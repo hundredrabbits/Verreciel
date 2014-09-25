@@ -11,6 +11,17 @@ import QuartzCore
 import SceneKit
 
 var scene = SCNScene()
+var touchOrigin = CGPoint()
+
+var heading = Double(0.0)
+var attitude = Double(0.0)
+var bank = 0.0
+
+func degToRad( degrees : Float ) -> Float
+{
+	return ( degrees / 180 * Float(M_PI) )
+}
+
 
 class GameViewController: UIViewController {
 
@@ -25,6 +36,10 @@ class GameViewController: UIViewController {
 		
 		// Camera
 		var cameraNode = SCNNode()
+		cameraNode.camera = SCNCamera()
+		cameraNode.name = "cameraNode"
+		cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
+		scene.rootNode.addChildNode(cameraNode)
 		
 		let sphere = SCNSphere(radius: 0.2)
 		let sphereNode = SCNNode(geometry: sphere)
@@ -32,10 +47,7 @@ class GameViewController: UIViewController {
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 0)
 		scene.rootNode.addChildNode(sphereNode)
 		
-		cameraNode.camera = SCNCamera()
-		cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
 		//		cameraNode.pivot = SCNMatrix4MakeTranslation(0.5, 0.5, 0.5)
-		scene.rootNode.childNodeWithName("sphere", recursively: true)!.addChildNode(cameraNode)
 		
 		// SourceFile
 		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
@@ -103,7 +115,7 @@ class GameViewController: UIViewController {
 		scnView.scene = scene
 		
 		// allows the user to manipulate the camera
-		scnView.allowsCameraControl = true
+//		scnView.allowsCameraControl = true
 		
 		// show statistics such as fps and timing information
 		scnView.showsStatistics = false
@@ -125,12 +137,32 @@ class GameViewController: UIViewController {
 	
 	override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
 	{
-		NSLog("!")
+		let touch = touches.anyObject() as UITouch
+		var touchPosition = touch.locationInView(self.view)
+		
+		touchOrigin = touchPosition
+		
 	}
 	
 	override func touchesMoved(touches: NSSet, withEvent event: UIEvent)
 	{
-		NSLog("!")
+		let touch = touches.anyObject() as UITouch
+		var touchPosition = touch.locationInView(self.view)
+		
+		var dragX = Float(touchPosition.x - touchOrigin.x)
+		var dragY = Float(touchPosition.y - touchOrigin.y)
+		
+		touchOrigin = touchPosition
+		
+		let xAngle = SCNMatrix4MakeRotation(degToRad(dragY/5), 1, 0, 0)
+		let yAngle = SCNMatrix4MakeRotation(degToRad(dragX/5), 0, 1, 0)
+		let zAngle = SCNMatrix4MakeRotation(degToRad(0), 0, 0, 1)
+		
+		var rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
+		
+		var cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+		
+		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
 		
 	}
 	
@@ -172,7 +204,7 @@ class GameViewController: UIViewController {
 					SCNTransaction.begin()
 					SCNTransaction.setAnimationDuration(0.5)
 					
-//					scene.rootNode.position = SCNVector3(x: 0, y: 0, z: scene.rootNode.position.z + 1)
+					scene.rootNode.position = SCNVector3(x: 0, y: 0, z: scene.rootNode.position.z + 1)
 					
 					SCNTransaction.commit()
 					
