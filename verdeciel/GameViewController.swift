@@ -38,13 +38,13 @@ class GameViewController: UIViewController {
 		var cameraNode = SCNNode()
 		cameraNode.camera = SCNCamera()
 		cameraNode.name = "cameraNode"
-		cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
+		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
 		scene.rootNode.addChildNode(cameraNode)
 		
 		let sphere = SCNSphere(radius: 0.2)
 		let sphereNode = SCNNode(geometry: sphere)
 		sphereNode.name = "sphere"
-		sphereNode.position = SCNVector3(x: 0, y: 0, z: 0)
+		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
 		scene.rootNode.addChildNode(sphereNode)
 		
 		//		cameraNode.pivot = SCNMatrix4MakeTranslation(0.5, 0.5, 0.5)
@@ -63,8 +63,6 @@ class GameViewController: UIViewController {
 		capsule2.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
 		capsule2.position = SCNVector3(x: 0, y: 0, z: 10)
 		scene.rootNode.addChildNode(capsule2)
-		
-		
 		
 		// place the camera
 		
@@ -163,7 +161,6 @@ class GameViewController: UIViewController {
 		var cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
-		
 	}
 	
 	override func touchesEnded(touches: NSSet, withEvent event: UIEvent)
@@ -213,7 +210,7 @@ class GameViewController: UIViewController {
 					SCNTransaction.begin()
 					SCNTransaction.setAnimationDuration(0.5)
 					
-//					scene.rootNode.position = SCNVector3(x: 0, y: 0, z: scene.rootNode.position.z - 1)
+					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: 0, y: 0, z: 10)
 					
 					SCNTransaction.commit()
 					
