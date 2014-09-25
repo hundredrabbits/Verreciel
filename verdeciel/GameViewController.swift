@@ -32,7 +32,7 @@ class GameViewController: UIViewController {
 	
 	func start()
 	{
-		scene = SCNScene()
+		scene = SCNScene(named: "art.scnassets/source.dae")
 		
 		// Camera
 		var cameraNode = SCNNode()
@@ -47,7 +47,14 @@ class GameViewController: UIViewController {
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
 		scene.rootNode.addChildNode(sphereNode)
 		
-		//		cameraNode.pivot = SCNMatrix4MakeTranslation(0.5, 0.5, 0.5)
+		
+		let sphere2 = SCNSphere(radius: 0.2)
+		let sphereNode2 = SCNNode(geometry: sphere2)
+		sphereNode2.name = "sphere2"
+		sphereNode2.position = SCNVector3(x: 0, y: 0, z: -10)
+		scene.rootNode.addChildNode(sphereNode2)
+		
+		
 		
 		// SourceFile
 		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
@@ -63,6 +70,11 @@ class GameViewController: UIViewController {
 		capsule2.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
 		capsule2.position = SCNVector3(x: 0, y: 0, z: 10)
 		scene.rootNode.addChildNode(capsule2)
+		
+		var capsule3 = meshLibrary.rootNode.childNodeWithName("capsule3", recursively: true)!
+		capsule3.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
+		capsule3.position = SCNVector3(x: 0, y: 0, z: -10)
+		scene.rootNode.addChildNode(capsule3)
 		
 		// place the camera
 		
@@ -80,40 +92,11 @@ class GameViewController: UIViewController {
 		ambientLightNode.light!.color = UIColor.grayColor()
 		scene.rootNode.addChildNode(ambientLightNode)
 		
-		// Pivot
-		
-		//		let boxNode = SCNNode()
-		//		boxNode.geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0.02)
-		//		boxNode.pivot = SCNMatrix4MakeTranslation(0.5, 0.5, 0.5)
-		
-		//		var spin = CABasicAnimation(keyPath: "rotation")
-		//		spin.byValue = NSValue(SCNVector4: SCNVector4(x: 0, y: 1, z: 0, w: 2*Float(M_PI)))
-		//		spin.duration = 10
-		//		spin.repeatCount = -1
-		//		cameraNode.addAnimation(spin, forKey: "spin around")
-		
-		// Alternative
-		//		ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1)))
-		
-		
-		//		let ship = scene.rootNode.childNodeWithName("donut", recursively: true)!
-		//		ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0.2, y: 0.2, z: 0.2, duration: 1)))
-		//		ship.scale = SCNVector3(x: 0.02, y: 0.02, z: 0.02)
-		//
-		//        // retrieve the ship node
-		//        let ship = scene.rootNode.childNodeWithName("donut", recursively: true)!
-		//
-		//        // animate the 3d object
-		//        ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1)))
-		
 		// retrieve the SCNView
 		let scnView = self.view as SCNView
 		
 		// set the scene to the view
 		scnView.scene = scene
-		
-		// allows the user to manipulate the camera
-//		scnView.allowsCameraControl = true
 		
 		// show statistics such as fps and timing information
 		scnView.showsStatistics = false
@@ -191,7 +174,7 @@ class GameViewController: UIViewController {
 					NSLog("unnamed")
 				}
 				
-				if( meshName == "donutMesh" ){
+				if( meshName == "sphere2" ){
 					
 					NSLog("%@",scnView.pointOfView!)
 					
@@ -199,16 +182,16 @@ class GameViewController: UIViewController {
 					
 					// highlight it
 					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(0.5)
+					SCNTransaction.setAnimationDuration(3)
 					
-					scene.rootNode.position = SCNVector3(x: 0, y: 0, z: scene.rootNode.position.z + 1)
+					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: 0, y: 0, z: -10)
 					
 					SCNTransaction.commit()
 					
 				}
 				else{
 					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(0.5)
+					SCNTransaction.setAnimationDuration(3)
 					
 					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: 0, y: 0, z: 10)
 					
