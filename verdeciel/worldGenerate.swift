@@ -14,11 +14,13 @@ extension GameViewController {
 	
 	func sceneSetup()
 	{
+		NSLog("SCENE | Setup")
 		scene = SCNScene(named: "art.scnassets/source.dae")
 		
 		// Camera
 		var cameraNode = SCNNode()
 		cameraNode.camera = SCNCamera()
+		cameraNode.camera?.xFov = 65
 		cameraNode.name = "cameraNode"
 		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
 		scene.rootNode.addChildNode(cameraNode)
@@ -38,39 +40,49 @@ extension GameViewController {
 		scene.rootNode.addChildNode(ambientLightNode)
 	}
 	
+	func capsuleSetup()
+	{
+		NSLog("CAPSL | Setup")
+		
+		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
+		
+		let scaleValue : Float = 0.0055
+		
+		let mainCapsule = meshLibrary.rootNode.childNodeWithName("mainCapsule", recursively: true)!
+		mainCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		mainCapsule.position = SCNVector3(x: 0, y: 0, z: 0)
+		scene.rootNode.addChildNode(mainCapsule)
+		
+		let supportCapsule = meshLibrary.rootNode.childNodeWithName("supportCapsule", recursively: true)!
+		supportCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		supportCapsule.position = SCNVector3(x: 0, y: 0, z: 5)
+		scene.rootNode.addChildNode(supportCapsule)
+		
+		let radarCapsule = meshLibrary.rootNode.childNodeWithName("radarCapsule", recursively: true)!
+		radarCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		radarCapsule.position = SCNVector3(x: 0, y: 0, z: -5)
+		scene.rootNode.addChildNode(radarCapsule)
+	}
+	
 	func objectSetup()
 	{
 		let sphere = SCNSphere(radius: 0.2)
 		let sphereNode = SCNNode(geometry: sphere)
-		sphereNode.name = "sphere"
-		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
+		sphereNode.name = "link"
+		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5)
 		scene.rootNode.addChildNode(sphereNode)
 		
 		let sphere2 = SCNSphere(radius: 0.2)
 		let sphereNode2 = SCNNode(geometry: sphere2)
-		sphereNode2.name = "sphere2"
-		sphereNode2.position = SCNVector3(x: 0, y: 0, z: -10)
+		sphereNode2.name = "link"
+		sphereNode2.position = SCNVector3(x: 0, y: 0, z: -5)
 		scene.rootNode.addChildNode(sphereNode2)
 		
-		// SourceFile
-		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
-		
-		// External
-		
-		let capsule = meshLibrary.rootNode.childNodeWithName("capsule1", recursively: true)!
-		capsule.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
-		capsule.position = SCNVector3(x: 0, y: 0, z: 0)
-		scene.rootNode.addChildNode(capsule)
-		
-		let capsule2 = meshLibrary.rootNode.childNodeWithName("capsule2", recursively: true)!
-		capsule2.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
-		capsule2.position = SCNVector3(x: 0, y: 0, z: 10)
-		scene.rootNode.addChildNode(capsule2)
-		
-		var capsule3 = meshLibrary.rootNode.childNodeWithName("capsule3", recursively: true)!
-		capsule3.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
-		capsule3.position = SCNVector3(x: 0, y: 0, z: -10)
-		scene.rootNode.addChildNode(capsule3)
+		let sphere3 = SCNSphere(radius: 0.2)
+		let sphereNode3 = SCNNode(geometry: sphere2)
+		sphereNode3.name = "link"
+		sphereNode3.position = SCNVector3(x: 0, y: 0, z: 0)
+		scene.rootNode.addChildNode(sphereNode3)
 	}
 	
 	func sceneComplete()

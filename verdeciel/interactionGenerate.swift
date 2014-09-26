@@ -29,7 +29,7 @@ extension GameViewController {
 		
 		touchOrigin = touchPosition
 		
-		let xAngle = SCNMatrix4MakeRotation(degToRad(dragY/5), 1, 0, 0)
+		let xAngle = SCNMatrix4MakeRotation(degToRad(dragY/4), 1, 0, 0)
 		let yAngle = SCNMatrix4MakeRotation(degToRad(dragX/5), 0, 1, 0)
 		let zAngle = SCNMatrix4MakeRotation(degToRad(0), 0, 0, 1)
 		
@@ -66,31 +66,14 @@ extension GameViewController {
 					NSLog("unnamed")
 				}
 				
-				if( meshName == "sphere2" ){
-					
-					NSLog("%@",scnView.pointOfView!)
-					
-					// animate mesh multiple times
-					
+				if( meshName == "link" )
+				{
 					// highlight it
 					SCNTransaction.begin()
 					SCNTransaction.setAnimationDuration(3)
-					
-					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: 0, y: 0, z: -10)
-					
+					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = result.node.position
 					SCNTransaction.commit()
-					
 				}
-				else{
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(3)
-					
-					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: 0, y: 0, z: 10)
-					
-					SCNTransaction.commit()
-					
-				}
-				
 				
 				// get its material
 				let material = result.node!.geometry!.firstMaterial!
@@ -104,12 +87,12 @@ extension GameViewController {
 					SCNTransaction.begin()
 					SCNTransaction.setAnimationDuration(0.5)
 					
-					material.emission.contents = UIColor.redColor()
+					material.emission.contents = UIColor.blackColor()
 					
 					SCNTransaction.commit()
 				}
 				
-				material.emission.contents = UIColor.blueColor()
+				material.emission.contents = UIColor.whiteColor()
 				
 				SCNTransaction.commit()
 			}

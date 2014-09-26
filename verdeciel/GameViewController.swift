@@ -22,13 +22,10 @@ class GameViewController: UIViewController
     override func viewDidLoad()
 	{
         super.viewDidLoad()
-		start()
-    }
-	
-	func start()
-	{
+		
 		sceneSetup()
+		capsuleSetup()
 		objectSetup()
 		sceneComplete()
-	}
+    }
 }
