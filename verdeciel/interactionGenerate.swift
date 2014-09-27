@@ -75,17 +75,27 @@ extension GameViewController {
 					SCNTransaction.commit()
 				}
 				
+				if( meshName == "doorTestMesh" )
+				{
+					NSLog("!")
+					// highlight it
+					SCNTransaction.begin()
+					SCNTransaction.setAnimationDuration(2)
+					result.node.position = SCNVector3(x: 0, y: 0, z: -350)
+					SCNTransaction.commit()
+				}
+				
 				// get its material
 				let material = result.node!.geometry!.firstMaterial!
 				
 				// highlight it
 				SCNTransaction.begin()
-				SCNTransaction.setAnimationDuration(0.5)
+				SCNTransaction.setAnimationDuration(0.1)
 				
 				// on completion - unhighlight
 				SCNTransaction.setCompletionBlock {
 					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(0.5)
+					SCNTransaction.setAnimationDuration(0.1)
 					
 					material.emission.contents = UIColor.blackColor()
 					material.diffuse.mipFilter = SCNFilterMode.None
@@ -93,7 +103,7 @@ extension GameViewController {
 					SCNTransaction.commit()
 				}
 				
-				material.emission.contents = UIColor.whiteColor()
+				material.emission.contents = UIColor.redColor()
 				
 				SCNTransaction.commit()
 			}

@@ -17,6 +17,11 @@ extension GameViewController {
 		NSLog("SCENE | Setup")
 		scene = SCNScene(named: "art.scnassets/source.dae")
 		
+		scene.fogStartDistance = 0
+		scene.fogEndDistance = 10
+		scene.fogDensityExponent = 4
+		scene.fogColor = UIColor.blackColor()
+		
 		// Camera
 		var cameraNode = SCNNode()
 		cameraNode.camera = SCNCamera()
@@ -97,7 +102,7 @@ extension GameViewController {
 		scnView.showsStatistics = false
 		
 		// configure the view
-		scnView.backgroundColor = UIColor.yellowColor()
+		scnView.backgroundColor = UIColor.blackColor()
 		
 		// add a tap gesture recognizer
 		let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
