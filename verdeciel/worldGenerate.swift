@@ -26,11 +26,11 @@ extension GameViewController {
 		scene.rootNode.addChildNode(cameraNode)
 		
 		// create and add a light to the scene
-		let lightNode = SCNNode()
-		lightNode.light = SCNLight()
-		lightNode.light!.type = SCNLightTypeOmni
-		lightNode.position = SCNVector3(x: 0, y: 20, z: 0)
-		scene.rootNode.addChildNode(lightNode)
+//		let lightNode = SCNNode()
+//		lightNode.light = SCNLight()
+//		lightNode.light!.type = SCNLightTypeOmni
+//		lightNode.position = SCNVector3(x: 0, y: 20, z: 0)
+//		scene.rootNode.addChildNode(lightNode)
 		
 		// create and add an ambient light to the scene
 		let ambientLightNode = SCNNode()
