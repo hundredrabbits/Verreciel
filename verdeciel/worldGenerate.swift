@@ -28,14 +28,9 @@ extension GameViewController {
 		cameraNode.camera?.xFov = 65
 		cameraNode.name = "cameraNode"
 		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
+		cameraNode.camera?.aperture = 100
+		cameraNode.camera?.automaticallyAdjustsZRange = 1
 		scene.rootNode.addChildNode(cameraNode)
-		
-		// create and add a light to the scene
-//		let lightNode = SCNNode()
-//		lightNode.light = SCNLight()
-//		lightNode.light!.type = SCNLightTypeOmni
-//		lightNode.position = SCNVector3(x: 0, y: 20, z: 0)
-//		scene.rootNode.addChildNode(lightNode)
 		
 		// create and add an ambient light to the scene
 		let ambientLightNode = SCNNode()
@@ -51,42 +46,36 @@ extension GameViewController {
 		
 		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
 		
-		let scaleValue : Float = 0.0055
-		
 		let mainCapsule = meshLibrary.rootNode.childNodeWithName("mainCapsule", recursively: true)!
 		mainCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
 		mainCapsule.position = SCNVector3(x: 0, y: 0, z: 0)
+		mainCapsule.geometry?.firstMaterial?.litPerPixel = false
+		mainCapsule.geometry?.firstMaterial?.diffuse.contents = UIColor.blackColor()
+		mainCapsule.geometry?.firstMaterial?.emission.contents = UIColor.blackColor()
 		scene.rootNode.addChildNode(mainCapsule)
-		
-		let supportCapsule = meshLibrary.rootNode.childNodeWithName("supportCapsule", recursively: true)!
-		supportCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		supportCapsule.position = SCNVector3(x: 0, y: 0, z: 5)
-		scene.rootNode.addChildNode(supportCapsule)
 		
 		let radarCapsule = meshLibrary.rootNode.childNodeWithName("radarCapsule", recursively: true)!
 		radarCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		radarCapsule.position = SCNVector3(x: 0, y: 0, z: -5)
+		radarCapsule.position = SCNVector3(x: 0, y: 0, z: 5.5)
 		scene.rootNode.addChildNode(radarCapsule)
 	}
 	
 	func objectSetup()
 	{
-		let sphere = SCNSphere(radius: 0.2)
+		let sphere = SCNSphere(radius: 1.5)
 		let sphereNode = SCNNode(geometry: sphere)
 		sphereNode.name = "link"
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5)
+		sphereNode.opacity = 0.01
+		sphereNode.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(sphereNode)
 		
-		let sphere2 = SCNSphere(radius: 0.2)
-		let sphereNode2 = SCNNode(geometry: sphere2)
-		sphereNode2.name = "link"
-		sphereNode2.position = SCNVector3(x: 0, y: 0, z: -5)
-		scene.rootNode.addChildNode(sphereNode2)
-		
-		let sphere3 = SCNSphere(radius: 0.2)
-		let sphereNode3 = SCNNode(geometry: sphere2)
+		let sphere3 = SCNSphere(radius: 1.5)
+		let sphereNode3 = SCNNode(geometry: sphere3)
 		sphereNode3.name = "link"
 		sphereNode3.position = SCNVector3(x: 0, y: 0, z: 0)
+		sphereNode3.opacity = 0.01
+		sphereNode3.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(sphereNode3)
 	}
 	
@@ -103,6 +92,11 @@ extension GameViewController {
 		
 		// configure the view
 		scnView.backgroundColor = UIColor.blackColor()
+		
+		scnView.antialiasingMode = SCNAntialiasingMode.None
+		
+		scnView.tintColor = UIColor.redColor()
+		scnView.tintAdjustmentMode = UIViewTintAdjustmentMode.Dimmed
 		
 		// add a tap gesture recognizer
 		let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")

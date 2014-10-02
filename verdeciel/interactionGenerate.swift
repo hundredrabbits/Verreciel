@@ -85,6 +85,16 @@ extension GameViewController {
 					SCNTransaction.commit()
 				}
 				
+				if( meshName == "door.window.mesh" )
+				{
+					NSLog("window")
+					// highlight it
+					SCNTransaction.begin()
+					SCNTransaction.setAnimationDuration(2)
+					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: result.worldCoordinates.x, y: result.worldCoordinates.y, z: result.worldCoordinates.z)
+					SCNTransaction.commit()
+				}
+				
 				// get its material
 				let material = result.node!.geometry!.firstMaterial!
 				
@@ -103,7 +113,7 @@ extension GameViewController {
 					SCNTransaction.commit()
 				}
 				
-				material.emission.contents = UIColor.redColor()
+//				material.emission.contents = UIColor.redColor()
 				
 				SCNTransaction.commit()
 			}
