@@ -10,7 +10,15 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-extension GameViewController {
+extension GameViewController
+{
+	func worldStart()
+	{
+		sceneSetup()
+		capsuleSetup()
+		objectSetup()
+		sceneComplete()
+	}
 	
 	func sceneSetup()
 	{
@@ -69,7 +77,6 @@ extension GameViewController {
 		sphereNode.name = "link"
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5.5)
 		sphereNode.opacity = 0.01
-		sphereNode.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(sphereNode)
 		
 		let camCapsuleLinkMesh = SCNSphere(radius: 1.5)
@@ -77,7 +84,6 @@ extension GameViewController {
 		camCapsuleLink.name = "link"
 		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -5.5)
 		camCapsuleLink.opacity = 0.01
-		camCapsuleLink.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(camCapsuleLink)
 		
 		let sphere3 = SCNSphere(radius: 1.5)
@@ -85,7 +91,6 @@ extension GameViewController {
 		sphereNode3.name = "link"
 		sphereNode3.position = SCNVector3(x: 0, y: 0, z: 0)
 		sphereNode3.opacity = 0.01
-		sphereNode3.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(sphereNode3)
 	}
 	

@@ -24,9 +24,6 @@ class GameViewController: UIViewController
 	{
         super.viewDidLoad()
 		
-		sceneSetup()
-		capsuleSetup()
-		objectSetup()
-		sceneComplete()
+		worldStart()
     }
 }
