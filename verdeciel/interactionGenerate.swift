@@ -35,7 +35,6 @@ extension GameViewController {
 		
 		var rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
 		var cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
-		
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
 	}
 	
@@ -85,6 +84,19 @@ extension GameViewController {
 					SCNTransaction.commit()
 				}
 				
+				if( meshName == "capsule.radar.mesh" )
+				{
+					NSLog("!")
+					
+					let cameraNode: AnyObject! = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+					
+					// highlight it
+					SCNTransaction.begin()
+					SCNTransaction.setAnimationDuration(2)
+					scene.rootNode.childNodeWithName("interface.navigation", recursively: true)!.rotation = SCNVector4Make(cameraNode.rotation.x, cameraNode.rotation.y, cameraNode.rotation.z, cameraNode.rotation.w)
+					SCNTransaction.commit()
+				}
+				
 				if( meshName == "door.window.mesh" )
 				{
 					NSLog("window")
@@ -107,8 +119,8 @@ extension GameViewController {
 					SCNTransaction.begin()
 					SCNTransaction.setAnimationDuration(0.1)
 					
-					material.emission.contents = UIColor.blackColor()
-					material.diffuse.mipFilter = SCNFilterMode.None
+//					material.emission.contents = UIColor.blackColor()
+//					material.diffuse.mipFilter = SCNFilterMode.None
 					
 					SCNTransaction.commit()
 				}

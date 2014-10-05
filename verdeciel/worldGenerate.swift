@@ -15,7 +15,7 @@ extension GameViewController {
 	func sceneSetup()
 	{
 		NSLog("SCENE | Setup")
-		scene = SCNScene(named: "art.scnassets/source.dae")
+		scene = SCNScene()
 		
 		scene.fogStartDistance = 0
 		scene.fogEndDistance = 10
@@ -49,15 +49,17 @@ extension GameViewController {
 		let mainCapsule = meshLibrary.rootNode.childNodeWithName("mainCapsule", recursively: true)!
 		mainCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
 		mainCapsule.position = SCNVector3(x: 0, y: 0, z: 0)
-		mainCapsule.geometry?.firstMaterial?.litPerPixel = false
-		mainCapsule.geometry?.firstMaterial?.diffuse.contents = UIColor.blackColor()
-		mainCapsule.geometry?.firstMaterial?.emission.contents = UIColor.blackColor()
 		scene.rootNode.addChildNode(mainCapsule)
 		
 		let radarCapsule = meshLibrary.rootNode.childNodeWithName("radarCapsule", recursively: true)!
 		radarCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
 		radarCapsule.position = SCNVector3(x: 0, y: 0, z: 5.5)
 		scene.rootNode.addChildNode(radarCapsule)
+		
+		let comCapsule = meshLibrary.rootNode.childNodeWithName("comCapsule", recursively: true)!
+		comCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		comCapsule.position = SCNVector3(x: 0, y: 0, z: -5.5)
+		scene.rootNode.addChildNode(comCapsule)
 	}
 	
 	func objectSetup()
@@ -65,10 +67,18 @@ extension GameViewController {
 		let sphere = SCNSphere(radius: 1.5)
 		let sphereNode = SCNNode(geometry: sphere)
 		sphereNode.name = "link"
-		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5)
+		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5.5)
 		sphereNode.opacity = 0.01
 		sphereNode.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		scene.rootNode.addChildNode(sphereNode)
+		
+		let camCapsuleLinkMesh = SCNSphere(radius: 1.5)
+		let camCapsuleLink = SCNNode(geometry: camCapsuleLinkMesh)
+		camCapsuleLink.name = "link"
+		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -5.5)
+		camCapsuleLink.opacity = 0.01
+		camCapsuleLink.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
+		scene.rootNode.addChildNode(camCapsuleLink)
 		
 		let sphere3 = SCNSphere(radius: 1.5)
 		let sphereNode3 = SCNNode(geometry: sphere3)
