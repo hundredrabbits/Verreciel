@@ -120,7 +120,7 @@ extension GameViewController {
 					SCNTransaction.setAnimationDuration(0.1)
 					
 //					material.emission.contents = UIColor.blackColor()
-//					material.diffuse.mipFilter = SCNFilterMode.None
+					material.diffuse.mipFilter = SCNFilterMode.None
 					
 					SCNTransaction.commit()
 				}

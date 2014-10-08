@@ -96,6 +96,8 @@ extension GameViewController
 	
 	func sceneComplete()
 	{
+		scene.rootNode.childNodeWithName("door.window.mesh", recursively: true)!.opacity = 0.2
+		
 		// retrieve the SCNView
 		let scnView = self.view as SCNView
 		
