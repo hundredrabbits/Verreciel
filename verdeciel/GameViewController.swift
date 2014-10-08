@@ -16,7 +16,7 @@ var touchOrigin = CGPoint()
 var heading = Double(0.0)
 var attitude = Double(0.0)
 var bank = 0.0
-let scaleValue : Float = 0.0055
+let scaleValue : Float = 0.01
 
 class GameViewController: UIViewController
 {

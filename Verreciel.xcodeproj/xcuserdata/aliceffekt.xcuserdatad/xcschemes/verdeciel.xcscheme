@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "03DDE17919CE497F008029A8"
-               BuildableName = "verdeciel.app"
-               BlueprintName = "verdeciel"
-               ReferencedContainer = "container:verdeciel.xcodeproj">
+               BuildableName = "Verreciel.app"
+               BlueprintName = "Verreciel"
+               ReferencedContainer = "container:Verreciel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "03DDE19019CE497F008029A8"
                BuildableName = "verdecielTests.xctest"
                BlueprintName = "verdecielTests"
-               ReferencedContainer = "container:verdeciel.xcodeproj">
+               ReferencedContainer = "container:Verreciel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "03DDE19019CE497F008029A8"
                BuildableName = "verdecielTests.xctest"
                BlueprintName = "verdecielTests"
-               ReferencedContainer = "container:verdeciel.xcodeproj">
+               ReferencedContainer = "container:Verreciel.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "03DDE17919CE497F008029A8"
-            BuildableName = "verdeciel.app"
-            BlueprintName = "verdeciel"
-            ReferencedContainer = "container:verdeciel.xcodeproj">
+            BuildableName = "Verreciel.app"
+            BlueprintName = "Verreciel"
+            ReferencedContainer = "container:Verreciel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "03DDE17919CE497F008029A8"
-            BuildableName = "verdeciel.app"
-            BlueprintName = "verdeciel"
-            ReferencedContainer = "container:verdeciel.xcodeproj">
+            BuildableName = "Verreciel.app"
+            BlueprintName = "Verreciel"
+            ReferencedContainer = "container:Verreciel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "03DDE17919CE497F008029A8"
-            BuildableName = "verdeciel.app"
-            BlueprintName = "verdeciel"
-            ReferencedContainer = "container:verdeciel.xcodeproj">
+            BuildableName = "Verreciel.app"
+            BlueprintName = "Verreciel"
+            ReferencedContainer = "container:Verreciel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

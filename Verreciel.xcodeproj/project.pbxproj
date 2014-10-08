@@ -25,7 +25,7 @@
 		0336701C19D4EB82005E1869 /* interactionGenerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interactionGenerate.swift; sourceTree = "<group>"; };
 		0336701E19D4EC0C005E1869 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
 		0336702019D4EC40005E1869 /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
-		03DDE17A19CE497F008029A8 /* verdeciel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = verdeciel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DDE17A19CE497F008029A8 /* Verreciel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verreciel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03DDE17E19CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE17F19CE497F008029A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03DDE18119CE497F008029A8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		03DDE17B19CE497F008029A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03DDE17A19CE497F008029A8 /* verdeciel.app */,
+				03DDE17A19CE497F008029A8 /* Verreciel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,9 +113,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03DDE17919CE497F008029A8 /* verdeciel */ = {
+		03DDE17919CE497F008029A8 /* Verreciel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03DDE19B19CE497F008029A8 /* Build configuration list for PBXNativeTarget "verdeciel" */;
+			buildConfigurationList = 03DDE19B19CE497F008029A8 /* Build configuration list for PBXNativeTarget "Verreciel" */;
 			buildPhases = (
 				03DDE17619CE497F008029A8 /* Sources */,
 				03DDE17719CE497F008029A8 /* Frameworks */,
@@ -125,9 +125,9 @@
 			);
 			dependencies = (
 			);
-			name = verdeciel;
+			name = Verreciel;
 			productName = verdeciel;
-			productReference = 03DDE17A19CE497F008029A8 /* verdeciel.app */;
+			productReference = 03DDE17A19CE497F008029A8 /* Verreciel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 03DDE17519CE497F008029A8 /* Build configuration list for PBXProject "verdeciel" */;
+			buildConfigurationList = 03DDE17519CE497F008029A8 /* Build configuration list for PBXProject "Verreciel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -157,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03DDE17919CE497F008029A8 /* verdeciel */,
+				03DDE17919CE497F008029A8 /* Verreciel */,
 			);
 		};
 /* End PBXProject section */
@@ -296,7 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = verdeciel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Verreciel;
 			};
 			name = Debug;
 		};
@@ -306,14 +306,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = verdeciel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Verreciel;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03DDE17519CE497F008029A8 /* Build configuration list for PBXProject "verdeciel" */ = {
+		03DDE17519CE497F008029A8 /* Build configuration list for PBXProject "Verreciel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03DDE19919CE497F008029A8 /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03DDE19B19CE497F008029A8 /* Build configuration list for PBXNativeTarget "verdeciel" */ = {
+		03DDE19B19CE497F008029A8 /* Build configuration list for PBXNativeTarget "Verreciel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03DDE19C19CE497F008029A8 /* Debug */,

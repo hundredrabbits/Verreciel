@@ -26,14 +26,14 @@ extension GameViewController
 		scene = SCNScene()
 		
 		scene.fogStartDistance = 0
-		scene.fogEndDistance = 10
+		scene.fogEndDistance = 17
 		scene.fogDensityExponent = 4
 		scene.fogColor = UIColor.blackColor()
 		
 		// Camera
 		var cameraNode = SCNNode()
 		cameraNode.camera = SCNCamera()
-		cameraNode.camera?.xFov = 65
+		cameraNode.camera?.xFov = 75
 		cameraNode.name = "cameraNode"
 		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
 		cameraNode.camera?.aperture = 100
@@ -61,12 +61,12 @@ extension GameViewController
 		
 		let radarCapsule = meshLibrary.rootNode.childNodeWithName("radarCapsule", recursively: true)!
 		radarCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		radarCapsule.position = SCNVector3(x: 0, y: 0, z: 5.5)
+		radarCapsule.position = SCNVector3(x: 0, y: 0, z: 10)
 		scene.rootNode.addChildNode(radarCapsule)
 		
 		let comCapsule = meshLibrary.rootNode.childNodeWithName("comCapsule", recursively: true)!
 		comCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		comCapsule.position = SCNVector3(x: 0, y: 0, z: -5.5)
+		comCapsule.position = SCNVector3(x: 0, y: 0, z: -10)
 		scene.rootNode.addChildNode(comCapsule)
 	}
 	
@@ -75,14 +75,14 @@ extension GameViewController
 		let sphere = SCNSphere(radius: 1.5)
 		let sphereNode = SCNNode(geometry: sphere)
 		sphereNode.name = "link"
-		sphereNode.position = SCNVector3(x: 0, y: 0, z: 5.5)
+		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
 		sphereNode.opacity = 0.01
 		scene.rootNode.addChildNode(sphereNode)
 		
 		let camCapsuleLinkMesh = SCNSphere(radius: 1.5)
 		let camCapsuleLink = SCNNode(geometry: camCapsuleLinkMesh)
 		camCapsuleLink.name = "link"
-		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -5.5)
+		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -10)
 		camCapsuleLink.opacity = 0.01
 		scene.rootNode.addChildNode(camCapsuleLink)
 		
