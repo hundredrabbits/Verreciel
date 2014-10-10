@@ -55,82 +55,55 @@ extension GameViewController {
 				// retrieved the first clicked object
 				let result: AnyObject! = hitResults[0]
 				
-				var meshName = ""
+				let prefix = result.node.name!.componentsSeparatedByString(".")[0]
+				let sufix  = result.node.name!.componentsSeparatedByString(".")[1]
 				
-				if(( result.node.name ) != nil){
-					NSLog("%@",result.node.name!)
-					meshName = result.node.name!
-				}
-				else{
-					NSLog("unnamed")
-				}
-				
-				if( meshName == "link" )
+				if( prefix == "trigger" )
 				{
-					// highlight it
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(3)
-					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = result.node.position
-					SCNTransaction.commit()
+					triggerRouter(sufix,object: result)
 				}
-				
-				if( meshName == "doorTestMesh" )
-				{
-					NSLog("!")
-					// highlight it
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(2)
-					result.node.position = SCNVector3(x: 0, y: 0, z: -350)
-					SCNTransaction.commit()
-				}
-				
-				if( meshName == "capsule.radar.mesh" )
-				{
-					NSLog("!")
-					
-					let cameraNode: AnyObject! = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
-					
-					// highlight it
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(2)
-					scene.rootNode.childNodeWithName("interface.navigation", recursively: true)!.rotation = SCNVector4Make(cameraNode.rotation.x, cameraNode.rotation.y, cameraNode.rotation.z, cameraNode.rotation.w)
-					SCNTransaction.commit()
-				}
-				
-				if( meshName == "door.window.mesh" )
-				{
-					NSLog("window")
-					// highlight it
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(2)
-					scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: result.worldCoordinates.x, y: result.worldCoordinates.y, z: result.worldCoordinates.z)
-					SCNTransaction.commit()
-				}
-				
-				// get its material
-				let material = result.node!.geometry!.firstMaterial!
-				
-				// highlight it
-				SCNTransaction.begin()
-				SCNTransaction.setAnimationDuration(0.1)
-				
-				// on completion - unhighlight
-				SCNTransaction.setCompletionBlock {
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(0.1)
-					
-//					material.emission.contents = UIColor.blackColor()
-					material.diffuse.mipFilter = SCNFilterMode.None
-					
-					SCNTransaction.commit()
-				}
-				
-//				material.emission.contents = UIColor.redColor()
-				
-				SCNTransaction.commit()
 			}
 		}
 	}
 	
+	func triggerRouter( method: NSString, object: AnyObject)
+	{
+		NSLog("%@",method)
+		
+		if(method == "move"){
+			// highlight it
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(3)
+			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
+			SCNTransaction.commit()
+		}
+		if( method == "door-vertical" )
+		{
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(2)
+			object.node.position = SCNVector3(x: 0, y: 0, z: -350)
+			SCNTransaction.commit()
+		}
+		if( method == "window" )
+		{
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(2)
+			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
+			SCNTransaction.commit()
+		}
+		if( method == "capsule.radar.mesh" )
+		{
+//			let cameraNode: AnyObject! = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+//			
+//			// highlight it
+//			SCNTransaction.begin()
+//			SCNTransaction.setAnimationDuration(2)
+//			scene.rootNode.childNodeWithName("interface.navigation", recursively: true)!.rotation = SCNVector4Make(cameraNode.rotation.x, cameraNode.rotation.y, cameraNode.rotation.z, cameraNode.rotation.w)
+//			SCNTransaction.commit()
+		}
+		
+	}
+	
+
 	
 }

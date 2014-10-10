@@ -74,21 +74,21 @@ extension GameViewController
 	{
 		let sphere = SCNSphere(radius: 1.5)
 		let sphereNode = SCNNode(geometry: sphere)
-		sphereNode.name = "link"
+		sphereNode.name = "trigger.move"
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
 		sphereNode.opacity = 0.01
 		scene.rootNode.addChildNode(sphereNode)
 		
 		let camCapsuleLinkMesh = SCNSphere(radius: 1.5)
 		let camCapsuleLink = SCNNode(geometry: camCapsuleLinkMesh)
-		camCapsuleLink.name = "link"
+		camCapsuleLink.name = "trigger.move"
 		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -10)
 		camCapsuleLink.opacity = 0.01
 		scene.rootNode.addChildNode(camCapsuleLink)
 		
 		let sphere3 = SCNSphere(radius: 1.5)
 		let sphereNode3 = SCNNode(geometry: sphere3)
-		sphereNode3.name = "link"
+		sphereNode3.name = "trigger.move"
 		sphereNode3.position = SCNVector3(x: 0, y: 0, z: 0)
 		sphereNode3.opacity = 0.01
 		scene.rootNode.addChildNode(sphereNode3)
@@ -97,6 +97,8 @@ extension GameViewController
 	func sceneComplete()
 	{
 		scene.rootNode.childNodeWithName("door.window.mesh", recursively: true)!.opacity = 0.2
+		
+		scene.rootNode.childNodeWithName("trigger.power", recursively: true)!.geometry?.firstMaterial?.transparency = 0
 		
 		// retrieve the SCNView
 		let scnView = self.view as SCNView
