@@ -22,7 +22,7 @@ extension GameViewController
 	
 	func sceneSetup()
 	{
-		NSLog("SCENE | Setup")
+		NSLog("SCENES | Setup")
 		scene = SCNScene()
 		
 		scene.fogStartDistance = 0
@@ -50,7 +50,7 @@ extension GameViewController
 	
 	func capsuleSetup()
 	{
-		NSLog("CAPSL | Setup")
+		NSLog("CAPSUL | Setup")
 		
 		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
 		
@@ -72,21 +72,21 @@ extension GameViewController
 	
 	func objectSetup()
 	{
-		let sphere = SCNSphere(radius: 1.5)
+		let sphere = SCNSphere(radius: 3)
 		let sphereNode = SCNNode(geometry: sphere)
 		sphereNode.name = "trigger.move"
 		sphereNode.position = SCNVector3(x: 0, y: 0, z: 10)
 		sphereNode.opacity = 0.01
 		scene.rootNode.addChildNode(sphereNode)
 		
-		let camCapsuleLinkMesh = SCNSphere(radius: 1.5)
+		let camCapsuleLinkMesh = SCNSphere(radius: 3)
 		let camCapsuleLink = SCNNode(geometry: camCapsuleLinkMesh)
 		camCapsuleLink.name = "trigger.move"
 		camCapsuleLink.position = SCNVector3(x: 0, y: 0, z: -10)
 		camCapsuleLink.opacity = 0.01
 		scene.rootNode.addChildNode(camCapsuleLink)
 		
-		let sphere3 = SCNSphere(radius: 1.5)
+		let sphere3 = SCNSphere(radius: 3)
 		let sphereNode3 = SCNNode(geometry: sphere3)
 		sphereNode3.name = "trigger.move"
 		sphereNode3.position = SCNVector3(x: 0, y: 0, z: 0)

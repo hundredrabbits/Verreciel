@@ -55,6 +55,11 @@ extension GameViewController {
 				// retrieved the first clicked object
 				let result: AnyObject! = hitResults[0]
 				
+				if( result.node.name!.rangeOfString(".") == nil ){
+					NSLog("SYSTEM | Trigger: not action")
+					return
+				}
+				
 				let prefix = result.node.name!.componentsSeparatedByString(".")[0]
 				let sufix  = result.node.name!.componentsSeparatedByString(".")[1]
 				
@@ -68,7 +73,7 @@ extension GameViewController {
 	
 	func triggerRouter( method: NSString, object: AnyObject)
 	{
-		NSLog("%@",method)
+		NSLog("ACTION | Trigger: %@",method)
 		
 		if(method == "move"){
 			// highlight it

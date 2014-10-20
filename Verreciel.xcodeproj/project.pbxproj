@@ -17,7 +17,6 @@
 		03DDE18719CE497F008029A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18519CE497F008029A8 /* Main.storyboard */; };
 		03DDE18919CE497F008029A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18819CE497F008029A8 /* Images.xcassets */; };
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
-		03DDE1A419CE4F31008029A8 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE1A319CE4F31008029A8 /* test.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		03DDE18B19CE497F008029A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		03DDE19619CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
-		03DDE1A319CE4F31008029A8 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 		03DDE17C19CE497F008029A8 /* verdeciel */ = {
 			isa = PBXGroup;
 			children = (
-				03DDE1A319CE4F31008029A8 /* test.jpg */,
 				03DDE17F19CE497F008029A8 /* AppDelegate.swift */,
 				03DDE18119CE497F008029A8 /* art.scnassets */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
@@ -168,7 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */,
-				03DDE1A419CE4F31008029A8 /* test.jpg in Resources */,
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
 				03DDE18219CE497F008029A8 /* art.scnassets in Resources */,
 				03DDE18719CE497F008029A8 /* Main.storyboard in Resources */,
