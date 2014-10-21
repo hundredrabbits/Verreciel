@@ -37,7 +37,7 @@ extension GameViewController
 		cameraNode.name = "cameraNode"
 		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
 		cameraNode.camera?.aperture = 100
-		cameraNode.camera?.automaticallyAdjustsZRange = 1
+		cameraNode.camera?.automaticallyAdjustsZRange = true
 		scene.rootNode.addChildNode(cameraNode)
 		
 		// create and add an ambient light to the scene
@@ -53,21 +53,21 @@ extension GameViewController
 		NSLog("CAPSUL | Setup")
 		
 		let meshLibrary = SCNScene(named: "art.scnassets/source.dae")
+	
+		let mainCapsule = meshLibrary?.rootNode.childNodeWithName("mainCapsule", recursively: true)!
+		mainCapsule?.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		mainCapsule?.position = SCNVector3(x: 0, y: 0, z: 0)
+		scene.rootNode.addChildNode(mainCapsule!)
 		
-		let mainCapsule = meshLibrary.rootNode.childNodeWithName("mainCapsule", recursively: true)!
-		mainCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		mainCapsule.position = SCNVector3(x: 0, y: 0, z: 0)
-		scene.rootNode.addChildNode(mainCapsule)
+		let radarCapsule = meshLibrary?.rootNode.childNodeWithName("radarCapsule", recursively: true)!
+		radarCapsule?.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		radarCapsule?.position = SCNVector3(x: 0, y: 0, z: 10)
+		scene.rootNode.addChildNode(radarCapsule!)
 		
-		let radarCapsule = meshLibrary.rootNode.childNodeWithName("radarCapsule", recursively: true)!
-		radarCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		radarCapsule.position = SCNVector3(x: 0, y: 0, z: 10)
-		scene.rootNode.addChildNode(radarCapsule)
-		
-		let comCapsule = meshLibrary.rootNode.childNodeWithName("comCapsule", recursively: true)!
-		comCapsule.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
-		comCapsule.position = SCNVector3(x: 0, y: 0, z: -10)
-		scene.rootNode.addChildNode(comCapsule)
+		let comCapsule = meshLibrary?.rootNode.childNodeWithName("comCapsule", recursively: true)!
+		comCapsule?.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
+		comCapsule?.position = SCNVector3(x: 0, y: 0, z: -10)
+		scene.rootNode.addChildNode(comCapsule!)
 	}
 	
 	func objectSetup()
