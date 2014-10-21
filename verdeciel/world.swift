@@ -12,7 +12,7 @@ import Foundation
 
 extension GameViewController
 {
-	func worldStart()
+	func worldSetup()
 	{
 		sceneSetup()
 		capsuleSetup()

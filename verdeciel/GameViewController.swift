@@ -24,6 +24,8 @@ class GameViewController: UIViewController
 	{
         super.viewDidLoad()
 		
-		worldStart()
+		configSetup()
+		userSetup()
+		worldSetup()
     }
 }
