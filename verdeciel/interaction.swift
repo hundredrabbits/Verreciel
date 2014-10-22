@@ -76,10 +76,12 @@ extension GameViewController {
 		NSLog("ACTION | Trigger: %@",method)
 		
 		if(method == "move"){
-			// highlight it
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(3)
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
+			SCNTransaction.setCompletionBlock({
+				self.doorClose()
+			})
 			SCNTransaction.commit()
 		}
 		if( method == "door-vertical" )
@@ -109,6 +111,24 @@ extension GameViewController {
 		
 	}
 	
-
+	func doorClose()
+	{
+		NSLog("INTERA | Door Close")
+		
+		for capsule in scene.rootNode.childNodes {
+			let capsuleParent = capsule as SCNNode
+			
+				
+			for element in capsuleParent.childNodes {
+				let elementNode = element as SCNNode
+				
+				if(( elementNode.name ) != nil){
+					NSLog("%@",elementNode.name!)
+				}
+			}
+			
+		}
+	
+	}
 	
 }

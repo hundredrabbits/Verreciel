@@ -20,16 +20,15 @@ extension GameViewController {
 	{
 		NSLog("USER   | Start")
 		
-		var airports = ["YYZ": 35, "DUB": "Dublin"]
+		var userNew:NSMutableDictionary = [:]
 		
+		userNew["general"]   = ["time" : 0,"capsule":""]
+		userNew["power"]     = ["active" : 0]
+		userNew["thrusters"] = ["active" : 0, "speed":0]
+		userNew["shield"]    = ["active" : 0]
+		userNew["position"]  = ["x" : 0,"y" : 0,"z" : 0]
 		
-		// Shield
-		airports["shield"] = ["active" : 1,"":""]
-		
-		
-		
-		
-		NSLog("%@",airports)
+		NSLog("%@",userNew)
 	}
 	
 }

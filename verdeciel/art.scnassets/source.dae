@@ -4,8 +4,8 @@
         <contributor>
             <authoring_tool>CINEMA4D 13.016 COLLADA Exporter</authoring_tool>
         </contributor>
-        <created>2014-10-10T18:26:45Z</created>
-        <modified>2014-10-10T18:26:45Z</modified>
+        <created>2014-10-22T16:22:07Z</created>
+        <modified>2014-10-22T16:22:07Z</modified>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -14,28 +14,28 @@
             <init_from>general.template.jpg</init_from>
         </image>
         <image id="ID16">
-            <init_from>main.capsule.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID23">
-            <init_from>test.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID28">
-            <init_from>main.capsule.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID33">
-            <init_from>general.door.cap.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID38">
-            <init_from>general.door.seal.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID43">
-            <init_from>door.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID48">
-            <init_from>main.doodads.jpg</init_from>
+            <init_from/>
         </image>
         <image id="ID57">
-            <init_from>general.template.jpg</init_from>
+            <init_from/>
         </image>
     </library_images>
     <library_effects>
@@ -4896,7 +4896,7 @@
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
                         <scale sid="scale">1 1 1</scale>
                         <node id="ID219" name="door.window.mesh">
-                            <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                            <translate sid="translate">1.54284 501.413 0.865324</translate>
                             <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                             <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                             <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -5091,7 +5091,7 @@
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
                         <scale sid="scale">1 1 1</scale>
                         <node id="ID314" name="door.window.mesh">
-                            <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                            <translate sid="translate">1.54284 501.413 0.865324</translate>
                             <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                             <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                             <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -5124,7 +5124,7 @@
                         </node>
                     </node>
                 </node>
-                <node id="ID332" name="door.panel_Instance">
+                <node id="ID332" name="door.panel">
                     <translate sid="translate">0 9.21933e-14 -501.877</translate>
                     <rotate sid="rotateY">0 1 0 0</rotate>
                     <rotate sid="rotateX">1 0 0 -90</rotate>
@@ -5720,7 +5720,7 @@
                         </instance_geometry>
                     </node>
                 </node>
-                <node id="ID585" name="door.panel_Instance">
+                <node id="ID585" name="door.panel">
                     <translate sid="translate">0 3.07311e-14 501.877</translate>
                     <rotate sid="rotateY">0 1 0 0</rotate>
                     <rotate sid="rotateX">1 0 0 -90</rotate>
@@ -6159,7 +6159,7 @@
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
                         <scale sid="scale">1 1 1</scale>
                         <node id="ID762" name="door.window.mesh">
-                            <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                            <translate sid="translate">1.54284 501.413 0.865324</translate>
                             <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                             <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                             <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -6228,7 +6228,7 @@
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
                         <scale sid="scale">1 1 1</scale>
                         <node id="ID792" name="door.window.mesh">
-                            <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                            <translate sid="translate">1.54284 501.413 0.865324</translate>
                             <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                             <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                             <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -6313,7 +6313,7 @@
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
                         <scale sid="scale">1 1 1</scale>
                         <node id="ID831" name="door.window.mesh">
-                            <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                            <translate sid="translate">1.54284 501.413 0.865324</translate>
                             <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                             <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                             <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -6572,7 +6572,7 @@
                     <rotate sid="rotateZ">0 0 1 -90</rotate>
                     <scale sid="scale">1 1 1</scale>
                     <node id="ID935" name="door.window.mesh">
-                        <translate sid="translate">1.26218e-29 500 1.22465e-13</translate>
+                        <translate sid="translate">1.54284 501.413 0.865324</translate>
                         <rotate sid="rotateY">0 1 0 7.01671e-15</rotate>
                         <rotate sid="rotateX">1 0 0 1.40334e-14</rotate>
                         <rotate sid="rotateZ">0 0 1 -0</rotate>
@@ -6795,7 +6795,7 @@
                 </node>
             </node>
             <node id="ID1027" name="workCam">
-                <translate sid="translate">52.9889 81.9653 294.535</translate>
+                <translate sid="translate">-139.152 268.431 940.686</translate>
                 <rotate sid="rotateY">0 1 0 343.44</rotate>
                 <rotate sid="rotateX">1 0 0 -15.4619</rotate>
                 <rotate sid="rotateZ">0 0 1 -0</rotate>
