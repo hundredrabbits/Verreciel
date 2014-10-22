@@ -86,9 +86,12 @@ extension GameViewController {
 		}
 		if( method == "door-vertical" )
 		{
+			NSLog("       | Name:     %@",object.node.name!)
+			NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
+			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(2)
-			object.node.position = SCNVector3(x: 0, y: 0, z: -350)
+			object.node.position = SCNVector3(x: 0, y: 400, z: 0)
 			SCNTransaction.commit()
 		}
 		if( method == "window" )
@@ -115,19 +118,37 @@ extension GameViewController {
 	{
 		NSLog("INTERA | Door Close")
 		
-		for capsule in scene.rootNode.childNodes {
-			let capsuleParent = capsule as SCNNode
+		// Look in Capsules
+		for capsuleNode in scene.rootNode.childNodes {
+			let capsuleNode = capsuleNode as SCNNode
 			
+			if( capsuleNode.name == nil ){ continue }
+			
+			NSLog("SCAN   | Capsule: %@",capsuleNode.name!)
+			
+			// Look in Elements
+			for elementNode in capsuleNode.childNodes {
+				let elementNode = elementNode as SCNNode
 				
-			for element in capsuleParent.childNodes {
-				let elementNode = element as SCNNode
+				if( elementNode.name == nil ){ continue }
+				if( elementNode.name != "door.gate" ){ continue }
 				
-				if(( elementNode.name ) != nil){
-					NSLog("%@",elementNode.name!)
+				NSLog("SCAN   | - Element: %@",elementNode.name!)
+				
+				for triggerNode in elementNode.childNodes {
+					let triggerNode = triggerNode as SCNNode
+					
+					NSLog("%f",triggerNode.position.y)
+					
+					SCNTransaction.begin()
+					SCNTransaction.setAnimationDuration(2)
+					triggerNode.position = SCNVector3(x: 0, y: 0, z: 0)
+					SCNTransaction.commit()
 				}
 			}
-			
 		}
+		
+		//
 	
 	}
 	

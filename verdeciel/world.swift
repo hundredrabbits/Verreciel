@@ -18,6 +18,8 @@ extension GameViewController
 		capsuleSetup()
 		objectSetup()
 		sceneComplete()
+		
+		doorClose()
 	}
 	
 	func sceneSetup()
@@ -96,8 +98,8 @@ extension GameViewController
 	
 	func sceneComplete()
 	{
+		// Fix textures
 		scene.rootNode.childNodeWithName("door.window.mesh", recursively: true)!.opacity = 0.2
-		
 		scene.rootNode.childNodeWithName("trigger.power", recursively: true)!.geometry?.firstMaterial?.transparency = 0
 		
 		// retrieve the SCNView
