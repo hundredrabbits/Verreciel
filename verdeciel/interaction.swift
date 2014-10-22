@@ -79,9 +79,7 @@ extension GameViewController {
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(3)
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
-			SCNTransaction.setCompletionBlock({
-				self.doorClose()
-			})
+			SCNTransaction.setCompletionBlock({ })
 			SCNTransaction.commit()
 		}
 		if( method == "door-vertical" )
@@ -99,6 +97,7 @@ extension GameViewController {
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(2)
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
+			SCNTransaction.setCompletionBlock({ self.doorClose() })
 			SCNTransaction.commit()
 		}
 		if( method == "capsule.radar.mesh" )
