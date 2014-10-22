@@ -17,6 +17,7 @@ var heading = Double(0.0)
 var attitude = Double(0.0)
 var bank = 0.0
 let scaleValue : Float = 0.01
+var user = Dictionary<String, Any>()
 
 class GameViewController: UIViewController
 {

@@ -71,28 +71,31 @@ extension GameViewController {
 		}
 	}
 	
-	func triggerRouter( method: NSString, object: AnyObject)
+	func triggerRouter( trigger: NSString, object: AnyObject)
 	{
-		NSLog("ACTION | Trigger: %@",method)
+		NSLog("ACTION | Trigger : %@",trigger)
+		NSLog("       | Object  : %@",object.node.name!)
+		NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
 		
-		if(method == "move"){
+		if(trigger == "move"){
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(3)
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
 			SCNTransaction.setCompletionBlock({ })
 			SCNTransaction.commit()
 		}
-		if( method == "door-vertical" )
+		if( trigger == "door-vertical" )
 		{
-			NSLog("       | Name:     %@",object.node.name!)
-			NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
-			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(2)
 			object.node.position = SCNVector3(x: 0, y: 400, z: 0)
 			SCNTransaction.commit()
 		}
-		if( method == "window" )
+		if( trigger == "power" )
+		{
+			powerToggle()
+		}
+		if( trigger == "window" )
 		{
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(2)
@@ -100,7 +103,7 @@ extension GameViewController {
 			SCNTransaction.setCompletionBlock({ self.doorClose() })
 			SCNTransaction.commit()
 		}
-		if( method == "capsule.radar.mesh" )
+		if( trigger == "capsule.radar.mesh" )
 		{
 //			let cameraNode: AnyObject! = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 //			
@@ -111,6 +114,18 @@ extension GameViewController {
 //			SCNTransaction.commit()
 		}
 		
+	}
+	
+	func powerToggle()
+	{
+		if( user["power_active"] as NSObject == 1){
+			user["power_active"] = 0
+		}
+		else{
+			user["power_active"] = 1
+		}
+		
+		NSLog("%@",user["power_active"] as NSObject)
 	}
 	
 	func doorClose()

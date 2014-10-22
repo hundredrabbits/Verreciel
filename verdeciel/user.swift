@@ -13,22 +13,23 @@ extension GameViewController {
 	func userSetup()
 	{
 		NSLog("USER   | Setup")
-		userStart()
+		user = userStart()
 	}
 	
-	func userStart()
+	func userStart() -> Dictionary<String, Any>
 	{
 		NSLog("USER   | Start")
 		
-		var userNew:NSMutableDictionary = [:]
+		var userNew = Dictionary<String, Any>()
 		
 		userNew["general"]   = ["time" : 0,"capsule":""]
 		userNew["power"]     = ["active" : 0]
+		userNew["power_active"]     = 0
 		userNew["thrusters"] = ["active" : 0, "speed":0]
 		userNew["shield"]    = ["active" : 0]
 		userNew["position"]  = ["x" : 0,"y" : 0,"z" : 0]
 		
-		NSLog("%@",userNew)
+		return userNew
 	}
 	
 }

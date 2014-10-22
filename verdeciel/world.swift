@@ -14,6 +14,7 @@ extension GameViewController
 {
 	func worldSetup()
 	{
+		
 		sceneSetup()
 		capsuleSetup()
 		objectSetup()
