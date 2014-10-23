@@ -28,10 +28,7 @@ extension GameViewController
 		NSLog("SCENES | Setup")
 		scene = SCNScene()
 		
-		scene.fogStartDistance = 0
-		scene.fogEndDistance = 17
-		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.blackColor()
+		fogCapsule()
 		
 		// Camera
 		var cameraNode = SCNNode()
@@ -71,6 +68,13 @@ extension GameViewController
 		comCapsule?.scale = SCNVector3(x: scaleValue, y: scaleValue, z: scaleValue)
 		comCapsule?.position = SCNVector3(x: 0, y: 0, z: -10)
 		scene.rootNode.addChildNode(comCapsule!)
+		
+		let spaceFar = meshLibrary?.rootNode.childNodeWithName("space", recursively: true)!
+		spaceFar?.scale = SCNVector3(x: 1, y: 1, z: 1)
+		spaceFar?.position = SCNVector3(x: 0, y: 0, z: 0)
+		scene.rootNode.addChildNode(spaceFar!)
+		
+		scene.rootNode.childNodeWithName("space", recursively: true)!.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 0, z: 2, duration: 10)))
 	}
 	
 	func objectSetup()

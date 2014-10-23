@@ -83,6 +83,7 @@ extension GameViewController {
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
 			SCNTransaction.setCompletionBlock({ })
 			SCNTransaction.commit()
+			fogCapsule()
 		}
 		if( trigger == "door-vertical" )
 		{
@@ -102,6 +103,7 @@ extension GameViewController {
 			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
 			SCNTransaction.setCompletionBlock({ self.doorClose() })
 			SCNTransaction.commit()
+			fogEvent()
 		}
 		if( trigger == "capsule.radar.mesh" )
 		{
@@ -114,6 +116,30 @@ extension GameViewController {
 //			SCNTransaction.commit()
 		}
 		
+	}
+	
+	func fogEvent()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		scene.fogStartDistance = 0
+		scene.fogEndDistance = 5000
+		scene.fogDensityExponent = 4
+		scene.fogColor = UIColor.blackColor()
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	}
+	
+	func fogCapsule()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		scene.fogStartDistance = 0
+		scene.fogEndDistance = 17
+		scene.fogDensityExponent = 4
+		scene.fogColor = UIColor.blackColor()
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 	
 	func powerToggle()
