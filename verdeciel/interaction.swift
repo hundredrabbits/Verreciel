@@ -77,45 +77,14 @@ extension GameViewController {
 		NSLog("       | Object  : %@",object.node.name!)
 		NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
 		
-		if(trigger == "move"){
-			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(3)
-			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
-			SCNTransaction.setCompletionBlock({ })
-			SCNTransaction.commit()
-			fogCapsule()
-		}
-		if( trigger == "door-vertical" )
-		{
-			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(2)
-			object.node.position = SCNVector3(x: 0, y: 400, z: 0)
-			SCNTransaction.commit()
-		}
-		if( trigger == "power" ){ powerToggle()	}
-		if( trigger == "speed" ){ speedToggle()	}
-		
-		if( trigger == "window" )
-		{
-			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(2)
-			scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
-			SCNTransaction.setCompletionBlock({ self.doorClose() })
-			SCNTransaction.commit()
-			fogEvent()
-		}
-		if( trigger == "capsule.radar.mesh" )
-		{
-//			let cameraNode: AnyObject! = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
-//			
-//			// highlight it
-//			SCNTransaction.begin()
-//			SCNTransaction.setAnimationDuration(2)
-//			scene.rootNode.childNodeWithName("interface.navigation", recursively: true)!.rotation = SCNVector4Make(cameraNode.rotation.x, cameraNode.rotation.y, cameraNode.rotation.z, cameraNode.rotation.w)
-//			SCNTransaction.commit()
-		}
-		
+		if( trigger == "move")			{ move(object) }
+		if( trigger == "window" )		{ moveWindow(object)}
+		if( trigger == "door-vertical" ){ doorOpen(object) }
+		if( trigger == "power" )		{ powerToggle()	}
+		if( trigger == "speed" )		{ speedToggle()	}
 	}
+	
+	// MARK: Fog
 	
 	func fogEvent()
 	{
@@ -124,7 +93,7 @@ extension GameViewController {
 		scene.fogStartDistance = 0
 		scene.fogEndDistance = 5000
 		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.blackColor()
+		scene.fogColor = UIColor.grayColor()
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
 	}
@@ -141,6 +110,8 @@ extension GameViewController {
 		SCNTransaction.commit()
 	}
 	
+	// MARK: Controls
+	
 	func speedToggle()
 	{
 		user["speed"] = user["speed"] as Int + 1
@@ -154,11 +125,48 @@ extension GameViewController {
 	{
 		if( user["power"] as NSObject == 1){
 			user["power"] = 0
+			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
 		}
 		else{
 			user["power"] = 1
+			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1))
 		}
+		scene.rootNode.childNodeWithName("mainCapsule", recursively: true)!.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		NSLog("%@",user["power"] as NSObject)
+	}
+	
+	// MARK: Move
+	
+	func move(object: AnyObject)
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+		fogCapsule()
+	}
+	func moveWindow(object: AnyObject)
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
+		SCNTransaction.setCompletionBlock({ self.doorClose() })
+		SCNTransaction.commit()
+		fogEvent()
+	}
+	
+	// MARK: Doors
+	
+	func doorOpen(object: AnyObject)
+	{
+		if( user["power"] as Int == 0 ){
+			return
+		}
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		object.node.position = SCNVector3(x: 0, y: 400, z: 0)
+		SCNTransaction.commit()
 	}
 	
 	func doorClose()

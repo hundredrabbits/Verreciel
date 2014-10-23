@@ -26,7 +26,6 @@ extension GameViewController {
 		userNew["speed"]  = 1
 		
 		userNew["general"]   = ["time" : 0,"capsule":""]
-		userNew["power"]            = ["active" : 0]
 		userNew["thrusters"] = ["active" : 0, "speed":0]
 		userNew["shield"]    = ["active" : 0]
 		userNew["position"]  = ["x" : 0,"y" : 0,"z" : 0]

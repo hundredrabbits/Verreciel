@@ -74,7 +74,7 @@ extension GameViewController
 		spaceFar?.position = SCNVector3(x: 0, y: 0, z: 0)
 		scene.rootNode.addChildNode(spaceFar!)
 		
-		scene.rootNode.childNodeWithName("space", recursively: true)!.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 0, z: 2, duration: 10)))
+		scene.rootNode.childNodeWithName("space", recursively: true)!.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 0, z: 2, duration: 20)))
 	}
 	
 	func objectSetup()
@@ -104,7 +104,7 @@ extension GameViewController
 	func sceneComplete()
 	{
 		// Fix textures
-		scene.rootNode.childNodeWithName("door.window.mesh", recursively: true)!.opacity = 0.2
+		scene.rootNode.childNodeWithName("door.window.mesh", recursively: true)!.geometry?.firstMaterial?.transparency = 0.1
 		scene.rootNode.childNodeWithName("trigger.power", recursively: true)!.geometry?.firstMaterial?.transparency = 0
 		
 		// retrieve the SCNView
