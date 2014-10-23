@@ -92,10 +92,9 @@ extension GameViewController {
 			object.node.position = SCNVector3(x: 0, y: 400, z: 0)
 			SCNTransaction.commit()
 		}
-		if( trigger == "power" )
-		{
-			powerToggle()
-		}
+		if( trigger == "power" ){ powerToggle()	}
+		if( trigger == "speed" ){ speedToggle()	}
+		
 		if( trigger == "window" )
 		{
 			SCNTransaction.begin()
@@ -142,16 +141,24 @@ extension GameViewController {
 		SCNTransaction.commit()
 	}
 	
+	func speedToggle()
+	{
+		user["speed"] = user["speed"] as Int + 1
+		if( user["speed"] as Int > 3 ){
+			user["speed"] = 1
+		}
+		NSLog("%@",user["speed"] as NSObject)
+	}
+	
 	func powerToggle()
 	{
-		if( user["power_active"] as NSObject == 1){
-			user["power_active"] = 0
+		if( user["power"] as NSObject == 1){
+			user["power"] = 0
 		}
 		else{
-			user["power_active"] = 1
+			user["power"] = 1
 		}
-		
-		NSLog("%@",user["power_active"] as NSObject)
+		NSLog("%@",user["power"] as NSObject)
 	}
 	
 	func doorClose()

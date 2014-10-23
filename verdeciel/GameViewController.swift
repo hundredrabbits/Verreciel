@@ -19,6 +19,8 @@ var bank = 0.0
 let scaleValue : Float = 0.01
 var user = Dictionary<String, Any>()
 
+var eventTime = 0
+
 class GameViewController: UIViewController
 {
     override func viewDidLoad()
@@ -28,5 +30,6 @@ class GameViewController: UIViewController
 		configSetup()
 		userSetup()
 		worldSetup()
+		eventSetup()
     }
 }
