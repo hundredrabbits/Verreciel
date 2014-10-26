@@ -12,7 +12,7 @@ import SceneKit
 import Foundation
 
 extension GameViewController {
-	
+
 	override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
 	{
 		let touch = touches.anyObject() as UITouch
@@ -79,7 +79,10 @@ extension GameViewController {
 		
 		if( trigger == "move")			{ move(object) }
 		if( trigger == "window" )		{ moveWindow(object)}
+		
 		if( trigger == "door-vertical" ){ doorOpen(object) }
+		if( trigger == "airlock" )		{ doorAirlock(object) }
+		
 		if( trigger == "power" )		{ powerToggle()	}
 		if( trigger == "speed" )		{ speedToggle()	}
 	}
@@ -118,17 +121,17 @@ extension GameViewController {
 		if( user["speed"] as Int > 3 ){
 			user["speed"] = 1
 		}
-		NSLog("%@",user["speed"] as NSObject)
+		NSLog("USER   | Speed: %@",user["airlock"] as NSObject)
 	}
 	
 	func powerToggle()
 	{
-		if( user["power"] as NSObject == 1){
-			user["power"] = 0
+		if( user["power"] as NSObject == 0){
+			user["power"] = 1
 			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
 		}
 		else{
-			user["power"] = 1
+			user["power"] = 0
 			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1))
 		}
 		scene.rootNode.childNodeWithName("mainCapsule", recursively: true)!.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
@@ -158,6 +161,19 @@ extension GameViewController {
 	
 	// MARK: Doors
 	
+	func doorAirlock(object: AnyObject)
+	{
+		if( user["airlock"] as Int > 2 ){
+			object.node.runAction(SCNAction.moveByX(0, y: 300, z: 0, duration: 4))
+			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 3, duration: 4))
+		}
+		else{
+			user["airlock"] = user["airlock"] as Int + 1
+			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1))
+		}
+		NSLog("USER   | Airlock: %@",user["airlock"] as NSObject)
+	}
+	
 	func doorOpen(object: AnyObject)
 	{
 		if( user["power"] as Int == 0 ){
@@ -171,6 +187,10 @@ extension GameViewController {
 	
 	func doorClose()
 	{
+		if( user["power"] as Int == 0 ){
+			return
+		}
+		
 		NSLog("INTERA | Door Close")
 		
 		// Look in Capsules
@@ -202,9 +222,5 @@ extension GameViewController {
 				}
 			}
 		}
-		
-		//
-	
 	}
-	
 }

@@ -18,7 +18,6 @@ extension GameViewController {
 	
 	func eventClock()
 	{
-		NSLog("EVENT | Clock: %d",eventTime)
 		eventTime += user["speed"] as Int
 		if( eventTime > 30){
 			eventTrigger()
@@ -29,7 +28,6 @@ extension GameViewController {
 	func eventTrigger()
 	{
 		NSLog("EVENT | Clock: Trigger")
-		
 	}
 	
 }
