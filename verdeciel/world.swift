@@ -108,7 +108,7 @@ extension GameViewController
 		scene.rootNode.childNodeWithName("trigger.power", recursively: true)!.geometry?.firstMaterial?.transparency = 0
 		
 		// retrieve the SCNView
-		let scnView = self.view as SCNView
+		let scnView = self.view as! SCNView
 		
 		// set the scene to the view
 		scnView.scene = scene
@@ -131,6 +131,6 @@ extension GameViewController
 		if let existingGestureRecognizers = scnView.gestureRecognizers {
 			gestureRecognizers.addObjectsFromArray(existingGestureRecognizers)
 		}
-		scnView.gestureRecognizers = gestureRecognizers
+		scnView.gestureRecognizers = gestureRecognizers as [AnyObject]
 	}	
 }

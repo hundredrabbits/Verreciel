@@ -11,18 +11,23 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-extension GameViewController {
-
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+extension GameViewController
+{
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
 	{
-		let touch = touches.anyObject() as UITouch
-		touchOrigin = touch.locationInView(self.view)
+		for touch: AnyObject in touches {
+			touchOrigin = touch.locationInView(self.view)
+		}
 	}
 	
-	override func touchesMoved(touches: NSSet, withEvent event: UIEvent)
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
 	{
-		let touch = touches.anyObject() as UITouch
-		var touchPosition = touch.locationInView(self.view)
+		var touchPosition = CGPoint()
+		for touch: AnyObject in touches {
+			touchPosition = touch.locationInView(self.view)
+		}
+		
+		println(touchPosition)
 		
 		var dragX = Float(touchPosition.x - touchOrigin.x)
 		var dragY = Float(touchPosition.y - touchOrigin.y)
@@ -38,14 +43,9 @@ extension GameViewController {
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
 	}
 	
-	override func touchesEnded(touches: NSSet, withEvent event: UIEvent)
-	{
-		
-	}
-	
 	func handleTap(gestureRecognize: UIGestureRecognizer) {
 		// retrieve the SCNView
-		let scnView = self.view as SCNView
+		let scnView = self.view as! SCNView
 		
 		// check what nodes are tapped
 		let p = gestureRecognize.locationInView(scnView)
@@ -117,16 +117,16 @@ extension GameViewController {
 	
 	func speedToggle()
 	{
-		user["speed"] = user["speed"] as Int + 1
-		if( user["speed"] as Int > 3 ){
+		user["speed"] = user["speed"]as! Int + 1
+		if( user["speed"] as! Int > 3 ){
 			user["speed"] = 1
 		}
-		NSLog("USER   | Speed: %@",user["airlock"] as NSObject)
+		NSLog("USER   | Speed: %@",user["airlock"] as! NSObject)
 	}
 	
 	func powerToggle()
 	{
-		if( user["power"] as NSObject == 0){
+		if( user["power"] as! NSObject == 0){
 			user["power"] = 1
 			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
 		}
@@ -135,7 +135,7 @@ extension GameViewController {
 			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1))
 		}
 		scene.rootNode.childNodeWithName("mainCapsule", recursively: true)!.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
-		NSLog("%@",user["power"] as NSObject)
+		NSLog("%@",user["power"] as! NSObject)
 	}
 	
 	// MARK: Move
@@ -163,20 +163,20 @@ extension GameViewController {
 	
 	func doorAirlock(object: AnyObject)
 	{
-		if( user["airlock"] as Int > 2 ){
+		if( user["airlock"] as! Int > 2 ){
 			object.node.runAction(SCNAction.moveByX(0, y: 300, z: 0, duration: 4))
 			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 3, duration: 4))
 		}
 		else{
-			user["airlock"] = user["airlock"] as Int + 1
+			user["airlock"] = user["airlock"] as! Int + 1
 			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1))
 		}
-		NSLog("USER   | Airlock: %@",user["airlock"] as NSObject)
+		NSLog("USER   | Airlock: %@",user["airlock"] as! NSObject)
 	}
 	
 	func doorOpen(object: AnyObject)
 	{
-		if( user["power"] as Int == 0 ){
+		if( user["power"] as! Int == 0 ){
 			return
 		}
 		SCNTransaction.begin()
@@ -187,7 +187,7 @@ extension GameViewController {
 	
 	func doorClose()
 	{
-		if( user["power"] as Int == 0 ){
+		if( user["power"] as! Int == 0 ){
 			return
 		}
 		
@@ -195,7 +195,7 @@ extension GameViewController {
 		
 		// Look in Capsules
 		for capsuleNode in scene.rootNode.childNodes {
-			let capsuleNode = capsuleNode as SCNNode
+			let capsuleNode = capsuleNode as! SCNNode
 			
 			if( capsuleNode.name == nil ){ continue }
 			
@@ -203,7 +203,7 @@ extension GameViewController {
 			
 			// Look in Elements
 			for elementNode in capsuleNode.childNodes {
-				let elementNode = elementNode as SCNNode
+				let elementNode = elementNode as! SCNNode
 				
 				if( elementNode.name == nil ){ continue }
 				if( elementNode.name != "door.gate" ){ continue }
@@ -211,7 +211,7 @@ extension GameViewController {
 				NSLog("SCAN   | - Element: %@",elementNode.name!)
 				
 				for triggerNode in elementNode.childNodes {
-					let triggerNode = triggerNode as SCNNode
+					let triggerNode = triggerNode as! SCNNode
 					
 					NSLog("%f",triggerNode.position.y)
 					
