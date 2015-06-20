@@ -96,7 +96,7 @@ extension GameViewController
 		scene.fogStartDistance = 0
 		scene.fogEndDistance = 5000
 		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.grayColor()
+		scene.fogColor = UIColor.redColor()
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
 	}

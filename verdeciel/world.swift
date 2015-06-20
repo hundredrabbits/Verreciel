@@ -27,121 +27,81 @@ extension GameViewController
 		var scale:Float = 0.25
 		var height:Float = -2
 		
-		let floor1 = SCNVector3(x: 2 * scale, y: height, z: -4 * scale)
-		let floor2 = SCNVector3(x: 4 * scale, y: height, z: -2 * scale)
-		let floor3 = SCNVector3(x: 4 * scale, y: height, z: 2 * scale)
-		let floor4 = SCNVector3(x: 2 * scale, y: height, z: 4 * scale)
-		let floor5 = SCNVector3(x: -2 * scale, y: height, z: 4 * scale)
-		let floor6 = SCNVector3(x: -4 * scale, y: height, z: 2 * scale)
-		let floor7 = SCNVector3(x: -4 * scale, y: height, z: -2 * scale)
-		let floor8 = SCNVector3(x: -2 * scale, y: height, z: -4 * scale)
+		var floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor1,floor2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor2,floor3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor3,floor4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor4,floor5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor5,floor6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor6,floor7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor7,floor8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor8,floor1))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[0],floorNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[1],floorNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[2],floorNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[3],floorNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[4],floorNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[5],floorNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[6],floorNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[7],floorNode[0]))
 		
 		height = 2
+		var ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
-		let ceiling1 = SCNVector3(x: 2 * scale, y: height, z: -4 * scale)
-		let ceiling2 = SCNVector3(x: 4 * scale, y: height, z: -2 * scale)
-		let ceiling3 = SCNVector3(x: 4 * scale, y: height, z: 2 * scale)
-		let ceiling4 = SCNVector3(x: 2 * scale, y: height, z: 4 * scale)
-		let ceiling5 = SCNVector3(x: -2 * scale, y: height, z: 4 * scale)
-		let ceiling6 = SCNVector3(x: -4 * scale, y: height, z: 2 * scale)
-		let ceiling7 = SCNVector3(x: -4 * scale, y: height, z: -2 * scale)
-		let ceiling8 = SCNVector3(x: -2 * scale, y: height, z: -4 * scale)
-		
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling1,ceiling2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling2,ceiling3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling3,ceiling4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling4,ceiling5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling5,ceiling6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling6,ceiling7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling7,ceiling8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceiling8,ceiling1))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[0],ceilingNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[1],ceilingNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[2],ceilingNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[3],ceilingNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[4],ceilingNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[5],ceilingNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[6],ceilingNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[7],ceilingNode[0]))
 		
 		scale = 1
 		height = -1.5
 		
-		let lowRing1 = SCNVector3(x: 2 * scale, y: height, z: -4 * scale)
-		let lowRing2 = SCNVector3(x: 4 * scale, y: height, z: -2 * scale)
-		let lowRing3 = SCNVector3(x: 4 * scale, y: height, z: 2 * scale)
-		let lowRing4 = SCNVector3(x: 2 * scale, y: height, z: 4 * scale)
-		let lowRing5 = SCNVector3(x: -2 * scale, y: height, z: 4 * scale)
-		let lowRing6 = SCNVector3(x: -4 * scale, y: height, z: 2 * scale)
-		let lowRing7 = SCNVector3(x: -4 * scale, y: height, z: -2 * scale)
-		let lowRing8 = SCNVector3(x: -2 * scale, y: height, z: -4 * scale)
+		var lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing1,lowRing2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing2,lowRing3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing3,lowRing4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing4,lowRing5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing5,lowRing6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing6,lowRing7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing7,lowRing8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing8,lowRing1))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[0],lowNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[1],lowNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[2],lowNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[3],lowNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[4],lowNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[5],lowNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[6],lowNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[7],lowNode[0]))
 		
 		scale = 1
 		height = 1.5
 		
-		let highRing1 = SCNVector3(x: 2 * scale, y: height, z: -4 * scale)
-		let highRing2 = SCNVector3(x: 4 * scale, y: height, z: -2 * scale)
-		let highRing3 = SCNVector3(x: 4 * scale, y: height, z: 2 * scale)
-		let highRing4 = SCNVector3(x: 2 * scale, y: height, z: 4 * scale)
-		let highRing5 = SCNVector3(x: -2 * scale, y: height, z: 4 * scale)
-		let highRing6 = SCNVector3(x: -4 * scale, y: height, z: 2 * scale)
-		let highRing7 = SCNVector3(x: -4 * scale, y: height, z: -2 * scale)
-		let highRing8 = SCNVector3(x: -2 * scale, y: height, z: -4 * scale)
+		var highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing1,highRing2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing2,highRing3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing3,highRing4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing4,highRing5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing5,highRing6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing6,highRing7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing7,highRing8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing8,highRing1))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[0],highNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[1],highNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[2],highNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[3],highNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[4],highNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[5],highNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[6],highNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[7],highNode[0]))
 		
-		
-		
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor1,lowRing1))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing1,highRing1))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing1,ceiling1))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor2,lowRing2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing2,highRing2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing2,ceiling2))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor3,lowRing3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing3,highRing3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing3,ceiling3))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor4,lowRing4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing4,highRing4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing4,ceiling4))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor5,lowRing5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing5,highRing5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing5,ceiling5))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor6,lowRing6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing6,highRing6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing6,ceiling6))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor7,lowRing7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing7,highRing7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing7,ceiling7))
-		scene.rootNode.addChildNode(lineBetweenNodeA(floor8,lowRing8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(lowRing8,highRing8))
-		scene.rootNode.addChildNode(lineBetweenNodeA(highRing8,ceiling8))
-		
-		
-		scene.rootNode.addChildNode(redLine(lowRing1,highRing8))
-		scene.rootNode.addChildNode(redLine(lowRing8,highRing1))
-		
-		
-		
-		
-		
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[0],lowNode[0]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[0],highNode[0]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[0],ceilingNode[0]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[1],lowNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[1],highNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[1],ceilingNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[2],lowNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[2],highNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[2],ceilingNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[3],lowNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[3],highNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[3],ceilingNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[4],lowNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[4],highNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[4],ceilingNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[5],lowNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[5],highNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[5],ceilingNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[6],lowNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[6],highNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[6],ceilingNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[7],lowNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[7],highNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[7],ceilingNode[7]))
 	}
 	
 	func sceneSetup()
@@ -160,13 +120,6 @@ extension GameViewController
 		cameraNode.camera?.aperture = 100
 		cameraNode.camera?.automaticallyAdjustsZRange = true
 		scene.rootNode.addChildNode(cameraNode)
-		
-		// create and add an ambient light to the scene
-		let ambientLightNode = SCNNode()
-		ambientLightNode.light = SCNLight()
-		ambientLightNode.light!.type = SCNLightTypeAmbient
-		ambientLightNode.light!.color = UIColor.grayColor()
-		scene.rootNode.addChildNode(ambientLightNode)
 	}
 	
 	func objectSetup()
