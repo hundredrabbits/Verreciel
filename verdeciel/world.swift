@@ -10,25 +10,53 @@ import QuartzCore
 import SceneKit
 import Foundation
 
+var ceilingNode:Array<SCNVector3>!
+var highNode:Array<SCNVector3>!
+var lowNode:Array<SCNVector3>!
+var floorNode:Array<SCNVector3>!
+
 extension GameViewController
 {
+	
 	func worldSetup()
 	{
 		sceneSetup()
+		
+		capsuleCoordinates()
+		capsuleDraw()
+		
 		objectSetup()
-		createCapsule()
 		sceneComplete()
 	}
 	
-	func createCapsule()
+	func capsuleCoordinates()
 	{
-		NSLog("WORLD  | Setup")
+		NSLog("WORLD  | Capsule Coordinates")
 		
 		var scale:Float = 0.25
 		var height:Float = -2
 		
-		var floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+
+		height = 2
+		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
+		scale = 1
+		height = -1.5
+		
+		lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 1
+		height = 1.5
+		
+		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+	}
+	
+	func capsuleDraw()
+	{
+		NSLog("WORLD  | Capsule Draw")
+		
+		// Draw Floor
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[0],floorNode[1]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[1],floorNode[2]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[2],floorNode[3]))
@@ -38,23 +66,7 @@ extension GameViewController
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[6],floorNode[7]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[7],floorNode[0]))
 		
-		height = 2
-		var ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[0],ceilingNode[1]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[1],ceilingNode[2]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[2],ceilingNode[3]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[3],ceilingNode[4]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[4],ceilingNode[5]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[5],ceilingNode[6]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[6],ceilingNode[7]))
-		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[7],ceilingNode[0]))
-		
-		scale = 1
-		height = -1.5
-		
-		var lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
+		// Draw Low Ring
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[0],lowNode[1]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[1],lowNode[2]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[2],lowNode[3]))
@@ -64,11 +76,7 @@ extension GameViewController
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[6],lowNode[7]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[7],lowNode[0]))
 		
-		scale = 1
-		height = 1.5
-		
-		var highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
+		// Draw High Ring
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[0],highNode[1]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[1],highNode[2]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[2],highNode[3]))
@@ -78,6 +86,17 @@ extension GameViewController
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[6],highNode[7]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[7],highNode[0]))
 		
+		// Draw Ceiling
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[0],ceilingNode[1]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[1],ceilingNode[2]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[2],ceilingNode[3]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[3],ceilingNode[4]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[4],ceilingNode[5]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[5],ceilingNode[6]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[6],ceilingNode[7]))
+		scene.rootNode.addChildNode(lineBetweenNodeA(ceilingNode[7],ceilingNode[0]))
+		
+		// Connect floors
 		scene.rootNode.addChildNode(lineBetweenNodeA(floorNode[0],lowNode[0]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(lowNode[0],highNode[0]))
 		scene.rootNode.addChildNode(lineBetweenNodeA(highNode[0],ceilingNode[0]))
