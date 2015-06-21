@@ -25,6 +25,7 @@ extension GameViewController
 		capsuleDraw()
 		
 		panel_commander()
+		panel_radar()
 		
 		linkSetup()
 		sceneComplete()
@@ -109,23 +110,30 @@ extension GameViewController
 		}
 	}
 	
+	// MARK: Panels
+	
+	func panel_radar()
+	{
+	
+	}
+	
 	func panel_commander()
 	{
 		let scale:Float = 0.8
-		let nodeA = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale, z: highNode[7].z * 0.9)
-		let nodeB = SCNVector3(x: highNode[0].x * scale, y: highNode[0].y * scale, z: highNode[0].z * 0.9)
-		let nodeC = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: lowNode[7].z * 0.9)
-		let nodeD = SCNVector3(x: lowNode[0].x * scale, y: lowNode[0].y * scale, z: lowNode[0].z * 0.9)
+		let nodeA = SCNVector3(x: highNode[3].x * scale, y: highNode[3].y * scale, z: highNode[3].z * 0.9)
+		let nodeB = SCNVector3(x: highNode[4].x * scale, y: highNode[4].y * scale, z: highNode[4].z * 0.9)
+		let nodeC = SCNVector3(x: lowNode[3].x * scale, y: lowNode[3].y * scale, z: lowNode[3].z * 0.9)
+		let nodeD = SCNVector3(x: lowNode[4].x * scale, y: lowNode[4].y * scale, z: lowNode[4].z * 0.9)
 		
 		scene.rootNode.addChildNode(line(nodeA,nodeB))
 		scene.rootNode.addChildNode(line(nodeC,nodeD))
 		scene.rootNode.addChildNode(line(nodeA,nodeC))
 		scene.rootNode.addChildNode(line(nodeB,nodeD))
 		
-		scene.rootNode.addChildNode(line(nodeA,highNode[7]))
-		scene.rootNode.addChildNode(line(nodeB,highNode[0]))
-		scene.rootNode.addChildNode(line(nodeC,lowNode[7]))
-		scene.rootNode.addChildNode(line(nodeD,lowNode[0]))
+		scene.rootNode.addChildNode(line(nodeA,highNode[3]))
+		scene.rootNode.addChildNode(line(nodeB,highNode[4]))
+		scene.rootNode.addChildNode(line(nodeC,lowNode[3]))
+		scene.rootNode.addChildNode(line(nodeD,lowNode[4]))
 		
 		let text = SCNText(string: "MENU", extrusionDepth: 0.0)
 		text.font = UIFont(name: "CourierNewPSMT", size: 14)
@@ -137,16 +145,18 @@ extension GameViewController
 		
 		// Interface
 		
-		scene.rootNode.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: highNode[7].z * 0.9),SCNVector3(x: 0, y: lowNode[7].y * scale, z: lowNode[7].z * 0.9)))
-		scene.rootNode.addChildNode(line(SCNVector3(x: 0, y: 0, z: highNode[7].z * 0.9),SCNVector3(x: lowNode[7].x * 0.8, y: 0, z: lowNode[7].z * 0.9)))
+		let panelNode = SCNNode()
+		panelNode.position = SCNVector3(x: 0, y: 0, z: lowNode[3].z * 0.9)
+		
+		panelNode.addChildNode(line(SCNVector3(x: 0, y: highNode[3].y * scale, z: 0),SCNVector3(x: 0, y: lowNode[3].y * scale, z: 0)))
+		panelNode.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: lowNode[3].x * -0.8, y: 0, z: 0)))
 		
 		// Draw interaction plane
 		let test = SCNPlane(width: 1, height: 1)
 		test.firstMaterial?.lightingModelName = SCNLightingModelConstant
 		test.firstMaterial?.diffuse.contents = clear
-		
 		let node2 = SCNNode(geometry: test)
-		node2.position = SCNVector3(x: 0.75, y: 0.35, z: lowNode[0].z * 0.9)
+		node2.position = SCNVector3(x: 0.75, y: 0.35, z: 0)
 		node2.name = "trigger.power"
 		
 		let lineTest = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
@@ -191,9 +201,15 @@ extension GameViewController
 		node4.scale = SCNVector3(x:0.02,y:0.02,z:0.02)
 		node2.addChildNode(node4)
 		
-		scene.rootNode.addChildNode(node2)
+		panelNode.addChildNode(node2)
+		
+		panelNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
+		
+		scene.rootNode.addChildNode(panelNode)
 		
 	}
+	
+	// MARK: Scenes
 	
 	func sceneSetup()
 	{
