@@ -128,13 +128,13 @@ extension GameViewController
 	{
 		if( user["power"] as! NSObject == 0){
 			user["power"] = 1
-			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
+			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.geometry?.firstMaterial?.diffuse.contents = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
+//			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
 		}
 		else{
 			user["power"] = 0
-			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1))
+			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.geometry?.firstMaterial?.diffuse.contents = UIColor.redColor()
 		}
-		scene.rootNode.childNodeWithName("mainCapsule", recursively: true)!.geometry?.firstMaterial?.emission.contents = UIColor.redColor()
 		NSLog("%@",user["power"] as! NSObject)
 	}
 	
@@ -147,7 +147,7 @@ extension GameViewController
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
-		fogCapsule()
+//		fogCapsule()
 	}
 	func moveWindow(object: AnyObject)
 	{
@@ -156,7 +156,7 @@ extension GameViewController
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
 		SCNTransaction.setCompletionBlock({ self.doorClose() })
 		SCNTransaction.commit()
-		fogEvent()
+//		fogEvent()
 	}
 	
 	// MARK: Doors
