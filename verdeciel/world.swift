@@ -17,7 +17,6 @@ var floorNode:Array<SCNVector3>!
 
 extension GameViewController
 {
-	
 	func worldSetup()
 	{
 		sceneSetup()
@@ -27,8 +26,11 @@ extension GameViewController
 		
 		panel_commander()
 		
-		objectSetup()
+		linkSetup()
 		sceneComplete()
+		
+		
+		triggersSetup()
 	}
 	
 	func capsuleCoordinates()
@@ -139,9 +141,9 @@ extension GameViewController
 		scene.rootNode.addChildNode(line(SCNVector3(x: 0, y: 0, z: highNode[7].z * 0.9),SCNVector3(x: lowNode[7].x * 0.8, y: 0, z: lowNode[7].z * 0.9)))
 		
 		// Draw interaction plane
-		let test = SCNPlane(width: 0.9, height: 0.9)
+		let test = SCNPlane(width: 1, height: 1)
 		test.firstMaterial?.lightingModelName = SCNLightingModelConstant
-		test.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 0)
+		test.firstMaterial?.diffuse.contents = clear
 		
 		let node2 = SCNNode(geometry: test)
 		node2.position = SCNVector3(x: 0.75, y: 0.35, z: lowNode[0].z * 0.9)
@@ -170,6 +172,10 @@ extension GameViewController
 		let lineTest6 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
 		lineTest6.name = "power.handle.cross2"
 		node2.addChildNode(lineTest6)
+		
+		let lineTest7 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
+		lineTest7.name = "power.handle.cross3"
+		node2.addChildNode(lineTest7)
 		
 		let text2 = SCNText(string: "POWER", extrusionDepth: 0.0)
 		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
@@ -205,38 +211,49 @@ extension GameViewController
 		scene.rootNode.addChildNode(cameraNode)
 	}
 	
-	func objectSetup()
+	func linkSetup()
 	{
-		let sphere = SCNSphere(radius: 0.2)
-		let sphereNode = SCNNode(geometry: sphere)
-		sphereNode.name = "trigger.move"
-		sphereNode.position = SCNVector3(x: 0, y: 0, z: 0)
-		sphereNode.opacity = 0.5
-		scene.rootNode.addChildNode(sphereNode)
+		let linkC = SCNNode(geometry: SCNSphere(radius: 0.5))
+		linkC.name = "trigger.move"
+		linkC.position = SCNVector3(x: 0, y: 0, z: 0)
+		linkC.geometry?.firstMaterial?.diffuse.contents = clear
+		scene.rootNode.addChildNode(linkC)
 		
-		let linkW = SCNNode(geometry: SCNSphere(radius: 0.1))
+		let linkW = SCNNode(geometry: SCNSphere(radius: 0.5))
 		linkW.name = "trigger.move"
-		linkW.opacity = 0.1
 		linkW.position = SCNVector3(x: -2, y: 0, z: 0)
+		linkW.geometry?.firstMaterial?.diffuse.contents = clear
 		scene.rootNode.addChildNode(linkW)
 		
-		let linkE = SCNNode(geometry: SCNSphere(radius: 0.1))
+		let linkE = SCNNode(geometry: SCNSphere(radius: 0.5))
 		linkE.name = "trigger.move"
-		linkE.opacity = 0.1
 		linkE.position = SCNVector3(x: 2, y: 0, z: 0)
+		linkE.geometry?.firstMaterial?.diffuse.contents = clear
 		scene.rootNode.addChildNode(linkE)
 		
-		let linkN = SCNNode(geometry: SCNSphere(radius: 0.1))
+		let linkN = SCNNode(geometry: SCNSphere(radius: 0.5))
 		linkN.name = "trigger.move"
-		linkN.opacity = 0.1
 		linkN.position = SCNVector3(x: 0, y: 0, z: 2)
+		linkN.geometry?.firstMaterial?.diffuse.contents = clear
 		scene.rootNode.addChildNode(linkN)
 		
-		let linkS = SCNNode(geometry: SCNSphere(radius: 0.1))
+		let linkS = SCNNode(geometry: SCNSphere(radius: 0.5))
 		linkS.name = "trigger.move"
-		linkS.opacity = 0.1
 		linkS.position = SCNVector3(x: 0, y: 0, z: -2)
+		linkS.geometry?.firstMaterial?.diffuse.contents = clear
 		scene.rootNode.addChildNode(linkS)
+		
+		let linkT = SCNNode(geometry: SCNSphere(radius: 0.5))
+		linkT.name = "trigger.move"
+		linkT.position = SCNVector3(x: 0, y: 2, z: 0)
+		linkT.geometry?.firstMaterial?.diffuse.contents = clear
+		scene.rootNode.addChildNode(linkT)
+		
+		let linkB = SCNNode(geometry: SCNSphere(radius: 0.5))
+		linkB.name = "trigger.move"
+		linkB.position = SCNVector3(x: 0, y: -2, z: 0)
+		linkB.geometry?.firstMaterial?.diffuse.contents = clear
+		scene.rootNode.addChildNode(linkB)
 		
 	}
 	

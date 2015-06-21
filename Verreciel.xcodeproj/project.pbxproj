@@ -20,6 +20,7 @@
 		03DDE18719CE497F008029A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18519CE497F008029A8 /* Main.storyboard */; };
 		03DDE18919CE497F008029A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18819CE497F008029A8 /* Images.xcassets */; };
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
+		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		03DDE18B19CE497F008029A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		03DDE19619CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
+		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				03BAD0CF19F9402C00BAF21A /* event.swift */,
 				0336701A19D47119005E1869 /* world.swift */,
 				0336701C19D4EB82005E1869 /* interaction.swift */,
+				578B3AE51B37392D00F9EFB5 /* triggers.swift */,
 				0336702019D4EC40005E1869 /* settings.swift */,
 				0336701E19D4EC0C005E1869 /* tools.swift */,
 				03DDE18519CE497F008029A8 /* Main.storyboard */,
@@ -195,6 +198,7 @@
 				03C73A1419F6B6A60006D534 /* user.swift in Sources */,
 				03C73A1619F6D6580006D534 /* config.swift in Sources */,
 				0336701F19D4EC0C005E1869 /* tools.swift in Sources */,
+				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				0336701D19D4EB82005E1869 /* interaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

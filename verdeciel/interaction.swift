@@ -71,22 +71,6 @@ extension GameViewController
 		}
 	}
 	
-	func triggerRouter( trigger: NSString, object: AnyObject)
-	{
-		NSLog("ACTION | Trigger : %@",trigger)
-		NSLog("       | Object  : %@",object.node.name!)
-		NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
-		
-		if( trigger == "move")			{ move(object) }
-		if( trigger == "window" )		{ moveWindow(object)}
-		
-		if( trigger == "door-vertical" ){ doorOpen(object) }
-		if( trigger == "airlock" )		{ doorAirlock(object) }
-		
-		if( trigger == "power" )		{ powerToggle()	}
-		if( trigger == "speed" )		{ speedToggle()	}
-	}
-	
 	// MARK: Fog
 	
 	func fogEvent()
@@ -111,41 +95,6 @@ extension GameViewController
 		scene.fogColor = UIColor.blackColor()
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
-	}
-	
-	// MARK: Controls
-	
-	func speedToggle()
-	{
-		user["speed"] = user["speed"]as! Int + 1
-		if( user["speed"] as! Int > 3 ){
-			user["speed"] = 1
-		}
-		NSLog("USER   | Speed: %@",user["airlock"] as! NSObject)
-	}
-	
-	func powerToggle()
-	{
-		NSLog("POWER!")
-		let commanderNode = scene.rootNode.childNodeWithName("trigger.power", recursively: true)!
-		
-		if( user["power"] as! NSObject == 0){
-			user["power"] = 1
-			for node in commanderNode.childNodes
-			{
-				var someNode: SCNNode = node as! SCNNode
-				someNode.geometry!.firstMaterial?.diffuse.contents = cyan
-			}
-		}
-		else{
-			user["power"] = 0
-			for node in commanderNode.childNodes
-			{
-				var someNode: SCNNode = node as! SCNNode
-				someNode.geometry!.firstMaterial?.diffuse.contents = red
-			}
-		}
-		NSLog("%@",user["power"] as! NSObject)
 	}
 	
 	// MARK: Move

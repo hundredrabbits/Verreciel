@@ -12,7 +12,7 @@ extension GameViewController {
 	
 	func eventSetup()
 	{
-		NSLog("EVENT | Setup")
+		NSLog(" EVENT | Setup")
 		var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("eventClock"), userInfo: nil, repeats: true)
 	}
 	
