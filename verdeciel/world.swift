@@ -148,27 +148,27 @@ extension GameViewController
 		node2.name = "trigger.power"
 		
 		let lineTest = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest.name = "power.handle"
+		lineTest.name = "power.handle.top"
 		node2.addChildNode(lineTest)
 		
 		let lineTest2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest2.name = "power.handle"
+		lineTest2.name = "power.handle.left"
 		node2.addChildNode(lineTest2)
 		
 		let lineTest3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest3.name = "power.handle"
+		lineTest3.name = "power.handle.bottom"
 		node2.addChildNode(lineTest3)
 		
 		let lineTest4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest3.name = "power.handle"
+		lineTest3.name = "power.handle.right"
 		node2.addChildNode(lineTest4)
 		
 		let lineTest5 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest5.name = "power.handle"
+		lineTest5.name = "power.handle.cross1"
 		node2.addChildNode(lineTest5)
 		
 		let lineTest6 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest6.name = "power.handle"
+		lineTest6.name = "power.handle.cross2"
 		node2.addChildNode(lineTest6)
 		
 		let text2 = SCNText(string: "POWER", extrusionDepth: 0.0)
@@ -186,7 +186,6 @@ extension GameViewController
 		node2.addChildNode(node4)
 		
 		scene.rootNode.addChildNode(node2)
-		
 		
 	}
 	

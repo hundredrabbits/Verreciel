@@ -126,13 +126,24 @@ extension GameViewController
 	
 	func powerToggle()
 	{
+		NSLog("POWER!")
+		let commanderNode = scene.rootNode.childNodeWithName("trigger.power", recursively: true)!
+		
 		if( user["power"] as! NSObject == 0){
 			user["power"] = 1
-			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.geometry?.firstMaterial?.diffuse.contents = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
+			for node in commanderNode.childNodes
+			{
+				var someNode: SCNNode = node as! SCNNode
+				someNode.geometry!.firstMaterial?.diffuse.contents = cyan
+			}
 		}
 		else{
 			user["power"] = 0
-			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.geometry?.firstMaterial?.diffuse.contents = UIColor.redColor()
+			for node in commanderNode.childNodes
+			{
+				var someNode: SCNNode = node as! SCNNode
+				someNode.geometry!.firstMaterial?.diffuse.contents = red
+			}
 		}
 		NSLog("%@",user["power"] as! NSObject)
 	}
