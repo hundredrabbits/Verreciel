@@ -13,28 +13,32 @@ import Foundation
 var ceilingNode:Array<SCNVector3>!
 var highNode:Array<SCNVector3>!
 var lowNode:Array<SCNVector3>!
+var lowMidNode:Array<SCNVector3>!
 var floorNode:Array<SCNVector3>!
 
 extension GameViewController
 {
 	func worldSetup()
 	{
+		// Basics
 		sceneSetup()
+		nodeNetworkSetup()
 		
-		capsuleCoordinates()
-		capsuleDraw()
+		// Capsule
+		capsuleSetup()
+		linkSetup()
 		
+		// Panels
 		panel_commander()
 		panel_radar()
+		panel_navigation()
 		
-		linkSetup()
 		sceneComplete()
-		
-		
+	
 		triggersSetup()
 	}
 	
-	func capsuleCoordinates()
+	func nodeNetworkSetup()
 	{
 		NSLog("WORLD  | Capsule Coordinates")
 		
@@ -50,12 +54,16 @@ extension GameViewController
 		height = -1.5
 		lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
+		scale = 0.5
+		height = -2
+		lowMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
 		scale = 1
 		height = 1.5
 		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 	}
 	
-	func capsuleDraw()
+	func capsuleSetup()
 	{
 		NSLog("WORLD  | Capsule Draw")
 		
@@ -112,6 +120,33 @@ extension GameViewController
 	
 	// MARK: Panels
 	
+	func panel_navigation()
+	{
+		let scale:Float = 0.8
+		
+		let HookA = lowNode[7]
+		let HookB = lowNode[0]
+		let HookC = lowMidNode[7]
+		let HookD = lowMidNode[0]
+		
+		let nodeA = SCNVector3(x: HookA.x * scale, y: HookA.y, z: HookA.z * 0.9)
+		let nodeB = SCNVector3(x: HookB.x * scale, y: HookB.y, z: HookB.z * 0.9)
+		let nodeC = SCNVector3(x: HookC.x * scale, y: HookC.y, z: HookC.z * 0.9)
+		let nodeD = SCNVector3(x: HookD.x * scale, y: HookD.y, z: HookD.z * 0.9)
+		
+		scene.rootNode.addChildNode(line(nodeA,nodeB))
+		scene.rootNode.addChildNode(line(nodeC,nodeD))
+		scene.rootNode.addChildNode(line(nodeA,nodeC))
+		scene.rootNode.addChildNode(line(nodeB,nodeD))
+		
+		scene.rootNode.addChildNode(line(nodeA,HookA))
+		scene.rootNode.addChildNode(line(nodeB,HookB))
+		
+		scene.rootNode.addChildNode(line(nodeC,floorNode[7]))
+		scene.rootNode.addChildNode(line(nodeD,floorNode[0]))
+		
+	}
+	
 	func panel_radar()
 	{
 		// Draw the frame
@@ -145,7 +180,6 @@ extension GameViewController
 		// Ship
 		panelNode.addChildNode(line(SCNVector3(x: 0, y: -0.25, z: 0),SCNVector3(x: 0, y: 0.25, z: 0)))
 		panelNode.addChildNode(line(SCNVector3(x: -0.25, y: 0, z: 0),SCNVector3(x: 0.25, y: 0, z: 0)))
-		
 		
 		let text2 = SCNText(string: "RADAR", extrusionDepth: 0.0)
 		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
