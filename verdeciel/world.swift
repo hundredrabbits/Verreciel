@@ -139,19 +139,55 @@ extension GameViewController
 		scene.rootNode.addChildNode(line(SCNVector3(x: 0, y: 0, z: highNode[7].z * 0.9),SCNVector3(x: lowNode[7].x * 0.8, y: 0, z: lowNode[7].z * 0.9)))
 		
 		// Draw interaction plane
-		let test = SCNPlane(width: 1, height: 1)
+		let test = SCNPlane(width: 0.9, height: 0.9)
 		test.firstMaterial?.lightingModelName = SCNLightingModelConstant
-		test.firstMaterial?.diffuse.contents = UIColor.orangeColor()
+		test.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 0)
+		
 		let node2 = SCNNode(geometry: test)
-		node2.position = SCNVector3(x: 0, y: 0, z: nodeC.z - 0.1)
+		node2.position = SCNVector3(x: 0.75, y: 0.35, z: lowNode[0].z * 0.9)
 		node2.name = "trigger.power"
 		
-		let lineTest = redLine(SCNVector3(x: -5, y: 0, z: 0),SCNVector3(x: 5, y: 0, z: 0))
+		let lineTest = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
 		lineTest.name = "power.handle"
 		node2.addChildNode(lineTest)
 		
+		let lineTest2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		lineTest2.name = "power.handle"
+		node2.addChildNode(lineTest2)
+		
+		let lineTest3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		lineTest3.name = "power.handle"
+		node2.addChildNode(lineTest3)
+		
+		let lineTest4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
+		lineTest3.name = "power.handle"
+		node2.addChildNode(lineTest4)
+		
+		let lineTest5 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		lineTest5.name = "power.handle"
+		node2.addChildNode(lineTest5)
+		
+		let lineTest6 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		lineTest6.name = "power.handle"
+		node2.addChildNode(lineTest6)
+		
+		let text2 = SCNText(string: "POWER", extrusionDepth: 0.0)
+		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
+		let node3 = SCNNode(geometry: text2)
+		node3.position = SCNVector3(x: -0.5, y: -1, z: 0)
+		node3.scale = SCNVector3(x:0.02,y:0.02,z:0.02)
+		node2.addChildNode(node3)
+		
+		let text3 = SCNText(string: "0.5", extrusionDepth: 0.0)
+		text3.font = UIFont(name: "CourierNewPSMT", size: 14)
+		let node4 = SCNNode(geometry: text3)
+		node4.position = SCNVector3(x: -0.5, y: -1.25, z: 0)
+		node4.scale = SCNVector3(x:0.02,y:0.02,z:0.02)
+		node2.addChildNode(node4)
+		
 		scene.rootNode.addChildNode(node2)
-
+		
+		
 	}
 	
 	func sceneSetup()

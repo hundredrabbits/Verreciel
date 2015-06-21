@@ -129,7 +129,6 @@ extension GameViewController
 		if( user["power"] as! NSObject == 0){
 			user["power"] = 1
 			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.geometry?.firstMaterial?.diffuse.contents = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
-//			scene.rootNode.childNodeWithName("power.handle", recursively: true)!.runAction(SCNAction.rotateToX(0, y: -1.35, z: 0, duration: 1))
 		}
 		else{
 			user["power"] = 0
