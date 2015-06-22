@@ -138,6 +138,14 @@ extension GameViewController
 			i += 1
 		}
 		scene.rootNode.addChildNode(line(ceilingNode[7],ceilingNode[0]))
+		
+		// Closed windows
+		
+		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: 0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: -0.25)))
+		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25)))
+		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: floorNode[0].y - 2, z: 0.25),SCNVector3(x: -0.25, y: floorNode[0].y - 2, z: -0.25)))
+		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: floorNode[0].y - 2, z: -0.25),SCNVector3(x: -0.25, y: floorNode[0].y - 2, z: 0.25)))
+		
 	}
 	
 	// MARK: Panels
@@ -199,7 +207,7 @@ extension GameViewController
 		// Ship
 		panelNode.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0),SCNVector3(x: 0.25, y: 0, z: 0)))
 		panelNode.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0),SCNVector3(x: -0.25, y: 0, z: 0)))
-		panelNode.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0),SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0)))
+		panelNode.addChildNode(grey(SCNVector3(x: 0, y: 0.25, z: 0),SCNVector3(x: 0, y: -0.25, z: 0)))
 		
 		let text2 = SCNText(string: "RADAR", extrusionDepth: 0.0)
 		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
@@ -226,41 +234,52 @@ extension GameViewController
 		let panelNode = SCNNode()
 		panelNode.position = SCNVector3(x: 0, y: 0, z: lowNode[3].z)
 		
+		panelNode.addChildNode(toggle("thruster",position: SCNVector3(x: 0.75, y: 0.35, z: 0)))
+		panelNode.addChildNode(toggle("electric",position: SCNVector3(x: -0.75, y: 0.35, z: 0)))
+		
+		panelNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
+		scene.rootNode.addChildNode(panelNode)
+	}
+	
+	// MARK: Interfaces
+	
+	func toggle(name:String,position:SCNVector3) -> SCNNode
+	{
 		// Draw interaction plane
 		let optionPanel = SCNNode(geometry: SCNPlane(width: 1, height: 1))
 		optionPanel.geometry?.firstMaterial?.diffuse.contents = clear
-		optionPanel.position = SCNVector3(x: 0.75, y: 0.35, z: 0)
-		optionPanel.name = "trigger.power"
+		optionPanel.position = position
+		optionPanel.name = "trigger.\(name)"
 		
 		let lineTest = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest.name = "power.handle.top"
+		lineTest.name = "\(name).handle.top"
 		optionPanel.addChildNode(lineTest)
 		
 		let lineTest2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest2.name = "power.handle.left"
+		lineTest2.name = "\(name).handle.left"
 		optionPanel.addChildNode(lineTest2)
 		
 		let lineTest3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest3.name = "power.handle.bottom"
+		lineTest3.name = "\(name).handle.bottom"
 		optionPanel.addChildNode(lineTest3)
 		
 		let lineTest4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest3.name = "power.handle.right"
+		lineTest3.name = "\(name).handle.right"
 		optionPanel.addChildNode(lineTest4)
 		
 		let lineTest5 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest5.name = "power.handle.cross1"
+		lineTest5.name = "\(name).handle.cross1"
 		optionPanel.addChildNode(lineTest5)
 		
 		let lineTest6 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest6.name = "power.handle.cross2"
+		lineTest6.name = "\(name).handle.cross2"
 		optionPanel.addChildNode(lineTest6)
 		
 		let lineTest7 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
-		lineTest7.name = "power.handle.cross3"
+		lineTest7.name = "\(name).handle.cross3"
 		optionPanel.addChildNode(lineTest7)
 		
-		let text2 = SCNText(string: "POWER", extrusionDepth: 0.0)
+		let text2 = SCNText(string: name, extrusionDepth: 0.0)
 		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
 		let node3 = SCNNode(geometry: text2)
 		node3.position = SCNVector3(x: -0.5, y: -1, z: 0)
@@ -274,13 +293,8 @@ extension GameViewController
 		node4.scale = SCNVector3(x:0.02,y:0.02,z:0.02)
 		optionPanel.addChildNode(node4)
 		
-		panelNode.addChildNode(optionPanel)
-		panelNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
-		scene.rootNode.addChildNode(panelNode)
+		return optionPanel
 	}
-	
-	
-	// MARK: Interfaces
 	
 	func knob(position:SCNVector3) -> SCNNode
 	{

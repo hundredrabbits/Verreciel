@@ -113,7 +113,7 @@ extension GameViewController
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
-		SCNTransaction.setCompletionBlock({ self.doorClose() })
+//		SCNTransaction.setCompletionBlock({ self.doorClose() })
 		SCNTransaction.commit()
 //		fogEvent()
 	}
@@ -133,53 +133,4 @@ extension GameViewController
 		NSLog("USER   | Airlock: %@",user["airlock"] as! NSObject)
 	}
 	
-	func doorOpen(object: AnyObject)
-	{
-		if( user["power"] as! Int == 0 ){
-			return
-		}
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		object.node.position = SCNVector3(x: 0, y: 400, z: 0)
-		SCNTransaction.commit()
-	}
-	
-	func doorClose()
-	{
-		if( user["power"] as! Int == 0 ){
-			return
-		}
-		
-		NSLog("INTERA | Door Close")
-		
-		// Look in Capsules
-		for capsuleNode in scene.rootNode.childNodes {
-			let capsuleNode = capsuleNode as! SCNNode
-			
-			if( capsuleNode.name == nil ){ continue }
-			
-			NSLog("SCAN   | Capsule: %@",capsuleNode.name!)
-			
-			// Look in Elements
-			for elementNode in capsuleNode.childNodes {
-				let elementNode = elementNode as! SCNNode
-				
-				if( elementNode.name == nil ){ continue }
-				if( elementNode.name != "door.gate" ){ continue }
-				
-				NSLog("SCAN   | - Element: %@",elementNode.name!)
-				
-				for triggerNode in elementNode.childNodes {
-					let triggerNode = triggerNode as! SCNNode
-					
-					NSLog("%f",triggerNode.position.y)
-					
-					SCNTransaction.begin()
-					SCNTransaction.setAnimationDuration(2)
-					triggerNode.position = SCNVector3(x: 0, y: 0, z: 0)
-					SCNTransaction.commit()
-				}
-			}
-		}
-	}
 }

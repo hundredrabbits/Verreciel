@@ -22,7 +22,9 @@ extension GameViewController {
 		
 		var userNew = Dictionary<String, Any>()
 		
-		userNew["power"]   = 0
+		userNew["electric"]   = 0
+		userNew["thruster"]   = 0
+		
 		userNew["speed"]   = 1
 		userNew["airlock"] = 0
 		

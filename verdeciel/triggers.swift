@@ -21,45 +21,47 @@ extension GameViewController
 		
 		if( trigger == "move")			{ move(object) }
 		if( trigger == "window" )		{ moveWindow(object)}
-		if( trigger == "power" )		{ powerToggle()	}
+		if( trigger == "electric" )		{ touchToggle("electric")}
+		if( trigger == "thruster" )		{ touchToggle("thruster")}
 	}
 	
-	func powerToggle()
+	func touchToggle(task:String)
 	{
-		if( user["power"] as! NSObject == 0){
-			user["power"] = 1
+		if( user[task] as! NSObject == 0){
+			user[task] = 1
 		}
 		else{
-			user["power"] = 0
+			user[task] = 0
 		}
-		drawPowerInterface()
-		NSLog(" POWER | %@",user["power"] as! NSObject)
+		updateToggleInterface(task)
+		NSLog(" POWER | %@",user["electric"] as! NSObject)
 	}
 	
 	// MARK: draws
 	
-	func drawPowerInterface()
+	func updateToggleInterface(task:String)
 	{
-		let commanderNode = scene.rootNode.childNodeWithName("trigger.power", recursively: true)!
+		let commanderNode = scene.rootNode.childNodeWithName("trigger.\(task)", recursively: true)!
 		
 		for node in commanderNode.childNodes
 		{
 			var node: SCNNode = node as! SCNNode
-			if( user["power"] as! NSObject == 0){
+			if( user[task] as! NSObject == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
-				if node.name == "power.handle.cross3" { node.geometry!.firstMaterial?.diffuse.contents = clear }
+				if node.name == "\(task).handle.cross3" { node.geometry!.firstMaterial?.diffuse.contents = clear }
 			}
 			else{
 				node.geometry!.firstMaterial?.diffuse.contents = cyan
-				if node.name == "power.handle.cross2" { node.geometry!.firstMaterial?.diffuse.contents = clear }
-				if node.name == "power.handle.cross1" { node.geometry!.firstMaterial?.diffuse.contents = clear }
+				if node.name == "\(task).handle.cross2" { node.geometry!.firstMaterial?.diffuse.contents = clear }
+				if node.name == "\(task).handle.cross1" { node.geometry!.firstMaterial?.diffuse.contents = clear }
 			}
 		}
 	}
 	
 	func triggersSetup()
 	{
-		drawPowerInterface()
+		updateToggleInterface("electric")
+		updateToggleInterface("thruster")
 	}
 	
 }
