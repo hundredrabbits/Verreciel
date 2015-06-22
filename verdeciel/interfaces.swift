@@ -99,26 +99,26 @@ extension GameViewController
 		// Top
 		knob.position = position
 		
-		// Label
-		let labelMesh = SCNText(string: "-", extrusionDepth: 0.0)
-		labelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
-		let labelNode = SCNNode(geometry: labelMesh)
-		labelNode.name = "label"
-		labelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
-		labelNode.position = SCNVector3(x: 0.1, y: -0.75, z: 0)
-		knob.addChildNode(labelNode)
-		
-		// Label
-		let interfaceLabelMesh = SCNText(string: name.uppercaseString, extrusionDepth: 0.0)
-		interfaceLabelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
-		let interfaceLabelNode = SCNNode(geometry: interfaceLabelMesh)
-		interfaceLabelNode.name = "label"
-		interfaceLabelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
-		interfaceLabelNode.position = SCNVector3(x: 0.1, y: 0.55, z: 0)
-		interfaceLabelMesh.firstMaterial?.diffuse.contents = grey
-		knob.addChildNode(interfaceLabelNode)
+		knob.addChildNode(label("label", text: "-", position: SCNVector3(x: 0.1, y: -0.75, z: 0), color: grey))
+		knob.addChildNode(label("labelStatic", text: name, position: SCNVector3(x: 0.1, y: 0.55, z: 0), color: grey))
 		
 		return knob
+	}
+	
+	func label(name:String,text:String, position:SCNVector3,color:UIColor) -> SCNNode
+	{
+		var labelNode = SCNNode()
+	
+		let interfaceLabelMesh = SCNText(string: text.uppercaseString, extrusionDepth: 0.0)
+		interfaceLabelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
+		
+		labelNode = SCNNode(geometry: interfaceLabelMesh)
+		labelNode.name = name
+		labelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
+		labelNode.position = position
+		labelNode.geometry!.firstMaterial?.diffuse.contents = color
+		
+		return labelNode
 	}
 	
 }
