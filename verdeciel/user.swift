@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension GameViewController {
-
+extension GameViewController
+{
 	func userSetup()
 	{
 		NSLog("USER   | Setup")
@@ -25,7 +25,7 @@ extension GameViewController {
 		userNew["electric"]   = 0
 		userNew["thruster"]   = 0
 		
-		userNew["speed"]   = 1
+		userNew["speed"]   = 0
 		userNew["airlock"] = 0
 		
 		userNew["general"]   = ["time" : 0,"capsule":""]
@@ -34,5 +34,4 @@ extension GameViewController {
 		
 		return userNew
 	}
-	
 }

@@ -8,11 +8,10 @@
 
 import Foundation
 
-extension GameViewController {
-	
+extension GameViewController
+{
 	func configSetup()
 	{
 		NSLog("CONFIG | Setup")
 	}
-	
 }

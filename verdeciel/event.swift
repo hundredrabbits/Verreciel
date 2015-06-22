@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension GameViewController {
-	
+extension GameViewController
+{
 	func eventSetup()
 	{
 		NSLog(" EVENT | Setup")
@@ -29,5 +29,4 @@ extension GameViewController {
 	{
 		NSLog("EVENT | Clock: Trigger")
 	}
-	
 }

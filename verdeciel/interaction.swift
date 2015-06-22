@@ -55,11 +55,7 @@ extension GameViewController
 				// retrieved the first clicked object
 				let result: AnyObject! = hitResults[0]
 				
-				if( result.node.name == nil ){
-					return
-				}
-				
-				if( result.node.name!.rangeOfString(".") == nil ){
+				if( result.node.name == nil || result.node.name!.rangeOfString(".") == nil ){
 					NSLog("SYSTEM | Trigger: not action")
 					return
 				}
@@ -110,31 +106,12 @@ extension GameViewController
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
-//		fogCapsule()
 	}
 	func moveWindow(object: AnyObject)
 	{
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
-//		SCNTransaction.setCompletionBlock({ self.doorClose() })
 		SCNTransaction.commit()
-//		fogEvent()
-	}
-	
-	// MARK: Doors
-	
-	func doorAirlock(object: AnyObject)
-	{
-		if( user["airlock"] as! Int > 2 ){
-			object.node.runAction(SCNAction.moveByX(0, y: 300, z: 0, duration: 4))
-			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 3, duration: 4))
-		}
-		else{
-			user["airlock"] = user["airlock"] as! Int + 1
-			object.node.runAction(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1))
-		}
-		NSLog("USER   | Airlock: %@",user["airlock"] as! NSObject)
-	}
-	
+	}	
 }
