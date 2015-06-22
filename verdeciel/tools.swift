@@ -28,6 +28,20 @@ func line(nodeA: SCNVector3, nodeB: SCNVector3) -> SCNNode {
 	return SCNNode(geometry: line)
 }
 
+func grey(nodeA: SCNVector3, nodeB: SCNVector3) -> SCNNode {
+	
+	let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]
+	let positionData = NSData(bytes: positions, length: sizeof(Float32)*positions.count)
+	let indices: [Int32] = [0, 1]
+	let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
+	let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)
+	let element = SCNGeometryElement(data: indexData, primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indices.count, bytesPerIndex: sizeof(Int32))
+	let line = SCNGeometry(sources: [source], elements: [element])
+	line.firstMaterial?.lightingModelName = SCNLightingModelConstant
+	line.firstMaterial?.diffuse.contents = UIColor.grayColor()
+	return SCNNode(geometry: line)
+}
+
 func redLine(nodeA: SCNVector3, nodeB: SCNVector3) -> SCNNode {
 	
 	let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]
