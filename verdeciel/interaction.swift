@@ -55,6 +55,10 @@ extension GameViewController
 				// retrieved the first clicked object
 				let result: AnyObject! = hitResults[0]
 				
+				if( result.node.name == nil ){
+					return
+				}
+				
 				if( result.node.name!.rangeOfString(".") == nil ){
 					NSLog("SYSTEM | Trigger: not action")
 					return

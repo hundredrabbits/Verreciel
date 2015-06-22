@@ -33,6 +33,7 @@ extension GameViewController
 		panel_commander()
 		panel_radar()
 		panel_navigation()
+		panel_thruster()
 		
 		sceneComplete()
 	
@@ -44,7 +45,7 @@ extension GameViewController
 		NSLog("WORLD  | Capsule Coordinates")
 		
 		var scale:Float = 0.25
-		var height:Float = -3
+		var height:Float = -2.4
 		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
 		scale = 0.3
@@ -65,8 +66,6 @@ extension GameViewController
 		scale = 0.25
 		height = 3
 		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		
 	}
 	
 	func capsuleSetup()
@@ -143,12 +142,20 @@ extension GameViewController
 		
 		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: 0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: -0.25)))
 		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25)))
-		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: floorNode[0].y - 2, z: 0.25),SCNVector3(x: -0.25, y: floorNode[0].y - 2, z: -0.25)))
-		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: floorNode[0].y - 2, z: -0.25),SCNVector3(x: -0.25, y: floorNode[0].y - 2, z: 0.25)))
 		
 	}
 	
 	// MARK: Panels
+	
+	func panel_thruster()
+	{
+		let panelNode = SCNNode()
+		panelNode.position = SCNVector3(x:0,y:floorNode[0].y,z:0)
+		panelNode.addChildNode(knob("speed",position:SCNVector3(x: 0, y: 0, z: 0)))
+		panelNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		scene.rootNode.addChildNode(panelNode)
+	}
 	
 	func panel_navigation()
 	{
@@ -169,9 +176,7 @@ extension GameViewController
 		optionPanel.geometry?.firstMaterial?.diffuse.contents = clear
 		optionPanel.position = SCNVector3(x: 0, y: -2, z: HookA.z * 0.65)
 		
-		optionPanel.addChildNode(knob(SCNVector3(x: 0, y: 0, z: 0)))
 		optionPanel.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 0.85)); // rotate 90 degrees
-		
 		
 		let text2 = SCNText(string: "STEER", extrusionDepth: 0.0)
 		text2.font = UIFont(name: "CourierNewPSMT", size: 14)
@@ -296,21 +301,56 @@ extension GameViewController
 		return optionPanel
 	}
 	
-	func knob(position:SCNVector3) -> SCNNode
+	func knob(name:String,position:SCNVector3) -> SCNNode
 	{
-		var knob = SCNNode()
-		
-		knob.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.5, z: 0),SCNVector3(x: 0.35, y: 0.35, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: 0.35, y: 0.35, z: 0),SCNVector3(x: 0.5, y: 0, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: 0.35, y: -0.35, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: 0.35, y: -0.35, z: 0),SCNVector3(x: 0, y: -0.5, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: 0, y: -0.5, z: 0),SCNVector3(x: -0.35, y: -0.35, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: -0.35, y: -0.35, z: 0),SCNVector3(x: -0.5, y: 0, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: -0.5, y: 0, z: 0),SCNVector3(x: -0.35, y: 0.35, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: -0.35, y: 0.35, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
-		knob.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
-		
+		var knob = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+		knob.geometry?.firstMaterial?.diffuse.contents = clear
 		knob.position = position
+		knob.name = "trigger.\(name)"
+		
+		var knobMesh = SCNNode()
+		knobMesh.name = "knob.mesh"
+		
+		// Base
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.5, z: 0),SCNVector3(x: 0.35, y: 0.35, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.35, y: 0.35, z: 0),SCNVector3(x: 0.5, y: 0, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: 0.35, y: -0.35, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.35, y: -0.35, z: 0),SCNVector3(x: 0, y: -0.5, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: -0.5, z: 0),SCNVector3(x: -0.35, y: -0.35, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.35, y: -0.35, z: 0),SCNVector3(x: -0.5, y: 0, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.5, y: 0, z: 0),SCNVector3(x: -0.35, y: 0.35, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.35, y: 0.35, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
+		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
+		
+		
+		knob.addChildNode(line(SCNVector3(x: 0, y: 0.6, z: 0),SCNVector3(x: 0, y: 0.7, z: 0)))
+		knob.addChildNode(line(SCNVector3(x: 0, y: -0.6, z: 0),SCNVector3(x: 0, y: -0.7, z: 0)))
+		knob.addChildNode(line(SCNVector3(x: 0.6, y: 0, z: 0),SCNVector3(x: 0.7, y: 0, z: 0)))
+		knob.addChildNode(line(SCNVector3(x: -0.6, y: 0, z: 0),SCNVector3(x: -0.7, y: 0, z: 0)))
+		
+		knob.addChildNode(knobMesh)
+		
+		// Top
+		knob.position = position
+		
+		// Label
+		let labelMesh = SCNText(string: "-", extrusionDepth: 0.0)
+		labelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
+		let labelNode = SCNNode(geometry: labelMesh)
+		labelNode.name = "label"
+		labelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
+		labelNode.position = SCNVector3(x: 0.1, y: -0.75, z: 0)
+		knob.addChildNode(labelNode)
+		
+		// Label
+		let interfaceLabelMesh = SCNText(string: name.uppercaseString, extrusionDepth: 0.0)
+		interfaceLabelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
+		let interfaceLabelNode = SCNNode(geometry: interfaceLabelMesh)
+		interfaceLabelNode.name = "label"
+		interfaceLabelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
+		interfaceLabelNode.position = SCNVector3(x: 0.1, y: 0.55, z: 0)
+		interfaceLabelMesh.firstMaterial?.diffuse.contents = grey
+		knob.addChildNode(interfaceLabelNode)
 		
 		return knob
 	}
@@ -336,47 +376,49 @@ extension GameViewController
 	
 	func linkSetup()
 	{
-		let linkC = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkC = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkC.name = "trigger.move"
 		linkC.position = SCNVector3(x: 0, y: 0, z: 0)
-		linkC.geometry?.firstMaterial?.diffuse.contents = clear
+		linkC.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkC)
 		
-		let linkW = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkW = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkW.name = "trigger.move"
 		linkW.position = SCNVector3(x: -2, y: 0, z: 0)
-		linkW.geometry?.firstMaterial?.diffuse.contents = clear
+		linkW.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkW)
 		
-		let linkE = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkE = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkE.name = "trigger.move"
 		linkE.position = SCNVector3(x: 2, y: 0, z: 0)
-		linkE.geometry?.firstMaterial?.diffuse.contents = clear
+		linkE.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkE)
 		
-		let linkN = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkN = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkN.name = "trigger.move"
 		linkN.position = SCNVector3(x: 0, y: 0, z: 2)
-		linkN.geometry?.firstMaterial?.diffuse.contents = clear
+		linkN.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkN)
 		
-		let linkS = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkS = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkS.name = "trigger.move"
 		linkS.position = SCNVector3(x: 0, y: 0, z: -2)
-		linkS.geometry?.firstMaterial?.diffuse.contents = clear
+		linkS.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkS)
 		
-		let linkT = SCNNode(geometry: SCNSphere(radius: 0.5))
+		/*
+		let linkT = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkT.name = "trigger.move"
 		linkT.position = SCNVector3(x: 0, y: 2, z: 0)
-		linkT.geometry?.firstMaterial?.diffuse.contents = clear
+		linkT.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkT)
 		
-		let linkB = SCNNode(geometry: SCNSphere(radius: 0.5))
+		let linkB = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkB.name = "trigger.move"
 		linkB.position = SCNVector3(x: 0, y: -2, z: 0)
-		linkB.geometry?.firstMaterial?.diffuse.contents = clear
+		linkB.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkB)
+*/
 		
 	}
 	
