@@ -8,10 +8,13 @@
 
 import Foundation
 
-extension GameViewController
+class Game
 {
-	func configSetup()
+	var time:Int = 0
+	
+	init()
 	{
 		NSLog("CONFIG | Setup")
 	}
+
 }

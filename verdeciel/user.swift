@@ -8,33 +8,18 @@
 
 import Foundation
 
-extension GameViewController
+class User
 {
-	func userSetup()
+	var x:Float = 0
+	var y:Float = 0
+	var z:Float = 0
+	var storage:Dictionary<String,Float> = ["new":0]
+	
+	init()
 	{
 		NSLog("USER   | Setup")
-		user = userStart()
-	}
-	
-	func userStart() -> Dictionary<String, Any>
-	{
-		NSLog("USER   | Start")
-		
-		var userNew = Dictionary<String, Any>()
-		
-		userNew["x"] = 0
-		userNew["y"] = 0
-		
-		userNew["electric"]   = 0
-		userNew["thruster"]   = 0
-		
-		userNew["speed"]   = 0
-		userNew["airlock"] = 0
-		
-		userNew["general"]   = ["time" : 0,"capsule":""]
-		userNew["shield"]    = ["active" : 0]
-		userNew["position"]  = ["x" : 0,"y" : 0,"z" : 0]
-		
-		return userNew
-	}
+		storage["thruster"] = 0
+		storage["electric"] = 0
+		storage["speed"] = 0
+	}	
 }

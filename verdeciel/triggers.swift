@@ -28,30 +28,26 @@ extension GameViewController
 	
 	func touchIncrement(task:String,limit:Float)
 	{
-		var userTask = Float(user[task] as! Int)
+		var userTask = user.storage[task]
 		
-		if( userTask < limit ){
-			userTask = userTask + 1
+		if( user.storage[task] < limit ){
+			user.storage[task] = userTask! + 1
 		}
 		else{
-			userTask = 0
+			user.storage[task] = 0
 		}
-		
-		user[task] = Int(userTask)
-		
 		updateKnobInterface(task,limit:limit)
 	}
 	
 	func touchToggle(task:String)
 	{
-		if( user[task] as! NSObject == 0){
-			user[task] = 1
+		if( user.storage[task] == 0){
+			user.storage[task] = 1
 		}
 		else{
-			user[task] = 0
+			user.storage[task] = 0
 		}
 		updateToggleInterface(task)
-		NSLog(" POWER | %@",user["electric"] as! NSObject)
 	}
 	
 	// MARK: draws
@@ -62,14 +58,14 @@ extension GameViewController
 		
 		let knobMesh = interfaceNode.childNodeWithName("knob.mesh", recursively: false)!
 		
-		let targetAngle = Double(user[task] as! Int) * -1
+		let targetAngle = Double(user.storage[task]!) * -1
 		
 		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
 		
 		for node in knobMesh.childNodes
 		{
 			var node: SCNNode = node as! SCNNode
-			if( user[task] as! NSObject == 0){
+			if( user.storage[task] == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
 			}
 			else{
@@ -79,8 +75,9 @@ extension GameViewController
 		
 		// Update label
 		
-		let userTaskValue = user[task] as! Int
-		let labelString = "\(userTaskValue)"
+		let labelUnwrap = Int(user.storage[task]!)
+		
+		let labelString = "\(labelUnwrap)"
 		
 		let labelNode = interfaceNode.childNodeWithName("label", recursively: false)!
 		let labelMesh = SCNText(string: labelString, extrusionDepth: 0.0)
@@ -96,7 +93,7 @@ extension GameViewController
 		for node in commanderNode.childNodes
 		{
 			var node: SCNNode = node as! SCNNode
-			if( user[task] as! NSObject == 0){
+			if( user.storage[task] == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
 				if node.name == "\(task).handle.cross3" { node.geometry!.firstMaterial?.diffuse.contents = clear }
 			}

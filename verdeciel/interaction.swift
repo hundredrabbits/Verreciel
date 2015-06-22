@@ -12,7 +12,7 @@ import SceneKit
 import Foundation
 
 extension GameViewController
-{
+{	
 	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
 	{
 		for touch: AnyObject in touches {

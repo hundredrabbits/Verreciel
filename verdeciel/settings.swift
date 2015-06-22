@@ -11,8 +11,8 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-extension GameViewController {
-
+extension GameViewController
+{
 	override func shouldAutorotate() -> Bool {
 		return true
 	}

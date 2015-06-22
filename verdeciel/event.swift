@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 XXIIVV. All rights reserved.
 //
 
+import UIKit
+import QuartzCore
+import SceneKit
 import Foundation
 
 extension GameViewController
@@ -13,20 +16,20 @@ extension GameViewController
 	func eventSetup()
 	{
 		NSLog(" EVENT | Setup")
-		var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("eventClock"), userInfo: nil, repeats: true)
+		
+		var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("eventClock"), userInfo: nil, repeats: true)
 	}
 	
 	func eventClock()
 	{
-		eventTime += user["speed"] as! Int
-		if( eventTime > 30){
-			eventTrigger()
-			eventTime = 0
-		}
+		game.time += 1
+		eventTrigger()
 	}
 	
 	func eventTrigger()
 	{
-		NSLog("EVENT | Clock: Trigger")
+		// Update location
+		user.z += user.storage["speed"]!
+		panel_radar_update()
 	}
 }
