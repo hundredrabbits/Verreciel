@@ -35,6 +35,8 @@ extension GameViewController
 		panel_navigation()
 		panel_thruster()
 		
+		panel_test()
+		
 		sceneComplete()
 	
 		triggersSetup()
@@ -144,10 +146,6 @@ extension GameViewController
 		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25)))
 		
 	}
-	
-	// MARK: Panels
-	
-	
 	
 	// MARK: Scenes
 	

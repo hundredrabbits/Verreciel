@@ -26,8 +26,6 @@ extension GameViewController
 	func panel_navigation()
 	{
 		let panelNode = SCNNode()
-		
-		
 		let scale:Float = 0.8
 		
 		let HookA = lowNode[7]
@@ -137,4 +135,12 @@ extension GameViewController
 		panelNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		scene.rootNode.addChildNode(panelNode)
 	}
+	
+	func panel_test()
+	{
+		let test:SCNLabel = SCNLabel(text: "test")
+		test.position = SCNVector3(x: -1, y: 2, z: lowNode[7].z)
+		scene.rootNode.addChildNode(test)
+	}
+	
 }
