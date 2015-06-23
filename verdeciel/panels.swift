@@ -103,11 +103,21 @@ extension GameViewController
 		interface.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
 		interface.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
 		
-		interface.addChildNode(label("label", text: "radar", position: SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0), color: grey))
+		var radarLabel = SCNLabel(text: "radar", scale: 0.1)
+		radarLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
+		interface.addChildNode(radarLabel)
 		
-		interface.addChildNode(label("labelX", text: "X", position: SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0), color: UIColor.whiteColor()))
-		interface.addChildNode(label("labelY", text: "Y", position: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.2, z: 0), color: UIColor.whiteColor()))
-		interface.addChildNode(label("labelR", text: "R", position: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.4, z: 0), color: UIColor.whiteColor()))
+		var xPosLabel = SCNLabel(text: "x", scale: 0.1)
+		xPosLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
+		interface.addChildNode(xPosLabel)
+		
+		var yPosLabel = SCNLabel(text: "y", scale: 0.1)
+		yPosLabel.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
+		interface.addChildNode(yPosLabel)
+		
+		var angleLabel = SCNLabel(text: "r", scale: 0.1)
+		angleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)
+		interface.addChildNode(angleLabel)
 		
 		interface.name = "radar"
 		
