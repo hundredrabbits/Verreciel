@@ -73,14 +73,15 @@ extension GameViewController
 		
 		let radarLabel = interfaceNode.childNodeWithName("radar.label", recursively: true)! as! SCNLabel
 		radarLabel.update("test")
-//		radarLabel.addLetters("b", scale: 0.1)
 		
-//		let labelX = interfaceNode.childNodeWithName("labelX", recursively: false)!
-//		interfaceNode.childNodeWithName("labelX", recursively: false)!.geometry = label("labelX", text: "\(user.z)", position: labelX.position, color: UIColor.whiteColor()).geometry
-//		let labelY = interfaceNode.childNodeWithName("labelY", recursively: false)!
-//		interfaceNode.childNodeWithName("labelY", recursively: false)!.geometry = label("labelY", text: "\(user.x)", position: labelY.position, color: UIColor.whiteColor()).geometry
-//		let labelR = interfaceNode.childNodeWithName("labelR", recursively: false)!
-//		interfaceNode.childNodeWithName("labelR", recursively: false)!.geometry = label("labelR", text: "\(user.r)", position: labelR.position, color: UIColor.whiteColor()).geometry
+		let xPosLabel = interfaceNode.childNodeWithName("radar.x", recursively: true)! as! SCNLabel
+		xPosLabel.update("test")
+		
+		let yPosLabel = interfaceNode.childNodeWithName("radar.y", recursively: true)! as! SCNLabel
+		yPosLabel.update("test")
+		
+		let rLabel = interfaceNode.childNodeWithName("radar.r", recursively: true)! as! SCNLabel
+		rLabel.update("test")
 	}
 	
 	func panel_radar()
@@ -123,7 +124,7 @@ extension GameViewController
 		yPosLabel.name = "radar.y"
 		interface.addChildNode(yPosLabel)
 		
-		var angleLabel = SCNLabel(text: "y", scale: 0.1)
+		var angleLabel = SCNLabel(text: "r", scale: 0.1)
 		angleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)
 		angleLabel.name = "radar.r"
 		interface.addChildNode(angleLabel)
