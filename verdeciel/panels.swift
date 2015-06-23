@@ -44,25 +44,25 @@ extension GameViewController
 		panelNode.addChildNode(label("labelStatic", text: "navigation", position: SCNVector3(x: 0, y: 1, z: 0), color: UIColor.whiteColor()))
 		panelNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 0.85));
 		
-		let turnRight = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
-		turnRight.geometry?.firstMaterial?.diffuse.contents = clear
-		turnRight.name = "trigger.turnRight"
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: 0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
-		turnRight.position = SCNVector3(x: 0.5, y: 0, z: 0)
-		panelNode.addChildNode(turnRight)
-		
 		let turnLeft = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
 		turnLeft.geometry?.firstMaterial?.diffuse.contents = clear
 		turnLeft.name = "trigger.turnLeft"
-		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
-		turnLeft.addChildNode(line(SCNVector3(x: -0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
+		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
+		turnLeft.addChildNode(line(SCNVector3(x: 0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
 		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
-		turnLeft.position = SCNVector3(x: -0.5, y: 0, z: 0)
+		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
+		turnLeft.position = SCNVector3(x: 0.5, y: 0, z: 0)
 		panelNode.addChildNode(turnLeft)
+		
+		let turnRight = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
+		turnRight.geometry?.firstMaterial?.diffuse.contents = clear
+		turnRight.name = "trigger.turnRight"
+		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
+		turnRight.addChildNode(line(SCNVector3(x: -0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
+		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
+		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
+		turnRight.position = SCNVector3(x: -0.5, y: 0, z: 0)
+		panelNode.addChildNode(turnRight)
 		
 		scene.rootNode.addChildNode(panelNode)
 	}
@@ -70,16 +70,14 @@ extension GameViewController
 	
 	func panel_radar_update()
 	{
-		if user.storage["speed"] < 1 { return }
-		
 		let interfaceNode = scene.rootNode.childNodeWithName("radar", recursively: false)!
 		
 		let labelX = interfaceNode.childNodeWithName("labelX", recursively: false)!
-		interfaceNode.childNodeWithName("labelX", recursively: false)!.geometry = label("labelX", text: "\(user.z)", position: labelX.position, color: red).geometry
+		interfaceNode.childNodeWithName("labelX", recursively: false)!.geometry = label("labelX", text: "\(user.z)", position: labelX.position, color: UIColor.whiteColor()).geometry
 		let labelY = interfaceNode.childNodeWithName("labelY", recursively: false)!
-		interfaceNode.childNodeWithName("labelY", recursively: false)!.geometry = label("labelY", text: "\(user.x)", position: labelY.position, color: red).geometry
+		interfaceNode.childNodeWithName("labelY", recursively: false)!.geometry = label("labelY", text: "\(user.x)", position: labelY.position, color: UIColor.whiteColor()).geometry
 		let labelR = interfaceNode.childNodeWithName("labelR", recursively: false)!
-		interfaceNode.childNodeWithName("labelR", recursively: false)!.geometry = label("labelR", text: "\(user.r)", position: labelR.position, color: red).geometry
+		interfaceNode.childNodeWithName("labelR", recursively: false)!.geometry = label("labelR", text: "\(user.r)", position: labelR.position, color: UIColor.whiteColor()).geometry
 	}
 	
 	func panel_radar()

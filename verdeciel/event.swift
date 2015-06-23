@@ -30,6 +30,10 @@ extension GameViewController
 	{
 		// Update location
 		user.z += user.storage["speed"]!
-		panel_radar_update()
+		
+		if user.storage["speed"] > 0 {
+			panel_radar_update()
+		}
+		
 	}
 }

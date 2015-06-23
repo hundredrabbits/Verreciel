@@ -24,13 +24,19 @@ extension GameViewController
 		if( trigger == "electric" )		{ touchToggle("electric")}
 		if( trigger == "thruster" )		{ touchToggle("thruster")}
 		if( trigger == "speed" )		{ touchIncrement("speed",limit: 3)}
-		if( trigger == "turn" )			{ touchTurn("left")}
-		if( trigger == "turn" )			{ touchTurn("right")}
+		if( trigger == "turnRight" )	{ touchTurn(true)}
+		if( trigger == "turnLeft" )		{ touchTurn(false)}
 	}
 	
-	func touchTurn(task:String)
+	func touchTurn(right:Bool)
 	{
-		println("Turning")
+		if right {
+			user.r -= 1
+		}
+		else{
+			user.r += 1
+		}
+		panel_radar_update()
 	}
 	
 	func touchIncrement(task:String,limit:Float)
