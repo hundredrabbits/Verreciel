@@ -13,6 +13,8 @@ class User
 	var x:Float = 0
 	var y:Float = 0
 	var z:Float = 0
+	var r:Float = 0
+	
 	var storage:Dictionary<String,Float> = ["new":0]
 	
 	init()

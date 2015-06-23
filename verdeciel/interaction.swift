@@ -55,7 +55,12 @@ extension GameViewController
 				// retrieved the first clicked object
 				let result: AnyObject! = hitResults[0]
 				
-				if( result.node.name == nil || result.node.name!.rangeOfString(".") == nil ){
+				if( result.node.name == nil ){
+					NSLog("SYSTEM | Mesh Unnamed")
+					return
+				}
+				
+				if( result.node.name!.rangeOfString(".") == nil ){
 					NSLog("SYSTEM | Trigger: not action")
 					return
 				}
