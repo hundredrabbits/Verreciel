@@ -100,7 +100,11 @@ extension GameViewController
 		knob.position = position
 		
 		knob.addChildNode(label("label", text: "-", position: SCNVector3(x: 0.1, y: -0.75, z: 0), color: grey))
-		knob.addChildNode(label("labelStatic", text: name, position: SCNVector3(x: 0.1, y: 0.55, z: 0), color: grey))
+		
+		var testLabel = SCNLabel(text: name, scale: 0.05)
+		testLabel.position = SCNVector3(x: 0.1, y: 0.65, z: 0)
+		
+		knob.addChildNode(testLabel)
 		
 		return knob
 	}
