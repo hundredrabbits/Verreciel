@@ -170,6 +170,71 @@ class SCNLabel : SCNNode
 			letterPivot.addChildNode(line(SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)))
 			
 		}
+		else if letter == "1"{
+			letterPivot.addChildNode(line(SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)))
+			
+		}
+		else if letter == "2"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "3"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			
+		}
+		else if letter == "4"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "5"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "6"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+		}
+		else if letter == "7"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "8"
+		{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "9"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+		}
+		else if letter == "0"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+			letterPivot.addChildNode(line(SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)))
+		}
+		else if letter == "-"{
+			letterPivot.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)))
+		}
 		else{
 			letterPivot.addChildNode(redLine(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
 			letterPivot.addChildNode(redLine(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
