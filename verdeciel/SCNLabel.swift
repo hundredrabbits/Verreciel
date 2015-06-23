@@ -13,12 +13,21 @@ import Foundation
 
 class SCNLabel : SCNNode
 {
+	var activeText = String()
+	var activeScale:Float = 0.2
+	
 	init(text:String,scale:Float)
 	{
 		super.init()
 		
-		let textPivot = SCNNode()
+		activeText = text
+		activeScale = scale
 		
+		addLetters(activeText,scale:activeScale)
+	}
+	
+	func addLetters(text:String,scale:Float)
+	{		
 		let characters = Array(text)
 		
 		var letterPos = 0
@@ -26,17 +35,30 @@ class SCNLabel : SCNNode
 		{
 			var letterNode = letter(String(letterCur),scale:scale)
 			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: 0, z: 0)
-			textPivot.addChildNode(letterNode)
+			self.addChildNode(letterNode)
 			
 			letterPos += 1
 		}
-		self.addChildNode(textPivot)
+	}
+	
+	func removeLetters()
+	{		
+		activeText = ""
+		for letterCur in self.childNodes {
+			letterCur.removeFromParentNode()
+		}
+	}
+	
+	func update(text:String)
+	{
+		removeLetters()
+		activeText = text
+		addLetters(activeText, scale: activeScale)
 	}
 	
 	func letter(letter:String,scale:Float) -> SCNNode
 	{		
 		let letterPivot = SCNNode()
-		letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: scale, z: 0)))
 		
 		if letter == "a"
 		{
@@ -154,7 +176,6 @@ class SCNLabel : SCNNode
 		}
 
 		return letterPivot
-		
 	}
 	
 	required init(coder aDecoder: NSCoder)
