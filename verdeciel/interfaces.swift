@@ -98,22 +98,5 @@ extension GameViewController
 		knob.position = position
 
 		return knob
-	}
-	
-	func label(name:String,text:String, position:SCNVector3,color:UIColor) -> SCNNode
-	{
-		var labelNode = SCNNode()
-	
-		let interfaceLabelMesh = SCNText(string: text.uppercaseString, extrusionDepth: 0.0)
-		interfaceLabelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
-		
-		labelNode = SCNNode(geometry: interfaceLabelMesh)
-		labelNode.name = name
-		labelNode.scale = SCNVector3(x:0.015,y:0.015,z:0.015)
-		labelNode.position = position
-		labelNode.geometry!.firstMaterial?.diffuse.contents = color
-		
-		return labelNode
-	}
-	
+	}	
 }

@@ -73,7 +73,6 @@ extension GameViewController
 		let nodeD = SCNVector3(x: HookD.x * scale, y: HookD.y * 0.9, z: HookD.z * 1.1)
 		
 		panelNode.position = SCNVector3(x: 0, y: -2, z: HookA.z * 0.65)
-		panelNode.addChildNode(label("labelStatic", text: "navigation", position: SCNVector3(x: 0, y: 1, z: 0), color: UIColor.whiteColor()))
 		panelNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 0.85));
 		
 		let turnLeft = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
@@ -101,69 +100,13 @@ extension GameViewController
 	
 	func panel_radar_update()
 	{
-		let interfaceNode = scene.rootNode.childNodeWithName("radar", recursively: false)!
-		
-		let radarLabel = interfaceNode.childNodeWithName("radar.label", recursively: true)! as! SCNLabel
-		radarLabel.update("test")
-		
-		let xPosLabel = interfaceNode.childNodeWithName("radar.x", recursively: true)! as! SCNLabel
-		xPosLabel.update(String(Int(user.x/20)))
-		
-		let zPosLabel = interfaceNode.childNodeWithName("radar.z", recursively: true)! as! SCNLabel
-		zPosLabel.update(String(Int(user.z/20)))
-		
-		let rLabel = interfaceNode.childNodeWithName("radar.r", recursively: true)! as! SCNLabel
-		rLabel.update(String(Int(user.orientation)))
+		let interfaceNode = scene.rootNode.childNodeWithName("radar", recursively: false)! as! SCNRadar
+		interfaceNode.update()
 	}
 	
 	func panel_radar()
 	{
-		// Draw the frame
-		
-		let scale:Float = 0.8
-		let nodeA = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale, z: highNode[7].z)
-		let nodeB = SCNVector3(x: highNode[0].x * scale, y: highNode[0].y * scale, z: highNode[0].z)
-		let nodeC = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: lowNode[7].z)
-		let nodeD = SCNVector3(x: lowNode[0].x * scale, y: lowNode[0].y * scale, z: lowNode[0].z)
-		
-		// Draw Radar
-		
-		let interface = SCNNode()
-		interface.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
-		
-		// Frame
-		interface.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: 0),SCNVector3(x: highNode[7].x * scale, y: 0, z: 0)))
-		interface.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * scale, y: 0, z: 0)))
-		interface.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
-		interface.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
-		// Ship
-		interface.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
-		interface.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
-		interface.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
-		
-		var radarLabel = SCNLabel(text: "radar", scale: 0.1)
-		radarLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
-		radarLabel.name = "radar.label"
-		interface.addChildNode(radarLabel)
-		
-		var xPosLabel = SCNLabel(text: "x", scale: 0.1)
-		xPosLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
-		xPosLabel.name = "radar.x"
-		interface.addChildNode(xPosLabel)
-		
-		var zPosLabel = SCNLabel(text: "z", scale: 0.1)
-		zPosLabel.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
-		zPosLabel.name = "radar.z"
-		interface.addChildNode(zPosLabel)
-		
-		var angleLabel = SCNLabel(text: "r", scale: 0.1)
-		angleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)
-		angleLabel.name = "radar.r"
-		interface.addChildNode(angleLabel)
-		
-		interface.name = "radar"
-		
-		scene.rootNode.addChildNode(interface)
+		scene.rootNode.addChildNode(SCNRadar())
 	}
 	
 	func panel_commander()
