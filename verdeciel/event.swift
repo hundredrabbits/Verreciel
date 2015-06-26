@@ -17,13 +17,7 @@ extension GameViewController
 	{
 		NSLog(" EVENT | Setup")
 		
-		var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("eventClock"), userInfo: nil, repeats: true)
-	}
-	
-	func eventClock()
-	{
-		game.time += 1
-		eventTrigger()
+		var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("eventTrigger"), userInfo: nil, repeats: true)
 	}
 	
 	func eventTrigger()
@@ -31,7 +25,7 @@ extension GameViewController
 		// Update location
 		user.z += user.speed
 		
-		if user.storage["speed"] > 0 {
+		if user.speed > 0 {
 			panel_radar_update()
 		}
 		

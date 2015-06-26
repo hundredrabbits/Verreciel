@@ -107,15 +107,13 @@ extension GameViewController
 		radarLabel.update("test")
 		
 		let xPosLabel = interfaceNode.childNodeWithName("radar.x", recursively: true)! as! SCNLabel
-		let userPosX = Int(user.x)
-		xPosLabel.update(String(userPosX))
+		xPosLabel.update(String(Int(user.x/20)))
 		
 		let zPosLabel = interfaceNode.childNodeWithName("radar.z", recursively: true)! as! SCNLabel
-		zPosLabel.update(String(Int(user.z)))
+		zPosLabel.update(String(Int(user.z/20)))
 		
 		let rLabel = interfaceNode.childNodeWithName("radar.r", recursively: true)! as! SCNLabel
-		let userR = Int(user.orientation)
-		rLabel.update(String(userR))
+		rLabel.update(String(Int(user.orientation)))
 	}
 	
 	func panel_radar()

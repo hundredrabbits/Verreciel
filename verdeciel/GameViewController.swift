@@ -26,7 +26,6 @@ var clear:UIColor = UIColor(white: 0, alpha: 0)
 var grey:UIColor = UIColor(white: 0.4, alpha: 1)
 
 var user:User = User()
-var game:Game = Game()
 
 class GameViewController: UIViewController
 {

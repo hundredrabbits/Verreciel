@@ -51,6 +51,8 @@ class SCNLabel : SCNNode
 	
 	func update(text:String)
 	{
+		if text == activeText { return }
+		
 		removeLetters()
 		activeText = text
 		addLetters(activeText, scale: activeScale)
