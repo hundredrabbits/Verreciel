@@ -16,11 +16,45 @@ extension GameViewController
 	func panel_thruster()
 	{
 		let panelNode = SCNNode()
+		panelNode.name = "panel.thurster"
 		panelNode.position = SCNVector3(x:0,y:floorNode[0].y,z:0)
 		panelNode.addChildNode(knob("speed",position:SCNVector3(x: 0, y: 0, z: 0)))
 		panelNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
+		
+		var testLabel = SCNLabel(text: "speed", scale: 0.05)
+		testLabel.position = SCNVector3(x: 0.1, y: 0.65, z: 0)
+		panelNode.addChildNode(testLabel)
+		
+		var testLabel2 = SCNLabel(text: "-", scale: 0.05)
+		testLabel2.position = SCNVector3(x: 0.1, y: -0.65, z: 0)
+		testLabel2.name = "label.speed"
+		panelNode.addChildNode(testLabel2)
+		
 		scene.rootNode.addChildNode(panelNode)
+	}
+	
+	func panel_thruster_update()
+	{
+		let panelNode = scene.rootNode.childNodeWithName("panel.thurster", recursively: false)!
+		
+		let knobMesh = panelNode.childNodeWithName("knob.mesh", recursively: true)!
+		let targetAngle = Double(user.speed) * -1
+		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
+		
+		for node in knobMesh.childNodes
+		{
+			var node: SCNNode = node as! SCNNode
+			if( user.speed == 0){
+				node.geometry!.firstMaterial?.diffuse.contents = red
+			}
+			else{
+				node.geometry!.firstMaterial?.diffuse.contents = cyan
+			}
+		}
+		
+		let labelNode = panelNode.childNodeWithName("label.speed", recursively: true)! as! SCNLabel
+		labelNode.update(String(Int(user.speed)))
 	}
 	
 	func panel_navigation()
@@ -65,7 +99,6 @@ extension GameViewController
 		scene.rootNode.addChildNode(panelNode)
 	}
 	
-	
 	func panel_radar_update()
 	{
 		let interfaceNode = scene.rootNode.childNodeWithName("radar", recursively: false)!
@@ -77,12 +110,11 @@ extension GameViewController
 		let userPosX = Int(user.x)
 		xPosLabel.update(String(userPosX))
 		
-		let yPosLabel = interfaceNode.childNodeWithName("radar.y", recursively: true)! as! SCNLabel
-		let userPosY = Int(user.y)
-		yPosLabel.update(String(userPosY))
+		let zPosLabel = interfaceNode.childNodeWithName("radar.z", recursively: true)! as! SCNLabel
+		zPosLabel.update(String(Int(user.z)))
 		
 		let rLabel = interfaceNode.childNodeWithName("radar.r", recursively: true)! as! SCNLabel
-		let userR = Int(user.r)
+		let userR = Int(user.orientation)
 		rLabel.update(String(userR))
 	}
 	
@@ -121,10 +153,10 @@ extension GameViewController
 		xPosLabel.name = "radar.x"
 		interface.addChildNode(xPosLabel)
 		
-		var yPosLabel = SCNLabel(text: "y", scale: 0.1)
-		yPosLabel.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
-		yPosLabel.name = "radar.y"
-		interface.addChildNode(yPosLabel)
+		var zPosLabel = SCNLabel(text: "z", scale: 0.1)
+		zPosLabel.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
+		zPosLabel.name = "radar.z"
+		interface.addChildNode(zPosLabel)
 		
 		var angleLabel = SCNLabel(text: "r", scale: 0.1)
 		angleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)

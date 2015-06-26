@@ -23,7 +23,7 @@ extension GameViewController
 		if( trigger == "window" )		{ moveWindow(object)}
 		if( trigger == "electric" )		{ touchToggle("electric")}
 		if( trigger == "thruster" )		{ touchToggle("thruster")}
-		if( trigger == "speed" )		{ touchIncrement("speed",limit: 3)}
+		if( trigger == "speed" )		{ touchIncrementSpeed()}
 		if( trigger == "turnRight" )	{ touchTurn(true)}
 		if( trigger == "turnLeft" )		{ touchTurn(false)}
 	}
@@ -31,25 +31,23 @@ extension GameViewController
 	func touchTurn(right:Bool)
 	{
 		if right {
-			user.r -= 1
+			user.orientation -= 1
 		}
 		else{
-			user.r += 1
+			user.orientation += 1
 		}
 		panel_radar_update()
 	}
 	
-	func touchIncrement(task:String,limit:Float)
+	func touchIncrementSpeed()
 	{
-		var userTask = user.storage[task]
-		
-		if( user.storage[task] < limit ){
-			user.storage[task] = userTask! + 1
+		if( user.speed < 3 ){
+			user.speed += 1
 		}
 		else{
-			user.storage[task] = 0
+			user.speed = 0
 		}
-		updateKnobInterface(task,limit:limit)
+		panel_thruster_update()
 	}
 	
 	func touchToggle(task:String)
@@ -64,40 +62,6 @@ extension GameViewController
 	}
 	
 	// MARK: draws
-	
-	func updateKnobInterface(task:String,limit:Float)
-	{
-		let interfaceNode = scene.rootNode.childNodeWithName("trigger.\(task)", recursively: true)!
-		
-		let knobMesh = interfaceNode.childNodeWithName("knob.mesh", recursively: false)!
-		
-		let targetAngle = Double(user.storage[task]!) * -1
-		
-		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
-		
-		for node in knobMesh.childNodes
-		{
-			var node: SCNNode = node as! SCNNode
-			if( user.storage[task] == 0){
-				node.geometry!.firstMaterial?.diffuse.contents = red
-			}
-			else{
-				node.geometry!.firstMaterial?.diffuse.contents = cyan
-			}
-		}
-		
-		// Update label
-		
-		let labelUnwrap = Int(user.storage[task]!)
-		
-		let labelString = "\(labelUnwrap)"
-		
-		let labelNode = interfaceNode.childNodeWithName("label", recursively: false)!
-		let labelMesh = SCNText(string: labelString, extrusionDepth: 0.0)
-		labelMesh.font = UIFont(name: "CourierNewPSMT", size: 12)
-		
-		labelNode.geometry = labelMesh
-	}
 	
 	func updateToggleInterface(task:String)
 	{
@@ -122,7 +86,7 @@ extension GameViewController
 	{
 		updateToggleInterface("electric")
 		updateToggleInterface("thruster")
-		updateKnobInterface("speed",limit:3)
+		panel_thruster_update()
 	}
 	
 }

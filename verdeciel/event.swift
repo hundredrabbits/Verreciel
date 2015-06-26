@@ -29,7 +29,7 @@ extension GameViewController
 	func eventTrigger()
 	{
 		// Update location
-		user.z += user.storage["speed"]!
+		user.z += user.speed
 		
 		if user.storage["speed"] > 0 {
 			panel_radar_update()
