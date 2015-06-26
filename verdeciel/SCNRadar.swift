@@ -16,15 +16,21 @@ class SCNRadar : SCNNode
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
+	var events:Array<SCNRadarEvent>!
 	
 	override init()
 	{
 		super.init()
 		name = "radar"
-		createRadar()
+		addInterface()
 	}
 	
-	func createRadar()
+	func addEvent(event:SCNRadarEvent)
+	{
+		self.addChildNode(event)
+	}
+	
+	func addInterface()
 	{
 		// Draw the frame
 		

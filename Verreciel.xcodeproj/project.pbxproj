@@ -21,6 +21,7 @@
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
 		57A0F10D1B3DCD640007650F /* SCNRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* SCNRadar.swift */; };
+		57A0F10F1B3DDABF0007650F /* SCNRadarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */; };
 		57DCE9D11B3868920054613E /* interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D01B3868920054613E /* interfaces.swift */; };
 		57DCE9D31B3868CA0054613E /* panels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D21B3868CA0054613E /* panels.swift */; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
@@ -45,6 +46,7 @@
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* SCNRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadar.swift; sourceTree = "<group>"; };
+		57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadarEvent.swift; sourceTree = "<group>"; };
 		57DCE9D01B3868920054613E /* interfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interfaces.swift; sourceTree = "<group>"; };
 		57DCE9D21B3868CA0054613E /* panels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = panels.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				57A0F10C1B3DCD640007650F /* SCNRadar.swift */,
+				57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */,
 			);
 			path = verdeciel;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				0336701D19D4EB82005E1869 /* interaction.swift in Sources */,
 				57DCE9D11B3868920054613E /* interfaces.swift in Sources */,
+				57A0F10F1B3DDABF0007650F /* SCNRadarEvent.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

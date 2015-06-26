@@ -97,18 +97,7 @@ extension GameViewController
 		
 		scene.rootNode.addChildNode(panelNode)
 	}
-	
-	func panel_radar_update()
-	{
-		let interfaceNode = scene.rootNode.childNodeWithName("radar", recursively: false)! as! SCNRadar
-		interfaceNode.update()
-	}
-	
-	func panel_radar()
-	{
-		scene.rootNode.addChildNode(SCNRadar())
-	}
-	
+
 	func panel_commander()
 	{
 		// Draw the frame

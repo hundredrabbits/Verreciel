@@ -17,6 +17,8 @@ var lowNode:Array<SCNVector3>!
 var lowMidNode:Array<SCNVector3>!
 var floorNode:Array<SCNVector3>!
 
+var radar:SCNRadar!
+
 extension GameViewController
 {
 	func worldSetup()
@@ -27,11 +29,22 @@ extension GameViewController
 		
 		// Capsule
 		capsuleSetup()
-		linkSetup()
+//		linkSetup()
 		
 		// Panels
 		panel_commander()
-		panel_radar()
+		
+		radar = SCNRadar()
+		scene.rootNode.addChildNode(radar)
+		
+		
+		
+		// event
+		var newEvent = SCNRadarEvent(newPosition: SCNVector3(x: 0.2, y: 0.5, z: 0))
+		radar.addEvent(newEvent)
+		var newEvent2 = SCNRadarEvent(newPosition: SCNVector3(x: -0.4, y: 0.2, z: 0))
+		radar.addEvent(newEvent2)
+		
 		panel_navigation()
 		panel_thruster()
 		
@@ -170,7 +183,7 @@ extension GameViewController
 		let linkC = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkC.name = "trigger.move"
 		linkC.position = SCNVector3(x: 0, y: 0, z: 0)
-		linkC.geometry?.firstMaterial?.diffuse.contents = red
+		linkC.geometry?.firstMaterial?.diffuse.contents = clear
 		scene.rootNode.addChildNode(linkC)
 		
 		let linkW = SCNNode(geometry: SCNSphere(radius: 0.2))

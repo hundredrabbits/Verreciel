@@ -36,7 +36,7 @@ extension GameViewController
 		else{
 			user.orientation += 1
 		}
-		panel_radar_update()
+		radar.update()
 	}
 	
 	func touchIncrementSpeed()

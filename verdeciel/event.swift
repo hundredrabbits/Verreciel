@@ -26,8 +26,7 @@ extension GameViewController
 		user.z += user.speed
 		
 		if user.speed > 0 {
-			panel_radar_update()
+			radar.update()
 		}
-		
 	}
 }
