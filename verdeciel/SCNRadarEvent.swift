@@ -13,11 +13,14 @@ import Foundation
 
 class SCNRadarEvent : SCNNode
 {
-	init(newPosition:SCNVector3)
+	var eventName:String = ""
+	var origin:SCNVector3!
+	
+	init(newOrigin:SCNVector3)
 	{
 		super.init()
 		name = "event"
-		position = newPosition
+		origin = newOrigin
 		self.addChildNode(cyanLine(SCNVector3(x:0,y:-0.1,z:0), SCNVector3(x:0,y:0.1,z:0)))
 		self.addChildNode(cyanLine(SCNVector3(x:-0.1,y:0,z:0), SCNVector3(x:0.1,y:0,z:0)))
 	}

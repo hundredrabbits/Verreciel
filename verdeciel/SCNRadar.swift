@@ -16,18 +16,32 @@ class SCNRadar : SCNNode
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
-	var events:Array<SCNRadarEvent>!
+	var eventView:SCNNode!
 	
 	override init()
 	{
 		super.init()
 		name = "radar"
 		addInterface()
+		
+		eventView = SCNNode()
+		self.addChildNode(eventView)
+	}
+	
+	func updateEvents()
+	{
+		for node in eventView.childNodes
+		{
+			let event = node as! SCNRadarEvent
+			event.position.y = event.origin.y - (user.z/200)
+			event.position.x = event.origin.x - (user.x/200)
+			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
+		}
 	}
 	
 	func addEvent(event:SCNRadarEvent)
 	{
-		self.addChildNode(event)
+		eventView.addChildNode(event)
 	}
 	
 	func addInterface()
@@ -80,6 +94,8 @@ class SCNRadar : SCNNode
 		labelPositionX.update(String(Int(user.x/20)))
 		labelPositionZ.update(String(Int(user.z/20)))
 		labelOrientation.update(String(Int(user.orientation)))
+		
+		updateEvents()
 	}
 
 	required init(coder aDecoder: NSCoder)

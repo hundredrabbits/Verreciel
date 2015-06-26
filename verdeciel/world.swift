@@ -40,9 +40,9 @@ extension GameViewController
 		
 		
 		// event
-		var newEvent = SCNRadarEvent(newPosition: SCNVector3(x: 0.2, y: 0.5, z: 0))
+		var newEvent = SCNRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
 		radar.addEvent(newEvent)
-		var newEvent2 = SCNRadarEvent(newPosition: SCNVector3(x: -0.4, y: 0.2, z: 0))
+		var newEvent2 = SCNRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
 		radar.addEvent(newEvent2)
 		
 		panel_navigation()
