@@ -23,7 +23,17 @@ extension GameViewController
 	func eventTrigger()
 	{
 		// Update location
-		user.z += user.speed
+		
+		var rightward = (user.orientation / 10)
+		
+		var forward = 1 - rightward
+		
+		if user.orientation < 0 { forward = 1 + rightward }
+		if user.orientation < -10 { rightward = (2 + rightward) * -1 }
+		if user.orientation > 10 { rightward = forward + 1 }
+		
+		user.z += user.speed * forward
+		user.x += user.speed * rightward
 		
 		if user.speed > 0 {
 			radar.update()
