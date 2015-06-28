@@ -17,6 +17,7 @@ class SCNRadar : SCNNode
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
 	var eventView:SCNNode!
+	var shipCursor:SCNNode!
 	
 	override init()
 	{
@@ -37,6 +38,23 @@ class SCNRadar : SCNNode
 			event.position.x = event.origin.x - (user.x/200)
 			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
 		}
+		updateOrientation()
+	}
+	
+	func updateOrientation()
+	{
+		var cursorOrientation:Float = 1;
+		switch user.orientationName() {
+			case "n" : cursorOrientation = 0
+			case "ne" : cursorOrientation = 0.5
+			case "e" : cursorOrientation = 1
+			case "se" : cursorOrientation = 1.5
+			case "nw" : cursorOrientation = -0.5
+			case "w" : cursorOrientation = -1
+			case "sw" : cursorOrientation = -1.5
+			default : cursorOrientation = 2
+		}
+		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ));
 	}
 	
 	func addEvent(event:SCNRadarEvent)
@@ -63,10 +81,13 @@ class SCNRadar : SCNNode
 		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * scale, y: 0, z: 0)))
 		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
 		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
+		
+		shipCursor = SCNNode()
 		// Ship
-		self.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
-		self.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
+		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
+		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
+		shipCursor.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
+		self.addChildNode(shipCursor)
 		
 		let titleLabel = SCNLabel(text: "radar", scale: 0.1)
 		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
@@ -93,7 +114,7 @@ class SCNRadar : SCNNode
 	{
 		labelPositionX.update(String(Int(user.x/20)))
 		labelPositionZ.update(String(Int(user.z/20)))
-		labelOrientation.update(String(Int(user.orientation)))
+		labelOrientation.update(user.orientationName())
 		
 		updateEvents()
 	}

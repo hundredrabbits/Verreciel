@@ -22,5 +22,19 @@ class User
 		NSLog("USER   | Setup")
 		storage["thruster"] = 0
 		storage["electric"] = 0
-	}	
+	}
+	
+	func orientationName() -> String
+	{
+		switch orientation {
+			case  0 : return "n"
+			case  1 : return "ne"
+			case  2 : return "e"
+			case  3 : return "se"
+			case -1 : return "nw"
+			case -2 : return "w"
+			case -3 : return "sw"
+			default : return "s"
+		}
+	}
 }

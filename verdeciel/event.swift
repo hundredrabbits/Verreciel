@@ -24,16 +24,20 @@ extension GameViewController
 	{
 		// Update location
 		
-		var rightward = (user.orientation / 10)
+		var ratio = CGPoint(x: 0, y: 1)
 		
-		var forward = 1 - rightward
+		if user.orientation == 1 { ratio = CGPoint(x: 0.5, y: 0.5) }
+		if user.orientation == 2 { ratio = CGPoint(x: 1.0, y: 0.0) }
+		if user.orientation == 3 { ratio = CGPoint(x: 0.5, y:-0.5) }
+		if user.orientation == 4 { ratio = CGPoint(x: 0.0, y:-1.0) }
 		
-		if user.orientation < 0 { forward = 1 + rightward }
-		if user.orientation < -10 { rightward = (2 + rightward) * -1 }
-		if user.orientation > 10 { rightward = forward + 1 }
+		if user.orientation == -1{ ratio = CGPoint(x:-0.5, y: 0.5) }
+		if user.orientation == -2{ ratio = CGPoint(x:-1.0, y: 0.0) }
+		if user.orientation == -3{ ratio = CGPoint(x:-0.5, y:-0.5) }
+		if user.orientation == -4{ ratio = CGPoint(x: 0.0, y:-1.0) }
 		
-		user.z += user.speed * forward
-		user.x += user.speed * rightward
+		user.z += user.speed * Float(ratio.y)
+		user.x += user.speed * Float(ratio.x)
 		
 		if user.speed > 0 {
 			radar.update()

@@ -36,6 +36,10 @@ extension GameViewController
 		else{
 			user.orientation += 1
 		}
+		
+		if user.orientation ==  5 { user.orientation = -3 }
+		if user.orientation == -5 { user.orientation =  3 }
+		
 		radar.update()
 	}
 	
