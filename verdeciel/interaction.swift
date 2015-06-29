@@ -102,14 +102,6 @@ extension GameViewController
 	
 	// MARK: Move
 	
-	func move(object: AnyObject)
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(3)
-		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.node.position
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
 	func moveWindow(object: AnyObject)
 	{
 		SCNTransaction.begin()

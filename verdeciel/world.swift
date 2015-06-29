@@ -35,15 +35,13 @@ extension GameViewController
 		
 		// Capsule
 		capsuleSetup()
-//		linkSetup()
+		linkSetup()
 		
 		// Panels
 		panel_commander()
 		
 		radar = SCNRadar()
 		scene.rootNode.addChildNode(radar)
-		
-		
 		
 		// event
 		var newEvent = SCNRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
@@ -186,6 +184,11 @@ extension GameViewController
 	
 	func linkSetup()
 	{
+//		var newLink = SCNLink(location: SCNVector3(x: 0, y: 0, z: -3), newDestination: SCNVector3(x: 1, y: 1, z: -1))
+//		scene.rootNode.addChildNode(newLink)
+		
+		/*
+		
 		let linkC = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkC.name = "trigger.move"
 		linkC.position = SCNVector3(x: 0, y: 0, z: 0)
@@ -216,7 +219,6 @@ extension GameViewController
 		linkS.geometry?.firstMaterial?.diffuse.contents = red
 		scene.rootNode.addChildNode(linkS)
 		
-		/*
 		let linkT = SCNNode(geometry: SCNSphere(radius: 0.2))
 		linkT.name = "trigger.move"
 		linkT.position = SCNVector3(x: 0, y: 2, z: 0)

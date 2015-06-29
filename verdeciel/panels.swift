@@ -96,7 +96,7 @@ extension GameViewController
 		panelNode.addChildNode(turnRight)
 		
 		var nameLabel = SCNLabel(text: "navigation", scale: 0.05, align: alignment.center)
-		nameLabel.position = SCNVector3(x: 0, y: -1, z: 0)
+		nameLabel.position = SCNVector3(x: 0, y: -0.5, z: 0)
 		nameLabel.name = "label.navigation"
 		panelNode.addChildNode(nameLabel)
 		

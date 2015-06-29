@@ -19,7 +19,7 @@ extension GameViewController
 		NSLog("       | Object  : %@",object.node.name!)
 		NSLog("       | Location: %f %f %f",object.node.position.x,object.node.position.y,object.node.position.z)
 		
-		if( trigger == "move")			{ move(object) }
+		if( trigger == "move")			{ move(object.node as! SCNLink) }
 		if( trigger == "window" )		{ moveWindow(object)}
 		if( trigger == "electric" )		{ touchToggle("electric")}
 		if( trigger == "thruster" )		{ touchToggle("thruster")}
@@ -63,6 +63,16 @@ extension GameViewController
 			user.storage[task] = 0
 		}
 		updateToggleInterface(task)
+	}
+	
+	
+	func move(object: SCNLink)
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = object.destination
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 	
 	// MARK: draws

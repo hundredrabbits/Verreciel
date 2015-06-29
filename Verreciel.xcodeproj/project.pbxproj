@@ -19,6 +19,8 @@
 		03DDE18719CE497F008029A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18519CE497F008029A8 /* Main.storyboard */; };
 		03DDE18919CE497F008029A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18819CE497F008029A8 /* Images.xcassets */; };
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
+		57009F4E1B40CF1000E3EE83 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4D1B40CF1000E3EE83 /* SCNPort.swift */; };
+		57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4F1B40CF4400E3EE83 /* SCNLink.swift */; };
 		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
 		57A0F10D1B3DCD640007650F /* SCNRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* SCNRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* SCNRadarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */; };
@@ -44,6 +46,8 @@
 		03DDE18B19CE497F008029A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		03DDE19619CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
+		57009F4D1B40CF1000E3EE83 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
+		57009F4F1B40CF4400E3EE83 /* SCNLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLink.swift; sourceTree = "<group>"; };
 		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* SCNRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadarEvent.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				57A0F10C1B3DCD640007650F /* SCNRadar.swift */,
 				57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */,
+				57009F4D1B40CF1000E3EE83 /* SCNPort.swift */,
+				57009F4F1B40CF4400E3EE83 /* SCNLink.swift */,
 			);
 			path = verdeciel;
 			sourceTree = "<group>";
@@ -206,11 +212,13 @@
 				0336701B19D47119005E1869 /* world.swift in Sources */,
 				0336702119D4EC40005E1869 /* settings.swift in Sources */,
 				03BAD0D019F9402C00BAF21A /* event.swift in Sources */,
+				57009F4E1B40CF1000E3EE83 /* SCNPort.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				03C73A1419F6B6A60006D534 /* user.swift in Sources */,
 				57DCE9D31B3868CA0054613E /* panels.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* SCNRadar.swift in Sources */,
 				0336701F19D4EC0C005E1869 /* tools.swift in Sources */,
+				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
 				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				0336701D19D4EB82005E1869 /* interaction.swift in Sources */,
 				57DCE9D11B3868920054613E /* interfaces.swift in Sources */,
