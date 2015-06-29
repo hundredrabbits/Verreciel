@@ -19,6 +19,12 @@ var floorNode:Array<SCNVector3>!
 
 var radar:SCNRadar!
 
+enum alignment {
+	case left
+	case center
+	case right
+}
+
 extension GameViewController
 {
 	func worldSetup()

@@ -22,11 +22,11 @@ extension GameViewController
 		panelNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		
-		var testLabel = SCNLabel(text: "speed", scale: 0.05)
+		var testLabel = SCNLabel(text: "speed", scale: 0.05, align: alignment.left)
 		testLabel.position = SCNVector3(x: 0.1, y: 0.65, z: 0)
 		panelNode.addChildNode(testLabel)
 		
-		var testLabel2 = SCNLabel(text: "-", scale: 0.05)
+		var testLabel2 = SCNLabel(text: "-", scale: 0.05, align: alignment.left)
 		testLabel2.position = SCNVector3(x: 0.1, y: -0.65, z: 0)
 		testLabel2.name = "label.speed"
 		panelNode.addChildNode(testLabel2)
@@ -95,6 +95,11 @@ extension GameViewController
 		turnRight.position = SCNVector3(x: -0.5, y: 0, z: 0)
 		panelNode.addChildNode(turnRight)
 		
+		var nameLabel = SCNLabel(text: "navigation", scale: 0.05, align: alignment.center)
+		nameLabel.position = SCNVector3(x: 0, y: -1, z: 0)
+		nameLabel.name = "label.navigation"
+		panelNode.addChildNode(nameLabel)
+		
 		scene.rootNode.addChildNode(panelNode)
 	}
 
@@ -122,15 +127,15 @@ extension GameViewController
 	
 	func panel_test()
 	{
-		let test:SCNLabel = SCNLabel(text: "abcdefgh", scale: 0.15)
+		let test:SCNLabel = SCNLabel(text: "abcdefgh", scale: 0.15, align: alignment.left)
 		test.position = SCNVector3(x: -1, y: 2, z: lowNode[7].z)
 		scene.rootNode.addChildNode(test)
 		
-		let test2:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.1)
+		let test2:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.1, align: alignment.left)
 		test2.position = SCNVector3(x: -1, y: 2.50, z: lowNode[7].z)
 		scene.rootNode.addChildNode(test2)
 		
-		let test3:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.05)
+		let test3:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.05, align: alignment.left)
 		test3.position = SCNVector3(x: -1, y: 2.85, z: lowNode[7].z)
 		scene.rootNode.addChildNode(test3)
 	}

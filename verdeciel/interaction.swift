@@ -27,8 +27,6 @@ extension GameViewController
 			touchPosition = touch.locationInView(self.view)
 		}
 		
-		println(touchPosition)
-		
 		var dragX = Float(touchPosition.x - touchOrigin.x)
 		var dragY = Float(touchPosition.y - touchOrigin.y)
 		
