@@ -16,17 +16,17 @@ class SCNLink : SCNNode
 	var activeLocation:SCNVector3!
 	var destination:SCNVector3!
 	
-	init(location:SCNVector3,newDestination:SCNVector3)
+	init(location:SCNVector3,newDestination:SCNVector3,scale:CGFloat)
 	{
 		super.init()
 		
 		activeLocation = location
 		destination = newDestination
 		
-		self.geometry = SCNNode(geometry: SCNPlane(width: 1, height: 1)).geometry
+		self.geometry = SCNNode(geometry: SCNPlane(width: scale, height: scale)).geometry
 		
 		self.position = activeLocation
-		self.geometry?.firstMaterial?.diffuse.contents = red
+		self.geometry?.firstMaterial?.diffuse.contents = clear
 		self.name = "trigger.move"
 	}
 	

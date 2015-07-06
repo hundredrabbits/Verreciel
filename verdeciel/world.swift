@@ -184,54 +184,48 @@ extension GameViewController
 	
 	func linkSetup()
 	{
-//		var newLink = SCNLink(location: SCNVector3(x: 0, y: 0, z: -3), newDestination: SCNVector3(x: 1, y: 1, z: -1))
-//		scene.rootNode.addChildNode(newLink)
+		var northNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: -4.5), newDestination: SCNVector3(x: 0, y: 0, z: -1), scale: 6)
+		scene.rootNode.addChildNode(northNode)
 		
-		/*
+		var southNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: 4.5), newDestination: SCNVector3(x: 0, y: 0, z: 1), scale: 6)
+		southNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 2));
+		scene.rootNode.addChildNode(southNode)
 		
-		let linkC = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkC.name = "trigger.move"
-		linkC.position = SCNVector3(x: 0, y: 0, z: 0)
-		linkC.geometry?.firstMaterial?.diffuse.contents = clear
-		scene.rootNode.addChildNode(linkC)
+		var eastNode = SCNLink(location: SCNVector3(x: 4.5, y: 0, z: 0), newDestination: SCNVector3(x: 1, y: 0, z: 0), scale: 6)
+		eastNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1));
+		scene.rootNode.addChildNode(eastNode)
 		
-		let linkW = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkW.name = "trigger.move"
-		linkW.position = SCNVector3(x: -2, y: 0, z: 0)
-		linkW.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkW)
+		var westNode = SCNLink(location: SCNVector3(x: -4.5, y: 0, z: 0), newDestination: SCNVector3(x: -1, y: 0, z: 0), scale: 6)
+		westNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1));
+		scene.rootNode.addChildNode(westNode)
 		
-		let linkE = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkE.name = "trigger.move"
-		linkE.position = SCNVector3(x: 2, y: 0, z: 0)
-		linkE.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkE)
+		var northWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: -4), newDestination: SCNVector3(x: -1, y: 0, z: -1), scale: 6)
+		northWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 3.5));
+		scene.rootNode.addChildNode(northWestNode)
 		
-		let linkN = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkN.name = "trigger.move"
-		linkN.position = SCNVector3(x: 0, y: 0, z: 2)
-		linkN.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkN)
+		var northEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: -4), newDestination: SCNVector3(x: 1, y: 0, z: -1), scale: 6)
+		northEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5));
+		scene.rootNode.addChildNode(northEastNode)
 		
-		let linkS = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkS.name = "trigger.move"
-		linkS.position = SCNVector3(x: 0, y: 0, z: -2)
-		linkS.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkS)
+		var southWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: 4), newDestination: SCNVector3(x: -1, y: 0, z: 1), scale: 6)
+		southWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 2.5));
+		scene.rootNode.addChildNode(southWestNode)
 		
-		let linkT = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkT.name = "trigger.move"
-		linkT.position = SCNVector3(x: 0, y: 2, z: 0)
-		linkT.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkT)
+		var southEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: 4), newDestination: SCNVector3(x: 1, y: 0, z: 1), scale: 6)
+		southEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5));
+		scene.rootNode.addChildNode(southEastNode)
 		
-		let linkB = SCNNode(geometry: SCNSphere(radius: 0.2))
-		linkB.name = "trigger.move"
-		linkB.position = SCNVector3(x: 0, y: -2, z: 0)
-		linkB.geometry?.firstMaterial?.diffuse.contents = red
-		scene.rootNode.addChildNode(linkB)
-*/
+		var topNode = SCNLink(location: SCNVector3(x: 0, y: 4, z: 0), newDestination: SCNVector3(x: 0, y: 1, z: 0), scale: 9)
+		topNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
+		scene.rootNode.addChildNode(topNode)
 		
+		var bottomNode = SCNLink(location: SCNVector3(x: 0, y: -4, z: 0), newDestination: SCNVector3(x: 0, y: -1, z: 0), scale: 9)
+		bottomNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1));
+		scene.rootNode.addChildNode(bottomNode)
+		
+		var windowNode = SCNLink(location: SCNVector3(x: 0, y: 3.5, z: 0), newDestination: SCNVector3(x: 0, y: 3.5, z: 0), scale: 4)
+		windowNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
+		scene.rootNode.addChildNode(windowNode)
 	}
 	
 	func sceneComplete()
