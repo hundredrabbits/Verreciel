@@ -101,6 +101,8 @@ extension GameViewController
 		updateToggleInterface("electric")
 		updateToggleInterface("thruster")
 		panel_thruster_update()
+		
+		radar.update()
 	}
 	
 }
