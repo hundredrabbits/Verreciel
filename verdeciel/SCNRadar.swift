@@ -60,6 +60,7 @@ class SCNRadar : SCNNode
 	func addEvent(event:SCNRadarEvent)
 	{
 		eventView.addChildNode(event)
+		update()
 	}
 	
 	func addInterface()

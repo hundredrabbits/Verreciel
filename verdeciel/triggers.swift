@@ -102,7 +102,6 @@ extension GameViewController
 		updateToggleInterface("thruster")
 		panel_thruster_update()
 		
-		radar.update()
 	}
 	
 }

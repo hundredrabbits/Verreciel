@@ -79,19 +79,4 @@ extension GameViewController
 		scene.rootNode.addChildNode(panelNode)
 	}
 	
-	func panel_test()
-	{
-		let test:SCNLabel = SCNLabel(text: "abcdefgh", scale: 0.15, align: alignment.left)
-		test.position = SCNVector3(x: -1, y: 2, z: lowNode[7].z)
-		scene.rootNode.addChildNode(test)
-		
-		let test2:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.1, align: alignment.left)
-		test2.position = SCNVector3(x: -1, y: 2.50, z: lowNode[7].z)
-		scene.rootNode.addChildNode(test2)
-		
-		let test3:SCNLabel = SCNLabel(text: "abcdefgh",scale:0.05, align: alignment.left)
-		test3.position = SCNVector3(x: -1, y: 2.85, z: lowNode[7].z)
-		scene.rootNode.addChildNode(test3)
-	}
-	
 }

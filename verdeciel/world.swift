@@ -19,6 +19,7 @@ var floorNode:Array<SCNVector3>!
 
 var radar:SCNRadar!
 var navigation:SCNNavigation!
+var monitor:SCNMonitor!
 
 enum alignment {
 	case left
@@ -46,6 +47,12 @@ extension GameViewController
 		
 		// New Elements
 		
+		monitor = SCNMonitor()
+		scene.rootNode.addChildNode(monitor)
+		
+		navigation = SCNNavigation()
+		scene.rootNode.addChildNode(navigation)
+		
 		radar = SCNRadar()
 		scene.rootNode.addChildNode(radar)
 
@@ -54,8 +61,7 @@ extension GameViewController
 		var newEvent2 = SCNRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
 		radar.addEvent(newEvent2)
 		
-		navigation = SCNNavigation()
-		scene.rootNode.addChildNode(navigation)
+		
 		
 		
 		
@@ -63,10 +69,8 @@ extension GameViewController
 		
 		panel_thruster()
 		
-		panel_test()
 		
 		sceneComplete()
-	
 		triggersSetup()
 	}
 	
