@@ -21,7 +21,7 @@ var radar:PanelRadar!
 var navigation:PanelNavigation!
 var monitor:PanelMonitor!
 var thruster:PanelThruster!
-var switchboard:PanelBreaker!
+var breaker:PanelBreaker!
 
 enum alignment {
 	case left
@@ -41,7 +41,7 @@ extension GameViewController
 		capsuleSetup()
 		linkSetup()
 		
-		// New Elements
+		//
 		
 		var northPanels = SCNNode()
 		
@@ -53,25 +53,35 @@ extension GameViewController
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
+		//
+		
 		var eastPanels = SCNNode()
 		
-		switchboard = PanelBreaker()
-		eastPanels.addChildNode(switchboard)
+		breaker = PanelBreaker()
+		eastPanels.addChildNode(breaker)
+		
+		
+		//
+		
+		var northEastPanels = SCNNode()
+		
+		
+		thruster = PanelThruster()
+		northEastPanels.addChildNode(thruster)
+		
+		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
+		
+		//
 		
 		
 		scene.rootNode.addChildNode(northPanels)
+		scene.rootNode.addChildNode(northEastPanels)
 		scene.rootNode.addChildNode(eastPanels)
 		
 		monitor = PanelMonitor()
 		scene.rootNode.addChildNode(monitor)
 		
 		
-		
-		
-		//
-		
-		thruster = PanelThruster()
-		scene.rootNode.addChildNode(thruster)
 		
 
 		var newEvent = PanelRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))

@@ -13,14 +13,26 @@ import Foundation
 
 class SCNToggle : SCNNode
 {
-	let activeName:String!
 	var label:SCNLabel!
 	
-	init(name:String)
+	var cross1:SCNNode!
+	var cross2:SCNNode!
+	var cross3:SCNNode!
+	
+	var outline1:SCNNode!
+	var outline2:SCNNode!
+	var outline3:SCNNode!
+	var outline4:SCNNode!
+	
+	var panelName:String = ""
+	
+	init(newName:String)
 	{
-		activeName = name
+		panelName = newName
 		super.init()
+		name = newName
 		addGeometry()
+		update()
 	}
 	
 	func addGeometry()
@@ -28,49 +40,80 @@ class SCNToggle : SCNNode
 		let optionPanel = SCNNode(geometry: SCNPlane(width: 1, height: 1))
 		optionPanel.geometry?.firstMaterial?.diffuse.contents = clear
 		optionPanel.position = position
-		optionPanel.name = "trigger.\(name)"
+		optionPanel.name = "trigger.\(panelName)"
 		
-		let lineTest = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest.name = "\(name).handle.top"
-		optionPanel.addChildNode(lineTest)
+		outline1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
+		outline1.name = "\(panelName).handle.top"
+		optionPanel.addChildNode(outline1)
 		
-		let lineTest2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest2.name = "\(name).handle.left"
-		optionPanel.addChildNode(lineTest2)
+		outline2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		outline2.name = "\(panelName).handle.left"
+		optionPanel.addChildNode(outline2)
 		
-		let lineTest3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest3.name = "\(name).handle.bottom"
-		optionPanel.addChildNode(lineTest3)
+		outline3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		outline3.name = "\(panelName).handle.bottom"
+		optionPanel.addChildNode(outline3)
 		
-		let lineTest4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
-		lineTest3.name = "\(name).handle.right"
-		optionPanel.addChildNode(lineTest4)
+		outline4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
+		outline4.name = "\(panelName).handle.right"
+		optionPanel.addChildNode(outline4)
 		
-		let lineTest5 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
-		lineTest5.name = "\(name).handle.cross1"
-		optionPanel.addChildNode(lineTest5)
+		cross1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		cross1.name = "\(panelName).handle.cross1"
+		optionPanel.addChildNode(cross1)
 		
-		let lineTest6 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
-		lineTest6.name = "\(name).handle.cross2"
-		optionPanel.addChildNode(lineTest6)
+		cross2 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		cross2.name = "\(panelName).handle.cross2"
+		optionPanel.addChildNode(cross2)
 		
-		/*
-		
-		let lineTest7 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
-		lineTest7.name = "\(name).handle.cross3"
-		optionPanel.addChildNode(lineTest7)
-		*/
+		cross3 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
+		cross3.name = "\(panelName).handle.cross3"
+		optionPanel.addChildNode(cross3)
 		
 		self.addChildNode(optionPanel)
 		
-		label = SCNLabel(text: activeName, scale: 0.1, align: alignment.left)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.left)
 		label.position = SCNVector3(x: 0.75, y: 0, z: 0)
 		
 		self.addChildNode(label)
 	}
 	
+	func touch()
+	{
+		println("yay")
+		if( user.storage[panelName] == 0){
+			user.storage[panelName] = 1
+		}
+		else{
+			user.storage[panelName] = 0
+		}
+		update()
+	}
+	
 	func update()
 	{
+		if( user.storage[panelName] == 0){
+			
+			outline1.geometry!.firstMaterial?.diffuse.contents = red
+			outline2.geometry!.firstMaterial?.diffuse.contents = red
+			outline3.geometry!.firstMaterial?.diffuse.contents = red
+			outline4.geometry!.firstMaterial?.diffuse.contents = red
+			
+			cross1.geometry!.firstMaterial?.diffuse.contents = red
+			cross2.geometry!.firstMaterial?.diffuse.contents = red
+			cross3.geometry!.firstMaterial?.diffuse.contents = clear
+		}
+		else{
+			
+			outline1.geometry!.firstMaterial?.diffuse.contents = cyan
+			outline2.geometry!.firstMaterial?.diffuse.contents = cyan
+			outline3.geometry!.firstMaterial?.diffuse.contents = cyan
+			outline4.geometry!.firstMaterial?.diffuse.contents = cyan
+			
+			cross1.geometry!.firstMaterial?.diffuse.contents = clear
+			cross2.geometry!.firstMaterial?.diffuse.contents = clear
+			cross3.geometry!.firstMaterial?.diffuse.contents = cyan
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)
