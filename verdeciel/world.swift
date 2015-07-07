@@ -20,6 +20,7 @@ var floorNode:Array<SCNVector3>!
 var radar:SCNRadar!
 var navigation:SCNNavigation!
 var monitor:SCNMonitor!
+var thruster:SCNThruster!
 
 enum alignment {
 	case left
@@ -42,10 +43,10 @@ extension GameViewController
 		// Panels
 		panel_commander()
 		
-		
-		
-		
 		// New Elements
+		
+		thruster = SCNThruster()
+		scene.rootNode.addChildNode(thruster)
 		
 		monitor = SCNMonitor()
 		scene.rootNode.addChildNode(monitor)
@@ -59,19 +60,9 @@ extension GameViewController
 		var newEvent = SCNRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
 		radar.addEvent(newEvent)
 		var newEvent2 = SCNRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
-		radar.addEvent(newEvent2)
-		
-		
-		
-		
-		
-		
-		
-		panel_thruster()
-		
+		radar.addEvent(newEvent2)		
 		
 		sceneComplete()
-		triggersSetup()
 	}
 	
 	func nodeNetworkSetup()

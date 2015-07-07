@@ -21,8 +21,10 @@
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		57009F4E1B40CF1000E3EE83 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4D1B40CF1000E3EE83 /* SCNPort.swift */; };
 		57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4F1B40CF4400E3EE83 /* SCNLink.swift */; };
+		573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627751B4BFD2900899EBC /* SCNKnob.swift */; };
 		573EDAB31B4B46C4007C6D3C /* SCNMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* SCNMonitor.swift */; };
 		573EDAB51B4B4762007C6D3C /* SCNNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* SCNNavigation.swift */; };
+		573EDAB71B4B4FCE007C6D3C /* SCNThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* SCNThruster.swift */; };
 		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
 		57A0F10D1B3DCD640007650F /* SCNRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* SCNRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* SCNRadarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */; };
@@ -50,8 +52,10 @@
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		57009F4D1B40CF1000E3EE83 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57009F4F1B40CF4400E3EE83 /* SCNLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLink.swift; sourceTree = "<group>"; };
+		573627751B4BFD2900899EBC /* SCNKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNKnob.swift; sourceTree = "<group>"; };
 		573EDAB21B4B46C4007C6D3C /* SCNMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNMonitor.swift; sourceTree = "<group>"; };
 		573EDAB41B4B4762007C6D3C /* SCNNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNavigation.swift; sourceTree = "<group>"; };
+		573EDAB61B4B4FCE007C6D3C /* SCNThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNThruster.swift; sourceTree = "<group>"; };
 		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* SCNRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* SCNRadarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRadarEvent.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				57009F4F1B40CF4400E3EE83 /* SCNLink.swift */,
 				573EDAB21B4B46C4007C6D3C /* SCNMonitor.swift */,
 				573EDAB41B4B4762007C6D3C /* SCNNavigation.swift */,
+				573EDAB61B4B4FCE007C6D3C /* SCNThruster.swift */,
+				573627751B4BFD2900899EBC /* SCNKnob.swift */,
 			);
 			path = verdeciel;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 			files = (
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				0336701B19D47119005E1869 /* world.swift in Sources */,
+				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				0336702119D4EC40005E1869 /* settings.swift in Sources */,
 				03BAD0D019F9402C00BAF21A /* event.swift in Sources */,
 				57009F4E1B40CF1000E3EE83 /* SCNPort.swift in Sources */,
@@ -232,6 +239,7 @@
 				57DCE9D11B3868920054613E /* interfaces.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* SCNRadarEvent.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
+				573EDAB71B4B4FCE007C6D3C /* SCNThruster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
