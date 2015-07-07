@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNNavigation : SCNNode
+class PanelNavigation : SCNNode
 {
 	override init()
 	{
@@ -64,6 +64,21 @@ class SCNNavigation : SCNNode
 		panelNode.addChildNode(nameLabel)
 		
 		self.addChildNode(panelNode)
+	}
+	
+	func touch(right:Bool)
+	{
+		if right {
+			user.orientation -= 1
+		}
+		else{
+			user.orientation += 1
+		}
+		
+		if user.orientation ==  5 { user.orientation = -3 }
+		if user.orientation == -5 { user.orientation =  3 }
+		
+		radar.update()
 	}
 	
 	required init(coder aDecoder: NSCoder)

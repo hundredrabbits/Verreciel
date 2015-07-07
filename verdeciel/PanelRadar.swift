@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNRadar : SCNNode
+class PanelRadar : SCNNode
 {
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
@@ -33,7 +33,7 @@ class SCNRadar : SCNNode
 	{
 		for node in eventView.childNodes
 		{
-			let event = node as! SCNRadarEvent
+			let event = node as! PanelRadarEvent
 			event.position.y = event.origin.y - (user.z/200)
 			event.position.x = event.origin.x - (user.x/200)
 			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
@@ -57,7 +57,7 @@ class SCNRadar : SCNNode
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ));
 	}
 	
-	func addEvent(event:SCNRadarEvent)
+	func addEvent(event:PanelRadarEvent)
 	{
 		eventView.addChildNode(event)
 		update()

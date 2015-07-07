@@ -17,10 +17,11 @@ var lowNode:Array<SCNVector3>!
 var lowMidNode:Array<SCNVector3>!
 var floorNode:Array<SCNVector3>!
 
-var radar:SCNRadar!
-var navigation:SCNNavigation!
-var monitor:SCNMonitor!
-var thruster:SCNThruster!
+var radar:PanelRadar!
+var navigation:PanelNavigation!
+var monitor:PanelMonitor!
+var thruster:PanelThruster!
+var switchboard:PanelBreaker!
 
 enum alignment {
 	case left
@@ -40,26 +41,42 @@ extension GameViewController
 		capsuleSetup()
 		linkSetup()
 		
-		// Panels
-		panel_commander()
-		
 		// New Elements
 		
-		thruster = SCNThruster()
-		scene.rootNode.addChildNode(thruster)
+		var northPanels = SCNNode()
 		
-		monitor = SCNMonitor()
+		navigation = PanelNavigation()
+		northPanels.addChildNode(navigation)
+		
+		radar = PanelRadar()
+		northPanels.addChildNode(radar)
+		
+		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		var eastPanels = SCNNode()
+		
+		switchboard = PanelBreaker()
+		eastPanels.addChildNode(switchboard)
+		
+		
+		scene.rootNode.addChildNode(northPanels)
+		scene.rootNode.addChildNode(eastPanels)
+		
+		monitor = PanelMonitor()
 		scene.rootNode.addChildNode(monitor)
 		
-		navigation = SCNNavigation()
-		scene.rootNode.addChildNode(navigation)
 		
-		radar = SCNRadar()
-		scene.rootNode.addChildNode(radar)
+		
+		
+		//
+		
+		thruster = PanelThruster()
+		scene.rootNode.addChildNode(thruster)
+		
 
-		var newEvent = SCNRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
+		var newEvent = PanelRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
 		radar.addEvent(newEvent)
-		var newEvent2 = SCNRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
+		var newEvent2 = PanelRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
 		radar.addEvent(newEvent2)		
 		
 		sceneComplete()

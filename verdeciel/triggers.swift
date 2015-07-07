@@ -23,25 +23,10 @@ extension GameViewController
 		if( trigger == "window" )		{ moveWindow(object) }
 		if( trigger == "electric" )		{ touchToggle("electric") }
 		if( trigger == "thruster" )		{ thruster.touch() }
-		if( trigger == "turnRight" )	{ touchTurn(true) }
-		if( trigger == "turnLeft" )		{ touchTurn(false) }
+		if( trigger == "turnRight" )	{ navigation.touch(true) }
+		if( trigger == "turnLeft" )		{ navigation.touch(false) }
 	}
-	
-	func touchTurn(right:Bool)
-	{
-		if right {
-			user.orientation -= 1
-		}
-		else{
-			user.orientation += 1
-		}
-		
-		if user.orientation ==  5 { user.orientation = -3 }
-		if user.orientation == -5 { user.orientation =  3 }
-		
-		radar.update()
-	}
-	
+
 	func touchToggle(task:String)
 	{
 		if( user.storage[task] == 0){

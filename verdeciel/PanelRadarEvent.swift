@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNRadarEvent : SCNNode
+class PanelRadarEvent : SCNNode
 {
 	var eventName:String = ""
 	var origin:SCNVector3!

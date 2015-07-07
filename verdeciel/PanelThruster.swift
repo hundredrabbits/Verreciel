@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNThruster : SCNNode
+class PanelThruster : SCNNode
 {
 	var knobMesh:SCNKnob!
 	
