@@ -28,7 +28,7 @@ class PanelThruster : SCNNode
 	
 	func addInterface()
 	{
-		knobMesh = SCNKnob(newName:"thruster",position:SCNVector3(x: 0, y: 0, z: 0))
+		knobMesh = SCNKnob(newName:"thruster")
 		self.addChildNode(knobMesh)
 		
 		let scale:Float = 0.7
@@ -57,7 +57,7 @@ class PanelThruster : SCNNode
 	
 	func update()
 	{
-		knobMesh.update()
+		knobMesh.update(user.speed)
 		speedLabel.update("\(Int(user.speed))")
 	}
 	

@@ -15,10 +15,12 @@ class SCNKnob : SCNNode
 {
 	var knobMesh:SCNNode!
 	
-	init(newName:String,position:SCNVector3)
+	var panelName:String = ""
+	
+	init(newName:String)
 	{
 		super.init()
-		name = newName
+		panelName = newName
 		addGeometry()
 	}
 	
@@ -26,8 +28,7 @@ class SCNKnob : SCNNode
 	{
 		var knob = SCNNode(geometry: SCNPlane(width: 1, height: 1))
 		knob.geometry?.firstMaterial?.diffuse.contents = clear
-		knob.position = position
-		knob.name = "trigger.thruster"
+		knob.name = "trigger.\(panelName)"
 		
 		knobMesh = SCNNode()
 		knobMesh.name = "knob.mesh"
@@ -54,22 +55,20 @@ class SCNKnob : SCNNode
 		self.addChildNode(knob)
 	}
 	
-	func update()
+	func update(targetValue:Float)
 	{
-		let targetAngle = Double(user.speed) * -1
+		let targetAngle = Double(targetValue) * -1
 		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
 		for node in knobMesh.childNodes
 		{
 			var node: SCNNode = node as! SCNNode
-			if( user.speed == 0){
+			if( targetValue == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
 			}
 			else{
 				node.geometry!.firstMaterial?.diffuse.contents = cyan
 			}
 		}
-		//		let labelNode = panelNode.childNodeWithName("label.speed", recursively: true)! as! SCNLabel
-		//		labelNode.update(String(Int(user.speed)))
 	}
 	
 	required init(coder aDecoder: NSCoder)

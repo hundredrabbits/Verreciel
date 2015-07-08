@@ -26,6 +26,9 @@ extension GameViewController
 		if( trigger == "thruster" )		{ thruster.touch() }
 		if( trigger == "turnRight" )	{ navigation.touch(true) }
 		if( trigger == "turnLeft" )		{ navigation.touch(false) }
+		if( trigger == "frequencyA" )	{ radio.touch(trigger) }
+		if( trigger == "frequencyB" )	{ radio.touch(trigger) }
+		if( trigger == "frequencyC" )	{ radio.touch(trigger) }
 	}	
 	
 	func move(object: SCNLink)
