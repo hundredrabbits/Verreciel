@@ -14,9 +14,6 @@ class User
 	var z:Float = 0
 	var orientation:Float = 0
 	var speed:Float = 0
-	var frequencyA:Float = 0
-	var frequencyB:Float = 0
-	var frequencyC:Float = 0
 	
 	var storage:Dictionary<String,Float> = ["new":0]
 	

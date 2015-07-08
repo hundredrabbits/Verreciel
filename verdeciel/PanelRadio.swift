@@ -13,6 +13,11 @@ import Foundation
 
 class PanelRadio : SCNNode
 {
+	var frequencyA:Float = 0
+	var frequencyB:Float = 0
+	var frequencyC:Float = 0
+	var frequencyD:Float = 0
+	
 	var frequencyKnobA:SCNKnob!
 	var frequencyKnobB:SCNKnob!
 	var frequencyKnobC:SCNKnob!
@@ -61,22 +66,17 @@ class PanelRadio : SCNNode
 	
 	func touch(knobId:String)
 	{
-		if knobId == "frequencyA" { user.frequencyA = user.frequencyA <= 3 ? (user.frequencyA+1) : 0 }
-		if knobId == "frequencyB" { user.frequencyB = user.frequencyB <= 3 ? (user.frequencyB+1) : 0 }
-		if knobId == "frequencyC" { user.frequencyC = user.frequencyC <= 3 ? (user.frequencyC+1) : 0 }
-		
-		println(user.frequencyA)
-		println(user.frequencyB)
-		println(user.frequencyC)
-		
+		if knobId == "frequencyA" { frequencyA = frequencyA <= 3 ? (frequencyA+1) : 0 }
+		if knobId == "frequencyB" { frequencyB = frequencyB <= 3 ? (frequencyB+1) : 0 }
+		if knobId == "frequencyC" { frequencyC = frequencyC <= 3 ? (frequencyC+1) : 0 }
 		update()
 	}
 	
 	func update()
 	{
-		frequencyKnobA.update(user.frequencyA)
-		frequencyKnobB.update(user.frequencyB)
-		frequencyKnobC.update(user.frequencyC)
+		frequencyKnobA.update(frequencyA)
+		frequencyKnobB.update(frequencyB)
+		frequencyKnobC.update(frequencyC)
 	}
 	
 	required init(coder aDecoder: NSCoder)

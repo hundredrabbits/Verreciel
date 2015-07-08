@@ -25,6 +25,7 @@ var breaker:PanelBreaker!
 var beacon:PanelBeacon!
 var radio:PanelRadio!
 var console:PanelConsole!
+var scanner:PanelScanner!
 
 enum alignment {
 	case left
@@ -79,6 +80,8 @@ extension GameViewController
 		var southPanels = SCNNode()
 		radio = PanelRadio()
 		southPanels.addChildNode(radio)
+		scanner = PanelScanner()
+		southPanels.addChildNode(scanner)
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
 		//
@@ -87,10 +90,8 @@ extension GameViewController
 		console = PanelConsole()
 		westPanels.addChildNode(console)
 		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
-		
-		
-		
-		
+
+		// Add
 		
 		scene.rootNode.addChildNode(northPanels)
 		scene.rootNode.addChildNode(northEastPanels)
@@ -99,22 +100,25 @@ extension GameViewController
 		scene.rootNode.addChildNode(southPanels)
 		scene.rootNode.addChildNode(westPanels)
 		
-		
-		
-		
-		
-		
 		monitor = PanelMonitor()
 		scene.rootNode.addChildNode(monitor)
 		
+		//
 		
+		radar.addEvent(PanelRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0)))
+		radar.addEvent(PanelRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0)))
 		
-
-		var newEvent = PanelRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0))
-		radar.addEvent(newEvent)
-		var newEvent2 = PanelRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0))
-		radar.addEvent(newEvent2)		
-		
+		console.addLine("hello there")
+		console.addLine("how are you")
+		console.addLine("0123456789")
+		console.addLine("a,b,c,d,e,f,g")
+		console.addLine("")
+		console.addLine("halt catch fire")
+		console.addLine("")
+		console.addLine("bios")
+		console.addLine("bias")
+		console.addLine("ftw")
+	
 		sceneComplete()
 	}
 	
