@@ -159,9 +159,9 @@
 		5736277A1B4C06FE00899EBC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
 				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
 				57A0F10E1B3DDABF0007650F /* PanelRadarEvent.swift */,
-				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
 				573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */,
 				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
 				5736277B1B4C0A2300899EBC /* PanelBreaker.swift */,
