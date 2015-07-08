@@ -24,6 +24,7 @@ var thruster:PanelThruster!
 var breaker:PanelBreaker!
 var beacon:PanelBeacon!
 var radio:PanelRadio!
+var console:PanelConsole!
 
 enum alignment {
 	case left
@@ -80,12 +81,23 @@ extension GameViewController
 		southPanels.addChildNode(radio)
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
+		//
+		
+		var westPanels = SCNNode()
+		console = PanelConsole()
+		westPanels.addChildNode(console)
+		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		
+		
+		
 		
 		scene.rootNode.addChildNode(northPanels)
 		scene.rootNode.addChildNode(northEastPanels)
 		scene.rootNode.addChildNode(eastPanels)
 		scene.rootNode.addChildNode(southEastPanels)
 		scene.rootNode.addChildNode(southPanels)
+		scene.rootNode.addChildNode(westPanels)
 		
 		
 		

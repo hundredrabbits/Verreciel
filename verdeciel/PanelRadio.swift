@@ -57,7 +57,6 @@ class PanelRadio : SCNNode
 		frequencyLabel = SCNLabel(text: "451", scale: 0.1, align: alignment.center)
 		frequencyLabel.position = SCNVector3(x: 0, y: -1, z: 0)
 		self.addChildNode(frequencyLabel)
-		
 	}
 	
 	func touch(knobId:String)

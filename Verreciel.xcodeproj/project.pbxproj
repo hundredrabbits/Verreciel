@@ -33,6 +33,7 @@
 		57F645F11B4CA2700088D115 /* PanelBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F01B4CA2700088D115 /* PanelBeacon.swift */; };
 		57F645F31B4CA3710088D115 /* SCNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F21B4CA3710088D115 /* SCNButton.swift */; };
 		57F645F51B4CACB60088D115 /* PanelRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F41B4CACB60088D115 /* PanelRadio.swift */; };
+		57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F61B4CC0C20088D115 /* PanelConsole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		57F645F01B4CA2700088D115 /* PanelBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBeacon.swift; sourceTree = "<group>"; };
 		57F645F21B4CA3710088D115 /* SCNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNButton.swift; sourceTree = "<group>"; };
 		57F645F41B4CACB60088D115 /* PanelRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadio.swift; sourceTree = "<group>"; };
+		57F645F61B4CC0C20088D115 /* PanelConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelConsole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				5736277B1B4C0A2300899EBC /* PanelBreaker.swift */,
 				57F645F01B4CA2700088D115 /* PanelBeacon.swift */,
 				57F645F41B4CACB60088D115 /* PanelRadio.swift */,
+				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */,
 				0336701F19D4EC0C005E1869 /* tools.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
+				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				0336701D19D4EB82005E1869 /* interaction.swift in Sources */,

@@ -81,7 +81,6 @@ class PanelMonitor : SCNNode
 		
 		//
 		
-		
 		var southMonitor = SCNNode()
 		
 		var labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
@@ -98,7 +97,7 @@ class PanelMonitor : SCNNode
 		
 		var labelHullValue = SCNLabel(text: "355.3", scale: 0.1, align: alignment.right)
 		labelHullValue.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
-		eastMonitor.addChildNode(labelHullValue)
+		southMonitor.addChildNode(labelHullValue)
 		
 		self.addChildNode(southMonitor)
 	}
