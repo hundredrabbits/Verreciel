@@ -90,23 +90,23 @@ class PanelRadar : SCNNode
 		shipCursor.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
 		self.addChildNode(shipCursor)
 		
+		
 		let titleLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
-		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
-		titleLabel.name = "radar.label"
+		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(titleLabel)
 		
 		labelPositionX = SCNLabel(text: "x", scale: 0.1, align: alignment.left)
-		labelPositionX.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
+		labelPositionX.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
 		labelPositionX.name = "radar.x"
 		self.addChildNode(labelPositionX)
 		
 		labelPositionZ = SCNLabel(text: "z", scale: 0.1, align: alignment.left)
-		labelPositionZ.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
+		labelPositionZ.position = SCNVector3(x: highNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)
 		labelPositionZ.name = "radar.z"
 		self.addChildNode(labelPositionZ)
 		
 		labelOrientation = SCNLabel(text: "r", scale: 0.1, align: alignment.left)
-		labelOrientation.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale + 0.3, z: 0)
+		labelOrientation.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
 		labelOrientation.name = "radar.r"
 		self.addChildNode(labelOrientation)
 	}

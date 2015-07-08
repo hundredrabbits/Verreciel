@@ -14,6 +14,7 @@ import Foundation
 class PanelThruster : SCNNode
 {
 	var knobMesh:SCNKnob!
+	var speedLabel:SCNLabel!
 	
 	override init()
 	{
@@ -36,10 +37,10 @@ class PanelThruster : SCNNode
 		titleLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(titleLabel)
 		
-		let speedValueLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.center)
-		speedValueLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
-		speedValueLabel.name = "label.speed"
-		self.addChildNode(speedValueLabel)
+		speedLabel = SCNLabel(text: "-", scale: 0.1, align: alignment.center)
+		speedLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		speedLabel.name = "label.speed"
+		self.addChildNode(speedLabel)
 	}
 	
 	func touch()
@@ -57,6 +58,7 @@ class PanelThruster : SCNNode
 	func update()
 	{
 		knobMesh.update()
+		speedLabel.update("\(Int(user.speed))")
 	}
 	
 	required init(coder aDecoder: NSCoder)

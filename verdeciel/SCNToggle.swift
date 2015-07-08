@@ -93,7 +93,6 @@ class SCNToggle : SCNNode
 	func update()
 	{
 		if( user.storage[panelName] == 0){
-			
 			outline1.geometry!.firstMaterial?.diffuse.contents = red
 			outline2.geometry!.firstMaterial?.diffuse.contents = red
 			outline3.geometry!.firstMaterial?.diffuse.contents = red
@@ -104,7 +103,6 @@ class SCNToggle : SCNNode
 			cross3.geometry!.firstMaterial?.diffuse.contents = clear
 		}
 		else{
-			
 			outline1.geometry!.firstMaterial?.diffuse.contents = cyan
 			outline2.geometry!.firstMaterial?.diffuse.contents = cyan
 			outline3.geometry!.firstMaterial?.diffuse.contents = cyan

@@ -22,6 +22,8 @@ var navigation:PanelNavigation!
 var monitor:PanelMonitor!
 var thruster:PanelThruster!
 var breaker:PanelBreaker!
+var beacon:PanelBeacon!
+var radio:PanelRadio!
 
 enum alignment {
 	case left
@@ -44,39 +46,51 @@ extension GameViewController
 		//
 		
 		var northPanels = SCNNode()
-		
 		navigation = PanelNavigation()
 		northPanels.addChildNode(navigation)
-		
 		radar = PanelRadar()
 		northPanels.addChildNode(radar)
-		
-		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
-		
-		//
-		
-		var eastPanels = SCNNode()
-		
-		breaker = PanelBreaker()
-		eastPanels.addChildNode(breaker)
-		
+		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
 		//
 		
 		var northEastPanels = SCNNode()
-		
-		
 		thruster = PanelThruster()
 		northEastPanels.addChildNode(thruster)
-		
-		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
+		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
 		//
+		
+		var eastPanels = SCNNode()
+		breaker = PanelBreaker()
+		eastPanels.addChildNode(breaker)
+		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		//
+		
+		var southEastPanels = SCNNode()
+		beacon = PanelBeacon()
+		southEastPanels.addChildNode(beacon)
+		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
+		
+		//
+		
+		var southPanels = SCNNode()
+		radio = PanelRadio()
+		southPanels.addChildNode(radio)
+		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
 		
 		scene.rootNode.addChildNode(northPanels)
 		scene.rootNode.addChildNode(northEastPanels)
 		scene.rootNode.addChildNode(eastPanels)
+		scene.rootNode.addChildNode(southEastPanels)
+		scene.rootNode.addChildNode(southPanels)
+		
+		
+		
+		
+		
 		
 		monitor = PanelMonitor()
 		scene.rootNode.addChildNode(monitor)
