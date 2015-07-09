@@ -32,6 +32,16 @@ enum alignment {
 	case center
 	case right
 }
+enum cardinals {
+	case n
+	case ne
+	case e
+	case se
+	case s
+	case sw
+	case w
+	case nw
+}
 
 extension GameViewController
 {

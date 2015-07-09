@@ -13,6 +13,8 @@ import Foundation
 
 class PanelThruster : SCNNode
 {
+	var speed:Float = 0
+	
 	var knobMesh:SCNKnob!
 	var speedLabel:SCNLabel!
 	
@@ -45,20 +47,20 @@ class PanelThruster : SCNNode
 	
 	func touch()
 	{
-		if( user.speed < 3 ){
-			user.speed += 1
+		if( speed < 3 ){
+			speed += 1
 		}
 		else{
-			user.speed = 0
+			speed = 0
 		}
-		NSLog("SPEED:%d",user.speed)
+		NSLog("SPEED:%d",speed)
 		update()
 	}
 	
 	func update()
 	{
-		knobMesh.update(user.speed)
-		speedLabel.update("\(Int(user.speed))")
+		knobMesh.update(speed)
+		speedLabel.update("\(Int(speed))")
 	}
 	
 	required init(coder aDecoder: NSCoder)

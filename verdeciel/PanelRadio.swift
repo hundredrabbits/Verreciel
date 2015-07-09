@@ -77,6 +77,8 @@ class PanelRadio : SCNNode
 		frequencyKnobA.update(frequencyA)
 		frequencyKnobB.update(frequencyB)
 		frequencyKnobC.update(frequencyC)
+		
+		scanner.update(frequencyA, val2: frequencyB, val3: frequencyC, val4: 0)
 	}
 	
 	required init(coder aDecoder: NSCoder)

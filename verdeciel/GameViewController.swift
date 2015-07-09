@@ -25,8 +25,6 @@ var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 var grey:UIColor = UIColor(white: 0.4, alpha: 1)
 
-var user:User = User()
-
 class GameViewController: UIViewController
 {
     override func viewDidLoad()

@@ -24,22 +24,7 @@ extension GameViewController
 	{
 		// Update location
 		
-		var ratio = CGPoint(x: 0, y: 1)
-		
-		if user.orientation == 1 { ratio = CGPoint(x: 0.5, y: 0.5) }
-		if user.orientation == 2 { ratio = CGPoint(x: 1.0, y: 0.0) }
-		if user.orientation == 3 { ratio = CGPoint(x: 0.5, y:-0.5) }
-		if user.orientation == 4 { ratio = CGPoint(x: 0.0, y:-1.0) }
-		
-		if user.orientation == -1{ ratio = CGPoint(x:-0.5, y: 0.5) }
-		if user.orientation == -2{ ratio = CGPoint(x:-1.0, y: 0.0) }
-		if user.orientation == -3{ ratio = CGPoint(x:-0.5, y:-0.5) }
-		if user.orientation == -4{ ratio = CGPoint(x: 0.0, y:-1.0) }
-		
-		user.z += user.speed * Float(ratio.y)
-		user.x += user.speed * Float(ratio.x)
-		
-		if user.speed > 0 {
+		if thruster.speed > 0 {
 			radar.update()
 		}
 	}

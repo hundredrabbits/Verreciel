@@ -26,6 +26,8 @@ class SCNToggle : SCNNode
 	
 	var panelName:String = ""
 	
+	var active:Bool = false
+	
 	init(newName:String)
 	{
 		panelName = newName
@@ -80,19 +82,13 @@ class SCNToggle : SCNNode
 	
 	func touch()
 	{
-		println("yay")
-		if( user.storage[panelName] == 0){
-			user.storage[panelName] = 1
-		}
-		else{
-			user.storage[panelName] = 0
-		}
+		active = !active
 		update()
 	}
 	
 	func update()
 	{
-		if( user.storage[panelName] == 0){
+		if( !active ){
 			outline1.geometry!.firstMaterial?.diffuse.contents = red
 			outline2.geometry!.firstMaterial?.diffuse.contents = red
 			outline3.geometry!.firstMaterial?.diffuse.contents = red

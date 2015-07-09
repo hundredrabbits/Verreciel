@@ -54,15 +54,29 @@ class PanelNavigation : SCNNode
 	func touch(right:Bool)
 	{
 		if right {
-			user.orientation -= 1
+			switch radar.direction {
+				case  cardinals.n : radar.direction = cardinals.nw
+				case  cardinals.ne : radar.direction = cardinals.n
+				case  cardinals.e : radar.direction = cardinals.ne
+				case  cardinals.se : radar.direction = cardinals.e
+				case  cardinals.nw : radar.direction = cardinals.w
+				case  cardinals.w : radar.direction = cardinals.sw
+				case  cardinals.sw : radar.direction = cardinals.s
+				default : radar.direction = cardinals.se
+			}
 		}
 		else{
-			user.orientation += 1
+			switch radar.direction {
+				case  cardinals.n : radar.direction = cardinals.ne
+				case  cardinals.ne : radar.direction = cardinals.e
+				case  cardinals.e : radar.direction = cardinals.se
+				case  cardinals.se : radar.direction = cardinals.s
+				case  cardinals.nw : radar.direction = cardinals.n
+				case  cardinals.w : radar.direction = cardinals.nw
+				case  cardinals.sw : radar.direction = cardinals.w
+				default : radar.direction = cardinals.sw
+			}
 		}
-		
-		if user.orientation ==  5 { user.orientation = -3 }
-		if user.orientation == -5 { user.orientation =  3 }
-		
 		radar.update()
 	}
 	

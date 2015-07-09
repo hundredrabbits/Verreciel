@@ -13,6 +13,10 @@ import Foundation
 
 class PanelRadar : SCNNode
 {
+	var x:Float = 0
+	var z:Float = 0
+	var direction = cardinals.n
+	
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
@@ -34,8 +38,8 @@ class PanelRadar : SCNNode
 		for node in eventView.childNodes
 		{
 			let event = node as! PanelRadarEvent
-			event.position.y = event.origin.y - (user.z/200)
-			event.position.x = event.origin.x - (user.x/200)
+			event.position.y = event.origin.y - (z/200)
+			event.position.x = event.origin.x - (x/200)
 			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
 		}
 		updateOrientation()
@@ -44,7 +48,7 @@ class PanelRadar : SCNNode
 	func updateOrientation()
 	{
 		var cursorOrientation:Float = 1;
-		switch user.orientationName() {
+		switch directionName() {
 			case "n" : cursorOrientation = 0
 			case "ne" : cursorOrientation = 0.5
 			case "e" : cursorOrientation = 1
@@ -55,6 +59,22 @@ class PanelRadar : SCNNode
 			default : cursorOrientation = 2
 		}
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ));
+		
+		println(direction)
+	}
+	
+	func directionName() -> String
+	{
+		switch direction {
+		case  cardinals.n : return "n"
+		case  cardinals.ne : return "ne"
+		case  cardinals.e : return "e"
+		case  cardinals.se : return "se"
+		case  cardinals.nw : return "nw"
+		case  cardinals.w : return "w"
+		case  cardinals.sw : return "sw"
+		default : return "s"
+		}
 	}
 	
 	func addEvent(event:PanelRadarEvent)
@@ -84,12 +104,12 @@ class PanelRadar : SCNNode
 		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
 		
 		shipCursor = SCNNode()
+		
 		// Ship
 		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
 		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
 		shipCursor.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
 		self.addChildNode(shipCursor)
-		
 		
 		let titleLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
 		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
@@ -113,11 +133,31 @@ class PanelRadar : SCNNode
 	
 	func update()
 	{
-		labelPositionX.update(String(Int(user.x/20)))
-		labelPositionZ.update(String(Int(user.z/20)))
-		labelOrientation.update(user.orientationName())
+		labelPositionX.update(String(Int(x/20)))
+		labelPositionZ.update(String(Int(z/20)))
+		labelOrientation.update(directionName())
 		
+		updatePosition()
 		updateEvents()
+	}
+	
+	func updatePosition()
+	{
+		var ratio = CGPoint(x: 0, y: 1)
+		
+		switch direction {
+			case  cardinals.n : ratio = CGPoint(x: 0, y: 1)
+			case  cardinals.ne : ratio = CGPoint(x: 0.5, y: 0.5)
+			case  cardinals.e : ratio = CGPoint(x: 1, y: 0)
+			case  cardinals.se : ratio = CGPoint(x: 0.5, y: -0.5)
+			case  cardinals.nw : ratio = CGPoint(x: -0.5, y: 0.5)
+			case  cardinals.w : ratio = CGPoint(x: -1, y: 0)
+			case  cardinals.sw : ratio = CGPoint(x: -0.5, y: -0.5)
+			default : ratio = CGPoint(x: 0, y: -1)
+		}
+		
+		z += thruster.speed * Float(ratio.y)
+		x += thruster.speed * Float(ratio.x)
 	}
 
 	required init(coder aDecoder: NSCoder)
