@@ -37,10 +37,17 @@ class PanelRadar : SCNNode
 	{
 		for node in eventView.childNodes
 		{
-			let event = node as! PanelRadarEvent
+			let event = node as! SCNEvent
 			event.position.y = event.origin.y - (z/200)
 			event.position.x = event.origin.x - (x/200)
 			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
+			
+			let scale:Float = 0.65
+			event.opacity = 1
+			if event.position.y > highNode[7].y * scale { event.opacity = 0 }
+			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
+			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
+			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
 		}
 		updateOrientation()
 	}
@@ -59,8 +66,6 @@ class PanelRadar : SCNNode
 			default : cursorOrientation = 2
 		}
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ));
-		
-		println(direction)
 	}
 	
 	func directionName() -> String
@@ -77,7 +82,7 @@ class PanelRadar : SCNNode
 		}
 	}
 	
-	func addEvent(event:PanelRadarEvent)
+	func addEvent(event:SCNEvent)
 	{
 		eventView.addChildNode(event)
 		update()
@@ -88,27 +93,23 @@ class PanelRadar : SCNNode
 		// Draw the frame
 		
 		let scale:Float = 0.8
-		let nodeA = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale, z: highNode[7].z)
-		let nodeB = SCNVector3(x: highNode[0].x * scale, y: highNode[0].y * scale, z: highNode[0].z)
-		let nodeC = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: lowNode[7].z)
-		let nodeD = SCNVector3(x: lowNode[0].x * scale, y: lowNode[0].y * scale, z: lowNode[0].z)
 		
 		// Draw Radar
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 		
 		// Frame
-		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: 0),SCNVector3(x: highNode[7].x * scale, y: 0, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * scale, y: 0, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0, y: highNode[7].y * -scale, z: 0),SCNVector3(x: highNode[7].x * -scale, y: 0, z: 0)))
+		let newScale:Float = 0.65
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
 		
 		shipCursor = SCNNode()
 		
 		// Ship
 		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
 		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
-		shipCursor.addChildNode(grey(SCNVector3(x: 0, y: 0, z: 0),SCNVector3(x: 0, y: -0.15, z: 0)))
 		self.addChildNode(shipCursor)
 		
 		let titleLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)

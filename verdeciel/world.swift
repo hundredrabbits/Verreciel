@@ -42,6 +42,11 @@ enum cardinals {
 	case w
 	case nw
 }
+enum eventTypes {
+	case unknown
+	case station
+	case star
+}
 
 extension GameViewController
 {
@@ -115,8 +120,9 @@ extension GameViewController
 		
 		//
 		
-		radar.addEvent(PanelRadarEvent(newOrigin:SCNVector3(x: 0.2, y: 0.5, z: 0)))
-		radar.addEvent(PanelRadarEvent(newOrigin:SCNVector3(x: -0.4, y: 0.2, z: 0)))
+		radar.addEvent(SCNEvent(newName:"ar37",newOrigin:SCNVector3(x: 0.0, y: 2.0, z: 0),size:1,range:5,type:eventTypes.star))
+		
+		radar.addEvent(SCNEvent(newName:"station",newOrigin:SCNVector3(x: 0, y: 0, z: 0),size:1,range:0,type:eventTypes.station))
 		
 		console.addLine("hello there")
 		console.addLine("how are you")
