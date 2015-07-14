@@ -27,5 +27,7 @@ extension GameViewController
 		if thruster.speed > 0 {
 			radar.update()
 		}
+		
+		monitor.update()
 	}
 }

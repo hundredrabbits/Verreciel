@@ -121,8 +121,8 @@ extension GameViewController
 		//
 		
 		radar.addEvent(SCNEvent(newName:"ar37",newOrigin:SCNVector3(x: 0.0, y: 2.0, z: 0),size:1,range:5,type:eventTypes.star))
-		
-		radar.addEvent(SCNEvent(newName:"station",newOrigin:SCNVector3(x: 0, y: 0, z: 0),size:1,range:0,type:eventTypes.station))
+		radar.addEvent(SCNEvent(newName:"station",newOrigin:SCNVector3(x: 0, y: 0, z: 0),size:1,range:5,type:eventTypes.station))
+		radar.addEvent(SCNEvent(newName:"",newOrigin:SCNVector3(x: 0.5, y: 0.5, z: 0),size:0.5,range:0,type:eventTypes.unknown))
 		
 		console.addLine("hello there")
 		console.addLine("how are you")
