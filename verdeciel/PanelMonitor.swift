@@ -22,7 +22,7 @@ class PanelMonitor : SCNNode
 	var temperature:Float = 100.0
 	var temperatureLabel:SCNLabel!
 	
-	var oxygen:Float = 100.0
+	var oxygen:Float = 50.0
 	var oxygenLabel:SCNLabel!
 	
 	var hull:Float = 100.0
@@ -121,19 +121,45 @@ class PanelMonitor : SCNNode
 	
 	func update()
 	{
+		// Oxygen
+		oxygen += oxygenMod()
+		if oxygen < 1 { oxygenLabel.update("empty") }
+		else if oxygen > 100 { oxygenLabel.update("full") }
+		else { oxygenLabel.update(String(format: "%.1f", oxygen)) }
+		
+		// Temperature
+		
+		
+		
+		/*
+		
 		if electricity >= 0 { electricity -= 0.1 }
 		if shield >= 0 { shield -= 0.1 }
 		if temperature >= 0 { temperature -= 0.1 }
-		if oxygen >= 0 { oxygen -= 0.1 }
 		if hull >= 0 { hull -= 0.1 }
 		if radiation >= 0 { radiation -= 0.1 }
 		
 		electricityLabel.update(String(format: "%.1f", electricity))
 		shieldLabel.update(String(format: "%.1f", shield))
 		temperatureLabel.update(String(format: "%.1f", temperature))
-		oxygenLabel.update(String(format: "%.1f", oxygen))
 		hullLabel.update(String(format: "%.1f", hull))
 		radiationLabel.update(String(format: "%.1f", radiation))
+
+*/
+	}
+	
+	func oxygenMod() -> Float
+	{
+		var modifier:Float = 0
+		
+		modifier += -0.02
+		if breaker.oxygenToggle.active { modifier += 0.5 }
+		
+		
+		if oxygen > 100 && modifier > 0 { modifier = 0 }
+		if oxygen < 0 && modifier < 0 { modifier = 0 }
+		
+		return modifier
 	}
 	
 	required init(coder aDecoder: NSCoder)
