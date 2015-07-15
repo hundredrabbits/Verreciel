@@ -118,6 +118,8 @@ extension GameViewController
 		monitor = PanelMonitor()
 		scene.rootNode.addChildNode(monitor)
 		
+		radio.update()
+		
 		//
 		
 		radar.addEvent(SCNEvent(newName:"ar37",newOrigin:SCNVector3(x: 0.0, y: 2.0, z: 0),size:1,range:5,type:eventTypes.star))

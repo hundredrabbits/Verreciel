@@ -13,7 +13,7 @@ import Foundation
 
 class PanelBreaker : SCNNode
 {
-	var electricToggle:SCNToggle!
+	var shieldToggle:SCNToggle!
 	var oxygenToggle:SCNToggle!
 	
 	override init()
@@ -34,9 +34,9 @@ class PanelBreaker : SCNNode
 		titleLabel.name = "radar.label"
 		self.addChildNode(titleLabel)
 		
-		electricToggle = SCNToggle(newName: "electric")
-		electricToggle.position = SCNVector3(x: (lowNode[7].x * scale) + 0.5, y: -0.8, z: 0)
-		self.addChildNode(electricToggle)
+		shieldToggle = SCNToggle(newName: "shield")
+		shieldToggle.position = SCNVector3(x: (lowNode[7].x * scale) + 0.5, y: -0.8, z: 0)
+		self.addChildNode(shieldToggle)
 		
 		oxygenToggle = SCNToggle(newName: "oxygen")
 		oxygenToggle.position = SCNVector3(x: (lowNode[7].x * scale) + 0.5, y: 0.4, z: 0)
@@ -46,7 +46,7 @@ class PanelBreaker : SCNNode
 	func touch(choice:String)
 	{
 		if choice == "oxygen" { oxygenToggle.touch() }
-		if choice == "electric" { electricToggle.touch() }
+		if choice == "shield" { shieldToggle.touch() }
 	}
 	
 	required init(coder aDecoder: NSCoder)

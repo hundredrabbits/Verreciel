@@ -121,43 +121,69 @@ class PanelMonitor : SCNNode
 	
 	func update()
 	{
-		// Oxygen
 		oxygen += oxygenMod()
-		if oxygen < 1 { oxygenLabel.update("empty") }
-		else if oxygen > 100 { oxygenLabel.update("full") }
-		else { oxygenLabel.update(String(format: "%.1f", oxygen)) }
-		
-		// Temperature
-		
-		
-		
-		/*
-		
-		if electricity >= 0 { electricity -= 0.1 }
-		if shield >= 0 { shield -= 0.1 }
-		if temperature >= 0 { temperature -= 0.1 }
-		if hull >= 0 { hull -= 0.1 }
-		if radiation >= 0 { radiation -= 0.1 }
-		
-		electricityLabel.update(String(format: "%.1f", electricity))
-		shieldLabel.update(String(format: "%.1f", shield))
-		temperatureLabel.update(String(format: "%.1f", temperature))
-		hullLabel.update(String(format: "%.1f", hull))
-		radiationLabel.update(String(format: "%.1f", radiation))
-
-*/
+		oxygenLabel.update(monitorValue(oxygen))
+		shield += shieldMod()
+		shieldLabel.update(monitorValue(shield))
+		electricity += electricityMod()
+		electricityLabel.update(monitorValue(electricity))
+		temperature += temperatureMod()
+		temperatureLabel.update(monitorValue(temperature))
+	}
+	
+	func monitorValue(value:Float) -> String
+	{
+		var stringValue = ""
+		if value < 1 { stringValue = "empty" }
+		else if value > 100 { stringValue = "full" }
+		else { stringValue = String(format: "%.1f", value) }
+		return stringValue
 	}
 	
 	func oxygenMod() -> Float
 	{
-		var modifier:Float = 0
+		var modifier:Float = -0.02
 		
-		modifier += -0.02
 		if breaker.oxygenToggle.active { modifier += 0.5 }
-		
 		
 		if oxygen > 100 && modifier > 0 { modifier = 0 }
 		if oxygen < 0 && modifier < 0 { modifier = 0 }
+		
+		return modifier
+	}
+	
+	func shieldMod() -> Float
+	{
+		var modifier:Float = -0.02
+		
+		if breaker.shieldToggle.active { modifier += 0.5 }
+		
+		return modifier
+	}
+	
+	func temperatureMod() -> Float
+	{
+		var modifier:Float = -0.1
+		
+		if breaker.oxygenToggle.active { modifier += 0.02 }
+		if thruster.speed > 0 { modifier += thruster.speed / 10 }
+		
+		if radio.frequencyA > 0 { modifier += 0.01 }
+		if radio.frequencyB > 0 { modifier += 0.01 }
+		if radio.frequencyC > 0 { modifier += 0.01 }
+		
+		return modifier
+	}
+	
+	func electricityMod() -> Float
+	{
+		var modifier:Float = 0
+		
+		if breaker.oxygenToggle.active { modifier -= 0.05 }
+		if thruster.speed > 0 { modifier -= thruster.speed / 20 }
+		if radio.frequencyA > 0 { modifier -= 0.01 }
+		if radio.frequencyB > 0 { modifier -= 0.01 }
+		if radio.frequencyC > 0 { modifier -= 0.01 }
 		
 		return modifier
 	}
