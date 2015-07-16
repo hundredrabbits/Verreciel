@@ -14,13 +14,17 @@ import Foundation
 class SCNEvent : SCNNode
 {
 	var eventName:String = ""
-	var origin:SCNVector3!
+	var x:Float!
+	var z:Float!
+	var type:eventTypes!
 	
-	init(newName:String,newOrigin:SCNVector3,size:Float,range:Float,type:eventTypes)
+	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes)
 	{
 		super.init()
 		name = newName
-		origin = newOrigin
+		self.x = x
+		self.z = z
+		self.type = type
 		
 		var eventColor = UIColor.grayColor()
 		

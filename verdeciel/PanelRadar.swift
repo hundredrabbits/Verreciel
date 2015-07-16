@@ -20,6 +20,10 @@ class PanelRadar : SCNNode
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
+	
+	var labelTargetName:SCNLabel!
+	var labelTargetType:SCNLabel!
+	
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
 	
@@ -31,25 +35,6 @@ class PanelRadar : SCNNode
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
-	}
-	
-	func updateEvents()
-	{
-		for node in eventView.childNodes
-		{
-			let event = node as! SCNEvent
-			event.position.y = event.origin.y - (z/200)
-			event.position.x = event.origin.x - (x/200)
-			event.position = SCNVector3(x: event.position.x, y: event.position.y, z: event.position.z)
-			
-			let scale:Float = 0.65
-			event.opacity = 1
-			if event.position.y > highNode[7].y * scale { event.opacity = 0 }
-			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
-			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
-			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
-		}
-		updateOrientation()
 	}
 	
 	func updateOrientation()
@@ -130,6 +115,14 @@ class PanelRadar : SCNNode
 		labelOrientation.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
 		labelOrientation.name = "radar.r"
 		self.addChildNode(labelOrientation)
+		
+		labelTargetName = SCNLabel(text: "radar", scale: 0.1, align: alignment.right)
+		labelTargetName.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+		self.addChildNode(labelTargetName)
+		
+		labelTargetType = SCNLabel(text: "Target", scale: 0.1, align: alignment.right)
+		labelTargetType.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale - 0.3, z: 0)
+		self.addChildNode(labelTargetType)
 	}
 	
 	func update()
@@ -140,8 +133,28 @@ class PanelRadar : SCNNode
 		
 		updatePosition()
 		updateEvents()
+		updateTarget()
 	}
 	
+	func updateEvents()
+	{
+		for node in eventView.childNodes
+		{
+			let event = node as! SCNEvent
+			event.position.z = event.z - (z/200)
+			event.position.x = event.x - (x/200)
+			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
+			
+			let scale:Float = 0.65
+			event.opacity = 1
+			
+			if event.position.y > highNode[7].y * scale { event.opacity = 0 }
+			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
+			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
+			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
+		}
+		updateOrientation()
+	}
 	func updatePosition()
 	{
 		var ratio = CGPoint(x: 0, y: 1)
@@ -159,6 +172,32 @@ class PanelRadar : SCNNode
 		
 		z += thruster.speed * Float(ratio.y)
 		x += thruster.speed * Float(ratio.x)
+	}
+	
+	func updateTarget()
+	{
+		var closestNode:SCNEvent!
+		var closestDistance:Float = 9000
+		
+		for node in eventView.childNodes
+		{
+			let event = node as! SCNEvent
+			
+			let point1 = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
+			let point2 = CGPoint(x: CGFloat(event.x), y: CGFloat(event.z))
+			
+			let distanceFromShip = Float(distanceBetweenTwoPoints(point1,point2))
+			
+			if distanceFromShip < closestDistance {
+				closestNode = event
+				closestDistance = distanceFromShip
+				labelTargetName.update(event.name!)
+				
+				println("\(x/200),\(z/200) -> \(event.x),\(event.z) : \(event.name) (\(distanceFromShip))")
+			}
+		}
+		
+		
 	}
 
 	required init(coder aDecoder: NSCoder)

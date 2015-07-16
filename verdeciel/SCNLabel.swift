@@ -82,6 +82,8 @@ class SCNLabel : SCNNode
 	{		
 		let letterPivot = SCNNode()
 		
+		var letter = letter.lowercaseString
+		
 		if letter == "a"
 		{
 			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))
@@ -209,7 +211,6 @@ class SCNLabel : SCNNode
 		else if letter == "t"{
 			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)))
 			letterPivot.addChildNode(line(SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)))
-			
 		}
 		else if letter == "u"{
 			letterPivot.addChildNode(line(SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)))

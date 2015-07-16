@@ -14,6 +14,13 @@ func degToRad( degrees : Float ) -> Float
 	return ( degrees / 180 * Float(M_PI) )
 }
 
+func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat
+{
+	let xDist:CGFloat = (point2.x - point1.x)
+	let yDist:CGFloat = (point2.y - point1.y)
+	return sqrt((xDist * xDist) + (yDist * yDist))
+}
+
 func line(nodeA: SCNVector3, nodeB: SCNVector3) -> SCNNode {
 	
 	let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]
