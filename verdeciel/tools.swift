@@ -21,6 +21,16 @@ func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat
 	return sqrt((xDist * xDist) + (yDist * yDist))
 }
 
+func angleBetweenTwoPoints(point1:CGPoint,point2:CGPoint,center:CGPoint) -> CGFloat
+{
+	let v1 = CGVector(dx: point1.x - center.x, dy: point1.y - center.y)
+	let v2 = CGVector(dx: point2.x - center.x, dy: point2.y - center.y)
+	let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+	var deg = angle * CGFloat(180.0 / M_PI)
+	if deg < 0 { deg += 360.0 }
+	return deg
+}
+
 func line(nodeA: SCNVector3, nodeB: SCNVector3) -> SCNNode {
 	
 	let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]

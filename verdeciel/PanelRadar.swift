@@ -20,6 +20,7 @@ class PanelRadar : SCNNode
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
+	var labelDistance:SCNLabel!
 	
 	var target:SCNEvent!
 	var targetter:SCNLine!
@@ -29,6 +30,15 @@ class PanelRadar : SCNNode
 	
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
+	
+	// Markers
+	
+	var markerHome:SCNNode!
+	var markerLastStar:SCNNode!
+	var markerLastStation:SCNNode!
+	
+	var lastStation:SCNEvent!
+	var lastStar:SCNEvent!
 	
 	override init()
 	{
@@ -41,6 +51,23 @@ class PanelRadar : SCNNode
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
+		
+		createCardinals()
+	}
+	
+	func createCardinals()
+	{
+		markerHome = SCNNode()
+		markerHome.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: grey))
+		self.addChildNode(markerHome)
+		
+		markerLastStation = SCNNode()
+		markerLastStation.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: cyan))
+		self.addChildNode(markerLastStation)
+		
+		markerLastStar = SCNNode()
+		markerLastStar.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: red))
+		self.addChildNode(markerLastStar)
 	}
 	
 	func updateOrientation()
@@ -129,6 +156,10 @@ class PanelRadar : SCNNode
 		labelTargetType = SCNLabel(text: "Target", scale: 0.1, align: alignment.right)
 		labelTargetType.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale - 0.3, z: 0)
 		self.addChildNode(labelTargetType)
+		
+		labelDistance = SCNLabel(text: "90.4", scale: 0.1, align: alignment.right)
+		labelDistance.position = SCNVector3(x: lowNode[0].x * scale, y: lowNode[7].y * scale, z: 0)
+		self.addChildNode(labelDistance)
 	}
 	
 	func update()
@@ -136,6 +167,10 @@ class PanelRadar : SCNNode
 		labelPositionX.update(String(Int(x/20)))
 		labelPositionZ.update(String(Int(z/20)))
 		labelOrientation.update(directionName())
+		
+		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),CGPoint(x: CGFloat(x), y: CGFloat(z))))
+		
+		labelDistance.update( "\(distance)" )
 		
 		updatePosition()
 		updateEvents()
@@ -178,6 +213,19 @@ class PanelRadar : SCNNode
 		
 		z += thruster.speed * Float(ratio.y)
 		x += thruster.speed * Float(ratio.x)
+		
+		// Home Marker
+		var markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), CGPoint(x: CGFloat(x), y: CGFloat(z)), CGPoint(x: 0, y: 0))) / 90
+		markerHome.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerHomeOrientation)))
+		
+		if lastStar != nil {
+			var markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			markerLastStar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStarOrientation)))
+		}
+		if lastStation != nil {
+			var markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			markerLastStation.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStationOrientation)))
+		}
 	}
 	
 	func updateTarget()
@@ -211,6 +259,9 @@ class PanelRadar : SCNNode
 				labelTargetType.update(target.typeString!)
 				labelTargetType.adjustAlignment()
 				console.addLine("scan \(target.name!)")
+				
+				if target.type == eventTypes.star { lastStar = target }
+				if target.type == eventTypes.station { lastStation = target }
 			}
 			targetter.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: target.position.x, y: target.position.y, z: 0), color: UIColor.grayColor()).geometry
 			targetter.opacity = 1
