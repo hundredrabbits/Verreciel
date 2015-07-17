@@ -57,6 +57,13 @@ extension GameViewController
 				let knob = result.node as! SCNKnob
 				knob.touch()
 			}
+			else if result.node.isKindOfClass(SCNToggle) {
+				let toggle = result.node as! SCNToggle
+				toggle.touch()
+			}
+			else{
+				println(result)
+			}
 		}
 	}
 	

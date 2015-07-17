@@ -39,40 +39,36 @@ class SCNToggle : SCNNode
 	
 	func addGeometry()
 	{
-		let optionPanel = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-		optionPanel.geometry?.firstMaterial?.diffuse.contents = clear
-		optionPanel.position = position
-		optionPanel.name = "trigger.\(panelName)"
+		self.geometry = SCNPlane(width: 1, height: 1)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		outline1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
 		outline1.name = "\(panelName).handle.top"
-		optionPanel.addChildNode(outline1)
+		self.addChildNode(outline1)
 		
 		outline2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
 		outline2.name = "\(panelName).handle.left"
-		optionPanel.addChildNode(outline2)
+		self.addChildNode(outline2)
 		
 		outline3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
 		outline3.name = "\(panelName).handle.bottom"
-		optionPanel.addChildNode(outline3)
+		self.addChildNode(outline3)
 		
 		outline4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
 		outline4.name = "\(panelName).handle.right"
-		optionPanel.addChildNode(outline4)
+		self.addChildNode(outline4)
 		
 		cross1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
 		cross1.name = "\(panelName).handle.cross1"
-		optionPanel.addChildNode(cross1)
+		self.addChildNode(cross1)
 		
 		cross2 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
 		cross2.name = "\(panelName).handle.cross2"
-		optionPanel.addChildNode(cross2)
+		self.addChildNode(cross2)
 		
 		cross3 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
 		cross3.name = "\(panelName).handle.cross3"
-		optionPanel.addChildNode(cross3)
-		
-		self.addChildNode(optionPanel)
+		self.addChildNode(cross3)
 		
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.left)
 		label.position = SCNVector3(x: 0.75, y: 0, z: 0)
