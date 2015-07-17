@@ -23,7 +23,6 @@ extension GameViewController
 		if( trigger == "window" )		{ moveWindow(object) }
 		if( trigger == "oxygen" )		{ breaker.touch(trigger) }
 		if( trigger == "electric" )		{ breaker.touch(trigger) }
-		if( trigger == "thruster" )		{ thruster.touch() }
 		if( trigger == "turnRight" )	{ navigation.touch(true) }
 		if( trigger == "turnLeft" )		{ navigation.touch(false) }
 	}	
@@ -36,6 +35,4 @@ extension GameViewController
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
 	}
-	
-	
 }

@@ -24,7 +24,7 @@ extension GameViewController
 	{
 		// Update location
 		
-		if thruster.speed > 0 {
+		if thruster.knob.value > 0 {
 			radar.update()
 		}
 		

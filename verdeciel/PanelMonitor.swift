@@ -172,7 +172,6 @@ class PanelMonitor : SCNNode
 		var modifier:Float = -0.1
 		
 		if breaker.oxygenToggle.active { modifier += 0.02 }
-		if thruster.speed > 0 { modifier += thruster.speed / 10 }
 		
 		return modifier
 	}
@@ -182,7 +181,6 @@ class PanelMonitor : SCNNode
 		var modifier:Float = 0.01
 		
 		if breaker.oxygenToggle.active { modifier -= 0.05 }
-		if thruster.speed > 0 { modifier -= thruster.speed / 20 }
 		
 		return modifier
 	}

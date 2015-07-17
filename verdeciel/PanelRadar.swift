@@ -211,8 +211,8 @@ class PanelRadar : SCNNode
 			default : ratio = CGPoint(x: 0, y: -1)
 		}
 		
-		z += thruster.speed * Float(ratio.y)
-		x += thruster.speed * Float(ratio.x)
+		z += thruster.knob.value * Float(ratio.y)
+		x += thruster.knob.value * Float(ratio.x)
 		
 		// Home Marker
 		var markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), CGPoint(x: CGFloat(x), y: CGFloat(z)), CGPoint(x: 0, y: 0))) / 90

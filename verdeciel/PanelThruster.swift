@@ -13,9 +13,7 @@ import Foundation
 
 class PanelThruster : SCNNode
 {
-	var speed:Float = 0
-	
-	var knobMesh:SCNKnob!
+	var knob:SCNKnob!
 	var speedLabel:SCNLabel!
 	
 	override init()
@@ -30,8 +28,8 @@ class PanelThruster : SCNNode
 	
 	func addInterface()
 	{
-		knobMesh = SCNKnob(newName:"thruster")
-		self.addChildNode(knobMesh)
+		knob = SCNKnob(newName:"thruster")
+		self.addChildNode(knob)
 		
 		let scale:Float = 0.7
 		
@@ -45,22 +43,10 @@ class PanelThruster : SCNNode
 		self.addChildNode(speedLabel)
 	}
 	
-	func touch()
-	{
-		if( speed < 3 ){
-			speed += 1
-		}
-		else{
-			speed = 0
-		}
-		NSLog("SPEED:%d",speed)
-		update()
-	}
-	
 	func update()
 	{
-		knobMesh.update()
-		speedLabel.update("\(Int(speed))")
+		knob.update()
+		speedLabel.update("\(Int(knob.value))")
 	}
 	
 	required init(coder aDecoder: NSCoder)

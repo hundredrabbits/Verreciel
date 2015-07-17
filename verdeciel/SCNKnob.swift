@@ -74,6 +74,7 @@ class SCNKnob : SCNNode
 		value = value > 3 ? 0 : value + 1
 		update()
 		radio.update()
+		thruster.update()
 	}
 	
 	required init(coder aDecoder: NSCoder)
