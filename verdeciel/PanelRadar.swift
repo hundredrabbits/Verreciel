@@ -203,11 +203,15 @@ class PanelRadar : SCNNode
 		}
 		
 		if closestEvent != nil {
-			target = closestEvent
-			labelTargetName.update(target.name!)
-			labelTargetName.adjustAlignment()
-			labelTargetType.update(target.typeString!)
-			labelTargetType.adjustAlignment()
+			
+			if closestEvent != target {
+				target = closestEvent
+				labelTargetName.update(target.name!)
+				labelTargetName.adjustAlignment()
+				labelTargetType.update(target.typeString!)
+				labelTargetType.adjustAlignment()
+				console.addLine("scan \(target.name!)")
+			}
 			targetter.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: target.position.x, y: target.position.y, z: 0), color: UIColor.grayColor()).geometry
 			targetter.opacity = 1
 		}

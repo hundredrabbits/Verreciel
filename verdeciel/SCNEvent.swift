@@ -13,7 +13,6 @@ import Foundation
 
 class SCNEvent : SCNNode
 {
-	var eventName:String = ""
 	var x:Float!
 	var z:Float!
 	var type:eventTypes!
