@@ -55,26 +55,26 @@ class PanelNavigation : SCNNode
 	{
 		if right {
 			switch radar.direction {
-				case  .n : radar.direction = cardinals.nw
-				case  .ne : radar.direction = cardinals.n
-				case  .e : radar.direction = cardinals.ne
-				case  .se : radar.direction = cardinals.e
-				case  .nw : radar.direction = cardinals.w
-				case  .w : radar.direction = cardinals.sw
-				case  .sw : radar.direction = cardinals.s
-				default : radar.direction = cardinals.se
+				case  .n : radar.direction = .nw
+				case  .ne : radar.direction = .n
+				case  .e : radar.direction = .ne
+				case  .se : radar.direction = .e
+				case  .nw : radar.direction = .w
+				case  .w : radar.direction = .sw
+				case  .sw : radar.direction = .s
+				default : radar.direction = .se
 			}
 		}
 		else{
 			switch radar.direction {
-				case  .n : radar.direction = cardinals.ne
-				case  .ne : radar.direction = cardinals.e
-				case  .e : radar.direction = cardinals.se
-				case  .se : radar.direction = cardinals.s
-				case  .nw : radar.direction = cardinals.n
-				case  .w : radar.direction = cardinals.nw
-				case  .sw : radar.direction = cardinals.w
-				default : radar.direction = cardinals.sw
+				case  .n : radar.direction = .ne
+				case  .ne : radar.direction = .e
+				case  .e : radar.direction = .se
+				case  .se : radar.direction = .s
+				case  .nw : radar.direction = .n
+				case  .w : radar.direction = .nw
+				case  .sw : radar.direction = .w
+				default : radar.direction = .sw
 			}
 		}
 		radar.update()

@@ -89,13 +89,13 @@ class PanelRadar : SCNNode
 	func directionName() -> String
 	{
 		switch direction {
-		case  cardinals.n : return "n"
-		case  cardinals.ne : return "ne"
-		case  cardinals.e : return "e"
-		case  cardinals.se : return "se"
-		case  cardinals.nw : return "nw"
-		case  cardinals.w : return "w"
-		case  cardinals.sw : return "sw"
+		case  .n : return "n"
+		case  .ne : return "ne"
+		case  .e : return "e"
+		case  .se : return "se"
+		case  .nw : return "nw"
+		case  .w : return "w"
+		case  .sw : return "sw"
 		default : return "s"
 		}
 	}
@@ -201,13 +201,13 @@ class PanelRadar : SCNNode
 		var ratio = CGPoint(x: 0, y: 1)
 		
 		switch direction {
-			case  cardinals.n : ratio = CGPoint(x: 0, y: 1)
-			case  cardinals.ne : ratio = CGPoint(x: 0.5, y: 0.5)
-			case  cardinals.e : ratio = CGPoint(x: 1, y: 0)
-			case  cardinals.se : ratio = CGPoint(x: 0.5, y: -0.5)
-			case  cardinals.nw : ratio = CGPoint(x: -0.5, y: 0.5)
-			case  cardinals.w : ratio = CGPoint(x: -1, y: 0)
-			case  cardinals.sw : ratio = CGPoint(x: -0.5, y: -0.5)
+			case  .n : ratio = CGPoint(x: 0, y: 1)
+			case  .ne : ratio = CGPoint(x: 0.5, y: 0.5)
+			case  .e : ratio = CGPoint(x: 1, y: 0)
+			case  .se : ratio = CGPoint(x: 0.5, y: -0.5)
+			case  .nw : ratio = CGPoint(x: -0.5, y: 0.5)
+			case  .w : ratio = CGPoint(x: -1, y: 0)
+			case  .sw : ratio = CGPoint(x: -0.5, y: -0.5)
 			default : ratio = CGPoint(x: 0, y: -1)
 		}
 		
