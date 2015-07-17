@@ -14,17 +14,25 @@ import Foundation
 
 class CapsuleNode : SCNNode
 {
+	var electricity:Float = 100.0
+	var shield:Float = 100.0
+	var temperature:Float = 100.0
+	var oxygen:Float = 50.0
+	var hull:Float = 100.0
+	var radiation:Float = 100.0
+	
 	override init()
 	{
 		super.init()
 		
 		capsuleSetup()
 		linkSetup()
+		
+		update()
 	}
 	
 	func update()
 	{
-		
 	}
 	
 	func linkSetup()

@@ -28,7 +28,7 @@ var console:PanelConsole!
 var scanner:PanelScanner!
 
 var capsule:CapsuleNode!
-var camera:CameraNode!
+var player:PlayerNode!
 
 enum alignment {
 	case left
@@ -63,8 +63,8 @@ extension GameViewController
 		capsule = CapsuleNode()
 		scene.rootNode.addChildNode(capsule)
 		
-		camera = CameraNode()
-		scene.rootNode.addChildNode(camera)
+		player = PlayerNode()
+		scene.rootNode.addChildNode(player)
 		
 		//
 		
@@ -143,8 +143,6 @@ extension GameViewController
 		console.addLine("bias")
 		console.addLine("ftw")
 		
-		
-	
 		sceneComplete()
 	}
 	

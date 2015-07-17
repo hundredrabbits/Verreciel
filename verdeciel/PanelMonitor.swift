@@ -12,23 +12,12 @@ import SceneKit
 import Foundation
 
 class PanelMonitor : SCNNode
-{
-	var electricity:Float = 100.0
+{	
 	var electricityLabel:SCNLabel!
-	
-	var shield:Float = 100.0
 	var shieldLabel:SCNLabel!
-	
-	var temperature:Float = 100.0
 	var temperatureLabel:SCNLabel!
-	
-	var oxygen:Float = 50.0
 	var oxygenLabel:SCNLabel!
-	
-	var hull:Float = 100.0
 	var hullLabel:SCNLabel!
-	
-	var radiation:Float = 100.0
 	var radiationLabel:SCNLabel!
 	
 	override init()
@@ -124,14 +113,14 @@ class PanelMonitor : SCNNode
 	
 	func update()
 	{
-		oxygen += oxygenMod()
-		oxygenLabel.update(monitorValue(oxygen))
-		shield += shieldMod()
-		shieldLabel.update(monitorValue(shield))
-		electricity += electricityMod()
-		electricityLabel.update(monitorValue(electricity))
-		temperature += temperatureMod()
-		temperatureLabel.update(monitorValue(temperature))
+		capsule.oxygen += oxygenMod()
+		oxygenLabel.update(monitorValue(capsule.oxygen))
+		capsule.shield += shieldMod()
+		shieldLabel.update(monitorValue(capsule.shield))
+		capsule.electricity += electricityMod()
+		electricityLabel.update(monitorValue(capsule.electricity))
+		capsule.temperature += temperatureMod()
+		temperatureLabel.update(monitorValue(capsule.temperature))
 	}
 	
 	func monitorValue(value:Float) -> String
@@ -149,8 +138,8 @@ class PanelMonitor : SCNNode
 		
 		if breaker.oxygenToggle.active { modifier += 0.5 }
 		
-		if oxygen > 100 && modifier > 0 { modifier = 0 }
-		if oxygen < 0 && modifier < 0 { modifier = 0 }
+		if capsule.oxygen > 100 && modifier > 0 { modifier = 0 }
+		if capsule.oxygen < 0 && modifier < 0 { modifier = 0 }
 		
 		return modifier
 	}

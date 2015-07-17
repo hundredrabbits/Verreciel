@@ -10,13 +10,19 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CameraNode : SCNNode
+class PlayerNode : SCNNode
 {
 	var displayHealth:SCNLabel!
-	var displayMisc:SCNLabel!
+	var displayMagic:SCNLabel!
+	
+	var health:Int
+	var magic:Int
 	
 	override init()
 	{
+		health = 99
+		magic = 99
+		
 		super.init()
 	
 		// Camera
@@ -29,6 +35,19 @@ class CameraNode : SCNNode
 		
 		addInterface()
 		addHelmet()
+	}
+	
+	func update()
+	{
+		displayHealth.update("\(health)hp")
+		displayMagic.update("\(magic)mp")
+		
+		if health < 0 {
+			displayHealth.update("dead")
+		}
+		
+		displayHealth.adjustAlignment()
+		displayMagic.adjustAlignment()
 	}
 	
 	func addHelmet()
@@ -49,10 +68,10 @@ class CameraNode : SCNNode
 		displayHealth.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(displayHealth)
 		
-		displayMisc = SCNLabel(text: "34mp", scale: 0.05, align: alignment.right)
-		displayMisc.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
-		displayMisc.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(displayMisc)
+		displayMagic = SCNLabel(text: "34mp", scale: 0.05, align: alignment.right)
+		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
+		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
+		self.addChildNode(displayMagic)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

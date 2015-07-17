@@ -28,6 +28,11 @@ extension GameViewController
 			radar.update()
 		}
 		
+		if( capsule.oxygen < 47 ){
+			player.health -= 1
+			player.update()
+		}
+		
 		monitor.update()
 	}
 }
