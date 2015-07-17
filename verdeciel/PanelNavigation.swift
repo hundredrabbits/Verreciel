@@ -55,25 +55,25 @@ class PanelNavigation : SCNNode
 	{
 		if right {
 			switch radar.direction {
-				case  cardinals.n : radar.direction = cardinals.nw
-				case  cardinals.ne : radar.direction = cardinals.n
-				case  cardinals.e : radar.direction = cardinals.ne
-				case  cardinals.se : radar.direction = cardinals.e
-				case  cardinals.nw : radar.direction = cardinals.w
-				case  cardinals.w : radar.direction = cardinals.sw
-				case  cardinals.sw : radar.direction = cardinals.s
+				case  .n : radar.direction = cardinals.nw
+				case  .ne : radar.direction = cardinals.n
+				case  .e : radar.direction = cardinals.ne
+				case  .se : radar.direction = cardinals.e
+				case  .nw : radar.direction = cardinals.w
+				case  .w : radar.direction = cardinals.sw
+				case  .sw : radar.direction = cardinals.s
 				default : radar.direction = cardinals.se
 			}
 		}
 		else{
 			switch radar.direction {
-				case  cardinals.n : radar.direction = cardinals.ne
-				case  cardinals.ne : radar.direction = cardinals.e
-				case  cardinals.e : radar.direction = cardinals.se
-				case  cardinals.se : radar.direction = cardinals.s
-				case  cardinals.nw : radar.direction = cardinals.n
-				case  cardinals.w : radar.direction = cardinals.nw
-				case  cardinals.sw : radar.direction = cardinals.w
+				case  .n : radar.direction = cardinals.ne
+				case  .ne : radar.direction = cardinals.e
+				case  .e : radar.direction = cardinals.se
+				case  .se : radar.direction = cardinals.s
+				case  .nw : radar.direction = cardinals.n
+				case  .w : radar.direction = cardinals.nw
+				case  .sw : radar.direction = cardinals.w
 				default : radar.direction = cardinals.sw
 			}
 		}

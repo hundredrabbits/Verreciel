@@ -57,7 +57,6 @@ extension GameViewController
 				let knob = result.node as! SCNKnob
 				knob.touch()
 			}
-			
 		}
 	}
 	

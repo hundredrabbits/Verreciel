@@ -174,10 +174,6 @@ class PanelMonitor : SCNNode
 		if breaker.oxygenToggle.active { modifier += 0.02 }
 		if thruster.speed > 0 { modifier += thruster.speed / 10 }
 		
-		if radio.frequencyA > 0 { modifier += 0.01 }
-		if radio.frequencyB > 0 { modifier += 0.01 }
-		if radio.frequencyC > 0 { modifier += 0.01 }
-		
 		return modifier
 	}
 	
@@ -187,9 +183,6 @@ class PanelMonitor : SCNNode
 		
 		if breaker.oxygenToggle.active { modifier -= 0.05 }
 		if thruster.speed > 0 { modifier -= thruster.speed / 20 }
-		if radio.frequencyA > 0 { modifier -= 0.01 }
-		if radio.frequencyB > 0 { modifier -= 0.01 }
-		if radio.frequencyC > 0 { modifier -= 0.01 }
 		
 		return modifier
 	}

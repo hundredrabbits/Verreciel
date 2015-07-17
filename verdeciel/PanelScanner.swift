@@ -31,7 +31,7 @@ class PanelScanner : SCNNode
 		position = SCNVector3(x: 0, y: -2, z: lowNode[7].z * 0.65)
 		rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 0.85))
 		
-		update(0, val2: 1, val3: 1, val4: 0)
+		update()
 	}
 	
 	func addInterface()
@@ -65,12 +65,19 @@ class PanelScanner : SCNNode
 		self.addChildNode(nameLabel)
 	}
 	
-	func update(val1:Float,val2:Float,val3:Float,val4:Float)
+	func update()
 	{
-		let avg12 = (val1+val2)/2/4
-		let avg23 = (val2+val3)/2/4
-		let avg34 = (val3+val4)/2/4
+		if radio.target == nil { return }
 		
+		let val1 = Float(abs(radio.freq1 - radar.target.freq1))
+		let val2 = Float(abs(radio.freq2 - radar.target.freq2))
+		let val3 = Float(abs(radio.freq3 - radar.target.freq3))
+		let val4 = Float(abs(radio.freq4 - radar.target.freq4))
+		
+		let avg12:Float = (val1+val2)/2/4
+		let avg23:Float = (val2+val3)/2/4
+		let avg34:Float = (val3+val4)/2/4
+	
 		// Left Side
 		val2Right.geometry = line(SCNVector3(x: 0, y: avg23/4, z: 0), SCNVector3(x: -0.25, y: val2/4, z: 0)).geometry
 		val2Left.geometry = line(SCNVector3(x: -0.25, y: val2/4, z: 0), SCNVector3(x: -0.5, y: avg12/4, z: 0)).geometry

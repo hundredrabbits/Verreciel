@@ -17,18 +17,27 @@ class SCNEvent : SCNNode
 	var z:Float!
 	var type:eventTypes!
 	var	typeString:String!
-	var frequency:Int!
+	
+	var freq1:Int = 0
+	var freq2:Int = 0
+	var freq3:Int = 0
+	var freq4:Int = 0
 	
 	var isKnown:Bool = false
 	
-	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes,frequency:Int)
+	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes,frequency:String)
 	{
 		super.init()
 		name = newName
 		self.x = x
 		self.z = z
 		self.type = type
-		self.frequency = frequency
+		
+		let frequencies = Array(frequency)
+		self.freq1 = String(frequencies[0]).toInt()!
+		self.freq2 = String(frequencies[1]).toInt()!
+		self.freq3 = String(frequencies[2]).toInt()!
+		self.freq4 = String(frequencies[3]).toInt()!
 		
 		var eventColor = UIColor.grayColor()
 		

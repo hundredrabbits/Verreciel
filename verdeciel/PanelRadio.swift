@@ -13,11 +13,6 @@ import Foundation
 
 class PanelRadio : SCNNode
 {
-	var frequencyA:Float = 0
-	var frequencyB:Float = 0
-	var frequencyC:Float = 0
-	var frequencyD:Float = 0
-	
 	var frequencyKnobA:SCNKnob!
 	var frequencyKnobB:SCNKnob!
 	var frequencyKnobC:SCNKnob!
@@ -30,6 +25,11 @@ class PanelRadio : SCNNode
 	var labelOrientation:SCNLabel!
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
+	
+	var freq1:Int = 0
+	var freq2:Int = 0
+	var freq3:Int = 0
+	var freq4:Int = 0
 	
 	var target:SCNEvent!
 	
@@ -66,22 +66,23 @@ class PanelRadio : SCNNode
 		frequencyKnobC.position = SCNVector3(x: -1, y: -0.5, z: 0)
 		self.addChildNode(frequencyKnobC)
 		
-		frequencyLabel = SCNLabel(text: "1221", scale: 0.1, align: alignment.center)
+		frequencyLabel = SCNLabel(text: "\(freq1)\(freq2)\(freq3)\(freq4)", scale: 0.1, align: alignment.center)
 		frequencyLabel.position = SCNVector3(x: 0, y: -1, z: 0)
 		self.addChildNode(frequencyLabel)
 	}
 	
-	func createFrequency()
+	func frequency() -> String
 	{
-		var freq = 0		
-	}
-	
-	func touch(knobId:String)
-	{
-		if knobId == "frequencyA" { frequencyA = frequencyA <= 3 ? (frequencyA+1) : 0 }
-		if knobId == "frequencyB" { frequencyB = frequencyB <= 3 ? (frequencyB+1) : 0 }
-		if knobId == "frequencyC" { frequencyC = frequencyC <= 3 ? (frequencyC+1) : 0 }
-		update()
+		var freq:Float = 0
+		
+		freq += 0101 * frequencyKnobA.value
+		freq += 1010 * frequencyKnobC.value
+		freq += 0110 * frequencyKnobB.value
+		
+		if Int(freq) < 100 { return "0000"}
+		if Int(freq) < 1000 { return "0\(Int(freq))"}
+		
+		return "\(Int(freq))"
 	}
 	
 	func addTarget(target:SCNEvent)
@@ -102,7 +103,9 @@ class PanelRadio : SCNNode
 		frequencyKnobB.update()
 		frequencyKnobC.update()
 		
-		scanner.update(frequencyA, val2: frequencyB, val3: frequencyC, val4: 0)
+		frequencyLabel.update("\(freq1)\(freq2)\(freq3)\(freq4)")
+		
+		scanner.update()
 	}
 	
 	required init(coder aDecoder: NSCoder)
