@@ -45,9 +45,6 @@ class PlayerNode : SCNNode
 		if health < 0 {
 			displayHealth.update("dead")
 		}
-		
-		displayHealth.adjustAlignment()
-		displayMagic.adjustAlignment()
 	}
 	
 	func addHelmet()

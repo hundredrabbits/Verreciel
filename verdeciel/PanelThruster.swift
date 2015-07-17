@@ -59,7 +59,7 @@ class PanelThruster : SCNNode
 	
 	func update()
 	{
-		knobMesh.update(speed)
+		knobMesh.update()
 		speedLabel.update("\(Int(speed))")
 	}
 	

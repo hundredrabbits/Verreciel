@@ -71,7 +71,6 @@ class PanelScanner : SCNNode
 		let avg23 = (val2+val3)/2/4
 		let avg34 = (val3+val4)/2/4
 		
-		
 		// Left Side
 		val2Right.geometry = line(SCNVector3(x: 0, y: avg23/4, z: 0), SCNVector3(x: -0.25, y: val2/4, z: 0)).geometry
 		val2Left.geometry = line(SCNVector3(x: -0.25, y: val2/4, z: 0), SCNVector3(x: -0.5, y: avg12/4, z: 0)).geometry

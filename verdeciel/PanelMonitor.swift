@@ -19,6 +19,7 @@ class PanelMonitor : SCNNode
 	var oxygenLabel:SCNLabel!
 	var hullLabel:SCNLabel!
 	var radiationLabel:SCNLabel!
+	var noiseLabel:SCNLabel!
 	
 	override init()
 	{
@@ -45,11 +46,9 @@ class PanelMonitor : SCNNode
 		labelOxygenTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		northMonitor.addChildNode(labelOxygenTitle)
 		
-		
 		oxygenLabel = SCNLabel(text: "68.5", scale: 0.1, align: alignment.right)
 		oxygenLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		northMonitor.addChildNode(oxygenLabel)
-		
 		
 		var labelShieldTitle = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		labelShieldTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
@@ -83,7 +82,6 @@ class PanelMonitor : SCNNode
 		temperatureLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
 		eastMonitor.addChildNode(temperatureLabel)
 		
-		
 		eastMonitor.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
 		self.addChildNode(eastMonitor)
@@ -109,6 +107,22 @@ class PanelMonitor : SCNNode
 		southMonitor.addChildNode(hullLabel)
 		
 		self.addChildNode(southMonitor)
+		
+		//
+		
+		var westMonitor = SCNNode()
+		
+		var noiseLabelTitle	= SCNLabel(text: "noise", scale: 0.1, align: alignment.left)
+		noiseLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
+		westMonitor.addChildNode(noiseLabelTitle)
+		
+		noiseLabel = SCNLabel(text: "null", scale: 0.1, align: alignment.right)
+		noiseLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
+		westMonitor.addChildNode(noiseLabel)
+		
+		westMonitor.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3)); // rotate 90 degrees
+		
+		self.addChildNode(westMonitor)
 	}
 	
 	func update()

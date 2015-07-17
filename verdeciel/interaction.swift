@@ -48,29 +48,16 @@ extension GameViewController
 		// check what nodes are tapped
 		let p = gestureRecognize.locationInView(scnView)
 		if let hitResults = scnView.hitTest(p, options: nil) {
-			// check that we clicked on at least one object
-			if hitResults.count > 0 {
-				// retrieved the first clicked object
-				let result: AnyObject! = hitResults[0]
-				
-				if( result.node.name == nil ){
-					NSLog("SYSTEM | Mesh Unnamed")
-					return
-				}
-				
-				if( result.node.name!.rangeOfString(".") == nil ){
-					NSLog("SYSTEM | Trigger: not action")
-					return
-				}
-				
-				let prefix = result.node.name!.componentsSeparatedByString(".")[0]
-				let sufix  = result.node.name!.componentsSeparatedByString(".")[1]
-				
-				if( prefix == "trigger" )
-				{
-					triggerRouter(sufix,object: result)
-				}
+			
+			if hitResults.count < 1 { return }
+			
+			let result: AnyObject! = hitResults[0]
+			
+			if result.node.isKindOfClass(SCNKnob) {
+				let knob = result.node as! SCNKnob
+				knob.touch()
 			}
+			
 		}
 	}
 	

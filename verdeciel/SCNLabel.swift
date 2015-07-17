@@ -72,10 +72,10 @@ class SCNLabel : SCNNode
 	func update(text:String)
 	{
 		if text == activeText { return }
-		
 		removeLetters()
 		activeText = text
 		addLetters(activeText, scale: activeScale)
+		adjustAlignment()
 	}
 	
 	func letter(letter:String,scale:Float) -> SCNNode

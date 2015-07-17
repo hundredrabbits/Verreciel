@@ -49,6 +49,7 @@ enum eventTypes {
 	case unknown
 	case station
 	case star
+	case sentry
 }
 
 extension GameViewController
@@ -128,10 +129,8 @@ extension GameViewController
 		
 		//
 		
-		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:2,size:1,range:5,type:eventTypes.star))
-		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station))
-		radar.addEvent(SCNEvent(newName:"asteroid",x:0.5,z:0,size:0.5,range:0,type:eventTypes.unknown))
-		radar.addEvent(SCNEvent(newName:"stat2",x:1,z:2,size:1,range:5,type:eventTypes.station))
+		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:1,size:0.5,range:7,type:eventTypes.sentry,frequency:1234))
+		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station,frequency:3456))
 		
 		console.addLine("hello there")
 		console.addLine("how are you")

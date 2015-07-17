@@ -14,8 +14,8 @@ import Foundation
 class SCNKnob : SCNNode
 {
 	var knobMesh:SCNNode!
-	
 	var panelName:String = ""
+	var value:Float = 0
 	
 	init(newName:String)
 	{
@@ -26,9 +26,9 @@ class SCNKnob : SCNNode
 	
 	func addGeometry()
 	{
-		var knob = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-		knob.geometry?.firstMaterial?.diffuse.contents = clear
-		knob.name = "trigger.\(panelName)"
+		self.geometry = SCNPlane(width: 1, height: 1)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
+		self.name = "trigger.\(panelName)"
 		
 		knobMesh = SCNNode()
 		knobMesh.name = "knob.mesh"
@@ -44,31 +44,35 @@ class SCNKnob : SCNNode
 		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.35, y: 0.35, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
 		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
 		
-		knob.addChildNode(line(SCNVector3(x: 0, y: 0.6, z: 0),SCNVector3(x: 0, y: 0.7, z: 0)))
-		knob.addChildNode(line(SCNVector3(x: 0, y: -0.6, z: 0),SCNVector3(x: 0, y: -0.7, z: 0)))
-		knob.addChildNode(line(SCNVector3(x: 0.6, y: 0, z: 0),SCNVector3(x: 0.7, y: 0, z: 0)))
-		knob.addChildNode(line(SCNVector3(x: -0.6, y: 0, z: 0),SCNVector3(x: -0.7, y: 0, z: 0)))
+		self.addChildNode(line(SCNVector3(x: 0, y: 0.6, z: 0),SCNVector3(x: 0, y: 0.7, z: 0)))
+		self.addChildNode(line(SCNVector3(x: 0, y: -0.6, z: 0),SCNVector3(x: 0, y: -0.7, z: 0)))
+		self.addChildNode(line(SCNVector3(x: 0.6, y: 0, z: 0),SCNVector3(x: 0.7, y: 0, z: 0)))
+		self.addChildNode(line(SCNVector3(x: -0.6, y: 0, z: 0),SCNVector3(x: -0.7, y: 0, z: 0)))
 		
-		knob.addChildNode(knobMesh)
-		knob.position = position
-		
-		self.addChildNode(knob)
+		self.addChildNode(knobMesh)
+		self.position = position
 	}
 	
-	func update(targetValue:Float)
+	func update()
 	{
-		let targetAngle = Double(targetValue) * -1
+		let targetAngle = Double(value) * -1
 		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
 		for node in knobMesh.childNodes
 		{
 			var node: SCNNode = node as! SCNNode
-			if( targetValue == 0){
+			if( value == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
 			}
 			else{
 				node.geometry!.firstMaterial?.diffuse.contents = cyan
 			}
 		}
+	}
+	
+	func touch()
+	{
+		value = value > 3 ? 0 : value + 1
+		update()
 	}
 	
 	required init(coder aDecoder: NSCoder)

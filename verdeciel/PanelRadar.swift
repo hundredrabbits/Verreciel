@@ -239,10 +239,12 @@ class PanelRadar : SCNNode
 		for node in eventView.childNodes
 		{
 			let event = node as! SCNEvent
+			
 			let eventNodePosition = CGPoint(x: CGFloat(event.x), y: CGFloat(event.z))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,eventNodePosition))
 			
-			if distanceFromShip > 0.75 { continue }
+			if event.isKnown == true { continue }
+			if distanceFromShip > 1 { continue }
 			
 			if distanceFromShip < closestDistance {
 				closestDistance = distanceFromShip
@@ -251,17 +253,8 @@ class PanelRadar : SCNNode
 		}
 		
 		if closestEvent != nil {
-			
 			if closestEvent != target {
-				target = closestEvent
-				labelTargetName.update(target.name!)
-				labelTargetName.adjustAlignment()
-				labelTargetType.update(target.typeString!)
-				labelTargetType.adjustAlignment()
-				console.addLine("scan \(target.name!)")
-				
-				if target.type == eventTypes.star { lastStar = target }
-				if target.type == eventTypes.station { lastStation = target }
+				addTarget(closestEvent)
 			}
 			targetter.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: target.position.x, y: target.position.y, z: 0), color: UIColor.grayColor()).geometry
 			targetter.opacity = 1
@@ -271,7 +264,21 @@ class PanelRadar : SCNNode
 			targetter.opacity = 0
 			labelTargetName.update("")
 			labelTargetType.update("")
+			radio.removeTarget()
 		}
+	}
+
+	func addTarget(event:SCNEvent)
+	{
+		target = event
+		labelTargetName.update(target.name!)
+		labelTargetType.update(target.typeString!)
+		console.addLine("scan \(target.name!)")
+		
+		if target.type == eventTypes.star { lastStar = target }
+		if target.type == eventTypes.station { lastStation = target }
+		
+		radio.addTarget(target)
 	}
 
 	required init(coder aDecoder: NSCoder)

@@ -23,12 +23,15 @@ class PanelRadio : SCNNode
 	var frequencyKnobC:SCNKnob!
 	
 	var frequencyLabel:SCNLabel!
+	var targetLabel:SCNLabel!
 	
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
+	
+	var target:SCNEvent!
 	
 	override init()
 	{
@@ -47,6 +50,10 @@ class PanelRadio : SCNNode
 		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(titleLabel)
 		
+		targetLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.right)
+		targetLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[7].y * scale, z: 0)
+		self.addChildNode(targetLabel)
+		
 		frequencyKnobA = SCNKnob(newName: "frequencyA")
 		frequencyKnobA.position = SCNVector3(x: 0, y: 0.5, z: 0)
 		self.addChildNode(frequencyKnobA)
@@ -59,9 +66,14 @@ class PanelRadio : SCNNode
 		frequencyKnobC.position = SCNVector3(x: -1, y: -0.5, z: 0)
 		self.addChildNode(frequencyKnobC)
 		
-		frequencyLabel = SCNLabel(text: "451", scale: 0.1, align: alignment.center)
+		frequencyLabel = SCNLabel(text: "1221", scale: 0.1, align: alignment.center)
 		frequencyLabel.position = SCNVector3(x: 0, y: -1, z: 0)
 		self.addChildNode(frequencyLabel)
+	}
+	
+	func createFrequency()
+	{
+		var freq = 0		
 	}
 	
 	func touch(knobId:String)
@@ -72,11 +84,23 @@ class PanelRadio : SCNNode
 		update()
 	}
 	
+	func addTarget(target:SCNEvent)
+	{
+		self.target = target
+		targetLabel.update(target.name!)
+	}
+	
+	func removeTarget()
+	{
+		target = nil
+		targetLabel.update("")
+	}
+	
 	func update()
 	{
-		frequencyKnobA.update(frequencyA)
-		frequencyKnobB.update(frequencyB)
-		frequencyKnobC.update(frequencyC)
+		frequencyKnobA.update()
+		frequencyKnobB.update()
+		frequencyKnobC.update()
 		
 		scanner.update(frequencyA, val2: frequencyB, val3: frequencyC, val4: 0)
 	}
