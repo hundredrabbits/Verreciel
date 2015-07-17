@@ -71,18 +71,12 @@ class PanelRadio : SCNNode
 		self.addChildNode(frequencyLabel)
 	}
 	
-	func frequency() -> String
+	func updateFrequency()
 	{
-		var freq:Float = 0
-		
-		freq += 0101 * frequencyKnobA.value
-		freq += 1010 * frequencyKnobC.value
-		freq += 0110 * frequencyKnobB.value
-		
-		if Int(freq) < 100 { return "0000"}
-		if Int(freq) < 1000 { return "0\(Int(freq))"}
-		
-		return "\(Int(freq))"
+		freq1 = Int(frequencyKnobC.value)
+		freq2 = Int(frequencyKnobA.value) + Int(frequencyKnobB.value)
+		freq3 = Int(frequencyKnobB.value) + Int(frequencyKnobC.value)
+		freq4 = Int(frequencyKnobA.value)
 	}
 	
 	func addTarget(target:SCNEvent)
@@ -99,6 +93,8 @@ class PanelRadio : SCNNode
 	
 	func update()
 	{
+		updateFrequency()
+		
 		frequencyKnobA.update()
 		frequencyKnobB.update()
 		frequencyKnobC.update()

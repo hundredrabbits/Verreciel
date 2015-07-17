@@ -129,8 +129,8 @@ extension GameViewController
 		
 		//
 		
-		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:1,size:0.5,range:7,type:eventTypes.sentry,frequency:"1234"))
-		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station,frequency:"3456"))
+		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:1,size:0.5,range:7,type:eventTypes.sentry,frequency:"2231"))
+		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station,frequency:"2231"))
 		
 		console.addLine("hello there")
 		console.addLine("how are you")
