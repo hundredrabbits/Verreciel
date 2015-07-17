@@ -26,7 +26,9 @@ var beacon:PanelBeacon!
 var radio:PanelRadio!
 var console:PanelConsole!
 var scanner:PanelScanner!
+
 var capsule:CapsuleNode!
+var camera:CameraNode!
 
 enum alignment {
 	case left
@@ -54,13 +56,15 @@ extension GameViewController
 	func worldSetup()
 	{
 		// Basics
-		sceneSetup()
 		nodeNetworkSetup()
 		
 		//
 		
 		capsule = CapsuleNode()
 		scene.rootNode.addChildNode(capsule)
+		
+		camera = CameraNode()
+		scene.rootNode.addChildNode(camera)
 		
 		//
 		
@@ -138,6 +142,8 @@ extension GameViewController
 		console.addLine("bios")
 		console.addLine("bias")
 		console.addLine("ftw")
+		
+		
 	
 		sceneComplete()
 	}
@@ -171,22 +177,6 @@ extension GameViewController
 	}
 	
 	// MARK: Scenes
-	
-	func sceneSetup()
-	{
-		NSLog("SCENES | Setup")
-		scene = SCNScene()
-		
-		// Camera
-		var cameraNode = SCNNode()
-		cameraNode.camera = SCNCamera()
-		cameraNode.camera?.xFov = 75
-		cameraNode.name = "cameraNode"
-		cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
-		cameraNode.camera?.aperture = 100
-		cameraNode.camera?.automaticallyAdjustsZRange = true
-		scene.rootNode.addChildNode(cameraNode)
-	}
 	
 	func sceneComplete()
 	{
