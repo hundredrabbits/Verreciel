@@ -124,8 +124,8 @@ extension GameViewController
 		
 		//
 		
-		radar.addEvent(SCNEvent(newName:"ar37",x:0,z:2,size:1,range:5,type:eventTypes.star))
-		radar.addEvent(SCNEvent(newName:"station",x:0,z:0,size:1,range:5,type:eventTypes.station))
+		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:2,size:1,range:5,type:eventTypes.star))
+		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station))
 		radar.addEvent(SCNEvent(newName:"asteroid",x:0.5,z:0.5,size:0.5,range:0,type:eventTypes.unknown))
 		
 		console.addLine("hello there")

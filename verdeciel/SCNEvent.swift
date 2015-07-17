@@ -17,6 +17,7 @@ class SCNEvent : SCNNode
 	var x:Float!
 	var z:Float!
 	var type:eventTypes!
+	var	typeString:String!
 	
 	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes)
 	{
@@ -28,8 +29,17 @@ class SCNEvent : SCNNode
 		
 		var eventColor = UIColor.grayColor()
 		
-		if type == eventTypes.station { eventColor = cyan }
-		if type == eventTypes.star { eventColor = red }
+		if type == eventTypes.station {
+			eventColor = cyan
+			typeString = "station"
+		}
+		else if type == eventTypes.star {
+			eventColor = red
+			typeString = "star"
+		}
+		else{
+			typeString = "unknown"		
+		}
 		
 		// Event Size
 		let displaySize = size/10

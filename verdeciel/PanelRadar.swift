@@ -21,6 +21,9 @@ class PanelRadar : SCNNode
 	var labelPositionZ:SCNLabel!
 	var labelOrientation:SCNLabel!
 	
+	var target:SCNEvent!
+	var targetter:SCNLine!
+	
 	var labelTargetName:SCNLabel!
 	var labelTargetType:SCNLabel!
 	
@@ -32,6 +35,9 @@ class PanelRadar : SCNNode
 		super.init()
 		name = "radar"
 		addInterface()
+		
+		targetter = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0, z: 0), color: red)
+		self.addChildNode(targetter)
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
@@ -176,28 +182,41 @@ class PanelRadar : SCNNode
 	
 	func updateTarget()
 	{
-		var closestNode:SCNEvent!
 		var closestDistance:Float = 9000
+		
+		var shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
+	
+		var closestEvent:SCNEvent!
 		
 		for node in eventView.childNodes
 		{
 			let event = node as! SCNEvent
+			let eventNodePosition = CGPoint(x: CGFloat(event.x), y: CGFloat(event.z))
+			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,eventNodePosition))
 			
-			let point1 = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
-			let point2 = CGPoint(x: CGFloat(event.x), y: CGFloat(event.z))
-			
-			let distanceFromShip = Float(distanceBetweenTwoPoints(point1,point2))
+			if distanceFromShip > 0.75 { continue }
 			
 			if distanceFromShip < closestDistance {
-				closestNode = event
 				closestDistance = distanceFromShip
-				labelTargetName.update(event.name!)
-				
-				println("\(x/200),\(z/200) -> \(event.x),\(event.z) : \(event.name) (\(distanceFromShip))")
+				closestEvent = event
 			}
 		}
 		
-		
+		if closestEvent != nil {
+			target = closestEvent
+			labelTargetName.update(target.name!)
+			labelTargetName.adjustAlignment()
+			labelTargetType.update(target.typeString!)
+			labelTargetType.adjustAlignment()
+			targetter.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: target.position.x, y: target.position.y, z: 0), color: UIColor.grayColor()).geometry
+			targetter.opacity = 1
+		}
+		else{
+			target = nil
+			targetter.opacity = 0
+			labelTargetName.update("")
+			labelTargetType.update("")
+		}
 	}
 
 	required init(coder aDecoder: NSCoder)
