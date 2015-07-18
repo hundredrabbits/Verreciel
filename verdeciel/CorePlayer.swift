@@ -43,7 +43,7 @@ class CorePlayer : SCNNode
 		displayMagic.update("\(magic)mp")
 		
 		if health < 0 {
-			displayHealth.update("dead")
+			displayHealth.updateWithColor("dead",color: red)
 		}
 	}
 	

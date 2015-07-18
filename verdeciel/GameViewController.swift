@@ -68,6 +68,8 @@ enum eventTypes {
 	case station
 	case star
 	case sentry
+	case warp
+	case missle
 }
 
 class GameViewController: UIViewController

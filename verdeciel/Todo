@@ -1,17 +1,26 @@
 
-
-
 ================
 *    TODOS
 ================
 
-- Remove line(), replace with SCNLine
-- Add color() to SCNLabel
-- Add Warp Event
-- Give offensive actions to sentries
+> Universe
+- Connect the event creation to the universe object
+- Try the concept of clusters/sectors
+- Begin generation algo
 - Test moving events
 - World Generation function
-- Add console commands for scanner
+	> Sentries
+	- Detection
+	- Firing missle events at player
+	- Animate missle events
+
+> Capsule
 - Implement Beacon interaction
-- Give sentries detection
 - Implement noise level
+
+> Radar
+- Display different icons per event type
+
+> Electric recharge event on stars event
+
+> Tools
