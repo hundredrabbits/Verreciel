@@ -53,21 +53,11 @@ extension GameViewController
 			
 			let result: AnyObject! = hitResults[0]
 			
-			if result.node.isKindOfClass(SCNKnob) {
-				let knob = result.node as! SCNKnob
-				knob.touch()
-			}
-			else if result.node.isKindOfClass(SCNToggle) {
-				let toggle = result.node as! SCNToggle
-				toggle.touch()
-			}
-			else if result.node.isKindOfClass(SCNArrow) {
-				let arrow = result.node as! SCNArrow
-				arrow.touch()
-			}
-			else{
-				println(result)
-			}
+			if result.node.isKindOfClass(SCNKnob) { (result.node as! SCNKnob).touch() }
+			else if result.node.isKindOfClass(SCNToggle) { (result.node as! SCNToggle).touch() }
+			else if result.node.isKindOfClass(SCNArrow) { (result.node as! SCNArrow).touch() }
+			else if result.node.isKindOfClass(SCNLink) { (result.node as! SCNLink).touch() }
+			else{ println(result) }
 		}
 	}
 	

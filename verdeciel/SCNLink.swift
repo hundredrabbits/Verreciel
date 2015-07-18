@@ -30,6 +30,11 @@ class SCNLink : SCNNode
 		self.name = "trigger.move"
 	}
 	
+	func touch()
+	{
+		
+	}
+	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
