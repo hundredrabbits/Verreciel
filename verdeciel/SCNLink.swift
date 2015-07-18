@@ -32,7 +32,11 @@ class SCNLink : SCNNode
 	
 	func touch()
 	{
-		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = self.destination
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 	
 	required init(coder aDecoder: NSCoder)

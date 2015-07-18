@@ -10,7 +10,6 @@
 		0336701B19D47119005E1869 /* world.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701A19D47119005E1869 /* world.swift */; };
 		0336701D19D4EB82005E1869 /* interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701C19D4EB82005E1869 /* interaction.swift */; };
 		0336701F19D4EC0C005E1869 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701E19D4EC0C005E1869 /* tools.swift */; };
-		0336702119D4EC40005E1869 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336702019D4EC40005E1869 /* settings.swift */; };
 		03BAD0D019F9402C00BAF21A /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAD0CF19F9402C00BAF21A /* event.swift */; };
 		03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDE17F19CE497F008029A8 /* AppDelegate.swift */; };
 		03DDE18219CE497F008029A8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18119CE497F008029A8 /* art.scnassets */; };
@@ -27,7 +26,6 @@
 		573EDAB51B4B4762007C6D3C /* PanelNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
-		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
 		578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E954A1B59A06600B33294 /* SCNArrow.swift */; };
 		579419721B58A3D200F9FF87 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* PlayerNode.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
@@ -44,7 +42,6 @@
 		0336701A19D47119005E1869 /* world.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = world.swift; sourceTree = "<group>"; };
 		0336701C19D4EB82005E1869 /* interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interaction.swift; sourceTree = "<group>"; };
 		0336701E19D4EC0C005E1869 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
-		0336702019D4EC40005E1869 /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		03BAD0CF19F9402C00BAF21A /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = event.swift; sourceTree = "<group>"; };
 		03DDE17A19CE497F008029A8 /* Verreciel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verreciel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03DDE17E19CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +62,6 @@
 		573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelNavigation.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
-		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
 		578E954A1B59A06600B33294 /* SCNArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNArrow.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* PlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
@@ -114,8 +110,6 @@
 				03BAD0CF19F9402C00BAF21A /* event.swift */,
 				0336701A19D47119005E1869 /* world.swift */,
 				0336701C19D4EB82005E1869 /* interaction.swift */,
-				578B3AE51B37392D00F9EFB5 /* triggers.swift */,
-				0336702019D4EC40005E1869 /* settings.swift */,
 				0336701E19D4EC0C005E1869 /* tools.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				573627791B4C06E800899EBC /* Components */,
@@ -270,7 +264,6 @@
 				5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */,
 				0336701B19D47119005E1869 /* world.swift in Sources */,
 				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
-				0336702119D4EC40005E1869 /* settings.swift in Sources */,
 				03BAD0D019F9402C00BAF21A /* event.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* PanelNavigation.swift in Sources */,
@@ -281,7 +274,6 @@
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
-				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				579419721B58A3D200F9FF87 /* PlayerNode.swift in Sources */,
 				578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */,
