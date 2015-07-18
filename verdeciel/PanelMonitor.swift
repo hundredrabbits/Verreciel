@@ -26,6 +26,7 @@ class PanelMonitor : SCNNode
 		super.init()
 		name = "monitor"
 		addInterface()
+		update()
 	}
 	
 	func addInterface()
@@ -127,6 +128,7 @@ class PanelMonitor : SCNNode
 	
 	func update()
 	{
+		if capsule == nil { return }
 		capsule.oxygen += oxygenMod()
 		oxygenLabel.update(monitorValue(capsule.oxygen))
 		capsule.shield += shieldMod()

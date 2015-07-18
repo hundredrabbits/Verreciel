@@ -10,7 +10,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PlayerNode : SCNNode
+class CorePlayer : SCNNode
 {
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!

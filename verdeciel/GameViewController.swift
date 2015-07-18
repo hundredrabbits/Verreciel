@@ -42,10 +42,10 @@ var radio:PanelRadio!
 var console:PanelConsole!
 var scanner:PanelScanner!
 
-var capsule:CapsuleNode!
-var player:PlayerNode!
-
-var time:NSTimer!
+var time:CoreTime!
+var universe:CoreUniverse!
+var capsule:CoreCapsule!
+var player:CorePlayer!
 
 enum alignment {
 	case left
@@ -73,23 +73,21 @@ class GameViewController: UIViewController
 {
     override func viewDidLoad()
 	{
-        super.viewDidLoad()
-		worldSetup()
-		eventSetup()
-	}
-	
-	//
-	
-	func worldSetup()
-	{
-		capsule = CapsuleNode()
+		super.viewDidLoad()
+		
+		capsule = CoreCapsule()
 		scene.rootNode.addChildNode(capsule)
 		
-		player = PlayerNode()
+		player = CorePlayer()
 		scene.rootNode.addChildNode(player)
+		
+		universe = CoreUniverse()
+		time = CoreTime()
 		
 		sceneComplete()
 	}
+	
+	//
 	
 	func sceneComplete()
 	{

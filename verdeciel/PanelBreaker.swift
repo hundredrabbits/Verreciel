@@ -43,6 +43,11 @@ class PanelBreaker : SCNNode
 		self.addChildNode(oxygenToggle)
 	}
 	
+	func update()
+	{
+	
+	}
+	
 	func touch(choice:String)
 	{
 		if choice == "oxygen" { oxygenToggle.touch() }

@@ -42,6 +42,10 @@ class PanelNavigation : SCNNode
 		self.addChildNode(nameLabel)
 	}
 	
+	func update()
+	{
+	}
+	
 	func turn(right:Bool)
 	{
 		if right {

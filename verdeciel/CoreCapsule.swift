@@ -6,13 +6,12 @@
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 //
 
-
 import UIKit
 import QuartzCore
 import SceneKit
 import Foundation
 
-class CapsuleNode : SCNNode
+class CoreCapsule: SCNNode
 {
 	var electricity:Float = 100.0
 	var shield:Float = 100.0
@@ -30,8 +29,6 @@ class CapsuleNode : SCNNode
 		capsuleSetup()
 		panelSetup()
 		linkSetup()
-		
-		update()
 	}
 	
 	func nodeSetup()
@@ -64,6 +61,15 @@ class CapsuleNode : SCNNode
 	
 	func update()
 	{
+		radar.update()
+		navigation.update()
+		monitor.update()
+		thruster.update()
+		breaker.update()
+		beacon.update()
+		radio.update()
+		console.update()
+		scanner.update()
 	}
 	
 	func panelSetup()

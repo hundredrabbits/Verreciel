@@ -60,17 +60,4 @@ extension GameViewController
 			else{ println(result) }
 		}
 	}
-	
-	// MARK: Fog
-	
-	
-	// MARK: Move
-	
-	func moveWindow(object: AnyObject)
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(x: object.worldCoordinates.x, y: object.worldCoordinates.y, z: object.worldCoordinates.z)
-		SCNTransaction.commit()
-	}	
 }
