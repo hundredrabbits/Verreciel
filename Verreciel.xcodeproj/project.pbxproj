@@ -19,6 +19,7 @@
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4F1B40CF4400E3EE83 /* SCNLink.swift */; };
 		5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717006D1B4D912000A8F563 /* PanelScanner.swift */; };
+		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627751B4BFD2900899EBC /* SCNKnob.swift */; };
 		573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627771B4C06DF00899EBC /* SCNToggle.swift */; };
 		5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5736277B1B4C0A2300899EBC /* PanelBreaker.swift */; };
@@ -55,6 +56,7 @@
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		57009F4F1B40CF4400E3EE83 /* SCNLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLink.swift; sourceTree = "<group>"; };
 		5717006D1B4D912000A8F563 /* PanelScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelScanner.swift; sourceTree = "<group>"; };
+		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		573627751B4BFD2900899EBC /* SCNKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNKnob.swift; sourceTree = "<group>"; };
 		573627771B4C06DF00899EBC /* SCNToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNToggle.swift; sourceTree = "<group>"; };
 		5736277B1B4C0A2300899EBC /* PanelBreaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBreaker.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		03DDE17C19CE497F008029A8 /* verdeciel */ = {
 			isa = PBXGroup;
 			children = (
+				5734D45B1B5AAA7800BF0048 /* Todo */,
 				03DDE17F19CE497F008029A8 /* AppDelegate.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				03BAD0CF19F9402C00BAF21A /* event.swift */,
@@ -249,6 +252,7 @@
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
 				03DDE18219CE497F008029A8 /* art.scnassets in Resources */,
 				03DDE18719CE497F008029A8 /* Main.storyboard in Resources */,
+				5734D45C1B5AAA7800BF0048 /* Todo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

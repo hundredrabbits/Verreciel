@@ -30,6 +30,8 @@ var scanner:PanelScanner!
 var capsule:CapsuleNode!
 var player:PlayerNode!
 
+var time:NSTimer!
+
 enum alignment {
 	case left
 	case center
@@ -56,123 +58,15 @@ extension GameViewController
 {
 	func worldSetup()
 	{
-		// Basics
-		nodeNetworkSetup()
-		
-		//
-		
 		capsule = CapsuleNode()
 		scene.rootNode.addChildNode(capsule)
 		
 		player = PlayerNode()
 		scene.rootNode.addChildNode(player)
 		
-		//
-		
-		var northPanels = SCNNode()
-		navigation = PanelNavigation()
-		northPanels.addChildNode(navigation)
-		radar = PanelRadar()
-		northPanels.addChildNode(radar)
-		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
-		
-		//
-		
-		var northEastPanels = SCNNode()
-		thruster = PanelThruster()
-		northEastPanels.addChildNode(thruster)
-		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
-		
-		//
-		
-		var eastPanels = SCNNode()
-		breaker = PanelBreaker()
-		eastPanels.addChildNode(breaker)
-		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
-		
-		//
-		
-		var southEastPanels = SCNNode()
-		beacon = PanelBeacon()
-		southEastPanels.addChildNode(beacon)
-		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
-		
-		//
-		
-		var southPanels = SCNNode()
-		radio = PanelRadio()
-		southPanels.addChildNode(radio)
-		scanner = PanelScanner()
-		southPanels.addChildNode(scanner)
-		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
-		
-		//
-		
-		var westPanels = SCNNode()
-		console = PanelConsole()
-		westPanels.addChildNode(console)
-		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
-
-		// Add
-		
-		scene.rootNode.addChildNode(northPanels)
-		scene.rootNode.addChildNode(northEastPanels)
-		scene.rootNode.addChildNode(eastPanels)
-		scene.rootNode.addChildNode(southEastPanels)
-		scene.rootNode.addChildNode(southPanels)
-		scene.rootNode.addChildNode(westPanels)
-		
-		monitor = PanelMonitor()
-		scene.rootNode.addChildNode(monitor)
-		
-		radio.update()
-		
-		//
-		
-		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:1,size:0.5,range:7,type:eventTypes.sentry,frequency:"2231"))
-		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station,frequency:"2231"))
-		
-		console.addLine("hello there")
-		console.addLine("how are you")
-		console.addLine("0123456789")
-		console.addLine("a,b,c,d,e,f,g")
-		console.addLine("")
-		console.addLine("halt catch fire")
-		console.addLine("")
-		console.addLine("bios")
-		console.addLine("bias")
-		console.addLine("ftw")
-		
 		sceneComplete()
 	}
 	
-	func nodeNetworkSetup()
-	{
-		NSLog("WORLD  | Capsule Coordinates")
-		
-		var scale:Float = 0.25
-		var height:Float = -2.4
-		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		scale = 0.3
-		height = -2.5
-		lowMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		scale = 1
-		height = -1.5
-		lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		scale = 1
-		height = 1.5
-		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		scale = 0.3
-		height = 2.5
-		highMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		scale = 0.25
-		height = 3
-		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-	}
 	
 	// MARK: Scenes
 	

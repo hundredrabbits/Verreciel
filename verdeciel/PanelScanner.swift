@@ -67,12 +67,17 @@ class PanelScanner : SCNNode
 	
 	func update()
 	{
-		if radio.target == nil { return }
+		var val1 = Float(0)
+		var val2 = Float(0)
+		var val3 = Float(0)
+		var val4 = Float(0)
 		
-		let val1 = Float(abs(radio.freq1 - radar.target.freq1))
-		let val2 = Float(abs(radio.freq2 - radar.target.freq2))
-		let val3 = Float(abs(radio.freq3 - radar.target.freq3))
-		let val4 = Float(abs(radio.freq4 - radar.target.freq4))
+		if radio.target != nil {
+			val1 = Float(abs(radio.freq1 - radar.target.freq1))
+			val2 = Float(abs(radio.freq2 - radar.target.freq2))
+			val3 = Float(abs(radio.freq3 - radar.target.freq3))
+			val4 = Float(abs(radio.freq4 - radar.target.freq4))
+		}
 		
 		let avg12:Float = (val1+val2)/2/4
 		let avg23:Float = (val2+val3)/2/4

@@ -63,29 +63,6 @@ extension GameViewController
 	
 	// MARK: Fog
 	
-	func fogEvent()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		scene.fogStartDistance = 0
-		scene.fogEndDistance = 5000
-		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.redColor()
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
-	
-	func fogCapsule()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		scene.fogStartDistance = 0
-		scene.fogEndDistance = 17
-		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.blackColor()
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
 	
 	// MARK: Move
 	

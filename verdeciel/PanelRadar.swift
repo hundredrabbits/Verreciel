@@ -260,11 +260,7 @@ class PanelRadar : SCNNode
 			targetter.opacity = 1
 		}
 		else{
-			target = nil
-			targetter.opacity = 0
-			labelTargetName.update("")
-			labelTargetType.update("")
-			radio.removeTarget()
+			removeTarget()
 		}
 	}
 
@@ -279,6 +275,15 @@ class PanelRadar : SCNNode
 		if target.type == eventTypes.station { lastStation = target }
 		
 		radio.addTarget(target)
+	}
+	
+	func removeTarget()
+	{
+		target = nil
+		targetter.opacity = 0
+		labelTargetName.update("")
+		labelTargetType.update("")
+		radio.removeTarget()
 	}
 
 	required init(coder aDecoder: NSCoder)

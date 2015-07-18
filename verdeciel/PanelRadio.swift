@@ -89,6 +89,7 @@ class PanelRadio : SCNNode
 	{
 		target = nil
 		targetLabel.update("")
+		scanner.update()
 	}
 	
 	func update()

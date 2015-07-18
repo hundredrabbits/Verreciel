@@ -25,14 +25,92 @@ class CapsuleNode : SCNNode
 	{
 		super.init()
 		
+		nodeSetup()
+		
 		capsuleSetup()
+		panelSetup()
 		linkSetup()
 		
 		update()
 	}
 	
+	func nodeSetup()
+	{
+		NSLog("WORLD  | Capsule Coordinates")
+		
+		var scale:Float = 0.25
+		var height:Float = -2.4
+		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 0.3
+		height = -2.5
+		lowMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 1
+		height = -1.5
+		lowNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		scale = 1
+		height = 1.5
+		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 0.3
+		height = 2.5
+		highMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 0.25
+		height = 3
+		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+	}
+	
 	func update()
 	{
+	}
+	
+	func panelSetup()
+	{
+		var northPanels = SCNNode()
+		navigation = PanelNavigation()
+		northPanels.addChildNode(navigation)
+		radar = PanelRadar()
+		northPanels.addChildNode(radar)
+		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
+		
+		var northEastPanels = SCNNode()
+		thruster = PanelThruster()
+		northEastPanels.addChildNode(thruster)
+		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
+		
+		var eastPanels = SCNNode()
+		breaker = PanelBreaker()
+		eastPanels.addChildNode(breaker)
+		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		var southEastPanels = SCNNode()
+		beacon = PanelBeacon()
+		southEastPanels.addChildNode(beacon)
+		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
+		
+		var southPanels = SCNNode()
+		radio = PanelRadio()
+		southPanels.addChildNode(radio)
+		scanner = PanelScanner()
+		southPanels.addChildNode(scanner)
+		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
+		
+		var westPanels = SCNNode()
+		console = PanelConsole()
+		westPanels.addChildNode(console)
+		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		
+		self.addChildNode(northPanels)
+		self.addChildNode(northEastPanels)
+		self.addChildNode(eastPanels)
+		self.addChildNode(southEastPanels)
+		self.addChildNode(southPanels)
+		self.addChildNode(westPanels)
+		
+		monitor = PanelMonitor()
+		self.addChildNode(monitor)
 	}
 	
 	func linkSetup()
@@ -155,7 +233,30 @@ class CapsuleNode : SCNNode
 		
 		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: 0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: -0.25)))
 		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25)))
-		
+	}
+	
+	func fogEvent()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		scene.fogStartDistance = 0
+		scene.fogEndDistance = 5000
+		scene.fogDensityExponent = 4
+		scene.fogColor = UIColor.redColor()
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	}
+	
+	func fogCapsule()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		scene.fogStartDistance = 0
+		scene.fogEndDistance = 17
+		scene.fogDensityExponent = 4
+		scene.fogColor = UIColor.blackColor()
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 	
 	required init(coder aDecoder: NSCoder)

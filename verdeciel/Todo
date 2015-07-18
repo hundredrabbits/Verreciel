@@ -1,0 +1,17 @@
+
+
+
+================
+*    TODOS
+================
+
+- Remove line(), replace with SCNLine
+- Add color() to SCNLabel
+- Add Warp Event
+- Give offensive actions to sentries
+- Test moving events
+- World Generation function
+- Add console commands for scanner
+- Implement Beacon interaction
+- Give sentries detection
+- Implement noise level

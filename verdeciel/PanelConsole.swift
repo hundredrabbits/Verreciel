@@ -89,13 +89,13 @@ class PanelConsole : SCNNode
 	
 	func update()
 	{
-		consoleLine1.update(lines[0])
-		consoleLine2.update(lines[1])
-		consoleLine3.update(lines[2])
-		consoleLine4.update(lines[3])
-		consoleLine5.update(lines[4])
-		consoleLine6.update(lines[5])
-		consoleLine7.update(lines[6])
+		consoleLine1.update("  \(lines[0])")
+		consoleLine2.update("  \(lines[1])")
+		consoleLine3.update("  \(lines[2])")
+		consoleLine4.update("  \(lines[3])")
+		consoleLine5.update("  \(lines[4])")
+		consoleLine6.update("  \(lines[5])")
+		consoleLine7.update("  \(lines[6])")
 		consoleLine8.update("> \(lines[7])")
 	}
 	

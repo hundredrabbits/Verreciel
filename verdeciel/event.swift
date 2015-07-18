@@ -15,9 +15,19 @@ extension GameViewController
 {
 	func eventSetup()
 	{
-		NSLog(" EVENT | Setup")
-		
-		var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("eventTrigger"), userInfo: nil, repeats: true)
+		universeSetup()
+		timeSetup()
+	}
+	
+	func timeSetup()
+	{
+		time = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("eventTrigger"), userInfo: nil, repeats: true)
+	}
+	
+	func universeSetup()
+	{
+		radar.addEvent(SCNEvent(newName:"su-ar37",x:0,z:1,size:0.5,range:7,type:eventTypes.sentry,frequency:"2231"))
+		radar.addEvent(SCNEvent(newName:"home",x:0,z:0,size:1,range:5,type:eventTypes.station,frequency:"2231"))
 	}
 	
 	func eventTrigger()
