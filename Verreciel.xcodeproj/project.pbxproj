@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0336701B19D47119005E1869 /* world.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701A19D47119005E1869 /* world.swift */; };
 		0336701D19D4EB82005E1869 /* interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701C19D4EB82005E1869 /* interaction.swift */; };
 		0336701F19D4EC0C005E1869 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701E19D4EC0C005E1869 /* tools.swift */; };
 		03BAD0D019F9402C00BAF21A /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAD0CF19F9402C00BAF21A /* event.swift */; };
@@ -40,7 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0336701A19D47119005E1869 /* world.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = world.swift; sourceTree = "<group>"; };
 		0336701C19D4EB82005E1869 /* interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interaction.swift; sourceTree = "<group>"; };
 		0336701E19D4EC0C005E1869 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
 		03BAD0CF19F9402C00BAF21A /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = event.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				03DDE17F19CE497F008029A8 /* AppDelegate.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				03BAD0CF19F9402C00BAF21A /* event.swift */,
-				0336701A19D47119005E1869 /* world.swift */,
 				0336701C19D4EB82005E1869 /* interaction.swift */,
 				0336701E19D4EC0C005E1869 /* tools.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
@@ -266,7 +263,6 @@
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
 				5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */,
-				0336701B19D47119005E1869 /* world.swift in Sources */,
 				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				03BAD0D019F9402C00BAF21A /* event.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
