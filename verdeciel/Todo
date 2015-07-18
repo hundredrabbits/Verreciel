@@ -4,23 +4,48 @@
 ================
 
 > Universe
-- Connect the event creation to the universe object
-- Try the concept of clusters/sectors
-- Begin generation algo
-- Test moving events
-- World Generation function
+
+	> Misc
+	- Try the concept of clusters/sectors
+	- Begin generation algo
+	- Test moving events
+	- World Generation function
+
+	> Events
+	- Collision event
+	- Collision warning
+	- Connect the event creation to the universe object
+	- Electric charge systems
+
 	> Sentries
 	- Detection
 	- Firing missle events at player
 	- Animate missle events
+	- Display player targeting
+
+	> Warp
+	- Design icon
+	- Update capsule location
 
 > Capsule
-- Implement Beacon interaction
-- Implement noise level
 
-> Radar
-- Display different icons per event type
+	> Misc
+	- Implement Beacon interaction
+	- Implement noise level
+	- Doodads polygons
+	= Design outdoors
+	- Add capsule mesh to hide outdoors
 
-> Electric recharge event on stars event
+	> Radar
+	- Display different icons per event type
+	- Add masking triangles to hide overflow
+
+	> Radio
+	- Solved frequency event
+
+	> Beacon
+	- Create systems
+
+> Player
 
 > Tools
