@@ -42,31 +42,31 @@ class SCNToggle : SCNNode
 		self.geometry = SCNPlane(width: 1, height: 1)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
-		outline1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
+		outline1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:white)
 		outline1.name = "\(panelName).handle.top"
 		self.addChildNode(outline1)
 		
-		outline2 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		outline2 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: -0.5, y: -0.5, z: 0),color:white)
 		outline2.name = "\(panelName).handle.left"
 		self.addChildNode(outline2)
 		
-		outline3 = redLine(SCNVector3(x: -0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white)
 		outline3.name = "\(panelName).handle.bottom"
 		self.addChildNode(outline3)
 		
-		outline4 = redLine(SCNVector3(x: 0.5, y: -0.5, z: 0),SCNVector3(x: 0.5, y: 0.5, z: 0))
+		outline4 = SCNLine(nodeA: SCNVector3(x: 0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:white)
 		outline4.name = "\(panelName).handle.right"
 		self.addChildNode(outline4)
 		
-		cross1 = redLine(SCNVector3(x: -0.5, y: 0.5, z: 0),SCNVector3(x: 0.5, y: -0.5, z: 0))
+		cross1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white)
 		cross1.name = "\(panelName).handle.cross1"
 		self.addChildNode(cross1)
 		
-		cross2 = redLine(SCNVector3(x: 0.5, y: 0.5, z: 0),SCNVector3(x: -0.5, y: -0.5, z: 0))
+		cross2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: -0.5, y: -0.5, z: 0),color:white)
 		cross2.name = "\(panelName).handle.cross2"
 		self.addChildNode(cross2)
 		
-		cross3 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: -0.5, y: 0, z: 0))
+		cross3 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0),nodeB: SCNVector3(x: -0.5, y: 0, z: 0),color:white)
 		cross3.name = "\(panelName).handle.cross3"
 		self.addChildNode(cross3)
 		

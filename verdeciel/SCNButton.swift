@@ -35,18 +35,18 @@ class SCNButton : SCNNode
 		optionPanel.position = position
 		optionPanel.name = "trigger.\(panelName)"
 		
-		optionPanel.addChildNode(line(SCNVector3(x: 0, y: 0.75, z: 0),SCNVector3(x: 0.75, y: 0, z: 0)))
-		optionPanel.addChildNode(line(SCNVector3(x: 0.75, y: 0, z: 0),SCNVector3(x: 0, y: -0.75, z: 0)))
-		optionPanel.addChildNode(line(SCNVector3(x: -0.75, y: 0, z: 0),SCNVector3(x: 0, y: 0.75, z: 0)))
-		optionPanel.addChildNode(line(SCNVector3(x: -0.75, y: 0, z: 0),SCNVector3(x: 0, y: -0.75, z: 0)))
+		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.75, z: 0),nodeB: SCNVector3(x: 0.75, y: 0, z: 0),color:white))
+		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.75, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.75, z: 0),color:white))
+		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.75, z: 0),color:white))
+		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.75, z: 0),color:white))
 		
-		outline1 = redLine(SCNVector3(x: 0, y: 0.5, z: 0),SCNVector3(x: 0.5, y: 0, z: 0))
+		outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
 		optionPanel.addChildNode(outline1)
-		outline2 = redLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: 0, y: -0.5, z: 0))
+		outline2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
 		optionPanel.addChildNode(outline2)
-		outline3 = redLine(SCNVector3(x: -0.5, y: 0, z: 0),SCNVector3(x: 0, y: 0.5, z: 0))
+		outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.5, z: 0),color:red)
 		optionPanel.addChildNode(outline3)
-		outline4 = redLine(SCNVector3(x: -0.5, y: 0, z: 0),SCNVector3(x: 0, y: -0.5, z: 0))
+		outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
 		optionPanel.addChildNode(outline4)
 		
 		self.addChildNode(optionPanel)

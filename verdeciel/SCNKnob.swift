@@ -22,6 +22,7 @@ class SCNKnob : SCNNode
 		super.init()
 		panelName = newName
 		addGeometry()
+		update()
 	}
 	
 	func addGeometry()
@@ -34,20 +35,20 @@ class SCNKnob : SCNNode
 		knobMesh.name = "knob.mesh"
 		
 		// Base
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.5, z: 0),SCNVector3(x: 0.35, y: 0.35, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.35, y: 0.35, z: 0),SCNVector3(x: 0.5, y: 0, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.5, y: 0, z: 0),SCNVector3(x: 0.35, y: -0.35, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0.35, y: -0.35, z: 0),SCNVector3(x: 0, y: -0.5, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: -0.5, z: 0),SCNVector3(x: -0.35, y: -0.35, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.35, y: -0.35, z: 0),SCNVector3(x: -0.5, y: 0, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.5, y: 0, z: 0),SCNVector3(x: -0.35, y: 0.35, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: -0.35, y: 0.35, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
-		knobMesh.addChildNode(cyanLine(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0, y: 0.5, z: 0)))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.35, y: 0.35, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.35, y: 0.35, z: 0),nodeB: SCNVector3(x: 0.5, y: 0, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0),nodeB: SCNVector3(x: 0.35, y: -0.35, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.35, y: -0.35, z: 0),nodeB: SCNVector3(x: 0, y: -0.5, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.5, z: 0),nodeB: SCNVector3(x: -0.35, y: -0.35, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.35, y: -0.35, z: 0),nodeB: SCNVector3(x: -0.5, y: 0, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0),nodeB: SCNVector3(x: -0.35, y: 0.35, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.35, y: 0.35, z: 0),nodeB: SCNVector3(x: 0, y: 0.5, z: 0),color:white))
+		knobMesh.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.15, z: 0),nodeB: SCNVector3(x: 0, y: 0.5, z: 0),color:white))
 		
-		self.addChildNode(line(SCNVector3(x: 0, y: 0.6, z: 0),SCNVector3(x: 0, y: 0.7, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0, y: -0.6, z: 0),SCNVector3(x: 0, y: -0.7, z: 0)))
-		self.addChildNode(line(SCNVector3(x: 0.6, y: 0, z: 0),SCNVector3(x: 0.7, y: 0, z: 0)))
-		self.addChildNode(line(SCNVector3(x: -0.6, y: 0, z: 0),SCNVector3(x: -0.7, y: 0, z: 0)))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.6, z: 0),nodeB: SCNVector3(x: 0, y: 0.7, z: 0),color:white))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.6, z: 0),nodeB: SCNVector3(x: 0, y: -0.7, z: 0),color:white))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.6, y: 0, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:white))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.6, y: 0, z: 0),nodeB: SCNVector3(x: -0.7, y: 0, z: 0),color:white))
 		
 		self.addChildNode(knobMesh)
 		self.position = position

@@ -173,11 +173,11 @@ class CoreCapsule: SCNNode
 		var i = 0
 		while i < floorNode.count
 		{
-			scene.rootNode.addChildNode(line(floorNode[i],lowMidNode[i]))
-			scene.rootNode.addChildNode(line(lowMidNode[i],lowNode[i]))
-			scene.rootNode.addChildNode(line(lowNode[i],highNode[i]))
-			scene.rootNode.addChildNode(line(highNode[i],highMidNode[i]))
-			scene.rootNode.addChildNode(line(highMidNode[i],ceilingNode[i]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: lowMidNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: highNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: highNode[i],nodeB: highMidNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: ceilingNode[i],color:white))
 			i += 1
 		}
 		
@@ -185,60 +185,60 @@ class CoreCapsule: SCNNode
 		i = 0
 		while i < floorNode.count - 1
 		{
-			scene.rootNode.addChildNode(line(floorNode[i],floorNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: floorNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(line(floorNode[7],floorNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[7],nodeB: floorNode[0],color:white))
 		
 		// Connect Window Low
 		i = 0
 		while i < lowMidNode.count - 1
 		{
-			scene.rootNode.addChildNode(grey(lowMidNode[i],lowMidNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowMidNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(grey(lowMidNode[7],lowMidNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[7],nodeB: lowMidNode[0],color:white))
 		
 		// Connect Low
 		i = 0
 		while i < lowNode.count - 1
 		{
-			scene.rootNode.addChildNode(grey(lowNode[i],lowNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: lowNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(grey(lowNode[7],lowNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[7],nodeB: lowNode[0],color:white))
 		
 		// Connect High
 		i = 0
 		while i < highNode.count - 1
 		{
-			scene.rootNode.addChildNode(grey(highNode[i],highNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: highNode[i],nodeB: highNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(grey(highNode[7],highNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: highNode[7],nodeB: highNode[0],color:white))
 		
 		// Connect Window High
 		i = 0
 		while i < highMidNode.count - 1
 		{
-			scene.rootNode.addChildNode(grey(highMidNode[i],highMidNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: highMidNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(grey(highMidNode[7],highMidNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[7],nodeB: highMidNode[0],color:white))
 		
 		// Connect Ceiling
 		i = 0
 		while i < ceilingNode.count - 1
 		{
-			scene.rootNode.addChildNode(line(ceilingNode[i],ceilingNode[i+1]))
+			scene.rootNode.addChildNode(SCNLine(nodeA: ceilingNode[i],nodeB: ceilingNode[i+1],color:white))
 			i += 1
 		}
-		scene.rootNode.addChildNode(line(ceilingNode[7],ceilingNode[0]))
+		scene.rootNode.addChildNode(SCNLine(nodeA: ceilingNode[7],nodeB: ceilingNode[0],color:white))
 		
 		// Closed windows
 		
-		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: 0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: -0.25)))
-		scene.rootNode.addChildNode(grey(SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25)))
+		scene.rootNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: 0.25),nodeB: SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: -0.25),color:white))
+		scene.rootNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: ceilingNode[0].y + 2, z: -0.25),nodeB: SCNVector3(x: -0.25, y: ceilingNode[0].y + 2, z: 0.25),color:white))
 	}
 	
 	func fogEvent()

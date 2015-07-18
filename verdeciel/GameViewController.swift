@@ -20,6 +20,7 @@ let scaleValue : Float = 0.01
 
 var eventTime = 0
 
+var white:UIColor = UIColor.whiteColor()
 var red:UIColor = UIColor.redColor()
 var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
@@ -127,4 +128,26 @@ class GameViewController: UIViewController
 	override func prefersStatusBarHidden() -> Bool {
 		return true
 	}
+}
+
+func degToRad( degrees : Float ) -> Float
+{
+	return ( degrees / 180 * Float(M_PI) )
+}
+
+func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat
+{
+	let xDist:CGFloat = (point2.x - point1.x)
+	let yDist:CGFloat = (point2.y - point1.y)
+	return sqrt((xDist * xDist) + (yDist * yDist))
+}
+
+func angleBetweenTwoPoints(point1:CGPoint,point2:CGPoint,center:CGPoint) -> CGFloat
+{
+	let v1 = CGVector(dx: point1.x - center.x, dy: point1.y - center.y)
+	let v2 = CGVector(dx: point2.x - center.x, dy: point2.y - center.y)
+	let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+	var deg = angle * CGFloat(180.0 / M_PI)
+	if deg < 0 { deg += 360.0 }
+	return deg
 }

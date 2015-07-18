@@ -39,16 +39,16 @@ class PanelScanner : SCNNode
 		let scale:Float = 0.8
 		
 		// Left Side
-		val2Right = line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: -0.25, y: 0.25, z: 0))
-		val2Left = line(SCNVector3(x: -0.25, y: 0.25, z: 0), SCNVector3(x: -0.5, y: 0, z: 0))
-		val1Right = line(SCNVector3(x: -0.5, y: 0, z: 0), SCNVector3(x: -0.75, y: 0.25, z: 0))
-		val1Left = line(SCNVector3(x: -0.75, y: 0.25, z: 0), SCNVector3(x: -1, y: 0, z: 0))
+		val2Right = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: -0.25, y: 0.25, z: 0),color:white)
+		val2Left = SCNLine(nodeA: SCNVector3(x: -0.25, y: 0.25, z: 0), nodeB: SCNVector3(x: -0.5, y: 0, z: 0),color:white)
+		val1Right = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB: SCNVector3(x: -0.75, y: 0.25, z: 0),color:white)
+		val1Left = SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.25, z: 0), nodeB: SCNVector3(x: -1, y: 0, z: 0),color:white)
 		
 		// Right Size
-		val3Left = line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0.25, y: 0.25, z: 0))
-		val3Right = line(SCNVector3(x: 0.25, y: 0.25, z: 0), SCNVector3(x: 0.5, y: 0, z: 0))
-		val4Left = line(SCNVector3(x: 0.5, y: 0, z: 0), SCNVector3(x: 0.75, y: 0.25, z: 0))
-		val4Right = line(SCNVector3(x: 0.75, y: 0.25, z: 0), SCNVector3(x: 1, y: 0, z: 0))
+		val3Left = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: 0.25, y: 0.25, z: 0),color:white)
+		val3Right = SCNLine(nodeA: SCNVector3(x: 0.25, y: 0.25, z: 0), nodeB: SCNVector3(x: 0.5, y: 0, z: 0),color:white)
+		val4Left = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB: SCNVector3(x: 0.75, y: 0.25, z: 0),color:white)
+		val4Right = SCNLine(nodeA: SCNVector3(x: 0.75, y: 0.25, z: 0), nodeB: SCNVector3(x: 1, y: 0, z: 0),color:white)
 		
 		self.addChildNode(val2Right)
 		self.addChildNode(val2Left)
@@ -84,16 +84,16 @@ class PanelScanner : SCNNode
 		let avg34:Float = (val3+val4)/2/4
 	
 		// Left Side
-		val2Right.geometry = line(SCNVector3(x: 0, y: avg23/4, z: 0), SCNVector3(x: -0.25, y: val2/4, z: 0)).geometry
-		val2Left.geometry = line(SCNVector3(x: -0.25, y: val2/4, z: 0), SCNVector3(x: -0.5, y: avg12/4, z: 0)).geometry
-		val1Right.geometry = line(SCNVector3(x: -0.5, y: avg12/4, z: 0), SCNVector3(x: -0.75, y: val1/4, z: 0)).geometry
-		val1Left.geometry = line(SCNVector3(x: -0.75, y: val1/4, z: 0), SCNVector3(x: -1, y: 0, z: 0)).geometry
+		val2Right.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: avg23/4, z: 0), nodeB: SCNVector3(x: -0.25, y: val2/4, z: 0),color:white).geometry
+		val2Left.geometry = SCNLine(nodeA: SCNVector3(x: -0.25, y: val2/4, z: 0), nodeB: SCNVector3(x: -0.5, y: avg12/4, z: 0),color:white).geometry
+		val1Right.geometry = SCNLine(nodeA: SCNVector3(x: -0.5, y: avg12/4, z: 0), nodeB: SCNVector3(x: -0.75, y: val1/4, z: 0),color:white).geometry
+		val1Left.geometry = SCNLine(nodeA: SCNVector3(x: -0.75, y: val1/4, z: 0), nodeB: SCNVector3(x: -1, y: 0, z: 0),color:white).geometry
 		
 		// Right Size
-		val3Left.geometry = line(SCNVector3(x: 0, y: avg23/4, z: 0), SCNVector3(x: 0.25, y: val3/4, z: 0)).geometry
-		val3Right.geometry = line(SCNVector3(x: 0.25, y: val3/4, z: 0), SCNVector3(x: 0.5, y: avg34/4, z: 0)).geometry
-		val4Left.geometry = line(SCNVector3(x: 0.5, y: avg34/4, z: 0), SCNVector3(x: 0.75, y: val4/4, z: 0)).geometry
-		val4Right.geometry = line(SCNVector3(x: 0.75, y: val4/4, z: 0), SCNVector3(x: 1, y: 0, z: 0)).geometry
+		val3Left.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: avg23/4, z: 0), nodeB: SCNVector3(x: 0.25, y: val3/4, z: 0),color:white).geometry
+		val3Right.geometry = SCNLine(nodeA: SCNVector3(x: 0.25, y: val3/4, z: 0), nodeB: SCNVector3(x: 0.5, y: avg34/4, z: 0),color:white).geometry
+		val4Left.geometry = SCNLine(nodeA: SCNVector3(x: 0.5, y: avg34/4, z: 0), nodeB: SCNVector3(x: 0.75, y: val4/4, z: 0),color:white).geometry
+		val4Right.geometry = SCNLine(nodeA: SCNVector3(x: 0.75, y: val4/4, z: 0), nodeB: SCNVector3(x: 1, y: 0, z: 0),color:white).geometry
 	}
 	
 	func touch()

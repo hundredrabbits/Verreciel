@@ -44,7 +44,7 @@ class PanelConsole : SCNNode
 	{
 		let scale:Float = 0.8
 		
-		self.addChildNode(line(SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0)))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:white))
 		
 		let titleLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
 		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)

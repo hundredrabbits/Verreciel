@@ -28,18 +28,18 @@ class SCNArrow : SCNNode
 		if cardinal == cardinals.w {
 			self.geometry = SCNPlane(width: 0.5, height: 0.5)
 			self.geometry?.firstMaterial?.diffuse.contents = clear
-			self.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
-			self.addChildNode(line(SCNVector3(x: 0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-			self.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-			self.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: 0.25, y: 0, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.25, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: 0, y: -0.25, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: -0.25, y: 0, z: 0),color:white))
 		}
 		else{
 			self.geometry = SCNPlane(width: 0.5, height: 0.5)
 			self.geometry?.firstMaterial?.diffuse.contents = clear
-			self.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
-			self.addChildNode(line(SCNVector3(x: -0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-			self.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-			self.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: -0.25, y: 0, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.25, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: 0, y: -0.25, z: 0),color:white))
+			self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: 0.25, y: 0, z: 0),color:white))
 		}
 	}
 	

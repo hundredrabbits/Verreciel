@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0336701D19D4EB82005E1869 /* interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701C19D4EB82005E1869 /* interaction.swift */; };
-		0336701F19D4EC0C005E1869 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336701E19D4EC0C005E1869 /* tools.swift */; };
 		03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDE17F19CE497F008029A8 /* AppDelegate.swift */; };
 		03DDE18219CE497F008029A8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18119CE497F008029A8 /* art.scnassets */; };
 		03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDE18319CE497F008029A8 /* GameViewController.swift */; };
@@ -41,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		0336701C19D4EB82005E1869 /* interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interaction.swift; sourceTree = "<group>"; };
-		0336701E19D4EC0C005E1869 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
 		03DDE17A19CE497F008029A8 /* Verreciel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verreciel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03DDE17E19CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE17F19CE497F008029A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				03DDE17F19CE497F008029A8 /* AppDelegate.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				0336701C19D4EB82005E1869 /* interaction.swift */,
-				0336701E19D4EC0C005E1869 /* tools.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				573627791B4C06E800899EBC /* Components */,
 				5736277A1B4C06FE00899EBC /* Panels */,
@@ -272,7 +269,6 @@
 				573EDAB51B4B4762007C6D3C /* PanelNavigation.swift in Sources */,
 				57F645F51B4CACB60088D115 /* PanelRadio.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */,
-				0336701F19D4EC0C005E1869 /* tools.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */,
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,

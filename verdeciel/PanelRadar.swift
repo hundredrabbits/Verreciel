@@ -126,8 +126,8 @@ class PanelRadar : SCNNode
 		shipCursor = SCNNode()
 		
 		// Ship
-		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: 0.15, y: 0, z: 0)))
-		shipCursor.addChildNode(line(SCNVector3(x: 0, y: 0.15, z: 0),SCNVector3(x: -0.15, y: 0, z: 0)))
+		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.15, z: 0),nodeB: SCNVector3(x: 0.15, y: 0, z: 0),color:white))
+		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.15, z: 0),nodeB: SCNVector3(x: -0.15, y: 0, z: 0),color:white))
 		self.addChildNode(shipCursor)
 		
 		let titleLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
