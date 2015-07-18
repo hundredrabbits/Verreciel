@@ -28,7 +28,7 @@ class CoreTime : NSObject
 			radar.update()
 		}
 		
-		if( capsule.oxygen < 47 ){
+		if( capsule.oxygen < 10 && player.health > 0 ){
 			player.health -= 1
 			player.update()
 		}
