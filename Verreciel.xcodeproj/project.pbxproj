@@ -28,6 +28,7 @@
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B3AE51B37392D00F9EFB5 /* triggers.swift */; };
+		578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E954A1B59A06600B33294 /* SCNArrow.swift */; };
 		579419721B58A3D200F9FF87 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* PlayerNode.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* SCNEvent.swift */; };
@@ -65,6 +66,7 @@
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B3AE51B37392D00F9EFB5 /* triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggers.swift; sourceTree = "<group>"; };
+		578E954A1B59A06600B33294 /* SCNArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNArrow.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* PlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* SCNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNEvent.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				573627751B4BFD2900899EBC /* SCNKnob.swift */,
 				57F645F21B4CA3710088D115 /* SCNButton.swift */,
 				57858B221B546BD900DD9E4E /* SCNLine.swift */,
+				578E954A1B59A06600B33294 /* SCNArrow.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				578B3AE61B37392D00F9EFB5 /* triggers.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				579419721B58A3D200F9FF87 /* PlayerNode.swift in Sources */,
+				578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */,
 				0336701D19D4EB82005E1869 /* interaction.swift in Sources */,
 				57F645F31B4CA3710088D115 /* SCNButton.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelBeacon.swift in Sources */,

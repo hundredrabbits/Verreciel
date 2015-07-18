@@ -23,8 +23,6 @@ extension GameViewController
 		if( trigger == "window" )		{ moveWindow(object) }
 		if( trigger == "oxygen" )		{ breaker.touch(trigger) }
 		if( trigger == "electric" )		{ breaker.touch(trigger) }
-		if( trigger == "turnRight" )	{ navigation.touch(true) }
-		if( trigger == "turnLeft" )		{ navigation.touch(false) }
 	}	
 	
 	func move(object: SCNLink)

@@ -168,7 +168,7 @@ class PanelRadar : SCNNode
 		labelPositionZ.update(String(Int(z/20)))
 		labelOrientation.update(directionName())
 		
-		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),CGPoint(x: CGFloat(x), y: CGFloat(z))))
+		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),CGPoint(x: CGFloat(x), y: CGFloat(z)))/1000 )
 		
 		labelDistance.update( "\(distance)" )
 		

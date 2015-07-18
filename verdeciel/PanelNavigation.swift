@@ -12,7 +12,10 @@ import SceneKit
 import Foundation
 
 class PanelNavigation : SCNNode
-{	
+{
+	var leftArrow:SCNArrow!
+	var rightArrow:SCNArrow!
+	
 	override init()
 	{
 		super.init()
@@ -25,25 +28,13 @@ class PanelNavigation : SCNNode
 	
 	func addInterface()
 	{
-		let turnLeft = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
-		turnLeft.geometry?.firstMaterial?.diffuse.contents = clear
-		turnLeft.name = "trigger.turnLeft"
-		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
-		turnLeft.addChildNode(line(SCNVector3(x: 0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnLeft.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
-		turnLeft.position = SCNVector3(x: 0.5, y: 0, z: 0)
-		self.addChildNode(turnLeft)
+		leftArrow = SCNArrow(direction: cardinals.w)
+		leftArrow.position = SCNVector3(x: 0.5, y: 0, z: 0)
+		self.addChildNode(leftArrow)
 		
-		let turnRight = SCNNode(geometry: SCNPlane(width: 0.5, height: 0.5))
-		turnRight.geometry?.firstMaterial?.diffuse.contents = clear
-		turnRight.name = "trigger.turnRight"
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: -0.25, y: 0, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: -0.25, y: 0, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0.25, z: 0), SCNVector3(x: 0, y: -0.25, z: 0)))
-		turnRight.addChildNode(line(SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0.25, y: 0, z: 0)))
-		turnRight.position = SCNVector3(x: -0.5, y: 0, z: 0)
-		self.addChildNode(turnRight)
+		rightArrow = SCNArrow(direction: cardinals.e)
+		rightArrow.position = SCNVector3(x: -0.5, y: 0, z: 0)
+		self.addChildNode(rightArrow)
 		
 		var nameLabel = SCNLabel(text: "navigation", scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: -0.5, z: 0)
@@ -51,7 +42,7 @@ class PanelNavigation : SCNNode
 		self.addChildNode(nameLabel)
 	}
 	
-	func touch(right:Bool)
+	func turn(right:Bool)
 	{
 		if right {
 			switch radar.direction {
