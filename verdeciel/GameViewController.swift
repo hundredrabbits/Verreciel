@@ -87,7 +87,12 @@ class GameViewController: UIViewController
 		universe = CoreUniverse()
 		time = CoreTime()
 		
-		sceneComplete()
+		let scnView = self.view as! SCNView
+		scnView.scene = scene
+		scnView.showsStatistics = false
+		scnView.backgroundColor = UIColor.blackColor()
+		scnView.antialiasingMode = SCNAntialiasingMode.None
+		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
 	}
 	
 	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
@@ -120,8 +125,6 @@ class GameViewController: UIViewController
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
-
-		/*
 		let scnView = self.view as! SCNView
 		
 		let p = gestureRecognize.locationInView(scnView)
@@ -137,36 +140,6 @@ class GameViewController: UIViewController
 			else if result.node.isKindOfClass(SCNLink) { (result.node as! SCNLink).touch() }
 			else{ print(result) }
 		}
-*/
-	}
-	
-	func sceneComplete()
-	{
-		let scnView = self.view as! SCNView
-		scnView.scene = scene
-		scnView.showsStatistics = false
-		scnView.backgroundColor = UIColor.blackColor()
-		scnView.antialiasingMode = SCNAntialiasingMode.None
-		
-		/*
-		let gestureRecognizers = NSMutableArray()
-		gestureRecognizers.addObject(UITapGestureRecognizer(target: self, action: "handleTap:"))
-		if let existingGestureRecognizers = scnView.gestureRecognizers {
-			gestureRecognizers.addObjectsFromArray(existingGestureRecognizers)
-		}
-		scnView.gestureRecognizers = gestureRecognizers as [UIGestureRecognizer]
-*/
-	}
-	
-	//
-	
-	override func shouldAutorotate() -> Bool {
-		return true
-	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Release any cached data, images, etc that aren't in use.
 	}
 	
 	override func prefersStatusBarHidden() -> Bool {
