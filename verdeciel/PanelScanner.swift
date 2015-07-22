@@ -35,9 +35,7 @@ class PanelScanner : SCNNode
 	}
 	
 	func addInterface()
-	{
-		let scale:Float = 0.8
-		
+	{		
 		// Left Side
 		val2Right = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: -0.25, y: 0.25, z: 0),color:white)
 		val2Left = SCNLine(nodeA: SCNVector3(x: -0.25, y: 0.25, z: 0), nodeB: SCNVector3(x: -0.5, y: 0, z: 0),color:white)
@@ -59,7 +57,7 @@ class PanelScanner : SCNNode
 		self.addChildNode(val4Right)
 		self.addChildNode(val4Left)
 		
-		var nameLabel = SCNLabel(text: "scanner", scale: 0.1, align: alignment.center)
+		let nameLabel = SCNLabel(text: "scanner", scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: -0.5, z: 0)
 		nameLabel.name = "label.navigation"
 		self.addChildNode(nameLabel)
@@ -100,8 +98,7 @@ class PanelScanner : SCNNode
 	{
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -74,36 +74,36 @@ class CoreCapsule: SCNNode
 	
 	func panelSetup()
 	{
-		var northPanels = SCNNode()
+		let northPanels = SCNNode()
 		navigation = PanelNavigation()
 		northPanels.addChildNode(navigation)
 		radar = PanelRadar()
 		northPanels.addChildNode(radar)
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
-		var northEastPanels = SCNNode()
+		let northEastPanels = SCNNode()
 		thruster = PanelThruster()
 		northEastPanels.addChildNode(thruster)
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
-		var eastPanels = SCNNode()
+		let eastPanels = SCNNode()
 		breaker = PanelBreaker()
 		eastPanels.addChildNode(breaker)
 		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
-		var southEastPanels = SCNNode()
+		let southEastPanels = SCNNode()
 		beacon = PanelBeacon()
 		southEastPanels.addChildNode(beacon)
 		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
 		
-		var southPanels = SCNNode()
+		let southPanels = SCNNode()
 		radio = PanelRadio()
 		southPanels.addChildNode(radio)
 		scanner = PanelScanner()
 		southPanels.addChildNode(scanner)
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
-		var westPanels = SCNNode()
+		let westPanels = SCNNode()
 		console = PanelConsole()
 		westPanels.addChildNode(console)
 		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
@@ -121,46 +121,46 @@ class CoreCapsule: SCNNode
 	
 	func linkSetup()
 	{
-		var northNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: -4.5), newDestination: SCNVector3(x: 0, y: 0, z: -1), scale: 6)
+		let northNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: -4.5), newDestination: SCNVector3(x: 0, y: 0, z: -1), scale: 6)
 		scene.rootNode.addChildNode(northNode)
 		
-		var southNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: 4.5), newDestination: SCNVector3(x: 0, y: 0, z: 1), scale: 6)
+		let southNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: 4.5), newDestination: SCNVector3(x: 0, y: 0, z: 1), scale: 6)
 		southNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 2));
 		scene.rootNode.addChildNode(southNode)
 		
-		var eastNode = SCNLink(location: SCNVector3(x: 4.5, y: 0, z: 0), newDestination: SCNVector3(x: 1, y: 0, z: 0), scale: 6)
+		let eastNode = SCNLink(location: SCNVector3(x: 4.5, y: 0, z: 0), newDestination: SCNVector3(x: 1, y: 0, z: 0), scale: 6)
 		eastNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1));
 		scene.rootNode.addChildNode(eastNode)
 		
-		var westNode = SCNLink(location: SCNVector3(x: -4.5, y: 0, z: 0), newDestination: SCNVector3(x: -1, y: 0, z: 0), scale: 6)
+		let westNode = SCNLink(location: SCNVector3(x: -4.5, y: 0, z: 0), newDestination: SCNVector3(x: -1, y: 0, z: 0), scale: 6)
 		westNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1));
 		scene.rootNode.addChildNode(westNode)
 		
-		var northWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: -4), newDestination: SCNVector3(x: -1, y: 0, z: -1), scale: 6)
+		let northWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: -4), newDestination: SCNVector3(x: -1, y: 0, z: -1), scale: 6)
 		northWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 3.5));
 		scene.rootNode.addChildNode(northWestNode)
 		
-		var northEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: -4), newDestination: SCNVector3(x: 1, y: 0, z: -1), scale: 6)
+		let northEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: -4), newDestination: SCNVector3(x: 1, y: 0, z: -1), scale: 6)
 		northEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5));
 		scene.rootNode.addChildNode(northEastNode)
 		
-		var southWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: 4), newDestination: SCNVector3(x: -1, y: 0, z: 1), scale: 6)
+		let southWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: 4), newDestination: SCNVector3(x: -1, y: 0, z: 1), scale: 6)
 		southWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 2.5));
 		scene.rootNode.addChildNode(southWestNode)
 		
-		var southEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: 4), newDestination: SCNVector3(x: 1, y: 0, z: 1), scale: 6)
+		let southEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: 4), newDestination: SCNVector3(x: 1, y: 0, z: 1), scale: 6)
 		southEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5));
 		scene.rootNode.addChildNode(southEastNode)
 		
-		var topNode = SCNLink(location: SCNVector3(x: 0, y: 4, z: 0), newDestination: SCNVector3(x: 0, y: 1, z: 0), scale: 9)
+		let topNode = SCNLink(location: SCNVector3(x: 0, y: 4, z: 0), newDestination: SCNVector3(x: 0, y: 1, z: 0), scale: 9)
 		topNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
 		scene.rootNode.addChildNode(topNode)
 		
-		var bottomNode = SCNLink(location: SCNVector3(x: 0, y: -4, z: 0), newDestination: SCNVector3(x: 0, y: -1, z: 0), scale: 9)
+		let bottomNode = SCNLink(location: SCNVector3(x: 0, y: -4, z: 0), newDestination: SCNVector3(x: 0, y: -1, z: 0), scale: 9)
 		bottomNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1));
 		scene.rootNode.addChildNode(bottomNode)
 		
-		var windowNode = SCNLink(location: SCNVector3(x: 0, y: 3.5, z: 0), newDestination: SCNVector3(x: 0, y: 3.5, z: 0), scale: 4)
+		let windowNode = SCNLink(location: SCNVector3(x: 0, y: 3.5, z: 0), newDestination: SCNVector3(x: 0, y: 3.5, z: 0), scale: 4)
 		windowNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
 		scene.rootNode.addChildNode(windowNode)
 	}
@@ -265,8 +265,7 @@ class CoreCapsule: SCNNode
 		SCNTransaction.commit()
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

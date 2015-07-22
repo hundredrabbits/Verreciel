@@ -36,7 +36,7 @@ class PanelNavigation : SCNNode
 		rightArrow.position = SCNVector3(x: -0.5, y: 0, z: 0)
 		self.addChildNode(rightArrow)
 		
-		var nameLabel = SCNLabel(text: "navigation", scale: 0.1, align: alignment.center)
+		let nameLabel = SCNLabel(text: "navigation", scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: -0.5, z: 0)
 		nameLabel.name = "label.navigation"
 		self.addChildNode(nameLabel)
@@ -75,8 +75,7 @@ class PanelNavigation : SCNNode
 		radar.update()
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

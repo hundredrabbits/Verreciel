@@ -24,7 +24,7 @@ class PanelBreaker : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 	}
-	
+
 	func addInterface()
 	{
 		let scale:Float = 0.8
@@ -54,8 +54,7 @@ class PanelBreaker : SCNNode
 		if choice == "shield" { shieldToggle.touch() }
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-	}
+	}	
 }

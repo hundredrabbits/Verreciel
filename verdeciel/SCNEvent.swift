@@ -34,10 +34,12 @@ class SCNEvent : SCNNode
 		self.type = type
 		
 		let frequencies = Array(frequency)
-		self.freq1 = String(frequencies[0]).toInt()!
-		self.freq2 = String(frequencies[1]).toInt()!
-		self.freq3 = String(frequencies[2]).toInt()!
-		self.freq4 = String(frequencies[3]).toInt()!
+		/*
+		self.freq1 = Int(String(frequencies[0]))
+		self.freq2 = Int(String(frequencies[1]))
+		self.freq3 = Int(String(frequencies[2]))
+		self.freq4 = Int(String(frequencies[3]))
+*/
 		
 		var eventColor = UIColor.grayColor()
 		
@@ -67,13 +69,12 @@ class SCNEvent : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:-rangeSize,y:0,z:0),color: grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: grey))
 		
-		var eventLabel = SCNLabel(text: newName, scale: 0.075, align: alignment.left)
+		let eventLabel = SCNLabel(text: newName, scale: 0.075, align: alignment.left)
 		eventLabel.position = SCNVector3(x: 0.25, y: 0, z: 0)
 		self.addChildNode(eventLabel)
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

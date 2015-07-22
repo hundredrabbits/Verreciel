@@ -25,6 +25,10 @@ class PanelThruster : SCNNode
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 		update()
 	}
+
+	required init(coder aDecoder: NSCoder) {
+	    fatalError("init(coder:) has not been implemented")
+	}
 	
 	func addInterface()
 	{
@@ -47,10 +51,5 @@ class PanelThruster : SCNNode
 	{
 		knob.update()
 		speedLabel.update("\(Int(knob.value))")
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
 	}
 }

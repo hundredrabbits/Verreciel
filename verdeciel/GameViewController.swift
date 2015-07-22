@@ -90,22 +90,23 @@ class GameViewController: UIViewController
 		sceneComplete()
 	}
 	
-	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+	/*
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
 		}
 	}
 	
-	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
+	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
 		}
 		
-		var dragX = Float(touchPosition.x - touchOrigin.x)
-		var dragY = Float(touchPosition.y - touchOrigin.y)
+		let dragX = Float(touchPosition.x - touchOrigin.x)
+		let dragY = Float(touchPosition.y - touchOrigin.y)
 		
 		touchOrigin = touchPosition
 		
@@ -113,15 +114,17 @@ class GameViewController: UIViewController
 		let yAngle = SCNMatrix4MakeRotation(degToRad(dragX/5), 0, 1, 0)
 		let zAngle = SCNMatrix4MakeRotation(degToRad(0), 0, 0, 1)
 		
-		var rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
-		var cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+		let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
+		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
 	}
-	
+	*/
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
-		let scnView = self.view as! SCNView
 
+		/*
+		let scnView = self.view as! SCNView
+		
 		let p = gestureRecognize.locationInView(scnView)
 		if let hitResults = scnView.hitTest(p, options: nil) {
 			
@@ -133,8 +136,9 @@ class GameViewController: UIViewController
 			else if result.node.isKindOfClass(SCNToggle) { (result.node as! SCNToggle).touch() }
 			else if result.node.isKindOfClass(SCNArrow) { (result.node as! SCNArrow).touch() }
 			else if result.node.isKindOfClass(SCNLink) { (result.node as! SCNLink).touch() }
-			else{ println(result) }
+			else{ print(result) }
 		}
+*/
 	}
 	
 	func sceneComplete()
@@ -145,26 +149,20 @@ class GameViewController: UIViewController
 		scnView.backgroundColor = UIColor.blackColor()
 		scnView.antialiasingMode = SCNAntialiasingMode.None
 		
+		/*
 		let gestureRecognizers = NSMutableArray()
 		gestureRecognizers.addObject(UITapGestureRecognizer(target: self, action: "handleTap:"))
 		if let existingGestureRecognizers = scnView.gestureRecognizers {
 			gestureRecognizers.addObjectsFromArray(existingGestureRecognizers)
 		}
-		scnView.gestureRecognizers = gestureRecognizers as [AnyObject]
+		scnView.gestureRecognizers = gestureRecognizers as [UIGestureRecognizer]
+*/
 	}
 	
 	//
 	
 	override func shouldAutorotate() -> Bool {
 		return true
-	}
-	
-	override func supportedInterfaceOrientations() -> Int {
-		if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-			return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
-		} else {
-			return Int(UIInterfaceOrientationMask.All.rawValue)
-		}
 	}
 	
 	override func didReceiveMemoryWarning() {

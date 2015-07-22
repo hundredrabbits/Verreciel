@@ -34,16 +34,12 @@ class PanelMonitor : SCNNode
 		// Draw the frame
 		
 		let scale:Float = 0.8
-		let nodeA = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale, z: highNode[7].z)
-		let nodeB = SCNVector3(x: highNode[0].x * scale, y: highNode[0].y * scale, z: highNode[0].z)
-		let nodeC = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: lowNode[7].z)
-		let nodeD = SCNVector3(x: lowNode[0].x * scale, y: lowNode[0].y * scale, z: lowNode[0].z)
 		
 		// Draw Radar
 		
-		var northMonitor = SCNNode()
+		let northMonitor = SCNNode()
 		
-		var labelOxygenTitle = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
+		let labelOxygenTitle = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
 		labelOxygenTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		northMonitor.addChildNode(labelOxygenTitle)
 		
@@ -51,7 +47,7 @@ class PanelMonitor : SCNNode
 		oxygenLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		northMonitor.addChildNode(oxygenLabel)
 		
-		var labelShieldTitle = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
+		let labelShieldTitle = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		labelShieldTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
 		northMonitor.addChildNode(labelShieldTitle)
 		
@@ -65,9 +61,9 @@ class PanelMonitor : SCNNode
 		
 		//
 		
-		var eastMonitor = SCNNode()
+		let eastMonitor = SCNNode()
 		
-		var labelElectricTitle = SCNLabel(text: "electricity", scale: 0.1, align: alignment.left)
+		let labelElectricTitle = SCNLabel(text: "electricity", scale: 0.1, align: alignment.left)
 		labelElectricTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		eastMonitor.addChildNode(labelElectricTitle)
 	
@@ -75,7 +71,7 @@ class PanelMonitor : SCNNode
 		electricityLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		eastMonitor.addChildNode(electricityLabel)
 		
-		var labelTemperatureTitle = SCNLabel(text: "temperature", scale: 0.1, align: alignment.left)
+		let labelTemperatureTitle = SCNLabel(text: "temperature", scale: 0.1, align: alignment.left)
 		labelTemperatureTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
 		eastMonitor.addChildNode(labelTemperatureTitle)
 		
@@ -89,13 +85,13 @@ class PanelMonitor : SCNNode
 		
 		//
 		
-		var southMonitor = SCNNode()
+		let southMonitor = SCNNode()
 		
-		var labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
+		let labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
 		labelRadiationTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		southMonitor.addChildNode(labelRadiationTitle)
 		
-		var labelHullTitle = SCNLabel(text: "hull", scale: 0.1, align: alignment.left)
+		let labelHullTitle = SCNLabel(text: "hull", scale: 0.1, align: alignment.left)
 		labelHullTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
 		southMonitor.addChildNode(labelHullTitle)
 		
@@ -111,9 +107,9 @@ class PanelMonitor : SCNNode
 		
 		//
 		
-		var westMonitor = SCNNode()
+		let westMonitor = SCNNode()
 		
-		var noiseLabelTitle	= SCNLabel(text: "noise", scale: 0.1, align: alignment.left)
+		let noiseLabelTitle	= SCNLabel(text: "noise", scale: 0.1, align: alignment.left)
 		noiseLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		westMonitor.addChildNode(noiseLabelTitle)
 		
@@ -187,8 +183,7 @@ class PanelMonitor : SCNNode
 		return modifier
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

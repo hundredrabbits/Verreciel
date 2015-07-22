@@ -53,7 +53,7 @@ class SCNLabel : SCNNode
 		var letterPos = 0
 		for letterCur in characters
 		{
-			var letterNode = letter(String(letterCur),scale:scale)
+			let letterNode = letter(String(letterCur),scale:scale)
 			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: 0, z: 0)
 			nodeOffset.addChildNode(letterNode)
 			
@@ -88,7 +88,7 @@ class SCNLabel : SCNNode
 	{		
 		let letterPivot = SCNNode()
 		
-		var letter = letter.lowercaseString
+		let letter = letter.lowercaseString
 		
 		if letter == "a"
 		{
@@ -342,8 +342,7 @@ class SCNLabel : SCNNode
 		return letterPivot
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

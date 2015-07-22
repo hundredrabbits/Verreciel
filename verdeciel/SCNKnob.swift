@@ -60,7 +60,7 @@ class SCNKnob : SCNNode
 		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))
 		for node in knobMesh.childNodes
 		{
-			var node: SCNNode = node as! SCNNode
+			let node: SCNNode = node as! SCNNode
 			if( value == 0){
 				node.geometry!.firstMaterial?.diffuse.contents = red
 			}
@@ -78,8 +78,7 @@ class SCNKnob : SCNNode
 		thruster.update()
 	}
 	
-	required init(coder aDecoder: NSCoder)
-	{
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -215,19 +215,19 @@ class PanelRadar : SCNNode
 		x += thruster.knob.value * Float(ratio.x)
 		
 		// Cardinals
-		var markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), CGPoint(x: CGFloat(x), y: CGFloat(z)), CGPoint(x: 0, y: 0))) / 90
+		let markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), CGPoint(x: CGFloat(x), y: CGFloat(z)), CGPoint(x: 0, y: 0))) / 90
 		markerHome.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerHomeOrientation)))
 		
 		markerLastStar.opacity = 0
 		markerLastStation.opacity = 0
 		
 		if lastStar != nil {
-			var markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			let markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
 			markerLastStar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStarOrientation)))
 			markerLastStar.opacity = 1
 		}
 		if lastStation != nil && lastStation.x != 0 && lastStation.z != 0 {
-			var markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			let markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
 			markerLastStation.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStationOrientation)))
 			markerLastStar.opacity = 1
 		}
@@ -237,7 +237,7 @@ class PanelRadar : SCNNode
 	{
 		var closestDistance:Float = 9000
 		
-		var shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
+		let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
 	
 		var closestEvent:SCNEvent!
 		
@@ -290,9 +290,8 @@ class PanelRadar : SCNNode
 		labelTargetType.update("")
 		radio.removeTarget()
 	}
-
-	required init(coder aDecoder: NSCoder)
-	{
+	
+	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
