@@ -34,7 +34,7 @@ class SCNEvent : SCNNode
 		self.type = type
 		
 		let frequencies = Array(frequency)
-		/*
+		/* TODO
 		self.freq1 = Int(String(frequencies[0]))
 		self.freq2 = Int(String(frequencies[1]))
 		self.freq3 = Int(String(frequencies[2]))

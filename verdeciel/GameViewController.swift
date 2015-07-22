@@ -90,15 +90,14 @@ class GameViewController: UIViewController
 		sceneComplete()
 	}
 	
-	/*
-	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
 	{
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
 		}
 	}
 	
-	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
 	{
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
@@ -118,7 +117,7 @@ class GameViewController: UIViewController
 		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
 	}
-	*/
+	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
 
