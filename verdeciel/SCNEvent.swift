@@ -24,6 +24,9 @@ class SCNEvent : SCNNode
 	var freq4:Int = 0
 	
 	var isKnown:Bool = false
+	var isTargetted:Bool = false
+	
+	var targetNode:SCNNode!
 	
 	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes,frequency:String)
 	{
@@ -62,16 +65,29 @@ class SCNEvent : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: eventColor))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: eventColor))
 		
-		// Range Size
-		let rangeSize = range/10
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:rangeSize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:-rangeSize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: grey))
+		// Target
+		targetNode = SCNNode()
+		let rangeSize:Float = 0.2
+		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:rangeSize,y:0,z:0),color: red))
+		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: red))
+		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:-rangeSize,y:0,z:0),color: red))
+		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: red))
+		targetNode.opacity = 0
+		self.addChildNode(targetNode)
 		
 		let eventLabel = SCNLabel(text: newName, scale: 0.075, align: alignment.left)
 		eventLabel.position = SCNVector3(x: 0.25, y: 0, z: 0)
 		self.addChildNode(eventLabel)
+	}
+	
+	func update()
+	{
+		if isTargetted == true {
+			targetNode.opacity = 1
+		}
+		else {
+			targetNode.opacity = 0
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder) {

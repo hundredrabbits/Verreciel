@@ -23,7 +23,7 @@ class PanelRadar : SCNNode
 	var labelDistance:SCNLabel!
 	
 	var target:SCNEvent!
-	var targetter:SCNLine!
+	var targetter:SCNNode!
 	
 	var labelTargetName:SCNLabel!
 	var labelTargetType:SCNLabel!
@@ -46,13 +46,25 @@ class PanelRadar : SCNNode
 		name = "radar"
 		addInterface()
 		
-		targetter = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0, z: 0), color: red)
+		targetter = createTargetter()
 		self.addChildNode(targetter)
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
 		
 		createCardinals()
+	}
+	
+	func createTargetter() -> SCNNode
+	{
+		var targetterNode = SCNNode()
+		
+		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0), nodeB: SCNVector3(x: 0.2, y: 0, z: 0), color: red))
+		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.2, z: 0), color: red))
+		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.2, z: 0), nodeB: SCNVector3(x: -0.2, y: 0, z: 0), color: red))
+		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
+		
+		return targetterNode
 	}
 	
 	func createCardinals()
@@ -118,10 +130,10 @@ class PanelRadar : SCNNode
 		
 		// Frame
 		let newScale:Float = 0.65
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
 		
 		shipCursor = SCNNode()
 		
@@ -193,6 +205,8 @@ class PanelRadar : SCNNode
 			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
 			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
 			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
+			
+			event.update()
 		}
 		updateOrientation()
 	}
@@ -261,7 +275,7 @@ class PanelRadar : SCNNode
 			if closestEvent != target {
 				addTarget(closestEvent)
 			}
-			targetter.geometry = SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: target.position.x, y: target.position.y, z: 0), color: UIColor.grayColor()).geometry
+			targetter.position = target.position
 			targetter.opacity = 1
 		}
 		else{
