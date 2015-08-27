@@ -20,6 +20,7 @@ class PanelMonitor : SCNNode
 	var hullLabel:SCNLabel!
 	var radiationLabel:SCNLabel!
 	var noiseLabel:SCNLabel!
+	var sectorNameLabel:SCNLabel!
 	
 	override init()
 	{
@@ -113,9 +114,17 @@ class PanelMonitor : SCNNode
 		noiseLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		westMonitor.addChildNode(noiseLabelTitle)
 		
+		let sectorNameLabelTitle = SCNLabel(text: "Sector", scale: 0.1, align: alignment.left)
+		sectorNameLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
+		westMonitor.addChildNode(sectorNameLabelTitle)
+		
 		noiseLabel = SCNLabel(text: "null", scale: 0.1, align: alignment.right)
 		noiseLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		westMonitor.addChildNode(noiseLabel)
+		
+		sectorNameLabel = SCNLabel(text: "EHXSEVANT", scale: 0.1, align: alignment.right)
+		sectorNameLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
+		westMonitor.addChildNode(sectorNameLabel)
 		
 		westMonitor.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3)); // rotate 90 degrees
 		
