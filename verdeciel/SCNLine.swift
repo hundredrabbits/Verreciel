@@ -28,6 +28,11 @@ class SCNLine : SCNNode
 		self.geometry = line
 	}
 	
+	func color(newColor:UIColor)
+	{
+		self.geometry!.firstMaterial?.diffuse.contents = newColor
+	}
+	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

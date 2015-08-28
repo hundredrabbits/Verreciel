@@ -38,37 +38,47 @@ class SCNEvent : SCNNode
 		
 		let frequencies = Array(frequency)
 		
-		/* TODO
-		self.freq1 = Int(String(frequencies[0]))
-		self.freq2 = Int(String(frequencies[1]))
-		self.freq3 = Int(String(frequencies[2]))
-		self.freq4 = Int(String(frequencies[3]))
-*/
-		
-		var eventColor = UIColor.grayColor()
-		
-		if type == eventTypes.station {
-			eventColor = cyan
-			typeString = "station"
-		}
-		else if type == eventTypes.star {
-			eventColor = red
-			typeString = "star"
-		}
-		else{
-			typeString = "unknown"		
-		}
+		self.freq1 = String(frequencies[0]).toInt()!
+		self.freq2 = String(frequencies[1]).toInt()!
+		self.freq3 = String(frequencies[2]).toInt()!
+		self.freq4 = String(frequencies[3]).toInt()!
 		
 		// Event Size
 		let displaySize = size/10
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: eventColor))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: eventColor))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: eventColor))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: eventColor))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
 		
 		// Add interactible events on the radar
 		self.geometry = SCNPlane(width: 1, height: 1)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
+		
+		update()
+	}
+	
+	func update()
+	{
+		if type == eventTypes.station {
+			typeString = "station"
+		}
+		else if type == eventTypes.star {
+			typeString = "star"
+		}
+		else{
+			typeString = "unknown"
+		}
+		
+		for node in self.childNodes
+		{
+			let line = node as! SCNLine
+			if isKnown == true {
+				line.color(white)
+			}
+			else{
+				line.color(grey)
+			}
+		}
 	}
 	
 	func touch()

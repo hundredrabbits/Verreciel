@@ -95,7 +95,12 @@ class PanelRadar : SCNNode
 			case "sw" : cursorOrientation = -1.5
 			default : cursorOrientation = 2
 		}
-		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ));
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1)
+		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ))
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 	
 	func directionName() -> String

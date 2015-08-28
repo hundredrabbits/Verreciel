@@ -77,12 +77,31 @@ class PanelRadio : SCNNode
 		freq2 = Int(frequencyKnobA.value) + Int(frequencyKnobB.value)
 		freq3 = Int(frequencyKnobB.value) + Int(frequencyKnobC.value)
 		freq4 = Int(frequencyKnobA.value)
+		
+		
+		if target != nil && freq1 == target.freq1 && freq2 == target.freq2 && freq3 == target.freq3 && freq4 == target.freq4 {
+			target.isKnown = true
+			target.update()
+			console.addLine("home<\(target.typeString)>")
+			self.scanComplete()
+		}
+	}
+	
+	func scanComplete()
+	{
+		frequencyKnobA.value = 0
+		frequencyKnobA.update()
+		frequencyKnobB.value = 0
+		frequencyKnobB.update()
+		frequencyKnobC.value = 0
+		frequencyKnobC.update()
 	}
 	
 	func addTarget(target:SCNEvent)
 	{
 		self.target = target
 		targetLabel.update(target.name!)
+		update()
 	}
 	
 	func removeTarget()
