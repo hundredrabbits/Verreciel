@@ -16,6 +16,8 @@
 		57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4F1B40CF4400E3EE83 /* SCNLink.swift */; };
 		570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599451B909E8E000F3E31 /* SCNPoly.swift */; };
 		570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599471B90A20B000F3E31 /* SCNTriangle.swift */; };
+		5705994A1B90D2F4000F3E31 /* PanelWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599491B90D2F4000F3E31 /* PanelWindow.swift */; };
+		5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705994B1B90D8D9000F3E31 /* CoreSpace.swift */; };
 		5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717006D1B4D912000A8F563 /* PanelScanner.swift */; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
@@ -53,6 +55,8 @@
 		57009F4F1B40CF4400E3EE83 /* SCNLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLink.swift; sourceTree = "<group>"; };
 		570599451B909E8E000F3E31 /* SCNPoly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPoly.swift; sourceTree = "<group>"; };
 		570599471B90A20B000F3E31 /* SCNTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTriangle.swift; sourceTree = "<group>"; };
+		570599491B90D2F4000F3E31 /* PanelWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelWindow.swift; sourceTree = "<group>"; };
+		5705994B1B90D8D9000F3E31 /* CoreSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpace.swift; sourceTree = "<group>"; };
 		5717006D1B4D912000A8F563 /* PanelScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelScanner.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				57F645F41B4CACB60088D115 /* PanelRadio.swift */,
 				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
 				5717006D1B4D912000A8F563 /* PanelScanner.swift */,
+				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				579419711B58A3D200F9FF87 /* CorePlayer.swift */,
 				57F3D8C61B58215400B9B859 /* CoreCapsule.swift */,
 				5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */,
+				5705994B1B90D8D9000F3E31 /* CoreSpace.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
+				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */,
@@ -287,6 +294,7 @@
 				57F645F11B4CA2700088D115 /* PanelBeacon.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
+				5705994A1B90D2F4000F3E31 /* PanelWindow.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */,
 				5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */,
 			);

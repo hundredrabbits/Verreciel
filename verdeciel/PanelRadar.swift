@@ -264,6 +264,7 @@ class PanelRadar : SCNNode
 		labelTargetName.update(target.name!)
 		labelTargetType.update(target.typeString!)
 		targetter.position = target.position
+		targetter.opacity = 1
 		console.addLine("scan \(target.name!)")
 		
 		if target.type == eventTypes.star { lastStar = target }

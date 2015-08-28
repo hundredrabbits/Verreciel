@@ -33,5 +33,6 @@ class CoreTime : NSObject
 			player.update()
 		}
 		monitor.update()
+		space.update()
 	}
 }

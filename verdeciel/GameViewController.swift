@@ -42,11 +42,13 @@ var beacon:PanelBeacon!
 var radio:PanelRadio!
 var console:PanelConsole!
 var scanner:PanelScanner!
+var window:PanelWindow!
 
 var time:CoreTime!
 var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
+var space:CoreSpace!
 
 enum alignment {
 	case left
@@ -83,6 +85,9 @@ class GameViewController: UIViewController
 		
 		player = CorePlayer()
 		scene.rootNode.addChildNode(player)
+		
+		space = CoreSpace()
+		scene.rootNode.addChildNode(space)
 		
 		universe = CoreUniverse()
 		time = CoreTime()
