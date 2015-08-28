@@ -42,8 +42,13 @@ class CoreSpace: SCNNode
 		}
 		
 		// Add a new line
-		let randX = Int(arc4random_uniform(40)) - 20
-		let randZ = Int(arc4random_uniform(40)) - 20
+		var randX = Int(arc4random_uniform(40)) - 20
+		var randZ = Int(arc4random_uniform(40)) - 20
+		
+		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), CGPoint(x: 0, y: 0)) < 6 ){
+			randX = Int(arc4random_uniform(40)) - 20
+			randZ = Int(arc4random_uniform(40)) - 20
+		}
 		
 		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: white)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
