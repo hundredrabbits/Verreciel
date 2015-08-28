@@ -14,6 +14,8 @@
 		03DDE18919CE497F008029A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18819CE497F008029A8 /* Images.xcassets */; };
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57009F4F1B40CF4400E3EE83 /* SCNLink.swift */; };
+		570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599451B909E8E000F3E31 /* SCNPoly.swift */; };
+		570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599471B90A20B000F3E31 /* SCNTriangle.swift */; };
 		5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717006D1B4D912000A8F563 /* PanelScanner.swift */; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
@@ -49,6 +51,8 @@
 		03DDE19619CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		57009F4F1B40CF4400E3EE83 /* SCNLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLink.swift; sourceTree = "<group>"; };
+		570599451B909E8E000F3E31 /* SCNPoly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPoly.swift; sourceTree = "<group>"; };
+		570599471B90A20B000F3E31 /* SCNTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTriangle.swift; sourceTree = "<group>"; };
 		5717006D1B4D912000A8F563 /* PanelScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelScanner.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				57F645F21B4CA3710088D115 /* SCNButton.swift */,
 				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 				578E954A1B59A06600B33294 /* SCNArrow.swift */,
+				570599451B909E8E000F3E31 /* SCNPoly.swift */,
+				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
 				5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */,
@@ -271,6 +278,7 @@
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
+				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
