@@ -33,7 +33,6 @@ class SCNButton : SCNNode
 		let optionPanel = SCNNode(geometry: SCNPlane(width: 1, height: 1))
 		optionPanel.geometry?.firstMaterial?.diffuse.contents = clear
 		optionPanel.position = position
-		optionPanel.name = "trigger.\(panelName)"
 		
 		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.75, z: 0),nodeB: SCNVector3(x: 0.75, y: 0, z: 0),color:white))
 		optionPanel.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.75, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.75, z: 0),color:white))

@@ -129,12 +129,6 @@ class PanelRadar : SCNNode
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 		
 		// Frame
-		let newScale:Float = 0.65
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * newScale, y: 0, z: 0), color: grey))
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * -newScale, z: 0), nodeB: SCNVector3(x: highNode[7].x * -newScale, y: 0, z: 0), color: grey))
-		
 		shipCursor = SCNNode()
 		
 		// Ship
@@ -205,8 +199,6 @@ class PanelRadar : SCNNode
 			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
 			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
 			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
-			
-			event.update()
 		}
 		updateOrientation()
 	}
@@ -249,37 +241,20 @@ class PanelRadar : SCNNode
 	
 	func updateTarget()
 	{
-		var closestDistance:Float = 9000
-		
-		let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
-	
-		var closestEvent:SCNEvent!
-		
-		for node in eventView.childNodes
-		{
-			let event = node as! SCNEvent
-			
-			let eventNodePosition = CGPoint(x: CGFloat(event.x), y: CGFloat(event.z))
-			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,eventNodePosition))
-			
-			if event.isKnown == true { continue }
-			if distanceFromShip > 1 { continue }
-			
-			if distanceFromShip < closestDistance {
-				closestDistance = distanceFromShip
-				closestEvent = event
-			}
-		}
-		
-		if closestEvent != nil {
-			if closestEvent != target {
-				addTarget(closestEvent)
-			}
+		if (target != nil) {
 			targetter.position = target.position
 			targetter.opacity = 1
+			
+			let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
+			let eventNodePosition = CGPoint(x: CGFloat(target.x), y: CGFloat(target.z))
+			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,eventNodePosition))
+			
+			if distanceFromShip > 1 {
+				removeTarget()
+			}
 		}
 		else{
-			removeTarget()
+			targetter.opacity = 0
 		}
 	}
 
@@ -288,6 +263,7 @@ class PanelRadar : SCNNode
 		target = event
 		labelTargetName.update(target.name!)
 		labelTargetType.update(target.typeString!)
+		targetter.position = target.position
 		console.addLine("scan \(target.name!)")
 		
 		if target.type == eventTypes.star { lastStar = target }

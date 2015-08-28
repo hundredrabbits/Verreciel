@@ -29,7 +29,6 @@ class SCNKnob : SCNNode
 	{
 		self.geometry = SCNPlane(width: 1, height: 1)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
-		self.name = "trigger.\(panelName)"
 		
 		knobMesh = SCNNode()
 		knobMesh.name = "knob.mesh"

@@ -37,6 +37,7 @@ class SCNEvent : SCNNode
 		self.type = type
 		
 		let frequencies = Array(frequency)
+		
 		/* TODO
 		self.freq1 = Int(String(frequencies[0]))
 		self.freq2 = Int(String(frequencies[1]))
@@ -65,29 +66,14 @@ class SCNEvent : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: eventColor))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: eventColor))
 		
-		// Target
-		targetNode = SCNNode()
-		let rangeSize:Float = 0.2
-		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:rangeSize,y:0,z:0),color: red))
-		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: red))
-		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:rangeSize,z:0),nodeB: SCNVector3(x:-rangeSize,y:0,z:0),color: red))
-		targetNode.addChildNode(SCNLine(nodeA: SCNVector3(x:rangeSize,y:0,z:0),nodeB: SCNVector3(x:0,y:-rangeSize,z:0),color: red))
-		targetNode.opacity = 0
-		self.addChildNode(targetNode)
-		
-		let eventLabel = SCNLabel(text: newName, scale: 0.075, align: alignment.left)
-		eventLabel.position = SCNVector3(x: 0.25, y: 0, z: 0)
-		self.addChildNode(eventLabel)
+		// Add interactible events on the radar
+		self.geometry = SCNPlane(width: 1, height: 1)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
 	}
 	
-	func update()
+	func touch()
 	{
-		if isTargetted == true {
-			targetNode.opacity = 1
-		}
-		else {
-			targetNode.opacity = 0
-		}
+		radar.addTarget(self)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

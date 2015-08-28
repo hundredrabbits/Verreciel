@@ -27,7 +27,6 @@ class SCNLink : SCNNode
 		
 		self.position = activeLocation
 		self.geometry?.firstMaterial?.diffuse.contents = clear
-		self.name = "trigger.move"
 	}
 	
 	func touch()
