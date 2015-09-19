@@ -18,7 +18,7 @@ class SCNTriangle : SCNNode
 		
 		let dat  = NSData(
 			bytes: indexes,
-			length: sizeof(CInt) * count(indexes) // Changed to size of CInt * count
+			length: sizeof(CInt) * indexes.count // Changed to size of CInt * count
 		)
 		let ele = SCNGeometryElement(
 			data: dat,

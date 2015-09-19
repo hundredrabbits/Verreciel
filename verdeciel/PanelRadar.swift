@@ -57,7 +57,7 @@ class PanelRadar : SCNNode
 	
 	func createTargetter() -> SCNNode
 	{
-		var targetterNode = SCNNode()
+		let targetterNode = SCNNode()
 		
 		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0), nodeB: SCNVector3(x: 0.2, y: 0, z: 0), color: red))
 		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.2, z: 0), color: red))
@@ -179,7 +179,7 @@ class PanelRadar : SCNNode
 		labelPositionZ.update(String(Int(z/20)))
 		labelOrientation.update(directionName())
 		
-		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),CGPoint(x: CGFloat(x), y: CGFloat(z)))/1000 )
+		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),point2: CGPoint(x: CGFloat(x), y: CGFloat(z)))/1000 )
 		
 		labelDistance.update( "\(distance)" )
 		
@@ -226,19 +226,19 @@ class PanelRadar : SCNNode
 		x += thruster.knob.value * Float(ratio.x)
 		
 		// Cardinals
-		let markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), CGPoint(x: CGFloat(x), y: CGFloat(z)), CGPoint(x: 0, y: 0))) / 90
+		let markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), point2: CGPoint(x: CGFloat(x), y: CGFloat(z)), center: CGPoint(x: 0, y: 0))) / 90
 		markerHome.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerHomeOrientation)))
 		
 		markerLastStar.opacity = 0
 		markerLastStation.opacity = 0
 		
 		if lastStar != nil {
-			let markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			let markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), point2: CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), center: CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
 			markerLastStar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStarOrientation)))
 			markerLastStar.opacity = 1
 		}
 		if lastStation != nil && lastStation.x != 0 && lastStation.z != 0 {
-			let markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
+			let markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), point2: CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), center: CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
 			markerLastStation.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStationOrientation)))
 			markerLastStar.opacity = 1
 		}
@@ -252,7 +252,7 @@ class PanelRadar : SCNNode
 			
 			let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
 			let eventNodePosition = CGPoint(x: CGFloat(target.x), y: CGFloat(target.z))
-			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,eventNodePosition))
+			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
 			if distanceFromShip > 1 {
 				removeTarget()

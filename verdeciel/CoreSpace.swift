@@ -19,7 +19,7 @@ class CoreSpace: SCNNode
 	{
 		super.init()
 	
-		var sphereNode = SCNNode()
+		let sphereNode = SCNNode()
 		sphereNode.geometry = SCNSphere(radius: 40.0)
 		sphereNode.geometry?.firstMaterial?.doubleSided = true
 		sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
@@ -36,7 +36,7 @@ class CoreSpace: SCNNode
 		// Speedlines
 		for node in speedLines.childNodes
 		{
-			let line = node as! SCNNode
+			let line = node 
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - 0.5, z: line.position.z)
 			if line.position.y < -10 { line.removeFromParentNode() }
 		}
@@ -45,7 +45,7 @@ class CoreSpace: SCNNode
 		var randX = Int(arc4random_uniform(40)) - 20
 		var randZ = Int(arc4random_uniform(40)) - 20
 		
-		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), CGPoint(x: 0, y: 0)) < 6 ){
+		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
 			randX = Int(arc4random_uniform(40)) - 20
 			randZ = Int(arc4random_uniform(40)) - 20
 		}

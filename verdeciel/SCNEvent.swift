@@ -36,12 +36,12 @@ class SCNEvent : SCNNode
 		self.z = z
 		self.type = type
 		
-		let frequencies = Array(frequency)
+		let frequencies = Array(arrayLiteral: frequency)
 		
-		self.freq1 = String(frequencies[0]).toInt()!
-		self.freq2 = String(frequencies[1]).toInt()!
-		self.freq3 = String(frequencies[2]).toInt()!
-		self.freq4 = String(frequencies[3]).toInt()!
+		self.freq1 = Int(String(frequencies[0]))!
+		self.freq2 = Int(String(frequencies[1]))!
+		self.freq3 = Int(String(frequencies[2]))!
+		self.freq4 = Int(String(frequencies[3]))!
 		
 		// Event Size
 		let displaySize = size/10

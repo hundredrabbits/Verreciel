@@ -100,14 +100,14 @@ class GameViewController: UIViewController
 		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
 	}
 	
-	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
 		}
 	}
 	
-	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
+	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
@@ -130,9 +130,14 @@ class GameViewController: UIViewController
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
+		/*
+		
 		let scnView = self.view as! SCNView
 		
+		
+		
 		let p = gestureRecognize.locationInView(scnView)
+		
 		if let hitResults = scnView.hitTest(p, options: nil) {
 			
 			if hitResults.count < 1 { return }
@@ -146,6 +151,7 @@ class GameViewController: UIViewController
 			else if result.node.isKindOfClass(SCNEvent) { (result.node as! SCNEvent).touch() }
 			else{ print(result) }
 		}
+*/
 	}
 	
 	override func prefersStatusBarHidden() -> Bool {
