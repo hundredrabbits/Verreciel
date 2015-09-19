@@ -130,13 +130,21 @@ class GameViewController: UIViewController
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
+		let scnView = self.view as! SCNView
+		let p = gestureRecognize.locationInView(scnView)
+		
+		let hitResults = scnView.hitTest(p, options: nil)
+		
+		print(hitResults)
+
+		
 		/*
 		
-		let scnView = self.view as! SCNView
 		
 		
 		
-		let p = gestureRecognize.locationInView(scnView)
+		
+		
 		
 		if let hitResults = scnView.hitTest(p, options: nil) {
 			
