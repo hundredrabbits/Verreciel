@@ -37,11 +37,11 @@ class SCNLabel : SCNNode
 	func adjustAlignment()
 	{
 		if activeAlignment == alignment.center {
-			let wordLength = Float(Array(arrayLiteral: activeText).count) * (activeScale * 1.5) * -1
+			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1
 			nodeOffset.position = SCNVector3(x: wordLength/2, y: 0, z: 0)
 		}
 		else if activeAlignment == alignment.right {
-			let wordLength = Float(Array(arrayLiteral: activeText).count) * (activeScale * 1.5) * -1
+			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1
 			nodeOffset.position = SCNVector3(x: wordLength, y: 0, z: 0)
 		}
 	}
@@ -54,10 +54,7 @@ class SCNLabel : SCNNode
 			let letterNode = letter(String(letterCur),scale:scale)
 			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: 0, z: 0)
 			nodeOffset.addChildNode(letterNode)
-			
 			letterPos += 1
-			
-			print(letterCur)
 		}
 	}
 	
