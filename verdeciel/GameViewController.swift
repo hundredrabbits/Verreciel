@@ -135,21 +135,8 @@ class GameViewController: UIViewController
 		
 		let hitResults = scnView.hitTest(p, options: nil)
 		
-		print(hitResults)
-
-		
-		/*
-		
-		
-		
-		
-		
-		
-		
-		if let hitResults = scnView.hitTest(p, options: nil) {
-			
-			if hitResults.count < 1 { return }
-			
+		if hitResults.count > 0
+		{
 			let result: AnyObject! = hitResults[0]
 			
 			if result.node.isKindOfClass(SCNKnob) { (result.node as! SCNKnob).touch() }
@@ -159,7 +146,6 @@ class GameViewController: UIViewController
 			else if result.node.isKindOfClass(SCNEvent) { (result.node as! SCNEvent).touch() }
 			else{ print(result) }
 		}
-*/
 	}
 	
 	override func prefersStatusBarHidden() -> Bool {
