@@ -19,13 +19,10 @@ class PanelRadar : SCNNode
 	
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
-	var labelOrientation:SCNLabel!
 	var labelDistance:SCNLabel!
 	
 	var target:SCNEvent!
 	var targetter:SCNNode!
-	
-	var labelTargetType:SCNLabel!
 	
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
@@ -178,16 +175,6 @@ class PanelRadar : SCNNode
 		labelPositionZ.name = "radar.z"
 		self.addChildNode(labelPositionZ)
 		
-		labelOrientation = SCNLabel(text: "r", scale: 0.1, align: alignment.left)
-		labelOrientation.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.3, z: 0)
-		labelOrientation.name = "radar.r"
-		self.addChildNode(labelOrientation)
-		
-		
-		labelTargetType = SCNLabel(text: "Target", scale: 0.1, align: alignment.right)
-		labelTargetType.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale - 0.3, z: 0)
-		self.addChildNode(labelTargetType)
-		
 		labelDistance = SCNLabel(text: "90.4", scale: 0.1, align: alignment.right)
 		labelDistance.position = SCNVector3(x: lowNode[0].x * scale, y: lowNode[7].y * scale, z: 0)
 		self.addChildNode(labelDistance)
@@ -197,7 +184,6 @@ class PanelRadar : SCNNode
 	{
 		labelPositionX.update(String(Int(x/20)))
 		labelPositionZ.update(String(Int(z/20)))
-		labelOrientation.update(directionName())
 		
 		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),point2: CGPoint(x: CGFloat(x), y: CGFloat(z)))/1000 )
 		
@@ -287,7 +273,6 @@ class PanelRadar : SCNNode
 	{
 		target = event
 		outputLabel.update(target.name!)
-		labelTargetType.update(target.typeString!)
 		targetter.position = target.position
 		targetter.opacity = 1
 		console.addLine("scan \(target.name!)")
@@ -303,7 +288,6 @@ class PanelRadar : SCNNode
 		target = nil
 		targetter.opacity = 0
 		outputLabel.update("")
-		labelTargetType.update("")
 		radio.removeTarget()
 	}
 	
