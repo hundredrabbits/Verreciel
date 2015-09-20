@@ -18,6 +18,8 @@ class CorePlayer : SCNNode
 	var health:Int
 	var magic:Int
 	
+	var port:SCNPort!
+	
 	override init()
 	{
 		health = 99
@@ -69,6 +71,32 @@ class CorePlayer : SCNNode
 		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
 		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(displayMagic)
+	}
+	
+	func activatePort(port:SCNPort)
+	{
+		// Create a new connection
+		if self.port != nil && self.port.polarity == true && port.polarity == false {
+			print("New connection")
+		}
+		
+		// 
+		
+		
+		//
+		
+		
+		
+		if self.port != nil {
+			self.port.desactivate()
+		}
+		if( self.port != nil && self.port == port ){
+			self.port.desactivate()
+		}
+		else{
+			self.port = port
+			self.port.activate()
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder) {

@@ -142,11 +142,12 @@ class PanelRadar : SCNNode
 		output = SCNPort(polarity: true)
 		output.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: highNode[7].y * scale, z: 0)
 		
-		inputLabel = SCNLabel(text: "", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.25, y: highNode[7].y * scale, z: 0)
+		inputLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
+		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
+		inputLabel.updateWithColor("radar", color: grey)
 		
-		outputLabel = SCNLabel(text: "output", scale: 0.1, align: alignment.right)
-		outputLabel.position = SCNVector3(x: lowNode[0].x * scale - 0.25, y: highNode[0].y * scale, z: 0)
+		outputLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
+		outputLabel.position = SCNVector3(x: lowNode[0].x * scale - 0.3, y: highNode[0].y * scale, z: 0)
 		outputLabel.updateColor(grey)
 		
 		self.addChildNode(input)
@@ -282,7 +283,7 @@ class PanelRadar : SCNNode
 		targetter.opacity = 0
 		
 		output.removeEvent()
-		outputLabel.updateWithColor("ouput", color: grey)
+		outputLabel.updateWithColor("", color: grey)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

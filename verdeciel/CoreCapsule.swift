@@ -91,8 +91,8 @@ class CoreCapsule: SCNNode
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
 		let eastPanels = SCNNode()
-		breaker = PanelBreaker()
-		eastPanels.addChildNode(breaker)
+		console = PanelConsole()
+		eastPanels.addChildNode(console)
 		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		let southEastPanels = SCNNode()
@@ -108,8 +108,8 @@ class CoreCapsule: SCNNode
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
 		let westPanels = SCNNode()
-		console = PanelConsole()
-		westPanels.addChildNode(console)
+		breaker = PanelBreaker()
+		westPanels.addChildNode(breaker)
 		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		window = PanelWindow()
@@ -295,8 +295,8 @@ class CoreCapsule: SCNNode
 		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[7],lowMidNode[0]], color: UIColor.blackColor()))
 	}
 	
-	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

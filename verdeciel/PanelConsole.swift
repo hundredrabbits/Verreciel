@@ -24,6 +24,13 @@ class PanelConsole : SCNNode
 	
 	var lines:Array<String> = ["","","","","","","",""]
 	
+	// Ports
+	
+	var inputLabel:SCNLabel!
+	var outputLabel:SCNLabel!
+	var input:SCNPort!
+	var output:SCNPort!
+	
 	override init()
 	{
 		super.init()
@@ -45,10 +52,6 @@ class PanelConsole : SCNNode
 		let scale:Float = 0.8
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:white))
-		
-		let titleLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
-		titleLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(titleLabel)
 		
 		consoleLine1 = SCNLabel(text: "> ", scale: 0.1, align: alignment.left)
 		consoleLine1.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.5, z: 0)
@@ -81,6 +84,26 @@ class PanelConsole : SCNNode
 		consoleLine8 = SCNLabel(text: "> ", scale: 0.1, align: alignment.left)
 		consoleLine8.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 2.25, z: 0)
 		self.addChildNode(consoleLine8)
+		
+		// Ports
+		
+		input = SCNPort(polarity: false)
+		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
+		output = SCNPort(polarity: true)
+		output.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: highNode[7].y * scale, z: 0)
+		
+		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
+		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
+		inputLabel.updateWithColor("console", color: grey)
+		
+		outputLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
+		outputLabel.position = SCNVector3(x: lowNode[0].x * scale - 0.3, y: highNode[0].y * scale, z: 0)
+		outputLabel.updateColor(grey)
+		
+		self.addChildNode(input)
+		self.addChildNode(output)
+		self.addChildNode(inputLabel)
+		self.addChildNode(outputLabel)
 	}
 	
 	func touch(knobId:String)

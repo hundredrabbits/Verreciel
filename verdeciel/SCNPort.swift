@@ -19,7 +19,8 @@ class SCNPort : SCNNode
 	var outline4:SCNLine!
 	
 	var polarity:Bool = false
-	var isSelected:Bool = false
+	var isRouted:Bool = false
+	var isActive:Bool = false
 	
 	var event:SCNEvent!
 	
@@ -54,12 +55,19 @@ class SCNPort : SCNNode
 	
 	func touch()
 	{
+		player.activatePort(self)
 		update()
 	}
 	
 	func update()
 	{
-		if( event != nil && polarity == true ){
+		if( isActive == true ){
+			outline1.color(grey)
+			outline2.color(grey)
+			outline3.color(grey)
+			outline4.color(grey)
+		}
+		else if( polarity == true ){
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -77,6 +85,18 @@ class SCNPort : SCNNode
 			outline3.color(grey)
 			outline4.color(grey)
 		}
+	}
+	
+	func activate()
+	{
+		isActive = true
+		update()
+	}
+	
+	func desactivate()
+	{
+		isActive = false
+		update()
 	}
 	
 	func addEvent(event:SCNEvent)
