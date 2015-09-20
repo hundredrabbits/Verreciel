@@ -21,9 +21,6 @@ class PanelRadar : SCNNode
 	var labelPositionZ:SCNLabel!
 	var labelDistance:SCNLabel!
 	
-	var target:SCNEvent!
-	var targetter:SCNNode!
-	
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
 	
@@ -35,6 +32,8 @@ class PanelRadar : SCNNode
 	
 	var lastStation:SCNEvent!
 	var lastStar:SCNEvent!
+	
+	var targetter:SCNNode!
 	
 	// Ports
 	
@@ -54,7 +53,6 @@ class PanelRadar : SCNNode
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
-		
 		
 		createCardinals()
 	}
@@ -137,33 +135,32 @@ class PanelRadar : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 		
-		// Frame
-		shipCursor = SCNNode()
-		
 		// Ports
+		
 		input = SCNPort(polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
 		output = SCNPort(polarity: true)
 		output.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: highNode[7].y * scale, z: 0)
 		
-		inputLabel = SCNLabel(text: "input", scale: 0.1, align: alignment.left)
+		inputLabel = SCNLabel(text: "", scale: 0.1, align: alignment.left)
 		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.25, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(inputLabel)
 		
 		outputLabel = SCNLabel(text: "output", scale: 0.1, align: alignment.right)
 		outputLabel.position = SCNVector3(x: lowNode[0].x * scale - 0.25, y: highNode[0].y * scale, z: 0)
-		self.addChildNode(outputLabel)
+		outputLabel.updateColor(grey)
 		
 		self.addChildNode(input)
 		self.addChildNode(output)
-		
+		self.addChildNode(inputLabel)
+		self.addChildNode(outputLabel)
 		
 		// Ship
-		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.15, z: 0),nodeB: SCNVector3(x: 0.15, y: 0, z: 0),color:white))
-		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.15, z: 0),nodeB: SCNVector3(x: -0.15, y: 0, z: 0),color:white))
+		
+		shipCursor = SCNNode()
+		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: 0.2, y: 0, z: 0),color:white))
+		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: -0.2, y: 0, z: 0),color:white))
+		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: 0, y: -0.2, z: 0),color:grey))
 		self.addChildNode(shipCursor)
-		
-		
 		
 		labelPositionX = SCNLabel(text: "x", scale: 0.1, align: alignment.left)
 		labelPositionX.position = SCNVector3(x: lowNode[7].x * scale, y: lowNode[7].y * scale, z: 0)
@@ -252,12 +249,12 @@ class PanelRadar : SCNNode
 	
 	func updateTarget()
 	{
-		if (target != nil) {
-			targetter.position = target.position
+		if (output.event != nil) {
+			targetter.position = output.event.position
 			targetter.opacity = 1
 			
 			let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
-			let eventNodePosition = CGPoint(x: CGFloat(target.x), y: CGFloat(target.z))
+			let eventNodePosition = CGPoint(x: CGFloat(output.event.x), y: CGFloat(output.event.z))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
 			if distanceFromShip > 1 {
@@ -271,24 +268,21 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
-		target = event
-		outputLabel.update(target.name!)
-		targetter.position = target.position
+		print("add")
+		output.addEvent(event)
+		outputLabel.updateWithColor(event.name!, color: white)
+		
+		targetter.position = event.position
 		targetter.opacity = 1
-		console.addLine("scan \(target.name!)")
-		
-		if target.type == eventTypes.star { lastStar = target }
-		if target.type == eventTypes.station { lastStation = target }
-		
-		radio.addTarget(target)
 	}
 	
 	func removeTarget()
 	{
-		target = nil
+		print("remove")
 		targetter.opacity = 0
-		outputLabel.update("")
-		radio.removeTarget()
+		
+		output.removeEvent()
+		outputLabel.updateWithColor("ouput", color: grey)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

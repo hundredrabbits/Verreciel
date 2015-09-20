@@ -156,6 +156,7 @@
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
 				57A0F10E1B3DDABF0007650F /* SCNEvent.swift */,
 				57009F4F1B40CF4400E3EE83 /* SCNLink.swift */,
 				573627771B4C06DF00899EBC /* SCNToggle.swift */,
@@ -166,7 +167,6 @@
 				578E954A1B59A06600B33294 /* SCNArrow.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
-				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";

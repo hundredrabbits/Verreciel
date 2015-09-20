@@ -21,9 +21,13 @@ class SCNPort : SCNNode
 	var polarity:Bool = false
 	var isSelected:Bool = false
 	
+	var event:SCNEvent!
+	
 	init(polarity:Bool)
 	{
 		self.polarity = polarity
+		self.event = nil
+		
 		super.init()
 		
 		addGeometry()
@@ -50,30 +54,41 @@ class SCNPort : SCNNode
 	
 	func touch()
 	{
-		isSelected = true
 		update()
 	}
 	
 	func update()
 	{
-		if( isSelected == true ){
-			outline1.color(grey)
-			outline2.color(grey)
-			outline3.color(grey)
-			outline4.color(grey)
-		}
-		else if( polarity == true ){
+		if( event != nil && polarity == true ){
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
 			outline4.color(cyan)
 		}
-		else{
+		else if( polarity == false ){
 			outline1.color(red)
 			outline2.color(red)
 			outline3.color(red)
 			outline4.color(red)
 		}
+		else{
+			outline1.color(grey)
+			outline2.color(grey)
+			outline3.color(grey)
+			outline4.color(grey)
+		}
+	}
+	
+	func addEvent(event:SCNEvent)
+	{
+		self.event = event
+		update()
+	}
+	
+	func removeEvent()
+	{
+		self.event = nil
+		update()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

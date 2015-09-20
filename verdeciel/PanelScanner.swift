@@ -65,6 +65,7 @@ class PanelScanner : SCNNode
 	
 	func update()
 	{
+		/*
 		var val1 = Float(0)
 		var val2 = Float(0)
 		var val3 = Float(0)
@@ -92,6 +93,7 @@ class PanelScanner : SCNNode
 		val3Right.geometry = SCNLine(nodeA: SCNVector3(x: 0.25, y: val3/4, z: 0), nodeB: SCNVector3(x: 0.5, y: avg34/4, z: 0),color:white).geometry
 		val4Left.geometry = SCNLine(nodeA: SCNVector3(x: 0.5, y: avg34/4, z: 0), nodeB: SCNVector3(x: 0.75, y: val4/4, z: 0),color:white).geometry
 		val4Right.geometry = SCNLine(nodeA: SCNVector3(x: 0.75, y: val4/4, z: 0), nodeB: SCNVector3(x: 1, y: 0, z: 0),color:white).geometry
+*/
 	}
 	
 	func touch()
