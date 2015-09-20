@@ -19,7 +19,7 @@ class SCNPort : SCNNode
 	var outline4:SCNLine!
 	
 	var polarity:Bool = false
-	var active:Bool = true
+	var isSelected:Bool = false
 	
 	init(polarity:Bool)
 	{
@@ -50,11 +50,13 @@ class SCNPort : SCNNode
 	
 	func touch()
 	{
+		isSelected = true
+		update()
 	}
 	
 	func update()
 	{
-		if( active == false ){
+		if( isSelected == true ){
 			outline1.color(grey)
 			outline2.color(grey)
 			outline3.color(grey)

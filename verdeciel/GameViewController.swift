@@ -144,6 +144,7 @@ class GameViewController: UIViewController
 			else if result.node.isKindOfClass(SCNArrow) { (result.node as! SCNArrow).touch() }
 			else if result.node.isKindOfClass(SCNLink) { (result.node as! SCNLink).touch() }
 			else if result.node.isKindOfClass(SCNEvent) { (result.node as! SCNEvent).touch() }
+			else if result.node.isKindOfClass(SCNPort) { (result.node as! SCNPort).touch() }
 			else{ print(result) }
 		}
 	}
