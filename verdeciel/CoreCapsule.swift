@@ -96,7 +96,7 @@ class CoreCapsule: SCNNode
 		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		let southEastPanels = SCNNode()
-		beacon = PanelBeacon()
+		beacon = PanelHatch()
 		southEastPanels.addChildNode(beacon)
 		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
 		

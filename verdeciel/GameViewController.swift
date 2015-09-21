@@ -38,7 +38,7 @@ var navigation:PanelNavigation!
 var monitor:PanelMonitor!
 var thruster:PanelThruster!
 var breaker:PanelBreaker!
-var beacon:PanelBeacon!
+var beacon:PanelHatch!
 var radio:PanelRadio!
 var console:PanelConsole!
 var scanner:PanelScanner!

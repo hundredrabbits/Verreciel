@@ -38,6 +38,7 @@ class SCNCommand : SCNNode
 		
 		output = SCNPort(host: self, polarity: true)
 		output.position = SCNVector3((highNode[0].x * 0.8 * 2) - 0.15, 0, 0)
+		output.opacity = 0
 		
 		self.addChildNode(label)
 		self.addChildNode(detailsLabel)
@@ -63,6 +64,11 @@ class SCNCommand : SCNNode
 			self.details = command.details
 			detailsLabel.update(self.details)
 		}
+	}
+	
+	override func bang()
+	{
+		output.connection.host.listen(self.event)
 	}
 
 	required init?(coder aDecoder: NSCoder)

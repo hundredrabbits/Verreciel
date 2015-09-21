@@ -19,7 +19,7 @@ class SCNLabel : SCNNode
 	var nodeOffset:SCNNode!
 	var color:UIColor = UIColor.whiteColor()
 	
-	init(text:String,scale:Float,align:alignment)
+	init(text:String,scale:Float = 0.1,align:alignment = alignment.left)
 	{
 		super.init()
 		
