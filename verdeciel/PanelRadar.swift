@@ -269,7 +269,6 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
-		print("add")
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		

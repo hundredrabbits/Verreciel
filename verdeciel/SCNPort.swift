@@ -23,6 +23,7 @@ class SCNPort : SCNNode
 	var isActive:Bool = false
 	
 	var event:SCNEvent!
+	var connection:SCNPort!
 	
 	init(polarity:Bool)
 	{
@@ -111,7 +112,17 @@ class SCNPort : SCNNode
 		update()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	func connect(port:SCNPort)
+	{
+		self.connection = port
+		
+		
+		
+		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: red))
+	}
+	
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

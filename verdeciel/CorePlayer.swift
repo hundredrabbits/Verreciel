@@ -78,6 +78,7 @@ class CorePlayer : SCNNode
 		// Create a new connection
 		if self.port != nil && self.port.polarity == true && port.polarity == false {
 			print("New connection")
+			self.port.connect(port)
 		}
 		
 		// 
