@@ -13,43 +13,59 @@ import Foundation
 
 class PanelThruster : SCNNode
 {
-	var knob:SCNKnob!
-	var speedLabel:SCNLabel!
+	var nameLabel = SCNNode()
+	
+	// Ports
+	
+	var input:SCNPort!
 	
 	override init()
 	{
 		super.init()
+		
 		name = "thruster"
 		addInterface()
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		
 		update()
 	}
 
-	required init(coder aDecoder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
-	}
 	
 	func addInterface()
 	{
-		knob = SCNKnob(newName:"thruster")
-		self.addChildNode(knob)
+		let scale:Float = 0.75
 		
-		let scale:Float = 0.7
+		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
+		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
+		self.addChildNode(nameLabel)
 		
-		let titleLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.center)
-		titleLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(titleLabel)
+		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: cyan))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: cyan))
 		
-		speedLabel = SCNLabel(text: "-", scale: 0.1, align: alignment.center)
-		speedLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
-		speedLabel.name = "label.speed"
-		self.addChildNode(speedLabel)
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(0.5, -0.5, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: white))
+		
+		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: white))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: white))
+		
+//		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.5, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: white))
+		
+		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
+		
+		
+		// Ports
+		
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
+		
+		self.addChildNode(input)
 	}
 	
-	override func update()
+	required init(coder aDecoder: NSCoder)
 	{
-		knob.update()
-		speedLabel.update("\(Int(knob.value))")
+		fatalError("init(coder:) has not been implemented")
 	}
 }

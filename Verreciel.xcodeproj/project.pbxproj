@@ -23,6 +23,7 @@
 		571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* PanelCargo.swift */; settings = {ASSET_TAGS = (); }; };
 		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; settings = {ASSET_TAGS = (); }; };
 		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; settings = {ASSET_TAGS = (); }; };
+		571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* PanelBattery.swift */; settings = {ASSET_TAGS = (); }; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
@@ -41,7 +42,6 @@
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
 		57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3D8C61B58215400B9B859 /* CoreCapsule.swift */; };
 		57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F01B4CA2700088D115 /* PanelHatch.swift */; };
-		57F645F31B4CA3710088D115 /* SCNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F21B4CA3710088D115 /* SCNButton.swift */; };
 		57F645F51B4CACB60088D115 /* PanelRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F41B4CACB60088D115 /* PanelRadio.swift */; };
 		57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F61B4CC0C20088D115 /* PanelConsole.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +67,7 @@
 		571728E01BB049BB002782A3 /* PanelCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCargo.swift; sourceTree = "<group>"; };
 		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
 		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
+		571728E91BB07FB8002782A3 /* PanelBattery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBattery.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
 		57F3D8C61B58215400B9B859 /* CoreCapsule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreCapsule.swift; sourceTree = "<group>"; };
 		57F645F01B4CA2700088D115 /* PanelHatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelHatch.swift; sourceTree = "<group>"; };
-		57F645F21B4CA3710088D115 /* SCNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNButton.swift; sourceTree = "<group>"; };
 		57F645F41B4CACB60088D115 /* PanelRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadio.swift; sourceTree = "<group>"; };
 		57F645F61B4CC0C20088D115 /* PanelConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelConsole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +161,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		571728E61BB07F98002782A3 /* Low */ = {
+			isa = PBXGroup;
+			children = (
+				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
+				573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */,
+				5717006D1B4D912000A8F563 /* PanelScanner.swift */,
+			);
+			name = Low;
+			sourceTree = "<group>";
+		};
+		571728EB1BB07FCA002782A3 /* Mid */ = {
+			isa = PBXGroup;
+			children = (
+				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
+				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
+				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
+				571728E01BB049BB002782A3 /* PanelCargo.swift */,
+				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
+			);
+			name = Mid;
+			sourceTree = "<group>";
+		};
+		571728EC1BB07FCE002782A3 /* High */ = {
+			isa = PBXGroup;
+			children = (
+				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
+				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
+			);
+			name = High;
+			sourceTree = "<group>";
+		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,12 +203,11 @@
 				573627771B4C06DF00899EBC /* SCNToggle.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				573627751B4BFD2900899EBC /* SCNKnob.swift */,
-				57F645F21B4CA3710088D115 /* SCNButton.swift */,
-				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 				578E954A1B59A06600B33294 /* SCNArrow.swift */,
+				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
-				571728E21BB05595002782A3 /* SCNTrigger.swift */,
+				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -185,17 +215,11 @@
 		5736277A1B4C06FE00899EBC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
-				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
-				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
-				571728E01BB049BB002782A3 /* PanelCargo.swift */,
-				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
-				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
-				573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */,
-				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
+				571728EC1BB07FCE002782A3 /* High */,
+				571728EB1BB07FCA002782A3 /* Mid */,
+				571728E61BB07F98002782A3 /* Low */,
 				5736277B1B4C0A2300899EBC /* PanelBreaker.swift */,
 				57F645F41B4CACB60088D115 /* PanelRadio.swift */,
-				5717006D1B4D912000A8F563 /* PanelScanner.swift */,
-				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -309,7 +333,7 @@
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */,
-				57F645F31B4CA3710088D115 /* SCNButton.swift in Sources */,
+				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,

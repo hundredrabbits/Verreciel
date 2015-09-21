@@ -90,6 +90,11 @@ class CoreCapsule: SCNNode
 		northEastPanels.addChildNode(cargo)
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
+		let northWestPanels = SCNNode()
+		thruster = PanelThruster()
+		northWestPanels.addChildNode(thruster)
+		northWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5)); // rotate 90 degrees
+		
 		let eastPanels = SCNNode()
 		console = PanelConsole()
 		eastPanels.addChildNode(console)
@@ -116,6 +121,7 @@ class CoreCapsule: SCNNode
 		
 		self.addChildNode(northPanels)
 		self.addChildNode(northEastPanels)
+		self.addChildNode(northWestPanels)
 		self.addChildNode(eastPanels)
 		self.addChildNode(southEastPanels)
 		self.addChildNode(southPanels)
