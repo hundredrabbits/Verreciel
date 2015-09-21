@@ -131,7 +131,7 @@ class PanelMonitor : SCNNode
 		self.addChildNode(westMonitor)
 	}
 	
-	func update()
+	override func update()
 	{
 		if capsule == nil { return }
 		capsule.oxygen += oxygenMod()

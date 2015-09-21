@@ -45,7 +45,7 @@ class PanelBeacon : SCNNode
 		update()
 	}
 	
-	func update()
+	override func update()
 	{
 	}
 	

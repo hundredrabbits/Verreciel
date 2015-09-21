@@ -39,7 +39,7 @@ class CorePlayer : SCNNode
 		addHelmet()
 	}
 	
-	func update()
+	override func update()
 	{
 		displayHealth.update("\(health)hp")
 		displayMagic.update("\(magic)mp")
@@ -79,14 +79,11 @@ class CorePlayer : SCNNode
 		if self.port != nil && self.port.polarity == true && port.polarity == false {
 			print("New connection")
 			self.port.connect(port)
+			port.desactivate()
+			self.port.desactivate()
+			self.port = nil
+			return
 		}
-		
-		// 
-		
-		
-		//
-		
-		
 		
 		if self.port != nil {
 			self.port.desactivate()
@@ -98,6 +95,11 @@ class CorePlayer : SCNNode
 			self.port = port
 			self.port.activate()
 		}
+	}
+	
+	func desactivatePort()
+	{
+		self.port.desactivate()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

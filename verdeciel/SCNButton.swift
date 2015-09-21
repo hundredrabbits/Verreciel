@@ -57,7 +57,7 @@ class SCNButton : SCNNode
 		update()
 	}
 	
-	func update()
+	override func update()
 	{
 	}
 	

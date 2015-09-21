@@ -53,7 +53,7 @@ class SCNArrow : SCNNode
 		}
 	}
 	
-	func update()
+	override func update()
 	{
 	
 	}

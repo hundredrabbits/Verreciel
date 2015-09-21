@@ -43,6 +43,7 @@ var radio:PanelRadio!
 var console:PanelConsole!
 var scanner:PanelScanner!
 var window:PanelWindow!
+var cargo:PanelCargo!
 
 var time:CoreTime!
 var universe:CoreUniverse!

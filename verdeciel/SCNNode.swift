@@ -18,6 +18,11 @@ extension SCNNode
 		print("This node has no touch action")
 	}
 	
+	func update()
+	{
+		print("This node has no touch action")
+	}
+	
 	func bang()
 	{
 		print("This node has no bang action")

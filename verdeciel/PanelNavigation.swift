@@ -42,7 +42,7 @@ class PanelNavigation : SCNNode
 		self.addChildNode(nameLabel)
 	}
 	
-	func update()
+	override func update()
 	{
 	}
 	

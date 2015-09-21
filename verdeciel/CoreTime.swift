@@ -24,9 +24,9 @@ class CoreTime : NSObject
 	
 	func tic()
 	{
-		if thruster.knob.value > 0 {
-			radar.update()
-		}
+//		if thruster.knob.value > 0 {
+//			radar.update()
+//		}
 		
 		if( capsule.oxygen < 10 && player.health > 0 ){
 			player.health -= 1

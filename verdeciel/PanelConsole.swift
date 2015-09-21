@@ -111,7 +111,7 @@ class PanelConsole : SCNNode
 		
 	}
 	
-	func update()
+	override func update()
 	{
 		consoleLine1.update("  \(lines[0])")
 		consoleLine2.update("  \(lines[1])")

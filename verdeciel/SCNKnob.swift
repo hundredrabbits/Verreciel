@@ -53,7 +53,7 @@ class SCNKnob : SCNNode
 		self.position = position
 	}
 	
-	func update()
+	override func update()
 	{
 		let targetAngle = Double(value) * -1
 		knobMesh.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI/2 * targetAngle)), duration: 0.7))

@@ -82,7 +82,7 @@ class SCNToggle : SCNNode
 		update()
 	}
 	
-	func update()
+	override func update()
 	{
 		if( !active ){
 			outline1.geometry!.firstMaterial?.diffuse.contents = red

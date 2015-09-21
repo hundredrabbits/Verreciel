@@ -43,7 +43,7 @@ class PanelBreaker : SCNNode
 		self.addChildNode(oxygenToggle)
 	}
 	
-	func update()
+	override func update()
 	{
 	
 	}

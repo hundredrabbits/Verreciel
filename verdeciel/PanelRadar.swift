@@ -178,7 +178,7 @@ class PanelRadar : SCNNode
 		self.addChildNode(labelDistance)
 	}
 	
-	func update()
+	override func update()
 	{
 		labelPositionX.update(String(Int(x/20)))
 		labelPositionZ.update(String(Int(z/20)))
@@ -211,6 +211,7 @@ class PanelRadar : SCNNode
 		}
 		updateOrientation()
 	}
+	
 	func updatePosition()
 	{
 		var ratio = CGPoint(x: 0, y: 1)
@@ -226,8 +227,8 @@ class PanelRadar : SCNNode
 			default : ratio = CGPoint(x: 0, y: -1)
 		}
 		
-		z += thruster.knob.value * Float(ratio.y)
-		x += thruster.knob.value * Float(ratio.x)
+//		z += thruster.knob.value * Float(ratio.y)
+//		x += thruster.knob.value * Float(ratio.x)
 		
 		// Cardinals
 		let markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), point2: CGPoint(x: CGFloat(x), y: CGFloat(z)), center: CGPoint(x: 0, y: 0))) / 90
@@ -269,7 +270,6 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
-		output.disconnect()
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		

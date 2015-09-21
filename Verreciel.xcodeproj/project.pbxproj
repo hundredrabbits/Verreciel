@@ -20,6 +20,7 @@
 		5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705994B1B90D8D9000F3E31 /* CoreSpace.swift */; };
 		5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717006D1B4D912000A8F563 /* PanelScanner.swift */; };
 		571728DF1BB03455002782A3 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728DE1BB03455002782A3 /* SCNNode.swift */; settings = {ASSET_TAGS = (); }; };
+		571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* PanelCargo.swift */; settings = {ASSET_TAGS = (); }; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
@@ -61,6 +62,7 @@
 		5705994B1B90D8D9000F3E31 /* CoreSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpace.swift; sourceTree = "<group>"; };
 		5717006D1B4D912000A8F563 /* PanelScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelScanner.swift; sourceTree = "<group>"; };
 		571728DE1BB03455002782A3 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
+		571728E01BB049BB002782A3 /* PanelCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCargo.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
 				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
+				571728E01BB049BB002782A3 /* PanelCargo.swift */,
 				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
 				573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */,
 				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
@@ -279,6 +282,7 @@
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
+				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */,
 				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,

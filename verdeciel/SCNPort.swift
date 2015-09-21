@@ -66,7 +66,7 @@ class SCNPort : SCNNode
 		update()
 	}
 	
-	func update()
+	override func update()
 	{
 		if( isActive == true ){
 			outline1.color(grey)
@@ -87,21 +87,23 @@ class SCNPort : SCNNode
 			outline4.color(red)
 		}
 		else{
-			outline1.color(grey)
-			outline2.color(grey)
-			outline3.color(grey)
-			outline4.color(grey)
+			outline1.color(white)
+			outline2.color(white)
+			outline3.color(white)
+			outline4.color(white)
 		}
 	}
 	
 	func activate()
 	{
+		print("activate")
 		isActive = true
 		update()
 	}
 	
 	func desactivate()
 	{
+		print("desactivate")
 		isActive = false
 		update()
 	}
@@ -121,7 +123,7 @@ class SCNPort : SCNNode
 	func connect(port:SCNPort)
 	{
 		self.connection = port
-		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: red).geometry
+		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: white).geometry
 		
 		host.bang()
 	}
@@ -129,7 +131,7 @@ class SCNPort : SCNNode
 	func disconnect()
 	{
 		self.connection = nil
-		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: red).geometry
+		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white).geometry
 	}
 	
 	func bang(event:SCNEvent)

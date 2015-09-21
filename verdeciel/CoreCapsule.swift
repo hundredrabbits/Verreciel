@@ -63,7 +63,7 @@ class CoreCapsule: SCNNode
 		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 	}
 	
-	func update()
+	override func update()
 	{
 		radar.update()
 		navigation.update()
@@ -86,8 +86,8 @@ class CoreCapsule: SCNNode
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
 		let northEastPanels = SCNNode()
-		thruster = PanelThruster()
-		northEastPanels.addChildNode(thruster)
+		cargo = PanelCargo()
+		northEastPanels.addChildNode(cargo)
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
 		let eastPanels = SCNNode()

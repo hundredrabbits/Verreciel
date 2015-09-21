@@ -111,7 +111,7 @@ class PanelRadio : SCNNode
 		scanner.update()
 	}
 	
-	func update()
+	override func update()
 	{
 		updateFrequency()
 		

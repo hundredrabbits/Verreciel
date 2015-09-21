@@ -47,7 +47,7 @@ class PanelThruster : SCNNode
 		self.addChildNode(speedLabel)
 	}
 	
-	func update()
+	override func update()
 	{
 		knob.update()
 		speedLabel.update("\(Int(knob.value))")

@@ -60,7 +60,7 @@ class SCNEvent : SCNNode
 		update()
 	}
 	
-	func update()
+	override func update()
 	{
 		if type == eventTypes.station {
 			typeString = "station"

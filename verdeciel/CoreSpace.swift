@@ -31,7 +31,7 @@ class CoreSpace: SCNNode
 		
 	}
 	
-	func update()
+	override func update()
 	{
 		// Speedlines
 		for node in speedLines.childNodes

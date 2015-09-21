@@ -63,7 +63,7 @@ class PanelScanner : SCNNode
 		self.addChildNode(nameLabel)
 	}
 	
-	func update()
+	override func update()
 	{
 		/*
 		var val1 = Float(0)
