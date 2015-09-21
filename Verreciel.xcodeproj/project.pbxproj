@@ -21,6 +21,8 @@
 		5717006E1B4D912000A8F563 /* PanelScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717006D1B4D912000A8F563 /* PanelScanner.swift */; };
 		571728DF1BB03455002782A3 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728DE1BB03455002782A3 /* SCNNode.swift */; settings = {ASSET_TAGS = (); }; };
 		571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* PanelCargo.swift */; settings = {ASSET_TAGS = (); }; };
+		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; settings = {ASSET_TAGS = (); }; };
+		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; settings = {ASSET_TAGS = (); }; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
@@ -63,6 +65,8 @@
 		5717006D1B4D912000A8F563 /* PanelScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelScanner.swift; sourceTree = "<group>"; };
 		571728DE1BB03455002782A3 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		571728E01BB049BB002782A3 /* PanelCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCargo.swift; sourceTree = "<group>"; };
+		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
+		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
@@ -161,8 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				571728DE1BB03455002782A3 /* SCNNode.swift */,
-				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
+				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57A0F10E1B3DDABF0007650F /* SCNEvent.swift */,
+				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
 				57009F4F1B40CF4400E3EE83 /* SCNLink.swift */,
 				573627771B4C06DF00899EBC /* SCNToggle.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
@@ -172,6 +177,7 @@
 				578E954A1B59A06600B33294 /* SCNArrow.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
+				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
+				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
 				5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */,
 				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
@@ -292,6 +299,7 @@
 				57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */,
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
+				571728E51BB06413002782A3 /* SCNCommand.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,

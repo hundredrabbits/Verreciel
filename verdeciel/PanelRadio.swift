@@ -82,7 +82,6 @@ class PanelRadio : SCNNode
 		if target != nil && freq1 == target.freq1 && freq2 == target.freq2 && freq3 == target.freq3 && freq4 == target.freq4 {
 			target.isKnown = true
 			target.update()
-			console.addLine("home<\(target.typeString)>")
 			self.scanComplete()
 		}
 	}

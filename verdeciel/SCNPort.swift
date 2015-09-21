@@ -116,7 +116,7 @@ class SCNPort : SCNNode
 	
 	func removeEvent()
 	{
-		self.event = SCNEvent(newName: "what")
+		self.event = nil
 		update()
 	}
 	

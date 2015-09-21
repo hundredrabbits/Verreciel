@@ -68,11 +68,9 @@ enum cardinals {
 }
 enum eventTypes {
 	case unknown
-	case station
-	case star
-	case sentry
-	case warp
-	case missle
+	case stack
+	case location
+	case item
 }
 
 class GameViewController: UIViewController
@@ -139,14 +137,7 @@ class GameViewController: UIViewController
 		if hitResults.count > 0
 		{
 			let result: AnyObject! = hitResults[0]
-			
-			if result.node.isKindOfClass(SCNKnob) { (result.node as! SCNKnob).touch() }
-			else if result.node.isKindOfClass(SCNToggle) { (result.node as! SCNToggle).touch() }
-			else if result.node.isKindOfClass(SCNArrow) { (result.node as! SCNArrow).touch() }
-			else if result.node.isKindOfClass(SCNLink) { (result.node as! SCNLink).touch() }
-			else if result.node.isKindOfClass(SCNEvent) { (result.node as! SCNEvent).touch() }
-			else if result.node.isKindOfClass(SCNPort) { (result.node as! SCNPort).touch() }
-			else{ print(result) }
+			result.node.touch()
 		}
 	}
 	

@@ -14,6 +14,7 @@ import Foundation
 class PanelCargo : SCNNode
 {
 	var nameLabel = SCNNode()
+	var cargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
 	
 	// Ports
 
@@ -27,6 +28,11 @@ class PanelCargo : SCNNode
 		addInterface()
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		
+		cargohold.content.append(SCNEvent(newName: "homeward", type: eventTypes.item, details: "warp"))
+		cargohold.content.append(SCNEvent(newName: "lifeforms", type: eventTypes.item, details: "element"))
+		cargohold.content.append(SCNEvent(newName: "bullets", type: eventTypes.item, details: "ammo", count: 31))
+		
 		update()
 	}
 	
@@ -42,7 +48,7 @@ class PanelCargo : SCNNode
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:white))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey))
@@ -56,10 +62,23 @@ class PanelCargo : SCNNode
 		
 		self.addChildNode(input)
 		self.addChildNode(output)
+		
+		// Trigger
+		
+		self.addChildNode(SCNTrigger(host: self, size: 2))
 	}
 	
 	override func touch()
 	{
+		bang()
+	}
+	
+	override func bang()
+	{
+		if output.connection != nil {
+			output.connection.host.listen(cargohold)
+		}
+		
 	}
 	
 	required init(coder aDecoder: NSCoder) {

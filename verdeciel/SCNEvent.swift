@@ -28,23 +28,21 @@ class SCNEvent : SCNNode
 	
 	var targetNode:SCNNode!
 	
-	init(newName:String,x:Float = 0,z:Float = 0,size:Float = 0,range:Float = 0,type:eventTypes = eventTypes.unknown,frequency:String = "")
+	var content:Array<SCNEvent>!
+	var details:String
+	var count:Int
+	
+	init(newName:String,x:Float = 0,z:Float = 0,size:Float = 0,type:eventTypes,details:String = "", count:Int = 1)
 	{
+		self.content = []
+		self.details = details
+		self.count = count
+		
 		super.init()
 		self.name = newName
 		self.x = x
 		self.z = z
 		self.type = type
-		
-		/*
-		let frequencies = Array(arrayLiteral: frequency)
-		
-		self.freq1 = Int(String(frequencies[0]))!
-		self.freq2 = Int(String(frequencies[1]))!
-		self.freq3 = Int(String(frequencies[2]))!
-		self.freq4 = Int(String(frequencies[3]))!
-
-*/
 		
 		// Event Size
 		let displaySize = size/10
@@ -62,15 +60,7 @@ class SCNEvent : SCNNode
 	
 	override func update()
 	{
-		if type == eventTypes.station {
-			typeString = "station"
-		}
-		else if type == eventTypes.star {
-			typeString = "star"
-		}
-		else{
-			typeString = "unknown"
-		}
+		typeString = "unknown"
 		
 		for node in self.childNodes
 		{
