@@ -39,7 +39,7 @@ class PanelWindow : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: ceilingNode[6].x, y: ceilingNode[4].y + 2, z: 0),nodeB: SCNVector3(x: ceilingNode[6].x, y: ceilingNode[4].y, z: 0),color:white))
 	}
 	
-	func touch()
+	override func touch()
 	{
 	}
 	

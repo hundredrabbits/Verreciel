@@ -24,11 +24,14 @@ class SCNPort : SCNNode
 	
 	var event:SCNEvent!
 	var connection:SCNPort!
+	var wire:SCNLine!
 	
-	init(polarity:Bool)
+	var host = SCNNode()
+	
+	init(host:SCNNode,polarity:Bool)
 	{
 		self.polarity = polarity
-		self.event = nil
+		self.host = host
 		
 		super.init()
 		
@@ -52,9 +55,12 @@ class SCNPort : SCNNode
 		self.addChildNode(outline2)
 		self.addChildNode(outline3)
 		self.addChildNode(outline4)
+		
+		wire = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white)
+		self.addChildNode(wire)
 	}
 	
-	func touch()
+	override func touch()
 	{
 		player.activatePort(self)
 		update()
@@ -108,17 +114,27 @@ class SCNPort : SCNNode
 	
 	func removeEvent()
 	{
-		self.event = nil
+		self.event = SCNEvent(newName: "what")
 		update()
 	}
 	
 	func connect(port:SCNPort)
 	{
 		self.connection = port
+		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: red).geometry
 		
+		host.bang()
+	}
+	
+	func disconnect()
+	{
+		self.connection = nil
+		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: red).geometry
+	}
+	
+	func bang(event:SCNEvent)
+	{
 		
-		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: red))
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -28,10 +28,10 @@ class SCNEvent : SCNNode
 	
 	var targetNode:SCNNode!
 	
-	init(newName:String,x:Float,z:Float,size:Float,range:Float,type:eventTypes,frequency:String)
+	init(newName:String,x:Float = 0,z:Float = 0,size:Float = 0,range:Float = 0,type:eventTypes = eventTypes.unknown,frequency:String = "")
 	{
 		super.init()
-		name = newName
+		self.name = newName
 		self.x = x
 		self.z = z
 		self.type = type
@@ -84,7 +84,7 @@ class SCNEvent : SCNNode
 		}
 	}
 	
-	func touch()
+	override func touch()
 	{
 		radar.addTarget(self)
 	}

@@ -40,7 +40,7 @@ class PanelBeacon : SCNNode
 		self.addChildNode(speedValueLabel)
 	}
 	
-	func touch()
+	override func touch()
 	{
 		update()
 	}

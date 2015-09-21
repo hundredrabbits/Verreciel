@@ -96,7 +96,7 @@ class PanelScanner : SCNNode
 */
 	}
 	
-	func touch()
+	override func touch()
 	{
 	}
 	

@@ -52,7 +52,7 @@ class SCNButton : SCNNode
 		
 	}
 	
-	func touch()
+	override func touch()
 	{
 		update()
 	}

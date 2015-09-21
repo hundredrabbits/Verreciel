@@ -87,9 +87,9 @@ class PanelConsole : SCNNode
 		
 		// Ports
 		
-		input = SCNPort(polarity: false)
+		input = SCNPort(host: self,polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
-		output = SCNPort(polarity: true)
+		output = SCNPort(host: self,polarity: true)
 		output.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: highNode[7].y * scale, z: 0)
 		
 		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
@@ -108,6 +108,7 @@ class PanelConsole : SCNNode
 	
 	func touch(knobId:String)
 	{
+		
 	}
 	
 	func update()
@@ -120,6 +121,14 @@ class PanelConsole : SCNNode
 		consoleLine6.update("  \(lines[5])")
 		consoleLine7.update("  \(lines[6])")
 		consoleLine8.update("> \(lines[7])")
+	}
+	
+	override func listen(event: SCNEvent)
+	{
+		let eventName = event.name!
+		self.addLine("    \(eventName)")
+		self.addLine("X   \(event.x)")
+		self.addLine("Y   \(event.z)")
 	}
 	
 	required init(coder aDecoder: NSCoder) {

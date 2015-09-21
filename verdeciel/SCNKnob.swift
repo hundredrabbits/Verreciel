@@ -69,7 +69,7 @@ class SCNKnob : SCNNode
 		}
 	}
 	
-	func touch()
+	override func touch()
 	{
 		value = value > 3 ? 0 : value + 1
 		update()

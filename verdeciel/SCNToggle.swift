@@ -76,7 +76,7 @@ class SCNToggle : SCNNode
 		self.addChildNode(label)
 	}
 	
-	func touch()
+	override func touch()
 	{
 		active = !active
 		update()

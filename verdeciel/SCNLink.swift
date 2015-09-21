@@ -29,7 +29,7 @@ class SCNLink : SCNNode
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 	}
 	
-	func touch()
+	override func touch()
 	{
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(3)

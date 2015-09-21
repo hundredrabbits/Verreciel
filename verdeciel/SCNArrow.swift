@@ -43,7 +43,7 @@ class SCNArrow : SCNNode
 		}
 	}
 	
-	func touch()
+	override func touch()
 	{
 		if cardinal == cardinals.e {
 			navigation.turn(true)

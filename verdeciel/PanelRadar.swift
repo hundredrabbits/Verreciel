@@ -137,9 +137,9 @@ class PanelRadar : SCNNode
 		
 		// Ports
 		
-		input = SCNPort(polarity: false)
+		input = SCNPort(host: self, polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
-		output = SCNPort(polarity: true)
+		output = SCNPort(host: self, polarity: true)
 		output.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: highNode[7].y * scale, z: 0)
 		
 		inputLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
@@ -269,6 +269,7 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
+		output.disconnect()
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		
@@ -278,11 +279,19 @@ class PanelRadar : SCNNode
 	
 	func removeTarget()
 	{
+		output.disconnect()
 		print("remove")
 		targetter.opacity = 0
 		
 		output.removeEvent()
 		outputLabel.updateWithColor("", color: grey)
+	}
+	
+	override func bang()
+	{
+		if output.event != nil {
+			output.connection.host.listen(output.event)
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder) {
