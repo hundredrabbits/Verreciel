@@ -48,7 +48,7 @@ class CoreCapsule: SCNNode
 		
 		battery.output.connect(thruster.input)
 		
-//		radar.output.connect(pilot.input)
+		radar.output.connect(pilot.input)
 		
 		cargo.output.connect(console.input)
 	}
