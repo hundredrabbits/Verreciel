@@ -238,7 +238,6 @@ class PanelRadar : SCNNode
 	func removeTarget()
 	{
 		output.disconnect()
-		print("remove")
 		targetter.opacity = 0
 		
 		output.removeEvent()

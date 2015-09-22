@@ -32,15 +32,14 @@ class CoreSpace: SCNNode
 	
 	override func update()
 	{
-		// Speedlines
-		for node in speedLines.childNodes
-		{
-			let line = node 
-			line.position = SCNVector3(x: line.position.x, y: line.position.y - 0.5, z: line.position.z)
-			if line.position.y < -10 { line.removeFromParentNode() }
+		if thruster.speed > 0 {
+			addLines()
+			updateLines()
 		}
-		
-		// Add a new line
+	}
+	
+	func addLines()
+	{
 		var randX = Int(arc4random_uniform(40)) - 20
 		var randZ = Int(arc4random_uniform(40)) - 20
 		
@@ -54,9 +53,15 @@ class CoreSpace: SCNNode
 		speedLines.addChildNode(newLine)
 	}
 	
-	func speedLine()
+	func updateLines()
 	{
-		
+		let lineSpeed = Float(thruster.speed) / 2
+		for node in speedLines.childNodes
+		{
+			let line = node
+			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
+			if line.position.y < -10 { line.removeFromParentNode() }
+		}
 	}
 	
 	func fogEvent()
