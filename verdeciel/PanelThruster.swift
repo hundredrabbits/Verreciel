@@ -18,6 +18,14 @@ class PanelThruster : SCNNode
 	var accelerate:SCNTrigger!
 	var decelerate:SCNTrigger!
 	
+	var line1:SCNLine!
+	var line2:SCNLine!
+	var line3:SCNLine!
+	var line4:SCNLine!
+	
+	var maxSpeed:Int = 0
+	var speed:Int = 0
+	
 	// Ports
 	
 	var input:SCNPort!
@@ -42,14 +50,20 @@ class PanelThruster : SCNNode
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
 		
+		// Lines
+		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
+		line2 = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: grey)
+		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: white)
+		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: white)
+		
+		self.addChildNode(line1)
+		self.addChildNode(line2)
+		self.addChildNode(line3)
+		self.addChildNode(line4)
+		
+		// Controls
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: cyan))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: cyan))
-		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: white))
-		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
 		
@@ -66,7 +80,6 @@ class PanelThruster : SCNNode
 		
 		input = SCNPort(host: self,polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
-		
 		self.addChildNode(input)
 	}
 	
@@ -82,12 +95,47 @@ class PanelThruster : SCNNode
 	
 	func speedUp()
 	{
-		print("speed up!")
+		if speed <= maxSpeed {
+			speed += 1
+		}
+		update()
 	}
 	
 	func speedDown()
 	{
-		print("speed down!")
+		if speed >= 1 {
+			speed -= 1
+		}
+		update()
+	}
+	
+	override func update()
+	{
+		maxSpeed = 3
+		
+		if speed >= maxSpeed {
+			speed = maxSpeed
+		}
+		
+		line1.opacity = 1
+		line2.opacity = 1
+		line3.opacity = 1
+		line4.opacity = 1
+		
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+		
+		if speed > 0 { line1.color(white) }
+		if speed > 1 { line2.color(white) }
+		if speed > 2 { line3.color(white) }
+		if speed > 3 { line4.color(white) }
+		
+		if maxSpeed < 4 { line4.opacity = 0 }
+		if maxSpeed < 3 { line3.opacity = 0 }
+		if maxSpeed < 2 { line2.opacity = 0 }
+		if maxSpeed < 1 { line1.opacity = 0 }
 	}
 	
 	required init(coder aDecoder: NSCoder)
