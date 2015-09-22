@@ -160,7 +160,6 @@ class PanelRadar : SCNNode
 		shipCursor = SCNNode()
 		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: 0.2, y: 0, z: 0),color:white))
 		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: -0.2, y: 0, z: 0),color:white))
-		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: 0, y: -0.2, z: 0),color:grey))
 		self.addChildNode(shipCursor)
 		
 		labelPositionX = SCNLabel(text: "x", scale: 0.1, align: alignment.left)

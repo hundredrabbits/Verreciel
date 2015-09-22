@@ -14,6 +14,7 @@ import Foundation
 class PanelPilot : SCNNode
 {
 	var nameLabel = SCNLabel(text: "")
+	var directionLabel = SCNLabel(text: "")
 	
 	var targetDirection = Int()
 	var targetDirectionIndicator = SCNNode()
@@ -44,6 +45,10 @@ class PanelPilot : SCNNode
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
+		
+		directionLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+		directionLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		self.addChildNode(directionLabel)
 		
 		//
 		
@@ -83,12 +88,14 @@ class PanelPilot : SCNNode
 	{
 		if capsule != nil {
 			print("Ship: \(capsule.direction) Target:\(targetDirection)")
-			let targetDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * -1
+			let targetDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 			targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-			let staticDirectionNormal = Double(Float(capsule.direction)/180) * -1
+			let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
 			staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
-			let eventsDirectionNormal = Double(Float(targetDirection)/180) * -1
+			let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 			eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+			
+			directionLabel.update(String(format: "%.0f",Float(targetDirection - capsule.direction)))
 		}
 	}
 	
