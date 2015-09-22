@@ -141,7 +141,7 @@ class PanelThruster : SCNNode
 	override func update()
 	{
 		if speed > 0 {
-			capsule.location.y += CGFloat(speed)/1
+			capsule.location.y += CGFloat(speed)/100
 			radar.update()
 		}
 	}

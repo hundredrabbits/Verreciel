@@ -192,8 +192,8 @@ class PanelRadar : SCNNode
 		for node in eventView.childNodes
 		{
 			let event = node as! SCNEvent
-			event.position.z = Float(event.location.y - (capsule.location.y/200))
-			event.position.x = Float(event.location.x - (capsule.location.x/200))
+			event.position.z = Float(event.location.y - (capsule.location.y))
+			event.position.x = Float(event.location.x - (capsule.location.x))
 			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
 			
 			let scale:Float = 0.65
@@ -203,6 +203,8 @@ class PanelRadar : SCNNode
 			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
 			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
 			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
+			
+			print("\(capsule.location.y) - \(event.location.y)")
 		}
 		updateOrientation()
 	}
@@ -214,10 +216,10 @@ class PanelRadar : SCNNode
 			targetter.opacity = 1
 			
 			let shipNodePosition = CGPoint(x: CGFloat(capsule.location.x), y: CGFloat(capsule.location.y))
-			let eventNodePosition = CGPoint(x: CGFloat(output.event.location.x * 200), y: CGFloat(output.event.location.y * 200))
+			let eventNodePosition = CGPoint(x: CGFloat(output.event.location.x), y: CGFloat(output.event.location.y))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
-			labelDistance.update(String(format: "%.1f",distanceFromShip/20))
+			labelDistance.update(String(format: "%.1f",distanceFromShip))
 			labelDistance.opacity = 1
 		}
 		else{

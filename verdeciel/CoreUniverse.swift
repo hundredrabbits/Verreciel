@@ -15,8 +15,8 @@ class CoreUniverse
 {
 	init() // Todo
 	{
-		radar.addEvent(SCNEvent(newName: "test", location: CGPoint(x: 0,y: 1), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "home", location: CGPoint(x: 0,y: 0), size: 1, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "test", location: CGPoint(x: 0,y: 0.5), size: 0.5, type: eventTypes.location))
+//		radar.addEvent(SCNEvent(newName: "home", location: CGPoint(x: 0,y: 0), size: 1, type: eventTypes.location))
 		
 		radar.addEvent(SCNEvent(newName: "a", location: CGPoint(x: -0.4,y: 0.4), size: 1, type: eventTypes.location))
 		radar.addEvent(SCNEvent(newName: "b", location: CGPoint(x: 0.4,y: 0.4), size: 1, type: eventTypes.location))
