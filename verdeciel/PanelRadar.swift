@@ -180,14 +180,9 @@ class PanelRadar : SCNNode
 	
 	override func update()
 	{
-		labelPositionX.update(String(Int(x/20)))
-		labelPositionZ.update(String(Int(z/20)))
+		labelPositionX.update(String(Int(capsule.x/20)))
+		labelPositionZ.update(String(Int(capsule.z/20)))
 		
-		let distance = String(format: "%.1f", distanceBetweenTwoPoints(CGPoint(x: 0, y: 0),point2: CGPoint(x: CGFloat(x), y: CGFloat(z)))/1000 )
-		
-		labelDistance.update( "\(distance)" )
-		
-		updatePosition()
 		updateEvents()
 		updateTarget()
 	}
@@ -197,8 +192,8 @@ class PanelRadar : SCNNode
 		for node in eventView.childNodes
 		{
 			let event = node as! SCNEvent
-			event.position.z = event.z - (z/200)
-			event.position.x = event.x - (x/200)
+			event.position.z = event.z - (capsule.z/200)
+			event.position.x = event.x - (capsule.x/200)
 			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
 			
 			let scale:Float = 0.65
@@ -210,43 +205,6 @@ class PanelRadar : SCNNode
 			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
 		}
 		updateOrientation()
-	}
-	
-	func updatePosition()
-	{
-		var ratio = CGPoint(x: 0, y: 1)
-		
-		switch direction {
-			case  .n : ratio = CGPoint(x: 0, y: 1)
-			case  .ne : ratio = CGPoint(x: 0.5, y: 0.5)
-			case  .e : ratio = CGPoint(x: 1, y: 0)
-			case  .se : ratio = CGPoint(x: 0.5, y: -0.5)
-			case  .nw : ratio = CGPoint(x: -0.5, y: 0.5)
-			case  .w : ratio = CGPoint(x: -1, y: 0)
-			case  .sw : ratio = CGPoint(x: -0.5, y: -0.5)
-			default : ratio = CGPoint(x: 0, y: -1)
-		}
-		
-//		z += thruster.knob.value * Float(ratio.y)
-//		x += thruster.knob.value * Float(ratio.x)
-		
-		// Cardinals
-		let markerHomeOrientation = (-90 + angleBetweenTwoPoints(CGPoint(x: 0, y: 0), point2: CGPoint(x: CGFloat(x), y: CGFloat(z)), center: CGPoint(x: 0, y: 0))) / 90
-		markerHome.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerHomeOrientation)))
-		
-		markerLastStar.opacity = 0
-		markerLastStation.opacity = 0
-		
-		if lastStar != nil {
-			let markerLastStarOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), point2: CGPoint(x: CGFloat(lastStar.x), y: CGFloat(lastStar.z)), center: CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
-			markerLastStar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStarOrientation)))
-			markerLastStar.opacity = 1
-		}
-		if lastStation != nil && lastStation.x != 0 && lastStation.z != 0 {
-			let markerLastStationOrientation = (90 + angleBetweenTwoPoints(CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)), point2: CGPoint(x: CGFloat(lastStation.x), y: CGFloat(lastStation.z)), center: CGPoint(x: CGFloat(x/200), y: CGFloat(z/200)))) / 90
-			markerLastStation.rotation = SCNVector4Make(0, 0, 1, Float(M_PI/2 * Double(markerLastStationOrientation)))
-			markerLastStar.opacity = 1
-		}
 	}
 	
 	func updateTarget()

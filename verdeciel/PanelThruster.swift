@@ -39,7 +39,7 @@ class PanelThruster : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		update()
+		draw()
 	}
 
 	func addInterface()
@@ -98,7 +98,7 @@ class PanelThruster : SCNNode
 		if speed <= maxSpeed {
 			speed += 1
 		}
-		update()
+		draw()
 	}
 	
 	func speedDown()
@@ -106,10 +106,10 @@ class PanelThruster : SCNNode
 		if speed >= 1 {
 			speed -= 1
 		}
-		update()
+		draw()
 	}
 	
-	override func update()
+	func draw()
 	{
 		maxSpeed = 3
 		
@@ -136,6 +136,14 @@ class PanelThruster : SCNNode
 		if maxSpeed < 3 { line3.opacity = 0 }
 		if maxSpeed < 2 { line2.opacity = 0 }
 		if maxSpeed < 1 { line1.opacity = 0 }
+	}
+	
+	override func update()
+	{
+		if speed > 0 {
+			capsule.z += Float(speed)/1
+			radar.update()
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

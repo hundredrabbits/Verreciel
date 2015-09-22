@@ -28,7 +28,6 @@ class CoreSpace: SCNNode
 		speedLines = SCNNode()
 		speedLines.position = SCNVector3(x: 0, y: 0, z: 0)
 		self.addChildNode(speedLines)
-		
 	}
 	
 	override func update()
