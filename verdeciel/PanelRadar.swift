@@ -213,16 +213,16 @@ class PanelRadar : SCNNode
 			targetter.position = output.event.position
 			targetter.opacity = 1
 			
-			let shipNodePosition = CGPoint(x: CGFloat(x/200), y: CGFloat(z/200))
-			let eventNodePosition = CGPoint(x: CGFloat(output.event.x), y: CGFloat(output.event.z))
+			let shipNodePosition = CGPoint(x: CGFloat(capsule.x), y: CGFloat(capsule.z))
+			let eventNodePosition = CGPoint(x: CGFloat(output.event.x * 200), y: CGFloat(output.event.z * 200))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
-			if distanceFromShip > 1 {
-				removeTarget()
-			}
+			labelDistance.update(String(format: "%.1f",distanceFromShip/20))
+			labelDistance.opacity = 1
 		}
 		else{
 			targetter.opacity = 0
+			labelDistance.opacity = 0
 		}
 	}
 
