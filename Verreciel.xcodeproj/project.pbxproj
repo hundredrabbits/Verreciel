@@ -31,10 +31,9 @@
 		573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627771B4C06DF00899EBC /* SCNToggle.swift */; };
 		5736277C1B4C0A2300899EBC /* PanelBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5736277B1B4C0A2300899EBC /* PanelBreaker.swift */; };
 		573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */; };
-		573EDAB51B4B4762007C6D3C /* PanelNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */; };
+		573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelPilot.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
-		578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E954A1B59A06600B33294 /* SCNArrow.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* SCNEvent.swift */; };
@@ -75,10 +74,9 @@
 		573627771B4C06DF00899EBC /* SCNToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNToggle.swift; sourceTree = "<group>"; };
 		5736277B1B4C0A2300899EBC /* PanelBreaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBreaker.swift; sourceTree = "<group>"; };
 		573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelMonitor.swift; sourceTree = "<group>"; };
-		573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelNavigation.swift; sourceTree = "<group>"; };
+		573EDAB41B4B4762007C6D3C /* PanelPilot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelPilot.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
-		578E954A1B59A06600B33294 /* SCNArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNArrow.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* SCNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNEvent.swift; sourceTree = "<group>"; };
@@ -165,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
-				573EDAB41B4B4762007C6D3C /* PanelNavigation.swift */,
+				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
 				5717006D1B4D912000A8F563 /* PanelScanner.swift */,
 			);
 			name = Low;
@@ -203,7 +201,6 @@
 				573627771B4C06DF00899EBC /* SCNToggle.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				573627751B4BFD2900899EBC /* SCNKnob.swift */,
-				578E954A1B59A06600B33294 /* SCNArrow.swift */,
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
@@ -318,7 +315,7 @@
 				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
-				573EDAB51B4B4762007C6D3C /* PanelNavigation.swift in Sources */,
+				573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */,
 				57F645F51B4CACB60088D115 /* PanelRadio.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */,
@@ -332,7 +329,6 @@
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
-				578E954B1B59A06600B33294 /* SCNArrow.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */,

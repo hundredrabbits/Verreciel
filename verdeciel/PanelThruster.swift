@@ -26,7 +26,7 @@ class PanelThruster : SCNNode
 		name = "thruster"
 		addInterface()
 		
-		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
 		update()
 	}
@@ -34,7 +34,7 @@ class PanelThruster : SCNNode
 	
 	func addInterface()
 	{
-		let scale:Float = 0.75
+		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)

@@ -55,9 +55,6 @@ class CorePlayer : SCNNode
 		self.addChildNode( SCNLine(nodeA: SCNVector3(x: 0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
 		self.addChildNode( SCNLine(nodeA: SCNVector3(x: 0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
 		self.addChildNode( SCNLine(nodeA: SCNVector3(x: -0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
-		
-		
-		self.addChildNode( SCNLine(nodeA: SCNVector3(x: -0.25, y: 0.95, z: -1.01), nodeB: SCNVector3(x: 0.25, y: 0.95, z: -1.01), color: grey) )
 	}
 	
 	func addInterface()

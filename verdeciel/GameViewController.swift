@@ -28,13 +28,14 @@ var grey:UIColor = UIColor(white: 0.4, alpha: 1)
 
 var ceilingNode:Array<SCNVector3>!
 var highMidNode:Array<SCNVector3>!
+var highGapNode:Array<SCNVector3>!
 var highNode:Array<SCNVector3>!
 var lowNode:Array<SCNVector3>!
 var lowMidNode:Array<SCNVector3>!
 var floorNode:Array<SCNVector3>!
 
 var radar:PanelRadar!
-var navigation:PanelNavigation!
+var pilot:PanelPilot!
 var monitor:PanelMonitor!
 var thruster:PanelThruster!
 var breaker:PanelBreaker!

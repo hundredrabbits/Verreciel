@@ -54,6 +54,10 @@ class CoreCapsule: SCNNode
 		height = 1.5
 		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
+		scale = 1
+		height = 2.4
+		highGapNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
 		scale = 0.3
 		height = 2.5
 		highMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
@@ -66,7 +70,7 @@ class CoreCapsule: SCNNode
 	override func update()
 	{
 		radar.update()
-		navigation.update()
+		pilot.update()
 		monitor.update()
 		thruster.update()
 		breaker.update()
@@ -79,8 +83,8 @@ class CoreCapsule: SCNNode
 	func panelSetup()
 	{
 		let northPanels = SCNNode()
-		navigation = PanelNavigation()
-		northPanels.addChildNode(navigation)
+		pilot = PanelPilot()
+		northPanels.addChildNode(pilot)
 		radar = PanelRadar()
 		northPanels.addChildNode(radar)
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
@@ -189,8 +193,8 @@ class CoreCapsule: SCNNode
 		{
 			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: lowMidNode[i],color:white))
 			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: highNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: highNode[i],nodeB: highMidNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: highGapNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highMidNode[i],color:white))
 			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: ceilingNode[i],color:white))
 			i += 1
 		}
@@ -231,6 +235,15 @@ class CoreCapsule: SCNNode
 		}
 		scene.rootNode.addChildNode(SCNLine(nodeA: highNode[7],nodeB: highNode[0],color:white))
 		
+		// Connect High Gap
+		i = 0
+		while i < highNode.count - 1
+		{
+			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highGapNode[i+1],color:grey))
+			i += 1
+		}
+		scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[7],nodeB: highGapNode[0],color:grey))
+		
 		// Connect Window High
 		i = 0
 		while i < highMidNode.count - 1
@@ -254,51 +267,6 @@ class CoreCapsule: SCNNode
 	
 	func capsuleMesh()
 	{
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 0,z: -6),SCNVector3(x: 0,y: 2,z: -6),SCNVector3(x: 4,y: 0,z: -4),SCNVector3(x: 4,y: 2,z: -4)], color:UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: 0,z: -4),SCNVector3(x: 4,y: 2,z: -4),SCNVector3(x: 6,y: 0,z: 0),SCNVector3(x: 6,y: 2,z: 0)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 0,z: 6),SCNVector3(x: 0,y: 2,z: 6),SCNVector3(x: 4,y: 0,z: 4),SCNVector3(x: 4,y: 2,z: 4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: 0,z: 4),SCNVector3(x: 4,y: 2,z: 4),SCNVector3(x: 6,y: 0,z: 0),SCNVector3(x: 6,y: 2,z: 0)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 0,z: 6),SCNVector3(x: 0,y: 2,z: 6),SCNVector3(x: -4,y: 0,z: 4),SCNVector3(x: -4,y: 2,z: 4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: 0,z: 4),SCNVector3(x: -4,y: 2,z: 4),SCNVector3(x: -6,y: 0,z: 0),SCNVector3(x: -6,y: 2,z: 0)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 0,z: -6),SCNVector3(x: 0,y: 2,z: -6),SCNVector3(x: -4,y: 0,z: -4),SCNVector3(x: -4,y: 2,z: -4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: 0,z: -4),SCNVector3(x: -4,y: 2,z: -4),SCNVector3(x: -6,y: 0,z: 0),SCNVector3(x: -6,y: 2,z: 0)], color: UIColor.blackColor()))
-		
-		// test
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 2,z: -6),SCNVector3(x: -4,y: 2,z: -4),ceilingNode[0],ceilingNode[7]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: 2,z: -4),SCNVector3(x: -6,y: 2,z: 0),ceilingNode[7],ceilingNode[6]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -6,y: 2,z: 0),SCNVector3(x: -4,y: 2,z: 4),ceilingNode[6],ceilingNode[5]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: 2,z: 4),SCNVector3(x: 0,y: 2,z: 6),ceilingNode[5],ceilingNode[4]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: 2,z: 6),SCNVector3(x: 4,y: 2,z: 4),ceilingNode[4],ceilingNode[3]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: 2,z: 4),SCNVector3(x: 6,y: 2,z: 0),ceilingNode[3],ceilingNode[2]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 6,y: 2,z: 0),SCNVector3(x: 4,y: 2,z: -4),ceilingNode[2],ceilingNode[1]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: 2,z: -4),SCNVector3(x: 0,y: 2,z: -6),ceilingNode[1],ceilingNode[0]], color: UIColor.blackColor()))
-		
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: -2,z: -6),SCNVector3(x: -4,y: -2,z: -4),lowMidNode[0],lowMidNode[7]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: -2,z: -4),SCNVector3(x: -6,y: -2,z: 0),lowMidNode[7],lowMidNode[6]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -6,y: -2,z: 0),SCNVector3(x: -4,y: -2,z: 4),lowMidNode[6],lowMidNode[5]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: -2,z: 4),SCNVector3(x: 0,y: -2,z: 6),lowMidNode[5],lowMidNode[4]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: -2,z: 6),SCNVector3(x: 4,y: -2,z: 4),lowMidNode[4],lowMidNode[3]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: -2,z: 4),SCNVector3(x: 6,y: -2,z: 0),lowMidNode[3],lowMidNode[2]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 6,y: -2,z: 0),SCNVector3(x: 4,y: -2,z: -4),lowMidNode[2],lowMidNode[1]], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: -2,z: -4),SCNVector3(x: 0,y: -2,z: -6),lowMidNode[1],lowMidNode[0]], color: UIColor.blackColor()))
-		
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: -2,z: -6),SCNVector3(x: -4,y: -2,z: -4),SCNVector3(x: 0,y: 2,z: -6),SCNVector3(x: -4,y: 2,z: -4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: -2,z: -4),SCNVector3(x: -6,y: -2,z: 0),SCNVector3(x: -4,y: 2,z: -4),SCNVector3(x: -6,y: 2,z: 0)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -6,y: -2,z: 0),SCNVector3(x: -4,y: -2,z: 4),SCNVector3(x: -6,y: 2,z: 0),SCNVector3(x: -4,y: 2,z: 4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: -4,y: -2,z: 4),SCNVector3(x: 0,y: -2,z: 6),SCNVector3(x: -4,y: 2,z: 4),SCNVector3(x: 0,y: 2,z: 6)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 0,y: -2,z: 6),SCNVector3(x: 4,y: -2,z: 4),SCNVector3(x: 0,y: 2,z: 6),SCNVector3(x: 4,y: 2,z: 4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: -2,z: 4),SCNVector3(x: 6,y: -2,z: 0),SCNVector3(x: 4,y: 2,z: 4),SCNVector3(x: 6,y: 2,z: 0)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 6,y: -2,z: 0),SCNVector3(x: 4,y: -2,z: -4),SCNVector3(x: 6,y: 2,z: 0),SCNVector3(x: 4,y: 2,z: -4)], color: UIColor.blackColor()))
-		self.addChildNode(SCNPoly(vertices: [SCNVector3(x: 4,y: -2,z: -4),SCNVector3(x: 0,y: -2,z: -6),SCNVector3(x: 4,y: 2,z: -4),SCNVector3(x: 0,y: 2,z: -6)], color: UIColor.blackColor()))
-		
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[0],lowMidNode[1]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[1],lowMidNode[2]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[2],lowMidNode[3]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[3],lowMidNode[4]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[4],lowMidNode[5]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[5],lowMidNode[6]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[6],lowMidNode[7]], color: UIColor.blackColor()))
-		self.addChildNode(SCNTriangle(vertices: [SCNVector3(x: 0,y: -7,z: 0),lowMidNode[7],lowMidNode[0]], color: UIColor.blackColor()))
 	}
 	
 	required init(coder aDecoder: NSCoder)
