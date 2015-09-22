@@ -15,10 +15,12 @@ class PanelPilot : SCNNode
 {
 	var nameLabel = SCNLabel(text: "")
 	
-	var targetOrientation = SCNNode()
-	var capsuleOrientation = SCNNode()
-	var homeOrientation = SCNNode()
-
+	var targetDirection = Int()
+	var targetDirectionIndicator = SCNNode()
+	var activeDirectionIndicator = SCNNode()
+	var staticDirectionIndicator = SCNNode()
+	var eventsDirectionIndicator = SCNNode()
+	
 	// Ports
 	
 	var input:SCNPort!
@@ -43,11 +45,27 @@ class PanelPilot : SCNNode
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
 		
-		// 
+		//
 		
-		targetOrientation = SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0, -0.7, 0), color: white)
-		targetOrientation.addChildNode(SCNLine(nodeA: SCNVector3(-0.2, 0.75, 0), nodeB: SCNVector3(0.2, 0.75, 0), color: white))
-		self.addChildNode(targetOrientation)
+		targetDirectionIndicator = SCNNode()
+		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0, 0.5, 0), color: white))
+		self.addChildNode(targetDirectionIndicator)
+		
+		activeDirectionIndicator = SCNNode()
+		activeDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, -0.1), nodeB: SCNVector3(0, 0.4, -0.1), color: grey))
+		self.addChildNode(activeDirectionIndicator)
+		
+		staticDirectionIndicator = SCNNode()
+		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0, 0.5, -0.1), color: cyan))
+		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, -0.1), nodeB: SCNVector3(0, -0.5, -0.1), color: red))
+		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0.2, 0, -0.1), nodeB: SCNVector3(0.5, 0, -0.1), color: red))
+		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(-0.2, 0, -0.1), nodeB: SCNVector3(-0.5, 0, -0.1), color: red))
+		self.addChildNode(staticDirectionIndicator)
+		
+		eventsDirectionIndicator = SCNNode()
+		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0.1), color: white))
+		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0.1), color: white))
+		self.addChildNode(eventsDirectionIndicator)
 		
 		// Ports
 		
@@ -63,18 +81,30 @@ class PanelPilot : SCNNode
 	
 	override func update()
 	{
+		if capsule != nil {
+			print("Ship: \(capsule.direction) Target:\(targetDirection)")
+			let targetDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * -1
+			targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+			let staticDirectionNormal = Double(Float(capsule.direction)/180) * -1
+			staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
+			let eventsDirectionNormal = Double(Float(targetDirection)/180) * -1
+			eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+		}
+	}
+	
+	override func tic()
+	{
+		if input.origin != nil {
+			input.origin.host.bang(true)
+		}
 		
+		if capsule.direction < targetDirection { capsule.direction! += 1 }
+		if capsule.direction > targetDirection { capsule.direction! -= 1 }
 	}
 	
 	override func listen(event:SCNEvent)
 	{
-		print("\(self.name!) -> Listen:\(event.name)")
-		
-		let value = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) - 90) / 180
-		let targetAngle = Double(value) * -1
-		
-		targetOrientation.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI * targetAngle)), duration: 0.2))
-		
+		targetDirection = Int(angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
 		self.update()
 	}
 	

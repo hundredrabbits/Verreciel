@@ -32,4 +32,9 @@ extension SCNNode
 	{
 		print("This node has no listen action")
 	}
+	
+	func tic()
+	{
+		
+	}
 }

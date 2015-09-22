@@ -26,14 +26,17 @@ class SCNPort : SCNNode
 	var connection:SCNPort!
 	var wire:SCNLine!
 	
-	var host = SCNNode()
+	var origin:SCNPort!
+	
+	var host = SCNNode!()
 	
 	init(host:SCNNode,polarity:Bool)
 	{
 		self.polarity = polarity
-		self.host = host
 		
 		super.init()
+		
+		self.host = host
 		
 		addGeometry()
 		update()
@@ -123,6 +126,7 @@ class SCNPort : SCNNode
 	func connect(port:SCNPort)
 	{
 		self.connection = port
+		self.connection.origin = self
 		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: white).geometry
 		
 		host.bang(true)
@@ -130,6 +134,7 @@ class SCNPort : SCNNode
 	
 	func disconnect()
 	{
+		self.connection.origin = nil
 		self.connection = nil
 		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white).geometry
 	}

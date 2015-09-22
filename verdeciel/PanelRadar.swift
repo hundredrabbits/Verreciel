@@ -178,6 +178,12 @@ class PanelRadar : SCNNode
 		self.addChildNode(labelDistance)
 	}
 	
+	override func tic()
+	{
+		let directionNormal = Double(Float(capsule.direction)/180) * -1
+		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
+	}
+	
 	override func update()
 	{
 		labelPositionX.update(String(Int(capsule.location.x/20)))

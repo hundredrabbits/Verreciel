@@ -22,10 +22,13 @@ class CoreCapsule: SCNNode
 	
 	var location:CGPoint = CGPoint()
 	
+	var direction:Int! = 1
+	
 	override init()
 	{
 		super.init()
 		
+		self.direction = 0
 		nodeSetup()
 		
 		capsuleSetup()
