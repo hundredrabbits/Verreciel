@@ -23,7 +23,7 @@ extension SCNNode
 		print("This node has no touch action")
 	}
 	
-	func bang()
+	func bang(param:Bool = true)
 	{
 		print("This node has no bang action")
 	}

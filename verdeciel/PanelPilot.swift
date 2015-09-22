@@ -57,13 +57,13 @@ class PanelPilot : SCNNode
 	
 	override func touch()
 	{
-		bang()
 	}
 	
 	override func update()
 	{
 		
 	}
+	
 	
 	override func listen(event:SCNEvent)
 	{

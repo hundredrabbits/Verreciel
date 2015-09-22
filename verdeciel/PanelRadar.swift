@@ -287,7 +287,7 @@ class PanelRadar : SCNNode
 		outputLabel.updateWithColor("", color: grey)
 	}
 	
-	override func bang()
+	func bang()
 	{
 		if output.event != nil {
 			output.connection.host.listen(output.event)

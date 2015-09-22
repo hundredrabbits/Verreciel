@@ -15,6 +15,9 @@ class PanelThruster : SCNNode
 {
 	var nameLabel = SCNNode()
 	
+	var accelerate:SCNTrigger!
+	var decelerate:SCNTrigger!
+	
 	// Ports
 	
 	var input:SCNPort!
@@ -31,7 +34,6 @@ class PanelThruster : SCNNode
 		update()
 	}
 
-	
 	func addInterface()
 	{
 		let scale:Float = 0.8
@@ -51,12 +53,41 @@ class PanelThruster : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
 		
+		// Triggers
+		accelerate = SCNTrigger(host: self, size: 1, operation: true)
+		accelerate.position = SCNVector3(0, 0.5, 0)
+		decelerate = SCNTrigger(host: self, size: 1, operation: false)
+		decelerate.position = SCNVector3(0, -0.5, 0)
+		
+		self.addChildNode(accelerate)
+		self.addChildNode(decelerate)
+		
 		// Ports
 		
 		input = SCNPort(host: self,polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
 		
 		self.addChildNode(input)
+	}
+	
+	override func bang(param:Bool = true)
+	{
+		if param == true {
+			speedUp()
+		}
+		else{
+			speedDown()
+		}
+	}
+	
+	func speedUp()
+	{
+		print("speed up!")
+	}
+	
+	func speedDown()
+	{
+		print("speed down!")
 	}
 	
 	required init(coder aDecoder: NSCoder)

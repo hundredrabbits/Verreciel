@@ -134,11 +134,6 @@ class SCNPort : SCNNode
 		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white).geometry
 	}
 	
-	func bang(event:SCNEvent)
-	{
-		
-	}
-	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

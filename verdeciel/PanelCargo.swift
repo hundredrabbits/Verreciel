@@ -66,15 +66,15 @@ class PanelCargo : SCNNode
 		
 		// Trigger
 		
-		self.addChildNode(SCNTrigger(host: self, size: 2))
+		self.addChildNode(SCNTrigger(host: self, size: 2, operation: true))
 	}
 	
 	override func touch()
 	{
-		bang()
+		self.bang(true)
 	}
 	
-	override func bang()
+	func bang()
 	{
 		if output.connection != nil {
 			output.connection.host.listen(cargohold)
