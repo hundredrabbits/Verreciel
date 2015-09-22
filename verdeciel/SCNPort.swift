@@ -125,7 +125,7 @@ class SCNPort : SCNNode
 		self.connection = port
 		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: white).geometry
 		
-		host.bang()
+		host.bang(true)
 	}
 	
 	func disconnect()

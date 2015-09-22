@@ -20,8 +20,7 @@ class CoreCapsule: SCNNode
 	var hull:Float = 100.0
 	var radiation:Float = 100.0
 	
-	var x:Float = 0
-	var z:Float = 0
+	var location:CGPoint = CGPoint()
 	
 	override init()
 	{

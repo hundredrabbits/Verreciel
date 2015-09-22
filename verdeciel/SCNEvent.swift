@@ -13,8 +13,6 @@ import Foundation
 
 class SCNEvent : SCNNode
 {
-	var x:Float!
-	var z:Float!
 	var type:eventTypes!
 	var	typeString:String!
 	
@@ -32,7 +30,9 @@ class SCNEvent : SCNNode
 	var details:String
 	var count:Int
 	
-	init(newName:String,x:Float = 0,z:Float = 0,size:Float = 0,type:eventTypes,details:String = "", count:Int = 1)
+	var location = CGPoint()
+	
+	init(newName:String,location:CGPoint = CGPoint(),size:Float = 0,type:eventTypes,details:String = "", count:Int = 1)
 	{
 		self.content = []
 		self.details = details
@@ -40,8 +40,7 @@ class SCNEvent : SCNNode
 		
 		super.init()
 		self.name = newName
-		self.x = x
-		self.z = z
+		self.location = location
 		self.type = type
 		
 		// Event Size

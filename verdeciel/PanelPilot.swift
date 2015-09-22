@@ -46,6 +46,7 @@ class PanelPilot : SCNNode
 		// 
 		
 		targetOrientation = SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0, -0.7, 0), color: white)
+		targetOrientation.addChildNode(SCNLine(nodeA: SCNVector3(-0.2, 0.75, 0), nodeB: SCNVector3(0.2, 0.75, 0), color: white))
 		self.addChildNode(targetOrientation)
 		
 		// Ports
@@ -57,6 +58,7 @@ class PanelPilot : SCNNode
 	
 	override func touch()
 	{
+		
 	}
 	
 	override func update()
@@ -64,9 +66,15 @@ class PanelPilot : SCNNode
 		
 	}
 	
-	
 	override func listen(event:SCNEvent)
 	{
+		print("\(self.name!) -> Listen:\(event.name)")
+		
+		let value = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) - 90) / 180
+		let targetAngle = Double(value) * -1
+		
+		targetOrientation.runAction(SCNAction.rotateToAxisAngle(SCNVector4Make(0, 0, 1, Float(M_PI * targetAngle)), duration: 0.2))
+		
 		self.update()
 	}
 	

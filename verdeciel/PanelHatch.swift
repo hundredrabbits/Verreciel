@@ -76,7 +76,7 @@ class PanelHatch : SCNNode
 	
 	override func touch()
 	{
-		bang()
+		bang(true)
 	}
 	
 	override func update()

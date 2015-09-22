@@ -180,8 +180,8 @@ class PanelRadar : SCNNode
 	
 	override func update()
 	{
-		labelPositionX.update(String(Int(capsule.x/20)))
-		labelPositionZ.update(String(Int(capsule.z/20)))
+		labelPositionX.update(String(Int(capsule.location.x/20)))
+		labelPositionZ.update(String(Int(capsule.location.y/20)))
 		
 		updateEvents()
 		updateTarget()
@@ -192,8 +192,8 @@ class PanelRadar : SCNNode
 		for node in eventView.childNodes
 		{
 			let event = node as! SCNEvent
-			event.position.z = event.z - (capsule.z/200)
-			event.position.x = event.x - (capsule.x/200)
+			event.position.z = Float(event.location.y - (capsule.location.y/200))
+			event.position.x = Float(event.location.x - (capsule.location.x/200))
 			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
 			
 			let scale:Float = 0.65
@@ -213,8 +213,8 @@ class PanelRadar : SCNNode
 			targetter.position = output.event.position
 			targetter.opacity = 1
 			
-			let shipNodePosition = CGPoint(x: CGFloat(capsule.x), y: CGFloat(capsule.z))
-			let eventNodePosition = CGPoint(x: CGFloat(output.event.x * 200), y: CGFloat(output.event.z * 200))
+			let shipNodePosition = CGPoint(x: CGFloat(capsule.location.x), y: CGFloat(capsule.location.y))
+			let eventNodePosition = CGPoint(x: CGFloat(output.event.location.x * 200), y: CGFloat(output.event.location.y * 200))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
 			labelDistance.update(String(format: "%.1f",distanceFromShip/20))
@@ -228,11 +228,14 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
+		print("added target")
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		
 		targetter.position = event.position
 		targetter.opacity = 1
+		
+		self.bang()
 	}
 	
 	func removeTarget()
@@ -244,10 +247,13 @@ class PanelRadar : SCNNode
 		outputLabel.updateWithColor("", color: grey)
 	}
 	
-	func bang()
+	override func bang(param:Bool = true)
 	{
 		if output.event != nil {
 			output.connection.host.listen(output.event)
+		}
+		else{
+			print("missing")
 		}
 	}
 	

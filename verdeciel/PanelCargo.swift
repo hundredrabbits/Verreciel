@@ -71,15 +71,14 @@ class PanelCargo : SCNNode
 	
 	override func touch()
 	{
-		self.bang(true)
+		self.bang()
 	}
 	
-	func bang()
+	override func bang(param:Bool = true)
 	{
 		if output.connection != nil {
 			output.connection.host.listen(cargohold)
 		}
-		
 	}
 	
 	required init(coder aDecoder: NSCoder) {

@@ -66,7 +66,7 @@ class SCNCommand : SCNNode
 		}
 	}
 	
-	func bang()
+	override func bang(param:Bool = true)
 	{
 		output.connection.host.listen(self.event)
 	}

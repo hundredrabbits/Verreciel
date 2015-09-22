@@ -6,13 +6,21 @@
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 //
 
+import UIKit
+import QuartzCore
+import SceneKit
 import Foundation
 
 class CoreUniverse
 {
 	init() // Todo
 	{
-		radar.addEvent(SCNEvent(newName: "test", x: 0, z: 1, size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "home", x: 0, z: 0, size: 1, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "test", location: CGPoint(x: 0,y: 1), size: 0.5, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "home", location: CGPoint(x: 0,y: 0), size: 1, type: eventTypes.location))
+		
+		radar.addEvent(SCNEvent(newName: "a", location: CGPoint(x: -0.4,y: 0.4), size: 1, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "b", location: CGPoint(x: 0.4,y: 0.4), size: 1, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "c", location: CGPoint(x: 0.4,y: -0.4), size: 1, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "d", location: CGPoint(x: -0.4,y: -0.4), size: 1, type: eventTypes.location))
 	}
 }
