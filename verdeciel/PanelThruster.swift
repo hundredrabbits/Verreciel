@@ -140,10 +140,17 @@ class PanelThruster : SCNNode
 	
 	override func update()
 	{
-		if speed > 0 {
-			capsule.location.y += CGFloat(speed)/100
+		if speed > 0
+		{
+			let speed:Float = 0.1
+			let angle:Float = Float((capsule.direction) % 360)
+			let angleRad = ( ( angle ) / Float(180.0) * Float(M_PI) )
+			
+			capsule.location.x += CGFloat(speed) * CGFloat(cos(angleRad))
+			capsule.location.y += CGFloat(speed) * CGFloat(sin(angleRad))
 			radar.update()
 		}
+		print(capsule.direction)
 	}
 	
 	required init(coder aDecoder: NSCoder)
