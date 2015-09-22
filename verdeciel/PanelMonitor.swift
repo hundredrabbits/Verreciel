@@ -133,15 +133,6 @@ class PanelMonitor : SCNNode
 	
 	override func update()
 	{
-		if capsule == nil { return }
-		capsule.oxygen += oxygenMod()
-		oxygenLabel.update(monitorValue(capsule.oxygen))
-		capsule.shield += shieldMod()
-		shieldLabel.update(monitorValue(capsule.shield))
-		capsule.electricity += electricityMod()
-		electricityLabel.update(monitorValue(capsule.electricity))
-		capsule.temperature += temperatureMod()
-		temperatureLabel.update(monitorValue(capsule.temperature))
 	}
 	
 	func monitorValue(value:Float) -> String
@@ -151,45 +142,6 @@ class PanelMonitor : SCNNode
 		else if value > 100 { stringValue = "full" }
 		else { stringValue = String(format: "%.1f", value) }
 		return stringValue
-	}
-	
-	func oxygenMod() -> Float
-	{
-		var modifier:Float = -0.02
-		
-		if breaker.oxygenToggle.active { modifier += 0.5 }
-		
-		if capsule.oxygen > 100 && modifier > 0 { modifier = 0 }
-		if capsule.oxygen < 0 && modifier < 0 { modifier = 0 }
-		
-		return modifier
-	}
-	
-	func shieldMod() -> Float
-	{
-		var modifier:Float = -0.02
-		
-		if breaker.shieldToggle.active { modifier += 0.5 }
-		
-		return modifier
-	}
-	
-	func temperatureMod() -> Float
-	{
-		var modifier:Float = -0.1
-		
-		if breaker.oxygenToggle.active { modifier += 0.02 }
-		
-		return modifier
-	}
-	
-	func electricityMod() -> Float
-	{
-		var modifier:Float = 0.01
-		
-		if breaker.oxygenToggle.active { modifier -= 0.05 }
-		
-		return modifier
 	}
 	
 	required init(coder aDecoder: NSCoder) {

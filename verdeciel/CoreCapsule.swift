@@ -30,9 +30,22 @@ class CoreCapsule: SCNNode
 		panelSetup()
 		linkSetup()
 		
-		// Create custom geometry
 		capsuleMesh()
 		
+		connectDefaultPorts()
+	}
+	
+	func connectDefaultPorts()
+	{
+		battery.outCell1.connect(battery.inOxygen)
+		battery.outCell2.connect(battery.inShield)
+		battery.outCell3.connect(battery.inRepair)
+		
+		battery.output.connect(thruster.input)
+		
+		radar.output.connect(pilot.input)
+		
+		cargo.output.connect(console.input)
 	}
 	
 	func nodeSetup()
@@ -40,12 +53,16 @@ class CoreCapsule: SCNNode
 		NSLog("WORLD  | Capsule Coordinates")
 		
 		var scale:Float = 0.25
-		var height:Float = -2.4
+		var height:Float = -2.65
 		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
 		scale = 0.3
-		height = -2.5
+		height = -2.75
 		lowMidNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		scale = 1
+		height = -2.4
+		lowGapNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
 		scale = 1
 		height = -1.5
@@ -73,20 +90,13 @@ class CoreCapsule: SCNNode
 		pilot.update()
 		monitor.update()
 		thruster.update()
-		breaker.update()
 		beacon.update()
-		radio.update()
 		console.update()
-		scanner.update()
 	}
 	
 	func panelSetup()
 	{
 		let northPanels = SCNNode()
-		pilot = PanelPilot()
-		northPanels.addChildNode(pilot)
-		radar = PanelRadar()
-		northPanels.addChildNode(radar)
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
 		let northEastPanels = SCNNode()
@@ -109,16 +119,19 @@ class CoreCapsule: SCNNode
 		southEastPanels.addChildNode(beacon)
 		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
 		
+		let southWestPanels = SCNNode()
+		pilot = PanelPilot()
+		southWestPanels.addChildNode(pilot)
+		southWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5)); // rotate 90 degrees
+		
 		let southPanels = SCNNode()
-		radio = PanelRadio()
-		southPanels.addChildNode(radio)
-		scanner = PanelScanner()
-		southPanels.addChildNode(scanner)
+		battery = PanelBattery()
+		southPanels.addChildNode(battery)
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
 		
 		let westPanels = SCNNode()
-		breaker = PanelBreaker()
-		westPanels.addChildNode(breaker)
+		radar = PanelRadar()
+		westPanels.addChildNode(radar)
 		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		window = PanelWindow()
@@ -128,6 +141,7 @@ class CoreCapsule: SCNNode
 		self.addChildNode(northWestPanels)
 		self.addChildNode(eastPanels)
 		self.addChildNode(southEastPanels)
+		self.addChildNode(southWestPanels)
 		self.addChildNode(southPanels)
 		self.addChildNode(westPanels)
 		
@@ -192,8 +206,8 @@ class CoreCapsule: SCNNode
 		while i < floorNode.count
 		{
 			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: lowMidNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: highGapNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowGapNode[i],color:white))
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[i],nodeB: highGapNode[i],color:white))
 			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highMidNode[i],color:white))
 			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: ceilingNode[i],color:white))
 			i += 1
@@ -217,6 +231,15 @@ class CoreCapsule: SCNNode
 		}
 		scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[7],nodeB: lowMidNode[0],color:white))
 		
+		// Connect Low Gap
+		i = 0
+		while i < lowGapNode.count - 1
+		{
+			scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[i],nodeB: lowGapNode[i+1],color:grey))
+			i += 1
+		}
+		scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[7],nodeB: lowGapNode[0],color:grey))
+		
 		// Connect Low
 		i = 0
 		while i < lowNode.count - 1
@@ -237,7 +260,7 @@ class CoreCapsule: SCNNode
 		
 		// Connect High Gap
 		i = 0
-		while i < highNode.count - 1
+		while i < highGapNode.count - 1
 		{
 			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highGapNode[i+1],color:grey))
 			i += 1

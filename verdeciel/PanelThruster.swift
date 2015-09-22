@@ -43,18 +43,13 @@ class PanelThruster : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: cyan))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: cyan))
 		
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(0.5, -0.5, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: white))
-		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: white))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: white))
 		
-//		self.addChildNode(SCNLine(nodeA: SCNVector3(-0.5, -0.5, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: white))
-		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
-		
 		
 		// Ports
 		
