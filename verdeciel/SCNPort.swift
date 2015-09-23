@@ -134,6 +134,7 @@ class SCNPort : SCNNode
 	
 	func disconnect()
 	{
+		if self.connection == nil { return }
 		self.connection.origin = nil
 		self.connection = nil
 		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white).geometry
