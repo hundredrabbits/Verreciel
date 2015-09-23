@@ -27,5 +27,7 @@ class CoreUniverse
 		radar.addEvent(SCNEvent(newName: "b", location: CGPoint(x: 0.5,y: 0.5), size: 1, type: eventTypes.location))
 		radar.addEvent(SCNEvent(newName: "c", location: CGPoint(x: 0.5,y: -0.5), size: 1, type: eventTypes.location))
 		radar.addEvent(SCNEvent(newName: "d", location: CGPoint(x: -0.5,y: -0.5), size: 1, type: eventTypes.location))
+		
+		radar.addEvent(SCNEvent(newName: "star", location: CGPoint(x: 4,y: 4), size: 1, type: eventTypes.location))
 	}
 }

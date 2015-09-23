@@ -179,7 +179,6 @@ class PanelRadar : SCNNode
 
 	func addTarget(event:SCNEvent)
 	{
-		print("added target")
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		
@@ -203,7 +202,11 @@ class PanelRadar : SCNNode
 	
 	override func listen(event: SCNEvent)
 	{
-		addEvent(event)
+		if event.type == eventTypes.location {
+			cargo.removeEvent(event)
+			addEvent(event)
+		}
+		
 		update()
 	}
 	

@@ -30,11 +30,18 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		// TEST Waypoints
-		cargohold.content.append(SCNEvent(newName: "waypoint", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.location, details: "warp"))
+		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.location, details: "warp")
+		self.addEvent(warpGate)
 		
-//		cargohold.content.append(SCNEvent(newName: "lifeforms", type: eventTypes.item, details: "element"))
-//		cargohold.content.append(SCNEvent(newName: "bullets", type: eventTypes.item, details: "ammo", count: 31))
+		let starMap = SCNEvent(newName: "starmap", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.waypoint, details: "waypoint")
+		self.addEvent(starMap)
+		
+		let bullet = SCNEvent(newName: "bullet", size: 1, type: eventTypes.item, details: "ammo")
+		self.addEvent(bullet)
+		
+		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "cypher")
+		self.addEvent(disk)
+		
 		
 		update()
 	}
@@ -69,6 +76,16 @@ class PanelCargo : SCNNode
 		// Trigger
 		
 		self.addChildNode(SCNTrigger(host: self, size: 2, operation: true))
+	}
+	
+	func addEvent(event:SCNEvent)
+	{
+		cargohold.content.append(event)
+	}
+	
+	func removeEvent(event:SCNEvent)
+	{
+		// TODO
 	}
 	
 	override func touch()

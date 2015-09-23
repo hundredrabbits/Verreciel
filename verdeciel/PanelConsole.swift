@@ -125,6 +125,8 @@ class PanelConsole : SCNNode
 		}
 		if event.type == eventTypes.location {
 			self.addLine(SCNCommand(text:event.name!))
+			self.addLine(SCNCommand(text:event.details))
+			self.input.origin.disconnect()
 		}
 	}
 	

@@ -44,7 +44,7 @@ class SCNPort : SCNNode
 	
 	func addGeometry()
 	{
-		self.geometry = SCNPlane(width: 1, height: 1)
+		self.geometry = SCNPlane(width: 0.2, height: 0.2)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		let radius:Float = 0.1
