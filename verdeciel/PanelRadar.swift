@@ -15,7 +15,6 @@ class PanelRadar : SCNNode
 {
 	var x:Float = 0
 	var z:Float = 0
-	var direction = cardinals.n
 	
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
@@ -82,41 +81,6 @@ class PanelRadar : SCNNode
 		markerLastStar = SCNNode()
 		markerLastStar.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: red))
 		self.addChildNode(markerLastStar)
-	}
-	
-	func updateOrientation()
-	{
-		var cursorOrientation:Float = 1;
-		switch directionName() {
-			case "n" : cursorOrientation = 0
-			case "ne" : cursorOrientation = 0.5
-			case "e" : cursorOrientation = 1
-			case "se" : cursorOrientation = 1.5
-			case "nw" : cursorOrientation = -0.5
-			case "w" : cursorOrientation = -1
-			case "sw" : cursorOrientation = -1.5
-			default : cursorOrientation = 2
-		}
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1)
-		shipCursor.rotation = SCNVector4Make(0, 0, 1, -1 * Float(Float(M_PI/2) * cursorOrientation ))
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
-	
-	func directionName() -> String
-	{
-		switch direction {
-		case  .n : return "n"
-		case  .ne : return "ne"
-		case  .e : return "e"
-		case  .se : return "se"
-		case  .nw : return "nw"
-		case  .w : return "w"
-		case  .sw : return "sw"
-		default : return "s"
-		}
 	}
 	
 	func addEvent(event:SCNEvent)
@@ -208,10 +172,7 @@ class PanelRadar : SCNNode
 			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
 			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
 			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
-			
-			print("\(capsule.location.y) - \(event.location.y)")
 		}
-		updateOrientation()
 	}
 	
 	func updateTarget()
@@ -226,6 +187,12 @@ class PanelRadar : SCNNode
 			
 			labelDistance.update(String(format: "%.1f",distanceFromShip))
 			labelDistance.opacity = 1
+			
+			if output.event.isKnown == false && distanceFromShip < 0.2 {
+				print("discovered")
+				output.event.isKnown = true
+				output.event.update()
+			}
 		}
 		else{
 			targetter.opacity = 0
@@ -243,6 +210,7 @@ class PanelRadar : SCNNode
 		targetter.opacity = 1
 		
 		self.bang()
+		updateTarget()
 	}
 	
 	func removeTarget()
@@ -252,15 +220,14 @@ class PanelRadar : SCNNode
 		
 		output.removeEvent()
 		outputLabel.updateWithColor("", color: grey)
+		
+		updateTarget()
 	}
 	
 	override func bang(param:Bool = true)
 	{
 		if output.event != nil {
 			output.connection.host.listen(output.event)
-		}
-		else{
-			print("missing")
 		}
 	}
 	

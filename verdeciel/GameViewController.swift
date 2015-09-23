@@ -47,6 +47,9 @@ var cargo:PanelCargo!
 var monitor:PanelMonitor!
 var window:PanelWindow!
 
+var radio:PanelRadio!
+var translator:PanelTranslator!
+
 var time:CoreTime!
 var universe:CoreUniverse!
 var capsule:CoreCapsule!
@@ -57,16 +60,6 @@ enum alignment {
 	case left
 	case center
 	case right
-}
-enum cardinals {
-	case n
-	case ne
-	case e
-	case se
-	case s
-	case sw
-	case w
-	case nw
 }
 enum eventTypes {
 	case unknown

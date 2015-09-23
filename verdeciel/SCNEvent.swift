@@ -14,12 +14,6 @@ import Foundation
 class SCNEvent : SCNNode
 {
 	var type:eventTypes!
-	var	typeString:String!
-	
-	var freq1:Int = 0
-	var freq2:Int = 0
-	var freq3:Int = 0
-	var freq4:Int = 0
 	
 	var isKnown:Bool = false
 	var isTargetted:Bool = false
@@ -29,6 +23,7 @@ class SCNEvent : SCNNode
 	var content:Array<SCNEvent>!
 	var details:String
 	var count:Int
+	var size:Float = 1
 	
 	var location = CGPoint()
 	
@@ -42,30 +37,37 @@ class SCNEvent : SCNNode
 		self.name = newName
 		self.location = location
 		self.type = type
+		self.size = size
 		
-		// Event Size
-		let displaySize = size/10
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
-		
-		// Add interactible events on the radar
-		self.geometry = SCNPlane(width: 1, height: 1)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
+		addInterface()
+		addTrigger()
 		
 		update()
 	}
 	
+	func addInterface()
+	{
+		let displaySize = self.size/10
+	
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
+	}
+	
+	func addTrigger()
+	{
+		self.geometry = SCNPlane(width: 1, height: 1)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
+	}
+	
 	override func update()
 	{
-		typeString = "unknown"
-		
 		for node in self.childNodes
 		{
 			let line = node as! SCNLine
 			if isKnown == true {
-				line.color(white)
+				line.color(cyan)
 			}
 			else{
 				line.color(grey)

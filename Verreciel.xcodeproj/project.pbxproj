@@ -26,6 +26,8 @@
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
+		5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */; settings = {ASSET_TAGS = (); }; };
+		5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */; settings = {ASSET_TAGS = (); }; };
 		573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627751B4BFD2900899EBC /* SCNKnob.swift */; };
 		573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627771B4C06DF00899EBC /* SCNToggle.swift */; };
 		573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */; };
@@ -66,6 +68,8 @@
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
+		5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadio.swift; sourceTree = "<group>"; };
+		5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTranslator.swift; sourceTree = "<group>"; };
 		573627751B4BFD2900899EBC /* SCNKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNKnob.swift; sourceTree = "<group>"; };
 		573627771B4C06DF00899EBC /* SCNToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNToggle.swift; sourceTree = "<group>"; };
 		573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelMonitor.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 		571728E61BB07F98002782A3 /* Low */ = {
 			isa = PBXGroup;
 			children = (
+				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
+				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
 			);
 			name = Low;
 			sourceTree = "<group>";
@@ -311,12 +317,14 @@
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
 				571728E51BB06413002782A3 /* SCNCommand.swift in Sources */,
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
+				5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
+				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,

@@ -102,42 +102,47 @@ class CoreCapsule: SCNNode
 	func panelSetup()
 	{
 		let northPanels = SCNNode()
-		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2)); // rotate 90 degrees
 		
 		let northEastPanels = SCNNode()
 		cargo = PanelCargo()
 		northEastPanels.addChildNode(cargo)
-		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5)); // rotate 90 degrees
 		
 		let northWestPanels = SCNNode()
 		thruster = PanelThruster()
 		northWestPanels.addChildNode(thruster)
-		northWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5)); // rotate 90 degrees
 		
 		let eastPanels = SCNNode()
 		console = PanelConsole()
 		eastPanels.addChildNode(console)
-		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
 		
 		let southEastPanels = SCNNode()
 		beacon = PanelHatch()
 		southEastPanels.addChildNode(beacon)
-		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5)); // rotate 90 degrees
 		
 		let southWestPanels = SCNNode()
 		pilot = PanelPilot()
 		southWestPanels.addChildNode(pilot)
-		southWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5)); // rotate 90 degrees
 		
 		let southPanels = SCNNode()
 		battery = PanelBattery()
+		radio = PanelRadio()
 		southPanels.addChildNode(battery)
-		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0)); // rotate 90 degrees
+		southPanels.addChildNode(radio)
 		
 		let westPanels = SCNNode()
 		radar = PanelRadar()
+		translator = PanelTranslator()
 		westPanels.addChildNode(radar)
-		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1)); // rotate 90 degrees
+		westPanels.addChildNode(translator)
+		
+		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
+		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
+		northWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5))
+		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1))
+		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5))
+		southWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5))
+		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0))
+		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1))
 		
 		window = PanelWindow()
 		

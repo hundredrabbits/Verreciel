@@ -87,7 +87,6 @@ class PanelPilot : SCNNode
 	override func update()
 	{
 		if capsule != nil {
-			print("Ship: \(capsule.direction) Target:\(targetDirection)")
 			let targetDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 			targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
 			let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
@@ -111,18 +110,6 @@ class PanelPilot : SCNNode
 		else if testOri >= 180 { capsule.direction! -= 1 }
 		else if capsule.direction < targetDirection { capsule.direction! += 1 }
 		else if capsule.direction > targetDirection { capsule.direction! -= 1 }
-		
-		
-		
-//		if testOri > 180 {
-//			capsule.direction! -= 1
-//		}
-//		else if testOri < 180 {
-//			capsule.direction! += 1
-//		}
-		
-		print("> \(testOri)")
-		
 	}
 	
 	override func listen(event:SCNEvent)

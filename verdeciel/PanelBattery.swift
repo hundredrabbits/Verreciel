@@ -68,12 +68,6 @@ class PanelBattery : SCNNode
 		cell3Label.position = SCNVector3(x: -distance - 0.2, y: -0.3, z: 0)
 		self.addChildNode(cell3Label)
 		
-		
-		
-		
-		
-		
-		
 		// Systems
 		
 		inOxygen = SCNPort(host: self, polarity: false)
