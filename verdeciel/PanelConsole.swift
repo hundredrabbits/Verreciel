@@ -117,14 +117,15 @@ class PanelConsole : SCNNode
 	{
 		if event.type == eventTypes.stack {
 			self.addLine(SCNCommand())
-			self.addLine(SCNCommand(text:event.name!, color: grey))
+			self.addLine(SCNCommand(text:event.name!, color: grey, head:true))
 			self.addLine(SCNCommand())
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item))
 			}
 		}
 		if event.type == eventTypes.location {
-			self.addLine(SCNCommand(text:event.name!))
+			self.addLine(SCNCommand())
+			self.addLine(SCNCommand(text:event.name!, head:true))
 			self.addLine(SCNCommand(text:event.details))
 			self.input.origin.disconnect()
 		}
