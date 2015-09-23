@@ -32,7 +32,7 @@ class CoreSpace: SCNNode
 	
 	override func update()
 	{
-		if thruster.speed > 0 {
+		if thruster.actualSpeed > 0 {
 			addLines()
 			updateLines()
 		}
@@ -55,7 +55,7 @@ class CoreSpace: SCNNode
 	
 	func updateLines()
 	{
-		let lineSpeed = Float(thruster.speed) / 2
+		let lineSpeed = Float(thruster.actualSpeed) / 2
 		for node in speedLines.childNodes
 		{
 			let line = node

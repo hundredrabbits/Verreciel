@@ -14,6 +14,7 @@ import Foundation
 class PanelThruster : SCNNode
 {
 	var nameLabel = SCNNode()
+	var speedLabel = SCNLabel(text: "")
 	
 	var accelerate:SCNTrigger!
 	var decelerate:SCNTrigger!
@@ -25,6 +26,7 @@ class PanelThruster : SCNNode
 	
 	var maxSpeed:Int = 0
 	var speed:Int = 0
+	var actualSpeed:Float = 0
 	
 	// Ports
 	
@@ -49,6 +51,10 @@ class PanelThruster : SCNNode
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
+		
+		speedLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+		speedLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		self.addChildNode(speedLabel)
 		
 		// Lines
 		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
@@ -140,9 +146,9 @@ class PanelThruster : SCNNode
 	
 	override func update()
 	{
-		if speed > 0
+		if actualSpeed > 0
 		{
-			let speed:Float = Float(self.speed)/100
+			let speed:Float = Float(actualSpeed)/100
 			let angle:Float = Float((capsule.direction) % 360)
 			
 			let angleRad = ( Double(angle) / 180.0 * M_PI)
@@ -151,6 +157,20 @@ class PanelThruster : SCNNode
 			capsule.location.y += CGFloat(speed) * CGFloat(cos(angleRad))
 			
 			radar.update()
+		}
+	}
+	
+	override func tic()
+	{
+		if speed * 10 > Int(actualSpeed * 10) {
+			actualSpeed += 0.1
+		}
+		else if speed * 10 < Int(actualSpeed * 10) {
+			actualSpeed -= 0.1
+		}
+		
+		if Float(speed) != actualSpeed {
+			speedLabel.update(String(format: "%.1f", actualSpeed))
 		}
 	}
 	

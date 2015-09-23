@@ -34,5 +34,6 @@ class CoreTime : NSObject
 		space.update()
 		pilot.tic()
 		radar.tic()
+		thruster.tic()
 	}
 }
