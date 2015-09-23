@@ -30,9 +30,11 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		cargohold.content.append(SCNEvent(newName: "homeward", type: eventTypes.item, details: "warp"))
-		cargohold.content.append(SCNEvent(newName: "lifeforms", type: eventTypes.item, details: "element"))
-		cargohold.content.append(SCNEvent(newName: "bullets", type: eventTypes.item, details: "ammo", count: 31))
+		// TEST Waypoints
+		cargohold.content.append(SCNEvent(newName: "waypoint", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.location, details: "warp"))
+		
+//		cargohold.content.append(SCNEvent(newName: "lifeforms", type: eventTypes.item, details: "element"))
+//		cargohold.content.append(SCNEvent(newName: "bullets", type: eventTypes.item, details: "ammo", count: 31))
 		
 		update()
 	}

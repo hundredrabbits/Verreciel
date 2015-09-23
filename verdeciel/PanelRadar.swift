@@ -52,8 +52,6 @@ class PanelRadar : SCNNode
 		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
-		
-		createCardinals()
 	}
 	
 	func createTargetter() -> SCNNode
@@ -66,21 +64,6 @@ class PanelRadar : SCNNode
 		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
 		
 		return targetterNode
-	}
-	
-	func createCardinals()
-	{
-		markerHome = SCNNode()
-		markerHome.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: grey))
-		self.addChildNode(markerHome)
-		
-		markerLastStation = SCNNode()
-		markerLastStation.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: cyan))
-		self.addChildNode(markerLastStation)
-		
-		markerLastStar = SCNNode()
-		markerLastStar.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: highNode[7].x * 0.65, z: 0), nodeB: SCNVector3(x: 0, y: lowNode[0].y, z: 0), color: red))
-		self.addChildNode(markerLastStar)
 	}
 	
 	func addEvent(event:SCNEvent)
@@ -145,12 +128,14 @@ class PanelRadar : SCNNode
 	{
 		let directionNormal = Double(Float(capsule.direction)/180) * -1
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
+		
+		update()
 	}
 	
 	override func update()
 	{
-		labelPositionX.update(String(Int(capsule.location.x/20)))
-		labelPositionZ.update(String(Int(capsule.location.y/20)))
+		labelPositionX.update(String(Int(capsule.location.x)))
+		labelPositionZ.update(String(Int(capsule.location.y)))
 		
 		updateEvents()
 		updateTarget()
@@ -164,14 +149,6 @@ class PanelRadar : SCNNode
 			event.position.z = Float(event.location.y - (capsule.location.y))
 			event.position.x = Float(event.location.x - (capsule.location.x))
 			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
-			
-			let scale:Float = 0.65
-			event.opacity = 1
-			
-			if event.position.y > highNode[7].y * scale { event.opacity = 0 }
-			if event.position.y < lowNode[7].y * scale { event.opacity = 0 }
-			if event.position.x < lowNode[7].x * scale { event.opacity = 0 }
-			if event.position.x > lowNode[0].x * scale { event.opacity = 0 }
 		}
 	}
 	
@@ -222,6 +199,12 @@ class PanelRadar : SCNNode
 		outputLabel.updateWithColor("", color: grey)
 		
 		updateTarget()
+	}
+	
+	override func listen(event: SCNEvent)
+	{
+		addEvent(event)
+		update()
 	}
 	
 	override func bang(param:Bool = true)

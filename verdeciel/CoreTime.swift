@@ -25,13 +25,9 @@ class CoreTime : NSObject
 	func tic()
 	{
 		thruster.update()
-		
-		if( capsule.oxygen < 10 && player.health > 0 ){
-			player.health -= 1
-			player.update()
-		}
 		monitor.update()
 		space.update()
+		
 		pilot.tic()
 		radar.tic()
 		thruster.tic()

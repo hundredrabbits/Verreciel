@@ -36,6 +36,9 @@ class CoreSpace: SCNNode
 			addLines()
 			updateLines()
 		}
+		
+		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
+		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
 	}
 	
 	func addLines()
