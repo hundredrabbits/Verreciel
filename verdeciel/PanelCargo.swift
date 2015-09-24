@@ -16,6 +16,13 @@ class PanelCargo : SCNNode
 	var nameLabel = SCNNode()
 	var cargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
 	
+	var line1:SCNLine!
+	var line2:SCNLine!
+	var line3:SCNLine!
+	var line4:SCNLine!
+	var line5:SCNLine!
+	var line6:SCNLine!
+	
 	// Ports
 
 	var input:SCNPort!
@@ -55,12 +62,19 @@ class PanelCargo : SCNNode
 		
 		// Quantity
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey))
+		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white)
+		line2 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:white)
+		line3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:white)
+		line4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey)
+		line5 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey)
+		line6 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey)
+			
+		self.addChildNode(line1)
+		self.addChildNode(line2)
+		self.addChildNode(line3)
+		self.addChildNode(line4)
+		self.addChildNode(line5)
+		self.addChildNode(line6)
 		
 		// Ports
 		
@@ -96,6 +110,20 @@ class PanelCargo : SCNNode
 			}
 		}
 		cargohold = newCargohold
+		
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+		line5.color(grey)
+		line6.color(grey)
+		
+		if cargohold.content.count > 0 { line1.color(white) }
+		if cargohold.content.count > 1 { line2.color(white) }
+		if cargohold.content.count > 2 { line3.color(white) }
+		if cargohold.content.count > 3 { line4.color(white) }
+		if cargohold.content.count > 4 { line5.color(white) }
+		if cargohold.content.count > 5 { line6.color(white) }
 	}
 	
 	override func touch()
