@@ -123,10 +123,10 @@ class PanelConsole : SCNNode
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item))
 			}
 		}
-		if event.type == eventTypes.location {
+		if event.type == eventTypes.location || event.type == eventTypes.item {
 			self.addLine(SCNCommand())
-			self.addLine(SCNCommand(text:event.name!, head:true))
-			self.addLine(SCNCommand(text:event.details))
+			self.addLine(SCNCommand(text:event.name!, head:true,details:event.details,color:grey))
+			self.addLine(SCNCommand(text:event.note,color:grey))
 			self.input.origin.disconnect()
 		}
 	}

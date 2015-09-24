@@ -14,6 +14,7 @@ import Foundation
 class PanelHatch : SCNNode
 {
 	var nameLabel = SCNLabel(text: "")
+	var quantityLabel = SCNLabel(text: "")
 	
 	var load:SCNEvent!
 
@@ -45,6 +46,10 @@ class PanelHatch : SCNNode
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
+		
+		quantityLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+		quantityLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		self.addChildNode(quantityLabel)
 		
 		// Ports
 		
@@ -83,6 +88,7 @@ class PanelHatch : SCNNode
 	{
 		if load != nil {
 			nameLabel.update("fire")
+			quantityLabel.update(String(Int(self.load.size)))
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)

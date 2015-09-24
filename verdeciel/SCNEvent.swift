@@ -13,31 +13,30 @@ import Foundation
 
 class SCNEvent : SCNNode
 {
-	var type:eventTypes!
-	
 	var isKnown:Bool = false
 	var isTargetted:Bool = false
 	
 	var targetNode:SCNNode!
 	
-	var content:Array<SCNEvent>!
-	var details:String
-	var count:Int
-	var size:Float = 1
-	
 	var location = CGPoint()
+	var size:Float = 1
+	var type:eventTypes!
+	var details:String
+	var note = String()
+	var content:Array<SCNEvent>!
 	
-	init(newName:String,location:CGPoint = CGPoint(),size:Float = 0,type:eventTypes,details:String = "", count:Int = 1)
+	init(newName:String,location:CGPoint = CGPoint(),size:Float = 0,type:eventTypes,details:String = "", note:String = "")
 	{
 		self.content = []
 		self.details = details
-		self.count = count
-		
+
 		super.init()
+		
 		self.name = newName
 		self.location = location
 		self.type = type
 		self.size = size
+		self.note = note
 		
 		addInterface()
 		addTrigger()
