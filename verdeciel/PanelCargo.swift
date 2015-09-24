@@ -37,7 +37,7 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.location, details: "warp",note:"warp to world 1")
+		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
 		self.addEvent(warpGate)
 		
 		let starMap = SCNEvent(newName: "starmap", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.waypoint, details: "waypoint",note:"go somewhere")
@@ -46,8 +46,14 @@ class PanelCargo : SCNNode
 		let bullet = SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo")
 		self.addEvent(bullet)
 		
-		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "cypher",note:"crack something")
+		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
 		self.addEvent(disk)
+		
+		let battery = SCNEvent(newName: "small cell", size: 25, type: eventTypes.battery, details: "battery",note:"crack something")
+		self.addEvent(battery)
+		
+		let battery2 = SCNEvent(newName: "large cell", size: 50, type: eventTypes.battery, details: "battery",note:"crack something")
+		self.addEvent(battery2)
 		
 		update()
 	}

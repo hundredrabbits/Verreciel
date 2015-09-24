@@ -99,14 +99,12 @@ class SCNPort : SCNNode
 	
 	func activate()
 	{
-		print("activate")
 		isActive = true
 		update()
 	}
 	
 	func desactivate()
 	{
-		print("desactivate")
 		isActive = false
 		update()
 	}

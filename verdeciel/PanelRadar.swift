@@ -151,8 +151,8 @@ class PanelRadar : SCNNode
 	}
 	
 	func updateTarget()
-	{
-		if (output.event != nil) {
+	{		
+		if output.event != nil {
 			targetter.position = output.event.position
 			targetter.opacity = 1
 			
@@ -164,15 +164,21 @@ class PanelRadar : SCNNode
 			labelDistance.opacity = 1
 			
 			if output.event.isKnown == false && distanceFromShip < 0.2 {
-				print("discovered")
 				output.event.isKnown = true
 				output.event.update()
+			}
+			
+			if distanceFromShip > 1.4 {
+				targetter.opacity = 0
+				labelDistance.opacity = 0
+				
 			}
 		}
 		else{
 			targetter.opacity = 0
 			labelDistance.opacity = 0
 		}
+		
 	}
 
 	func addTarget(event:SCNEvent)
@@ -210,9 +216,11 @@ class PanelRadar : SCNNode
 	
 	override func bang(param:Bool = true)
 	{
-		if output.event != nil {
-			output.connection.host.listen(output.event)
-		}
+		if output.connection == nil { return }
+		if output.event == nil { return }
+		
+		output.connection.host.listen(output.event)
+		
 	}
 	
 	required init(coder aDecoder: NSCoder)

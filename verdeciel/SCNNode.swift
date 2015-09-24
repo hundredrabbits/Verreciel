@@ -20,7 +20,7 @@ extension SCNNode
 	
 	func update()
 	{
-		print("This node has no touch action")
+//		print("This node has no touch action")
 	}
 	
 	func bang(param:Bool)

@@ -50,11 +50,19 @@ class SCNEventNPC : SCNEvent
 	
 	override func update()
 	{
-		location.x += 0.003
-		location.y += 0.004
+		if capsule == nil { return }
 		
+//		location.x += 0.003
+		location.y += 0.005
 		
 		self.position = SCNVector3(location.x,location.y,0)
+		
+		if distanceBetweenTwoPoints(capsule.location, point2: self.location) > 1.3 {
+			self.opacity = 0
+		}
+		else {
+			self.opacity = 1
+		}
 	}
 	
 	override func touch()

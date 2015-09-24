@@ -28,8 +28,11 @@ class CoreTime : NSObject
 		monitor.update()
 		space.update()
 		
+		battery.tic()
+		
 		pilot.tic()
 		radar.tic()
 		thruster.tic()
+		monitor.tic()
 	}
 }

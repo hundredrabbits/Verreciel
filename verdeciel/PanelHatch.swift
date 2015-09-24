@@ -115,7 +115,6 @@ class PanelHatch : SCNNode
 			load = nil
 		}
 		
-		
 		if load != nil && load.type != eventTypes.item {
 			nameLabel.update("hatch")
 			quantityLabel.update("error")

@@ -30,6 +30,6 @@ class CoreUniverse
 		
 		radar.addEvent(SCNEvent(newName: "star", location: CGPoint(x: 4,y: 4), size: 1, type: eventTypes.location))
 		
-		radar.addEvent(SCNEventNPC(newName: "test", location: CGPoint(x: 1,y: 0.5), size: 1.5,details:"test",note:"nothing"))
+		radar.addEvent(SCNEventNPC(newName: "test", location: CGPoint(x: 0,y: 0.5), size: 1.5,details:"test",note:"nothing"))
 	}
 }

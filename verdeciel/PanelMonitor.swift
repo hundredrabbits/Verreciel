@@ -64,13 +64,13 @@ class PanelMonitor : SCNNode
 		
 		let eastMonitor = SCNNode()
 		
-		let labelElectricTitle = SCNLabel(text: "electricity", scale: 0.1, align: alignment.left)
-		labelElectricTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		eastMonitor.addChildNode(labelElectricTitle)
+		let labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
+		labelRadiationTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
+		eastMonitor.addChildNode(labelRadiationTitle)
 	
-		electricityLabel = SCNLabel(text: "45.3", scale: 0.1, align: alignment.right)
-		electricityLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		eastMonitor.addChildNode(electricityLabel)
+		radiationLabel = SCNLabel(text: "45.3", scale: 0.1, align: alignment.right)
+		radiationLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
+		eastMonitor.addChildNode(radiationLabel)
 		
 		let labelTemperatureTitle = SCNLabel(text: "temperature", scale: 0.1, align: alignment.left)
 		labelTemperatureTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
@@ -88,21 +88,22 @@ class PanelMonitor : SCNNode
 		
 		let southMonitor = SCNNode()
 		
-		let labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
-		labelRadiationTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		southMonitor.addChildNode(labelRadiationTitle)
+		let labelElectricTitle = SCNLabel(text: "electricity", scale: 0.1, align: alignment.left)
+		labelElectricTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
+		
+		electricityLabel = SCNLabel(text: "325.5", scale: 0.1, align: alignment.right)
+		electricityLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		
 		let labelHullTitle = SCNLabel(text: "hull", scale: 0.1, align: alignment.left)
 		labelHullTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
-		southMonitor.addChildNode(labelHullTitle)
-		
-		radiationLabel = SCNLabel(text: "325.5", scale: 0.1, align: alignment.right)
-		radiationLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		southMonitor.addChildNode(radiationLabel)
 		
 		hullLabel = SCNLabel(text: "355.3", scale: 0.1, align: alignment.right)
 		hullLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
+		
+		southMonitor.addChildNode(labelHullTitle)
+		southMonitor.addChildNode(labelElectricTitle)
 		southMonitor.addChildNode(hullLabel)
+		southMonitor.addChildNode(electricityLabel)
 		
 		self.addChildNode(southMonitor)
 		
@@ -131,8 +132,9 @@ class PanelMonitor : SCNNode
 		self.addChildNode(westMonitor)
 	}
 	
-	override func update()
+	override func tic()
 	{
+		electricityLabel.update(String(format: "%.1f", battery.value))
 	}
 	
 	func monitorValue(value:Float) -> String

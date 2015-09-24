@@ -13,6 +13,8 @@ import Foundation
 
 class PanelBattery : SCNNode
 {
+	var value:Float = 100
+	
 	// Ports
 	
 	var inputLabel:SCNLabel!
@@ -46,56 +48,64 @@ class PanelBattery : SCNNode
 		// Cells
 		
 		let distance:Float = 0.4
+		let verticalOffset:Float = -0.2
 		
 		outCell1 = SCNPort(host: self, polarity: true)
-		outCell1.position = SCNVector3(x: -distance, y: 0.3, z: 0)
+		outCell1.position = SCNVector3(x: -distance, y: 0.3 + verticalOffset, z: 0)
 		self.addChildNode(outCell1)
 		let cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell1Label.position = SCNVector3(x: -distance - 0.2, y: 0.3, z: 0)
+		cell1Label.position = SCNVector3(x: -distance - 0.2, y: 0.3 + verticalOffset, z: 0)
 		self.addChildNode(cell1Label)
 		
 		outCell2 = SCNPort(host: self, polarity: true)
-		outCell2.position = SCNVector3(x: -distance, y: 0, z: 0)
+		outCell2.position = SCNVector3(x: -distance, y: 0 + verticalOffset, z: 0)
 		self.addChildNode(outCell2)
 		let cell2Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell2Label.position = SCNVector3(x: -distance - 0.2, y: 0, z: 0)
+		cell2Label.position = SCNVector3(x: -distance - 0.2, y: 0 + verticalOffset, z: 0)
 		self.addChildNode(cell2Label)
 		
 		outCell3 = SCNPort(host: self, polarity: true)
-		outCell3.position = SCNVector3(x: -distance, y: -0.3, z: 0)
+		outCell3.position = SCNVector3(x: -distance, y: -0.3 + verticalOffset, z: 0)
 		self.addChildNode(outCell3)
 		let cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell3Label.position = SCNVector3(x: -distance - 0.2, y: -0.3, z: 0)
+		cell3Label.position = SCNVector3(x: -distance - 0.2, y: -0.3 + verticalOffset, z: 0)
 		self.addChildNode(cell3Label)
 		
 		// Systems
 		
+		let test1 = SCNPort(host: self, polarity: false)
+		test1.position = SCNVector3(x: distance, y: 0.6 + verticalOffset, z: 0)
+		self.addChildNode(test1)
+		let test1Label = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
+		test1Label.position = SCNVector3(x: distance + 0.2, y: 0.6 + verticalOffset, z: 0)
+		self.addChildNode(test1Label)
+		
 		inOxygen = SCNPort(host: self, polarity: false)
-		inOxygen.position = SCNVector3(x: distance, y: 0.3, z: 0)
+		inOxygen.position = SCNVector3(x: distance, y: 0.3 + verticalOffset, z: 0)
 		self.addChildNode(inOxygen)
 		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		oxygenLabel.position = SCNVector3(x: distance + 0.2, y: 0.3, z: 0)
+		oxygenLabel.position = SCNVector3(x: distance + 0.2, y: 0.3 + verticalOffset, z: 0)
 		self.addChildNode(oxygenLabel)
 		
 		inShield = SCNPort(host: self, polarity: false)
-		inShield.position = SCNVector3(x: distance, y: 0, z: 0)
+		inShield.position = SCNVector3(x: distance, y: 0 + verticalOffset, z: 0)
 		self.addChildNode(inShield)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
-		shieldLabel.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
+		shieldLabel.position = SCNVector3(x: distance + 0.2, y: 0 + verticalOffset, z: 0)
 		self.addChildNode(shieldLabel)
 		
 		let test = SCNPort(host: self, polarity: false)
-		test.position = SCNVector3(x: distance, y: -0.3, z: 0)
+		test.position = SCNVector3(x: distance, y: -0.3 + verticalOffset, z: 0)
 		self.addChildNode(test)
-		let testLabel = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
-		testLabel.position = SCNVector3(x: distance + 0.2, y: -0.3, z: 0)
+		let testLabel = SCNLabel(text: "silencer", scale: 0.1, align: alignment.left)
+		testLabel.position = SCNVector3(x: distance + 0.2, y: -0.3 + verticalOffset, z: 0)
 		self.addChildNode(testLabel)
 		
 		inRepair = SCNPort(host: self, polarity: false)
-		inRepair.position = SCNVector3(x: distance, y: -0.6, z: 0)
+		inRepair.position = SCNVector3(x: distance, y: -0.6 + verticalOffset, z: 0)
 		self.addChildNode(inRepair)
 		let repairLabel = SCNLabel(text: "repair", scale: 0.1, align: alignment.left)
-		repairLabel.position = SCNVector3(x: distance + 0.2, y: -0.6, z: 0)
+		repairLabel.position = SCNVector3(x: distance + 0.2, y: -0.6 + verticalOffset, z: 0)
 		self.addChildNode(repairLabel)
 		
 		// Ports
@@ -117,6 +127,62 @@ class PanelBattery : SCNNode
 		self.addChildNode(output)
 		self.addChildNode(inputLabel)
 		self.addChildNode(outputLabel)
+	}
+	
+	override func listen(event:SCNEvent)
+	{
+		if event.type != eventTypes.battery { return }
+		
+		
+		/*
+		let command = input.origin.host as! SCNCommand
+		
+		if load.type != eventTypes.item {
+			return
+		}
+		
+		if command.event.size > 0 {
+			command.event.size -= 1
+			command.update()
+		}
+		
+		if command.event.size < 1 {
+			command.update(SCNCommand(text: "--", details: "", color: grey, event: command.event))
+			command.output.disconnect()
+			self.load = nil
+			cargo.bang(true)
+		}
+
+*/
+		
+		
+		print("routed \(event.name!)")
+		
+		update()
+	}
+	
+	override func tic()
+	{
+		if output.connection != nil { self.value -= 0.01 }
+		if outCell1.connection != nil { self.value -= 0.01 }
+		if outCell2.connection != nil { self.value -= 0.01 }
+		if outCell3.connection != nil { self.value -= 0.01 }
+		
+		// Leech
+		if input.origin != nil && input.origin.event == nil {
+			let command = input.origin.host as! SCNCommand
+			if command.event.type == eventTypes.battery {
+				if command.event.size > 0 {
+					command.event.size -= 1
+					command.update()
+					self.value += 1
+				}
+				else{
+					command.output.disconnect()
+					cargo.bang(true)
+				}
+			}
+		}
 	}
 	
 	func touch(knobId:String)
