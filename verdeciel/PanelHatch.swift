@@ -84,9 +84,50 @@ class PanelHatch : SCNNode
 		bang(true)
 	}
 	
+	override func bang(param: Bool)
+	{
+		if input.origin == nil { return }
+		
+		let command = input.origin.host as! SCNCommand
+		
+		if load.type != eventTypes.item {
+			return
+		}
+		
+		if command.event.size > 0 {
+			command.event.size -= 1
+			command.update()
+		}
+		
+		if command.event.size < 1 {
+			command.update(SCNCommand(text: "--", details: "", color: grey, event: command.event))
+			command.output.disconnect()
+			self.load = nil
+			cargo.bang(true)
+		}
+		update()
+		
+	}
+	
 	override func update()
 	{
-		if load != nil {
+		print("update!!!!!!!")
+		
+		if input.origin == nil {
+			load = nil
+		}
+		
+		
+		if load != nil && load.type != eventTypes.item {
+			nameLabel.update("hatch")
+			quantityLabel.update("error")
+			outline1.color(red)
+			outline2.color(red)
+			outline3.color(red)
+			outline4.color(red)
+			return
+		}
+		else if load != nil {
 			nameLabel.update("fire")
 			quantityLabel.update(String(Int(self.load.size)))
 			outline1.color(cyan)
@@ -96,10 +137,11 @@ class PanelHatch : SCNNode
 		}
 		else{
 			nameLabel.update("hatch")
-			outline1.color(red)
-			outline2.color(red)
-			outline3.color(red)
-			outline4.color(red)
+			quantityLabel.update("")
+			outline1.color(grey)
+			outline2.color(grey)
+			outline3.color(grey)
+			outline4.color(grey)
 		}
 	}
 	

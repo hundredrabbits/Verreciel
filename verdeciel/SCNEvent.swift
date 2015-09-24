@@ -25,7 +25,7 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
-	init(newName:String,location:CGPoint = CGPoint(),size:Float = 0,type:eventTypes,details:String = "", note:String = "")
+	init(newName:String,location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
 		self.content = []
 		self.details = details

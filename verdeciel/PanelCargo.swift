@@ -87,6 +87,17 @@ class PanelCargo : SCNNode
 		// TODO
 	}
 	
+	override func update()
+	{
+		let newCargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
+		for item in cargohold.content {
+			if item.size > 0 {
+				newCargohold.content.append(item)
+			}
+		}
+		cargohold = newCargohold
+	}
+	
 	override func touch()
 	{
 		self.bang()
@@ -94,6 +105,7 @@ class PanelCargo : SCNNode
 	
 	override func bang(param:Bool = true)
 	{
+		self.update()
 		if output.connection != nil {
 			output.connection.host.listen(cargohold)
 		}
