@@ -177,8 +177,13 @@ class PanelThruster : SCNNode
 	override func listen(event: SCNEvent)
 	{
 		if event.type == eventTypes.warp {
-			print("Connected Warp")
+			warp(event)
 		}
+	}
+	
+	func warp(event:SCNEvent)
+	{
+		print("Warping")
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -111,11 +111,6 @@ class PanelCargo : SCNNode
 		cargohold.content.append(event)
 	}
 	
-	func removeEvent(event:SCNEvent)
-	{
-		// TODO
-	}
-	
 	override func update()
 	{
 		let newCargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
@@ -144,6 +139,28 @@ class PanelCargo : SCNNode
 	override func touch()
 	{
 		self.bang()
+	}
+	
+	override func listen(event:SCNEvent)
+	{
+		if event.type != eventTypes.item { return }
+		
+		
+		
+		
+		
+		
+		input.origin.disconnect()
+		
+		let newItem = event
+		cargohold.content.append(newItem)
+		
+		event.removeFromParentNode()
+		radar.removeTarget()
+		
+		print("getting \(event.name!)")
+		update()
+		bang()
 	}
 	
 	override func bang(param:Bool = true)

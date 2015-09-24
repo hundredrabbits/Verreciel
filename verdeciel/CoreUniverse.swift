@@ -13,14 +13,11 @@ import Foundation
 
 class CoreUniverse
 {
-	init() // Todo
+	init()
 	{
 		radar.addEvent(SCNEvent(newName: "test", location: CGPoint(x: 0,y: 0.5), size: 0.5, type: eventTypes.location))
-//		radar.addEvent(SCNEvent(newName: "home", location: CGPoint(x: 0,y: 0), size: 1, type: eventTypes.location))
-		
 		radar.addEvent(SCNEvent(newName: "star", location: CGPoint(x: 4,y: 4), size: 1, type: eventTypes.location))
-		
 		radar.addEvent(SCNEventNPC(newName: "test", location: CGPoint(x: 6,y: 0.5), size: 1.5,details:"test",note:"nothing"))
-		
+		radar.addEvent(SCNEvent(newName: "item", location: CGPoint(x: -0.5,y: -0.5), size: 1, type: eventTypes.item))
 	}
 }

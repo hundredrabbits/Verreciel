@@ -140,7 +140,7 @@ class PanelRadar : SCNNode
 	}
 	
 	func updateEvents()
-	{
+	{		
 		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
 		for event in eventView.childNodes
 		{

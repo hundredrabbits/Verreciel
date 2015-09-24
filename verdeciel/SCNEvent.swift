@@ -74,6 +74,11 @@ class SCNEvent : SCNNode
 				self.opacity = 1
 			}
 		}
+		
+		// Destroy
+		if self.size < 0 {
+			self.removeFromParentNode()
+		}
 	}
 	
 	func color(targetColor:UIColor)

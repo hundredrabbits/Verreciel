@@ -100,9 +100,9 @@ class PanelPilot : SCNNode
 	
 	override func tic()
 	{
-		if input.origin != nil {
-			input.origin.host.bang(true)
-		}
+		if input.origin == nil { return }
+		
+		input.origin.host.bang(true)
 		
 		let testOri = abs(targetDirection - capsule.direction) % 360
 		
