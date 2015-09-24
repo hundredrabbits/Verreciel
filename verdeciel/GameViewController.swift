@@ -67,6 +67,7 @@ enum eventTypes {
 	case location
 	case item
 	case waypoint
+	case npc
 }
 
 class GameViewController: UIViewController

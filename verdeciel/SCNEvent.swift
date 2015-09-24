@@ -25,7 +25,7 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
-	init(newName:String,location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
+	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
 		self.content = []
 		self.details = details
@@ -56,21 +56,23 @@ class SCNEvent : SCNNode
 	
 	func addTrigger()
 	{
-		self.geometry = SCNPlane(width: 1, height: 1)
+		let displaySize:CGFloat = CGFloat(self.size/2.5)
+		
+		self.geometry = SCNPlane(width: displaySize, height: displaySize)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 	}
 	
 	override func update()
 	{
+		self.position = SCNVector3(location.x,location.y,0)
+	}
+	
+	func color(targetColor:UIColor)
+	{
 		for node in self.childNodes
 		{
 			let line = node as! SCNLine
-			if isKnown == true {
-				line.color(cyan)
-			}
-			else{
-				line.color(grey)
-			}
+			line.color(targetColor)
 		}
 	}
 	
