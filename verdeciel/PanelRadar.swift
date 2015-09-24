@@ -23,16 +23,11 @@ class PanelRadar : SCNNode
 	var eventView:SCNNode!
 	var shipCursor:SCNNode!
 	
-	// Markers
-	
-	var markerHome:SCNNode!
-	var markerLastStar:SCNNode!
-	var markerLastStation:SCNNode!
-	
-	var lastStation:SCNEvent!
-	var lastStar:SCNEvent!
-	
 	var targetter:SCNNode!
+	var targetterAway:SCNNode!
+	
+	var horizontalGrid:SCNLine!
+	var verticalGrid:SCNLine!
 	
 	// Ports
 	
@@ -120,6 +115,17 @@ class PanelRadar : SCNNode
 		labelDistance = SCNLabel(text: "90.4", scale: 0.1, align: alignment.right)
 		labelDistance.position = SCNVector3(x: lowNode[0].x * scale, y: lowNode[7].y * scale, z: 0)
 		self.addChildNode(labelDistance)
+		
+		targetterAway = SCNNode()
+		targetterAway.addChildNode(SCNLine(nodeA: SCNVector3(0.8,0,0), nodeB: SCNVector3(1,0,0), color: red))
+		self.addChildNode(targetterAway)
+		targetterAway.opacity = 0
+		
+		horizontalGrid = SCNLine(nodeA: SCNVector3(lowNode[7].x,0,0),nodeB: SCNVector3(lowNode[0].x,0,0),color:grey)
+		self.addChildNode(horizontalGrid)
+		
+		verticalGrid = SCNLine(nodeA: SCNVector3(0,highNode[7].y,0),nodeB: SCNVector3(0,lowNode[0].y,0),color:grey)
+		self.addChildNode(verticalGrid)
 	}
 	
 	override func tic()
@@ -137,6 +143,9 @@ class PanelRadar : SCNNode
 		
 		updateEvents()
 		updateTarget()
+		
+		horizontalGrid.position = SCNVector3(0,((capsule.location.y * -1) % 3) + 1.5,-0.001)
+		verticalGrid.position = SCNVector3(((capsule.location.x * -1) % 4) + 2,0,-0.001)
 	}
 	
 	func updateEvents()
@@ -168,8 +177,13 @@ class PanelRadar : SCNNode
 			
 			if distanceFromShip > 1.4 {
 				targetter.opacity = 0
-				labelDistance.opacity = 0
-				
+				let angleTest = angleBetweenTwoPoints(capsule.location, point2: output.event.location, center: capsule.location)
+				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
+				targetterAway.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+				targetterAway.opacity = 1
+			}
+			else{
+				targetterAway.opacity = 0
 			}
 		}
 		else{
