@@ -20,7 +20,6 @@ class CoreUniverse
 		radar.addEvent(SCNEventNPC(newName: "test", location: CGPoint(x: 6,y: 0.5), size: 1.5,details:"test",note:"nothing"))
 		radar.addEvent(SCNEvent(newName: "a teapot", location: CGPoint(x: -0.5,y: -0.5), size: 1, type: eventTypes.item, details:"misc"))
 		
-		radar.addEvent(SCNEvent(newName: "the cyanine", location: CGPoint(x: 0.5,y: -0.5), size: 1, type: eventTypes.portal, details:"portal", note:"universe warp"))
-
+		radar.addEvent(SCNEvent(newName: "to cyanine", location: CGPoint(x: 0.5,y: -0.5), size: 1, type: eventTypes.portal, details:"portal", note:"universe warp"))
 	}
 }

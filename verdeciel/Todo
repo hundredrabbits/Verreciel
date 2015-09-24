@@ -38,14 +38,16 @@
 
 	> Radar
 	- Display different icons per event type
-	- Add masking triangles to hide overflow
-	- Overview mode? Galaxy Map
+	- Add pointer for when a target goes off map
 
 	> Radio
 	- Solved frequency event
 
 	> Beacon
 	- Create systems
+
+	> Cargo
+	- Hook mechanic
 
 	> Cargo?
 

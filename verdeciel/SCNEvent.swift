@@ -64,8 +64,28 @@ class SCNEvent : SCNNode
 	
 	override func update()
 	{
+		if capsule == nil { return }
+		
 		self.position = SCNVector3(location.x,location.y,0)
 		
+		culling()
+		clean()
+		
+		if self.isKnown == false && distanceBetweenTwoPoints(capsule.location, point2: self.location) < 0.3 {
+			isKnown = true
+			self.color(white)
+		}
+	}
+	
+	func clean()
+	{
+		if self.size < 0 {
+			self.removeFromParentNode()
+		}
+	}
+	
+	func culling()
+	{
 		if capsule != nil {
 			if distanceBetweenTwoPoints(capsule.location, point2: self.location) > 1.3 {
 				self.opacity = 0
@@ -73,11 +93,6 @@ class SCNEvent : SCNNode
 			else {
 				self.opacity = 1
 			}
-		}
-		
-		// Destroy
-		if self.size < 0 {
-			self.removeFromParentNode()
 		}
 	}
 	

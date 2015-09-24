@@ -145,11 +145,6 @@ class PanelCargo : SCNNode
 	{
 		if event.type != eventTypes.item { return }
 		
-		
-		
-		
-		
-		
 		input.origin.disconnect()
 		
 		let newItem = event
