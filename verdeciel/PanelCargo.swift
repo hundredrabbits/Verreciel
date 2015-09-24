@@ -37,25 +37,32 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
-		self.addEvent(warpGate)
 		
-		
+		// Goes in Hatch
 		let bullet = SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo")
 		self.addEvent(bullet)
 		
-		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
-		self.addEvent(disk)
+//		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
+//		self.addEvent(disk)
 		
-		let battery = SCNEvent(newName: "small cell", size: 25, type: eventTypes.battery, details: "battery",note:"crack something")
+		// Goes in Battery
+		let battery = SCNEvent(newName: "small battery", size: 25, type: eventTypes.battery, details: "cell",note:"crack something")
 		self.addEvent(battery)
 		
-		// Starmap
+		// Goes in Radar
 		let starMap = SCNEvent(newName: "helio's path", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.map, details: "map",note:"go somewhere")
 		starMap.content.append(SCNEvent(newName: "star1", location: CGPoint(x: -3,y: 2), size: 1, type: eventTypes.location))
 		starMap.content.append(SCNEvent(newName: "star2", location: CGPoint(x: -1,y: 0.7), size: 1, type: eventTypes.location))
 		starMap.content.append(SCNEvent(newName: "star3", location: CGPoint(x: 0.6,y: -0.3), size: 1, type: eventTypes.location))
 		self.addEvent(starMap)
+		
+		// For pilot
+		let coordinate = SCNEvent(newName: "helio system", location: CGPoint(x: -3, y: -4), size: 1, type: eventTypes.location, details: "pilot",note:"go somewhere")
+		self.addEvent(coordinate)
+		
+		// For thruster
+		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
+		self.addEvent(warpGate)
 		
 		update()
 	}

@@ -174,6 +174,13 @@ class PanelThruster : SCNNode
 		}
 	}
 	
+	override func listen(event: SCNEvent)
+	{
+		if event.type == eventTypes.warp {
+			print("Connected Warp")
+		}
+	}
+	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
