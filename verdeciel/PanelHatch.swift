@@ -111,8 +111,6 @@ class PanelHatch : SCNNode
 	
 	override func update()
 	{
-		print("update!!!!!!!")
-		
 		if input.origin == nil {
 			load = nil
 		}

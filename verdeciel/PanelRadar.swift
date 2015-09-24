@@ -47,11 +47,11 @@ class PanelRadar : SCNNode
 		name = "radar"
 		addInterface()
 		
-		targetter = createTargetter()
-		self.addChildNode(targetter)
-		
 		eventView = SCNNode()
 		self.addChildNode(eventView)
+	
+		targetter = createTargetter()
+		eventView.addChildNode(targetter)
 	}
 	
 	func createTargetter() -> SCNNode
@@ -68,6 +68,7 @@ class PanelRadar : SCNNode
 	
 	func addEvent(event:SCNEvent)
 	{
+		event.position = SCNVector3(event.location.x,event.location.y,0)
 		eventView.addChildNode(event)
 		update()
 	}
@@ -143,13 +144,17 @@ class PanelRadar : SCNNode
 	
 	func updateEvents()
 	{
-		for node in eventView.childNodes
-		{
-			let event = node as! SCNEvent
-			event.position.z = Float(event.location.y - (capsule.location.y))
-			event.position.x = Float(event.location.x - (capsule.location.x))
-			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
-		}
+		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
+		
+		
+		
+//		for node in eventView.childNodes
+//		{
+//			let event = node as! SCNEvent
+//			event.position.z = Float(event.location.y - (capsule.location.y))
+//			event.position.x = Float(event.location.x - (capsule.location.x))
+//			event.position = SCNVector3(x: event.position.x, y: event.position.z, z: 0)
+//		}
 	}
 	
 	func updateTarget()
