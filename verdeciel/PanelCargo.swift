@@ -14,6 +14,8 @@ import Foundation
 class PanelCargo : SCNNode
 {
 	var nameLabel = SCNNode()
+	var attractorLabel = SCNLabel(text: "")
+	
 	var cargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
 	
 	var line1:SCNLine!
@@ -74,6 +76,10 @@ class PanelCargo : SCNNode
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(nameLabel)
+		
+		attractorLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+		attractorLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		self.addChildNode(attractorLabel)
 		
 		// Quantity
 		
@@ -143,8 +149,31 @@ class PanelCargo : SCNNode
 	
 	override func listen(event:SCNEvent)
 	{
-		if event.type != eventTypes.item { return }
+		if event.type != eventTypes.item {
+			attractorLabel.updateWithColor("error", color: red)
+			return
+		}
 		
+		if distanceBetweenTwoPoints(capsule.location, point2: event.location) > 0.2 {
+			attractorLabel.update(String(format: "%.1f", distanceBetweenTwoPoints(capsule.location, point2: event.location)))
+			attract(event)
+		}
+		else{
+			attractorLabel.update("")
+			pickup(event)
+		}
+	}
+	
+	func attract(event:SCNEvent)
+	{
+		if event.location.x > capsule.location.x { event.location.x -= 0.002 }
+		if event.location.x < capsule.location.x { event.location.x += 0.002 }
+		if event.location.y > capsule.location.x { event.location.y -= 0.002 }
+		if event.location.y < capsule.location.x { event.location.y += 0.002 }
+	}
+
+	func pickup(event:SCNEvent)
+	{
 		input.origin.disconnect()
 		
 		let newItem = event

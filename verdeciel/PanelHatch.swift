@@ -117,7 +117,7 @@ class PanelHatch : SCNNode
 		
 		if load != nil && load.type != eventTypes.item {
 			nameLabel.update("hatch")
-			quantityLabel.update("error")
+			quantityLabel.updateWithColor("error", color: red)
 			outline1.color(red)
 			outline2.color(red)
 			outline3.color(red)
