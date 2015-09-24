@@ -131,33 +131,7 @@ class PanelBattery : SCNNode
 	
 	override func listen(event:SCNEvent)
 	{
-		if event.type != eventTypes.battery { return }
-		
-		
-		/*
-		let command = input.origin.host as! SCNCommand
-		
-		if load.type != eventTypes.item {
-			return
-		}
-		
-		if command.event.size > 0 {
-			command.event.size -= 1
-			command.update()
-		}
-		
-		if command.event.size < 1 {
-			command.update(SCNCommand(text: "--", details: "", color: grey, event: command.event))
-			command.output.disconnect()
-			self.load = nil
-			cargo.bang(true)
-		}
-
-*/
-		
-		
-		print("routed \(event.name!)")
-		
+		if event.type != eventTypes.battery { return }		
 		update()
 	}
 	
@@ -167,21 +141,26 @@ class PanelBattery : SCNNode
 		if outCell1.connection != nil { self.value -= 0.01 }
 		if outCell2.connection != nil { self.value -= 0.01 }
 		if outCell3.connection != nil { self.value -= 0.01 }
+		if self.value > 100 { self.value -= 0.01 }
 		
-		// Leech
 		if input.origin != nil && input.origin.event == nil {
 			let command = input.origin.host as! SCNCommand
-			if command.event.type == eventTypes.battery {
-				if command.event.size > 0 {
-					command.event.size -= 1
-					command.update()
-					self.value += 1
-				}
-				else{
-					command.output.disconnect()
-					cargo.bang(true)
-				}
-			}
+			leech(command)
+		}
+	}
+	
+	func leech(command:SCNCommand)
+	{
+		if command.event.type != eventTypes.battery { return }
+		
+		if command.event.size > 0 {
+			command.event.size -= 1
+			command.update()
+			self.value += 1
+		}
+		else{
+			command.output.disconnect()
+			cargo.bang(true)
 		}
 	}
 	

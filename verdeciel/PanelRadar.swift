@@ -91,11 +91,9 @@ class PanelRadar : SCNNode
 		
 		inputLabel = SCNLabel(text: "radar", scale: 0.1, align: alignment.left)
 		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
-		inputLabel.updateWithColor("radar", color: grey)
 		
 		outputLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
 		outputLabel.position = SCNVector3(x: lowNode[0].x * scale - 0.3, y: highNode[0].y * scale, z: 0)
-		outputLabel.updateColor(grey)
 		
 		self.addChildNode(input)
 		self.addChildNode(output)
@@ -199,16 +197,19 @@ class PanelRadar : SCNNode
 		targetter.opacity = 0
 		
 		output.removeEvent()
-		outputLabel.updateWithColor("", color: grey)
 		
 		updateTarget()
 	}
 	
 	override func listen(event: SCNEvent)
 	{
-		if event.type == eventTypes.location {
-			cargo.removeEvent(event)
-			addEvent(event)
+		if event.type == eventTypes.map {
+			radar.inputLabel.update("+\(event.content.count) new")
+			for location in event.content {
+				self.addEvent(location)
+			}
+			event.size = 0
+			cargo.bang(true)
 		}
 		
 		update()

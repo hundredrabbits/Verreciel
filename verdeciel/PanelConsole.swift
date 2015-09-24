@@ -103,6 +103,15 @@ class PanelConsole : SCNNode
 	
 	override func update()
 	{
+		consoleLine1.output.disconnect()
+		consoleLine2.output.disconnect()
+		consoleLine3.output.disconnect()
+		consoleLine4.output.disconnect()
+		consoleLine5.output.disconnect()
+		consoleLine6.output.disconnect()
+		consoleLine7.output.disconnect()
+		consoleLine8.output.disconnect()
+		
 		consoleLine1.update(commands[0])
 		consoleLine2.update(commands[1])
 		consoleLine3.update(commands[2])

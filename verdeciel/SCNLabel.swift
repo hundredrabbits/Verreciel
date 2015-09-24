@@ -309,6 +309,10 @@ class SCNLabel : SCNNode
 		else if letter == "-"{
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:self.color))
 		}
+		else if letter == "+"{
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:self.color))
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale/2, y: scale, z: 0), nodeB: SCNVector3(x: scale/2, y: -scale, z: 0),color:self.color))
+		}
 		else if letter == ">"{
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:red))
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -scale, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:red))

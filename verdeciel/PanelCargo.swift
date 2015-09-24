@@ -40,8 +40,6 @@ class PanelCargo : SCNNode
 		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
 		self.addEvent(warpGate)
 		
-		let starMap = SCNEvent(newName: "starmap", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.waypoint, details: "waypoint",note:"go somewhere")
-		self.addEvent(starMap)
 		
 		let bullet = SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo")
 		self.addEvent(bullet)
@@ -52,8 +50,12 @@ class PanelCargo : SCNNode
 		let battery = SCNEvent(newName: "small cell", size: 25, type: eventTypes.battery, details: "battery",note:"crack something")
 		self.addEvent(battery)
 		
-		let battery2 = SCNEvent(newName: "large cell", size: 50, type: eventTypes.battery, details: "battery",note:"crack something")
-		self.addEvent(battery2)
+		// Starmap
+		let starMap = SCNEvent(newName: "helio's path", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.map, details: "map",note:"go somewhere")
+		starMap.content.append(SCNEvent(newName: "star1", location: CGPoint(x: -3,y: 2), size: 1, type: eventTypes.location))
+		starMap.content.append(SCNEvent(newName: "star2", location: CGPoint(x: -1,y: 0.7), size: 1, type: eventTypes.location))
+		starMap.content.append(SCNEvent(newName: "star3", location: CGPoint(x: 0.6,y: -0.3), size: 1, type: eventTypes.location))
+		self.addEvent(starMap)
 		
 		update()
 	}
