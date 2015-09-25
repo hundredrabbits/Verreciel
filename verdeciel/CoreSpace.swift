@@ -52,23 +52,22 @@ class CoreSpace: SCNNode
 	func addStructure(event:SCNEvent)
 	{
 		print("added structure: \(event.name!)")
-		let someNode = SCNNode(geometry: SCNSphere(radius: 1))
-		someNode.position = SCNVector3(0,0,0)
-		someNode.geometry!.materials.first?.diffuse.contents = red
-		structuresRoot.addChildNode(someNode)
+		structuresRoot.addChildNode(SCNStructure(event: event))
 	}
 	
 	func removeStructure()
 	{
 		print("removed structure")
 		for structure in structuresRoot.childNodes{
-			structure.removeFromParentNode()
+//			structure.removeFromParentNode()
 		}
 	}
 	
 	func updateStructures()
 	{
-		
+		for structure in structuresRoot.childNodes{
+			structure.update()
+		}
 	}
 	
 	func addLines()

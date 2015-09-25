@@ -25,6 +25,7 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
+	var angleFromCapsule:CGFloat!
 	var distanceFromCapsule:CGFloat!
 	var isVisible:Bool = false
 	
@@ -71,6 +72,7 @@ class SCNEvent : SCNNode
 		
 		position = SCNVector3(location.x,location.y,0)
 		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
+		angleFromCapsule = (angleBetweenTwoPoints(capsule.location, point2: self.location, center: self.location) + 270) % 360
 		
 		discover()
 		radarCulling()
@@ -89,12 +91,12 @@ class SCNEvent : SCNNode
 	
 	func spaceCulling()
 	{
-		if distanceFromCapsule < 0.5 && isVisible == false {
+		if distanceFromCapsule < 0.75 && isVisible == false {
 			isVisible = true
 			space.addStructure(self)
 		}
 		
-		if distanceFromCapsule > 0.5 && isVisible == true {
+		if distanceFromCapsule > 0.75 && isVisible == true {
 			isVisible = false
 			space.removeStructure()
 		}

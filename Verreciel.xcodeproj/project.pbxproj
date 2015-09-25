@@ -33,6 +33,7 @@
 		573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */; };
 		573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelPilot.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
+		5741B0681BB5C9B7000F7FEF /* SCNStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741B0671BB5C9B7000F7FEF /* SCNStructure.swift */; settings = {ASSET_TAGS = (); }; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
@@ -76,6 +77,7 @@
 		573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelMonitor.swift; sourceTree = "<group>"; };
 		573EDAB41B4B4762007C6D3C /* PanelPilot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelPilot.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
+		5741B0671BB5C9B7000F7FEF /* SCNStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNStructure.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5741B0671BB5C9B7000F7FEF /* SCNStructure.swift */,
 				571728DE1BB03455002782A3 /* SCNNode.swift */,
 				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57A0F10E1B3DDABF0007650F /* SCNEvent.swift */,
@@ -306,6 +309,7 @@
 			files = (
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
+				5741B0681BB5C9B7000F7FEF /* SCNStructure.swift in Sources */,
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
