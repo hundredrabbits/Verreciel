@@ -28,14 +28,16 @@ class SCNStructure : SCNNode
 	override func update()
 	{
 		if event.name == nil { return }
-		if event.angleFromCapsule >= 180 {
-			self.position = SCNVector3(event.angleFromCapsule * 0.001,event.distanceFromCapsule * -20,0)
-		}
-		else{
-			self.position = SCNVector3(0,event.distanceFromCapsule * 20,0)
-		}
 		
-		print("Approaching \(event.name!) at \(event.angleFromCapsule)")
+		let angleBetweenPoints = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: capsule.location) + 270) % 360
+		var positionFromAngle = capsule.direction - angleBetweenPoints
+		if positionFromAngle < -180 { positionFromAngle += 360}
+		positionFromAngle = positionFromAngle % 360
+		
+		
+		self.position = SCNVector3(positionFromAngle * 0.01,event.distanceFromCapsule * 20,0)
+		
+		print("Approaching \(event.name!) at \( angleBetweenPoints ), ship at \(capsule.direction) : \( (positionFromAngle) )")
 	}
 	
 	required init?(coder aDecoder: NSCoder)

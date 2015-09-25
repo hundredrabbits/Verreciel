@@ -22,7 +22,7 @@ class CoreCapsule: SCNNode
 	
 	var location:CGPoint = CGPoint()
 	
-	var direction:Int! = 1
+	var direction:CGFloat! = 1
 	
 	override init()
 	{

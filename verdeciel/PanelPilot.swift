@@ -16,7 +16,7 @@ class PanelPilot : SCNNode
 	var nameLabel = SCNLabel(text: "")
 	var directionLabel = SCNLabel(text: "")
 	
-	var targetDirection = Int()
+	var targetDirection = CGFloat()
 	var targetDirectionIndicator = SCNNode()
 	var activeDirectionIndicator = SCNNode()
 	var staticDirectionIndicator = SCNNode()
@@ -114,7 +114,7 @@ class PanelPilot : SCNNode
 	
 	override func listen(event:SCNEvent)
 	{
-		targetDirection = Int(angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
+		targetDirection = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
 		self.update()
 	}
 	

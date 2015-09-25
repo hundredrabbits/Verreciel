@@ -72,7 +72,8 @@ class SCNEvent : SCNNode
 		
 		position = SCNVector3(location.x,location.y,0)
 		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
-		angleFromCapsule = (angleBetweenTwoPoints(capsule.location, point2: self.location, center: self.location) + 270) % 360
+
+		angleFromCapsule = capsule.direction - ((angleBetweenTwoPoints(capsule.location, point2: self.location, center: self.location) + 270) % 360)
 		
 		discover()
 		radarCulling()
