@@ -25,6 +25,9 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
+	var distanceFromCapsule:CGFloat!
+	var isVisible:Bool = false
+	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
 		self.content = []
@@ -66,14 +69,46 @@ class SCNEvent : SCNNode
 	{
 		if capsule == nil { return }
 		
-		self.position = SCNVector3(location.x,location.y,0)
+		position = SCNVector3(location.x,location.y,0)
+		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
 		
-		culling()
+		discover()
+		radarCulling()
+		spaceCulling()
+		
 		clean()
-		
-		if self.isKnown == false && distanceBetweenTwoPoints(capsule.location, point2: self.location) < 0.3 {
+	}
+	
+	func discover()
+	{
+		if self.isKnown == false && distanceFromCapsule < 0.3 {
 			isKnown = true
 			self.color(white)
+		}
+	}
+	
+	func spaceCulling()
+	{
+		if distanceFromCapsule < 0.5 && isVisible == false {
+			isVisible = true
+			space.addStructure(self)
+		}
+		
+		if distanceFromCapsule > 0.5 && isVisible == true {
+			isVisible = false
+			space.removeStructure()
+		}
+	}
+	
+	func radarCulling()
+	{
+		if capsule != nil {
+			if distanceFromCapsule < 1.3 {
+				self.opacity = 1
+			}
+			else {
+				self.opacity = 0
+			}
 		}
 	}
 	
@@ -81,18 +116,6 @@ class SCNEvent : SCNNode
 	{
 		if self.size < 0 {
 			self.removeFromParentNode()
-		}
-	}
-	
-	func culling()
-	{
-		if capsule != nil {
-			if distanceBetweenTwoPoints(capsule.location, point2: self.location) > 1.3 {
-				self.opacity = 0
-			}
-			else {
-				self.opacity = 1
-			}
 		}
 	}
 	

@@ -1,3 +1,4 @@
+
 //
 //  CapsuleNode.swift
 //  Verreciel
@@ -13,7 +14,8 @@ import Foundation
 
 class CoreSpace: SCNNode
 {
-	var speedLines:SCNNode!
+	var structuresRoot:SCNNode!
+	var starsRoot:SCNNode!
 	
 	override init()
 	{
@@ -25,9 +27,13 @@ class CoreSpace: SCNNode
 		sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
 		self.addChildNode(sphereNode)
 		
-		speedLines = SCNNode()
-		speedLines.position = SCNVector3(x: 0, y: 0, z: 0)
-		self.addChildNode(speedLines)
+		structuresRoot = SCNNode()
+		structuresRoot.position = SCNVector3(x: 0, y: 0, z: 0)
+		self.addChildNode(structuresRoot)
+		
+		starsRoot = SCNNode()
+		starsRoot.position = SCNVector3(x: 0, y: 0, z: 0)
+		self.addChildNode(starsRoot)
 	}
 	
 	override func update()
@@ -39,6 +45,30 @@ class CoreSpace: SCNNode
 		
 		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
 		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
+		
+		updateStructures()
+	}
+	
+	func addStructure(event:SCNEvent)
+	{
+		print("added structure: \(event.name!)")
+		let someNode = SCNNode(geometry: SCNSphere(radius: 1))
+		someNode.position = SCNVector3(0,0,0)
+		someNode.geometry!.materials.first?.diffuse.contents = red
+		structuresRoot.addChildNode(someNode)
+	}
+	
+	func removeStructure()
+	{
+		print("removed structure")
+		for structure in structuresRoot.childNodes{
+			structure.removeFromParentNode()
+		}
+	}
+	
+	func updateStructures()
+	{
+		
 	}
 	
 	func addLines()
@@ -53,13 +83,13 @@ class CoreSpace: SCNNode
 		
 		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: white)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
-		speedLines.addChildNode(newLine)
+		starsRoot.addChildNode(newLine)
 	}
 	
 	func updateLines()
 	{
 		let lineSpeed = Float(thruster.actualSpeed) / 2
-		for node in speedLines.childNodes
+		for node in starsRoot.childNodes
 		{
 			let line = node
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
