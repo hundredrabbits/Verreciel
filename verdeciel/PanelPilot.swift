@@ -93,8 +93,6 @@ class PanelPilot : SCNNode
 			staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
 			let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 			eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
-			
-			directionLabel.update(String(format: "%.0f",Float(targetDirection - capsule.direction)))
 		}
 	}
 	
@@ -118,6 +116,10 @@ class PanelPilot : SCNNode
 	override func listen(event:SCNEvent)
 	{
 		targetDirection = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
+		
+		
+		directionLabel.update(String(format: "%.0f",event.alignmentWithCapsule))
+		
 		self.update()
 	}
 	

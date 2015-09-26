@@ -6,9 +6,8 @@
 > Universe
 
 	> Events
-	- Collision event
-	- Collision warning
-	- Connect the event creation to the universe object
+	- Connect the beacon to the event's nodes for communication
+	- Use the angle as a modifier for distance
 
 	> Sentries
 	- Detection
@@ -35,5 +34,7 @@
 	- Create systems
 
 > Player
+
+	> Blink the instance name, into the helmet, upon entering
 
 > Tools

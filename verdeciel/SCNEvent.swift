@@ -25,7 +25,8 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
-	var angleFromCapsule:CGFloat!
+	var angleWithCapsule:CGFloat!
+	var alignmentWithCapsule:CGFloat!
 	var distanceFromCapsule:CGFloat!
 	var isVisible:Bool = false
 	
@@ -72,8 +73,9 @@ class SCNEvent : SCNNode
 		
 		position = SCNVector3(location.x,location.y,0)
 		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
-
-		angleFromCapsule = updateAngle()
+		
+		angleWithCapsule = calculateAngle()
+		alignmentWithCapsule = calculateAlignment()
 		
 		discover()
 		instance()
@@ -126,7 +128,7 @@ class SCNEvent : SCNNode
 		}
 	}
 	
-	func updateAngle() -> CGFloat
+	func calculateAngle() -> CGFloat
 	{
 		let p1 = capsule.location
 		let p2 = self.location
@@ -137,21 +139,15 @@ class SCNEvent : SCNNode
 		
 		let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
 		
-		let shipInRadian = Double(capsule.direction) * M_PI / 180.0
-		var angleInDeg = 360 - (((Double(angle) * 180.0 / M_PI) + 360) % 360)
-		angleInDeg = (angleInDeg + 90) % 360
-		let angleInRad = degToRad(CGFloat(angleInDeg))
+		return (360 - (radToDeg(angle) - 90)) % 360
+	}
+	
+	func calculateAlignment() -> CGFloat
+	{
+		var diff = max(capsule.direction, self.angleWithCapsule) - min(capsule.direction, self.angleWithCapsule)
+		if (diff > 180){ diff = 360 - diff }
 		
-		var difference = degToRad(capsule.direction) - angleInRad
-		
-		
-		var differenceInDeg = abs(radToDeg(difference))
-		
-		if differenceInDeg > 180 { differenceInDeg = differenceInDeg % 180 }
-		
-		
-		return differenceInDeg
-
+		return diff
 	}
 	
 	override func touch()

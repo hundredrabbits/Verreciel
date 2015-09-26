@@ -31,13 +31,16 @@ class SCNInstance : SCNNode
 	{
 		let distance = event.distanceFromCapsule * 15.0
 		
-		let newAngle = degToRad(abs(event.angleFromCapsule))
+		let newAngle = degToRad(abs(event.alignmentWithCapsule))
 		
 		let flattenedDistance = CGFloat(cos(newAngle)) * distance // important
 		
-		self.position = SCNVector3(0,flattenedDistance,0)
-		
-		
+		if event.alignmentWithCapsule >= 90 {
+			self.position = SCNVector3(0,abs(flattenedDistance) * -1,0)
+		}
+		else{
+			self.position = SCNVector3(0,abs(flattenedDistance),0)
+		}
 		
 		if event.distanceFromCapsule > 1.5 {
 			leaveInstance()

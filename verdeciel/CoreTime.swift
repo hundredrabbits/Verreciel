@@ -19,7 +19,7 @@ class CoreTime : NSObject
 	{
 		super.init()
 		let eventSelector = Selector("tic")
-		time = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: eventSelector, userInfo: nil, repeats: true)
+		time = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: eventSelector, userInfo: nil, repeats: true)
 	}
 	
 	func tic()
