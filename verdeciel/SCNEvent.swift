@@ -92,7 +92,7 @@ class SCNEvent : SCNNode
 	
 	func instance()
 	{
-		if distanceFromCapsule < 0.9 && capsule.instance == nil {
+		if distanceFromCapsule < 1.5 && capsule.instance == nil {
 			capsule.instance = self
 			space.startInstance(self)
 		}

@@ -149,9 +149,14 @@ class GameViewController: UIViewController
 	}
 }
 
-func degToRad( degrees : Float ) -> Float
+func degToRad(degrees:Float) -> Float
 {
-	return ( degrees / 180 * Float(M_PI) )
+	return degrees / 180 * Float(M_PI)
+}
+
+func RadToDeg(value:Double) -> Double
+{
+	return value * 180.0 / M_PI
 }
 
 func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat
