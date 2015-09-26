@@ -76,8 +76,8 @@ class SCNEvent : SCNNode
 		angleFromCapsule = capsule.direction - ((angleBetweenTwoPoints(capsule.location, point2: self.location, center: self.location) + 270) % 360)
 		
 		discover()
+		instance()
 		radarCulling()
-		spaceCulling()
 		
 		clean()
 	}
@@ -90,16 +90,11 @@ class SCNEvent : SCNNode
 		}
 	}
 	
-	func spaceCulling()
+	func instance()
 	{
-		if distanceFromCapsule < 0.75 && isVisible == false {
-			isVisible = true
-			space.addStructure(self)
-		}
-		
-		if distanceFromCapsule > 0.75 && isVisible == true {
-			isVisible = false
-			space.removeStructure()
+		if distanceFromCapsule < 0.9 && capsule.instance == nil {
+			capsule.instance = self
+			space.startInstance(self)
 		}
 	}
 	

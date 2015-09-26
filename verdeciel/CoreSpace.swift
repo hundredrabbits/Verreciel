@@ -36,6 +36,11 @@ class CoreSpace: SCNNode
 		self.addChildNode(starsRoot)
 	}
 	
+	func startInstance(event:SCNEvent)
+	{
+		structuresRoot.addChildNode(SCNInstance(event: event))
+	}
+	
 	override func update()
 	{
 		if thruster.actualSpeed > 0 {
@@ -49,24 +54,10 @@ class CoreSpace: SCNNode
 		updateStructures()
 	}
 	
-	func addStructure(event:SCNEvent)
-	{
-		print("added structure: \(event.name!)")
-		structuresRoot.addChildNode(SCNStructure(event: event))
-	}
-	
-	func removeStructure()
-	{
-		print("removed structure")
-		for structure in structuresRoot.childNodes{
-//			structure.removeFromParentNode()
-		}
-	}
-	
 	func updateStructures()
 	{
-		for structure in structuresRoot.childNodes{
-			structure.update()
+		for instance in structuresRoot.childNodes{
+			instance.update()
 		}
 	}
 	

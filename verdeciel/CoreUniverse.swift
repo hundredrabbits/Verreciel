@@ -16,9 +16,9 @@ class CoreUniverse
 	init()
 	{
 		radar.addEvent(SCNEvent(newName: "tl", location: CGPoint(x: 0.5,y: 0.5), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "tr", location: CGPoint(x: -0.5,y: 0.5), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "bl", location: CGPoint(x: 0.5,y: -0.5), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
+//		radar.addEvent(SCNEvent(newName: "tr", location: CGPoint(x: -0.5,y: 0.5), size: 0.5, type: eventTypes.location))
+//		radar.addEvent(SCNEvent(newName: "bl", location: CGPoint(x: 0.5,y: -0.5), size: 0.5, type: eventTypes.location))
+//		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
 		
 		
 		

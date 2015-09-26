@@ -24,6 +24,8 @@ class CoreCapsule: SCNNode
 	
 	var direction:CGFloat! = 1
 	
+	var instance:SCNEvent!
+	
 	override init()
 	{
 		super.init()
