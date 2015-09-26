@@ -116,14 +116,14 @@ class GameViewController: UIViewController
 			touchPosition = touch.locationInView(self.view)
 		}
 		
-		let dragX = Float(touchPosition.x - touchOrigin.x)
-		let dragY = Float(touchPosition.y - touchOrigin.y)
+		let dragX = CGFloat(touchPosition.x - touchOrigin.x)
+		let dragY = CGFloat(touchPosition.y - touchOrigin.y)
 		
 		touchOrigin = touchPosition
 		
-		let xAngle = SCNMatrix4MakeRotation(degToRad(dragY/4), 1, 0, 0)
-		let yAngle = SCNMatrix4MakeRotation(degToRad(dragX/5), 0, 1, 0)
-		let zAngle = SCNMatrix4MakeRotation(degToRad(0), 0, 0, 1)
+		let xAngle = SCNMatrix4MakeRotation(Float(degToRad(dragY/4)), 1, 0, 0)
+		let yAngle = SCNMatrix4MakeRotation(Float(degToRad(dragX/5)), 0, 1, 0)
+		let zAngle = SCNMatrix4MakeRotation(Float(degToRad(0)), 0, 0, 1)
 		
 		let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
 		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
@@ -149,14 +149,14 @@ class GameViewController: UIViewController
 	}
 }
 
-func degToRad(degrees:Float) -> Float
+func degToRad(degrees:CGFloat) -> CGFloat
 {
-	return degrees / 180 * Float(M_PI)
+	return degrees / 180 * CGFloat(M_PI)
 }
 
-func RadToDeg(value:Double) -> Double
+func radToDeg(value:CGFloat) -> CGFloat
 {
-	return value * 180.0 / M_PI
+	return CGFloat(Double(value) * 180.0 / M_PI)
 }
 
 func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat

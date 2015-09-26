@@ -73,7 +73,7 @@ class SCNEvent : SCNNode
 		position = SCNVector3(location.x,location.y,0)
 		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
 
-		angleFromCapsule = capsule.direction - ((angleBetweenTwoPoints(capsule.location, point2: self.location, center: self.location) + 270) % 360)
+		angleFromCapsule = updateAngle()
 		
 		discover()
 		instance()
@@ -124,6 +124,34 @@ class SCNEvent : SCNNode
 			let line = node as! SCNLine
 			line.color(targetColor)
 		}
+	}
+	
+	func updateAngle() -> CGFloat
+	{
+		let p1 = capsule.location
+		let p2 = self.location
+		let center = capsule.location
+		
+		let v1 = CGVector(dx: p1.x - center.x, dy: p1.y - center.y)
+		let v2 = CGVector(dx: p2.x - center.x, dy: p2.y - center.y)
+		
+		let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+		
+		let shipInRadian = Double(capsule.direction) * M_PI / 180.0
+		var angleInDeg = 360 - (((Double(angle) * 180.0 / M_PI) + 360) % 360)
+		angleInDeg = (angleInDeg + 90) % 360
+		let angleInRad = degToRad(CGFloat(angleInDeg))
+		
+		var difference = degToRad(capsule.direction) - angleInRad
+		
+		
+		var differenceInDeg = abs(radToDeg(difference))
+		
+		if differenceInDeg > 180 { differenceInDeg = differenceInDeg % 180 }
+		
+		
+		return differenceInDeg
+
 	}
 	
 	override func touch()

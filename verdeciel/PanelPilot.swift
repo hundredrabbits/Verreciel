@@ -110,6 +110,9 @@ class PanelPilot : SCNNode
 		else if testOri >= 180 { capsule.direction! -= 1 }
 		else if Int(capsule.direction) < Int(targetDirection) { capsule.direction! += 1 }
 		else if Int(capsule.direction) > Int(targetDirection) { capsule.direction! -= 1 }
+		
+		if capsule.direction < 0 { capsule.direction = capsule.direction! + 360 }
+		if capsule.direction >= 360 { capsule.direction = capsule.direction! - 360 }
 	}
 	
 	override func listen(event:SCNEvent)
