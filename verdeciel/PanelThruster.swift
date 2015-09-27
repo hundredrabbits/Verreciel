@@ -146,18 +146,6 @@ class PanelThruster : SCNNode
 	
 	override func update()
 	{
-		if actualSpeed > 0
-		{
-			let speed:Float = Float(actualSpeed)/100
-			let angle:Float = Float((capsule.direction) % 360)
-			
-			let angleRad = ( Double(angle) / 180.0 * M_PI)
-			
-			capsule.location.x += CGFloat(speed) * CGFloat(sin(angleRad))
-			capsule.location.y += CGFloat(speed) * CGFloat(cos(angleRad))
-			
-			radar.update()
-		}
 	}
 	
 	override func tic()
@@ -171,6 +159,19 @@ class PanelThruster : SCNNode
 		
 		if Float(speed) != actualSpeed {
 			speedLabel.update(String(format: "%.1f", actualSpeed))
+		}
+		
+		if actualSpeed > 0
+		{
+			let speed:Float = Float(actualSpeed)/150
+			let angle:Float = Float((capsule.direction) % 360)
+			
+			let angleRad = ( Double(angle) / 180.0 * M_PI)
+			
+			capsule.location.x += CGFloat(speed) * CGFloat(sin(angleRad))
+			capsule.location.y += CGFloat(speed) * CGFloat(cos(angleRad))
+			
+			radar.update()
 		}
 	}
 	

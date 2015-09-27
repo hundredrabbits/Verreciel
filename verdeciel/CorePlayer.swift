@@ -122,7 +122,6 @@ class CorePlayer : SCNNode
 	
 	override func tic()
 	{
-		if alertTimer.valid == false { return }
 		if alertLabel.opacity == 0 { alertLabel.opacity = 1}
 		else{ alertLabel.opacity = 0 }
 	}

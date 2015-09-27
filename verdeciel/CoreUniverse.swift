@@ -17,12 +17,9 @@ class CoreUniverse
 	{
 //		radar.addEvent(SCNEvent(newName: "tl", location: CGPoint(x: 0.5,y: 0.5), size: 0.5, type: eventTypes.location))
 //		radar.addEvent(SCNEvent(newName: "tr", location: CGPoint(x: -0.5,y: 0.5), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "bl", location: CGPoint(x: -0.5,y: 0.5), size: 0.5, type: eventTypes.location))
+		radar.addEvent(SCNEvent(newName: "the prismatist", location: CGPoint(x: 0,y: 0.8), size: 0.5, type: eventTypes.location))
 		//		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.8,y: -0.8), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.8,y: 0.8), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: 0.8,y: -0.8), size: 0.5, type: eventTypes.location))
-		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: 0.8,y: 0.8), size: 0.5, type: eventTypes.location))
+		
 		
 //		radar.addEvent(SCNEvent(newName: "star", location: CGPoint(x: 4,y: 4), size: 1, type: eventTypes.location))
 //		radar.addEvent(SCNEventNPC(newName: "test", location: CGPoint(x: 6,y: 0.5), size: 1.5,details:"test",note:"nothing"))
