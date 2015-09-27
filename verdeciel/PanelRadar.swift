@@ -170,11 +170,6 @@ class PanelRadar : SCNNode
 			labelDistance.update(String(format: "%.1f",distanceFromShip))
 			labelDistance.opacity = 1
 			
-			print("ShipAngle:\(capsule.direction) EventAngle:\(output.event.angleWithCapsule) EventAlignment:\(output.event.alignmentWithCapsule)")
-			
-			
-			
-			
 			if output.event.isKnown == false && distanceFromShip < 0.2 {
 				output.event.isKnown = true
 				output.event.update()

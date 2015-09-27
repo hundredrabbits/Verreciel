@@ -15,6 +15,9 @@ class CorePlayer : SCNNode
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!
 	
+	var alertLabel:SCNLabel!
+	var alertTimer:NSTimer!
+	
 	var health:Int
 	var magic:Int
 	
@@ -68,6 +71,11 @@ class CorePlayer : SCNNode
 		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
 		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(displayMagic)
+		
+		alertLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
+		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
+		alertLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
+		self.addChildNode(alertLabel)
 	}
 	
 	func activatePort(port:SCNPort)
@@ -98,6 +106,25 @@ class CorePlayer : SCNNode
 	func desactivatePort()
 	{
 		self.port.desactivate()
+	}
+	
+	func alert(text:String)
+	{
+		alertLabel.update(text)
+		alertTimer = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: Selector("clearAlert"), userInfo: nil, repeats: false)
+	}
+	
+	func clearAlert()
+	{
+		alertLabel.update("")
+		alertTimer.invalidate()
+	}
+	
+	override func tic()
+	{
+		if alertTimer.valid == false { return }
+		if alertLabel.opacity == 0 { alertLabel.opacity = 1}
+		else{ alertLabel.opacity = 0 }
 	}
 	
 	required init(coder aDecoder: NSCoder) {

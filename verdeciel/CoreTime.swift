@@ -34,5 +34,7 @@ class CoreTime : NSObject
 		radar.tic()
 		thruster.tic()
 		monitor.tic()
+		
+		player.tic()
 	}
 }

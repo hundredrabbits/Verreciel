@@ -42,7 +42,7 @@ class SCNInstance : SCNNode
 			self.position = SCNVector3(0,abs(flattenedDistance),0)
 		}
 		
-		if event.distanceFromCapsule > 1.5 {
+		if event.distanceFromCapsule > 0.75 {
 			leaveInstance()
 		}
 	}
