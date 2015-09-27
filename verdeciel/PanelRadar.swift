@@ -63,6 +63,8 @@ class PanelRadar : SCNNode
 	
 	func addEvent(event:SCNEvent)
 	{
+		print(event.location)
+		
 		eventView.addChildNode(event)
 		update()
 	}

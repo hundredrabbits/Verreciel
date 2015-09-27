@@ -150,6 +150,11 @@ class SCNEvent : SCNNode
 		return diff
 	}
 	
+	func mesh() -> SCNNode
+	{
+		return SCNNode()
+	}
+	
 	override func touch()
 	{
 		radar.addTarget(self)

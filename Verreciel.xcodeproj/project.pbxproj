@@ -22,12 +22,12 @@
 		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; settings = {ASSET_TAGS = (); }; };
 		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; settings = {ASSET_TAGS = (); }; };
 		571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* PanelBattery.swift */; settings = {ASSET_TAGS = (); }; };
+		572258151BB877C600DEC41E /* EventPrismatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* EventPrismatist.swift */; settings = {ASSET_TAGS = (); }; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
 		5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */; settings = {ASSET_TAGS = (); }; };
 		5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */; settings = {ASSET_TAGS = (); }; };
-		573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627751B4BFD2900899EBC /* SCNKnob.swift */; };
 		573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573627771B4C06DF00899EBC /* SCNToggle.swift */; };
 		573AE0621BB44AF800CF906C /* SCNEventNPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573AE0611BB44AF800CF906C /* SCNEventNPC.swift */; settings = {ASSET_TAGS = (); }; };
 		573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */; };
@@ -66,12 +66,12 @@
 		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
 		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
 		571728E91BB07FB8002782A3 /* PanelBattery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBattery.swift; sourceTree = "<group>"; };
+		572258141BB877C600DEC41E /* EventPrismatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPrismatist.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
 		5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadio.swift; sourceTree = "<group>"; };
 		5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTranslator.swift; sourceTree = "<group>"; };
-		573627751B4BFD2900899EBC /* SCNKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNKnob.swift; sourceTree = "<group>"; };
 		573627771B4C06DF00899EBC /* SCNToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNToggle.swift; sourceTree = "<group>"; };
 		573AE0611BB44AF800CF906C /* SCNEventNPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNEventNPC.swift; sourceTree = "<group>"; };
 		573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelMonitor.swift; sourceTree = "<group>"; };
@@ -122,6 +122,7 @@
 			children = (
 				5734D45B1B5AAA7800BF0048 /* Todo */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
+				572258131BB8779900DEC41E /* Events */,
 				579419731B58AEB100F9FF87 /* Core */,
 				573627791B4C06E800899EBC /* Components */,
 				5736277A1B4C06FE00899EBC /* Panels */,
@@ -192,6 +193,14 @@
 			name = High;
 			sourceTree = "<group>";
 		};
+		572258131BB8779900DEC41E /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				572258141BB877C600DEC41E /* EventPrismatist.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +213,6 @@
 				57009F4F1B40CF4400E3EE83 /* SCNLink.swift */,
 				573627771B4C06DF00899EBC /* SCNToggle.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
-				573627751B4BFD2900899EBC /* SCNKnob.swift */,
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
@@ -313,7 +321,6 @@
 				573627781B4C06DF00899EBC /* SCNToggle.swift in Sources */,
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
-				573627761B4BFD2900899EBC /* SCNKnob.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */,
@@ -324,6 +331,7 @@
 				57009F501B40CF4400E3EE83 /* SCNLink.swift in Sources */,
 				5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
+				572258151BB877C600DEC41E /* EventPrismatist.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				573AE0621BB44AF800CF906C /* SCNEventNPC.swift in Sources */,

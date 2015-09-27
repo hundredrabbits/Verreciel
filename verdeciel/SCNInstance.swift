@@ -14,32 +14,15 @@ import Foundation
 class SCNInstance : SCNNode
 {
 	var event:SCNEvent!
-	var mesh:SCNNode!
 	
 	init(event:SCNEvent)
 	{
 		super.init()
 		self.event = event
 		
-		// Mesh
-		
-		mesh = SCNNode()
-		addMesh()
-		self.addChildNode(mesh)
+		self.addChildNode(event.mesh())
 		
 		print("Begin instance : \(event.name!)")
-	}
-	
-	func addMesh()
-	{
-		var i = 0
-		while i < 4 {
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,i,0), nodeB: SCNVector3(0,i,3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,3), nodeB: SCNVector3(3,i,0), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,i,0), nodeB: SCNVector3(0,i,-3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,-3), nodeB: SCNVector3(-3,i,0), color: red))
-			i += 1
-		}
 	}
 	
 	override func update()
