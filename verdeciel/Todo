@@ -14,6 +14,16 @@
 	- Animate missle events
 	- Display player targeting
 
+> Event Types
+
+	> Items
+	- Add repair kits
+	- Add batteries
+
+	> Locations
+	- Add station events
+	- Add stars
+
 > Capsule
 
 	> Misc
@@ -22,9 +32,12 @@
 	- Doodads polygons
 
 	> Radar
+	- Improve the targetter sprite
 
 	> Give instances their own control panels
 
 > Player
+
+	- Better controls in general..
 
 > Tools
