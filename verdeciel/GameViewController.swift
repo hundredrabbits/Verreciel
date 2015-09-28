@@ -38,6 +38,7 @@ var floorNode:Array<SCNVector3>!
 var radar:PanelRadar!
 var battery:PanelBattery!
 var console:PanelConsole!
+var custom:PanelCustom!
 
 var pilot:PanelPilot!
 var thruster:PanelThruster!

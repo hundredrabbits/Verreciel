@@ -23,11 +23,11 @@ class SCNEventNPC : SCNEvent
 		self.details = details
 		self.note = note
 		
-		addInterface()
+		createSprite()
 		addTrigger()
 	}
 	
-	override func addInterface()
+	override func createSprite()
 	{
 		let displaySize = self.size/10
 		

@@ -104,6 +104,8 @@ class CoreCapsule: SCNNode
 	func panelSetup()
 	{
 		let northPanels = SCNNode()
+		custom = PanelCustom()
+		northPanels.addChildNode(custom)
 		
 		let northEastPanels = SCNNode()
 		cargo = PanelCargo()

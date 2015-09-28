@@ -30,6 +30,8 @@ class SCNEvent : SCNNode
 	var distanceFromCapsule:CGFloat!
 	var isVisible:Bool = false
 	
+	var sprite = SCNNode()
+	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
 		self.content = []
@@ -43,13 +45,15 @@ class SCNEvent : SCNNode
 		self.size = size
 		self.note = note
 		
-		addInterface()
+		createSprite()
 		addTrigger()
+		
+		self.addChildNode(sprite)
 		
 		update()
 	}
 	
-	func addInterface()
+	func createSprite()
 	{
 		let displaySize = self.size/10
 	
@@ -121,7 +125,7 @@ class SCNEvent : SCNNode
 	
 	func color(targetColor:UIColor)
 	{
-		for node in self.childNodes
+		for node in sprite.childNodes
 		{
 			let line = node as! SCNLine
 			line.color(targetColor)

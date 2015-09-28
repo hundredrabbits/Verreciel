@@ -22,6 +22,8 @@ class SCNInstance : SCNNode
 		
 		self.addChildNode(event.mesh())
 		
+		self.update()
+		
 		print("Begin instance : \(event.name!)")
 	}
 	

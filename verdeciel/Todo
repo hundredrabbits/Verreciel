@@ -6,8 +6,7 @@
 > Universe
 
 	> Events
-	- Connect the beacon to the event's nodes for communication
-	- Use the angle as a modifier for distance
+	- Warps
 
 	> Sentries
 	- Detection
@@ -15,23 +14,14 @@
 	- Animate missle events
 	- Display player targeting
 
-	> Warp
-	- Design icon
-	- Update capsule location
-
 > Capsule
 
 	> Misc
 	- Implement Beacon interaction
 	- Implement noise level
 	- Doodads polygons
-	= Design outdoors
 
 	> Radar
-	- Display different icons per event type
-
-	> Beacon
-	- Create systems
 
 	> Give instances their own control panels
 
