@@ -121,6 +121,13 @@ class PanelCargo : SCNNode
 		cargohold.content.append(event)
 	}
 	
+	func addEvents(events:Array<SCNEvent>)
+	{
+		for event in events {
+			cargohold.content.append(event)
+		}
+	}
+	
 	override func update()
 	{
 		let newCargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
@@ -167,15 +174,23 @@ class PanelCargo : SCNNode
 			attractorLabel.updateWithColor("waiting", color: red)
 			return
 		}
+		
 		if loadTime < 100 {
-			loadTime += 1
+			loadTime += Int(arc4random_uniform(4))
+			if loadTime > 100 { loadTime = 100}
 			attractorLabel.updateWithColor("\(loadTime)%", color: cyan)
 		}
 		else{
+			attractorLabel.updateWithColor("", color: cyan)
 			loadTime = 0
 			input.origin.disconnect()
-			let newItem = event
-			cargohold.content.append(newItem)
+			
+			if event.type == eventTypes.cargo {
+				self.addEvents(event.content)
+			}
+			else{
+				self.addEvent(event)
+			}
 			
 			event.removeFromParentNode()
 			radar.removeTarget()

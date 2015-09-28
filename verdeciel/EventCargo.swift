@@ -5,7 +5,7 @@ import Foundation
 
 class eventCargo : SCNEvent
 {
-	init(location: CGPoint)
+	init(location: CGPoint, inventory: SCNEvent)
 	{
 		super.init(newName:"cargo", location:location, type:eventTypes.cargo)
 		
@@ -13,6 +13,8 @@ class eventCargo : SCNEvent
 		self.size = 1
 		self.details = ""
 		self.note = ""
+		
+		self.content.append(inventory)
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
