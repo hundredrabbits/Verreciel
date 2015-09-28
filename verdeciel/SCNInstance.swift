@@ -21,35 +21,34 @@ class SCNInstance : SCNNode
 		self.event = event
 		
 		self.addChildNode(event.mesh())
-		
+		print("> INSTANCE | Begin \(event.name!)")
+
 		self.update()
-		
-		print("Begin instance : \(event.name!)")
 	}
 	
 	override func update()
 	{
-		let distance = event.distanceFromCapsule * 15.0
+		let distance = event.distance * 15.0
 		
-		let newAngle = degToRad(abs(event.alignmentWithCapsule))
+		let newAngle = degToRad(abs(event.alignment))
 		
 		let flattenedDistance = CGFloat(cos(newAngle)) * distance // important
 		
-		if event.alignmentWithCapsule >= 90 {
+		if event.alignment >= 90 {
 			self.position = SCNVector3(0,abs(flattenedDistance) * -1,0)
 		}
 		else{
 			self.position = SCNVector3(0,abs(flattenedDistance),0)
 		}
 		
-		if event.distanceFromCapsule > 0.75 {
+		if event.distance > 0.75 {
 			leaveInstance()
 		}
 	}
 	
 	func leaveInstance()
 	{
-		print("Leaving instance: \(self.event.name!)")
+		print("> INSTANCE | Leaving \(event.name!)")
 		capsule.instance = nil
 		self.removeFromParentNode()
 	}

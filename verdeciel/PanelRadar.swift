@@ -20,7 +20,7 @@ class PanelRadar : SCNNode
 	var labelPositionZ:SCNLabel!
 	var labelDistance:SCNLabel!
 	
-	var eventView:SCNNode!
+	var eventView = universe
 	var shipCursor:SCNNode!
 	
 	var targetter:SCNNode!
@@ -39,10 +39,12 @@ class PanelRadar : SCNNode
 	override init()
 	{
 		super.init()
+		
+		print("@ RADAR    | Init")
+		
 		name = "radar"
 		addInterface()
 		
-		eventView = SCNNode()
 		self.addChildNode(eventView)
 	
 		targetter = createTargetter()
@@ -59,13 +61,6 @@ class PanelRadar : SCNNode
 		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
 		
 		return targetterNode
-	}
-	
-	func addEvent(event:SCNEvent)
-	{
-		print("> RADAR(\(event.name!) @\(event.location))")
-//		eventView.addChildNode(event)
-//		update()
 	}
 	
 	func addInterface()
@@ -142,20 +137,12 @@ class PanelRadar : SCNNode
 		labelPositionX.update(String(Int(capsule.location.x)))
 		labelPositionZ.update(String(Int(capsule.location.y)))
 		
-		updateEvents()
-		updateTarget()
+		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
 		
 		horizontalGrid.position = SCNVector3(0,((capsule.location.y * -1) % 3) + 1.5,-0.001)
 		verticalGrid.position = SCNVector3(((capsule.location.x * -1) % 4) + 2,0,-0.001)
-	}
-	
-	func updateEvents()
-	{		
-		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
-		for event in eventView.childNodes
-		{
-			event.update()
-		}
+		
+		updateTarget()
 	}
 	
 	func updateTarget()
@@ -220,9 +207,9 @@ class PanelRadar : SCNNode
 	{
 		if event.type == eventTypes.map {
 			radar.inputLabel.update("+\(event.content.count) new")
-			for location in event.content {
-				self.addEvent(location)
-			}
+//			for location in event.content {
+//				self.addEvent(location)
+//			}
 			event.size = 0
 			cargo.bang(true)
 		}

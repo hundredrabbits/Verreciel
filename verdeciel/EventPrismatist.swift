@@ -13,10 +13,12 @@ class thePrismatist : SCNEvent
 		self.size = 1
 		self.details = ""
 		self.note = ""
-	}
-	
-	override func collide()
-	{
+		
+		self.geometry = SCNPlane(width: 0.5, height: 0.5)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
+		
+		self.addChildNode(sprite)
+		self.addChildNode(trigger)
 	}
 	
 	override func createSprite() -> SCNNode

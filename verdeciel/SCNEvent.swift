@@ -13,9 +13,6 @@ import Foundation
 
 class SCNEvent : SCNNode
 {
-	var isKnown:Bool = false
-	var isTargetted:Bool = false
-	
 	var targetNode:SCNNode!
 	
 	var location = CGPoint()
@@ -25,10 +22,18 @@ class SCNEvent : SCNNode
 	var note = String()
 	var content:Array<SCNEvent>!
 	
-	var angleWithCapsule:CGFloat!
-	var alignmentWithCapsule:CGFloat!
-	var distanceFromCapsule:CGFloat!
+	var angle:CGFloat!
+	var alignment:CGFloat!
+	var distance:CGFloat!
+	
+	var inCollision:Bool = false
+	var inApproach:Bool = false
+	var inDiscovery:Bool = false
+	var inSight:Bool = false
+	
 	var isVisible:Bool = false
+	var isKnown:Bool = false
+	var isTargetted:Bool = false
 	
 	var sprite = SCNNode()
 	var trigger = SCNNode()
@@ -52,46 +57,84 @@ class SCNEvent : SCNNode
 		start()
 	}
 	
+	// MARK: Basic -
+	
 	func start()
 	{
-		print("+ EVENT(\(self.name!) @\(self.location))")
+		print("@ EVENT    | \(self.name!)\(self.location)")
 		
 		self.sprite  = createSprite()
 		self.trigger = createTrigger()
-		
-//		update()
 	}
 	
 	override func update()
 	{
 		if capsule == nil { return }
 		
-		position = SCNVector3(location.x,location.y,0)
-		distanceFromCapsule = distanceBetweenTwoPoints(capsule.location, point2: self.location)
+		self.position = SCNVector3(location.x,location.y,0)
+		self.distance = distanceBetweenTwoPoints(capsule.location, point2: self.location)
+		self.angle = calculateAngle()
+		self.alignment = calculateAlignment()
 		
-		angleWithCapsule = calculateAngle()
-		alignmentWithCapsule = calculateAlignment()
+		// Sighted
+		if self.distance < 2 {
+			if self.inSight == false {
+				sight()
+				self.inSight = true
+				self.isKnown = true
+			}
+		}
+		else{
+			inSight = false
+		}
 		
-		// Discover
-		if self.isKnown == false && distanceFromCapsule < 0.3 {
-			discover()
+		// Approach
+		if self.distance < 0.75 {
+			if self.inApproach == false {
+				approach()
+				self.inApproach = true
+			}
+		}
+		else{
+			inApproach = false
 		}
 		
 		// Collide
-		if distanceFromCapsule < 0.1 {
-			collide()
+		if self.distance < 0.1 {
+			if self.inCollision == false {
+				collide()
+				self.inCollision = true
+			}
 		}
-//		print("Distance: \(distanceFromCapsule) - \(capsule.location) / \(self.location)")
-		
-		// Approach
-		if distanceFromCapsule < 0.75 && capsule.instance == nil {
-			approach()
+		else{
+			inCollision = false
 		}
 		
 		radarCulling()
-		
 		clean()
 	}
+	
+	// MARK: Events -
+	
+	
+	func sight()
+	{
+		print("* EVENT    | Sighted \(self.name!)")
+	}
+	
+	func approach()
+	{
+		print("* EVENT    | Approached \(self.name!)")
+		capsule.instance = self
+		space.startInstance(self)
+	}
+	
+	func collide()
+	{
+		print("* EVENT    | Collided \(self.name!)")
+	}
+	
+	// MARK: Misc -
 	
 	func createSprite() -> SCNNode
 	{
@@ -119,26 +162,9 @@ class SCNEvent : SCNNode
 		return triggerNode
 	}
 	
-	func discover()
-	{
-		isKnown = true
-		self.color(white)
-	}
-	
-	func collide()
-	{
-		
-	}
-	
-	func approach()
-	{
-//		capsule.instance = self
-//		space.startInstance(self)
-	}
-	
 	func radarCulling()
 	{
-		if distanceFromCapsule < 1.3 {
+		if self.distance < 1.3 {
 			self.opacity = 1
 		}
 		else {
@@ -179,7 +205,7 @@ class SCNEvent : SCNNode
 	
 	func calculateAlignment() -> CGFloat
 	{
-		var diff = max(capsule.direction, self.angleWithCapsule) - min(capsule.direction, self.angleWithCapsule)
+		var diff = max(capsule.direction, self.angle) - min(capsule.direction, self.angle)
 		if (diff > 180){ diff = 360 - diff }
 		
 		return diff

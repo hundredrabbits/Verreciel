@@ -117,7 +117,7 @@ class PanelPilot : SCNNode
 	{
 		targetDirection = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
 		
-		directionLabel.update(String(format: "%.0f",event.alignmentWithCapsule))
+		directionLabel.update(String(format: "%.0f",event.alignment))
 		
 		self.update()
 	}

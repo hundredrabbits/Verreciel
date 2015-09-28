@@ -57,8 +57,6 @@ class CoreCapsule: SCNNode
 	
 	func nodeSetup()
 	{
-		NSLog("WORLD  | Capsule Coordinates")
-		
 		var scale:Float = 0.25
 		var height:Float = -2.65
 		floorNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
@@ -212,9 +210,7 @@ class CoreCapsule: SCNNode
 	}
 	
 	func capsuleSetup()
-	{
-		NSLog("WORLD  | Capsule Draw")
-		
+	{		
 		// Connect floors
 		var i = 0
 		while i < floorNode.count

@@ -11,15 +11,15 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CoreUniverse
+class CoreUniverse : SCNNode
 {
-	var events:Array<SCNEvent>!
-	
-	init()
+	override init()
 	{
-		self.events = []
+		super.init()
 		
-		self.addEvent(thePrismatist(location: CGPoint(x: 0,y: 1)))
+		print("@ UNIVERSE | Init")
+		
+		self.addChildNode(thePrismatist(location: CGPoint(x: 0,y: 1)))
 		
 		
 //		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
@@ -37,8 +37,15 @@ class CoreUniverse
 //		radar.addEvent(SCNEvent(newName: "to cyanine", location: CGPoint(x: 0.5,y: -0.5), size: 1, type: eventTypes.portal, details:"portal", note:"universe warp"))
 	}
 	
-	func addEvent(event:SCNEvent)
+	override func update()
 	{
-		events.append(event)
+		for newEvent in self.childNodes {
+			newEvent.update()
+		}
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -83,6 +83,8 @@ class GameViewController: UIViewController
 	{
 		super.viewDidLoad()
 		
+		universe = CoreUniverse()
+		
 		capsule = CoreCapsule()
 		scene.rootNode.addChildNode(capsule)
 		
@@ -92,7 +94,6 @@ class GameViewController: UIViewController
 		space = CoreSpace()
 		scene.rootNode.addChildNode(space)
 		
-		universe = CoreUniverse()
 		time = CoreTime()
 		
 		let scnView = self.view as! SCNView
