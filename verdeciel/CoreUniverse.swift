@@ -19,10 +19,8 @@ class CoreUniverse : SCNNode
 		
 		print("@ UNIVERSE | Init")
 		
-		self.addChildNode(thePrismatist(location: CGPoint(x: 0,y: 1)))
-		
-		
-//		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
+		self.addChildNode(eventPortal(location: CGPoint(x: 0.5,y: 0.5)))
+		self.addChildNode(eventCargo(location: CGPoint(x: -0.25, y: 0.75)))
 		
 //		radar.addEvent(SCNEvent(newName: "tl", location: CGPoint(x: 0.5,y: 0.5), size: 0.5, type: eventTypes.location))
 //		radar.addEvent(SCNEvent(newName: "tr", location: CGPoint(x: -0.5,y: 0.5), size: 0.5, type: eventTypes.location))

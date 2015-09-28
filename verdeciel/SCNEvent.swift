@@ -51,6 +51,9 @@ class SCNEvent : SCNNode
 		self.note = note
 		self.location = location
 		
+		self.geometry = SCNPlane(width: 0.5, height: 0.5)
+		self.geometry?.firstMaterial?.diffuse.contents = red
+		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
 		

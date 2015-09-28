@@ -3,11 +3,11 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class thePrismatist : SCNEvent
+class eventPortal : SCNEvent
 {
 	init(location: CGPoint)
 	{
-		super.init(newName:"prismatist", location:location, type:eventTypes.location)
+		super.init(newName:"portal", location:location, type:eventTypes.location)
 
 		self.location = location
 		self.size = 1
@@ -24,7 +24,7 @@ class thePrismatist : SCNEvent
 	override func createSprite() -> SCNNode
 	{
 		var size:Float = 0.15
-		let color:UIColor = red
+		let color:UIColor = white
 		
 		let spriteNode = SCNNode()
 		
@@ -33,10 +33,10 @@ class thePrismatist : SCNEvent
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
 		
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0.1,y:0,z:0),color: color))
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:-0.1,y:0,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0.075,y:0,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:-0.075,y:0,z:0),color: color))
 		
-		size = 0.1
+		size = 0.075
 		
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
