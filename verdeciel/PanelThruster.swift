@@ -178,13 +178,13 @@ class PanelThruster : SCNNode
 	override func listen(event: SCNEvent)
 	{
 		if event.type == eventTypes.warp {
-			warp(event)
+//			warp(event.destination)
 		}
 	}
 	
-	func warp(event:SCNEvent)
+	func warp(destination:CGPoint)
 	{
-		print("Warping")
+		print("  WARP     | Warping to \(destination)")
 	}
 	
 	required init(coder aDecoder: NSCoder)

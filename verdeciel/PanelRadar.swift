@@ -130,6 +130,7 @@ class PanelRadar : SCNNode
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		update()
+		self.bang(true)
 	}
 	
 	override func update()
@@ -223,7 +224,6 @@ class PanelRadar : SCNNode
 		if output.event == nil { return }
 		
 		output.connection.host.listen(output.event)
-		
 	}
 	
 	required init(coder aDecoder: NSCoder)

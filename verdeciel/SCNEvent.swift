@@ -206,9 +206,9 @@ class SCNEvent : SCNNode
 		return (360 - (radToDeg(angle) - 90)) % 360
 	}
 	
-	func calculateAlignment() -> CGFloat
+	func calculateAlignment(direction:CGFloat = capsule.direction) -> CGFloat
 	{
-		var diff = max(capsule.direction, self.angle) - min(capsule.direction, self.angle)
+		var diff = max(direction, self.angle) - min(direction, self.angle)
 		if (diff > 180){ diff = 360 - diff }
 		
 		return diff

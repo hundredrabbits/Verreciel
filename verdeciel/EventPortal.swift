@@ -5,8 +5,12 @@ import Foundation
 
 class eventPortal : SCNEvent
 {
-	init(location: CGPoint)
+	let destination:CGPoint!
+	
+	init(location: CGPoint,destination: CGPoint)
 	{
+		self.destination = destination
+		
 		super.init(newName:"portal", location:location, type:eventTypes.location)
 
 		self.location = location
@@ -19,6 +23,11 @@ class eventPortal : SCNEvent
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+	}
+	
+	override func collide()
+	{
+		thruster.warp(self.destination)
 	}
 	
 	override func createSprite() -> SCNNode

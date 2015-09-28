@@ -86,40 +86,50 @@ class PanelPilot : SCNNode
 	
 	override func update()
 	{
-		if capsule != nil {
-			let targetDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
-			targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-			let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
-			staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
-			let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
-			eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
-		}
+		if capsule == nil { return }
+		
+		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
+		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+		let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
+		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
+		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
+		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
 	}
-	
-	override func tic()
-	{
-		if input.origin == nil { return }
-		
-		input.origin.host.bang(true)
-		
-		let testOri = abs(targetDirection - capsule.direction) % 360
-		
-		if testOri == 0 {}
-		else if testOri >= 180 { capsule.direction! -= 1 }
-		else if Int(capsule.direction) < Int(targetDirection) { capsule.direction! += 1 }
-		else if Int(capsule.direction) > Int(targetDirection) { capsule.direction! -= 1 }
-		
-		if capsule.direction < 0 { capsule.direction = capsule.direction! + 360 }
-		if capsule.direction >= 360 { capsule.direction = capsule.direction! - 360 }
-	}
-	
 	override func listen(event:SCNEvent)
 	{
-		targetDirection = (angleBetweenTwoPoints(capsule.location, point2: event.location, center: event.location) + 270) % 360
+		
+		let left = event.calculateAlignment(capsule.direction - 1)
+		let right = event.calculateAlignment(capsule.direction + 1)
+		
+		targetDirection = event.alignment
+		
+		if Int(event.alignment) > 0 {
+			
+			print("  PILOT    | Aligning with \(event.name!), \(event.alignment)")
+			
+			if Int(left) < Int(right) {
+				self.turnLeft(1 + (targetDirection % 1))
+			}
+			else if Int(left) > Int(right) {
+				self.turnRight(1 + (targetDirection % 1))
+			}
+		}
 		
 		directionLabel.update(String(format: "%.0f",event.alignment))
 		
 		self.update()
+	}
+	
+	func turnLeft(deg:CGFloat)
+	{
+		capsule.direction = capsule.direction - deg
+		capsule.direction = capsule.direction % 360
+	}
+	
+	func turnRight(deg:CGFloat)
+	{
+		capsule.direction = capsule.direction + deg
+		capsule.direction = capsule.direction % 360
 	}
 	
 	required init(coder aDecoder: NSCoder) {
