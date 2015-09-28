@@ -16,6 +16,8 @@ class PanelCargo : SCNNode
 	var nameLabel = SCNNode()
 	var attractorLabel = SCNLabel(text: "")
 	
+	var loadTime:Int = 0
+	
 	var cargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
 	
 	var line1:SCNLine!
@@ -151,41 +153,36 @@ class PanelCargo : SCNNode
 	
 	override func listen(event:SCNEvent)
 	{
-		if event.type != eventTypes.item {
-			attractorLabel.updateWithColor("error", color: red)
-			return
-		}
-		
-		if distanceBetweenTwoPoints(capsule.location, point2: event.location) > 0.2 {
-			attractorLabel.update(String(format: "%.1f", distanceBetweenTwoPoints(capsule.location, point2: event.location)))
-			attract(event)
-		}
-		else{
-			attractorLabel.update("")
+		if event.type == eventTypes.cargo {
 			pickup(event)
 		}
-	}
-	
-	func attract(event:SCNEvent)
-	{
-		if event.location.x > capsule.location.x { event.location.x -= 0.002 }
-		if event.location.x < capsule.location.x { event.location.x += 0.002 }
-		if event.location.y > capsule.location.x { event.location.y -= 0.002 }
-		if event.location.y < capsule.location.x { event.location.y += 0.002 }
+		else{
+			attractorLabel.updateWithColor("error", color: red)
+		}
 	}
 
 	func pickup(event:SCNEvent)
 	{
-		input.origin.disconnect()
-		
-		let newItem = event
-		cargohold.content.append(newItem)
-		
-		event.removeFromParentNode()
-		radar.removeTarget()
-		
-		update()
-		bang()
+		if event.distance > 0.5 {
+			attractorLabel.updateWithColor("waiting", color: red)
+			return
+		}
+		if loadTime < 100 {
+			loadTime += 1
+			attractorLabel.updateWithColor("\(loadTime)%", color: cyan)
+		}
+		else{
+			loadTime = 0
+			input.origin.disconnect()
+			let newItem = event
+			cargohold.content.append(newItem)
+			
+			event.removeFromParentNode()
+			radar.removeTarget()
+			
+			update()
+			bang()
+		}
 	}
 	
 	override func bang(param:Bool = true)

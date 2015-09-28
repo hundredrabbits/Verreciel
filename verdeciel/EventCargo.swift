@@ -7,7 +7,7 @@ class eventCargo : SCNEvent
 {
 	init(location: CGPoint)
 	{
-		super.init(newName:"cargo", location:location, type:eventTypes.location)
+		super.init(newName:"cargo", location:location, type:eventTypes.cargo)
 		
 		self.location = location
 		self.size = 1

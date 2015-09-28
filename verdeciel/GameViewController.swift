@@ -64,12 +64,15 @@ enum alignment {
 }
 enum eventTypes {
 	case unknown
+	
+	case portal
+	case cargo
+	
 	case stack
 	case location
 	case item
 	case npc
 	case battery
-	case portal
 	case waypoint
 	case ammo
 	case cypher
