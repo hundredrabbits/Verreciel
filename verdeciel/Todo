@@ -5,8 +5,14 @@
 
 > Universe
 
+	> Dimensions
+	- Add the cyan dimension
+	- Add the red dimension
+	- Add the dark dimension
+	- Add the snow dimension
+
 	> Events
-	- Warps
+	- Warp animation
 
 	> Sentries
 	- Detection
@@ -19,10 +25,15 @@
 	> Items
 	- Add repair kits
 	- Add batteries
+	- Add maps
+	- Add ammo
 
 	> Locations
 	- Add station events
 	- Add stars
+	- Add post sign
+	- Add dimensional gates
+	- Add cities
 
 > Capsule
 
@@ -33,6 +44,13 @@
 
 	> Radar
 	- Improve the targetter sprite
+
+	> Console
+	- Improve diagnostic
+
+	> Cargo
+	- Improve transfer animation
+	- decline transfer when cargo is full
 
 	> Give instances their own control panels
 
