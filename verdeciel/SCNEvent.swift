@@ -31,6 +31,7 @@ class SCNEvent : SCNNode
 	var isVisible:Bool = false
 	
 	var sprite = SCNNode()
+	var trigger = SCNNode()
 	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
@@ -40,35 +41,25 @@ class SCNEvent : SCNNode
 		super.init()
 		
 		self.name = newName
-		self.location = location
 		self.type = type
 		self.size = size
 		self.note = note
-		
-		createSprite()
-		addTrigger()
+		self.location = location
 		
 		self.addChildNode(sprite)
+		self.addChildNode(trigger)
 		
-		update()
+		start()
 	}
 	
-	func createSprite()
+	func start()
 	{
-		let displaySize = self.size/10
-	
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: grey))
-	}
-	
-	func addTrigger()
-	{
-		let displaySize:CGFloat = CGFloat(self.size/2.5)
+		print("+ EVENT(\(self.name!) @\(self.location))")
 		
-		self.geometry = SCNPlane(width: displaySize, height: displaySize)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
+		self.sprite  = createSprite()
+		self.trigger = createTrigger()
+		
+//		update()
 	}
 	
 	override func update()
@@ -81,44 +72,84 @@ class SCNEvent : SCNNode
 		angleWithCapsule = calculateAngle()
 		alignmentWithCapsule = calculateAlignment()
 		
-		discover()
-		instance()
+		// Discover
+		if self.isKnown == false && distanceFromCapsule < 0.3 {
+			discover()
+		}
+		
+		// Collide
+		if distanceFromCapsule < 0.1 {
+			collide()
+		}
+//		print("Distance: \(distanceFromCapsule) - \(capsule.location) / \(self.location)")
+		
+		// Approach
+		if distanceFromCapsule < 0.75 && capsule.instance == nil {
+			approach()
+		}
+		
 		radarCulling()
 		
 		clean()
 	}
 	
-	func discover()
+	func createSprite() -> SCNNode
 	{
-		if self.isKnown == false && distanceFromCapsule < 0.3 {
-			isKnown = true
-			self.color(white)
-		}
+		let size = self.size/10
+		
+		let spriteNode = SCNNode()
+		
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
+		
+		return spriteNode
 	}
 	
-	func instance()
+	func createTrigger() -> SCNNode
 	{
-		if distanceFromCapsule < 0.75 && capsule.instance == nil {
-			capsule.instance = self
-			space.startInstance(self)
-		}
+		let size = CGFloat(self.size/2.5)
+		
+		let triggerNode = SCNNode()
+		
+		self.geometry = SCNPlane(width: size, height: size)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
+		
+		return triggerNode
+	}
+	
+	func discover()
+	{
+		isKnown = true
+		self.color(white)
+	}
+	
+	func collide()
+	{
+		
+	}
+	
+	func approach()
+	{
+//		capsule.instance = self
+//		space.startInstance(self)
 	}
 	
 	func radarCulling()
 	{
-		if capsule != nil {
-			if distanceFromCapsule < 1.3 {
-				self.opacity = 1
-			}
-			else {
-				self.opacity = 0
-			}
+		if distanceFromCapsule < 1.3 {
+			self.opacity = 1
+		}
+		else {
+			self.opacity = 0
 		}
 	}
 	
 	func clean()
 	{
-		if self.size < 0 {
+		if self.size < 1 {
+			print("Removed event \(self.name!) -> \(self.size)")
 			self.removeFromParentNode()
 		}
 	}

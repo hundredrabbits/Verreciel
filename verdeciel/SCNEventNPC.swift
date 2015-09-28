@@ -15,7 +15,6 @@ class SCNEventNPC : SCNEvent
 {
 	init(newName: String, location: CGPoint, size: Float, details: String, note: String)
 	{
-		print("added")
 		super.init(newName:"ship1", type:eventTypes.npc)
 		
 		self.location = location
@@ -23,29 +22,10 @@ class SCNEventNPC : SCNEvent
 		self.details = details
 		self.note = note
 		
-		createSprite()
-		addTrigger()
-	}
-	
-	override func createSprite()
-	{
-		let displaySize = self.size/10
+		self.addChildNode(sprite)
+		self.addChildNode(trigger)
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:displaySize,y:0,z:0),color: white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:-displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: white))
-		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:displaySize,y:0,z:0),nodeB: SCNVector3(x:-displaySize,y:0,z:0),color: white))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:displaySize,z:0),nodeB: SCNVector3(x:0,y:-displaySize,z:0),color: white))
-	}
-	
-	override func addTrigger()
-	{
-		let displaySize:CGFloat = CGFloat(self.size/2.5)
-		
-		self.geometry = SCNPlane(width: displaySize, height: displaySize)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
+		start()
 	}
 	
 	override func update()

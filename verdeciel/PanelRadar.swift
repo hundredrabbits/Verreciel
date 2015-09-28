@@ -63,10 +63,9 @@ class PanelRadar : SCNNode
 	
 	func addEvent(event:SCNEvent)
 	{
-		print(event.location)
-		
-		eventView.addChildNode(event)
-		update()
+		print("> RADAR(\(event.name!) @\(event.location))")
+//		eventView.addChildNode(event)
+//		update()
 	}
 	
 	func addInterface()

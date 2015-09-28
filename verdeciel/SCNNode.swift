@@ -15,22 +15,22 @@ extension SCNNode
 {
 	func touch()
 	{
-		print("This node has no touch action")
+		print("! This node has no touch action")
 	}
 	
 	func update()
 	{
-//		print("This node has no touch action")
+//		print("! This node has no update action")
 	}
 	
 	func bang(param:Bool)
 	{
-		print("This node has no bang action")
+		print("! This node has no bang action")
 	}
 	
 	func listen(event:SCNEvent)
 	{
-		print("This node has no listen action")
+		print("! This node has no listen action")
 	}
 	
 	func tic()

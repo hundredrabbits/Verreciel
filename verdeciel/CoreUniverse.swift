@@ -13,9 +13,15 @@ import Foundation
 
 class CoreUniverse
 {
+	var events:Array<SCNEvent>!
+	
 	init()
 	{
-		radar.addEvent(thePrismatist(location: CGPoint(x: 0,y: 1)))
+		self.events = []
+		
+		self.addEvent(thePrismatist(location: CGPoint(x: 0,y: 1)))
+		
+		
 //		radar.addEvent(SCNEvent(newName: "br", location: CGPoint(x: -0.5,y: -0.5), size: 0.5, type: eventTypes.location))
 		
 //		radar.addEvent(SCNEvent(newName: "tl", location: CGPoint(x: 0.5,y: 0.5), size: 0.5, type: eventTypes.location))
@@ -29,5 +35,10 @@ class CoreUniverse
 //		radar.addEvent(SCNEvent(newName: "a teapot", location: CGPoint(x: -0.5,y: -0.5), size: 1, type: eventTypes.item, details:"misc"))
 		
 //		radar.addEvent(SCNEvent(newName: "to cyanine", location: CGPoint(x: 0.5,y: -0.5), size: 1, type: eventTypes.portal, details:"portal", note:"universe warp"))
+	}
+	
+	func addEvent(event:SCNEvent)
+	{
+		events.append(event)
 	}
 }

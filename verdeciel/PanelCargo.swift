@@ -39,7 +39,7 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		
+		/*
 		// Goes in Hatch
 		let bullet = SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo")
 		self.addEvent(bullet)
@@ -65,6 +65,8 @@ class PanelCargo : SCNNode
 		// For thruster
 		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
 		self.addEvent(warpGate)
+
+*/
 		
 		update()
 	}
@@ -182,7 +184,6 @@ class PanelCargo : SCNNode
 		event.removeFromParentNode()
 		radar.removeTarget()
 		
-		print("getting \(event.name!)")
 		update()
 		bang()
 	}
