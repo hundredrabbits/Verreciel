@@ -31,6 +31,7 @@ class SCNLink : SCNNode
 	
 	override func touch()
 	{
+		/*
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(1.5)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.orientation = self.orientation
@@ -42,6 +43,7 @@ class SCNLink : SCNNode
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = self.destination
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+*/
 	}
 	
 	required init(coder aDecoder: NSCoder) {

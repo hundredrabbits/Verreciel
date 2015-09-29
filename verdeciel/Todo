@@ -34,9 +34,9 @@
 	- Implement Beacon interaction
 	- Implement noise level
 	- Doodads polygons
+	- Add handles to help with the camera
 
 	> Radar
-	- Draw Path between events
 
 	> Console
 	- Improve diagnostic

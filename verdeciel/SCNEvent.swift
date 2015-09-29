@@ -119,7 +119,7 @@ class SCNEvent : SCNNode
 		
 		spriteMode(inApproach)
 		
-//		radarCulling()
+		radarCulling()
 		clean()
 	}
 	
@@ -165,7 +165,7 @@ class SCNEvent : SCNNode
 	
 	func connect(event:SCNEvent)
 	{
-		print("connect with \(event.name!)")
+		if event.connection == self { return }
 		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.location.x - self.location.x),(event.location.y - self.location.y),0), color: grey).geometry
 	}
 	

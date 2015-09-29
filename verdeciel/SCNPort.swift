@@ -29,12 +29,20 @@ class SCNPort : SCNNode
 	var origin:SCNPort!
 	
 	var host = SCNNode!()
+	var trigger = SCNTrigger!()
 	
 	init(host:SCNNode,polarity:Bool)
 	{
 		self.polarity = polarity
 		
 		super.init()
+	
+		self.geometry = SCNPlane(width: 0.3, height: 0.3)
+		self.geometry?.firstMaterial?.diffuse.contents = red
+		
+		let trigger = SCNTrigger(host: self, size: 1)
+		trigger.position = SCNVector3(0,0,-0.1)
+		self.addChildNode(trigger)
 		
 		self.host = host
 		
@@ -44,8 +52,6 @@ class SCNPort : SCNNode
 	
 	func addGeometry()
 	{
-		self.geometry = SCNPlane(width: 0.2, height: 0.2)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		let radius:Float = 0.1
 		
