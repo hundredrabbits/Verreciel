@@ -169,39 +169,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		571728E61BB07F98002782A3 /* Low */ = {
-			isa = PBXGroup;
-			children = (
-				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
-				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
-			);
-			name = Low;
-			sourceTree = "<group>";
-		};
-		571728EB1BB07FCA002782A3 /* Mid */ = {
-			isa = PBXGroup;
-			children = (
-				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
-				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
-				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
-				57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */,
-				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
-				571728E01BB049BB002782A3 /* PanelCargo.swift */,
-				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
-				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
-			);
-			name = Mid;
-			sourceTree = "<group>";
-		};
-		571728EC1BB07FCE002782A3 /* High */ = {
-			isa = PBXGroup;
-			children = (
-				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
-				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
-			);
-			name = High;
-			sourceTree = "<group>";
-		};
 		572258131BB8779900DEC41E /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,9 +203,18 @@
 		5736277A1B4C06FE00899EBC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
-				571728EC1BB07FCE002782A3 /* High */,
-				571728EB1BB07FCA002782A3 /* Mid */,
-				571728E61BB07F98002782A3 /* Low */,
+				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
+				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
+				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
+				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
+				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
+				57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */,
+				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
+				571728E01BB049BB002782A3 /* PanelCargo.swift */,
+				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
+				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
+				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
+				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";

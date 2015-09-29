@@ -22,6 +22,7 @@ class CorePlayer : SCNNode
 	var magic:Int
 	
 	var port:SCNPort!
+	var event:SCNEvent!
 	
 	override init()
 	{
@@ -76,6 +77,14 @@ class CorePlayer : SCNNode
 		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
 		alertLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(alertLabel)
+	}
+	
+	func activateEvent(event:SCNEvent)
+	{
+		if self.event != nil {
+			event.connect(self.event)
+		}
+		self.event = event
 	}
 	
 	func activatePort(port:SCNPort)

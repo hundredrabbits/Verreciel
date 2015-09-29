@@ -37,6 +37,7 @@ class SCNEvent : SCNNode
 	
 	var sprite = SCNNode()
 	var trigger = SCNNode()
+	var connection = SCNNode()
 	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
 	{
@@ -56,6 +57,9 @@ class SCNEvent : SCNNode
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+		self.addChildNode(connection)
+		
+		connection.position = SCNVector3(0,0,-0.01)
 		
 		start()
 	}
@@ -115,12 +119,11 @@ class SCNEvent : SCNNode
 		
 		spriteMode(inApproach)
 		
-		radarCulling()
+//		radarCulling()
 		clean()
 	}
 	
 	// MARK: Events -
-	
 	
 	func sight()
 	{
@@ -132,6 +135,7 @@ class SCNEvent : SCNNode
 		print("* EVENT    | Approached \(self.name!)")
 		capsule.instance = self
 		space.startInstance(self)
+		player.activateEvent(self)
 	}
 	
 	func collide()
@@ -155,6 +159,14 @@ class SCNEvent : SCNNode
 				line.color(grey)
 			}
 		}
+	}
+	
+	// MARK: Radar -
+	
+	func connect(event:SCNEvent)
+	{
+		print("connect with \(event.name!)")
+		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.location.x - self.location.x),(event.location.y - self.location.y),0), color: grey).geometry
 	}
 	
 	// MARK: Misc -
@@ -197,7 +209,7 @@ class SCNEvent : SCNNode
 	
 	func clean()
 	{
-		if self.size < 1 {
+		if self.size == 0 {
 			print("Removed event \(self.name!) -> \(self.size)")
 			self.removeFromParentNode()
 		}
