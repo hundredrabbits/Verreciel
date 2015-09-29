@@ -5,12 +5,6 @@
 
 > Universe
 
-	> Dimensions
-	- Add the cyan dimension
-	- Add the red dimension
-	- Add the dark dimension
-	- Add the snow dimension
-
 	> Events
 	- Warp animation
 
@@ -42,6 +36,7 @@
 	- Doodads polygons
 
 	> Radar
+	- Draw Path between events
 
 	> Console
 	- Improve diagnostic
@@ -57,3 +52,16 @@
 	- Better controls in general..
 
 > Tools
+
+================
+*    Notes
+================
+
+> Universe Hierarchy
+	> Normal
+		> Vermiles
+			> Opal
+			> Void
+		> Cyanine
+			> Opal
+			> Void

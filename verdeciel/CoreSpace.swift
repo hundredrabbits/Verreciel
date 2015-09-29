@@ -47,6 +47,8 @@ class CoreSpace: SCNNode
 	{
 		if capsule.sector == sectors.cyanine { spaceColor.geometry?.firstMaterial?.diffuse.contents = cyanTone }
 		if capsule.sector == sectors.opal { spaceColor.geometry?.firstMaterial?.diffuse.contents = whiteTone }
+		if capsule.sector == sectors.vermiles { spaceColor.geometry?.firstMaterial?.diffuse.contents = redTone }
+		if capsule.sector == sectors.void { spaceColor.geometry?.firstMaterial?.diffuse.contents = greyTone }
 		
 		if thruster.actualSpeed > 0 {
 			addLines()
@@ -81,7 +83,8 @@ class CoreSpace: SCNNode
 		var color = white
 		if capsule.sector == sectors.cyanine { color = black }
 		if capsule.sector == sectors.opal { color = black }
-		
+		if capsule.sector == sectors.opal { color = black }
+		if capsule.sector == sectors.void { color = grey }
 		
 		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)

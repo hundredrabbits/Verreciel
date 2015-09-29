@@ -17,9 +17,11 @@ let scaleValue : Float = 0.01
 
 var black:UIColor = UIColor(white: 0, alpha: 1)
 var grey:UIColor = UIColor(white: 0.4, alpha: 1)
+var greyTone:UIColor = UIColor(white: 0.2, alpha: 1)
 var white:UIColor = UIColor.whiteColor()
 var whiteTone:UIColor = UIColor(white: 0.8, alpha: 1)
 var red:UIColor = UIColor.redColor()
+var redTone:UIColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
 var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
@@ -66,6 +68,7 @@ enum sectors {
 	case cyanine
 	case vermiles
 	case normal
+	case void
 }
 
 enum eventTypes {
