@@ -186,9 +186,12 @@ class PanelThruster : SCNNode
 		}
 	}
 	
-	func warp(destination:CGPoint)
+	func warp(destination:CGPoint, sector:sectors = capsule.sector)
 	{
 		print("  WARP     | Warping to \(destination)")
+		
+		capsule.location = destination
+		capsule.sector = sector
 	}
 	
 	required init(coder aDecoder: NSCoder)

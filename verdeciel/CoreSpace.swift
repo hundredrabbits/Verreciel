@@ -14,6 +14,7 @@ import Foundation
 
 class CoreSpace: SCNNode
 {
+	var spaceColor:SCNNode!
 	var structuresRoot:SCNNode!
 	var starsRoot:SCNNode!
 	
@@ -21,11 +22,11 @@ class CoreSpace: SCNNode
 	{
 		super.init()
 	
-		let sphereNode = SCNNode()
-		sphereNode.geometry = SCNSphere(radius: 40.0)
-		sphereNode.geometry?.firstMaterial?.doubleSided = true
-		sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
-		self.addChildNode(sphereNode)
+		spaceColor = SCNNode()
+		spaceColor.geometry = SCNSphere(radius: 40.0)
+		spaceColor.geometry?.firstMaterial?.doubleSided = true
+		spaceColor.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
+		self.addChildNode(spaceColor)
 		
 		structuresRoot = SCNNode()
 		structuresRoot.position = SCNVector3(x: 0, y: 0, z: 0)
@@ -43,7 +44,10 @@ class CoreSpace: SCNNode
 	}
 	
 	override func update()
-	{	
+	{
+		if capsule.sector == sectors.cyanine { spaceColor.geometry?.firstMaterial?.diffuse.contents = cyanTone }
+		if capsule.sector == sectors.opal { spaceColor.geometry?.firstMaterial?.diffuse.contents = whiteTone }
+		
 		if thruster.actualSpeed > 0 {
 			addLines()
 			updateLines()
@@ -64,6 +68,8 @@ class CoreSpace: SCNNode
 	
 	func addLines()
 	{
+		if starsRoot.childNodes.count > 350 { return }
+		
 		var randX = Int(arc4random_uniform(40)) - 20
 		var randZ = Int(arc4random_uniform(40)) - 20
 		
@@ -72,7 +78,12 @@ class CoreSpace: SCNNode
 			randZ = Int(arc4random_uniform(40)) - 20
 		}
 		
-		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: white)
+		var color = white
+		if capsule.sector == sectors.cyanine { color = black }
+		if capsule.sector == sectors.opal { color = black }
+		
+		
+		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
 		starsRoot.addChildNode(newLine)
 	}

@@ -24,7 +24,7 @@ class CoreCapsule: SCNNode
 	var travel:Float = 0
 	
 	var direction:CGFloat! = 1
-	
+	var sector:sectors = sectors.normal
 	var instance:SCNEvent!
 	
 	override init()
