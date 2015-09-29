@@ -37,4 +37,12 @@ extension SCNNode
 	{
 		
 	}
+	
+	func updateChildrenColors(color:UIColor)
+	{
+		for newLine in self.childNodes {
+			let line = newLine as! SCNLine
+			line.color(white)
+		}
+	}
 }

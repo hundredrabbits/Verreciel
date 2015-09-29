@@ -92,7 +92,7 @@ class SCNEvent : SCNNode
 		}
 		
 		// Approach
-		if self.distance < 0.75 {
+		if self.distance <= 0.6 {
 			if self.inApproach == false {
 				approach()
 				self.inApproach = true
@@ -112,6 +112,8 @@ class SCNEvent : SCNNode
 		else{
 			inCollision = false
 		}
+		
+		spriteMode(inApproach)
 		
 		radarCulling()
 		clean()
@@ -135,6 +137,24 @@ class SCNEvent : SCNNode
 	func collide()
 	{
 		print("* EVENT    | Collided \(self.name!)")
+	}
+	
+	// MARK: Events -
+	
+	func spriteMode(toggle:Bool)
+	{
+		if toggle == true {
+			for newLine in sprite.childNodes {
+				let line = newLine as! SCNLine
+				line.color(white)
+			}
+		}
+		else{
+			for newLine in sprite.childNodes {
+				let line = newLine as! SCNLine
+				line.color(grey)
+			}
+		}
 	}
 	
 	// MARK: Misc -

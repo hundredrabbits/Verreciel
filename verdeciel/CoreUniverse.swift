@@ -21,6 +21,8 @@ class CoreUniverse : SCNNode
 		
 		self.addChildNode(eventPortal(location: CGPoint(x: 0.5,y: 0.5), destination: CGPoint(x: 0.5,y: 0.5)))
 		self.addChildNode(eventCargo(location: CGPoint(x: -0.25, y: 0.75), inventory: SCNEvent(newName: "warpdisk",type: eventTypes.item)))
+		
+		self.addChildNode(eventCargo(location: CGPoint(x: 0.25, y: -0.5), inventory: SCNEvent(newName: "warpdisk",type: eventTypes.item)))
 	}
 	
 	override func update()

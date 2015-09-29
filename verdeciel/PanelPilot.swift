@@ -97,16 +97,12 @@ class PanelPilot : SCNNode
 	}
 	override func listen(event:SCNEvent)
 	{
-		
 		let left = event.calculateAlignment(capsule.direction - 1)
 		let right = event.calculateAlignment(capsule.direction + 1)
 		
 		targetDirection = event.alignment
 		
 		if Int(event.alignment) > 0 {
-			
-			print("  PILOT    | Aligning with \(event.name!), \(event.alignment)")
-			
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}
@@ -116,7 +112,6 @@ class PanelPilot : SCNNode
 		}
 		
 		directionLabel.update(String(format: "%.0f",event.alignment))
-		
 		self.update()
 	}
 	
