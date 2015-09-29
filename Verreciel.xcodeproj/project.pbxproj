@@ -45,6 +45,8 @@
 		57F4FA111BB8CECF00AEE66C /* PanelCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */; settings = {ASSET_TAGS = (); }; };
 		57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F01B4CA2700088D115 /* PanelHatch.swift */; };
 		57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F61B4CC0C20088D115 /* PanelConsole.swift */; };
+		57FA031D1BBA21490077D517 /* EventStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031C1BBA21490077D517 /* EventStation.swift */; settings = {ASSET_TAGS = (); }; };
+		57FA031F1BBA22FE0077D517 /* EventStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031E1BBA22FE0077D517 /* EventStar.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCustom.swift; sourceTree = "<group>"; };
 		57F645F01B4CA2700088D115 /* PanelHatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelHatch.swift; sourceTree = "<group>"; };
 		57F645F61B4CC0C20088D115 /* PanelConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelConsole.swift; sourceTree = "<group>"; };
+		57FA031C1BBA21490077D517 /* EventStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStation.swift; sourceTree = "<group>"; };
+		57FA031E1BBA22FE0077D517 /* EventStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 			children = (
 				572258141BB877C600DEC41E /* EventPortal.swift */,
 				57CA80971BB9CEA3000D31F7 /* EventCargo.swift */,
+				57FA031C1BBA21490077D517 /* EventStation.swift */,
+				57FA031E1BBA22FE0077D517 /* EventStar.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 				5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				572258151BB877C600DEC41E /* EventPortal.swift in Sources */,
+				57FA031F1BBA22FE0077D517 /* EventStar.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				573AE0621BB44AF800CF906C /* SCNEventNPC.swift in Sources */,
@@ -351,6 +358,7 @@
 				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* SCNEvent.swift in Sources */,
+				57FA031D1BBA21490077D517 /* EventStation.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 				5705994A1B90D2F4000F3E31 /* PanelWindow.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */,

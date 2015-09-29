@@ -157,6 +157,10 @@ class PanelThruster : SCNNode
 			actualSpeed -= 0.1
 		}
 		
+		if actualSpeed < 0.1 {
+			actualSpeed = 0.1
+		}
+		
 		if Float(speed) != actualSpeed {
 			speedLabel.update(String(format: "%.1f", actualSpeed))
 		}

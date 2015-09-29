@@ -13,9 +13,23 @@ import Foundation
 
 class SCNLine : SCNNode
 {
+	var nodeA = SCNVector3()
+	var nodeB = SCNVector3()
+	var color = UIColor()
+	
 	init(nodeA: SCNVector3, nodeB: SCNVector3, color:UIColor)
 	{
+		self.nodeA = nodeA
+		self.nodeB = nodeB
+		self.color = color
+		
 		super.init()
+		
+		draw(self.nodeA, nodeB: self.nodeB, color: self.color)
+	}
+	
+	func draw(nodeA: SCNVector3, nodeB: SCNVector3, color:UIColor)
+	{
 		let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]
 		let positionData = NSData(bytes: positions, length: sizeof(Float32)*positions.count)
 		let indices: [Int32] = [0, 1]
@@ -26,6 +40,11 @@ class SCNLine : SCNNode
 		line.firstMaterial?.lightingModelName = SCNLightingModelConstant
 		line.firstMaterial?.diffuse.contents = color
 		self.geometry = line
+	}
+	
+	func updateHeight(height:Float)
+	{
+		draw(self.nodeA, nodeB: SCNVector3(nodeB.x,height,nodeB.z), color: self.color)
 	}
 	
 	func color(newColor:UIColor)

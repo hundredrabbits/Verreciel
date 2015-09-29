@@ -43,7 +43,7 @@ class CoreSpace: SCNNode
 	}
 	
 	override func update()
-	{
+	{	
 		if thruster.actualSpeed > 0 {
 			addLines()
 			updateLines()
@@ -82,34 +82,11 @@ class CoreSpace: SCNNode
 		let lineSpeed = Float(thruster.actualSpeed) / 2
 		for node in starsRoot.childNodes
 		{
-			let line = node
+			let line = node as! SCNLine
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
+			line.updateHeight(thruster.actualSpeed + 0.2)
 			if line.position.y < -10 { line.removeFromParentNode() }
 		}
-	}
-	
-	func fogEvent()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		scene.fogStartDistance = 0
-		scene.fogEndDistance = 5000
-		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.redColor()
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
-	
-	func fogCapsule()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
-		scene.fogStartDistance = 0
-		scene.fogEndDistance = 17
-		scene.fogDensityExponent = 4
-		scene.fogColor = UIColor.blackColor()
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

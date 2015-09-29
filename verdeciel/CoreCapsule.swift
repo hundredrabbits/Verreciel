@@ -21,6 +21,7 @@ class CoreCapsule: SCNNode
 	var radiation:Float = 100.0
 	
 	var location:CGPoint = CGPoint()
+	var travel:Float = 0
 	
 	var direction:CGFloat! = 1
 	

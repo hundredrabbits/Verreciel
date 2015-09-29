@@ -208,13 +208,12 @@ class PanelRadar : SCNNode
 	{
 		if event.type == eventTypes.map {
 			radar.inputLabel.update("+\(event.content.count) new")
-//			for location in event.content {
-//				self.addEvent(location)
-//			}
+			for location in event.content {
+				universe.addChildNode(location)
+			}
 			event.size = 0
 			cargo.bang(true)
 		}
-		
 		update()
 	}
 	

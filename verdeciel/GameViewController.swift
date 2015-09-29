@@ -67,6 +67,7 @@ enum eventTypes {
 	
 	case portal
 	case cargo
+	case station
 	
 	case stack
 	case location
@@ -104,7 +105,7 @@ class GameViewController: UIViewController
 		scnView.showsStatistics = false
 		scnView.backgroundColor = UIColor.blackColor()
 		scnView.antialiasingMode = SCNAntialiasingMode.None
-		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))		
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -133,6 +134,7 @@ class GameViewController: UIViewController
 		let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
 		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
+
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

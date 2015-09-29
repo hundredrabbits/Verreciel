@@ -29,7 +29,6 @@
 	- Add ammo
 
 	> Locations
-	- Add station events
 	- Add stars
 	- Add post sign
 	- Add dimensional gates
@@ -43,7 +42,6 @@
 	- Doodads polygons
 
 	> Radar
-	- Improve the targetter sprite
 
 	> Console
 	- Improve diagnostic
