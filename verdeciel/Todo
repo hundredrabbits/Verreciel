@@ -40,6 +40,8 @@
 
 	> Console
 	- Improve diagnostic
+	- Input node name
+	- 6 lines instead of 8
 
 	> Cargo
 	- Improve transfer animation
