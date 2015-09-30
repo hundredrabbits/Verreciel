@@ -22,7 +22,7 @@ class SCNTrigger : SCNNode
 		self.host = host
 		super.init()
 		self.geometry = SCNPlane(width: size, height: size)
-		self.geometry?.materials.first?.diffuse.contents = cyan
+		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
 	override func touch()

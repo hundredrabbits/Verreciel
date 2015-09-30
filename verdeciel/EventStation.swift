@@ -14,9 +14,6 @@ class eventStation : SCNEvent
 		self.details = ""
 		self.note = ""
 		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
 	}

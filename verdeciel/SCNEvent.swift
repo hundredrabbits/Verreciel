@@ -71,7 +71,13 @@ class SCNEvent : SCNNode
 		print("@ EVENT    | \(self.name!)\(self.location)")
 		
 		self.sprite  = createSprite()
-		self.trigger = createTrigger()
+		
+		self.geometry = SCNPlane(width: 0.5, height: 0.5)
+		self.geometry?.firstMaterial?.diffuse.contents = clear
+		
+		let trigger = SCNTrigger(host: self, size: 1)
+		trigger.position = SCNVector3(0,0,-0.1)
+		self.addChildNode(trigger)
 	}
 	
 	override func update()
@@ -183,18 +189,6 @@ class SCNEvent : SCNNode
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
 		
 		return spriteNode
-	}
-	
-	func createTrigger() -> SCNNode
-	{
-		let size = CGFloat(self.size/2.5)
-		
-		let triggerNode = SCNNode()
-		
-		self.geometry = SCNPlane(width: size, height: size)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
-		return triggerNode
 	}
 	
 	func radarCulling()

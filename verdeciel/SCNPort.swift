@@ -38,7 +38,7 @@ class SCNPort : SCNNode
 		super.init()
 	
 		self.geometry = SCNPlane(width: 0.3, height: 0.3)
-		self.geometry?.firstMaterial?.diffuse.contents = red
+		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		let trigger = SCNTrigger(host: self, size: 1)
 		trigger.position = SCNVector3(0,0,-0.1)
