@@ -190,3 +190,17 @@ func angleBetweenTwoPoints(point1:CGPoint,point2:CGPoint,center:CGPoint) -> CGFl
 	if deg < 0 { deg += 360.0 }
 	return deg
 }
+
+/*
+SCNTransaction.begin()
+SCNTransaction.setAnimationDuration(1.5)
+scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.orientation = self.orientation
+SCNTransaction.setCompletionBlock({ })
+SCNTransaction.commit()
+
+SCNTransaction.begin()
+SCNTransaction.setAnimationDuration(3)
+scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = self.destination
+SCNTransaction.setCompletionBlock({ })
+SCNTransaction.commit()
+*/

@@ -164,52 +164,6 @@ class CoreCapsule: SCNNode
 		self.addChildNode(monitor)
 	}
 	
-	func linkSetup()
-	{
-		let northNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: -4.5), newDestination: SCNVector3(x: 0, y: 0, z: -1), scale: 6)
-		scene.rootNode.addChildNode(northNode)
-		
-		let southNode = SCNLink(location: SCNVector3(x: 0, y: 0, z: 4.5), newDestination: SCNVector3(x: 0, y: 0, z: 1), scale: 6)
-		southNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 2));
-		scene.rootNode.addChildNode(southNode)
-		
-		let eastNode = SCNLink(location: SCNVector3(x: 4.5, y: 0, z: 0), newDestination: SCNVector3(x: 1, y: 0, z: 0), scale: 6)
-		eastNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1));
-		scene.rootNode.addChildNode(eastNode)
-		
-		let westNode = SCNLink(location: SCNVector3(x: -4.5, y: 0, z: 0), newDestination: SCNVector3(x: -1, y: 0, z: 0), scale: 6)
-		westNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1));
-		scene.rootNode.addChildNode(westNode)
-		
-		let northWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: -4), newDestination: SCNVector3(x: -1, y: 0, z: -1), scale: 6)
-		northWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 3.5));
-		scene.rootNode.addChildNode(northWestNode)
-		
-		let northEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: -4), newDestination: SCNVector3(x: 1, y: 0, z: -1), scale: 6)
-		northEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5));
-		scene.rootNode.addChildNode(northEastNode)
-		
-		let southWestNode = SCNLink(location: SCNVector3(x: -4, y: 0, z: 4), newDestination: SCNVector3(x: -1, y: 0, z: 1), scale: 6)
-		southWestNode.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 2.5));
-		scene.rootNode.addChildNode(southWestNode)
-		
-		let southEastNode = SCNLink(location: SCNVector3(x: 4, y: 0, z: 4), newDestination: SCNVector3(x: 1, y: 0, z: 1), scale: 6)
-		southEastNode.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5));
-		scene.rootNode.addChildNode(southEastNode)
-		
-		let topNode = SCNLink(location: SCNVector3(x: 0, y: 4, z: 0), newDestination: SCNVector3(x: 0, y: 1, z: 0), scale: 9)
-		topNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
-		scene.rootNode.addChildNode(topNode)
-		
-		let bottomNode = SCNLink(location: SCNVector3(x: 0, y: -4, z: 0), newDestination: SCNVector3(x: 0, y: -1, z: 0), scale: 9)
-		bottomNode.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1));
-		scene.rootNode.addChildNode(bottomNode)
-		
-		let windowNode = SCNLink(location: SCNVector3(x: 0, y: 3.5, z: 0), newDestination: SCNVector3(x: 0, y: 3.5, z: 0), scale: 4)
-		windowNode.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 1));
-		scene.rootNode.addChildNode(windowNode)
-	}
-	
 	func capsuleSetup()
 	{		
 		// Connect floors
