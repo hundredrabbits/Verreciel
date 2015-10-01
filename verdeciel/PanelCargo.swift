@@ -41,10 +41,15 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
+		self.addEvent(SCNEvent(newName: "top", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(SCNEvent(newName: "bottom", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+	
 		/*
 		// Goes in Hatch
-		let bullet = SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo")
-		self.addEvent(bullet)
 		
 //		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
 //		self.addEvent(disk)

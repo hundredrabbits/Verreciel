@@ -19,10 +19,8 @@ class PanelConsole : SCNNode
 	var consoleLine4:SCNCommand!
 	var consoleLine5:SCNCommand!
 	var consoleLine6:SCNCommand!
-	var consoleLine7:SCNCommand!
-	var consoleLine8:SCNCommand!
 	
-	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
+	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
 	// Ports
 	
@@ -44,37 +42,37 @@ class PanelConsole : SCNNode
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:white))
 		
+		let linesRoot = SCNNode()
+		
+		let spacing:Float = -0.35
+		
+		linesRoot.position = SCNVector3(0,highNode[7].y * scale + spacing - 0.2,0)
+		
 		consoleLine1 = SCNCommand()
-		consoleLine1.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.5, z: 0)
-		self.addChildNode(consoleLine1)
+		consoleLine1.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 0), z: 0)
+		linesRoot.addChildNode(consoleLine1)
 		
 		consoleLine2 = SCNCommand()
-		consoleLine2.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 0.75, z: 0)
-		self.addChildNode(consoleLine2)
+		consoleLine2.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 1), z: 0)
+		linesRoot.addChildNode(consoleLine2)
 		
 		consoleLine3 = SCNCommand()
-		consoleLine3.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 1, z: 0)
-		self.addChildNode(consoleLine3)
+		consoleLine3.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 2), z: 0)
+		linesRoot.addChildNode(consoleLine3)
 		
 		consoleLine4 = SCNCommand()
-		consoleLine4.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 1.25, z: 0)
-		self.addChildNode(consoleLine4)
+		consoleLine4.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 3), z: 0)
+		linesRoot.addChildNode(consoleLine4)
 		
 		consoleLine5 = SCNCommand()
-		consoleLine5.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 1.5, z: 0)
-		self.addChildNode(consoleLine5)
+		consoleLine5.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 4), z: 0)
+		linesRoot.addChildNode(consoleLine5)
 		
 		consoleLine6 = SCNCommand()
-		consoleLine6.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 1.75, z: 0)
-		self.addChildNode(consoleLine6)
+		consoleLine6.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 5), z: 0)
+		linesRoot.addChildNode(consoleLine6)
 		
-		consoleLine7 = SCNCommand()
-		consoleLine7.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 2, z: 0)
-		self.addChildNode(consoleLine7)
-		
-		consoleLine8 = SCNCommand()
-		consoleLine8.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale - 2.25, z: 0)
-		self.addChildNode(consoleLine8)
+		self.addChildNode(linesRoot)
 		
 		// Ports
 		
@@ -97,7 +95,7 @@ class PanelConsole : SCNNode
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
-		if commands.count > 8 { commands.removeAtIndex(0) }
+		if commands.count > 6 { commands.removeAtIndex(0) }
 		update()
 	}
 	
@@ -109,8 +107,6 @@ class PanelConsole : SCNNode
 		consoleLine4.output.disconnect()
 		consoleLine5.output.disconnect()
 		consoleLine6.output.disconnect()
-		consoleLine7.output.disconnect()
-		consoleLine8.output.disconnect()
 		
 		consoleLine1.update(commands[0])
 		consoleLine2.update(commands[1])
@@ -118,8 +114,6 @@ class PanelConsole : SCNNode
 		consoleLine4.update(commands[3])
 		consoleLine5.update(commands[4])
 		consoleLine6.update(commands[5])
-		consoleLine7.update(commands[6])
-		consoleLine8.update(commands[7])
 	}
 	
 	override func listen(event: SCNEvent)
