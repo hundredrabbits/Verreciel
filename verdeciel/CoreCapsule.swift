@@ -25,7 +25,7 @@ class CoreCapsule: SCNNode
 	
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal
-	var instance:SCNEvent!
+	var instance:Event!
 	
 	override init()
 	{

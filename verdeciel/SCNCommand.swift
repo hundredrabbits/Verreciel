@@ -16,7 +16,7 @@ class SCNCommand : SCNNode
 	var text:String!
 	var details:String!
 	var color:UIColor!
-	var event:SCNEvent!
+	var event:Event!
 	
 	var head:Bool!
 	
@@ -27,7 +27,7 @@ class SCNCommand : SCNNode
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "",details:String = "",color:UIColor = white,event:SCNEvent! = nil, head:Bool = false)
+	init(text:String = "",details:String = "",color:UIColor = white,event:Event! = nil, head:Bool = false)
 	{
 		self.text = text
 		self.details = details

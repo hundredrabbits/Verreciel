@@ -16,7 +16,7 @@ class PanelHatch : SCNNode
 	var nameLabel = SCNLabel(text: "")
 	var quantityLabel = SCNLabel(text: "")
 	
-	var load:SCNEvent!
+	var load:Event!
 
 	var outline1:SCNLine!
 	var outline2:SCNLine!
@@ -142,7 +142,7 @@ class PanelHatch : SCNNode
 		}
 	}
 	
-	override func listen(event:SCNEvent)
+	override func listen(event:Event)
 	{
 		self.load = event
 		self.update()

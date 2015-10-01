@@ -129,7 +129,7 @@ class PanelBattery : SCNNode
 		self.addChildNode(outputLabel)
 	}
 	
-	override func listen(event:SCNEvent)
+	override func listen(event:Event)
 	{
 		if event.type != eventTypes.battery { return }		
 		update()

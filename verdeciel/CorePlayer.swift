@@ -22,7 +22,7 @@ class CorePlayer : SCNNode
 	var magic:Int
 	
 	var port:SCNPort!
-	var event:SCNEvent!
+	var event:Event!
 	
 	override init()
 	{
@@ -79,7 +79,7 @@ class CorePlayer : SCNNode
 		self.addChildNode(alertLabel)
 	}
 	
-	func activateEvent(event:SCNEvent)
+	func activateEvent(event:Event)
 	{
 		if self.event != nil {
 			event.connect(self.event)

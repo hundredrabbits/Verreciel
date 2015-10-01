@@ -18,7 +18,7 @@ class PanelCargo : SCNNode
 	
 	var loadTime:Int = 0
 	
-	var cargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
+	var cargohold = Event(newName: "cargohold", type: eventTypes.stack)
 	
 	var line1:SCNLine!
 	var line2:SCNLine!
@@ -41,36 +41,36 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		self.addEvent(SCNEvent(newName: "top", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(SCNEvent(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(SCNEvent(newName: "bottom", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "top", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		self.addEvent(Event(newName: "bottom", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
 	
 		/*
 		// Goes in Hatch
 		
-//		let disk = SCNEvent(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
+//		let disk = Event(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
 //		self.addEvent(disk)
 		
 		// Goes in Battery
-		let battery = SCNEvent(newName: "small battery", size: 25, type: eventTypes.battery, details: "cell",note:"crack something")
+		let battery = Event(newName: "small battery", size: 25, type: eventTypes.battery, details: "cell",note:"crack something")
 		self.addEvent(battery)
 		
 		// Goes in Radar
-		let starMap = SCNEvent(newName: "helio's path", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.map, details: "map",note:"go somewhere")
-		starMap.content.append(SCNEvent(newName: "star1", location: CGPoint(x: -3,y: 2), size: 1, type: eventTypes.location))
-		starMap.content.append(SCNEvent(newName: "star2", location: CGPoint(x: -1,y: 0.7), size: 1, type: eventTypes.location))
-		starMap.content.append(SCNEvent(newName: "star3", location: CGPoint(x: 0.6,y: -0.3), size: 1, type: eventTypes.location))
+		let starMap = Event(newName: "helio's path", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.map, details: "map",note:"go somewhere")
+		starMap.content.append(Event(newName: "star1", location: CGPoint(x: -3,y: 2), size: 1, type: eventTypes.location))
+		starMap.content.append(Event(newName: "star2", location: CGPoint(x: -1,y: 0.7), size: 1, type: eventTypes.location))
+		starMap.content.append(Event(newName: "star3", location: CGPoint(x: 0.6,y: -0.3), size: 1, type: eventTypes.location))
 		self.addEvent(starMap)
 		
 		// For pilot
-		let coordinate = SCNEvent(newName: "helio system", location: CGPoint(x: -3, y: -4), size: 1, type: eventTypes.location, details: "pilot",note:"go somewhere")
+		let coordinate = Event(newName: "helio system", location: CGPoint(x: -3, y: -4), size: 1, type: eventTypes.location, details: "pilot",note:"go somewhere")
 		self.addEvent(coordinate)
 		
 		// For thruster
-		let warpGate = SCNEvent(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
+		let warpGate = Event(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
 		self.addEvent(warpGate)
 
 */
@@ -121,12 +121,12 @@ class PanelCargo : SCNNode
 		self.addChildNode(SCNTrigger(host: self, size: 2, operation: true))
 	}
 	
-	func addEvent(event:SCNEvent)
+	func addEvent(event:Event)
 	{
 		cargohold.content.append(event)
 	}
 	
-	func addEvents(events:Array<SCNEvent>)
+	func addEvents(events:Array<Event>)
 	{
 		for event in events {
 			cargohold.content.append(event)
@@ -135,7 +135,7 @@ class PanelCargo : SCNNode
 	
 	override func update()
 	{
-		let newCargohold = SCNEvent(newName: "cargohold", type: eventTypes.stack)
+		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
 		for item in cargohold.content {
 			if item.size > 0 {
 				newCargohold.content.append(item)
@@ -163,7 +163,7 @@ class PanelCargo : SCNNode
 		self.bang()
 	}
 	
-	override func listen(event:SCNEvent)
+	override func listen(event:Event)
 	{
 		if event.type == eventTypes.cargo {
 			pickup(event)
@@ -173,7 +173,7 @@ class PanelCargo : SCNNode
 		}
 	}
 
-	func pickup(event:SCNEvent)
+	func pickup(event:Event)
 	{
 		if event.distance > 0.5 {
 			attractorLabel.updateWithColor("waiting", color: red)

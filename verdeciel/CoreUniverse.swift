@@ -38,9 +38,9 @@ class CoreUniverse : SCNNode
 		
 		
 		
-		self.addChildNode(eventCargo(location: CGPoint(x: -0.25, y: 0.75), inventory: SCNEvent(newName: "warpdisk",type: eventTypes.item)))
+		self.addChildNode(eventCargo(location: CGPoint(x: -0.25, y: 0.75), inventory: Event(newName: "warpdisk",type: eventTypes.item)))
 		
-		self.addChildNode(eventCargo(location: CGPoint(x: 0.25, y: -0.5), inventory: SCNEvent(newName: "warpdisk",type: eventTypes.item)))
+		self.addChildNode(eventCargo(location: CGPoint(x: 0.25, y: -0.5), inventory: Event(newName: "warpdisk",type: eventTypes.item)))
 */
 	}
 	

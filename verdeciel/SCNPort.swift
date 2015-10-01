@@ -22,7 +22,7 @@ class SCNPort : SCNNode
 	var isRouted:Bool = false
 	var isActive:Bool = false
 	
-	var event:SCNEvent!
+	var event:Event!
 	var connection:SCNPort!
 	var wire:SCNLine!
 	
@@ -115,7 +115,7 @@ class SCNPort : SCNNode
 		update()
 	}
 	
-	func addEvent(event:SCNEvent)
+	func addEvent(event:Event)
 	{
 		self.event = event
 		update()

@@ -28,7 +28,7 @@ extension SCNNode
 		print("! This node has no bang action")
 	}
 	
-	func listen(event:SCNEvent)
+	func listen(event:Event)
 	{
 		print("! This node has no listen action")
 	}

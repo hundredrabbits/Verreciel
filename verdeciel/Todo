@@ -23,7 +23,6 @@
 	- Add ammo
 
 	> Locations
-	- Add stars
 	- Add post sign
 	- Add dimensional gates
 	- Add cities
@@ -41,7 +40,6 @@
 	> Console
 	- Improve diagnostic
 	- Input node name
-	- 6 lines instead of 8
 
 	> Cargo
 	- Improve transfer animation
@@ -52,6 +50,7 @@
 > Player
 
 	- Better controls in general..
+	- Display some diagnostics in the helmet
 
 > Tools
 

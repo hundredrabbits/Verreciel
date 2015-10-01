@@ -177,9 +177,11 @@ class PanelThruster : SCNNode
 			
 			radar.update()
 		}
+		
+		capsule.travel += actualSpeed
 	}
 	
-	override func listen(event: SCNEvent)
+	override func listen(event: Event)
 	{
 		if event.type == eventTypes.warp {
 //			warp(event.destination)

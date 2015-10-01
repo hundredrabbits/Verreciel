@@ -182,7 +182,7 @@ class PanelRadar : SCNNode
 		
 	}
 
-	func addTarget(event:SCNEvent)
+	func addTarget(event:Event)
 	{
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
@@ -204,7 +204,7 @@ class PanelRadar : SCNNode
 		updateTarget()
 	}
 	
-	override func listen(event: SCNEvent)
+	override func listen(event: Event)
 	{
 		if event.type == eventTypes.map {
 			radar.inputLabel.update("+\(event.content.count) new")

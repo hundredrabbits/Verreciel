@@ -95,7 +95,7 @@ class PanelPilot : SCNNode
 		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
 	}
-	override func listen(event:SCNEvent)
+	override func listen(event:Event)
 	{
 		let left = event.calculateAlignment(capsule.direction - 1)
 		let right = event.calculateAlignment(capsule.direction + 1)

@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventPortal : SCNEvent
+class eventPortal : Event
 {
 	let destination:CGPoint!
 	let sector:sectors!

@@ -3,9 +3,9 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventCargo : SCNEvent
+class eventCargo : Event
 {
-	init(location: CGPoint, inventory: SCNEvent)
+	init(location: CGPoint, inventory: Event)
 	{
 		super.init(newName:"cargo", location:location, type:eventTypes.cargo)
 		

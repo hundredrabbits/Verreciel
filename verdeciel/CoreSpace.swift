@@ -37,7 +37,7 @@ class CoreSpace: SCNNode
 		self.addChildNode(starsRoot)
 	}
 	
-	func startInstance(event:SCNEvent)
+	func startInstance(event:Event)
 	{
 		structuresRoot.addChildNode(SCNInstance(event: event))
 		player.alert("Approaching \(event.name!)")
@@ -50,8 +50,14 @@ class CoreSpace: SCNNode
 		if capsule.sector == sectors.vermiles { spaceColor.geometry?.firstMaterial?.diffuse.contents = redTone }
 		if capsule.sector == sectors.void { spaceColor.geometry?.firstMaterial?.diffuse.contents = greyTone }
 		
+		
 		if thruster.actualSpeed > 0 {
-			addLines()
+			
+			if capsule.travel > 0.5 {
+				addLines()
+				capsule.travel -= 0.5
+			}
+			
 			updateLines()
 		}
 		

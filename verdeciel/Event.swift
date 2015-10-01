@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNEvent : SCNNode
+class Event : SCNNode
 {
 	var targetNode:SCNNode!
 	
@@ -20,7 +20,7 @@ class SCNEvent : SCNNode
 	var type:eventTypes!
 	var details:String
 	var note = String()
-	var content:Array<SCNEvent>!
+	var content:Array<Event>!
 	
 	var angle:CGFloat!
 	var alignment:CGFloat!
@@ -169,7 +169,7 @@ class SCNEvent : SCNNode
 	
 	// MARK: Radar -
 	
-	func connect(event:SCNEvent)
+	func connect(event:Event)
 	{
 		if event.connection == self { return }
 		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.location.x - self.location.x),(event.location.y - self.location.y),0), color: grey).geometry

@@ -13,9 +13,9 @@ import Foundation
 
 class SCNInstance : SCNNode
 {
-	var event:SCNEvent!
+	var event:Event!
 	
-	init(event:SCNEvent)
+	init(event:Event)
 	{
 		super.init()
 		self.event = event

@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventStar : SCNEvent
+class eventStar : Event
 {
 	init(location: CGPoint)
 	{

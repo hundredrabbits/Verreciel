@@ -116,7 +116,7 @@ class PanelConsole : SCNNode
 		consoleLine6.update(commands[5])
 	}
 	
-	override func listen(event: SCNEvent)
+	override func listen(event: Event)
 	{
 		if event.type == eventTypes.stack {
 			self.addLine(SCNCommand())
