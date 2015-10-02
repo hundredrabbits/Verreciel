@@ -81,9 +81,6 @@ class CorePlayer : SCNNode
 	
 	func activateEvent(event:Event)
 	{
-		if self.event != nil {
-			event.connect(self.event)
-		}
 		self.event = event
 	}
 	

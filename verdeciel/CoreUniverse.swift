@@ -19,8 +19,11 @@ class CoreUniverse : SCNNode
 		
 		print("@ UNIVERSE | Init")
 		
+		senniSystem(CGPoint(x: 2,y: 0))
 		
-		self.addChildNode(eventStar(location: CGPoint(x: -0.5,y: 0.5)))
+		
+		// Starting zone
+		
 		
 		self.addChildNode(eventStation(location: CGPoint(x: 0.25,y: 0), size: 0.5))
 		
@@ -42,6 +45,14 @@ class CoreUniverse : SCNNode
 		
 		self.addChildNode(eventCargo(location: CGPoint(x: 0.25, y: -0.5), inventory: Event(newName: "warpdisk",type: eventTypes.item)))
 */
+	}
+	
+	func senniSystem(offset:CGPoint)
+	{
+		let star = eventStar(location: CGPoint(x:offset.x,y:offset.y))
+		
+		self.addChildNode(star)
+		
 	}
 	
 	override func update()

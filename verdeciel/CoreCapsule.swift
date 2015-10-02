@@ -36,7 +36,6 @@ class CoreCapsule: SCNNode
 		
 		capsuleSetup()
 		panelSetup()
-		linkSetup()
 		
 		capsuleMesh()
 		
