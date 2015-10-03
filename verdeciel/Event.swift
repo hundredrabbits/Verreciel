@@ -23,7 +23,7 @@ class Event : SCNNode
 	var content:Array<Event>!
 	
 	var angle:CGFloat!
-	var alignment:CGFloat!
+	var align:CGFloat!
 	var distance:CGFloat!
 	
 	var inCollision:Bool = false
@@ -87,7 +87,7 @@ class Event : SCNNode
 		self.position = SCNVector3(location.x,location.y,0)
 		self.distance = distanceBetweenTwoPoints(capsule.location, point2: self.location)
 		self.angle = calculateAngle()
-		self.alignment = calculateAlignment()
+		self.align = calculateAlignment()
 		
 		// Sighted
 		if self.distance < 2 {
@@ -193,7 +193,7 @@ class Event : SCNNode
 	
 	func radarCulling()
 	{
-		if self.distance < 1.3 {
+		if self.distance < 4 {
 			self.opacity = 1
 		}
 		else {

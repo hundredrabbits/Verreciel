@@ -30,11 +30,11 @@ class SCNInstance : SCNNode
 	{
 		let distance = event.distance * 15.0
 		
-		let newAngle = degToRad(abs(event.alignment))
+		let newAngle = degToRad(abs(event.align))
 		
 		let flattenedDistance = CGFloat(cos(newAngle)) * distance // important
 		
-		if event.alignment >= 90 {
+		if event.align >= 90 {
 			self.position = SCNVector3(0,abs(flattenedDistance) * -1,0)
 		}
 		else{

@@ -5,9 +5,9 @@ import Foundation
 
 class eventStar : Event
 {
-	init(location: CGPoint)
+	init(name:String,location: CGPoint)
 	{
-		super.init(newName:"star", location:location, type:eventTypes.station)
+		super.init(newName:name, location:location, type:eventTypes.station)
 		
 		self.location = location
 		self.size = 1
@@ -19,6 +19,10 @@ class eventStar : Event
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+		
+		let label = SCNLabel(text: name, scale: 0.05, align: alignment.center)
+		label.position = SCNVector3(0,-0.5,0)
+		self.addChildNode(label)
 	}
 	
 	override func createSprite() -> SCNNode

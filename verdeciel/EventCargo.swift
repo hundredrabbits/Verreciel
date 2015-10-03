@@ -5,7 +5,7 @@ import Foundation
 
 class eventCargo : Event
 {
-	init(location: CGPoint, inventory: Event)
+	init(name:String,location: CGPoint, inventory: Event = Event(type: eventTypes.item))
 	{
 		super.init(newName:"cargo", location:location, type:eventTypes.cargo)
 		

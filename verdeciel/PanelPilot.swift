@@ -100,9 +100,9 @@ class PanelPilot : SCNNode
 		let left = event.calculateAlignment(capsule.direction - 1)
 		let right = event.calculateAlignment(capsule.direction + 1)
 		
-		targetDirection = event.alignment
+		targetDirection = event.align
 		
-		if Int(event.alignment) > 0 {
+		if Int(event.align) > 0 {
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}
@@ -111,7 +111,7 @@ class PanelPilot : SCNNode
 			}
 		}
 		
-		directionLabel.update(String(format: "%.0f",event.alignment))
+		directionLabel.update(String(format: "%.0f",event.align))
 		self.update()
 	}
 	

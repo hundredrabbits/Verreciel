@@ -5,9 +5,9 @@ import Foundation
 
 class eventStation : Event
 {
-	init(location: CGPoint, size: Float)
+	init(name:String,location: CGPoint, size: Float)
 	{
-		super.init(newName:"station", location:location, type:eventTypes.station)
+		super.init(newName:name, location:location, type:eventTypes.station)
 		
 		self.location = location
 		self.size = size
