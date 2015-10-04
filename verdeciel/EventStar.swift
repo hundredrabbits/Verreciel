@@ -20,7 +20,7 @@ class eventStar : Event
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
 		
-		let label = SCNLabel(text: name, scale: 0.05, align: alignment.center)
+		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center)
 		label.position = SCNVector3(0,-0.5,0)
 		self.addChildNode(label)
 	}

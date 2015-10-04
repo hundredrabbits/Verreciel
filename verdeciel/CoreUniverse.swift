@@ -56,6 +56,9 @@ class CoreUniverse : SCNNode
 		let portal = eventPortal(name: "Portal", location: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
 		let cargo = eventCargo(name: "cargo", location: CGPoint(x:offset.x,y:offset.y - 1))
 		let cargo2 = eventCargo(name: "cargo", location: CGPoint(x:offset.x + 1.5,y:offset.y))
+		let gate = eventPortal(name: "Portal", location: CGPoint(x:offset.x,y:offset.y + 2), destination:CGPoint(x:offset.x,y:offset.y), sector: sectors.cyanine)
+		
+		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x + 0.75,y:offset.y + 0.75))
 		
 		landing.connect(repair)
 		repair.connect(portal)
@@ -63,12 +66,17 @@ class CoreUniverse : SCNNode
 		cargo.connect(landing)
 		cargo2.connect(portal)
 		
+		gate.connect(repair)
+		
 		self.addChildNode(star)
 		self.addChildNode(landing)
 		self.addChildNode(repair)
 		self.addChildNode(portal)
 		self.addChildNode(cargo)
 		self.addChildNode(cargo2)
+		
+		self.addChildNode(beacon)
+		self.addChildNode(gate)
 	}
 	
 	override func update()

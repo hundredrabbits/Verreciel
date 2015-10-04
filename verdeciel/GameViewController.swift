@@ -77,6 +77,8 @@ enum eventTypes {
 	case portal
 	case cargo
 	case station
+	case beacon
+	case city
 	
 	case stack
 	case location
