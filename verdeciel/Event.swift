@@ -62,6 +62,7 @@ class Event : SCNNode
 		self.addChildNode(connection)
 		
 		connection.position = SCNVector3(0,0,-0.01)
+		connection.opacity = 0
 		
 		start()
 	}

@@ -136,6 +136,11 @@ class CorePlayer : SCNNode
 		radar.shipCursor.position = SCNVector3(0,0,-14)
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+		
+		for newEvent in universe.childNodes {
+			let event = newEvent as! Event
+			event.connection.opacity = 1
+		}
 	}
 	
 	
