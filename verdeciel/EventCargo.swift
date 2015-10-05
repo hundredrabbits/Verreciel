@@ -26,7 +26,7 @@ class eventCargo : Event
 	override func createSprite() -> SCNNode
 	{
 		let size:Float = 0.15
-		let color:UIColor = white
+		let color:UIColor = grey
 		
 		let spriteNode = SCNNode()
 		

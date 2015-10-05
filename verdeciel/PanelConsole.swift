@@ -119,6 +119,16 @@ class PanelConsole : SCNNode
 		}
 	}
 	
+	func boot()
+	{
+		self.addLine(SCNCommand(text: "> ready", details: "no input", color: red))
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+	}
+	
 	func clearLines()
 	{
 		self.addLine(SCNCommand())
@@ -132,6 +142,7 @@ class PanelConsole : SCNNode
 	
 	override func disconnect()
 	{
+		boot()
 		update()
 	}
 	

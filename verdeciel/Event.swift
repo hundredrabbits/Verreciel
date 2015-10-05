@@ -21,6 +21,7 @@ class Event : SCNNode
 	var details:String
 	var note = String()
 	var content:Array<Event>!
+	var color = grey
 	
 	var angle:CGFloat!
 	var align:CGFloat!
@@ -39,7 +40,7 @@ class Event : SCNNode
 	var trigger = SCNNode()
 	var connection = SCNNode()
 	
-	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "")
+	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "", color:UIColor = grey)
 	{
 		self.content = []
 		self.details = details
@@ -51,6 +52,7 @@ class Event : SCNNode
 		self.size = size
 		self.note = note
 		self.location = location
+		self.color = color
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = red
@@ -123,8 +125,6 @@ class Event : SCNNode
 			inCollision = false
 		}
 		
-		spriteMode(inApproach)
-		
 		radarCulling()
 		clean()
 	}
@@ -148,25 +148,7 @@ class Event : SCNNode
 	{
 		print("* EVENT    | Collided \(self.name!)")
 	}
-	
-	// MARK: Events -
-	
-	func spriteMode(toggle:Bool)
-	{
-		if toggle == true {
-			for newLine in sprite.childNodes {
-				let line = newLine as! SCNLine
-				line.color(white)
-			}
-		}
-		else{
-			for newLine in sprite.childNodes {
-				let line = newLine as! SCNLine
-				line.color(grey)
-			}
-		}
-	}
-	
+
 	// MARK: Radar -
 	
 	func connect(event:Event)
@@ -193,7 +175,7 @@ class Event : SCNNode
 	
 	func radarCulling()
 	{
-		if self.distance < 4 {
+		if self.distance < 400 {
 			self.opacity = 1
 		}
 		else {
@@ -209,7 +191,7 @@ class Event : SCNNode
 		}
 	}
 	
-	func color(targetColor:UIColor)
+	func updateColor(targetColor:UIColor)
 	{
 		for node in sprite.childNodes
 		{
@@ -247,7 +229,18 @@ class Event : SCNNode
 	
 	override func touch()
 	{
+		print("touched: \(self.name!)")
 		radar.addTarget(self)
+	}
+	
+	func selection()
+	{
+		updateColor(white)
+	}
+	
+	func deselection()
+	{
+		updateColor(grey)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

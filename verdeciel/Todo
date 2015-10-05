@@ -34,13 +34,13 @@
 	- Implement noise level
 	- Doodads polygons
 	- Add handles to help with the camera
-	- Display name of the closest star
 
 	> Radar
 
 	> Console
 	- Improve diagnostic
 	- Input node name
+	- Radar view(Star map?)
 
 	> Cargo
 	- Improve transfer animation

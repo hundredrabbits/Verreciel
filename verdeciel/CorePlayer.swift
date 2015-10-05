@@ -126,6 +126,19 @@ class CorePlayer : SCNNode
 		alertTimer.invalidate()
 	}
 	
+	func enterRadar()
+	{
+		print("animate")
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1.5)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(13,0,0)
+		universe.position = SCNVector3(0,0,-14)
+		radar.shipCursor.position = SCNVector3(0,0,-14)
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	}
+	
+	
 	override func tic()
 	{
 		if alertLabel.opacity == 0 { alertLabel.opacity = 1}

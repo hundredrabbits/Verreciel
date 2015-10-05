@@ -5,14 +5,19 @@ import Foundation
 
 class eventStar : Event
 {
-	init(name:String,location: CGPoint)
+	init(name:String,location: CGPoint, color:UIColor = red)
 	{
+		print(color)
 		super.init(newName:name, location:location, type:eventTypes.star)
 		
+		print(color)
 		self.location = location
 		self.size = 1
 		self.details = ""
 		self.note = ""
+		self.color = color
+		print(color)
+		print(self.color)
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -27,8 +32,10 @@ class eventStar : Event
 	
 	override func createSprite() -> SCNNode
 	{
+		print(self.color)
 		let size:Float = 0.15
-		let color:UIColor = red
+		let color = red
+		print(color)
 		
 		let spriteNode = SCNNode()
 		
@@ -60,10 +67,6 @@ class eventStar : Event
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(-3,0,0), color: white))
 		
 		return mesh
-	}
-	
-	override func spriteMode(toggle:Bool)
-	{
 	}
 	
 	required init(coder aDecoder: NSCoder) {

@@ -7,20 +7,19 @@ class eventPortal : Event
 {
 	let destination:CGPoint!
 	let sector:sectors!
-	let color:UIColor!
 	
 	init(name:String,location: CGPoint,destination: CGPoint,sector:sectors = sectors.normal,color:UIColor = white)
 	{
 		self.destination = destination
 		self.sector = sector
-		self.color = color
 		
 		super.init(newName:name, location:location, type:eventTypes.location)
-
+		
 		self.location = location
 		self.size = 1
 		self.details = ""
 		self.note = ""
+		self.color = color
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -82,12 +81,6 @@ class eventPortal : Event
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: color))
 		
 		return mesh
-	}
-	
-	
-	override func spriteMode(toggle:Bool)
-	{
-		
 	}
 	
 	required init(coder aDecoder: NSCoder) {

@@ -48,12 +48,6 @@ class eventBeacon : Event
 		return mesh
 	}
 	
-	
-	override func spriteMode(toggle:Bool)
-	{
-		
-	}
-	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
