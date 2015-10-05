@@ -38,6 +38,11 @@ extension SCNNode
 		
 	}
 	
+	func disconnect()
+	{
+		
+	}
+	
 	func updateChildrenColors(color:UIColor)
 	{
 		for newLine in self.childNodes {

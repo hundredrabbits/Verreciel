@@ -125,7 +125,7 @@ class PanelMonitor : SCNNode
 		noiseLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		westMonitor.addChildNode(noiseLabel)
 		
-		sectorNameLabel = SCNLabel(text: "EHXSEVANT", scale: 0.1, align: alignment.right)
+		sectorNameLabel = SCNLabel(text: "UNKNOWN", scale: 0.1, align: alignment.right)
 		sectorNameLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
 		westMonitor.addChildNode(sectorNameLabel)
 		
@@ -136,7 +136,7 @@ class PanelMonitor : SCNNode
 	
 	override func tic()
 	{
-		updateSystem()		
+		updateSystem()
 		electricityLabel.update(String(format: "%.1f", battery.value))
 	}
 	

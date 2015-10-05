@@ -51,7 +51,6 @@
 		03DDE17A19CE497F008029A8 /* Verreciel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verreciel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03DDE17E19CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE17F19CE497F008029A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03DDE18119CE497F008029A8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		03DDE18319CE497F008029A8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		03DDE18619CE497F008029A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03DDE18819CE497F008029A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -142,7 +141,6 @@
 				03DDE18519CE497F008029A8 /* Main.storyboard */,
 				03DDE18A19CE497F008029A8 /* LaunchScreen.xib */,
 				03DDE18819CE497F008029A8 /* Images.xcassets */,
-				03DDE18119CE497F008029A8 /* art.scnassets */,
 				03DDE17E19CE497F008029A8 /* Info.plist */,
 			);
 			name = "Supporting Files";

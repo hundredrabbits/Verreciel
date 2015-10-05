@@ -44,8 +44,6 @@ class PanelCargo : SCNNode
 		self.addEvent(Event(newName: "top", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
 		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
 		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
 		self.addEvent(Event(newName: "bottom", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
 	
 		/*

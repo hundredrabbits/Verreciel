@@ -23,7 +23,6 @@ class PanelRadar : SCNNode
 	var eventView = universe
 	var shipCursor:SCNNode!
 	
-	var targetter:SCNNode!
 	var targetterAway:SCNNode!
 	
 	var horizontalGrid:SCNLine!
@@ -46,9 +45,6 @@ class PanelRadar : SCNNode
 		addInterface()
 		
 		self.addChildNode(eventView)
-	
-		targetter = createTargetter()
-//		eventView.addChildNode(targetter)
 	}
 	
 	func createTargetter() -> SCNNode
@@ -149,8 +145,6 @@ class PanelRadar : SCNNode
 	func updateTarget()
 	{		
 		if output.event != nil {
-			targetter.position = output.event.position
-			targetter.opacity = 1
 			
 			let shipNodePosition = CGPoint(x: CGFloat(capsule.location.x), y: CGFloat(capsule.location.y))
 			let eventNodePosition = CGPoint(x: CGFloat(output.event.location.x), y: CGFloat(output.event.location.y))
@@ -165,7 +159,6 @@ class PanelRadar : SCNNode
 			}
 			
 			if distanceFromShip > 1.4 {
-				targetter.opacity = 0
 				let angleTest = angleBetweenTwoPoints(capsule.location, point2: output.event.location, center: capsule.location)
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
 				targetterAway.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
@@ -176,7 +169,6 @@ class PanelRadar : SCNNode
 			}
 		}
 		else{
-			targetter.opacity = 0
 			labelDistance.opacity = 0
 		}
 		
@@ -187,9 +179,6 @@ class PanelRadar : SCNNode
 		output.addEvent(event)
 		outputLabel.updateWithColor(event.name!, color: white)
 		
-		targetter.position = event.position
-		targetter.opacity = 1
-		
 		self.bang()
 		updateTarget()
 	}
@@ -197,7 +186,6 @@ class PanelRadar : SCNNode
 	func removeTarget()
 	{
 		output.disconnect()
-		targetter.opacity = 0
 		
 		output.removeEvent()
 		
@@ -209,7 +197,7 @@ class PanelRadar : SCNNode
 		if event.type == eventTypes.map {
 			radar.inputLabel.update("+\(event.content.count) new")
 			for location in event.content {
-//				universe.addChildNode(location)
+				universe.addChildNode(location)
 			}
 			event.size = 0
 			cargo.bang(true)

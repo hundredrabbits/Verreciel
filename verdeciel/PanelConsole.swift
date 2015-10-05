@@ -81,7 +81,6 @@ class PanelConsole : SCNNode
 		
 		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
 		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
-		inputLabel.updateWithColor("console", color: grey)
 		
 		self.addChildNode(input)
 		self.addChildNode(inputLabel)
@@ -114,22 +113,40 @@ class PanelConsole : SCNNode
 		consoleLine4.update(commands[3])
 		consoleLine5.update(commands[4])
 		consoleLine6.update(commands[5])
+		
+		if input.origin == nil {
+			inputLabel.update("console")
+		}
+	}
+	
+	func clearLines()
+	{
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+		self.addLine(SCNCommand())
+	}
+	
+	override func disconnect()
+	{
+		update()
 	}
 	
 	override func listen(event: Event)
 	{
 		if event.type == eventTypes.stack {
-			self.addLine(SCNCommand())
-			self.addLine(SCNCommand(text:event.name!, color: grey, head:true))
-			self.addLine(SCNCommand())
+			print(event.name!)
+			inputLabel.update(event.name!)
+			self.clearLines()
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item))
 			}
 		}
 		else {
-			self.addLine(SCNCommand())
-			self.addLine(SCNCommand(text:event.name!, head:true,details:event.details,color:grey))
-			self.addLine(SCNCommand(text:event.note,color:grey))
+			self.clearLines()
 			self.input.origin.disconnect()
 		}
 	}
