@@ -22,6 +22,8 @@ class PanelMonitor : SCNNode
 	var noiseLabel:SCNLabel!
 	var sectorNameLabel:SCNLabel!
 	
+	var currentSystem = Event(newName: "test", location: CGPoint(x: 999999,y: 999999),type: eventTypes.star)
+	
 	override init()
 	{
 		super.init()
@@ -134,7 +136,21 @@ class PanelMonitor : SCNNode
 	
 	override func tic()
 	{
+		updateSystem()		
 		electricityLabel.update(String(format: "%.1f", battery.value))
+	}
+	
+	func updateSystem()
+	{		
+		for newEvent in universe.childNodes {
+			let event = newEvent as! Event
+			if event.type != eventTypes.star { continue }
+			if event == currentSystem { continue }
+			if distanceBetweenTwoPoints(event.location, point2: capsule.location) < distanceBetweenTwoPoints(currentSystem.location, point2: capsule.location){
+				currentSystem = event
+				sectorNameLabel.update(currentSystem.name!)
+			}
+		}
 	}
 	
 	func monitorValue(value:Float) -> String

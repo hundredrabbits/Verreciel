@@ -79,6 +79,7 @@ enum eventTypes {
 	case station
 	case beacon
 	case city
+	case star
 	
 	case stack
 	case location

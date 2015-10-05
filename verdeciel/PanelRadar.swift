@@ -48,7 +48,7 @@ class PanelRadar : SCNNode
 		self.addChildNode(eventView)
 	
 		targetter = createTargetter()
-		eventView.addChildNode(targetter)
+//		eventView.addChildNode(targetter)
 	}
 	
 	func createTargetter() -> SCNNode
@@ -209,7 +209,7 @@ class PanelRadar : SCNNode
 		if event.type == eventTypes.map {
 			radar.inputLabel.update("+\(event.content.count) new")
 			for location in event.content {
-				universe.addChildNode(location)
+//				universe.addChildNode(location)
 			}
 			event.size = 0
 			cargo.bang(true)

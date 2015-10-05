@@ -37,6 +37,7 @@ class PanelTranslator : SCNNode
 	
 	func addPorts()
 	{
+		/*
 		let scale:Float = 0.8
 		
 		input = SCNPort(host: self, polarity: false)
@@ -56,6 +57,7 @@ class PanelTranslator : SCNNode
 		self.addChildNode(output)
 		self.addChildNode(inputLabel)
 		self.addChildNode(outputLabel)
+*/
 	}
 	
 	required init(coder aDecoder: NSCoder)

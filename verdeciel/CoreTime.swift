@@ -25,8 +25,7 @@ class CoreTime : NSObject
 	func tic()
 	{
 		universe.update()
-		
-		monitor.update()
+	
 		space.update()
 		
 		battery.tic()

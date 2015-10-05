@@ -7,7 +7,7 @@ class eventStar : Event
 {
 	init(name:String,location: CGPoint)
 	{
-		super.init(newName:name, location:location, type:eventTypes.station)
+		super.init(newName:name, location:location, type:eventTypes.star)
 		
 		self.location = location
 		self.size = 1

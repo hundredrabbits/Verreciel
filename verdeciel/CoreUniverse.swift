@@ -19,6 +19,7 @@ class CoreUniverse : SCNNode
 		
 		print("@ UNIVERSE | Init")
 		
+		
 		// Starting zone
 		senniSystem(CGPoint(x: 0,y: 0))
 		

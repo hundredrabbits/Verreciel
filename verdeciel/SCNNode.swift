@@ -12,7 +12,7 @@ import SceneKit
 import Foundation
 
 extension SCNNode
-{	
+{
 	func touch()
 	{
 		print("! This node has no touch action")
