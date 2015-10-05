@@ -40,6 +40,8 @@ class Event : SCNNode
 	var trigger = SCNNode()
 	var connection = SCNNode()
 	
+	var targetter = SCNNode()
+	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "", color:UIColor = grey)
 	{
 		self.content = []
@@ -63,6 +65,10 @@ class Event : SCNNode
 		
 		connection.position = SCNVector3(0,0,-0.01)
 		connection.opacity = 0
+		
+		targetter = SCNLine(nodeA: SCNVector3(-0.1,-0.25,0), nodeB: SCNVector3(0.1,-0.25,0), color: red)
+		targetter.opacity = 0
+		self.addChildNode(targetter)
 		
 		start()
 	}
@@ -176,7 +182,7 @@ class Event : SCNNode
 	
 	func radarCulling()
 	{
-		if self.distance < 400 {
+		if self.distance < 1.3 || player.inRadar == true {
 			self.opacity = 1
 		}
 		else {
@@ -236,12 +242,14 @@ class Event : SCNNode
 	
 	func selection()
 	{
-		updateColor(white)
+		updateColor(self.color)
+		targetter.opacity = 1
 	}
 	
 	func deselection()
 	{
-		updateColor(grey)
+		updateColor(self.color)
+		targetter.opacity = 0
 	}
 	
 	required init(coder aDecoder: NSCoder) {

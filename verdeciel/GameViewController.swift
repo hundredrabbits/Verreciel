@@ -129,6 +129,8 @@ class GameViewController: UIViewController
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
+		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+		
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
@@ -138,14 +140,9 @@ class GameViewController: UIViewController
 		let dragY = CGFloat(touchPosition.y - touchOrigin.y)
 		
 		touchOrigin = touchPosition
-		
-		let xAngle = SCNMatrix4MakeRotation(Float(degToRad(dragY/4)), 1, 0, 0)
-		let yAngle = SCNMatrix4MakeRotation(Float(degToRad(dragX/5)), 0, 1, 0)
-		let zAngle = SCNMatrix4MakeRotation(Float(degToRad(0)), 0, 0, 1)
-		
-		let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
-		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
-		cameraNode.transform = SCNMatrix4Mult(rotationMatrix, cameraNode.transform )
+
+		cameraNode.eulerAngles.x += Float(degToRad(dragY/4))
+		cameraNode.eulerAngles.y += Float(degToRad(dragX/4))
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

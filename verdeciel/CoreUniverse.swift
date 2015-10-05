@@ -67,7 +67,7 @@ class CoreUniverse : SCNNode
 	
 	func valentSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Valent",location: CGPoint(x:offset.x,y:offset.y),color:cyan)
+		let star = eventStar(name:"Valent",location: CGPoint(x:offset.x,y:offset.y))
 		let landing = eventStation(name:"landing",location: CGPoint(x:offset.x - 1.25,y:offset.y + 1), size: 0.5)
 		let repair = eventStation(name:"Repair",location: CGPoint(x:offset.x + 1.25,y:offset.y + 1), size: 0.5)
 		let portal = eventPortal(name: "Portal", location: CGPoint(x:offset.x,y:offset.y + 1), destination:CGPoint(x:offset.x,y:offset.y))
@@ -88,7 +88,7 @@ class CoreUniverse : SCNNode
 
 	func senniSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Senni",location: CGPoint(x:offset.x,y:offset.y),color:cyan)
+		let star = eventStar(name:"Senni",location: CGPoint(x:offset.x,y:offset.y))
 		let landing = eventStation(name:"landing",location: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
 		let repair = eventStation(name:"Repair",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		let portal = eventPortal(name: "Portal", location: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))

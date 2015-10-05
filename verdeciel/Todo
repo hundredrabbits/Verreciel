@@ -41,6 +41,7 @@
 	- Improve diagnostic
 	- Input node name
 	- Radar view(Star map?)
+	- Mute output port, until the target is in range
 
 	> Cargo
 	- Improve transfer animation

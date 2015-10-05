@@ -24,6 +24,8 @@ class CorePlayer : SCNNode
 	var port:SCNPort!
 	var event:Event!
 	
+	var inRadar:Bool = false
+	
 	override init()
 	{
 		health = 99
@@ -128,9 +130,11 @@ class CorePlayer : SCNNode
 	
 	func enterRadar()
 	{
+		self.inRadar = true
+		
 		print("animate")
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1.5)
+		SCNTransaction.setAnimationDuration(2.5)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(13,0,0)
 		universe.position = SCNVector3(0,0,-14)
 		radar.shipCursor.position = SCNVector3(0,0,-14)
@@ -140,9 +144,9 @@ class CorePlayer : SCNNode
 		for newEvent in universe.childNodes {
 			let event = newEvent as! Event
 			event.connection.opacity = 1
+			event.opacity = 1
 		}
 	}
-	
 	
 	override func tic()
 	{
