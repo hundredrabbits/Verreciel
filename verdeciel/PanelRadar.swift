@@ -20,6 +20,7 @@ class PanelRadar : SCNNode
 	var labelPositionZ:SCNLabel!
 	var labelDistance:SCNLabel!
 	
+	var eventPivot = SCNNode()
 	var eventView = universe
 	var shipCursor:SCNNode!
 	
@@ -27,6 +28,8 @@ class PanelRadar : SCNNode
 	
 	var horizontalGrid:SCNLine!
 	var verticalGrid:SCNLine!
+	
+	var leaveButton:SCNTrigger!
 	
 	// Ports
 	
@@ -44,10 +47,16 @@ class PanelRadar : SCNNode
 		name = "radar"
 		addInterface()
 		
-		self.addChildNode(eventView)
+		self.addChildNode(eventPivot)
+		eventPivot.addChildNode(eventView)
 		
 		self.geometry = SCNPlane(width: 2, height: 2)
 		self.geometry?.materials.first?.diffuse.contents = clear
+		
+		leaveButton = SCNTrigger(host: self, size: 2, operation: false)
+		leaveButton.position = SCNVector3(0,-3,-14)
+		leaveButton.geometry?.materials.first?.diffuse.contents = red
+		self.addChildNode(leaveButton)
 	}
 	
 	override func touch()
@@ -142,7 +151,7 @@ class PanelRadar : SCNNode
 		labelPositionX.update(String(Int(capsule.location.x)))
 		labelPositionZ.update(String(Int(capsule.location.y)))
 		
-//		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
+		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
 		
 		horizontalGrid.position = SCNVector3(0,((capsule.location.y * -1) % 3) + 1.5,-0.001)
 		verticalGrid.position = SCNVector3(((capsule.location.x * -1) % 4) + 2,0,-0.001)
@@ -218,6 +227,8 @@ class PanelRadar : SCNNode
 	
 	override func bang(param:Bool = true)
 	{
+		if param == false { player.leaveRadar() }
+		
 		if output.connection == nil { return }
 		if output.event == nil { return }
 		

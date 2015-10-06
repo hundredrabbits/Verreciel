@@ -23,9 +23,8 @@ class CoreUniverse : SCNNode
 		// Starting zone
 		senniSystem(CGPoint(x: 0,y: 0))
 		valentSystem(CGPoint(x: 3,y: 3))
-		
-		usulSystem(CGPoint(x: -2,y: 2))
-		
+		usulSystem(CGPoint(x: -3,y: 2))
+		falvetSystem(CGPoint(x: -1,y: 5))
 		
 		/*
 		
@@ -50,10 +49,20 @@ class CoreUniverse : SCNNode
 */
 	}
 	
+	func falvetSystem(offset:CGPoint)
+	{
+		let star = eventStar(name:"Falvet",location: CGPoint(x:offset.x,y:offset.y),color:cyan)
+
+		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x,y:offset.y - 2))
+		
+		self.addChildNode(star)
+		self.addChildNode(beacon)
+	}
+	
 	
 	func usulSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Usul",location: CGPoint(x:offset.x,y:offset.y),color:cyan)
+		let star = eventStar(name:"Usul",location: CGPoint(x:offset.x,y:offset.y))
 		let portal = eventPortal(name: "Portal", location: CGPoint(x:offset.x,y:offset.y - 1), destination:CGPoint(x:offset.x,y:offset.y))
 		
 		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x,y:offset.y - 2))

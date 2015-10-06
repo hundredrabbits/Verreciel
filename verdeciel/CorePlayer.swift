@@ -132,11 +132,10 @@ class CorePlayer : SCNNode
 	{
 		self.inRadar = true
 		
-		print("animate")
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(13,0,0)
-		universe.position = SCNVector3(0,0,-14)
+		radar.eventPivot.position = SCNVector3(universe.position.x,universe.position.y,-14)
 		radar.shipCursor.position = SCNVector3(0,0,-14)
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
@@ -146,6 +145,27 @@ class CorePlayer : SCNNode
 			event.connection.opacity = 1
 			event.opacity = 1
 		}
+		radar.leaveButton.opacity = 1
+	}
+	
+	func leaveRadar()
+	{
+		self.inRadar = false
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(0,0,0)
+		radar.eventPivot.position = SCNVector3(universe.position.x,universe.position.y,0)
+		radar.shipCursor.position = SCNVector3(0,0,0)
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+
+		for newEvent in universe.childNodes {
+			let event = newEvent as! Event
+			event.connection.opacity = 0
+			event.opacity = 0
+		}
+		radar.leaveButton.opacity = 0
 	}
 	
 	override func tic()

@@ -27,20 +27,21 @@
 	- Add dimensional gates
 	- Add cities
 
+	> Stealthed events
+
 > Capsule
 
 	> Misc
 	- Implement Beacon interaction
 	- Implement noise level
 	- Doodads polygons
-	- Add handles to help with the camera
 
 	> Radar
+	- Option to leave radar mode
+	- Radar view event culling(Only allow click events that have been discovered)
 
 	> Console
 	- Improve diagnostic
-	- Input node name
-	- Radar view(Star map?)
 	- Mute output port, until the target is in range
 
 	> Cargo
