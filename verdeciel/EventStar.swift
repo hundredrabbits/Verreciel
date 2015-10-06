@@ -29,7 +29,6 @@ class eventStar : Event
 	override func createSprite() -> SCNNode
 	{
 		let size:Float = 0.15
-		let color = red
 		
 		let spriteNode = SCNNode()
 		

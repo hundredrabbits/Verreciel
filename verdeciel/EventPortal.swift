@@ -36,7 +36,6 @@ class eventPortal : Event
 	override func createSprite() -> SCNNode
 	{
 		var size:Float = 0.15
-		let color:UIColor = self.color
 		
 		let spriteNode = SCNNode()
 		
@@ -91,6 +90,11 @@ class eventPortal : Event
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: color))
 		
 		return mesh
+	}
+	
+	override func sight()
+	{
+		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

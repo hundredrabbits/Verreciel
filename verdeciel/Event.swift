@@ -154,6 +154,7 @@ class Event : SCNNode
 	func sight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
+		updateSprite()
 	}
 	
 	func approach()
@@ -162,11 +163,13 @@ class Event : SCNNode
 		capsule.instance = self
 		space.startInstance(self)
 		player.activateEvent(self)
+		updateSprite()
 	}
 	
 	func collide()
 	{
 		print("* EVENT    | Collided \(self.name!)")
+		updateSprite()
 	}
 
 	// MARK: Radar -
@@ -185,10 +188,10 @@ class Event : SCNNode
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
 		}
 		else{
 			size = 0.05
@@ -257,8 +260,13 @@ class Event : SCNNode
 	
 	override func touch()
 	{
-		print("touched: \(self.name!)")
-		radar.addTarget(self)
+		if isKnown == true {
+			print("touched: \(self.name!)")
+			radar.addTarget(self)
+		}
+		else{
+			print("event is unknown")
+		}
 	}
 	
 	func selection()
