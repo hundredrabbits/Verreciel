@@ -14,15 +14,17 @@ import Foundation
 class CoreUniverse : SCNNode
 {
 	var falvetToSenni = eventPath()
-	var falvetTovalen = eventPath()
+	var falvetToValen = eventPath()
 	var falvetToUsul = eventPath()
+	var falvetToLoiqe = eventPath()
 	
 	var valenToVenic = eventPath()
 	
 	var entryToSenni = eventStation()
-	var entryTovalen = eventStation()
+	var entryToValen = eventStation()
 	var entryToUsul = eventStation()
 	var entryToVenic = eventStation()
+	var entryToLoiqe = eventStation()
 	
 	override init()
 	{
@@ -37,6 +39,7 @@ class CoreUniverse : SCNNode
 		usulSystem(CGPoint(x: -4,y: 0))
 		
 		venicSystem(CGPoint(x: 4,y: -4))
+		loiqeSystem(CGPoint(x: 0,y: -4))
 		
 		connectPaths()
 	}
@@ -47,8 +50,8 @@ class CoreUniverse : SCNNode
 		
 		falvetToUsul = eventPath(name:"landing",location: CGPoint(x:offset.x - 1.5,y:offset.y))
 		falvetToSenni = eventPath(name:"landing",location: CGPoint(x:offset.x,y:offset.y + 1.5))
-		falvetTovalen = eventPath(name:"landing",location: CGPoint(x:offset.x + 1.5,y:offset.y))
-		let city4 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1.5), size: 0.5)
+		falvetToValen = eventPath(name:"landing",location: CGPoint(x:offset.x + 1.5,y:offset.y))
+		falvetToLoiqe = eventPath(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1.5))
 		
 		let city5 = eventStation(name:"landing",location: CGPoint(x:offset.x - 1,y:offset.y + 1), size: 0.5)
 		let city6 = eventStation(name:"landing",location: CGPoint(x:offset.x + 1,y:offset.y + 1), size: 0.5)
@@ -57,25 +60,31 @@ class CoreUniverse : SCNNode
 		
 		self.addChildNode(falvetToUsul)
 		self.addChildNode(falvetToSenni)
-		self.addChildNode(falvetTovalen)
-		self.addChildNode(city4)
+		self.addChildNode(falvetToValen)
+		self.addChildNode(falvetToLoiqe)
 		
 		self.addChildNode(city5)
 		self.addChildNode(city6)
 		self.addChildNode(city7)
 		self.addChildNode(city8)
 		
-		city5.connect(city6)
-		city6.connect(city7)
-		city7.connect(city8)
-		city8.connect(city5)
-		
-		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x,y:offset.y - 2))
+		city5.connect(falvetToSenni)
+		city6.connect(falvetToValen)
+		city7.connect(falvetToLoiqe)
+		city8.connect(falvetToUsul)
 		
 		self.addChildNode(star)
-		self.addChildNode(beacon)
 	}
 	
+	func loiqeSystem(offset:CGPoint)
+	{
+		let star = eventStar(name:"loiqe",location: CGPoint(x:offset.x,y:offset.y))
+		
+		entryToLoiqe = eventStation(name:"Repair",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		
+		self.addChildNode(star)
+		self.addChildNode(entryToLoiqe)
+	}
 	
 	func venicSystem(offset:CGPoint)
 	{
@@ -118,14 +127,14 @@ class CoreUniverse : SCNNode
 	{
 		let star = eventStar(name:"valen",location: CGPoint(x:offset.x,y:offset.y))
 		
-		entryTovalen = eventStation(name:"Repair",location: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
+		entryToValen = eventStation(name:"Repair",location: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
 		valenToVenic = eventPath(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1))
 		
 		let city2 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
-		city2.connect(entryTovalen)
+		city2.connect(entryToValen)
 		
-		self.addChildNode(entryTovalen)
+		self.addChildNode(entryToValen)
 		self.addChildNode(star)
 		self.addChildNode(valenToVenic)
 		self.addChildNode(city2)
@@ -165,9 +174,10 @@ class CoreUniverse : SCNNode
 	func connectPaths()
 	{
 		falvetToSenni.connect(entryToSenni)
-		falvetTovalen.connect(entryTovalen)
+		falvetToValen.connect(entryToValen)
 		falvetToUsul.connect(entryToUsul)
 		valenToVenic.connect(entryToVenic)
+		falvetToLoiqe.connect(entryToLoiqe)
 	}
 	
 	override func update()

@@ -206,10 +206,21 @@ class PanelRadar : SCNNode
 	func removeTarget()
 	{
 		output.disconnect()
-		
 		output.removeEvent()
-		
 		updateTarget()
+	}
+	
+	func closestEvent(type:eventTypes) -> Event
+	{
+		var closestEvent:Event!
+		for newEvent in universe.childNodes {
+			let event = newEvent as! Event
+			if closestEvent == nil { closestEvent = event }
+			if event.type != type { continue }
+			if event.distance > closestEvent.distance { continue }
+			closestEvent = event
+		}
+		return closestEvent
 	}
 	
 	override func listen(event: Event)

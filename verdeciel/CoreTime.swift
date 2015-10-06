@@ -18,6 +18,11 @@ class CoreTime : NSObject
 	override init()
 	{
 		super.init()
+		
+	}
+	
+	func start()
+	{
 		let eventSelector = Selector("tic")
 		time = NSTimer.scheduledTimerWithTimeInterval(0.075, target: self, selector: eventSelector, userInfo: nil, repeats: true)
 	}

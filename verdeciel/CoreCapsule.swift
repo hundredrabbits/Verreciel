@@ -34,14 +34,28 @@ class CoreCapsule: SCNNode
 		super.init()
 		
 		self.direction = 0
-		nodeSetup()
 		
+		nodeSetup()
+
 		capsuleSetup()
 		panelSetup()
 		
 		capsuleMesh()
 		
+		start()
+	}
+	
+	func start()
+	{
 		connectDefaultPorts()
+		dock(radar.closestEvent(eventTypes.station))
+	}
+	
+	func dock(newDock:Event)
+	{
+		dock = newDock
+		thruster.update()
+		custom.dock(dock)
 	}
 	
 	func connectDefaultPorts()

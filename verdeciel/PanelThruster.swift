@@ -157,7 +157,11 @@ class PanelThruster : SCNNode
 			actualSpeed -= 0.1
 		}
 		
-		if actualSpeed < 0.1 {
+		if capsule.dock != nil {
+			actualSpeed = 0
+			speedLabel.update("docked")
+		}
+		else if actualSpeed < 0.1 {
 			actualSpeed = 0.1
 		}
 		

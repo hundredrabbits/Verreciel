@@ -42,7 +42,7 @@ class Event : SCNNode
 	
 	var targetter = SCNNode()
 	
-	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes,details:String = "", note:String = "", color:UIColor = grey)
+	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey)
 	{
 		self.content = []
 		self.details = details

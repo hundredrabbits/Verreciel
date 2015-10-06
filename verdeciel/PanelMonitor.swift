@@ -141,16 +141,8 @@ class PanelMonitor : SCNNode
 	}
 	
 	func updateSystem()
-	{		
-		for newEvent in universe.childNodes {
-			let event = newEvent as! Event
-			if event.type != eventTypes.star { continue }
-			if event == currentSystem { continue }
-			if distanceBetweenTwoPoints(event.location, point2: capsule.location) < distanceBetweenTwoPoints(currentSystem.location, point2: capsule.location){
-				currentSystem = event
-				sectorNameLabel.update(currentSystem.name!)
-			}
-		}
+	{
+		sectorNameLabel.update(radar.closestEvent(eventTypes.star).name!)
 	}
 	
 	func monitorValue(value:Float) -> String

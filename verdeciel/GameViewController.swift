@@ -122,6 +122,8 @@ class GameViewController: UIViewController
 		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
 		
 		cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+		
+		time.start()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

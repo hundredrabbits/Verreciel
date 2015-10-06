@@ -31,6 +31,11 @@ class PanelCustom : SCNNode
 		self.addChildNode(SCNLine(nodeA: highNode[7],nodeB: lowNode[0],color:white))
 	}
 	
+	func dock(event:Event)
+	{
+		print("Load interface for \(event.name!)")
+	}
+	
 	override func listen(event:Event)
 	{
 		
