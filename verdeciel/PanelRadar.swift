@@ -53,7 +53,7 @@ class PanelRadar : SCNNode
 		self.geometry = SCNPlane(width: 2, height: 2)
 		self.geometry?.materials.first?.diffuse.contents = clear
 		
-		leaveButton = SCNTrigger(host: self, size: 2, operation: false)
+		leaveButton = SCNTrigger(host: self, size: 1, operation: false)
 		leaveButton.position = SCNVector3(0,-3,-14)
 		leaveButton.geometry?.materials.first?.diffuse.contents = red
 		self.addChildNode(leaveButton)

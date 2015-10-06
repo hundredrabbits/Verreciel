@@ -101,9 +101,9 @@ class Event : SCNNode
 		// Sighted
 		if self.distance < 2 {
 			if self.inSight == false {
-				sight()
 				self.inSight = true
 				self.isKnown = true
+				sight()
 			}
 		}
 		else{
@@ -134,6 +134,19 @@ class Event : SCNNode
 		
 		radarCulling()
 		clean()
+	}
+	
+	func updateSprite()
+	{
+		// Empty node
+		for node in self.sprite.childNodes {
+			node.removeFromParentNode()
+		}
+		
+		// Add
+		for node in createSprite().childNodes {
+			self.addChildNode(node)
+		}
 	}
 	
 	// MARK: Events -
