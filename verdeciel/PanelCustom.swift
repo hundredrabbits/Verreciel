@@ -18,6 +18,8 @@ class PanelCustom : Panel
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
 	
+	var content:SCNNode!
+	
 	override init()
 	{
 		super.init()
@@ -26,6 +28,9 @@ class PanelCustom : Panel
 		addInterface()
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		
+		content = SCNNode()
+		self.addChildNode(content)
 		
 		update()
 	}
@@ -59,6 +64,28 @@ class PanelCustom : Panel
 		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
 		self.addChildNode(statusLabel)
 		
+		let undockButton = SCNTrigger(host: self, size: 1, operation: false)
+		undockButton.geometry?.materials.first?.diffuse.contents = red
+		
+		undockButton.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+
+		self.addChildNode(undockButton)
+	}
+	
+	override func bang(param:Bool)
+	{
+		print("!!")
+		touch()
+	}
+	
+	override func touch()
+	{
+		capsule.undock()
+	}
+	
+	func undock()
+	{
+		content.empty()
 	}
 	
 	func dock(event:Event)
@@ -68,7 +95,7 @@ class PanelCustom : Panel
 		
 		inputLabel.update(event.name!)
 		
-		self.addChildNode(event.interface)
+		content.addChildNode(event.interface)
 		
 //		self.updateInterface(event.interface)
 	}

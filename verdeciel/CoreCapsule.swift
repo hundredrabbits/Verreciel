@@ -57,6 +57,13 @@ class CoreCapsule: SCNNode
 		custom.dock(dock)
 	}
 	
+	func undock()
+	{
+		dock = nil
+		thruster.update()
+		custom.undock()
+	}
+	
 	func connectDefaultPorts()
 	{
 		battery.outCell1.connect(battery.inOxygen)

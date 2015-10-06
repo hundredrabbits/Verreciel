@@ -43,6 +43,20 @@ extension SCNNode
 		
 	}
 	
+	func empty()
+	{
+		for node in self.childNodes {
+			node.removeFromParentNode()
+		}
+	}
+	
+	func add(object:SCNNode)
+	{
+		for node in object.childNodes {
+			self.addChildNode(node)
+		}
+	}
+	
 	func updateChildrenColors(color:UIColor)
 	{
 		for newLine in self.childNodes {

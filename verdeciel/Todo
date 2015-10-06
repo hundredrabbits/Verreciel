@@ -39,7 +39,6 @@
 
 	> Radar
 	- Option to leave radar mode
-	- Radar view event culling(Only allow click events that have been discovered)
 
 	> Console
 	- Improve diagnostic
