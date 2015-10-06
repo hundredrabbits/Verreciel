@@ -20,7 +20,7 @@ class eventStation : Event
 	
 	override func createSprite() -> SCNNode
 	{
-		var size:Float = 0.15		
+		var size:Float = 0.1
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {

@@ -35,7 +35,7 @@ class eventPortal : Event
 	
 	override func createSprite() -> SCNNode
 	{
-		var size:Float = 0.15
+		var size:Float = 0.1
 		
 		let spriteNode = SCNNode()
 		
@@ -48,7 +48,7 @@ class eventPortal : Event
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0.075,y:0,z:0),color: color))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:-0.075,y:0,z:0),color: color))
 			
-			size = 0.075
+			size = 0.05
 			
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))

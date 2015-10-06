@@ -33,7 +33,7 @@ class Event : SCNNode
 	var inSight:Bool = false
 	
 	var isVisible:Bool = false
-	var isKnown:Bool = false
+	var isKnown:Bool = false // TODO: set to false for release
 	var isTargetted:Bool = false
 	
 	var sprite = SCNNode()

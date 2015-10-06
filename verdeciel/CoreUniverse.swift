@@ -14,12 +14,15 @@ import Foundation
 class CoreUniverse : SCNNode
 {
 	var falvetToSenni = eventPath()
-	var falvetToValent = eventPath()
+	var falvetTovalen = eventPath()
 	var falvetToUsul = eventPath()
 	
+	var valenToVenic = eventPath()
+	
 	var entryToSenni = eventStation()
-	var entryToValent = eventStation()
+	var entryTovalen = eventStation()
 	var entryToUsul = eventStation()
+	var entryToVenic = eventStation()
 	
 	override init()
 	{
@@ -30,19 +33,21 @@ class CoreUniverse : SCNNode
 		// Starting zone
 		falvetSystem(CGPoint(x: 0,y: 0))
 		senniSystem(CGPoint(x: 0,y: 4))
-		valentSystem(CGPoint(x: 4,y: 0))
+		valenSystem(CGPoint(x: 4,y: 0))
 		usulSystem(CGPoint(x: -4,y: 0))
+		
+		venicSystem(CGPoint(x: 4,y: -4))
 		
 		connectPaths()
 	}
 	
 	func falvetSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Falvet",location: CGPoint(x:offset.x,y:offset.y),color:cyan)
+		let star = eventStar(name:"Falvet",location: CGPoint(x:offset.x,y:offset.y),color:red)
 		
 		falvetToUsul = eventPath(name:"landing",location: CGPoint(x:offset.x - 1.5,y:offset.y))
 		falvetToSenni = eventPath(name:"landing",location: CGPoint(x:offset.x,y:offset.y + 1.5))
-		falvetToValent = eventPath(name:"landing",location: CGPoint(x:offset.x + 1.5,y:offset.y))
+		falvetTovalen = eventPath(name:"landing",location: CGPoint(x:offset.x + 1.5,y:offset.y))
 		let city4 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1.5), size: 0.5)
 		
 		let city5 = eventStation(name:"landing",location: CGPoint(x:offset.x - 1,y:offset.y + 1), size: 0.5)
@@ -52,7 +57,7 @@ class CoreUniverse : SCNNode
 		
 		self.addChildNode(falvetToUsul)
 		self.addChildNode(falvetToSenni)
-		self.addChildNode(falvetToValent)
+		self.addChildNode(falvetTovalen)
 		self.addChildNode(city4)
 		
 		self.addChildNode(city5)
@@ -68,6 +73,26 @@ class CoreUniverse : SCNNode
 		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x,y:offset.y - 2))
 		
 		self.addChildNode(star)
+		self.addChildNode(beacon)
+	}
+	
+	
+	func venicSystem(offset:CGPoint)
+	{
+		let star = eventStar(name:"venic",location: CGPoint(x:offset.x,y:offset.y))
+		
+		entryToVenic = eventStation(name:"Repair",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		
+		let portal = eventPortal(name: "Portal", location: CGPoint(x:offset.x - 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
+		
+		let beacon = eventBeacon(name: "beacon", location: CGPoint(x:offset.x + 1,y:offset.y))
+		
+		portal.connect(entryToVenic)
+		beacon.connect(entryToVenic)
+		
+		self.addChildNode(entryToVenic)
+		self.addChildNode(star)
+		self.addChildNode(portal)
 		self.addChildNode(beacon)
 	}
 	
@@ -89,21 +114,20 @@ class CoreUniverse : SCNNode
 		self.addChildNode(beacon)
 	}
 	
-	func valentSystem(offset:CGPoint)
+	func valenSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Valent",location: CGPoint(x:offset.x,y:offset.y))
+		let star = eventStar(name:"valen",location: CGPoint(x:offset.x,y:offset.y))
 		
-		entryToValent = eventStation(name:"Repair",location: CGPoint(x:offset.x - 1.5,y:offset.y), size: 0.5)
+		entryTovalen = eventStation(name:"Repair",location: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
+		valenToVenic = eventPath(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1))
 		
-		let city1 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y + 1.5), size: 0.5)
-		let city2 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y - 1.5), size: 0.5)
+		let city2 = eventStation(name:"landing",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
-		city1.connect(entryToValent)
-		city2.connect(entryToValent)
+		city2.connect(entryTovalen)
 		
-		self.addChildNode(entryToValent)
+		self.addChildNode(entryTovalen)
 		self.addChildNode(star)
-		self.addChildNode(city1)
+		self.addChildNode(valenToVenic)
 		self.addChildNode(city2)
 	}
 
@@ -141,8 +165,9 @@ class CoreUniverse : SCNNode
 	func connectPaths()
 	{
 		falvetToSenni.connect(entryToSenni)
-		falvetToValent.connect(entryToValent)
+		falvetTovalen.connect(entryTovalen)
 		falvetToUsul.connect(entryToUsul)
+		valenToVenic.connect(entryToVenic)
 	}
 	
 	override func update()

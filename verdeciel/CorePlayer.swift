@@ -135,7 +135,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = SCNVector3(13,0,0)
-		radar.eventPivot.position = SCNVector3(universe.position.x,universe.position.y,-14)
+		radar.eventPivot.position = SCNVector3(0,0,-14)
 		radar.shipCursor.position = SCNVector3(0,0,-14)
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
