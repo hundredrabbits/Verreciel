@@ -36,6 +36,7 @@
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
+		57C915171BC45E91009454C4 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C915161BC45E91009454C4 /* Panel.swift */; settings = {ASSET_TAGS = (); }; };
 		57CA80981BB9CEA3000D31F7 /* EventCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* EventCargo.swift */; settings = {ASSET_TAGS = (); }; };
 		57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */; settings = {ASSET_TAGS = (); }; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
@@ -82,6 +83,7 @@
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		57C915161BC45E91009454C4 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		57CA80971BB9CEA3000D31F7 /* EventCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCargo.swift; sourceTree = "<group>"; };
 		57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		5736277A1B4C06FE00899EBC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				57C915161BC45E91009454C4 /* Panel.swift */,
 				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
 				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
 				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
@@ -325,6 +328,7 @@
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* PanelCustom.swift in Sources */,
 				57EDED221BC17321005DF3DE /* EventBeacon.swift in Sources */,
+				57C915171BC45E91009454C4 /* Panel.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,

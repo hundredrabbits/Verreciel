@@ -51,6 +51,10 @@
 
 	> Give instances their own control panels
 
+	> Wires
+	- Dsiplay output event in output label
+	- Grey wire if output is null
+
 > Player
 
 	- Better controls in general..

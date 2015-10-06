@@ -41,6 +41,7 @@ class Event : SCNNode
 	var connection = SCNNode()
 	
 	var targetter = SCNNode()
+	var interface = Panel()
 	
 	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey)
 	{
@@ -254,6 +255,11 @@ class Event : SCNNode
 	}
 	
 	func mesh() -> SCNNode
+	{
+		return SCNNode()
+	}
+	
+	func panel() -> SCNNode
 	{
 		return SCNNode()
 	}

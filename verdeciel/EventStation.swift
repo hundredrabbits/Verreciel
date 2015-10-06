@@ -16,6 +16,9 @@ class eventStation : Event
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+		self.addChildNode(trigger)
+		
+		self.interface = panel()
 	}
 	
 	override func createSprite() -> SCNNode
@@ -43,13 +46,30 @@ class eventStation : Event
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
+		let radius:Float = 4
+		let distance:Float = 4
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,0,0), nodeB: SCNVector3(0,0,3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(3,0,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,0,0), nodeB: SCNVector3(0,0,-3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(-3,0,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
 		
 		return mesh
+	}
+	
+	override func panel() -> Panel
+	{
+		let newPanel = Panel()
+		
+		let test = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
+		newPanel.addChildNode(test)
+		
+		return newPanel
+	}
+	
+	override func collide()
+	{
+		capsule.dock(self)
 	}
 	
 	override func sight()

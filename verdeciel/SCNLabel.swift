@@ -19,10 +19,11 @@ class SCNLabel : SCNNode
 	var nodeOffset:SCNNode!
 	var color:UIColor = UIColor.whiteColor()
 	
-	init(text:String,scale:Float = 0.1,align:alignment = alignment.left)
+	init(text:String,scale:Float = 0.1,align:alignment = alignment.left, color:UIColor = white)
 	{
 		super.init()
 		
+		self.color = color
 		activeText = text
 		activeScale = scale
 		activeAlignment = align
@@ -194,6 +195,14 @@ class SCNLabel : SCNNode
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: 0), nodeB: SCNVector3(x: scale, y: scale, z: 0),color:self.color))
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale, y: scale, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:self.color))
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0, z: 0),color:self.color))
+		}
+		else if letter == "q"
+		{
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale, y: scale, z: 0), nodeB: SCNVector3(x: scale, y: -scale, z: 0),color:self.color))
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale, y: -scale, z: 0), nodeB: SCNVector3(x: 0, y: -scale, z: 0),color:self.color))
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -scale, z: 0), nodeB: SCNVector3(x: 0, y: scale, z: 0),color:self.color))
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: 0), nodeB: SCNVector3(x: scale, y: scale, z: 0),color:self.color))
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: scale/2, y: 0, z: 0), nodeB: SCNVector3(x: scale, y: -scale, z: 0),color:self.color))
 		}
 		else if letter == "r"{
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: 0), nodeB: SCNVector3(x: 0, y: -scale, z: 0),color:self.color))

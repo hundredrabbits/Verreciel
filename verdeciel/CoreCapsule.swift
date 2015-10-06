@@ -20,7 +20,7 @@ class CoreCapsule: SCNNode
 	var hull:Float = 100.0
 	var radiation:Float = 100.0
 	
-	var location:CGPoint = CGPoint(x:0,y:-4)
+	var location:CGPoint = CGPoint(x:-1,y:-4)
 	var travel:Float = 0
 	
 	var direction:CGFloat! = 1
@@ -48,7 +48,6 @@ class CoreCapsule: SCNNode
 	func start()
 	{
 		connectDefaultPorts()
-		dock(radar.closestEvent(eventTypes.station))
 	}
 	
 	func dock(newDock:Event)

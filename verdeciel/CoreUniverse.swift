@@ -82,7 +82,11 @@ class CoreUniverse : SCNNode
 		
 		entryToLoiqe = eventStation(name:"Repair",location: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
+		let spawn = eventStation(name:"Spawn",location: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
+		spawn.connect(entryToLoiqe)
+		
 		self.addChildNode(star)
+		self.addChildNode(spawn)
 		self.addChildNode(entryToLoiqe)
 	}
 	
