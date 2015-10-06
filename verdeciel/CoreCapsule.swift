@@ -27,6 +27,8 @@ class CoreCapsule: SCNNode
 	var sector:sectors = sectors.normal
 	var instance:Event!
 	
+	var dock:Event!
+	
 	override init()
 	{
 		super.init()

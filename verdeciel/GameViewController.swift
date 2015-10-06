@@ -57,6 +57,8 @@ var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
 
+var cameraNode:SCNNode!
+
 enum alignment {
 	case left
 	case center
@@ -118,6 +120,8 @@ class GameViewController: UIViewController
 		scnView.backgroundColor = UIColor.blackColor()
 		scnView.antialiasingMode = SCNAntialiasingMode.None
 		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+		
+		cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -129,7 +133,6 @@ class GameViewController: UIViewController
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		let cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
@@ -194,13 +197,13 @@ func angleBetweenTwoPoints(point1:CGPoint,point2:CGPoint,center:CGPoint) -> CGFl
 /*
 SCNTransaction.begin()
 SCNTransaction.setAnimationDuration(1.5)
-scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.orientation = self.orientation
+cameraNode.orientation = self.orientation
 SCNTransaction.setCompletionBlock({ })
 SCNTransaction.commit()
 
 SCNTransaction.begin()
 SCNTransaction.setAnimationDuration(3)
-scene.rootNode.childNodeWithName("cameraNode", recursively: true)!.position = self.destination
+cameraNode.position = self.destination
 SCNTransaction.setCompletionBlock({ })
 SCNTransaction.commit()
 */
