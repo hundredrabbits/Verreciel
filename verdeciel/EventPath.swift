@@ -3,9 +3,9 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventStation : Event
+class eventPath : Event
 {
-	init(name:String = "",location: CGPoint = CGPoint(), size: Float = 1)
+	init(name:String = "",location:CGPoint = CGPoint(x: 0,y: 0))
 	{
 		super.init(newName:name, location:location, type:eventTypes.station)
 		
@@ -20,7 +20,7 @@ class eventStation : Event
 	
 	override func createSprite() -> SCNNode
 	{
-		var size:Float = 0.15		
+		var size:Float = 0.05
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {
