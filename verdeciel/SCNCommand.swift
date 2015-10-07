@@ -42,8 +42,6 @@ class SCNCommand : SCNNode
 		
 		super.init()
 		
-		print("\(text) -> \(head)")
-		
 		output = SCNPort(host: self, polarity: true)
 		output.position = SCNVector3((highNode[0].x * 0.8 * 2) - 0.15, 0, 0)
 		output.opacity = 0

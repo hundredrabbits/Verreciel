@@ -230,7 +230,6 @@ class Event : SCNNode
 	func clean()
 	{
 		if self.size == 0 {
-			print("Removed event \(self.name!) -> \(self.size)")
 			self.removeFromParentNode()
 		}
 	}

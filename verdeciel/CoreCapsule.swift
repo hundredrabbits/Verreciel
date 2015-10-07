@@ -60,13 +60,9 @@ class CoreCapsule: SCNNode
 	func connectDefaultPorts()
 	{
 		battery.outCell1.connect(battery.inOxygen)
-		battery.outCell2.connect(battery.inShield)
-		battery.outCell3.connect(battery.inRepair)
-		
-		battery.output.connect(thruster.input)
-		
-		radar.output.connect(pilot.input)
-		
+		battery.outCell2.connect(battery.inThruster)
+		battery.outCell3.connect(battery.inShield)
+		radar.output.connect(pilot.input)		
 		cargo.output.connect(console.input)
 	}
 	
