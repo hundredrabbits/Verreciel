@@ -126,7 +126,7 @@ class PanelHatch : SCNNode
 		}
 		else if load != nil {
 			nameLabel.update("fire")
-			quantityLabel.update(String(Int(self.load.size)))
+			quantityLabel.updateWithColor(String(Int(self.load.size)), color: white)
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -144,8 +144,13 @@ class PanelHatch : SCNNode
 	
 	override func listen(event:Event)
 	{
-		self.load = event
-		self.update()
+		if event.quest == true {
+			quantityLabel.updateWithColor("error", color: red)
+		}
+		else{
+			self.load = event
+			self.update()
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder) {

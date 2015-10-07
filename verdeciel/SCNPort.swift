@@ -79,7 +79,6 @@ class SCNPort : SCNNode
 		}
 		else if( polarity == true ){
 			sprite.updateChildrenColors(cyan)
-			
 			if event == nil { wire.color(grey) }
 			else{ wire.color(white) }
 		}
