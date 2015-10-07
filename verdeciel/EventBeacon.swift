@@ -12,7 +12,6 @@ class eventBeacon : Event
 		
 		self.at = at
 		self.size = 1
-		self.details = ""
 		self.note = ""
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)

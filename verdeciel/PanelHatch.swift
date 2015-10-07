@@ -100,7 +100,7 @@ class PanelHatch : SCNNode
 		}
 		
 		if command.event.size < 1 {
-			command.update(SCNCommand(text: "--", details: "", color: grey, event: command.event))
+			command.update(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
 			command.output.disconnect()
 			self.load = nil
 			cargo.bang(true)

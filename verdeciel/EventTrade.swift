@@ -20,7 +20,6 @@ class eventTrade : Event
 		
 		self.at = at
 		self.size = size
-		self.details = ""
 		self.note = ""
 		
 		self.want = want
@@ -107,11 +106,21 @@ class eventTrade : Event
 		if event == want {
 			wantLabel.updateColor(white)
 			giveLabel.updateColor(white)
+			custom.undockButtonLabel.opacity = 1
 		}
 		else{
 			wantLabel.updateColor(grey)
 		}
 		print(event.name!)
+	}
+	
+	override func bang(param: Bool)
+	{
+		wantLabel.update("--")
+		giveLabel.update("--")
+		
+		givePort.connection.host.listen(give)
+		givePort.disconnect()
 	}
 	
 	override func collide()

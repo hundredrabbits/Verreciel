@@ -11,7 +11,6 @@ class eventStation : Event
 		
 		self.at = at
 		self.size = size
-		self.details = ""
 		self.note = ""
 		
 		self.addChildNode(sprite)

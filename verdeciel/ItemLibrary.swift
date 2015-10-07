@@ -11,8 +11,9 @@ import Foundation
 class ItemLibrary
 {
 	// Quest items
-	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: "card", note:"required to undock from loiqe city", quest:true)
+	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: eventDetails.card, note:"required to undock from loiqe city", quest:true)
 	
 	// Batteries
-	let smallBattery = Event(newName: "small cell", size: 25, type: eventTypes.battery, details: "battery", note:"gives a small amount of power")
+	let smallBattery = Event(newName: "small cell", size: 25, type: eventTypes.item, details: eventDetails.battery, note:"gives a small amount of power")
+	let mediumBattery = Event(newName: "cell", size: 50, type: eventTypes.item, details: eventDetails.battery, note:"gives battery power")
 }

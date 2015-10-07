@@ -37,8 +37,10 @@ class PanelCustom : Panel
 		
 		content = SCNNode()
 		self.addChildNode(content)
-		
+	
 		update()
+		
+		undockButtonLabel.opacity = 0
 	}
 	
 	func addInterface()

@@ -18,7 +18,7 @@ class Event : SCNNode
 	var at = CGPoint()
 	var size:Float = 1
 	var type:eventTypes!
-	var details:String
+	var details:eventDetails
 	var note = String()
 	var content:Array<Event>!
 	var color = grey
@@ -45,7 +45,7 @@ class Event : SCNNode
 	
 	var quest:Bool = false
 	
-	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey, quest:Bool = false)
+	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:eventDetails = eventDetails.unknown, note:String = "", color:UIColor = grey, quest:Bool = false)
 	{
 		self.content = []
 		self.details = details

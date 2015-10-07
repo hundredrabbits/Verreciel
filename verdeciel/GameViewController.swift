@@ -98,6 +98,12 @@ enum eventTypes {
 	case warp
 }
 
+enum eventDetails {
+	case unknown
+	case battery
+	case card
+}
+
 class GameViewController: UIViewController
 {
     override func viewDidLoad()

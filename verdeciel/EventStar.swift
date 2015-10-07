@@ -11,7 +11,6 @@ class eventStar : Event
 		
 		self.at = at
 		self.size = 1
-		self.details = ""
 		self.note = ""
 		self.color = color
 		

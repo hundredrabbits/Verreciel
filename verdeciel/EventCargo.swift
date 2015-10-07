@@ -11,7 +11,6 @@ class eventCargo : Event
 		
 		self.at = at
 		self.size = 1
-		self.details = ""
 		self.note = ""
 		
 		self.content.append(inventory)

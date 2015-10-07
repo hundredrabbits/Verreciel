@@ -44,7 +44,7 @@ class PanelCargo : SCNNode
 		// Tutorial Item
 		
 		self.addEvent(itemLibrary.loiqeLicense)
-		self.addEvent(itemLibrary.smallBattery)
+		self.addEvent(itemLibrary.mediumBattery)
 			
 		update()
 	}
@@ -136,7 +136,7 @@ class PanelCargo : SCNNode
 	
 	override func listen(event:Event)
 	{
-		if event.type == eventTypes.cargo {
+		if event.type == eventTypes.item {
 			pickup(event)
 		}
 		else{
@@ -146,34 +146,15 @@ class PanelCargo : SCNNode
 
 	func pickup(event:Event)
 	{
-		if event.distance > 0.5 {
-			attractorLabel.updateWithColor("waiting", color: red)
-			return
-		}
-		
-		if loadTime < 100 {
-			loadTime += Int(arc4random_uniform(4))
-			if loadTime > 100 { loadTime = 100}
-			attractorLabel.updateWithColor("\(loadTime)%", color: cyan)
+		if event.type == eventTypes.cargo {
+			self.addEvents(event.content)
 		}
 		else{
-			attractorLabel.updateWithColor("", color: cyan)
-			loadTime = 0
-			input.origin.disconnect()
-			
-			if event.type == eventTypes.cargo {
-				self.addEvents(event.content)
-			}
-			else{
-				self.addEvent(event)
-			}
-			
-			event.removeFromParentNode()
-			radar.removeTarget()
-			
-			update()
-			bang()
+			self.addEvent(event)
 		}
+		
+		update()
+		bang()
 	}
 	
 	override func bang(param:Bool = true)

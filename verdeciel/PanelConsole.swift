@@ -121,7 +121,7 @@ class PanelConsole : SCNNode
 	
 	func boot()
 	{
-		self.addLine(SCNCommand(text: "> ready", details: "no input", color: red))
+		self.addLine(SCNCommand(text: "> ready", details: eventDetails.unknown, color: red))
 		self.addLine(SCNCommand())
 		self.addLine(SCNCommand())
 		self.addLine(SCNCommand())

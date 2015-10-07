@@ -14,20 +14,20 @@ import Foundation
 class SCNCommand : SCNNode
 {
 	var text:String!
-	var details:String!
+	var details:eventDetails!
 	var color:UIColor!
 	var event:Event!
 	
 	var head:Bool!
 	
 	var output:SCNPort!
-	var label:SCNLabel
+	var label:SCNLabel!
 	var detailsLabel:SCNLabel
 	
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "",details:String = "",color:UIColor = white,event:Event! = nil, head:Bool = false)
+	init(text:String = "",details:eventDetails = eventDetails.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false)
 	{
 		self.text = text
 		self.details = details
@@ -71,9 +71,9 @@ class SCNCommand : SCNNode
 			output.opacity = 0
 		}
 		
-		if command.details != "" {
+		if command.details != eventDetails.unknown {
 			self.details = command.details
-			detailsLabel.update(self.details)
+			detailsLabel.update("\(details)")
 		}
 		
 		if command.head == true {
