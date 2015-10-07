@@ -47,11 +47,6 @@ class SCNLine : SCNNode
 		draw(self.nodeA, nodeB: SCNVector3(nodeB.x,height,nodeB.z), color: self.color)
 	}
 	
-	func color(newColor:UIColor)
-	{
-		self.geometry!.firstMaterial?.diffuse.contents = newColor
-	}
-	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

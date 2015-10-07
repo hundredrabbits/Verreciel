@@ -13,14 +13,12 @@ import Foundation
 
 class SCNPort : SCNNode
 {
-	var outline1:SCNLine!
-	var outline2:SCNLine!
-	var outline3:SCNLine!
-	var outline4:SCNLine!
+	var sprite = SCNNode()
 	
 	var polarity:Bool = false
 	var isRouted:Bool = false
 	var isActive:Bool = false
+	var isEnabled:Bool = true
 	
 	var event:Event!
 	var connection:SCNPort!
@@ -54,18 +52,15 @@ class SCNPort : SCNNode
 	{
 		let radius:Float = 0.1
 		
-		outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: radius, z: 0),nodeB: SCNVector3(x: radius, y: 0, z: 0),color:white)
-		outline2 = SCNLine(nodeA: SCNVector3(x: radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: -radius, z: 0),color:white)
-		outline3 = SCNLine(nodeA: SCNVector3(x: 0, y: -radius, z: 0),nodeB: SCNVector3(x: -radius, y: 0, z: 0),color:white)
-		outline4 = SCNLine(nodeA: SCNVector3(x: -radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius, z: 0),color:white)
-		
-		self.addChildNode(outline1)
-		self.addChildNode(outline2)
-		self.addChildNode(outline3)
-		self.addChildNode(outline4)
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: radius, z: 0),nodeB: SCNVector3(x: radius, y: 0, z: 0),color:white))
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: -radius, z: 0),color:white))
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -radius, z: 0),nodeB: SCNVector3(x: -radius, y: 0, z: 0),color:white))
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: -radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius, z: 0),color:white))
 		
 		wire = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white)
+		
 		self.addChildNode(wire)
+		self.addChildNode(sprite)
 	}
 	
 	override func touch()
@@ -76,31 +71,23 @@ class SCNPort : SCNNode
 	
 	override func update()
 	{
-		if( isActive == true ){
-			outline1.color(grey)
-			outline2.color(grey)
-			outline3.color(grey)
-			outline4.color(grey)
+		if isEnabled == false {
+			sprite.updateChildrenColors(black)
+		}
+		else if( isActive == true ){
+			sprite.updateChildrenColors(grey)
 		}
 		else if( polarity == true ){
-			outline1.color(cyan)
-			outline2.color(cyan)
-			outline3.color(cyan)
-			outline4.color(cyan)
-			if event == nil { wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: self.connection), color: grey).geometry }
-			else{ wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: self.connection), color: white).geometry }
+			sprite.updateChildrenColors(cyan)
+			
+			if event == nil { wire.color(grey) }
+			else{ wire.color(white) }
 		}
 		else if( polarity == false ){
-			outline1.color(red)
-			outline2.color(red)
-			outline3.color(red)
-			outline4.color(red)
+			sprite.updateChildrenColors(red)
 		}
 		else{
-			outline1.color(white)
-			outline2.color(white)
-			outline3.color(white)
-			outline4.color(white)
+			sprite.updateChildrenColors(white)
 		}
 	}
 	
@@ -113,6 +100,18 @@ class SCNPort : SCNNode
 	func desactivate()
 	{
 		isActive = false
+		update()
+	}
+	
+	func enable()
+	{
+		isEnabled = true
+		update()
+	}
+	
+	func disable()
+	{
+		isEnabled = false
 		update()
 	}
 	

@@ -39,8 +39,11 @@ class PanelCustom : Panel
 		self.addChildNode(content)
 	
 		update()
+	}
+	
+	override func update()
+	{
 		
-		undockButtonLabel.opacity = 0
 	}
 	
 	func addInterface()
@@ -59,11 +62,11 @@ class PanelCustom : Panel
 		self.addChildNode(statusLabel)
 		
 		undockButtonLabel = SCNLabel(text: "Undock", scale: 0.1, align: alignment.right, color:red)
-		undockButtonLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+		undockButtonLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * -scale, z: 0)
 		self.addChildNode(undockButtonLabel)
 		
 		undockButton = SCNTrigger(host: self, size: CGSize(width: 1.5, height: 0.7), operation: false)
-		undockButton.position = SCNVector3(x: lowNode[0].x - 1, y: highNode[0].y * scale, z: 0)
+		undockButton.position = SCNVector3(x: lowNode[0].x - 1, y: highNode[0].y * -scale, z: 0)
 
 		self.addChildNode(undockButton)
 		

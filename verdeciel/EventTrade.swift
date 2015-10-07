@@ -14,6 +14,8 @@ class eventTrade : Event
 	var want:Event!
 	var give:Event!
 	
+	var unlocked:Bool = false
+	
 	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
 		super.init(newName:name, at:at, type:eventTypes.station)
@@ -98,6 +100,8 @@ class eventTrade : Event
 		giveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.5, z: 0)
 		newPanel.addChildNode(giveLabel)
 		
+		givePort.disable()
+		
 		return newPanel
 	}
 	
@@ -106,21 +110,39 @@ class eventTrade : Event
 		if event == want {
 			wantLabel.updateColor(white)
 			giveLabel.updateColor(white)
-			custom.undockButtonLabel.opacity = 1
+			givePort.enable()
 		}
 		else{
 			wantLabel.updateColor(grey)
+			givePort.disable()
 		}
-		print(event.name!)
 	}
 	
 	override func bang(param: Bool)
 	{
+		completeTrade()
+		
+		custom.statusLabel.update("complete")
+		custom.update()
+	}
+
+	func completeTrade()
+	{
 		wantLabel.update("--")
 		giveLabel.update("--")
 		
+		let command = wantPort.origin.host as! SCNCommand
+		command.event.size -= 1
+		command.update()
+		
 		givePort.connection.host.listen(give)
 		givePort.disconnect()
+		
+		wantPort.disable()
+		givePort.disable()
+		
+		want = nil
+		give = nil
 	}
 	
 	override func collide()

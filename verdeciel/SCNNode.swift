@@ -38,6 +38,11 @@ extension SCNNode
 		
 	}
 	
+	func color(color:UIColor)
+	{
+		self.geometry!.firstMaterial?.diffuse.contents = color
+	}
+	
 	func disconnect()
 	{
 		
@@ -59,9 +64,8 @@ extension SCNNode
 	
 	func updateChildrenColors(color:UIColor)
 	{
-		for newLine in self.childNodes {
-			let line = newLine as! SCNLine
-			line.color(white)
+		for node in self.childNodes {
+			node.color(color)
 		}
 	}
 }
