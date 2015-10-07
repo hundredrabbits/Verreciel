@@ -210,11 +210,20 @@ class Event : SCNNode
 	
 	func radarCulling()
 	{
-		if self.distance < 1.3 || player.inRadar == true {
+		let verticalDistance = abs(capsule.at.y - at.y)
+		let horizontalDistance = abs(capsule.at.x - at.x)
+		
+		if player.inRadar == true {
 			self.opacity = 1
 		}
-		else {
+		else if Float(verticalDistance) > highNode[0].y {
 			self.opacity = 0
+		}
+		else if Float(horizontalDistance) > highNode[0].x {
+			self.opacity = 0
+		}
+		else {
+			self.opacity = 1
 		}
 	}
 	
