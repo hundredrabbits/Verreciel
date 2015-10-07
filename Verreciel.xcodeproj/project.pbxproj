@@ -51,7 +51,7 @@
 		57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F01B4CA2700088D115 /* PanelHatch.swift */; };
 		57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F61B4CC0C20088D115 /* PanelConsole.swift */; };
 		57FA031D1BBA21490077D517 /* EventStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031C1BBA21490077D517 /* EventStation.swift */; settings = {ASSET_TAGS = (); }; };
-		57FA031F1BBA22FE0077D517 /* EventStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031E1BBA22FE0077D517 /* EventStar.swift */; settings = {ASSET_TAGS = (); }; };
+		57FA031F1BBA22FE0077D517 /* LocationStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031E1BBA22FE0077D517 /* LocationStar.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +103,7 @@
 		57F645F01B4CA2700088D115 /* PanelHatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelHatch.swift; sourceTree = "<group>"; };
 		57F645F61B4CC0C20088D115 /* PanelConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelConsole.swift; sourceTree = "<group>"; };
 		57FA031C1BBA21490077D517 /* EventStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStation.swift; sourceTree = "<group>"; };
-		57FA031E1BBA22FE0077D517 /* EventStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStar.swift; sourceTree = "<group>"; };
+		57FA031E1BBA22FE0077D517 /* LocationStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +141,7 @@
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				572258131BB8779900DEC41E /* Events */,
+				576E5DAF1BC5E5F8001D52A9 /* Locations */,
 				5736277A1B4C06FE00899EBC /* Panels */,
 				574E5FBC1BC5774C008130AB /* Library */,
 				573627791B4C06E800899EBC /* Components */,
@@ -185,12 +186,8 @@
 				572258141BB877C600DEC41E /* EventPortal.swift */,
 				57CA80971BB9CEA3000D31F7 /* EventCargo.swift */,
 				57FA031C1BBA21490077D517 /* EventStation.swift */,
-				57FA031E1BBA22FE0077D517 /* EventStar.swift */,
 				57EDED211BC17321005DF3DE /* EventBeacon.swift */,
 				574AE3F61BC36DAE00432603 /* EventPath.swift */,
-				574E5FC11BC5AEA2008130AB /* Location.swift */,
-				574E5FBF1BC578E1008130AB /* LocationTrade.swift */,
-				574E5FC31BC5B588008130AB /* LocationRepair.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -238,6 +235,17 @@
 				574E5FBD1BC5775F008130AB /* LocationLibrary.swift */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		576E5DAF1BC5E5F8001D52A9 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				574E5FC11BC5AEA2008130AB /* Location.swift */,
+				574E5FBF1BC578E1008130AB /* LocationTrade.swift */,
+				57FA031E1BBA22FE0077D517 /* LocationStar.swift */,
+				574E5FC31BC5B588008130AB /* LocationRepair.swift */,
+			);
+			name = Locations;
 			sourceTree = "<group>";
 		};
 		579419731B58AEB100F9FF87 /* Core */ = {
@@ -343,7 +351,7 @@
 				5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				572258151BB877C600DEC41E /* EventPortal.swift in Sources */,
-				57FA031F1BBA22FE0077D517 /* EventStar.swift in Sources */,
+				57FA031F1BBA22FE0077D517 /* LocationStar.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,

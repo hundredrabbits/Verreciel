@@ -3,11 +3,11 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventStar : Event
+class LocationStar : Location
 {
-	init(name:String,at: CGPoint, color:UIColor = red)
+	init(name:String,at: CGPoint = CGPoint(), color:UIColor = red)
 	{
-		super.init(newName:name, at:at, type:eventTypes.star)
+		super.init(name:name, at:at)
 		
 		self.at = at
 		self.size = 1
@@ -64,10 +64,9 @@ class eventStar : Event
 	{
 		let mesh = SCNNode()
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,0,0), nodeB: SCNVector3(0,0,3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(3,0,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,0,0), nodeB: SCNVector3(0,0,-3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(-3,0,0), color: white))
+		let radius:Float = 5
+		
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,0), nodeB: SCNVector3(radius/2,0,radius * 0.75), color: red))
 		
 		return mesh
 	}

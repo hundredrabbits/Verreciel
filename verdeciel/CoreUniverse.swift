@@ -46,7 +46,7 @@ class CoreUniverse : SCNNode
 	
 	func falvetSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Falvet",at: CGPoint(x:offset.x,y:offset.y),color:red)
+		let star = LocationStar(name:"Falvet",at: CGPoint(x:offset.x,y:offset.y),color:red)
 		
 		falvetToUsul = eventPath(name:"landing",at: CGPoint(x:offset.x - 1.5,y:offset.y))
 		falvetToSenni = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1.5))
@@ -78,7 +78,7 @@ class CoreUniverse : SCNNode
 	
 	func loiqeSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
+		let star = LocationStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
 		self.addChildNode(star)
 		
 		// Repair
@@ -93,7 +93,7 @@ class CoreUniverse : SCNNode
 	
 	func venicSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"venic",at: CGPoint(x:offset.x,y:offset.y))
+		let star = LocationStar(name:"venic",at: CGPoint(x:offset.x,y:offset.y))
 		
 		entryToVenic = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
@@ -112,7 +112,7 @@ class CoreUniverse : SCNNode
 	
 	func usulSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Usul",at: CGPoint(x:offset.x,y:offset.y))
+		let star = LocationStar(name:"Usul",at: CGPoint(x:offset.x,y:offset.y))
 		
 		entryToUsul = eventStation(name:"Repair",at: CGPoint(x:offset.x + 1,y:offset.y), size: 0.5)
 		
@@ -130,7 +130,7 @@ class CoreUniverse : SCNNode
 	
 	func valenSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"valen",at: CGPoint(x:offset.x,y:offset.y))
+		let star = LocationStar(name:"valen",at: CGPoint(x:offset.x,y:offset.y))
 		
 		entryToValen = eventStation(name:"Repair",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
 		valenToVenic = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1))
@@ -147,7 +147,7 @@ class CoreUniverse : SCNNode
 
 	func senniSystem(offset:CGPoint)
 	{
-		let star = eventStar(name:"Senni",at: CGPoint(x:offset.x,y:offset.y))
+		let star = LocationStar(name:"Senni",at: CGPoint(x:offset.x,y:offset.y))
 		let landing = eventStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
 		let repair = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))

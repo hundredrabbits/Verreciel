@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventRepair : Location
+class LocationRepair : Location
 {
 	init(name:String = "",at: CGPoint = CGPoint())
 	{

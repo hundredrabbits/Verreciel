@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventTrade : Location
+class LocationTrade : Location
 {
 	var wantPort:SCNPort!
 	var wantLabel:SCNLabel!
