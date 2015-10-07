@@ -15,6 +15,8 @@ class CorePlayer : SCNNode
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!
 	
+	var messageLabel:SCNLabel!
+	var messageTimer:NSTimer!
 	var alertLabel:SCNLabel!
 	var alertTimer:NSTimer!
 	
@@ -79,6 +81,11 @@ class CorePlayer : SCNNode
 		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
 		alertLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(alertLabel)
+		
+		messageLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
+		messageLabel.position = SCNVector3(x: 0, y: 1.1, z: -1.01)
+		messageLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
+		self.addChildNode(messageLabel)
 	}
 	
 	func activateEvent(event:Event)
@@ -114,6 +121,17 @@ class CorePlayer : SCNNode
 	func desactivatePort()
 	{
 		self.port.desactivate()
+	}
+	
+	func message(text:String)
+	{
+		messageLabel.update(text)
+		messageTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("clearMessage"), userInfo: nil, repeats: false)
+	}
+	
+	func clearMessage()
+	{
+		messageLabel.update("")
 	}
 	
 	func alert(text:String)

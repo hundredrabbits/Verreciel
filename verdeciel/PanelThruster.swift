@@ -171,10 +171,10 @@ class PanelThruster : SCNNode
 		
 		if actualSpeed > 0
 		{
-			let speed:Float = Float(actualSpeed)/150
-			let angle:Float = Float((capsule.direction) % 360)
+			let speed:Float = Float(actualSpeed)/300
+			let angle:CGFloat = CGFloat((capsule.direction) % 360)
 			
-			let angleRad = ( Double(angle) / 180.0 * M_PI)
+			let angleRad = degToRad(angle)
 			
 			capsule.location.x += CGFloat(speed) * CGFloat(sin(angleRad))
 			capsule.location.y += CGFloat(speed) * CGFloat(cos(angleRad))

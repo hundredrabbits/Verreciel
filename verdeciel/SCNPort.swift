@@ -52,7 +52,6 @@ class SCNPort : SCNNode
 	
 	func addGeometry()
 	{
-		
 		let radius:Float = 0.1
 		
 		outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: radius, z: 0),nodeB: SCNVector3(x: radius, y: 0, z: 0),color:white)
@@ -88,6 +87,8 @@ class SCNPort : SCNNode
 			outline2.color(cyan)
 			outline3.color(cyan)
 			outline4.color(cyan)
+			if event == nil { wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: self.connection), color: grey).geometry }
+			else{ wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: self.connection), color: white).geometry }
 		}
 		else if( polarity == false ){
 			outline1.color(red)

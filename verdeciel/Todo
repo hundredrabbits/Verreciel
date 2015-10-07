@@ -47,6 +47,7 @@
 	> Cargo
 	- Improve transfer animation
 	- decline transfer when cargo is full
+	- Grey line when cargo is empty
 
 	> Give instances their own control panels
 

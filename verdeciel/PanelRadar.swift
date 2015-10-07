@@ -157,6 +157,8 @@ class PanelRadar : SCNNode
 		verticalGrid.position = SCNVector3(((capsule.location.x * -1) % 4) + 2,0,-0.001)
 		
 		updateTarget()
+
+		output.update()
 	}
 	
 	func updateTarget()
@@ -241,7 +243,10 @@ class PanelRadar : SCNNode
 		if param == false { player.leaveRadar() }
 		
 		if output.connection == nil { return }
-		if output.event == nil { return }
+		if output.event == nil {
+			output.update()
+			return
+		} // TODO: Allow the broadcast of null
 		
 		output.connection.host.listen(output.event)
 	}

@@ -13,12 +13,19 @@ import Foundation
 
 class PanelCustom : Panel
 {
+	var content:SCNNode!
+	
+	var undockButton:SCNTrigger!
+	var statusLabel:SCNLabel!
+	var undockButtonLabel:SCNLabel!
+	
+	var dockingStatus:Int = 0
+	var dockingTimer:NSTimer!
+	
 	// Ports
 	
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
-	
-	var content:SCNNode!
 	
 	override init()
 	{
@@ -52,24 +59,23 @@ class PanelCustom : Panel
 		
 		// Undock
 		
-		let undockLabel = SCNLabel(text: "Undock", scale: 0.1, align: alignment.right, color:red)
-		undockLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
-		self.addChildNode(undockLabel)
+		statusLabel = SCNLabel(text: "connected..", scale: 0.1, align: alignment.left, color:grey)
+		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
+		self.addChildNode(statusLabel)
 		
+		undockButtonLabel = SCNLabel(text: "Undock", scale: 0.1, align: alignment.right, color:red)
+		undockButtonLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+		self.addChildNode(undockButtonLabel)
+		
+		undockButton = SCNTrigger(host: self, size: 1, operation: false)
+		undockButton.geometry?.materials.first?.diffuse.contents = red
+		undockButton.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+
+		self.addChildNode(undockButton)
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),color:grey))
 		
-		let statusLabel = SCNLabel(text: "connected..", scale: 0.1, align: alignment.left, color:grey)
-		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
-		self.addChildNode(statusLabel)
-		
-		let undockButton = SCNTrigger(host: self, size: 1, operation: false)
-		undockButton.geometry?.materials.first?.diffuse.contents = red
-		
-		undockButton.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
-
-		self.addChildNode(undockButton)
 	}
 	
 	override func bang(param:Bool)
@@ -80,12 +86,42 @@ class PanelCustom : Panel
 	
 	override func touch()
 	{
-		capsule.undock()
+		undock()
 	}
 	
 	func undock()
 	{
 		content.empty()
+		player.message("undocking")
+		statusLabel.update("undocking")
+		undockButton.opacity = 0
+		undockButtonLabel.opacity = 0
+		
+		dockingTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("undocking"), userInfo: nil, repeats: true)
+		
+	}
+	
+	func undocking()
+	{
+		dockingStatus += Int(arc4random_uniform(7))
+		
+		if dockingStatus >= 100 {
+			dockingTimer.invalidate()
+			dockingStatus = 0
+			undockingComplete()
+			statusLabel.update("> in flight")
+		}
+		else{
+			statusLabel.update("progress \(dockingStatus)%")
+		}
+	}
+	
+	func undockingComplete()
+	{
+		input.event = nil
+		inputLabel.update("")
+		capsule.undock()
+		dockingTimer.invalidate()
 	}
 	
 	func dock(event:Event)
@@ -93,6 +129,7 @@ class PanelCustom : Panel
 		print("Load interface for \(event.name!)")
 		print(event.interface)
 		
+		input.event = event
 		inputLabel.update(event.name!)
 		
 		content.addChildNode(event.interface)

@@ -62,6 +62,8 @@ class CoreCapsule: SCNNode
 		dock = nil
 		thruster.update()
 		custom.undock()
+		
+		player.message("in flight")
 	}
 	
 	func connectDefaultPorts()
