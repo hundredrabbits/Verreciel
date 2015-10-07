@@ -25,6 +25,11 @@ class Location : Event
 		self.service = service
 	}
 	
+	override func collide()
+	{
+		capsule.dock(self)
+	}
+	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

@@ -145,11 +145,6 @@ class eventTrade : Location
 		give = nil
 	}
 	
-	override func collide()
-	{
-		capsule.dock(self)
-	}
-	
 	override func sight()
 	{
 		updateSprite()

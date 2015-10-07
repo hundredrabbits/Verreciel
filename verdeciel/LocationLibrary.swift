@@ -17,4 +17,12 @@ class LocationLibrary
 		location.at = at
 		return location
 	}
+	
+	func loiqeRepair(at:CGPoint) -> eventRepair
+	{
+		let location = eventRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = at
+		return location
+	}
 }

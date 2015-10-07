@@ -108,6 +108,7 @@ enum services
 {
 	case none
 	case electricity
+	case hull
 }
 
 class GameViewController: UIViewController

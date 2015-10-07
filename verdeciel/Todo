@@ -29,6 +29,8 @@
 	- Add cities
 
 	> Stealthed events
+	> Migrate stars to locations
+	> Make star sprites
 
 > Capsule
 
@@ -51,17 +53,6 @@
 	- Improve transfer animation
 	- decline transfer when cargo is full
 	- Grey line when cargo is empty
-
-	> Give instances their own control panels
-
-	> Wires
-	- Dsiplay output event in output label
-	- Grey wire if output is null
-
-> Player
-
-	- Better controls in general..
-	- Display some diagnostics in the helmet
 
 > Tools
 

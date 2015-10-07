@@ -171,6 +171,11 @@ class PanelBattery : SCNNode
 		}
 	}
 	
+	func recharge()
+	{
+		value += 0.5
+	}
+	
 	func touch(knobId:String)
 	{
 		

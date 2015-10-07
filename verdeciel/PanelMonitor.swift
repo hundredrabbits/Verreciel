@@ -140,8 +140,13 @@ class PanelMonitor : SCNNode
 		
 		var labelColor = white
 		if battery.value < 10 { labelColor = red }
-		if capsule.dock.service == services.electricity { labelColor = cyan }
+		if capsule.dock != nil && capsule.dock.service == services.electricity { labelColor = cyan }
 		electricityLabel.updateWithColor(String(format: "%.1f", battery.value), color: labelColor)
+		
+		labelColor = white
+		if capsule.hull < 10 { labelColor = red }
+		if capsule.dock != nil && capsule.dock.service == services.hull { labelColor = cyan }
+		hullLabel.updateWithColor(String(format: "%.1f", capsule.hull), color: labelColor)
 	}
 	
 	func updateSystem()

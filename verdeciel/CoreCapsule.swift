@@ -12,7 +12,8 @@ import SceneKit
 import Foundation
 
 class CoreCapsule: SCNNode
-{	
+{
+	var hull:Float = 50
 	var at:CGPoint = CGPoint(x:-1,y:-4)
 	var travel:Float = 0
 	
@@ -121,7 +122,13 @@ class CoreCapsule: SCNNode
 	func service()
 	{
 		if dock == nil { return }
-		if dock.service == services.electricity && battery.value < 100 { battery.value += 0.5 }
+		if dock.service == services.electricity && battery.value < 100 { battery.recharge() }
+		if dock.service == services.hull && capsule.hull < 100 { capsule.repair() }
+	}
+	
+	func repair()
+	{
+		capsule.hull += 0.5
 	}
 	
 	func panelSetup()

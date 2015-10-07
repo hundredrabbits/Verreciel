@@ -24,7 +24,7 @@ class CoreUniverse : SCNNode
 	var entryToValen = eventStation()
 	var entryToUsul = eventStation()
 	var entryToVenic = eventStation()
-	var entryToLoiqe = eventStation()
+	var entryToLoiqe:Location!
 	
 	override init()
 	{
@@ -79,17 +79,16 @@ class CoreUniverse : SCNNode
 	func loiqeSystem(offset:CGPoint)
 	{
 		let star = eventStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
+		self.addChildNode(star)
 		
-		entryToLoiqe = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		// Repair
+		entryToLoiqe = locationLibrary.loiqeRepair(CGPoint(x:offset.x,y:offset.y + 1))
+		self.addChildNode(entryToLoiqe)
 		
 		// City
 		let loiqeCity = locationLibrary.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
 		loiqeCity.connect(entryToLoiqe)
 		self.addChildNode(loiqeCity)
-		
-		
-		self.addChildNode(star)
-		self.addChildNode(entryToLoiqe)
 	}
 	
 	func venicSystem(offset:CGPoint)
