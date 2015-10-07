@@ -35,8 +35,6 @@ class CoreCapsule: SCNNode
 		panelSetup()
 		
 		capsuleMesh()
-		
-		start()
 	}
 	
 	func start()

@@ -52,6 +52,7 @@ class PanelBattery : SCNNode
 		
 		outCell1 = SCNPort(host: self, polarity: true)
 		outCell1.position = SCNVector3(x: -distance, y: 0, z: 0)
+		outCell1.addEvent(Event(type:eventTypes.cell))
 		let cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -distance - 0.2, y:0, z: 0)
 		self.addChildNode(cell1Label)
@@ -59,6 +60,7 @@ class PanelBattery : SCNNode
 		
 		outCell2 = SCNPort(host: self, polarity: true)
 		outCell2.position = SCNVector3(x: -distance, y: 0 - verticalOffset, z: 0)
+		outCell2.addEvent(Event(type:eventTypes.cell))
 		let cell2Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell2Label.position = SCNVector3(x: -distance - 0.2, y: -verticalOffset, z: 0)
 		self.addChildNode(cell2Label)
@@ -66,6 +68,7 @@ class PanelBattery : SCNNode
 		
 		outCell3 = SCNPort(host: self, polarity: true)
 		outCell3.position = SCNVector3(x: -distance, y: verticalOffset, z: 0)
+		outCell3.addEvent(Event(type:eventTypes.cell))
 		let cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell3Label.position = SCNVector3(x: -distance - 0.2, y: verticalOffset, z: 0)
 		self.addChildNode(cell3Label)
@@ -135,6 +138,11 @@ class PanelBattery : SCNNode
 		
 		if value < 0 { value = 0}
 		if value > 100 { value = 100}
+	}
+	
+	override func bang(param: Bool)
+	{
+		thruster.update()
 	}
 	
 	func recharge()

@@ -85,6 +85,7 @@ enum eventTypes {
 	case beacon
 	case city
 	case star
+	case cell
 	
 	case stack
 	case location
@@ -140,6 +141,7 @@ class GameViewController: UIViewController
 		cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
 		
 		time.start()
+		capsule.start()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

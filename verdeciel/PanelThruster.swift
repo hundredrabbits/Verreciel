@@ -143,9 +143,6 @@ class PanelThruster : SCNNode
 		if maxSpeed < 1 { line1.opacity = 0 }
 	}
 	
-	override func update()
-	{
-	}
 	
 	func enable()
 	{
@@ -160,6 +157,39 @@ class PanelThruster : SCNNode
 	}
 	
 	override func tic()
+	{
+		update()
+	}
+	
+	override func update()
+	{
+		if battery.inThruster.origin == nil { speedLabel.update("unpowered") ; disable() ; return }
+		if battery.inThruster.origin.event.type != eventTypes.cell { speedLabel.update("unpowered") ; disable() ; return }
+		
+		enable()
+		adjustSpeed()
+		thrust()
+	}
+	
+	func thrust()
+	{
+		if actualSpeed > 0
+		{
+			let speed:Float = Float(actualSpeed)/300
+			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			
+			let angleRad = degToRad(angle)
+			
+			capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
+			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
+			
+			radar.update()
+		}
+		
+		capsule.travel += actualSpeed
+	}
+	
+	func adjustSpeed()
 	{
 		if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1
@@ -179,21 +209,6 @@ class PanelThruster : SCNNode
 		if Float(speed) != actualSpeed {
 			speedLabel.update(String(format: "%.1f", actualSpeed))
 		}
-		
-		if actualSpeed > 0
-		{
-			let speed:Float = Float(actualSpeed)/300
-			let angle:CGFloat = CGFloat((capsule.direction) % 360)
-			
-			let angleRad = degToRad(angle)
-			
-			capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
-			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
-			
-			radar.update()
-		}
-		
-		capsule.travel += actualSpeed
 	}
 	
 	override func listen(event: Event)

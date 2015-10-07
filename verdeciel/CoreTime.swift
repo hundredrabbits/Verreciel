@@ -37,10 +37,11 @@ class CoreTime : NSObject
 		
 		pilot.tic()
 		radar.tic()
-		thruster.tic()
 		monitor.tic()
 		
 		capsule.tic()
+		
+		thruster.tic()
 		
 		player.tic()
 	}
