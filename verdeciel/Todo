@@ -30,9 +30,7 @@
 
 	> Stealthed events
 	> Migrate stars to locations
-	> Make star sprites
-
-	> TradePosts
+	> Make star meshes
 
 > Capsule
 
@@ -43,13 +41,6 @@
 
 	> Radar
 	- Option to leave radar mode
-
-	> Console
-	- Improve diagnostic
-	- Mute output port, until the target is in range
-
-	> Hatch
-	- Disable firing quest items
 
 	> Cargo
 	- Improve transfer animation

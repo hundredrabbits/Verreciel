@@ -126,8 +126,17 @@ class PanelBattery : SCNNode
 	
 	override func listen(event:Event)
 	{
-		if event.type != eventTypes.battery { return }		
-		update()
+		if event.details != eventDetails.battery { return }
+		
+		let command = input.origin.host as! SCNCommand
+		
+		if command.event.size > 0 {
+			self.value += command.event.size
+			command.event.size = 0
+			command.update()
+			cargo.bang(true)
+		}
+		
 	}
 	
 	override func tic()
