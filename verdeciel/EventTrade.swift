@@ -5,6 +5,15 @@ import Foundation
 
 class eventTrade : Event
 {
+	var wantPort:SCNPort!
+	var wantLabel:SCNLabel!
+	
+	var givePort:SCNPort!
+	var giveLabel:SCNLabel!
+	
+	var want:Event!
+	var give:Event!
+	
 	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
 		super.init(newName:name, at:at, type:eventTypes.station)
@@ -13,6 +22,9 @@ class eventTrade : Event
 		self.size = size
 		self.details = ""
 		self.note = ""
+		
+		self.want = want
+		self.give = give
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
@@ -61,8 +73,33 @@ class eventTrade : Event
 	{
 		let newPanel = Panel()
 		
-		let test = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
-		newPanel.addChildNode(test)
+		
+		// Want
+		let tradeWantLabel = SCNLabel(text: "Trade", color:grey)
+		tradeWantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
+		newPanel.addChildNode(tradeWantLabel)
+		
+		wantPort = SCNPort(host: self, polarity: false)
+		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
+		newPanel.addChildNode(wantPort)
+		
+		wantLabel = SCNLabel(text: want.name!)
+		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
+		newPanel.addChildNode(wantLabel)
+		
+		// Give
+		let tradeGiveLabel = SCNLabel(text: "for", color:grey)
+		tradeGiveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.2, z: 0)
+		newPanel.addChildNode(tradeGiveLabel)
+		
+		givePort = SCNPort(host: self, polarity: true)
+		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
+		newPanel.addChildNode(givePort)
+		
+		giveLabel = SCNLabel(text: give.name!)
+		giveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.5, z: 0)
+		newPanel.addChildNode(giveLabel)
+		
 		
 		return newPanel
 	}

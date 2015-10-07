@@ -16,12 +16,12 @@ class SCNTrigger : SCNNode
 	let host:SCNNode!
 	let operation:Bool!
 	
-	init(host:SCNNode,size:CGFloat,operation:Bool = true)
+	init(host:SCNNode,size:CGSize,operation:Bool = true)
 	{
 		self.operation = operation
 		self.host = host
 		super.init()
-		self.geometry = SCNPlane(width: size, height: size)
+		self.geometry = SCNPlane(width: size.width, height: size.height)
 		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	

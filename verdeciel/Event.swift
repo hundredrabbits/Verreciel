@@ -88,7 +88,7 @@ class Event : SCNNode
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
-		let trigger = SCNTrigger(host: self, size: 1)
+		let trigger = SCNTrigger(host: self, size: CGSize(width: 1, height: 1))
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
 	}

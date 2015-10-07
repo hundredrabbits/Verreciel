@@ -74,9 +74,9 @@ class PanelThruster : SCNNode
 		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
 		
 		// Triggers
-		accelerate = SCNTrigger(host: self, size: 1, operation: true)
+		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: true)
 		accelerate.position = SCNVector3(0, 0.5, 0)
-		decelerate = SCNTrigger(host: self, size: 1, operation: false)
+		decelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: false)
 		decelerate.position = SCNVector3(0, -0.5, 0)
 		
 		self.addChildNode(accelerate)

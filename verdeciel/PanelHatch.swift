@@ -76,7 +76,7 @@ class PanelHatch : SCNNode
 
 		// Trigger
 		
-		self.addChildNode(SCNTrigger(host: self, size: 2, operation: true))
+		self.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
 	}
 	
 	override func touch()

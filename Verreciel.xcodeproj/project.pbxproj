@@ -137,9 +137,9 @@
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				572258131BB8779900DEC41E /* Events */,
-				573627791B4C06E800899EBC /* Components */,
 				5736277A1B4C06FE00899EBC /* Panels */,
 				574E5FBC1BC5774C008130AB /* Library */,
+				573627791B4C06E800899EBC /* Components */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
 			);
 			path = verdeciel;

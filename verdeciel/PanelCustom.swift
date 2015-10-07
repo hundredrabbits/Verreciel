@@ -24,8 +24,7 @@ class PanelCustom : Panel
 	
 	// Ports
 	
-	var inputLabel:SCNLabel!
-	var input:SCNPort!
+	var dockNameLabel:SCNLabel!
 	
 	override init()
 	{
@@ -46,20 +45,14 @@ class PanelCustom : Panel
 	{
 		let scale:Float = 0.8
 		
-		// Ports
-		
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
-		
-		inputLabel = SCNLabel(text: "Undocked", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
-		
-		self.addChildNode(input)
-		self.addChildNode(inputLabel)
+		dockNameLabel = SCNLabel(text: "Undocked", scale: 0.1, align: alignment.left)
+		dockNameLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
+
+		self.addChildNode(dockNameLabel)
 		
 		// Undock
 		
-		statusLabel = SCNLabel(text: "connected..", scale: 0.1, align: alignment.left, color:grey)
+		statusLabel = SCNLabel(text: "trading..", scale: 0.1, align: alignment.left, color:grey)
 		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
 		self.addChildNode(statusLabel)
 		
@@ -67,20 +60,17 @@ class PanelCustom : Panel
 		undockButtonLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
 		self.addChildNode(undockButtonLabel)
 		
-		undockButton = SCNTrigger(host: self, size: 1, operation: false)
-		undockButton.geometry?.materials.first?.diffuse.contents = red
-		undockButton.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * scale, z: 0)
+		undockButton = SCNTrigger(host: self, size: CGSize(width: 1.5, height: 0.7), operation: false)
+		undockButton.position = SCNVector3(x: lowNode[0].x - 1, y: highNode[0].y * scale, z: 0)
 
 		self.addChildNode(undockButton)
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),color:grey))
-		
 	}
 	
 	override func bang(param:Bool)
 	{
-		print("!!")
 		touch()
 	}
 	
@@ -91,11 +81,7 @@ class PanelCustom : Panel
 	
 	func dock(event:Event)
 	{
-		print(event.interface)
-		
-		input.event = event
-		inputLabel.update(event.name!)
-		
+		dockNameLabel.update(event.name!)
 		content.addChildNode(event.interface)
 	}
 	
@@ -127,10 +113,9 @@ class PanelCustom : Panel
 	
 	func undockingComplete()
 	{
-		input.event = nil
+		dockNameLabel.update("")
 		player.clearAlert()
 		player.message("in flight")
-		inputLabel.update("")
 		dockingTimer.invalidate()
 		capsule.undock()
 	}
