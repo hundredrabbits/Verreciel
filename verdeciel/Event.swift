@@ -43,10 +43,13 @@ class Event : SCNNode
 	var targetter = SCNNode()
 	var interface = Panel()
 	
-	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey)
+	var quest:Bool = false
+	
+	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey, quest:Bool = false)
 	{
 		self.content = []
 		self.details = details
+		self.quest = quest
 
 		super.init()
 		

@@ -5,7 +5,7 @@ import Foundation
 
 class eventTrade : Event
 {
-	init(name:String = "",at: CGPoint = CGPoint(), size: Float = 1)
+	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
 		super.init(newName:name, at:at, type:eventTypes.station)
 		

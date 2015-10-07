@@ -44,6 +44,9 @@
 	- Improve diagnostic
 	- Mute output port, until the target is in range
 
+	> Hatch
+	- Disable firing quest items
+
 	> Cargo
 	- Improve transfer animation
 	- decline transfer when cargo is full

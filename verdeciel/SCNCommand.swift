@@ -42,6 +42,8 @@ class SCNCommand : SCNNode
 		
 		super.init()
 		
+		print("\(text) -> \(head)")
+		
 		output = SCNPort(host: self, polarity: true)
 		output.position = SCNVector3((highNode[0].x * 0.8 * 2) - 0.15, 0, 0)
 		output.opacity = 0
@@ -54,8 +56,6 @@ class SCNCommand : SCNNode
 		self.addChildNode(output)
 		self.addChildNode(headLineTop)
 		self.addChildNode(headLineDown)
-		
-		if details != "" { detailsLabel.update("hey") }
 	}
 	
 	func update(command:SCNCommand)

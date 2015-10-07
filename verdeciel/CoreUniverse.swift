@@ -82,7 +82,7 @@ class CoreUniverse : SCNNode
 		
 		entryToLoiqe = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
-		
+		// City
 		let loiqeCity = locationLibrary.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
 		loiqeCity.connect(entryToLoiqe)
 		self.addChildNode(loiqeCity)
