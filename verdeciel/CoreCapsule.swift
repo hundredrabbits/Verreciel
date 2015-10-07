@@ -12,14 +12,7 @@ import SceneKit
 import Foundation
 
 class CoreCapsule: SCNNode
-{
-	var electricity:Float = 100.0
-	var shield:Float = 100.0
-	var temperature:Float = 100.0
-	var oxygen:Float = 50.0
-	var hull:Float = 100.0
-	var radiation:Float = 100.0
-	
+{	
 	var at:CGPoint = CGPoint(x:-1,y:-4)
 	var travel:Float = 0
 	
@@ -27,7 +20,7 @@ class CoreCapsule: SCNNode
 	var sector:sectors = sectors.normal
 	var instance:Event!
 	
-	var dock:Event!
+	var dock:Location!
 	
 	override init()
 	{
@@ -50,17 +43,17 @@ class CoreCapsule: SCNNode
 		connectDefaultPorts()
 	}
 	
-	func dock(newDock:Event)
+	func dock(newDock:Location)
 	{
 		dock = newDock
-		thruster.update()
+		thruster.disable()
 		custom.dock(dock)
 	}
 	
 	func undock()
 	{
 		dock = nil
-		thruster.update()
+		thruster.enable()
 	}
 	
 	func connectDefaultPorts()
@@ -118,6 +111,17 @@ class CoreCapsule: SCNNode
 		thruster.update()
 		beacon.update()
 		console.update()
+	}
+	
+	override func tic()
+	{
+		service()
+	}
+	
+	func service()
+	{
+		if dock == nil { return }
+		if dock.service == services.electricity && battery.value < 100 { battery.value += 0.5 }
 	}
 	
 	func panelSetup()

@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventTrade : Event
+class eventTrade : Location
 {
 	var wantPort:SCNPort!
 	var wantLabel:SCNLabel!
@@ -18,7 +18,7 @@ class eventTrade : Event
 	
 	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
-		super.init(newName:name, at:at, type:eventTypes.station)
+		super.init(name: name, at: at)
 		
 		self.at = at
 		self.size = size

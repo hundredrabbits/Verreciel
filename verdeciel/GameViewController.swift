@@ -104,6 +104,12 @@ enum eventDetails {
 	case card
 }
 
+enum services
+{
+	case none
+	case electricity
+}
+
 class GameViewController: UIViewController
 {
     override func viewDidLoad()
@@ -144,7 +150,6 @@ class GameViewController: UIViewController
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		
 		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)

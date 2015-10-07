@@ -13,6 +13,7 @@ class LocationLibrary
 	func loiqeCity(at:CGPoint) -> eventTrade
 	{
 		let location = eventTrade(name: "Loiqe City", want:itemLibrary.loiqeLicense, give:itemLibrary.smallBattery)
+		location.addService(services.electricity)
 		location.at = at
 		return location
 	}

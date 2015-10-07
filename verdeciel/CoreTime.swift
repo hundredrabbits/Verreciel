@@ -40,6 +40,8 @@ class CoreTime : NSObject
 		thruster.tic()
 		monitor.tic()
 		
+		capsule.tic()
+		
 		player.tic()
 	}
 }

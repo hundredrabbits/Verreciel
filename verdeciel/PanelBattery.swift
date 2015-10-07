@@ -13,7 +13,7 @@ import Foundation
 
 class PanelBattery : SCNNode
 {
-	var value:Float = 100
+	var value:Float = 0
 	
 	// Ports
 	
@@ -137,6 +137,9 @@ class PanelBattery : SCNNode
 	
 	override func tic()
 	{
+		if value == 0 { return }
+		
+		/*
 		if output.connection != nil { self.value -= 0.01 }
 		if outCell1.connection != nil { self.value -= 0.01 }
 		if outCell2.connection != nil { self.value -= 0.01 }
@@ -147,6 +150,10 @@ class PanelBattery : SCNNode
 			let command = input.origin.host as! SCNCommand
 			leech(command)
 		}
+*/
+		
+		if value < 0 { value = 0}
+		if value > 100 { value = 100}
 	}
 	
 	func leech(command:SCNCommand)

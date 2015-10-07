@@ -137,7 +137,11 @@ class PanelMonitor : SCNNode
 	override func tic()
 	{
 		updateSystem()
-		electricityLabel.update(String(format: "%.1f", battery.value))
+		
+		var labelColor = white
+		if battery.value < 10 { labelColor = red }
+		if capsule.dock.service == services.electricity { labelColor = cyan }
+		electricityLabel.updateWithColor(String(format: "%.1f", battery.value), color: labelColor)
 	}
 	
 	func updateSystem()

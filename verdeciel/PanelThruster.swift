@@ -67,17 +67,16 @@ class PanelThruster : SCNNode
 		self.addChildNode(line3)
 		self.addChildNode(line4)
 		
-		// Controls
-		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(0.5, 0.5, 0), color: cyan))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.7, 0), nodeB: SCNVector3(-0.5, 0.5, 0), color: cyan))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.7, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red))
-		
 		// Triggers
 		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: true)
 		accelerate.position = SCNVector3(0, 0.5, 0)
+		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: cyan))
+		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: cyan))
+		
 		decelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: false)
 		decelerate.position = SCNVector3(0, -0.5, 0)
+		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
+		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))
 		
 		self.addChildNode(accelerate)
 		self.addChildNode(decelerate)
@@ -146,6 +145,18 @@ class PanelThruster : SCNNode
 	
 	override func update()
 	{
+	}
+	
+	func enable()
+	{
+		accelerate.opacity = 1
+		decelerate.opacity = 1
+	}
+	
+	func disable()
+	{
+		accelerate.opacity = 0
+		decelerate.opacity = 0
 	}
 	
 	override func tic()
