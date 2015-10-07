@@ -73,7 +73,6 @@ class eventTrade : Event
 	{
 		let newPanel = Panel()
 		
-		
 		// Want
 		let tradeWantLabel = SCNLabel(text: "Trade", color:grey)
 		tradeWantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
@@ -83,7 +82,7 @@ class eventTrade : Event
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
 		newPanel.addChildNode(wantPort)
 		
-		wantLabel = SCNLabel(text: want.name!)
+		wantLabel = SCNLabel(text: want.name!, color:grey)
 		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
 		newPanel.addChildNode(wantLabel)
 		
@@ -96,12 +95,23 @@ class eventTrade : Event
 		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
 		newPanel.addChildNode(givePort)
 		
-		giveLabel = SCNLabel(text: give.name!)
+		giveLabel = SCNLabel(text: give.name!, color:grey)
 		giveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.5, z: 0)
 		newPanel.addChildNode(giveLabel)
 		
-		
 		return newPanel
+	}
+	
+	override func listen(event: Event)
+	{
+		if event == want {
+			wantLabel.updateColor(white)
+			giveLabel.updateColor(white)
+		}
+		else{
+			wantLabel.updateColor(grey)
+		}
+		print(event.name!)
 	}
 	
 	override func collide()

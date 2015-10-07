@@ -67,9 +67,9 @@ class SCNLabel : SCNNode
 		}
 	}
 	
-	func update(text:String)
+	func update(text:String, force:Bool = false)
 	{
-		if text == activeText { return }
+		if text == activeText && force == false { return }
 		removeLetters()
 		activeText = text
 		addLetters(activeText, scale: activeScale)
@@ -85,7 +85,7 @@ class SCNLabel : SCNNode
 	func updateColor(color:UIColor)
 	{
 		self.color = color
-		update(activeText)
+		update(activeText,force:true)
 	}
 	
 	func letter(letter:String,scale:Float) -> SCNNode

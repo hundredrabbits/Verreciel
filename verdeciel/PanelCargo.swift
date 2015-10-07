@@ -44,6 +44,7 @@ class PanelCargo : SCNNode
 		// Tutorial Item
 		
 		self.addEvent(itemLibrary.loiqeLicense)
+		self.addEvent(itemLibrary.smallBattery)
 			
 		update()
 	}
