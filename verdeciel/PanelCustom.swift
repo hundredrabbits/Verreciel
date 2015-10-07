@@ -89,16 +89,25 @@ class PanelCustom : Panel
 		undock()
 	}
 	
+	func dock(event:Event)
+	{
+		print(event.interface)
+		
+		input.event = event
+		inputLabel.update(event.name!)
+		
+		content.addChildNode(event.interface)
+	}
+	
 	func undock()
 	{
 		content.empty()
-		player.message("undocking")
+		player.alert("<undocking>")
 		statusLabel.update("undocking")
 		undockButton.opacity = 0
 		undockButtonLabel.opacity = 0
 		
 		dockingTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("undocking"), userInfo: nil, repeats: true)
-		
 	}
 	
 	func undocking()
@@ -119,22 +128,11 @@ class PanelCustom : Panel
 	func undockingComplete()
 	{
 		input.event = nil
+		player.clearAlert()
+		player.message("in flight")
 		inputLabel.update("")
-		capsule.undock()
 		dockingTimer.invalidate()
-	}
-	
-	func dock(event:Event)
-	{
-		print("Load interface for \(event.name!)")
-		print(event.interface)
-		
-		input.event = event
-		inputLabel.update(event.name!)
-		
-		content.addChildNode(event.interface)
-		
-//		self.updateInterface(event.interface)
+		capsule.undock()
 	}
 	
 	override func listen(event:Event)

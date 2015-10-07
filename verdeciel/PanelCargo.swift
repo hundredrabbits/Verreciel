@@ -41,10 +41,11 @@ class PanelCargo : SCNNode
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		self.addEvent(Event(newName: "top", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(Event(newName: "bullet", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
-		self.addEvent(Event(newName: "bottom", size: 19, type: eventTypes.item, details: "ammo",note:"default ammo"))
+		// Tutorial Item
+		
+		self.addEvent(itemLibrary.loiqeLicense)
+		
+		
 	
 		/*
 		// Goes in Hatch

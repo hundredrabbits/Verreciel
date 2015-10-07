@@ -59,6 +59,8 @@ var space:CoreSpace!
 
 var cameraNode:SCNNode!
 
+var itemLibrary = ItemLibrary()
+
 enum alignment {
 	case left
 	case center

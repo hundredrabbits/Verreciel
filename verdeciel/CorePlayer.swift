@@ -15,10 +15,13 @@ class CorePlayer : SCNNode
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!
 	
+	var eventLabel:SCNLabel!
 	var messageLabel:SCNLabel!
 	var messageTimer:NSTimer!
+	
 	var alertLabel:SCNLabel!
 	var alertTimer:NSTimer!
+	var alertIsActive:Bool = false
 	
 	var health:Int
 	var magic:Int
@@ -86,6 +89,11 @@ class CorePlayer : SCNNode
 		messageLabel.position = SCNVector3(x: 0, y: 1.1, z: -1.01)
 		messageLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		self.addChildNode(messageLabel)
+		
+		eventLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
+		eventLabel.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
+		eventLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
+		self.addChildNode(eventLabel)
 	}
 	
 	func activateEvent(event:Event)
@@ -136,19 +144,23 @@ class CorePlayer : SCNNode
 	
 	func alert(text:String)
 	{
+		alertIsActive = true
 		alertLabel.update(text)
 		alertTimer = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: Selector("clearAlert"), userInfo: nil, repeats: false)
 	}
 	
 	func clearAlert()
 	{
-		alertLabel.update("")
+		alertIsActive = false
 		alertTimer.invalidate()
+		alertLabel.update("")
+		alertLabel.opacity = 0
 	}
 	
 	func enterRadar()
 	{
 		self.inRadar = true
+		eventLabel.update("leave radar view")
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
@@ -188,6 +200,18 @@ class CorePlayer : SCNNode
 	
 	override func tic()
 	{
+		if capsule.dock != nil {
+			player.eventLabel.updateWithColor("docked at \(capsule.dock.name!)", color: grey)
+		}
+		else{
+			player.eventLabel.update("")
+		}
+		flickerAlert()
+	}
+	
+	func flickerAlert()
+	{
+		if alertIsActive == false { return }
 		if alertLabel.opacity == 0 { alertLabel.opacity = 1}
 		else{ alertLabel.opacity = 0 }
 	}
