@@ -17,7 +17,7 @@ class SCNLine : SCNNode
 	var nodeB = SCNVector3()
 	var color = UIColor()
 	
-	init(nodeA: SCNVector3, nodeB: SCNVector3, color:UIColor)
+	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3(), color:UIColor = white)
 	{
 		self.nodeA = nodeA
 		self.nodeB = nodeB

@@ -169,6 +169,7 @@ class PanelThruster : SCNNode
 	{
 		if battery.inThruster.origin == nil { disable() }
 		else if battery.inThruster.origin.event.type != eventTypes.cell { disable() }
+		else if capsule.dock != nil { disable() }
 		else{ enable() }
 		
 		adjustSpeed()

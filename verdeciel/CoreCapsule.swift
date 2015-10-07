@@ -13,9 +13,9 @@ import Foundation
 
 class CoreCapsule: SCNNode
 {
-	var hull:Float = 50
-	var shield:Float = 50
-	var oxygen:Float = 50
+	var hull:Float = 100
+	var shield:Float = 100
+	var oxygen:Float = 100
 	
 	var at:CGPoint = CGPoint(x:-1,y:-4)
 	var travel:Float = 0

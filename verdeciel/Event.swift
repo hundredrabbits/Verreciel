@@ -38,7 +38,8 @@ class Event : SCNNode
 	
 	var sprite = SCNNode()
 	var trigger = SCNNode()
-	var connection = SCNNode()
+	var wire:SCNLine!
+	var connection:Event!
 	
 	var targetter = SCNNode()
 	var interface = Panel()
@@ -65,10 +66,11 @@ class Event : SCNNode
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
-		self.addChildNode(connection)
 		
-		connection.position = SCNVector3(0,0,-0.01)
-		connection.opacity = 0
+		wire = SCNLine()
+		wire.position = SCNVector3(0,0,-0.01)
+		wire.opacity = 0
+		self.addChildNode(wire)
 		
 		targetter = SCNLine(nodeA: SCNVector3(-0.1,-0.25,0), nodeB: SCNVector3(0.1,-0.25,0), color: red)
 		targetter.opacity = 0
@@ -180,8 +182,8 @@ class Event : SCNNode
 	
 	func connect(event:Event)
 	{
-		if event.connection == self { return }
-		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.at.x - self.at.x),(event.at.y - self.at.y),0), color: grey).geometry
+		connection = event
+		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
 	}
 	
 	// MARK: Misc -
@@ -225,6 +227,16 @@ class Event : SCNNode
 		else {
 			self.opacity = 1
 		}
+		
+		if connection != nil {
+			if connection.opacity == 1 {
+				wire.opacity = 1
+			}
+			else{
+				wire.opacity = 0
+			}
+		}
+		
 	}
 	
 	func clean()

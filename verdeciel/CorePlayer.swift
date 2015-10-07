@@ -172,7 +172,7 @@ class CorePlayer : SCNNode
 		
 		for newEvent in universe.childNodes {
 			let event = newEvent as! Event
-			event.connection.opacity = 1
+			event.wire.opacity = 1
 			event.opacity = 1
 		}
 		radar.leaveButton.opacity = 1

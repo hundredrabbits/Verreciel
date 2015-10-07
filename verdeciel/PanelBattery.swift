@@ -136,7 +136,6 @@ class PanelBattery : SCNNode
 			command.update()
 			cargo.bang(true)
 		}
-		
 	}
 	
 	override func tic()
