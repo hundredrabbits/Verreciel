@@ -10,6 +10,6 @@ import Foundation
 
 class ItemLibrary {
 	
-	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: "card",note:"required to undock from loiqe station")
+	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: "card",note:"required to undock from loiqe city")
 
 }

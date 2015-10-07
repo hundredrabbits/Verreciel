@@ -15,7 +15,7 @@ class Event : SCNNode
 {
 	var targetNode:SCNNode!
 	
-	var location = CGPoint()
+	var at = CGPoint()
 	var size:Float = 1
 	var type:eventTypes!
 	var details:String
@@ -43,7 +43,7 @@ class Event : SCNNode
 	var targetter = SCNNode()
 	var interface = Panel()
 	
-	init(newName:String = "",location:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey)
+	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:String = "", note:String = "", color:UIColor = grey)
 	{
 		self.content = []
 		self.details = details
@@ -54,7 +54,7 @@ class Event : SCNNode
 		self.type = type
 		self.size = size
 		self.note = note
-		self.location = location
+		self.at = at
 		self.color = color
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
@@ -78,7 +78,7 @@ class Event : SCNNode
 	
 	func start()
 	{
-		print("@ EVENT    | \(self.name!)\(self.location)")
+		print("@ EVENT    | \(self.name!)\(self.at)")
 		
 		self.sprite  = createSprite()
 		
@@ -94,8 +94,8 @@ class Event : SCNNode
 	{
 		if capsule == nil { return }
 		
-		self.position = SCNVector3(location.x,location.y,0)
-		self.distance = distanceBetweenTwoPoints(capsule.location, point2: self.location)
+		self.position = SCNVector3(at.x,at.y,0)
+		self.distance = distanceBetweenTwoPoints(capsule.at, point2: self.at)
 		self.angle = calculateAngle()
 		self.align = calculateAlignment()
 		
@@ -178,7 +178,7 @@ class Event : SCNNode
 	func connect(event:Event)
 	{
 		if event.connection == self { return }
-		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.location.x - self.location.x),(event.location.y - self.location.y),0), color: grey).geometry
+		self.connection.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3( (event.at.x - self.at.x),(event.at.y - self.at.y),0), color: grey).geometry
 	}
 	
 	// MARK: Misc -
@@ -234,9 +234,9 @@ class Event : SCNNode
 	
 	func calculateAngle() -> CGFloat
 	{
-		let p1 = capsule.location
-		let p2 = self.location
-		let center = capsule.location
+		let p1 = capsule.at
+		let p2 = self.at
+		let center = capsule.at
 		
 		let v1 = CGVector(dx: p1.x - center.x, dy: p1.y - center.y)
 		let v2 = CGVector(dx: p2.x - center.x, dy: p2.y - center.y)

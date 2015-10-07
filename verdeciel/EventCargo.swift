@@ -5,11 +5,11 @@ import Foundation
 
 class eventCargo : Event
 {
-	init(name:String,location: CGPoint, inventory: Event = Event(type: eventTypes.item))
+	init(name:String,at: CGPoint, inventory: Event = Event(type: eventTypes.item))
 	{
-		super.init(newName:"cargo", location:location, type:eventTypes.cargo)
+		super.init(newName:"cargo", at:at, type:eventTypes.cargo)
 		
-		self.location = location
+		self.at = at
 		self.size = 1
 		self.details = ""
 		self.note = ""

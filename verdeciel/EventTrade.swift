@@ -3,38 +3,27 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventBeacon : Event
+class eventTrade : Event
 {
-	
-	init(name:String,at: CGPoint)
+	init(name:String = "",at: CGPoint = CGPoint(), size: Float = 1)
 	{
-		super.init(newName:name, at:at, type:eventTypes.beacon)
+		super.init(newName:name, at:at, type:eventTypes.station)
 		
 		self.at = at
-		self.size = 1
+		self.size = size
 		self.details = ""
 		self.note = ""
 		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
-	}
-	
-	override func sight()
-	{
-		updateSprite()
-	}
-	
-	override func collide()
-	{
+		self.addChildNode(trigger)
+		
+		self.interface = panel()
 	}
 	
 	override func createSprite() -> SCNNode
 	{
 		var size:Float = 0.1
-		
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {
@@ -57,8 +46,35 @@ class eventBeacon : Event
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
+		let radius:Float = 4
+		let distance:Float = 4
+		
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
 		
 		return mesh
+	}
+	
+	override func panel() -> Panel
+	{
+		let newPanel = Panel()
+		
+		let test = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
+		newPanel.addChildNode(test)
+		
+		return newPanel
+	}
+	
+	override func collide()
+	{
+		capsule.dock(self)
+	}
+	
+	override func sight()
+	{
+		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

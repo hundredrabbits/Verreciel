@@ -34,6 +34,7 @@
 		574AE3F71BC36DAE00432603 /* EventPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AE3F61BC36DAE00432603 /* EventPath.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBA1BC57749008130AB /* ItemLibrary.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FBE1BC5775F008130AB /* LocationLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBD1BC5775F008130AB /* LocationLibrary.swift */; settings = {ASSET_TAGS = (); }; };
+		574E5FC01BC578E1008130AB /* EventTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* EventTrade.swift */; settings = {ASSET_TAGS = (); }; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
@@ -83,6 +84,7 @@
 		574AE3F61BC36DAE00432603 /* EventPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPath.swift; sourceTree = "<group>"; };
 		574E5FBA1BC57749008130AB /* ItemLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemLibrary.swift; sourceTree = "<group>"; };
 		574E5FBD1BC5775F008130AB /* LocationLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLibrary.swift; sourceTree = "<group>"; };
+		574E5FBF1BC578E1008130AB /* EventTrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTrade.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				57FA031E1BBA22FE0077D517 /* EventStar.swift */,
 				57EDED211BC17321005DF3DE /* EventBeacon.swift */,
 				574AE3F61BC36DAE00432603 /* EventPath.swift */,
+				574E5FBF1BC578E1008130AB /* EventTrade.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
+				574E5FC01BC578E1008130AB /* EventTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
 				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,

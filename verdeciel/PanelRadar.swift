@@ -148,13 +148,13 @@ class PanelRadar : SCNNode
 	
 	override func update()
 	{
-		labelPositionX.update(String(Int(capsule.location.x)))
-		labelPositionZ.update(String(Int(capsule.location.y)))
+		labelPositionX.update(String(Int(capsule.at.x)))
+		labelPositionZ.update(String(Int(capsule.at.y)))
 		
-		eventView.position = SCNVector3(capsule.location.x * -1,capsule.location.y * -1,0)
+		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
-		horizontalGrid.position = SCNVector3(0,((capsule.location.y * -1) % 3) + 1.5,-0.001)
-		verticalGrid.position = SCNVector3(((capsule.location.x * -1) % 4) + 2,0,-0.001)
+		horizontalGrid.position = SCNVector3(0,((capsule.at.y * -1) % 3) + 1.5,-0.001)
+		verticalGrid.position = SCNVector3(((capsule.at.x * -1) % 4) + 2,0,-0.001)
 		
 		updateTarget()
 
@@ -165,8 +165,8 @@ class PanelRadar : SCNNode
 	{		
 		if output.event != nil {
 			
-			let shipNodePosition = CGPoint(x: CGFloat(capsule.location.x), y: CGFloat(capsule.location.y))
-			let eventNodePosition = CGPoint(x: CGFloat(output.event.location.x), y: CGFloat(output.event.location.y))
+			let shipNodePosition = CGPoint(x: CGFloat(capsule.at.x), y: CGFloat(capsule.at.y))
+			let eventNodePosition = CGPoint(x: CGFloat(output.event.at.x), y: CGFloat(output.event.at.y))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
 			labelDistance.update(String(format: "%.1f",distanceFromShip))
@@ -178,7 +178,7 @@ class PanelRadar : SCNNode
 			}
 			
 			if distanceFromShip > 1.4 {
-				let angleTest = angleBetweenTwoPoints(capsule.location, point2: output.event.location, center: capsule.location)
+				let angleTest = angleBetweenTwoPoints(capsule.at, point2: output.event.at, center: capsule.at)
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
 				targetterAway.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
 				targetterAway.opacity = 1

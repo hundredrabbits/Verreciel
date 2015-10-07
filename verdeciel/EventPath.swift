@@ -5,11 +5,11 @@ import Foundation
 
 class eventPath : Event
 {
-	init(name:String = "",location:CGPoint = CGPoint(x: 0,y: 0))
+	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0))
 	{
-		super.init(newName:name, location:location, type:eventTypes.station)
+		super.init(newName:name, at:at, type:eventTypes.station)
 		
-		self.location = location
+		self.at = at
 		self.size = size
 		self.details = ""
 		self.note = ""

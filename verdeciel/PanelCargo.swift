@@ -44,36 +44,7 @@ class PanelCargo : SCNNode
 		// Tutorial Item
 		
 		self.addEvent(itemLibrary.loiqeLicense)
-		
-		
-	
-		/*
-		// Goes in Hatch
-		
-//		let disk = Event(newName: "disk", size: 1, type: eventTypes.item, details: "code",note:"crack something")
-//		self.addEvent(disk)
-		
-		// Goes in Battery
-		let battery = Event(newName: "small battery", size: 25, type: eventTypes.battery, details: "cell",note:"crack something")
-		self.addEvent(battery)
-		
-		// Goes in Radar
-		let starMap = Event(newName: "helio's path", location: CGPoint(x: 4, y: 4), size: 1, type: eventTypes.map, details: "map",note:"go somewhere")
-		starMap.content.append(Event(newName: "star1", location: CGPoint(x: -3,y: 2), size: 1, type: eventTypes.location))
-		starMap.content.append(Event(newName: "star2", location: CGPoint(x: -1,y: 0.7), size: 1, type: eventTypes.location))
-		starMap.content.append(Event(newName: "star3", location: CGPoint(x: 0.6,y: -0.3), size: 1, type: eventTypes.location))
-		self.addEvent(starMap)
-		
-		// For pilot
-		let coordinate = Event(newName: "helio system", location: CGPoint(x: -3, y: -4), size: 1, type: eventTypes.location, details: "pilot",note:"go somewhere")
-		self.addEvent(coordinate)
-		
-		// For thruster
-		let warpGate = Event(newName: "warpgate", location: CGPoint(x: 0, y: 1), size: 1, type: eventTypes.warp, details: "warp",note:"warp to world 1")
-		self.addEvent(warpGate)
-
-*/
-		
+			
 		update()
 	}
 	

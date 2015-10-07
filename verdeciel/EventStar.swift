@@ -5,11 +5,11 @@ import Foundation
 
 class eventStar : Event
 {
-	init(name:String,location: CGPoint, color:UIColor = red)
+	init(name:String,at: CGPoint, color:UIColor = red)
 	{
-		super.init(newName:name, location:location, type:eventTypes.star)
+		super.init(newName:name, at:at, type:eventTypes.star)
 		
-		self.location = location
+		self.at = at
 		self.size = 1
 		self.details = ""
 		self.note = ""

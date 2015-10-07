@@ -8,14 +8,14 @@ class eventPortal : Event
 	let destination:CGPoint!
 	let sector:sectors!
 	
-	init(name:String,location: CGPoint,destination: CGPoint,sector:sectors = sectors.normal,color:UIColor = white)
+	init(name:String,at: CGPoint,destination: CGPoint,sector:sectors = sectors.normal,color:UIColor = white)
 	{
 		self.destination = destination
 		self.sector = sector
 		
-		super.init(newName:name, location:location, type:eventTypes.location)
+		super.init(newName:name, at:at, type:eventTypes.location)
 		
-		self.location = location
+		self.at = at
 		self.size = 1
 		self.details = ""
 		self.note = ""

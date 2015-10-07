@@ -22,7 +22,7 @@ class PanelMonitor : SCNNode
 	var noiseLabel:SCNLabel!
 	var sectorNameLabel:SCNLabel!
 	
-	var currentSystem = Event(newName: "test", location: CGPoint(x: 999999,y: 999999),type: eventTypes.star)
+	var currentSystem = Event(newName: "test", at: CGPoint(x: 999999,y: 999999),type: eventTypes.star)
 	
 	override init()
 	{

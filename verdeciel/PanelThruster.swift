@@ -176,8 +176,8 @@ class PanelThruster : SCNNode
 			
 			let angleRad = degToRad(angle)
 			
-			capsule.location.x += CGFloat(speed) * CGFloat(sin(angleRad))
-			capsule.location.y += CGFloat(speed) * CGFloat(cos(angleRad))
+			capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
+			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
 			
 			radar.update()
 		}
@@ -196,7 +196,7 @@ class PanelThruster : SCNNode
 	{
 		print("  WARP     | Warping to \(destination)")
 		
-		capsule.location = destination
+		capsule.at = destination
 		capsule.sector = sector
 	}
 	
