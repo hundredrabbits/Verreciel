@@ -147,6 +147,16 @@ class PanelMonitor : SCNNode
 		if capsule.hull < 10 { labelColor = red }
 		if capsule.dock != nil && capsule.dock.service == services.hull { labelColor = cyan }
 		hullLabel.updateWithColor(String(format: "%.1f", capsule.hull), color: labelColor)
+		
+		labelColor = white
+		if capsule.shield < 10 { labelColor = red }
+		if battery.inShield.origin != nil {	if battery.inShield.origin.event.type == eventTypes.cell && capsule.shield < 100 { labelColor = cyan } }
+		shieldLabel.updateWithColor(String(format: "%.1f", capsule.shield), color: labelColor)
+		
+		labelColor = white
+		if capsule.oxygen < 10 { labelColor = red }
+		if battery.inOxygen.origin != nil {	if battery.inOxygen.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { labelColor = cyan } }
+		oxygenLabel.updateWithColor(String(format: "%.1f", capsule.oxygen), color: labelColor)
 	}
 	
 	func updateSystem()

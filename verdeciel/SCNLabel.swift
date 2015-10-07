@@ -84,6 +84,7 @@ class SCNLabel : SCNNode
 	
 	func updateColor(color:UIColor)
 	{
+		if self.color == color { return }
 		self.color = color
 		update(activeText,force:true)
 	}

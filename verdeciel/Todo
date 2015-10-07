@@ -19,7 +19,6 @@
 
 	> Items
 	- Add repair kits
-	- Add batteries
 	- Add maps
 	- Add ammo
 
@@ -27,10 +26,13 @@
 	- Add post sign
 	- Add dimensional gates
 	- Add cities
+	- Mark the sprite as completed when the quest is done
 
 	> Stealthed events
 	> Migrate stars to locations
 	> Make star sprites
+
+	> TradePosts
 
 > Capsule
 

@@ -28,6 +28,8 @@ class PanelThruster : SCNNode
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
+	var isEnabled:Bool = true
+	
 	// Ports
 	
 	var input:SCNPort!
@@ -146,12 +148,14 @@ class PanelThruster : SCNNode
 	
 	func enable()
 	{
+		isEnabled = true
 		accelerate.opacity = 1
 		decelerate.opacity = 1
 	}
 	
 	func disable()
 	{
+		isEnabled = false
 		accelerate.opacity = 0
 		decelerate.opacity = 0
 	}
@@ -163,10 +167,10 @@ class PanelThruster : SCNNode
 	
 	override func update()
 	{
-		if battery.inThruster.origin == nil { speedLabel.update("unpowered") ; disable() ; return }
-		if battery.inThruster.origin.event.type != eventTypes.cell { speedLabel.update("unpowered") ; disable() ; return }
+		if battery.inThruster.origin == nil { disable() }
+		else if battery.inThruster.origin.event.type != eventTypes.cell { disable() }
+		else{ enable() }
 		
-		enable()
 		adjustSpeed()
 		thrust()
 	}
@@ -191,7 +195,11 @@ class PanelThruster : SCNNode
 	
 	func adjustSpeed()
 	{
-		if speed * 10 > Int(actualSpeed * 10) {
+		if isEnabled == false {
+			speed = 0
+			actualSpeed -= 0.1
+		}
+		else if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1
 		}
 		else if speed * 10 < Int(actualSpeed * 10) {

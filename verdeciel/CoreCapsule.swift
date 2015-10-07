@@ -14,6 +14,9 @@ import Foundation
 class CoreCapsule: SCNNode
 {
 	var hull:Float = 50
+	var shield:Float = 50
+	var oxygen:Float = 50
+	
 	var at:CGPoint = CGPoint(x:-1,y:-4)
 	var travel:Float = 0
 	
@@ -111,18 +114,24 @@ class CoreCapsule: SCNNode
 	override func tic()
 	{
 		service()
+		systems()
+	}
+	
+	func systems()
+	{
+		if battery.inOxygen.origin != nil {
+			if battery.inOxygen.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { capsule.oxygen += 0.5 }
+		}
+		if battery.inShield.origin != nil {
+			if battery.inShield.origin.event.type == eventTypes.cell && capsule.shield < 100 { capsule.shield += 0.5 }
+		}
 	}
 	
 	func service()
 	{
 		if dock == nil { return }
 		if dock.service == services.electricity && battery.value < 100 { battery.recharge() }
-		if dock.service == services.hull && capsule.hull < 100 { capsule.repair() }
-	}
-	
-	func repair()
-	{
-		capsule.hull += 0.5
+		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
 	}
 	
 	func panelSetup()
