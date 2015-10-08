@@ -47,6 +47,7 @@
 		57CA80981BB9CEA3000D31F7 /* EventCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* EventCargo.swift */; settings = {ASSET_TAGS = (); }; };
 		57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */; settings = {ASSET_TAGS = (); }; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
+		57DD808E1BC7005600A4146C /* PanelHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD808D1BC7005600A4146C /* PanelHandle.swift */; settings = {ASSET_TAGS = (); }; };
 		57EDED221BC17321005DF3DE /* LocationBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDED211BC17321005DF3DE /* LocationBeacon.swift */; settings = {ASSET_TAGS = (); }; };
 		57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3D8C61B58215400B9B859 /* CoreCapsule.swift */; };
 		57F4FA111BB8CECF00AEE66C /* PanelCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */; settings = {ASSET_TAGS = (); }; };
@@ -101,6 +102,7 @@
 		57CA80971BB9CEA3000D31F7 /* EventCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCargo.swift; sourceTree = "<group>"; };
 		57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
+		57DD808D1BC7005600A4146C /* PanelHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelHandle.swift; sourceTree = "<group>"; };
 		57EDED211BC17321005DF3DE /* LocationBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationBeacon.swift; sourceTree = "<group>"; };
 		57F3D8C61B58215400B9B859 /* CoreCapsule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreCapsule.swift; sourceTree = "<group>"; };
 		57F4FA101BB8CECF00AEE66C /* PanelCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCustom.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
 				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
 				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
+				57DD808D1BC7005600A4146C /* PanelHandle.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				57EDED221BC17321005DF3DE /* LocationBeacon.swift in Sources */,
 				57C915171BC45E91009454C4 /* Panel.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* PanelBattery.swift in Sources */,
+				57DD808E1BC7005600A4146C /* PanelHandle.swift in Sources */,
 				574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */,
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,

@@ -139,6 +139,7 @@ class CoreCapsule: SCNNode
 		let northPanels = SCNNode()
 		custom = PanelCustom()
 		northPanels.addChildNode(custom)
+		northPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
 		
 		let northEastPanels = SCNNode()
 		cargo = PanelCargo()
@@ -151,6 +152,7 @@ class CoreCapsule: SCNNode
 		let eastPanels = SCNNode()
 		console = PanelConsole()
 		eastPanels.addChildNode(console)
+		eastPanels.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
 		
 		let southEastPanels = SCNNode()
 		beacon = PanelHatch()
@@ -165,12 +167,14 @@ class CoreCapsule: SCNNode
 		radio = PanelRadio()
 		southPanels.addChildNode(battery)
 		southPanels.addChildNode(radio)
+		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
 		
 		let westPanels = SCNNode()
 		radar = PanelRadar()
 		translator = PanelTranslator()
 		westPanels.addChildNode(radar)
 		westPanels.addChildNode(translator)
+		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
