@@ -19,8 +19,10 @@ class PanelCustom : Panel
 	var statusLabel:SCNLabel!
 	var undockButtonLabel:SCNLabel!
 	
-	var dockingStatus:Int = 0
+	var dockingStatus:CGFloat = 0
 	var dockingTimer:NSTimer!
+	
+	var progressBar:SCNProgressBar!
 	
 	// Ports
 	
@@ -37,6 +39,10 @@ class PanelCustom : Panel
 		
 		content = SCNNode()
 		self.addChildNode(content)
+		
+		progressBar = SCNProgressBar(width: 2)
+		progressBar.position = SCNVector3(0,-3,0)
+		self.addChildNode(progressBar)
 	
 		update()
 	}
@@ -103,7 +109,7 @@ class PanelCustom : Panel
 	
 	func undocking()
 	{
-		dockingStatus += Int(arc4random_uniform(7))
+		dockingStatus += CGFloat(arc4random_uniform(7))
 		
 		if dockingStatus >= 100 {
 			dockingTimer.invalidate()
@@ -113,6 +119,7 @@ class PanelCustom : Panel
 		}
 		else{
 			statusLabel.update("progress \(dockingStatus)%")
+			progressBar.update(dockingStatus)
 		}
 	}
 	
