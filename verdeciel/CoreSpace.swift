@@ -37,10 +37,10 @@ class CoreSpace: SCNNode
 		self.addChildNode(starsRoot)
 	}
 	
-	func startInstance(event:Event)
+	func startInstance(location:Location)
 	{
-		structuresRoot.addChildNode(SCNInstance(event: event))
-		player.alert("Approaching \(event.name!)")
+		structuresRoot.addChildNode(SCNInstance(event: location))
+		player.alert("Approaching \(location.name!)")
 	}
 	
 	override func update()

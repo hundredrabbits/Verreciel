@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventPortal : Event
+class eventPortal : Location
 {
 	let destination:CGPoint!
 	let sector:sectors!
@@ -13,7 +13,7 @@ class eventPortal : Event
 		self.destination = destination
 		self.sector = sector
 		
-		super.init(newName:name, at:at, type:eventTypes.location)
+		super.init(name:name, at:at)
 		
 		self.at = at
 		self.size = 1

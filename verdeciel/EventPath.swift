@@ -3,11 +3,11 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventPath : Event
+class eventPath : Location
 {
 	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0))
 	{
-		super.init(newName:name, at:at, type:eventTypes.station)
+		super.init(name:name, at:at)
 		
 		self.at = at
 		self.size = size

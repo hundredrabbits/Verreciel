@@ -21,6 +21,20 @@ class Location : Event
 		self.addChildNode(trigger)
 	}
 	
+	func mesh() -> SCNNode
+	{
+		let mesh = SCNNode()
+		let radius:Float = 3
+		let distance:Float = 4
+		
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
+
+		return mesh
+	}
+	
 	func addService(service:services)
 	{
 		self.service = service

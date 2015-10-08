@@ -3,11 +3,11 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventCargo : Event
+class eventCargo : Location
 {
 	init(name:String,at: CGPoint, inventory: Event = Event(type: eventTypes.item))
 	{
-		super.init(newName:"cargo", at:at, type:eventTypes.cargo)
+		super.init(name:"cargo", at:at)
 		
 		self.at = at
 		self.size = 1

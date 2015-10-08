@@ -60,13 +60,18 @@ class LocationTrade : Location
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 4
+		var radius:Float = 2.75
 		let distance:Float = 4
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
+		var i = 0
+		while i < 10 {
+			
+			radius -= 0.25
+			
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,-radius * 1.5), color: white))
+			i++
+			
+		}
 		
 		return mesh
 	}

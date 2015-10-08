@@ -63,10 +63,26 @@ class LocationStar : Location
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
+		var radius:Float = 2.75
+		let distance:Float = 4
 		
-		let radius:Float = 5
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,0), nodeB: SCNVector3(radius/2,0,radius * 0.75), color: red))
+		var i = 0
+		while i < 10 {
+			
+			radius -= 0.25
+			
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,-radius * 1.5), color: red))
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,radius * 1.5), color: red))
+			
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius * 1.5,distance,0), nodeB: SCNVector3(-radius,distance,-radius * 1.5), color: red))
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius * 1.5,distance,0), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: red))
+			
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,-radius * 1.5), nodeB: SCNVector3(-radius,distance,-radius * 1.5), color: red))
+			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,radius * 1.5), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: red))
+			
+			i++
+			
+		}
 		
 		return mesh
 	}

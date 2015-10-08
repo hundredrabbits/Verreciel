@@ -167,7 +167,7 @@ class Event : SCNNode
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		capsule.instance = self
-		space.startInstance(self)
+		space.startInstance(self as! Location)
 		player.activateEvent(self)
 		updateSprite()
 	}
@@ -275,11 +275,6 @@ class Event : SCNNode
 		if (diff > 180){ diff = 360 - diff }
 		
 		return diff
-	}
-	
-	func mesh() -> SCNNode
-	{
-		return SCNNode()
 	}
 	
 	func panel() -> SCNNode

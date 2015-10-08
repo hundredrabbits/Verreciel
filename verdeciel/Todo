@@ -23,14 +23,10 @@
 	- Add ammo
 
 	> Locations
-	- Add post sign
-	- Add dimensional gates
-	- Add cities
+	- Add dimensional gates(qith item requirements)
 	- Mark the sprite as completed when the quest is done
 
 	> Stealthed events
-	> Migrate stars to locations
-	> Make star meshes
 
 > Capsule
 

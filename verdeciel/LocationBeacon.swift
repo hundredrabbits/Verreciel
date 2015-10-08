@@ -35,8 +35,6 @@ class LocationBeacon : Location
 		let text3 = message.subString(38, length: 19)
 		let text4 = message.subString(57, length: 19)
 		
-		
-		
 		let line1 = SCNLabel(text: text1)
 		line1.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
 		newPanel.addChildNode(line1)
