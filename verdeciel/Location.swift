@@ -6,6 +6,7 @@ import Foundation
 class Location : Event
 {
 	var service = services.none
+	var interaction = "connected"
 	
 	init(name:String,at: CGPoint, service:services = services.none)
 	{

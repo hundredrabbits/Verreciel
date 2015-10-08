@@ -90,10 +90,11 @@ class PanelCustom : Panel
 		undock()
 	}
 	
-	func dock(event:Event)
+	func dock(location:Location)
 	{
-		dockNameLabel.update(event.name!)
-		content.addChildNode(event.interface)
+		dockNameLabel.update(location.name!)
+		statusLabel.update(location.interaction)
+		content.addChildNode(location.interface)
 	}
 	
 	func undock()

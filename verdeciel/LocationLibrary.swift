@@ -12,8 +12,7 @@ class LocationLibrary
 {
 	func loiqe(at:CGPoint) -> LocationStar
 	{
-		let location = LocationStar(name:"Loiqe Repairs")
-		location.addService(services.hull)
+		let location = LocationStar(name:"Loiqe")
 		location.at = at
 		return location
 	}
@@ -21,7 +20,6 @@ class LocationLibrary
 	func loiqeCity(at:CGPoint) -> LocationTrade
 	{
 		let location = LocationTrade(name: "Loiqe City", want:itemLibrary.loiqeLicense, give:itemLibrary.smallBattery)
-		location.addService(services.none)
 		location.at = at
 		return location
 	}
@@ -30,6 +28,13 @@ class LocationLibrary
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
 		location.addService(services.hull)
+		location.at = at
+		return location
+	}
+	
+	func loiqeBeacon(at:CGPoint) -> LocationBeacon
+	{
+		let location = LocationBeacon(name:"loiqe beacon",message:"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")
 		location.at = at
 		return location
 	}

@@ -13,6 +13,8 @@ class LocationRepair : Location
 		self.size = size
 		self.note = ""
 		
+		self.interaction = "repairing"
+		
 		self.interface = panel()
 	}
 	

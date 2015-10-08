@@ -81,11 +81,12 @@ class CoreUniverse : SCNNode
 		let star = LocationStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
 		self.addChildNode(star)
 		
-		// Repair
 		entryToLoiqe = locationLibrary.loiqeRepair(CGPoint(x:offset.x,y:offset.y + 1))
 		self.addChildNode(entryToLoiqe)
 		
-		// City
+		let loiqeBeacon = locationLibrary.loiqeBeacon(CGPoint(x:offset.x - 1,y:offset.y + 1))
+		self.addChildNode(loiqeBeacon)
+		
 		let loiqeCity = locationLibrary.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
 		loiqeCity.connect(entryToLoiqe)
 		self.addChildNode(loiqeCity)
@@ -99,15 +100,12 @@ class CoreUniverse : SCNNode
 		
 		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x - 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
 		
-		let beacon = eventBeacon(name: "beacon", at: CGPoint(x:offset.x + 1,y:offset.y))
 		
 		portal.connect(entryToVenic)
-		beacon.connect(entryToVenic)
 		
 		self.addChildNode(entryToVenic)
 		self.addChildNode(star)
 		self.addChildNode(portal)
-		self.addChildNode(beacon)
 	}
 	
 	func usulSystem(offset:CGPoint)
@@ -118,14 +116,9 @@ class CoreUniverse : SCNNode
 		
 		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y - 1), destination:CGPoint(x:offset.x,y:offset.y))
 		
-		let beacon = eventBeacon(name: "beacon", at: CGPoint(x:offset.x,y:offset.y - 2))
-		
-		portal.connect(beacon)
-		
 		self.addChildNode(entryToUsul)
 		self.addChildNode(star)
 		self.addChildNode(portal)
-		self.addChildNode(beacon)
 	}
 	
 	func valenSystem(offset:CGPoint)
@@ -154,7 +147,6 @@ class CoreUniverse : SCNNode
 		let cargo2 = eventCargo(name: "cargo", at: CGPoint(x:offset.x + 1.5,y:offset.y))
 		let gate = eventPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y + 2), destination:CGPoint(x:offset.x,y:offset.y), sector: sectors.cyanine)
 		
-		let beacon = eventBeacon(name: "beacon", at: CGPoint(x:offset.x + 0.75,y:offset.y + 0.75))
 		
 		entryToSenni = eventStation(name: "cargo", at: CGPoint(x:offset.x,y:offset.y - 1), size:1)
 		
@@ -172,7 +164,6 @@ class CoreUniverse : SCNNode
 		self.addChildNode(portal)
 		self.addChildNode(cargo2)
 		
-		self.addChildNode(beacon)
 		self.addChildNode(gate)
 	}
 	

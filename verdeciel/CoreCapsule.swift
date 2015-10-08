@@ -17,7 +17,7 @@ class CoreCapsule: SCNNode
 	var shield:Float = 100
 	var oxygen:Float = 100
 	
-	var at:CGPoint = CGPoint(x:-1,y:-4)
+	var at:CGPoint = CGPoint(x:-1,y:-3) // CGPoint(x:-1,y:-4)
 	var travel:Float = 0
 	
 	var direction:CGFloat! = 1

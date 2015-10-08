@@ -27,8 +27,9 @@ class LocationTrade : Location
 		self.want = want
 		self.give = give
 		
+		self.interaction = "trading"
+		
 		self.addChildNode(sprite)
-		self.addChildNode(trigger)
 		self.addChildNode(trigger)
 		
 		self.interface = panel()

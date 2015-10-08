@@ -3,37 +3,62 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventBeacon : Event
+class LocationBeacon : Location
 {
+	var message:String = ""
 	
-	init(name:String,at: CGPoint)
+	init(name:String,at: CGPoint = CGPoint(), message:String)
 	{
-		super.init(newName:name, at:at, type:eventTypes.beacon)
+		super.init(name:name, at:at)
 		
 		self.at = at
 		self.size = 1
 		self.note = ""
+		self.message = message
+		self.interaction = "> message"
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+		
+		self.interface = panel()
 	}
 	
-	override func sight()
+	override func panel() -> Panel
 	{
-		updateSprite()
-	}
-	
-	override func collide()
-	{
+		let newPanel = Panel()
+		
+		let text1 = message.subString(0, length: 19)
+		let text2 = message.subString(19, length: 19)
+		let text3 = message.subString(38, length: 19)
+		let text4 = message.subString(57, length: 19)
+		
+		
+		
+		let line1 = SCNLabel(text: text1)
+		line1.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
+		newPanel.addChildNode(line1)
+		
+		let line2 = SCNLabel(text: text2)
+		line2.position = SCNVector3(x: -1.5 + 0.3, y: 0.2, z: 0)
+		newPanel.addChildNode(line2)
+		
+		let line3 = SCNLabel(text: text3)
+		line3.position = SCNVector3(x: -1.5 + 0.3, y: -0.2, z: 0)
+		newPanel.addChildNode(line3)
+		
+		let line4 = SCNLabel(text: text4)
+		line4.position = SCNVector3(x: -1.5 + 0.3, y: -0.6, z: 0)
+		newPanel.addChildNode(line4)
+		
+		return newPanel
 	}
 	
 	override func createSprite() -> SCNNode
 	{
-		var size:Float = 0.1
-		
+		let size:Float = 0.05
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {
@@ -42,13 +67,6 @@ class eventBeacon : Event
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
 		}
-		else{
-			size = 0.05
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-		}
 		
 		return spriteNode
 	}
@@ -56,7 +74,6 @@ class eventBeacon : Event
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
-		
 		return mesh
 	}
 	
