@@ -34,7 +34,7 @@ class LocationLibrary
 	
 	func loiqeBeacon(at:CGPoint) -> LocationBeacon
 	{
-		let location = LocationBeacon(name:"loiqe beacon",message:"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")
+		let location = LocationBeacon(name:"loiqe beacon",message:"Are you absolutely sure that you are ~in space ...")
 		location.at = at
 		return location
 	}
