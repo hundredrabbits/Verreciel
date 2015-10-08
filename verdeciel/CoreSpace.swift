@@ -88,7 +88,7 @@ class CoreSpace: SCNNode
 		
 		var color = white
 		if capsule.sector == sectors.cyanine { color = black }
-		if capsule.sector == sectors.opal { color = black }
+		if capsule.sector == sectors.vermiles { color = black }
 		if capsule.sector == sectors.opal { color = black }
 		if capsule.sector == sectors.void { color = grey }
 		

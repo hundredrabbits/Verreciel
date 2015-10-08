@@ -13,6 +13,7 @@ class LocationStar : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
+		self.details = eventDetails.star
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -60,6 +61,11 @@ class LocationStar : Location
 		updateSprite()
 	}
 	
+	override func collide()
+	{
+		
+	}
+	
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
@@ -67,9 +73,9 @@ class LocationStar : Location
 		let distance:Float = 4
 		
 		var i = 0
-		while i < 10 {
+		while i < 20 {
 			
-			radius -= 0.25
+			radius -= 0.125
 			
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,-radius * 1.5), color: red))
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,radius * 1.5), color: red))

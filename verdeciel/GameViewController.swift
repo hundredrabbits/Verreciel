@@ -103,6 +103,7 @@ enum eventDetails {
 	case unknown
 	case battery
 	case card
+	case star
 }
 
 enum services

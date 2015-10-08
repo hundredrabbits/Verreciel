@@ -128,7 +128,7 @@ class Event : SCNNode
 		}
 		
 		// Collide
-		if self.distance < 0.1 {
+		if self.distance < 0.01 {
 			if self.inCollision == false {
 				collide()
 				self.inCollision = true

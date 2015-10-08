@@ -212,13 +212,13 @@ class PanelRadar : SCNNode
 		updateTarget()
 	}
 	
-	func closestEvent(type:eventTypes) -> Event
+	func closestLocation(type:eventDetails) -> Location
 	{
-		var closestEvent:Event!
+		var closestEvent:Location!
 		for newEvent in universe.childNodes {
-			let event = newEvent as! Event
+			let event = newEvent as! Location
 			if closestEvent == nil { closestEvent = event }
-			if event.type != type { continue }
+			if event.details != type { continue }
 			if event.distance > closestEvent.distance { continue }
 			closestEvent = event
 		}

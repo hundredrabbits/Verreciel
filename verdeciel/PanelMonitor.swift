@@ -161,7 +161,7 @@ class PanelMonitor : SCNNode
 	
 	func updateSystem()
 	{
-		sectorNameLabel.update(radar.closestEvent(eventTypes.star).name!)
+		sectorNameLabel.update(radar.closestLocation(eventDetails.star).name!)
 	}
 	
 	func monitorValue(value:Float) -> String
