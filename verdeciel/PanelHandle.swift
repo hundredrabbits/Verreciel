@@ -29,11 +29,11 @@ class PanelHandle : SCNNode
 	
 	func addInterface()
 	{
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 1, y: 0.5, z: 0),nodeB: SCNVector3(x: 1.1, y: 0, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.75, y: 0.5, z: 0),nodeB: SCNVector3(x: 1, y: 0.5, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.75, y: 0.5, z: 0),color:cyan))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.5, z: 0),nodeB: SCNVector3(x: -1, y: 0.5, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -1, y: 0.5, z: 0),nodeB: SCNVector3(x: -1.1, y: 0, z: 0),color:grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 1, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 1.1, y: 0, z: 0),color:grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 1, y: 0.25, z: 0.3),color:grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 0.75, y: 0.25, z: 0.3),color:cyan))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: -1, y: 0.25, z: 0.3),color:grey))
+		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -1, y: 0.25, z: 0.3),nodeB: SCNVector3(x: -1.1, y: 0, z: 0),color:grey))
 	}
 	
 	override func touch()

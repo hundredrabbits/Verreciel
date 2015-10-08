@@ -70,7 +70,7 @@ class LocationStar : Location
 	{
 		let mesh = SCNNode()
 		var radius:Float = 2.75
-		let distance:Float = 4
+		let distance:Float = 0
 		
 		var i = 0
 		while i < 20 {
