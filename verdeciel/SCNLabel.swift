@@ -19,7 +19,7 @@ class SCNLabel : SCNNode
 	var nodeOffset:SCNNode!
 	var color:UIColor = UIColor.whiteColor()
 	
-	init(text:String,scale:Float = 0.1,align:alignment = alignment.left, color:UIColor = white)
+	init(text:String = "",scale:Float = 0.1,align:alignment = alignment.left, color:UIColor = white)
 	{
 		super.init()
 		
@@ -324,6 +324,9 @@ class SCNLabel : SCNNode
 		}
 		else if letter == "~"{
 			
+		}
+		else if letter == "/"{
+			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -scale, z: 0), nodeB: SCNVector3(x: scale, y: scale, z: 0),color:self.color))
 		}
 		else if letter == "-"{
 			letterPivot.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0, z: 0), nodeB: SCNVector3(x: scale, y: 0, z: 0),color:self.color))

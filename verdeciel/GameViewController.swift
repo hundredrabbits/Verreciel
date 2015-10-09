@@ -38,7 +38,7 @@ var floorNode:Array<SCNVector3>!
 var radar:PanelRadar!
 var battery:PanelBattery!
 var console:PanelConsole!
-var custom:PanelCustom!
+var custom:PanelQuest!
 
 var pilot:PanelPilot!
 var thruster:PanelThruster!
@@ -62,59 +62,9 @@ var space:CoreSpace!
 
 var cameraNode:SCNNode!
 
-var itemLibrary = ItemLibrary()
-var locationLibrary = LocationLibrary()
-
-enum alignment {
-	case left
-	case center
-	case right
-}
-
-enum sectors {
-	case opal
-	case cyanine
-	case vermiles
-	case normal
-	case void
-}
-
-enum eventTypes {
-	case unknown
-	
-	case portal
-	case cargo
-	case station
-	case beacon
-	case city
-	case star
-	case cell
-	
-	case stack
-	case location
-	case item
-	case npc
-	case battery
-	case waypoint
-	case ammo
-	case cypher
-	case map
-	case warp
-}
-
-enum eventDetails {
-	case unknown
-	case battery
-	case card
-	case star
-}
-
-enum services
-{
-	case none
-	case electricity
-	case hull
-}
+var items = ItemLibrary()
+var locations = LocationLibrary()
+var quests = QuestLibrary()
 
 class GameViewController: UIViewController
 {

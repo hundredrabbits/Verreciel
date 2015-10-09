@@ -25,6 +25,7 @@ class PanelPilot : SCNNode
 	// Ports
 	
 	var input:SCNPort!
+	var event:Event!
 	
 	override init()
 	{
@@ -84,19 +85,16 @@ class PanelPilot : SCNNode
 		
 	}
 	
-	override func update()
+	override func tic()
 	{
-		if capsule == nil { return }
-		
-		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
-		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-		let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
-		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
-		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
-		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+		print("working")
+		adjustAngle()
 	}
-	override func listen(event:Event)
+	
+	func adjustAngle()
 	{
+		if event == nil { return }
+		
 		let left = event.calculateAlignment(capsule.direction - 1)
 		let right = event.calculateAlignment(capsule.direction + 1)
 		
@@ -112,7 +110,18 @@ class PanelPilot : SCNNode
 		}
 		
 		directionLabel.update(String(format: "%.0f",event.align))
-		self.update()
+		
+		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
+		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+		let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
+		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
+		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
+		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+	}
+	
+	override func listen(event:Event)
+	{
+		self.event = event
 	}
 	
 	func turnLeft(deg:CGFloat)

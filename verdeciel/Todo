@@ -13,7 +13,6 @@
 	- Firing missle events at player
 	- Animate missle events
 	- Display player targeting
-	- Create many stars before game starts
 
 > Event Types
 
@@ -30,12 +29,9 @@
 
 > Capsule
 
-	> Targeting Warning Panel
-	> Undock Panel
 	> Turn off all systems panel
 
 	> Misc
-	- Implement Beacon interaction
 	- Implement noise level
 	- Doodads polygons
 
@@ -46,9 +42,14 @@
 	- Improve transfer animation
 	- decline transfer when cargo is full
 	- Grey line when cargo is empty
+	- Use progress bar to show transfer
 
 	> Handles
 	- Return to center if inactive
+
+	> make wires soft
+
+	> Turn the custom Panel into a quest panel
 
 > Tools
 

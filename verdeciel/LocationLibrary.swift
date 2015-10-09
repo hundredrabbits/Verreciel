@@ -10,6 +10,11 @@ import UIKit
 
 class LocationLibrary
 {
+	var loiqeCity:Location!
+	var falvetCity:Location!
+	
+	// Loiqe
+	
 	func loiqe(at:CGPoint) -> LocationStar
 	{
 		let location = LocationStar(name:"Loiqe")
@@ -19,8 +24,9 @@ class LocationLibrary
 	
 	func loiqeCity(at:CGPoint) -> LocationTrade
 	{
-		let location = LocationTrade(name: "Loiqe City", want:itemLibrary.loiqeLicense, give:itemLibrary.smallBattery)
+		let location = LocationTrade(name: "Loiqe City", want:items.loiqeLicense, give:items.smallBattery)
 		location.at = at
+		loiqeCity = location
 		return location
 	}
 	
@@ -36,6 +42,23 @@ class LocationLibrary
 	{
 		let location = LocationBeacon(name:"loiqe beacon",message:"Are you absolutely sure that you are ~in space ...")
 		location.at = at
+		return location
+	}
+	
+	// Falvet
+	
+	func falvet(at:CGPoint) -> LocationStar
+	{
+		let location = LocationStar(name:"Falvet")
+		location.at = at
+		return location
+	}
+	
+	func falvetCity(at:CGPoint) -> LocationTrade
+	{
+		let location = LocationTrade(name: "Falvet City", want:items.loiqeLicense, give:items.smallBattery)
+		location.at = at
+		falvetCity = location
 		return location
 	}
 }

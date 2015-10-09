@@ -46,14 +46,16 @@ class CoreUniverse : SCNNode
 	
 	func falvetSystem(offset:CGPoint)
 	{
-		let star = LocationStar(name:"Falvet",at: CGPoint(x:offset.x,y:offset.y),color:red)
+		self.addChildNode(locations.falvet(CGPoint(x:offset.x,y:offset.y)))
 		
 		falvetToUsul = eventPath(name:"landing",at: CGPoint(x:offset.x - 1.5,y:offset.y))
 		falvetToSenni = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1.5))
 		falvetToValen = eventPath(name:"landing",at: CGPoint(x:offset.x + 1.5,y:offset.y))
 		falvetToLoiqe = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1.5))
 		
-		let city5 = eventStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y + 1), size: 0.5)
+		let city = locations.falvetCity(CGPoint(x:offset.x - 1,y:offset.y + 1))
+		
+		self.addChildNode(city)
 		let city6 = eventStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y + 1), size: 0.5)
 		let city7 = eventStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y - 1), size: 0.5)
 		let city8 = eventStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y - 1), size: 0.5)
@@ -63,17 +65,16 @@ class CoreUniverse : SCNNode
 		self.addChildNode(falvetToValen)
 		self.addChildNode(falvetToLoiqe)
 		
-		self.addChildNode(city5)
+		self.addChildNode(city)
 		self.addChildNode(city6)
 		self.addChildNode(city7)
 		self.addChildNode(city8)
 		
-		city5.connect(falvetToSenni)
+		city.connect(falvetToSenni)
 		city6.connect(falvetToValen)
 		city7.connect(falvetToLoiqe)
 		city8.connect(falvetToUsul)
 		
-		self.addChildNode(star)
 	}
 	
 	func loiqeSystem(offset:CGPoint)
@@ -81,13 +82,13 @@ class CoreUniverse : SCNNode
 		let star = LocationStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
 		self.addChildNode(star)
 		
-		entryToLoiqe = locationLibrary.loiqeRepair(CGPoint(x:offset.x,y:offset.y + 1))
+		entryToLoiqe = locations.loiqeRepair(CGPoint(x:offset.x,y:offset.y + 1))
 		self.addChildNode(entryToLoiqe)
 		
-		let loiqeBeacon = locationLibrary.loiqeBeacon(CGPoint(x:offset.x - 1,y:offset.y + 1))
+		let loiqeBeacon = locations.loiqeBeacon(CGPoint(x:offset.x - 1,y:offset.y + 1))
 		self.addChildNode(loiqeBeacon)
 		
-		let loiqeCity = locationLibrary.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
+		let loiqeCity = locations.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
 		loiqeCity.connect(entryToLoiqe)
 		self.addChildNode(loiqeCity)
 	}

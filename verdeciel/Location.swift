@@ -8,7 +8,7 @@ class Location : Event
 	var service = services.none
 	var interaction = "connected"
 	
-	init(name:String,at: CGPoint, service:services = services.none)
+	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
 

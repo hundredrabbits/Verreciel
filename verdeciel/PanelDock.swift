@@ -29,11 +29,20 @@ class PanelDock : Panel
 		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
+	func start()
+	{
+		update()
+	}
+	
 	override func update()
 	{
 		if capsule.dock != nil {
 			label.updateWithColor("docked", color: red)
 			triangle.updateChildrenColors(red)
+		}
+		else{
+			label.updateWithColor("undocked", color: grey)
+			triangle.updateChildrenColors(grey)
 		}
 	}
 	
@@ -75,12 +84,10 @@ class PanelDock : Panel
 			dockingTimer.invalidate()
 			dockingStatus = 0
 			completeUndocking()
-			custom.progressBar.opacity = 0
 		}
 		else{
 			label.updateWithColor("Undocking \(Int(dockingStatus))%", color: grey)
 			custom.progressBar.update(dockingStatus)
-			custom.progressBar.opacity = 1
 		}
 	}
 	

@@ -26,15 +26,32 @@ class CoreSpace: SCNNode
 		spaceColor.geometry = SCNSphere(radius: 40.0)
 		spaceColor.geometry?.firstMaterial?.doubleSided = true
 		spaceColor.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
-		self.addChildNode(spaceColor)
+		addChildNode(spaceColor)
 		
 		structuresRoot = SCNNode()
 		structuresRoot.position = SCNVector3(x: 0, y: 0, z: 0)
-		self.addChildNode(structuresRoot)
+		addChildNode(structuresRoot)
 		
 		starsRoot = SCNNode()
 		starsRoot.position = SCNVector3(x: 0, y: 0, z: 0)
-		self.addChildNode(starsRoot)
+		addChildNode(starsRoot)
+		
+		prepareLines()
+		
+	}
+	
+	func prepareLines()
+	{
+		var i = 0
+		while i < 100 {
+			thruster.actualSpeed = 3
+			addLines()
+			updateLines()
+			i += 1
+		}
+		thruster.actualSpeed = 0
+		updateLines()
+		
 	}
 	
 	func startInstance(location:Location)
