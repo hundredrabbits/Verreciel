@@ -50,9 +50,8 @@ class PanelCustom : Panel
 
 		self.addChildNode(dockNameLabel)
 		
-		
-		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale))
-		progressBar.position = SCNVector3(0,highNode[7].y * -scale,0)
+		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale) * 2)
+		progressBar.position = SCNVector3(highNode[7].x * scale,highNode[7].y * scale - 0.25,0)
 		self.addChildNode(progressBar)
 		
 		// Undock
@@ -61,7 +60,6 @@ class PanelCustom : Panel
 		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
 		self.addChildNode(statusLabel)
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),color:grey))
 	}
 	

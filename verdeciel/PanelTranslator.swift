@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelTranslator : SCNNode
+class PanelTranslator : Panel
 {
 	var inputLabel:SCNLabel!
 	var outputLabel:SCNLabel!

@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelMonitor : SCNNode
+class PanelMonitor : Panel
 {	
 	var electricityLabel:SCNLabel!
 	var shieldLabel:SCNLabel!

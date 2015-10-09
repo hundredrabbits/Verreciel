@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelDock : Panel
+class PanelRadiation : Panel
 {
 	var label:SCNLabel!
 	
@@ -27,19 +27,29 @@ class PanelDock : Panel
 		self.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.6))
 		self.geometry = SCNPlane(width: 2, height: 2)
 		self.geometry?.materials.first?.diffuse.contents = clear
+		
+		triangle.updateChildrenColors(grey)
+		label.updateWithColor("no radiation", color: grey)
 	}
 	
-	override func update()
+	func update(value:CGFloat)
 	{
-		if capsule.dock != nil {
-			label.updateWithColor("docked", color: red)
+		if value > 0 {
+			let radiationString = String(format: "%.1f", value)
+			label.updateWithColor("radiation \(radiationString)%", color: red)
 			triangle.updateChildrenColors(red)
 		}
+		else{
+			label.updateWithColor("no radiation", color: grey)
+			triangle.updateChildrenColors(grey)
+			
+		}
+		
 	}
 	
 	func addInterface()
 	{
-		label = SCNLabel(text: "UNDOCK", scale: 0.1, align: alignment.center, color: red)
+		label = SCNLabel(text: "No radiation", scale: 0.1, align: alignment.center, color: red)
 		label.position = SCNVector3(0.05,0.35,0)
 		self.addChildNode(label)
 		
@@ -52,43 +62,6 @@ class PanelDock : Panel
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,0,0), color: red))
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,size * 0.25,0), color: red))
 		self.addChildNode(triangle)
-	}
-	
-	override func touch()
-	{
-		if capsule.dock == nil { return }
-		beginUndocking()
-	}
-	
-	func beginUndocking()
-	{
-		player.alert("<undocking>")
-		dockingTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateUndocking"), userInfo: nil, repeats: true)
-		triangle.updateChildrenColors(grey)
-	}
-	
-	func updateUndocking()
-	{
-		dockingStatus += CGFloat(arc4random_uniform(7))
-		
-		if dockingStatus >= 100 {
-			dockingTimer.invalidate()
-			dockingStatus = 0
-			completeUndocking()
-			custom.progressBar.opacity = 0
-		}
-		else{
-			label.updateWithColor("Undocking \(Int(dockingStatus))%", color: grey)
-			custom.progressBar.update(dockingStatus)
-			custom.progressBar.opacity = 1
-		}
-	}
-	
-	func completeUndocking()
-	{
-		player.clearAlert()
-		label.updateWithColor("undocked", color: grey)
-		capsule.undock()
 	}
 	
 	required init(coder aDecoder: NSCoder)

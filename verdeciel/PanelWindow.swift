@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelWindow : SCNNode
+class PanelWindow : Panel
 {
 	override init()
 	{

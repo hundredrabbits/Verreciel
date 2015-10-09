@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelRadio : SCNNode
+class PanelRadio : Panel
 {
 	var inputLabel:SCNLabel!
 	var outputLabel:SCNLabel!

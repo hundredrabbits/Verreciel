@@ -48,7 +48,6 @@
 	- Grey line when cargo is empty
 
 	> Handles
-	- Highlight selected handle
 	- Return to center if inactive
 
 > Tools

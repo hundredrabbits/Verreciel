@@ -169,16 +169,20 @@ class CoreCapsule: SCNNode
 		
 		let southPanels = SCNNode()
 		battery = PanelBattery()
+		radiation = PanelRadiation()
 		radio = PanelRadio()
 		southPanels.addChildNode(battery)
 		southPanels.addChildNode(radio)
+		southPanels.addChildNode(radiation)
 		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
 		
 		let westPanels = SCNNode()
 		radar = PanelRadar()
 		translator = PanelTranslator()
+		targetter = PanelTargetter()
 		westPanels.addChildNode(radar)
 		westPanels.addChildNode(translator)
+		westPanels.addChildNode(targetter)
 		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))

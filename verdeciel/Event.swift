@@ -98,48 +98,6 @@ class Event : SCNNode
 	override func update()
 	{
 		if capsule == nil { return }
-		
-		self.position = SCNVector3(at.x,at.y,0)
-		self.distance = distanceBetweenTwoPoints(capsule.at, point2: self.at)
-		self.angle = calculateAngle()
-		self.align = calculateAlignment()
-		
-		// Sighted
-		if self.distance < 2 {
-			if self.inSight == false {
-				self.inSight = true
-				self.isKnown = true
-				sight()
-			}
-		}
-		else{
-			inSight = false
-		}
-		
-		// Approach
-		if self.distance <= 0.6 {
-			if self.inApproach == false {
-				approach()
-				self.inApproach = true
-			}
-		}
-		else{
-			inApproach = false
-		}
-		
-		// Collide
-		if self.distance < 0.01 {
-			if self.inCollision == false {
-				collide()
-				self.inCollision = true
-			}
-		}
-		else{
-			inCollision = false
-		}
-		
-		radarCulling()
-		clean()
 	}
 	
 	func updateSprite()
@@ -153,29 +111,6 @@ class Event : SCNNode
 		for node in createSprite().childNodes {
 			self.addChildNode(node)
 		}
-	}
-	
-	// MARK: Events -
-	
-	func sight()
-	{
-		print("* EVENT    | Sighted \(self.name!)")
-		updateSprite()
-	}
-	
-	func approach()
-	{
-		print("* EVENT    | Approached \(self.name!)")
-		capsule.instance = self
-		space.startInstance(self as! Location)
-		player.activateEvent(self)
-		updateSprite()
-	}
-	
-	func collide()
-	{
-		print("* EVENT    | Collided \(self.name!)")
-		updateSprite()
 	}
 
 	// MARK: Radar -

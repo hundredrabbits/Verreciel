@@ -49,6 +49,8 @@ class SCNLine : SCNNode
 	
 	func updateColor(color:UIColor)
 	{
+		if color == self.color { return }
+		self.color = color
 		draw(nodeA, nodeB: nodeB, color: color)
 	}
 	

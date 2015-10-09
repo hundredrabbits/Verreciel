@@ -48,6 +48,8 @@ var cargo:PanelCargo!
 var monitor:PanelMonitor!
 var window:PanelWindow!
 var dockbay:PanelDock!
+var targetter:PanelTargetter!
+var radiation:PanelRadiation!
 
 var radio:PanelRadio!
 var translator:PanelTranslator!

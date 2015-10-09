@@ -35,14 +35,84 @@ class Location : Event
 		return mesh
 	}
 	
+	func sightUpdate()
+	{
+	
+	}
+	
+	override func update()
+	{
+		self.position = SCNVector3(at.x,at.y,0)
+		self.distance = distanceBetweenTwoPoints(capsule.at, point2: self.at)
+		self.angle = calculateAngle()
+		self.align = calculateAlignment()
+		
+		// Sighted
+		if self.distance < 2 {
+			if self.inSight == false {
+				self.inSight = true
+				self.isKnown = true
+				sight()
+			}
+			sightUpdate()
+		}
+		else{
+			inSight = false
+		}
+		
+		// Approach
+		if self.distance <= 0.6 {
+			if self.inApproach == false {
+				approach()
+				self.inApproach = true
+			}
+		}
+		else{
+			inApproach = false
+		}
+		
+		// Collide
+		if self.distance < 0.01 {
+			if self.inCollision == false {
+				collide()
+				self.inCollision = true
+			}
+		}
+		else{
+			inCollision = false
+		}
+		
+		radarCulling()
+		clean()
+	}
+
+	// MARK: Events -
+	
+	func sight()
+	{
+		print("* EVENT    | Sighted \(self.name!)")
+		updateSprite()
+	}
+	
+	func approach()
+	{
+		print("* EVENT    | Approached \(self.name!)")
+		capsule.instance = self
+		space.startInstance(self)
+		player.activateEvent(self)
+		updateSprite()
+	}
+	
+	func collide()
+	{
+		print("* EVENT    | Collided \(self.name!)")
+		updateSprite()
+		capsule.dock(self)
+	}
+	
 	func addService(service:services)
 	{
 		self.service = service
-	}
-	
-	override func collide()
-	{
-		capsule.dock(self)
 	}
 	
 	required init(coder aDecoder: NSCoder) {
