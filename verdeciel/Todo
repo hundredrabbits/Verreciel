@@ -30,6 +30,10 @@
 
 > Capsule
 
+	> Targeting Warning Panel
+	> Undock Panel
+	> Turn off all systems panel
+
 	> Misc
 	- Implement Beacon interaction
 	- Implement noise level
@@ -43,7 +47,9 @@
 	- decline transfer when cargo is full
 	- Grey line when cargo is empty
 
-	- Add handles
+	> Handles
+	- Highlight selected handle
+	- Return to center if inactive
 
 > Tools
 

@@ -13,6 +13,8 @@ import Foundation
 
 class Panel : SCNNode
 {
+	var isEnabled:Bool = true
+	
 	func updateInterface(interface:Panel)
 	{
 		// Empty node

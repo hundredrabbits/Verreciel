@@ -47,6 +47,7 @@ var cargo:PanelCargo!
 
 var monitor:PanelMonitor!
 var window:PanelWindow!
+var dockbay:PanelDock!
 
 var radio:PanelRadio!
 var translator:PanelTranslator!

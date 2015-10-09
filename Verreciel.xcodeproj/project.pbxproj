@@ -37,6 +37,7 @@
 		574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* LocationTrade.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC31BC5B588008130AB /* LocationRepair.swift */; settings = {ASSET_TAGS = (); }; };
+		577F5D421BC80EC2001017B0 /* PanelDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D411BC80EC2001017B0 /* PanelDock.swift */; settings = {ASSET_TAGS = (); }; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
@@ -92,6 +93,7 @@
 		574E5FBF1BC578E1008130AB /* LocationTrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574E5FC31BC5B588008130AB /* LocationRepair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepair.swift; sourceTree = "<group>"; };
+		577F5D411BC80EC2001017B0 /* PanelDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelDock.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
@@ -219,8 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				57C915161BC45E91009454C4 /* Panel.swift */,
-				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
-				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
 				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
 				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
 				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
@@ -229,9 +229,7 @@
 				571728E01BB049BB002782A3 /* PanelCargo.swift */,
 				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
 				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
-				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
-				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
-				57DD808D1BC7005600A4146C /* PanelHandle.swift */,
+				577F5D401BC80E9C001017B0 /* Extras */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -255,6 +253,19 @@
 				57EDED211BC17321005DF3DE /* LocationBeacon.swift */,
 			);
 			name = Locations;
+			sourceTree = "<group>";
+		};
+		577F5D401BC80E9C001017B0 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
+				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
+				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
+				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
+				57DD808D1BC7005600A4146C /* PanelHandle.swift */,
+				577F5D411BC80EC2001017B0 /* PanelDock.swift */,
+			);
+			name = Extras;
 			sourceTree = "<group>";
 		};
 		579419731B58AEB100F9FF87 /* Core */ = {
@@ -370,6 +381,7 @@
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
+				577F5D421BC80EC2001017B0 /* PanelDock.swift in Sources */,
 				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* PanelCustom.swift in Sources */,

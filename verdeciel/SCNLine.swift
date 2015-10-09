@@ -47,6 +47,11 @@ class SCNLine : SCNNode
 		draw(self.nodeA, nodeB: SCNVector3(nodeB.x,height,nodeB.z), color: self.color)
 	}
 	
+	func updateColor(color:UIColor)
+	{
+		draw(nodeA, nodeB: nodeB, color: color)
+	}
+	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

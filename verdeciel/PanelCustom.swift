@@ -14,14 +14,7 @@ import Foundation
 class PanelCustom : Panel
 {
 	var content:SCNNode!
-	
-	var undockButton:SCNTrigger!
 	var statusLabel:SCNLabel!
-	var undockButtonLabel:SCNLabel!
-	
-	var dockingStatus:CGFloat = 0
-	var dockingTimer:NSTimer!
-	
 	var progressBar:SCNProgressBar!
 	
 	// Ports
@@ -39,10 +32,6 @@ class PanelCustom : Panel
 		
 		content = SCNNode()
 		self.addChildNode(content)
-		
-		progressBar = SCNProgressBar(width: 2)
-		progressBar.position = SCNVector3(0,-3,0)
-		self.addChildNode(progressBar)
 	
 		update()
 	}
@@ -61,20 +50,16 @@ class PanelCustom : Panel
 
 		self.addChildNode(dockNameLabel)
 		
+		
+		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale))
+		progressBar.position = SCNVector3(0,highNode[7].y * -scale,0)
+		self.addChildNode(progressBar)
+		
 		// Undock
 		
 		statusLabel = SCNLabel(text: "trading..", scale: 0.1, align: alignment.left, color:grey)
 		statusLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * -scale, z: 0)
 		self.addChildNode(statusLabel)
-		
-		undockButtonLabel = SCNLabel(text: "Undock", scale: 0.1, align: alignment.right, color:red)
-		undockButtonLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[0].y * -scale, z: 0)
-		self.addChildNode(undockButtonLabel)
-		
-		undockButton = SCNTrigger(host: self, size: CGSize(width: 1.5, height: 0.7), operation: false)
-		undockButton.position = SCNVector3(x: lowNode[0].x - 1, y: highNode[0].y * -scale, z: 0)
-
-		self.addChildNode(undockButton)
 		
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:grey))
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * -scale + 0.25, z: 0),color:grey))
@@ -100,37 +85,7 @@ class PanelCustom : Panel
 	func undock()
 	{
 		content.empty()
-		player.alert("<undocking>")
-		statusLabel.update("undocking")
-		undockButton.opacity = 0
-		undockButtonLabel.opacity = 0
-		
-		dockingTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("undocking"), userInfo: nil, repeats: true)
-	}
-	
-	func undocking()
-	{
-		dockingStatus += CGFloat(arc4random_uniform(7))
-		
-		if dockingStatus >= 100 {
-			dockingTimer.invalidate()
-			dockingStatus = 0
-			undockingComplete()
-			statusLabel.update("> in flight")
-		}
-		else{
-			statusLabel.update("progress \(dockingStatus)%")
-			progressBar.update(dockingStatus)
-		}
-	}
-	
-	func undockingComplete()
-	{
-		dockNameLabel.update("")
-		player.clearAlert()
-		player.message("in flight")
-		dockingTimer.invalidate()
-		capsule.undock()
+		statusLabel.update("undocked")
 	}
 	
 	override func listen(event:Event)
