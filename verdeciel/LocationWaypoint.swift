@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventPath : Location
+class LocationWaypoint : Location
 {
 	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0))
 	{

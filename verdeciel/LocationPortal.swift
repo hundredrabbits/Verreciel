@@ -3,7 +3,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventPortal : Location
+class LocationPortal : Location
 {
 	let destination:CGPoint!
 	let sector:sectors!

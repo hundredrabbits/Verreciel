@@ -3,30 +3,26 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class eventCargo : Location
+class LocationStation : Location
 {
-	init(name:String,at: CGPoint, inventory: Event = Event(type: eventTypes.item))
+	init(name:String = "",at: CGPoint = CGPoint(), size: Float = 1)
 	{
-		super.init(name:"cargo", at:at)
+		super.init(name:name, at:at)
 		
 		self.at = at
-		self.size = 1
+		self.size = size
 		self.note = ""
-		
-		self.content.append(inventory)
-		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		self.addChildNode(sprite)
 		self.addChildNode(trigger)
+		self.addChildNode(trigger)
+		
+		self.interface = panel()
 	}
 	
 	override func createSprite() -> SCNNode
 	{
-		var size:Float = 0.15
-		let color:UIColor = grey
-		
+		var size:Float = 0.1
 		let spriteNode = SCNNode()
 		
 		if isKnown == true {
@@ -34,8 +30,6 @@ class eventCargo : Location
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-			
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size/2,y:size/2,z:0),nodeB: SCNVector3(x:-size/2,y:-size/2,z:0),color: color))
 		}
 		else{
 			size = 0.05
@@ -51,25 +45,30 @@ class eventCargo : Location
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
+		let radius:Float = 4
+		let distance:Float = 4
 		
-		var i = 0
-		while i < 4 {
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,i,0), nodeB: SCNVector3(0,i,3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,3), nodeB: SCNVector3(3,i,0), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,i,0), nodeB: SCNVector3(0,i,-3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,-3), nodeB: SCNVector3(-3,i,0), color: red))
-			i += 1
-		}
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(0,1,-3), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(0,1,3), color: red))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,1,0), nodeB: SCNVector3(3,2,0), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,1,0), nodeB: SCNVector3(-3,2,0), color: red))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,-3), nodeB: SCNVector3(0,3,-3), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: red))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
 		
 		return mesh
+	}
+	
+	override func panel() -> Panel
+	{
+		let newPanel = Panel()
+		
+		let test = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
+		newPanel.addChildNode(test)
+		
+		return newPanel
+	}
+	
+	override func collide()
+	{
+		capsule.dock(self)
 	}
 	
 	override func sight()

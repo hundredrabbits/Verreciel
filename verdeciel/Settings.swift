@@ -58,6 +58,7 @@ enum services
 	case none
 	case electricity
 	case hull
+	case neutralize
 }
 
 enum missions

@@ -13,17 +13,17 @@ import Foundation
 
 class CoreUniverse : SCNNode
 {
-	var falvetToSenni = eventPath()
-	var falvetToValen = eventPath()
-	var falvetToUsul = eventPath()
-	var falvetToLoiqe = eventPath()
+	var falvetToSenni = LocationWaypoint()
+	var falvetToValen = LocationWaypoint()
+	var falvetToUsul = LocationWaypoint()
+	var falvetToLoiqe = LocationWaypoint()
 	
-	var valenToVenic = eventPath()
+	var valenToVenic = LocationWaypoint()
 	
-	var entryToSenni = eventStation()
-	var entryToValen = eventStation()
-	var entryToUsul = eventStation()
-	var entryToVenic = eventStation()
+	var entryToSenni = LocationStation()
+	var entryToValen = LocationStation()
+	var entryToUsul = LocationStation()
+	var entryToVenic = LocationStation()
 	var entryToLoiqe:Location!
 	
 	override init()
@@ -48,17 +48,17 @@ class CoreUniverse : SCNNode
 	{
 		self.addChildNode(locations.falvet(CGPoint(x:offset.x,y:offset.y)))
 		
-		falvetToUsul = eventPath(name:"landing",at: CGPoint(x:offset.x - 1.5,y:offset.y))
-		falvetToSenni = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1.5))
-		falvetToValen = eventPath(name:"landing",at: CGPoint(x:offset.x + 1.5,y:offset.y))
-		falvetToLoiqe = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1.5))
+		falvetToUsul = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x - 1.5,y:offset.y))
+		falvetToSenni = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1.5))
+		falvetToValen = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x + 1.5,y:offset.y))
+		falvetToLoiqe = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1.5))
 		
 		let city = locations.falvetCity(CGPoint(x:offset.x - 1,y:offset.y + 1))
 		
 		self.addChildNode(city)
-		let city6 = eventStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y + 1), size: 0.5)
-		let city7 = eventStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y - 1), size: 0.5)
-		let city8 = eventStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y - 1), size: 0.5)
+		let city6 = LocationStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y + 1), size: 0.5)
+		let city7 = LocationStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y - 1), size: 0.5)
+		let city8 = LocationStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y - 1), size: 0.5)
 		
 		self.addChildNode(falvetToUsul)
 		self.addChildNode(falvetToSenni)
@@ -97,9 +97,9 @@ class CoreUniverse : SCNNode
 	{
 		let star = LocationStar(name:"venic",at: CGPoint(x:offset.x,y:offset.y))
 		
-		entryToVenic = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		entryToVenic = LocationStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
-		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x - 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
+		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x - 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
 		
 		
 		portal.connect(entryToVenic)
@@ -113,9 +113,9 @@ class CoreUniverse : SCNNode
 	{
 		let star = LocationStar(name:"Usul",at: CGPoint(x:offset.x,y:offset.y))
 		
-		entryToUsul = eventStation(name:"Repair",at: CGPoint(x:offset.x + 1,y:offset.y), size: 0.5)
+		entryToUsul = LocationStation(name:"Repair",at: CGPoint(x:offset.x + 1,y:offset.y), size: 0.5)
 		
-		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y - 1), destination:CGPoint(x:offset.x,y:offset.y))
+		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y - 1), destination:CGPoint(x:offset.x,y:offset.y))
 		
 		self.addChildNode(entryToUsul)
 		self.addChildNode(star)
@@ -126,10 +126,10 @@ class CoreUniverse : SCNNode
 	{
 		let star = LocationStar(name:"valen",at: CGPoint(x:offset.x,y:offset.y))
 		
-		entryToValen = eventStation(name:"Repair",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
-		valenToVenic = eventPath(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1))
+		entryToValen = LocationStation(name:"Repair",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
+		valenToVenic = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1))
 		
-		let city2 = eventStation(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		let city2 = LocationStation(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
 		
 		city2.connect(entryToValen)
 		
@@ -142,14 +142,14 @@ class CoreUniverse : SCNNode
 	func senniSystem(offset:CGPoint)
 	{
 		let star = LocationStar(name:"Senni",at: CGPoint(x:offset.x,y:offset.y))
-		let landing = eventStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
-		let repair = eventStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
-		let portal = eventPortal(name: "Portal", at: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
-		let cargo2 = eventCargo(name: "cargo", at: CGPoint(x:offset.x + 1.5,y:offset.y))
-		let gate = eventPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y + 2), destination:CGPoint(x:offset.x,y:offset.y), sector: sectors.cyanine)
+		let landing = LocationStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
+		let repair = LocationStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
+		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
+		let cargo2 = LocationCargo(name: "cargo", at: CGPoint(x:offset.x + 1.5,y:offset.y))
+		let gate = LocationPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y + 2), destination:CGPoint(x:offset.x,y:offset.y), sector: sectors.cyanine)
 		
 		
-		entryToSenni = eventStation(name: "cargo", at: CGPoint(x:offset.x,y:offset.y - 1), size:1)
+		entryToSenni = LocationStation(name: "cargo", at: CGPoint(x:offset.x,y:offset.y - 1), size:1)
 		
 		landing.connect(repair)
 		repair.connect(portal)
