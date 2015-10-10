@@ -19,8 +19,6 @@ class PanelMonitor : Panel
 	var oxygenLabel:SCNLabel!
 	var hullLabel:SCNLabel!
 	var radiationLabel:SCNLabel!
-	var noiseLabel:SCNLabel!
-	var sectorNameLabel:SCNLabel!
 	
 	var currentSystem = Event(newName: "test", at: CGPoint(x: 999999,y: 999999),type: eventTypes.star)
 	
@@ -108,36 +106,10 @@ class PanelMonitor : Panel
 		southMonitor.addChildNode(electricityLabel)
 		
 		self.addChildNode(southMonitor)
-		
-		//
-		
-		let westMonitor = SCNNode()
-		
-		let noiseLabelTitle	= SCNLabel(text: "noise", scale: 0.1, align: alignment.left)
-		noiseLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		westMonitor.addChildNode(noiseLabelTitle)
-		
-		let sectorNameLabelTitle = SCNLabel(text: "Sector", scale: 0.1, align: alignment.left)
-		sectorNameLabelTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
-		westMonitor.addChildNode(sectorNameLabelTitle)
-		
-		noiseLabel = SCNLabel(text: "null", scale: 0.1, align: alignment.right)
-		noiseLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
-		westMonitor.addChildNode(noiseLabel)
-		
-		sectorNameLabel = SCNLabel(text: "UNKNOWN", scale: 0.1, align: alignment.right)
-		sectorNameLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.9, z: lowNode[7].z)
-		westMonitor.addChildNode(sectorNameLabel)
-		
-		westMonitor.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3)); // rotate 90 degrees
-		
-		self.addChildNode(westMonitor)
 	}
 	
 	override func fixedUpdate()
-	{
-		updateSystem()
-		
+	{		
 		var labelColor = white
 		if battery.value < 10 { labelColor = red }
 		if capsule.dock != nil && capsule.dock.service == services.electricity { labelColor = cyan }
@@ -157,11 +129,6 @@ class PanelMonitor : Panel
 		if capsule.oxygen < 10 { labelColor = red }
 		if battery.inOxygen.origin != nil {	if battery.inOxygen.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { labelColor = cyan } }
 		oxygenLabel.updateWithColor(String(format: "%.1f", capsule.oxygen), color: labelColor)
-	}
-	
-	func updateSystem()
-	{
-		sectorNameLabel.update(radar.closestLocation(eventDetails.star).name!)
 	}
 	
 	func monitorValue(value:Float) -> String

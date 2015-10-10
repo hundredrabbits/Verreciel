@@ -19,6 +19,7 @@ class PanelRadar : SCNNode
 	var labelPositionX:SCNLabel!
 	var labelPositionZ:SCNLabel!
 	var labelDistance:SCNLabel!
+	var sectorLabel:SCNLabel!
 	
 	var eventPivot = SCNNode()
 	var eventView = universe
@@ -67,6 +68,10 @@ class PanelRadar : SCNNode
 		// Draw Radar
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+	
+		sectorLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: white)
+		sectorLabel.position = SCNVector3(0,highNode[7].y + 0.2,0)
+		addChildNode(sectorLabel)
 		
 		// Ports
 		
@@ -112,12 +117,18 @@ class PanelRadar : SCNNode
 		self.addChildNode(targetterAway)
 		targetterAway.opacity = 0
 		
+		// Design Top
+		addChildNode(SCNLine(nodeA: SCNVector3(highNode[7].x,highNode[7].y,0), nodeB: SCNVector3(highNode[7].x * 0.8,highNode[7].y,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(highNode[0].x,highNode[0].y,0), nodeB: SCNVector3(highNode[0].x * 0.8,highNode[0].y,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(highNode[7].x * 0.8,highNode[7].y,0), nodeB: SCNVector3(highNode[7].x * 0.7,highNode[7].y * 1.3,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(highNode[0].x * 0.8,highNode[0].y,0), nodeB: SCNVector3(highNode[0].x * 0.7,highNode[0].y * 1.3,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(highNode[0].x * 0.7,highNode[0].y * 1.3,0), nodeB: SCNVector3(highNode[7].x * 0.7,highNode[7].y * 1.3,0), color: white))
+		
+		// Design Bottom
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[7].x,lowNode[7].y,0), nodeB: SCNVector3(lowNode[7].x * 0.8,lowNode[7].y,0), color: white))
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), color: white))
-	
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[7].x * 0.8,lowNode[7].y,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), color: white))
-		
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
 		
 		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
@@ -132,6 +143,9 @@ class PanelRadar : SCNNode
 	
 	override func fixedUpdate()
 	{
+		sectorLabel.update("\(closestLocation(eventDetails.star).name!) system")
+		
+		/*  FIX THIS SHIT
 		labelPositionX.update(String(Int(capsule.at.x)))
 		labelPositionZ.update(String(Int(capsule.at.y)))
 		
@@ -140,12 +154,13 @@ class PanelRadar : SCNNode
 		updateTarget()
 		
 		output.update()
-	let directionNormal = Double(Float(capsule.direction)/180) * -1
-	shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
-	
-	update()
-	self.bang(true)
-	
+		
+		let directionNormal = Double(Float(capsule.direction)/180) * -1
+		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
+		
+		update()
+		self.bang(true)
+		*/
 	}
 	
 	func updateTarget()

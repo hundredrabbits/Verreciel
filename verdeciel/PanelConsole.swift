@@ -20,6 +20,8 @@ class PanelConsole : SCNNode
 	var consoleLine5:SCNCommand!
 	var consoleLine6:SCNCommand!
 	
+	var progressBar:SCNProgressBar!
+	
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
 	// Ports
@@ -40,7 +42,9 @@ class PanelConsole : SCNNode
 	{
 		let scale:Float = 0.8
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale - 0.25, z: 0),nodeB: SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale - 0.25, z: 0),color:white))
+		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale) * 2)
+		progressBar.position = SCNVector3(highNode[7].x * scale,highNode[7].y * scale - 0.25,0)
+		self.addChildNode(progressBar)
 		
 		let linesRoot = SCNNode()
 		
