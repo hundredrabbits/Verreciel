@@ -37,7 +37,6 @@ class CoreSpace: SCNNode
 		addChildNode(starsRoot)
 		
 		prepareLines()
-		
 	}
 	
 	func prepareLines()

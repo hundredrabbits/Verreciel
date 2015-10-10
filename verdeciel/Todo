@@ -8,11 +8,9 @@
 	> Events
 	- Warp animation
 
-	> Sentries
-	- Detection
-	- Firing missle events at player
-	- Animate missle events
-	- Display player targeting
+	> Add Vermil Portal to Usul
+
+	> Add cyanin Portal to Valen
 
 > Event Types
 
@@ -20,12 +18,22 @@
 	- Add repair kits
 	- Add maps
 	- Add ammo
+	- Portal Keys
 
 	> Locations
 	- Add dimensional gates(qith item requirements)
 	- Mark the sprite as completed when the quest is done
+	- Warp Align locations
 
 	> Stealthed events
+
+> Locations
+
+	- Location where you can mix two items
+	- Invisible
+	- Sentries
+	- Hostile
+	- Cargo
 
 > Capsule
 
@@ -36,7 +44,7 @@
 	- Doodads polygons
 
 	> Radar
-	- Option to leave radar mode
+	- Create better radar sprites
 
 	> Cargo
 	- Improve transfer animation
@@ -49,14 +57,17 @@
 
 	> make wires soft
 
-	> Turn the custom Panel into a quest panel
-
 > Tools
 
 > Quests
 
-	- Tutorial #1 : Give license to the Loiqe station
-	- Tutorial #2 : Use Battery to power ship
+	> Implement quest completion/check
+
+	- visit
+	- discover
+	- fetch
+	- trade
+	- find
 
 ================
 *    Notes

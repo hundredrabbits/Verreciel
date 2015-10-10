@@ -87,7 +87,6 @@ class PanelPilot : SCNNode
 	
 	override func tic()
 	{
-		print("working")
 		adjustAngle()
 	}
 	

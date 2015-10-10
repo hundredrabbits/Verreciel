@@ -29,8 +29,6 @@ class PanelRadar : SCNNode
 	var horizontalGrid:SCNLine!
 	var verticalGrid:SCNLine!
 	
-	var leaveButton:SCNTrigger!
-	
 	// Ports
 	
 	var inputLabel:SCNLabel!
@@ -52,11 +50,6 @@ class PanelRadar : SCNNode
 		
 		self.geometry = SCNPlane(width: 2, height: 2)
 		self.geometry?.materials.first?.diffuse.contents = clear
-		
-		leaveButton = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: false)
-		leaveButton.position = SCNVector3(0,-3,-14)
-		leaveButton.geometry?.materials.first?.diffuse.contents = clear
-		self.addChildNode(leaveButton)
 	}
 	
 	override func touch()

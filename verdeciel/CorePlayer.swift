@@ -15,7 +15,6 @@ class CorePlayer : SCNNode
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!
 	
-	var eventLabel:SCNLabel!
 	var messageLabel:SCNLabel!
 	var messageTimer:NSTimer!
 	
@@ -31,6 +30,9 @@ class CorePlayer : SCNNode
 	var handle:PanelHandle!
 	
 	var inRadar:Bool = false
+	
+	var trigger:SCNTrigger!
+	var triggerLabel:SCNLabel!
 	
 	override init()
 	{
@@ -61,6 +63,11 @@ class CorePlayer : SCNNode
 		}
 	}
 	
+	override func bang(param: Bool)
+	{
+		leaveRadar()
+	}
+	
 	func addHelmet()
 	{
 		self.addChildNode( SCNLine(nodeA: SCNVector3(x: -0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
@@ -74,27 +81,34 @@ class CorePlayer : SCNNode
 		displayHealth = SCNLabel(text: "99hp", scale: 0.05, align: alignment.left)
 		displayHealth.position = SCNVector3(x: -0.7, y: -1, z: -1.01)
 		displayHealth.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(displayHealth)
+		addChildNode(displayHealth)
 		
 		displayMagic = SCNLabel(text: "34mp", scale: 0.05, align: alignment.right)
 		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
 		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(displayMagic)
+		addChildNode(displayMagic)
 		
 		alertLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
 		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
 		alertLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(alertLabel)
+		addChildNode(alertLabel)
 		
 		messageLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
 		messageLabel.position = SCNVector3(x: 0, y: 1.1, z: -1.01)
 		messageLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(messageLabel)
+		addChildNode(messageLabel)
 		
-		eventLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
-		eventLabel.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
-		eventLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		self.addChildNode(eventLabel)
+		// Button
+		
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75), operation: true)
+		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
+		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))
+		trigger.opacity = 0
+		addChildNode(trigger)
+		
+		triggerLabel = SCNLabel(text: "return to capsule", scale: 0.03, align: alignment.center, color: red)
+		triggerLabel.position = SCNVector3(0,0,0)
+		trigger.addChildNode(triggerLabel)
 	}
 	
 	func activateEvent(event:Event)
@@ -161,14 +175,16 @@ class CorePlayer : SCNNode
 	func enterRadar()
 	{
 		self.inRadar = true
-		eventLabel.update("leave radar view")
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
+		
 		cameraNode.position = SCNVector3(13,0,0)
+		
 		radar.eventPivot.position = SCNVector3(0,0,-14)
 		radar.shipCursor.position = SCNVector3(0,0,-14)
-		SCNTransaction.setCompletionBlock({ })
+		
+		SCNTransaction.setCompletionBlock({ self.trigger.opacity = 1 })
 		SCNTransaction.commit()
 		
 		for newEvent in universe.childNodes {
@@ -176,37 +192,33 @@ class CorePlayer : SCNNode
 			event.wire.opacity = 1
 			event.opacity = 1
 		}
-		radar.leaveButton.opacity = 1
 	}
 	
 	func leaveRadar()
 	{
 		self.inRadar = false
+		self.trigger.opacity = 0
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
+		
 		cameraNode.position = SCNVector3(0,0,0)
-		radar.eventPivot.position = SCNVector3(universe.position.x,universe.position.y,0)
+		
+		radar.eventPivot.position = SCNVector3(0,0,0)
 		radar.shipCursor.position = SCNVector3(0,0,0)
+		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
 
 		for newEvent in universe.childNodes {
 			let event = newEvent as! Event
-			event.connection.opacity = 0
+			event.wire.opacity = 0
 			event.opacity = 0
 		}
-		radar.leaveButton.opacity = 0
 	}
 	
 	override func tic()
 	{
-		if capsule.dock != nil {
-			player.eventLabel.updateWithColor("docked at \(capsule.dock.name!)", color: grey)
-		}
-		else{
-			player.eventLabel.update("")
-		}
 		flickerAlert()
 	}
 	
