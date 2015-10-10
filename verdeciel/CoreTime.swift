@@ -23,26 +23,13 @@ class CoreTime : NSObject
 	
 	func start()
 	{
-		let eventSelector = Selector("tic")
-		time = NSTimer.scheduledTimerWithTimeInterval(0.075, target: self, selector: eventSelector, userInfo: nil, repeats: true)
+		time = NSTimer.scheduledTimerWithTimeInterval(0.075, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
 	}
 	
 	func tic()
 	{
 		universe.update()
-	
 		space.update()
-		
-		battery.tic()
-		
-		pilot.tic()
-		radar.tic()
-		monitor.tic()
-		
-		capsule.tic()
-		
-		thruster.tic()
-		
-		player.tic()
+		capsule._fixedUpdate()
 	}
 }

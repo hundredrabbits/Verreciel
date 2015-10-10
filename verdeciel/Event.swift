@@ -81,7 +81,7 @@ class Event : SCNNode
 	
 	// MARK: Basic -
 	
-	func start()
+	override func start()
 	{
 		print("@ EVENT    | \(self.name!)\(self.at)")
 		
@@ -93,11 +93,6 @@ class Event : SCNNode
 		let trigger = SCNTrigger(host: self, size: CGSize(width: 1, height: 1))
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
-	}
-	
-	override func update()
-	{
-		if capsule == nil { return }
 	}
 	
 	func updateSprite()

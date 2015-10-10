@@ -138,7 +138,7 @@ class PanelBattery : SCNNode
 		}
 	}
 	
-	override func tic()
+	override func fixedUpdate()
 	{
 		if value == 0 { return }
 		

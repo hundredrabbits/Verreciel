@@ -130,16 +130,7 @@ class PanelRadar : SCNNode
 		addChildNode(trigger)
 	}
 	
-	override func tic()
-	{
-		let directionNormal = Double(Float(capsule.direction)/180) * -1
-		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
-		
-		update()
-		self.bang(true)
-	}
-	
-	override func update()
+	override func fixedUpdate()
 	{
 		labelPositionX.update(String(Int(capsule.at.x)))
 		labelPositionZ.update(String(Int(capsule.at.y)))
@@ -147,8 +138,14 @@ class PanelRadar : SCNNode
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
 		updateTarget()
-
+		
 		output.update()
+	let directionNormal = Double(Float(capsule.direction)/180) * -1
+	shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
+	
+	update()
+	self.bang(true)
+	
 	}
 	
 	func updateTarget()

@@ -134,7 +134,7 @@ class PanelMonitor : Panel
 		self.addChildNode(westMonitor)
 	}
 	
-	override func tic()
+	override func fixedUpdate()
 	{
 		updateSystem()
 		

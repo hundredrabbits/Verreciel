@@ -18,9 +18,32 @@ extension SCNNode
 		print("! This node has no touch action")
 	}
 	
+	func _start()
+	{
+		for node in childNodes {
+			node.start()
+			node._start()
+		}
+	}
+	
+	func _fixedUpdate()
+	{
+		for node in childNodes {
+			node.fixedUpdate()
+			node._fixedUpdate()
+		}
+	}
+	
+	func start()
+	{
+	}
+	
 	func update()
 	{
-//		print("! This node has no update action")
+	}
+	
+	func fixedUpdate()
+	{
 	}
 	
 	func bang(param:Bool)
@@ -31,11 +54,6 @@ extension SCNNode
 	func listen(event:Event)
 	{
 		print("! This node has no listen action")
-	}
-	
-	func tic()
-	{
-		
 	}
 	
 	func color(color:UIColor)

@@ -160,7 +160,7 @@ class PanelThruster : SCNNode
 		decelerate.opacity = 0
 	}
 	
-	override func tic()
+	override func fixedUpdate()
 	{
 		update()
 	}
@@ -190,7 +190,6 @@ class PanelThruster : SCNNode
 			
 			radar.update()
 		}
-		
 		capsule.travel += actualSpeed
 	}
 	

@@ -53,16 +53,6 @@ class CorePlayer : SCNNode
 		addHelmet()
 	}
 	
-	override func update()
-	{
-		displayHealth.update("\(health)hp")
-		displayMagic.update("\(magic)mp")
-		
-		if health < 0 {
-			displayHealth.updateWithColor("dead",color: red)
-		}
-	}
-	
 	override func bang(param: Bool)
 	{
 		leaveRadar()
@@ -222,8 +212,8 @@ class CorePlayer : SCNNode
 		}
 	}
 	
-	override func tic()
-	{
+	override func fixedUpdate() {
+		
 		flickerAlert()
 	}
 	

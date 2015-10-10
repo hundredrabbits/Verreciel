@@ -29,7 +29,7 @@ class PanelDock : Panel
 		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
-	func start()
+	override func start()
 	{
 		update()
 	}

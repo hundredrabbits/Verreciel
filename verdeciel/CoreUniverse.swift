@@ -177,13 +177,6 @@ class CoreUniverse : SCNNode
 		falvetToLoiqe.connect(entryToLoiqe)
 	}
 	
-	override func update()
-	{
-		for newEvent in self.childNodes {
-			newEvent.update()
-		}
-	}
-	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

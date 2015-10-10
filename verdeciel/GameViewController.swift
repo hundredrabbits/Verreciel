@@ -96,6 +96,8 @@ class GameViewController: UIViewController
 		
 		time.start()
 		capsule.start()
+		
+		capsule._start()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

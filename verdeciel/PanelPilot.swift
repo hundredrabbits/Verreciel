@@ -85,7 +85,7 @@ class PanelPilot : SCNNode
 		
 	}
 	
-	override func tic()
+	override func fixedUpdate()
 	{
 		adjustAngle()
 	}

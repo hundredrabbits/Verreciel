@@ -40,7 +40,7 @@ class CoreCapsule: SCNNode
 		capsuleMesh()
 	}
 	
-	func start()
+	override func start()
 	{
 		connectDefaultPorts()
 		dockbay.start()
@@ -105,18 +105,8 @@ class CoreCapsule: SCNNode
 		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 	}
 	
-	override func update()
-	{
-		radar.update()
-		pilot.update()
-		monitor.update()
-		thruster.update()
-		beacon.update()
-		console.update()
-	}
-	
-	override func tic()
-	{
+	override func fixedUpdate()
+	{		
 		service()
 		systems()
 	}
