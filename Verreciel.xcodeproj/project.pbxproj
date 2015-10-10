@@ -51,6 +51,7 @@
 		57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9621BC6C3DB00EA35F6 /* String.swift */; settings = {ASSET_TAGS = (); }; };
 		57C915171BC45E91009454C4 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C915161BC45E91009454C4 /* Panel.swift */; settings = {ASSET_TAGS = (); }; };
 		57CA80981BB9CEA3000D31F7 /* LocationCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* LocationCargo.swift */; settings = {ASSET_TAGS = (); }; };
+		57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA937A1BC9A9A50089337F /* SCNWire.swift */; settings = {ASSET_TAGS = (); }; };
 		57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */; settings = {ASSET_TAGS = (); }; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
 		57DD808E1BC7005600A4146C /* PanelHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD808D1BC7005600A4146C /* PanelHandle.swift */; settings = {ASSET_TAGS = (); }; };
@@ -112,6 +113,7 @@
 		57A5F9621BC6C3DB00EA35F6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		57C915161BC45E91009454C4 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		57CA80971BB9CEA3000D31F7 /* LocationCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCargo.swift; sourceTree = "<group>"; };
+		57CA937A1BC9A9A50089337F /* SCNWire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNWire.swift; sourceTree = "<group>"; };
 		57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
 		57DD808D1BC7005600A4146C /* PanelHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelHandle.swift; sourceTree = "<group>"; };
@@ -160,8 +162,7 @@
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
 				5736277A1B4C06FE00899EBC /* Panels */,
-				572258131BB8779900DEC41E /* Library */,
-				576BE0841BC8B8700046E43C /* Seetings */,
+				576BE0841BC8B8700046E43C /* Library */,
 				573627791B4C06E800899EBC /* Components */,
 				576BE0831BC8B5380046E43C /* Defaults */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
@@ -198,16 +199,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		572258131BB8779900DEC41E /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				5748AD9F1BC8583B00C47468 /* Quest.swift */,
-				574E5FC11BC5AEA2008130AB /* Location.swift */,
-				57A0F10E1B3DDABF0007650F /* Event.swift */,
-			);
-			name = Library;
-			sourceTree = "<group>";
-		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +212,7 @@
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
 				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
+				57CA937A1BC9A9A50089337F /* SCNWire.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -250,15 +242,18 @@
 			name = Defaults;
 			sourceTree = "<group>";
 		};
-		576BE0841BC8B8700046E43C /* Seetings */ = {
+		576BE0841BC8B8700046E43C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				57A0F10E1B3DDABF0007650F /* Event.swift */,
+				5748AD9F1BC8583B00C47468 /* Quest.swift */,
+				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				574E5FBA1BC57749008130AB /* ItemLibrary.swift */,
 				574E5FBD1BC5775F008130AB /* LocationLibrary.swift */,
 				5748AD9D1BC8476000C47468 /* QuestLibrary.swift */,
 			);
-			name = Seetings;
+			name = Library;
 			sourceTree = "<group>";
 		};
 		576E5DAF1BC5E5F8001D52A9 /* Locations */ = {
@@ -386,6 +381,7 @@
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				57CA80981BB9CEA3000D31F7 /* LocationCargo.swift in Sources */,
 				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
+				57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,

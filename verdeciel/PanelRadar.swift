@@ -131,6 +131,7 @@ class PanelRadar : SCNNode
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), color: white))
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
 		
+		/* TODO: wtf
 		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
 		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(zoomLabel)
@@ -139,24 +140,26 @@ class PanelRadar : SCNNode
 		trigger.geometry?.materials.first?.diffuse.contents = clear
 		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(trigger)
+		*/
 	}
 	
 	override func fixedUpdate()
 	{
 		sectorLabel.update("\(closestLocation(eventDetails.star).name!) system")
-		
-		/*  FIX THIS SHIT
+		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		labelPositionX.update(String(Int(capsule.at.x)))
 		labelPositionZ.update(String(Int(capsule.at.y)))
 		
-		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
+		let directionNormal = Double(Float(capsule.direction)/180) * -1
+		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
+		
+		/*  FIX THIS SHIT
+		
 		
 		updateTarget()
 		
 		output.update()
 		
-		let directionNormal = Double(Float(capsule.direction)/180) * -1
-		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		update()
 		self.bang(true)

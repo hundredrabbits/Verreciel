@@ -8,6 +8,10 @@ class Location : Event
 	var service = services.none
 	var interaction = "connected"
 	
+	var angle:CGFloat!
+	var align:CGFloat!
+	var distance:CGFloat!
+	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
@@ -17,8 +21,27 @@ class Location : Event
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
+		addChildNode(sprite)
+		addChildNode(trigger)
+	}
+	
+	override func start()
+	{
+		position = SCNVector3(at.x,at.y,0)
+		sprite = _sprite()
+		
+		position = SCNVector3(at.x,at.y,0)
+		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
+		angle = calculateAngle()
+		align = calculateAlignment()
+	}
+	
+	override func fixedUpdate()
+	{
+		position = SCNVector3(at.x,at.y,0)
+		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
+		angle = calculateAngle()
+		align = calculateAlignment()
 	}
 	
 	func mesh() -> SCNNode
@@ -35,18 +58,10 @@ class Location : Event
 		return mesh
 	}
 	
-	func sightUpdate()
-	{
 	
-	}
 	
 	override func update()
 	{
-		self.position = SCNVector3(at.x,at.y,0)
-		self.distance = distanceBetweenTwoPoints(capsule.at, point2: self.at)
-		self.angle = calculateAngle()
-		self.align = calculateAlignment()
-		
 		// Sighted
 		if self.distance < 2 {
 			if self.inSight == false {
@@ -54,7 +69,6 @@ class Location : Event
 				self.isKnown = true
 				sight()
 			}
-			sightUpdate()
 		}
 		else{
 			inSight = false
@@ -91,7 +105,6 @@ class Location : Event
 	func sight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
-		updateSprite()
 	}
 	
 	func approach()
@@ -100,19 +113,61 @@ class Location : Event
 		capsule.instance = self
 		space.startInstance(self)
 		player.activateEvent(self)
-		updateSprite()
 	}
 	
 	func collide()
 	{
 		print("* EVENT    | Collided \(self.name!)")
-		updateSprite()
 		capsule.dock(self)
 	}
 	
 	func addService(service:services)
 	{
 		self.service = service
+	}
+	
+	func _sprite() -> SCNNode
+	{
+		var size = self.size/10
+		let spriteNode = SCNNode()
+		
+		if isKnown == true {
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
+		}
+		else{
+			size = 0.05
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
+			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
+		}
+		
+		return spriteNode
+	}
+	
+	func calculateAngle() -> CGFloat
+	{
+		let p1 = capsule.at
+		let p2 = self.at
+		let center = capsule.at
+		
+		let v1 = CGVector(dx: p1.x - center.x, dy: p1.y - center.y)
+		let v2 = CGVector(dx: p2.x - center.x, dy: p2.y - center.y)
+		
+		let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+		
+		return (360 - (radToDeg(angle) - 90)) % 360
+	}
+	
+	func calculateAlignment(direction:CGFloat = capsule.direction) -> CGFloat
+	{
+		var diff = max(direction, self.angle) - min(direction, self.angle)
+		if (diff > 180){ diff = 360 - diff }
+		
+		return diff
 	}
 	
 	required init(coder aDecoder: NSCoder) {

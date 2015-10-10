@@ -25,7 +25,7 @@ class PanelPilot : SCNNode
 	// Ports
 	
 	var input:SCNPort!
-	var event:Event!
+	var location:Location!
 	
 	override init()
 	{
@@ -92,14 +92,14 @@ class PanelPilot : SCNNode
 	
 	func adjustAngle()
 	{
-		if event == nil { return }
+		if location == nil { return }
 		
-		let left = event.calculateAlignment(capsule.direction - 1)
-		let right = event.calculateAlignment(capsule.direction + 1)
+		let left = location.calculateAlignment(capsule.direction - 1)
+		let right = location.calculateAlignment(capsule.direction + 1)
 		
-		targetDirection = event.align
+		targetDirection = location.align
 		
-		if Int(event.align) > 0 {
+		if Int(location.align) > 0 {
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}
@@ -108,7 +108,7 @@ class PanelPilot : SCNNode
 			}
 		}
 		
-		directionLabel.update(String(format: "%.0f",event.align))
+		directionLabel.update(String(format: "%.0f",location.align))
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
@@ -120,7 +120,7 @@ class PanelPilot : SCNNode
 	
 	override func listen(event:Event)
 	{
-		self.event = event
+		self.location = event as! Location
 	}
 	
 	func turnLeft(deg:CGFloat)

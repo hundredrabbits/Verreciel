@@ -9,7 +9,6 @@
 	- Warp animation
 
 	> Add Vermil Portal to Usul
-
 	> Add cyanin Portal to Valen
 
 > Event Types
@@ -37,12 +36,11 @@
 
 > Capsule
 
-	> Misc
-	- Implement noise level
-	- Doodads polygons
-
 	> Radar
 	- Create better radar sprites
+
+	> Pilot
+	- Add manual controls
 
 	> Cargo
 	- Improve transfer animation

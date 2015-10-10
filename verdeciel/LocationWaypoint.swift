@@ -17,7 +17,7 @@ class LocationWaypoint : Location
 		self.addChildNode(trigger)
 	}
 	
-	override func createSprite() -> SCNNode
+	override func _sprite() -> SCNNode
 	{
 		var size:Float = 0.05
 		let spriteNode = SCNNode()
@@ -49,11 +49,6 @@ class LocationWaypoint : Location
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(-3,0,0), color: white))
 		
 		return mesh
-	}
-	
-	override func sight()
-	{
-		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

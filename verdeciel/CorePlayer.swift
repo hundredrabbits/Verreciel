@@ -40,7 +40,7 @@ class CorePlayer : SCNNode
 		magic = 99
 		
 		super.init()
-	
+		
 		// Camera
 		self.camera = SCNCamera()
 		self.camera?.xFov = 75
@@ -174,7 +174,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		
-		cameraNode.position = SCNVector3(13,0,0)
+		player.position = SCNVector3(13,0,0)
 		
 		radar.eventPivot.position = SCNVector3(0,0,-14)
 		radar.shipCursor.position = SCNVector3(0,0,-14)
@@ -197,7 +197,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		
-		cameraNode.position = SCNVector3(0,0,0)
+		player.position = SCNVector3(0,0,0)
 		
 		radar.eventPivot.position = SCNVector3(0,0,0)
 		radar.shipCursor.position = SCNVector3(0,0,0)

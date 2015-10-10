@@ -35,7 +35,7 @@ class LocationTrade : Location
 		self.interface = panel()
 	}
 	
-	override func createSprite() -> SCNNode
+	override func _sprite() -> SCNNode
 	{
 		var size:Float = 0.1
 		let spriteNode = SCNNode()
@@ -137,11 +137,6 @@ class LocationTrade : Location
 		
 		want = nil
 		give = nil
-	}
-	
-	override func sight()
-	{
-		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

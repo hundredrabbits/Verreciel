@@ -22,7 +22,7 @@ class SCNPort : SCNNode
 	
 	var event:Event!
 	var connection:SCNPort!
-	var wire:SCNLine!
+	var wire:SCNWire!
 	
 	var origin:SCNPort!
 	
@@ -57,7 +57,7 @@ class SCNPort : SCNNode
 		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -radius, z: 0),nodeB: SCNVector3(x: -radius, y: 0, z: 0),color:white))
 		sprite.addChildNode(SCNLine(nodeA: SCNVector3(x: -radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius, z: 0),color:white))
 		
-		wire = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white)
+		wire = SCNWire(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))
 		
 		self.addChildNode(wire)
 		self.addChildNode(sprite)
@@ -130,7 +130,8 @@ class SCNPort : SCNNode
 	{
 		self.connection = port
 		self.connection.origin = self
-		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port), color: white).geometry
+		
+		wire.update(SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port))
 		
 		host.bang(true)
 	}
@@ -147,7 +148,7 @@ class SCNPort : SCNNode
 		targetOrigin.disconnect()
 		targetOrigin.update()
 		
-		wire.geometry = SCNLine(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0), color: white).geometry
+		wire.reset()
 	}
 	
 	required init(coder aDecoder: NSCoder)

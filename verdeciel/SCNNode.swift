@@ -20,6 +20,7 @@ extension SCNNode
 	
 	func _start()
 	{
+		start()
 		for node in childNodes {
 			node.start()
 			node._start()
@@ -28,6 +29,7 @@ extension SCNNode
 	
 	func _fixedUpdate()
 	{
+		fixedUpdate()
 		for node in childNodes {
 			node.fixedUpdate()
 			node._fixedUpdate()

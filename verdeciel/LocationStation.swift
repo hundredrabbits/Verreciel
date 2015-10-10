@@ -20,7 +20,7 @@ class LocationStation : Location
 		self.interface = panel()
 	}
 	
-	override func createSprite() -> SCNNode
+	override func _sprite() -> SCNNode
 	{
 		var size:Float = 0.1
 		let spriteNode = SCNNode()
@@ -69,11 +69,6 @@ class LocationStation : Location
 	override func collide()
 	{
 		capsule.dock(self)
-	}
-	
-	override func sight()
-	{
-		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

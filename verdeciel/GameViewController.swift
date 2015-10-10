@@ -60,8 +60,6 @@ var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
 
-var cameraNode:SCNNode!
-
 var items = ItemLibrary()
 var locations = LocationLibrary()
 var quests = QuestLibrary()
@@ -72,6 +70,23 @@ class GameViewController: UIViewController
 	{
 		super.viewDidLoad()
 		
+		create()
+		initialize()
+		start()
+	}
+	
+	func create()
+	{
+		let scnView = self.view as! SCNView
+		scnView.scene = scene
+		scnView.showsStatistics = false
+		scnView.backgroundColor = UIColor.blackColor()
+		scnView.antialiasingMode = SCNAntialiasingMode.None
+		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+	}
+	
+	func initialize()
+	{
 		universe = CoreUniverse()
 		
 		capsule = CoreCapsule()
@@ -84,20 +99,16 @@ class GameViewController: UIViewController
 		scene.rootNode.addChildNode(space)
 		
 		time = CoreTime()
-		
-		let scnView = self.view as! SCNView
-		scnView.scene = scene
-		scnView.showsStatistics = false
-		scnView.backgroundColor = UIColor.blackColor()
-		scnView.antialiasingMode = SCNAntialiasingMode.None
-		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
-		
-		cameraNode = scene.rootNode.childNodeWithName("cameraNode", recursively: true)!
+	}
+	
+	func start()
+	{
+		universe._start()
+		capsule._start()
+		player._start()
+		space._start()
 		
 		time.start()
-		capsule.start()
-		
-		capsule._start()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -119,8 +130,8 @@ class GameViewController: UIViewController
 		
 		touchOrigin = touchPosition
 
-		cameraNode.eulerAngles.x += Float(degToRad(dragY/4))
-		cameraNode.eulerAngles.y += Float(degToRad(dragX/4))
+		player.eulerAngles.x += Float(degToRad(dragY/4))
+		player.eulerAngles.y += Float(degToRad(dragX/4))
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

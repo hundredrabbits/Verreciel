@@ -26,7 +26,7 @@ class LocationStar : Location
 		self.addChildNode(label)
 	}
 	
-	override func createSprite() -> SCNNode
+	override func _sprite() -> SCNNode
 	{
 		let size:Float = 0.15
 		
@@ -56,7 +56,7 @@ class LocationStar : Location
 		return spriteNode
 	}
 	
-	override func sightUpdate()
+	override func fixedUpdate()
 	{
 		if self.distance/0.75 < 1 {
 			let radiationPercent = 100 - ((self.distance/0.75) * 100)
@@ -65,11 +65,6 @@ class LocationStar : Location
 		else{
 			radiation.update(0)
 		}
-	}
-	
-	override func sight()
-	{
-		updateSprite()
 	}
 	
 	override func collide()

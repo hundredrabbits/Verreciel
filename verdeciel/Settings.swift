@@ -8,13 +8,15 @@
 
 import Foundation
 
-enum alignment {
+enum alignment
+{
 	case left
 	case center
 	case right
 }
 
-enum sectors {
+enum sectors
+{
 	case opal
 	case cyanine
 	case vermiles
@@ -22,7 +24,8 @@ enum sectors {
 	case void
 }
 
-enum eventTypes {
+enum eventTypes
+{
 	case unknown
 	
 	case portal
@@ -45,7 +48,8 @@ enum eventTypes {
 	case warp
 }
 
-enum eventDetails {
+enum eventDetails
+{
 	case unknown
 	case battery
 	case card

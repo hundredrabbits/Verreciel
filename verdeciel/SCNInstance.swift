@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNInstance : SCNNode
+class Instance : SCNNode
 {
 	var event:Location!
 	

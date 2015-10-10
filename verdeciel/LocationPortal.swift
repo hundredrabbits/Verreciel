@@ -32,7 +32,7 @@ class LocationPortal : Location
 		thruster.warp(self.destination, sector:self.sector)
 	}
 	
-	override func createSprite() -> SCNNode
+	override func _sprite() -> SCNNode
 	{
 		var size:Float = 0.1
 		
@@ -89,11 +89,6 @@ class LocationPortal : Location
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: color))
 		
 		return mesh
-	}
-	
-	override func sight()
-	{
-		updateSprite()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

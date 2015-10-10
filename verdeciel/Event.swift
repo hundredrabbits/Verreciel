@@ -23,10 +23,6 @@ class Event : SCNNode
 	var content:Array<Event>!
 	var color = grey
 	
-	var angle:CGFloat!
-	var align:CGFloat!
-	var distance:CGFloat!
-	
 	var inCollision:Bool = false
 	var inApproach:Bool = false
 	var inDiscovery:Bool = false
@@ -75,8 +71,6 @@ class Event : SCNNode
 		targetter = SCNLine(nodeA: SCNVector3(-0.1,-0.25,0), nodeB: SCNVector3(0.1,-0.25,0), color: red)
 		targetter.opacity = 0
 		self.addChildNode(targetter)
-		
-		start()
 	}
 	
 	// MARK: Basic -
@@ -85,27 +79,12 @@ class Event : SCNNode
 	{
 		print("@ EVENT    | \(self.name!)\(self.at)")
 		
-		self.sprite  = createSprite()
-		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
 		let trigger = SCNTrigger(host: self, size: CGSize(width: 1, height: 1))
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
-	}
-	
-	func updateSprite()
-	{
-		// Empty node
-		for node in self.sprite.childNodes {
-			node.removeFromParentNode()
-		}
-		
-		// Add
-		for node in createSprite().childNodes {
-			self.addChildNode(node)
-		}
 	}
 
 	// MARK: Radar -
@@ -114,30 +93,6 @@ class Event : SCNNode
 	{
 		connection = event
 		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
-	}
-	
-	// MARK: Misc -
-	
-	func createSprite() -> SCNNode
-	{
-		var size = self.size/10
-		let spriteNode = SCNNode()
-		
-		if isKnown == true {
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-		}
-		else{
-			size = 0.05
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-		}
-		
-		return spriteNode
 	}
 	
 	func radarCulling()
@@ -183,28 +138,6 @@ class Event : SCNNode
 			let line = node as! SCNLine
 			line.color(targetColor)
 		}
-	}
-	
-	func calculateAngle() -> CGFloat
-	{
-		let p1 = capsule.at
-		let p2 = self.at
-		let center = capsule.at
-		
-		let v1 = CGVector(dx: p1.x - center.x, dy: p1.y - center.y)
-		let v2 = CGVector(dx: p2.x - center.x, dy: p2.y - center.y)
-		
-		let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
-		
-		return (360 - (radToDeg(angle) - 90)) % 360
-	}
-	
-	func calculateAlignment(direction:CGFloat = capsule.direction) -> CGFloat
-	{
-		var diff = max(direction, self.angle) - min(direction, self.angle)
-		if (diff > 180){ diff = 360 - diff }
-		
-		return diff
 	}
 	
 	func panel() -> SCNNode
