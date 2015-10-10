@@ -37,8 +37,6 @@
 
 > Capsule
 
-	> Turn off all systems panel
-
 	> Misc
 	- Implement noise level
 	- Doodads polygons
@@ -54,6 +52,9 @@
 
 	> Handles
 	- Return to center if inactive
+
+	> Thruster
+	- Reflect the number of connections
 
 	> make wires soft
 

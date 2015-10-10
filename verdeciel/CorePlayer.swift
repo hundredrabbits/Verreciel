@@ -172,6 +172,11 @@ class CorePlayer : SCNNode
 		alertLabel.opacity = 0
 	}
 	
+	func bang()
+	{
+		print("test")
+	}
+	
 	func enterRadar()
 	{
 		self.inRadar = true

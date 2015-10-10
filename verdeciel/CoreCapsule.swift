@@ -257,7 +257,10 @@ class CoreCapsule: SCNNode
 		i = 0
 		while i < lowNode.count - 1
 		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: lowNode[i+1],color:white))
+			if i != 1 {
+				scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: lowNode[i+1],color:white))
+			}
+			
 			i += 1
 		}
 		scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[7],nodeB: lowNode[0],color:white))

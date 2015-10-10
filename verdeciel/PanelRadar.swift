@@ -26,9 +26,6 @@ class PanelRadar : SCNNode
 	
 	var targetterAway:SCNNode!
 	
-	var horizontalGrid:SCNLine!
-	var verticalGrid:SCNLine!
-	
 	// Ports
 	
 	var inputLabel:SCNLabel!
@@ -47,14 +44,6 @@ class PanelRadar : SCNNode
 		
 		self.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)
-		
-		self.geometry = SCNPlane(width: 2, height: 2)
-		self.geometry?.materials.first?.diffuse.contents = clear
-	}
-	
-	override func touch()
-	{
-		player.enterRadar()
 	}
 	
 	func createTargetter() -> SCNNode
@@ -123,11 +112,22 @@ class PanelRadar : SCNNode
 		self.addChildNode(targetterAway)
 		targetterAway.opacity = 0
 		
-		horizontalGrid = SCNLine(nodeA: SCNVector3(lowNode[7].x,0,0),nodeB: SCNVector3(lowNode[0].x,0,0),color:grey)
-		self.addChildNode(horizontalGrid)
+		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[7].x,lowNode[7].y,0), nodeB: SCNVector3(lowNode[7].x * 0.8,lowNode[7].y,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), color: white))
+	
+		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[7].x * 0.8,lowNode[7].y,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
+		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), color: white))
 		
-		verticalGrid = SCNLine(nodeA: SCNVector3(0,highNode[7].y,0),nodeB: SCNVector3(0,lowNode[0].y,0),color:grey)
-		self.addChildNode(verticalGrid)
+		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
+		
+		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
+		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
+		addChildNode(zoomLabel)
+		
+		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7), operation: true)
+		trigger.geometry?.materials.first?.diffuse.contents = clear
+		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
+		addChildNode(trigger)
 	}
 	
 	override func tic()
@@ -145,9 +145,6 @@ class PanelRadar : SCNNode
 		labelPositionZ.update(String(Int(capsule.at.y)))
 		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
-		
-		horizontalGrid.position = SCNVector3(0,((capsule.at.y * -1) % 3) + 1.5,-0.001)
-		verticalGrid.position = SCNVector3(((capsule.at.x * -1) % 4) + 2,0,-0.001)
 		
 		updateTarget()
 
