@@ -177,11 +177,6 @@ class PanelRadar : SCNNode
 			labelDistance.update(String(format: "%.1f",distanceFromShip))
 			labelDistance.opacity = 1
 			
-			if output.event.isKnown == false && distanceFromShip < 0.2 {
-				output.event.isKnown = true
-				output.event.update()
-			}
-			
 			if distanceFromShip > 1.4 {
 				let angleTest = angleBetweenTwoPoints(capsule.at, point2: output.event.at, center: capsule.at)
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1

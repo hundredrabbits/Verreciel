@@ -23,15 +23,6 @@ class Event : SCNNode
 	var content:Array<Event>!
 	var color = grey
 	
-	var inCollision:Bool = false
-	var inApproach:Bool = false
-	var inDiscovery:Bool = false
-	var inSight:Bool = false
-	
-	var isVisible:Bool = false
-	var isKnown:Bool = false // TODO: set to false for release
-	var isTargetted:Bool = false
-	
 	var sprite = SCNNode()
 	var trigger = SCNNode()
 	var wire:SCNLine!
@@ -114,17 +105,6 @@ class Event : SCNNode
 	func panel() -> SCNNode
 	{
 		return SCNNode()
-	}
-	
-	override func touch()
-	{
-		if isKnown == true {
-			print("touched: \(self.name!)")
-			radar.addTarget(self)
-		}
-		else{
-			print("event is unknown")
-		}
 	}
 	
 	func selection()

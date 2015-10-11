@@ -67,6 +67,11 @@ class LocationStar : Location
 		}
 	}
 	
+	override func discover()
+	{
+		print("hey")
+	}
+	
 	override func collide()
 	{
 		

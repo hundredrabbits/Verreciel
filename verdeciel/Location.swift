@@ -12,6 +12,15 @@ class Location : Event
 	var align:CGFloat!
 	var distance:CGFloat!
 	
+	var inCollision:Bool = false
+	var inApproach:Bool = false
+	var inDiscovery:Bool = false
+	var inSight:Bool = false
+	
+	var isVisible:Bool = false
+	var isKnown:Bool = false
+	var isTargetted:Bool = false
+	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
@@ -46,43 +55,6 @@ class Location : Event
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
 		align = calculateAlignment()
-		
-		// Sighted
-		if self.distance < 2 {
-			if self.inSight == false {
-				if isKnown == false {
-					discover()
-				}
-				self.inSight = true
-				self.isKnown = true
-				sight()
-			}
-		}
-		else{
-			inSight = false
-		}
-		
-		// Approach
-		if self.distance <= 0.6 {
-			if self.inApproach == false {
-				approach()
-				self.inApproach = true
-			}
-		}
-		else{
-			inApproach = false
-		}
-		
-		// Collide
-		if self.distance < 0.01 {
-			if self.inCollision == false {
-				collide()
-				self.inCollision = true
-			}
-		}
-		else{
-			inCollision = false
-		}
 		
 		radarCulling()
 		clean()
@@ -161,6 +133,17 @@ class Location : Event
 	func addService(service:services)
 	{
 		self.service = service
+	}
+	
+	override func touch()
+	{
+		if isKnown == true {
+			print("touched: \(self.name!)")
+			radar.addTarget(self)
+		}
+		else{
+			print("event is unknown")
+		}
 	}
 	
 	func _sprite() -> SCNNode
