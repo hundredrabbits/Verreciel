@@ -59,8 +59,7 @@ class SCNWire : SCNNode
 	
 	override func fixedUpdate()
 	{
-		if isEnabled == false { return }
-		if self.nodeB == nil { return }
+		if isEnabled == false || nodeB == nil { return }
 		if nodeA.x == nodeB.x && nodeA.y == nodeB.y && nodeA.z == nodeB.z { return }
 		
 		vertex1 = SCNVector3(nodeB.x * 0.2,nodeB.y * 0.2,nodeB.z * 0.2)

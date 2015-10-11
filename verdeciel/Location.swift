@@ -25,6 +25,8 @@ class Location : Event
 		addChildNode(trigger)
 	}
 	
+	// MARK: System -
+	
 	override func start()
 	{
 		position = SCNVector3(at.x,at.y,0)
@@ -48,6 +50,9 @@ class Location : Event
 		// Sighted
 		if self.distance < 2 {
 			if self.inSight == false {
+				if isKnown == false {
+					discover()
+				}
 				self.inSight = true
 				self.isKnown = true
 				sight()
@@ -130,6 +135,13 @@ class Location : Event
 	func sight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
+	}
+	
+	func discover()
+	{
+		print("* EVENT    | Discovered \(self.name!)")
+		sprite.empty()
+		sprite.add(_sprite())
 	}
 	
 	func approach()

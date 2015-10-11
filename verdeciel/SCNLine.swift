@@ -49,7 +49,6 @@ class SCNLine : SCNNode
 	
 	func reset()
 	{
-		print("reset")
 		geometry = nil
 	}
 	

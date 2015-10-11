@@ -121,7 +121,6 @@ class PanelQuest : Panel
 		}
 	}
 	
-	
 	override func update()
 	{
 		quest1.update((quests.loiqe.first?.name)!)
@@ -147,7 +146,7 @@ class PanelQuest : Panel
 		content.empty()
 		statusLabel.update("undocked")
 		
-		linesRoot.opacity = 0
+		linesRoot.opacity = 1
 	}
 	
 	override func listen(event:Event)
