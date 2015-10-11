@@ -47,6 +47,11 @@ class SCNLine : SCNNode
 		draw(self.nodeA, nodeB: SCNVector3(nodeB.x,height,nodeB.z), color: self.color)
 	}
 	
+	func reset()
+	{
+		geometry = nil
+	}
+	
 	func updateColor(color:UIColor)
 	{
 		if color == self.color { return }

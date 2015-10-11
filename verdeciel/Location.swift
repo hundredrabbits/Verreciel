@@ -28,7 +28,9 @@ class Location : Event
 	override func start()
 	{
 		position = SCNVector3(at.x,at.y,0)
-		sprite = _sprite()
+		
+		sprite.empty()
+		sprite.add(_sprite())
 		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
@@ -42,26 +44,7 @@ class Location : Event
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
 		align = calculateAlignment()
-	}
-	
-	func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let radius:Float = 3
-		let distance:Float = 4
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
-
-		return mesh
-	}
-	
-	
-	
-	override func update()
-	{
 		// Sighted
 		if self.distance < 2 {
 			if self.inSight == false {
@@ -98,6 +81,48 @@ class Location : Event
 		
 		radarCulling()
 		clean()
+	}
+	
+	func mesh() -> SCNNode
+	{
+		let mesh = SCNNode()
+		let radius:Float = 3
+		let distance:Float = 4
+		
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
+
+		return mesh
+	}
+	
+	func radarCulling()
+	{
+		let verticalDistance = abs(capsule.at.y - at.y)
+		let horizontalDistance = abs(capsule.at.x - at.x)
+		
+		if player.inRadar == true {
+			self.opacity = 1
+		}
+		else if Float(verticalDistance) > highNode[0].y {
+			self.opacity = 0
+		}
+		else if Float(horizontalDistance) > highNode[0].x {
+			self.opacity = 0
+		}
+		else {
+			self.opacity = 1
+		}
+		
+		if connection != nil {
+			if connection.opacity == 1 {
+				wire.opacity = 1
+			}
+			else{
+				wire.opacity = 0
+			}
+		}
 	}
 
 	// MARK: Events -

@@ -14,11 +14,11 @@ import Foundation
 class CoreTime : NSObject
 {
 	var time:NSTimer!
+	var elapsed:Float = 0
 	
 	override init()
 	{
 		super.init()
-		
 	}
 	
 	func start()
@@ -31,5 +31,6 @@ class CoreTime : NSObject
 		universe.update()
 		space.update()
 		capsule._fixedUpdate()
+		elapsed += 1
 	}
 }

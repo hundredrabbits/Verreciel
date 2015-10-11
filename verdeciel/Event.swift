@@ -95,35 +95,6 @@ class Event : SCNNode
 		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
 	}
 	
-	func radarCulling()
-	{
-		let verticalDistance = abs(capsule.at.y - at.y)
-		let horizontalDistance = abs(capsule.at.x - at.x)
-		
-		if player.inRadar == true {
-			self.opacity = 1
-		}
-		else if Float(verticalDistance) > highNode[0].y {
-			self.opacity = 0
-		}
-		else if Float(horizontalDistance) > highNode[0].x {
-			self.opacity = 0
-		}
-		else {
-			self.opacity = 1
-		}
-		
-		if connection != nil {
-			if connection.opacity == 1 {
-				wire.opacity = 1
-			}
-			else{
-				wire.opacity = 0
-			}
-		}
-		
-	}
-	
 	func clean()
 	{
 		if self.size == 0 {
