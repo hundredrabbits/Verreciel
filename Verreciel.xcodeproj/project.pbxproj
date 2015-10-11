@@ -237,7 +237,6 @@
 		576BE0831BC8B5380046E43C /* Defaults */ = {
 			isa = PBXGroup;
 			children = (
-				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 			);
 			name = Defaults;
 			sourceTree = "<group>";
@@ -245,9 +244,9 @@
 		576BE0841BC8B8700046E43C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 				57A0F10E1B3DDABF0007650F /* Event.swift */,
 				5748AD9F1BC8583B00C47468 /* Quest.swift */,
-				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				574E5FBA1BC57749008130AB /* ItemLibrary.swift */,
 				574E5FBD1BC5775F008130AB /* LocationLibrary.swift */,
@@ -259,6 +258,7 @@
 		576E5DAF1BC5E5F8001D52A9 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
+				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				572258141BB877C600DEC41E /* LocationPortal.swift */,
 				574E5FBF1BC578E1008130AB /* LocationTrade.swift */,
 				57FA031E1BBA22FE0077D517 /* LocationStar.swift */,

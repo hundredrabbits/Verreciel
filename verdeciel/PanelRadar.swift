@@ -152,18 +152,6 @@ class PanelRadar : SCNNode
 		
 		let directionNormal = Double(Float(capsule.direction)/180) * -1
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
-		
-		/*  FIX THIS SHIT
-		
-		
-		updateTarget()
-		
-		output.update()
-		
-		
-		update()
-		self.bang(true)
-		*/
 	}
 	
 	func updateTarget()

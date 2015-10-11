@@ -56,10 +56,17 @@ class LocationStar : Location
 		return spriteNode
 	}
 	
-	override func fixedUpdate()
+	override func sight()
 	{
-		if self.distance/0.75 < 1 {
-			let radiationPercent = 100 - ((self.distance/0.75) * 100)
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
+	override func approach()
+	{
+		if distance/0.75 < 1 {
+			let radiationPercent = 100 - ((distance/0.75) * 100)
 			radiation.update((radiationPercent * radiationPercent)/100)
 		}
 		else{

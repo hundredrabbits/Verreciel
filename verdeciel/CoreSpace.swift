@@ -41,9 +41,9 @@ class CoreSpace: SCNNode
 	
 	func prepareLines()
 	{
+		thruster.actualSpeed = 3
 		var i = 0
-		while i < 100 {
-			thruster.actualSpeed = 3
+		while i < 50 {
 			addLines()
 			updateLines()
 			i += 1

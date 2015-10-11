@@ -34,6 +34,13 @@ class LocationTrade : Location
 		
 		self.interface = panel()
 	}
+
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
 	
 	override func _sprite() -> SCNNode
 	{

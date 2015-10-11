@@ -56,6 +56,15 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
+		if distance <= 2 { if inSight == false { sight() ; inSight = true } }
+		else{ inSight = false }
+		
+		if distance <= 0.6 { approach() ; inApproach = true }
+		else{ inApproach = false }
+		
+		if distance <= 0.01 { if inCollision == false { collide() ; inCollision = true } }
+		else{ inCollision = false }
+		
 		radarCulling()
 		clean()
 	}
@@ -118,10 +127,10 @@ class Location : Event
 	
 	func approach()
 	{
-		print("* EVENT    | Approached \(self.name!)")
-		capsule.instance = self
-		space.startInstance(self)
-		player.activateEvent(self)
+//		print("* EVENT    | Approached \(self.name!)")
+//		capsule.instance = self
+//		space.startInstance(self)
+//		player.activateEvent(self)
 	}
 	
 	func collide()
