@@ -136,6 +136,7 @@ class SCNPort : SCNNode
 		wire.update(SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port))
 		
 		host.bang(true)
+		wire.enable()
 	}
 	
 	override func disconnect()
@@ -150,7 +151,7 @@ class SCNPort : SCNNode
 		targetOrigin.disconnect()
 		targetOrigin.update()
 		
-		wire.reset()
+		wire.disable()
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -28,6 +28,8 @@ class SCNWire : SCNNode
 	var vertex3 = SCNVector3()
 	var vertex4 = SCNVector3()
 	
+	var isEnabled:Bool = true
+	
 	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
 	{
 		super.init()
@@ -57,6 +59,7 @@ class SCNWire : SCNNode
 	
 	override func fixedUpdate()
 	{
+		if isEnabled == false { return }
 		if self.nodeB == nil { return }
 		if nodeA.x == nodeB.x && nodeA.y == nodeB.y && nodeA.z == nodeB.z { return }
 		
@@ -65,17 +68,16 @@ class SCNWire : SCNNode
 		vertex3 = SCNVector3(nodeB.x * 0.6,nodeB.y * 0.6,nodeB.z * 0.6)
 		vertex4 = SCNVector3(nodeB.x * 0.8,nodeB.y * 0.8,nodeB.z * 0.8)
 		
-		vertex1.y = vertex1.y + sin((time.elapsed + vertex1.x + vertex1.y + vertex1.z)/10) * 0.05
-		vertex2.y = vertex2.y + sin((time.elapsed + vertex2.x + vertex2.y + vertex2.z)/10) * 0.08
-		vertex3.y = vertex3.y + sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/10) * 0.08
-		vertex4.y = vertex4.y + sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/10) * 0.05
+		vertex1.y += sin((time.elapsed + vertex1.x + vertex1.y + vertex1.z)/10) * 0.05
+		vertex2.y += sin((time.elapsed + vertex2.x + vertex2.y + vertex2.z)/10) * 0.08
+		vertex3.y += sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/10) * 0.08
+		vertex4.y += sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/10) * 0.05
 		
 		segment1.draw( nodeA, nodeB: vertex1, color: cyan)
 		segment2.draw( vertex1, nodeB: vertex2, color: white)
 		segment3.draw( vertex2, nodeB: vertex3, color: white)
 		segment4.draw( vertex3, nodeB: vertex4, color: white)
 		segment5.draw( vertex4, nodeB: nodeB, color: red)
-		
 	}
 	
 	func update(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
@@ -95,8 +97,14 @@ class SCNWire : SCNNode
 		segment5.draw( vertex4, nodeB: nodeB, color: red)
 	}
 	
-	func reset()
+	func enable()
 	{
+		isEnabled = true
+	}
+	
+	func disable()
+	{
+		isEnabled = false
 		segment1.reset()
 		segment2.reset()
 		segment3.reset()
