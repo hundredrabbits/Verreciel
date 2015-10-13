@@ -27,6 +27,13 @@ class LocationPortal : Location
 		self.addChildNode(trigger)
 	}
 	
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	override func collide()
 	{
 		thruster.warp(self.destination, sector:self.sector)

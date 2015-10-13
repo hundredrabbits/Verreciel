@@ -54,6 +54,13 @@ class LocationBeacon : Location
 		return newPanel
 	}
 	
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	override func _sprite() -> SCNNode
 	{
 		let size:Float = 0.05

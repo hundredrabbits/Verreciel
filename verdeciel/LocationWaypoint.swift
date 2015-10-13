@@ -39,6 +39,14 @@ class LocationWaypoint : Location
 		return spriteNode
 	}
 	
+	
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()

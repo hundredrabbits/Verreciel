@@ -164,7 +164,6 @@
 				5736277A1B4C06FE00899EBC /* Panels */,
 				576BE0841BC8B8700046E43C /* Library */,
 				573627791B4C06E800899EBC /* Components */,
-				576BE0831BC8B5380046E43C /* Defaults */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
 			);
 			path = verdeciel;
@@ -232,13 +231,6 @@
 				577F5D401BC80E9C001017B0 /* Extras */,
 			);
 			name = Panels;
-			sourceTree = "<group>";
-		};
-		576BE0831BC8B5380046E43C /* Defaults */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Defaults;
 			sourceTree = "<group>";
 		};
 		576BE0841BC8B8700046E43C /* Library */ = {

@@ -28,9 +28,6 @@ class Event : SCNNode
 	var wire:SCNLine!
 	var connection:Event!
 	
-	var targetter = SCNNode()
-	var interface = Panel()
-	
 	var quest:Bool = false
 	
 	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:eventDetails = eventDetails.unknown, note:String = "", color:UIColor = grey, quest:Bool = false)
@@ -58,10 +55,6 @@ class Event : SCNNode
 		wire.position = SCNVector3(0,0,-0.01)
 		wire.opacity = 0
 		self.addChildNode(wire)
-		
-		targetter = SCNLine(nodeA: SCNVector3(-0.1,-0.25,0), nodeB: SCNVector3(0.1,-0.25,0), color: red)
-		targetter.opacity = 0
-		self.addChildNode(targetter)
 	}
 	
 	// MARK: Basic -
@@ -105,18 +98,6 @@ class Event : SCNNode
 	func panel() -> SCNNode
 	{
 		return SCNNode()
-	}
-	
-	func selection()
-	{
-		updateColor(self.color)
-		targetter.opacity = 1
-	}
-	
-	func deselection()
-	{
-		updateColor(self.color)
-		targetter.opacity = 0
 	}
 	
 	required init(coder aDecoder: NSCoder) {

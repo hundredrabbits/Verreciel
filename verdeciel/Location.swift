@@ -21,6 +21,8 @@ class Location : Event
 	var isKnown:Bool = false
 	var isTargetted:Bool = false
 	
+	var interface = Panel()
+	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)

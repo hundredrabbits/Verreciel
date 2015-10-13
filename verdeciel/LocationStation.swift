@@ -66,6 +66,13 @@ class LocationStation : Location
 		return newPanel
 	}
 	
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	override func collide()
 	{
 		capsule.dock(self)

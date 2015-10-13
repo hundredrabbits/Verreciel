@@ -22,11 +22,6 @@ class PanelPilot : SCNNode
 	var staticDirectionIndicator = SCNNode()
 	var eventsDirectionIndicator = SCNNode()
 	
-	// Ports
-	
-	var input:SCNPort!
-	var location:Location!
-	
 	override init()
 	{
 		super.init()
@@ -72,12 +67,6 @@ class PanelPilot : SCNNode
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		self.addChildNode(eventsDirectionIndicator)
-		
-		// Ports
-		
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(input)
 	}
 	
 	override func touch()
@@ -92,14 +81,14 @@ class PanelPilot : SCNNode
 	
 	func adjustAngle()
 	{
-		if location == nil { return }
+		if radar.target == nil { return }
 		
-		let left = location.calculateAlignment(capsule.direction - 1)
-		let right = location.calculateAlignment(capsule.direction + 1)
+		let left = radar.target.calculateAlignment(capsule.direction - 1)
+		let right = radar.target.calculateAlignment(capsule.direction + 1)
 		
-		targetDirection = location.align
+		targetDirection = radar.target.align
 		
-		if Int(location.align) > 0 {
+		if Int(radar.target.align) > 0 {
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}
@@ -108,7 +97,7 @@ class PanelPilot : SCNNode
 			}
 		}
 		
-		directionLabel.update(String(format: "%.0f",location.align))
+		directionLabel.update(String(format: "%.0f",radar.target.align))
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
@@ -116,11 +105,6 @@ class PanelPilot : SCNNode
 		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
 		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
-	}
-	
-	override func listen(event:Event)
-	{
-		self.location = event as! Location
 	}
 	
 	func turnLeft(deg:CGFloat)

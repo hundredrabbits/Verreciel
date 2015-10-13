@@ -72,6 +72,13 @@ class LocationCargo : Location
 		return mesh
 	}
 	
+	override func sight()
+	{
+		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
