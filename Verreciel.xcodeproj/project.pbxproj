@@ -44,6 +44,8 @@
 		577F5D441BC821A3001017B0 /* PanelTargetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D431BC821A3001017B0 /* PanelTargetter.swift */; settings = {ASSET_TAGS = (); }; };
 		577F5D461BC8233E001017B0 /* PanelRadiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D451BC8233E001017B0 /* PanelRadiation.swift */; settings = {ASSET_TAGS = (); }; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
+		578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */; settings = {ASSET_TAGS = (); }; };
+		578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */; settings = {ASSET_TAGS = (); }; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
@@ -106,6 +108,8 @@
 		577F5D431BC821A3001017B0 /* PanelTargetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTargetter.swift; sourceTree = "<group>"; };
 		577F5D451BC8233E001017B0 /* PanelRadiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadiation.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
+		578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpawn.swift; sourceTree = "<group>"; };
+		578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTelescope.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				57FA031C1BBA21490077D517 /* LocationStation.swift */,
 				57CA80971BB9CEA3000D31F7 /* LocationCargo.swift */,
 				574AE3F61BC36DAE00432603 /* LocationWaypoint.swift */,
+				578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */,
+				578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */,
 			);
 			name = Locations;
 			sourceTree = "<group>";
@@ -400,6 +406,8 @@
 				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
+				578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */,
+				578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* PanelQuest.swift in Sources */,
 				57EDED221BC17321005DF3DE /* LocationBeacon.swift in Sources */,
 				57C915171BC45E91009454C4 /* Panel.swift in Sources */,

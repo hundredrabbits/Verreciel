@@ -21,9 +21,9 @@ class QuestLibrary
 	
 	func _loiqe()
 	{
-		loiqe.append(Quest(type:missions.visit, event: locations.loiqeCity))
-		loiqe.append(Quest(type:missions.fetch, event: locations.loiqeCity))
-		loiqe.append(Quest(type:missions.trade, event: locations.loiqeCity))
+		loiqe.append(Quest(type:missions.visit, event: universe.loiqe_city))
+		loiqe.append(Quest(type:missions.fetch, event: universe.loiqe_city))
+		loiqe.append(Quest(type:missions.trade, event: universe.loiqe_city))
 	}
 	
 	func _falvet()

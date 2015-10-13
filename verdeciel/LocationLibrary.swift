@@ -5,45 +5,82 @@
 //  Created by Devine Lu Linvega on 2015-10-07.
 //  Copyright © 2015 XXIIVV. All rights reserved.
 //
-
 import UIKit
+import QuartzCore
+import SceneKit
+import Foundation
 
-class LocationLibrary
+class Loiqe
 {
-	var loiqeCity:Location!
-	var falvetCity:Location!
+	var offset:CGPoint!
 	
-	// Loiqe
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
 	
-	func loiqe(at:CGPoint) -> LocationStar
+	func star() -> LocationStar
 	{
 		let location = LocationStar(name:"Loiqe")
-		location.at = at
+		location.at = offset
 		return location
 	}
 	
-	func loiqeCity(at:CGPoint) -> LocationTrade
+	func spawn() -> LocationSpawn
+	{
+		let location = LocationSpawn(name:"Awakening")
+		location.at = CGPoint(x: offset.x, y: offset.y - 3)
+		return location
+	}
+	
+	func landing() -> LocationTrade
 	{
 		let location = LocationTrade(name: "Loiqe City", want:items.loiqeLicense, give:items.smallBattery)
-		location.at = at
-		loiqeCity = location
+		location.at = CGPoint(x: offset.x, y: offset.y - 2)
 		return location
 	}
 	
-	func loiqeRepair(at:CGPoint) -> LocationRepair
+	func city() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
 		location.addService(services.hull)
-		location.at = at
+		location.at = CGPoint(x: offset.x, y: offset.y - 1)
 		return location
 	}
 	
-	func loiqeBeacon(at:CGPoint) -> LocationBeacon
+	func telescope() -> LocationTelescope
 	{
-		let location = LocationBeacon(name:"loiqe beacon",message:"Are you absolutely sure that you are ~in space ...")
-		location.at = at
+		let location = LocationTelescope(name:"telescope")
+		location.at = CGPoint(x: offset.x - 1, y: offset.y)
 		return location
 	}
+	
+	func waypoint() -> LocationStation
+	{
+		let location = LocationStation(name: "station")
+		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		return location
+	}
+	
+	func beacon() -> LocationBeacon
+	{
+		let location = LocationBeacon(name:"loiqe beacon",message:"Are you absolutely sure that you are ~in space ...")
+		location.at = CGPoint(x: offset.x, y: offset.y - 3)
+		return location
+	}
+}
+
+class LocationLibrary
+{
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
+	
+	init()
+	{
+		
+	}
+	
+	var falvetCity:Location!
+	
 	
 	// Falvet
 	

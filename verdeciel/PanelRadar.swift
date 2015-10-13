@@ -105,8 +105,8 @@ class PanelRadar : SCNNode
 			sectorLabel.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: grey)
 		}
 		
-		if targetter.opacity == 1 { targetter.opacity = 0 ; print("no") }
-		else{ targetter.opacity = 1 ; print("yes") }
+		if targetter.opacity == 1 { targetter.opacity = 0 }
+		else{ targetter.opacity = 1 }
 		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		

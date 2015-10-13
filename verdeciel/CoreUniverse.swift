@@ -31,7 +31,9 @@ class CoreUniverse : SCNNode
 		super.init()
 		
 		print("@ UNIVERSE | Init")
-	
+		
+		addLoiqe()
+		
 		// Starting zone
 		falvetSystem(CGPoint(x: 0,y: 0))
 		senniSystem(CGPoint(x: 0,y: 4))
@@ -39,7 +41,6 @@ class CoreUniverse : SCNNode
 		usulSystem(CGPoint(x: -4,y: 0))
 		
 		venicSystem(CGPoint(x: 4,y: -4))
-		loiqeSystem(CGPoint(x: 0,y: -4))
 		
 		connectPaths()
 	}
@@ -77,20 +78,23 @@ class CoreUniverse : SCNNode
 		
 	}
 	
-	func loiqeSystem(offset:CGPoint)
+	// MARK: Loiqe -
+	
+	var loiqe = locations.loiqe.star()
+	var loiqe_spawn = locations.loiqe.spawn()
+	var loiqe_landing = locations.loiqe.landing()
+	var loiqe_city = locations.loiqe.city()
+	var loiqe_telescope = locations.loiqe.telescope()
+	var loiqe_waypoint = locations.loiqe.waypoint()
+	
+	func addLoiqe()
 	{
-		let star = LocationStar(name:"loiqe",at: CGPoint(x:offset.x,y:offset.y))
-		self.addChildNode(star)
-		
-		entryToLoiqe = locations.loiqeRepair(CGPoint(x:offset.x,y:offset.y + 1))
-		self.addChildNode(entryToLoiqe)
-		
-		let loiqeBeacon = locations.loiqeBeacon(CGPoint(x:offset.x - 1,y:offset.y + 1))
-		self.addChildNode(loiqeBeacon)
-		
-		let loiqeCity = locations.loiqeCity(CGPoint(x:offset.x - 1,y:offset.y))
-		loiqeCity.connect(entryToLoiqe)
-		self.addChildNode(loiqeCity)
+		addChildNode(loiqe)
+		addChildNode(loiqe_spawn)
+		addChildNode(loiqe_landing)
+		addChildNode(loiqe_city)
+		addChildNode(loiqe_telescope)
+		addChildNode(loiqe_waypoint)
 	}
 	
 	func venicSystem(offset:CGPoint)
@@ -170,11 +174,14 @@ class CoreUniverse : SCNNode
 	
 	func connectPaths()
 	{
+		loiqe_spawn.connect(loiqe_landing)
+		
+		
 		falvetToSenni.connect(entryToSenni)
 		falvetToValen.connect(entryToValen)
 		falvetToUsul.connect(entryToUsul)
 		valenToVenic.connect(entryToVenic)
-		falvetToLoiqe.connect(entryToLoiqe)
+//		falvetToLoiqe.connect(entryToLoiqe)
 	}
 	
 	required init?(coder aDecoder: NSCoder)
