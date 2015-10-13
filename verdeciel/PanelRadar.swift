@@ -22,8 +22,9 @@ class PanelRadar : SCNNode
 	var eventView = universe
 	var shipCursor:SCNNode!
 	
-	var targetterAway:SCNNode!
 	var target:Location!
+	var targetter:SCNNode!
+	var targetterFar:SCNNode!
 	
 	override init()
 	{
@@ -36,22 +37,11 @@ class PanelRadar : SCNNode
 		
 		self.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)
-	}
-	
-	func createTargetter() -> SCNNode
-	{
-		let targetterNode = SCNNode()
 		
-		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0), nodeB: SCNVector3(x: 0.2, y: 0, z: 0), color: red))
-		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.2, z: 0), color: red))
-		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.2, z: 0), nodeB: SCNVector3(x: -0.2, y: 0, z: 0), color: red))
-		targetterNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
-		
-		return targetterNode
 	}
 	
 	func addInterface()
-	{	
+	{
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 	
 		sectorLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: white)
@@ -65,10 +55,10 @@ class PanelRadar : SCNNode
 		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: -0.2, y: 0, z: 0),color:white))
 		self.addChildNode(shipCursor)
 		
-		targetterAway = SCNNode()
-		targetterAway.addChildNode(SCNLine(nodeA: SCNVector3(0.8,0,0), nodeB: SCNVector3(1,0,0), color: red))
-		self.addChildNode(targetterAway)
-		targetterAway.opacity = 0
+		targetterFar = SCNNode()
+		targetterFar.addChildNode(SCNLine(nodeA: SCNVector3(0.8,0,0), nodeB: SCNVector3(1,0,0), color: red))
+		targetterFar.opacity = 0
+		self.addChildNode(targetterFar)
 		
 		// Design Top
 		addChildNode(SCNLine(nodeA: SCNVector3(highNode[7].x,highNode[7].y,0), nodeB: SCNVector3(highNode[7].x * 0.8,highNode[7].y,0), color: white))
@@ -83,6 +73,16 @@ class PanelRadar : SCNNode
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[7].x * 0.8,lowNode[7].y,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.8,lowNode[0].y,0), nodeB: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), color: white))
 		addChildNode(SCNLine(nodeA: SCNVector3(lowNode[0].x * 0.7,lowNode[0].y * 1.3,0), nodeB: SCNVector3(lowNode[7].x * 0.7,lowNode[7].y * 1.3,0), color: white))
+		
+		// Targetter
+		
+		targetter = SCNNode()
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0), nodeB: SCNVector3(x: 0.2, y: 0, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.2, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.2, z: 0), nodeB: SCNVector3(x: -0.2, y: 0, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
+		targetter.opacity = 0
+		addChildNode(targetter)
 		
 		/* TODO: wtf
 		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
@@ -105,6 +105,9 @@ class PanelRadar : SCNNode
 			sectorLabel.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: grey)
 		}
 		
+		if targetter.opacity == 1 { targetter.opacity = 0 ; print("no") }
+		else{ targetter.opacity = 1 ; print("yes") }
+		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
 		let directionNormal = Double(Float(capsule.direction)/180) * -1
@@ -119,14 +122,17 @@ class PanelRadar : SCNNode
 			let eventNodePosition = CGPoint(x: CGFloat(target.at.x), y: CGFloat(target.at.y))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
-			if distanceFromShip > 1.4 {
+			if distanceFromShip > 2 {
 				let angleTest = angleBetweenTwoPoints(capsule.at, point2: target.at, center: capsule.at)
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
-				targetterAway.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-				targetterAway.opacity = 1
+				targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+				targetterFar.opacity = 1
+				targetter.opacity = 0
 			}
 			else{
-				targetterAway.opacity = 0
+				targetter.position = SCNVector3(target.at.x - capsule.at.x,target.at.y - capsule.at.y,0)
+				targetterFar.opacity = 0
+				targetter.opacity = 1
 			}
 		}
 	}
