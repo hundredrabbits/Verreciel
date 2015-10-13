@@ -1,5 +1,26 @@
 
 ================
+*    FLOW
+================
+
+> Quest1: Tutorial #1 - Locked camera
+
+- Wake Up(Eyelid animation)
+- 1) Activate Ship breaker
+- 2) Activate Oxygen¥
+- 3) Activate Thruster
+- 4) Target Loiqe Landing
+- 5) Undock
+
+> Quest1: Tutorial #2 - Locked camera
+
+- 1) Give pilot license to Loiqe Landing
+- 2) Put small cell in cargo
+- 3) Route small cell in battery
+- 4) Undock
+- 5) Go to the telescope
+
+================
 *    ACTIVE
 ================
 
@@ -20,6 +41,9 @@
 
 	> Add Vermil Portal to Usul
 	> Add cyanin Portal to Valen
+	> Fix star generation rate
+	> Add journey distance in the capsule
+	> Fix blinking cursor(multiple fixed update per frame?)
 
 > Event Types
 
@@ -30,7 +54,7 @@
 	- Portal Keys
 
 	> Locations
-	- Add dimensional gates(qith item requirements)
+	- Add dimensional gates(with item requirements)
 	- Mark the sprite as completed when the quest is done
 	- Warp Align locations
 
@@ -65,7 +89,9 @@
 	> Thruster
 	- Reflect the number of connections
 
-> Tools
+	> Quest Log
+	- Remove ports
+	- Replace the undocked label with quest progress
 
 > Quests
 
