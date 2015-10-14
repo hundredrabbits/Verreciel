@@ -33,17 +33,100 @@ class CoreUniverse : SCNNode
 		print("@ UNIVERSE | Init")
 		
 		addLoiqe()
+		addUsul()
+		addVenic()
+		addValen()
 		
 		// Starting zone
 		falvetSystem(CGPoint(x: 0,y: 0))
 		senniSystem(CGPoint(x: 0,y: 4))
 		valenSystem(CGPoint(x: 4,y: 0))
-		usulSystem(CGPoint(x: -4,y: 0))
-		
-		venicSystem(CGPoint(x: 4,y: -4))
 		
 		connectPaths()
 	}
+	
+	// MARK: Loiqe -
+	
+	var loiqe = locations.loiqe.star()
+	var loiqe_spawn = locations.loiqe.spawn()
+	var loiqe_landing = locations.loiqe.landing()
+	var loiqe_city = locations.loiqe.city()
+	var loiqe_telescope = locations.loiqe.telescope()
+	var loiqe_waypoint = locations.loiqe.waypoint()
+	
+	func addLoiqe()
+	{
+		addChildNode(loiqe)
+		addChildNode(loiqe_spawn)
+		addChildNode(loiqe_landing)
+		addChildNode(loiqe_city)
+		addChildNode(loiqe_telescope)
+		addChildNode(loiqe_waypoint)
+	}
+	
+	// MARK: Usul -
+	
+	var usul = locations.usul.star()
+	var usul_city = locations.usul.city()
+	var usul_waypoint = locations.usul.waypoint()
+	
+	func addUsul()
+	{
+		addChildNode(usul)
+		addChildNode(usul_city)
+		addChildNode(usul_waypoint)
+	}
+	
+	// MARK: Valen -
+	
+	var valen = locations.valen.star()
+	var valen_city = locations.valen.city()
+	var valen_telescope = locations.valen.telescope()
+	var valen_waypoint = locations.valen.waypoint()
+	
+	func addValen()
+	{
+		addChildNode(valen)
+		addChildNode(valen_city)
+		addChildNode(valen_telescope)
+		addChildNode(valen_waypoint)
+	}
+	
+	// MARK: Venic -
+	
+	var venic = locations.venic.star()
+	var venic_city = locations.venic.city()
+	var venic_waypoint = locations.venic.waypoint()
+	
+	func addVenic()
+	{
+		addChildNode(venic)
+		addChildNode(venic_city)
+		addChildNode(venic_waypoint)
+	}
+	
+	// MARK: Senni -
+	
+	var senni = locations.senni.star()
+	var senni_city = locations.senni.city()
+	var senni_waypoint = locations.senni.waypoint()
+	var senni_telescope = locations.senni.telescope()
+	var senni_portal = locations.senni.portal()
+	var senni_service = locations.senni.service()
+	var senni_spawn = locations.senni.spawn()
+	
+	func addSenni()
+	{
+		addChildNode(senni)
+		addChildNode(senni_city)
+		addChildNode(senni_waypoint)
+		addChildNode(senni_telescope)
+		addChildNode(senni_portal)
+		addChildNode(senni_service)
+		addChildNode(senni_spawn)
+	}
+	
+	// MARK: Usul -
 	
 	func falvetSystem(offset:CGPoint)
 	{
@@ -76,54 +159,6 @@ class CoreUniverse : SCNNode
 		city7.connect(falvetToLoiqe)
 		city8.connect(falvetToUsul)
 		
-	}
-	
-	// MARK: Loiqe -
-	
-	var loiqe = locations.loiqe.star()
-	var loiqe_spawn = locations.loiqe.spawn()
-	var loiqe_landing = locations.loiqe.landing()
-	var loiqe_city = locations.loiqe.city()
-	var loiqe_telescope = locations.loiqe.telescope()
-	var loiqe_waypoint = locations.loiqe.waypoint()
-	
-	func addLoiqe()
-	{
-		addChildNode(loiqe)
-		addChildNode(loiqe_spawn)
-		addChildNode(loiqe_landing)
-		addChildNode(loiqe_city)
-		addChildNode(loiqe_telescope)
-		addChildNode(loiqe_waypoint)
-	}
-	
-	func venicSystem(offset:CGPoint)
-	{
-		let star = LocationStar(name:"venic",at: CGPoint(x:offset.x,y:offset.y))
-		
-		entryToVenic = LocationStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
-		
-		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x - 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
-		
-		
-		portal.connect(entryToVenic)
-		
-		self.addChildNode(entryToVenic)
-		self.addChildNode(star)
-		self.addChildNode(portal)
-	}
-	
-	func usulSystem(offset:CGPoint)
-	{
-		let star = LocationStar(name:"Usul",at: CGPoint(x:offset.x,y:offset.y))
-		
-		entryToUsul = LocationStation(name:"Repair",at: CGPoint(x:offset.x + 1,y:offset.y), size: 0.5)
-		
-		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y - 1), destination:CGPoint(x:offset.x,y:offset.y))
-		
-		self.addChildNode(entryToUsul)
-		self.addChildNode(star)
-		self.addChildNode(portal)
 	}
 	
 	func valenSystem(offset:CGPoint)
@@ -175,13 +210,10 @@ class CoreUniverse : SCNNode
 	func connectPaths()
 	{
 		loiqe_spawn.connect(loiqe_landing)
+		loiqe_landing.connect(loiqe_city)
+		loiqe_telescope.connect(loiqe_waypoint)
 		
-		
-		falvetToSenni.connect(entryToSenni)
-		falvetToValen.connect(entryToValen)
-		falvetToUsul.connect(entryToUsul)
-		valenToVenic.connect(entryToVenic)
-//		falvetToLoiqe.connect(entryToLoiqe)
+		venic_city.connect(venic_waypoint)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

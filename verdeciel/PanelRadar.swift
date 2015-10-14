@@ -84,16 +84,20 @@ class PanelRadar : SCNNode
 		targetter.opacity = 0
 		addChildNode(targetter)
 		
-		/* TODO: wtf
 		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
 		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(zoomLabel)
 		
 		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7), operation: true)
-		trigger.geometry?.materials.first?.diffuse.contents = clear
+		trigger.geometry?.materials.first?.diffuse.contents = red
 		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(trigger)
-		*/
+
+	}
+	
+	override func bang(param: Bool)
+	{
+		player.enterRadar()
 	}
 	
 	override func fixedUpdate()

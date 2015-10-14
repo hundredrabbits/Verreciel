@@ -70,9 +70,115 @@ class Loiqe
 	}
 }
 
+class Usul
+{
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func star() -> LocationStar
+	{
+		let location = LocationStar(name:"Usul")
+		location.at = offset
+		return location
+	}
+	
+	func city() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		return location
+	}
+	
+	func waypoint() -> LocationStation
+	{
+		let location = LocationStation(name: "station")
+		location.at = CGPoint(x: offset.x + 1, y: offset.y)
+		return location
+	}
+}
+
+class Valen
+{
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func star() -> LocationStar
+	{
+		let location = LocationStar(name:"Valen")
+		location.at = offset
+		return location
+	}
+	
+	func city() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		return location
+	}
+	
+	func waypoint() -> LocationStation
+	{
+		let location = LocationStation(name: "station")
+		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		return location
+	}
+	
+	func telescope() -> LocationTelescope
+	{
+		let location = LocationTelescope(name:"telescope")
+		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		return location
+	}
+}
+
+class Venic
+{
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func star() -> LocationStar
+	{
+		let location = LocationStar(name:"Venic")
+		location.at = offset
+		return location
+	}
+	
+	func city() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		return location
+	}
+	
+	func waypoint() -> LocationStation
+	{
+		let location = LocationStation(name: "station")
+		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		return location
+	}
+}
+
 class LocationLibrary
 {
 	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
+	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
+	let venic = Venic(offset: CGPoint(x: 4,y: -4))
+	let valen = Valen(offset: CGPoint(x: 4,y: 0))
 	
 	init()
 	{
