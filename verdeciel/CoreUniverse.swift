@@ -36,11 +36,8 @@ class CoreUniverse : SCNNode
 		addUsul()
 		addVenic()
 		addValen()
-		
-		// Starting zone
-		falvetSystem(CGPoint(x: 0,y: 0))
-		senniSystem(CGPoint(x: 0,y: 4))
-		valenSystem(CGPoint(x: 4,y: 0))
+		addSenni()
+		addFalvet()
 		
 		connectPaths()
 	}
@@ -126,86 +123,34 @@ class CoreUniverse : SCNNode
 		addChildNode(senni_spawn)
 	}
 	
-	// MARK: Usul -
+	// MARK: Falvet -
 	
-	func falvetSystem(offset:CGPoint)
+	var falvet = locations.falvet.star()
+	var falvet_toUsul = locations.falvet.toUsul()
+	var falvet_toSenni = locations.falvet.toSenni()
+	var falvet_toValen = locations.falvet.toValen()
+	var falvet_toLoiqe = locations.falvet.toLoiqe()
+	
+	var falvet_service1 = locations.falvet.service1()
+	var falvet_service2 = locations.falvet.service2()
+	var falvet_service3 = locations.falvet.service3()
+	var falvet_service4 = locations.falvet.service4()
+	
+	func addFalvet()
 	{
-		self.addChildNode(locations.falvet(CGPoint(x:offset.x,y:offset.y)))
+		addChildNode(falvet)
+		addChildNode(falvet_toUsul)
+		addChildNode(falvet_toSenni)
+		addChildNode(falvet_toValen)
+		addChildNode(falvet_toLoiqe)
 		
-		falvetToUsul = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x - 1.5,y:offset.y))
-		falvetToSenni = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1.5))
-		falvetToValen = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x + 1.5,y:offset.y))
-		falvetToLoiqe = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1.5))
-		
-		let city = locations.falvetCity(CGPoint(x:offset.x - 1,y:offset.y + 1))
-		
-		self.addChildNode(city)
-		let city6 = LocationStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y + 1), size: 0.5)
-		let city7 = LocationStation(name:"landing",at: CGPoint(x:offset.x + 1,y:offset.y - 1), size: 0.5)
-		let city8 = LocationStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y - 1), size: 0.5)
-		
-		self.addChildNode(falvetToUsul)
-		self.addChildNode(falvetToSenni)
-		self.addChildNode(falvetToValen)
-		self.addChildNode(falvetToLoiqe)
-		
-		self.addChildNode(city)
-		self.addChildNode(city6)
-		self.addChildNode(city7)
-		self.addChildNode(city8)
-		
-		city.connect(falvetToSenni)
-		city6.connect(falvetToValen)
-		city7.connect(falvetToLoiqe)
-		city8.connect(falvetToUsul)
-		
+		addChildNode(falvet_service1)
+		addChildNode(falvet_service2)
+		addChildNode(falvet_service3)
+		addChildNode(falvet_service4)
 	}
 	
-	func valenSystem(offset:CGPoint)
-	{
-		let star = LocationStar(name:"valen",at: CGPoint(x:offset.x,y:offset.y))
-		
-		entryToValen = LocationStation(name:"Repair",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
-		valenToVenic = LocationWaypoint(name:"landing",at: CGPoint(x:offset.x,y:offset.y - 1))
-		
-		let city2 = LocationStation(name:"landing",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
-		
-		city2.connect(entryToValen)
-		
-		self.addChildNode(entryToValen)
-		self.addChildNode(star)
-		self.addChildNode(valenToVenic)
-		self.addChildNode(city2)
-	}
-
-	func senniSystem(offset:CGPoint)
-	{
-		let star = LocationStar(name:"Senni",at: CGPoint(x:offset.x,y:offset.y))
-		let landing = LocationStation(name:"landing",at: CGPoint(x:offset.x - 1,y:offset.y), size: 0.5)
-		let repair = LocationStation(name:"Repair",at: CGPoint(x:offset.x,y:offset.y + 1), size: 0.5)
-		let portal = LocationPortal(name: "Portal", at: CGPoint(x:offset.x + 1,y:offset.y), destination:CGPoint(x:offset.x,y:offset.y))
-		let cargo2 = LocationCargo(name: "cargo", at: CGPoint(x:offset.x + 1.5,y:offset.y))
-		let gate = LocationPortal(name: "Portal", at: CGPoint(x:offset.x,y:offset.y + 2), destination:CGPoint(x:offset.x,y:offset.y), sector: sectors.cyanine)
-		
-		
-		entryToSenni = LocationStation(name: "cargo", at: CGPoint(x:offset.x,y:offset.y - 1), size:1)
-		
-		landing.connect(repair)
-		repair.connect(portal)
-		portal.connect(entryToSenni)
-		entryToSenni.connect(landing)
-		cargo2.connect(portal)
-		
-		gate.connect(repair)
-		
-		self.addChildNode(star)
-		self.addChildNode(landing)
-		self.addChildNode(repair)
-		self.addChildNode(portal)
-		self.addChildNode(cargo2)
-		
-		self.addChildNode(gate)
-	}
+	// MARK: Misc -
 	
 	func connectPaths()
 	{
@@ -214,6 +159,22 @@ class CoreUniverse : SCNNode
 		loiqe_telescope.connect(loiqe_waypoint)
 		
 		venic_city.connect(venic_waypoint)
+		
+		falvet_toLoiqe.connect(loiqe_waypoint)
+		falvet_toUsul.connect(usul_waypoint)
+		falvet_toValen.connect(valen_waypoint)
+		falvet_toSenni.connect(senni_waypoint)
+		
+		valen_telescope.connect(venic_waypoint)
+		valen_city.connect(valen_waypoint)
+		
+		falvet_service1.connect(falvet_toValen)
+		falvet_service2.connect(falvet_toSenni)
+		falvet_service3.connect(falvet_toLoiqe)
+		falvet_service4.connect(falvet_toUsul)
+		
+		senni_telescope.connect(senni_service)
+		senni_spawn.connect(senni_portal)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

@@ -10,6 +10,20 @@ import QuartzCore
 import SceneKit
 import Foundation
 
+class LocationLibrary
+{
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
+	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
+	let venic = Venic(offset: CGPoint(x: 4,y: -4))
+	let valen = Valen(offset: CGPoint(x: 4,y: 0))
+	let senni = Senni(offset: CGPoint(x: 0,y: 4))
+	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
+	
+	init()
+	{
+	}
+}
+
 class Loiqe
 {
 	var offset:CGPoint!
@@ -173,35 +187,143 @@ class Venic
 	}
 }
 
-class LocationLibrary
+class Senni
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
-	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
-	let venic = Venic(offset: CGPoint(x: 4,y: -4))
-	let valen = Valen(offset: CGPoint(x: 4,y: 0))
+	var offset:CGPoint!
 	
-	init()
+	init(offset:CGPoint)
 	{
-		
+		self.offset = offset
 	}
 	
-	var falvetCity:Location!
-	
-	
-	// Falvet
-	
-	func falvet(at:CGPoint) -> LocationStar
+	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Falvet")
-		location.at = at
+		let location = LocationStar(name:"Senni")
+		location.at = offset
 		return location
 	}
 	
-	func falvetCity(at:CGPoint) -> LocationTrade
+	func city() -> LocationRepair
 	{
-		let location = LocationTrade(name: "Falvet City", want:items.loiqeLicense, give:items.smallBattery)
-		location.at = at
-		falvetCity = location
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		return location
+	}
+	
+	func portal() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y)
+		return location
+	}
+	
+	func service() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		return location
+	}
+	
+	func spawn() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x + 2, y: offset.y)
+		return location
+	}
+	
+	func telescope() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x, y: offset.y + 2)
+		return location
+	}
+	
+	func waypoint() -> LocationStation
+	{
+		let location = LocationStation(name: "station")
+		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		return location
+	}
+}
+
+class Falvet
+{
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func star() -> LocationStar
+	{
+		let location = LocationStar(name:"Falvet")
+		location.at = offset
+		return location
+	}
+	
+	func toUsul() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.at = CGPoint(x: offset.x - 1.5, y: offset.y)
+		return location
+	}
+	
+	func toLoiqe() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.at = CGPoint(x: offset.x, y: offset.y - 1.5)
+		return location
+	}
+	
+	func toValen() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.at = CGPoint(x: offset.x + 1.5, y: offset.y)
+		return location
+	}
+	
+	func toSenni() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.at = CGPoint(x: offset.x, y: offset.y + 1.5)
+		return location
+	}
+	
+	func service1() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y + 1)
+		return location
+	}
+	
+	func service2() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x - 1, y: offset.y + 1)
+		return location
+	}
+	
+	func service3() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
+		return location
+	}
+	
+	func service4() -> LocationRepair
+	{
+		let location = LocationRepair(name:"Loiqe Repairs")
+		location.addService(services.hull)
+		location.at = CGPoint(x: offset.x - 1, y: offset.y - 1)
 		return location
 	}
 }

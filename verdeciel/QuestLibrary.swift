@@ -28,6 +28,6 @@ class QuestLibrary
 	
 	func _falvet()
 	{
-		falvet.append(Quest(type:missions.visit, event: locations.falvetCity))
+		falvet.append(Quest(type:missions.visit, event: universe.falvet_service2 ))
 	}
 }
