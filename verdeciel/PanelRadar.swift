@@ -101,7 +101,7 @@ class PanelRadar : SCNNode
 	}
 	
 	override func fixedUpdate()
-	{
+	{		
 		if target != nil {
 			sectorLabel.updateWithColor(target.name!, color: white)
 		}

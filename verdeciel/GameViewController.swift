@@ -64,6 +64,8 @@ var items = ItemLibrary()
 var locations = LocationLibrary()
 var quests = QuestLibrary()
 
+var counter:Int = 0
+
 class GameViewController: UIViewController
 {
     override func viewDidLoad()

@@ -28,8 +28,7 @@ class CoreTime : NSObject
 	
 	func tic()
 	{
-		universe.update()
-		space.update()
+		counter = 0
 		capsule._fixedUpdate()
 		elapsed += 1
 	}

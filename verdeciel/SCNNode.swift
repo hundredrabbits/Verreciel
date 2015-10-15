@@ -29,7 +29,6 @@ extension SCNNode
 	
 	func _fixedUpdate()
 	{
-		fixedUpdate()
 		for node in childNodes {
 			node.fixedUpdate()
 			node._fixedUpdate()

@@ -175,6 +175,8 @@ class CoreUniverse : SCNNode
 		
 		senni_telescope.connect(senni_service)
 		senni_spawn.connect(senni_portal)
+		senni_service.connect(senni_portal)
+		senni_portal.connect(senni_waypoint)
 	}
 	
 	required init?(coder aDecoder: NSCoder)
