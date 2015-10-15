@@ -22,15 +22,7 @@ class PanelMonitor : Panel
 	
 	var currentSystem = Event(newName: "test", at: CGPoint(x: 999999,y: 999999),type: eventTypes.star)
 	
-	override init()
-	{
-		super.init()
-		name = "monitor"
-		addInterface()
-		update()
-	}
-	
-	func addInterface()
+	override func setup()
 	{
 		// Draw the frame
 		
@@ -67,7 +59,7 @@ class PanelMonitor : Panel
 		let labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
 		labelRadiationTitle.position = SCNVector3(x: highNode[7].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		eastMonitor.addChildNode(labelRadiationTitle)
-	
+		
 		radiationLabel = SCNLabel(text: "45.3", scale: 0.1, align: alignment.right)
 		radiationLabel.position = SCNVector3(x: highNode[0].x * scale, y: highNode[7].y * scale + 0.6, z: lowNode[7].z)
 		eastMonitor.addChildNode(radiationLabel)
@@ -106,6 +98,8 @@ class PanelMonitor : Panel
 		southMonitor.addChildNode(electricityLabel)
 		
 		self.addChildNode(southMonitor)
+		
+		update()
 	}
 	
 	override func fixedUpdate()
@@ -138,9 +132,5 @@ class PanelMonitor : Panel
 		else if value > 100 { stringValue = "full" }
 		else { stringValue = String(format: "%.1f", value) }
 		return stringValue
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 }

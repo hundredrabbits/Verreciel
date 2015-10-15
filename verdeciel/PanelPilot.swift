@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelPilot : SCNNode
+class PanelPilot : Panel
 {
 	var nameLabel = SCNLabel(text: "")
 	var directionLabel = SCNLabel(text: "")
@@ -22,20 +22,13 @@ class PanelPilot : SCNNode
 	var staticDirectionIndicator = SCNNode()
 	var eventsDirectionIndicator = SCNNode()
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
 		name = "pilot"
-		addInterface()
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		update()
-	}
-	
-	func addInterface()
-	{
+		
 		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
@@ -67,7 +60,10 @@ class PanelPilot : SCNNode
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		self.addChildNode(eventsDirectionIndicator)
+		
+		update()
 	}
+	
 	
 	override func touch()
 	{
@@ -117,9 +113,5 @@ class PanelPilot : SCNNode
 	{
 		capsule.direction = capsule.direction + deg
 		capsule.direction = capsule.direction % 360
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 }

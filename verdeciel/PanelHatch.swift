@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelHatch : SCNNode
+class PanelHatch : Panel
 {
 	var nameLabel = SCNLabel(text: "")
 	var quantityLabel = SCNLabel(text: "")
@@ -27,20 +27,11 @@ class PanelHatch : SCNNode
 	
 	var input:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
 		name = "hatch"
-		addInterface()
-		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		update()
-	}
-	
-	func addInterface()
-	{
 		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
@@ -73,12 +64,12 @@ class PanelHatch : SCNNode
 		self.addChildNode(outline3)
 		outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
 		self.addChildNode(outline4)
-
+		
 		// Trigger
 		
 		self.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
 	}
-	
+
 	override func touch()
 	{
 		bang(true)
@@ -151,9 +142,5 @@ class PanelHatch : SCNNode
 			self.load = event
 			self.update()
 		}
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -40,6 +40,7 @@
 		574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* LocationTrade.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 		574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC31BC5B588008130AB /* LocationRepair.swift */; settings = {ASSET_TAGS = (); }; };
+		575A74121BCFEA83000104DD /* PanelBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A74111BCFEA83000104DD /* PanelBreaker.swift */; settings = {ASSET_TAGS = (); }; };
 		577F5D421BC80EC2001017B0 /* PanelDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D411BC80EC2001017B0 /* PanelDock.swift */; settings = {ASSET_TAGS = (); }; };
 		577F5D441BC821A3001017B0 /* PanelTargetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D431BC821A3001017B0 /* PanelTargetter.swift */; settings = {ASSET_TAGS = (); }; };
 		577F5D461BC8233E001017B0 /* PanelRadiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D451BC8233E001017B0 /* PanelRadiation.swift */; settings = {ASSET_TAGS = (); }; };
@@ -104,6 +105,7 @@
 		574E5FBF1BC578E1008130AB /* LocationTrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574E5FC31BC5B588008130AB /* LocationRepair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepair.swift; sourceTree = "<group>"; };
+		575A74111BCFEA83000104DD /* PanelBreaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBreaker.swift; sourceTree = "<group>"; };
 		577F5D411BC80EC2001017B0 /* PanelDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelDock.swift; sourceTree = "<group>"; };
 		577F5D431BC821A3001017B0 /* PanelTargetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTargetter.swift; sourceTree = "<group>"; };
 		577F5D451BC8233E001017B0 /* PanelRadiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadiation.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				577F5D411BC80EC2001017B0 /* PanelDock.swift */,
 				577F5D431BC821A3001017B0 /* PanelTargetter.swift */,
 				577F5D451BC8233E001017B0 /* PanelRadiation.swift */,
+				575A74111BCFEA83000104DD /* PanelBreaker.swift */,
 			);
 			name = Extras;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
+				575A74121BCFEA83000104DD /* PanelBreaker.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
 				577F5D421BC80EC2001017B0 /* PanelDock.swift in Sources */,
 				577F5D441BC821A3001017B0 /* PanelTargetter.swift in Sources */,

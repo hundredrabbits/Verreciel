@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelCargo : SCNNode
+class PanelCargo : Panel
 {
 	var nameLabel = SCNNode()
 	var attractorLabel = SCNLabel(text: "")
@@ -32,13 +32,9 @@ class PanelCargo : SCNNode
 	var input:SCNPort!
 	var output:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
 		name = "cargo"
-		addInterface()
-		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
 		// Tutorial Item
@@ -46,11 +42,6 @@ class PanelCargo : SCNNode
 		self.addEvent(items.loiqeLicense)
 		self.addEvent(items.mediumBattery)
 			
-		update()
-	}
-	
-	func addInterface()
-	{
 		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
@@ -69,7 +60,7 @@ class PanelCargo : SCNNode
 		line4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey)
 		line5 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey)
 		line6 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey)
-			
+		
 		self.addChildNode(line1)
 		self.addChildNode(line2)
 		self.addChildNode(line3)
@@ -163,9 +154,5 @@ class PanelCargo : SCNNode
 		if output.connection != nil {
 			output.connection.host.listen(cargohold)
 		}
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -18,25 +18,11 @@ class PanelRadio : Panel
 	var input:SCNPort!
 	var output:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
 		name = "radio"
-		addInterface()
-		
 		self.position = SCNVector3(x: 0, y: -1 * highNode[7].y * 0.8 - 0.6, z: lowNode[7].z)
 		
-		update()
-	}
-	
-	func addInterface()
-	{
-		addPorts()
-	}
-	
-	func addPorts()
-	{
 		let scale:Float = 0.8
 		
 		input = SCNPort(host: self, polarity: false)
@@ -56,10 +42,6 @@ class PanelRadio : Panel
 		self.addChildNode(output)
 		self.addChildNode(inputLabel)
 		self.addChildNode(outputLabel)
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
+		
 	}
 }

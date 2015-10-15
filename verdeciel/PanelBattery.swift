@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelBattery : SCNNode
+class PanelBattery : Panel
 {
 	var value:Float = 0
 	
@@ -30,15 +30,9 @@ class PanelBattery : SCNNode
 	var outCell2:SCNPort!
 	var outCell3:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
 		name = "battery"
-		addInterface()
-	}
-	
-	func addInterface()
-	{
 		let scale:Float = 0.8
 		
 		// Draw Radar
@@ -161,10 +155,5 @@ class PanelBattery : SCNNode
 	func touch(knobId:String)
 	{
 		
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
 	}
 }

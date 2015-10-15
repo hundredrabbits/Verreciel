@@ -53,6 +53,7 @@ var radiation:PanelRadiation!
 
 var radio:PanelRadio!
 var translator:PanelTranslator!
+var breaker:PanelBreaker!
 
 var time:CoreTime!
 var universe:CoreUniverse!

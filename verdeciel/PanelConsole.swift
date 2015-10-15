@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelConsole : SCNNode
+class PanelConsole : Panel
 {
 	var consoleLine1:SCNCommand!
 	var consoleLine2:SCNCommand!
@@ -29,17 +29,12 @@ class PanelConsole : SCNNode
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		name = "console"
-		addInterface()
 		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
-	}
-	
-	func addInterface()
-	{
+		
+		
 		let scale:Float = 0.8
 		
 		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale) * 2)
@@ -163,10 +158,5 @@ class PanelConsole : SCNNode
 			self.clearLines()
 			self.input.origin.disconnect()
 		}
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
 	}
 }

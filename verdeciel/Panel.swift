@@ -14,6 +14,25 @@ import Foundation
 class Panel : SCNNode
 {
 	var isEnabled:Bool = true
+	var interface:SCNNode!
+	var decals:SCNNode!
+	
+	init(position:SCNVector3 = SCNVector3(0,0,0))
+	{
+		super.init()
+
+		interface = SCNNode()
+		self.addChildNode(interface)
+		decals = SCNNode()
+		self.addChildNode(decals)
+		
+		setup()
+		start()
+	}
+	
+	func setup()
+	{
+	}
 	
 	func updateInterface(interface:Panel)
 	{
@@ -26,5 +45,10 @@ class Panel : SCNNode
 		for node in interface.childNodes {
 			self.addChildNode(node)
 		}
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

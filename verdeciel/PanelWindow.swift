@@ -13,13 +13,7 @@ import Foundation
 
 class PanelWindow : Panel
 {
-	override init()
-	{
-		super.init()
-		addInterface()
-	}
-	
-	func addInterface()
+	override func setup()
 	{
 		let depth:Float = 0
 		
@@ -37,11 +31,4 @@ class PanelWindow : Panel
 		self.addChildNode(SCNLine(nodeA: SCNVector3(x: ceilingNode[6].x, y: ceilingNode[4].y + depth, z: 0),nodeB: SCNVector3(x: ceilingNode[6].x, y: ceilingNode[4].y, z: 0),color:white))
 	}
 	
-	override func touch()
-	{
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
 }

@@ -36,21 +36,14 @@ class PanelQuest : Panel
 	
 	var dockNameLabel:SCNLabel!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
-		name = "travel log"
-		addInterface()
-		
+		name = "Travel log"
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
 		
 		content = SCNNode()
 		self.addChildNode(content)
-	}
-	
-	func addInterface()
-	{
+		
 		let scale:Float = 0.8
 		
 		dockNameLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.left)
@@ -107,6 +100,7 @@ class PanelQuest : Panel
 		self.addChildNode(linesRoot)
 		
 		update()
+		
 	}
 	
 	func addQuest(newQuest:Quest)
@@ -152,9 +146,5 @@ class PanelQuest : Panel
 	override func listen(event:Event)
 	{
 		
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 }

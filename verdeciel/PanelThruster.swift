@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelThruster : SCNNode
+class PanelThruster : Panel
 {
 	var nameLabel = SCNNode()
 	var speedLabel = SCNLabel(text: "")
@@ -28,26 +28,16 @@ class PanelThruster : SCNNode
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
-	var isEnabled:Bool = true
-	
 	// Ports
 	
 	var input:SCNPort!
 	
-	override init()
+	override func setup()
 	{
-		super.init()
-		
 		name = "thruster"
-		addInterface()
-		
 		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
 		
-		draw()
-	}
-
-	func addInterface()
-	{
+		
 		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
@@ -88,7 +78,10 @@ class PanelThruster : SCNNode
 		input = SCNPort(host: self,polarity: false)
 		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(input)
+		
+		draw()
 	}
+
 	
 	override func bang(param:Bool = true)
 	{
@@ -232,10 +225,5 @@ class PanelThruster : SCNNode
 		
 		capsule.at = destination
 		capsule.sector = sector
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
 	}
 }

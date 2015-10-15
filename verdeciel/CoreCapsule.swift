@@ -34,10 +34,11 @@ class CoreCapsule: SCNNode
 		
 		nodeSetup()
 
-		capsuleSetup()
 		panelSetup()
-		
-		capsuleMesh()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+	    fatalError("init(coder:) has not been implemented")
 	}
 	
 	override func start()
@@ -45,6 +46,18 @@ class CoreCapsule: SCNNode
 		connectDefaultPorts()
 		dockbay.start()
 	}
+	
+	// MARK: Breaker -
+	
+	func setActive()
+	{
+	}
+	
+	func setInactive()
+	{
+	}
+	
+	// MARK: Docking -
 	
 	func dock(newDock:Location)
 	{
@@ -134,7 +147,7 @@ class CoreCapsule: SCNNode
 		dockbay = PanelDock()
 		northPanels.addChildNode(custom)
 		northPanels.addChildNode(dockbay)
-		northPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
+//		northPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
 		
 		let northEastPanels = SCNNode()
 		cargo = PanelCargo()
@@ -147,7 +160,7 @@ class CoreCapsule: SCNNode
 		let eastPanels = SCNNode()
 		console = PanelConsole()
 		eastPanels.addChildNode(console)
-		eastPanels.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
+//		eastPanels.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
 		
 		let southEastPanels = SCNNode()
 		beacon = PanelHatch()
@@ -164,7 +177,7 @@ class CoreCapsule: SCNNode
 		southPanels.addChildNode(battery)
 		southPanels.addChildNode(radio)
 		southPanels.addChildNode(radiation)
-		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
+//		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
 		
 		let westPanels = SCNNode()
 		radar = PanelRadar()
@@ -173,7 +186,7 @@ class CoreCapsule: SCNNode
 		westPanels.addChildNode(radar)
 		westPanels.addChildNode(translator)
 		westPanels.addChildNode(targetter)
-		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
+//		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
@@ -184,8 +197,6 @@ class CoreCapsule: SCNNode
 		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0))
 		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1))
 		
-		window = PanelWindow()
-		
 		self.addChildNode(northPanels)
 		self.addChildNode(northEastPanels)
 		self.addChildNode(northWestPanels)
@@ -195,110 +206,11 @@ class CoreCapsule: SCNNode
 		self.addChildNode(southPanels)
 		self.addChildNode(westPanels)
 		
+		window = PanelWindow()
 		self.addChildNode(window)
-		
+		breaker = PanelBreaker()
+		self.addChildNode(breaker)
 		monitor = PanelMonitor()
 		self.addChildNode(monitor)
-	}
-	
-	func capsuleSetup()
-	{		
-		// Connect floors
-		var i = 0
-		while i < floorNode.count
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: lowMidNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowGapNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[i],nodeB: highGapNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highMidNode[i],color:white))
-			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: ceilingNode[i],color:white))
-			i += 1
-		}
-		
-		// Connect Floor
-		i = 0
-		while i < floorNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[i],nodeB: floorNode[i+1],color:white))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: floorNode[7],nodeB: floorNode[0],color:white))
-		
-		// Connect Window Low
-		i = 0
-		while i < lowMidNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[i],nodeB: lowMidNode[i+1],color:white))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: lowMidNode[7],nodeB: lowMidNode[0],color:white))
-		
-		// Connect Low Gap
-		i = 0
-		while i < lowGapNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[i],nodeB: lowGapNode[i+1],color:grey))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: lowGapNode[7],nodeB: lowGapNode[0],color:grey))
-		
-		// Connect Low
-		i = 0
-		while i < lowNode.count - 1
-		{
-			if i != 1 {
-				scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[i],nodeB: lowNode[i+1],color:white))
-			}
-			
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: lowNode[7],nodeB: lowNode[0],color:white))
-		
-		// Connect High
-		i = 0
-		while i < highNode.count - 1
-		{
-			if i != 1 {
-				scene.rootNode.addChildNode(SCNLine(nodeA: highNode[i],nodeB: highNode[i+1],color:white))
-			}
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: highNode[7],nodeB: highNode[0],color:white))
-		
-		// Connect High Gap
-		i = 0
-		while i < highGapNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[i],nodeB: highGapNode[i+1],color:grey))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: highGapNode[7],nodeB: highGapNode[0],color:grey))
-		
-		// Connect Window High
-		i = 0
-		while i < highMidNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[i],nodeB: highMidNode[i+1],color:white))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: highMidNode[7],nodeB: highMidNode[0],color:white))
-		
-		// Connect Ceiling
-		i = 0
-		while i < ceilingNode.count - 1
-		{
-			scene.rootNode.addChildNode(SCNLine(nodeA: ceilingNode[i],nodeB: ceilingNode[i+1],color:white))
-			i += 1
-		}
-		scene.rootNode.addChildNode(SCNLine(nodeA: ceilingNode[7],nodeB: ceilingNode[0],color:white))
-	}
-	
-	func capsuleMesh()
-	{
-	}
-	
-	required init(coder aDecoder: NSCoder)
-	{
-		fatalError("init(coder:) has not been implemented")
 	}
 }
