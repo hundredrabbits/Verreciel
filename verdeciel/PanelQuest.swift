@@ -47,15 +47,15 @@ class PanelQuest : Panel
 		let scale:Float = 0.8
 		
 		dockNameLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.left)
-		dockNameLabel.position = SCNVector3(x: lowNode[7].x * scale, y: highNode[7].y * scale, z: 0)
+		dockNameLabel.position = SCNVector3(x: templates.leftMargin, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(dockNameLabel)
 		
 		statusLabel = SCNLabel(text: "17/19", scale: 0.1, align: alignment.right, color:grey)
-		statusLabel.position = SCNVector3(x: lowNode[0].x * scale, y: highNode[7].y * scale, z: 0)
+		statusLabel.position = SCNVector3(x: templates.rightMargin, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(statusLabel)
 		
-		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale) * 2)
-		progressBar.position = SCNVector3(highNode[7].x * scale,highNode[7].y * scale - 0.25,0)
+		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
+		progressBar.position = SCNVector3(templates.leftMargin,highNode[7].y * scale - 0.25,0)
 		self.addChildNode(progressBar)
 		
 		let spacing:Float = -0.35
@@ -64,37 +64,37 @@ class PanelQuest : Panel
 		linesRoot.position = SCNVector3(0,highNode[7].y * scale + spacing - 0.2,0)
 		
 		quest1 = SCNLabel()
-		quest1.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 0), z: 0)
+		quest1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(quest1)
 		
 		quest1Port = SCNPort(host: self, polarity: true)
 		quest1Port.addEvent((quests.loiqe.first?.event)!)
-		quest1Port.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: (spacing * 0), z: 0)
+		quest1Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(quest1Port)
 		
 		quest2 = SCNLabel()
-		quest2.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 1), z: 0)
+		quest2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(quest2)
 		
 		quest2Port = SCNPort(host: self, polarity: true)
 		quest2Port.addEvent((quests.falvet.first?.event)!)
-		quest2Port.position = SCNVector3(x: lowNode[0].x * scale - 0.15, y: (spacing * 1), z: 0)
+		quest2Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(quest2Port)
 		
 		quest3 = SCNLabel()
-		quest3.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 2), z: 0)
+		quest3.position = SCNVector3(x: templates.leftMargin, y: (spacing * 2), z: 0)
 		linesRoot.addChildNode(quest3)
 		
 		quest4 = SCNLabel()
-		quest4.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 3), z: 0)
+		quest4.position = SCNVector3(x: templates.leftMargin, y: (spacing * 3), z: 0)
 		linesRoot.addChildNode(quest4)
 		
 		quest5 = SCNLabel()
-		quest5.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 4), z: 0)
+		quest5.position = SCNVector3(x: templates.leftMargin, y: (spacing * 4), z: 0)
 		linesRoot.addChildNode(quest5)
 		
 		quest6 = SCNLabel()
-		quest6.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 5), z: 0)
+		quest6.position = SCNVector3(x: templates.leftMargin, y: (spacing * 5), z: 0)
 		linesRoot.addChildNode(quest6)
 		
 		self.addChildNode(linesRoot)

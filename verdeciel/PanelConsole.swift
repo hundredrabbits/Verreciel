@@ -37,8 +37,8 @@ class PanelConsole : Panel
 		
 		let scale:Float = 0.8
 		
-		progressBar = SCNProgressBar(width: CGFloat(highNode[0].x * scale) * 2)
-		progressBar.position = SCNVector3(highNode[7].x * scale,highNode[7].y * scale - 0.25,0)
+		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
+		progressBar.position = SCNVector3(templates.leftMargin,highNode[7].y * scale - 0.25,0)
 		self.addChildNode(progressBar)
 		
 		let linesRoot = SCNNode()
@@ -48,27 +48,27 @@ class PanelConsole : Panel
 		linesRoot.position = SCNVector3(0,highNode[7].y * scale + spacing - 0.2,0)
 		
 		consoleLine1 = SCNCommand()
-		consoleLine1.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 0), z: 0)
+		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(consoleLine1)
 		
 		consoleLine2 = SCNCommand()
-		consoleLine2.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 1), z: 0)
+		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(consoleLine2)
 		
 		consoleLine3 = SCNCommand()
-		consoleLine3.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 2), z: 0)
+		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: (spacing * 2), z: 0)
 		linesRoot.addChildNode(consoleLine3)
 		
 		consoleLine4 = SCNCommand()
-		consoleLine4.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 3), z: 0)
+		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: (spacing * 3), z: 0)
 		linesRoot.addChildNode(consoleLine4)
 		
 		consoleLine5 = SCNCommand()
-		consoleLine5.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 4), z: 0)
+		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: (spacing * 4), z: 0)
 		linesRoot.addChildNode(consoleLine5)
 		
 		consoleLine6 = SCNCommand()
-		consoleLine6.position = SCNVector3(x: lowNode[7].x * scale, y: (spacing * 5), z: 0)
+		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: (spacing * 5), z: 0)
 		linesRoot.addChildNode(consoleLine6)
 		
 		self.addChildNode(linesRoot)
@@ -76,10 +76,10 @@ class PanelConsole : Panel
 		// Ports
 		
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: highNode[7].y * scale, z: 0)
 		
 		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: highNode[7].y * scale, z: 0)
 		
 		self.addChildNode(input)
 		self.addChildNode(inputLabel)

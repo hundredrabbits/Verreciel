@@ -36,7 +36,7 @@ class CoreSpace: SCNNode
 		starsRoot.position = SCNVector3(x: 0, y: 0, z: 0)
 		addChildNode(starsRoot)
 		
-		prepareLines()
+//		prepareLines()
 	}
 	
 	func prepareLines()

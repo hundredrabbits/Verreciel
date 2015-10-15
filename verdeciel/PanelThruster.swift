@@ -76,7 +76,7 @@ class PanelThruster : Panel
 		// Ports
 		
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: lowNode[7].x * scale + 0.7, y: highNode[7].y * scale, z: 0)
+		input.position = SCNVector3(x: templates.leftMargin + 0.7, y: highNode[7].y * scale, z: 0)
 		self.addChildNode(input)
 		
 		draw()

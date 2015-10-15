@@ -64,6 +64,7 @@ var space:CoreSpace!
 var items = ItemLibrary()
 var locations = LocationLibrary()
 var quests = QuestLibrary()
+var templates = Templates()
 
 var counter:Int = 0
 

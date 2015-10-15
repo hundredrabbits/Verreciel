@@ -6,6 +6,9 @@
 //  Copyright © 2015 XXIIVV. All rights reserved.
 //
 
+import UIKit
+import QuartzCore
+import SceneKit
 import Foundation
 
 enum alignment
@@ -72,4 +75,17 @@ enum missions
 	case discover
 	case fetch
 	case trade
+}
+
+struct Templates
+{
+	var left:Float = 0
+	var right:Float = 0
+	var top:Float = 0
+	var bottom:Float = 0
+	
+	var leftMargin:Float = 0
+	var rightMargin:Float = 0
+	var topMargin:Float = 0
+	var bottomMargin:Float = 0
 }

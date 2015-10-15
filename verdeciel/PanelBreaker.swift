@@ -14,7 +14,6 @@ import Foundation
 class PanelBreaker : Panel
 {
 	var label:SCNLabel!
-	var statusLabel:SCNLabel!
 	var interfaceActive:SCNLine!
 	var isActive = false
 	
@@ -26,12 +25,8 @@ class PanelBreaker : Panel
 		self.geometry?.materials.first?.diffuse.contents = clear
 		
 		label = SCNLabel(text: "breaker", scale: 0.075, align: alignment.center, color: white)
-		label.position = SCNVector3(0,0.7,0)
+		label.position = SCNVector3(0,-0.7,0)
 		self.addChildNode(label)
-		
-		statusLabel = SCNLabel(text: "off", scale: 0.075, align: alignment.center, color: white)
-		statusLabel.position = SCNVector3(0,-0.7,0)
-		self.addChildNode(statusLabel)
 		
 		interface = SCNNode()
 		interface.addChildNode(SCNLine(nodeA: SCNVector3(-0.4,0.4,0), nodeB: SCNVector3(0.4,0.4,0), color: red))
@@ -44,6 +39,10 @@ class PanelBreaker : Panel
 		interfaceActive.position = SCNVector3(0,-0.4,0)
 		self.addChildNode(interfaceActive)
 		
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,0,0), nodeB: SCNVector3(templates.leftMargin,0,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,0,0), nodeB: SCNVector3(templates.rightMargin,0,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(0,templates.top,0), nodeB: SCNVector3(0,templates.topMargin,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(0,templates.bottom,0), nodeB: SCNVector3(0,templates.bottomMargin,0), color: grey))
 	}
 	
 	override func touch()
@@ -54,8 +53,8 @@ class PanelBreaker : Panel
 			interfaceActive.position = SCNVector3(0,0,0)
 			SCNTransaction.setCompletionBlock({ self.setActive() })
 			SCNTransaction.commit()
-			interface.updateChildrenColors(cyan)
-			interfaceActive.updateColor(cyan)
+			interface.updateChildrenColors(red)
+			interfaceActive.updateColor(red)
 		}
 		else{
 			SCNTransaction.begin()
@@ -70,19 +69,19 @@ class PanelBreaker : Panel
 	
 	func setInactive()
 	{
-		statusLabel.update("off")
 		isActive = false
 		interface.updateChildrenColors(red)
 		interfaceActive.updateColor(red)
+		label.updateColor(grey)
 		capsule.setInactive()
 	}
 	
 	func setActive()
 	{
-		statusLabel.update("on")
 		isActive = true
 		interface.updateChildrenColors(cyan)
 		interfaceActive.updateColor(cyan)
+		label.updateColor(white)
 		capsule.setActive()
 	}
 }

@@ -50,9 +50,10 @@ class PanelRadar : Panel
 		targetterFar.opacity = 0
 		self.addChildNode(targetterFar)
 		
-		//
+		// Decals
 		
-		
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,0,0), nodeB: SCNVector3(templates.leftMargin,0,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,0,0), nodeB: SCNVector3(templates.rightMargin,0,0), color: grey))
 		
 		// Targetter
 		
@@ -64,12 +65,12 @@ class PanelRadar : Panel
 		targetter.opacity = 0
 		addChildNode(targetter)
 		
-		let zoomLabel = SCNLabel(text: "enter radar", scale: 0.1, align: alignment.center, color: red)
+		let zoomLabel = SCNLabel(text: "zoom", scale: 0.1, align: alignment.center, color: red)
 		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(zoomLabel)
 		
 		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7), operation: true)
-		trigger.geometry?.materials.first?.diffuse.contents = red
+		trigger.geometry?.materials.first?.diffuse.contents = clear
 		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		addChildNode(trigger)
 	}

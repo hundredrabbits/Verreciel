@@ -115,6 +115,15 @@ class CoreCapsule: SCNNode
 		scale = 0.25
 		height = 3.9
 		ceilingNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale), SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		templates.left = highNode[7].x
+		templates.right = highNode[0].x
+		templates.top = highNode[0].y
+		templates.bottom = lowNode[0].y
+		templates.leftMargin = highNode[7].x * 0.8
+		templates.rightMargin = highNode[0].x * 0.8
+		templates.topMargin = highNode[0].y * 0.8
+		templates.bottomMargin = lowNode[0].y * 0.8
 	}
 	
 	override func fixedUpdate()

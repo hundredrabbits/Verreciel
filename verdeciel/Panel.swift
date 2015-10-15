@@ -20,7 +20,7 @@ class Panel : SCNNode
 	init(position:SCNVector3 = SCNVector3(0,0,0))
 	{
 		super.init()
-
+		
 		interface = SCNNode()
 		self.addChildNode(interface)
 		decals = SCNNode()

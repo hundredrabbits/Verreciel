@@ -108,10 +108,10 @@ class PanelBattery : Panel
 		// Ports
 		
 		input = SCNPort(host: self, polarity: false)
-		input.position = SCNVector3(x: lowNode[7].x * scale + 0.1, y: highNode[7].y * scale, z: 0)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: highNode[7].y * scale, z: 0)
 		
 		inputLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: lowNode[7].x * scale + 0.3, y: highNode[7].y * scale, z: 0)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: highNode[7].y * scale, z: 0)
 		inputLabel.updateWithColor(self.name!, color: grey)
 		
 		self.addChildNode(input)
