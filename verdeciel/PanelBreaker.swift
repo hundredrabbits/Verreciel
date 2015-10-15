@@ -19,7 +19,7 @@ class PanelBreaker : Panel
 	
 	override func setup()
 	{		
-		self.position = SCNVector3(x: 0, y: floorNode[7].y, z: 0)
+		self.position = SCNVector3(x: 0, y: templates.radius, z: 0)
 		self.rotation = SCNVector4Make(-1, 0, 0, Float(M_PI/2 * 1))
 		self.geometry = SCNPlane(width: 2, height: 2)
 		self.geometry?.materials.first?.diffuse.contents = clear

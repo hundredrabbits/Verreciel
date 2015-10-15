@@ -28,6 +28,9 @@ class PanelRadar : Panel
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
 	
+	var panelFoot:SCNNode!
+	var labelSecondary:SCNLabel!
+	
 	override func setup()
 	{
 		name = "radar"
@@ -42,6 +45,18 @@ class PanelRadar : Panel
 		panelHead.addChildNode(inputLabel)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
+		
+		panelFoot = SCNNode()
+		labelSecondary = SCNLabel(text: "zoom", scale: 0.1, align: alignment.center)
+		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelFoot.addChildNode(labelSecondary)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
+		
+		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7))
+		trigger.geometry?.materials.first?.diffuse.contents = clear
+		trigger.position = SCNVector3(0,0,0)
+		labelSecondary.addChildNode(trigger)
 		
 		interface.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)
@@ -72,15 +87,6 @@ class PanelRadar : Panel
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
 		targetter.opacity = 0
 		interface.addChildNode(targetter)
-		
-		let zoomLabel = SCNLabel(text: "zoom", scale: 0.1, align: alignment.center, color: red)
-		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
-		interface.addChildNode(zoomLabel)
-		
-		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7))
-		trigger.geometry?.materials.first?.diffuse.contents = clear
-		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
-		interface.addChildNode(trigger)
 	}
 	
 	

@@ -26,14 +26,7 @@ var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 
-var ceilingNode:Array<SCNVector3>!
-var highMidNode:Array<SCNVector3>!
-var highGapNode:Array<SCNVector3>!
 var highNode:Array<SCNVector3>!
-var lowNode:Array<SCNVector3>!
-var lowGapNode:Array<SCNVector3>!
-var lowMidNode:Array<SCNVector3>!
-var floorNode:Array<SCNVector3>!
 
 var radar:PanelRadar!
 var battery:PanelBattery!
