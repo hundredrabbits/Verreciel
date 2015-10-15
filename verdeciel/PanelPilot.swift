@@ -13,7 +13,6 @@ import Foundation
 
 class PanelPilot : Panel
 {
-	var nameLabel = SCNLabel(text: "")
 	var directionLabel = SCNLabel(text: "")
 	
 	var targetDirection = CGFloat()
@@ -22,21 +21,28 @@ class PanelPilot : Panel
 	var staticDirectionIndicator = SCNNode()
 	var eventsDirectionIndicator = SCNNode()
 	
+	var panelHead:SCNNode!
+	var label:SCNLabel!
+	var input:SCNPort!
+	
 	override func setup()
 	{
 		name = "pilot"
 		
-		self.position = SCNVector3(x: 0, y: 0, z: templates.radius - 0.2)
+		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		
-		let scale:Float = 0.8
-		
-		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
-		nameLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		self.addChildNode(nameLabel)
+		panelHead = SCNNode()
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: -0.75, y: templates.topMargin, z: 0)
+		label = SCNLabel(text: "pilot", scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0.05, y: templates.topMargin, z: 0)
+		panelHead.addChildNode(input)
+		panelHead.addChildNode(label)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		directionLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		directionLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		directionLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(directionLabel)
 		
 		//

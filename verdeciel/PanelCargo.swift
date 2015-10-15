@@ -44,14 +44,12 @@ class PanelCargo : Panel
 		self.addEvent(items.loiqeLicense)
 		self.addEvent(items.mediumBattery)
 			
-		let scale:Float = 0.8
-		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(nameLabel)
 		
 		attractorLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		attractorLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		attractorLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(attractorLabel)
 		
 		// Quantity

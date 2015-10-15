@@ -37,15 +37,12 @@ class PanelThruster : Panel
 		name = "thruster"
 		self.position = SCNVector3(x: 0, y: 0, z: templates.radius - 0.2)
 		
-		
-		let scale:Float = 0.8
-		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
 		nameLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(nameLabel)
 		
 		speedLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		speedLabel.position = SCNVector3(x: 0, y: lowNode[7].y * scale, z: 0)
+		speedLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(speedLabel)
 		
 		// Lines

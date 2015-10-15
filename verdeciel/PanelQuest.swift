@@ -48,7 +48,7 @@ class PanelQuest : Panel
 		panelHead.addChildNode(progressBar)
 		input = SCNPort(host: self,polarity: false)
 		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: templates.topMargin, z: 0)
-		inputLabel = SCNLabel(text: "battery", scale: 0.1, align: alignment.left)
+		inputLabel = SCNLabel(text: "travel log", scale: 0.1, align: alignment.left)
 		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: templates.topMargin, z: 0)
 		panelHead.addChildNode(input)
 		panelHead.addChildNode(inputLabel)
