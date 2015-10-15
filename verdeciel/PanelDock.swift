@@ -38,10 +38,7 @@ class PanelDock : Panel
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,size * 0.25,0), color: red))
 		interface.addChildNode(triangle)
 		
-		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2))
-		trigger.geometry = SCNPlane(width: 2, height: 2)
-		trigger.geometry?.materials.first?.diffuse.contents = red
 		
 		interface.addChildNode(trigger)
 		

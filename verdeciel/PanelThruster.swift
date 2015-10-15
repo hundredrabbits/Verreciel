@@ -82,9 +82,9 @@ class PanelThruster : Panel
 		draw()
 	}
 
-	override func bang(param:Bool = true)
+	override func touch(id:Int = 0)
 	{
-		if param == true {
+		if id == 1 {
 			speedUp()
 		}
 		else{

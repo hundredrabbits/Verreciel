@@ -14,35 +14,37 @@ import Foundation
 class PanelHandle : Panel
 {
 	var destination:SCNVector3!
-	var selectionLine:SCNLine!
+	var selectionLine1:SCNLine!
+	var selectionLine2:SCNLine!
+	var trigger:SCNTrigger!
 	
-	func setup(destination:SCNVector3)
+	override func setup()
 	{
-		self.destination = destination
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		self.position = SCNVector3(x: 0, y: highGapNode[4].y, z: templates.radius)
-		self.geometry = SCNBox(width: 2, height: 1, length: 1, chamferRadius: 0)
-		self.geometry?.materials.first?.diffuse.contents = clear
+		selectionLine1 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0.05, z: 0),nodeB: SCNVector3(x: 0.3, y: 0.05, z: 0),color:cyan)
+		selectionLine2 = SCNLine(nodeA: SCNVector3(x: -0.3, y: -0.05, z: 0),nodeB: SCNVector3(x: 0.3, y: -0.05, z: 0),color:cyan)
+		interface.addChildNode(selectionLine1)
+		interface.addChildNode(selectionLine2)
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 1, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 1.1, y: 0, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 1, y: 0.25, z: 0.3),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: -1, y: 0.25, z: 0.3),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -1, y: 0.25, z: 0.3),nodeB: SCNVector3(x: -1.1, y: 0, z: 0),color:grey))
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
+		interface.addChildNode(trigger)
 		
-		selectionLine = SCNLine(nodeA: SCNVector3(x: -0.75, y: 0.25, z: 0.3),nodeB: SCNVector3(x: 0.75, y: 0.25, z: 0.3),color:cyan)
-		self.addChildNode(selectionLine)
+		self.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 	}
 	
 	func enable()
 	{
 		isEnabled = true
-		selectionLine.updateColor(cyan)
+		selectionLine1.updateColor(cyan)
+		selectionLine2.updateColor(cyan)
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-		selectionLine.updateColor(grey)
+		selectionLine1.updateColor(grey)
+		selectionLine2.updateColor(grey)
 	}
 	
 	override func touch(id:Int = 0)
