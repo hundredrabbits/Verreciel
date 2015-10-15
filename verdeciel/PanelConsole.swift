@@ -23,22 +23,18 @@ class PanelConsole : Panel
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
 	var panelHead:SCNNode!
-	var progressBar:SCNProgressBar!
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
 	
 	override func setup()
 	{
-		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
-		progressBar.position = SCNVector3(templates.leftMargin,templates.top,0)
-		panelHead.addChildNode(progressBar)
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: templates.topMargin, z: 0)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: 0, z: templates.radius)
 		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: templates.topMargin, z: 0)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
 		panelHead.addChildNode(inputLabel)
 		addChildNode(panelHead)
@@ -74,7 +70,7 @@ class PanelConsole : Panel
 		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: (spacing * 5), z: 0)
 		linesRoot.addChildNode(consoleLine6)
 		
-		self.addChildNode(linesRoot)
+		interface.addChildNode(linesRoot)
 	}
 	
 	func touch(knobId:String)

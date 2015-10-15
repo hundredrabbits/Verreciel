@@ -76,11 +76,9 @@ class PanelDock : Panel
 			dockingTimer.invalidate()
 			dockingStatus = 0
 			completeUndocking()
-			custom.progressBar.update(0)
 		}
 		else{
 			label.updateWithColor("Undocking \(Int(dockingStatus))%", color: grey)
-			custom.progressBar.update(dockingStatus)
 		}
 	}
 	

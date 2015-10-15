@@ -91,7 +91,7 @@ struct Templates
 	var topMargin:Float = 0
 	var bottomMargin:Float = 0
 	
-	var titlesAngle:CGFloat = 25
+	var titlesAngle:CGFloat = 22
 	var monitorsAngle:CGFloat = 30
 	var warningsAngle:CGFloat = 42
 }

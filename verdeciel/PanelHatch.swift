@@ -29,13 +29,13 @@ class PanelHatch : Panel
 	override func setup()
 	{
 		name = "hatch"
-		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.75, y: templates.topMargin, z: 0)
-		label = SCNLabel(text: "pilot", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: templates.topMargin, z: 0)
+		input.position = SCNVector3(x: -0.75, y: 0, z: templates.radius)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
@@ -43,27 +43,27 @@ class PanelHatch : Panel
 		
 		quantityLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 		quantityLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		self.addChildNode(quantityLabel)
+		interface.addChildNode(quantityLabel)
 		
 		// Button
 		
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
-		self.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
+		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
+		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
+		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
+		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
 		
 		outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
-		self.addChildNode(outline1)
+		interface.addChildNode(outline1)
 		outline2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
-		self.addChildNode(outline2)
+		interface.addChildNode(outline2)
 		outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.5, z: 0),color:red)
-		self.addChildNode(outline3)
+		interface.addChildNode(outline3)
 		outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
-		self.addChildNode(outline4)
+		interface.addChildNode(outline4)
 		
 		// Trigger
 		
-		self.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
+		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
 	}
 
 	override func touch()

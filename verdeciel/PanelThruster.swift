@@ -13,9 +13,6 @@ import Foundation
 
 class PanelThruster : Panel
 {
-	var nameLabel = SCNNode()
-	var speedLabel = SCNLabel(text: "")
-	
 	var accelerate:SCNTrigger!
 	var decelerate:SCNTrigger!
 	
@@ -28,22 +25,34 @@ class PanelThruster : Panel
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
-	// Ports
-	
+	var panelHead:SCNNode!
+	var label:SCNLabel!
 	var input:SCNPort!
+	
+	var panelFoot:SCNNode!
+	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
 		name = "thruster"
-		self.position = SCNVector3(x: 0, y: 0, z: templates.radius - 0.2)
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
-		nameLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		self.addChildNode(nameLabel)
+		panelHead = SCNNode()
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: -0.75, y: 0, z: templates.radius)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelHead.addChildNode(input)
+		panelHead.addChildNode(label)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
-		speedLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		speedLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		self.addChildNode(speedLabel)
+		panelFoot = SCNNode()
+		labelSecondary = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelFoot.addChildNode(labelSecondary)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
 		// Lines
 		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
@@ -51,10 +60,10 @@ class PanelThruster : Panel
 		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: white)
 		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: white)
 		
-		self.addChildNode(line1)
-		self.addChildNode(line2)
-		self.addChildNode(line3)
-		self.addChildNode(line4)
+		interface.addChildNode(line1)
+		interface.addChildNode(line2)
+		interface.addChildNode(line3)
+		interface.addChildNode(line4)
 		
 		// Triggers
 		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: true)
@@ -67,19 +76,12 @@ class PanelThruster : Panel
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))
 		
-		self.addChildNode(accelerate)
-		self.addChildNode(decelerate)
-		
-		// Ports
-		
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.7, y: templates.topMargin, z: 0)
-		self.addChildNode(input)
+		interface.addChildNode(accelerate)
+		interface.addChildNode(decelerate)
 		
 		draw()
 	}
 
-	
 	override func bang(param:Bool = true)
 	{
 		if param == true {
@@ -108,7 +110,7 @@ class PanelThruster : Panel
 	
 	func draw()
 	{
-		maxSpeed = 3
+		maxSpeed = 4
 		
 		if speed >= maxSpeed {
 			speed = maxSpeed
@@ -139,15 +141,15 @@ class PanelThruster : Panel
 	func enable()
 	{
 		isEnabled = true
-		accelerate.opacity = 1
-		decelerate.opacity = 1
+//		accelerate.opacity = 1
+//		decelerate.opacity = 1
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-		accelerate.opacity = 0
-		decelerate.opacity = 0
+//		accelerate.opacity = 0
+//		decelerate.opacity = 0
 	}
 	
 	override func fixedUpdate()
@@ -198,14 +200,14 @@ class PanelThruster : Panel
 		
 		if capsule.dock != nil {
 			actualSpeed = 0
-			speedLabel.update("docked")
+			labelSecondary.update("docked")
 		}
 		else if actualSpeed < 0.1 {
 			actualSpeed = 0.1
 		}
 		
 		if Float(speed) != actualSpeed {
-			speedLabel.update(String(format: "%.1f", actualSpeed))
+			labelSecondary.update(String(format: "%.1f", actualSpeed))
 		}
 	}
 	

@@ -63,7 +63,7 @@ class CoreCapsule: SCNNode
 	{
 		dock = newDock
 		custom.dock(dock)
-		thruster.enable()
+//		thruster.enable()
 		dockbay.update()
 	}
 	

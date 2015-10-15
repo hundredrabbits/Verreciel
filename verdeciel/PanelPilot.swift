@@ -29,43 +29,43 @@ class PanelPilot : Panel
 	{
 		name = "pilot"
 		
-		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.75, y: templates.topMargin, z: 0)
+		input.position = SCNVector3(x: -0.75, y: 0, z: templates.radius)
 		label = SCNLabel(text: "pilot", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: templates.topMargin, z: 0)
+		label.position = SCNVector3(x: 0.05, y:0, z: templates.radius)
 		panelHead.addChildNode(input)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		directionLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		directionLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		self.addChildNode(directionLabel)
+		directionLabel.position = SCNVector3(x: 0, y:0, z: templates.radius)
+		interface.addChildNode(directionLabel)
 		
 		//
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))
-		self.addChildNode(targetDirectionIndicator)
+		interface.addChildNode(targetDirectionIndicator)
 		
 		activeDirectionIndicator = SCNNode()
 		activeDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.4, -0.1), nodeB: SCNVector3(0, 0.55, -0), color: grey))
-		self.addChildNode(activeDirectionIndicator)
+		interface.addChildNode(activeDirectionIndicator)
 		
 		staticDirectionIndicator = SCNNode()
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0, 0.4, -0), color: cyan))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, -0.1), nodeB: SCNVector3(0, -0.4, -0), color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0.2, 0, -0.1), nodeB: SCNVector3(0.4, 0, -0), color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(-0.2, 0, -0.1), nodeB: SCNVector3(-0.4, 0, -0), color: red))
-		self.addChildNode(staticDirectionIndicator)
+		interface.addChildNode(staticDirectionIndicator)
 		
 		eventsDirectionIndicator = SCNNode()
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
-		self.addChildNode(eventsDirectionIndicator)
+		interface.addChildNode(eventsDirectionIndicator)
 		
 		update()
 	}
@@ -78,7 +78,7 @@ class PanelPilot : Panel
 	
 	override func fixedUpdate()
 	{
-		adjustAngle()
+//		adjustAngle()
 	}
 	
 	func adjustAngle()
