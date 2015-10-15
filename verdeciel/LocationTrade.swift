@@ -122,8 +122,6 @@ class LocationTrade : Location
 	override func bang(param: Bool)
 	{
 		completeTrade()
-		
-		custom.statusLabel.update("complete")
 		custom.update()
 	}
 

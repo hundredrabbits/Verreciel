@@ -11,16 +11,10 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelTranslator : Panel
+class PanelExternal : Panel
 {
-	var inputLabel:SCNLabel!
-	var outputLabel:SCNLabel!
-	var input:SCNPort!
-	var output:SCNPort!
-	
 	override func setup()
 	{
-		self.position = SCNVector3(x: 0, y: -1 * highNode[7].y * 0.8 - 0.6, z: templates.radius)
+		
 	}
-	
 }

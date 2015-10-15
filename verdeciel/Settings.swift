@@ -84,8 +84,14 @@ struct Templates
 	var top:Float = 0
 	var bottom:Float = 0
 	
+	var radius:Float = 0
+	
 	var leftMargin:Float = 0
 	var rightMargin:Float = 0
 	var topMargin:Float = 0
 	var bottomMargin:Float = 0
+	
+	var titlesAngle:CGFloat = 25
+	var monitorsAngle:CGFloat = 30
+	var warningsAngle:CGFloat = 42
 }

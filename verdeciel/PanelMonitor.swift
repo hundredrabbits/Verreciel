@@ -27,23 +27,23 @@ class PanelMonitor : Panel
 		let northMonitor = SCNNode()
 		
 		let labelOxygenTitle = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		labelOxygenTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: lowNode[7].z)
+		labelOxygenTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: templates.radius)
 		northMonitor.addChildNode(labelOxygenTitle)
 		
 		oxygenLabel = SCNLabel(text: "68.5", scale: 0.1, align: alignment.right)
-		oxygenLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: lowNode[7].z)
+		oxygenLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: templates.radius)
 		northMonitor.addChildNode(oxygenLabel)
 		
 		let labelShieldTitle = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
-		labelShieldTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: lowNode[7].z)
+		labelShieldTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: templates.radius)
 		northMonitor.addChildNode(labelShieldTitle)
 		
 		shieldLabel = SCNLabel(text: "35.7", scale: 0.1, align: alignment.right)
-		shieldLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: lowNode[7].z)
+		shieldLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: templates.radius)
 		northMonitor.addChildNode(shieldLabel)
 		
 		northMonitor.eulerAngles.y += Float(degToRad(90))
-		northMonitor.eulerAngles.x += Float(degToRad(25))
+		northMonitor.eulerAngles.x += Float(degToRad(templates.monitorsAngle))
 		
 		self.addChildNode(northMonitor)
 		
@@ -52,23 +52,23 @@ class PanelMonitor : Panel
 		let eastMonitor = SCNNode()
 		
 		let labelRadiationTitle = SCNLabel(text: "radiation", scale: 0.1, align: alignment.left)
-		labelRadiationTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: lowNode[7].z)
+		labelRadiationTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: templates.radius)
 		eastMonitor.addChildNode(labelRadiationTitle)
 		
 		radiationLabel = SCNLabel(text: "45.3", scale: 0.1, align: alignment.right)
-		radiationLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: lowNode[7].z)
+		radiationLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: templates.radius)
 		eastMonitor.addChildNode(radiationLabel)
 		
 		let labelTemperatureTitle = SCNLabel(text: "temperature", scale: 0.1, align: alignment.left)
-		labelTemperatureTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: lowNode[7].z)
+		labelTemperatureTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: templates.radius)
 		eastMonitor.addChildNode(labelTemperatureTitle)
 		
 		temperatureLabel = SCNLabel(text: "34.7", scale: 0.1, align: alignment.right)
-		temperatureLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: lowNode[7].z)
+		temperatureLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: templates.radius)
 		eastMonitor.addChildNode(temperatureLabel)
 		
 		eastMonitor.eulerAngles.y += Float(degToRad(180))
-		eastMonitor.eulerAngles.x += Float(degToRad(25))
+		eastMonitor.eulerAngles.x += Float(degToRad(templates.monitorsAngle))
 		
 		self.addChildNode(eastMonitor)
 		
@@ -77,16 +77,16 @@ class PanelMonitor : Panel
 		let southMonitor = SCNNode()
 		
 		let labelElectricTitle = SCNLabel(text: "electricity", scale: 0.1, align: alignment.left)
-		labelElectricTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: lowNode[7].z)
+		labelElectricTitle.position = SCNVector3(x: templates.leftMargin, y: 0, z: templates.radius)
 		
 		electricityLabel = SCNLabel(text: "325.5", scale: 0.1, align: alignment.right)
-		electricityLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: lowNode[7].z)
+		electricityLabel.position = SCNVector3(x: templates.rightMargin, y: 0, z: templates.radius)
 		
 		let labelHullTitle = SCNLabel(text: "hull", scale: 0.1, align: alignment.left)
-		labelHullTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: lowNode[7].z)
+		labelHullTitle.position = SCNVector3(x: templates.leftMargin, y: 0.3, z: templates.radius)
 		
 		hullLabel = SCNLabel(text: "355.3", scale: 0.1, align: alignment.right)
-		hullLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: lowNode[7].z)
+		hullLabel.position = SCNVector3(x: templates.rightMargin, y: 0.3, z: templates.radius)
 		
 		southMonitor.addChildNode(labelHullTitle)
 		southMonitor.addChildNode(labelElectricTitle)
@@ -94,7 +94,7 @@ class PanelMonitor : Panel
 		southMonitor.addChildNode(electricityLabel)
 		
 		southMonitor.eulerAngles.y += Float(degToRad(0))
-		southMonitor.eulerAngles.x += Float(degToRad(25))
+		southMonitor.eulerAngles.x += Float(degToRad(templates.monitorsAngle))
 		
 		self.addChildNode(southMonitor)
 		

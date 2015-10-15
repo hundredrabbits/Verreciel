@@ -21,14 +21,13 @@ class PanelTargetter : Panel
 	
 	override func setup()
 	{
-		self.position = SCNVector3(x: 0, y: 3.3, z: lowNode[7].z * 0.825)
-		self.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.6))
-		self.geometry = SCNPlane(width: 2, height: 2)
-		self.geometry?.materials.first?.diffuse.contents = clear
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		interface.geometry = SCNPlane(width: 2, height: 2)
+		interface.geometry?.materials.first?.diffuse.contents = clear
 		
 		label = SCNLabel(text: "Targetted", scale: 0.1, align: alignment.center, color: red)
 		label.position = SCNVector3(0.05,0.35,0)
-		self.addChildNode(label)
+		interface.addChildNode(label)
 		
 		let size:Float = 0.7
 		triangle = SCNNode()
@@ -38,10 +37,11 @@ class PanelTargetter : Panel
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(size,0,0), nodeB: SCNVector3(size * 0.75,size * 0.25,0), color: red))
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,0,0), color: red))
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,size * 0.25,0), color: red))
-		self.addChildNode(triangle)
+		interface.addChildNode(triangle)
 		
 		triangle.updateChildrenColors(grey)
 		label.updateWithColor("untargetted", color: grey)
 		
+		self.eulerAngles.x += Float(degToRad(templates.warningsAngle))		
 	}
 }

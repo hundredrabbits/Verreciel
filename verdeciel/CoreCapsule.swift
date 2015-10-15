@@ -124,6 +124,7 @@ class CoreCapsule: SCNNode
 		templates.rightMargin = highNode[0].x * 0.8
 		templates.topMargin = highNode[0].y * 0.8
 		templates.bottomMargin = lowNode[0].y * 0.8
+		templates.radius = lowNode[0].z
 	}
 	
 	override func fixedUpdate()

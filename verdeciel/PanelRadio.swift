@@ -21,7 +21,7 @@ class PanelRadio : Panel
 	override func setup()
 	{
 		name = "radio"
-		self.position = SCNVector3(x: 0, y: -1 * highNode[7].y * 0.8 - 0.6, z: lowNode[7].z)
+		self.position = SCNVector3(x: 0, y: -1 * highNode[7].y * 0.8 - 0.6, z: templates.radius)
 		
 		input = SCNPort(host: self, polarity: false)
 		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: -0.3, z: 0)

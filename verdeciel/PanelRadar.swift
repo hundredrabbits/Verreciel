@@ -29,7 +29,7 @@ class PanelRadar : Panel
 	override func setup()
 	{
 		name = "radar"
-		position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		self.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)

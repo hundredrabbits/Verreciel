@@ -20,7 +20,7 @@ class PanelHandle : Panel
 	{
 		self.destination = destination
 		
-		self.position = SCNVector3(x: 0, y: highGapNode[4].y, z: lowNode[7].z)
+		self.position = SCNVector3(x: 0, y: highGapNode[4].y, z: templates.radius)
 		self.geometry = SCNBox(width: 2, height: 1, length: 1, chamferRadius: 0)
 		self.geometry?.materials.first?.diffuse.contents = clear
 		

@@ -26,13 +26,13 @@ class PanelPilot : Panel
 	{
 		name = "pilot"
 		
-		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z - 0.2)
+		self.position = SCNVector3(x: 0, y: 0, z: templates.radius - 0.2)
 		
 		
 		let scale:Float = 0.8
 		
 		nameLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.center)
-		nameLabel.position = SCNVector3(x: 0, y: highNode[7].y * scale, z: 0)
+		nameLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
 		self.addChildNode(nameLabel)
 		
 		directionLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)

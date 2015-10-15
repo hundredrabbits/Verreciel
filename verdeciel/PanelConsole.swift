@@ -20,32 +20,35 @@ class PanelConsole : Panel
 	var consoleLine5:SCNCommand!
 	var consoleLine6:SCNCommand!
 	
-	var progressBar:SCNProgressBar!
-	
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
-	// Ports
-	
+	var panelHead:SCNNode!
+	var progressBar:SCNProgressBar!
 	var inputLabel:SCNLabel!
 	var input:SCNPort!
 	
 	override func setup()
 	{
+		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
-		
-		
-		let scale:Float = 0.8
-		
+		panelHead = SCNNode()
 		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
-		progressBar.position = SCNVector3(templates.leftMargin,highNode[7].y * scale - 0.25,0)
-		self.addChildNode(progressBar)
+		progressBar.position = SCNVector3(templates.leftMargin,templates.top,0)
+		panelHead.addChildNode(progressBar)
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: templates.topMargin, z: 0)
+		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: templates.topMargin, z: 0)
+		panelHead.addChildNode(input)
+		panelHead.addChildNode(inputLabel)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		let linesRoot = SCNNode()
 		
 		let spacing:Float = -0.35
 		
-		linesRoot.position = SCNVector3(0,highNode[7].y * scale + spacing - 0.2,0)
+		linesRoot.position = SCNVector3(0,templates.topMargin + spacing - 0.2,0)
 		
 		consoleLine1 = SCNCommand()
 		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
@@ -72,17 +75,6 @@ class PanelConsole : Panel
 		linesRoot.addChildNode(consoleLine6)
 		
 		self.addChildNode(linesRoot)
-		
-		// Ports
-		
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: highNode[7].y * scale, z: 0)
-		
-		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: highNode[7].y * scale, z: 0)
-		
-		self.addChildNode(input)
-		self.addChildNode(inputLabel)
 	}
 	
 	func touch(knobId:String)

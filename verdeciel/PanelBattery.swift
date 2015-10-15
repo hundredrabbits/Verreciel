@@ -15,11 +15,6 @@ class PanelBattery : Panel
 {
 	var value:Float = 0
 	
-	// Ports
-	
-	var inputLabel:SCNLabel!
-	var input:SCNPort!
-	
 	var inOxygen:SCNPort!
 	var inShield:SCNPort!
 	var inCloak:SCNPort!
@@ -30,14 +25,29 @@ class PanelBattery : Panel
 	var outCell2:SCNPort!
 	var outCell3:SCNPort!
 	
+	var panelHead:SCNNode!
+	var progressBar:SCNProgressBar!
+	var inputLabel:SCNLabel!
+	var input:SCNPort!
+	
 	override func setup()
 	{
 		name = "battery"
-		let scale:Float = 0.8
+	
+		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		// Draw Radar
-		
-		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		panelHead = SCNNode()
+		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
+		progressBar.position = SCNVector3(templates.leftMargin,templates.top,0)
+		panelHead.addChildNode(progressBar)
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: templates.topMargin, z: 0)
+		inputLabel = SCNLabel(text: "battery", scale: 0.1, align: alignment.left)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: templates.topMargin, z: 0)
+		panelHead.addChildNode(input)
+		panelHead.addChildNode(inputLabel)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		// Cells
 		
@@ -104,18 +114,6 @@ class PanelBattery : Panel
 		radioLabel.position = SCNVector3(x: distance + 0.2, y: 2 * -verticalOffset, z: 0)
 		self.addChildNode(radioLabel)
 		self.addChildNode(inRadio)
-		
-		// Ports
-		
-		input = SCNPort(host: self, polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: highNode[7].y * scale, z: 0)
-		
-		inputLabel = SCNLabel(text: self.name!, scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: highNode[7].y * scale, z: 0)
-		inputLabel.updateWithColor(self.name!, color: grey)
-		
-		self.addChildNode(input)
-		self.addChildNode(inputLabel)
 	}
 	
 	override func listen(event:Event)

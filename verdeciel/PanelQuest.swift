@@ -14,8 +14,6 @@ import Foundation
 class PanelQuest : Panel
 {
 	var content:SCNNode!
-	var statusLabel:SCNLabel!
-	var progressBar:SCNProgressBar!
 
 	var linesRoot:SCNNode!
 	
@@ -34,34 +32,36 @@ class PanelQuest : Panel
 	
 	// Ports
 	
-	var dockNameLabel:SCNLabel!
+	var panelHead:SCNNode!
+	var progressBar:SCNProgressBar!
+	var inputLabel:SCNLabel!
+	var input:SCNPort!
 	
 	override func setup()
 	{
 		name = "Travel log"
-		self.position = SCNVector3(x: 0, y: 0, z: lowNode[7].z)
+		self.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		
+		panelHead = SCNNode()
+		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
+		progressBar.position = SCNVector3(templates.leftMargin,templates.top,0)
+		panelHead.addChildNode(progressBar)
+		input = SCNPort(host: self,polarity: false)
+		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: templates.topMargin, z: 0)
+		inputLabel = SCNLabel(text: "battery", scale: 0.1, align: alignment.left)
+		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: templates.topMargin, z: 0)
+		panelHead.addChildNode(input)
+		panelHead.addChildNode(inputLabel)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		content = SCNNode()
 		self.addChildNode(content)
 		
-		let scale:Float = 0.8
-		
-		dockNameLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.left)
-		dockNameLabel.position = SCNVector3(x: templates.leftMargin, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(dockNameLabel)
-		
-		statusLabel = SCNLabel(text: "17/19", scale: 0.1, align: alignment.right, color:grey)
-		statusLabel.position = SCNVector3(x: templates.rightMargin, y: highNode[7].y * scale, z: 0)
-		self.addChildNode(statusLabel)
-		
-		progressBar = SCNProgressBar(width: CGFloat(templates.rightMargin) * 2)
-		progressBar.position = SCNVector3(templates.leftMargin,highNode[7].y * scale - 0.25,0)
-		self.addChildNode(progressBar)
-		
 		let spacing:Float = -0.35
 		
 		linesRoot = SCNNode()
-		linesRoot.position = SCNVector3(0,highNode[7].y * scale + spacing - 0.2,0)
+		linesRoot.position = SCNVector3(0,templates.topMargin + spacing - 0.2,0)
 		
 		quest1 = SCNLabel()
 		quest1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
@@ -127,19 +127,13 @@ class PanelQuest : Panel
 	
 	func dock(location:Location)
 	{
-		dockNameLabel.update(location.name!)
-		statusLabel.update(location.interaction)
 		content.addChildNode(location.interface)
-		
 		linesRoot.opacity = 0
 	}
 	
 	func undock()
 	{
-		dockNameLabel.update(name!)
 		content.empty()
-		statusLabel.update("undocked")
-		
 		linesRoot.opacity = 1
 	}
 	
