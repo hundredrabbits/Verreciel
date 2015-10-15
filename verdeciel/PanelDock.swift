@@ -18,12 +18,11 @@ class PanelDock : Panel
 	var dockingStatus:CGFloat = 0
 	var dockingTimer:NSTimer!
 	var triangle:SCNNode!
+	var trigger:SCNTrigger!
 	
 	override func setup()
 	{
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		interface.geometry = SCNPlane(width: 2, height: 2)
-		interface.geometry?.materials.first?.diffuse.contents = clear
 		
 		label = SCNLabel(text: "UNDOCK", scale: 0.1, align: alignment.center, color: red)
 		label.position = SCNVector3(0.05,0.35,0)
@@ -39,6 +38,13 @@ class PanelDock : Panel
 		triangle.addChildNode(SCNLine(nodeA: SCNVector3(-size,0,0), nodeB: SCNVector3(size * -0.75,size * 0.25,0), color: red))
 		interface.addChildNode(triangle)
 		
+		
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2))
+		trigger.geometry = SCNPlane(width: 2, height: 2)
+		trigger.geometry?.materials.first?.diffuse.contents = red
+		
+		interface.addChildNode(trigger)
+		
 		self.eulerAngles.x += Float(degToRad(templates.warningsAngle))
 	}
 
@@ -53,13 +59,13 @@ class PanelDock : Panel
 			triangle.updateChildrenColors(grey)
 		}
 	}
-
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		if capsule.dock == nil { return }
 		beginUndocking()
 	}
+	
 	
 	func beginUndocking()
 	{

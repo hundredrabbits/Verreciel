@@ -146,7 +146,7 @@ class Location : Event
 		self.service = service
 	}
 	
-	override func touch()
+	override func touch(id:Int)
 	{
 		if isKnown == true {
 			print("touched: \(self.name!)")

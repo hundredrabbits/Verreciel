@@ -14,9 +14,9 @@ import Foundation
 class SCNTrigger : SCNNode
 {
 	let host:SCNNode!
-	let operation:Bool!
+	let operation:Int!
 	
-	init(host:SCNNode,size:CGSize,operation:Bool = true)
+	init(host:SCNNode,size:CGSize,operation:Int = 0)
 	{
 		self.operation = operation
 		self.host = host
@@ -25,9 +25,9 @@ class SCNTrigger : SCNNode
 		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
-	override func touch()
+	override func touch(id:Int)
 	{
-		host.bang(self.operation)
+		host.touch(operation)
 	}
 	
 	override func update()

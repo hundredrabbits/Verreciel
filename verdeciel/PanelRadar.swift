@@ -77,7 +77,7 @@ class PanelRadar : Panel
 		zoomLabel.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		interface.addChildNode(zoomLabel)
 		
-		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7), operation: true)
+		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7))
 		trigger.geometry?.materials.first?.diffuse.contents = clear
 		trigger.position = SCNVector3(0,lowNode[7].y - 0.2,0)
 		interface.addChildNode(trigger)

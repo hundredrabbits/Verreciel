@@ -45,7 +45,7 @@ class PanelHandle : Panel
 		selectionLine.updateColor(grey)
 	}
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		if player.handle != nil { player.handle.enable() }
 		

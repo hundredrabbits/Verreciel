@@ -13,8 +13,6 @@ import Foundation
 
 class PanelHatch : Panel
 {
-	var quantityLabel = SCNLabel(text: "")
-	
 	var load:Event!
 
 	var outline1:SCNLine!
@@ -25,6 +23,9 @@ class PanelHatch : Panel
 	var panelHead:SCNNode!
 	var label:SCNLabel!
 	var input:SCNPort!
+	
+	var panelFoot:SCNNode!
+	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -41,11 +42,12 @@ class PanelHatch : Panel
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
-		quantityLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		quantityLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		interface.addChildNode(quantityLabel)
-		
-		// Button
+		panelFoot = SCNNode()
+		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
+		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelFoot.addChildNode(labelSecondary)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
 		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
 		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
@@ -63,10 +65,10 @@ class PanelHatch : Panel
 		
 		// Trigger
 		
-		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
+		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 	}
 
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		bang(true)
 	}
@@ -104,7 +106,7 @@ class PanelHatch : Panel
 		
 		if load != nil && load.type != eventTypes.item {
 			label.update("hatch")
-			quantityLabel.updateWithColor("error", color: red)
+			labelSecondary.updateWithColor("error", color: red)
 			outline1.color(red)
 			outline2.color(red)
 			outline3.color(red)
@@ -113,7 +115,7 @@ class PanelHatch : Panel
 		}
 		else if load != nil {
 			label.update("fire")
-			quantityLabel.updateWithColor(String(Int(self.load.size)), color: white)
+			labelSecondary.updateWithColor(String(Int(self.load.size)), color: white)
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -121,7 +123,7 @@ class PanelHatch : Panel
 		}
 		else{
 			label.update("hatch")
-			quantityLabel.update("")
+			labelSecondary.update("")
 			outline1.color(grey)
 			outline2.color(grey)
 			outline3.color(grey)
@@ -132,7 +134,7 @@ class PanelHatch : Panel
 	override func listen(event:Event)
 	{
 		if event.quest == true {
-			quantityLabel.updateWithColor("error", color: red)
+			labelSecondary.updateWithColor("error", color: red)
 		}
 		else{
 			self.load = event

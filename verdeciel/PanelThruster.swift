@@ -48,7 +48,7 @@ class PanelThruster : Panel
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
 		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelFoot.addChildNode(labelSecondary)
 		addChildNode(panelFoot)
@@ -66,12 +66,12 @@ class PanelThruster : Panel
 		interface.addChildNode(line4)
 		
 		// Triggers
-		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: true)
+		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: 1)
 		accelerate.position = SCNVector3(0, 0.5, 0)
 		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: cyan))
 		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: cyan))
 		
-		decelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: false)
+		decelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: 0)
 		decelerate.position = SCNVector3(0, -0.5, 0)
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))

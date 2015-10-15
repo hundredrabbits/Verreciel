@@ -12,9 +12,7 @@ import SceneKit
 import Foundation
 
 class PanelCargo : Panel
-{
-	var attractorLabel = SCNLabel(text: "")
-	
+{	
 	var loadTime:Int = 0
 	
 	var cargohold = Event(newName: "cargohold", type: eventTypes.stack)
@@ -26,12 +24,13 @@ class PanelCargo : Panel
 	var line5:SCNLine!
 	var line6:SCNLine!
 	
-	// Ports
-	
 	var panelHead:SCNNode!
 	var label:SCNLabel!
 	var input:SCNPort!
 	var output:SCNPort!
+	
+	var panelFoot:SCNNode!
+	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -50,16 +49,19 @@ class PanelCargo : Panel
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
+		
+		panelFoot = SCNNode()
+		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
+		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelFoot.addChildNode(labelSecondary)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 
 		// Tutorial Item
 		
 		addEvent(items.loiqeLicense)
 		addEvent(items.mediumBattery)
-		
-		attractorLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		attractorLabel.position = SCNVector3(x: 0, y: templates.topMargin, z: 0)
-		interface.addChildNode(attractorLabel)
-		
+
 		// Quantity
 		
 		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white)
@@ -78,7 +80,7 @@ class PanelCargo : Panel
 		
 		// Trigger
 		
-		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: true))
+		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 	}
 	
 	func addEvent(event:Event)
@@ -118,7 +120,7 @@ class PanelCargo : Panel
 		if cargohold.content.count > 5 { line6.color(white) }
 	}
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		self.bang()
 	}
@@ -129,7 +131,7 @@ class PanelCargo : Panel
 			pickup(event)
 		}
 		else{
-			attractorLabel.updateWithColor("error", color: red)
+			labelSecondary.updateWithColor("error", color: red)
 		}
 	}
 

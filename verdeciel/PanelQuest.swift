@@ -124,7 +124,7 @@ class PanelQuest : Panel
 	func dock(location:Location)
 	{
 		content.addChildNode(location.interface)
-		linesRoot.opacity = 0
+		linesRoot.opacity = 1
 	}
 	
 	func undock()

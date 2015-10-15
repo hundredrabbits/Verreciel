@@ -13,7 +13,7 @@ import Foundation
 
 extension SCNNode
 {
-	func touch()
+	func touch(id:Int = 0)
 	{
 		print("! This node has no touch action")
 	}

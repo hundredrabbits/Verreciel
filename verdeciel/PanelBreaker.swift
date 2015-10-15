@@ -45,7 +45,7 @@ class PanelBreaker : Panel
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(0,templates.bottom,0), nodeB: SCNVector3(0,templates.bottomMargin,0), color: grey))
 	}
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		if isActive != true {
 			SCNTransaction.begin()

@@ -90,7 +90,7 @@ class CorePlayer : SCNNode
 		
 		// Button
 		
-		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75), operation: true)
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75))
 		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
 		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))
 		trigger.opacity = 0

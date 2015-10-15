@@ -73,11 +73,6 @@ class PanelConsole : Panel
 		interface.addChildNode(linesRoot)
 	}
 	
-	func touch(knobId:String)
-	{
-		
-	}
-	
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
@@ -109,22 +104,22 @@ class PanelConsole : Panel
 	func boot()
 	{
 		self.addLine(SCNCommand(text: "> ready", details: eventDetails.unknown, color: red))
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
 	}
 	
 	func clearLines()
 	{
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
-		self.addLine(SCNCommand())
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
+		self.addLine(SCNCommand(text: "--", color: grey))
 	}
 	
 	override func disconnect()

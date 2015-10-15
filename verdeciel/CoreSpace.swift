@@ -36,7 +36,7 @@ class CoreSpace: SCNNode
 		starsRoot.position = SCNVector3(x: 0, y: 0, z: 0)
 		addChildNode(starsRoot)
 		
-//		prepareLines()
+		prepareLines()
 	}
 	
 	func prepareLines()
@@ -65,7 +65,6 @@ class CoreSpace: SCNNode
 		if capsule.sector == sectors.opal { spaceColor.geometry?.firstMaterial?.diffuse.contents = whiteTone }
 		if capsule.sector == sectors.vermiles { spaceColor.geometry?.firstMaterial?.diffuse.contents = redTone }
 		if capsule.sector == sectors.void { spaceColor.geometry?.firstMaterial?.diffuse.contents = greyTone }
-		
 		
 		if thruster.actualSpeed > 0 {
 			

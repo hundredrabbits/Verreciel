@@ -65,7 +65,7 @@ class SCNPort : SCNNode
 		self.addChildNode(sprite)
 	}
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		player.activatePort(self)
 		update()

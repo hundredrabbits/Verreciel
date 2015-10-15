@@ -12,9 +12,7 @@ import SceneKit
 import Foundation
 
 class PanelPilot : Panel
-{
-	var directionLabel = SCNLabel(text: "")
-	
+{	
 	var targetDirection = CGFloat()
 	var targetDirectionIndicator = SCNNode()
 	var activeDirectionIndicator = SCNNode()
@@ -24,6 +22,9 @@ class PanelPilot : Panel
 	var panelHead:SCNNode!
 	var label:SCNLabel!
 	var input:SCNPort!
+	
+	var panelFoot:SCNNode!
+	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -41,11 +42,12 @@ class PanelPilot : Panel
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
-		directionLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-		directionLabel.position = SCNVector3(x: 0, y:0, z: templates.radius)
-		interface.addChildNode(directionLabel)
-		
-		//
+		panelFoot = SCNNode()
+		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
+		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		panelFoot.addChildNode(labelSecondary)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))
@@ -71,7 +73,7 @@ class PanelPilot : Panel
 	}
 	
 	
-	override func touch()
+	override func touch(id:Int = 0)
 	{
 		
 	}
@@ -99,7 +101,7 @@ class PanelPilot : Panel
 			}
 		}
 		
-		directionLabel.update(String(format: "%.0f",radar.target.align))
+		labelSecondary.update(String(format: "%.0f",radar.target.align))
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
