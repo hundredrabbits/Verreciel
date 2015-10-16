@@ -25,8 +25,9 @@ class PanelRadar : Panel
 	var targetterFar:SCNNode!
 	
 	var panelHead:SCNNode!
-	var inputLabel:SCNLabel!
 	var input:SCNPort!
+	var output:SCNPort!
+	var outputLabel:SCNLabel!
 	
 	var panelFoot:SCNNode!
 	var labelSecondary:SCNLabel!
@@ -38,11 +39,14 @@ class PanelRadar : Panel
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: 0, z: templates.radius)
-		inputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		inputLabel.position = SCNVector3(x: 0.01, y: 0, z: templates.radius)
+		input.position = SCNVector3(x: -0.2, y: 0.4, z: templates.radius)
+		output = SCNPort(host: self,polarity: true)
+		output.position = SCNVector3(x: 0.2, y: 0.4, z: templates.radius)
+		outputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		outputLabel.position = SCNVector3(x: 0.01, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
-		panelHead.addChildNode(inputLabel)
+		panelHead.addChildNode(output)
+		panelHead.addChildNode(outputLabel)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
@@ -89,19 +93,13 @@ class PanelRadar : Panel
 		interface.addChildNode(targetter)
 	}
 	
-	
-	override func bang(param: Bool)
-	{
-		player.enterRadar()
-	}
-	
 	override func fixedUpdate()
 	{
 		if target != nil {
-			inputLabel.updateWithColor(target.name!, color: white)
+			outputLabel.updateWithColor(target.name!, color: white)
 		}
 		else{
-			inputLabel.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: grey)
+			outputLabel.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: white)
 		}
 
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)

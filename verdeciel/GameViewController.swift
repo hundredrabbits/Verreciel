@@ -26,8 +26,6 @@ var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 
-var highNode:Array<SCNVector3>!
-
 var radar:PanelRadar!
 var battery:PanelBattery!
 var console:PanelConsole!

@@ -20,7 +20,7 @@ class PanelTranslator : Panel
 	
 	override func setup()
 	{
-		self.position = SCNVector3(x: 0, y: -1 * highNode[7].y * 0.8 - 0.6, z: templates.radius)
+		self.position = SCNVector3(x: 0, y: -1 * templates.leftMargin - 0.6, z: templates.radius)
 	}
 	
 }

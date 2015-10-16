@@ -93,10 +93,10 @@ class Location : Event
 		if player.inRadar == true {
 			self.opacity = 1
 		}
-		else if Float(verticalDistance) > highNode[0].y {
+		else if Float(verticalDistance) > templates.topMargin {
 			self.opacity = 0
 		}
-		else if Float(horizontalDistance) > highNode[0].x {
+		else if Float(horizontalDistance) > templates.right {
 			self.opacity = 0
 		}
 		else {

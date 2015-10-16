@@ -34,7 +34,7 @@ class PanelHatch : Panel
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.75, y: 0, z: templates.radius)
+		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
@@ -43,7 +43,7 @@ class PanelHatch : Panel
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
+		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
 		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelFoot.addChildNode(labelSecondary)
 		addChildNode(panelFoot)

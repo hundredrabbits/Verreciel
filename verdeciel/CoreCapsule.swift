@@ -25,6 +25,7 @@ class CoreCapsule: SCNNode
 	var instance:Event!
 	
 	var dock:Location!
+	var mesh:SCNNode!
 	
 	override init()
 	{
@@ -76,10 +77,10 @@ class CoreCapsule: SCNNode
 	
 	func connectDefaultPorts()
 	{
+		battery.output.connect(thruster.input)
 		battery.outCell1.connect(battery.inOxygen)
-		battery.outCell2.connect(battery.inThruster)
-		battery.outCell3.connect(battery.inShield)
 		cargo.output.connect(console.input)
+		radar.output.connect(pilot.input)
 	}
 	
 	func nodeSetup()
@@ -89,7 +90,8 @@ class CoreCapsule: SCNNode
 		
 		scale = 1
 		height = 1.5
-		highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		var highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
 		
 		templates.left = highNode[7].x
 		templates.right = highNode[0].x
@@ -100,6 +102,26 @@ class CoreCapsule: SCNNode
 		templates.topMargin = highNode[0].y * 0.8
 		templates.bottomMargin = -highNode[0].y * 0.8
 		templates.radius = highNode[0].z
+		
+		mesh = SCNNode()
+		mesh.position = SCNVector3(0,0,0)
+		addChildNode(mesh)
+		
+		var i = 0
+		while i < 90 {
+			var line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
+			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
+			mesh.addChildNode(line)
+			if i <= 50 && i >= 32 || i >= 85 || i <= 13 {
+//				line = SCNLine(nodeA: SCNVector3(0,0.1,templates.radius), nodeB: SCNVector3(0,-0.1,templates.radius), color: red)
+			}
+			else{
+				line = SCNLine(nodeA: SCNVector3(0,0.1,templates.radius), nodeB: SCNVector3(0,-0.1,templates.radius), color: grey)
+				line.eulerAngles.x += Float(degToRad(CGFloat(i) * 4))
+				mesh.addChildNode(line)
+			}
+			i += 1
+		}
 	}
 	
 	override func fixedUpdate()
@@ -179,7 +201,7 @@ class CoreCapsule: SCNNode
 		westPanels.addChildNode(targetter)
 		let handle4 = PanelHandle()
 		handle4.destination = SCNVector3(1.5,0,0)
-		southPanels.addChildNode(handle4)
+		westPanels.addChildNode(handle4)
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
@@ -213,7 +235,7 @@ class CoreCapsule: SCNNode
 		self.addChildNode(window)
 		breaker = PanelBreaker()
 		self.addChildNode(breaker)
-		monitor = PanelMonitor()
-		self.addChildNode(monitor)
+//		monitor = PanelMonitor()
+//		self.addChildNode(monitor)
 	}
 }

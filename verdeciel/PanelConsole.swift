@@ -28,13 +28,14 @@ class PanelConsole : Panel
 	
 	override func setup()
 	{
+		name = "console"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: templates.leftMargin + 0.1, y: 0, z: templates.radius)
-		inputLabel = SCNLabel(text: "console", scale: 0.1, align: alignment.left)
-		inputLabel.position = SCNVector3(x: templates.leftMargin + 0.3, y: 0, z: templates.radius)
+		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		inputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		inputLabel.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
 		panelHead.addChildNode(inputLabel)
 		addChildNode(panelHead)

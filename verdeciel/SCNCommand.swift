@@ -37,13 +37,13 @@ class SCNCommand : SCNNode
 
 		label = SCNLabel(text: self.text, scale: 0.1, align: alignment.left)
 		detailsLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
-		detailsLabel.position = SCNVector3((highNode[0].x * 0.8 * 2) - 0.3, 0, 0)
+		detailsLabel.position = SCNVector3((templates.rightMargin * 2) - 0.4, 0, 0)
 		detailsLabel.updateColor(grey)
 		
 		super.init()
 		
 		output = SCNPort(host: self, polarity: true)
-		output.position = SCNVector3((highNode[0].x * 0.8 * 2) - 0.15, 0, 0)
+		output.position = SCNVector3((templates.rightMargin * 2) - 0.15, 0, 0)
 		output.opacity = 0
 
 		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: red)

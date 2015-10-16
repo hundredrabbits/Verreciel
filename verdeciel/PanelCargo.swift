@@ -39,9 +39,9 @@ class PanelCargo : Panel
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.75, y: 0, z: templates.radius)
+		input.position = SCNVector3(x: -0.2, y: 0.4, z: templates.radius)
 		output = SCNPort(host: self,polarity: true)
-		output.position = SCNVector3(x: 0.75, y: 0, z: templates.radius)
+		output.position = SCNVector3(x: 0.2, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "cargo", scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
@@ -51,7 +51,7 @@ class PanelCargo : Panel
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "secondary", scale: 0.1, align: alignment.center)
+		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
 		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelFoot.addChildNode(labelSecondary)
 		addChildNode(panelFoot)
