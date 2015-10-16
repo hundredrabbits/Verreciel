@@ -119,7 +119,7 @@ class LocationTrade : Location
 		}
 	}
 	
-	override func bang(param: Bool)
+	override func bang()
 	{
 		completeTrade()
 		custom.update()

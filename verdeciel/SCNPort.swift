@@ -152,7 +152,7 @@ class SCNPort : SCNNode
 		
 		wire.update(SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port))
 		
-		host.bang(true)
+		host.bang()
 		wire.enable()
 		
 		update()

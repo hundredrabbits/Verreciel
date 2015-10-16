@@ -148,7 +148,7 @@ class PanelCargo : Panel
 		bang()
 	}
 	
-	override func bang(param:Bool = true)
+	override func bang()
 	{
 		self.update()
 		if output.connection != nil {

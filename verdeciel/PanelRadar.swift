@@ -29,9 +29,6 @@ class PanelRadar : Panel
 	var output:SCNPort!
 	var outputLabel:SCNLabel!
 	
-	var panelFoot:SCNNode!
-	var labelSecondary:SCNLabel!
-	
 	override func setup()
 	{
 		name = "radar"
@@ -50,18 +47,6 @@ class PanelRadar : Panel
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
-		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "zoom", scale: 0.1, align: alignment.center)
-		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelFoot.addChildNode(labelSecondary)
-		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
-		
-		let trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.7))
-		trigger.geometry?.materials.first?.diffuse.contents = clear
-		trigger.position = SCNVector3(0,0,0)
-		labelSecondary.addChildNode(trigger)
-		
 		interface.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)
 		
@@ -79,8 +64,14 @@ class PanelRadar : Panel
 		
 		// Decals
 		
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,0,0), nodeB: SCNVector3(templates.leftMargin,0,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,0,0), nodeB: SCNVector3(templates.rightMargin,0,0), color: grey))
+		decals.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
+		
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
 		// Targetter
 		
@@ -139,6 +130,14 @@ class PanelRadar : Panel
 	{
 		target = event
 		updateTarget()
+		bang()
+	}
+	
+	override func bang()
+	{
+		if output.connection == nil { return }
+		if target == nil { return }
+		output.connection.host.listen(target)
 	}
 	
 	func removeTarget()
@@ -166,7 +165,7 @@ class PanelRadar : Panel
 				universe.addChildNode(location)
 			}
 			event.size = 0
-			cargo.bang(true)
+			cargo.bang()
 		}
 		update()
 	}

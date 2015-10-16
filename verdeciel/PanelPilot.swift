@@ -12,7 +12,8 @@ import SceneKit
 import Foundation
 
 class PanelPilot : Panel
-{	
+{
+	var target:Location!
 	var targetDirection = CGFloat()
 	var targetDirectionIndicator = SCNNode()
 	var activeDirectionIndicator = SCNNode()
@@ -78,21 +79,26 @@ class PanelPilot : Panel
 		
 	}
 	
+	override func listen(event: Event)
+	{
+		target = event as! Location
+	}
+	
 	override func fixedUpdate()
 	{
-//		adjustAngle()
+		adjustAngle()
 	}
 	
 	func adjustAngle()
 	{
-		if radar.target == nil { return }
+		if target == nil { return }
 		
-		let left = radar.target.calculateAlignment(capsule.direction - 1)
-		let right = radar.target.calculateAlignment(capsule.direction + 1)
+		let left = target.calculateAlignment(capsule.direction - 1)
+		let right = target.calculateAlignment(capsule.direction + 1)
 		
-		targetDirection = radar.target.align
+		targetDirection = target.align
 		
-		if Int(radar.target.align) > 0 {
+		if Int(target.align) > 0 {
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}
@@ -101,7 +107,7 @@ class PanelPilot : Panel
 			}
 		}
 		
-		labelSecondary.update(String(format: "%.0f",radar.target.align))
+		labelSecondary.update(String(format: "%.0f",target.align))
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))

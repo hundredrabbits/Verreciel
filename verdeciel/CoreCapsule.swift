@@ -17,7 +17,7 @@ class CoreCapsule: SCNNode
 	var shield:Float = 100
 	var oxygen:Float = 100
 	
-	var at:CGPoint = universe.loiqe_spawn.at
+	var at:CGPoint = universe.loiqe_city.at
 	var travel:Float = 0
 	
 	var direction:CGFloat! = 1
@@ -64,7 +64,7 @@ class CoreCapsule: SCNNode
 	{
 		dock = newDock
 		custom.dock(dock)
-//		thruster.enable()
+		thruster.disable()
 		dockbay.update()
 	}
 	
@@ -72,7 +72,7 @@ class CoreCapsule: SCNNode
 	{
 		dock = nil
 		custom.undock()
-		thruster.disable()
+		thruster.enable()
 	}
 	
 	func connectDefaultPorts()
@@ -112,8 +112,7 @@ class CoreCapsule: SCNNode
 			var line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
 			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
 			mesh.addChildNode(line)
-			if i <= 50 && i >= 32 || i >= 85 || i <= 13 {
-//				line = SCNLine(nodeA: SCNVector3(0,0.1,templates.radius), nodeB: SCNVector3(0,-0.1,templates.radius), color: red)
+			if i <= 50 && i >= 32 || i >= 85 || i <= 13 || i == 17 || i >= 65 && i <= 69 {
 			}
 			else{
 				line = SCNLine(nodeA: SCNVector3(0,0.1,templates.radius), nodeB: SCNVector3(0,-0.1,templates.radius), color: grey)

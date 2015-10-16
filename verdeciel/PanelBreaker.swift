@@ -41,8 +41,6 @@ class PanelBreaker : Panel
 		
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,0,0), nodeB: SCNVector3(templates.leftMargin,0,0), color: grey))
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,0,0), nodeB: SCNVector3(templates.rightMargin,0,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(0,templates.top,0), nodeB: SCNVector3(0,templates.topMargin,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(0,templates.bottom,0), nodeB: SCNVector3(0,templates.bottomMargin,0), color: grey))
 	}
 	
 	override func touch(id:Int = 0)

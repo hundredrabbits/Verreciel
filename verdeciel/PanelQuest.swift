@@ -104,7 +104,7 @@ class PanelQuest : Panel
 		update()
 	}
 	
-	override func bang(param:Bool = true)
+	override func bang()
 	{
 		if quest1Port.connection != nil {
 			quest1Port.connection.host.listen((quests.loiqe.first?.event)!)

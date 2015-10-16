@@ -53,7 +53,7 @@ class CorePlayer : SCNNode
 		addHelmet()
 	}
 	
-	override func bang(param: Bool)
+	override func bang()
 	{
 		leaveRadar()
 	}
@@ -160,11 +160,6 @@ class CorePlayer : SCNNode
 		alertTimer.invalidate()
 		alertLabel.update("")
 		alertLabel.opacity = 0
-	}
-	
-	func bang()
-	{
-		print("test")
 	}
 	
 	func enterRadar()

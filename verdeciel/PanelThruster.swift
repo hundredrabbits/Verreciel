@@ -137,34 +137,45 @@ class PanelThruster : Panel
 		if maxSpeed < 1 { line1.opacity = 0 }
 	}
 	
-	
 	func enable()
 	{
 		isEnabled = true
-//		accelerate.opacity = 1
-//		decelerate.opacity = 1
+		accelerate.opacity = 1
+		decelerate.opacity = 1
+		draw()
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-//		accelerate.opacity = 0
-//		decelerate.opacity = 0
+		accelerate.opacity = 0
+		decelerate.opacity = 0
+		speed = 0
+		draw()
 	}
 	
 	override func fixedUpdate()
 	{
-		update()
-	}
-	
-	override func update()
-	{
-		if battery.inThruster.origin == nil { disable() }
-		else if battery.inThruster.origin.event.type != eventTypes.cell { disable() }
-		else if capsule.dock != nil { disable() }
-		else{ enable() }
+		if speed * 10 > Int(actualSpeed * 10) {
+			actualSpeed += 0.1
+		}
+		else if speed * 10 < Int(actualSpeed * 10) {
+			actualSpeed -= 0.1
+		}
 		
-		adjustSpeed()
+		if capsule.dock != nil {
+			speed = 0
+			actualSpeed = 0
+			labelSecondary.update("docked")
+		}
+		else if actualSpeed < 0.1 {
+			actualSpeed = 0.1
+		}
+		
+		if Float(speed) != actualSpeed {
+			labelSecondary.update(String(format: "%.1f", actualSpeed))
+		}
+		
 		thrust()
 	}
 	
@@ -183,32 +194,6 @@ class PanelThruster : Panel
 			radar.update()
 		}
 		capsule.travel += actualSpeed
-	}
-	
-	func adjustSpeed()
-	{
-		if isEnabled == false {
-			speed = 0
-			actualSpeed -= 0.1
-		}
-		else if speed * 10 > Int(actualSpeed * 10) {
-			actualSpeed += 0.1
-		}
-		else if speed * 10 < Int(actualSpeed * 10) {
-			actualSpeed -= 0.1
-		}
-		
-		if capsule.dock != nil {
-			actualSpeed = 0
-			labelSecondary.update("docked")
-		}
-		else if actualSpeed < 0.1 {
-			actualSpeed = 0.1
-		}
-		
-		if Float(speed) != actualSpeed {
-			labelSecondary.update(String(format: "%.1f", actualSpeed))
-		}
 	}
 	
 	override func listen(event: Event)

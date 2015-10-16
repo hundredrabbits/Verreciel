@@ -48,7 +48,7 @@ extension SCNNode
 	{
 	}
 	
-	func bang(param:Bool)
+	func bang()
 	{
 		print("! This node has no bang action")
 	}

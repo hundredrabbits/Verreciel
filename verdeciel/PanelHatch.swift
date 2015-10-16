@@ -70,10 +70,10 @@ class PanelHatch : Panel
 
 	override func touch(id:Int = 0)
 	{
-		bang(true)
+		bang()
 	}
 	
-	override func bang(param: Bool)
+	override func bang()
 	{
 		if input.origin == nil { return }
 		
@@ -92,7 +92,7 @@ class PanelHatch : Panel
 			command.update(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
 			command.output.disconnect()
 			self.load = nil
-			cargo.bang(true)
+			cargo.bang()
 		}
 		update()
 		

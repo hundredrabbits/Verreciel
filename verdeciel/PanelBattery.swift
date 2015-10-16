@@ -131,7 +131,7 @@ class PanelBattery : Panel
 			self.value += command.event.size
 			command.event.size = 0
 			command.update()
-			cargo.bang(true)
+			cargo.bang()
 		}
 	}
 	
@@ -145,7 +145,7 @@ class PanelBattery : Panel
 		if value > 100 { value = 100}
 	}
 	
-	override func bang(param: Bool)
+	override func bang()
 	{
 		thruster.update()
 	}
