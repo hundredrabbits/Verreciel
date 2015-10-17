@@ -12,6 +12,7 @@ import SceneKit
 
 var scene = SCNScene()
 var touchOrigin = CGPoint()
+var touchPosition = CGPoint()
 
 let scaleValue : Float = 0.01
 
@@ -59,7 +60,7 @@ var templates = Templates()
 
 var counter:Int = 0
 
-class GameViewController: UIViewController
+class GameViewController: UIViewController, SCNSceneRendererDelegate
 {
     override func viewDidLoad()
 	{
@@ -115,7 +116,6 @@ class GameViewController: UIViewController
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		var touchPosition = CGPoint()
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
 		}
@@ -127,6 +127,28 @@ class GameViewController: UIViewController
 
 		player.eulerAngles.x += Float(degToRad(dragY/4))
 		player.eulerAngles.y += Float(degToRad(dragX/4))
+	}
+	
+	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
+	{
+		/*
+		var touchEnd = CGPoint()
+		for touch: AnyObject in touches {
+			touchEnd = touch.locationInView(self.view)
+		}
+		
+		let difference = touchPosition.x - touchEnd.x
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1.5)
+		
+		player.eulerAngles.y -= Float(degToRad(difference * 2))
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	
+		print(difference)
+		*/
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
@@ -145,6 +167,16 @@ class GameViewController: UIViewController
 	
 	override func prefersStatusBarHidden() -> Bool {
 		return true
+	}
+	
+	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
+	{
+		player.eulerAngles.y += Float(degToRad(1))
+	}
+	
+	func renderer(renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: NSTimeInterval)
+	{
+		player.eulerAngles.y += Float(degToRad(1))
 	}
 }
 
