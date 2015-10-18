@@ -210,8 +210,7 @@ class CorePlayer : SCNNode
 	override func fixedUpdate()
 	{
 		flickerAlert()
-		
-		player.eulerAngles.y += Float(degToRad(0.5))
+//		player.eulerAngles.y += Float(degToRad(0.5))
 	}
 	
 	func flickerAlert()

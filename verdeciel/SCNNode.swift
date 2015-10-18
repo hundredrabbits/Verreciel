@@ -23,15 +23,14 @@ extension SCNNode
 	{
 		start()
 		for node in childNodes {
-			node.start()
 			node._start()
 		}
 	}
 	
 	func _fixedUpdate()
 	{
+		fixedUpdate()
 		for node in childNodes {
-			node.fixedUpdate()
 			node._fixedUpdate()
 		}
 	}
