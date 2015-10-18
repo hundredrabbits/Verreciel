@@ -60,6 +60,8 @@ var templates = Templates()
 
 var counter:Int = 0
 
+var sceneDelegate:SceneDelegate!
+
 class GameViewController: UIViewController, SCNSceneRendererDelegate
 {
     override func viewDidLoad()
@@ -79,6 +81,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		scnView.backgroundColor = UIColor.blackColor()
 		scnView.antialiasingMode = SCNAntialiasingMode.None
 		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+		scnView.preferredFramesPerSecond = 60
+		
+		sceneDelegate = SceneDelegate()
+		scnView.delegate = sceneDelegate
 	}
 	
 	func initialize()
@@ -167,16 +173,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func prefersStatusBarHidden() -> Bool {
 		return true
-	}
-	
-	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
-	{
-		player.eulerAngles.y += Float(degToRad(1))
-	}
-	
-	func renderer(renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: NSTimeInterval)
-	{
-		player.eulerAngles.y += Float(degToRad(1))
 	}
 }
 
