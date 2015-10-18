@@ -13,8 +13,9 @@ import Foundation
 
 class SceneDelegate: SCNView, SCNSceneRendererDelegate
 {	
-	func renderer(renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval)
+	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-		player.eulerAngles.y += Float(degToRad(0.5))
+		capsule._fixedUpdate()
+		player._fixedUpdate()
 	}
 }

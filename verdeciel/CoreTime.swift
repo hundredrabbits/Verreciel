@@ -23,13 +23,11 @@ class CoreTime : NSObject
 	
 	func start()
 	{
-		time = NSTimer.scheduledTimerWithTimeInterval(0.075, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
+		time = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
 	}
 	
 	func tic()
 	{
-		counter = 0
-		capsule._fixedUpdate()
 		elapsed += 1
 	}
 }
