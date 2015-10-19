@@ -52,6 +52,7 @@ var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
+var ui:CoreUI!
 
 var items = ItemLibrary()
 var locations = LocationLibrary()
@@ -101,6 +102,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		space = CoreSpace()
 		scene.rootNode.addChildNode(space)
 		
+		ui = CoreUI()
+		scene.rootNode.addChildNode(ui)
+		
 		time = CoreTime()
 	}
 	
@@ -110,6 +114,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule._start()
 		player._start()
 		space._start()
+		ui._start()
 		
 		time.start()
 	}
@@ -119,6 +124,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
 		}
+		
+		ui.canUpdate = false
 	}
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -134,28 +141,29 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 
 		player.eulerAngles.x += Float(degToRad(dragY/4))
 		player.eulerAngles.y += Float(degToRad(dragX/4))
+		
+		let diffy = radToDeg(CGFloat(ui.eulerAngles.y - player.eulerAngles.y))
+		let diffx = radToDeg(CGFloat(ui.eulerAngles.x - player.eulerAngles.x))
+		
+		if diffy > 3 {
+			ui.eulerAngles.y = player.eulerAngles.y + Float(degToRad(3))
+		}
+		if diffy < -3 {
+			ui.eulerAngles.y = player.eulerAngles.y - Float(degToRad(3))
+		}
+		if diffx > 3 {
+			ui.eulerAngles.x = player.eulerAngles.x + Float(degToRad(3))
+		}
+		if diffx < -3 {
+			ui.eulerAngles.x = player.eulerAngles.x - Float(degToRad(3))
+		}
+
+		ui.fixedUpdate()
 	}
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		/*
-		var touchEnd = CGPoint()
-		for touch: AnyObject in touches {
-			touchEnd = touch.locationInView(self.view)
-		}
-		
-		let difference = touchPosition.x - touchEnd.x
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1.5)
-		
-		player.eulerAngles.y -= Float(degToRad(difference * 2))
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	
-		print(difference)
-		*/
+		ui.canUpdate = true
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

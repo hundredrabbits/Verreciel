@@ -50,7 +50,6 @@ class CorePlayer : SCNNode
 		self.camera?.automaticallyAdjustsZRange = true
 		
 		addInterface()
-		addHelmet()
 	}
 	
 	override func bang()
@@ -58,25 +57,17 @@ class CorePlayer : SCNNode
 		leaveRadar()
 	}
 	
-	func addHelmet()
-	{
-		self.addChildNode( SCNLine(nodeA: SCNVector3(x: -0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
-		self.addChildNode( SCNLine(nodeA: SCNVector3(x: 0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
-		self.addChildNode( SCNLine(nodeA: SCNVector3(x: 0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
-		self.addChildNode( SCNLine(nodeA: SCNVector3(x: -0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
-	}
-	
 	func addInterface()
 	{
-		displayHealth = SCNLabel(text: "99hp", scale: 0.05, align: alignment.left)
-		displayHealth.position = SCNVector3(x: -0.7, y: -1, z: -1.01)
-		displayHealth.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(displayHealth)
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75))
+		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
+		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))
+		trigger.opacity = 0
+		addChildNode(trigger)
 		
-		displayMagic = SCNLabel(text: "34mp", scale: 0.05, align: alignment.right)
-		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
-		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(displayMagic)
+		triggerLabel = SCNLabel(text: "return to capsule", scale: 0.03, align: alignment.center, color: red)
+		triggerLabel.position = SCNVector3(0,0,0)
+		trigger.addChildNode(triggerLabel)
 		
 		alertLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
 		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
@@ -87,18 +78,6 @@ class CorePlayer : SCNNode
 		messageLabel.position = SCNVector3(x: 0, y: 1.1, z: -1.01)
 		messageLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
 		addChildNode(messageLabel)
-		
-		// Button
-		
-		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75))
-		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
-		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))
-		trigger.opacity = 0
-		addChildNode(trigger)
-		
-		triggerLabel = SCNLabel(text: "return to capsule", scale: 0.03, align: alignment.center, color: red)
-		triggerLabel.position = SCNVector3(0,0,0)
-		trigger.addChildNode(triggerLabel)
 	}
 	
 	func activateEvent(event:Event)
@@ -210,7 +189,6 @@ class CorePlayer : SCNNode
 	override func fixedUpdate()
 	{
 		flickerAlert()
-//		player.eulerAngles.y += Float(degToRad(0.5))
 	}
 	
 	func flickerAlert()
