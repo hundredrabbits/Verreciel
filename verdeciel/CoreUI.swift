@@ -78,8 +78,13 @@ class CoreUI: SCNNode
 			if (ui.eulerAngles.y - player.eulerAngles.y) < -0.0001 && ui.eulerAngles.y < player.eulerAngles.y {
 				ui.eulerAngles.y -= (ui.eulerAngles.y - player.eulerAngles.y) * 0.1
 			}
+			if (ui.eulerAngles.x - player.eulerAngles.x) > 0.0001 && ui.eulerAngles.x > player.eulerAngles.x {
+				ui.eulerAngles.x -= (ui.eulerAngles.x - player.eulerAngles.x) * 0.1
+			}
+			if (ui.eulerAngles.x - player.eulerAngles.x) < -0.0001 && ui.eulerAngles.y < player.eulerAngles.x {
+				ui.eulerAngles.x -= (ui.eulerAngles.x - player.eulerAngles.x) * 0.1
+			}
 		}
-		ui.eulerAngles.x = player.eulerAngles.x
 	}
 	
 	required init(coder aDecoder: NSCoder)

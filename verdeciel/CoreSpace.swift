@@ -14,7 +14,6 @@ import Foundation
 
 class CoreSpace: SCNNode
 {
-	var spaceColor:SCNNode!
 	var structuresRoot:SCNNode!
 	var starsRoot:SCNNode!
 	var starTimer:Float = 0
@@ -32,66 +31,39 @@ class CoreSpace: SCNNode
 	
 	override func fixedUpdate()
 	{
-		if starTimer > 10 {
+		if capsule.sector == sectors.cyanine { sceneView.backgroundColor = cyanTone }
+		if capsule.sector == sectors.opal { sceneView.backgroundColor = whiteTone }
+		if capsule.sector == sectors.vermiles { sceneView.backgroundColor = redTone }
+		if capsule.sector == sectors.void { sceneView.backgroundColor = greyTone }
+
+		if starTimer > 2 {
 			addStar()
-			starTimer -= 10
+			starTimer -= 2
 		}
 		
+		// Orientation
 		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
 		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
 		
-		updateStars()
-	}
-	
-	func prepareLines()
-	{
-		thruster.actualSpeed = 3
-		var i = 0
-		while i < 50 {
-			addStar()
-			updateStars()
-			i += 1
+		// Stars
+		let lineSpeed = Float(thruster.actualSpeed) / 6
+		for node in starsRoot.childNodes
+		{
+			let line = node as! SCNLine
+			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
+			line.updateHeight(thruster.actualSpeed + 0.2)
+			if line.position.y < -20 { line.removeFromParentNode() }
 		}
-		thruster.actualSpeed = 0
-		updateStars()
 		
+		// Structures
+		for instance in structuresRoot.childNodes{
+			instance.update()
+		}
 	}
 	
 	func startInstance(location:Location)
 	{
 		structuresRoot.addChildNode(Instance(event: location))
-		player.alert("Approaching \(location.name!)")
-	}
-	
-	/*
-	override func update()
-	{
-		if capsule.sector == sectors.cyanine { spaceColor.geometry?.firstMaterial?.diffuse.contents = cyanTone }
-		if capsule.sector == sectors.opal { spaceColor.geometry?.firstMaterial?.diffuse.contents = whiteTone }
-		if capsule.sector == sectors.vermiles { spaceColor.geometry?.firstMaterial?.diffuse.contents = redTone }
-		if capsule.sector == sectors.void { spaceColor.geometry?.firstMaterial?.diffuse.contents = greyTone }
-		
-		if thruster.actualSpeed > 0 {
-			
-			if capsule.travel > 0.5 {
-				addLines()
-				capsule.travel -= 0.5
-			}
-	
-		}
-	
-		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
-		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
-		
-		updateStructures()
-	}
-*/
-	
-	func updateStructures()
-	{
-		for instance in structuresRoot.childNodes{
-			instance.update()
-		}
 	}
 	
 	func addStar()
@@ -117,19 +89,8 @@ class CoreSpace: SCNNode
 		starsRoot.addChildNode(newLine)
 	}
 	
-	func updateStars()
+	required init(coder aDecoder: NSCoder)
 	{
-		let lineSpeed = Float(thruster.actualSpeed) / 2
-		for node in starsRoot.childNodes
-		{
-			let line = node as! SCNLine
-			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
-			line.updateHeight(thruster.actualSpeed + 0.2)
-			if line.position.y < -10 { line.removeFromParentNode() }
-		}
-	}
-	
-	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

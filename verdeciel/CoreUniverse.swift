@@ -13,19 +13,6 @@ import Foundation
 
 class CoreUniverse : SCNNode
 {
-	var falvetToSenni = LocationWaypoint()
-	var falvetToValen = LocationWaypoint()
-	var falvetToUsul = LocationWaypoint()
-	var falvetToLoiqe = LocationWaypoint()
-	
-	var valenToVenic = LocationWaypoint()
-	
-	var entryToSenni = LocationStation()
-	var entryToValen = LocationStation()
-	var entryToUsul = LocationStation()
-	var entryToVenic = LocationStation()
-	var entryToLoiqe:Location!
-	
 	override init()
 	{
 		super.init()

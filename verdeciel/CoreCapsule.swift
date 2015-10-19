@@ -22,7 +22,6 @@ class CoreCapsule: SCNNode
 	
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal
-	var instance:Event!
 	
 	var dock:Location!
 	var mesh:SCNNode!
@@ -77,8 +76,8 @@ class CoreCapsule: SCNNode
 	
 	func connectDefaultPorts()
 	{
-		battery.output.connect(thruster.input)
 		battery.outCell1.connect(battery.inOxygen)
+		battery.outCell2.connect(battery.inThruster)
 		cargo.output.connect(console.input)
 		radar.output.connect(pilot.input)
 	}
@@ -106,21 +105,6 @@ class CoreCapsule: SCNNode
 		mesh = SCNNode()
 		mesh.position = SCNVector3(0,0,0)
 		addChildNode(mesh)
-		
-		var i = 0
-		while i < 90 {
-			var line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
-			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
-			mesh.addChildNode(line)
-			if i <= 50 && i >= 32 || i >= 85 || i <= 13 || i == 17 || i >= 65 && i <= 69 {
-			}
-			else{
-				line = SCNLine(nodeA: SCNVector3(0,0.1,templates.radius), nodeB: SCNVector3(0,-0.1,templates.radius), color: grey)
-				line.eulerAngles.x += Float(degToRad(CGFloat(i) * 4))
-				mesh.addChildNode(line)
-			}
-			i += 1
-		}
 	}
 	
 	override func fixedUpdate()

@@ -61,7 +61,7 @@ class Location : Event
 		if distance <= 2 { if inSight == false { sight() ; inSight = true } }
 		else{ inSight = false }
 		
-		if distance <= 0.6 { approach() ; inApproach = true }
+		if distance <= 0.6 { if inApproach == false { approach() ; inApproach = true } ; visibleUpdate() }
 		else{ inApproach = false }
 		
 		if distance <= 0.01 { if inCollision == false { collide() ; inCollision = true } }
@@ -71,16 +71,20 @@ class Location : Event
 		clean()
 	}
 	
+	func visibleUpdate()
+	{
+	
+	}
+	
 	func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
 		let radius:Float = 3
-		let distance:Float = 4
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,distance,0), nodeB: SCNVector3(0,distance,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,radius), nodeB: SCNVector3(radius,distance,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,0), nodeB: SCNVector3(0,distance,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,distance,-radius), nodeB: SCNVector3(-radius,distance,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,0,0), nodeB: SCNVector3(0,0,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,radius), nodeB: SCNVector3(radius,0,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,0,0), nodeB: SCNVector3(0,0,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-radius), nodeB: SCNVector3(-radius,0,0), color: white))
 
 		return mesh
 	}
@@ -129,10 +133,8 @@ class Location : Event
 	
 	func approach()
 	{
-//		print("* EVENT    | Approached \(self.name!)")
-//		capsule.instance = self
-//		space.startInstance(self)
-//		player.activateEvent(self)
+		print("* EVENT    | Approached \(self.name!)")
+		space.startInstance(self)
 	}
 	
 	func collide()

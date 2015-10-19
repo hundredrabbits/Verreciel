@@ -28,7 +28,6 @@ class PanelBattery : Panel
 	var panelHead:SCNNode!
 	var label:SCNLabel!
 	var input:SCNPort!
-	var output:SCNPort!
 	
 	override func setup()
 	{
@@ -38,13 +37,10 @@ class PanelBattery : Panel
 		
 		panelHead = SCNNode()
 		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.2, y: 0.4, z: templates.radius)
-		output = SCNPort(host: self,polarity: true)
-		output.position = SCNVector3(x: 0.2, y: 0.4, z: templates.radius)
+		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "battery", scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
 		panelHead.addChildNode(input)
-		panelHead.addChildNode(output)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
@@ -82,9 +78,9 @@ class PanelBattery : Panel
 		
 		inThruster = SCNPort(host: self, polarity: false)
 		inThruster.position = SCNVector3(x: distance, y: 0, z: 0)
-		let test1Label = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
-		test1Label.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
-		interface.addChildNode(test1Label)
+		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
+		thrusterLabel.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
+		interface.addChildNode(thrusterLabel)
 		interface.addChildNode(inThruster)
 		
 		inOxygen = SCNPort(host: self, polarity: false)
@@ -115,10 +111,12 @@ class PanelBattery : Panel
 		interface.addChildNode(radioLabel)
 		interface.addChildNode(inRadio)
 		
-		cell2Label.updateWithColor("--", color: grey)
 		cell3Label.updateWithColor("--", color: grey)
-		outCell2.disable()
 		outCell3.disable()
+		
+		cloakLabel.updateWithColor("--", color: grey)
+		shieldLabel.updateWithColor("--", color: grey)
+		radioLabel.updateWithColor("--", color: grey)
 	}
 	
 	override func listen(event:Event)

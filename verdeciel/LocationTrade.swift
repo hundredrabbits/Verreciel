@@ -64,13 +64,6 @@ class LocationTrade : Location
 		return spriteNode
 	}
 	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		
-		return mesh
-	}
-	
 	override func panel() -> Panel
 	{
 		let newPanel = Panel()

@@ -63,7 +63,12 @@ class LocationStar : Location
 		sprite.add(_sprite())
 	}
 	
-	override func approach()
+	override func collide()
+	{
+		print("death")
+	}
+	
+	override func visibleUpdate()
 	{
 		if distance/0.75 < 1 {
 			let radiationPercent = 100 - ((distance/0.75) * 100)
@@ -74,16 +79,6 @@ class LocationStar : Location
 		}
 	}
 	
-	override func discover()
-	{
-		print("hey")
-	}
-	
-	override func collide()
-	{
-		
-	}
-	
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
@@ -92,7 +87,6 @@ class LocationStar : Location
 		
 		var i = 0
 		while i < 20 {
-			
 			radius -= 0.125
 			
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,-radius * 1.5), color: red))
@@ -105,13 +99,13 @@ class LocationStar : Location
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,radius * 1.5), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: red))
 			
 			i++
-			
 		}
 		
 		return mesh
 	}
-	
-	required init(coder aDecoder: NSCoder) {
+
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

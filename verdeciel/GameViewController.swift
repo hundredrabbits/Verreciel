@@ -10,6 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
+var sceneView:SCNView!
 var scene = SCNScene()
 var touchOrigin = CGPoint()
 var touchPosition = CGPoint()
@@ -76,17 +77,17 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func create()
 	{
-		let scnView = self.view as! SCNView
-		scnView.scene = scene
-		scnView.showsStatistics = false
-		scnView.backgroundColor = UIColor.blackColor()
-		scnView.antialiasingMode = SCNAntialiasingMode.None
-		scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
-		scnView.preferredFramesPerSecond = 30
-		scnView.playing = true
+		sceneView = self.view as! SCNView
+		sceneView.scene = scene
+		sceneView.showsStatistics = false
+		sceneView.backgroundColor = UIColor.blackColor()
+		sceneView.antialiasingMode = SCNAntialiasingMode.None
+		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+		sceneView.preferredFramesPerSecond = 25
+		sceneView.playing = true
 		
 		sceneDelegate = SceneDelegate()
-		scnView.delegate = sceneDelegate
+		sceneView.delegate = sceneDelegate
 	}
 	
 	func initialize()
@@ -143,14 +144,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		player.eulerAngles.x += Float(degToRad(dragY/4))
 		player.eulerAngles.y += Float(degToRad(dragX/4))
 		
-		let diffy = radToDeg(CGFloat(ui.eulerAngles.y - player.eulerAngles.y))
-		
-		if diffy > 3 {
-			ui.eulerAngles.y = player.eulerAngles.y + Float(degToRad(3))
-		}
-		if diffy < -3 {
-			ui.eulerAngles.y = player.eulerAngles.y - Float(degToRad(3))
-		}
+		ui.eulerAngles.x += Float(degToRad(dragY/4)) * 0.975
+		ui.eulerAngles.y += Float(degToRad(dragX/4)) * 0.95
 
 		ui.fixedUpdate()
 	}
@@ -163,10 +158,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
 	{
-		let scnView = self.view as! SCNView
-		let p = gestureRecognize.locationInView(scnView)
+		let p = gestureRecognize.locationInView(sceneView)
 		
-		let hitResults = scnView.hitTest(p, options: nil)
+		let hitResults = sceneView.hitTest(p, options: nil)
 		
 		if hitResults.count > 0
 		{

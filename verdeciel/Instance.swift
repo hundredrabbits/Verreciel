@@ -29,7 +29,6 @@ class Instance : SCNNode
 	override func update()
 	{
 		let distance = event.distance * 15.0
-		
 		let newAngle = degToRad(abs(event.align))
 		
 		let flattenedDistance = CGFloat(cos(newAngle)) * distance // important
@@ -49,7 +48,6 @@ class Instance : SCNNode
 	func leaveInstance()
 	{
 		print("> INSTANCE | Leaving \(event.name!)")
-		capsule.instance = nil
 		self.removeFromParentNode()
 	}
 	
