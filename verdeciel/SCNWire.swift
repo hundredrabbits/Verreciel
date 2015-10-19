@@ -67,10 +67,10 @@ class SCNWire : SCNNode
 		vertex3 = SCNVector3(nodeB.x * 0.6,nodeB.y * 0.6,nodeB.z * 0.6)
 		vertex4 = SCNVector3(nodeB.x * 0.8,nodeB.y * 0.8,nodeB.z * 0.8)
 		
-		vertex1.y += sin((time.elapsed + vertex1.x + vertex1.y + vertex1.z)/10) * 0.05
-		vertex2.y += sin((time.elapsed + vertex2.x + vertex2.y + vertex2.z)/10) * 0.08
-		vertex3.y += sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/10) * 0.08
-		vertex4.y += sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/10) * 0.05
+		vertex1.y += sin((time.elapsed + vertex1.x + vertex1.y + vertex1.z)/20) * 0.05
+		vertex2.y += sin((time.elapsed + vertex2.x + vertex2.y + vertex2.z)/20) * 0.08
+		vertex3.y += sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/20) * 0.08
+		vertex4.y += sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/20) * 0.05
 		
 		segment1.draw( nodeA, nodeB: vertex1, color: cyan)
 		segment2.draw( vertex1, nodeB: vertex2, color: white)

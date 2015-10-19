@@ -125,7 +125,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			touchOrigin = touch.locationInView(self.view)
 		}
 		
-		ui.canUpdate = false
+		player.canAlign = false
+		ui.canAlign = false
 	}
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -143,7 +144,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		player.eulerAngles.y += Float(degToRad(dragX/4))
 		
 		let diffy = radToDeg(CGFloat(ui.eulerAngles.y - player.eulerAngles.y))
-		let diffx = radToDeg(CGFloat(ui.eulerAngles.x - player.eulerAngles.x))
 		
 		if diffy > 3 {
 			ui.eulerAngles.y = player.eulerAngles.y + Float(degToRad(3))
@@ -151,19 +151,14 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		if diffy < -3 {
 			ui.eulerAngles.y = player.eulerAngles.y - Float(degToRad(3))
 		}
-		if diffx > 3 {
-			ui.eulerAngles.x = player.eulerAngles.x + Float(degToRad(3))
-		}
-		if diffx < -3 {
-			ui.eulerAngles.x = player.eulerAngles.x - Float(degToRad(3))
-		}
 
 		ui.fixedUpdate()
 	}
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		ui.canUpdate = true
+		player.canAlign = true
+		ui.canAlign = true
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

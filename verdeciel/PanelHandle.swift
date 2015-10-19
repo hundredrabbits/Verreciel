@@ -54,6 +54,7 @@ class PanelHandle : Panel
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		player.position = destination
+		ui.position = destination
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
 		

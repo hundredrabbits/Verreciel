@@ -14,9 +14,15 @@ import Foundation
 
 class CoreUI: SCNNode
 {
-	var canUpdate:Bool = false
-	var displayHealth:SCNNode!
-	var displayMagic:SCNNode!
+	var canAlign:Bool = false
+	
+	var displayLeft:SCNNode!
+	var displayRight:SCNNode!
+	
+	var displayHealth:SCNLabel!
+	var displayMagic:SCNLabel!
+	
+	var visor:SCNNode!
 	
 	override init()
 	{
@@ -26,44 +32,58 @@ class CoreUI: SCNNode
 	
 	func setup()
 	{
-		addChildNode( SCNLine(nodeA: SCNVector3(x: -0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
-		addChildNode( SCNLine(nodeA: SCNVector3(x: 0.8, y: -0.92, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
-		addChildNode( SCNLine(nodeA: SCNVector3(x: 0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: 0.3, y: -1, z: -1.2), color: grey) )
-		addChildNode( SCNLine(nodeA: SCNVector3(x: -0.25, y: -0.8, z: -1.01), nodeB: SCNVector3(x: -0.3, y: -1, z: -1.2), color: grey) )
+		let textSize:Float = 0.025
 		
-		displayHealth = SCNLabel(text: "99hp", scale: 0.05, align: alignment.left)
-		displayHealth.position = SCNVector3(x: -0.7, y: -1, z: -1.01)
-		displayHealth.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(displayHealth)
+		visor = SCNNode()
+		visor.position = SCNVector3(0,0,-1.2)
 		
-		displayMagic = SCNLabel(text: "34mp", scale: 0.05, align: alignment.right)
-		displayMagic.position = SCNVector3(x: 0.7, y: -1, z: -1.01)
-		displayMagic.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(displayMagic)
+		displayLeft = SCNNode()
+		displayLeft.position = SCNVector3(-0.5,0,0)
+		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
+		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: 0.01, y: -1.275, z: 0), color: grey))
+		
+		displayHealth = SCNLabel(text: "99hp", scale: textSize, align: alignment.left, color:grey)
+		displayHealth.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
+		displayLeft.addChildNode(displayHealth)
+		
+		displayLeft.eulerAngles.y = Float(degToRad(10))
+		
+		visor.addChildNode(displayLeft)
+		
+		displayRight = SCNNode()
+		displayRight.position = SCNVector3(0.5,0,0)
+		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
+		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: -0.01, y: -1.275, z: 0), color: grey))
+		
+		displayMagic = SCNLabel(text: "16mp", scale: textSize, align: alignment.right, color:grey)
+		displayMagic.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
+		displayRight.addChildNode(displayMagic)
+		
+		displayRight.eulerAngles.y = Float(degToRad(-10))
+		
+		visor.addChildNode(displayRight)
+		
+		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: 0.1, y: 1.4, z: 0), color: grey))
+		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: -0.1, y: 1.4, z: 0), color: grey))
+		
+		addChildNode(visor)
 	}
 	
 	override func fixedUpdate()
 	{
-		if canUpdate == false { return }
-		
-		if (ui.eulerAngles.y - player.eulerAngles.y) > 0.0001 && ui.eulerAngles.y > player.eulerAngles.y {
-			ui.eulerAngles.y -= (ui.eulerAngles.y - player.eulerAngles.y) * 0.1
+		if canAlign == true {
+			if (ui.eulerAngles.y - player.eulerAngles.y) > 0.0001 && ui.eulerAngles.y > player.eulerAngles.y {
+				ui.eulerAngles.y -= (ui.eulerAngles.y - player.eulerAngles.y) * 0.1
+			}
+			if (ui.eulerAngles.y - player.eulerAngles.y) < -0.0001 && ui.eulerAngles.y < player.eulerAngles.y {
+				ui.eulerAngles.y -= (ui.eulerAngles.y - player.eulerAngles.y) * 0.1
+			}
 		}
-		if (ui.eulerAngles.y - player.eulerAngles.y) < -0.0001 && ui.eulerAngles.y < player.eulerAngles.y {
-			ui.eulerAngles.y -= (ui.eulerAngles.y - player.eulerAngles.y) * 0.1
-		}
-		
-		
-		if (ui.eulerAngles.x - player.eulerAngles.x) > 0.0001 && ui.eulerAngles.x > player.eulerAngles.x {
-			ui.eulerAngles.x -= (ui.eulerAngles.x - player.eulerAngles.x) * 0.1
-		}
-		if (ui.eulerAngles.x - player.eulerAngles.x) < -0.0001 && ui.eulerAngles.x < player.eulerAngles.x {
-			ui.eulerAngles.x -= (ui.eulerAngles.x - player.eulerAngles.x) * 0.1
-		}
-		
+		ui.eulerAngles.x = player.eulerAngles.x
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }
