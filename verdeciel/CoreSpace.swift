@@ -17,26 +17,30 @@ class CoreSpace: SCNNode
 	var spaceColor:SCNNode!
 	var structuresRoot:SCNNode!
 	var starsRoot:SCNNode!
+	var starTimer:Float = 0
 	
 	override init()
 	{
 		super.init()
-	
-		spaceColor = SCNNode()
-		spaceColor.geometry = SCNSphere(radius: 40.0)
-		spaceColor.geometry?.firstMaterial?.doubleSided = true
-		spaceColor.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0, alpha: 1)
-		addChildNode(spaceColor)
 		
 		structuresRoot = SCNNode()
-		structuresRoot.position = SCNVector3(x: 0, y: 0, z: 0)
 		addChildNode(structuresRoot)
 		
 		starsRoot = SCNNode()
-		starsRoot.position = SCNVector3(x: 0, y: 0, z: 0)
 		addChildNode(starsRoot)
+	}
+	
+	override func fixedUpdate()
+	{
+		if starTimer > 10 {
+			addStar()
+			starTimer -= 10
+		}
 		
-		prepareLines()
+		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
+		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
+		
+		updateStars()
 	}
 	
 	func prepareLines()
@@ -44,12 +48,12 @@ class CoreSpace: SCNNode
 		thruster.actualSpeed = 3
 		var i = 0
 		while i < 50 {
-			addLines()
-			updateLines()
+			addStar()
+			updateStars()
 			i += 1
 		}
 		thruster.actualSpeed = 0
-		updateLines()
+		updateStars()
 		
 	}
 	
@@ -59,6 +63,7 @@ class CoreSpace: SCNNode
 		player.alert("Approaching \(location.name!)")
 	}
 	
+	/*
 	override func update()
 	{
 		if capsule.sector == sectors.cyanine { spaceColor.geometry?.firstMaterial?.diffuse.contents = cyanTone }
@@ -72,15 +77,15 @@ class CoreSpace: SCNNode
 				addLines()
 				capsule.travel -= 0.5
 			}
-			
-			updateLines()
+	
 		}
-		
+	
 		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
 		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
 		
 		updateStructures()
 	}
+*/
 	
 	func updateStructures()
 	{
@@ -89,7 +94,7 @@ class CoreSpace: SCNNode
 		}
 	}
 	
-	func addLines()
+	func addStar()
 	{
 		if starsRoot.childNodes.count > 350 { return }
 		
@@ -112,7 +117,7 @@ class CoreSpace: SCNNode
 		starsRoot.addChildNode(newLine)
 	}
 	
-	func updateLines()
+	func updateStars()
 	{
 		let lineSpeed = Float(thruster.actualSpeed) / 2
 		for node in starsRoot.childNodes

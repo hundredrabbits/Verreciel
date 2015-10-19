@@ -18,5 +18,6 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 		capsule._fixedUpdate()
 		player._fixedUpdate()
 		ui._fixedUpdate()
+		space.fixedUpdate()
 	}
 }

@@ -193,7 +193,8 @@ class PanelThruster : Panel
 			
 			radar.update()
 		}
-		capsule.travel += actualSpeed
+		capsule.journey += actualSpeed
+		space.starTimer += actualSpeed
 	}
 	
 	override func listen(event: Event)

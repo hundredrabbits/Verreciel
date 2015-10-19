@@ -17,8 +17,8 @@ class CoreCapsule: SCNNode
 	var shield:Float = 100
 	var oxygen:Float = 100
 	
-	var at:CGPoint = universe.loiqe_city.at
-	var travel:Float = 0
+	var at:CGPoint = universe.loiqe_spawn.at
+	var journey:Float = 0
 	
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal

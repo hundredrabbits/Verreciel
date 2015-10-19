@@ -43,7 +43,6 @@ class CorePlayer : SCNNode
 		
 		super.init()
 		
-		// Camera
 		self.camera = SCNCamera()
 		self.camera?.xFov = 75
 		self.name = "cameraNode"
@@ -202,8 +201,8 @@ class CorePlayer : SCNNode
 		else{ alertLabel.opacity = 0 }
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
-	
 }

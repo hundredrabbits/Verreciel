@@ -132,7 +132,6 @@ class PanelConsole : Panel
 	override func listen(event: Event)
 	{
 		if event.type == eventTypes.stack {
-			inputLabel.update(event.name!)
 			self.clearLines()
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.quest))
