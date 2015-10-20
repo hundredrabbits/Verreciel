@@ -221,6 +221,28 @@
 			name = Triangles;
 			sourceTree = "<group>";
 		};
+		5728D1151BD6D4160002D1A4 /* Primary */ = {
+			isa = PBXGroup;
+			children = (
+				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
+				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
+				57F4FA101BB8CECF00AEE66C /* PanelMission.swift */,
+				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
+			);
+			name = Primary;
+			sourceTree = "<group>";
+		};
+		5728D1161BD6D41C0002D1A4 /* Secondary */ = {
+			isa = PBXGroup;
+			children = (
+				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
+				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
+				571728E01BB049BB002782A3 /* PanelCargo.swift */,
+				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
+			);
+			name = Secondary;
+			sourceTree = "<group>";
+		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,14 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				57C915161BC45E91009454C4 /* Panel.swift */,
-				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
-				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
-				57F4FA101BB8CECF00AEE66C /* PanelMission.swift */,
-				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
-				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
-				571728E01BB049BB002782A3 /* PanelCargo.swift */,
-				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
-				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
+				5728D1151BD6D4160002D1A4 /* Primary */,
+				5728D1161BD6D41C0002D1A4 /* Secondary */,
 				5728D1141BD67C560002D1A4 /* Triangles */,
 				577F5D401BC80E9C001017B0 /* Extras */,
 			);

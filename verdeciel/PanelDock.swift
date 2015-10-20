@@ -23,7 +23,7 @@ class PanelDock : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		label = SCNLabel(text: "UNDOCK", scale: 0.1, align: alignment.center, color: red)
-		label.position = SCNVector3(0.05,0.35,0)
+		label.position = SCNVector3(0,0.35,0)
 		interface.addChildNode(label)
 		
 		let size:Float = 0.7

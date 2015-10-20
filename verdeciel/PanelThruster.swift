@@ -26,10 +26,8 @@ class PanelThruster : Panel
 	var actualSpeed:Float = 0
 	
 	var panelHead:SCNNode!
-	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
-	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -40,16 +38,16 @@ class PanelThruster : Panel
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelFoot.addChildNode(labelSecondary)
+		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
 		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
@@ -173,14 +171,14 @@ class PanelThruster : Panel
 		if capsule.dock != nil {
 			speed = 0
 			actualSpeed = 0
-			labelSecondary.update("docked")
+			details.update("docked")
 		}
 		else if actualSpeed < 0.1 {
 			actualSpeed = 0.1
 		}
 		
 		if Float(speed) != actualSpeed {
-			labelSecondary.update(String(format: "%.1f", actualSpeed))
+			details.update(String(format: "%.1f", actualSpeed))
 		}
 		
 		thrust()

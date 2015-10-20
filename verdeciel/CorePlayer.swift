@@ -98,6 +98,7 @@ class CorePlayer : SCNNode
 		// Remove origin
 		if self.port == port {
 			port.desactivate()
+			port.disconnect()
 			self.port = nil
 			return
 		}
@@ -107,11 +108,6 @@ class CorePlayer : SCNNode
 		port.update()
 		self.port.update()
 		self.port = nil
-	}
-	
-	func desactivatePort()
-	{
-		self.port.desactivate()
 	}
 	
 	func message(text:String)

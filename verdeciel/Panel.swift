@@ -14,6 +14,9 @@ import Foundation
 class Panel : SCNNode
 {
 	var label = SCNLabel()
+	var details = SCNLabel()
+	var port:SCNPort!
+	
 	var isPowered:Bool = false
 	var isInstalled:Bool = false
 	var isEnabled:Bool = true
@@ -54,7 +57,7 @@ class Panel : SCNNode
 		if installProgress > 0 { installProgressBar.opacity = 1 }
 		if installProgress >= 100 { installed() ; installer.opacity = 0 ; return }
 		
-		let randomTime = Double(arc4random_uniform(100))/500
+		let randomTime = Double(arc4random_uniform(100))/750
 		NSTimer.scheduledTimerWithTimeInterval(randomTime, target: self, selector: Selector("install"), userInfo: nil, repeats: false)
 		
 		installProgressBar.update(installProgress)
@@ -64,7 +67,22 @@ class Panel : SCNNode
 	
 	func installed()
 	{
-	
+		isInstalled = true
+		installer.opacity = 0
+		
+		label.updateWithColor(name!, color: white)
+		decals.position = SCNVector3(0,0,templates.radius - 0.5)
+		interface.position = SCNVector3(0,0,templates.radius + 1)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		decals.opacity = 1
+		decals.position = SCNVector3(0,0,templates.radius)
+		interface.opacity = 1
+		interface.position = SCNVector3(0,0,templates.radius)
+		details.opacity = 1
+		SCNTransaction.setCompletionBlock({ self.port.enable() })
+		SCNTransaction.commit()
 	}
 	
 	func setPower(power:Bool)

@@ -84,8 +84,7 @@ class SCNPort : SCNNode
 			return
 		}
 		
-		if player.port != nil && player.port == self
-		{
+		if player.port != nil && player.port == self{
 			sprite_output.updateChildrenColors(cyan)
 			sprite_output.blink()
 			return

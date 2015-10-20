@@ -14,9 +14,7 @@ import Foundation
 class PanelTranslator : Panel
 {
 	var inputLabel:SCNLabel!
-	var outputLabel:SCNLabel!
-	var port:SCNPort!
-	
+	var outputLabel:SCNLabel!	
 	
 	override func setup()
 	{

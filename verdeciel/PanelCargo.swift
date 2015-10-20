@@ -25,10 +25,8 @@ class PanelCargo : Panel
 	var line6:SCNLine!
 	
 	var panelHead:SCNNode!
-	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
-	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -39,16 +37,16 @@ class PanelCargo : Panel
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "cargo", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelFoot.addChildNode(labelSecondary)
+		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
 		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 
@@ -134,7 +132,7 @@ class PanelCargo : Panel
 			pickup(event)
 		}
 		else{
-			labelSecondary.updateWithColor("error", color: red)
+			details.updateWithColor("error", color: red)
 		}
 	}
 

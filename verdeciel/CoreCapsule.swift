@@ -36,16 +36,20 @@ class CoreCapsule: SCNNode
 
 		panelSetup()
 	}
-
-	required init?(coder aDecoder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
-	}
 	
 	override func start()
 	{
 		dockbay.start()
+		
 		radar.install()
+		mission.install()
+		console.install()
+		battery.install()
+		
 		pilot.install()
+		cargo.install()
+		thruster.install()
+		hatch.install()
 	}
 	
 	// MARK: Breaker -
@@ -157,70 +161,28 @@ class CoreCapsule: SCNNode
 	
 	func panelSetup()
 	{
-		let northPanels = SCNNode()
-		northPanels.addChildNode(mission)
-		northPanels.addChildNode(dockbay)
-		northPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
+		addChildNode(battery)
+		addChildNode(hatch)
+		addChildNode(console)
+		addChildNode(cargo)
+		addChildNode(mission)
+		addChildNode(pilot)
+		addChildNode(radar)
+		addChildNode(thruster)
 		
-		let northEastPanels = SCNNode()
-		northEastPanels.addChildNode(cargo)
-		
-		let northWestPanels = SCNNode()
-		northWestPanels.addChildNode(thruster)
-		
-		let eastPanels = SCNNode()
-		eastPanels.addChildNode(console)
-		eastPanels.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
-		
-		let southEastPanels = SCNNode()
-		southEastPanels.addChildNode(hatch)
-		
-		let southWestPanels = SCNNode()
-		southWestPanels.addChildNode(pilot)
-		
-		let southPanels = SCNNode()
-		southPanels.addChildNode(battery)
-		southPanels.addChildNode(radio)
-		southPanels.addChildNode(radiation)
-		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
-		
-		let westPanels = SCNNode()
-		westPanels.addChildNode(radar)
-		westPanels.addChildNode(translator)
-		westPanels.addChildNode(targetter)
-		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
-		
-		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
-		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
-		northWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 3.5))
-		eastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1))
-		southEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0.5))
-		southWestPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2.5))
-		southPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 0))
-		westPanels.rotation = SCNVector4Make(0, -1, 0, Float(M_PI/2 * 1))
-		
-		self.addChildNode(northPanels)
-		self.addChildNode(northEastPanels)
-		self.addChildNode(northWestPanels)
-		self.addChildNode(eastPanels)
-		self.addChildNode(southEastPanels)
-		self.addChildNode(southWestPanels)
-		self.addChildNode(southPanels)
-		self.addChildNode(westPanels)
-		
-		/*
-		let handle5 = PanelHandle(destination: SCNVector3(0,4,0))
-		handle5.eulerAngles.x += Float(degToRad(90))
-		self.addChildNode(handle5)
-		
-		let handle6 = PanelHandle(destination: SCNVector3(0,0,0))
-		handle6.eulerAngles.x += Float(degToRad(-100))
-		self.addChildNode(handle6)
-		*/
-		
-		self.addChildNode(window)
+		hatch.eulerAngles.y = Float(degToRad(45))
+		console.eulerAngles.y = Float(degToRad(90))
+		cargo.eulerAngles.y = Float(degToRad(135))
+		mission.eulerAngles.y = Float(degToRad(180))
+		pilot.eulerAngles.y = Float(degToRad(225))
+		radar.eulerAngles.y = Float(degToRad(270))
+		thruster.eulerAngles.y = Float(degToRad(315))
+
 		self.addChildNode(breaker)
-//		monitor = PanelMonitor()
-//		self.addChildNode(monitor)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -24,7 +24,7 @@ class PanelRadiation : Panel
 		interface.geometry?.materials.first?.diffuse.contents = clear
 		
 		label = SCNLabel(text: "No radiation", scale: 0.1, align: alignment.center, color: red)
-		label.position = SCNVector3(0.05,0.35,0)
+		label.position = SCNVector3(0,0.35,0)
 		interface.addChildNode(label)
 		
 		let size:Float = 0.7

@@ -25,7 +25,6 @@ class PanelRadar : Panel
 	var targetterFar:SCNNode!
 	
 	var panelHead:SCNNode!
-	var port:SCNPort!
 	
 	// MARK: Default -
 	
@@ -100,24 +99,6 @@ class PanelRadar : Panel
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
-	}
-	
-	override func installed()
-	{
-		self.isInstalled = true
-		
-		label.updateWithColor(name!, color: white)
-		decals.position = SCNVector3(0,0,templates.radius + 0.5)
-		interface.position = SCNVector3(0,0,templates.radius + 1)
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		decals.opacity = 1
-		decals.position = SCNVector3(0,0,templates.radius)
-		interface.opacity = 1
-		interface.position = SCNVector3(0,0,templates.radius)
-		SCNTransaction.setCompletionBlock({ self.port.enable() })
-		SCNTransaction.commit()
 	}
 	
 	// MARK: Ports -

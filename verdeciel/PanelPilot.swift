@@ -21,10 +21,8 @@ class PanelPilot : Panel
 	var eventsDirectionIndicator = SCNNode()
 	
 	var panelHead:SCNNode!
-	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
-	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -36,18 +34,18 @@ class PanelPilot : Panel
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "pilot", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y:0, z: templates.radius)
+		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelFoot.addChildNode(labelSecondary)
+		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
+		panelFoot.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))
@@ -78,24 +76,6 @@ class PanelPilot : Panel
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
 		panelFoot.opacity = 0
-	}
-	
-	override func installed()
-	{
-		self.isInstalled = true
-		
-		label.updateWithColor(name!, color: white)
-		decals.position = SCNVector3(0,0,templates.radius + 0.5)
-		interface.position = SCNVector3(0,0,templates.radius + 1)
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		decals.opacity = 1
-		decals.position = SCNVector3(0,0,templates.radius)
-		interface.opacity = 1
-		interface.position = SCNVector3(0,0,templates.radius)
-		SCNTransaction.setCompletionBlock({ self.port.enable() })
-		SCNTransaction.commit()
 	}
 	
 	override func setPower(power: Bool)
@@ -147,7 +127,7 @@ class PanelPilot : Panel
 			}
 		}
 		
-		labelSecondary.update(String(format: "%.0f",target.align))
+		details.update(String(format: "%.0f",target.align))
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))

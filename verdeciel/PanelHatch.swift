@@ -22,10 +22,7 @@ class PanelHatch : Panel
 	
 	var panelHead:SCNNode!
 	
-	var port:SCNPort!
-	
 	var panelFoot:SCNNode!
-	var labelSecondary:SCNLabel!
 	
 	override func setup()
 	{
@@ -36,16 +33,16 @@ class PanelHatch : Panel
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		labelSecondary = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		labelSecondary.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelFoot.addChildNode(labelSecondary)
+		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
 		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
@@ -114,7 +111,7 @@ class PanelHatch : Panel
 		
 		if load != nil && load.type != eventTypes.item {
 			label.update("hatch")
-			labelSecondary.updateWithColor("error", color: red)
+			details.updateWithColor("error", color: red)
 			outline1.color(red)
 			outline2.color(red)
 			outline3.color(red)
@@ -123,7 +120,7 @@ class PanelHatch : Panel
 		}
 		else if load != nil {
 			label.update("fire")
-			labelSecondary.updateWithColor(String(Int(self.load.size)), color: white)
+			details.updateWithColor(String(Int(self.load.size)), color: white)
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -131,7 +128,7 @@ class PanelHatch : Panel
 		}
 		else{
 			label.update("hatch")
-			labelSecondary.update("")
+			details.update("")
 			outline1.color(grey)
 			outline2.color(grey)
 			outline3.color(grey)
@@ -142,7 +139,7 @@ class PanelHatch : Panel
 	override func listen(event:Event)
 	{
 		if event.quest == true {
-			labelSecondary.updateWithColor("error", color: red)
+			details.updateWithColor("error", color: red)
 		}
 		else{
 			self.load = event
