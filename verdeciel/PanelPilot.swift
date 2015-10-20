@@ -80,6 +80,24 @@ class PanelPilot : Panel
 		panelFoot.opacity = 0
 	}
 	
+	override func installed()
+	{
+		self.isInstalled = true
+		
+		label.updateWithColor(name!, color: white)
+		decals.position = SCNVector3(0,0,templates.radius + 0.5)
+		interface.position = SCNVector3(0,0,templates.radius + 1)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		decals.opacity = 1
+		decals.position = SCNVector3(0,0,templates.radius)
+		interface.opacity = 1
+		interface.position = SCNVector3(0,0,templates.radius)
+		SCNTransaction.setCompletionBlock({ self.port.enable() })
+		SCNTransaction.commit()
+	}
+	
 	override func setPower(power: Bool)
 	{
 		// Add progress bar during booting

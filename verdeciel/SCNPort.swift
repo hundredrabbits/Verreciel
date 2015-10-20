@@ -46,6 +46,8 @@ class SCNPort : SCNNode
 		setup()
 		
 		update()
+		
+		disable()
 	}
 	
 	func setup()
@@ -71,19 +73,35 @@ class SCNPort : SCNNode
 		player.activatePort(self)
 	}
 	
-	override func update()
+	override func fixedUpdate()
 	{
-		if( origin != nil ){
+		sprite_input.opacity = 1
+		sprite_output.opacity = 1
+		
+		if isEnabled == false {
+			sprite_input.updateChildrenColors(clear)
+			sprite_output.updateChildrenColors(grey)
+			return
+		}
+		
+		if player.port != nil && player.port == self
+		{
+			sprite_output.updateChildrenColors(cyan)
+			sprite_output.blink()
+			return
+		}
+		
+		if origin != nil {
 			sprite_input.updateChildrenColors(red)
 		}
-		else{
+		else {
 			sprite_input.updateChildrenColors(grey)
 		}
 		
-		if( connection != nil ){
+		if connection != nil {
 			sprite_output.updateChildrenColors(cyan)
 		}
-		else{
+		else {
 			sprite_output.updateChildrenColors(grey)
 		}
 	}
@@ -91,27 +109,21 @@ class SCNPort : SCNNode
 	func activate()
 	{
 		isActive = true
-		sprite_output.updateChildrenColors(cyan)
-		print("cyan")
 	}
 	
 	func desactivate()
 	{
 		isActive = false
-		sprite_output.updateChildrenColors(grey)
-		print("grey")
 	}
 	
 	func enable()
 	{
 		isEnabled = true
-		update()
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-		update()
 	}
 	
 	func addEvent(event:Event)
@@ -128,6 +140,9 @@ class SCNPort : SCNNode
 	
 	func connect(port:SCNPort)
 	{
+		if port.isEnabled == false { print("Port is disabled") ; return }
+		if origin != nil && origin == port { print("Port is a loop") ; return }
+		
 		self.connection = port
 		self.connection.origin = self
 		

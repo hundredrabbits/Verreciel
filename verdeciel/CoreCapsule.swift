@@ -45,6 +45,7 @@ class CoreCapsule: SCNNode
 	{
 		dockbay.start()
 		radar.install()
+		pilot.install()
 	}
 	
 	// MARK: Breaker -

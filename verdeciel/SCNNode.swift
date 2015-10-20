@@ -86,6 +86,12 @@ extension SCNNode
 		}
 	}
 	
+	func blink()
+	{
+		if time.elapsed % 2 == 0 { opacity = 1 }
+		else { opacity = 0 }
+	}
+	
 	func updateChildrenColors(color:UIColor)
 	{
 		for node in self.childNodes {

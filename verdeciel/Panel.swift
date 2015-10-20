@@ -59,7 +59,7 @@ class Panel : SCNNode
 		
 		installProgressBar.update(installProgress)
 		installProgress += 1
-		label.updateWithColor("Installing \(installProgress)%", color: grey)
+		label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
 	}
 	
 	func installed()

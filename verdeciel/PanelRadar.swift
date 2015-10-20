@@ -94,13 +94,6 @@ class PanelRadar : Panel
 	{		
 		if isInstalled == false { return }
 		
-		if target != nil {
-			label.updateWithColor(target.name!, color: white)
-		}
-		else{
-			label.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: white)
-		}
-		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
 		let directionNormal = Double(Float(capsule.direction)/180) * -1
@@ -111,7 +104,20 @@ class PanelRadar : Panel
 	
 	override func installed()
 	{
+		self.isInstalled = true
+		
 		label.updateWithColor(name!, color: white)
+		decals.position = SCNVector3(0,0,templates.radius + 0.5)
+		interface.position = SCNVector3(0,0,templates.radius + 1)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		decals.opacity = 1
+		decals.position = SCNVector3(0,0,templates.radius)
+		interface.opacity = 1
+		interface.position = SCNVector3(0,0,templates.radius)
+		SCNTransaction.setCompletionBlock({ self.port.enable() })
+		SCNTransaction.commit()
 	}
 	
 	// MARK: Ports -
