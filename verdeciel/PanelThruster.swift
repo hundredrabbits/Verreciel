@@ -26,7 +26,6 @@ class PanelThruster : Panel
 	var actualSpeed:Float = 0
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
 	
 	var panelFoot:SCNNode!

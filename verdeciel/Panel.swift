@@ -13,13 +13,18 @@ import Foundation
 
 class Panel : SCNNode
 {
+	var label = SCNLabel()
 	var isPowered:Bool = false
 	var isInstalled:Bool = false
 	var isEnabled:Bool = true
 	var interface:SCNNode!
 	var decals:SCNNode!
 	
-	init(position:SCNVector3 = SCNVector3(0,0,0))
+	var installer:SCNNode = SCNNode()
+	var installProgress:CGFloat = 0
+	var installProgressBar = SCNProgressBar(width: 1)
+	
+	override init()
 	{
 		super.init()
 		
@@ -28,22 +33,43 @@ class Panel : SCNNode
 		decals = SCNNode()
 		self.addChildNode(decals)
 		
+		installer = template_installer()
+		installer.position = SCNVector3(0,0,templates.radius)
+		installProgressBar = SCNProgressBar(width: 1)
+		installProgressBar.position = SCNVector3(-0.5,-0.5,0)
+		installProgressBar.opacity = 0
+		installer.addChildNode(installProgressBar)
+		self.addChildNode(installer)
+		
 		setup()
 		start()
 	}
 	
+	func setup()
+	{
+	}
+	
 	func install()
 	{
-		isInstalled = true
+		if installProgress > 0 { installProgressBar.opacity = 1 }
+		if installProgress >= 100 { installed() ; installer.opacity = 0 ; return }
+		
+		let randomTime = Double(arc4random_uniform(100))/500
+		NSTimer.scheduledTimerWithTimeInterval(randomTime, target: self, selector: Selector("install"), userInfo: nil, repeats: false)
+		
+		installProgressBar.update(installProgress)
+		installProgress += 1
+		label.updateWithColor("Installing \(installProgress)%", color: grey)
+	}
+	
+	func installed()
+	{
+	
 	}
 	
 	func setPower(power:Bool)
 	{
 		print("Missing unpowered mode for \(name!).")
-	}
-	
-	func setup()
-	{
 	}
 	
 	func updateInterface(interface:Panel)
@@ -57,6 +83,16 @@ class Panel : SCNNode
 		for node in interface.childNodes {
 			self.addChildNode(node)
 		}
+	}
+	
+	func template_installer() -> SCNNode
+	{
+		let sprite = SCNNode()
+		
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
+		sprite.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
+		
+		return sprite
 	}
 	
 	required init?(coder aDecoder: NSCoder)

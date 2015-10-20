@@ -28,25 +28,21 @@ var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
 var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 
-var radar:PanelRadar!
-var battery:PanelBattery!
-var console:PanelConsole!
-var custom:PanelQuest!
-
-var pilot:PanelPilot!
-var thruster:PanelThruster!
-var hatch:PanelHatch!
-var cargo:PanelCargo!
-
-var monitor:PanelMonitor!
-var window:PanelWindow!
-var dockbay:PanelDock!
-var targetter:PanelTargetter!
-var radiation:PanelRadiation!
-
-var radio:PanelRadio!
-var translator:PanelTranslator!
-var breaker:PanelBreaker!
+let battery = PanelBattery()
+let radiation = PanelRadiation()
+let radio = PanelRadio()
+let pilot = PanelPilot()
+let hatch = PanelHatch()
+let mission = PanelMission()
+let dockbay = PanelDock()
+let cargo = PanelCargo()
+let thruster = PanelThruster()
+let console = PanelConsole()
+let radar = PanelRadar()
+let translator = PanelTranslator()
+let targetter = PanelTargetter()
+let breaker = PanelBreaker()
+let window = PanelWindow()
 
 var time:CoreTime!
 var universe:CoreUniverse!

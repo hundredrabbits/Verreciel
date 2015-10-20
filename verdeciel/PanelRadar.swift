@@ -25,8 +25,9 @@ class PanelRadar : Panel
 	var targetterFar:SCNNode!
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
+	
+	// MARK: Default -
 	
 	override func setup()
 	{
@@ -78,25 +79,19 @@ class PanelRadar : Panel
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.2, z: 0), color: red))
 		targetter.opacity = 0
 		interface.addChildNode(targetter)
+		
+		self.position = SCNVector3(0,0,0)
 	}
 	
 	override func start()
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
-	}
-	
-	override func setPower(power: Bool)
-	{
-		isPowered = false
-		port.disable()
-		eventView.opacity = 0
-		label.updateWithColor("radar", color: grey)
+		label.updateWithColor(name!, color: grey)
 	}
 	
 	override func fixedUpdate()
-	{
+	{		
 		if isInstalled == false { return }
 		
 		if target != nil {
@@ -105,13 +100,49 @@ class PanelRadar : Panel
 		else{
 			label.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: white)
 		}
-
+		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
 		let directionNormal = Double(Float(capsule.direction)/180) * -1
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
+	}
+	
+	override func installed()
+	{
+		label.updateWithColor(name!, color: white)
+	}
+	
+	// MARK: Ports -
+	
+	override func bang()
+	{
+		if port.connection == nil { return }
+		if target == nil { return }
+		port.connection.host.listen(target)
+	}
+	
+	override func listen(event: Event)
+	{
+		if event.type == eventTypes.map {
+			for location in event.content {
+				universe.addChildNode(location)
+			}
+			event.size = 0
+			cargo.bang()
+		}
+		update()
+	}
+
+	// MARK: Custom -
+
+	override func setPower(power: Bool)
+	{
+		isPowered = false
+		port.disable()
+		eventView.opacity = 0
+		label.updateWithColor("radar", color: grey)
 	}
 	
 	func updateTarget()
@@ -146,13 +177,6 @@ class PanelRadar : Panel
 		bang()
 	}
 	
-	override func bang()
-	{
-		if port.connection == nil { return }
-		if target == nil { return }
-		port.connection.host.listen(target)
-	}
-	
 	func removeTarget()
 	{
 		target = nil
@@ -169,17 +193,5 @@ class PanelRadar : Panel
 			closestEvent = event
 		}
 		return closestEvent
-	}
-	
-	override func listen(event: Event)
-	{
-		if event.type == eventTypes.map {
-			for location in event.content {
-				universe.addChildNode(location)
-			}
-			event.size = 0
-			cargo.bang()
-		}
-		update()
 	}
 }

@@ -21,7 +21,6 @@ class PanelPilot : Panel
 	var eventsDirectionIndicator = SCNNode()
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
 	
 	var panelFoot:SCNNode!

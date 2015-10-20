@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelQuest : Panel
+class PanelMission : Panel
 {
 	var content:SCNNode!
 
@@ -33,12 +33,11 @@ class PanelQuest : Panel
 	// Ports
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
 	
 	override func setup()
 	{
-		name = "log"
+		name = "mission"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
@@ -96,19 +95,22 @@ class PanelQuest : Panel
 		interface.addChildNode(linesRoot)
 		
 		update()
-		
 	}
 	
 	override func start()
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.updateWithColor(name!, color: grey)
 	}
 	
 	func addQuest(newQuest:Quest)
 	{
 		update()
+	}
+	
+	override func fixedUpdate()
+	{
 	}
 	
 	override func bang()

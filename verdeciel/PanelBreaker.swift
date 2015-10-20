@@ -13,7 +13,6 @@ import Foundation
 
 class PanelBreaker : Panel
 {
-	var label:SCNLabel!
 	var interfaceActive:SCNLine!
 	var isActive = false
 	

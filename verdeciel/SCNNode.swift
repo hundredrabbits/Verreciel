@@ -35,6 +35,11 @@ extension SCNNode
 		}
 	}
 	
+	func absolutePosition() -> SCNVector3
+	{
+		return convertPosition(SCNVector3(0, 0, 0), fromNode: self)
+	}
+	
 	func start()
 	{
 	}

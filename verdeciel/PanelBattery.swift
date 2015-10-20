@@ -26,7 +26,6 @@ class PanelBattery : Panel
 	var outCell3:SCNPort!
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
 	
 	override func setup()
@@ -39,7 +38,7 @@ class PanelBattery : Panel
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "battery", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
@@ -123,7 +122,7 @@ class PanelBattery : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.updateWithColor(name!, color: grey)
 	}
 	
 	override func listen(event:Event)

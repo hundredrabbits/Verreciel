@@ -19,6 +19,22 @@ class PanelHandle : Panel
 	var selectionLine3:SCNLine!
 	var trigger:SCNTrigger!
 	
+	init(destination:SCNVector3 = SCNVector3())
+	{
+		self.destination = destination
+		
+		super.init()
+		
+		interface = SCNNode()
+		self.addChildNode(interface)
+		decals = SCNNode()
+		self.addChildNode(decals)
+		installer = SCNNode()
+		
+		setup()
+		start()
+	}
+	
 	override func setup()
 	{
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
@@ -31,6 +47,7 @@ class PanelHandle : Panel
 		interface.addChildNode(selectionLine3)
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
+		trigger.updateChildrenColors(red)
 		interface.addChildNode(trigger)
 		
 		self.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
@@ -65,5 +82,10 @@ class PanelHandle : Panel
 		
 		player.handle = self
 		player.handle.disable()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

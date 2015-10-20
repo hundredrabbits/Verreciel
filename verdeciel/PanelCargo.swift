@@ -25,7 +25,6 @@ class PanelCargo : Panel
 	var line6:SCNLine!
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
 	var port:SCNPort!
 	
 	var panelFoot:SCNNode!

@@ -12,9 +12,7 @@ import SceneKit
 import Foundation
 
 class PanelTargetter : Panel
-{
-	var label:SCNLabel!
-	
+{	
 	var dockingStatus:CGFloat = 0
 	var dockingTimer:NSTimer!
 	var triangle:SCNNode!

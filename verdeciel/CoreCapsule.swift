@@ -43,8 +43,8 @@ class CoreCapsule: SCNNode
 	
 	override func start()
 	{
-		connectDefaultPorts()
 		dockbay.start()
+		radar.install()
 	}
 	
 	// MARK: Breaker -
@@ -53,7 +53,7 @@ class CoreCapsule: SCNNode
 	{
 		radar.setPower(true)
 		pilot.setPower(true)
-		custom.setPower(true)
+		mission.setPower(true)
 		cargo.setPower(true)
 		console.setPower(true)
 		hatch.setPower(true)
@@ -65,7 +65,7 @@ class CoreCapsule: SCNNode
 	{
 		radar.setPower(false)
 		pilot.setPower(false)
-		custom.setPower(false)
+		mission.setPower(false)
 		cargo.setPower(false)
 		console.setPower(false)
 		hatch.setPower(false)
@@ -78,7 +78,7 @@ class CoreCapsule: SCNNode
 	func dock(newDock:Location)
 	{
 		dock = newDock
-		custom.dock(dock)
+		mission.dock(dock)
 		thruster.disable()
 		dockbay.update()
 	}
@@ -86,7 +86,7 @@ class CoreCapsule: SCNNode
 	func undock()
 	{
 		dock = nil
-		custom.undock()
+		mission.undock()
 		thruster.enable()
 	}
 	
@@ -129,7 +129,6 @@ class CoreCapsule: SCNNode
 			mesh.addChildNode(line)
 			i += 1
 		}
-
 	}
 	
 	override func fixedUpdate()
@@ -158,58 +157,37 @@ class CoreCapsule: SCNNode
 	func panelSetup()
 	{
 		let northPanels = SCNNode()
-		custom = PanelQuest()
-		dockbay = PanelDock()
-		northPanels.addChildNode(custom)
+		northPanels.addChildNode(mission)
 		northPanels.addChildNode(dockbay)
-		let handle1 = PanelHandle()
-		handle1.destination = SCNVector3(0,0,1.5)
-		northPanels.addChildNode(handle1)
+		northPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
 		
 		let northEastPanels = SCNNode()
-		cargo = PanelCargo()
 		northEastPanels.addChildNode(cargo)
 		
 		let northWestPanels = SCNNode()
-		thruster = PanelThruster()
 		northWestPanels.addChildNode(thruster)
 		
 		let eastPanels = SCNNode()
-		console = PanelConsole()
 		eastPanels.addChildNode(console)
-		let handle2 = PanelHandle()
-		handle2.destination = SCNVector3(-1.5,0,0)
-		eastPanels.addChildNode(handle2)
+		eastPanels.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
 		
 		let southEastPanels = SCNNode()
-		hatch = PanelHatch()
 		southEastPanels.addChildNode(hatch)
 		
 		let southWestPanels = SCNNode()
-		pilot = PanelPilot()
 		southWestPanels.addChildNode(pilot)
 		
 		let southPanels = SCNNode()
-		battery = PanelBattery()
-		radiation = PanelRadiation()
-		radio = PanelRadio()
 		southPanels.addChildNode(battery)
 		southPanels.addChildNode(radio)
 		southPanels.addChildNode(radiation)
-		let handle3 = PanelHandle()
-		handle3.destination = SCNVector3(0,0,-1.5)
-		southPanels.addChildNode(handle3)
+		southPanels.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
 		
 		let westPanels = SCNNode()
-		radar = PanelRadar()
-		translator = PanelTranslator()
-		targetter = PanelTargetter()
 		westPanels.addChildNode(radar)
 		westPanels.addChildNode(translator)
 		westPanels.addChildNode(targetter)
-		let handle4 = PanelHandle()
-		handle4.destination = SCNVector3(1.5,0,0)
-		westPanels.addChildNode(handle4)
+		westPanels.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
 		
 		northPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 2))
 		northEastPanels.rotation = SCNVector4Make(0, 1, 0, Float(M_PI/2 * 1.5))
@@ -229,19 +207,17 @@ class CoreCapsule: SCNNode
 		self.addChildNode(southPanels)
 		self.addChildNode(westPanels)
 		
-		let handle5 = PanelHandle()
-		handle5.destination = SCNVector3(0,4,0)
+		/*
+		let handle5 = PanelHandle(destination: SCNVector3(0,4,0))
 		handle5.eulerAngles.x += Float(degToRad(90))
 		self.addChildNode(handle5)
 		
-		let handle6 = PanelHandle()
-		handle6.destination = SCNVector3(0,0,0)
+		let handle6 = PanelHandle(destination: SCNVector3(0,0,0))
 		handle6.eulerAngles.x += Float(degToRad(-100))
 		self.addChildNode(handle6)
+		*/
 		
-		window = PanelWindow()
 		self.addChildNode(window)
-		breaker = PanelBreaker()
 		self.addChildNode(breaker)
 //		monitor = PanelMonitor()
 //		self.addChildNode(monitor)

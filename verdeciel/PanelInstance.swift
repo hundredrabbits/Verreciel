@@ -15,6 +15,6 @@ class PanelExternal : Panel
 {
 	override func setup()
 	{
-		
+		installer.updateChildrenColors(red)
 	}
 }

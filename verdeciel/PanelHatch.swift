@@ -21,7 +21,7 @@ class PanelHatch : Panel
 	var outline4:SCNLine!
 	
 	var panelHead:SCNNode!
-	var label:SCNLabel!
+	
 	var port:SCNPort!
 	
 	var panelFoot:SCNNode!

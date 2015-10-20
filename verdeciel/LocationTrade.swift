@@ -115,7 +115,7 @@ class LocationTrade : Location
 	override func bang()
 	{
 		completeTrade()
-		custom.update()
+		mission.update()
 	}
 
 	func completeTrade()
