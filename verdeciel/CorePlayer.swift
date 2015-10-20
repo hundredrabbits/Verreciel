@@ -88,27 +88,25 @@ class CorePlayer : SCNNode
 	
 	func activatePort(port:SCNPort)
 	{
-		if self.port != nil {
-			// Disconnect
-			if self.port == port {
-				self.port = nil
-				port.disconnect()
-				port.desactivate()
-			}
-			// New Connection
-			else if self.port.polarity == true && port.polarity == false {
-				self.port.connect(port)
-				port.desactivate()
-				self.port.desactivate()
-				self.port = nil
-				return
-			}
-		}
-		else if port.polarity == true {
-			// Select
+		// Select origin
+		if self.port == nil {
 			self.port = port
-			self.port.activate()
+			port.activate()
+			return
 		}
+		
+		// Remove origin
+		if self.port == port {
+			port.desactivate()
+			self.port = nil
+			return
+		}
+		
+		// Connect
+		self.port.connect(port)
+		port.update()
+		self.port.update()
+		self.port = nil
 	}
 	
 	func desactivatePort()

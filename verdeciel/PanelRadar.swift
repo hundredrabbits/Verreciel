@@ -25,9 +25,8 @@ class PanelRadar : Panel
 	var targetterFar:SCNNode!
 	
 	var panelHead:SCNNode!
-	var input:SCNPort!
-	var output:SCNPort!
-	var outputLabel:SCNLabel!
+	var label:SCNLabel!
+	var port:SCNPort!
 	
 	override func setup()
 	{
@@ -35,15 +34,12 @@ class PanelRadar : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.2, y: 0.4, z: templates.radius)
-		output = SCNPort(host: self,polarity: true)
-		output.position = SCNVector3(x: 0.2, y: 0.4, z: templates.radius)
-		outputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		outputLabel.position = SCNVector3(x: 0.01, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
-		panelHead.addChildNode(output)
-		panelHead.addChildNode(outputLabel)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0.01, y: 0, z: templates.radius)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		panelHead.addChildNode(label)
+		panelHead.addChildNode(port)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
@@ -84,13 +80,30 @@ class PanelRadar : Panel
 		interface.addChildNode(targetter)
 	}
 	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+	}
+	
+	override func setPower(power: Bool)
+	{
+		isPowered = false
+		port.disable()
+		eventView.opacity = 0
+		label.updateWithColor("radar", color: grey)
+	}
+	
 	override func fixedUpdate()
 	{
+		if isInstalled == false { return }
+		
 		if target != nil {
-			outputLabel.updateWithColor(target.name!, color: white)
+			label.updateWithColor(target.name!, color: white)
 		}
 		else{
-			outputLabel.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: white)
+			label.updateWithColor("\(closestLocation(eventDetails.star).name!) system", color: white)
 		}
 
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
@@ -135,9 +148,9 @@ class PanelRadar : Panel
 	
 	override func bang()
 	{
-		if output.connection == nil { return }
+		if port.connection == nil { return }
 		if target == nil { return }
-		output.connection.host.listen(target)
+		port.connection.host.listen(target)
 	}
 	
 	func removeTarget()

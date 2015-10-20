@@ -45,6 +45,13 @@ class PanelRadiation : Panel
 		self.eulerAngles.x += Float(degToRad(templates.warningsAngle))
 	}
 	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+	}
+	
 	func update(value:CGFloat)
 	{
 		if value > 0 {

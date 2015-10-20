@@ -27,7 +27,7 @@ class PanelThruster : Panel
 	
 	var panelHead:SCNNode!
 	var label:SCNLabel!
-	var input:SCNPort!
+	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
 	var labelSecondary:SCNLabel!
@@ -38,11 +38,11 @@ class PanelThruster : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
+		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
@@ -80,6 +80,14 @@ class PanelThruster : Panel
 		interface.addChildNode(decelerate)
 		
 		draw()
+	}
+	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+		panelFoot.opacity = 0
 	}
 
 	override func touch(id:Int = 0)

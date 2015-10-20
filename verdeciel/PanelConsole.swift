@@ -23,8 +23,8 @@ class PanelConsole : Panel
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
 	var panelHead:SCNNode!
-	var inputLabel:SCNLabel!
-	var input:SCNPort!
+	var label:SCNLabel!
+	var port:SCNPort!
 	
 	override func setup()
 	{
@@ -32,12 +32,12 @@ class PanelConsole : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		inputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		inputLabel.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
-		panelHead.addChildNode(inputLabel)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelHead.addChildNode(port)
+		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
@@ -74,6 +74,13 @@ class PanelConsole : Panel
 		interface.addChildNode(linesRoot)
 	}
 	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+	}
+	
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
@@ -83,12 +90,12 @@ class PanelConsole : Panel
 	
 	override func update()
 	{
-		consoleLine1.output.disconnect()
-		consoleLine2.output.disconnect()
-		consoleLine3.output.disconnect()
-		consoleLine4.output.disconnect()
-		consoleLine5.output.disconnect()
-		consoleLine6.output.disconnect()
+		consoleLine1.port.disconnect()
+		consoleLine2.port.disconnect()
+		consoleLine3.port.disconnect()
+		consoleLine4.port.disconnect()
+		consoleLine5.port.disconnect()
+		consoleLine6.port.disconnect()
 		
 		consoleLine1.update(commands[0])
 		consoleLine2.update(commands[1])
@@ -97,8 +104,8 @@ class PanelConsole : Panel
 		consoleLine5.update(commands[4])
 		consoleLine6.update(commands[5])
 		
-		if input.origin == nil {
-			inputLabel.update("console")
+		if port.origin == nil {
+			label.update("console")
 		}
 	}
 	
@@ -139,7 +146,7 @@ class PanelConsole : Panel
 		}
 		else {
 			self.clearLines()
-			self.input.origin.disconnect()
+			port.origin.disconnect()
 		}
 	}
 }

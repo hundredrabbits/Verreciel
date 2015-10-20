@@ -33,8 +33,8 @@ class PanelQuest : Panel
 	// Ports
 	
 	var panelHead:SCNNode!
-	var inputLabel:SCNLabel!
-	var input:SCNPort!
+	var label:SCNLabel!
+	var port:SCNPort!
 	
 	override func setup()
 	{
@@ -42,12 +42,12 @@ class PanelQuest : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		inputLabel = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		inputLabel.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
-		panelHead.addChildNode(inputLabel)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
+		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelHead.addChildNode(port)
+		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
@@ -63,7 +63,7 @@ class PanelQuest : Panel
 		quest1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(quest1)
 		
-		quest1Port = SCNPort(host: self, polarity: true)
+		quest1Port = SCNPort(host: self)
 		quest1Port.addEvent((quests.loiqe.first?.event)!)
 		quest1Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(quest1Port)
@@ -72,7 +72,7 @@ class PanelQuest : Panel
 		quest2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(quest2)
 		
-		quest2Port = SCNPort(host: self, polarity: true)
+		quest2Port = SCNPort(host: self)
 		quest2Port.addEvent((quests.falvet.first?.event)!)
 		quest2Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(quest2Port)
@@ -97,6 +97,13 @@ class PanelQuest : Panel
 		
 		update()
 		
+	}
+	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
 	}
 	
 	func addQuest(newQuest:Quest)

@@ -15,8 +15,8 @@ class PanelTranslator : Panel
 {
 	var inputLabel:SCNLabel!
 	var outputLabel:SCNLabel!
-	var input:SCNPort!
-	var output:SCNPort!
+	var port:SCNPort!
+	
 	
 	override func setup()
 	{

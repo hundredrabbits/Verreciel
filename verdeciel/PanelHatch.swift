@@ -22,7 +22,7 @@ class PanelHatch : Panel
 	
 	var panelHead:SCNNode!
 	var label:SCNLabel!
-	var input:SCNPort!
+	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
 	var labelSecondary:SCNLabel!
@@ -33,11 +33,11 @@ class PanelHatch : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
+		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
@@ -67,6 +67,14 @@ class PanelHatch : Panel
 		
 		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 	}
+	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+		panelFoot.opacity = 0
+	}
 
 	override func touch(id:Int = 0)
 	{
@@ -75,9 +83,9 @@ class PanelHatch : Panel
 	
 	override func bang()
 	{
-		if input.origin == nil { return }
+		if port.origin == nil { return }
 		
-		let command = input.origin.host as! SCNCommand
+		let command = port.origin.host as! SCNCommand
 		
 		if load.type != eventTypes.item {
 			return
@@ -90,7 +98,7 @@ class PanelHatch : Panel
 		
 		if command.event.size < 1 {
 			command.update(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
-			command.output.disconnect()
+			command.port.disconnect()
 			self.load = nil
 			cargo.bang()
 		}
@@ -100,7 +108,7 @@ class PanelHatch : Panel
 	
 	override func update()
 	{
-		if input.origin == nil {
+		if port.origin == nil {
 			load = nil
 		}
 		

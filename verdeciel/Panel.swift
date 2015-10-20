@@ -13,6 +13,8 @@ import Foundation
 
 class Panel : SCNNode
 {
+	var isPowered:Bool = false
+	var isInstalled:Bool = false
 	var isEnabled:Bool = true
 	var interface:SCNNode!
 	var decals:SCNNode!
@@ -28,6 +30,16 @@ class Panel : SCNNode
 		
 		setup()
 		start()
+	}
+	
+	func install()
+	{
+		isInstalled = true
+	}
+	
+	func setPower(power:Bool)
+	{
+		print("Missing unpowered mode for \(name!).")
 	}
 	
 	func setup()

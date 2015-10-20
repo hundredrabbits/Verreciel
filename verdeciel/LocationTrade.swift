@@ -73,7 +73,7 @@ class LocationTrade : Location
 		tradeWantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
 		newPanel.addChildNode(tradeWantLabel)
 		
-		wantPort = SCNPort(host: self, polarity: false)
+		wantPort = SCNPort(host: self)
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
 		newPanel.addChildNode(wantPort)
 		
@@ -86,7 +86,7 @@ class LocationTrade : Location
 		tradeGiveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.2, z: 0)
 		newPanel.addChildNode(tradeGiveLabel)
 		
-		givePort = SCNPort(host: self, polarity: true)
+		givePort = SCNPort(host: self)
 		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
 		newPanel.addChildNode(givePort)
 		

@@ -211,6 +211,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5728D1141BD67C560002D1A4 /* Triangles */ = {
+			isa = PBXGroup;
+			children = (
+				577F5D411BC80EC2001017B0 /* PanelDock.swift */,
+				577F5D431BC821A3001017B0 /* PanelTargetter.swift */,
+				577F5D451BC8233E001017B0 /* PanelRadiation.swift */,
+			);
+			name = Triangles;
+			sourceTree = "<group>";
+		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,11 +296,9 @@
 				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
 				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
 				57DD808D1BC7005600A4146C /* PanelHandle.swift */,
-				577F5D411BC80EC2001017B0 /* PanelDock.swift */,
-				577F5D431BC821A3001017B0 /* PanelTargetter.swift */,
-				577F5D451BC8233E001017B0 /* PanelRadiation.swift */,
 				575A74111BCFEA83000104DD /* PanelBreaker.swift */,
 				575A74151BD01CED000104DD /* PanelInstance.swift */,
+				5728D1141BD67C560002D1A4 /* Triangles */,
 			);
 			name = Extras;
 			sourceTree = "<group>";

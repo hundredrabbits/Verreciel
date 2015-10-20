@@ -25,6 +25,12 @@ class LocationSpawn : Location
 		sprite.add(_sprite())
 	}
 	
+	override func mesh() -> SCNNode
+	{
+		let mesh = SCNNode()
+		return mesh
+	}
+	
 	override func panel() -> Panel
 	{
 		let newPanel = Panel()

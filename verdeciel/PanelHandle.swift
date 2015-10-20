@@ -16,16 +16,19 @@ class PanelHandle : Panel
 	var destination:SCNVector3!
 	var selectionLine1:SCNLine!
 	var selectionLine2:SCNLine!
+	var selectionLine3:SCNLine!
 	var trigger:SCNTrigger!
 	
 	override func setup()
 	{
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		selectionLine1 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0.05, z: 0),nodeB: SCNVector3(x: 0.3, y: 0.05, z: 0),color:cyan)
-		selectionLine2 = SCNLine(nodeA: SCNVector3(x: -0.3, y: -0.05, z: 0),nodeB: SCNVector3(x: 0.3, y: -0.05, z: 0),color:cyan)
+		selectionLine1 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.3, y: 0.1, z: 0),color:cyan)
+		selectionLine2 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0, z: 0),nodeB: SCNVector3(x: 0.3, y: 0, z: 0),color:cyan)
+		selectionLine3 = SCNLine(nodeA: SCNVector3(x: -0.3, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.3, y: -0.1, z: 0),color:cyan)
 		interface.addChildNode(selectionLine1)
 		interface.addChildNode(selectionLine2)
+		interface.addChildNode(selectionLine3)
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
 		interface.addChildNode(trigger)
@@ -38,6 +41,7 @@ class PanelHandle : Panel
 		isEnabled = true
 		selectionLine1.updateColor(cyan)
 		selectionLine2.updateColor(cyan)
+		selectionLine3.updateColor(cyan)
 	}
 	
 	func disable()
@@ -45,6 +49,7 @@ class PanelHandle : Panel
 		isEnabled = false
 		selectionLine1.updateColor(grey)
 		selectionLine2.updateColor(grey)
+		selectionLine3.updateColor(grey)
 	}
 	
 	override func touch(id:Int = 0)

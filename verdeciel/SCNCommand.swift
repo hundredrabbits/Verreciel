@@ -20,8 +20,8 @@ class SCNCommand : SCNNode
 	
 	var head:Bool!
 	
-	var output:SCNPort!
 	var label:SCNLabel!
+	var port:SCNPort!
 	var detailsLabel:SCNLabel
 	
 	var headLineTop:SCNLine!
@@ -42,16 +42,16 @@ class SCNCommand : SCNNode
 		
 		super.init()
 		
-		output = SCNPort(host: self, polarity: true)
-		output.position = SCNVector3((templates.rightMargin * 2) - 0.15, 0, 0)
-		output.opacity = 0
+		port = SCNPort(host: self)
+		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
+		port.opacity = 0
 
 		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: red)
 		headLineDown = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, -0.1, 0), color: red)
 		
 		self.addChildNode(label)
 		self.addChildNode(detailsLabel)
-		self.addChildNode(output)
+		self.addChildNode(port)
 		self.addChildNode(headLineTop)
 		self.addChildNode(headLineDown)
 	}
@@ -63,11 +63,11 @@ class SCNCommand : SCNNode
 		
 		if command.event != nil {
 			self.event = command.event!
-			output.opacity = 1
-			output.addEvent(event)
+			port.opacity = 1
+			port.addEvent(event)
 		}
 		else{
-			output.opacity = 0
+			port.opacity = 0
 		}
 		
 		if command.details != eventDetails.unknown {
@@ -87,7 +87,7 @@ class SCNCommand : SCNNode
 	
 	override func bang()
 	{
-		output.connection.host.listen(self.event)
+		port.connection.host.listen(self.event)
 	}
 
 	required init?(coder aDecoder: NSCoder)

@@ -51,10 +51,26 @@ class CoreCapsule: SCNNode
 	
 	func setActive()
 	{
+		radar.setPower(true)
+		pilot.setPower(true)
+		custom.setPower(true)
+		cargo.setPower(true)
+		console.setPower(true)
+		hatch.setPower(true)
+		battery.setPower(true)
+		thruster.setPower(true)
 	}
 	
 	func setInactive()
 	{
+		radar.setPower(false)
+		pilot.setPower(false)
+		custom.setPower(false)
+		cargo.setPower(false)
+		console.setPower(false)
+		hatch.setPower(false)
+		battery.setPower(false)
+		thruster.setPower(false)
 	}
 	
 	// MARK: Docking -
@@ -78,8 +94,8 @@ class CoreCapsule: SCNNode
 	{
 		battery.outCell1.connect(battery.inOxygen)
 		battery.outCell2.connect(battery.inThruster)
-		cargo.output.connect(console.input)
-		radar.output.connect(pilot.input)
+		cargo.port.connect(console.port)
+		radar.port.connect(pilot.port)
 	}
 	
 	func nodeSetup()
@@ -105,6 +121,15 @@ class CoreCapsule: SCNNode
 		mesh = SCNNode()
 		mesh.position = SCNVector3(0,0,0)
 		addChildNode(mesh)
+		
+		var i = 0
+		while i < 90 {
+			let line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
+			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
+			mesh.addChildNode(line)
+			i += 1
+		}
+
 	}
 	
 	override func fixedUpdate()
@@ -157,8 +182,8 @@ class CoreCapsule: SCNNode
 		eastPanels.addChildNode(handle2)
 		
 		let southEastPanels = SCNNode()
-		beacon = PanelHatch()
-		southEastPanels.addChildNode(beacon)
+		hatch = PanelHatch()
+		southEastPanels.addChildNode(hatch)
 		
 		let southWestPanels = SCNNode()
 		pilot = PanelPilot()

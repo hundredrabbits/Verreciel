@@ -26,8 +26,7 @@ class PanelCargo : Panel
 	
 	var panelHead:SCNNode!
 	var label:SCNLabel!
-	var input:SCNPort!
-	var output:SCNPort!
+	var port:SCNPort!
 	
 	var panelFoot:SCNNode!
 	var labelSecondary:SCNLabel!
@@ -38,14 +37,11 @@ class PanelCargo : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: -0.2, y: 0.4, z: templates.radius)
-		output = SCNPort(host: self,polarity: true)
-		output.position = SCNVector3(x: 0.2, y: 0.4, z: templates.radius)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "cargo", scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
-		panelHead.addChildNode(output)
+		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
@@ -81,6 +77,14 @@ class PanelCargo : Panel
 		// Trigger
 		
 		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
+	}
+	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+		panelFoot.opacity = 0
 	}
 	
 	func addEvent(event:Event)
@@ -151,8 +155,8 @@ class PanelCargo : Panel
 	override func bang()
 	{
 		self.update()
-		if output.connection != nil {
-			output.connection.host.listen(cargohold)
+		if port.connection != nil {
+			port.connection.host.listen(cargohold)
 		}
 	}
 }

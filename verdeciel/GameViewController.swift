@@ -35,7 +35,7 @@ var custom:PanelQuest!
 
 var pilot:PanelPilot!
 var thruster:PanelThruster!
-var beacon:PanelHatch!
+var hatch:PanelHatch!
 var cargo:PanelCargo!
 
 var monitor:PanelMonitor!

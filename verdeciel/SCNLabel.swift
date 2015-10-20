@@ -39,7 +39,7 @@ class SCNLabel : SCNNode
 	{
 		if activeAlignment == alignment.center {
 			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1
-			nodeOffset.position = SCNVector3(x: wordLength/2, y: 0, z: 0)
+			nodeOffset.position = SCNVector3(x: (wordLength/2) - 0.01, y: 0, z: 0)
 		}
 		else if activeAlignment == alignment.right {
 			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1

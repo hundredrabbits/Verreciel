@@ -27,7 +27,7 @@ class PanelBattery : Panel
 	
 	var panelHead:SCNNode!
 	var label:SCNLabel!
-	var input:SCNPort!
+	var port:SCNPort!
 	
 	override func setup()
 	{
@@ -36,11 +36,11 @@ class PanelBattery : Panel
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		panelHead = SCNNode()
-		input = SCNPort(host: self,polarity: false)
-		input.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label = SCNLabel(text: "battery", scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0.05, y: 0, z: templates.radius)
-		panelHead.addChildNode(input)
+		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
 		addChildNode(panelHead)
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
@@ -50,7 +50,7 @@ class PanelBattery : Panel
 		let distance:Float = 0.4
 		let verticalOffset:Float = 0.4
 		
-		outCell1 = SCNPort(host: self, polarity: true)
+		outCell1 = SCNPort(host: self)
 		outCell1.position = SCNVector3(x: -distance, y: verticalOffset, z: 0)
 		outCell1.addEvent(Event(type:eventTypes.cell))
 		let cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
@@ -58,7 +58,7 @@ class PanelBattery : Panel
 		outCell1.addChildNode(cell1Label)
 		interface.addChildNode(outCell1)
 		
-		outCell2 = SCNPort(host: self, polarity: true)
+		outCell2 = SCNPort(host: self)
 		outCell2.position = SCNVector3(x: -distance, y: 0, z: 0)
 		outCell2.addEvent(Event(type:eventTypes.cell))
 		let cell2Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
@@ -66,7 +66,7 @@ class PanelBattery : Panel
 		outCell2.addChildNode(cell2Label)
 		interface.addChildNode(outCell2)
 		
-		outCell3 = SCNPort(host: self, polarity: true)
+		outCell3 = SCNPort(host: self)
 		outCell3.position = SCNVector3(x: -distance, y: -verticalOffset, z: 0)
 		outCell3.addEvent(Event(type:eventTypes.cell))
 		let cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
@@ -76,35 +76,35 @@ class PanelBattery : Panel
 		
 		// Systems
 		
-		inThruster = SCNPort(host: self, polarity: false)
+		inThruster = SCNPort(host: self)
 		inThruster.position = SCNVector3(x: distance, y: 0, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
 		interface.addChildNode(thrusterLabel)
 		interface.addChildNode(inThruster)
 		
-		inOxygen = SCNPort(host: self, polarity: false)
+		inOxygen = SCNPort(host: self)
 		inOxygen.position = SCNVector3(x: distance, y: verticalOffset, z: 0)
 		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
 		oxygenLabel.position = SCNVector3(x: distance + 0.2, y: verticalOffset, z: 0)
 		interface.addChildNode(oxygenLabel)
 		interface.addChildNode(inOxygen)
 		
-		inShield = SCNPort(host: self, polarity: false)
+		inShield = SCNPort(host: self)
 		inShield.position = SCNVector3(x: distance, y: 2 * verticalOffset, z: 0)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: distance + 0.2, y: 2 * verticalOffset, z: 0)
 		interface.addChildNode(shieldLabel)
 		interface.addChildNode(inShield)
 		
-		inCloak = SCNPort(host: self, polarity: false)
+		inCloak = SCNPort(host: self)
 		inCloak.position = SCNVector3(x: distance, y: -verticalOffset, z: 0)
 		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		cloakLabel.position = SCNVector3(x: distance + 0.2, y: -verticalOffset, z: 0)
 		interface.addChildNode(cloakLabel)
 		interface.addChildNode(inCloak)
 		
-		inRadio = SCNPort(host: self, polarity: false)
+		inRadio = SCNPort(host: self)
 		inRadio.position = SCNVector3(x: distance, y: 2 * -verticalOffset, z: 0)
 		let radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: distance + 0.2, y: 2 * -verticalOffset, z: 0)
@@ -119,11 +119,18 @@ class PanelBattery : Panel
 		radioLabel.updateWithColor("--", color: grey)
 	}
 	
+	override func start()
+	{
+		decals.opacity = 0
+		interface.opacity = 0
+		label.updateWithColor("--", color: grey)
+	}
+	
 	override func listen(event:Event)
 	{
 		if event.details != eventDetails.battery { return }
 		
-		let command = input.origin.host as! SCNCommand
+		let command = port.origin.host as! SCNCommand
 		
 		if command.event.size > 0 {
 			self.value += command.event.size
