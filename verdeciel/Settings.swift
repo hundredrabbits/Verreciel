@@ -71,10 +71,20 @@ enum services
 enum missions
 {
 	case none
+	case panel
 	case visit
 	case discover
 	case fetch
 	case trade
+}
+
+enum requirements
+{
+	case none
+	case isNil
+	case isTrue
+	case isNotNil
+	case isNotTrue
 }
 
 struct Templates

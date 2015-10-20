@@ -18,6 +18,7 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 		capsule._fixedUpdate()
 		player._fixedUpdate()
 		ui._fixedUpdate()
-		space.fixedUpdate()
+		space.fixedUpdate() // TODO: Missing the real fixedUpdate
+		quests._fixedUpdate()
 	}
 }

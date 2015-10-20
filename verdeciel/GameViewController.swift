@@ -41,7 +41,6 @@ let console = PanelConsole()
 let radar = PanelRadar()
 let translator = PanelTranslator()
 let targetter = PanelTargetter()
-let breaker = PanelBreaker()
 let window = PanelWindow()
 
 var time:CoreTime!
@@ -53,8 +52,9 @@ var ui:CoreUI!
 
 var items = ItemLibrary()
 var locations = LocationLibrary()
-var quests = QuestLibrary()
 var templates = Templates()
+
+var quests:QuestLibrary!
 
 var counter:Int = 0
 
@@ -103,6 +103,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		scene.rootNode.addChildNode(ui)
 		
 		time = CoreTime()
+		quests = QuestLibrary()
 	}
 	
 	func start()

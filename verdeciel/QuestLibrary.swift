@@ -10,24 +10,32 @@ import Foundation
 
 class QuestLibrary
 {
+	var tutorial:Array<Quest> = []
 	var loiqe:Array<Quest> = []
-	var falvet:Array<Quest> = []
 	
 	init()
 	{
+		_tutorial()
 		_loiqe()
-		_falvet()
+	}
+	
+	func _tutorial()
+	{
+		tutorial.append(Quest(type:missions.panel, target: battery.thrusterPort.origin, requirement:requirements.isNotNil ))
 	}
 	
 	func _loiqe()
 	{
-		loiqe.append(Quest(type:missions.visit, event: universe.loiqe_city))
-		loiqe.append(Quest(type:missions.fetch, event: universe.loiqe_city))
-		loiqe.append(Quest(type:missions.trade, event: universe.loiqe_city))
+		loiqe.append(Quest(type:missions.visit, target: universe.falvet_service2.isKnown, requirement:requirements.isTrue ))
 	}
 	
-	func _falvet()
+	func _fixedUpdate()
 	{
-		falvet.append(Quest(type:missions.visit, event: universe.falvet_service2 ))
+		tutorial = []
+		tutorial.append(Quest(type:missions.panel, target: battery.thrusterPort.origin, requirement:requirements.isNotNil ))
+		
+		for currentQuest in tutorial {
+			currentQuest.validate()
+		}
 	}
 }

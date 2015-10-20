@@ -26,6 +26,8 @@ class CoreCapsule: SCNNode
 	var dock:Location!
 	var mesh:SCNNode!
 	
+	// MARK: Default -
+	
 	override init()
 	{
 		super.init()
@@ -39,46 +41,17 @@ class CoreCapsule: SCNNode
 	
 	override func start()
 	{
-		dockbay.start()
-		
-		radar.install()
-		mission.install()
-		console.install()
 		battery.install()
-		
-		pilot.install()
-		cargo.install()
-		thruster.install()
-		hatch.install()
+		mission.install()
 	}
 	
-	// MARK: Breaker -
-	
-	func setActive()
+	override func fixedUpdate()
 	{
-		radar.setPower(true)
-		pilot.setPower(true)
-		mission.setPower(true)
-		cargo.setPower(true)
-		console.setPower(true)
-		hatch.setPower(true)
-		battery.setPower(true)
-		thruster.setPower(true)
+		service()
+		systems()
 	}
 	
-	func setInactive()
-	{
-		radar.setPower(false)
-		pilot.setPower(false)
-		mission.setPower(false)
-		cargo.setPower(false)
-		console.setPower(false)
-		hatch.setPower(false)
-		battery.setPower(false)
-		thruster.setPower(false)
-	}
-	
-	// MARK: Docking -
+	// MARK: Custom -
 	
 	func dock(newDock:Location)
 	{
@@ -97,8 +70,6 @@ class CoreCapsule: SCNNode
 	
 	func connectDefaultPorts()
 	{
-		battery.outCell1.connect(battery.inOxygen)
-		battery.outCell2.connect(battery.inThruster)
 		cargo.port.connect(console.port)
 		radar.port.connect(pilot.port)
 	}
@@ -132,23 +103,20 @@ class CoreCapsule: SCNNode
 			let line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
 			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
 			mesh.addChildNode(line)
+			let line3 = SCNLine(nodeA: SCNVector3(-0.05,4,templates.radius/2.5), nodeB: SCNVector3(0.05,4,templates.radius/2.5), color: grey)
+			line3.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
+			mesh.addChildNode(line3)
 			i += 1
 		}
 	}
 	
-	override func fixedUpdate()
-	{		
-		service()
-		systems()
-	}
-	
 	func systems()
 	{
-		if battery.inOxygen.origin != nil {
-			if battery.inOxygen.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { capsule.oxygen += 0.5 }
+		if battery.oxygenPort.origin != nil {
+			if battery.oxygenPort.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { capsule.oxygen += 0.5 }
 		}
-		if battery.inShield.origin != nil {
-			if battery.inShield.origin.event.type == eventTypes.cell && capsule.shield < 100 { capsule.shield += 0.5 }
+		if battery.shieldPort.origin != nil {
+			if battery.shieldPort.origin.event.type == eventTypes.cell && capsule.shield < 100 { capsule.shield += 0.5 }
 		}
 	}
 	
@@ -181,9 +149,7 @@ class CoreCapsule: SCNNode
 		battery.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
 		console.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
 		mission.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
-		radar.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
-
-		addChildNode(breaker)
+		radar.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))	
 	}
 	
 	required init?(coder aDecoder: NSCoder)

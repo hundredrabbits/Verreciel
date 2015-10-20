@@ -15,15 +15,15 @@ class PanelBattery : Panel
 {
 	var value:Float = 0
 	
-	var inOxygen:SCNPort!
-	var inShield:SCNPort!
-	var inCloak:SCNPort!
-	var inThruster:SCNPort!
-	var inRadio:SCNPort!
+	var oxygenPort:SCNPort!
+	var shieldPort:SCNPort!
+	var clockPort:SCNPort!
+	var thrusterPort:SCNPort!
+	var radioPort:SCNPort!
 	
-	var outCell1:SCNPort!
-	var outCell2:SCNPort!
-	var outCell3:SCNPort!
+	var cell1:SCNPort!
+	var cell2:SCNPort!
+	var cell3:SCNPort!
 	
 	var panelHead:SCNNode!
 	
@@ -59,80 +59,82 @@ class PanelBattery : Panel
 		let distance:Float = 0.4
 		let verticalOffset:Float = 0.4
 		
-		outCell1 = SCNPort(host: self)
-		outCell1.position = SCNVector3(x: -distance, y: verticalOffset, z: 0)
-		outCell1.addEvent(Event(type:eventTypes.cell))
+		cell1 = SCNPort(host: self)
+		cell1.position = SCNVector3(x: -distance, y: verticalOffset, z: 0)
+		cell1.addEvent(Event(type:eventTypes.cell))
 		let cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -distance - 0.2, y:0, z: 0)
-		outCell1.addChildNode(cell1Label)
-		interface.addChildNode(outCell1)
+		cell1.addChildNode(cell1Label)
+		interface.addChildNode(cell1)
 		
-		outCell2 = SCNPort(host: self)
-		outCell2.position = SCNVector3(x: -distance, y: 0, z: 0)
-		outCell2.addEvent(Event(type:eventTypes.cell))
+		cell2 = SCNPort(host: self)
+		cell2.position = SCNVector3(x: -distance, y: 0, z: 0)
+		cell2.addEvent(Event(type:eventTypes.cell))
 		let cell2Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell2Label.position = SCNVector3(x: -distance - 0.2, y: 0, z: 0)
-		outCell2.addChildNode(cell2Label)
-		interface.addChildNode(outCell2)
+		cell2.addChildNode(cell2Label)
+		interface.addChildNode(cell2)
 		
-		outCell3 = SCNPort(host: self)
-		outCell3.position = SCNVector3(x: -distance, y: -verticalOffset, z: 0)
-		outCell3.addEvent(Event(type:eventTypes.cell))
+		cell3 = SCNPort(host: self)
+		cell3.position = SCNVector3(x: -distance, y: -verticalOffset, z: 0)
+		cell3.addEvent(Event(type:eventTypes.cell))
 		let cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell3Label.position = SCNVector3(x: -distance - 0.2, y: 0, z: 0)
-		outCell3.addChildNode(cell3Label)
-		interface.addChildNode(outCell3)
+		cell3.addChildNode(cell3Label)
+		interface.addChildNode(cell3)
 		
 		// Systems
 		
-		inThruster = SCNPort(host: self)
-		inThruster.position = SCNVector3(x: distance, y: 0, z: 0)
-		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
-		thrusterLabel.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
-		interface.addChildNode(thrusterLabel)
-		interface.addChildNode(inThruster)
-		
-		inOxygen = SCNPort(host: self)
-		inOxygen.position = SCNVector3(x: distance, y: verticalOffset, z: 0)
+		oxygenPort = SCNPort(host: self)
+		oxygenPort.position = SCNVector3(x: distance, y: 0, z: 0)
 		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		oxygenLabel.position = SCNVector3(x: distance + 0.2, y: verticalOffset, z: 0)
+		oxygenLabel.position = SCNVector3(x: distance + 0.2, y: 0, z: 0)
 		interface.addChildNode(oxygenLabel)
-		interface.addChildNode(inOxygen)
+		interface.addChildNode(oxygenPort)
 		
-		inShield = SCNPort(host: self)
-		inShield.position = SCNVector3(x: distance, y: 2 * verticalOffset, z: 0)
+		thrusterPort = SCNPort(host: self)
+		thrusterPort.position = SCNVector3(x: distance, y: verticalOffset, z: 0)
+		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
+		thrusterLabel.position = SCNVector3(x: distance + 0.2, y: verticalOffset, z: 0)
+		interface.addChildNode(thrusterLabel)
+		interface.addChildNode(thrusterPort)
+		
+		shieldPort = SCNPort(host: self)
+		shieldPort.position = SCNVector3(x: distance, y: 2 * verticalOffset, z: 0)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: distance + 0.2, y: 2 * verticalOffset, z: 0)
+		interface.addChildNode(shieldPort)
 		interface.addChildNode(shieldLabel)
-		interface.addChildNode(inShield)
 		
-		inCloak = SCNPort(host: self)
-		inCloak.position = SCNVector3(x: distance, y: -verticalOffset, z: 0)
+		clockPort = SCNPort(host: self)
+		clockPort.position = SCNVector3(x: distance, y: -verticalOffset, z: 0)
 		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		cloakLabel.position = SCNVector3(x: distance + 0.2, y: -verticalOffset, z: 0)
+		interface.addChildNode(clockPort)
 		interface.addChildNode(cloakLabel)
-		interface.addChildNode(inCloak)
 		
-		inRadio = SCNPort(host: self)
-		inRadio.position = SCNVector3(x: distance, y: 2 * -verticalOffset, z: 0)
+		radioPort = SCNPort(host: self)
+		radioPort.position = SCNVector3(x: distance, y: 2 * -verticalOffset, z: 0)
 		let radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: distance + 0.2, y: 2 * -verticalOffset, z: 0)
+		interface.addChildNode(radioPort)
 		interface.addChildNode(radioLabel)
-		interface.addChildNode(inRadio)
 		
 		cell3Label.updateWithColor("--", color: grey)
-		outCell3.disable()
+		cell3.disable()
+		cell2Label.updateWithColor("--", color: grey)
+		cell2.disable()
 		
 		cloakLabel.updateWithColor("--", color: grey)
 		shieldLabel.updateWithColor("--", color: grey)
 		radioLabel.updateWithColor("--", color: grey)
+		oxygenLabel.updateWithColor("--", color: grey)
 	}
 	
 	override func start()
-	{
-		decals.opacity = 0
-		interface.opacity = 0
-		label.updateWithColor(name!, color: grey)
+	{		
+		cell1.enable()
+		thrusterPort.enable()
 	}
 	
 	override func listen(event:Event)
@@ -152,8 +154,6 @@ class PanelBattery : Panel
 	override func fixedUpdate()
 	{
 		if value == 0 { return }
-		
-		// Pulse at system
 		
 		if value < 0 { value = 0}
 		if value > 100 { value = 100}

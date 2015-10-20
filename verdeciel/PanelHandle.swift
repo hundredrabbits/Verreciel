@@ -24,15 +24,11 @@ class PanelHandle : Panel
 		self.destination = destination
 		
 		super.init()
+	}
+	
+	override func installation()
+	{
 		
-		interface = SCNNode()
-		self.addChildNode(interface)
-		decals = SCNNode()
-		self.addChildNode(decals)
-		installer = SCNNode()
-		
-		setup()
-		start()
 	}
 	
 	override func setup()

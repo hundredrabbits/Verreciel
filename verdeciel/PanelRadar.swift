@@ -82,13 +82,6 @@ class PanelRadar : Panel
 		self.position = SCNVector3(0,0,0)
 	}
 	
-	override func start()
-	{
-		decals.opacity = 0
-		interface.opacity = 0
-		label.updateWithColor(name!, color: grey)
-	}
-	
 	override func fixedUpdate()
 	{		
 		if isInstalled == false { return }

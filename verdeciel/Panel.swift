@@ -36,6 +36,18 @@ class Panel : SCNNode
 		decals = SCNNode()
 		self.addChildNode(decals)
 		
+		setup()
+		installation()
+		start()
+	}
+	
+	func setup()
+	{
+		
+	}
+	
+	func installation()
+	{
 		installer = template_installer()
 		installer.position = SCNVector3(0,0,templates.radius)
 		installProgressBar = SCNProgressBar(width: 1)
@@ -44,12 +56,9 @@ class Panel : SCNNode
 		installer.addChildNode(installProgressBar)
 		self.addChildNode(installer)
 		
-		setup()
-		start()
-	}
-	
-	func setup()
-	{
+		label.updateWithColor("--", color: grey)
+		interface.opacity = 0
+		decals.opacity = 0
 	}
 	
 	func install()

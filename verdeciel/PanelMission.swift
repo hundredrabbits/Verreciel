@@ -13,7 +13,7 @@ import Foundation
 
 class PanelMission : Panel
 {
-	var content:SCNNode!
+	var content:Panel!
 
 	var linesRoot:SCNNode!
 	
@@ -60,7 +60,7 @@ class PanelMission : Panel
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
-		content = SCNNode()
+		content = Panel()
 		interface.addChildNode(content)
 		
 		let spacing:Float = -0.35
@@ -72,19 +72,19 @@ class PanelMission : Panel
 		quest1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
 		linesRoot.addChildNode(quest1)
 		
-		quest1Port = SCNPort(host: self)
-		quest1Port.addEvent((quests.loiqe.first?.event)!)
-		quest1Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 0), z: 0)
-		linesRoot.addChildNode(quest1Port)
+//		quest1Port = SCNPort(host: self)
+//		quest1Port.addEvent((quests.tutorial.first?.event)!)
+//		quest1Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 0), z: 0)
+//		linesRoot.addChildNode(quest1Port)
 		
 		quest2 = SCNLabel()
 		quest2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
 		linesRoot.addChildNode(quest2)
 		
-		quest2Port = SCNPort(host: self)
-		quest2Port.addEvent((quests.falvet.first?.event)!)
-		quest2Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 1), z: 0)
-		linesRoot.addChildNode(quest2Port)
+//		quest2Port = SCNPort(host: self)
+//		quest2Port.addEvent((quests.falvet.first?.event)!)
+//		quest2Port.position = SCNVector3(x: templates.rightMargin - 0.15, y: (spacing * 1), z: 0)
+//		linesRoot.addChildNode(quest2Port)
 		
 		quest3 = SCNLabel()
 		quest3.position = SCNVector3(x: templates.leftMargin, y: (spacing * 2), z: 0)
@@ -107,13 +107,6 @@ class PanelMission : Panel
 		update()
 	}
 	
-	override func start()
-	{
-		decals.opacity = 0
-		interface.opacity = 0
-		label.updateWithColor(name!, color: grey)
-	}
-	
 	override func fixedUpdate()
 	{
 		
@@ -121,8 +114,9 @@ class PanelMission : Panel
 	
 	override func update()
 	{
-		quest1.update((quests.loiqe.first?.name)!)
-		quest2.updateWithColor(((quests.falvet.first?.name)!), color: grey)
+		if quests == nil { return }
+		quest1.update((quests.tutorial.first?.name)!)
+		quest2.updateWithColor(((quests.loiqe.first?.name)!), color: grey)
 		quest3.update("--")
 		quest4.update("--")
 		quest5.update("--")
@@ -138,9 +132,6 @@ class PanelMission : Panel
 	
 	override func bang()
 	{
-		if quest1Port.connection != nil {
-			quest1Port.connection.host.listen((quests.loiqe.first?.event)!)
-		}
 	}
 	
 	// MARK: Custom -
@@ -153,6 +144,7 @@ class PanelMission : Panel
 	func dock(location:Location)
 	{
 		content.addChildNode(location.interface)
+		content.opacity = 0 // TODO: installation of custom panel
 		linesRoot.opacity = 1
 	}
 	

@@ -14,20 +14,42 @@ import Foundation
 class Quest
 {
 	var name:String!
-	var event:Event!
 	var type:missions
-	var isUnlocked:Bool = false
+	var target:NSObject!
+	var requirement:requirements!
 	
-	init(type:missions = missions.none,event:Event = Event())
+	init(type:missions = missions.none,target:NSObject!, requirement:requirements!)
 	{
-		self.event = event
 		self.type = type
+		self.target = target
+		self.requirement = requirement
 		
 		createName()
 	}
 	
 	func createName()
 	{
-		name = "\(type) \(event.name!)"
+		var action = "Visit"
+		if type == missions.panel { action = "Activate" }
+		name = "\(action) \(type)"
+	}
+	
+	func validate()
+	{
+		if requirement == requirements.isNotNil {
+			print("\(requirement)")
+			if target == nil{
+				print("\(target)")
+			}
+			else if target != nil {
+				print("\(target)")
+				complete()
+			}
+		}
+	}
+	
+	func complete()
+	{
+		print("Quest complete!")
 	}
 }
