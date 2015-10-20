@@ -39,7 +39,6 @@
 - Add quest pointers
 
 - Unlock every panel
-- Remove port polarity
 
 ================
 *    GENRAL
@@ -93,6 +92,7 @@
 	- decline transfer when cargo is full
 	- Grey line when cargo is empty
 	- Use progress bar to show transfer
+	- Unlock additional space
 
 	> Handles
 	- Return to center if inactive

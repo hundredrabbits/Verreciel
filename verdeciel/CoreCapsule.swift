@@ -177,8 +177,13 @@ class CoreCapsule: SCNNode
 		pilot.eulerAngles.y = Float(degToRad(225))
 		radar.eulerAngles.y = Float(degToRad(270))
 		thruster.eulerAngles.y = Float(degToRad(315))
+		
+		battery.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
+		console.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
+		mission.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
+		radar.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))
 
-		self.addChildNode(breaker)
+		addChildNode(breaker)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

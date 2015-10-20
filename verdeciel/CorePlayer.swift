@@ -88,6 +88,8 @@ class CorePlayer : SCNNode
 	
 	func activatePort(port:SCNPort)
 	{
+		if port.isEnabled == false { return }
+		
 		// Select origin
 		if self.port == nil {
 			self.port = port
