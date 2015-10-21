@@ -106,17 +106,14 @@ class PanelMission : Panel
 
 	}
 	
-	override func fixedUpdate()
-	{
-		update()
-		
-	}
-	
-	override func update()
+	override func installedFixedUpdate()
 	{
 		if quests == nil { return }
-		if quests.tutorialQuest == nil { return }
-		quest1.update((quests.tutorialQuest.name!))
+		
+		quests.update()
+		
+		if quests.tutorialLatest != nil { quest1.update((quests.tutorialLatest.name!)) } else { quest1.updateWithColor("--", color: grey) }
+		
 		quest2.update("--")
 		quest3.update("--")
 		quest4.update("--")

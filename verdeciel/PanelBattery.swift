@@ -151,12 +151,9 @@ class PanelBattery : Panel
 		}
 	}
 	
-	override func fixedUpdate()
+	override func installedFixedUpdate()
 	{
-		if value == 0 { return }
 		
-		if value < 0 { value = 0}
-		if value > 100 { value = 100}
 	}
 	
 	override func bang()

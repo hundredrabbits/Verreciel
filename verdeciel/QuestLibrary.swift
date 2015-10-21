@@ -11,7 +11,7 @@ import Foundation
 class QuestLibrary
 {
 	var tutorial:Array<Quest> = []
-	var tutorialQuest:Quest!
+	var tutorialLatest:Quest!
 	
 	init()
 	{
@@ -20,14 +20,15 @@ class QuestLibrary
 
 	func _tutorial()
 	{
-		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { player.enterRadar() }))
+		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { radar.install() }))
+		tutorial.append( Quest(name:"Connect oxygen", predicate:{ battery.oxygenPort.origin != nil }, result: { print("what") }))
 	}
 	
-	func _fixedUpdate()
+	func update()
 	{
 		for quest in tutorial {
 			if quest.isCompleted == true { continue }
-			tutorialQuest = quest
+			tutorialLatest = quest
 			quest.validate()
 			break
 		}

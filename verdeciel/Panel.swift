@@ -18,11 +18,12 @@ class Panel : SCNNode
 	var port:SCNPort!
 	
 	var isPowered:Bool = false
-	var isInstalled:Bool = false
 	var isEnabled:Bool = true
 	var interface:SCNNode!
 	var decals:SCNNode!
 	
+	var isInstalling:Bool = false
+	var isInstalled:Bool = false
 	var installer:SCNNode = SCNNode()
 	var installProgress:CGFloat = 0
 	var installProgressBar = SCNProgressBar(width: 1)
@@ -46,6 +47,36 @@ class Panel : SCNNode
 		
 	}
 	
+	func install()
+	{
+		isInstalling = true
+	}
+	
+	override func fixedUpdate()
+	{
+		if isInstalling == true {
+			installProgress += CGFloat(arc4random_uniform(100))/100
+			installProgressBar.update(installProgress)
+			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
+			installProgressBar.opacity = 1
+			
+			if installProgress >= 100 {
+				installed()
+				installer.opacity = 0
+				isInstalling = false
+			}
+		}
+		
+		if isInstalled == true {
+			installedFixedUpdate()
+		}
+	}
+	
+	func installedFixedUpdate()
+	{
+	
+	}
+	
 	func installation()
 	{
 		installer = template_installer()
@@ -59,19 +90,6 @@ class Panel : SCNNode
 		label.updateWithColor("--", color: grey)
 		interface.opacity = 0
 		decals.opacity = 0
-	}
-	
-	func install()
-	{
-		if installProgress > 0 { installProgressBar.opacity = 1 }
-		if installProgress >= 100 { installed() ; installer.opacity = 0 ; return }
-		
-		let randomTime = Double(arc4random_uniform(100))/750
-		NSTimer.scheduledTimerWithTimeInterval(randomTime, target: self, selector: Selector("install"), userInfo: nil, repeats: false)
-		
-		installProgressBar.update(installProgress)
-		installProgress += 1
-		label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
 	}
 	
 	func installed()
