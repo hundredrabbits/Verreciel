@@ -89,13 +89,17 @@ class PanelMission : Panel
 		
 		quests.update()
 		
+		// Tutorial Quest Line
 		if quests.tutorialLatest != nil {
 			quest1.update((quests.tutorialLatest.name!))
 			quest1Details.update("\(quests.tutorialProgress)/\(quests.tutorial.count)")
+			
+			ui.addMessage(quests.tutorialLatest.name!)
 		} else {
 			quest1.update("--")
 		}
 		
+		// Falvet Quest Line
 		if quests.falvetLatest != nil {
 			quest2.update((quests.falvetLatest.name!))
 			quest2Details.update("\(quests.falvetProgress)/\(quests.falvet.count)")
@@ -103,7 +107,6 @@ class PanelMission : Panel
 			quest2.update("--")
 		}
 		
-		if quests.falvetLatest != nil { quest2.update((quests.falvetLatest.name!)) } else { quest2.updateWithColor("--", color: grey) }
 		quest2.update("--")
 		quest3.update("--")
 		quest4.update("--")

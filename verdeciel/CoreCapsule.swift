@@ -36,7 +36,6 @@ class CoreCapsule: SCNNode
 		self.direction = 0
 		
 		nodeSetup()
-
 		panelSetup()
 	}
 	
@@ -68,13 +67,18 @@ class CoreCapsule: SCNNode
 		let verticalTarget:Int = Int(dock.at.y * 1000)
 		let verticalOffset:Int = verticalLocation - verticalTarget
 		
-		if horizontalOffset > 0 { capsule.at.y -= 0.001 }
-		if horizontalOffset < 0 { capsule.at.y += 0.001 }
-		if verticalOffset > 0 { capsule.at.y -= 0.001 }
-		if verticalOffset < 0 { capsule.at.y += 0.001 }
+		var approachSpeed:CGFloat = 0.001
+		let distanceRatio = distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5
+		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
+		
+		if approachSpeed < 0.0001 { approachSpeed = 0.0001 }
+	
+		if horizontalOffset > 0 { capsule.at.y -= approachSpeed }
+		if horizontalOffset < 0 { capsule.at.y += approachSpeed }
+		if verticalOffset > 0 { capsule.at.y -= approachSpeed }
+		if verticalOffset < 0 { capsule.at.y += approachSpeed }
 		
 		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { isDocked = true ; capsule.at == dock.at ; dock.docked() }
-		else{ print("docking.. Target: \(horizontalOffset) \(verticalOffset)")}
 	}
 	
 	func dock(newDock:Location)
@@ -89,11 +93,7 @@ class CoreCapsule: SCNNode
 		dock = nil
 	}
 	
-	func connectDefaultPorts()
-	{
-		cargo.port.connect(console.port)
-		radar.port.connect(pilot.port)
-	}
+	// MARK: Custom -
 	
 	func nodeSetup()
 	{

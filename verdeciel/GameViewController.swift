@@ -54,6 +54,7 @@ var ui:CoreUI!
 var items = ItemLibrary()
 var locations = LocationLibrary()
 var templates = Templates()
+var settings = Settings()
 
 var quests:QuestLibrary!
 

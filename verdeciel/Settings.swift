@@ -89,3 +89,10 @@ struct Templates
 	var monitorsAngle:CGFloat = 32
 	var warningsAngle:CGFloat = 44
 }
+
+struct Settings
+{
+	var sight:CGFloat = 2.0
+	var approach:CGFloat = 0.5
+	var collision:CGFloat = 0.5
+}

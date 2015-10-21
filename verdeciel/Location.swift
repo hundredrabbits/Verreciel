@@ -58,17 +58,47 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if distance <= 2 { if inSight == false { sight() ; inSight = true } ; sightUpdate() }
+		if distance <= settings.sight { if inSight == false { sight() ; inSight = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= 0.6 { if inApproach == false { inApproach = true ; approach() } ; approachUpdate() }
+		if distance <= settings.approach { if inApproach == false { inApproach = true ; approach() } ; approachUpdate() }
 		else{ inApproach = false }
 		
-		if distance <= 0.01 { if inCollision == false {  inCollision = true ; collide() } ; collisionUpdate() }
+		if distance <= settings.collision { if inCollision == false {  inCollision = true ; collide() } ; collisionUpdate() }
 		else{ inCollision = false }
 		
 		radarCulling()
 		clean()
+	}
+	
+	func sight()
+	{
+		print("* EVENT    | Sighted \(self.name!)")
+	}
+	
+	func discover()
+	{
+		print("* EVENT    | Discovered \(self.name!)")
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
+	func approach()
+	{
+		print("* EVENT    | Approached \(self.name!)")
+		space.startInstance(self)
+	}
+	
+	func collide()
+	{
+		print("* EVENT    | Collided \(self.name!)")
+	}
+	
+	func docked()
+	{
+		print("* EVENT    | Docked at \(self.name!)")
+		isKnown = true
+		ui.addPassive("\(self.name!)")
 	}
 	
 	func sightUpdate()
@@ -133,35 +163,6 @@ class Location : Event
 	}
 
 	// MARK: Events -
-	
-	func sight()
-	{
-		print("* EVENT    | Sighted \(self.name!)")
-	}
-	
-	func discover()
-	{
-		print("* EVENT    | Discovered \(self.name!)")
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
-	func approach()
-	{
-		print("* EVENT    | Approached \(self.name!)")
-		space.startInstance(self)
-	}
-	
-	func collide()
-	{
-		print("* EVENT    | Collided \(self.name!)")
-	}
-	
-	func docked()
-	{
-		print("* EVENT    | Docked at \(self.name!)")
-		isKnown = true
-	}
 	
 	func addService(service:services)
 	{

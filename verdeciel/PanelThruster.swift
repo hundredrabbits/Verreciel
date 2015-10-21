@@ -162,7 +162,6 @@ class PanelThruster : Panel
 			line2.color(grey)
 			line3.color(grey)
 			line4.color(grey)
-			details.update("Docked")
 		}
 		
 		if speed * 10 > Int(actualSpeed * 10) {
@@ -175,13 +174,22 @@ class PanelThruster : Panel
 		if capsule.dock != nil {
 			speed = 0
 			actualSpeed = 0
-			details.update("docked")
 		}
 		else if actualSpeed < 0.1 {
 			actualSpeed = 0.1
 		}
 		
-		if Float(speed) != actualSpeed {
+		// Detail
+		if capsule.dock != nil {
+			if capsule.isDocked == true {
+				details.update("docked")
+			}
+			else
+			{
+				details.update("docking")
+			}
+		}
+		else{
 			details.update(String(format: "%.1f", actualSpeed))
 		}
 		

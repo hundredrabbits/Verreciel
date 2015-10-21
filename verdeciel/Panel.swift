@@ -49,7 +49,7 @@ class Panel : SCNNode
 	override func fixedUpdate()
 	{
 		if isInstalling == true {
-			installProgress += CGFloat(arc4random_uniform(100))/100
+			installProgress += CGFloat(arc4random_uniform(100))/50
 			installProgressBar.update(installProgress)
 			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
 			installProgressBar.opacity = 1
