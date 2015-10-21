@@ -80,8 +80,6 @@ class PanelPilot : Panel
 	
 	override func setPower(power: Bool)
 	{
-		// Add progress bar during booting
-		isPowered = power
 		if power == true {
 			port.enable()
 			staticDirectionIndicator.opacity = 1
@@ -104,7 +102,7 @@ class PanelPilot : Panel
 		target = event as! Location
 	}
 	
-	override func fixedUpdate()
+	override func installedFixedUpdate()
 	{
 		adjustAngle()
 	}

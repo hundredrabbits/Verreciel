@@ -20,7 +20,7 @@ class QuestLibrary
 
 	func _tutorial()
 	{
-		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { radar.install() }))
+		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { thruster.install() }))
 		tutorial.append( Quest(name:"Connect oxygen", predicate:{ battery.oxygenPort.origin != nil }, result: { print("what") }))
 	}
 	

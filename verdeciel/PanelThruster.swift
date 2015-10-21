@@ -29,6 +29,8 @@ class PanelThruster : Panel
 	
 	var panelFoot:SCNNode!
 	
+	// MARK: Default -
+	
 	override func setup()
 	{
 		name = "thruster"
@@ -97,6 +99,8 @@ class PanelThruster : Panel
 		}
 	}
 	
+	// MARK: Custom -
+	
 	func speedUp()
 	{
 		if speed <= maxSpeed {
@@ -159,7 +163,7 @@ class PanelThruster : Panel
 		draw()
 	}
 	
-	override func fixedUpdate()
+	override func installedFixedUpdate()
 	{
 		if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1

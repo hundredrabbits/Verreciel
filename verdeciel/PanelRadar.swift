@@ -117,7 +117,6 @@ class PanelRadar : Panel
 
 	override func setPower(power: Bool)
 	{
-		isPowered = false
 		port.disable()
 		eventView.opacity = 0
 		label.updateWithColor("radar", color: grey)

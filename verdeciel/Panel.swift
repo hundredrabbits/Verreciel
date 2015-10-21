@@ -17,7 +17,6 @@ class Panel : SCNNode
 	var details = SCNLabel()
 	var port:SCNPort!
 	
-	var isPowered:Bool = false
 	var isEnabled:Bool = true
 	var interface:SCNNode!
 	var decals:SCNNode!
