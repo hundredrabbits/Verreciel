@@ -106,7 +106,6 @@ class PanelMission : Panel
 
 	}
 	
-	
 	override func fixedUpdate()
 	{
 		update()

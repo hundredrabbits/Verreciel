@@ -17,12 +17,14 @@ class Quest
 	var type:missions
 	var predicate:() -> Bool
 	var isCompleted:Bool = false
+	var result:() -> Void
 	
-	init(type:missions = missions.none, predicate:() -> Bool )
+	init(type:missions = missions.none, predicate:() -> Bool, name:String, result: () -> Void )
 	{
-		self.name = "test"
+		self.name = name
 		self.type = type
 		self.predicate = predicate
+		self.result = result
 	}
 	
 	func validate()
@@ -37,5 +39,6 @@ class Quest
 		if isCompleted == true { return }
 		print("Quest complete!")
 		isCompleted = true
+		self.result()
 	}
 }
