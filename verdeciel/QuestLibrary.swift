@@ -11,9 +11,7 @@ import Foundation
 class QuestLibrary
 {
 	var tutorial:Array<Quest> = []
-	var loiqe:Array<Quest> = []
-	
-	var quest1:Quest!
+	var tutorialQuest:Quest!
 	
 	init()
 	{
@@ -28,7 +26,10 @@ class QuestLibrary
 	func _fixedUpdate()
 	{
 		for quest in tutorial {
+			if quest.isCompleted == true { continue }
+			tutorialQuest = quest
 			quest.validate()
+			break
 		}
 	}
 }

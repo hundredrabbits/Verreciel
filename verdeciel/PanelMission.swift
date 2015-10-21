@@ -103,20 +103,22 @@ class PanelMission : Panel
 		linesRoot.addChildNode(quest6)
 		
 		interface.addChildNode(linesRoot)
-		
-		update()
+
 	}
+	
 	
 	override func fixedUpdate()
 	{
+		update()
 		
 	}
 	
 	override func update()
 	{
 		if quests == nil { return }
-		quest1.update((quests.tutorial.first?.name)!)
-		quest2.updateWithColor(((quests.loiqe.first?.name)!), color: grey)
+		if quests.tutorialQuest == nil { return }
+		quest1.update((quests.tutorialQuest.name!))
+		quest2.update("--")
 		quest3.update("--")
 		quest4.update("--")
 		quest5.update("--")
@@ -135,11 +137,6 @@ class PanelMission : Panel
 	}
 	
 	// MARK: Custom -
-	
-	func addQuest(newQuest:Quest)
-	{
-		update()
-	}
 	
 	func dock(location:Location)
 	{
