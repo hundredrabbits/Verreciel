@@ -13,29 +13,22 @@ class QuestLibrary
 	var tutorial:Array<Quest> = []
 	var loiqe:Array<Quest> = []
 	
+	var quest1:Quest!
+	
 	init()
 	{
 		_tutorial()
-		_loiqe()
 	}
-	
+
 	func _tutorial()
 	{
-		tutorial.append(Quest(type:missions.panel, target: battery.thrusterPort.origin, requirement:requirements.isNotNil ))
-	}
-	
-	func _loiqe()
-	{
-		loiqe.append(Quest(type:missions.visit, target: universe.falvet_service2.isKnown, requirement:requirements.isTrue ))
+		tutorial.append( Quest(type:missions.panel, predicate:{ battery.thrusterPort.origin != nil }) )
 	}
 	
 	func _fixedUpdate()
 	{
-		tutorial = []
-		tutorial.append(Quest(type:missions.panel, target: battery.thrusterPort.origin, requirement:requirements.isNotNil ))
-		
-		for currentQuest in tutorial {
-			currentQuest.validate()
+		for quest in tutorial {
+			quest.validate()
 		}
 	}
 }

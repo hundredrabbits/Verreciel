@@ -78,15 +78,6 @@ enum missions
 	case trade
 }
 
-enum requirements
-{
-	case none
-	case isNil
-	case isTrue
-	case isNotNil
-	case isNotTrue
-}
-
 struct Templates
 {
 	var left:Float = 0

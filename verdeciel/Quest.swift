@@ -15,41 +15,27 @@ class Quest
 {
 	var name:String!
 	var type:missions
-	var target:NSObject!
-	var requirement:requirements!
+	var predicate:() -> Bool
+	var isCompleted:Bool = false
 	
-	init(type:missions = missions.none,target:NSObject!, requirement:requirements!)
+	init(type:missions = missions.none, predicate:() -> Bool )
 	{
+		self.name = "test"
 		self.type = type
-		self.target = target
-		self.requirement = requirement
-		
-		createName()
-	}
-	
-	func createName()
-	{
-		var action = "Visit"
-		if type == missions.panel { action = "Activate" }
-		name = "\(action) \(type)"
+		self.predicate = predicate
 	}
 	
 	func validate()
 	{
-		if requirement == requirements.isNotNil {
-			print("\(requirement)")
-			if target == nil{
-				print("\(target)")
-			}
-			else if target != nil {
-				print("\(target)")
-				complete()
-			}
+		if predicate() {
+			complete()
 		}
 	}
 	
 	func complete()
 	{
+		if isCompleted == true { return }
 		print("Quest complete!")
+		isCompleted = true
 	}
 }
