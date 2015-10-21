@@ -37,7 +37,6 @@ class LocationTrade : Location
 
 	override func sight()
 	{
-		isKnown = true
 		sprite.empty()
 		sprite.add(_sprite())
 	}
@@ -135,6 +134,14 @@ class LocationTrade : Location
 		
 		want = nil
 		give = nil
+	}
+	
+	override func approach()
+	{
+		space.startInstance(self)
+		print("in approach")
+		
+		capsule.dock(self)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

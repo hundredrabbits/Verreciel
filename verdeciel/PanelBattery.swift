@@ -132,7 +132,7 @@ class PanelBattery : Panel
 	}
 	
 	override func start()
-	{		
+	{
 		cell1.enable()
 		thrusterPort.enable()
 	}

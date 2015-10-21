@@ -90,6 +90,10 @@ class PanelRadar : Panel
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
+		
+		if target != nil {
+			targetter.blink()
+		}		
 	}
 	
 	// MARK: Ports -
@@ -114,13 +118,6 @@ class PanelRadar : Panel
 	}
 
 	// MARK: Custom -
-
-	override func setPower(power: Bool)
-	{
-		port.disable()
-		eventView.opacity = 0
-		label.updateWithColor("radar", color: grey)
-	}
 	
 	func updateTarget()
 	{		
@@ -140,10 +137,6 @@ class PanelRadar : Panel
 				targetter.position = SCNVector3(target.at.x - capsule.at.x,target.at.y - capsule.at.y,0)
 				targetterFar.opacity = 0
 			}
-			
-			if targetter.opacity == 1 { targetter.opacity = 0 }
-			else{ targetter.opacity = 1 }
-			
 		}
 	}
 

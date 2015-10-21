@@ -20,9 +20,13 @@ class LocationSpawn : Location
 	
 	override func sight()
 	{
-		isKnown = true
 		sprite.empty()
 		sprite.add(_sprite())
+	}
+	
+	override func collide()
+	{
+		
 	}
 	
 	override func mesh() -> SCNNode

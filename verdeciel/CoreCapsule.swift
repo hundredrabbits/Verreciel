@@ -23,6 +23,7 @@ class CoreCapsule: SCNNode
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal
 	
+	var isDocked:Bool = false
 	var dock:Location!
 	var mesh:SCNNode!
 	
@@ -49,23 +50,43 @@ class CoreCapsule: SCNNode
 	{
 		service()
 		systems()
+		docking()
 	}
 	
 	// MARK: Custom -
 	
+	func docking()
+	{
+		if dock == nil { return }
+		if isDocked == true { return }
+		
+		let horizontalLocation:Int = Int(capsule.at.y * 1000)
+		let horizontalTarget:Int = Int(dock.at.y * 1000)
+		let horizontalOffset:Int = horizontalLocation - horizontalTarget
+		
+		let verticalLocation:Int = Int(capsule.at.y * 1000)
+		let verticalTarget:Int = Int(dock.at.y * 1000)
+		let verticalOffset:Int = verticalLocation - verticalTarget
+		
+		if horizontalOffset > 0 { capsule.at.y -= 0.001 }
+		if horizontalOffset < 0 { capsule.at.y += 0.001 }
+		if verticalOffset > 0 { capsule.at.y -= 0.001 }
+		if verticalOffset < 0 { capsule.at.y += 0.001 }
+		
+		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { isDocked = true ; capsule.at == dock.at ; dock.docked() }
+		else{ print("docking.. Target: \(horizontalOffset) \(verticalOffset)")}
+	}
+	
 	func dock(newDock:Location)
 	{
+		print("init dock")
 		dock = newDock
-		mission.dock(dock)
 		thruster.disable()
-		dockbay.update()
 	}
 	
 	func undock()
 	{
 		dock = nil
-		mission.undock()
-		thruster.enable()
 	}
 	
 	func connectDefaultPorts()

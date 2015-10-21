@@ -70,7 +70,6 @@ class PanelHatch : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
-		panelFoot.opacity = 0
 	}
 
 	override func touch(id:Int = 0)

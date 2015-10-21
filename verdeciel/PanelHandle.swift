@@ -49,7 +49,7 @@ class PanelHandle : Panel
 		self.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 	}
 	
-	func enable()
+	override func enable()
 	{
 		isEnabled = true
 		selectionLine1.updateColor(cyan)
@@ -57,7 +57,7 @@ class PanelHandle : Panel
 		selectionLine3.updateColor(cyan)
 	}
 	
-	func disable()
+	override func disable()
 	{
 		isEnabled = false
 		selectionLine1.updateColor(grey)

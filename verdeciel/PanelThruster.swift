@@ -26,7 +26,6 @@ class PanelThruster : Panel
 	var actualSpeed:Float = 0
 	
 	var panelHead:SCNNode!
-	
 	var panelFoot:SCNNode!
 	
 	// MARK: Default -
@@ -86,7 +85,6 @@ class PanelThruster : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
-		panelFoot.opacity = 0
 	}
 
 	override func touch(id:Int = 0)
@@ -146,25 +144,27 @@ class PanelThruster : Panel
 		if maxSpeed < 1 { line1.opacity = 0 }
 	}
 	
-	func enable()
-	{
-		isEnabled = true
-		accelerate.opacity = 1
-		decelerate.opacity = 1
-		draw()
-	}
-	
-	func disable()
-	{
-		isEnabled = false
-		accelerate.opacity = 0
-		decelerate.opacity = 0
-		speed = 0
-		draw()
-	}
-	
 	override func installedFixedUpdate()
 	{
+		// Draw handles
+		if isEnabled == true {
+			accelerate.updateChildrenColors(cyan)
+			decelerate.updateChildrenColors(red)
+		}
+		else{
+			accelerate.updateChildrenColors(grey)
+			decelerate.updateChildrenColors(grey)
+		}
+		
+		// Lines
+		if capsule.dock != nil {
+			line1.color(grey)
+			line2.color(grey)
+			line3.color(grey)
+			line4.color(grey)
+			details.update("Docked")
+		}
+		
 		if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1
 		}
@@ -208,16 +208,5 @@ class PanelThruster : Panel
 	
 	override func listen(event: Event)
 	{
-		if event.type == eventTypes.warp {
-//			warp(event.destination)
-		}
-	}
-	
-	func warp(destination:CGPoint, sector:sectors = capsule.sector)
-	{
-		print("  WARP     | Warping to \(destination)")
-		
-		capsule.at = destination
-		capsule.sector = sector
 	}
 }

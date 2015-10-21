@@ -46,11 +46,6 @@ class Panel : SCNNode
 		
 	}
 	
-	func install()
-	{
-		isInstalling = true
-	}
-	
 	override func fixedUpdate()
 	{
 		if isInstalling == true {
@@ -73,12 +68,44 @@ class Panel : SCNNode
 	
 	func installedFixedUpdate()
 	{
+		
+	}
 	
+	func enable()
+	{
+		isEnabled = true
+	}
+	
+	func disable()
+	{
+		isEnabled = false
+	}
+	
+	func updateInterface(interface:Panel)
+	{
+		// Empty node
+		for node in self.childNodes {
+			node.removeFromParentNode()
+		}
+		
+		// Add
+		for node in interface.childNodes {
+			self.addChildNode(node)
+		}
+	}
+	
+	// MARK: Installation -
+	
+	func install()
+	{
+		isInstalling = true
 	}
 	
 	func installation()
 	{
-		installer = template_installer()
+		installer = SCNNode()
+		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
+		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
 		installer.position = SCNVector3(0,0,templates.radius)
 		installProgressBar = SCNProgressBar(width: 1)
 		installProgressBar.position = SCNVector3(-0.5,-0.5,0)
@@ -89,6 +116,7 @@ class Panel : SCNNode
 		label.updateWithColor("--", color: grey)
 		interface.opacity = 0
 		decals.opacity = 0
+		details.opacity = 0
 	}
 	
 	func installed()
@@ -109,34 +137,6 @@ class Panel : SCNNode
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.port.enable() })
 		SCNTransaction.commit()
-	}
-	
-	func setPower(power:Bool)
-	{
-		print("Missing unpowered mode for \(name!).")
-	}
-	
-	func updateInterface(interface:Panel)
-	{
-		// Empty node
-		for node in self.childNodes {
-			node.removeFromParentNode()
-		}
-		
-		// Add
-		for node in interface.childNodes {
-			self.addChildNode(node)
-		}
-	}
-	
-	func template_installer() -> SCNNode
-	{
-		let sprite = SCNNode()
-		
-		sprite.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
-		sprite.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
-		
-		return sprite
 	}
 	
 	required init?(coder aDecoder: NSCoder)

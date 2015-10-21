@@ -68,14 +68,8 @@ class LocationStation : Location
 	
 	override func sight()
 	{
-		isKnown = true
 		sprite.empty()
 		sprite.add(_sprite())
-	}
-	
-	override func collide()
-	{
-		capsule.dock(self)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

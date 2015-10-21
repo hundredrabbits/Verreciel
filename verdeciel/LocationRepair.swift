@@ -20,7 +20,6 @@ class LocationRepair : Location
 	
 	override func sight()
 	{
-		isKnown = true
 		sprite.empty()
 		sprite.add(_sprite())
 	}

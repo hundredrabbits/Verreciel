@@ -34,7 +34,7 @@ let radio = PanelRadio()
 let pilot = PanelPilot()
 let hatch = PanelHatch()
 let mission = PanelMission()
-let dockbay = PanelDock()
+let dock = PanelDock()
 let cargo = PanelCargo()
 let thruster = PanelThruster()
 let console = PanelConsole()
@@ -42,6 +42,7 @@ let radar = PanelRadar()
 let translator = PanelTranslator()
 let targetter = PanelTargetter()
 let window = PanelWindow()
+let monitor = PanelMonitor()
 
 var time:CoreTime!
 var universe:CoreUniverse!

@@ -58,6 +58,9 @@ enum eventDetails
 	case card
 	case star
 	case quest
+	case waste
+	case part
+	case panel
 }
 
 enum services

@@ -58,22 +58,32 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if distance <= 2 { if inSight == false { sight() ; inSight = true } }
+		if distance <= 2 { if inSight == false { sight() ; inSight = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= 0.6 { if inApproach == false { approach() ; inApproach = true } ; visibleUpdate() }
+		if distance <= 0.6 { if inApproach == false { inApproach = true ; approach() } ; approachUpdate() }
 		else{ inApproach = false }
 		
-		if distance <= 0.01 { if inCollision == false { collide() ; inCollision = true } }
+		if distance <= 0.01 { if inCollision == false {  inCollision = true ; collide() } ; collisionUpdate() }
 		else{ inCollision = false }
 		
 		radarCulling()
 		clean()
 	}
 	
-	func visibleUpdate()
+	func sightUpdate()
 	{
+		
+	}
 	
+	func approachUpdate()
+	{
+		
+	}
+	
+	func collisionUpdate()
+	{
+		
 	}
 	
 	func mesh() -> SCNNode
@@ -81,10 +91,15 @@ class Location : Event
 		let mesh = SCNNode()
 		let radius:Float = 3
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,0,0), nodeB: SCNVector3(0,0,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,radius), nodeB: SCNVector3(radius,0,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,0,0), nodeB: SCNVector3(0,0,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-radius), nodeB: SCNVector3(-radius,0,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,2,0), nodeB: SCNVector3(0,2,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,radius), nodeB: SCNVector3(radius,2,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,2,0), nodeB: SCNVector3(0,2,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,-radius), nodeB: SCNVector3(-radius,2,0), color: white))
+		
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-2,0), nodeB: SCNVector3(0,-2,radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-2,radius), nodeB: SCNVector3(radius,-2,0), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,-2,0), nodeB: SCNVector3(0,-2,-radius), color: white))
+		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-2,-radius), nodeB: SCNVector3(-radius,-2,0), color: white))
 
 		return mesh
 	}
@@ -140,7 +155,12 @@ class Location : Event
 	func collide()
 	{
 		print("* EVENT    | Collided \(self.name!)")
-		capsule.dock(self)
+	}
+	
+	func docked()
+	{
+		print("* EVENT    | Docked at \(self.name!)")
+		isKnown = true
 	}
 	
 	func addService(service:services)
@@ -150,13 +170,8 @@ class Location : Event
 	
 	override func touch(id:Int)
 	{
-		if isKnown == true {
-			print("touched: \(self.name!)")
-			radar.addTarget(self)
-		}
-		else{
-			print("event is unknown")
-		}
+		print("touched: \(self.name!)")
+		radar.addTarget(self)
 	}
 	
 	func _sprite() -> SCNNode

@@ -81,7 +81,14 @@ class PanelCargo : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
-		panelFoot.opacity = 0
+	}
+	
+	func contains(event:Event) -> Bool
+	{
+		for newEvent in cargohold.content {
+			if newEvent == event { return true }
+		}
+		return false
 	}
 	
 	func addEvent(event:Event)

@@ -58,7 +58,6 @@ class LocationStar : Location
 	
 	override func sight()
 	{
-		isKnown = true
 		sprite.empty()
 		sprite.add(_sprite())
 	}
@@ -68,7 +67,7 @@ class LocationStar : Location
 		print("death")
 	}
 	
-	override func visibleUpdate()
+	override func approachUpdate()
 	{
 		if distance/0.75 < 1 {
 			let radiationPercent = 100 - ((distance/0.75) * 100)

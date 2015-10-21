@@ -75,21 +75,6 @@ class PanelPilot : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
-		panelFoot.opacity = 0
-	}
-	
-	override func setPower(power: Bool)
-	{
-		if power == true {
-			port.enable()
-			staticDirectionIndicator.opacity = 1
-			label.updateWithColor(name!, color: white)
-		}
-		else{
-			port.disable()
-			staticDirectionIndicator.opacity = 0
-			label.updateWithColor(name!, color: grey)
-		}
 	}
 	
 	override func touch(id:Int = 0)

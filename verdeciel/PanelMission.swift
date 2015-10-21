@@ -17,11 +17,13 @@ class PanelMission : Panel
 
 	var linesRoot:SCNNode!
 	
-	var quest1:SCNLabel!
-	var quest2:SCNLabel!
-	var quest3:SCNLabel!
-	var quest4:SCNLabel!
-	var quest5:SCNLabel!
+	var quest1 = SCNLabel()
+	var quest1Details = SCNLabel(text: "", align: alignment.right, color:grey)
+	var quest2 = SCNLabel()
+	var quest2Details = SCNLabel(text: "", align: alignment.right, color:grey)
+	var quest3 = SCNLabel()
+	var quest4 = SCNLabel()
+	var quest5 = SCNLabel()
 	
 	var panelHead:SCNNode!
 	
@@ -59,23 +61,22 @@ class PanelMission : Panel
 		linesRoot = SCNNode()
 		linesRoot.position = SCNVector3(0,0,0)
 		
-		quest1 = SCNLabel()
 		quest1.position = SCNVector3(x: templates.leftMargin, y: 0.8, z: 0)
 		linesRoot.addChildNode(quest1)
+		quest1Details.position = SCNVector3(x: templates.rightMargin, y: 0.8, z: 0)
+		linesRoot.addChildNode(quest1Details)
 		
-		quest2 = SCNLabel()
 		quest2.position = SCNVector3(x: templates.leftMargin, y: 0.4, z: 0)
 		linesRoot.addChildNode(quest2)
+		quest2Details.position = SCNVector3(x: templates.rightMargin, y: 0.4, z: 0)
+		linesRoot.addChildNode(quest2Details)
 		
-		quest3 = SCNLabel()
 		quest3.position = SCNVector3(x: templates.leftMargin, y: 0, z: 0)
 		linesRoot.addChildNode(quest3)
 		
-		quest4 = SCNLabel()
 		quest4.position = SCNVector3(x: templates.leftMargin, y: -0.4, z: 0)
 		linesRoot.addChildNode(quest4)
 		
-		quest5 = SCNLabel()
 		quest5.position = SCNVector3(x: templates.leftMargin, y: -0.8, z: 0)
 		linesRoot.addChildNode(quest5)
 		
@@ -88,8 +89,21 @@ class PanelMission : Panel
 		
 		quests.update()
 		
-		if quests.tutorialLatest != nil { quest1.update((quests.tutorialLatest.name!)) } else { quest1.updateWithColor("--", color: grey) }
+		if quests.tutorialLatest != nil {
+			quest1.update((quests.tutorialLatest.name!))
+			quest1Details.update("\(quests.tutorialProgress)/\(quests.tutorial.count)")
+		} else {
+			quest1.update("--")
+		}
 		
+		if quests.falvetLatest != nil {
+			quest2.update((quests.falvetLatest.name!))
+			quest2Details.update("\(quests.falvetProgress)/\(quests.falvet.count)")
+		} else {
+			quest2.update("--")
+		}
+		
+		if quests.falvetLatest != nil { quest2.update((quests.falvetLatest.name!)) } else { quest2.updateWithColor("--", color: grey) }
 		quest2.update("--")
 		quest3.update("--")
 		quest4.update("--")
