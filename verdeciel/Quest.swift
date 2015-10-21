@@ -14,15 +14,13 @@ import Foundation
 class Quest
 {
 	var name:String!
-	var type:missions
 	var predicate:() -> Bool
-	var isCompleted:Bool = false
 	var result:() -> Void
+	var isCompleted:Bool = false
 	
-	init(type:missions = missions.none, predicate:() -> Bool, name:String, result: () -> Void )
+	init(name:String, predicate:() -> Bool, result: () -> Void )
 	{
 		self.name = name
-		self.type = type
 		self.predicate = predicate
 		self.result = result
 	}

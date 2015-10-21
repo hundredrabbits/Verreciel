@@ -68,16 +68,6 @@ enum services
 	case neutralize
 }
 
-enum missions
-{
-	case none
-	case panel
-	case visit
-	case discover
-	case fetch
-	case trade
-}
-
 struct Templates
 {
 	var left:Float = 0

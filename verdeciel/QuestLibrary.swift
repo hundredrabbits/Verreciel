@@ -17,17 +17,10 @@ class QuestLibrary
 	{
 		_tutorial()
 	}
-	
-	func someTest() -> Void
-	{
-	
-	}
 
 	func _tutorial()
 	{
-		let someTest = { player.enterRadar() }
-		
-		tutorial.append( Quest(type:missions.panel, predicate:{ battery.thrusterPort.origin != nil }, name:"Connect thruster", result:someTest) )
+		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { player.enterRadar() }))
 	}
 	
 	func _fixedUpdate()
