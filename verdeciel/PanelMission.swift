@@ -87,8 +87,6 @@ class PanelMission : Panel
 	{
 		if quests == nil { return }
 		
-		quests.update()
-		
 		// Tutorial Quest Line
 		if quests.tutorialLatest != nil {
 			quest1.update((quests.tutorialLatest.name!))

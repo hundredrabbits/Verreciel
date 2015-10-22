@@ -98,7 +98,6 @@ class Location : Event
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
-		ui.addPassive("\(self.name!)")
 	}
 	
 	func sightUpdate()

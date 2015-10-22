@@ -35,7 +35,7 @@ class Quest
 	func complete()
 	{
 		if isCompleted == true { return }
-		print("Quest complete!")
+		print("+ QUEST    | Complete: \(name!)")
 		isCompleted = true
 		self.result()
 	}

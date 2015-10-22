@@ -55,9 +55,9 @@ class Loiqe
 		return location
 	}
 	
-	func city() -> LocationRepair
+	func city() -> LocationCargo
 	{
-		let location = LocationRepair(name:"Loiqe Repairs")
+		let location = LocationCargo(name:"Loiqe City", inventory: items.loiqeLicense)
 		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y - 1)
 		return location

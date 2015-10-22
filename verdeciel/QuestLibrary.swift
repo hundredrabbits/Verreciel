@@ -28,11 +28,10 @@ class QuestLibrary
 	{
 		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { thruster.install() }) )
 		tutorial.append( Quest(name:"Reach the station", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
-//		tutorial.append( Quest(name:"Align with cargo", predicate:{ radar.target != nil && radar.target == universe.loiqe_telescope }, result: { dock.install() }) )
 		tutorial.append( Quest(name:"Undock from station", predicate:{ capsule.dock == nil }, result: { cargo.install() }) )
-		tutorial.append( Quest(name:"Dock at cargo", predicate:{ capsule.dock == universe.loiqe_telescope }, result: { mission.install() }) )
+		tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { mission.install() }) )
 		tutorial.append( Quest(name:"Upload to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )
-		tutorial.append( Quest(name:"Inspect cargo", predicate:{ cargo.port.connection == console.port }, result: { hatch.install() }) )
+		tutorial.append( Quest(name:"Inspect cargo", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { hatch.install() }) )
 		tutorial.append( Quest(name:"Eject waste", predicate:{ cargo.contains(items.waste) == false }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Connect pilot", predicate:{ radar.port.connection == pilot.port }, result: { radiation.install() }) )
 		tutorial.append( Quest(name:"Reach city", predicate:{ capsule.dock == universe.loiqe_telescope }, result: { monitor.install() }) )
@@ -49,7 +48,7 @@ class QuestLibrary
 	}
 	
 	func update()
-	{
+	{		
 		tutorialProgress = 0
 		for quest in tutorial {
 			tutorialProgress += 1

@@ -1,10 +1,5 @@
-//
-//  SCNLine.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-07-13.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -13,6 +8,7 @@ import Foundation
 
 class SCNTrigger : SCNNode
 {
+	var isEnabled:Bool = true
 	let host:SCNNode!
 	let operation:Int!
 	
@@ -27,12 +23,23 @@ class SCNTrigger : SCNNode
 	
 	override func touch(id:Int)
 	{
+		if isEnabled == false { return }
 		host.touch(operation)
 	}
 	
 	override func update()
 	{
 		
+	}
+	
+	func enable()
+	{
+		isEnabled = true
+	}
+	
+	func disable()
+	{
+		isEnabled = false
 	}
 	
 	required init(coder aDecoder: NSCoder) {

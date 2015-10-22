@@ -116,12 +116,14 @@ class CoreUI: SCNNode
 		SCNTransaction.setAnimationDuration(0.1)
 		displayMessage.position = SCNVector3(0,1.375,self.visorDepth - 0.01)
 		displayMessage.opacity = 0
+		displayMessage.updateColor(cyan)
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.displayMessage.update(self.message)
 			self.displayMessage.position = SCNVector3(0,1.375,self.visorDepth)
 			self.displayMessage.opacity = 1
+			self.displayMessage.updateColor(white)
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()

@@ -51,7 +51,6 @@ class PanelThruster : Panel
 		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		undockTrigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
-		undockTrigger.geometry?.materials.first?.diffuse.contents = red
 		details.addChildNode(undockTrigger)
 		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
@@ -93,7 +92,7 @@ class PanelThruster : Panel
 	override func touch(id:Int = 0)
 	{
 		if id == 0 { speedDown() ; return }
-		if id == 1 { speedDown() ; return }
+		if id == 1 { speedUp() ; return }
 		if id == 2 { capsule.undock() ; return }
 	}
 	
@@ -124,6 +123,8 @@ class PanelThruster : Panel
 		details.updateWithColor("unpowered", color: grey)
 		port.disable()
 		
+		accelerate.disable()
+		decelerate.disable()
 		accelerate.updateChildrenColors(clear)
 		decelerate.updateChildrenColors(clear)
 		
@@ -139,6 +140,8 @@ class PanelThruster : Panel
 		details.updateWithColor("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
 		port.enable()
 		
+		accelerate.disable()
+		decelerate.disable()
 		accelerate.updateChildrenColors(grey)
 		decelerate.updateChildrenColors(grey)
 		
@@ -152,9 +155,11 @@ class PanelThruster : Panel
 	func modeDocked()
 	{
 		label.updateColor(white)
-		details.updateWithColor("Undock", color: red)
+		details.updateWithColor("<Undock>", color: red)
 		port.enable()
 		
+		accelerate.disable()
+		decelerate.disable()
 		accelerate.updateChildrenColors(grey)
 		decelerate.updateChildrenColors(grey)
 		
@@ -170,7 +175,7 @@ class PanelThruster : Panel
 		maxSpeed = 1
 	
 		label.updateColor(white)
-		details.update(String(format: "%.1f", actualSpeed))
+		details.updateWithColor(String(format: "%.1f", actualSpeed), color: white)
 		port.enable()
 		
 		line1.opacity = 1
@@ -187,6 +192,9 @@ class PanelThruster : Panel
 		if speed > 1 { line2.color(white) }
 		if speed > 2 { line3.color(white) }
 		if speed > 3 { line4.color(white) }
+		
+		accelerate.enable()
+		decelerate.enable()
 		
 		if speed == maxSpeed {
 			accelerate.updateChildrenColors(grey)
@@ -219,6 +227,8 @@ class PanelThruster : Panel
 	
 	func thrust()
 	{
+		if capsule.isDocked ==  true { speed = 0 ; actualSpeed = 0 ; return }
+		
 		if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1
 		}

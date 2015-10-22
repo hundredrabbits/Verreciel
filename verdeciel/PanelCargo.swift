@@ -52,8 +52,8 @@ class PanelCargo : Panel
 
 		// Tutorial Item
 		
-		addEvent(items.loiqeLicense)
 		addEvent(items.mediumBattery)
+		addEvent(items.waste)
 
 		// Quantity
 		

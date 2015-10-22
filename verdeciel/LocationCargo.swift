@@ -5,10 +5,11 @@ import Foundation
 
 class LocationCargo : Location
 {
-	init(name:String,at: CGPoint, inventory: Event = Event(type: eventTypes.item))
+	init(name:String,at: CGPoint = CGPoint(), inventory: Event = Event(type: eventTypes.item))
 	{
-		super.init(name:"cargo", at:at)
+		super.init(name:name, at:at)
 		
+		self.name = name
 		self.at = at
 		self.size = 1
 		self.note = ""
@@ -72,13 +73,14 @@ class LocationCargo : Location
 		return mesh
 	}
 	
-	override func sight()
+	override func approach()
 	{
-		sprite.empty()
-		sprite.add(_sprite())
+		space.startInstance(self)
+		capsule.dock(self)
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

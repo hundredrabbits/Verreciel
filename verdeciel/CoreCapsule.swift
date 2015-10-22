@@ -42,7 +42,6 @@ class CoreCapsule: SCNNode
 	override func start()
 	{
 		battery.installed()
-		mission.installed()
 	}
 	
 	override func fixedUpdate()
@@ -78,7 +77,15 @@ class CoreCapsule: SCNNode
 		if verticalOffset > 0 { capsule.at.y -= approachSpeed }
 		if verticalOffset < 0 { capsule.at.y += approachSpeed }
 		
-		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { isDocked = true ; capsule.at = dock.at ; dock.docked() }
+		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { docked() }
+	}
+	
+	func docked()
+	{
+		isDocked = true
+		capsule.at = dock.at
+		dock.docked()
+		ui.addPassive("Docked at \(dock.name!)")
 	}
 	
 	func dock(newDock:Location)
@@ -86,11 +93,18 @@ class CoreCapsule: SCNNode
 		print("init dock")
 		dock = newDock
 		thruster.disable()
+		
+		ui.addPassive("docking \(dock.name!)")
 	}
 	
 	func undock()
 	{
+		print("quit dock")
+		isDocked = false
 		dock = nil
+		thruster.enable()
+		
+		ui.addPassive("in flight")
 	}
 	
 	// MARK: Custom -
