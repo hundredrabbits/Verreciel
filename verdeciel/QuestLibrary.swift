@@ -1,10 +1,5 @@
-//
-//  ItemLibrary.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-10-07.
 //  Copyright © 2015 XXIIVV. All rights reserved.
-//
 
 import Foundation
 
@@ -32,7 +27,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { mission.install() }) )
 		tutorial.append( Quest(name:"Upload to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )
 		tutorial.append( Quest(name:"Inspect cargo", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { hatch.install() }) )
-		tutorial.append( Quest(name:"Eject waste", predicate:{ cargo.contains(items.waste) == false }, result: { pilot.install() }) )
+		tutorial.append( Quest(name:"Connect cell to battery", predicate:{ cargo.contains(items.waste) == false }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Connect pilot", predicate:{ radar.port.connection == pilot.port }, result: { radiation.install() }) )
 		tutorial.append( Quest(name:"Reach city", predicate:{ capsule.dock == universe.loiqe_telescope }, result: { monitor.install() }) )
 		tutorial.append( Quest(name:"Load Radio pieces", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { }) )
@@ -48,7 +43,7 @@ class QuestLibrary
 	}
 	
 	func update()
-	{		
+	{
 		tutorialProgress = 0
 		for quest in tutorial {
 			tutorialProgress += 1

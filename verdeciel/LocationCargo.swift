@@ -5,7 +5,11 @@ import Foundation
 
 class LocationCargo : Location
 {
-	init(name:String,at: CGPoint = CGPoint(), inventory: Event = Event(type: eventTypes.item))
+	var inventoryPort:SCNPort!
+	var inventoryLabel:SCNLabel!
+	var item:Event!
+	
+	init(name:String,at: CGPoint = CGPoint(), item: Event = Event(type: eventTypes.item))
 	{
 		super.init(name:name, at:at)
 		
@@ -14,7 +18,7 @@ class LocationCargo : Location
 		self.size = 1
 		self.note = ""
 		
-		self.content.append(inventory)
+		self.item = item
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -49,34 +53,47 @@ class LocationCargo : Location
 		return spriteNode
 	}
 	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		
-		var i = 0
-		while i < 4 {
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,i,0), nodeB: SCNVector3(0,i,3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,3), nodeB: SCNVector3(3,i,0), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,i,0), nodeB: SCNVector3(0,i,-3), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,-3), nodeB: SCNVector3(-3,i,0), color: red))
-			i += 1
-		}
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(0,1,-3), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(0,1,3), color: red))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,1,0), nodeB: SCNVector3(3,2,0), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,1,0), nodeB: SCNVector3(-3,2,0), color: red))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,-3), nodeB: SCNVector3(0,3,-3), color: red))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: red))
-		
-		return mesh
-	}
-	
 	override func approach()
 	{
 		space.startInstance(self)
 		capsule.dock(self)
+	}
+	
+	// MARK: Panel
+	
+	override func panel() -> Panel
+	{
+		let newPanel = Panel()
+		
+		inventoryLabel = SCNLabel(text: (item.name!))
+		inventoryLabel.position = SCNVector3(x: templates.leftMargin, y: 0, z: 0)
+		newPanel.addChildNode(inventoryLabel)
+		
+		inventoryPort = SCNPort(host: self)
+		inventoryPort.position = SCNVector3(x: templates.rightMargin, y: 0, z: 0)
+		inventoryPort.enable()
+		newPanel.addChildNode(inventoryPort)
+		
+		return newPanel
+	}
+	
+	override func bang()
+	{
+		if inventoryPort.connection.host == cargo {
+			if cargo.cargohold.content.count < 6 {
+				cargo.uploadItem(item)
+				self.item = nil
+				
+				inventoryPort.disable()
+				inventoryLabel.updateWithColor("--", color: grey)
+			}
+			else{
+				print("Cargo is full")
+			}
+		}
+		else{
+			print("Unsupported route")
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

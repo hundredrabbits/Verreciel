@@ -1,10 +1,5 @@
-//
-//  GameViewController.swift
-//  verdeciel
-//
 //  Created by Devine Lu Linvega on 2014-09-21.
 //  Copyright (c) 2014 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -34,7 +29,6 @@ let radio = PanelRadio()
 let pilot = PanelPilot()
 let hatch = PanelHatch()
 let mission = PanelMission()
-let dock = PanelDock()
 let cargo = PanelCargo()
 let thruster = PanelThruster()
 let console = PanelConsole()

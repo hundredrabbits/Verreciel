@@ -53,7 +53,6 @@ class Panel : SCNNode
 			installProgressBar.update(installProgress)
 			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
 			installProgressBar.opacity = 1
-			
 			if installProgress >= 100 {
 				installed()
 				installer.opacity = 0

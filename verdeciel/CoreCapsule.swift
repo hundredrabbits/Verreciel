@@ -85,7 +85,10 @@ class CoreCapsule: SCNNode
 		isDocked = true
 		capsule.at = dock.at
 		dock.docked()
+		
 		ui.addPassive("Docked at \(dock.name!)")
+		
+		mission.connectToLocation(dock)
 	}
 	
 	func dock(newDock:Location)
@@ -105,6 +108,8 @@ class CoreCapsule: SCNNode
 		thruster.enable()
 		
 		ui.addPassive("in flight")
+		
+		mission.disconnectFromLocation()
 	}
 	
 	// MARK: Custom -

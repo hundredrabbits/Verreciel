@@ -1,10 +1,5 @@
-//
-//  PanelBeacon.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-07-07.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -124,16 +119,19 @@ class PanelMission : Panel
 	
 	// MARK: Custom -
 	
-	func dock(location:Location)
+	func connectToLocation(location:Location)
 	{
-		content.addChildNode(location.interface)
-		content.opacity = 0 // TODO: installation of custom panel
-		linesRoot.opacity = 1
+		print("connected")
+		label.update(location.name!)
+		linesRoot.opacity = 0
+		content.updateInterface(location.panel())
 	}
 	
-	func undock()
+	func disconnectFromLocation()
 	{
-		content.empty()
+		print("disconnected")
+		label.update(name!)
 		linesRoot.opacity = 1
+		content.empty()
 	}
 }

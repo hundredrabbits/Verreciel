@@ -59,6 +59,7 @@ class SCNCommand : SCNNode
 		if command.event != nil {
 			self.event = command.event!
 			port.opacity = 1
+			port.enable()
 			port.addEvent(event)
 		}
 		else{

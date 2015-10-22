@@ -14,6 +14,8 @@ import Foundation
 class PanelCargo : Panel
 {	
 	var loadTime:Int = 0
+	var uploadItem:Event!
+	var uploadProgress:CGFloat = 0
 	
 	var cargohold = Event(newName: "cargohold", type: eventTypes.stack)
 	
@@ -103,31 +105,6 @@ class PanelCargo : Panel
 		}
 	}
 	
-	override func update()
-	{
-		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
-		for item in cargohold.content {
-			if item.size > 0 {
-				newCargohold.content.append(item)
-			}
-		}
-		cargohold = newCargohold
-		
-		line1.color(grey)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
-		line5.color(grey)
-		line6.color(grey)
-		
-		if cargohold.content.count > 0 { line1.color(white) }
-		if cargohold.content.count > 1 { line2.color(white) }
-		if cargohold.content.count > 2 { line3.color(white) }
-		if cargohold.content.count > 3 { line4.color(white) }
-		if cargohold.content.count > 4 { line5.color(white) }
-		if cargohold.content.count > 5 { line6.color(white) }
-	}
-	
 	override func touch(id:Int = 0)
 	{
 		self.bang()
@@ -135,6 +112,7 @@ class PanelCargo : Panel
 	
 	override func listen(event:Event)
 	{
+		print("* CARGO    | Signal: \(event.name!)")
 		if event.type == eventTypes.item {
 			pickup(event)
 		}
@@ -151,9 +129,64 @@ class PanelCargo : Panel
 		else{
 			self.addEvent(event)
 		}
-		
+		refreshCargohold()
 		update()
 		bang()
+	}
+	
+	override func installedFixedUpdate()
+	{
+		if uploadItem != nil {
+			uploadProgress += CGFloat(arc4random_uniform(100))/50
+			details.updateWithColor("Upload \(Int(uploadProgress))%", color: grey)
+			if uploadProgress >= 100 {
+				uploadCompleted()
+			}
+		}
+	}
+	
+	func uploadItem(item:Event)
+	{
+		uploadItem = item
+	}
+	
+	func uploadCompleted()
+	{
+		port.origin.disconnect()
+		self.addEvent(uploadItem)
+		uploadItem = nil
+		details.update("")
+		refreshCargohold()
+		update()
+		bang()
+	}
+	
+	override func update()
+	{
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+		line5.color(grey)
+		line6.color(grey)
+		
+		if cargohold.content.count > 0 { line1.color(white) }
+		if cargohold.content.count > 1 { line2.color(white) }
+		if cargohold.content.count > 2 { line3.color(white) }
+		if cargohold.content.count > 3 { line4.color(white) }
+		if cargohold.content.count > 4 { line5.color(white) }
+		if cargohold.content.count > 5 { line6.color(white) }
+	}
+	
+	func refreshCargohold()
+	{
+		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
+		for item in cargohold.content {
+			if item.size > 0 {
+				newCargohold.content.append(item)
+			}
+		}
+		cargohold = newCargohold
 	}
 	
 	override func bang()

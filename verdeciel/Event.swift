@@ -95,9 +95,9 @@ class Event : SCNNode
 		}
 	}
 	
-	func panel() -> SCNNode
+	func panel() -> Panel
 	{
-		return SCNNode()
+		return Panel()
 	}
 	
 	required init(coder aDecoder: NSCoder) {
