@@ -28,7 +28,7 @@ class QuestLibrary
 	{
 		tutorial.append( Quest(name:"Connect thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { thruster.install() }) )
 		tutorial.append( Quest(name:"Reach the station", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
-		tutorial.append( Quest(name:"Align with cargo", predicate:{ radar.target != nil && radar.target == universe.loiqe_telescope }, result: { dock.install() }) )
+//		tutorial.append( Quest(name:"Align with cargo", predicate:{ radar.target != nil && radar.target == universe.loiqe_telescope }, result: { dock.install() }) )
 		tutorial.append( Quest(name:"Undock from station", predicate:{ capsule.dock == nil }, result: { cargo.install() }) )
 		tutorial.append( Quest(name:"Dock at cargo", predicate:{ capsule.dock == universe.loiqe_telescope }, result: { mission.install() }) )
 		tutorial.append( Quest(name:"Upload to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )

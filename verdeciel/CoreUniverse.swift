@@ -141,7 +141,6 @@ class CoreUniverse : SCNNode
 	
 	func connectPaths()
 	{
-		loiqe_spawn.connect(loiqe_landing)
 		loiqe_landing.connect(loiqe_city)
 		loiqe_telescope.connect(loiqe_waypoint)
 		

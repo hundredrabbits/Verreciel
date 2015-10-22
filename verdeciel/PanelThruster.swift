@@ -28,6 +28,8 @@ class PanelThruster : Panel
 	var panelHead:SCNNode!
 	var panelFoot:SCNNode!
 	
+	var undockTrigger:SCNTrigger!
+	
 	// MARK: Default -
 	
 	override func setup()
@@ -48,6 +50,9 @@ class PanelThruster : Panel
 		panelFoot = SCNNode()
 		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		undockTrigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
+		undockTrigger.geometry?.materials.first?.diffuse.contents = red
+		details.addChildNode(undockTrigger)
 		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
 		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
@@ -76,8 +81,6 @@ class PanelThruster : Panel
 		
 		interface.addChildNode(accelerate)
 		interface.addChildNode(decelerate)
-		
-		draw()
 	}
 	
 	override func start()
@@ -89,39 +92,86 @@ class PanelThruster : Panel
 
 	override func touch(id:Int = 0)
 	{
-		if id == 1 {
-			speedUp()
+		if id == 0 { speedDown() ; return }
+		if id == 1 { speedDown() ; return }
+		if id == 2 { capsule.undock() ; return }
+	}
+	
+	override func installedFixedUpdate()
+	{
+		if battery.thrusterPort.origin == nil {
+			speed = 0
+			modeUnpowered()
 		}
-		else{
-			speedDown()
+		else if capsule.isDocked == true {
+			modeDocked()
 		}
+		else if capsule.dock != nil {
+			modeDocking()
+		}
+		else {
+			modeFlight()
+		}
+	
+		thrust()
 	}
 	
 	// MARK: Custom -
 	
-	func speedUp()
+	func modeUnpowered()
 	{
-		if speed <= maxSpeed {
-			speed += 1
-		}
-		draw()
-	}
-	
-	func speedDown()
-	{
-		if speed >= 1 {
-			speed -= 1
-		}
-		draw()
-	}
-	
-	func draw()
-	{
-		maxSpeed = 4
+		label.updateColor(grey)
+		details.updateWithColor("unpowered", color: grey)
+		port.disable()
 		
-		if speed >= maxSpeed {
-			speed = maxSpeed
-		}
+		accelerate.updateChildrenColors(clear)
+		decelerate.updateChildrenColors(clear)
+		
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+	}
+	
+	func modeDocking()
+	{
+		label.updateColor(white)
+		details.updateWithColor("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
+		port.enable()
+		
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		line1.blink()
+		line1.color(white)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+	}
+	
+	func modeDocked()
+	{
+		label.updateColor(white)
+		details.updateWithColor("Undock", color: red)
+		port.enable()
+		
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		line1.opacity = 1
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+	}
+	
+	func modeFlight()
+	{
+		maxSpeed = 1
+	
+		label.updateColor(white)
+		details.update(String(format: "%.1f", actualSpeed))
+		port.enable()
 		
 		line1.opacity = 1
 		line2.opacity = 1
@@ -138,32 +188,37 @@ class PanelThruster : Panel
 		if speed > 2 { line3.color(white) }
 		if speed > 3 { line4.color(white) }
 		
-		if maxSpeed < 4 { line4.opacity = 0 }
-		if maxSpeed < 3 { line3.opacity = 0 }
-		if maxSpeed < 2 { line2.opacity = 0 }
-		if maxSpeed < 1 { line1.opacity = 0 }
-	}
-	
-	override func installedFixedUpdate()
-	{
-		// Draw handles
-		if isEnabled == true {
-			accelerate.updateChildrenColors(cyan)
-			decelerate.updateChildrenColors(red)
+		if speed == maxSpeed {
+			accelerate.updateChildrenColors(grey)
 		}
 		else{
-			accelerate.updateChildrenColors(grey)
+			accelerate.updateChildrenColors(cyan)
+		}
+		
+		if speed == 0 {
 			decelerate.updateChildrenColors(grey)
 		}
-		
-		// Lines
-		if capsule.dock != nil {
-			line1.color(grey)
-			line2.color(grey)
-			line3.color(grey)
-			line4.color(grey)
+		else{
+			decelerate.updateChildrenColors(red)
 		}
-		
+	}
+	
+	func speedUp()
+	{
+		if speed <= maxSpeed {
+			speed += 1
+		}
+	}
+	
+	func speedDown()
+	{
+		if speed >= 1 {
+			speed -= 1
+		}
+	}
+	
+	func thrust()
+	{
 		if speed * 10 > Int(actualSpeed * 10) {
 			actualSpeed += 0.1
 		}
@@ -173,31 +228,11 @@ class PanelThruster : Panel
 		
 		if capsule.dock != nil {
 			speed = 0
-			actualSpeed = 0
 		}
 		else if actualSpeed < 0.1 {
 			actualSpeed = 0.1
 		}
 		
-		// Detail
-		if capsule.dock != nil {
-			if capsule.isDocked == true {
-				details.update("docked")
-			}
-			else
-			{
-				details.update("docking")
-			}
-		}
-		else{
-			details.update(String(format: "%.1f", actualSpeed))
-		}
-		
-		thrust()
-	}
-	
-	func thrust()
-	{
 		if actualSpeed > 0
 		{
 			let speed:Float = Float(actualSpeed)/600
@@ -212,9 +247,5 @@ class PanelThruster : Panel
 		}
 		capsule.journey += actualSpeed
 		space.starTimer += actualSpeed
-	}
-	
-	override func listen(event: Event)
-	{
 	}
 }

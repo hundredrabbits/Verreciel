@@ -78,7 +78,7 @@ class CoreCapsule: SCNNode
 		if verticalOffset > 0 { capsule.at.y -= approachSpeed }
 		if verticalOffset < 0 { capsule.at.y += approachSpeed }
 		
-		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { isDocked = true ; capsule.at == dock.at ; dock.docked() }
+		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { isDocked = true ; capsule.at = dock.at ; dock.docked() }
 	}
 	
 	func dock(newDock:Location)
