@@ -137,7 +137,7 @@ class PanelHatch : Panel
 	
 	override func listen(event:Event)
 	{
-		if event.quest == true {
+		if event.isQuest == true {
 			details.updateWithColor("error", color: red)
 		}
 		else{

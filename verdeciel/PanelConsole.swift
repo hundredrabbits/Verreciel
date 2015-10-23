@@ -151,7 +151,7 @@ class PanelConsole : Panel
 		if event.type == eventTypes.stack {
 			self.clearLines()
 			for item in event.content {
-				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.quest))
+				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))
 			}
 		}
 		else {

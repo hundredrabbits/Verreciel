@@ -41,8 +41,8 @@ class SCNCommand : SCNNode
 		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
 		port.opacity = 0
 
-		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: red)
-		headLineDown = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, -0.1, 0), color: red)
+		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: cyan)
+		headLineDown = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, -0.1, 0), color: cyan)
 		
 		self.addChildNode(label)
 		self.addChildNode(detailsLabel)

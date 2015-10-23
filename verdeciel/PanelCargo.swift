@@ -163,12 +163,12 @@ class PanelCargo : Panel
 		line5.color(grey)
 		line6.color(grey)
 		
-		if cargohold.content.count > 0 { line1.color(white) }
-		if cargohold.content.count > 1 { line2.color(white) }
-		if cargohold.content.count > 2 { line3.color(white) }
-		if cargohold.content.count > 3 { line4.color(white) }
-		if cargohold.content.count > 4 { line5.color(white) }
-		if cargohold.content.count > 5 { line6.color(white) }
+		if cargohold.content.count > 0 { line1.color( cargohold.content[0].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 1 { line2.color( cargohold.content[1].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 2 { line3.color( cargohold.content[2].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 3 { line4.color( cargohold.content[3].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 4 { line5.color( cargohold.content[4].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 5 { line6.color( cargohold.content[5].isQuest == true ? cyan : white ) }
 	}
 	
 	func refreshCargohold()
