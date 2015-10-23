@@ -18,8 +18,9 @@ class Location : Event
 	var inSight:Bool = false
 	
 	var isVisible:Bool = false
-	var isKnown:Bool = false
 	var isTargetted:Bool = false
+	var isKnown:Bool = false
+	var isSeen:Bool = false
 	
 	var interface = Panel()
 	
@@ -58,7 +59,7 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if distance <= settings.sight { if inSight == false { sight() ; inSight = true } ; sightUpdate() }
+		if distance <= settings.sight { if inSight == false { sight() ; inSight = true ; isSeen = true } ; sightUpdate() }
 		else{ inSight = false }
 		
 		if distance <= settings.approach { if inApproach == false { inApproach = true ; approach() } ; approachUpdate() }
@@ -74,6 +75,8 @@ class Location : Event
 	func sight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
+		sprite.empty()
+		sprite.add(_sprite())
 	}
 	
 	func discover()
@@ -87,6 +90,8 @@ class Location : Event
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
+		sprite.empty()
+		sprite.add(_sprite())
 	}
 	
 	func collide()
@@ -98,6 +103,8 @@ class Location : Event
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
+		sprite.empty()
+		sprite.add(_sprite())
 	}
 	
 	func sightUpdate()

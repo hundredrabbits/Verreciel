@@ -300,6 +300,7 @@
 				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				574E5FBF1BC578E1008130AB /* LocationTrade.swift */,
 				57CA80971BB9CEA3000D31F7 /* LocationCargo.swift */,
+				578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */,
 				572258141BB877C600DEC41E /* LocationPortal.swift */,
 				57FA031E1BBA22FE0077D517 /* LocationStar.swift */,
 				574E5FC31BC5B588008130AB /* LocationRepair.swift */,
@@ -307,7 +308,6 @@
 				57FA031C1BBA21490077D517 /* LocationStation.swift */,
 				574AE3F61BC36DAE00432603 /* LocationWaypoint.swift */,
 				578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */,
-				578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */,
 			);
 			name = Locations;
 			sourceTree = "<group>";
