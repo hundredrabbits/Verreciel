@@ -13,6 +13,7 @@ import Foundation
 
 class PanelConsole : Panel
 {
+	var isConnected:Bool = true
 	var consoleLine1:SCNCommand!
 	var consoleLine2:SCNCommand!
 	var consoleLine3:SCNCommand!
@@ -89,6 +90,13 @@ class PanelConsole : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
+		
+		clearLines()
+		addLine(SCNCommand(text: "Awaiting input..", head: true))
+	}
+	
+	override func installedFixedUpdate()
+	{
 	}
 	
 	func addLine(command:SCNCommand! = nil)
@@ -117,16 +125,17 @@ class PanelConsole : Panel
 		if port.origin == nil {
 			label.update("console")
 		}
+		
+		if port.origin != nil && isConnected == true {
+			disconnect()
+		}
 	}
 	
 	func boot()
 	{
-		self.addLine(SCNCommand(text: "> ready", details: eventDetails.unknown, color: red))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
+		clearLines()
+		addLine(SCNCommand(text: "Disconnected"))
+		addLine(SCNCommand(text: "Awaiting input..", head:true))
 	}
 	
 	func clearLines()
@@ -142,6 +151,9 @@ class PanelConsole : Panel
 	
 	override func disconnect()
 	{
+		print("+ CONSOLE  | Disconnected")
+		isConnected = false
+		
 		boot()
 		update()
 	}
@@ -149,6 +161,8 @@ class PanelConsole : Panel
 	override func listen(event: Event)
 	{
 		if event.type == eventTypes.stack {
+			print("+ CONSOLE  | Connected")
+			isConnected = true
 			self.clearLines()
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))

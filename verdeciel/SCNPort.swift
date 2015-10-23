@@ -135,7 +135,7 @@ class SCNPort : SCNNode
 	func connect(port:SCNPort)
 	{
 		if port.isEnabled == false { print("Port is disabled") ; return }
-		if origin != nil && origin == port { print("Port is a loop") ; return }
+		if origin != nil { print("Port already has input") ; return }
 		
 		connection = port
 		connection.origin = self

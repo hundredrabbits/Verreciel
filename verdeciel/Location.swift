@@ -21,6 +21,7 @@ class Location : Event
 	var isTargetted:Bool = false
 	var isKnown:Bool = false
 	var isSeen:Bool = false
+	var isSelected:Bool = false
 	
 	var interface = Panel()
 	
@@ -53,7 +54,7 @@ class Location : Event
 	}
 	
 	override func fixedUpdate()
-	{
+	{		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
@@ -70,6 +71,10 @@ class Location : Event
 		
 		radarCulling()
 		clean()
+	}
+	
+	override func lateUpdate()
+	{
 	}
 	
 	func sight()

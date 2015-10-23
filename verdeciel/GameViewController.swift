@@ -49,6 +49,7 @@ var items = ItemLibrary()
 var locations = LocationLibrary()
 var templates = Templates()
 var settings = Settings()
+var debug = Debug()
 
 var quests:QuestLibrary!
 

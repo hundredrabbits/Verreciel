@@ -86,7 +86,6 @@ class PanelMission : Panel
 		if quests.tutorialLatest != nil {
 			quest1.update((quests.tutorialLatest.name!))
 			quest1Details.update("\(quests.tutorialProgress)/\(quests.tutorial.count)")
-			
 			ui.addMessage(quests.tutorialLatest.name!)
 		} else {
 			quest1.update("--")

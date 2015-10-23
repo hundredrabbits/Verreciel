@@ -52,9 +52,9 @@ class PanelCargo : Panel
 
 		// Quantity
 		
-		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:white)
-		line2 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:white)
-		line3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:white)
+		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:grey)
+		line2 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:grey)
+		line3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:grey)
 		line4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey)
 		line5 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey)
 		line6 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey)
@@ -76,6 +76,18 @@ class PanelCargo : Panel
 		decals.opacity = 0
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
+		update()
+	}
+	
+	override func installedFixedUpdate()
+	{
+		if uploadItem != nil {
+			uploadProgress += CGFloat(arc4random_uniform(100))/50
+			details.updateWithColor("Upload \(Int(uploadProgress))%", color: grey)
+			if uploadProgress >= 100 {
+				uploadCompleted()
+			}
+		}
 	}
 	
 	func contains(event:Event) -> Bool
@@ -125,17 +137,6 @@ class PanelCargo : Panel
 		refreshCargohold()
 		update()
 		bang()
-	}
-	
-	override func installedFixedUpdate()
-	{
-		if uploadItem != nil {
-			uploadProgress += CGFloat(arc4random_uniform(100))/50
-			details.updateWithColor("Upload \(Int(uploadProgress))%", color: grey)
-			if uploadProgress >= 100 {
-				uploadCompleted()
-			}
-		}
 	}
 	
 	func uploadItem(item:Event)

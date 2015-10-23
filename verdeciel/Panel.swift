@@ -120,6 +120,8 @@ class Panel : SCNNode
 	
 	func installed()
 	{
+		print("+ PANEL    | Installed the \(name!)")
+		
 		isInstalled = true
 		installer.opacity = 0
 		

@@ -24,6 +24,7 @@
 
 - Add quest pointers
 - Allow multiple input in ports
+- Grey wires when the port is inactive
 
 ================
 *    GENRAL

@@ -84,11 +84,6 @@ class PanelPilot : Panel
 	
 	override func installedFixedUpdate()
 	{
-		adjustAngle()
-	}
-	
-	func adjustAngle()
-	{
 		if target == nil { return }
 		
 		let left = target.calculateAlignment(capsule.direction - 1)

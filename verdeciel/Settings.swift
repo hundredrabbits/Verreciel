@@ -96,3 +96,8 @@ struct Settings
 	var approach:CGFloat = 0.5
 	var collision:CGFloat = 0.5
 }
+
+struct Debug
+{
+	var fixedUpdatedCount:Int = 0
+}

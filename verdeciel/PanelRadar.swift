@@ -90,10 +90,6 @@ class PanelRadar : Panel
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
-		
-		if target != nil {
-			targetter.blink()
-		}		
 	}
 	
 	// MARK: Ports -
@@ -137,12 +133,17 @@ class PanelRadar : Panel
 				targetter.position = SCNVector3(target.at.x - capsule.at.x,target.at.y - capsule.at.y,0)
 				targetterFar.opacity = 0
 			}
+			targetter.blink()
 		}
 	}
 
 	func addTarget(event:Location)
 	{
+		if target != nil { target.isSelected = false }
+		
 		target = event
+		target.isSelected = true
+		
 		updateTarget()
 		bang()
 	}

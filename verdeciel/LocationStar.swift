@@ -26,13 +26,20 @@ class LocationStar : Location
 		self.addChildNode(label)
 	}
 	
+	override func sight()
+	{
+		isSeen = true
+		sprite.empty()
+		sprite.add(_sprite())
+	}
+	
 	override func _sprite() -> SCNNode
 	{
 		let size:Float = 0.15
 		
 		let spriteNode = SCNNode()
 		
-		if isKnown == true {
+		if isSeen == true {
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
@@ -54,12 +61,6 @@ class LocationStar : Location
 		}
 		
 		return spriteNode
-	}
-	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
 	}
 	
 	override func collide()

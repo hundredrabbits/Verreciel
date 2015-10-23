@@ -19,4 +19,9 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 		space.fixedUpdate()
 		quests.update()
 	}
+	
+	func renderer(renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval)
+	{
+//		capsule._lateUpdate()
+	}
 }

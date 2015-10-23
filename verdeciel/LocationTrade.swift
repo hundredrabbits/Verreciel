@@ -34,9 +34,10 @@ class LocationTrade : Location
 		
 		self.interface = panel()
 	}
-
+	
 	override func sight()
 	{
+		isSeen = true
 		sprite.empty()
 		sprite.add(_sprite())
 	}

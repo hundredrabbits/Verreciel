@@ -22,6 +22,10 @@ extension SCNNode
 		}
 	}
 	
+	func start()
+	{
+	}
+	
 	func _fixedUpdate()
 	{
 		fixedUpdate()
@@ -30,23 +34,32 @@ extension SCNNode
 		}
 	}
 	
+	func fixedUpdate()
+	{
+	}
+	
+	func _lateUpdate()
+	{
+		lateUpdate()
+		for node in childNodes {
+			node._lateUpdate()
+		}
+	}
+	
+	func lateUpdate()
+	{
+	
+	}
+	
 	func absolutePosition() -> SCNVector3
 	{
 		return convertPosition(SCNVector3(0, 0, 0), fromNode: self)
 	}
 	
-	func start()
-	{
-	}
-	
 	func update()
 	{
 	}
-	
-	func fixedUpdate()
-	{
-	}
-	
+
 	func bang()
 	{
 		print("! This node has no bang action")
