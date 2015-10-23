@@ -85,6 +85,11 @@ class SCNPort : SCNNode
 			return
 		}
 		
+		if event == nil && connection != nil {
+			sprite_output.updateChildrenColors(white)
+			return
+		}
+		
 		if origin != nil {
 			sprite_input.updateChildrenColors(red)
 		}

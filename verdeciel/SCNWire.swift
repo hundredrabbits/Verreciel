@@ -24,6 +24,7 @@ class SCNWire : SCNNode
 	var vertex4 = SCNVector3()
 	
 	var isEnabled:Bool = true
+	var isActive:Bool = false
 	
 	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
 	{

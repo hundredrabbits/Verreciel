@@ -40,6 +40,7 @@ class SCNCommand : SCNNode
 		port = SCNPort(host: self)
 		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
 		port.opacity = 0
+		port.event = event
 
 		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: cyan)
 		headLineDown = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, -0.1, 0), color: cyan)
@@ -49,6 +50,13 @@ class SCNCommand : SCNNode
 		self.addChildNode(port)
 		self.addChildNode(headLineTop)
 		self.addChildNode(headLineDown)
+	}
+	
+	override func fixedUpdate()
+	{
+		if port.event != nil && port.event.size < 1 {
+			print("error: \(self.text)")
+		}
 	}
 	
 	func update(command:SCNCommand)
