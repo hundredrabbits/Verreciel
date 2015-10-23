@@ -19,7 +19,7 @@ class ItemLibrary
 	
 	
 	// Batteries
-	let smallBattery = Event(newName: "small cell", size: 25, type: eventTypes.item, details: eventDetails.battery, note:"gives a small amount of power")
+	let smallBattery = Event(newName: "cell", size: 25, type: eventTypes.item, details: eventDetails.battery, note:"gives a small amount of power")
 	let mediumBattery = Event(newName: "cell", size: 50, type: eventTypes.item, details: eventDetails.battery, note:"gives battery power")
 	
 	// Misc

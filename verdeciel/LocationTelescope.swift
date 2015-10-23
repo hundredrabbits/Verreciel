@@ -30,6 +30,12 @@ class LocationTelescope : Location
 		return newPanel
 	}
 	
+	override func approach()
+	{
+		space.startInstance(self)		
+		capsule.dock(self)
+	}
+	
 	override func listen(event: Event)
 	{
 		

@@ -137,8 +137,8 @@ class SCNPort : SCNNode
 		if port.isEnabled == false { print("Port is disabled") ; return }
 		if origin != nil && origin == port { print("Port is a loop") ; return }
 		
-		self.connection = port
-		self.connection.origin = self
+		connection = port
+		connection.origin = self
 		
 		wire.update(SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port))
 		

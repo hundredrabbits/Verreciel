@@ -23,6 +23,7 @@
 - Make monitor centered labels, all around the ship
 
 - Add quest pointers
+- Allow multiple input in ports
 
 ================
 *    GENRAL
@@ -81,6 +82,9 @@
 
 	> Thruster
 	- Reflect the number of connections
+
+	> Battery
+	- Allow sending batteries directly into the cell ports
 
 ================
 *    Notes

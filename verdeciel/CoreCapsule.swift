@@ -97,7 +97,7 @@ class CoreCapsule: SCNNode
 		dock = newDock
 		thruster.disable()
 		
-		ui.addPassive("docking \(dock.name!)")
+		ui.addPassive("Approaching \(dock.name!)")
 	}
 	
 	func undock()
@@ -163,7 +163,6 @@ class CoreCapsule: SCNNode
 	func service()
 	{
 		if dock == nil { return }
-		if dock.service == services.electricity && battery.value < 100 { battery.recharge() }
 		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
 	}
 	

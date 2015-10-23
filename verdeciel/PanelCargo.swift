@@ -1,10 +1,5 @@
-//
-//  File.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-08-28.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -12,8 +7,7 @@ import SceneKit
 import Foundation
 
 class PanelCargo : Panel
-{	
-	var loadTime:Int = 0
+{
 	var uploadItem:Event!
 	var uploadProgress:CGFloat = 0
 	
@@ -54,8 +48,7 @@ class PanelCargo : Panel
 
 		// Tutorial Item
 		
-		addEvent(items.mediumBattery)
-		addEvent(items.waste)
+		addEvent(items.smallBattery)
 
 		// Quantity
 		
