@@ -22,6 +22,7 @@ class Location : Event
 	var isKnown:Bool = false
 	var isSeen:Bool = false
 	var isSelected:Bool = false
+	var isComplete:Bool = false
 	
 	var interface = Panel()
 	

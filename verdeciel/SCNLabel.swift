@@ -44,11 +44,13 @@ class SCNLabel : SCNNode
 	
 	func addLetters(text:String,scale:Float)
 	{
-		var letterPos = 0
+		var letterPos:Float = 0
+		var linePos:Float = 0
 		for letterCur in text.characters
 		{
+			if letterCur == "$" { linePos += 1 ; letterPos = 0 ; continue }
 			let letterNode = letter(String(letterCur),scale:scale)
-			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: 0, z: 0)
+			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: scale * linePos * -3, z: 0)
 			nodeOffset.addChildNode(letterNode)
 			letterPos += 1
 		}

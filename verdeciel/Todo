@@ -9,6 +9,9 @@
 *    ACTIVE
 ================
 
+- Completed states for locations.
+- Name mission panel with the location's name
+
 - Cargo Location Panel
 
 - Map Zoom
@@ -23,8 +26,6 @@
 - Make monitor centered labels, all around the ship
 
 - Add quest pointers
-- Allow multiple input in ports
-- Grey wires when the port is inactive
 
 ================
 *    GENRAL
@@ -80,9 +81,6 @@
 
 	> Handles
 	- Return to center if inactive
-
-	> Thruster
-	- Reflect the number of connections
 
 	> Battery
 	- Allow sending batteries directly into the cell ports

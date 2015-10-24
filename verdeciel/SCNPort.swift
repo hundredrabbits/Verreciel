@@ -143,7 +143,7 @@ class SCNPort : SCNNode
 	func connect(port:SCNPort)
 	{
 		if port.isEnabled == false { print("Port is disabled") ; return }
-		if origin != nil { print("Port already has input") ; return }
+		if port.origin != nil { print("Port already has input") ; return }
 		
 		connection = port
 		connection.origin = self
@@ -173,6 +173,11 @@ class SCNPort : SCNNode
 		targetOrigin.update()
 		
 		wire.disable()
+	}
+	
+	override func bang()
+	{
+		print("Warning! Bang on SCNPort")
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -7,9 +7,10 @@ class LocationCargo : Location
 {
 	var inventoryPort:SCNPort!
 	var inventoryLabel:SCNLabel!
-	var item:Event!
+	var inventoryNote:SCNLabel!
+	var locationLabel:SCNLabel!
 	
-	init(name:String,at: CGPoint = CGPoint(), item: Event = Event(type: eventTypes.item))
+	init(name:String,at: CGPoint = CGPoint(), item:Event!)
 	{
 		super.init(name:name, at:at)
 		
@@ -18,7 +19,8 @@ class LocationCargo : Location
 		self.size = 1
 		self.note = ""
 		
-		self.item = item
+		inventoryPort = SCNPort(host: self)
+		inventoryPort.event = item
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -66,34 +68,53 @@ class LocationCargo : Location
 	{
 		let newPanel = Panel()
 		
-		inventoryLabel = SCNLabel(text: (item.name!))
-		inventoryLabel.position = SCNVector3(x: templates.leftMargin, y: 0, z: 0)
-		newPanel.addChildNode(inventoryLabel)
+		locationLabel = SCNLabel(text: note)
+		locationLabel.position = SCNVector3(templates.leftMargin,templates.topMargin - 0.25,0)
+		newPanel.addChildNode(locationLabel)
 		
-		inventoryPort = SCNPort(host: self)
-		inventoryPort.position = SCNVector3(x: templates.rightMargin, y: 0, z: 0)
+		// Interface
+		
+		let nodeFrame = SCNNode()
+		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,-0.4,0)
+		let frameSize:Float = 0.3
+		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,frameSize,0), nodeB: SCNVector3(frameSize,frameSize,0), color: red))
+		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,-frameSize,0), nodeB: SCNVector3(frameSize,-frameSize,0), color: red))
+		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,frameSize,0), nodeB: SCNVector3(-frameSize,-frameSize,0), color: red))
+		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(frameSize,frameSize,0), nodeB: SCNVector3(frameSize,-frameSize,0), color: red))
+		
+		inventoryPort.position = SCNVector3(x: 0, y: 0, z: 0)
 		inventoryPort.enable()
-		newPanel.addChildNode(inventoryPort)
+		nodeFrame.addChildNode(inventoryPort)
+		
+		inventoryLabel = SCNLabel(text: inventoryPort.event.name!)
+		inventoryLabel.position = SCNVector3(x: 0.5, y: 0.2, z: 0)
+		nodeFrame.addChildNode(inventoryLabel)
+		
+		inventoryNote = SCNLabel(text: inventoryPort.event.note, scale:0.08, color:grey)
+		inventoryNote.position = SCNVector3(x: 0.5, y: -0.1, z: 0)
+		nodeFrame.addChildNode(inventoryNote)
+		
+		newPanel.addChildNode(nodeFrame)
 		
 		return newPanel
 	}
 	
 	override func bang()
 	{
-		if inventoryPort.connection.host == cargo {
-			if cargo.port.event.content.count < 6 {
-				cargo.uploadItem(item)
-				self.item = nil
-				
-				inventoryPort.disable()
-				inventoryLabel.updateWithColor("--", color: grey)
-			}
-			else{
-				print("Cargo is full")
-			}
+		if inventoryPort.connection == nil { print("Missing connection") ; return }
+		
+		if inventoryPort.event != nil {
+			inventoryPort.connection.host.listen(inventoryPort.event)
 		}
-		else{
-			print("Unsupported route")
+		
+		if inventoryPort.event != nil && inventoryPort.event.size < 1 {
+			inventoryPort.event = nil
+		}
+		
+		if inventoryPort.event == nil {
+			inventoryLabel.updateWithColor("Empty", color: grey)
+			inventoryNote.updateWithColor("--", color: grey)
+			isComplete = true
 		}
 	}
 	

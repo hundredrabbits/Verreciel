@@ -60,6 +60,7 @@ class Loiqe
 		let location = LocationCargo(name:"Loiqe City", item: items.loiqeLicense)
 		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		location.note = "The city of loiqe is$granting you a$pilot license."
 		return location
 	}
 	

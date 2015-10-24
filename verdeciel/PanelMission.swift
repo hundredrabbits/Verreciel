@@ -80,7 +80,13 @@ class PanelMission : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if quests == nil { return }
+		if capsule.isDocked { panelUpdate() }
+		else{ missionUpdate() }
+	}
+	
+	func missionUpdate()
+	{
+		label.updateWithColor(name!, color: white)
 		
 		// Tutorial Quest Line
 		if quests.tutorialLatest != nil {
@@ -103,6 +109,16 @@ class PanelMission : Panel
 		quest3.update("--")
 		quest4.update("--")
 		quest5.update("--")
+	}
+	
+	func panelUpdate()
+	{
+		if capsule.dock.isComplete == true {
+			label.updateWithColor(capsule.dock.name!, color: cyan)
+		}
+		else{
+			label.updateWithColor(capsule.dock.name!, color: red)
+		}
 	}
 	
 	// MARK: Ports -

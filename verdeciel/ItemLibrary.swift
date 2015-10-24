@@ -11,7 +11,7 @@ import Foundation
 class ItemLibrary
 {
 	// Quest items
-	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: eventDetails.card, note:"required to undock from loiqe city", isQuest:true)
+	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: eventDetails.card, note:"required to undock$from loiqe city", isQuest:true)
 	
 	let radio = Event(newName: "radio", size: 1, type: eventTypes.item, details: eventDetails.panel, note:"complete radio", isQuest:true)
 	let radioAntena = Event(newName: "radio antena", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)

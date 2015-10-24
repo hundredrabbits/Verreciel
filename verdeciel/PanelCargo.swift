@@ -47,7 +47,7 @@ class PanelCargo : Panel
 
 		// Tutorial Item
 		
-		addEvent(items.smallBattery)
+		port.event.content.append(items.smallBattery)
 
 		// Quantity
 		
@@ -97,11 +97,6 @@ class PanelCargo : Panel
 		return false
 	}
 	
-	func addEvent(event:Event)
-	{
-		port.event.content.append(event)
-	}
-	
 	func addEvents(events:Array<Event>)
 	{
 		for event in events {
@@ -117,27 +112,11 @@ class PanelCargo : Panel
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
-		if event.type == eventTypes.item {
-			pickup(event)
-		}
-		else{
-			details.updateWithColor("error", color: red)
-		}
+		
+		if event.type != eventTypes.item { print("Not item") ; return }
+		uploadItem(event)
 	}
 
-	func pickup(event:Event)
-	{
-		if event.type == eventTypes.cargo {
-			self.addEvents(event.content)
-		}
-		else{
-			self.addEvent(event)
-		}
-		refreshCargohold()
-		update()
-		bang()
-	}
-	
 	func uploadItem(item:Event)
 	{
 		uploadItem = item
@@ -145,9 +124,13 @@ class PanelCargo : Panel
 	
 	func uploadCompleted()
 	{
-		port.origin.disconnect()
-		self.addEvent(uploadItem)
+		let newItem = uploadItem
+		port.event.content.append(newItem)
 		uploadItem = nil
+		
+		port.origin.event = nil
+		port.origin.host.bang()
+		
 		details.update("")
 		refreshCargohold()
 		update()

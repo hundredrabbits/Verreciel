@@ -146,15 +146,6 @@ class PanelBattery : Panel
 		else if cell3.event == nil {
 			cell3.addEvent(event)
 		}
-		
-		/*
-		
-		// Remove from origin
-		let command = port.origin.host as! SCNCommand
-		command.event.size = 0
-		command.update()
-		cargo.bang()
-		*/
 	}
 	
 	override func update()
