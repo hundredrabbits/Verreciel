@@ -87,6 +87,7 @@ class SCNPort : SCNNode
 		
 		if event == nil && connection != nil {
 			sprite_output.updateChildrenColors(white)
+			wire.isActive = false
 			return
 		}
 		
@@ -103,6 +104,8 @@ class SCNPort : SCNNode
 		else {
 			sprite_output.updateChildrenColors(grey)
 		}
+		
+		wire.isActive = true
 	}
 	
 	func activate()

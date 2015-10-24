@@ -20,7 +20,6 @@ class PanelRadar : Panel
 	var eventView = universe
 	var shipCursor:SCNNode!
 	
-	var target:Location!
 	var targetter:SCNNode!
 	var targetterFar:SCNNode!
 	
@@ -97,8 +96,8 @@ class PanelRadar : Panel
 	override func bang()
 	{
 		if port.connection == nil { return }
-		if target == nil { return }
-		port.connection.host.listen(target)
+		if port.event == nil { return }
+		port.connection.host.listen(port.event)
 	}
 	
 	override func listen(event: Event)
@@ -117,20 +116,19 @@ class PanelRadar : Panel
 	
 	func updateTarget()
 	{		
-		if target != nil {
-			
+		if port.event != nil {
 			let shipNodePosition = CGPoint(x: CGFloat(capsule.at.x), y: CGFloat(capsule.at.y))
-			let eventNodePosition = CGPoint(x: CGFloat(target.at.x), y: CGFloat(target.at.y))
+			let eventNodePosition = CGPoint(x: CGFloat(port.event.at.x), y: CGFloat(port.event.at.y))
 			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
 			
 			if distanceFromShip > 2 {
-				let angleTest = angleBetweenTwoPoints(capsule.at, point2: target.at, center: capsule.at)
+				let angleTest = angleBetweenTwoPoints(capsule.at, point2: port.event.at, center: capsule.at)
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
 				targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
 				targetterFar.opacity = 1
 			}
 			else{
-				targetter.position = SCNVector3(target.at.x - capsule.at.x,target.at.y - capsule.at.y,0)
+				targetter.position = SCNVector3(port.event.at.x - capsule.at.x,port.event.at.y - capsule.at.y,0)
 				targetterFar.opacity = 0
 			}
 			targetter.blink()
@@ -139,10 +137,7 @@ class PanelRadar : Panel
 
 	func addTarget(event:Location)
 	{
-		if target != nil { target.isSelected = false }
-		
-		target = event
-		target.isSelected = true
+		port.event = event
 		
 		updateTarget()
 		bang()
@@ -150,7 +145,7 @@ class PanelRadar : Panel
 	
 	func removeTarget()
 	{
-		target = nil
+		port.event = nil
 	}
 	
 	func closestLocation(type:eventDetails) -> Location
