@@ -125,6 +125,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[1].complete()
 		quests.tutorial[2].complete()
 		quests.tutorial[3].complete()
+		
+		console.install()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

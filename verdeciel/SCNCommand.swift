@@ -52,23 +52,22 @@ class SCNCommand : SCNNode
 		self.addChildNode(headLineDown)
 	}
 	
-	override func fixedUpdate()
-	{
-		if port.event != nil && port.event.size < 1 {
-			print("error: \(self.text)")
-		}
-	}
-	
 	func update(command:SCNCommand)
 	{
+		self.text = command.text
+		self.details = command.details
+		self.color = command.color
+		self.event = command.event
+		self.head = command.head
+		
+		port.event = command.event
+		
 		label.updateWithColor(command.text, color: self.color)
 		detailsLabel.update("")
 		
 		if command.event != nil {
-			self.event = command.event!
 			port.opacity = 1
 			port.enable()
-			port.addEvent(event)
 		}
 		else{
 			port.opacity = 0

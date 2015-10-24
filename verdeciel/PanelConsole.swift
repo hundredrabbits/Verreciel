@@ -24,6 +24,7 @@ class PanelConsole : Panel
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
 	var panelHead:SCNNode!
+	var consoleNode:SCNNode!
 	
 	override func setup()
 	{
@@ -51,38 +52,37 @@ class PanelConsole : Panel
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
-		
-		let linesRoot = SCNNode()
+		consoleNode = SCNNode()
 		
 		let spacing:Float = -0.35
 		
-		linesRoot.position = SCNVector3(0,templates.topMargin + spacing - 0.2,0)
+		consoleNode.position = SCNVector3(0,templates.topMargin + spacing - 0.2,0)
 		
 		consoleLine1 = SCNCommand()
 		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
-		linesRoot.addChildNode(consoleLine1)
+		consoleNode.addChildNode(consoleLine1)
 		
 		consoleLine2 = SCNCommand()
 		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
-		linesRoot.addChildNode(consoleLine2)
+		consoleNode.addChildNode(consoleLine2)
 		
 		consoleLine3 = SCNCommand()
 		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: (spacing * 2), z: 0)
-		linesRoot.addChildNode(consoleLine3)
+		consoleNode.addChildNode(consoleLine3)
 		
 		consoleLine4 = SCNCommand()
 		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: (spacing * 3), z: 0)
-		linesRoot.addChildNode(consoleLine4)
+		consoleNode.addChildNode(consoleLine4)
 		
 		consoleLine5 = SCNCommand()
 		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: (spacing * 4), z: 0)
-		linesRoot.addChildNode(consoleLine5)
+		consoleNode.addChildNode(consoleLine5)
 		
 		consoleLine6 = SCNCommand()
 		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: (spacing * 5), z: 0)
-		linesRoot.addChildNode(consoleLine6)
+		consoleNode.addChildNode(consoleLine6)
 		
-		interface.addChildNode(linesRoot)
+		interface.addChildNode(consoleNode)
 	}
 	
 	override func start()
@@ -97,6 +97,12 @@ class PanelConsole : Panel
 	
 	override func installedFixedUpdate()
 	{
+		for line in consoleNode.childNodes {
+			let command = line as! SCNCommand
+			if command.port != nil && command.port.event != nil && command.port.event.size == 0 {
+				command.update(SCNCommand(text: "--", color: grey))
+			}
+		}
 	}
 	
 	func addLine(command:SCNCommand! = nil)
