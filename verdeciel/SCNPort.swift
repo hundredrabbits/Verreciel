@@ -98,7 +98,7 @@ class SCNPort : SCNNode
 			sprite_input.updateChildrenColors(grey)
 		}
 		
-		if connection != nil {
+		if event != nil {
 			sprite_output.updateChildrenColors(cyan)
 		}
 		else {

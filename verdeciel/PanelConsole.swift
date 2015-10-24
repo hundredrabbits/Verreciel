@@ -146,13 +146,13 @@ class PanelConsole : Panel
 	
 	func clearLines()
 	{
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
-		self.addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
+		addLine(SCNCommand(text: "--", color: grey))
 	}
 	
 	override func disconnect()
@@ -166,17 +166,14 @@ class PanelConsole : Panel
 	
 	override func listen(event: Event)
 	{
-		if event.type == eventTypes.stack {
+		print("-")
+		if port.origin.host == cargo {
 			print("+ CONSOLE  | Connected")
-			isConnected = true
 			self.clearLines()
 			for item in event.content {
+				print("sending: \(item.name!) \(item.size)")
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))
 			}
-		}
-		else {
-			self.clearLines()
-			port.origin.disconnect()
 		}
 	}
 }

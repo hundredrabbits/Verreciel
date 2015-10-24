@@ -77,21 +77,17 @@ class LocationCargo : Location
 		let nodeFrame = SCNNode()
 		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,-0.4,0)
 		let frameSize:Float = 0.3
-		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,frameSize,0), nodeB: SCNVector3(frameSize,frameSize,0), color: red))
-		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,-frameSize,0), nodeB: SCNVector3(frameSize,-frameSize,0), color: red))
-		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(-frameSize,frameSize,0), nodeB: SCNVector3(-frameSize,-frameSize,0), color: red))
-		nodeFrame.addChildNode(SCNLine(nodeA: SCNVector3(frameSize,frameSize,0), nodeB: SCNVector3(frameSize,-frameSize,0), color: red))
 		
 		inventoryPort.position = SCNVector3(x: 0, y: 0, z: 0)
 		inventoryPort.enable()
 		nodeFrame.addChildNode(inventoryPort)
 		
 		inventoryLabel = SCNLabel(text: inventoryPort.event.name!)
-		inventoryLabel.position = SCNVector3(x: 0.5, y: 0.2, z: 0)
+		inventoryLabel.position = SCNVector3(x: 0.5, y: 0, z: 0)
 		nodeFrame.addChildNode(inventoryLabel)
 		
 		inventoryNote = SCNLabel(text: inventoryPort.event.note, scale:0.08, color:grey)
-		inventoryNote.position = SCNVector3(x: 0.5, y: -0.1, z: 0)
+		inventoryNote.position = SCNVector3(x: 0.5, y: -0.3, z: 0)
 		nodeFrame.addChildNode(inventoryNote)
 		
 		newPanel.addChildNode(nodeFrame)

@@ -209,5 +209,6 @@ class PanelBattery : Panel
 		cell2.addEvent(uploadItem)
 		uploadItem = nil
 		update()
+		cargo.bang()
 	}
 }

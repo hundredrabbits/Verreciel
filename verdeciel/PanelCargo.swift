@@ -22,6 +22,8 @@ class PanelCargo : Panel
 	
 	var panelFoot:SCNNode!
 	
+	var trigger:SCNTrigger!
+	
 	override func setup()
 	{
 		name = "cargo"
@@ -67,7 +69,8 @@ class PanelCargo : Panel
 		
 		// Trigger
 		
-		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
+		interface.addChildNode(trigger)
 	}
 	
 	override func start()
@@ -106,7 +109,7 @@ class PanelCargo : Panel
 	
 	override func touch(id:Int = 0)
 	{
-		self.bang()
+		bang()
 	}
 	
 	override func listen(event:Event)
@@ -132,13 +135,21 @@ class PanelCargo : Panel
 		port.origin.host.bang()
 		
 		details.update("")
-		refreshCargohold()
 		update()
 		bang()
 	}
 	
 	override func update()
 	{
+		// Update cargohold
+		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
+		for item in port.event.content {
+			if item.size > 0 {
+				newCargohold.content.append(item)
+			}
+		}
+		port.event = newCargohold
+		
 		line1.color(grey)
 		line2.color(grey)
 		line3.color(grey)
@@ -154,22 +165,10 @@ class PanelCargo : Panel
 		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
 	}
 	
-	func refreshCargohold()
-	{
-		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
-		for item in port.event.content {
-			if item.size > 0 {
-				newCargohold.content.append(item)
-			}
-		}
-		port.event = newCargohold
-	}
-	
 	override func bang()
 	{
-		self.update()
-		if port.connection != nil {
-			port.connection.host.listen(port.event)
-		}
+		update()
+		if port.connection == nil { return }
+		port.connection.host.listen(port.event)
 	}
 }
