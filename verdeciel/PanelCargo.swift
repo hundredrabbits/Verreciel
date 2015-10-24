@@ -11,8 +11,6 @@ class PanelCargo : Panel
 	var uploadItem:Event!
 	var uploadProgress:CGFloat = 0
 	
-	var cargohold = Event(newName: "cargohold", type: eventTypes.stack)
-	
 	var line1:SCNLine!
 	var line2:SCNLine!
 	var line3:SCNLine!
@@ -32,6 +30,7 @@ class PanelCargo : Panel
 		panelHead = SCNNode()
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		port.event = Event(newName: "cargohold", type: eventTypes.stack)
 		label = SCNLabel(text: "cargo", scale: 0.1, align: alignment.center)
 		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelHead.addChildNode(port)
@@ -92,7 +91,7 @@ class PanelCargo : Panel
 	
 	func contains(event:Event) -> Bool
 	{
-		for newEvent in cargohold.content {
+		for newEvent in port.event.content {
 			if newEvent == event { return true }
 		}
 		return false
@@ -100,13 +99,13 @@ class PanelCargo : Panel
 	
 	func addEvent(event:Event)
 	{
-		cargohold.content.append(event)
+		port.event.content.append(event)
 	}
 	
 	func addEvents(events:Array<Event>)
 	{
 		for event in events {
-			cargohold.content.append(event)
+			port.event.content.append(event)
 		}
 	}
 	
@@ -164,30 +163,30 @@ class PanelCargo : Panel
 		line5.color(grey)
 		line6.color(grey)
 		
-		if cargohold.content.count > 0 { line1.color( cargohold.content[0].isQuest == true ? cyan : white ) }
-		if cargohold.content.count > 1 { line2.color( cargohold.content[1].isQuest == true ? cyan : white ) }
-		if cargohold.content.count > 2 { line3.color( cargohold.content[2].isQuest == true ? cyan : white ) }
-		if cargohold.content.count > 3 { line4.color( cargohold.content[3].isQuest == true ? cyan : white ) }
-		if cargohold.content.count > 4 { line5.color( cargohold.content[4].isQuest == true ? cyan : white ) }
-		if cargohold.content.count > 5 { line6.color( cargohold.content[5].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 0 { line1.color( port.event.content[0].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 1 { line2.color( port.event.content[1].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 2 { line3.color( port.event.content[2].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
 	}
 	
 	func refreshCargohold()
 	{
 		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
-		for item in cargohold.content {
+		for item in port.event.content {
 			if item.size > 0 {
 				newCargohold.content.append(item)
 			}
 		}
-		cargohold = newCargohold
+		port.event = newCargohold
 	}
 	
 	override func bang()
 	{
 		self.update()
 		if port.connection != nil {
-			port.connection.host.listen(cargohold)
+			port.connection.host.listen(port.event)
 		}
 	}
 }

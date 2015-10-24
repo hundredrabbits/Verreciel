@@ -81,7 +81,7 @@ class LocationCargo : Location
 	override func bang()
 	{
 		if inventoryPort.connection.host == cargo {
-			if cargo.cargohold.content.count < 6 {
+			if cargo.port.event.content.count < 6 {
 				cargo.uploadItem(item)
 				self.item = nil
 				
