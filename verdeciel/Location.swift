@@ -183,8 +183,15 @@ class Location : Event
 	
 	override func touch(id:Int)
 	{
-		print("touched: \(self.name!)")
-		radar.addTarget(self)
+		if radar.port.event == nil {
+			radar.addTarget(self)
+		}
+		else if radar.port.event == self {
+			radar.removeTarget()
+		}
+		else{
+			radar.addTarget(self)
+		}
 	}
 	
 	func _sprite() -> SCNNode
