@@ -25,7 +25,7 @@ class CorePlayer : SCNNode
 	
 	var port:SCNPort!
 	var event:Event!
-	var handle:PanelHandle!
+	var handle:SCNHandle!
 	
 	var inRadar:Bool = false
 	

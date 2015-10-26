@@ -19,6 +19,9 @@ class Panel : SCNNode
 	let portInputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.right)
 	let portOutputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.left)
 	
+	let header = SCNNode()
+	let footer = SCNNode()
+	
 	var isEnabled:Bool = true
 	var interface:SCNNode!
 	var decals:SCNNode!
@@ -47,23 +50,18 @@ class Panel : SCNNode
 		
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		var panelHead:SCNNode!
-		var panelFoot:SCNNode!
-		
-		panelHead = SCNNode()
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
 		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
+		header.addChildNode(port)
+		header.addChildNode(label)
+		addChildNode(header)
+		header.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
-		panelFoot = SCNNode()
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelFoot.addChildNode(details)
-		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
+		footer.addChildNode(details)
+		addChildNode(footer)
+		footer.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
 		
 		port.addChildNode(portInputLabel)
 		port.addChildNode(portOutputLabel)

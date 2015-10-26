@@ -114,6 +114,8 @@ class PanelBattery : Panel
 		
 		port.input = eventTypes.battery
 		port.output = eventTypes.unknown
+		
+		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1)))
 	}
 	
 	override func start()

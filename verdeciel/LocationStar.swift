@@ -15,8 +15,8 @@ class LocationStar : Location
 		self.color = color
 		self.details = eventDetails.star
 		
-		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center)
-		label.position = SCNVector3(0,-0.5,0)
+		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center, color: grey)
+		label.position = SCNVector3(0,-0.5,-1)
 		self.addChildNode(label)
 	}
 	

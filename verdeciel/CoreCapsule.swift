@@ -36,6 +36,8 @@ class CoreCapsule: SCNNode
 	
 	override func start()
 	{
+		print(universe.loiqe_spawn.at)
+		
 		battery.installed()
 	}
 	

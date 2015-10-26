@@ -58,10 +58,14 @@ class PanelRadar : Panel
 		// Targetter
 		
 		targetter = SCNNode()
-		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: 0.25, y: 0, z: 0), color: red))
-		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: -0.25, z: 0), color: red))
-		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.25, z: 0), nodeB: SCNVector3(x: -0.25, y: 0, z: 0), color: red))
-		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0, y: 0.25, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: 0.05, y: 0.2, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.25, z: 0), nodeB: SCNVector3(x: -0.05, y: 0.2, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.25, z: 0), nodeB: SCNVector3(x: 0.05, y: -0.2, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -0.25, z: 0), nodeB: SCNVector3(x: -0.05, y: -0.2, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0.2, y: 0.05, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.25, y: 0, z: 0), nodeB: SCNVector3(x: 0.2, y: -0.05, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.25, y: 0, z: 0), nodeB: SCNVector3(x: -0.2, y: 0.05, z: 0), color: red))
+		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.25, y: 0, z: 0), nodeB: SCNVector3(x: -0.2, y: -0.05, z: 0), color: red))
 		targetter.opacity = 0
 		interface.addChildNode(targetter)
 		
@@ -69,6 +73,8 @@ class PanelRadar : Panel
 		
 		port.input = eventTypes.map
 		port.output = eventTypes.location
+		
+		footer.addChildNode(SCNHandle(destination: SCNVector3(1,0,0)))
 	}
 	
 	override func installedFixedUpdate()

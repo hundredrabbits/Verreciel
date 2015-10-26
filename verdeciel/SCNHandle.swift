@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelHandle : Panel
+class SCNHandle : Panel
 {
 	var destination:SCNVector3!
 	var selectionLine1:SCNLine!
@@ -45,8 +45,6 @@ class PanelHandle : Panel
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
 		trigger.updateChildrenColors(red)
 		interface.addChildNode(trigger)
-		
-		self.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 	}
 	
 	override func enable()
