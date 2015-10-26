@@ -79,46 +79,50 @@ class SCNPort : SCNNode
 		sprite_input.opacity = 1
 		sprite_output.opacity = 1
 		
-		if isEnabled == false {
+		// Input
+		if origin == nil {
+			sprite_input.updateChildrenColors(grey)
+		}
+		else if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)
+		}
+		else {
+			sprite_input.updateChildrenColors(red)
+		}
+
+		// Output
+		if event == nil || isEnabled == false {
 			sprite_output.updateChildrenColors(grey)
-			return
+		}
+		else {
+			sprite_output.updateChildrenColors(cyan)
 		}
 		
+		// Wire
+		if connection != nil{
+			wire.isActive = true
+			
+			if connection == nil {
+				wire.isEnabled = false
+			}
+			else if event == nil {
+				wire.isActive = false
+			}
+			else if event.type != connection.input && connection.input != eventTypes.generic {
+				wire.isCompatible = false
+			}
+			else {
+				wire.isActive = true
+				wire.isCompatible = true
+			}
+		}
+		
+		// Blink
 		if player.port != nil && player.port == self {
 			sprite_output.updateChildrenColors(cyan)
 			sprite_output.blink()
 			return
 		}
-		
-		// Empty cargo node
-		if event != nil && event.type == eventTypes.cargo && event.content.count == 0 {
-			sprite_input.updateChildrenColors(clear)
-			sprite_output.updateChildrenColors(grey)
-			return
-		}
-		
-		if event == nil && connection != nil {
-			sprite_output.updateChildrenColors(white)
-			wire.isActive = false
-			return
-		}
-		
-		if origin != nil {
-			sprite_input.updateChildrenColors(red)
-		}
-		else {
-			sprite_input.updateChildrenColors(grey)
-		}
-		
-		if event != nil {
-			sprite_output.updateChildrenColors(cyan)
-		}
-		else {
-			sprite_output.updateChildrenColors(grey)
-		}
-		
-		wire.isActive = true
 	}
 	
 	func activate()
@@ -168,8 +172,15 @@ class SCNPort : SCNNode
 		host.bang()
 		wire.enable()
 		
-		update()
-		connection.update()
+		print("expected: \(connection.input) received:\(event.type)")
+	}
+	
+	func hasEvent(type:eventTypes = eventTypes.none) -> Bool
+	{
+		if event == nil { return false }
+		if event.type == eventTypes.none && event != nil { return true }
+		if event.type == type { return true }
+		return false
 	}
 	
 	override func disconnect()

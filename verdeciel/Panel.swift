@@ -94,6 +94,7 @@ class Panel : SCNNode
 		}
 		
 		if isInstalled == true {
+			if port.hasEvent(port.output) == true { portOutputLabel.updateColor(white) } else { portOutputLabel.updateColor(grey) }
 			installedFixedUpdate()
 		}
 	}

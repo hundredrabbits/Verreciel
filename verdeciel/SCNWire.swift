@@ -25,6 +25,7 @@ class SCNWire : SCNNode
 	
 	var isEnabled:Bool = true
 	var isActive:Bool = false
+	var isCompatible:Bool = false
 	
 	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
 	{
@@ -68,19 +69,19 @@ class SCNWire : SCNNode
 		vertex3.y += sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/20) * 0.08
 		vertex4.y += sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/20) * 0.05
 		
-		if isActive == true {
+		if isCompatible == false || isActive == false {
+			segment1.draw( nodeA, nodeB: vertex1, color: white)
+			segment2.draw( vertex1, nodeB: vertex2, color: grey)
+			segment3.draw( vertex2, nodeB: vertex3, color: grey)
+			segment4.draw( vertex3, nodeB: vertex4, color: grey)
+			segment5.draw( vertex4, nodeB: nodeB, color: white)
+		}
+		else{
 			segment1.draw( nodeA, nodeB: vertex1, color: cyan)
 			segment2.draw( vertex1, nodeB: vertex2, color: white)
 			segment3.draw( vertex2, nodeB: vertex3, color: white)
 			segment4.draw( vertex3, nodeB: vertex4, color: white)
 			segment5.draw( vertex4, nodeB: nodeB, color: red)
-		}
-		else{
-			segment1.draw( nodeA, nodeB: vertex1, color: grey)
-			segment2.draw( vertex1, nodeB: vertex2, color: grey)
-			segment3.draw( vertex2, nodeB: vertex3, color: grey)
-			segment4.draw( vertex3, nodeB: vertex4, color: grey)
-			segment5.draw( vertex4, nodeB: nodeB, color: grey)
 		}
 	}
 	

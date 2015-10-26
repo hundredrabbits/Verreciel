@@ -29,7 +29,10 @@ enum sectors
 
 enum eventTypes
 {
+	case none
 	case unknown
+	
+	case generic
 	
 	case portal
 	case cargo
@@ -39,7 +42,6 @@ enum eventTypes
 	case star
 	case cell
 	
-	case stack
 	case location
 	case item
 	case npc

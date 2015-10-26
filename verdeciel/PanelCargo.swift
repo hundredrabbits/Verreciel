@@ -25,7 +25,6 @@ class PanelCargo : Panel
 		name = "cargo"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		
 		port.event = items.playerCargo
 
 		// Tutorial Item
@@ -126,7 +125,7 @@ class PanelCargo : Panel
 	override func update()
 	{
 		// Update cargohold
-		let newCargohold = Event(newName: "cargohold", type: eventTypes.stack)
+		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
 		for item in port.event.content {
 			if item.size > 0 {
 				newCargohold.content.append(item)

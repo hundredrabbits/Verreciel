@@ -18,7 +18,7 @@ class PanelBattery : Panel
 	
 	var oxygenPort:SCNPort!
 	var shieldPort:SCNPort!
-	var clockPort:SCNPort!
+	var cloakPort:SCNPort!
 	var thrusterPort:SCNPort!
 	var radioPort:SCNPort!
 	
@@ -50,7 +50,7 @@ class PanelBattery : Panel
 		
 		cell1 = SCNPort(host: self)
 		cell1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
-		cell1.addEvent(Event(type:eventTypes.cell))
+		cell1.addEvent(items.smallBattery)
 		cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -0.2, y:0, z: 0)
 		cell1.addChildNode(cell1Label)
@@ -72,35 +72,35 @@ class PanelBattery : Panel
 		
 		// Systems
 		
-		oxygenPort = SCNPort(host: self)
+		oxygenPort = SCNPort(host: self, input:eventTypes.battery)
 		oxygenPort.position = SCNVector3(x: distance, y: 0, z: 0)
 		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
 		oxygenLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		oxygenPort.addChildNode(oxygenLabel)
 		interface.addChildNode(oxygenPort)
 		
-		thrusterPort = SCNPort(host: self)
+		thrusterPort = SCNPort(host: self, input:eventTypes.battery)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		interface.addChildNode(thrusterPort)
 		
-		shieldPort = SCNPort(host: self)
+		shieldPort = SCNPort(host: self, input:eventTypes.battery)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		interface.addChildNode(shieldPort)
 		
-		clockPort = SCNPort(host: self)
-		clockPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
+		cloakPort = SCNPort(host: self, input:eventTypes.battery)
+		cloakPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
 		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		cloakLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
-		clockPort.addChildNode(cloakLabel)
-		interface.addChildNode(clockPort)
+		cloakPort.addChildNode(cloakLabel)
+		interface.addChildNode(cloakPort)
 		
-		radioPort = SCNPort(host: self)
+		radioPort = SCNPort(host: self, input:eventTypes.battery)
 		radioPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
 		let radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
