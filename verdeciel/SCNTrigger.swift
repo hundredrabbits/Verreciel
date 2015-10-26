@@ -20,7 +20,7 @@ class SCNTrigger : SCNNode
 		self.size = size
 		super.init()
 		self.geometry = SCNPlane(width: size.width, height: size.height)
-		self.geometry?.materials.first?.diffuse.contents = cyan
+		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
 	override func touch(id:Int)
@@ -38,6 +38,7 @@ class SCNTrigger : SCNNode
 	{
 		isEnabled = true
 		self.geometry = SCNPlane(width: size.width, height: size.height)
+		self.geometry?.materials.first?.diffuse.contents = clear
 	}
 	
 	func disable()

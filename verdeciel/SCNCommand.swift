@@ -32,7 +32,7 @@ class SCNCommand : SCNNode
 
 		label = SCNLabel(text: self.text, scale: 0.1, align: alignment.left)
 		detailsLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
-		detailsLabel.position = SCNVector3((templates.rightMargin * 2) - 0.4, 0, 0)
+		detailsLabel.position = SCNVector3((templates.rightMargin * 2) - 0.2, 0, 0)
 		detailsLabel.updateColor(grey)
 		
 		super.init()

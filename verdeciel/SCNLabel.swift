@@ -57,9 +57,10 @@ class SCNLabel : SCNNode
 	}
 	
 	func removeLetters()
-	{		
+	{
 		activeText = ""
 		for letterCur in nodeOffset.childNodes {
+			if letterCur.parentNode == nil { continue }
 			letterCur.removeFromParentNode()
 		}
 	}

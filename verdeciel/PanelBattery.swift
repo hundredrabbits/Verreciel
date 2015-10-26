@@ -61,10 +61,9 @@ class PanelBattery : Panel
 		// Cells
 		
 		let distance:Float = 0.4
-		let verticalOffset:Float = 0.4
 		
 		cell1 = SCNPort(host: self)
-		cell1.position = SCNVector3(x: -distance, y: verticalOffset, z: 0)
+		cell1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
 		cell1.addEvent(Event(type:eventTypes.cell))
 		cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -0.2, y:0, z: 0)
@@ -79,7 +78,7 @@ class PanelBattery : Panel
 		interface.addChildNode(cell2)
 		
 		cell3 = SCNPort(host: self)
-		cell3.position = SCNVector3(x: -distance, y: -verticalOffset, z: 0)
+		cell3.position = SCNVector3(x: -distance, y: -templates.lineSpacing, z: 0)
 		cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell3Label.position = SCNVector3(x: -0.2, y: 0, z: 0)
 		cell3.addChildNode(cell3Label)
@@ -95,28 +94,28 @@ class PanelBattery : Panel
 		interface.addChildNode(oxygenPort)
 		
 		thrusterPort = SCNPort(host: self)
-		thrusterPort.position = SCNVector3(x: distance, y: verticalOffset, z: 0)
+		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		interface.addChildNode(thrusterPort)
 		
 		shieldPort = SCNPort(host: self)
-		shieldPort.position = SCNVector3(x: distance, y: 2 * verticalOffset, z: 0)
+		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		interface.addChildNode(shieldPort)
 		
 		clockPort = SCNPort(host: self)
-		clockPort.position = SCNVector3(x: distance, y: -verticalOffset, z: 0)
+		clockPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
 		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		cloakLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		clockPort.addChildNode(cloakLabel)
 		interface.addChildNode(clockPort)
 		
 		radioPort = SCNPort(host: self)
-		radioPort.position = SCNVector3(x: distance, y: 2 * -verticalOffset, z: 0)
+		radioPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
 		let radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		radioPort.addChildNode(radioLabel)

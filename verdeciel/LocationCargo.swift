@@ -76,7 +76,6 @@ class LocationCargo : Location
 		
 		let nodeFrame = SCNNode()
 		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,-0.4,0)
-		let frameSize:Float = 0.3
 		
 		inventoryPort.position = SCNVector3(x: 0, y: 0, z: 0)
 		inventoryPort.enable()

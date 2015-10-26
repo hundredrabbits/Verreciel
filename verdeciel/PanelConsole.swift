@@ -13,7 +13,6 @@ import Foundation
 
 class PanelConsole : Panel
 {
-	var isConnected:Bool = true
 	var consoleLine1:SCNCommand!
 	var consoleLine2:SCNCommand!
 	var consoleLine3:SCNCommand!
@@ -25,6 +24,8 @@ class PanelConsole : Panel
 	
 	var panelHead:SCNNode!
 	var consoleNode:SCNNode!
+	
+	var refreshTimer:NSTimer!
 	
 	override func setup()
 	{
@@ -54,35 +55,35 @@ class PanelConsole : Panel
 		
 		consoleNode = SCNNode()
 		
-		let spacing:Float = -0.35
-		
-		consoleNode.position = SCNVector3(0,templates.topMargin + spacing - 0.2,0)
+		consoleNode.position = SCNVector3(0,0,0)
 		
 		consoleLine1 = SCNCommand()
-		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: (spacing * 0), z: 0)
+		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 2.5, z: 0)
 		consoleNode.addChildNode(consoleLine1)
 		
 		consoleLine2 = SCNCommand()
-		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: (spacing * 1), z: 0)
+		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 1.5, z: 0)
 		consoleNode.addChildNode(consoleLine2)
 		
 		consoleLine3 = SCNCommand()
-		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: (spacing * 2), z: 0)
+		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 0.5, z: 0)
 		consoleNode.addChildNode(consoleLine3)
 		
 		consoleLine4 = SCNCommand()
-		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: (spacing * 3), z: 0)
+		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 0.5, z: 0)
 		consoleNode.addChildNode(consoleLine4)
 		
 		consoleLine5 = SCNCommand()
-		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: (spacing * 4), z: 0)
+		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 1.5, z: 0)
 		consoleNode.addChildNode(consoleLine5)
 		
 		consoleLine6 = SCNCommand()
-		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: (spacing * 5), z: 0)
+		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 2.5, z: 0)
 		consoleNode.addChildNode(consoleLine6)
 		
 		interface.addChildNode(consoleNode)
+		
+		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
 	}
 	
 	override func start()
@@ -91,36 +92,28 @@ class PanelConsole : Panel
 		interface.opacity = 0
 		label.updateWithColor("--", color: grey)
 		
-		clearLines()
-		addLine(SCNCommand(text: "Awaiting input..", head: true))
+		boot()
 	}
 	
 	override func installedFixedUpdate()
 	{
+		/*
 		for line in consoleNode.childNodes {
 			let command = line as! SCNCommand
 			if command.port != nil && command.port.event != nil && command.port.event.size == 0 {
 				command.update(SCNCommand(text: "--", color: grey))
 			}
 		}
+*/
 	}
 	
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
-		if commands.count > 6 { commands.removeAtIndex(0) }
-		update()
 	}
 	
 	override func update()
 	{
-		consoleLine1.port.disconnect()
-		consoleLine2.port.disconnect()
-		consoleLine3.port.disconnect()
-		consoleLine4.port.disconnect()
-		consoleLine5.port.disconnect()
-		consoleLine6.port.disconnect()
-		
 		consoleLine1.update(commands[0])
 		consoleLine2.update(commands[1])
 		consoleLine3.update(commands[2])
@@ -131,16 +124,13 @@ class PanelConsole : Panel
 		if port.origin == nil {
 			label.update("console")
 		}
-		
-		if port.origin != nil && isConnected == true {
-			disconnect()
-		}
 	}
 	
 	func boot()
 	{
 		clearLines()
-		addLine(SCNCommand(text: "Disconnected"))
+		addLine(SCNCommand(text: "Run"))
+		addLine(SCNCommand(text: " "))
 		addLine(SCNCommand(text: "Awaiting input..", head:true))
 	}
 	
@@ -155,23 +145,23 @@ class PanelConsole : Panel
 		addLine(SCNCommand(text: "--", color: grey))
 	}
 	
-	override func disconnect()
+	func refresh()
 	{
-		print("+ CONSOLE  | Disconnected")
-		isConnected = false
-		
-		boot()
+		if commands.count > 6 { commands.removeAtIndex(0) }
 		update()
 	}
 	
 	override func listen(event: Event)
 	{
-		print("-")
+		// Invalidate older lines
+		for command in commands {
+			command.event = nil
+		}
+		
 		if port.origin.host == cargo {
 			print("+ CONSOLE  | Connected")
-			self.clearLines()
+			addLine(SCNCommand(text: port.origin.host.name!, color: grey, head:true))
 			for item in event.content {
-				print("sending: \(item.name!) \(item.size)")
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))
 			}
 		}

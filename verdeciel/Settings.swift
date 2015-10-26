@@ -88,6 +88,8 @@ struct Templates
 	var titlesAngle:CGFloat = 22
 	var monitorsAngle:CGFloat = 32
 	var warningsAngle:CGFloat = 44
+	
+	var lineSpacing:Float = 0.42
 }
 
 struct Settings
