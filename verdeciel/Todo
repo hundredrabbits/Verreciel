@@ -9,13 +9,7 @@
 *    ACTIVE
 ================
 
-- Completed states for locations.
-- Name mission panel with the location's name
-
-- Cargo Location Panel
-
 - Map Zoom
-- Radar Target
 - Radar Location Sprites
 - Warnings
 
@@ -28,7 +22,6 @@
 - Add quest pointers
 
 - Add harvest location
-- Cargo's note displays grey if the cargo is empty
 - Display core port inputs
 
 ================
@@ -54,7 +47,6 @@
 
 	> Locations
 	- Add dimensional gates(with item requirements)
-	- Mark the sprite as completed when the quest is done
 	- Warp Align locations
 
 	> Stealthed events
@@ -65,23 +57,16 @@
 	- Invisible
 	- Sentries
 	- Hostile
-	- Cargo
 
 > Capsule
 
 	> Radar
 	- Create better radar sprites
-	- Highlight nodes with quests
 
 	> Pilot
-	- Add manual controls
 
 	> Cargo
-	- Improve transfer animation
 	- decline transfer when cargo is full
-	- Grey line when cargo is empty
-	- Use progress bar to show transfer
-	- Unlock additional space
 
 	> Handles
 	- Return to center if inactive
