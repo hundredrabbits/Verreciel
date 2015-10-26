@@ -128,6 +128,13 @@ class PanelRadar : Panel
 		
 		updateTarget()
 		bang()
+		
+		// Check for overlapping events
+		for newEvent in eventView.childNodes {
+			if newEvent.position.x == event.position.x && newEvent.position.y == event.position.y && event != newEvent {
+				print("Overlapping event: \(newEvent.name!) -> \(event.position.x)")
+			}
+		}
 	}
 	
 	func removeTarget()

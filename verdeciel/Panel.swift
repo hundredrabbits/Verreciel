@@ -21,24 +21,23 @@ class Panel : SCNNode
 	var interface:SCNNode!
 	var decals:SCNNode!
 	
-	var isInstalling:Bool = false
-	var isInstalled:Bool = false
-	var installer:SCNNode = SCNNode()
-	var installProgress:CGFloat = 0
-	var installProgressBar = SCNProgressBar(width: 1)
-	
 	override init()
 	{
 		super.init()
 		
 		initialSetup()
 		setup()
+		
 		installation()
 		start()
 	}
 	
+	// MARK: Setup
+	
 	func initialSetup()
 	{
+		name = "unknown"
+		
 		interface = SCNNode()
 		self.addChildNode(interface)
 		decals = SCNNode()
@@ -52,7 +51,6 @@ class Panel : SCNNode
 		panelHead = SCNNode()
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label.update(name!)
 		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
 		panelHead.addChildNode(port)
 		panelHead.addChildNode(label)
@@ -60,7 +58,7 @@ class Panel : SCNNode
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
@@ -77,7 +75,7 @@ class Panel : SCNNode
 		if isInstalling == true {
 			installProgress += CGFloat(arc4random_uniform(100))/50
 			installProgressBar.update(installProgress)
-			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
+//			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
 			installProgressBar.opacity = 1
 			if installProgress >= 100 {
 				installed()
@@ -120,6 +118,12 @@ class Panel : SCNNode
 	}
 	
 	// MARK: Installation -
+
+	var isInstalling:Bool = false
+	var isInstalled:Bool = false
+	var installer:SCNNode = SCNNode()
+	var installProgress:CGFloat = 0
+	var installProgressBar = SCNProgressBar(width: 1)
 	
 	func install()
 	{

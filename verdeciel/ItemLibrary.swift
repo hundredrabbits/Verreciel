@@ -10,6 +10,9 @@ import Foundation
 
 class ItemLibrary
 {
+	// Ship events
+	let playerCargo = Event(newName: "player cargo", size: 1, type: eventTypes.cargo, details: eventDetails.panel, note:"need description", isQuest:true)
+	
 	// Quest items
 	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: eventDetails.card, note:"required to undock$from loiqe city", isQuest:true)
 	

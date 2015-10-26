@@ -24,6 +24,8 @@ class PanelCargo : Panel
 	{
 		name = "cargo"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		
+		port.event = items.playerCargo
 
 		// Tutorial Item
 		
