@@ -32,7 +32,7 @@ class SCNPort : SCNNode
 		self.geometry = SCNPlane(width: 0.3, height: 0.3)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
-		let trigger = SCNTrigger(host: self, size: CGSize(width: 1, height: 1))
+		trigger = SCNTrigger(host: self, size: CGSize(width: 1, height: 1))
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
 		
@@ -79,9 +79,16 @@ class SCNPort : SCNNode
 			return
 		}
 		
-		if player.port != nil && player.port == self{
+		if player.port != nil && player.port == self {
 			sprite_output.updateChildrenColors(cyan)
 			sprite_output.blink()
+			return
+		}
+		
+		// Empty cargo node
+		if event != nil && event.type == eventTypes.cargo && event.content.count == 0 {
+			sprite_input.updateChildrenColors(clear)
+			sprite_output.updateChildrenColors(grey)
 			return
 		}
 		
@@ -121,11 +128,13 @@ class SCNPort : SCNNode
 	func enable()
 	{
 		isEnabled = true
+		trigger.enable()
 	}
 	
 	func disable()
 	{
 		isEnabled = false
+		trigger.disable()
 	}
 	
 	func addEvent(event:Event)

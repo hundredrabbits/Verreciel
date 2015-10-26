@@ -196,12 +196,8 @@ class PanelBattery : Panel
 	
 	func uploadCompleted()
 	{
-		print("Taking: \(port.origin.event)")
-		print("From: \(port.origin)")
 		port.origin.event.size = 0
 		port.origin.update()
-		print("Taking: \(port.origin.event)")
-		print("From: \(port.origin)")
 		
 		port.origin.event.remove()
 		port.origin.host.update()

@@ -11,14 +11,16 @@ class SCNTrigger : SCNNode
 	var isEnabled:Bool = true
 	let host:SCNNode!
 	let operation:Int!
+	var size:CGSize!
 	
 	init(host:SCNNode,size:CGSize,operation:Int = 0)
 	{
 		self.operation = operation
 		self.host = host
+		self.size = size
 		super.init()
 		self.geometry = SCNPlane(width: size.width, height: size.height)
-		self.geometry?.materials.first?.diffuse.contents = clear
+		self.geometry?.materials.first?.diffuse.contents = cyan
 	}
 	
 	override func touch(id:Int)
@@ -35,11 +37,13 @@ class SCNTrigger : SCNNode
 	func enable()
 	{
 		isEnabled = true
+		self.geometry = SCNPlane(width: size.width, height: size.height)
 	}
 	
 	func disable()
 	{
 		isEnabled = false
+		self.geometry = SCNPlane(width: 0, height: 0)
 	}
 	
 	required init(coder aDecoder: NSCoder) {

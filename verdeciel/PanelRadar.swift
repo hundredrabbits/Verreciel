@@ -146,6 +146,7 @@ class PanelRadar : Panel
 	func removeTarget()
 	{
 		port.event = nil
+		targetter.opacity = 0
 	}
 	
 	func closestLocation(type:eventDetails) -> Location
