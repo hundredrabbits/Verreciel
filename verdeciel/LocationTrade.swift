@@ -35,13 +35,6 @@ class LocationTrade : Location
 		self.interface = panel()
 	}
 	
-	override func sight()
-	{
-		isSeen = true
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
 	override func _sprite() -> SCNNode
 	{
 		let size:Float = 0.1

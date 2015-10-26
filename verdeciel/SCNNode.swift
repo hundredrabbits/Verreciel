@@ -79,6 +79,12 @@ extension SCNNode
 		
 	}
 	
+	func replace(node:SCNNode)
+	{
+		self.empty()
+		self.add(node)
+	}
+	
 	func empty()
 	{
 		for node in self.childNodes {
@@ -86,10 +92,10 @@ extension SCNNode
 		}
 	}
 	
-	func add(object:SCNNode)
+	func add(node:SCNNode)
 	{
-		for node in object.childNodes {
-			self.addChildNode(node)
+		for child in node.childNodes {
+			self.addChildNode(child)
 		}
 	}
 	

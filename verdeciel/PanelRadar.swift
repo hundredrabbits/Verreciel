@@ -142,17 +142,4 @@ class PanelRadar : Panel
 		port.event = nil
 		targetter.opacity = 0
 	}
-	
-	func closestLocation(type:eventDetails) -> Location
-	{
-		var closestEvent:Location!
-		for newEvent in universe.childNodes {
-			let event = newEvent as! Location
-			if closestEvent == nil { closestEvent = event }
-			if event.details != type { continue }
-			if event.distance > closestEvent.distance { continue }
-			closestEvent = event
-		}
-		return closestEvent
-	}
 }

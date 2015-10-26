@@ -8,6 +8,7 @@ class Location : Event
 	var service = services.none
 	var interaction = "connected"
 	
+	var sprite = SCNNode()
 	var angle:CGFloat!
 	var align:CGFloat!
 	var distance:CGFloat!
@@ -32,8 +33,8 @@ class Location : Event
 
 		self.at = at
 		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
+		geometry = SCNPlane(width: 0.5, height: 0.5)
+		geometry?.firstMaterial?.diffuse.contents = clear
 		
 		addChildNode(sprite)
 		addChildNode(trigger)
@@ -44,9 +45,6 @@ class Location : Event
 	override func start()
 	{
 		position = SCNVector3(at.x,at.y,0)
-		
-		sprite.empty()
-		sprite.add(_sprite())
 		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
@@ -81,23 +79,21 @@ class Location : Event
 	func sight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
-		sprite.empty()
-		sprite.add(_sprite())
+		isSeen = true
+		sprite.replace(_sprite())
 	}
 	
 	func discover()
 	{
 		print("* EVENT    | Discovered \(self.name!)")
-		sprite.empty()
-		sprite.add(_sprite())
+		sprite.replace(_sprite())
 	}
 	
 	func approach()
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
-		sprite.empty()
-		sprite.add(_sprite())
+		sprite.replace(_sprite())
 	}
 	
 	func collide()
@@ -109,8 +105,7 @@ class Location : Event
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
-		sprite.empty()
-		sprite.add(_sprite())
+		sprite.replace(_sprite())
 	}
 	
 	func sightUpdate()

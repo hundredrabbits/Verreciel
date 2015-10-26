@@ -39,13 +39,6 @@ class LocationTelescope : Location
 		return spriteNode
 	}
 	
-	override func sight()
-	{
-		isSeen = true
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
 	override func panel() -> Panel
 	{
 		let newPanel = Panel()

@@ -49,13 +49,6 @@ class LocationCargo : Location
 		return spriteNode
 	}
 	
-	override func sight()
-	{
-		isSeen = true
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
 	override func approach()
 	{
 		space.startInstance(self)

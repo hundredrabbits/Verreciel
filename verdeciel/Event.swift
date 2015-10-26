@@ -23,7 +23,6 @@ class Event : SCNNode
 	var content:Array<Event>!
 	var color = grey
 	
-	var sprite = SCNNode()
 	var trigger = SCNNode()
 	var wire:SCNLine!
 	var connection:Event!
@@ -47,9 +46,6 @@ class Event : SCNNode
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = red
-		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
 		
 		wire = SCNLine()
 		wire.position = SCNVector3(0,0,-0.01)
@@ -88,15 +84,6 @@ class Event : SCNNode
 	{
 		if self.size == 0 {
 			self.removeFromParentNode()
-		}
-	}
-	
-	func updateColor(targetColor:UIColor)
-	{
-		for node in sprite.childNodes
-		{
-			let line = node as! SCNLine
-			line.color(targetColor)
 		}
 	}
 	

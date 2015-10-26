@@ -18,23 +18,14 @@ class LocationStar : Location
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
-		
 		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center)
 		label.position = SCNVector3(0,-0.5,0)
 		self.addChildNode(label)
 	}
 	
-	override func sight()
-	{
-		isSeen = true
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
 	override func _sprite() -> SCNNode
 	{
+		print("Seeing:\(isSeen)")
 		let size:Float = 0.15
 		
 		let spriteNode = SCNNode()
@@ -59,6 +50,8 @@ class LocationStar : Location
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
 			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
 		}
+		
+		print("generated \(name!)")
 		
 		return spriteNode
 	}
