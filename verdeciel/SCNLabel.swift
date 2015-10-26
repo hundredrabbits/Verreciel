@@ -11,7 +11,7 @@ class SCNLabel : SCNNode
 	var activeText = String()
 	var activeScale:Float = 0.2
 	var activeAlignment:alignment!
-	var nodeOffset:SCNNode!
+	var nodeOffset:SCNNode = SCNNode()
 	var color:UIColor = UIColor.whiteColor()
 	
 	init(text:String = "",scale:Float = 0.1,align:alignment = alignment.left, color:UIColor = white, position:SCNVector3 = SCNVector3())
@@ -22,7 +22,6 @@ class SCNLabel : SCNNode
 		activeText = text
 		activeScale = scale
 		activeAlignment = align
-		nodeOffset = SCNNode()
 		
 		addLetters(activeText,scale:activeScale)
 		adjustAlignment()
@@ -60,7 +59,6 @@ class SCNLabel : SCNNode
 	{
 		activeText = ""
 		for letterCur in nodeOffset.childNodes {
-			if letterCur.parentNode == nil { continue }
 			letterCur.removeFromParentNode()
 		}
 	}

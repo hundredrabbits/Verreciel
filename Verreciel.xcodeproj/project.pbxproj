@@ -44,8 +44,6 @@
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
 		574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC31BC5B588008130AB /* LocationRepair.swift */; };
 		575A74161BD01CED000104DD /* PanelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A74151BD01CED000104DD /* PanelInstance.swift */; };
-		577F5D441BC821A3001017B0 /* PanelTargetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D431BC821A3001017B0 /* PanelTargetter.swift */; };
-		577F5D461BC8233E001017B0 /* PanelRadiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F5D451BC8233E001017B0 /* PanelRadiation.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */; };
 		578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */; };
@@ -111,8 +109,6 @@
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574E5FC31BC5B588008130AB /* LocationRepair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepair.swift; sourceTree = "<group>"; };
 		575A74151BD01CED000104DD /* PanelInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelInstance.swift; sourceTree = "<group>"; };
-		577F5D431BC821A3001017B0 /* PanelTargetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTargetter.swift; sourceTree = "<group>"; };
-		577F5D451BC8233E001017B0 /* PanelRadiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadiation.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpawn.swift; sourceTree = "<group>"; };
 		578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTelescope.swift; sourceTree = "<group>"; };
@@ -209,15 +205,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5728D1141BD67C560002D1A4 /* Triangles */ = {
-			isa = PBXGroup;
-			children = (
-				577F5D431BC821A3001017B0 /* PanelTargetter.swift */,
-				577F5D451BC8233E001017B0 /* PanelRadiation.swift */,
-			);
-			name = Triangles;
-			sourceTree = "<group>";
-		};
 		5728D1151BD6D4160002D1A4 /* Primary */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +259,6 @@
 				57C915161BC45E91009454C4 /* Panel.swift */,
 				5728D1151BD6D4160002D1A4 /* Primary */,
 				5728D1161BD6D41C0002D1A4 /* Secondary */,
-				5728D1141BD67C560002D1A4 /* Triangles */,
 				5728D1171BD6DDD60002D1A4 /* Verticals */,
 				577F5D401BC80E9C001017B0 /* Extras */,
 			);
@@ -415,7 +401,6 @@
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
 				574E5FC21BC5AEA2008130AB /* Location.swift in Sources */,
 				57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */,
-				577F5D461BC8233E001017B0 /* PanelRadiation.swift in Sources */,
 				5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */,
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				57CA80981BB9CEA3000D31F7 /* LocationCargo.swift in Sources */,
@@ -444,7 +429,6 @@
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
-				577F5D441BC821A3001017B0 /* PanelTargetter.swift in Sources */,
 				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,

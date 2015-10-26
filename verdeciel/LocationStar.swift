@@ -68,17 +68,6 @@ class LocationStar : Location
 		print("death")
 	}
 	
-	override func approachUpdate()
-	{
-		if distance/0.75 < 1 {
-			let radiationPercent = 100 - ((distance/0.75) * 100)
-			radiation.update((radiationPercent * radiationPercent)/100)
-		}
-		else{
-			radiation.update(0)
-		}
-	}
-	
 	override func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()

@@ -29,23 +29,9 @@ class PanelBattery : Panel
 	var cell3Label:SCNLabel!
 	var cell3:SCNPort!
 	
-	var panelHead:SCNNode!
-	
 	override func setup()
 	{
 		name = "battery"
-	
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label = SCNLabel(text: "battery", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		// Decals
 		

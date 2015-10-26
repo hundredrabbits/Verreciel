@@ -11,7 +11,6 @@ extension SCNNode
 	func touch(id:Int = 0)
 	{
 		print("! This node has no touch action")
-		print(self)
 	}
 	
 	func _start()

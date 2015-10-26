@@ -94,6 +94,7 @@ struct Templates
 
 struct Settings
 {
+	var applicationIsReady:Bool = false
 	var sight:CGFloat = 2.0
 	var approach:CGFloat = 0.5
 	var collision:CGFloat = 0.5

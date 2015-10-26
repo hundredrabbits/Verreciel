@@ -22,7 +22,6 @@ class PanelConsole : Panel
 	
 	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
 	
-	var panelHead:SCNNode!
 	var consoleNode:SCNNode!
 	
 	var refreshTimer:NSTimer!
@@ -30,17 +29,6 @@ class PanelConsole : Panel
 	override func setup()
 	{
 		name = "console"
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		// Decals
 		

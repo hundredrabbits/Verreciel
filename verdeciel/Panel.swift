@@ -13,8 +13,8 @@ import Foundation
 
 class Panel : SCNNode
 {
-	var label = SCNLabel()
-	var details = SCNLabel()
+	var label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+	var details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 	var port:SCNPort!
 	
 	var isEnabled:Bool = true
@@ -31,14 +31,40 @@ class Panel : SCNNode
 	{
 		super.init()
 		
+		initialSetup()
+		setup()
+		installation()
+		start()
+	}
+	
+	func initialSetup()
+	{
 		interface = SCNNode()
 		self.addChildNode(interface)
 		decals = SCNNode()
 		self.addChildNode(decals)
 		
-		setup()
-		installation()
-		start()
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		
+		var panelHead:SCNNode!
+		var panelFoot:SCNNode!
+		
+		panelHead = SCNNode()
+		port = SCNPort(host: self)
+		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
+		label.update(name!)
+		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
+		panelHead.addChildNode(port)
+		panelHead.addChildNode(label)
+		addChildNode(panelHead)
+		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
+		
+		panelFoot = SCNNode()
+		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
+		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		panelFoot.addChildNode(details)
+		addChildNode(panelFoot)
+		panelFoot.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
 	}
 	
 	func setup()

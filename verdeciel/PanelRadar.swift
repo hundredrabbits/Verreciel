@@ -23,24 +23,11 @@ class PanelRadar : Panel
 	var targetter:SCNNode!
 	var targetterFar:SCNNode!
 	
-	var panelHead:SCNNode!
-	
 	// MARK: Default -
 	
 	override func setup()
 	{
 		name = "radar"
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0.01, y: 0, z: templates.radius)
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		panelHead.addChildNode(label)
-		panelHead.addChildNode(port)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		interface.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)

@@ -18,34 +18,12 @@ class PanelCargo : Panel
 	var line5:SCNLine!
 	var line6:SCNLine!
 	
-	var panelHead:SCNNode!
-	
-	var panelFoot:SCNNode!
-	
 	var trigger:SCNTrigger!
 	
 	override func setup()
 	{
 		name = "cargo"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		port.event = Event(newName: "cargohold", type: eventTypes.stack)
-		label = SCNLabel(text: "cargo", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
-		
-		panelFoot = SCNNode()
-		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelFoot.addChildNode(details)
-		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 
 		// Tutorial Item
 		

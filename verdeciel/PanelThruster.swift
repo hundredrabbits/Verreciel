@@ -20,9 +20,6 @@ class PanelThruster : Panel
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
-	var panelHead:SCNNode!
-	var panelFoot:SCNNode!
-	
 	var undockTrigger:SCNTrigger!
 	
 	// MARK: Default -
@@ -30,26 +27,6 @@ class PanelThruster : Panel
 	override func setup()
 	{
 		name = "thruster"
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label = SCNLabel(text: name!, scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
-		
-		panelFoot = SCNNode()
-		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		undockTrigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
-		details.addChildNode(undockTrigger)
-		panelFoot.addChildNode(details)
-		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x += Float(degToRad(-templates.titlesAngle))
 		
 		// Lines
 		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)

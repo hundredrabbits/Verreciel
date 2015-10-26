@@ -24,7 +24,6 @@ var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 
 let battery = PanelBattery()
-let radiation = PanelRadiation()
 let radio = PanelRadio()
 let pilot = PanelPilot()
 let hatch = PanelHatch()
@@ -34,7 +33,6 @@ let thruster = PanelThruster()
 let console = PanelConsole()
 let radar = PanelRadar()
 let translator = PanelTranslator()
-let targetter = PanelTargetter()
 let window = PanelWindow()
 let monitor = PanelMonitor()
 
@@ -112,6 +110,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		ui._start()
 		
 		time.start()
+		
+		settings.applicationIsReady = true
 		
 		debugState()
 	}

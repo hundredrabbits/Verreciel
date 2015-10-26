@@ -11,6 +11,8 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 {	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
+		if settings.applicationIsReady == false { return }
+		
 		capsule._fixedUpdate()
 		player._fixedUpdate()
 		ui._fixedUpdate()

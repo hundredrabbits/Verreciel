@@ -15,32 +15,9 @@ class PanelPilot : Panel
 	var staticDirectionIndicator = SCNNode()
 	var eventsDirectionIndicator = SCNNode()
 	
-	var panelHead:SCNNode!
-	
-	var panelFoot:SCNNode!
-	
 	override func setup()
 	{
 		name = "pilot"
-		
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		panelHead = SCNNode()
-		port = SCNPort(host: self)
-		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label = SCNLabel(text: "pilot", scale: 0.1, align: alignment.center)
-		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
-		panelHead.addChildNode(port)
-		panelHead.addChildNode(label)
-		addChildNode(panelHead)
-		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
-		
-		panelFoot = SCNNode()
-		details = SCNLabel(text: "0", scale: 0.1, align: alignment.center)
-		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		panelFoot.addChildNode(details)
-		addChildNode(panelFoot)
-		panelFoot.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))
@@ -61,8 +38,6 @@ class PanelPilot : Panel
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		interface.addChildNode(eventsDirectionIndicator)
-		
-		update()
 	}
 	
 	override func start()
