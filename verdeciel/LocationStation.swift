@@ -13,10 +13,6 @@ class LocationStation : Location
 		self.size = size
 		self.note = ""
 		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
-		self.addChildNode(trigger)
-		
 		self.interface = panel()
 	}
 	
@@ -64,12 +60,6 @@ class LocationStation : Location
 		newPanel.addChildNode(test)
 		
 		return newPanel
-	}
-	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
 	}
 	
 	required init(coder aDecoder: NSCoder) {

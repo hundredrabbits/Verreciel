@@ -17,12 +17,6 @@ class LocationBeacon : Location
 		self.message = message
 		self.interaction = "> message"
 		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
-		
 		self.interface = panel()
 	}
 	
@@ -52,12 +46,6 @@ class LocationBeacon : Location
 		newPanel.addChildNode(line4)
 		
 		return newPanel
-	}
-	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
 	}
 	
 	override func _sprite() -> SCNNode

@@ -18,12 +18,6 @@ class LocationSpawn : Location
 		self.interface = panel()
 	}
 	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
-	}
-	
 	override func collide()
 	{
 		

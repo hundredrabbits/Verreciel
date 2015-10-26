@@ -29,9 +29,6 @@ class LocationTrade : Location
 		
 		self.interaction = "trading"
 		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
-		
 		self.interface = panel()
 	}
 	

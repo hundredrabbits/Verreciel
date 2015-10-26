@@ -12,9 +12,6 @@ class LocationWaypoint : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
 	}
 	
 	override func _sprite() -> SCNNode
@@ -37,13 +34,6 @@ class LocationWaypoint : Location
 		}
 		
 		return spriteNode
-	}
-	
-	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
 	}
 	
 	override func mesh() -> SCNNode

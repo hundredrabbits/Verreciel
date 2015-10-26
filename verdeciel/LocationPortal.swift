@@ -19,18 +19,6 @@ class LocationPortal : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
-		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
-	}
-	
-	override func sight()
-	{
-		sprite.empty()
-		sprite.add(_sprite())
 	}
 	
 	override func _sprite() -> SCNNode

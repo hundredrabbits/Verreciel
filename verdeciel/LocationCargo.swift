@@ -21,12 +21,6 @@ class LocationCargo : Location
 		
 		inventoryPort = SCNPort(host: self)
 		inventoryPort.event = item
-		
-		self.geometry = SCNPlane(width: 0.5, height: 0.5)
-		self.geometry?.firstMaterial?.diffuse.contents = clear
-		
-		self.addChildNode(sprite)
-		self.addChildNode(trigger)
 	}
 	
 	override func _sprite() -> SCNNode
