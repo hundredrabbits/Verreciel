@@ -13,9 +13,11 @@ import Foundation
 
 class Panel : SCNNode
 {
-	var label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-	var details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+	let label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+	let details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 	var port:SCNPort!
+	let portInputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.right)
+	let portOutputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.left)
 	
 	var isEnabled:Bool = true
 	var interface:SCNNode!
@@ -58,11 +60,18 @@ class Panel : SCNNode
 		panelHead.eulerAngles.x += Float(degToRad(templates.titlesAngle))
 		
 		panelFoot = SCNNode()
-		details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		panelFoot.addChildNode(details)
 		addChildNode(panelFoot)
 		panelFoot.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
+		
+		port.addChildNode(portInputLabel)
+		port.addChildNode(portOutputLabel)
+		portInputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
+		portOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
+		
+		portInputLabel.update("--")
+		portOutputLabel.update("--")
 	}
 	
 	func setup()
@@ -151,6 +160,9 @@ class Panel : SCNNode
 	func installed()
 	{
 		print("+ PANEL    | Installed the \(name!)")
+		
+		portInputLabel.update("\(port.input)")
+		portOutputLabel.update("\(port.output)")
 		
 		isInstalled = true
 		installer.opacity = 0

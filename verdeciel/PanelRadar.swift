@@ -66,6 +66,9 @@ class PanelRadar : Panel
 		interface.addChildNode(targetter)
 		
 		self.position = SCNVector3(0,0,0)
+		
+		port.input = eventTypes.map
+		port.output = eventTypes.location
 	}
 	
 	override func installedFixedUpdate()

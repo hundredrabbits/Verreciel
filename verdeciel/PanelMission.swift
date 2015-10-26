@@ -63,6 +63,9 @@ class PanelMission : Panel
 		linesRoot.addChildNode(quest5)
 		
 		interface.addChildNode(linesRoot)
+		
+		port.input = eventTypes.item
+		port.output = eventTypes.unknown
 	}
 	
 	override func installedFixedUpdate()

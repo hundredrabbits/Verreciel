@@ -111,6 +111,9 @@ class PanelBattery : Panel
 		shieldLabel.updateWithColor("--", color: grey)
 		radioLabel.updateWithColor("--", color: grey)
 		oxygenLabel.updateWithColor("--", color: grey)
+		
+		port.input = eventTypes.battery
+		port.output = eventTypes.unknown
 	}
 	
 	override func start()

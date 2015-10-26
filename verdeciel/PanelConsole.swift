@@ -72,6 +72,9 @@ class PanelConsole : Panel
 		interface.addChildNode(consoleNode)
 		
 		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
+		
+		port.input = eventTypes.unknown
+		port.output = eventTypes.unknown
 	}
 	
 	override func start()

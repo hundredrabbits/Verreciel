@@ -8,6 +8,9 @@ import Foundation
 
 class SCNPort : SCNNode
 {
+	var input:eventTypes!
+	var output:eventTypes!
+	
 	var isActive:Bool = false
 	var isEnabled:Bool = true
 	
@@ -25,9 +28,12 @@ class SCNPort : SCNNode
 	var sprite_output = SCNNode()
 	var sprite_input = SCNNode()
 	
-	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3())
+	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown)
 	{
 		super.init()
+		
+		self.input = input
+		self.output = output
 	
 		self.geometry = SCNPlane(width: 0.3, height: 0.3)
 		self.geometry?.firstMaterial?.diffuse.contents = clear

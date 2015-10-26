@@ -20,10 +20,6 @@ class PanelHatch : Panel
 	var outline3:SCNLine!
 	var outline4:SCNLine!
 	
-	var panelHead:SCNNode!
-	
-	var panelFoot:SCNNode!
-	
 	override func setup()
 	{
 		name = "hatch"
@@ -45,6 +41,9 @@ class PanelHatch : Panel
 		// Trigger
 		
 		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
+		
+		port.input = eventTypes.item
+		port.output = eventTypes.unknown
 	}
 	
 	override func start()

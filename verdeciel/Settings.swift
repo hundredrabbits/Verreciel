@@ -80,6 +80,7 @@ struct Templates
 	
 	var radius:Float = 0
 	
+	var margin:Float = 0
 	var leftMargin:Float = 0
 	var rightMargin:Float = 0
 	var topMargin:Float = 0

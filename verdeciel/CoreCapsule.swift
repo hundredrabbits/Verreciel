@@ -128,6 +128,7 @@ class CoreCapsule: SCNNode
 		templates.topMargin = highNode[0].y * 0.8
 		templates.bottomMargin = -highNode[0].y * 0.8
 		templates.radius = highNode[0].z
+		templates.margin = abs(templates.left - templates.leftMargin)
 		
 		mesh = SCNNode()
 		mesh.position = SCNVector3(0,0,0)

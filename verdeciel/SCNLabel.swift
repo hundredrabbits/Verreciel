@@ -32,12 +32,12 @@ class SCNLabel : SCNNode
 	func adjustAlignment()
 	{
 		if activeAlignment == alignment.center {
-			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1
-			nodeOffset.position = SCNVector3(x: (wordLength/2) + 0.025, y: 0, z: 0)
+			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5)
+			nodeOffset.position = SCNVector3(x: (-wordLength/2) + 0.025, y: 0, z: 0)
 		}
 		else if activeAlignment == alignment.right {
-			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5) * -1
-			nodeOffset.position = SCNVector3(x: wordLength, y: 0, z: 0)
+			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5)
+			nodeOffset.position = SCNVector3(x: -wordLength + (activeScale * 0.5), y: 0, z: 0)
 		}
 	}
 	
@@ -365,7 +365,8 @@ class SCNLabel : SCNNode
 		return letterPivot
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

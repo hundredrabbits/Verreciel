@@ -38,6 +38,9 @@ class PanelPilot : Panel
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		interface.addChildNode(eventsDirectionIndicator)
+		
+		port.input = eventTypes.location
+		port.output = eventTypes.unknown
 	}
 	
 	override func start()

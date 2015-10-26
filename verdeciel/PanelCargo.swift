@@ -25,6 +25,7 @@ class PanelCargo : Panel
 		name = "cargo"
 		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
+		
 		port.event = items.playerCargo
 
 		// Tutorial Item
@@ -51,6 +52,9 @@ class PanelCargo : Panel
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
 		interface.addChildNode(trigger)
+		
+		port.input = eventTypes.item
+		port.output = eventTypes.cargo
 	}
 	
 	override func start()

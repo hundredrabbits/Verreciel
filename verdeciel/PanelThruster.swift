@@ -52,6 +52,9 @@ class PanelThruster : Panel
 		
 		interface.addChildNode(accelerate)
 		interface.addChildNode(decelerate)
+		
+		port.input = eventTypes.location
+		port.output = eventTypes.unknown
 	}
 	
 	override func start()
