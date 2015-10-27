@@ -198,6 +198,22 @@ class CorePlayer : SCNNode
 		else{ alertLabel.opacity = 0 }
 	}
 	
+	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:Float)
+	{
+		player.isLocked = true
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		
+		player.position = position
+		player.eulerAngles.y = deg
+		ui.position = position
+		ui.eulerAngles.y = deg
+		
+		SCNTransaction.setCompletionBlock({ player.isLocked = false })
+		SCNTransaction.commit()
+	}
+	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
