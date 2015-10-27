@@ -78,7 +78,6 @@ class PanelThruster : Panel
 
 	override func touch(id:Int = 0)
 	{
-		print("touched")
 		if id == 0 { speedDown() ; return }
 		if id == 1 { speedUp() ; return }
 		if id == 2 { capsule.undock() ; return }
@@ -205,9 +204,10 @@ class PanelThruster : Panel
 	
 	func speedUp()
 	{
-		if speed <= maxSpeed {
+		if speed < maxSpeed {
 			speed += 1
 		}
+		print("\(speed) - \(maxSpeed)")
 	}
 	
 	func speedDown()
