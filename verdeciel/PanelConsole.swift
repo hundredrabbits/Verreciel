@@ -88,21 +88,16 @@ class PanelConsole : Panel
 		boot()
 	}
 	
-	override func installedFixedUpdate()
-	{
-		/*
-		for line in consoleNode.childNodes {
-			let command = line as! SCNCommand
-			if command.port != nil && command.port.event != nil && command.port.event.size == 0 {
-				command.update(SCNCommand(text: "--", color: grey))
-			}
-		}
-*/
-	}
-	
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
+	}
+	
+	func refresh()
+	{
+		if isInstalled == false { return }
+		if commands.count > 6 { commands.removeAtIndex(0) }
+		update()
 	}
 	
 	override func update()
@@ -136,12 +131,6 @@ class PanelConsole : Panel
 		addLine(SCNCommand(text: "--", color: grey))
 		addLine(SCNCommand(text: "--", color: grey))
 		addLine(SCNCommand(text: "--", color: grey))
-	}
-	
-	func refresh()
-	{
-		if commands.count > 6 { commands.removeAtIndex(0) }
-		update()
 	}
 	
 	override func listen(event: Event)
