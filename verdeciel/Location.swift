@@ -40,6 +40,10 @@ class Location : Event
 		
 		addChildNode(sprite)
 		addChildNode(trigger)
+		
+		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
+		label.position = SCNVector3(0,-0.3,-0.35)
+		addChildNode(label)
 	}
 	
 	// MARK: System -

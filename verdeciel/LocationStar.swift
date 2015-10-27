@@ -14,10 +14,6 @@ class LocationStar : Location
 		self.note = ""
 		self.color = color
 		self.details = eventDetails.star
-		
-		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center, color: grey)
-		label.position = SCNVector3(0,-0.1,-1)
-		self.addChildNode(label)
 	}
 	
 	override func _sprite() -> SCNNode
