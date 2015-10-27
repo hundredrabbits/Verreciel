@@ -14,9 +14,7 @@ import Foundation
 class SCNHandle : SCNNode
 {
 	var destination:SCNVector3!
-	var selectionLine1:SCNLine!
-	var selectionLine2:SCNLine!
-	var selectionLine3:SCNLine!
+	var selectionLine:SCNLine!
 	var trigger:SCNTrigger!
 	
 	var isEnabled:Bool = true
@@ -32,14 +30,22 @@ class SCNHandle : SCNNode
 	
 	func setup()
 	{
-		position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		let width:Float = 0.4
+		let spacing:Float = 0.15
+		let height:Float = 0.2
+		position = SCNVector3(x: 0, y: -0.2, z: templates.radius)
 		
-		selectionLine1 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.3, y: 0.1, z: 0),color:cyan)
-		selectionLine2 = SCNLine(nodeA: SCNVector3(x: -0.3, y: 0, z: 0),nodeB: SCNVector3(x: 0.3, y: 0, z: 0),color:cyan)
-		selectionLine3 = SCNLine(nodeA: SCNVector3(x: -0.3, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.3, y: -0.1, z: 0),color:cyan)
-		addChildNode(selectionLine1)
-		addChildNode(selectionLine2)
-		addChildNode(selectionLine3)
+		addChildNode(SCNLine(nodeA: SCNVector3(x: -width, y: 0, z: height),nodeB: SCNVector3(x: -width + spacing, y: 0, z: height),color:grey) )
+		addChildNode(SCNLine(nodeA: SCNVector3(x: width, y: 0, z: height),nodeB: SCNVector3(x: width - spacing, y: 0, z: height),color:grey) )
+		addChildNode(SCNLine(nodeA: SCNVector3(x: -width, y: 0, z: 0),nodeB: SCNVector3(x: -width, y: 0, z: height),color:grey) )
+		addChildNode(SCNLine(nodeA: SCNVector3(x: width, y: 0, z: 0),nodeB: SCNVector3(x: width, y: 0, z: height),color:grey) )
+		
+		selectionLine = SCNLine(nodeA: SCNVector3(x: -width + spacing, y: 0, z: height),nodeB: SCNVector3(x: width - spacing, y: 0, z: height),color:cyan)
+		addChildNode(selectionLine)
+		
+		let label = SCNLabel(text: "handle", scale: 0.03, align: alignment.center, color: grey)
+		label.position = SCNVector3(0,-0.2,0)
+		addChildNode(label)
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
 		trigger.updateChildrenColors(red)
@@ -49,17 +55,13 @@ class SCNHandle : SCNNode
 	func enable()
 	{
 		isEnabled = true
-		selectionLine1.updateColor(cyan)
-		selectionLine2.updateColor(cyan)
-		selectionLine3.updateColor(cyan)
+		selectionLine.updateColor(cyan)
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-		selectionLine1.updateColor(grey)
-		selectionLine2.updateColor(grey)
-		selectionLine3.updateColor(grey)
+		selectionLine.updateColor(grey)
 	}
 	
 	override func touch(id:Int = 0)
