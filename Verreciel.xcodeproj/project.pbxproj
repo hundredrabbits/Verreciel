@@ -14,7 +14,6 @@
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599451B909E8E000F3E31 /* SCNPoly.swift */; };
 		570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599471B90A20B000F3E31 /* SCNTriangle.swift */; };
-		5705994A1B90D2F4000F3E31 /* PanelWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599491B90D2F4000F3E31 /* PanelWindow.swift */; };
 		5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705994B1B90D8D9000F3E31 /* CoreSpace.swift */; };
 		571728DF1BB03455002782A3 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728DE1BB03455002782A3 /* SCNNode.swift */; };
 		571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* PanelCargo.swift */; };
@@ -27,9 +26,6 @@
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
-		5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */; };
-		5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */; };
-		573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */; };
 		573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelPilot.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
 		5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741B0671BB5C9B7000F7FEF /* Instance.swift */; };
@@ -43,11 +39,15 @@
 		574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* LocationTrade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
 		574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC31BC5B588008130AB /* LocationRepair.swift */; };
-		575A74161BD01CED000104DD /* PanelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A74151BD01CED000104DD /* PanelInstance.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */; };
 		578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
+		579614491BE00E6000421D69 /* MonitorJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614481BE00E6000421D69 /* MonitorJourney.swift */; };
+		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
+		5796144E1BE012DD00421D69 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144D1BE012DD00421D69 /* Converter.swift */; };
+		579614511BE0154400421D69 /* ConverterRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614501BE0154400421D69 /* ConverterRadio.swift */; };
+		579614531BE0156400421D69 /* ConverterTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614521BE0156400421D69 /* ConverterTranslator.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
 		57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */; };
@@ -79,7 +79,6 @@
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		570599451B909E8E000F3E31 /* SCNPoly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPoly.swift; sourceTree = "<group>"; };
 		570599471B90A20B000F3E31 /* SCNTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTriangle.swift; sourceTree = "<group>"; };
-		570599491B90D2F4000F3E31 /* PanelWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelWindow.swift; sourceTree = "<group>"; };
 		5705994B1B90D8D9000F3E31 /* CoreSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreSpace.swift; sourceTree = "<group>"; };
 		571728DE1BB03455002782A3 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		571728E01BB049BB002782A3 /* PanelCargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelCargo.swift; sourceTree = "<group>"; };
@@ -92,9 +91,6 @@
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
-		5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadio.swift; sourceTree = "<group>"; };
-		5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTranslator.swift; sourceTree = "<group>"; };
-		573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelMonitor.swift; sourceTree = "<group>"; };
 		573EDAB41B4B4762007C6D3C /* PanelPilot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelPilot.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
 		5741B0671BB5C9B7000F7FEF /* Instance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
@@ -108,11 +104,15 @@
 		574E5FBF1BC578E1008130AB /* LocationTrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574E5FC31BC5B588008130AB /* LocationRepair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepair.swift; sourceTree = "<group>"; };
-		575A74151BD01CED000104DD /* PanelInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelInstance.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpawn.swift; sourceTree = "<group>"; };
 		578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTelescope.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
+		579614481BE00E6000421D69 /* MonitorJourney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorJourney.swift; sourceTree = "<group>"; };
+		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		5796144D1BE012DD00421D69 /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		579614501BE0154400421D69 /* ConverterRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterRadio.swift; sourceTree = "<group>"; };
+		579614521BE0156400421D69 /* ConverterTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterTranslator.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
@@ -168,6 +168,8 @@
 				5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
+				5796144F1BE012E200421D69 /* Converters */,
+				5796144C1BE00EF800421D69 /* Monitors */,
 				5736277A1B4C06FE00899EBC /* Panels */,
 				576BE0841BC8B8700046E43C /* Library */,
 				573627791B4C06E800899EBC /* Components */,
@@ -205,36 +207,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5728D1151BD6D4160002D1A4 /* Primary */ = {
-			isa = PBXGroup;
-			children = (
-				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
-				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
-				57F4FA101BB8CECF00AEE66C /* PanelMission.swift */,
-				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
-			);
-			name = Primary;
-			sourceTree = "<group>";
-		};
-		5728D1161BD6D41C0002D1A4 /* Secondary */ = {
-			isa = PBXGroup;
-			children = (
-				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
-				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
-				571728E01BB049BB002782A3 /* PanelCargo.swift */,
-				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
-			);
-			name = Secondary;
-			sourceTree = "<group>";
-		};
-		5728D1171BD6DDD60002D1A4 /* Verticals */ = {
-			isa = PBXGroup;
-			children = (
-				570599491B90D2F4000F3E31 /* PanelWindow.swift */,
-			);
-			name = Verticals;
-			sourceTree = "<group>";
-		};
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,10 +230,14 @@
 			isa = PBXGroup;
 			children = (
 				57C915161BC45E91009454C4 /* Panel.swift */,
-				5728D1151BD6D4160002D1A4 /* Primary */,
-				5728D1161BD6D41C0002D1A4 /* Secondary */,
-				5728D1171BD6DDD60002D1A4 /* Verticals */,
-				577F5D401BC80E9C001017B0 /* Extras */,
+				571728E91BB07FB8002782A3 /* PanelBattery.swift */,
+				57A0F10C1B3DCD640007650F /* PanelRadar.swift */,
+				57F4FA101BB8CECF00AEE66C /* PanelMission.swift */,
+				57F645F61B4CC0C20088D115 /* PanelConsole.swift */,
+				573EDAB41B4B4762007C6D3C /* PanelPilot.swift */,
+				573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */,
+				571728E01BB049BB002782A3 /* PanelCargo.swift */,
+				57F645F01B4CA2700088D115 /* PanelHatch.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -299,17 +275,6 @@
 			name = Locations;
 			sourceTree = "<group>";
 		};
-		577F5D401BC80E9C001017B0 /* Extras */ = {
-			isa = PBXGroup;
-			children = (
-				5734E3A61BB2EF7A007B42AD /* PanelRadio.swift */,
-				5734E3A81BB2F2C3007B42AD /* PanelTranslator.swift */,
-				573EDAB21B4B46C4007C6D3C /* PanelMonitor.swift */,
-				575A74151BD01CED000104DD /* PanelInstance.swift */,
-			);
-			name = Extras;
-			sourceTree = "<group>";
-		};
 		579419731B58AEB100F9FF87 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +286,25 @@
 				5726C6061BD46FFF00B924B2 /* CoreUI.swift */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		5796144C1BE00EF800421D69 /* Monitors */ = {
+			isa = PBXGroup;
+			children = (
+				5796144A1BE00EE300421D69 /* Monitor.swift */,
+				579614481BE00E6000421D69 /* MonitorJourney.swift */,
+			);
+			name = Monitors;
+			sourceTree = "<group>";
+		};
+		5796144F1BE012E200421D69 /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				5796144D1BE012DD00421D69 /* Converter.swift */,
+				579614501BE0154400421D69 /* ConverterRadio.swift */,
+				579614521BE0156400421D69 /* ConverterTranslator.swift */,
+			);
+			name = Converters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,9 +382,12 @@
 			files = (
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
+				579614531BE0156400421D69 /* ConverterTranslator.swift in Sources */,
+				5796144E1BE012DD00421D69 /* Converter.swift in Sources */,
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
 				574E5FC21BC5AEA2008130AB /* Location.swift in Sources */,
 				57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */,
+				579614491BE00E6000421D69 /* MonitorJourney.swift in Sources */,
 				5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */,
 				571728E11BB049BB002782A3 /* PanelCargo.swift in Sources */,
 				57CA80981BB9CEA3000D31F7 /* LocationCargo.swift in Sources */,
@@ -411,30 +398,28 @@
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */,
+				5796144B1BE00EE300421D69 /* Monitor.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */,
 				574E5FBE1BC5775F008130AB /* LocationLibrary.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* CoreCapsule.swift in Sources */,
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
 				571728E51BB06413002782A3 /* SCNCommand.swift in Sources */,
-				5734E3A91BB2F2C3007B42AD /* PanelTranslator.swift in Sources */,
 				5748AD9E1BC8476000C47468 /* QuestLibrary.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* PanelConsole.swift in Sources */,
 				572258151BB877C600DEC41E /* LocationPortal.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* LocationStar.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
-				573EDAB31B4B46C4007C6D3C /* PanelMonitor.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
 				5745646E1BD3D87000A57C83 /* GameSceneDelegate.swift in Sources */,
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
-				5734E3A71BB2EF7A007B42AD /* PanelRadio.swift in Sources */,
+				579614511BE0154400421D69 /* ConverterRadio.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */,
 				578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */,
-				575A74161BD01CED000104DD /* PanelInstance.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* PanelMission.swift in Sources */,
 				57EDED221BC17321005DF3DE /* LocationBeacon.swift in Sources */,
 				57C915171BC45E91009454C4 /* Panel.swift in Sources */,
@@ -445,7 +430,6 @@
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,
 				57FA031D1BBA21490077D517 /* LocationStation.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
-				5705994A1B90D2F4000F3E31 /* PanelWindow.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */,
 				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
 				574AE3F71BC36DAE00432603 /* LocationWaypoint.swift in Sources */,

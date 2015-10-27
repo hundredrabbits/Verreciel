@@ -92,7 +92,7 @@ class PanelMission : Panel
 		quest1Details.update("\(quests.tutorialQuestId)/\(quests.tutorial.count)")
 		ui.addMessage(latestTutorialQuest.name!)
 		
-		// Tutorial Quest Line
+		// Falvet Quest Line
 		quest2.update((latestFalvetQuest.name!))
 		quest2Details.update("\(quests.falvetQuestId)/\(quests.falvet.count)")
 		ui.addMessage(latestFalvetQuest.name!)

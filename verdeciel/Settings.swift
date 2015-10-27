@@ -11,8 +11,8 @@ import QuartzCore
 import SceneKit
 import Foundation
 
+// Panels
 let battery = PanelBattery()
-let radio = PanelRadio()
 let pilot = PanelPilot()
 let hatch = PanelHatch()
 let mission = PanelMission()
@@ -20,10 +20,15 @@ let cargo = PanelCargo()
 let thruster = PanelThruster()
 let console = PanelConsole()
 let radar = PanelRadar()
-let translator = PanelTranslator()
-let window = PanelWindow()
-let monitor = PanelMonitor()
 
+// Converters
+let radio = ConverterRadio()
+let translator = ConverterTranslator()
+
+// Monitors
+let journey = MonitorJourney()
+
+// Generic
 var time:CoreTime!
 var universe:CoreUniverse!
 var capsule:CoreCapsule!
@@ -31,6 +36,7 @@ var player:CorePlayer!
 var space:CoreSpace!
 var ui:CoreUI!
 
+// Collections
 var quests = QuestLibrary()
 var items = ItemLibrary()
 var locations = LocationLibrary()

@@ -180,7 +180,6 @@ class Panel : SCNNode
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.port.enable() ; self.onInstallationComplete() })
 		SCNTransaction.commit()
-		
 	}
 	
 	func onInstallationBegin()
