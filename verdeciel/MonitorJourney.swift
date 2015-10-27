@@ -8,5 +8,15 @@ import Foundation
 
 class MonitorJourney : Monitor
 {
-
+	var distance:Float = 0
+	
+	override func installedFixedUpdate()
+	{
+		label.update("\(Int(distance/100))")
+	}
+	
+	override func onInstallationBegin()
+	{
+		player.lookAt(deg: -90)
+	}
 }

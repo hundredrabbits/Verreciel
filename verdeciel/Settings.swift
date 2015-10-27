@@ -44,6 +44,7 @@ var templates = Templates()
 var settings = Settings()
 var debug = Debug()
 
+// Colors
 var black:UIColor = UIColor(white: 0, alpha: 1)
 var grey:UIColor = UIColor(white: 0.4, alpha: 1)
 var greyTone:UIColor = UIColor(white: 0.2, alpha: 1)
@@ -133,7 +134,7 @@ struct Templates
 	var bottomMargin:Float = 0
 	
 	var titlesAngle:CGFloat = 22
-	var monitorsAngle:CGFloat = 32
+	var monitorsAngle:CGFloat = 47
 	var warningsAngle:CGFloat = 44
 	
 	var lineSpacing:Float = 0.42

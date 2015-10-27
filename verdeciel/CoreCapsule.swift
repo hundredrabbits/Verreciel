@@ -13,7 +13,6 @@ class CoreCapsule: SCNNode
 	var oxygen:Float = 100
 	
 	var at:CGPoint = universe.loiqe_spawn.at
-	var journey:Float = 0
 	
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal
@@ -31,7 +30,7 @@ class CoreCapsule: SCNNode
 		self.direction = 0
 		
 		nodeSetup()
-		panelSetup()
+		interfaceSetup()
 	}
 	
 	override func start()
@@ -58,7 +57,7 @@ class CoreCapsule: SCNNode
 		let distanceRatio = distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5
 		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 		
-		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.003 { speed = 0.003 }
+		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.001 { speed = 0.001 }
 		let angle:CGFloat = CGFloat((capsule.direction) % 360)
 
 		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
@@ -154,8 +153,16 @@ class CoreCapsule: SCNNode
 		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
 	}
 	
-	func panelSetup()
+	func interfaceSetup()
 	{
+		// Converters
+		addChildNode(translator)
+		addChildNode(radio)
+		
+		// Monitors
+		addChildNode(journey)
+		
+		// Panels
 		addChildNode(battery)
 		addChildNode(hatch)
 		addChildNode(console)
@@ -173,10 +180,10 @@ class CoreCapsule: SCNNode
 		radar.eulerAngles.y = Float(degToRad(270))
 		thruster.eulerAngles.y = Float(degToRad(315))
 		
-//		battery.addChildNode(PanelHandle(destination: SCNVector3(0,0,-1.5)))
-//		console.addChildNode(PanelHandle(destination: SCNVector3(-1.5,0,0)))
-//		mission.addChildNode(PanelHandle(destination: SCNVector3(0,0,1.5)))
-//		radar.addChildNode(PanelHandle(destination: SCNVector3(1.5,0,0)))	
+		journey.eulerAngles.y = radar.eulerAngles.y
+		
+		radio.eulerAngles.y = console.eulerAngles.y
+		translator.eulerAngles.y = battery.eulerAngles.y
 	}
 	
 	required init?(coder aDecoder: NSCoder)

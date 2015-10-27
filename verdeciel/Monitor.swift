@@ -8,12 +8,56 @@ import Foundation
 
 class Monitor : SCNNode
 {
-	let label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-	let details = SCNLabel(text: "", scale: 0.085, align: alignment.center)
+	let label = SCNLabel(text: "", scale: 0.08, align: alignment.center)
+	let details = SCNLabel(text: "", scale: 0.04, align: alignment.center, color: grey)
+	let interface = SCNNode()
 	
 	override init()
 	{
 		super.init()
+		
+		name = "journey"
+		
+		addChildNode(interface)
+		interface.position = SCNVector3(0,0,templates.radius)
+		
+		label.update("0")
+		label.position = SCNVector3(0,0,0)
+		interface.addChildNode(label)
+		
+		details.update(name!)
+		details.position = SCNVector3(0,0.2,0)
+		interface.addChildNode(details)
+		
+		self.eulerAngles.z = Float(degToRad(templates.monitorsAngle))
+		
+		label.opacity = 0
+		details.opacity = 0
+		
+		installation()
+	}
+	
+	override func fixedUpdate()
+	{
+		if isInstalling == true {
+			installProgress += CGFloat(arc4random_uniform(100))/50
+			installProgressBar.update(installProgress)
+			installProgressBar.opacity = 1
+			if installProgress >= 100 {
+				installed()
+				installer.opacity = 0
+				isInstalling = false
+			}
+		}
+		
+		if isInstalled == true {
+			installedFixedUpdate()
+		}
+	}
+	
+	func installedFixedUpdate()
+	{
+		
 	}
 	
 	// MARK: Installation -
@@ -33,18 +77,14 @@ class Monitor : SCNNode
 	func installation()
 	{
 		installer = SCNNode()
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
-		installer.position = SCNVector3(0,0,templates.radius)
-		installProgressBar = SCNProgressBar(width: 1)
-		installProgressBar.position = SCNVector3(-0.5,-0.5,0)
+		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1 + 0.1,0), nodeB: SCNVector3(0.1,-0.1 + 0.1,0), color: grey))
+		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1 + 0.1,0), nodeB: SCNVector3(0.1,0.1 + 0.1,0), color: grey))
+		installer.position = SCNVector3(0,0,0)
+		installProgressBar = SCNProgressBar(width: 0.5)
+		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
 		installProgressBar.opacity = 0
 		installer.addChildNode(installProgressBar)
-		self.addChildNode(installer)
-		
-		label.updateWithColor("--", color: grey)
-		self.opacity = 0
-		details.opacity = 0
+		interface.addChildNode(installer)
 	}
 	
 	func installed()
@@ -54,13 +94,9 @@ class Monitor : SCNNode
 		isInstalled = true
 		installer.opacity = 0
 		
-		label.updateWithColor(name!, color: white)
-		self.position = SCNVector3(0,0,templates.radius - 0.5)
-		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
-		self.opacity = 1
-		self.position = SCNVector3(0,0,templates.radius)
+		label.opacity = 1
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
 		SCNTransaction.commit()

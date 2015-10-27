@@ -164,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				5734D45B1B5AAA7800BF0048 /* Todo */,
+				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
 				5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
@@ -245,7 +246,6 @@
 		576BE0841BC8B8700046E43C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
 				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 				57A0F10E1B3DDABF0007650F /* Event.swift */,
