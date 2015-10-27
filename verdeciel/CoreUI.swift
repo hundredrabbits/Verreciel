@@ -54,11 +54,11 @@ class CoreUI: SCNNode
 		visor.addChildNode(displayMessage)
 		
 		displayPassive = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: grey)
-		displayPassive.position = SCNVector3(0,-1.375,visorDepth)
+		displayPassive.position = SCNVector3(0,-1.2,visorDepth)
 		visor.addChildNode(displayPassive)
 		
 		displayAlert = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: red)
-		displayAlert.position = SCNVector3(0,1.325,visorDepth)
+		displayAlert.position = SCNVector3(0,1.3,visorDepth)
 		visor.addChildNode(displayAlert)
 		
 		displayLeft.eulerAngles.y = Float(degToRad(10))
@@ -131,13 +131,13 @@ class CoreUI: SCNNode
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
-		displayPassive.position = SCNVector3(0,-1.35,self.visorDepth - 0.01)
+		displayPassive.position = SCNVector3(0,-1.2,self.visorDepth - 0.01)
 		displayPassive.opacity = 0
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.displayPassive.update(self.passive)
-			self.displayPassive.position = SCNVector3(0,-1.35,self.visorDepth)
+			self.displayPassive.position = SCNVector3(0,-1.2,self.visorDepth)
 			self.displayPassive.opacity = 1
 			SCNTransaction.commit()
 		})

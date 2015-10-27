@@ -33,7 +33,7 @@ class SCNLabel : SCNNode
 	{
 		if activeAlignment == alignment.center {
 			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5)
-			nodeOffset.position = SCNVector3(x: (-wordLength/2) + 0.025, y: 0, z: 0)
+			nodeOffset.position = SCNVector3(x: (-wordLength/2), y: 0, z: 0)
 		}
 		else if activeAlignment == alignment.right {
 			let wordLength = Float(activeText.characters.count) * (activeScale * 1.5)
@@ -49,7 +49,7 @@ class SCNLabel : SCNNode
 		{
 			if letterCur == "$" { linePos += 1 ; letterPos = 0 ; continue }
 			let letterNode = letter(String(letterCur),scale:scale)
-			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: scale * linePos * -3, z: 0)
+			letterNode.position = SCNVector3(x: (scale * 1.5) * Float(letterPos), y: scale * linePos * -4.15, z: 0)
 			nodeOffset.addChildNode(letterNode)
 			letterPos += 1
 		}

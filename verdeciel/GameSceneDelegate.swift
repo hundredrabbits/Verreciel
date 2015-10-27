@@ -24,6 +24,5 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval)
 	{
-//		capsule._lateUpdate()
 	}
 }

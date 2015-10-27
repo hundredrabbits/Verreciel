@@ -20,7 +20,7 @@ class PanelThruster : Panel
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
-	var undockTrigger:SCNTrigger!
+	var trigger:SCNTrigger!
 	
 	// MARK: Default -
 	
@@ -55,6 +55,18 @@ class PanelThruster : Panel
 		
 		port.input = eventTypes.location
 		port.output = eventTypes.unknown
+		
+		let buttonWidth = 0.65
+		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth,-0.25,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth,0.25,0), color: red))
+		
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
+		
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
+		details.addChildNode(trigger)
 	}
 	
 	override func start()
@@ -66,6 +78,7 @@ class PanelThruster : Panel
 
 	override func touch(id:Int = 0)
 	{
+		print("touched")
 		if id == 0 { speedDown() ; return }
 		if id == 1 { speedUp() ; return }
 		if id == 2 { capsule.undock() ; return }
@@ -97,6 +110,7 @@ class PanelThruster : Panel
 		label.updateColor(grey)
 		details.updateWithColor("unpowered", color: grey)
 		port.disable()
+		trigger.opacity = 0
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -114,6 +128,7 @@ class PanelThruster : Panel
 		label.updateColor(white)
 		details.updateWithColor("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
 		port.enable()
+		trigger.opacity = 0
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -130,8 +145,9 @@ class PanelThruster : Panel
 	func modeDocked()
 	{
 		label.updateColor(white)
-		details.updateWithColor("<Undock>", color: red)
+		details.update("Undock")
 		port.enable()
+		trigger.opacity = 1
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -152,6 +168,7 @@ class PanelThruster : Panel
 		label.updateColor(white)
 		details.updateWithColor(String(format: "%.1f", actualSpeed), color: white)
 		port.enable()
+		trigger.opacity = 0
 		
 		line1.opacity = 1
 		line2.opacity = 1

@@ -80,11 +80,11 @@ class SCNPort : SCNNode
 		sprite_output.opacity = 1
 		
 		// Input
-		if origin == nil {
-			sprite_input.updateChildrenColors(grey)
-		}
-		else if isEnabled == false {
+		if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)
+		}
+		else if origin == nil {
+			sprite_input.updateChildrenColors(grey)
 		}
 		else {
 			sprite_input.updateChildrenColors(red)
@@ -171,8 +171,6 @@ class SCNPort : SCNNode
 		
 		host.bang()
 		wire.enable()
-		
-		print("expected: \(connection.input) received:\(event.type)")
 	}
 	
 	func hasEvent(type:eventTypes = eventTypes.none) -> Bool

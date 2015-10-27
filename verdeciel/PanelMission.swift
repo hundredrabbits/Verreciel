@@ -80,22 +80,18 @@ class PanelMission : Panel
 	{
 		label.updateWithColor(name!, color: white)
 		
-		// Tutorial Quest Line
-		if quests.tutorialLatest != nil {
-			quest1.update((quests.tutorialLatest.name!))
-			quest1Details.update("\(quests.tutorialProgress)/\(quests.tutorial.count)")
-			ui.addMessage(quests.tutorialLatest.name!)
-		} else {
-			quest1.update("--")
-		}
+		let latestTutorialQuest = quests.tutorial[quests.tutorialQuestId]
+		let latestFalvetQuest = quests.falvet[quests.falvetQuestId]
 		
-		// Falvet Quest Line
-		if quests.falvetLatest != nil {
-			quest2.update((quests.falvetLatest.name!))
-			quest2Details.update("\(quests.falvetProgress)/\(quests.falvet.count)")
-		} else {
-			quest2.update("--")
-		}
+		// Tutorial Quest Line
+		quest1.update((latestTutorialQuest.name!))
+		quest1Details.update("\(quests.tutorialQuestId)/\(quests.tutorial.count)")
+		ui.addMessage(latestTutorialQuest.name!)
+		
+		// Tutorial Quest Line
+		quest2.update((latestFalvetQuest.name!))
+		quest2Details.update("\(quests.falvetQuestId)/\(quests.falvet.count)")
+		ui.addMessage(latestFalvetQuest.name!)
 		
 		quest2.update("--")
 		quest3.update("--")

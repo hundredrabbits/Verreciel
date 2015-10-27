@@ -73,7 +73,7 @@ class LocationCargo : Location
 		nodeFrame.addChildNode(inventoryLabel)
 		
 		inventoryNote = SCNLabel(text: inventoryPort.event.note, scale:0.08, color:grey)
-		inventoryNote.position = SCNVector3(x: 0.5, y: -0.3, z: 0)
+		inventoryNote.position = SCNVector3(x: 0.5, y: -0.4, z: 0)
 		nodeFrame.addChildNode(inventoryNote)
 		
 		newPanel.addChildNode(nodeFrame)

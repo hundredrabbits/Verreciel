@@ -118,15 +118,15 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		battery.cell1.connect(battery.thrusterPort)
-		capsule.at = universe.loiqe_city.at
-		
-		quests.tutorial[0].complete()
-		quests.tutorial[1].complete()
-		quests.tutorial[2].complete()
-		quests.tutorial[3].complete()
-		
-		console.install()
+//		battery.cell1.connect(battery.thrusterPort)
+//		capsule.at = universe.loiqe_city.at
+//		
+//		quests.tutorial[0].complete()
+//		quests.tutorial[1].complete()
+//		quests.tutorial[2].complete()
+//		quests.tutorial[3].complete()
+//		
+//		console.install()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
