@@ -249,4 +249,20 @@ class PanelThruster : Panel
 		capsule.journey += actualSpeed
 		space.starTimer += actualSpeed
 	}
+	
+	override func onInstallationBegin()
+	{
+		player.isLocked = true
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		
+		player.position = SCNVector3(0,0,0)
+		player.eulerAngles.y = Float(degToRad(-45))
+		ui.position = SCNVector3(0,0,0)
+		ui.eulerAngles.y = Float(degToRad(-45))
+		
+		SCNTransaction.setCompletionBlock({ player.isLocked = false })
+		SCNTransaction.commit()
+	}
 }

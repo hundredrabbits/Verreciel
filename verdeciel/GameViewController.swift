@@ -10,49 +10,6 @@ var scene = SCNScene()
 var touchOrigin = CGPoint()
 var touchPosition = CGPoint()
 
-let scaleValue : Float = 0.01
-
-var black:UIColor = UIColor(white: 0, alpha: 1)
-var grey:UIColor = UIColor(white: 0.4, alpha: 1)
-var greyTone:UIColor = UIColor(white: 0.2, alpha: 1)
-var white:UIColor = UIColor.whiteColor()
-var whiteTone:UIColor = UIColor(white: 0.8, alpha: 1)
-var red:UIColor = UIColor.redColor()
-var redTone:UIColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
-var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
-var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
-var clear:UIColor = UIColor(white: 0, alpha: 0)
-
-let battery = PanelBattery()
-let radio = PanelRadio()
-let pilot = PanelPilot()
-let hatch = PanelHatch()
-let mission = PanelMission()
-let cargo = PanelCargo()
-let thruster = PanelThruster()
-let console = PanelConsole()
-let radar = PanelRadar()
-let translator = PanelTranslator()
-let window = PanelWindow()
-let monitor = PanelMonitor()
-
-var time:CoreTime!
-var universe:CoreUniverse!
-var capsule:CoreCapsule!
-var player:CorePlayer!
-var space:CoreSpace!
-var ui:CoreUI!
-
-var items = ItemLibrary()
-var locations = LocationLibrary()
-var templates = Templates()
-var settings = Settings()
-var debug = Debug()
-
-var quests:QuestLibrary!
-
-var counter:Int = 0
-
 var sceneDelegate:SceneDelegate!
 
 class GameViewController: UIViewController, SCNSceneRendererDelegate
@@ -131,6 +88,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
+		if player.isLocked == true { return }
+		
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
 		}
@@ -141,6 +100,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
+		if player.isLocked == true { return }
+		
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
 		}
@@ -161,6 +122,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
+		if player.isLocked == true { return }
+		
 		player.canAlign = true
 		ui.canAlign = true
 	}
@@ -178,7 +141,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		}
 	}
 	
-	override func prefersStatusBarHidden() -> Bool {
+	override func prefersStatusBarHidden() -> Bool
+	{
 		return true
 	}
 }

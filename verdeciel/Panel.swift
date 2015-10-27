@@ -136,6 +136,7 @@ class Panel : SCNNode
 	func install()
 	{
 		isInstalling = true
+		onInstallationBegin()
 	}
 	
 	func installation()
@@ -177,8 +178,19 @@ class Panel : SCNNode
 		interface.opacity = 1
 		interface.position = SCNVector3(0,0,templates.radius)
 		details.opacity = 1
-		SCNTransaction.setCompletionBlock({ self.port.enable() })
+		SCNTransaction.setCompletionBlock({ self.port.enable() ; self.onInstallationComplete() })
 		SCNTransaction.commit()
+		
+	}
+	
+	func onInstallationBegin()
+	{
+	
+	}
+	
+	func onInstallationComplete()
+	{
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

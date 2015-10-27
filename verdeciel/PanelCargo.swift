@@ -73,6 +73,8 @@ class PanelCargo : Panel
 				uploadCompleted()
 			}
 		}
+		
+		details.update("\(port.event.content.count)/6")
 	}
 	
 	func contains(event:Event) -> Bool
@@ -117,7 +119,6 @@ class PanelCargo : Panel
 		port.origin.event = nil
 		port.origin.host.bang()
 		
-		details.update("")
 		update()
 		bang()
 	}
@@ -153,5 +154,21 @@ class PanelCargo : Panel
 		update()
 		if port.connection == nil { return }
 		port.connection.host.listen(port.event)
+	}
+	
+	override func onInstallationBegin()
+	{
+		player.isLocked = true
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		
+		player.position = SCNVector3(0,0,0)
+		player.eulerAngles.y = Float(degToRad(-225))
+		ui.position = SCNVector3(0,0,0)
+		ui.eulerAngles.y = Float(degToRad(-225))
+		
+		SCNTransaction.setCompletionBlock({ player.isLocked = false })
+		SCNTransaction.commit()
 	}
 }

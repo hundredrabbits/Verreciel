@@ -8,9 +8,9 @@ import Foundation
 
 class PanelMission : Panel
 {
-	var content:Panel!
+	var locationPanel:Panel!
 
-	var linesRoot:SCNNode!
+	var questPanel:SCNNode!
 	
 	var quest1 = SCNLabel()
 	var quest1Details = SCNLabel(text: "", align: alignment.right, color:grey)
@@ -37,43 +37,45 @@ class PanelMission : Panel
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
 		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
-		content = Panel()
-		interface.addChildNode(content)
+		locationPanel = Panel()
+		interface.addChildNode(locationPanel)
 	
-		linesRoot = SCNNode()
-		linesRoot.position = SCNVector3(0,0,0)
+		questPanel = SCNNode()
+		questPanel.position = SCNVector3(0,0,0)
 		
 		quest1.position = SCNVector3(x: templates.leftMargin, y: 0.8, z: 0)
-		linesRoot.addChildNode(quest1)
+		questPanel.addChildNode(quest1)
 		quest1Details.position = SCNVector3(x: templates.rightMargin, y: 0.8, z: 0)
-		linesRoot.addChildNode(quest1Details)
+		questPanel.addChildNode(quest1Details)
 		
 		quest2.position = SCNVector3(x: templates.leftMargin, y: 0.4, z: 0)
-		linesRoot.addChildNode(quest2)
+		questPanel.addChildNode(quest2)
 		quest2Details.position = SCNVector3(x: templates.rightMargin, y: 0.4, z: 0)
-		linesRoot.addChildNode(quest2Details)
+		questPanel.addChildNode(quest2Details)
 		
 		quest3.position = SCNVector3(x: templates.leftMargin, y: 0, z: 0)
-		linesRoot.addChildNode(quest3)
+		questPanel.addChildNode(quest3)
 		
 		quest4.position = SCNVector3(x: templates.leftMargin, y: -0.4, z: 0)
-		linesRoot.addChildNode(quest4)
+		questPanel.addChildNode(quest4)
 		
 		quest5.position = SCNVector3(x: templates.leftMargin, y: -0.8, z: 0)
-		linesRoot.addChildNode(quest5)
+		questPanel.addChildNode(quest5)
 		
-		interface.addChildNode(linesRoot)
+		interface.addChildNode(questPanel)
 		
 		port.input = eventTypes.item
 		port.output = eventTypes.unknown
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1)))
+		
+		locationPanel.opacity = 0
 	}
 	
 	override func installedFixedUpdate()
 	{
-		if capsule.isDocked { panelUpdate() }
-		else{ missionUpdate() }
+		if capsule.isDocked { panelUpdate() ; questPanel.opacity = 0 ; locationPanel.opacity = 1 }
+		else{ missionUpdate() ; questPanel.opacity = 1 ; locationPanel.opacity = 0 }
 	}
 	
 	func missionUpdate()
@@ -101,6 +103,7 @@ class PanelMission : Panel
 	
 	func panelUpdate()
 	{
+		if isInstalled == false { return }
 		if capsule.dock.isComplete == true {
 			label.updateWithColor(capsule.dock.name!, color: cyan)
 		}
@@ -126,15 +129,29 @@ class PanelMission : Panel
 	{
 		print("connected")
 		label.update(location.name!)
-		linesRoot.opacity = 0
-		content.updateInterface(location.panel())
+		locationPanel.updateInterface(location.panel())
 	}
 	
 	func disconnectFromLocation()
 	{
 		print("disconnected")
 		label.update(name!)
-		linesRoot.opacity = 1
-		content.empty()
+		locationPanel.empty()
+	}
+	
+	override func onInstallationBegin()
+	{
+		player.isLocked = true
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		
+		player.position = SCNVector3(0,0,0)
+		player.eulerAngles.y = Float(degToRad(-180))
+		ui.position = SCNVector3(0,0,0)
+		ui.eulerAngles.y = Float(degToRad(-180))
+		
+		SCNTransaction.setCompletionBlock({ player.isLocked = false })
+		SCNTransaction.commit()
 	}
 }

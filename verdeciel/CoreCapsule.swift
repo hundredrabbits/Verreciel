@@ -139,7 +139,7 @@ class CoreCapsule: SCNNode
 			let line = SCNLine(nodeA: SCNVector3(-0.1,-3,templates.radius), nodeB: SCNVector3(0.1,-3,templates.radius), color: grey)
 			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
 			mesh.addChildNode(line)
-			let line3 = SCNLine(nodeA: SCNVector3(-0.05,4,templates.radius/2.5), nodeB: SCNVector3(0.05,4,templates.radius/2.5), color: grey)
+			let line3 = SCNLine(nodeA: SCNVector3(-0.1,3,templates.radius), nodeB: SCNVector3(0.1,3,templates.radius), color: grey)
 			line3.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
 			mesh.addChildNode(line3)
 			i += 1
