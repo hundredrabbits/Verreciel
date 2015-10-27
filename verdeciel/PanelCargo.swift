@@ -73,8 +73,9 @@ class PanelCargo : Panel
 				uploadCompleted()
 			}
 		}
-		
-		details.update("\(port.event.content.count)/6")
+		else{
+			details.update("\(port.event.content.count)/6")
+		}
 	}
 	
 	func contains(event:Event) -> Bool

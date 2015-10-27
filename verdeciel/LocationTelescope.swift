@@ -16,6 +16,10 @@ class LocationTelescope : Location
 		self.interaction = "respawning"
 		
 		self.interface = panel()
+		
+		let label = SCNLabel(text: name, scale: 0.075, align: alignment.center, color: grey)
+		label.position = SCNVector3(0,-0.25,-1)
+		self.addChildNode(label)
 	}
 	
 	override func _sprite() -> SCNNode
