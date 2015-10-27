@@ -45,7 +45,7 @@ class CoreSpace: SCNNode
 		{
 			let line = node as! SCNLine
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
-			line.updateHeight(thruster.actualSpeed + 0.2)
+			line.updateHeight(thruster.actualSpeed + 0.1)
 			
 			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50
 		

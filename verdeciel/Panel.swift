@@ -14,7 +14,7 @@ import Foundation
 class Panel : SCNNode
 {
 	let label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-	let details = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+	let details = SCNLabel(text: "", scale: 0.085, align: alignment.center)
 	var port:SCNPort!
 	let portInputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.right)
 	let portOutputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.left)

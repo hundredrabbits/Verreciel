@@ -39,7 +39,8 @@ class SCNLine : SCNNode
 	
 	func updateHeight(height:Float)
 	{
-		draw(self.nodeA, nodeB: SCNVector3(nodeB.x,height,nodeB.z), color: self.color)
+		self.nodeB = SCNVector3(nodeB.x,height,nodeB.z)
+		draw(nodeA, nodeB: nodeB, color: color)
 	}
 	
 	func reset()

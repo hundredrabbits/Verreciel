@@ -33,7 +33,7 @@ class SCNHandle : SCNNode
 		let width:Float = 0.4
 		let spacing:Float = 0.15
 		let height:Float = 0.2
-		position = SCNVector3(x: 0, y: -0.2, z: templates.radius)
+		position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		addChildNode(SCNLine(nodeA: SCNVector3(x: -width, y: 0, z: height),nodeB: SCNVector3(x: -width + spacing, y: 0, z: height),color:grey) )
 		addChildNode(SCNLine(nodeA: SCNVector3(x: width, y: 0, z: height),nodeB: SCNVector3(x: width - spacing, y: 0, z: height),color:grey) )

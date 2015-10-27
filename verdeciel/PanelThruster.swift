@@ -207,7 +207,6 @@ class PanelThruster : Panel
 		if speed < maxSpeed {
 			speed += 1
 		}
-		print("\(speed) - \(maxSpeed)")
 	}
 	
 	func speedDown()
