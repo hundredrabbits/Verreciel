@@ -183,11 +183,9 @@ class CorePlayer : SCNNode
 	
 	override func fixedUpdate()
 	{
-		if isLocked == false {
-			player.eulerAngles.z = sin((time.elapsed)/60) * 0.04
-			ui.eulerAngles.z = sin((time.elapsed)/60) * 0.03
-		}
-		
+		player.eulerAngles.z = sin((time.elapsed)/60) * 0.04
+		ui.eulerAngles.z = sin((time.elapsed)/60) * 0.03
+
 		flickerAlert()
 	}
 	

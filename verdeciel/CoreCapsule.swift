@@ -53,26 +53,18 @@ class CoreCapsule: SCNNode
 		if dock == nil { return }
 		if isDocked == true { return }
 		
-		let horizontalLocation:Int = Int(capsule.at.y * 1000)
-		let horizontalTarget:Int = Int(dock.at.y * 1000)
-		let horizontalOffset:Int = horizontalLocation - horizontalTarget
-		
-		let verticalLocation:Int = Int(capsule.at.y * 1000)
-		let verticalTarget:Int = Int(dock.at.y * 1000)
-		let verticalOffset:Int = verticalLocation - verticalTarget
-		
 		var approachSpeed:CGFloat = 0.001
+		
 		let distanceRatio = distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5
 		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 		
-		if approachSpeed < 0.0001 { approachSpeed = 0.0001 }
-	
-		if horizontalOffset > 0 { capsule.at.y -= approachSpeed }
-		if horizontalOffset < 0 { capsule.at.y += approachSpeed }
-		if verticalOffset > 0 { capsule.at.y -= approachSpeed }
-		if verticalOffset < 0 { capsule.at.y += approachSpeed }
+		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.003 { speed = 0.003 }
+		let angle:CGFloat = CGFloat((capsule.direction) % 360)
+
+		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
+		capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
 		
-		if abs(horizontalOffset) < 2 && abs(verticalOffset) < 2 { docked() }
+		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.01 { docked() }
 	}
 	
 	func docked()

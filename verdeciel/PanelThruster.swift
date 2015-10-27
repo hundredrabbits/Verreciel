@@ -243,9 +243,8 @@ class PanelThruster : Panel
 			
 			capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
-			
-			radar.update()
 		}
+		
 		capsule.journey += actualSpeed
 		space.starTimer += actualSpeed
 	}

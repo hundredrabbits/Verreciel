@@ -80,6 +80,8 @@ class PanelMission : Panel
 	
 	func missionUpdate()
 	{
+		if isInstalled == false { return }
+		
 		label.updateWithColor(name!, color: white)
 		
 		let latestTutorialQuest = quests.tutorial[quests.tutorialQuestId]
@@ -104,6 +106,7 @@ class PanelMission : Panel
 	func panelUpdate()
 	{
 		if isInstalled == false { return }
+		
 		if capsule.dock.isComplete == true {
 			label.updateWithColor(capsule.dock.name!, color: cyan)
 		}
@@ -127,15 +130,11 @@ class PanelMission : Panel
 	
 	func connectToLocation(location:Location)
 	{
-		print("connected")
-		label.update(location.name!)
 		locationPanel.updateInterface(location.panel())
 	}
 	
 	func disconnectFromLocation()
 	{
-		print("disconnected")
-		label.update(name!)
 		locationPanel.empty()
 	}
 	

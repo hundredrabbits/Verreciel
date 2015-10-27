@@ -75,6 +75,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
+		
 //		battery.cell1.connect(battery.thrusterPort)
 //		capsule.at = universe.loiqe_city.at
 //		

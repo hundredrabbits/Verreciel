@@ -47,7 +47,7 @@ class LocationTelescope : Location
 	
 	override func approach()
 	{
-		space.startInstance(self)		
+		space.startInstance(self)
 		capsule.dock(self)
 	}
 	
@@ -56,7 +56,8 @@ class LocationTelescope : Location
 		
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }
