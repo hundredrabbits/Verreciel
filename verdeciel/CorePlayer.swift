@@ -198,17 +198,20 @@ class CorePlayer : SCNNode
 		else{ alertLabel.opacity = 0 }
 	}
 	
-	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:Float)
+	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
 	{
+		player.eulerAngles.y = Float(degToRad(radToDeg(CGFloat(player.eulerAngles.y)) % 360))
+		ui.eulerAngles.y = Float(degToRad(radToDeg(CGFloat(ui.eulerAngles.y)) % 360))
+		
 		player.isLocked = true
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		
 		player.position = position
-		player.eulerAngles.y = deg
+		player.eulerAngles.y = Float(degToRad(deg))
 		ui.position = position
-		ui.eulerAngles.y = deg
+		ui.eulerAngles.y = Float(degToRad(deg))
 		
 		SCNTransaction.setCompletionBlock({ player.isLocked = false })
 		SCNTransaction.commit()

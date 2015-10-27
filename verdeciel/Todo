@@ -18,16 +18,17 @@
 
 - Link radar(telescope) to helmet?
 - UI Installs
+- Add comms in UI
 
 - Add combinatrix() panel node
 
 - Add quest pointers
+- Mission/Panel Toggle?
 
 - Add harvest location
 
 - Signal converter panel?
 
-- Add comms in UI
 
 ================
 *    GENRAL
@@ -58,7 +59,6 @@
 
 > Locations
 
-	- Location where you can mix two items
 	- Invisible
 	- Sentries
 	- Hostile
@@ -72,9 +72,6 @@
 
 	> Cargo
 	- decline transfer when cargo is full
-
-	> Handles
-	- Return to center if inactive
 
 	> Battery
 	- Allow sending batteries directly into the cell ports

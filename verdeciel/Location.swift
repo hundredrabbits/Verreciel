@@ -27,6 +27,8 @@ class Location : Event
 	
 	var interface = Panel()
 	
+	var label = SCNLabel()
+	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
