@@ -47,6 +47,43 @@ class CoreCapsule: SCNNode
 	
 	// MARK: Custom -
 	
+	func interfaceSetup()
+	{
+		// Converters
+		addChildNode(translator)
+		addChildNode(radio)
+		
+		// Monitors
+		addChildNode(journey)
+		addChildNode(exploration)
+		addChildNode(progress)
+		
+		// Panels
+		addChildNode(battery)
+		addChildNode(hatch)
+		addChildNode(console)
+		addChildNode(cargo)
+		addChildNode(mission)
+		addChildNode(pilot)
+		addChildNode(radar)
+		addChildNode(thruster)
+		
+		hatch.eulerAngles.y = Float(degToRad(45))
+		console.eulerAngles.y = Float(degToRad(90))
+		cargo.eulerAngles.y = Float(degToRad(135))
+		mission.eulerAngles.y = Float(degToRad(180))
+		pilot.eulerAngles.y = Float(degToRad(225))
+		radar.eulerAngles.y = Float(degToRad(270))
+		thruster.eulerAngles.y = Float(degToRad(315))
+		
+		journey.eulerAngles.y = battery.eulerAngles.y
+		exploration.eulerAngles.y = console.eulerAngles.y
+		progress.eulerAngles.y = mission.eulerAngles.y
+		
+		radio.eulerAngles.y = console.eulerAngles.y
+		translator.eulerAngles.y = battery.eulerAngles.y
+	}
+	
 	func docking()
 	{
 		if dock == nil { return }
@@ -151,39 +188,6 @@ class CoreCapsule: SCNNode
 	{
 		if dock == nil { return }
 		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
-	}
-	
-	func interfaceSetup()
-	{
-		// Converters
-		addChildNode(translator)
-		addChildNode(radio)
-		
-		// Monitors
-		addChildNode(journey)
-		
-		// Panels
-		addChildNode(battery)
-		addChildNode(hatch)
-		addChildNode(console)
-		addChildNode(cargo)
-		addChildNode(mission)
-		addChildNode(pilot)
-		addChildNode(radar)
-		addChildNode(thruster)
-		
-		hatch.eulerAngles.y = Float(degToRad(45))
-		console.eulerAngles.y = Float(degToRad(90))
-		cargo.eulerAngles.y = Float(degToRad(135))
-		mission.eulerAngles.y = Float(degToRad(180))
-		pilot.eulerAngles.y = Float(degToRad(225))
-		radar.eulerAngles.y = Float(degToRad(270))
-		thruster.eulerAngles.y = Float(degToRad(315))
-		
-		journey.eulerAngles.y = radar.eulerAngles.y
-		
-		radio.eulerAngles.y = console.eulerAngles.y
-		translator.eulerAngles.y = battery.eulerAngles.y
 	}
 	
 	required init?(coder aDecoder: NSCoder)

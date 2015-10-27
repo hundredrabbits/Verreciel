@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class MonitorJourney : Monitor
+class MonitorExploration : Monitor
 {
 	var distance:Float = 0
 	
@@ -17,11 +17,19 @@ class MonitorJourney : Monitor
 	
 	override func installedFixedUpdate()
 	{
-		label.update("\(Int(distance/100))")
+		var knownLocations:Int = 0
+		
+		for location in universe.childNodes {
+			let locationData = location as! Location
+			if locationData.isKnown == true {
+				knownLocations += 1
+			}
+		}
+		label.update("\(knownLocations)/\(universe.childNodes.count)")
 	}
 	
 	override func onInstallationBegin()
 	{
-		player.lookAt(deg: -90)
+		player.lookAt(deg: -180)
 	}
 }

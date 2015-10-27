@@ -35,10 +35,10 @@ class QuestLibrary
 		
 		// Radio
 		
-		/*  1 */ tutorial.append( Quest(name:"Reach falvet from loiqe", predicate:{ universe.falvet_toLoiqe.isKnown }, result: { translator.install() }) )
+		/*  1 */ tutorial.append( Quest(name:"Reach falvet from loiqe", predicate:{ universe.falvet_toLoiqe.isKnown }, result: { exploration.install() }) )
 		/*  2 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioAntena) }, result: { }) )
 		/*  3 */ tutorial.append( Quest(name:"Grab speaker from cargo", predicate:{ cargo.contains(items.radioSpeaker) }, result: { }) )
-		/*  4 */ tutorial.append( Quest(name:"Reach Horadric", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { }) )
+		/*  4 */ tutorial.append( Quest(name:"Reach Horadric", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { progress.install() }) )
 		/*  5 */ tutorial.append( Quest(name:"Combine antena and speaker", predicate:{ cargo.contains(items.radio) }, result: { radio.install() }) )
 		
 	}

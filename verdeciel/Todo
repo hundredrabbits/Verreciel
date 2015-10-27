@@ -1,5 +1,6 @@
 
 - Take decent screenshots for IGF
+- Make IGF build
 
 ================
 *    FLOW
@@ -11,14 +12,13 @@
 *    ACTIVE
 ================
 
-- Map Zoom
 - Warnings
 
 - Link radar(telescope) to helmet?
 - UI Installs
 - Add comms in UI
 
-- Add combinatrix() panel node
+- Add combinatrix() Horadric panel node
 
 - Add quest pointers
 - Mission/Panel Toggle?
@@ -26,7 +26,6 @@
 - Add harvest location
 
 - Signal converter panel?
-
 
 ================
 *    GENRAL

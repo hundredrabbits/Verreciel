@@ -6,10 +6,8 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class MonitorJourney : Monitor
+class MonitorProgress : Monitor
 {
-	var distance:Float = 0
-	
 	override func setup()
 	{
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
@@ -17,11 +15,11 @@ class MonitorJourney : Monitor
 	
 	override func installedFixedUpdate()
 	{
-		label.update("\(Int(distance/100))")
+		label.update("4/39")
 	}
 	
 	override func onInstallationBegin()
 	{
-		player.lookAt(deg: -90)
+		player.lookAt(deg: -270)
 	}
 }

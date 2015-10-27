@@ -29,12 +29,16 @@ class Monitor : SCNNode
 		details.position = SCNVector3(0,0.2,0)
 		interface.addChildNode(details)
 		
-		self.eulerAngles.z = Float(degToRad(templates.monitorsAngle))
-		
 		label.opacity = 0
 		details.opacity = 0
 		
 		installation()
+		setup()
+	}
+	
+	func setup()
+	{
+		
 	}
 	
 	override func fixedUpdate()

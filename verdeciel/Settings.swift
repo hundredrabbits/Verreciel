@@ -27,6 +27,8 @@ let translator = ConverterTranslator()
 
 // Monitors
 let journey = MonitorJourney()
+let exploration = MonitorExploration()
+let progress = MonitorProgress()
 
 // Generic
 var time:CoreTime!
