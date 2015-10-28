@@ -17,6 +17,7 @@ class SCNPort : SCNNode
 	let radius:Float = 0.125
 	
 	var event:Event!
+	var requirement:Event!
 	var connection:SCNPort!
 	var wire:SCNWire!
 	
@@ -45,9 +46,6 @@ class SCNPort : SCNNode
 		self.host = host
 		
 		setup()
-		
-		update()
-		
 		disable()
 	}
 	
@@ -82,6 +80,9 @@ class SCNPort : SCNNode
 		// Input
 		if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)
+		}
+		else if requirement != nil {
+			sprite_input.updateChildrenColors(red)
 		}
 		else if origin == nil {
 			sprite_input.updateChildrenColors(grey)
@@ -150,13 +151,16 @@ class SCNPort : SCNNode
 	func addEvent(event:Event)
 	{
 		self.event = event
-		update()
+	}
+	
+	func addRequirement(event:Event)
+	{
+		self.requirement = event
 	}
 	
 	func removeEvent()
 	{
 		self.event = nil
-		update()
 	}
 	
 	func connect(port:SCNPort)
@@ -190,8 +194,6 @@ class SCNPort : SCNNode
 		self.connection.origin = nil
 		connection.update()
 		self.connection = nil
-		
-		update()
 		
 		targetOrigin.disconnect()
 		targetOrigin.update()

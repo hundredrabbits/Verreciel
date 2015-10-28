@@ -50,6 +50,29 @@ class LocationTrade : Location
 		return spriteNode
 	}
 	
+	// MARK: Panels -
+	
+	override func update()
+	{
+		if givePort.event == nil {
+			wantLabel.updateWithColor("--", color:grey)
+			giveLabel.updateWithColor("--", color:grey)
+			givePort.disable()
+			wantPort.disable()
+			return
+		}
+		if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
+			wantLabel.updateColor(white)
+			giveLabel.updateColor(white)
+			givePort.enable()
+		}
+		else{
+			wantLabel.updateColor(grey)
+			giveLabel.updateColor(grey)
+			givePort.disable()
+		}
+	}
+	
 	override func panel() -> Panel
 	{
 		let newPanel = Panel()
@@ -61,10 +84,14 @@ class LocationTrade : Location
 		
 		wantPort = SCNPort(host: self)
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
+		wantPort.addRequirement(want)
+		wantPort.enable()
+		wantPort.input = eventTypes.item
 		newPanel.addChildNode(wantPort)
 		
 		wantLabel = SCNLabel(text: want.name!, color:grey)
 		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
+		wantPort.output = eventTypes.item
 		newPanel.addChildNode(wantLabel)
 		
 		// Give
@@ -74,6 +101,7 @@ class LocationTrade : Location
 		
 		givePort = SCNPort(host: self)
 		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
+		givePort.event = give
 		newPanel.addChildNode(givePort)
 		
 		giveLabel = SCNLabel(text: give.name!, color:grey)
@@ -87,40 +115,35 @@ class LocationTrade : Location
 	
 	override func listen(event: Event)
 	{
-		if event == want {
-			wantLabel.updateColor(white)
-			giveLabel.updateColor(white)
-			givePort.enable()
-		}
-		else{
-			wantLabel.updateColor(grey)
-			givePort.disable()
-		}
+		if wantPort.origin == nil { return }
+		update()
 	}
 	
 	override func bang()
 	{
-		completeTrade()
-		mission.update()
+		if givePort.connection == nil { print("No connection") ; return }
+		if givePort.connection.host != cargo { print("Not routed to cargo") ; return }
+		if givePort.event == nil { completeTrade() ; return }
+		
+		givePort.connection.host.listen(givePort.event)
+		
+		update()
 	}
 
 	func completeTrade()
 	{
-		wantLabel.update("--")
-		giveLabel.update("--")
-		
-		let command = wantPort.origin.host as! SCNCommand
-		command.event.size -= 1
-		command.update()
-		
-		givePort.connection.host.listen(give)
-		givePort.disconnect()
-		
-		wantPort.disable()
-		givePort.disable()
-		
-		want = nil
-		give = nil
+		if wantPort.origin != nil {
+			wantPort.origin.event.size = 0
+			wantPort.origin.update()
+			wantPort.origin.event.remove()
+			wantPort.origin.host.update()
+			wantPort.origin.disconnect()
+		}
+		if givePort.connection != nil {
+			givePort.disconnect()
+		}
+		givePort.event = nil
+		update()
 	}
 	
 	required init(coder aDecoder: NSCoder) {

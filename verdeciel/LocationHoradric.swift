@@ -6,7 +6,7 @@ import Foundation
 class LocationHoradric : Location
 {	
 	
-	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
+	init(name:String = "",at: CGPoint = CGPoint())
 	{
 		super.init(name: name, at: at)
 		

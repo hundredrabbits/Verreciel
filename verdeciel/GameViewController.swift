@@ -85,6 +85,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[6].complete()
 		quests.tutorial[7].complete()
 		quests.tutorial[8].complete()
+		
+		cargo.port.event.content.append(items.loiqeLicense)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
