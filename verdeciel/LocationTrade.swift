@@ -123,14 +123,6 @@ class LocationTrade : Location
 		give = nil
 	}
 	
-	override func approach()
-	{
-		space.startInstance(self)
-		print("in approach")
-		
-		capsule.dock(self)
-	}
-	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

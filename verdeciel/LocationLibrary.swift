@@ -71,11 +71,15 @@ class Loiqe
 		return location
 	}
 	
-	func waypoint() -> LocationStation
+	func waypoint() -> LocationTrade
 	{
-		let location = LocationStation(name: "station")
-		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		let location = LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.loiqeLicense, give: items.radioAntena)
 		return location
+	}
+	
+	func cargo() -> LocationCargo
+	{
+		return LocationCargo(name: "waypoint", at: CGPoint(x: offset.x + 1, y: offset.y + 1), item: items.radioSpeaker)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -276,11 +280,9 @@ class Falvet
 		return location
 	}
 	
-	func toLoiqe() -> LocationRepair
+	func toLoiqe() -> LocationHoradric
 	{
-		let location = LocationRepair(name:"Loiqe Repairs")
-		location.at = CGPoint(x: offset.x, y: offset.y - 1.5)
-		return location
+		return LocationHoradric(name:"Horadric", at: CGPoint(x: offset.x, y: offset.y - 1.5))
 	}
 	
 	func toValen() -> LocationRepair

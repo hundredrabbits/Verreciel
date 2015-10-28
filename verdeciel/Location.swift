@@ -100,6 +100,7 @@ class Location : Event
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
 		sprite.replace(_sprite())
+		capsule.dock(self)
 	}
 	
 	func collide()

@@ -43,12 +43,6 @@ class LocationCargo : Location
 		return spriteNode
 	}
 	
-	override func approach()
-	{
-		space.startInstance(self)
-		capsule.dock(self)
-	}
-	
 	// MARK: Panel
 	
 	override func panel() -> Panel

@@ -28,6 +28,9 @@
 		5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */; };
 		573EDAB51B4B4762007C6D3C /* PanelPilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* PanelPilot.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */; };
+		574156DA1BE12E6C008B6C44 /* LocationHoradric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574156D91BE12E6C008B6C44 /* LocationHoradric.swift */; };
+		574156DC1BE12F24008B6C44 /* RecipesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */; };
+		574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574156DE1BE12FAA008B6C44 /* Recipe.swift */; };
 		5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741B0671BB5C9B7000F7FEF /* Instance.swift */; };
 		5745646E1BD3D87000A57C83 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */; };
 		5748AD9E1BC8476000C47468 /* QuestLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748AD9D1BC8476000C47468 /* QuestLibrary.swift */; };
@@ -95,6 +98,9 @@
 		5734D45F1B5AB4C400BF0048 /* CoreUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUniverse.swift; sourceTree = "<group>"; };
 		573EDAB41B4B4762007C6D3C /* PanelPilot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelPilot.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* PanelThruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelThruster.swift; sourceTree = "<group>"; };
+		574156D91BE12E6C008B6C44 /* LocationHoradric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHoradric.swift; sourceTree = "<group>"; };
+		574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesLibrary.swift; sourceTree = "<group>"; };
+		574156DE1BE12FAA008B6C44 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		5741B0671BB5C9B7000F7FEF /* Instance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		5748AD9D1BC8476000C47468 /* QuestLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestLibrary.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 				5796144F1BE012E200421D69 /* Converters */,
 				5796144C1BE00EF800421D69 /* Monitors */,
 				5736277A1B4C06FE00899EBC /* Panels */,
+				574156DD1BE12F61008B6C44 /* Objects */,
 				576BE0841BC8B8700046E43C /* Library */,
 				573627791B4C06E800899EBC /* Components */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
@@ -247,16 +254,25 @@
 			name = Panels;
 			sourceTree = "<group>";
 		};
-		576BE0841BC8B8700046E43C /* Library */ = {
+		574156DD1BE12F61008B6C44 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
 				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 				57A0F10E1B3DDABF0007650F /* Event.swift */,
+				5748AD9F1BC8583B00C47468 /* Quest.swift */,
+				574156DE1BE12FAA008B6C44 /* Recipe.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		576BE0841BC8B8700046E43C /* Library */ = {
+			isa = PBXGroup;
+			children = (
 				574E5FBA1BC57749008130AB /* ItemLibrary.swift */,
 				574E5FBD1BC5775F008130AB /* LocationLibrary.swift */,
 				5748AD9D1BC8476000C47468 /* QuestLibrary.swift */,
-				5748AD9F1BC8583B00C47468 /* Quest.swift */,
+				574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -265,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				574E5FC11BC5AEA2008130AB /* Location.swift */,
+				574156D91BE12E6C008B6C44 /* LocationHoradric.swift */,
 				574E5FBF1BC578E1008130AB /* LocationTrade.swift */,
 				57CA80971BB9CEA3000D31F7 /* LocationCargo.swift */,
 				578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */,
@@ -401,6 +418,7 @@
 				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
 				579614571BE028F300421D69 /* MonitorProgress.swift in Sources */,
 				57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */,
+				574156DC1BE12F24008B6C44 /* RecipesLibrary.swift in Sources */,
 				5726C6071BD46FFF00B924B2 /* CoreUI.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
@@ -437,8 +455,10 @@
 				57F645F11B4CA2700088D115 /* PanelHatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,
 				57FA031D1BBA21490077D517 /* LocationStation.swift in Sources */,
+				574156DA1BE12E6C008B6C44 /* LocationHoradric.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */,
+				574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */,
 				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
 				574AE3F71BC36DAE00432603 /* LocationWaypoint.swift in Sources */,
 				5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */,

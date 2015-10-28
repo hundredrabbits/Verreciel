@@ -32,6 +32,7 @@ class CoreUniverse : SCNNode
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_telescope = locations.loiqe.telescope()
 	var loiqe_waypoint = locations.loiqe.waypoint()
+	var loiqe_cargo = locations.loiqe.cargo()
 	
 	func addLoiqe()
 	{
