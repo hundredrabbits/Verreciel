@@ -125,7 +125,6 @@ class CoreCapsule: SCNNode
 	
 	func undock()
 	{
-		print("quit dock")
 		isDocked = false
 		dock = nil
 		thruster.enable()

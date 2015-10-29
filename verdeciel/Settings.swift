@@ -110,6 +110,7 @@ enum eventDetails
 	case waste
 	case part
 	case panel
+	case key
 }
 
 enum services

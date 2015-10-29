@@ -35,11 +35,12 @@ class QuestLibrary
 		
 		// Radio
 		
-		/*  9 */ tutorial.append( Quest(name:"Reach falvet from loiqe", predicate:{ universe.falvet_toLoiqe.isKnown }, result: { exploration.install() }) )
+		/*  9 */ tutorial.append( Quest(name:"Reach the loiqe waypoint", predicate:{ universe.loiqe_waypoint.isKnown }, result: { exploration.install() }) )
 		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioAntena) }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Grab speaker from cargo", predicate:{ cargo.contains(items.radioSpeaker) }, result: { }) )
-		/* 12 */ tutorial.append( Quest(name:"Reach Horadric", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { progress.install() }) )
+		/* 12 */ tutorial.append( Quest(name:"Combine antena to speaker", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { progress.install() }) )
 		/* 13 */ tutorial.append( Quest(name:"Combine antena and speaker", predicate:{ cargo.contains(items.radio) }, result: { radio.install() }) )
+		/* 13 */ tutorial.append( Quest(name:"Route radio to radar at waypoint", predicate:{ universe.loiqe_connection.isVisible == true }, result: { radio.install() }) )
 	}
 	
 	func _falvet()
@@ -59,8 +60,6 @@ class QuestLibrary
 		}
 		if falvet[falvetQuestId].isCompleted == true {
 			falvetQuestId += 1
-			ui.addMessage(falvet[falvetQuestId].name)
 		}
-		
 	}
 }

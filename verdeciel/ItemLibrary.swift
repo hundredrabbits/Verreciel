@@ -15,6 +15,7 @@ class ItemLibrary
 	
 	// Quest items
 	let loiqeLicense = Event(newName: "pilot license", size: 1, type: eventTypes.item, details: eventDetails.card, note:"required to undock$from loiqe city", isQuest:true)
+	let cyanineKey = Event(newName: "Cyanine Key", size: 1, type: eventTypes.item, details: eventDetails.key, note:"unlocks the portal to cyanine", isQuest:true)
 	
 	// Radio Quest
 	let radio = Event(newName: "radio", size: 1, type: eventTypes.item, details: eventDetails.panel, note:"complete radio", isQuest:true)
