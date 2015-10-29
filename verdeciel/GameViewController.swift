@@ -75,7 +75,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_waypoint.at
+		capsule.at = universe.loiqe_horadric.at
 		quests.tutorial[0].complete()
 		quests.tutorial[1].complete()
 		quests.tutorial[2].complete()
@@ -85,8 +85,14 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[6].complete()
 		quests.tutorial[7].complete()
 		quests.tutorial[8].complete()
+		quests.tutorial[9].complete()
+		quests.tutorial[10].complete()
+		quests.tutorial[11].complete()
+		quests.tutorial[12].complete()
 		
 		cargo.port.event.content.append(items.loiqeLicense)
+		cargo.port.event.content.append(items.radioPart1)
+		cargo.port.event.content.append(items.radioPart2)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

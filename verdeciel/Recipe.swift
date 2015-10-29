@@ -14,27 +14,28 @@ import Foundation
 class Recipe
 {
 	var name:String!
-	var requirements:Array<Event> = []
+	var ingredients:Array<Event> = []
 	var result:Event!
 	
-	init(name:String, requirements:Array<Event>, result:Event)
+	init(name:String, ingredients:Array<Event>, result:Event)
 	{
 		self.name = name
-		self.requirements = requirements
+		self.ingredients = ingredients
 		self.result = result
 	}
 	
-	func validate(inputs:Array<Event>)
+	func isValid(inputs:Array<Event>) -> Bool
 	{
-		for requirement in requirements {
+		for ingredient in ingredients {
+			var isFound:Bool = false
 			for input in inputs {
-				if input == requirement {
-					print("requirement: \(requirement) -> Fullfiled")
-				}
-				else {
-					print("requirement: \(requirement) -> Missing")
-				}
+				if input == ingredient { isFound = true }
+			}
+			if isFound == false {
+				print("missing \(ingredient.name)")
+				return false
 			}
 		}
+		return true
 	}
 }

@@ -25,7 +25,6 @@ class Monitor : SCNNode
 		label.position = SCNVector3(0,0,0)
 		interface.addChildNode(label)
 		
-		details.update(name!)
 		details.position = SCNVector3(0,0.2,0)
 		interface.addChildNode(details)
 		
@@ -34,6 +33,8 @@ class Monitor : SCNNode
 		
 		installation()
 		setup()
+		
+		details.update(name!)
 	}
 	
 	func setup()

@@ -5,10 +5,10 @@ import Foundation
 
 class RecipesLibrary
 {
-	var recipes:Array<Recipe> = []
+	var horadric:Array<Recipe> = []
 	
 	init()
 	{
-		
+		horadric.append( Recipe(name: "build radio", ingredients: [items.radioPart1, items.radioPart2], result: items.radio) )
 	}
 }

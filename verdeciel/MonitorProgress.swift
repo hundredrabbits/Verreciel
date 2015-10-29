@@ -10,6 +10,7 @@ class MonitorProgress : Monitor
 {
 	override func setup()
 	{
+		name = "progress"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	

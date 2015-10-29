@@ -42,6 +42,8 @@ var ui:CoreUI!
 var quests = QuestLibrary()
 var items = ItemLibrary()
 var locations = LocationLibrary()
+var recipes = RecipesLibrary()
+
 var templates = Templates()
 var settings = Settings()
 var debug = Debug()

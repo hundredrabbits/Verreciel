@@ -132,16 +132,9 @@ class LocationTrade : Location
 
 	func completeTrade()
 	{
-		if wantPort.origin != nil {
-			wantPort.origin.event.size = 0
-			wantPort.origin.update()
-			wantPort.origin.event.remove()
-			wantPort.origin.host.update()
-			wantPort.origin.disconnect()
-		}
-		if givePort.connection != nil {
-			givePort.disconnect()
-		}
+		if wantPort.origin != nil { wantPort.syphon() }
+		if givePort.connection != nil {	givePort.disconnect() }
+		
 		givePort.event = nil
 		update()
 	}

@@ -29,9 +29,9 @@ class LocationSpawn : Location
 		return mesh
 	}
 	
-	override func panel() -> Panel
+	override func panel() -> SCNNode
 	{
-		let newPanel = Panel()
+		let newPanel = SCNNode()
 		return newPanel
 	}
 	

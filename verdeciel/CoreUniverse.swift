@@ -30,7 +30,7 @@ class CoreUniverse : SCNNode
 	var loiqe_spawn = locations.loiqe.spawn()
 	var loiqe_landing = locations.loiqe.landing()
 	var loiqe_city = locations.loiqe.city()
-	var loiqe_telescope = locations.loiqe.telescope()
+	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_waypoint = locations.loiqe.waypoint()
 	var loiqe_cargo = locations.loiqe.cargo()
 	var loiqe_connection = locations.loiqe.connection()
@@ -41,7 +41,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_spawn)
 		addChildNode(loiqe_landing)
 		addChildNode(loiqe_city)
-		addChildNode(loiqe_telescope)
+		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_waypoint)
 		addChildNode(loiqe_cargo)
 		addChildNode(loiqe_connection)
@@ -141,7 +141,7 @@ class CoreUniverse : SCNNode
 	func connectPaths()
 	{
 		loiqe_landing.connect(loiqe_city)
-		loiqe_telescope.connect(loiqe_waypoint)
+		loiqe_horadric.connect(loiqe_waypoint)
 		
 		venic_city.connect(venic_waypoint)
 		

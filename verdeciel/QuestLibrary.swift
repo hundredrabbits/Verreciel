@@ -10,7 +10,6 @@ class QuestLibrary
 	var falvet:Array<Quest> = []
 	var falvetQuestId:Int = 0
 	
-	
 	init()
 	{
 		_tutorial()
@@ -31,15 +30,15 @@ class QuestLibrary
 		/*  5 */ tutorial.append( Quest(name:"Route Cargo to Console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
 		/*  6 */ tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.cell2.isEnabled == true }, result: { pilot.install() }) )
 		/*  7 */ tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: { }) )
-		/*  8 */ tutorial.append( Quest(name:"Reach telescope", predicate:{ universe.loiqe_telescope.isKnown }, result: { journey.install() }) )
+		/*  8 */ tutorial.append( Quest(name:"Reach horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: { journey.install() }) )
 		
 		// Radio
 		
 		/*  9 */ tutorial.append( Quest(name:"Reach the loiqe waypoint", predicate:{ universe.loiqe_waypoint.isKnown }, result: { exploration.install() }) )
-		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioAntena) }, result: { }) )
-		/* 11 */ tutorial.append( Quest(name:"Grab speaker from cargo", predicate:{ cargo.contains(items.radioSpeaker) }, result: { }) )
-		/* 12 */ tutorial.append( Quest(name:"Combine antena to speaker", predicate:{ cargo.contains(items.radioAntena) && cargo.contains(items.radioSpeaker) }, result: { progress.install() }) )
-		/* 13 */ tutorial.append( Quest(name:"Combine antena and speaker", predicate:{ cargo.contains(items.radio) }, result: { radio.install() }) )
+		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
+		/* 11 */ tutorial.append( Quest(name:"Reach cargo", predicate:{ universe.loiqe_cargo.isKnown == true }, result: { }) )
+		/* 11 */ tutorial.append( Quest(name:"Route speaker to cargo", predicate:{ cargo.contains(items.radioPart1) && cargo.contains(items.radioPart2) }, result: { progress.install() }) )
+		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ cargo.contains(items.radio) }, result: { radio.install() }) )
 		/* 13 */ tutorial.append( Quest(name:"Route radio to radar at waypoint", predicate:{ universe.loiqe_connection.isVisible == true }, result: { radio.install() }) )
 	}
 	

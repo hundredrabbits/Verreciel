@@ -64,21 +64,19 @@ class Loiqe
 		return location
 	}
 	
-	func telescope() -> LocationTelescope
+	func horadric() -> LocationHoradric
 	{
-		let location = LocationTelescope(name:"telescope")
-		location.at = CGPoint(x: offset.x - 1, y: offset.y)
-		return location
+		return LocationHoradric(name:"Horadric", at: CGPoint(x: offset.x - 1, y: offset.y))
 	}
 	
 	func waypoint() -> LocationTrade
 	{
-		return LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.loiqeLicense, give: items.radioAntena)
+		return LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.loiqeLicense, give: items.radioPart1)
 	}
 	
 	func cargo() -> LocationCargo
 	{
-		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x + 1, y: offset.y + 1), item: items.radioSpeaker)
+		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x + 1, y: offset.y + 1), item: items.radioPart2)
 	}
 	
 	func connection() -> LocationCargo

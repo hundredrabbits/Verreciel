@@ -19,8 +19,8 @@ class ItemLibrary
 	
 	// Radio Quest
 	let radio = Event(newName: "radio", size: 1, type: eventTypes.item, details: eventDetails.panel, note:"complete radio", isQuest:true)
-	let radioAntena = Event(newName: "radio antena", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
-	let radioSpeaker = Event(newName: "radio speaker", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
+	let radioPart1 = Event(newName: "radio antena", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
+	let radioPart2 = Event(newName: "radio speaker", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
 	
 	// Batteries
 	let smallBattery = Event(newName: "cell", size: 1, type: eventTypes.battery, details: eventDetails.battery, note:"gives a small amount of power")

@@ -201,6 +201,15 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
+	func syphon()
+	{
+		origin.event.size = 0
+		origin.update()
+		origin.event.remove()
+		origin.host.update()
+		origin.disconnect()
+	}
+	
 	override func bang()
 	{
 		print("Warning! Bang on SCNPort")

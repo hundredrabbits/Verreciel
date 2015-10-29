@@ -25,7 +25,7 @@ class Location : Event
 	var isSelected:Bool = false
 	var isComplete:Bool = false
 	
-	var interface = Panel()
+	var interface = SCNNode()
 	
 	var label = SCNLabel()
 	

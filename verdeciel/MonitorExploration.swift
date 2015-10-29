@@ -12,6 +12,7 @@ class MonitorExploration : Monitor
 	
 	override func setup()
 	{
+		name = "exploration"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	

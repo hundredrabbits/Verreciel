@@ -112,19 +112,6 @@ class Panel : SCNNode
 		isEnabled = false
 	}
 	
-	func updateInterface(interface:Panel)
-	{
-		// Empty node
-		for node in self.childNodes {
-			node.removeFromParentNode()
-		}
-		
-		// Add
-		for node in interface.childNodes {
-			self.addChildNode(node)
-		}
-	}
-	
 	// MARK: Installation -
 
 	var isInstalling:Bool = false

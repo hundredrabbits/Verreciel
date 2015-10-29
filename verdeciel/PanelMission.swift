@@ -8,7 +8,7 @@ import Foundation
 
 class PanelMission : Panel
 {
-	var locationPanel:Panel!
+	var locationPanel:SCNNode!
 
 	var questPanel:SCNNode!
 	
@@ -130,7 +130,7 @@ class PanelMission : Panel
 	
 	func connectToLocation(location:Location)
 	{
-		locationPanel.updateInterface(location.panel())
+		locationPanel.replace(location.panel())
 	}
 	
 	func disconnectFromLocation()
