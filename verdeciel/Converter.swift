@@ -8,6 +8,7 @@ import Foundation
 
 class Converter : SCNNode
 {
+	let interface = SCNNode()
 	let label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
 	let details = SCNLabel(text: "", scale: 0.085, align: alignment.center)
 	var port:SCNPort!
@@ -17,6 +18,61 @@ class Converter : SCNNode
 	override init()
 	{
 		super.init()
+		
+		name = "converter"
+		
+		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		
+		port = SCNPort(host: self, input: eventTypes.generic, output: eventTypes.location)
+		interface.addChildNode(port)
+		
+		label.position = SCNVector3(0,-0.5,0)
+		interface.addChildNode(label)
+		
+		port.addChildNode(portInputLabel)
+		port.addChildNode(portOutputLabel)
+		portInputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
+		portOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
+		
+		portInputLabel.update("--")
+		portOutputLabel.update("--")
+		
+		addChildNode(interface)
+		self.eulerAngles.x = Float(degToRad(-templates.monitorsAngle))
+	}
+	
+	override func fixedUpdate()
+	{
+		if isInstalling == true {
+			installProgress += CGFloat(arc4random_uniform(100))/50
+			installProgressBar.update(installProgress)
+			installProgressBar.opacity = 1
+			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
+			if installProgress >= 100 {
+				installed()
+				installer.opacity = 0
+				isInstalling = false
+			}
+		}
+		
+		if isInstalled == true {
+			if port.hasEvent(port.output) == true { portOutputLabel.updateColor(white) } else { portOutputLabel.updateColor(grey) }
+			installedFixedUpdate()
+		}
+	}
+	
+	func installedFixedUpdate()
+	{
+		
+	}
+	
+	func display()
+	{
+		print("ready for installation")
+		port.enable()
+		port.input = eventTypes.item
+		port.requirement = items.radio
+		label.updateWithColor("awaiting panel",color:grey)
 	}
 	
 	// MARK: Installation -
@@ -38,7 +94,7 @@ class Converter : SCNNode
 		installer = SCNNode()
 		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
 		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
-		installer.position = SCNVector3(0,0,templates.radius)
+		installer.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 1)
 		installProgressBar.position = SCNVector3(-0.5,-0.5,0)
 		installProgressBar.opacity = 0
@@ -61,12 +117,10 @@ class Converter : SCNNode
 		installer.opacity = 0
 		
 		label.updateWithColor(name!, color: white)
-		self.position = SCNVector3(0,0,templates.radius - 0.5)
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		self.opacity = 1
-		self.position = SCNVector3(0,0,templates.radius)
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.port.enable() ; self.onInstallationComplete() })
 		SCNTransaction.commit()
@@ -79,7 +133,6 @@ class Converter : SCNNode
 	
 	func onInstallationComplete()
 	{
-		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

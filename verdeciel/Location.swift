@@ -49,9 +49,7 @@ class Location : Event
 	// MARK: System -
 	
 	override func start()
-	{
-		position = SCNVector3(at.x,at.y,0)
-		
+	{		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
@@ -133,17 +131,17 @@ class Location : Event
 	func mesh() -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 3
+//		let radius:Float = 3
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,2,0), nodeB: SCNVector3(0,2,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,radius), nodeB: SCNVector3(radius,2,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,2,0), nodeB: SCNVector3(0,2,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,-radius), nodeB: SCNVector3(-radius,2,0), color: white))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-2,0), nodeB: SCNVector3(0,-2,radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-2,radius), nodeB: SCNVector3(radius,-2,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,-2,0), nodeB: SCNVector3(0,-2,-radius), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-2,-radius), nodeB: SCNVector3(-radius,-2,0), color: white))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(0,radius,radius), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(radius,radius,0), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(0,radius,-radius), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,-radius), nodeB: SCNVector3(-radius,radius,0), color: grey))
+//		
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-radius,0), nodeB: SCNVector3(0,-radius,radius), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,radius), nodeB: SCNVector3(radius,-radius,0), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,-radius,0), nodeB: SCNVector3(0,-radius,-radius), color: grey))
+//		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,-radius), nodeB: SCNVector3(-radius,-radius,0), color: grey))
 
 		return mesh
 	}

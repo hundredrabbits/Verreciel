@@ -38,8 +38,8 @@ class QuestLibrary
 		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Reach cargo", predicate:{ universe.loiqe_cargo.isKnown == true }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Route speaker to cargo", predicate:{ cargo.contains(items.radioPart1) && cargo.contains(items.radioPart2) }, result: { progress.install() }) )
-		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ cargo.contains(items.radio) }, result: { radio.install() }) )
-		/* 13 */ tutorial.append( Quest(name:"Route radio to radar at waypoint", predicate:{ universe.loiqe_connection.isVisible == true }, result: { radio.install() }) )
+		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ cargo.contains(items.radio) }, result: { radio.display() }) )
+		/* 15 */ tutorial.append( Quest(name:"Route radio in panel", predicate:{ translator.isInstalled == true }, result: { }) )
 	}
 	
 	func _falvet()

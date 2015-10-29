@@ -100,6 +100,7 @@ enum eventTypes
 	case cypher
 	case map
 	case warp
+	case panel
 }
 
 enum eventDetails

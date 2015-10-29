@@ -80,8 +80,8 @@ class CoreCapsule: SCNNode
 		exploration.eulerAngles.y = console.eulerAngles.y
 		progress.eulerAngles.y = mission.eulerAngles.y
 		
-		radio.eulerAngles.y = console.eulerAngles.y
-		translator.eulerAngles.y = battery.eulerAngles.y
+		radio.eulerAngles.y = battery.eulerAngles.y
+		translator.eulerAngles.y = mission.eulerAngles.y
 	}
 	
 	func docking()
