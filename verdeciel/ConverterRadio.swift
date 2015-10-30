@@ -36,6 +36,22 @@ class ConverterRadio : Converter
 	func modePowered()
 	{
 		label.updateColor(white)
+		port.event = nil
+		for location in universe.childNodes {
+			let NewLocation = location as! Location
+			if NewLocation.isRadioQuest == false { continue }
+			if NewLocation.distance > 1.1 { continue }
+			port.event = NewLocation
+			print("scanning:\(NewLocation.name!)")
+			break
+		}
+	}
+	
+	override func bang()
+	{
+		if port.connection == nil { return }
+		if port.event == nil { return }
+		port.connection.host.listen(port.event)
 	}
 	
 	func modeUnpowered()
@@ -47,7 +63,9 @@ class ConverterRadio : Converter
 	{
 		battery.radioLabel.update("radio",color:white)
 		battery.radioPort.enable()
-		port.origin.disconnect()
+		if port.origin != nil {
+			port.origin.disconnect()
+		}
 		
 		port.input = eventTypes.item
 		port.output = eventTypes.location

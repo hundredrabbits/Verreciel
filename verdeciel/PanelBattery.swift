@@ -71,7 +71,7 @@ class PanelBattery : Panel
 		thrusterPort.addChildNode(thrusterLabel)
 		interface.addChildNode(thrusterPort)
 		
-		radioPort = SCNPort(host: self, input:eventTypes.battery)
+		radioPort = SCNPort(host: self, input:eventTypes.item)
 		radioPort.position = SCNVector3(x: distance, y: 0, z: 0)
 		radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)

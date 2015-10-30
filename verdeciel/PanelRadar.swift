@@ -72,7 +72,7 @@ class PanelRadar : Panel
 		
 		self.position = SCNVector3(0,0,0)
 		
-		port.input = eventTypes.map
+		port.input = eventTypes.location
 		port.output = eventTypes.location
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(1,0,0)))
@@ -95,11 +95,6 @@ class PanelRadar : Panel
 		if port.connection == nil { return }
 		if port.event == nil { return }
 		port.connection.host.listen(port.event)
-	}
-	
-	override func listen(event: Event)
-	{
-		
 	}
 
 	// MARK: Custom -

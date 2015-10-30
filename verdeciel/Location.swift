@@ -18,7 +18,7 @@ class Location : Event
 	var inDiscovery:Bool = false
 	var inSight:Bool = false
 	
-	var isRadioQuest:Bool = true
+	var isRadioQuest:Bool = false
 	
 	var isTargetted:Bool = false
 	var isKnown:Bool = false
@@ -172,6 +172,11 @@ class Location : Event
 			else{
 				wire.opacity = 0
 			}
+		}
+		
+		if isRadioQuest == true {
+			opacity = 0
+			if radar.port.origin != nil && radar.port.origin.event == self { opacity = 1 }
 		}
 	}
 

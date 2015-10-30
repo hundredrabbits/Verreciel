@@ -10,7 +10,7 @@ class LocationCargo : Location
 	var inventoryNote:SCNLabel!
 	var locationLabel:SCNLabel!
 	
-	init(name:String,at: CGPoint = CGPoint(), item:Event!, isRadioQuest:Bool = true)
+	init(name:String,at: CGPoint = CGPoint(), item:Event!, isRadioQuest:Bool = false)
 	{
 		super.init(name:name, at:at)
 		
