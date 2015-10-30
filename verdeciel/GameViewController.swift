@@ -90,9 +90,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[11].complete()
 		quests.tutorial[12].complete()
 		
-		cargo.port.event.content.append(items.loiqeLicense)
-		cargo.port.event.content.append(items.radioPart1)
-		cargo.port.event.content.append(items.radioPart2)
+		cargo.port.event.content.append(items.cell1)
+		cargo.port.event.content.append(items.cell2)
+		
+//		cargo.port.event.content.append(items.loiqeLicense)
+//		cargo.port.event.content.append(items.radioPart1)
+//		cargo.port.event.content.append(items.radioPart2)
 
 	}
 	

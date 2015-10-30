@@ -21,7 +21,7 @@ class SCNCommand : SCNNode
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "",details:itemTypes = itemTypes.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false)
+	init(text:String = "",details:itemTypes = itemTypes.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false, host:SCNNode! = nil)
 	{
 		self.text = text
 		self.details = details
@@ -35,7 +35,12 @@ class SCNCommand : SCNNode
 		
 		super.init()
 		
-		port = SCNPort(host: self)
+		if host != nil {
+			port = SCNPort(host: host)
+		}
+		else{
+			port = SCNPort(host: self)
+		}
 		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
 		port.opacity = 0
 		port.event = event
@@ -90,11 +95,6 @@ class SCNCommand : SCNNode
 		if port.event == nil {
 			port.disable()
 		}
-	}
-	
-	override func bang()
-	{
-		port.connection.host.listen(self.port.event)
 	}
 
 	required init?(coder aDecoder: NSCoder)

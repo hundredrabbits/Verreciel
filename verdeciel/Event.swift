@@ -82,7 +82,6 @@ class Event : SCNNode
 	
 	func remove()
 	{
-		self.size = 0
 		self.removeFromParentNode()
 	}
 	
@@ -98,7 +97,9 @@ class Event : SCNNode
 		return Panel()
 	}
 	
-	func instance() -> Event
+	// MARK: Debug -
+	
+	func duplicate() -> Event
 	{
 		let newEvent = Event()
 		

@@ -50,7 +50,7 @@ class Loiqe
 	
 	func landing() -> LocationTrade
 	{
-		let location = LocationTrade(name: "Loiqe Landings", want:items.loiqeLicense, give:items.cell)
+		let location = LocationTrade(name: "Loiqe Landings", want:items.loiqeLicense, give:items.cell2)
 		location.at = CGPoint(x: offset.x, y: offset.y - 2)
 		return location
 	}

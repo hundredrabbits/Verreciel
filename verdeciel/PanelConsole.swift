@@ -45,27 +45,27 @@ class PanelConsole : Panel
 		
 		consoleNode.position = SCNVector3(0,0,0)
 		
-		consoleLine1 = SCNCommand()
+		consoleLine1 = SCNCommand(host:self)
 		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 2.5, z: 0)
 		consoleNode.addChildNode(consoleLine1)
 		
-		consoleLine2 = SCNCommand()
+		consoleLine2 = SCNCommand(host:self)
 		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 1.5, z: 0)
 		consoleNode.addChildNode(consoleLine2)
 		
-		consoleLine3 = SCNCommand()
+		consoleLine3 = SCNCommand(host:self)
 		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 0.5, z: 0)
 		consoleNode.addChildNode(consoleLine3)
 		
-		consoleLine4 = SCNCommand()
+		consoleLine4 = SCNCommand(host:self)
 		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 0.5, z: 0)
 		consoleNode.addChildNode(consoleLine4)
 		
-		consoleLine5 = SCNCommand()
+		consoleLine5 = SCNCommand(host:self)
 		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 1.5, z: 0)
 		consoleNode.addChildNode(consoleLine5)
 		
-		consoleLine6 = SCNCommand()
+		consoleLine6 = SCNCommand(host:self)
 		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 2.5, z: 0)
 		consoleNode.addChildNode(consoleLine6)
 		
@@ -85,7 +85,7 @@ class PanelConsole : Panel
 		interface.opacity = 0
 		label.update("--", color: grey)
 	}
-	
+
 	func addLine(command:SCNCommand! = nil)
 	{
 		commands.append(command)
@@ -94,12 +94,15 @@ class PanelConsole : Panel
 	func refresh()
 	{
 		if isInstalled == false { return }
-		if commands.count > 6 { commands.removeAtIndex(0) }
-		update()
+		if commands.count > 6 { commands.removeAtIndex(0) ; update() }
 	}
 	
 	override func update()
 	{
+		if port.origin != nil {
+			port.origin.host.update()
+		}
+		
 		consoleLine1.inject(commands[0])
 		consoleLine2.inject(commands[1])
 		consoleLine3.inject(commands[2])
@@ -142,6 +145,16 @@ class PanelConsole : Panel
 				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))
 			}
 		}
+	}
+	
+	override func bang()
+	{
+		if consoleLine1.port.connection != nil { consoleLine1.port.connection.host.listen(consoleLine1.port.event) }
+		if consoleLine2.port.connection != nil { consoleLine2.port.connection.host.listen(consoleLine2.port.event) }
+		if consoleLine3.port.connection != nil { consoleLine3.port.connection.host.listen(consoleLine3.port.event) }
+		if consoleLine4.port.connection != nil { consoleLine4.port.connection.host.listen(consoleLine4.port.event) }
+		if consoleLine5.port.connection != nil { consoleLine5.port.connection.host.listen(consoleLine5.port.event) }
+		if consoleLine6.port.connection != nil { consoleLine6.port.connection.host.listen(consoleLine6.port.event) }
 	}
 	
 	override func onInstallationBegin()

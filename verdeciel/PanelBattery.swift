@@ -15,12 +15,12 @@ class PanelBattery : Panel
 	var radioLabel:SCNLabel!
 	var radioPort:SCNPort!
 	
-	var cell1Label:SCNLabel!
-	var cell1:SCNPort!
-	var cell2Label:SCNLabel!
-	var cell2:SCNPort!
-	var cell3Label:SCNLabel!
-	var cell3:SCNPort!
+	var cellLabel1:SCNLabel!
+	var cellPort1:SCNPort!
+	var cellLabel2:SCNLabel!
+	var cellPort2:SCNPort!
+	var cellLabel3:SCNLabel!
+	var cellPort3:SCNPort!
 	
 	override func setup()
 	{
@@ -41,26 +41,26 @@ class PanelBattery : Panel
 		
 		let distance:Float = 0.4
 		
-		cell1 = SCNPort(host: self)
-		cell1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
-		cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell1Label.position = SCNVector3(x: -0.2, y:0, z: 0)
-		cell1.addChildNode(cell1Label)
-		interface.addChildNode(cell1)
+		cellPort1 = SCNPort(host: self)
+		cellPort1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
+		cellLabel1 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
+		cellLabel1.position = SCNVector3(x: -0.2, y:0, z: 0)
+		cellPort1.addChildNode(cellLabel1)
+		interface.addChildNode(cellPort1)
 		
-		cell2 = SCNPort(host: self)
-		cell2.position = SCNVector3(x: -distance, y: 0, z: 0)
-		cell2Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell2Label.position = SCNVector3(x: -0.2, y: 0, z: 0)
-		cell2.addChildNode(cell2Label)
-		interface.addChildNode(cell2)
+		cellPort2 = SCNPort(host: self)
+		cellPort2.position = SCNVector3(x: -distance, y: 0, z: 0)
+		cellLabel2 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
+		cellLabel2.position = SCNVector3(x: -0.2, y: 0, z: 0)
+		cellPort2.addChildNode(cellLabel2)
+		interface.addChildNode(cellPort2)
 		
-		cell3 = SCNPort(host: self)
-		cell3.position = SCNVector3(x: -distance, y: -templates.lineSpacing, z: 0)
-		cell3Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cell3Label.position = SCNVector3(x: -0.2, y: 0, z: 0)
-		cell3.addChildNode(cell3Label)
-		interface.addChildNode(cell3)
+		cellPort3 = SCNPort(host: self)
+		cellPort3.position = SCNVector3(x: -distance, y: -templates.lineSpacing, z: 0)
+		cellLabel3 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
+		cellLabel3.position = SCNVector3(x: -0.2, y: 0, z: 0)
+		cellPort3.addChildNode(cellLabel3)
+		interface.addChildNode(cellPort3)
 		
 		// Systems
 		
@@ -113,36 +113,36 @@ class PanelBattery : Panel
 	override func start()
 	{
 		thrusterPort.enable()
-		cell1.addEvent(items.cell)
+//		cellPort1.addEvent(items.cell1)
 	}
 	
 	override func update()
 	{
-		if cell1.event != nil {
-			cell1Label.update(cell1.event.name!, color: white)
-			cell1.enable()
+		if cellPort1.event != nil {
+			cellLabel1.update(cellPort1.event.name!, color: white)
+			cellPort1.enable()
 		}
 		else{
-			cell1Label.update("--", color: grey)
-			cell1.disable()
+			cellLabel1.update("--", color: grey)
+			cellPort1.disable()
 		}
 		
-		if cell2.event != nil {
-			cell2Label.update(cell2.event.name!, color: white)
-			cell2.enable()
+		if cellPort2.event != nil {
+			cellLabel2.update(cellPort2.event.name!, color: white)
+			cellPort2.enable()
 		}
 		else{
-			cell2Label.update("--", color: grey)
-			cell2.disable()
+			cellLabel2.update("--", color: grey)
+			cellPort2.disable()
 		}
 		
-		if cell3.event != nil {
-			cell3Label.update(cell3.event.name!, color: white)
-			cell3.enable()
+		if cellPort3.event != nil {
+			cellLabel3.update(cellPort3.event.name!, color: white)
+			cellPort3.enable()
 		}
 		else{
-			cell3Label.update("--", color: grey)
-			cell3.disable()
+			cellLabel3.update("--", color: grey)
+			cellPort3.disable()
 		}
 	}
 	
@@ -169,9 +169,9 @@ class PanelBattery : Panel
 	
 	override func bang()
 	{
-		if cell1.event != nil && cell1.connection != nil { cell1.connection.host.listen(cell1.event) }
-		if cell2.event != nil && cell2.connection != nil { cell2.connection.host.listen(cell2.event) }
-		if cell3.event != nil && cell3.connection != nil { cell3.connection.host.listen(cell3.event) }
+		if cellPort1.event != nil && cellPort1.connection != nil { cellPort1.connection.host.listen(cellPort1.event) }
+		if cellPort2.event != nil && cellPort2.connection != nil { cellPort2.connection.host.listen(cellPort2.event) }
+		if cellPort3.event != nil && cellPort3.connection != nil { cellPort3.connection.host.listen(cellPort3.event) }
 	}
 	
 	// MARK: Uploading -
@@ -188,9 +188,9 @@ class PanelBattery : Panel
 	{
 		uploadProgress += CGFloat(arc4random_uniform(100))/50
 		
-		if cell1.event == nil { cell1Label.update("\(Int(uploadProgress))%", color: grey) }
-		else if cell2.event == nil { cell2Label.update("\(Int(uploadProgress))%", color: grey) }
-		else if cell3.event == nil { cell3Label.update("\(Int(uploadProgress))%", color: grey) }
+		if cellPort1.event == nil { cellLabel1.update("\(Int(uploadProgress))%", color: grey) }
+		else if cellPort2.event == nil { cellLabel2.update("\(Int(uploadProgress))%", color: grey) }
+		else if cellPort3.event == nil { cellLabel3.update("\(Int(uploadProgress))%", color: grey) }
 		
 		if uploadProgress >= 100 {
 			uploadCompleted()
@@ -199,9 +199,9 @@ class PanelBattery : Panel
 	
 	func uploadCompleted()
 	{
-		if cell1.event == nil { cell1.addEvent(port.syphon()) }
-		else if cell2.event == nil { cell2.addEvent(port.syphon()) }
-		else if cell3.event == nil { cell3.addEvent(port.syphon()) }
+		if cellPort1.event == nil { cellPort1.addEvent(port.syphon()) }
+		else if cellPort2.event == nil { cellPort2.addEvent(port.syphon()) }
+		else if cellPort3.event == nil { cellPort3.addEvent(port.syphon()) }
 		else{ print("No available slots") }
 		
 		uploadProgress = 0
@@ -221,11 +221,5 @@ class PanelBattery : Panel
 	{
 		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.details == itemTypes.battery { return true }
 		return false
-	}
-	
-	// MARK: Flags -
-	override func onInstallationComplete()
-	{
-		cell1.addEvent(items.cell.instance())
 	}
 }

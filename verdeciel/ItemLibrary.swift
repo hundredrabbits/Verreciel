@@ -23,7 +23,10 @@ class ItemLibrary
 	let radioPart2 = Event(newName: "radio speaker", size: 1, type: eventTypes.item, details: itemTypes.part, note:"piece of radio", isQuest:true)
 	
 	// Batteries
-	let cell = Event(newName: "cell", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
+	let cell1 = Event(newName: "cell a", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
+	let cell2 = Event(newName: "cell b", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
+	let cell3 = Event(newName: "cell c", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
+	let cell4 = Event(newName: "cell d", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
 	let rack = Event(newName: "rack", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives average power")
 	
 	// Misc

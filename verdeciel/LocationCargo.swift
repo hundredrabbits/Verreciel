@@ -46,7 +46,7 @@ class LocationCargo : Location
 	
 	// MARK: Panel
 	
-	override func panel() -> Panel
+	override func panel() -> SCNNode
 	{
 		let newPanel = Panel()
 		

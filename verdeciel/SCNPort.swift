@@ -203,13 +203,17 @@ class SCNPort : SCNNode
 	
 	func syphon() -> Event
 	{
-		let syph = origin.event.instance()
+		let syph = origin.event
 		
-		origin.event.remove()
+		syph.size = 0
+		print("open")
+		print(origin.host)
 		origin.event = nil
 		origin.host.update()
 		origin.update()
 		origin.disconnect()
+		print("close")
+		syph.size = 1
 		
 		return syph
 	}

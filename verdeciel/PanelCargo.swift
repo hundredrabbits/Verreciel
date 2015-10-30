@@ -24,10 +24,6 @@ class PanelCargo : Panel
 		
 		port.event = items.playerCargo
 
-		// Tutorial Item
-		
-		port.event.content.append(items.cell)
-
 		// Quantity
 		
 		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:grey)
@@ -89,6 +85,35 @@ class PanelCargo : Panel
 		bang()
 	}
 	
+	override func update()
+	{
+		print("Update cargo")
+		
+		// Update cargohold
+		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
+		for item in port.event.content {
+			print("\(item.name) - \(item.size)")
+			if item.size > 0 {
+				newCargohold.content.append(item)
+			}
+		}
+		port.event = newCargohold
+		
+		line1.color(grey)
+		line2.color(grey)
+		line3.color(grey)
+		line4.color(grey)
+		line5.color(grey)
+		line6.color(grey)
+		
+		if port.event.content.count > 0 { line1.color( port.event.content[0].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 1 { line2.color( port.event.content[1].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 2 { line3.color( port.event.content[2].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
+		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
+	}
+	
 	// MARK: I/O -
 	
 	override func listen(event:Event)
@@ -134,32 +159,6 @@ class PanelCargo : Panel
 		uploadProgress = 0
 		isUploading = false
 		bang()
-	}
-	
-	override func update()
-	{
-		// Update cargohold
-		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
-		for item in port.event.content {
-			if item.size > 0 {
-				newCargohold.content.append(item)
-			}
-		}
-		port.event = newCargohold
-		
-		line1.color(grey)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
-		line5.color(grey)
-		line6.color(grey)
-		
-		if port.event.content.count > 0 { line1.color( port.event.content[0].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 1 { line2.color( port.event.content[1].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 2 { line3.color( port.event.content[2].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
 	}
 	
 	override func onInstallationBegin()
