@@ -17,11 +17,9 @@ class CoreUI: SCNNode
 	var displayMagic:SCNLabel!
 	var displayMessage:SCNLabel!
 	var displayPassive:SCNLabel!
-	var displayAlert:SCNLabel!
 	
 	var message:String = ""
 	var passive:String = ""
-	var alert:String = ""
 	
 	let textSize:Float = 0.025
 	let visorDepth = -1.3
@@ -56,10 +54,6 @@ class CoreUI: SCNNode
 		displayPassive = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: grey)
 		displayPassive.position = SCNVector3(0,-1.2,visorDepth)
 		visor.addChildNode(displayPassive)
-		
-		displayAlert = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: red)
-		displayAlert.position = SCNVector3(0,1.3,visorDepth)
-		visor.addChildNode(displayAlert)
 		
 		displayLeft.eulerAngles.y = Float(degToRad(10))
 		

@@ -215,6 +215,11 @@ class CorePlayer : SCNNode
 		
 		SCNTransaction.setCompletionBlock({ player.isLocked = false })
 		SCNTransaction.commit()
+		
+		if handle != nil {
+			handle.enable()
+			handle = nil
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

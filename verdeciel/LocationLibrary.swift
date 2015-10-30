@@ -50,14 +50,14 @@ class Loiqe
 	
 	func landing() -> LocationTrade
 	{
-		let location = LocationTrade(name: "Loiqe Landings", want:items.loiqeLicense, give:items.cell2)
+		let location = LocationTrade(name: "Loiqe Landings", want:items.materia, give:items.cell2)
 		location.at = CGPoint(x: offset.x, y: offset.y - 2)
 		return location
 	}
 	
 	func city() -> LocationCargo
 	{
-		let location = LocationCargo(name:"Loiqe City", item: items.loiqeLicense)
+		let location = LocationCargo(name:"Loiqe City", item: items.materia)
 		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y - 1)
 		location.note = "The city of loiqe is$granting you a$pilot license."
@@ -71,7 +71,7 @@ class Loiqe
 	
 	func waypoint() -> LocationTrade
 	{
-		return LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.loiqeLicense, give: items.radioPart1)
+		return LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.materia, give: items.radioPart1)
 	}
 	
 	func cargo() -> LocationCargo

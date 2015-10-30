@@ -23,21 +23,21 @@ class QuestLibrary
 		// Capsule
 		
 		/*  1 */ tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.isThrusterPowered() == true }, result: { thruster.install() }) )
-		/*  2 */ tutorial.append( Quest(name:"Press undock", predicate:{ capsule.dock == nil }, result: { }) )
+		/*  2 */ tutorial.append( Quest(name:"Press undock on thruster", predicate:{ capsule.dock == nil }, result: { }) )
 		/*  3 */ tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { }) )
-		/*  4 */ tutorial.append( Quest(name:"Please wait", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
+		/*  4 */ tutorial.append( Quest(name:"Wait for docking", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
 		/*  5 */ tutorial.append( Quest(name:"Undock from Landing", predicate:{ capsule.dock == nil }, result: { }) )
 		/*  6 */ tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { cargo.install() ; mission.install() }) )
-		/*  7 */ tutorial.append( Quest(name:"Route license to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )
+		/*  7 */ tutorial.append( Quest(name:"Route materia to cargo", predicate:{ cargo.contains(items.materia) }, result: { console.install() }) )
 		/*  8 */ tutorial.append( Quest(name:"Route Cargo to Console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
-		/*  9 */ tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.cellPort2.isEnabled == true }, result: { pilot.install() }) )
 		/* 10 */ tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: { }) )
-		/* 11 */ tutorial.append( Quest(name:"Reach horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: { journey.install() }) )
+		/* 10 */ tutorial.append( Quest(name:"Press horadric on radar", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
+		/* 11 */ tutorial.append( Quest(name:"Undock and Reach horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: { journey.install() }) )
 		
 		// Radio
 		
 		/*  9 */ tutorial.append( Quest(name:"Reach the loiqe waypoint", predicate:{ universe.loiqe_waypoint.isKnown }, result: { exploration.install() }) )
-		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
+		/* 10 */ tutorial.append( Quest(name:"Trade materia for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Reach cargo", predicate:{ universe.loiqe_cargo.isKnown == true }, result: { }) )
 		/* 12 */ tutorial.append( Quest(name:"Route speaker to cargo", predicate:{ cargo.contains(items.radioPart1) && cargo.contains(items.radioPart2) }, result: { progress.install() }) )
 		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ capsule.dock == universe.loiqe_horadric }, result: { radio.display() }) )

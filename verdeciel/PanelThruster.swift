@@ -16,6 +16,15 @@ class PanelThruster : Panel
 	var line3:SCNLine!
 	var line4:SCNLine!
 	
+	var cutLine1Left:SCNLine!
+	var cutLine1Right:SCNLine!
+	var cutLine2Left:SCNLine!
+	var cutLine2Right:SCNLine!
+	var cutLine3Left:SCNLine!
+	var cutLine3Right:SCNLine!
+	var cutLine4Left:SCNLine!
+	var cutLine4Right:SCNLine!
+	
 	var maxSpeed:Int = 0
 	var speed:Int = 0
 	var actualSpeed:Float = 0
@@ -144,7 +153,7 @@ class PanelThruster : Panel
 	func modeDocked()
 	{
 		label.updateColor(white)
-		details.update("Undock")
+		details.update("Undock", color:white)
 		port.enable()
 		trigger.opacity = 1
 		
