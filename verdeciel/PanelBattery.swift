@@ -43,7 +43,7 @@ class PanelBattery : Panel
 		
 		cell1 = SCNPort(host: self)
 		cell1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
-		cell1.addEvent(items.smallBattery)
+		cell1.addEvent(items.cell)
 		cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -0.2, y:0, z: 0)
 		cell1.addChildNode(cell1Label)
@@ -65,8 +65,7 @@ class PanelBattery : Panel
 		
 		// Systems
 		
-		thrusterPort = SCNPort(host: self, input:eventTypes.battery)
-		thrusterPort.requirement = items.smallBattery
+		thrusterPort = SCNPort(host: self, input:eventTypes.item)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
@@ -115,7 +114,7 @@ class PanelBattery : Panel
 	override func start()
 	{
 		thrusterPort.enable()
-		cell1.addEvent(items.smallBattery)
+		cell1.addEvent(items.cell)
 	}
 	
 	override func update()
@@ -162,10 +161,11 @@ class PanelBattery : Panel
 	
 	override func listen(event:Event)
 	{
-		if event.details != eventDetails.battery { return }
+		if event.details != itemTypes.battery { return }
 		
-		print("hey")
-		uploadItem(event)
+		if port.origin != nil && port.origin.event != nil && isUploading == false {
+			uploadItem(event)
+		}
 	}
 	
 	override func bang()
@@ -214,13 +214,13 @@ class PanelBattery : Panel
 	
 	func isRadioPowered() -> Bool
 	{
-		if radioPort.origin != nil && radioPort.origin.event != nil && radioPort.origin.event.type == eventTypes.battery { return true }
+		if radioPort.origin != nil && radioPort.origin.event != nil && radioPort.origin.event.details == itemTypes.battery { return true }
 		return false
 	}
 	
 	func isThrusterPowered() -> Bool
 	{
-		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.type == eventTypes.battery { return true }
+		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.details == itemTypes.battery { return true }
 		return false
 	}
 }

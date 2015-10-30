@@ -204,7 +204,8 @@ class SCNPort : SCNNode
 	func syphon() -> Event
 	{
 		let eventCopy = origin.event
-
+		
+		origin.event.size = 0
 		origin.event = nil
 		origin.host.update()
 		origin.update()

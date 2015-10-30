@@ -13,7 +13,7 @@ class LocationStar : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
-		self.details = eventDetails.star
+		self.details = itemTypes.star
 	}
 	
 	override func _sprite() -> SCNNode

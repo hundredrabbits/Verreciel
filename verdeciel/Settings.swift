@@ -103,7 +103,7 @@ enum eventTypes
 	case panel
 }
 
-enum eventDetails
+enum itemTypes
 {
 	case unknown
 	case battery

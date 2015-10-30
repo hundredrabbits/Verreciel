@@ -9,9 +9,8 @@ import Foundation
 class SCNCommand : SCNNode
 {
 	var text:String!
-	var details:eventDetails!
+	var details:itemTypes!
 	var color:UIColor!
-	var event:Event!
 	
 	var head:Bool!
 	
@@ -22,12 +21,11 @@ class SCNCommand : SCNNode
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "",details:eventDetails = eventDetails.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false)
+	init(text:String = "",details:itemTypes = itemTypes.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false)
 	{
 		self.text = text
 		self.details = details
 		self.color = color
-		self.event = event
 		self.head = head
 
 		label = SCNLabel(text: self.text, scale: 0.1, align: alignment.left)
@@ -57,15 +55,14 @@ class SCNCommand : SCNNode
 		self.text = command.text
 		self.details = command.details
 		self.color = command.color
-		self.event = command.event
 		self.head = command.head
 		
-		port.event = command.event
+		port.event = command.port.event
 		
 		label.update(command.text, color: self.color)
 		detailsLabel.update("")
 		
-		if command.event != nil {
+		if port.event != nil {
 			port.opacity = 1
 			port.enable()
 		}
@@ -73,7 +70,7 @@ class SCNCommand : SCNNode
 			port.opacity = 0
 		}
 		
-		if command.details != eventDetails.unknown {
+		if command.details != itemTypes.unknown {
 			self.details = command.details
 			detailsLabel.update("\(details)")
 		}
@@ -97,7 +94,7 @@ class SCNCommand : SCNNode
 	
 	override func bang()
 	{
-		port.connection.host.listen(self.event)
+		port.connection.host.listen(self.port.event)
 	}
 
 	required init?(coder aDecoder: NSCoder)

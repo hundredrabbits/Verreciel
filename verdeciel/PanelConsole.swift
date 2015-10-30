@@ -98,6 +98,15 @@ class PanelConsole : Panel
 		update()
 	}
 	
+	override func installedFixedUpdate()
+	{
+		print("--")
+		for line in consoleNode.childNodes {
+			let newLine = line as! SCNCommand
+			if newLine.port.event != nil { print(newLine.port.event) }
+		}
+	}
+	
 	override func update()
 	{
 		consoleLine1.inject(commands[0])
@@ -132,7 +141,7 @@ class PanelConsole : Panel
 	override func listen(event: Event)
 	{
 		for command in commands {
-			command.event = nil
+			command.port.event = nil
 		}
 		
 		if port.origin.host == cargo {

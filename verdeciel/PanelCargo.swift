@@ -26,7 +26,7 @@ class PanelCargo : Panel
 
 		// Tutorial Item
 		
-		port.event.content.append(items.smallBattery)
+		port.event.content.append(items.cell)
 
 		// Quantity
 		

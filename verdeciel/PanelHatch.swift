@@ -68,13 +68,13 @@ class PanelHatch : Panel
 			return
 		}
 		
-		if command.event.size > 0 {
-			command.event.size -= 1
+		if command.port.event.size > 0 {
+			command.port.event.size -= 1
 			command.update()
 		}
 		
-		if command.event.size < 1 {
-			command.inject(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
+		if command.port.event.size < 1 {
+			command.inject(SCNCommand(text: "--", details: itemTypes.unknown, color: grey, event: command.port.event))
 			command.port.disconnect()
 			self.load = nil
 			cargo.bang()
