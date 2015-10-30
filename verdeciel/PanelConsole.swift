@@ -115,8 +115,6 @@ class PanelConsole : Panel
 	func boot()
 	{
 		clearLines()
-		addLine(SCNCommand(text: "Run"))
-		addLine(SCNCommand(text: " "))
 		addLine(SCNCommand(text: "Awaiting input..", head:true))
 	}
 	
@@ -149,5 +147,10 @@ class PanelConsole : Panel
 	override func onInstallationBegin()
 	{
 		player.lookAt(deg: -270)
+	}
+	
+	override func onInstallationComplete()
+	{
+		boot()
 	}
 }

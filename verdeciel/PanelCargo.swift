@@ -8,9 +8,6 @@ import Foundation
 
 class PanelCargo : Panel
 {
-	var uploadItem:Event!
-	var uploadProgress:CGFloat = 0
-	
 	var line1:SCNLine!
 	var line2:SCNLine!
 	var line3:SCNLine!
@@ -66,13 +63,7 @@ class PanelCargo : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if uploadItem != nil {
-			uploadProgress += CGFloat(arc4random_uniform(100))/50
-			details.update("Upload \(Int(uploadProgress))%", color: grey)
-			if uploadProgress >= 100 {
-				uploadCompleted()
-			}
-		}
+		if isUploading == true { uploadProcess() }
 		else{
 			details.update("\(port.event.content.count)/6")
 		}
@@ -98,31 +89,50 @@ class PanelCargo : Panel
 		bang()
 	}
 	
+	// MARK: I/O -
+	
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
 		
-		if event.type == eventTypes.item {
-			uploadItem(event)
-		}
-		else{
-			print("Not item")
-		}
+		if event.type != eventTypes.item { print("Not item") ; return }
+		
+		uploadItem(event)
 	}
-
+	
+	override func bang()
+	{
+		update()
+		if port.connection == nil { return }
+		port.connection.host.listen(port.event)
+	}
+	
+	// MARK: Upload -
+	
+	var isUploading:Bool = false
+	var uploadProgress:CGFloat = 0
+	
 	func uploadItem(item:Event)
 	{
-		uploadItem = item
+		isUploading = true
+	}
+	
+	func uploadProcess()
+	{
+		uploadProgress += CGFloat(arc4random_uniform(100))/50
+		details.update("Upload \(Int(uploadProgress))%", color: grey)
+		if uploadProgress >= 100 {
+			uploadCompleted()
+		}
 	}
 	
 	func uploadCompleted()
 	{
-		let newItem = uploadItem
-		port.event.content.append(newItem)
-		uploadItem = nil
-		port.origin.event = nil
-		port.origin.host.bang()
-		update()
+		let test = port.syphon()
+		port.event.content.append(test)
+		
+		uploadProgress = 0
+		isUploading = false
 		bang()
 	}
 	
@@ -150,13 +160,6 @@ class PanelCargo : Panel
 		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
-	}
-	
-	override func bang()
-	{
-		update()
-		if port.connection == nil { return }
-		port.connection.host.listen(port.event)
 	}
 	
 	override func onInstallationBegin()

@@ -8,9 +8,6 @@ import Foundation
 
 class PanelBattery : Panel
 {
-	var isUploading:Bool = false
-	var uploadProgress:CGFloat = 0
-	
 	var oxygenPort:SCNPort!
 	var shieldPort:SCNPort!
 	var cloakPort:SCNPort!
@@ -69,6 +66,7 @@ class PanelBattery : Panel
 		// Systems
 		
 		thrusterPort = SCNPort(host: self, input:eventTypes.battery)
+		thrusterPort.requirement = items.smallBattery
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
@@ -89,7 +87,6 @@ class PanelBattery : Panel
 		oxygenPort.addChildNode(oxygenLabel)
 		interface.addChildNode(oxygenPort)
 		
-		
 		shieldPort = SCNPort(host: self, input:eventTypes.battery)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
@@ -103,7 +100,6 @@ class PanelBattery : Panel
 		cloakLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		cloakPort.addChildNode(cloakLabel)
 		interface.addChildNode(cloakPort)
-		
 		
 		cloakLabel.update("--", color: grey)
 		shieldLabel.update("--", color: grey)
@@ -120,20 +116,6 @@ class PanelBattery : Panel
 	{
 		thrusterPort.enable()
 		cell1.addEvent(items.smallBattery)
-		update()
-	}
-	
-	override func listen(event:Event)
-	{
-		if event.details != eventDetails.battery { return }
-		
-		// Find free slot
-		if cell2.event == nil {
-			uploadItem(event)
-		}
-		else if cell3.event == nil {
-			cell3.addEvent(event)
-		}
 	}
 	
 	override func update()
@@ -169,26 +151,62 @@ class PanelBattery : Panel
 	override func installedFixedUpdate()
 	{
 		if isUploading == true {
-			uploadProgress += CGFloat(arc4random_uniform(100))/50
-			cell2Label.update("\(Int(uploadProgress))%", color: grey)
-			if uploadProgress >= 100 {
-				uploadCompleted()
-			}
+			uploadProcess()
+		}
+		if isInstalled == true {
+			update()
 		}
 	}
+	
+	// MARK: I/O
+	
+	override func listen(event:Event)
+	{
+		if event.details != eventDetails.battery { return }
+		
+		print("hey")
+		uploadItem(event)
+	}
+	
+	override func bang()
+	{
+		if cell1.event != nil && cell1.connection != nil { cell1.connection.host.listen(cell1.event) }
+		if cell2.event != nil && cell2.connection != nil { cell2.connection.host.listen(cell2.event) }
+		if cell3.event != nil && cell3.connection != nil { cell3.connection.host.listen(cell3.event) }
+	}
+	
+	// MARK: Uploading -
+	
+	var isUploading:Bool = false
+	var uploadProgress:CGFloat = 0
 	
 	func uploadItem(item:Event)
 	{
 		isUploading = true
 	}
 	
+	func uploadProcess()
+	{
+		uploadProgress += CGFloat(arc4random_uniform(100))/50
+		cell2Label.update("\(Int(uploadProgress))%", color: grey)
+		if uploadProgress >= 100 {
+			uploadCompleted()
+		}
+	}
+	
 	func uploadCompleted()
 	{
-		cell2.addEvent(port.syphon())
+		if cell1.event == nil { cell1.addEvent(port.syphon()) }
+		else if cell2.event == nil { cell2.addEvent(port.syphon()) }
+		else if cell3.event == nil { cell3.addEvent(port.syphon()) }
+		else{ print("No available slots") }
+		
+		uploadProgress = 0
 		isUploading = false
-		update()
 		cargo.bang()
 	}
+	
+	// MARK: Flags -
 	
 	func isRadioPowered() -> Bool
 	{

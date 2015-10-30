@@ -19,12 +19,10 @@
 - UI Installs
 - Add comms in UI
 
-- Add combinatrix() Horadric panel node
-
 - Add quest pointers
 - Mission/Panel Toggle?
 
-- Add harvest location
+- Add harvest location 4 in falvet
 
 - Signal converter panel?
 
@@ -35,7 +33,7 @@
 > Universe
 
 	> Events
-	- Warp animation
+	- Warp animation align
 
 	> Add Vermil Portal to Usul
 	> Add cyanin Portal to Valen
@@ -51,7 +49,6 @@
 
 	> Locations
 	- Add dimensional gates(with item requirements)
-	- Warp Align locations
 
 	> Stealthed events
 
@@ -60,6 +57,8 @@
 	- Invisible
 	- Sentries
 	- Hostile
+	- Node
+	- Shield (cyan requires shield + 4)
 
 > Capsule
 

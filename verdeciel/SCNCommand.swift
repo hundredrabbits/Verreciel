@@ -90,9 +90,7 @@ class SCNCommand : SCNNode
 	
 	override func update()
 	{
-		print("update: \(port.event.size)")
-		
-		if port.event.size < 1 {
+		if port.event == nil {
 			port.disable()
 		}
 	}

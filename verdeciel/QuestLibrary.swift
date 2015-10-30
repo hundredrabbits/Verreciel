@@ -23,10 +23,12 @@ class QuestLibrary
 		// Capsule
 		
 		/*  1 */ tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event.type != nil && battery.thrusterPort.origin.event.type == eventTypes.battery }, result: { thruster.install() }) )
-		/*  2 */ tutorial.append( Quest(name:"Reach the station", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
-		/*  3 */ tutorial.append( Quest(name:"Undock from station", predicate:{ capsule.dock == nil }, result: { cargo.install() }) )
-		/*  3 */ tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { mission.install() }) )
-		/*  4 */ tutorial.append( Quest(name:"Upload license to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )
+		/*  2 */ tutorial.append( Quest(name:"Press undock", predicate:{ capsule.dock == nil }, result: { }) )
+		/*  2 */ tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { }) )
+		/*  2 */ tutorial.append( Quest(name:"Reach station", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
+		/*  3 */ tutorial.append( Quest(name:"Undock from station", predicate:{ capsule.dock == nil }, result: { }) )
+		/*  3 */ tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { cargo.install() ; mission.install() }) )
+		/*  4 */ tutorial.append( Quest(name:"Route license to cargo", predicate:{ cargo.contains(items.loiqeLicense) }, result: { console.install() }) )
 		/*  5 */ tutorial.append( Quest(name:"Route Cargo to Console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
 		/*  6 */ tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.cell2.isEnabled == true }, result: { pilot.install() }) )
 		/*  7 */ tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: { }) )

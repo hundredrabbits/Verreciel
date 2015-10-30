@@ -205,8 +205,7 @@ class SCNPort : SCNNode
 	{
 		let eventCopy = origin.event
 
-		origin.event.size = 0
-		origin.event.fixedUpdate()
+		origin.event = nil
 		origin.host.update()
 		origin.update()
 		origin.disconnect()

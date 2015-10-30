@@ -94,7 +94,7 @@ class CoreCapsule: SCNNode
 		let distanceRatio = distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5
 		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 		
-		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.001 { speed = 0.001 }
+		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
 		let angle:CGFloat = CGFloat((capsule.direction) % 360)
 
 		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
