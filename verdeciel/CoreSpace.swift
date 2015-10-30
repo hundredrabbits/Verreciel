@@ -40,18 +40,20 @@ class CoreSpace: SCNNode
 		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
 		
 		// Stars
-		let lineSpeed = Float(thruster.actualSpeed) / 6
+		
+		var starSpeed = thruster.actualSpeed
+		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.1 }
+		else{ starSpeed = thruster.actualSpeed }
+		
+		let lineSpeed = Float(starSpeed) / 6
 		for node in starsRoot.childNodes
 		{
 			let line = node as! SCNLine
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
 			line.updateHeight(thruster.actualSpeed + 0.1)
-			
 			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50
-		
 			line.updateColor(UIColor(white: CGFloat(distanceRatio), alpha: 1))
-			
-			
+
 			if line.position.y < -20 { line.removeFromParentNode() }
 		}
 		

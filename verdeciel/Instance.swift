@@ -40,6 +40,15 @@ class Instance : SCNNode
 			self.position = SCNVector3(0,abs(flattenedDistance),0)
 		}
 		
+		if distance > 6 {
+			let normalized = distance - 6
+			let someVal = (1 - (normalized/1.5))
+			self.opacity = someVal
+		}
+		else{
+			self.opacity = 1
+		}
+		
 		if event.distance > 0.75 {
 			leaveInstance()
 		}
