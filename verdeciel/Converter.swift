@@ -15,6 +15,7 @@ class Converter : SCNNode
 	let portInputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.right)
 	let portOutputLabel = SCNLabel(text: "", scale: 0.03, color:grey, align: alignment.left)
 	
+	
 	override init()
 	{
 		super.init()
@@ -47,7 +48,7 @@ class Converter : SCNNode
 			installProgress += CGFloat(arc4random_uniform(100))/50
 			installProgressBar.update(installProgress)
 			installProgressBar.opacity = 1
-			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
+			label.update("Installing \(Int(installProgress))%", color: grey)
 			if installProgress >= 100 {
 				installed()
 				installer.opacity = 0
@@ -72,7 +73,7 @@ class Converter : SCNNode
 		port.enable()
 		port.input = eventTypes.item
 		port.requirement = items.radio
-		label.updateWithColor("awaiting panel",color:grey)
+		label.update("awaiting panel",color:grey)
 	}
 	
 	// MARK: Installation -
@@ -101,7 +102,7 @@ class Converter : SCNNode
 		installer.addChildNode(installProgressBar)
 		self.addChildNode(installer)
 		
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 		self.opacity = 0
 		details.opacity = 0
 	}
@@ -116,7 +117,7 @@ class Converter : SCNNode
 		isInstalled = true
 		installer.opacity = 0
 		
-		label.updateWithColor(name!, color: white)
+		label.update(name!, color: white)
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
@@ -124,6 +125,8 @@ class Converter : SCNNode
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.port.enable() ; self.onInstallationComplete() })
 		SCNTransaction.commit()
+		
+		port.requirement = nil
 	}
 	
 	func onInstallationBegin()

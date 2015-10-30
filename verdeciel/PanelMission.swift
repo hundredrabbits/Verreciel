@@ -82,7 +82,7 @@ class PanelMission : Panel
 	{
 		if isInstalled == false { return }
 		
-		label.updateWithColor(name!, color: white)
+		label.update(name!, color: white)
 		
 		let latestTutorialQuest = quests.tutorial[quests.tutorialQuestId]
 		let latestFalvetQuest = quests.falvet[quests.falvetQuestId]
@@ -108,10 +108,10 @@ class PanelMission : Panel
 		locationPanel.update()
 		
 		if capsule.dock.isComplete == true {
-			label.updateWithColor(capsule.dock.name!, color: cyan)
+			label.update(capsule.dock.name!, color: cyan)
 		}
 		else{
-			label.updateWithColor(capsule.dock.name!, color: red)
+			label.update(capsule.dock.name!, color: red)
 		}
 	}
 	

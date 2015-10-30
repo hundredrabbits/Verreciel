@@ -52,7 +52,7 @@ class SCNCommand : SCNNode
 		self.addChildNode(headLineDown)
 	}
 	
-	func update(command:SCNCommand)
+	func inject(command:SCNCommand)
 	{
 		self.text = command.text
 		self.details = command.details
@@ -62,7 +62,7 @@ class SCNCommand : SCNNode
 		
 		port.event = command.event
 		
-		label.updateWithColor(command.text, color: self.color)
+		label.update(command.text, color: self.color)
 		detailsLabel.update("")
 		
 		if command.event != nil {
@@ -85,6 +85,15 @@ class SCNCommand : SCNNode
 		else{
 			headLineTop.opacity = 0
 			headLineDown.opacity = 0
+		}
+	}
+	
+	override func update()
+	{
+		print("update: \(port.event.size)")
+		
+		if port.event.size < 1 {
+			port.disable()
 		}
 	}
 	

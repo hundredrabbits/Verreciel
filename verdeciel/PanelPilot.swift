@@ -47,7 +47,7 @@ class PanelPilot : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 	}
 	
 	override func touch(id:Int = 0)

@@ -82,7 +82,7 @@ class Panel : SCNNode
 		if isInstalling == true {
 			installProgress += CGFloat(arc4random_uniform(100))/50
 			installProgressBar.update(installProgress)
-//			label.updateWithColor("Installing \(Int(installProgress))%", color: grey)
+//			label.update("Installing \(Int(installProgress))%", color: grey)
 			installProgressBar.opacity = 1
 			if installProgress >= 100 {
 				installed()
@@ -138,7 +138,7 @@ class Panel : SCNNode
 		installer.addChildNode(installProgressBar)
 		self.addChildNode(installer)
 		
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 		interface.opacity = 0
 		decals.opacity = 0
 		details.opacity = 0
@@ -154,7 +154,7 @@ class Panel : SCNNode
 		isInstalled = true
 		installer.opacity = 0
 		
-		label.updateWithColor(name!, color: white)
+		label.update(name!, color: white)
 		decals.position = SCNVector3(0,0,templates.radius - 0.5)
 		interface.position = SCNVector3(0,0,templates.radius + 1)
 		

@@ -63,6 +63,16 @@ class SCNLabel : SCNNode
 		}
 	}
 	
+	func update(text:String, force:Bool = false, color:UIColor)
+	{
+		if text == activeText && color == self.color && force == false { return }
+		removeLetters()
+		activeText = text
+		self.color = color
+		addLetters(activeText, scale: activeScale)
+		adjustAlignment()
+	}
+	
 	func update(text:String, force:Bool = false)
 	{
 		if text == activeText && force == false { return }
@@ -71,13 +81,7 @@ class SCNLabel : SCNNode
 		addLetters(activeText, scale: activeScale)
 		adjustAlignment()
 	}
-	
-	func updateWithColor(text:String,color:UIColor)
-	{
-		self.color = color
-		update(text)
-	}
-	
+
 	func updateColor(color:UIColor)
 	{
 		if self.color == color { return }

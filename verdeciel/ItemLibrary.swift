@@ -18,7 +18,7 @@ class ItemLibrary
 	let cyanineKey = Event(newName: "Cyanine Key", size: 1, type: eventTypes.item, details: eventDetails.key, note:"unlocks the portal to cyanine", isQuest:true)
 	
 	// Radio Quest
-	let radio = Event(newName: "radio", size: 1, type: eventTypes.item, details: eventDetails.panel, note:"complete radio", isQuest:true)
+	let radio = Event(newName: "radio", size: 1, type: eventTypes.panel, details: eventDetails.panel, note:"complete radio", isQuest:true)
 	let radioPart1 = Event(newName: "radio antena", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
 	let radioPart2 = Event(newName: "radio speaker", size: 1, type: eventTypes.item, details: eventDetails.part, note:"piece of radio", isQuest:true)
 	

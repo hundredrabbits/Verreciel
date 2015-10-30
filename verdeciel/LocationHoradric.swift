@@ -93,13 +93,13 @@ class LocationHoradric : Location
 		if inPort3.origin != nil && inPort3.origin.event != nil { ingredients.append(inPort3.origin.event) }
 		if inPort4.origin != nil && inPort4.origin.event != nil { ingredients.append(inPort4.origin.event) }
 		
-		if ingredients.count < 2 { label.updateWithColor("not recipe", color: grey) ; return }
+		if ingredients.count < 2 { label.update("incompatible", color: grey) ; return }
 		
 		// Check for recipies
 		
 		for recipe in recipes.horadric {
 			if recipe.isValid(ingredients) == true {
-				label.updateWithColor(recipe.name, color: white)
+				label.update(recipe.name, color: white)
 				outPort.event = recipe.result
 				outPort.enable()
 			}
@@ -109,13 +109,12 @@ class LocationHoradric : Location
 	override func bang()
 	{
 		if outPort.connection == nil { print("No connection") ; return }
-		if outPort.connection.host != cargo { print("Not routed to cargo") ; return }
-		if outPort.event == nil { completeTrade() ; return }
+		if outPort.event == nil { return }
 		
 		outPort.connection.host.listen(outPort.event)
-		
-		update()
+		completeTrade()
 	}
+	
 	func completeTrade()
 	{
 		if inPort1.origin != nil { inPort1.syphon() }
@@ -123,10 +122,9 @@ class LocationHoradric : Location
 		if inPort3.origin != nil { inPort3.syphon() }
 		if inPort4.origin != nil { inPort4.syphon() }
 		
-		if outPort.connection != nil { outPort.disconnect() }
-		
+		cargo.bang()
 		outPort.event = nil
-		label.updateWithColor("not recipe", color: grey)
+		label.update("--", color: grey)
 	}
 	
 	required init(coder aDecoder: NSCoder)

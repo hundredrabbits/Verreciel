@@ -1,10 +1,5 @@
-//
-//  PanelConsole.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-07-07.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -13,13 +8,14 @@ import Foundation
 
 class PanelBattery : Panel
 {
-	var uploadItem:Event!
+	var isUploading:Bool = false
 	var uploadProgress:CGFloat = 0
 	
 	var oxygenPort:SCNPort!
 	var shieldPort:SCNPort!
 	var cloakPort:SCNPort!
 	var thrusterPort:SCNPort!
+	var radioLabel:SCNLabel!
 	var radioPort:SCNPort!
 	
 	var cell1Label:SCNLabel!
@@ -72,19 +68,27 @@ class PanelBattery : Panel
 		
 		// Systems
 		
-		oxygenPort = SCNPort(host: self, input:eventTypes.battery)
-		oxygenPort.position = SCNVector3(x: distance, y: 0, z: 0)
-		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		oxygenLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
-		oxygenPort.addChildNode(oxygenLabel)
-		interface.addChildNode(oxygenPort)
-		
 		thrusterPort = SCNPort(host: self, input:eventTypes.battery)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		interface.addChildNode(thrusterPort)
+		
+		radioPort = SCNPort(host: self, input:eventTypes.battery)
+		radioPort.position = SCNVector3(x: distance, y: 0, z: 0)
+		radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
+		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		radioPort.addChildNode(radioLabel)
+		interface.addChildNode(radioPort)
+		
+		oxygenPort = SCNPort(host: self, input:eventTypes.battery)
+		oxygenPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
+		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
+		oxygenLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		oxygenPort.addChildNode(oxygenLabel)
+		interface.addChildNode(oxygenPort)
+		
 		
 		shieldPort = SCNPort(host: self, input:eventTypes.battery)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
@@ -100,17 +104,11 @@ class PanelBattery : Panel
 		cloakPort.addChildNode(cloakLabel)
 		interface.addChildNode(cloakPort)
 		
-		radioPort = SCNPort(host: self, input:eventTypes.battery)
-		radioPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
-		let radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
-		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
-		radioPort.addChildNode(radioLabel)
-		interface.addChildNode(radioPort)
 		
-		cloakLabel.updateWithColor("--", color: grey)
-		shieldLabel.updateWithColor("--", color: grey)
-		radioLabel.updateWithColor("--", color: grey)
-		oxygenLabel.updateWithColor("--", color: grey)
+		cloakLabel.update("--", color: grey)
+		shieldLabel.update("--", color: grey)
+		radioLabel.update("--", color: grey)
+		oxygenLabel.update("--", color: grey)
 		
 		port.input = eventTypes.battery
 		port.output = eventTypes.unknown
@@ -141,38 +139,38 @@ class PanelBattery : Panel
 	override func update()
 	{
 		if cell1.event != nil {
-			cell1Label.updateWithColor(cell1.event.name!, color: white)
+			cell1Label.update(cell1.event.name!, color: white)
 			cell1.enable()
 		}
 		else{
-			cell1Label.updateWithColor("--", color: grey)
+			cell1Label.update("--", color: grey)
 			cell1.disable()
 		}
 		
 		if cell2.event != nil {
-			cell2Label.updateWithColor(cell2.event.name!, color: white)
+			cell2Label.update(cell2.event.name!, color: white)
 			cell2.enable()
 		}
 		else{
-			cell2Label.updateWithColor("--", color: grey)
+			cell2Label.update("--", color: grey)
 			cell2.disable()
 		}
 		
 		if cell3.event != nil {
-			cell3Label.updateWithColor(cell3.event.name!, color: white)
+			cell3Label.update(cell3.event.name!, color: white)
 			cell3.enable()
 		}
 		else{
-			cell3Label.updateWithColor("--", color: grey)
+			cell3Label.update("--", color: grey)
 			cell3.disable()
 		}
 	}
 	
 	override func installedFixedUpdate()
 	{
-		if uploadItem != nil {
+		if isUploading == true {
 			uploadProgress += CGFloat(arc4random_uniform(100))/50
-			cell2Label.updateWithColor("\(Int(uploadProgress))%", color: grey)
+			cell2Label.update("\(Int(uploadProgress))%", color: grey)
 			if uploadProgress >= 100 {
 				uploadCompleted()
 			}
@@ -181,20 +179,26 @@ class PanelBattery : Panel
 	
 	func uploadItem(item:Event)
 	{
-		uploadItem = item
+		isUploading = true
 	}
 	
 	func uploadCompleted()
 	{
-		port.origin.event.size = 0
-		port.origin.update()
-		
-		port.origin.event.remove()
-		port.origin.host.update()
-		port.origin.disconnect()
-		cell2.addEvent(uploadItem)
-		uploadItem = nil
+		cell2.addEvent(port.syphon())
+		isUploading = false
 		update()
 		cargo.bang()
+	}
+	
+	func isRadioPowered() -> Bool
+	{
+		if radioPort.origin != nil && radioPort.origin.event != nil && radioPort.origin.event.type == eventTypes.battery { return true }
+		return false
+	}
+	
+	func isThrusterPowered() -> Bool
+	{
+		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.type == eventTypes.battery { return true }
+		return false
 	}
 }

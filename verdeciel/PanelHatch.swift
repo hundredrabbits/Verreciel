@@ -50,7 +50,7 @@ class PanelHatch : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 	}
 
 	override func touch(id:Int = 0)
@@ -74,13 +74,12 @@ class PanelHatch : Panel
 		}
 		
 		if command.event.size < 1 {
-			command.update(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
+			command.inject(SCNCommand(text: "--", details: eventDetails.unknown, color: grey, event: command.event))
 			command.port.disconnect()
 			self.load = nil
 			cargo.bang()
 		}
 		update()
-		
 	}
 	
 	override func update()
@@ -91,7 +90,7 @@ class PanelHatch : Panel
 		
 		if load != nil && load.type != eventTypes.item {
 			label.update("hatch")
-			details.updateWithColor("error", color: red)
+			details.update("error", color: red)
 			outline1.color(red)
 			outline2.color(red)
 			outline3.color(red)
@@ -100,7 +99,7 @@ class PanelHatch : Panel
 		}
 		else if load != nil {
 			label.update("fire")
-			details.updateWithColor(String(Int(self.load.size)), color: white)
+			details.update(String(Int(self.load.size)), color: white)
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -119,7 +118,7 @@ class PanelHatch : Panel
 	override func listen(event:Event)
 	{
 		if event.isQuest == true {
-			details.updateWithColor("error", color: red)
+			details.update("error", color: red)
 		}
 		else{
 			self.load = event

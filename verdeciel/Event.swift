@@ -75,6 +75,11 @@ class Event : SCNNode
 		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
 	}
 	
+	override func update()
+	{
+		if size < 1 { remove() }
+	}
+	
 	func remove()
 	{
 		self.removeFromParentNode()

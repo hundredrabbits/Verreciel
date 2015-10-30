@@ -201,13 +201,17 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
-	func syphon()
+	func syphon() -> Event
 	{
+		let eventCopy = origin.event
+
 		origin.event.size = 0
-		origin.update()
-		origin.event.remove()
+		origin.event.fixedUpdate()
 		origin.host.update()
+		origin.update()
 		origin.disconnect()
+		
+		return eventCopy
 	}
 	
 	override func bang()

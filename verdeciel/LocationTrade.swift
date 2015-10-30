@@ -55,8 +55,8 @@ class LocationTrade : Location
 	override func update()
 	{
 		if givePort.event == nil {
-			wantLabel.updateWithColor("--", color:grey)
-			giveLabel.updateWithColor("--", color:grey)
+			wantLabel.update("--", color:grey)
+			giveLabel.update("--", color:grey)
 			givePort.disable()
 			wantPort.disable()
 			return

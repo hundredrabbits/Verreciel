@@ -91,7 +91,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[12].complete()
 		
 		cargo.port.event.content.append(items.loiqeLicense)
-		cargo.port.event.content.append(items.radio)
+		cargo.port.event.content.append(items.radioPart1)
+		cargo.port.event.content.append(items.radioPart2)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

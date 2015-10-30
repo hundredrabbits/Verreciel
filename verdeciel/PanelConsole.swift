@@ -83,9 +83,7 @@ class PanelConsole : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
-		
-		boot()
+		label.update("--", color: grey)
 	}
 	
 	func addLine(command:SCNCommand! = nil)
@@ -102,12 +100,12 @@ class PanelConsole : Panel
 	
 	override func update()
 	{
-		consoleLine1.update(commands[0])
-		consoleLine2.update(commands[1])
-		consoleLine3.update(commands[2])
-		consoleLine4.update(commands[3])
-		consoleLine5.update(commands[4])
-		consoleLine6.update(commands[5])
+		consoleLine1.inject(commands[0])
+		consoleLine2.inject(commands[1])
+		consoleLine3.inject(commands[2])
+		consoleLine4.inject(commands[3])
+		consoleLine5.inject(commands[4])
+		consoleLine6.inject(commands[5])
 		
 		if port.origin == nil {
 			label.update("console")
@@ -135,7 +133,6 @@ class PanelConsole : Panel
 	
 	override func listen(event: Event)
 	{
-		// Invalidate older lines
 		for command in commands {
 			command.event = nil
 		}

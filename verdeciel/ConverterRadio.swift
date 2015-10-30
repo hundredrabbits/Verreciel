@@ -12,19 +12,48 @@ class ConverterRadio : Converter
 	{
 		super.init()
 		name = "radio"
-		
 		port.input = eventTypes.panel
 	}
 	
 	override func listen(event: Event)
 	{
-		if isInstalled == false {
-			if event == items.radio {
-				install()
-				port.syphon()
-				cargo.bang()
-			}
+		print("heard")
+		if isInstalled == false && event == items.radio {
+			install()
 		}
+	}
+	
+	override func installedFixedUpdate()
+	{
+		if battery.isRadioPowered() == true {
+			modePowered()
+		}
+		else{
+			modeUnpowered()
+		}
+	}
+	
+	func modePowered()
+	{
+		label.updateColor(white)
+	}
+	
+	func modeUnpowered()
+	{
+		label.updateColor(grey)
+	}
+	
+	override func onInstallationComplete()
+	{
+		battery.radioLabel.update("radio",color:white)
+		battery.radioPort.enable()
+		port.origin.disconnect()
+		
+		port.input = eventTypes.item
+		port.output = eventTypes.location
+		port.requirement = nil
+		portInputLabel.update("\(port.input)")
+		portOutputLabel.update("\(port.output)")
 	}
 
 	required init?(coder aDecoder: NSCoder)

@@ -73,7 +73,7 @@ class PanelThruster : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 	}
 
 	override func touch(id:Int = 0)
@@ -85,7 +85,7 @@ class PanelThruster : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if battery.thrusterPort.origin == nil {
+		if battery.isThrusterPowered() == false {
 			speed = 0
 			modeUnpowered()
 		}
@@ -107,7 +107,7 @@ class PanelThruster : Panel
 	func modeUnpowered()
 	{
 		label.updateColor(grey)
-		details.updateWithColor("unpowered", color: grey)
+		details.update("unpowered", color: grey)
 		port.disable()
 		trigger.opacity = 0
 		
@@ -125,7 +125,7 @@ class PanelThruster : Panel
 	func modeDocking()
 	{
 		label.updateColor(white)
-		details.updateWithColor("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
+		details.update("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
 		port.enable()
 		trigger.opacity = 0
 		
@@ -165,7 +165,7 @@ class PanelThruster : Panel
 		maxSpeed = 1
 	
 		label.updateColor(white)
-		details.updateWithColor(String(format: "%.1f", actualSpeed), color: white)
+		details.update(String(format: "%.1f", actualSpeed), color: white)
 		port.enable()
 		trigger.opacity = 0
 		

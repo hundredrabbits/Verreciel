@@ -89,8 +89,8 @@ class LocationCargo : Location
 		}
 		
 		if inventoryPort.event == nil {
-			inventoryLabel.updateWithColor("Empty", color: grey)
-			inventoryNote.updateWithColor("--", color: grey)
+			inventoryLabel.update("Empty", color: grey)
+			inventoryNote.update("--", color: grey)
 			isComplete = true
 		}
 	}

@@ -22,7 +22,7 @@ class QuestLibrary
 	{
 		// Capsule
 		
-		/*  1 */ tutorial.append( Quest(name:"Connect cell to thruster", predicate:{ battery.thrusterPort.origin != nil }, result: { thruster.install() }) )
+		/*  1 */ tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event.type != nil && battery.thrusterPort.origin.event.type == eventTypes.battery }, result: { thruster.install() }) )
 		/*  2 */ tutorial.append( Quest(name:"Reach the station", predicate:{ universe.loiqe_landing.isKnown == true }, result: { radar.install() }) )
 		/*  3 */ tutorial.append( Quest(name:"Undock from station", predicate:{ capsule.dock == nil }, result: { cargo.install() }) )
 		/*  3 */ tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { mission.install() }) )
@@ -38,8 +38,14 @@ class QuestLibrary
 		/* 10 */ tutorial.append( Quest(name:"Trade license for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Reach cargo", predicate:{ universe.loiqe_cargo.isKnown == true }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Route speaker to cargo", predicate:{ cargo.contains(items.radioPart1) && cargo.contains(items.radioPart2) }, result: { progress.install() }) )
-		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ cargo.contains(items.radio) }, result: { radio.display() }) )
-		/* 15 */ tutorial.append( Quest(name:"Route radio in panel", predicate:{ translator.isInstalled == true }, result: { }) )
+		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ capsule.dock == universe.loiqe_horadric }, result: { radio.display() }) )
+		/* 13 */ tutorial.append( Quest(name:"Route radio below battery", predicate:{ radio.isInstalled == true }, result: { }) )
+		/* 14 */ tutorial.append( Quest(name:"Route cell into radio", predicate:{ battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event.type != nil && battery.thrusterPort.origin.event.type == eventTypes.battery }, result: { }) )
+		/* 13 */ tutorial.append( Quest(name:"Route radio into radar", predicate:{ radio.port.connection != nil && radio.port.connection == radar.port }, result: { }) )
+		/* 13 */ tutorial.append( Quest(name:"Approach the waypoint", predicate:{ capsule.dock != nil && capsule.dock == universe.loiqe_waypoint }, result: { }) )
+		/* 13 */ tutorial.append( Quest(name:"Reach the connection", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
+		
+		/* 13 */ tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
 	}
 	
 	func _falvet()

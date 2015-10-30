@@ -9,6 +9,6 @@ class RecipesLibrary
 	
 	init()
 	{
-		horadric.append( Recipe(name: "build radio", ingredients: [items.radioPart1, items.radioPart2], result: items.radio) )
+		horadric.append( Recipe(name: "radio", ingredients: [items.radioPart1, items.radioPart2], result: items.radio) )
 	}
 }

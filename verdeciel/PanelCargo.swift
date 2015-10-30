@@ -60,7 +60,7 @@ class PanelCargo : Panel
 	{
 		decals.opacity = 0
 		interface.opacity = 0
-		label.updateWithColor("--", color: grey)
+		label.update("--", color: grey)
 		update()
 	}
 	
@@ -68,7 +68,7 @@ class PanelCargo : Panel
 	{
 		if uploadItem != nil {
 			uploadProgress += CGFloat(arc4random_uniform(100))/50
-			details.updateWithColor("Upload \(Int(uploadProgress))%", color: grey)
+			details.update("Upload \(Int(uploadProgress))%", color: grey)
 			if uploadProgress >= 100 {
 				uploadCompleted()
 			}
@@ -102,8 +102,12 @@ class PanelCargo : Panel
 	{
 		print("* CARGO    | Signal: \(event.name!)")
 		
-		if event.type != eventTypes.item { print("Not item") ; return }
-		uploadItem(event)
+		if event.type == eventTypes.item {
+			uploadItem(event)
+		}
+		else{
+			print("Not item")
+		}
 	}
 
 	func uploadItem(item:Event)
@@ -116,10 +120,8 @@ class PanelCargo : Panel
 		let newItem = uploadItem
 		port.event.content.append(newItem)
 		uploadItem = nil
-		
 		port.origin.event = nil
 		port.origin.host.bang()
-		
 		update()
 		bang()
 	}
