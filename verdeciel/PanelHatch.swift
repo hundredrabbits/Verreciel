@@ -79,6 +79,7 @@ class PanelHatch : Panel
 			self.load = nil
 			cargo.bang()
 		}
+		
 		update()
 	}
 	

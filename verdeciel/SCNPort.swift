@@ -203,15 +203,15 @@ class SCNPort : SCNNode
 	
 	func syphon() -> Event
 	{
-		let eventCopy = origin.event
+		let syph = origin.event.duplicate()
 		
-		origin.event.size = 0
+		origin.event.remove()
 		origin.event = nil
 		origin.host.update()
 		origin.update()
 		origin.disconnect()
 		
-		return eventCopy
+		return syph
 	}
 	
 	override func bang()

@@ -82,6 +82,7 @@ class Event : SCNNode
 	
 	func remove()
 	{
+		self.size = 0
 		self.removeFromParentNode()
 	}
 	
@@ -95,6 +96,24 @@ class Event : SCNNode
 	func panel() -> SCNNode
 	{
 		return Panel()
+	}
+	
+	func duplicate() -> Event
+	{
+		let newEvent = Event()
+		
+		newEvent.content = content
+		newEvent.details = details
+		newEvent.isQuest = isQuest
+	
+		newEvent.name = name
+		newEvent.type = type
+		newEvent.size = size
+		newEvent.note = note
+		newEvent.at = at
+		newEvent.color = color
+		
+		return newEvent
 	}
 	
 	required init(coder aDecoder: NSCoder) {
