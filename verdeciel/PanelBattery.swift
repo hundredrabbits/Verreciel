@@ -106,7 +106,7 @@ class PanelBattery : Panel
 		radioLabel.update("--", color: grey)
 		oxygenLabel.update("--", color: grey)
 		
-		port.input = eventTypes.battery
+		port.input = eventTypes.item
 		port.output = eventTypes.unknown
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1)))
@@ -153,7 +153,7 @@ class PanelBattery : Panel
 		if isUploading == true {
 			uploadProcess()
 		}
-		if isInstalled == true {
+		else if isInstalled == true {
 			update()
 		}
 	}
@@ -188,7 +188,11 @@ class PanelBattery : Panel
 	func uploadProcess()
 	{
 		uploadProgress += CGFloat(arc4random_uniform(100))/50
-		cell2Label.update("\(Int(uploadProgress))%", color: grey)
+		
+		if cell1.event == nil { cell1Label.update("\(Int(uploadProgress))%", color: grey) }
+		else if cell2.event == nil { cell2Label.update("\(Int(uploadProgress))%", color: grey) }
+		else if cell3.event == nil { cell3Label.update("\(Int(uploadProgress))%", color: grey) }
+		
 		if uploadProgress >= 100 {
 			uploadCompleted()
 		}
