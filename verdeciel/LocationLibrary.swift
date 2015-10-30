@@ -81,7 +81,7 @@ class Loiqe
 	
 	func connection() -> LocationCargo
 	{
-		return LocationCargo(name: "connection", at: CGPoint(x: offset.x, y: offset.y + 2), item: items.cyanineKey, isVisible:false)
+		return LocationCargo(name: "connection", at: CGPoint(x: offset.x, y: offset.y + 2), item: items.cyanineKey, isRadioQuest:false)
 	}
 	
 	func beacon() -> LocationBeacon

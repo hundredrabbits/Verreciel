@@ -10,7 +10,7 @@ class LocationCargo : Location
 	var inventoryNote:SCNLabel!
 	var locationLabel:SCNLabel!
 	
-	init(name:String,at: CGPoint = CGPoint(), item:Event!, isVisible:Bool = true)
+	init(name:String,at: CGPoint = CGPoint(), item:Event!, isRadioQuest:Bool = true)
 	{
 		super.init(name:name, at:at)
 		
@@ -18,7 +18,7 @@ class LocationCargo : Location
 		self.at = at
 		self.size = 1
 		self.note = ""
-		self.isVisible = isVisible
+		self.isRadioQuest = isRadioQuest
 		
 		inventoryPort = SCNPort(host: self)
 		inventoryPort.event = item

@@ -98,14 +98,7 @@ class PanelRadar : Panel
 	
 	override func listen(event: Event)
 	{
-		if event.type == eventTypes.map {
-			for location in event.content {
-				universe.addChildNode(location)
-			}
-			event.size = 0
-			cargo.bang()
-		}
-		update()
+		
 	}
 
 	// MARK: Custom -

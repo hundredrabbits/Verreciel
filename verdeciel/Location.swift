@@ -18,7 +18,8 @@ class Location : Event
 	var inDiscovery:Bool = false
 	var inSight:Bool = false
 	
-	var isVisible:Bool = true
+	var isRadioQuest:Bool = true
+	
 	var isTargetted:Bool = false
 	var isKnown:Bool = false
 	var isSeen:Bool = false
@@ -43,7 +44,7 @@ class Location : Event
 		
 		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
 		label.position = SCNVector3(0,-0.3,-0.35)
-		addChildNode(label)
+		self.addChildNode(label)
 	}
 	
 	// MARK: System -
@@ -57,7 +58,7 @@ class Location : Event
 	}
 	
 	override func fixedUpdate()
-	{		
+	{
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
@@ -74,6 +75,26 @@ class Location : Event
 		
 		radarCulling()
 		clean()
+		
+		// Only visible by radio
+		
+		sprite.opacity = 0
+		
+		if isRadioQuest == true {
+			if radar.port.origin == nil {
+				print("missing connection")
+			}
+			else if radar.port.origin.host != radio {
+				print("2")
+			}
+			else if battery.isRadioPowered() == true {
+				print("working")
+				sprite.opacity = 1
+			}
+			else{
+				print("missing")
+			}
+		}
 	}
 	
 	override func lateUpdate()
