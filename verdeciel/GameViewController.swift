@@ -75,7 +75,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		
 		capsule.at = universe.loiqe_horadric.at
 		quests.tutorial[0].complete()
 		quests.tutorial[1].complete()

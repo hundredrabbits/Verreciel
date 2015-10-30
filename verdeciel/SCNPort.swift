@@ -203,7 +203,7 @@ class SCNPort : SCNNode
 	
 	func syphon() -> Event
 	{
-		let syph = origin.event.duplicate()
+		let syph = origin.event.instance()
 		
 		origin.event.remove()
 		origin.event = nil

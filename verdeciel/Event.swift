@@ -98,7 +98,7 @@ class Event : SCNNode
 		return Panel()
 	}
 	
-	func duplicate() -> Event
+	func instance() -> Event
 	{
 		let newEvent = Event()
 		

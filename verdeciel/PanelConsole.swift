@@ -98,15 +98,6 @@ class PanelConsole : Panel
 		update()
 	}
 	
-	override func installedFixedUpdate()
-	{
-		print("--")
-		for line in consoleNode.childNodes {
-			let newLine = line as! SCNCommand
-			if newLine.port.event != nil { print(newLine.port.event) }
-		}
-	}
-	
 	override func update()
 	{
 		consoleLine1.inject(commands[0])

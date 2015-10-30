@@ -43,7 +43,6 @@ class PanelBattery : Panel
 		
 		cell1 = SCNPort(host: self)
 		cell1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
-		cell1.addEvent(items.cell)
 		cell1Label = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
 		cell1Label.position = SCNVector3(x: -0.2, y:0, z: 0)
 		cell1.addChildNode(cell1Label)
@@ -222,5 +221,11 @@ class PanelBattery : Panel
 	{
 		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.details == itemTypes.battery { return true }
 		return false
+	}
+	
+	// MARK: Flags -
+	override func onInstallationComplete()
+	{
+		cell1.addEvent(items.cell.instance())
 	}
 }
