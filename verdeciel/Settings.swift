@@ -21,10 +21,6 @@ let thruster = PanelThruster()
 let console = PanelConsole()
 let radar = PanelRadar()
 
-// Converters
-let radio = ConverterRadio()
-let translator = ConverterTranslator()
-
 // Monitors
 let journey = MonitorJourney()
 let exploration = MonitorExploration()

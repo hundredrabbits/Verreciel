@@ -30,6 +30,10 @@ class Location : Event
 	
 	var label = SCNLabel()
 	
+	var trigger = SCNNode()
+	var wire:SCNLine!
+	var connection:Event!
+	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
@@ -45,6 +49,11 @@ class Location : Event
 		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
 		label.position = SCNVector3(0,-0.3,-0.35)
 		self.addChildNode(label)
+		
+		wire = SCNLine()
+		wire.position = SCNVector3(0,0,-0.01)
+		wire.opacity = 0
+		self.addChildNode(wire)
 	}
 	
 	// MARK: System -
@@ -176,8 +185,14 @@ class Location : Event
 		
 		if isRadioQuest == true {
 			opacity = 0
-			if radar.port.origin != nil && radar.port.origin.event == self { opacity = 1 }
+			if radar.port.origin != nil && radar.port.origin.event != nil && radar.port.origin.event == self { opacity = 1 }
 		}
+	}
+	
+	func connect(event:Event)
+	{
+		connection = event
+		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
 	}
 
 	// MARK: Events -

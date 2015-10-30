@@ -42,15 +42,13 @@
 		574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* LocationTrade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
 		574E5FC41BC5B588008130AB /* LocationRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC31BC5B588008130AB /* LocationRepair.swift */; };
+		577EA0D11BE408F2005C793E /* LocationGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577EA0D01BE408F2005C793E /* LocationGate.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */; };
 		578B1AE41BCD5C3000DC3FD6 /* LocationTelescope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		579614491BE00E6000421D69 /* MonitorJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614481BE00E6000421D69 /* MonitorJourney.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
-		5796144E1BE012DD00421D69 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144D1BE012DD00421D69 /* Converter.swift */; };
-		579614511BE0154400421D69 /* ConverterRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614501BE0154400421D69 /* ConverterRadio.swift */; };
-		579614531BE0156400421D69 /* ConverterTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614521BE0156400421D69 /* ConverterTranslator.swift */; };
 		579614551BE0227500421D69 /* MonitorExploration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614541BE0227500421D69 /* MonitorExploration.swift */; };
 		579614571BE028F300421D69 /* MonitorProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614561BE028F300421D69 /* MonitorProgress.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
@@ -112,15 +110,13 @@
 		574E5FBF1BC578E1008130AB /* LocationTrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574E5FC31BC5B588008130AB /* LocationRepair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepair.swift; sourceTree = "<group>"; };
+		577EA0D01BE408F2005C793E /* LocationGate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGate.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpawn.swift; sourceTree = "<group>"; };
 		578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTelescope.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		579614481BE00E6000421D69 /* MonitorJourney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorJourney.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
-		5796144D1BE012DD00421D69 /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		579614501BE0154400421D69 /* ConverterRadio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterRadio.swift; sourceTree = "<group>"; };
-		579614521BE0156400421D69 /* ConverterTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterTranslator.swift; sourceTree = "<group>"; };
 		579614541BE0227500421D69 /* MonitorExploration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorExploration.swift; sourceTree = "<group>"; };
 		579614561BE028F300421D69 /* MonitorProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorProgress.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
@@ -179,7 +175,6 @@
 				5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
-				5796144F1BE012E200421D69 /* Converters */,
 				5796144C1BE00EF800421D69 /* Monitors */,
 				5736277A1B4C06FE00899EBC /* Panels */,
 				574156DD1BE12F61008B6C44 /* Objects */,
@@ -292,6 +287,7 @@
 				574AE3F61BC36DAE00432603 /* LocationWaypoint.swift */,
 				578B1AE11BCD513B00DC3FD6 /* LocationSpawn.swift */,
 				578B1AE31BCD5C3000DC3FD6 /* LocationTelescope.swift */,
+				577EA0D01BE408F2005C793E /* LocationGate.swift */,
 			);
 			name = Locations;
 			sourceTree = "<group>";
@@ -318,16 +314,6 @@
 				579614541BE0227500421D69 /* MonitorExploration.swift */,
 			);
 			name = Monitors;
-			sourceTree = "<group>";
-		};
-		5796144F1BE012E200421D69 /* Converters */ = {
-			isa = PBXGroup;
-			children = (
-				5796144D1BE012DD00421D69 /* Converter.swift */,
-				579614501BE0154400421D69 /* ConverterRadio.swift */,
-				579614521BE0156400421D69 /* ConverterTranslator.swift */,
-			);
-			name = Converters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,8 +391,7 @@
 			files = (
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
-				579614531BE0156400421D69 /* ConverterTranslator.swift in Sources */,
-				5796144E1BE012DD00421D69 /* Converter.swift in Sources */,
+				577EA0D11BE408F2005C793E /* LocationGate.swift in Sources */,
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
 				574E5FC21BC5AEA2008130AB /* Location.swift in Sources */,
 				57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */,
@@ -441,7 +426,6 @@
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
-				579614511BE0154400421D69 /* ConverterRadio.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* LocationSpawn.swift in Sources */,

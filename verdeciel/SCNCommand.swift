@@ -53,6 +53,15 @@ class SCNCommand : SCNNode
 		self.addChildNode(port)
 		self.addChildNode(headLineTop)
 		self.addChildNode(headLineDown)
+		
+		if head == true {
+			headLineTop.opacity = 1
+			headLineDown.opacity = 1
+		}
+		else{
+			headLineTop.opacity = 0
+			headLineDown.opacity = 0
+		}
 	}
 	
 	func inject(command:SCNCommand)

@@ -83,7 +83,11 @@ class LocationCargo : Location
 		if inventoryPort.event != nil {
 			inventoryPort.connection.host.listen(inventoryPort.event)
 		}
-		
+		update()
+	}
+	
+	override func update()
+	{
 		if inventoryPort.event != nil && inventoryPort.event.size < 1 {
 			inventoryPort.event = nil
 		}

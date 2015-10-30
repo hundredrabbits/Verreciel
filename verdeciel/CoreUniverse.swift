@@ -31,9 +31,8 @@ class CoreUniverse : SCNNode
 	var loiqe_landing = locations.loiqe.landing()
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_horadric = locations.loiqe.horadric()
-	var loiqe_waypoint = locations.loiqe.waypoint()
+	var loiqe_gate = locations.loiqe.gate()
 	var loiqe_cargo = locations.loiqe.cargo()
-	var loiqe_connection = locations.loiqe.connection()
 	
 	func addLoiqe()
 	{
@@ -42,9 +41,8 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_landing)
 		addChildNode(loiqe_city)
 		addChildNode(loiqe_horadric)
-		addChildNode(loiqe_waypoint)
+		addChildNode(loiqe_gate)
 		addChildNode(loiqe_cargo)
-		addChildNode(loiqe_connection)
 	}
 	
 	// MARK: Usul -
@@ -141,11 +139,12 @@ class CoreUniverse : SCNNode
 	func connectPaths()
 	{
 		loiqe_landing.connect(loiqe_city)
-		loiqe_horadric.connect(loiqe_waypoint)
+		loiqe_city.connect(loiqe_horadric)
+		loiqe_horadric.connect(loiqe_gate)
+		loiqe_gate.connect(falvet_toLoiqe)
 		
 		venic_city.connect(venic_waypoint)
 		
-		falvet_toLoiqe.connect(loiqe_waypoint)
 		falvet_toUsul.connect(usul_waypoint)
 		falvet_toValen.connect(valen_waypoint)
 		falvet_toSenni.connect(senni_waypoint)

@@ -40,8 +40,26 @@ class PanelThruster : Panel
 		// Lines
 		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
 		line2 = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: grey)
-		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: white)
-		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: white)
+		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey)
+		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey)
+		
+		cutLine1Left = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(-0.1, -0.3, 0), color: grey)
+		cutLine1Right = SCNLine(nodeA: SCNVector3(0.5, -0.3, 0), nodeB: SCNVector3(0.1, -0.3, 0), color: grey)
+		cutLine2Left = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(-0.1, -0.1, 0), color: grey)
+		cutLine2Right = SCNLine(nodeA: SCNVector3(0.5, -0.1, 0), nodeB: SCNVector3(0.1, -0.1, 0), color: grey)
+		cutLine3Left = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(-0.1, 0.1, 0), color: grey)
+		cutLine3Right = SCNLine(nodeA: SCNVector3(0.5, 0.1, 0), nodeB: SCNVector3(0.1, 0.1, 0), color: grey)
+		cutLine4Left = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(-0.1, 0.3, 0), color: grey)
+		cutLine4Right = SCNLine(nodeA: SCNVector3(0.5, 0.3, 0), nodeB: SCNVector3(0.1, 0.3, 0), color: grey)
+		
+		interface.addChildNode(cutLine1Left)
+		interface.addChildNode(cutLine1Right)
+		interface.addChildNode(cutLine2Left)
+		interface.addChildNode(cutLine2Right)
+		interface.addChildNode(cutLine3Left)
+		interface.addChildNode(cutLine3Right)
+		interface.addChildNode(cutLine4Left)
+		interface.addChildNode(cutLine4Right)
 		
 		interface.addChildNode(line1)
 		interface.addChildNode(line2)
@@ -92,6 +110,23 @@ class PanelThruster : Panel
 		if id == 2 { capsule.undock() ; return }
 	}
 	
+	override func update()
+	{
+		maxSpeed = 0
+		
+		if battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event != nil {
+			if battery.thrusterPort.origin.event == items.cell1 || battery.thrusterPort.origin.event == items.cell2 || battery.thrusterPort.origin.event == items.cell3 || battery.thrusterPort.origin.event == items.cell4 { maxSpeed = 1 }
+			if battery.thrusterPort.origin.event == items.array1 || battery.thrusterPort.origin.event == items.array2 || battery.thrusterPort.origin.event == items.array3 || battery.thrusterPort.origin.event == items.array4 { maxSpeed = 2 }
+			if battery.thrusterPort.origin.event == items.grid1 || battery.thrusterPort.origin.event == items.grid2 || battery.thrusterPort.origin.event == items.grid3 || battery.thrusterPort.origin.event == items.grid4 { maxSpeed = 3 }
+			if battery.thrusterPort.origin.event == items.matrix1 || battery.thrusterPort.origin.event == items.matrix2 || battery.thrusterPort.origin.event == items.matrix3 || battery.thrusterPort.origin.event == items.matrix4 { maxSpeed = 4 }
+		}
+		
+		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0 } else { line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1 }
+		if maxSpeed > 1 { line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0 } else { line2.opacity = 0 ; cutLine2Left.opacity = 1 ; cutLine2Right.opacity = 1 }
+		if maxSpeed > 2 { line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0 } else { line3.opacity = 0 ; cutLine3Left.opacity = 1 ; cutLine3Right.opacity = 1 }
+		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0 } else { line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1 }
+	}
+	
 	override func installedFixedUpdate()
 	{
 		if battery.isThrusterPowered() == false {
@@ -107,6 +142,8 @@ class PanelThruster : Panel
 		else {
 			modeFlight()
 		}
+		
+		update()
 	
 		thrust()
 	}
@@ -125,10 +162,10 @@ class PanelThruster : Panel
 		accelerate.updateChildrenColors(clear)
 		decelerate.updateChildrenColors(clear)
 		
-		line1.color(grey)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
+		line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1
+		line2.opacity = 0 ; cutLine2Left.opacity = 1 ; cutLine2Right.opacity = 1
+		line3.opacity = 0 ; cutLine3Left.opacity = 1 ; cutLine3Right.opacity = 1
+		line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1
 	}
 	
 	func modeDocking()
@@ -171,27 +208,15 @@ class PanelThruster : Panel
 	
 	func modeFlight()
 	{
-		maxSpeed = 1
-	
 		label.updateColor(white)
 		details.update(String(format: "%.1f", actualSpeed), color: white)
 		port.enable()
 		trigger.opacity = 0
 		
-		line1.opacity = 1
-		line2.opacity = 1
-		line3.opacity = 1
-		line4.opacity = 1
-		
-		line1.color(grey)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
-		
-		if speed > 0 { line1.color(white) }
-		if speed > 1 { line2.color(white) }
-		if speed > 2 { line3.color(white) }
-		if speed > 3 { line4.color(white) }
+		if speed > 0 { line1.color(white) } else { line1.color(grey) }
+		if speed > 1 { line2.color(white) } else { line2.color(grey) }
+		if speed > 2 { line3.color(white) } else { line3.color(grey) }
+		if speed > 3 { line4.color(white) } else { line4.color(grey) }
 		
 		accelerate.enable()
 		decelerate.enable()

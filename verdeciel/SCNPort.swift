@@ -167,6 +167,7 @@ class SCNPort : SCNNode
 	{
 		if port.isEnabled == false { print("Port is disabled") ; return }
 		if port.origin != nil { print("Port already has input: (\(port.origin))") ; return }
+		if port.connection != nil && port.connection == self { print("Loop") ; return }
 		
 		connection = port
 		connection.origin = self
@@ -206,13 +207,10 @@ class SCNPort : SCNNode
 		let syph = origin.event
 		
 		syph.size = 0
-		print("open")
-		print(origin.host)
 		origin.event = nil
 		origin.host.update()
 		origin.update()
 		origin.disconnect()
-		print("close")
 		syph.size = 1
 		
 		return syph

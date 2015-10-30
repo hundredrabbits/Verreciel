@@ -13,7 +13,7 @@ import Foundation
 
 class LocationLibrary
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -3.5))
 	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
 	let venic = Venic(offset: CGPoint(x: 4,y: -4))
 	let valen = Valen(offset: CGPoint(x: 4,y: 0))
@@ -48,17 +48,14 @@ class Loiqe
 		return location
 	}
 	
-	func landing() -> LocationBeacon
+	func landing() -> LocationCargo
 	{
-		return LocationBeacon(name: "Loiqe Landings", at:CGPoint(x: offset.x, y: offset.y - 2), message: "Nothing for you here.")
+		return LocationCargo(name: "Loiqe Landings", at:CGPoint(x: offset.x, y: offset.y - 2), item: items.materia)
 	}
 	
-	func city() -> LocationCargo
+	func city() -> LocationTrade
 	{
-		let location = LocationCargo(name:"Loiqe City", item: items.materia)
-		location.addService(services.hull)
-		location.at = CGPoint(x: offset.x, y: offset.y - 1)
-		location.note = "The city of loiqe is$granting you a$pilot license."
+		let location = LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqeKeyFragment1)
 		return location
 	}
 	
@@ -67,21 +64,14 @@ class Loiqe
 		return LocationHoradric(name:"Horadric", at: CGPoint(x: offset.x - 1, y: offset.y))
 	}
 	
-	func waypoint() -> LocationTrade
+	func gate() -> LocationGate
 	{
-		return LocationTrade(name: "waypoint", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.materia, give: items.radioPart1)
+		return LocationGate(name: "gate", at: CGPoint(x: offset.x, y: offset.y + 1), want: items.loiqeKey)
 	}
 	
 	func cargo() -> LocationCargo
 	{
-		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x + 1, y: offset.y + 1), item: items.radioPart2)
-	}
-	
-	func connection() -> LocationBeacon
-	{
-		let location = LocationBeacon(name: "passage", at: CGPoint(x: offset.x, y: offset.y + 2), message: "something")
-		location.isRadioQuest = true
-		return location
+		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y), item: items.loiqeKeyFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -282,7 +272,7 @@ class Falvet
 	
 	func toLoiqe() -> LocationHoradric
 	{
-		return LocationHoradric(name:"Horadric", at: CGPoint(x: offset.x, y: offset.y - 1.5))
+		return LocationHoradric(name:"Passage", at: CGPoint(x: offset.x, y: offset.y - 1.5))
 	}
 	
 	func toValen() -> LocationRepair

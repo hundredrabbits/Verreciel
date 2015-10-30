@@ -152,7 +152,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.commit()
 		
 		for newEvent in universe.childNodes {
-			let event = newEvent as! Event
+			let event = newEvent as! Location
 			event.wire.opacity = 1
 			event.opacity = 1
 		}
@@ -175,7 +175,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.commit()
 
 		for newEvent in universe.childNodes {
-			let event = newEvent as! Event
+			let event = newEvent as! Location
 			event.wire.opacity = 0
 			event.opacity = 0
 		}

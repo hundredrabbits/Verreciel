@@ -69,7 +69,7 @@ class PanelPilot : Panel
 		
 		targetDirection = target.align
 		
-		if Int(target.align) > 0 {
+		if Int(target.align) >= 0 {
 			if Int(left) < Int(right) {
 				self.turnLeft(1 + (targetDirection % 1))
 			}

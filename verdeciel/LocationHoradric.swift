@@ -50,7 +50,7 @@ class LocationHoradric : Location
 	override func panel() -> SCNNode
 	{
 		let newPanel = SCNNode()
-		let distance:CGFloat = 0.65
+		let distance:CGFloat = 0.7
 		
 		inPort1 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
 		inPort2 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)

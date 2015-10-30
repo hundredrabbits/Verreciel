@@ -92,7 +92,6 @@ class PanelCargo : Panel
 		// Update cargohold
 		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
 		for item in port.event.content {
-			print("\(item.name) - \(item.size)")
 			if item.size > 0 {
 				newCargohold.content.append(item)
 			}

@@ -49,10 +49,6 @@ class CoreCapsule: SCNNode
 	
 	func interfaceSetup()
 	{
-		// Converters
-		addChildNode(translator)
-		addChildNode(radio)
-		
 		// Monitors
 		addChildNode(journey)
 		addChildNode(exploration)
@@ -79,9 +75,6 @@ class CoreCapsule: SCNNode
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y
 		progress.eulerAngles.y = mission.eulerAngles.y
-		
-		radio.eulerAngles.y = battery.eulerAngles.y
-		translator.eulerAngles.y = mission.eulerAngles.y
 	}
 	
 	func docking()
