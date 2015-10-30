@@ -30,20 +30,20 @@ class QuestLibrary
 		/*  6 */ tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: { cargo.install() ; mission.install() }) )
 		/*  7 */ tutorial.append( Quest(name:"Route materia to cargo", predicate:{ cargo.contains(items.materia) }, result: { console.install() }) )
 		/*  8 */ tutorial.append( Quest(name:"Route Cargo to Console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
-		/* 10 */ tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: { }) )
 		/* 10 */ tutorial.append( Quest(name:"Press horadric on radar", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
+		/* 10 */ tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Undock and Reach horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: { journey.install() }) )
 		
 		// Radio
 		
-		/*  9 */ tutorial.append( Quest(name:"Reach the loiqe waypoint", predicate:{ universe.loiqe_waypoint.isKnown }, result: { exploration.install() }) )
+		/*  9 */ tutorial.append( Quest(name:"Reach the waypoint", predicate:{ universe.loiqe_waypoint.isKnown }, result: { exploration.install() }) )
 		/* 10 */ tutorial.append( Quest(name:"Trade materia for antena", predicate:{ cargo.contains(items.radioPart1) }, result: { }) )
 		/* 11 */ tutorial.append( Quest(name:"Reach cargo", predicate:{ universe.loiqe_cargo.isKnown == true }, result: { }) )
 		/* 12 */ tutorial.append( Quest(name:"Route speaker to cargo", predicate:{ cargo.contains(items.radioPart1) && cargo.contains(items.radioPart2) }, result: { progress.install() }) )
-		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ capsule.dock == universe.loiqe_horadric }, result: { radio.display() }) )
+		/* 13 */ tutorial.append( Quest(name:"Combine radio at horadric", predicate:{ capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { radio.display() }) )
 		/* 14 */ tutorial.append( Quest(name:"Route radio below battery", predicate:{ radio.isInstalled == true }, result: { }) )
-		/* 15 */ tutorial.append( Quest(name:"Route cell into radio", predicate:{ battery.isRadioPowered() == true }, result: { }) )
-		/* 16 */ tutorial.append( Quest(name:"Go to the waypoint", predicate:{ capsule.dock != nil && capsule.dock == universe.loiqe_waypoint }, result: { }) )
+		/* 15 */ tutorial.append( Quest(name:"Go to the waypoint", predicate:{ capsule.isDockedAtLocation(universe.loiqe_waypoint) == true }, result: { }) )
+		/* 16 */ tutorial.append( Quest(name:"Route cell into radio", predicate:{ battery.isRadioPowered() == true }, result: { }) )
 		/* 17 */ tutorial.append( Quest(name:"Route radio into radar", predicate:{ radio.port.connection != nil && radio.port.connection == radar.port }, result: { }) )
 		/* 18 */ tutorial.append( Quest(name:"Reach the connection", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
 		

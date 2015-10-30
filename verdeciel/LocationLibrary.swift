@@ -48,11 +48,9 @@ class Loiqe
 		return location
 	}
 	
-	func landing() -> LocationTrade
+	func landing() -> LocationBeacon
 	{
-		let location = LocationTrade(name: "Loiqe Landings", want:items.materia, give:items.cell2)
-		location.at = CGPoint(x: offset.x, y: offset.y - 2)
-		return location
+		return LocationBeacon(name: "Loiqe Landings", at:CGPoint(x: offset.x, y: offset.y - 2), message: "Nothing for you here.")
 	}
 	
 	func city() -> LocationCargo

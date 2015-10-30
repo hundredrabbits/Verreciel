@@ -189,6 +189,12 @@ class CoreCapsule: SCNNode
 		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
 	}
 	
+	func isDockedAtLocation(location:Location) -> Bool
+	{
+		if isDocked == true && dock != nil && dock == location { return true }
+		return false
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

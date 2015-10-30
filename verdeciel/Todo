@@ -26,6 +26,10 @@
 
 - Signal converter panel?
 
+seen = white
+completed = cyan
+incomplete = red
+
 ================
 *    GENRAL
 ================

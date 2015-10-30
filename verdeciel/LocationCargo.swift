@@ -48,7 +48,7 @@ class LocationCargo : Location
 	
 	override func panel() -> SCNNode
 	{
-		let newPanel = Panel()
+		let newPanel = SCNNode()
 		
 		locationLabel = SCNLabel(text: note)
 		locationLabel.position = SCNVector3(templates.leftMargin,templates.topMargin - 0.25,0)

@@ -73,9 +73,9 @@ class LocationTrade : Location
 		}
 	}
 	
-	override func panel() -> Panel
+	override func panel() -> SCNNode
 	{
-		let newPanel = Panel()
+		let newPanel = SCNNode()
 		
 		// Want
 		let tradeWantLabel = SCNLabel(text: "Trade", color:grey)
@@ -89,7 +89,7 @@ class LocationTrade : Location
 		wantPort.input = eventTypes.item
 		newPanel.addChildNode(wantPort)
 		
-		wantLabel = SCNLabel(text: want.name!, color:grey)
+		wantLabel = SCNLabel(text: want.name!, color:white)
 		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
 		wantPort.output = eventTypes.item
 		newPanel.addChildNode(wantLabel)

@@ -57,7 +57,7 @@ class PanelRadar : Panel
 		
 		// Targetter
 		let scale:Float = 0.3
-		let depth:Float = 0.15
+		let depth:Float = 0
 		targetter = SCNNode()
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: depth), nodeB: SCNVector3(x: scale * 0.2, y: scale * 0.8, z: depth), color: red))
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: scale, z: depth), nodeB: SCNVector3(x: -scale * 0.2, y: scale * 0.8, z: depth), color: red))
