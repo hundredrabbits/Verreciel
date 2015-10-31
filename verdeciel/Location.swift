@@ -156,6 +156,11 @@ class Location : Event
 		return mesh
 	}
 	
+	func animateMesh(mesh:SCNNode)
+	{
+		
+	}
+	
 	func radarCulling()
 	{
 		let verticalDistance = abs(capsule.at.y - at.y)

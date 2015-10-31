@@ -14,13 +14,16 @@ import Foundation
 class Instance : SCNNode
 {
 	var event:Location!
+	var mesh:SCNNode!
 	
 	init(event:Location)
 	{
 		super.init()
 		self.event = event
 		
-		self.addChildNode(event.mesh())
+		mesh = event.mesh()
+		self.addChildNode(mesh)
+		
 		print("> INSTANCE | Begin \(event.name!)")
 
 		self.update()
@@ -39,6 +42,8 @@ class Instance : SCNNode
 		else{
 			self.position = SCNVector3(0,abs(flattenedDistance),0)
 		}
+		
+		event.animateMesh(mesh)
 		
 		if distance > 6 {
 			let normalized = distance - 6

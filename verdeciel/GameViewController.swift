@@ -70,7 +70,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		startingState()
+		debugState()
 	}
 	
 	func startingState()
@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-//		capsule.at = universe.loiqe_waypoint.at
+		capsule.at = universe.loiqe_landing.at
 		radar.install()
 		pilot.install()
 		

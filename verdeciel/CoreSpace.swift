@@ -42,7 +42,7 @@ class CoreSpace: SCNNode
 		// Stars
 		
 		var starSpeed = thruster.actualSpeed
-		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.1 }
+		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.5 }
 		else{ starSpeed = thruster.actualSpeed }
 		
 		let lineSpeed = Float(starSpeed) / 6

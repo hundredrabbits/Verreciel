@@ -44,6 +44,51 @@ class LocationGate : Location
 		return spriteNode
 	}
 	
+	override func mesh() -> SCNNode
+	{
+		let mesh = SCNNode()
+		let radius:Float = 4
+		let color:UIColor = red
+		let sides:Int = 8
+		let verticalOffset:Float = 5
+		
+		var i = 0
+		while i < sides {
+			let root = SCNNode()
+			
+			let counter:Float = 0
+			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,verticalOffset + counter,0), nodeB: SCNVector3(0,verticalOffset + counter,radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,verticalOffset + counter,radius), nodeB: SCNVector3(radius,verticalOffset + counter,0), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,verticalOffset + counter,0), nodeB: SCNVector3(0,verticalOffset + counter,-radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,verticalOffset + counter,-radius), nodeB: SCNVector3(-radius,verticalOffset + counter,0), color: color))
+			
+			let test = CGFloat(i * (360/sides/3))
+			
+			mesh.addChildNode(root)
+			
+			root.eulerAngles.y = Float(degToRad(test))
+			i += 1
+		}
+		
+		let aim = SCNNode()
+		i = 0
+		while i < 3
+		{
+			let test = SCNLine(nodeA: SCNVector3(0,verticalOffset/3,0.75), nodeB: SCNVector3(0,verticalOffset/3,0.85), color: white)
+			test.eulerAngles.y = Float(degToRad(CGFloat(120 * i)))
+			aim.addChildNode(test)
+			i += 1
+		}
+		mesh.addChildNode(aim)
+		
+		return mesh
+	}
+	
+	override func animateMesh(mesh:SCNNode)
+	{
+		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.25)))
+	}
+	
 	// MARK: Panels -
 	
 	override func update()

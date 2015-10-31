@@ -17,11 +17,19 @@ class QuestLibrary
 		
 		ui.addMessage(tutorial.first!.name)
 	}
-
+	
+	// MARK: Tutorial -
+	
 	func _tutorial()
 	{
-		// Capsule
-		
+		_tutorialPart1()
+
+		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
+	}
+	
+	func _tutorialPart1()
+	{
 		tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.isThrusterPowered() == true }, result: { thruster.install() }) )
 		tutorial.append( Quest(name:"Press undock on thruster", predicate:{ capsule.dock == nil }, result: { }) )
 		tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { mission.install() }) )
@@ -37,10 +45,9 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.loiqeKeyFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.loiqeKey) }, result: { journey.install() }) )
 		tutorial.append( Quest(name:"Unlock loiqe gate", predicate:{ universe.loiqe_gate.isComplete == true }, result: { progress.install() }) )
-
-		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
 	}
+	
+	// MARK: Tutorial -
 	
 	func _falvet()
 	{
