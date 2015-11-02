@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		time.start()
 		
 		settings.applicationIsReady = true
-		
+
 		debugState()
 	}
 	

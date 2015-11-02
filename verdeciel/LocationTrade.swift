@@ -23,6 +23,7 @@ class LocationTrade : Location
 		self.at = at
 		self.size = size
 		self.note = ""
+		self.mesh = structures.trade
 		
 		self.want = want
 		self.give = give
@@ -111,33 +112,6 @@ class LocationTrade : Location
 		givePort.disable()
 		
 		return newPanel
-	}
-	
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let radius:Float = 5
-		let color:UIColor = red
-		let sides:Int = 72
-		let verticalOffset:Float = 8
-		
-		var i = 0
-		while i < sides {
-			let root = SCNNode()
-			
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,verticalOffset,0), nodeB: SCNVector3(0,verticalOffset/2,radius), color: color))
-			
-			let test = CGFloat(i * (360/sides))
-			
-			mesh.addChildNode(root)
-			
-			root.eulerAngles.y = Float(degToRad(test))
-			
-			i += 1
-		}
-		
-		return mesh
 	}
 	
 	override func animateMesh(mesh:SCNNode)

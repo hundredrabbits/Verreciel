@@ -19,6 +19,7 @@ class LocationPortal : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
+		self.mesh = structures.portal
 	}
 	
 	override func _sprite() -> SCNNode
@@ -52,31 +53,6 @@ class LocationPortal : Location
 		}
 		
 		return spriteNode
-	}
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let color:UIColor = self.color
-		
-		var i = 0
-		while i < 4 {
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,i,0), nodeB: SCNVector3(0,i,3), color: color))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,3), nodeB: SCNVector3(3,i,0), color: color))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,i,0), nodeB: SCNVector3(0,i,-3), color: color))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,i,-3), nodeB: SCNVector3(-3,i,0), color: color))
-			i += 1
-		}
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(0,1,-3), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(0,1,3), color: color))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,1,0), nodeB: SCNVector3(3,2,0), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,1,0), nodeB: SCNVector3(-3,2,0), color: color))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,-3), nodeB: SCNVector3(0,3,-3), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,2,3), nodeB: SCNVector3(0,3,3), color: color))
-		
-		return mesh
 	}
 	
 	required init(coder aDecoder: NSCoder) {

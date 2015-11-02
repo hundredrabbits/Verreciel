@@ -12,6 +12,7 @@ class LocationTelescope : Location
 		self.at = at
 		self.size = size
 		self.note = ""
+		self.mesh = structures.placeholder
 		
 		self.interaction = "respawning"
 		

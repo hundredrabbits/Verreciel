@@ -16,6 +16,7 @@ class LocationBeacon : Location
 		self.note = ""
 		self.message = message
 		self.interaction = "> message"
+		self.mesh = structures.beacon
 		
 		self.interface = panel()
 	}
@@ -65,12 +66,6 @@ class LocationBeacon : Location
 		}
 		
 		return spriteNode
-	}
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		return mesh
 	}
 	
 	required init(coder aDecoder: NSCoder) {

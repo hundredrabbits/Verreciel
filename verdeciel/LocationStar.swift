@@ -13,7 +13,9 @@ class LocationStar : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
+		self.mesh = structures.star
 		self.details = itemTypes.star
+		self.mesh = structures.star
 	}
 	
 	override func _sprite() -> SCNNode
@@ -52,31 +54,6 @@ class LocationStar : Location
 	override func collide()
 	{
 		print("death")
-	}
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		var radius:Float = 2.75
-		let distance:Float = 0
-		
-		var i = 0
-		while i < 20 {
-			radius -= 0.125
-			
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,-radius * 1.5), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius * 1.5,distance,0), nodeB: SCNVector3(radius,distance,radius * 1.5), color: red))
-			
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius * 1.5,distance,0), nodeB: SCNVector3(-radius,distance,-radius * 1.5), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius * 1.5,distance,0), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: red))
-			
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,-radius * 1.5), nodeB: SCNVector3(-radius,distance,-radius * 1.5), color: red))
-			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,radius * 1.5), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: red))
-			
-			i++
-		}
-		
-		return mesh
 	}
 
 	required init(coder aDecoder: NSCoder)

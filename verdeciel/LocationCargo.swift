@@ -19,76 +19,10 @@ class LocationCargo : Location
 		self.size = 1
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
+		self.mesh = structures.cargo
 		
 		inventoryPort = SCNPort(host: self)
 		inventoryPort.event = item
-	}
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let color:UIColor = cyan
-		let sides:Int = 90
-		let verticalOffset:Float = 4
-		
-		var i = 0
-		while i < sides {
-			let line = SCNLine(nodeA: SCNVector3(-0.75,-0.25,2.25), nodeB: SCNVector3(1,0.25,-2), color: color)
-			line.position = SCNVector3(0,verticalOffset,2.25)
-			let root = SCNNode()
-			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
-			root.addChildNode(line)
-			
-			mesh.addChildNode(root)
-			i += 1
-		}
-		
-		let aim = SCNNode()
-		i = 0
-		while i < 3
-		{
-			let test = SCNLine(nodeA: SCNVector3(0,verticalOffset * 2,0.75), nodeB: SCNVector3(0,verticalOffset * 2,0.85), color: white)
-			test.eulerAngles.y = Float(degToRad(CGFloat(120 * i)))
-			aim.addChildNode(test)
-			i += 1
-		}
-		mesh.addChildNode(aim)
-		
-		return mesh
-	}
-	
-	override func animateMesh(mesh:SCNNode)
-	{
-		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.125)))
-		for node in mesh.childNodes {
-			for line in node.childNodes {
-//				line.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 2)))
-			}
-		}
-	}
-	
-	/*
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let color:UIColor = cyan
-		let sides:Int = 45
-		let verticalOffset:Float = 4
-		
-		var i = 0
-		while i < sides {
-			let line = SCNLine(nodeA: SCNVector3(-0.75,-0.25,1), nodeB: SCNVector3(0.75,0.25,-1), color: color)
-			line.position = SCNVector3(0,verticalOffset,2)
-			let root = SCNNode()
-			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
-			root.addChildNode(line)
-			
-			mesh.addChildNode(root)
-			i += 1
-		}
-		
-		return mesh
 	}
 	
 	override func animateMesh(mesh:SCNNode)
@@ -100,8 +34,6 @@ class LocationCargo : Location
 			}
 		}
 	}
-	
-	*/
 	override func _sprite() -> SCNNode
 	{
 		print("* LOCATION | Updated sprite for \(name!)")

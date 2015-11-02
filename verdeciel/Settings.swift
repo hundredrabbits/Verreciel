@@ -39,6 +39,7 @@ var quests = QuestLibrary()
 var items = ItemLibrary()
 var locations = LocationLibrary()
 var recipes = RecipesLibrary()
+var structures = StructuresLibrary()
 
 var templates = Templates()
 var settings = Settings()
@@ -152,5 +153,6 @@ struct Settings
 
 struct Debug
 {
+	var isActive:Bool = false
 	var fixedUpdatedCount:Int = 0
 }

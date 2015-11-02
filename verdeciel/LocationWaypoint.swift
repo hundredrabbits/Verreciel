@@ -12,6 +12,7 @@ class LocationWaypoint : Location
 		self.at = at
 		self.size = size
 		self.note = ""
+		self.mesh = structures.placeholder
 	}
 	
 	override func _sprite() -> SCNNode
@@ -36,19 +37,8 @@ class LocationWaypoint : Location
 		return spriteNode
 	}
 	
-	override func mesh() -> SCNNode
+	required init(coder aDecoder: NSCoder)
 	{
-		let mesh = SCNNode()
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-3,0,0), nodeB: SCNVector3(0,0,3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,3), nodeB: SCNVector3(3,0,0), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(3,0,0), nodeB: SCNVector3(0,0,-3), color: white))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,-3), nodeB: SCNVector3(-3,0,0), color: white))
-		
-		return mesh
-	}
-	
-	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

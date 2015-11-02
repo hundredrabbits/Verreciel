@@ -33,6 +33,7 @@ class Location : Event
 	var trigger = SCNNode()
 	var wire:SCNLine!
 	var connection:Event!
+	var mesh:SCNNode!
 	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
@@ -136,24 +137,6 @@ class Location : Event
 	func collisionUpdate()
 	{
 		
-	}
-	
-	func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		let radius:Float = 3
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(0,radius,radius), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(radius,radius,0), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(0,radius,-radius), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,-radius), nodeB: SCNVector3(-radius,radius,0), color: grey))
-		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-radius,0), nodeB: SCNVector3(0,-radius,radius), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,radius), nodeB: SCNVector3(radius,-radius,0), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,-radius,0), nodeB: SCNVector3(0,-radius,-radius), color: grey))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,-radius), nodeB: SCNVector3(-radius,-radius,0), color: grey))
-
-		return mesh
 	}
 	
 	func animateMesh(mesh:SCNNode)

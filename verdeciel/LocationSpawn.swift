@@ -12,6 +12,7 @@ class LocationSpawn : Location
 		self.at = at
 		self.size = size
 		self.note = ""
+		self.mesh = structures.placeholder
 		
 		self.interaction = "respawning"
 		
@@ -21,12 +22,6 @@ class LocationSpawn : Location
 	override func collide()
 	{
 		
-	}
-	
-	override func mesh() -> SCNNode
-	{
-		let mesh = SCNNode()
-		return mesh
 	}
 	
 	override func panel() -> SCNNode

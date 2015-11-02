@@ -1,10 +1,5 @@
-//
-//  SCNCommand.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-09-21.
 //  Copyright © 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -21,7 +16,7 @@ class Instance : SCNNode
 		super.init()
 		self.event = event
 		
-		mesh = event.mesh()
+		mesh = event.mesh
 		self.addChildNode(mesh)
 		
 		print("> INSTANCE | Begin \(event.name!)")
