@@ -68,6 +68,7 @@ class LocationCargo : Location
 			inventoryLabel.update("Empty", color: grey)
 			inventoryNote.update("--", color: grey)
 			isComplete = true
+			inventoryPort.disable()
 		}
 	}
 	
@@ -75,7 +76,6 @@ class LocationCargo : Location
 	
 	override func bang()
 	{
-		print("bang")
 		if inventoryPort.connection == nil { print("Missing connection") ; return }
 		
 		if inventoryPort.event != nil {
