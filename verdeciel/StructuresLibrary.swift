@@ -16,6 +16,7 @@ class StructuresLibrary
 		
 		// Todo
 		trade = _trade()
+		horadric = _horadric()
 		
 		cyanine = _cyanine()
 		test = _test()
@@ -47,7 +48,7 @@ class StructuresLibrary
 	func _cargo() -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 0.5
+		let radius:Float = 1
 		let color:UIColor = white
 		
 		let root = SCNNode()
@@ -70,7 +71,7 @@ class StructuresLibrary
 		root.addChildNode(SCNLine(nodeA: SCNVector3(-radius/2,radius,-radius/2), nodeB: SCNVector3(radius/2,radius,radius/2), color: grey))
 		root.addChildNode(SCNLine(nodeA: SCNVector3(radius/2,-radius,-radius/2), nodeB: SCNVector3(-radius/2,-radius,radius/2), color: grey))
 		
-		root.position = SCNVector3(0,2,0)
+		root.position = SCNVector3(0,4,0)
 		mesh.addChildNode(root)
 		
 		return mesh

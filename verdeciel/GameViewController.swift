@@ -85,6 +85,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		cargo.install()
 		console.install()
+		mission.install()
 		
 //		quests.tutorial[0].complete()
 //		quests.tutorial[1].complete()

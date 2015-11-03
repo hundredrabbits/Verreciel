@@ -12,6 +12,13 @@
 *    ACTIVE
 ================
 
+- Fix issue with trading where the wires are not gone.
+- Fix issue with trading where the panel flickers
+- Create radar icons for locations in Loiqe
+- Add stars while docking
+
+- Bank location
+
 - Warnings
 
 - Link radar(telescope) to helmet?

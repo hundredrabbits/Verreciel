@@ -5,12 +5,17 @@ import Foundation
 
 class LocationCargo : Location
 {
-	var inventoryPort:SCNPort!
-	var inventoryLabel:SCNLabel!
-	var inventoryNote:SCNLabel!
+	var port1:SCNPort!
+	var port1Label:SCNLabel!
+	var port1Note:SCNLabel!
+	
+	var port2:SCNPort!
+	var port2Label:SCNLabel!
+	var port2Note:SCNLabel!
+	
 	var locationLabel:SCNLabel!
 	
-	init(name:String,at: CGPoint = CGPoint(), item:Event!, isRadioQuest:Bool = false)
+	init(name:String,at: CGPoint = CGPoint(), item:Event!, item2:Event! = nil, isRadioQuest:Bool = false)
 	{
 		super.init(name:name, at:at)
 		
@@ -22,8 +27,12 @@ class LocationCargo : Location
 		self.mesh = structures.cargo
 		self.icon = icons.cargo
 		
-		inventoryPort = SCNPort(host: self)
-		inventoryPort.event = item
+		port1 = SCNPort(host: self)
+		port1.event = item
+		port2 = SCNPort(host: self)
+		port2.event = item2
+		
+		update()
 	}
 	
 	// MARK: Panel
@@ -39,36 +48,64 @@ class LocationCargo : Location
 		// Interface
 		
 		let nodeFrame = SCNNode()
-		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,-0.4,0)
+		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,0,0)
 		
-		inventoryPort.position = SCNVector3(x: 0, y: 0, z: 0)
-		inventoryPort.enable()
-		nodeFrame.addChildNode(inventoryPort)
+		port1.position = SCNVector3(x: 0, y: 0.6, z: 0)
+		port1.enable()
+		nodeFrame.addChildNode(port1)
+		port1Label = SCNLabel(text: port1.event.name!)
+		port1Label.position = SCNVector3(x: 0.5, y: 0, z: 0)
+		port1.addChildNode(port1Label)
+		port1Note = SCNLabel(text: port1.event.note, scale:0.08, color:grey)
+		port1Note.position = SCNVector3(x: 0.5, y: -0.4, z: 0)
+		port1.addChildNode(port1Note)
 		
-		inventoryLabel = SCNLabel(text: inventoryPort.event.name!)
-		inventoryLabel.position = SCNVector3(x: 0.5, y: 0, z: 0)
-		nodeFrame.addChildNode(inventoryLabel)
-		
-		inventoryNote = SCNLabel(text: inventoryPort.event.note, scale:0.08, color:grey)
-		inventoryNote.position = SCNVector3(x: 0.5, y: -0.4, z: 0)
-		nodeFrame.addChildNode(inventoryNote)
+		port2.position = SCNVector3(x: 0, y: -0.6, z: 0)
+		port2.enable()
+		nodeFrame.addChildNode(port2)
+		port2Label = SCNLabel()
+		port2Label.position = SCNVector3(x: 0.5, y: 0, z: 0)
+		port2.addChildNode(port2Label)
+		port2Note = SCNLabel(scale:0.08, color:grey)
+		port2Note.position = SCNVector3(x: 0.5, y: -0.4, z: 0)
+		port2.addChildNode(port2Note)
 		
 		newPanel.addChildNode(nodeFrame)
 		
 		return newPanel
 	}
 	
-	override func update()
+	// MARK: Docked
+	
+	override func dockedUpdate()
 	{
-		if inventoryPort.event != nil && inventoryPort.event.size < 1 {
-			inventoryPort.event = nil
+		if port1.event != nil && port1.event.size < 1 {
+			port1.event = nil
+		}
+		if port2.event != nil && port2.event.size < 1 {
+			port2.event = nil
 		}
 		
-		if inventoryPort.event == nil {
-			inventoryLabel.update("Empty", color: grey)
-			inventoryNote.update("--", color: grey)
+		if port1.event == nil {
+			port1Label.update("Empty", color: grey)
+			port1Note.update("--", color: grey)
 			isComplete = true
-			inventoryPort.disable()
+			port1.disable()
+		}
+		else{
+			port1Label.update(port1.event.name!)
+			port1Note.update(port1.event.note)
+		}
+		
+		if port2.event == nil {
+			port2Label.update("Empty", color: grey)
+			port2Note.update("--", color: grey)
+			isComplete = true
+			port2.disable()
+		}
+		else{
+			port2Label.update(port2.event.name!)
+			port2Note.update(port2.event.note)
 		}
 	}
 	
@@ -76,11 +113,9 @@ class LocationCargo : Location
 	
 	override func bang()
 	{
-		if inventoryPort.connection == nil { print("Missing connection") ; return }
+		if port1.connection != nil && port1.event != nil{ port1.connection.host.listen(port1.event) }
+		if port2.connection != nil && port2.event != nil{ port2.connection.host.listen(port2.event) }
 		
-		if inventoryPort.event != nil {
-			inventoryPort.connection.host.listen(inventoryPort.event)
-		}
 		update()
 	}
 	

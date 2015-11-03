@@ -67,6 +67,11 @@ class Location : Event
 		align = calculateAlignment()
 	}
 	
+	func setup()
+	{
+	
+	}
+	
 	override func fixedUpdate()
 	{
 		position = SCNVector3(at.x,at.y,0)
@@ -82,6 +87,8 @@ class Location : Event
 		
 		if distance <= settings.collision { if inCollision == false {  inCollision = true ; collide() } ; collisionUpdate() }
 		else{ inCollision = false }
+		
+		if capsule.isDocked == true && capsule.dock == self { dockedUpdate() }
 		
 		radarCulling()
 		clean()
@@ -131,6 +138,11 @@ class Location : Event
 	}
 	
 	func collisionUpdate()
+	{
+		
+	}
+	
+	func dockedUpdate()
 	{
 		
 	}

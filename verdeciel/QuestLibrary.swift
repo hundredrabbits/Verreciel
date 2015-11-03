@@ -41,6 +41,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.loiqeKeyFragment1) == true }, result: { }) )
 		tutorial.append( Quest(name:"Press horadric on radar", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
+		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.loiqeKeyFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.loiqeKey) }, result: { journey.install() }) )

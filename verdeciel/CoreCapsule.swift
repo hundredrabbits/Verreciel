@@ -93,7 +93,7 @@ class CoreCapsule: SCNNode
 		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
 		capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
 		
-		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.01 { docked() }
+		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.001 { docked() }
 	}
 	
 	func docked()
