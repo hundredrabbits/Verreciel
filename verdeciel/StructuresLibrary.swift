@@ -10,10 +10,15 @@ class StructuresLibrary
 {
 	init()
 	{
+		// Complete
 		placeholder = _placeholder()
+		cargo = _cargo()
+		
+		// Todo
+		trade = _trade()
+		
 		cyanine = _cyanine()
 		test = _test()
-		cargo = _cargo()
 		star = _star()
 	}
 	
@@ -42,18 +47,31 @@ class StructuresLibrary
 	func _cargo() -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 3
-		let color:UIColor = cyan
+		let radius:Float = 0.5
+		let color:UIColor = white
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(0,radius,radius), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(radius,radius,0), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(0,radius,-radius), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,-radius), nodeB: SCNVector3(-radius,radius,0), color: color))
+		let root = SCNNode()
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-radius,0), nodeB: SCNVector3(0,-radius,radius), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,radius), nodeB: SCNVector3(radius,-radius,0), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,-radius,0), nodeB: SCNVector3(0,-radius,-radius), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,-radius), nodeB: SCNVector3(-radius,-radius,0), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(0,radius,radius), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(radius,radius,0), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(0,radius,-radius), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,-radius), nodeB: SCNVector3(-radius,radius,0), color: color))
+		
+		root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,-radius,0), nodeB: SCNVector3(0,-radius,radius), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,radius), nodeB: SCNVector3(radius,-radius,0), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(radius,-radius,0), nodeB: SCNVector3(0,-radius,-radius), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,-radius,-radius), nodeB: SCNVector3(-radius,-radius,0), color: color))
+		
+		root.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(radius,-radius,0), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(-radius,-radius,0), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(0,-radius,radius), color: color))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,-radius), nodeB: SCNVector3(0,-radius,-radius), color: color))
+		
+		root.addChildNode(SCNLine(nodeA: SCNVector3(-radius/2,radius,-radius/2), nodeB: SCNVector3(radius/2,radius,radius/2), color: grey))
+		root.addChildNode(SCNLine(nodeA: SCNVector3(radius/2,-radius,-radius/2), nodeB: SCNVector3(-radius/2,-radius,radius/2), color: grey))
+		
+		root.position = SCNVector3(0,2,0)
+		mesh.addChildNode(root)
 		
 		return mesh
 	}

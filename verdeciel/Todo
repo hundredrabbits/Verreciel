@@ -24,6 +24,9 @@
 - Add harvest location 4 in falvet
 
 - Signal converter panel?
+- Audio mute panel
+
+- Add dimensional gates(with item requirements)
 
 seen = white
 completed = cyan
@@ -51,7 +54,6 @@ incomplete = red
 	- Portal Keys
 
 	> Locations
-	- Add dimensional gates(with item requirements)
 
 	> Stealthed events
 

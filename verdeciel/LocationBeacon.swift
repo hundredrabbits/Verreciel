@@ -17,6 +17,7 @@ class LocationBeacon : Location
 		self.message = message
 		self.interaction = "> message"
 		self.mesh = structures.beacon
+		self.icon = icons.placeholder
 		
 		self.interface = panel()
 	}
@@ -47,25 +48,6 @@ class LocationBeacon : Location
 		newPanel.addChildNode(line4)
 		
 		return newPanel
-	}
-	
-	override func _sprite() -> SCNNode
-	{
-		let size:Float = 0.05
-		let spriteNode = SCNNode()
-		
-		if isRadioQuest == true {
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:0.1,z:0),nodeB: SCNVector3(x:0,y:-0.1,z:0),color: cyan))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-0.1,y:0,z:0),nodeB: SCNVector3(x:0.1,y:0,z:0),color: cyan))
-		}
-		if isKnown == true {
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-		}
-		
-		return spriteNode
 	}
 	
 	required init(coder aDecoder: NSCoder) {

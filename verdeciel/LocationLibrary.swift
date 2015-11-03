@@ -50,8 +50,7 @@ class Loiqe
 	
 	func city() -> LocationTrade
 	{
-		let location = LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqeKeyFragment1)
-		return location
+		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqeKeyFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
@@ -96,7 +95,6 @@ class Usul
 	func city() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y - 1)
 		return location
 	}
@@ -128,7 +126,6 @@ class Valen
 	func city() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y + 1)
 		return location
 	}
@@ -167,7 +164,6 @@ class Venic
 	func city() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x - 1, y: offset.y)
 		return location
 	}
@@ -199,7 +195,6 @@ class Senni
 	func city() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x - 1, y: offset.y)
 		return location
 	}
@@ -207,7 +202,6 @@ class Senni
 	func portal() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y)
 		return location
 	}
@@ -215,7 +209,6 @@ class Senni
 	func service() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y + 1)
 		return location
 	}
@@ -223,7 +216,6 @@ class Senni
 	func spawn() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x + 2, y: offset.y)
 		return location
 	}
@@ -231,7 +223,6 @@ class Senni
 	func telescope() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x, y: offset.y + 2)
 		return location
 	}
@@ -285,7 +276,6 @@ class Falvet
 	func service1() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y + 1)
 		return location
 	}
@@ -293,7 +283,6 @@ class Falvet
 	func service2() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x - 1, y: offset.y + 1)
 		return location
 	}
@@ -301,7 +290,6 @@ class Falvet
 	func service3() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
 		return location
 	}
@@ -309,7 +297,6 @@ class Falvet
 	func service4() -> LocationRepair
 	{
 		let location = LocationRepair(name:"Loiqe Repairs")
-		location.addService(services.hull)
 		location.at = CGPoint(x: offset.x - 1, y: offset.y - 1)
 		return location
 	}

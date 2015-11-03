@@ -8,7 +8,6 @@ class Location : Event
 	var service = services.none
 	var interaction = "connected"
 	
-	var sprite = SCNNode()
 	var angle:CGFloat!
 	var align:CGFloat!
 	var distance:CGFloat!
@@ -33,7 +32,9 @@ class Location : Event
 	var trigger = SCNNode()
 	var wire:SCNLine!
 	var connection:Event!
+	
 	var mesh:SCNNode!
+	var icon:SCNNode!
 	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
@@ -44,7 +45,6 @@ class Location : Event
 		geometry = SCNPlane(width: 0.5, height: 0.5)
 		geometry?.firstMaterial?.diffuse.contents = clear
 		
-		addChildNode(sprite)
 		addChildNode(trigger)
 		
 		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
@@ -95,20 +95,17 @@ class Location : Event
 	{
 		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
-		sprite.replace(_sprite())
 	}
 	
 	func discover()
 	{
 		print("* EVENT    | Discovered \(self.name!)")
-		sprite.replace(_sprite())
 	}
 	
 	func approach()
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
-		sprite.replace(_sprite())
 		capsule.dock(self)
 	}
 	
@@ -121,7 +118,6 @@ class Location : Event
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
-		sprite.replace(_sprite())
 	}
 	
 	func sightUpdate()
@@ -185,11 +181,6 @@ class Location : Event
 
 	// MARK: Events -
 	
-	func addService(service:services)
-	{
-		self.service = service
-	}
-	
 	override func touch(id:Int)
 	{
 		if radar.port.event == nil {
@@ -201,28 +192,6 @@ class Location : Event
 		else{
 			radar.addTarget(self)
 		}
-	}
-	
-	func _sprite() -> SCNNode
-	{
-		var size = self.size/10
-		size = 0.05
-		let spriteNode = SCNNode()
-		
-		if isKnown == true {
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: white))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: white))
-		}
-		else{
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: grey))
-			spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: grey))
-		}
-		
-		return spriteNode
 	}
 	
 	func calculateAngle() -> CGFloat

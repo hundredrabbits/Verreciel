@@ -20,38 +20,10 @@ class LocationCargo : Location
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
 		self.mesh = structures.cargo
+		self.icon = icons.cargo
 		
 		inventoryPort = SCNPort(host: self)
 		inventoryPort.event = item
-	}
-	
-	override func animateMesh(mesh:SCNNode)
-	{
-		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.125)))
-		for node in mesh.childNodes {
-			for line in node.childNodes {
-				line.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 2)))
-			}
-		}
-	}
-	override func _sprite() -> SCNNode
-	{
-		print("* LOCATION | Updated sprite for \(name!)")
-		
-		let size:Float = 0.05
-		var spriteColor:UIColor = grey
-		
-		let spriteNode = SCNNode()
-		
-		if isKnown == true { spriteColor = white }
-		else if isSeen == true { spriteColor = cyan }
-		
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: spriteColor))
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: spriteColor))
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: spriteColor))
-		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: spriteColor))
-		
-		return spriteNode
 	}
 	
 	// MARK: Panel
@@ -86,16 +58,6 @@ class LocationCargo : Location
 		return newPanel
 	}
 	
-	override func bang()
-	{
-		if inventoryPort.connection == nil { print("Missing connection") ; return }
-		
-		if inventoryPort.event != nil {
-			inventoryPort.connection.host.listen(inventoryPort.event)
-		}
-		update()
-	}
-	
 	override func update()
 	{
 		if inventoryPort.event != nil && inventoryPort.event.size < 1 {
@@ -106,6 +68,30 @@ class LocationCargo : Location
 			inventoryLabel.update("Empty", color: grey)
 			inventoryNote.update("--", color: grey)
 			isComplete = true
+		}
+	}
+	
+	// MARK: I/O
+	
+	override func bang()
+	{
+		print("bang")
+		if inventoryPort.connection == nil { print("Missing connection") ; return }
+		
+		if inventoryPort.event != nil {
+			inventoryPort.connection.host.listen(inventoryPort.event)
+		}
+		update()
+	}
+	
+	// MARK: Mesh -
+	
+	override func animateMesh(mesh:SCNNode)
+	{
+		for node in mesh.childNodes {
+			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.5)))
+			node.eulerAngles.x = Float(degToRad(CGFloat(time.elapsed * 0.25)))
+			node.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 0.125)))
 		}
 	}
 	

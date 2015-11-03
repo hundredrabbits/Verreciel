@@ -52,6 +52,7 @@
 		579614551BE0227500421D69 /* MonitorExploration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614541BE0227500421D69 /* MonitorExploration.swift */; };
 		579614571BE028F300421D69 /* MonitorProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579614561BE028F300421D69 /* MonitorProgress.swift */; };
 		5797B83C1BE7DD09004EE1F7 /* StructuresLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797B83B1BE7DD09004EE1F7 /* StructuresLibrary.swift */; };
+		579EA8EB1BE853F600B384C7 /* IconsLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579EA8EA1BE853F600B384C7 /* IconsLibrary.swift */; };
 		57A0F10D1B3DCD640007650F /* PanelRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* PanelRadar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
 		57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */; };
@@ -121,6 +122,7 @@
 		579614541BE0227500421D69 /* MonitorExploration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorExploration.swift; sourceTree = "<group>"; };
 		579614561BE028F300421D69 /* MonitorProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorProgress.swift; sourceTree = "<group>"; };
 		5797B83B1BE7DD09004EE1F7 /* StructuresLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructuresLibrary.swift; sourceTree = "<group>"; };
+		579EA8EA1BE853F600B384C7 /* IconsLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsLibrary.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* PanelRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRadar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				5748AD9D1BC8476000C47468 /* QuestLibrary.swift */,
 				574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */,
 				5797B83B1BE7DD09004EE1F7 /* StructuresLibrary.swift */,
+				579EA8EA1BE853F600B384C7 /* IconsLibrary.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
 				5745646E1BD3D87000A57C83 /* GameSceneDelegate.swift in Sources */,
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
+				579EA8EB1BE853F600B384C7 /* IconsLibrary.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,
 				574E5FBB1BC57749008130AB /* ItemLibrary.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,

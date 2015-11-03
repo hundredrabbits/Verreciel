@@ -13,6 +13,7 @@ class LocationRepair : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.placeholder
+		self.icon = icons.placeholder
 		
 		self.interaction = "repairing"
 		

@@ -40,6 +40,7 @@ var items = ItemLibrary()
 var locations = LocationLibrary()
 var recipes = RecipesLibrary()
 var structures = StructuresLibrary()
+var icons = IconsLibrary()
 
 var templates = Templates()
 var settings = Settings()
