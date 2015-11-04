@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_landing.at
+		capsule.at = universe.loiqe_city.at
 		radar.install()
 		pilot.install()
 		

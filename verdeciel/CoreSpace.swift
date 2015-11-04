@@ -42,7 +42,7 @@ class CoreSpace: SCNNode
 		// Stars
 		
 		var starSpeed = thruster.actualSpeed
-		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.5 }
+		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }
 		
 		let lineSpeed = Float(starSpeed) / 6
@@ -50,7 +50,7 @@ class CoreSpace: SCNNode
 		{
 			let line = node as! SCNLine
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
-			line.updateHeight(thruster.actualSpeed + 0.1)
+			line.updateHeight(starSpeed + 0.1)
 			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50
 			line.updateColor(UIColor(white: CGFloat(distanceRatio), alpha: 1))
 

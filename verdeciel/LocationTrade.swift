@@ -25,7 +25,7 @@ class LocationTrade : Location
 		icon.replace(icons.placeholder())
 		
 		wantPort = SCNPort(host: self)
-		wantPort.event = want
+		wantPort.addRequirement(want)
 		givePort = SCNPort(host: self)
 		givePort.event = give
 		
@@ -46,12 +46,11 @@ class LocationTrade : Location
 		newPanel.addChildNode(tradeWantLabel)
 		
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
-		wantPort.addRequirement(wantPort.event)
 		wantPort.enable()
 		wantPort.input = eventTypes.item
 		newPanel.addChildNode(wantPort)
 		
-		wantLabel = SCNLabel(text: wantPort.event.name!, color:white)
+		wantLabel = SCNLabel(text: wantPort.requirement.name!, color:white)
 		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
 		wantPort.output = eventTypes.item
 		newPanel.addChildNode(wantLabel)
