@@ -20,7 +20,7 @@ class LocationPortal : Location
 		self.note = ""
 		self.color = color
 		self.mesh = structures.portal
-		self.icon = icons.placeholder
+		icon.replace(icons.placeholder())
 	}
 	
 	required init(coder aDecoder: NSCoder) {

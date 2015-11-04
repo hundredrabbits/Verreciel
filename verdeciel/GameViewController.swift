@@ -70,7 +70,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 
-		startingState()
+		debugState()
 	}
 	
 	func startingState()

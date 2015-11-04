@@ -15,12 +15,7 @@ class LocationStar : Location
 		self.color = color
 		self.mesh = structures.star
 		self.details = itemTypes.star
-		self.icon = icons.placeholder
-	}
-	
-	override func collide()
-	{
-		print("death")
+		icon.replace(icons.placeholder())
 	}
 
 	required init(coder aDecoder: NSCoder)

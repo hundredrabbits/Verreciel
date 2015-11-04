@@ -34,7 +34,7 @@ class Location : Event
 	var connection:Event!
 	
 	var mesh:SCNNode!
-	var icon:SCNNode!
+	var icon = SCNNode()
 	
 	init(name:String = "", at: CGPoint! = nil, service:services = services.none)
 	{
@@ -46,6 +46,10 @@ class Location : Event
 		geometry?.firstMaterial?.diffuse.contents = clear
 		
 		addChildNode(trigger)
+		addChildNode(icon)
+		
+//		icon.geometry = SCNPlane(width: 0.5, height: 0.5)
+//		icon.geometry?.firstMaterial?.diffuse.contents = red
 		
 		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
 		label.position = SCNVector3(0,-0.3,-0.35)
@@ -79,13 +83,13 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if distance <= settings.sight { if inSight == false { sight() ; inSight = true ; isSeen = true } ; sightUpdate() }
+		if distance <= settings.sight { if inSight == false { onSight() ; inSight = true ; isSeen = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= settings.approach { if inApproach == false { inApproach = true ; approach() } ; approachUpdate() }
+		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() }
 		else{ inApproach = false }
 		
-		if distance <= settings.collision { if inCollision == false {  inCollision = true ; collide() } ; collisionUpdate() }
+		if distance <= settings.collision { if inCollision == false {  inCollision = true ; onCollision() } ; collisionUpdate() }
 		else{ inCollision = false }
 		
 		if capsule.isDocked == true && capsule.dock == self { dockedUpdate() }
@@ -98,30 +102,30 @@ class Location : Event
 	{
 	}
 	
-	func sight()
+	func onSight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
 	}
 	
-	func discover()
+	func onDiscovery()
 	{
 		print("* EVENT    | Discovered \(self.name!)")
 	}
 	
-	func approach()
+	func onApproach()
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
 		capsule.dock(self)
 	}
 	
-	func collide()
+	func onCollision()
 	{
 		print("* EVENT    | Collided \(self.name!)")
 	}
 	
-	func docked()
+	func onDock()
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
@@ -228,7 +232,8 @@ class Location : Event
 		return diff
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

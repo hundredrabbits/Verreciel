@@ -13,7 +13,7 @@ class LocationStation : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.station
-		self.icon = icons.placeholder
+		icon.replace(icons.placeholder())
 		
 		self.interface = panel()
 	}

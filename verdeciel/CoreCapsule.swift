@@ -100,7 +100,7 @@ class CoreCapsule: SCNNode
 	{
 		isDocked = true
 		capsule.at = dock.at
-		dock.docked()
+		dock.onDock()
 		
 		ui.addPassive("Docked at \(dock.name!)")
 		

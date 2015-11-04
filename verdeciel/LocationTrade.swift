@@ -24,7 +24,7 @@ class LocationTrade : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.trade
-		self.icon = icons.placeholder
+		icon.replace(icons.placeholder())
 		
 		self.want = want
 		self.give = give

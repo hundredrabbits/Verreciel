@@ -17,14 +17,14 @@ class LocationGate : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.gate
-		self.icon = icons.gate
+		icon.replace(icons.placeholder())
 		
 		wantPort = SCNPort(host: self)
 		wantPort.addRequirement(want)
 		wantLabel = SCNLabel(text: want.name!, color:white)
 		
 		self.interaction = "trading"
-		
+
 		self.interface = panel()
 	}
 	

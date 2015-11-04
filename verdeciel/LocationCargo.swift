@@ -25,7 +25,7 @@ class LocationCargo : Location
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
 		self.mesh = structures.cargo
-		self.icon = icons.cargo
+		icon.replace(icons.cargo())
 		
 		port1 = SCNPort(host: self)
 		port1.event = item

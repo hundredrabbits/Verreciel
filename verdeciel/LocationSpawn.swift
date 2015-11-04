@@ -13,18 +13,11 @@ class LocationSpawn : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.placeholder
-		self.icon = icons.placeholder
-		
 		self.interaction = "respawning"
-		
 		self.interface = panel()
+		self.icon.replace(icons.placeholder())
 	}
-	
-	override func collide()
-	{
-		
-	}
-	
+
 	override func panel() -> SCNNode
 	{
 		let newPanel = SCNNode()
