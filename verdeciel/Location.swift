@@ -106,11 +106,7 @@ class Location : Event
 	{
 		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
-	}
-	
-	func onDiscovery()
-	{
-		print("* EVENT    | Discovered \(self.name!)")
+		update()
 	}
 	
 	func onApproach()
@@ -118,17 +114,20 @@ class Location : Event
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
 		capsule.dock(self)
+		update()
 	}
 	
 	func onCollision()
 	{
 		print("* EVENT    | Collided \(self.name!)")
+		update()
 	}
 	
 	func onDock()
 	{
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
+		update()
 	}
 	
 	func sightUpdate()

@@ -41,10 +41,6 @@ class LocationCargo : Location
 	{
 		let newPanel = SCNNode()
 		
-		locationLabel = SCNLabel(text: note)
-		locationLabel.position = SCNVector3(templates.leftMargin,templates.topMargin - 0.25,0)
-		newPanel.addChildNode(locationLabel)
-		
 		// Interface
 		
 		let nodeFrame = SCNNode()
@@ -106,6 +102,21 @@ class LocationCargo : Location
 		else{
 			port2Label.update(port2.event.name!)
 			port2Note.update(port2.event.note)
+		}
+	}
+	
+	override func update()
+	{
+		if port1.event == nil && port2.event == nil { isComplete = true }
+		
+		if isKnown == false {
+			icon.replace(icons.cargo(grey))
+		}
+		else if isComplete == true {
+			icon.replace(icons.cargo(cyan))
+		}
+		else {
+			icon.replace(icons.cargo(red))
 		}
 	}
 	

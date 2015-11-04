@@ -11,9 +11,6 @@ class LocationTrade : Location
 	var givePort:SCNPort!
 	var giveLabel:SCNLabel!
 	
-	var want:Event!
-	var give:Event!
-	
 	var unlocked:Bool = false
 	
 	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
@@ -24,10 +21,13 @@ class LocationTrade : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.trade
+		
 		icon.replace(icons.placeholder())
 		
-		self.want = want
-		self.give = give
+		wantPort = SCNPort(host: self)
+		wantPort.event = want
+		givePort = SCNPort(host: self)
+		givePort.event = give
 		
 		self.interaction = "trading"
 		
@@ -35,27 +35,6 @@ class LocationTrade : Location
 	}
 	
 	// MARK: Panels -
-	
-	override func update()
-	{
-		if givePort.event == nil {
-			wantLabel.update("--", color:grey)
-			giveLabel.update("--", color:grey)
-			givePort.disable()
-			wantPort.disable()
-			return
-		}
-		if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
-			wantLabel.updateColor(white)
-			giveLabel.updateColor(white)
-			givePort.enable()
-		}
-		else{
-			wantLabel.updateColor(grey)
-			giveLabel.updateColor(grey)
-			givePort.disable()
-		}
-	}
 	
 	override func panel() -> SCNNode
 	{
@@ -66,14 +45,13 @@ class LocationTrade : Location
 		tradeWantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
 		newPanel.addChildNode(tradeWantLabel)
 		
-		wantPort = SCNPort(host: self)
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
-		wantPort.addRequirement(want)
+		wantPort.addRequirement(wantPort.event)
 		wantPort.enable()
 		wantPort.input = eventTypes.item
 		newPanel.addChildNode(wantPort)
 		
-		wantLabel = SCNLabel(text: want.name!, color:white)
+		wantLabel = SCNLabel(text: wantPort.event.name!, color:white)
 		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
 		wantPort.output = eventTypes.item
 		newPanel.addChildNode(wantLabel)
@@ -83,12 +61,10 @@ class LocationTrade : Location
 		tradeGiveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.2, z: 0)
 		newPanel.addChildNode(tradeGiveLabel)
 		
-		givePort = SCNPort(host: self)
 		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
-		givePort.event = give
 		newPanel.addChildNode(givePort)
 		
-		giveLabel = SCNLabel(text: give.name!, color:grey)
+		giveLabel = SCNLabel(text: givePort.event.name!, color:grey)
 		giveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.5, z: 0)
 		newPanel.addChildNode(giveLabel)
 		
@@ -112,6 +88,41 @@ class LocationTrade : Location
 		givePort.connection.host.listen(givePort.event)
 		
 		update()
+	}
+	
+	override func update()
+	{
+		if givePort.event == nil { isComplete = true }
+		
+		if isKnown == false {
+			icon.replace(icons.trade(grey))
+		}
+		else if isComplete == true {
+			icon.replace(icons.trade(cyan))
+		}
+		else {
+			icon.replace(icons.trade(red))
+		}
+		
+		// 
+		
+		if givePort.event == nil {
+			wantLabel.update("--", color:grey)
+			giveLabel.update("--", color:grey)
+			givePort.disable()
+			wantPort.disable()
+			return
+		}
+		if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
+			wantLabel.updateColor(white)
+			giveLabel.updateColor(white)
+			givePort.enable()
+		}
+		else{
+			wantLabel.updateColor(grey)
+			giveLabel.updateColor(grey)
+			givePort.disable()
+		}
 	}
 
 	func completeTrade()
