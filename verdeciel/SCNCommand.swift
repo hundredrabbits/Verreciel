@@ -15,7 +15,7 @@ class SCNCommand : SCNNode
 	var head:Bool!
 	
 	var label:SCNLabel!
-	var port:SCNPort!
+	var port:SCNPortRedirect!
 	var detailsLabel:SCNLabel
 	
 	var headLineTop:SCNLine!
@@ -36,10 +36,10 @@ class SCNCommand : SCNNode
 		super.init()
 		
 		if host != nil {
-			port = SCNPort(host: host)
+			port = SCNPortRedirect(host: host)
 		}
 		else{
-			port = SCNPort(host: self)
+			port = SCNPortRedirect(host: self)
 		}
 		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
 		port.opacity = 0

@@ -87,6 +87,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		console.install()
 		mission.install()
 		
+		cargo.port.event.content.append(items.materia)
+		
 //		quests.tutorial[0].complete()
 //		quests.tutorial[1].complete()
 //		quests.tutorial[2].complete()
@@ -101,9 +103,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 //		quests.tutorial[11].complete()
 //		quests.tutorial[12].complete()
 		
-//		cargo.port.event.content.append(items.loiqeLicense)
-//		cargo.port.event.content.append(items.radioPart1)
-//		cargo.port.event.content.append(items.radioPart2)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

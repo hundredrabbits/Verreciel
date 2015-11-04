@@ -206,12 +206,11 @@ class SCNPort : SCNNode
 	{
 		let syph = origin.event
 		
-		syph.size = 0
-		origin.event = nil
+		print("syphon from : \(origin)")
+		origin.removeEvent()
 		origin.host.update()
 		origin.update()
 		origin.disconnect()
-		syph.size = 1
 		
 		return syph
 	}

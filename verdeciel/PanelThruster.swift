@@ -209,7 +209,7 @@ class PanelThruster : Panel
 	func modeFlight()
 	{
 		label.updateColor(white)
-		details.update(String(format: "%.1f", actualSpeed), color: white)
+		details.update(String(format: "%.1f", actualSpeed), color: grey)
 		port.enable()
 		trigger.opacity = 0
 		

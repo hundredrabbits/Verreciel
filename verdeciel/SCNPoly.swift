@@ -16,7 +16,8 @@ class SCNPoly : SCNNode
 		self.addChildNode(SCNTriangle(vertices: [vertices[1],vertices[2],vertices[3]], color:color))
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

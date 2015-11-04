@@ -25,8 +25,6 @@ class LocationHoradric : Location
 		
 		self.interaction = "trading"
 		
-		self.interface = panel()
-		
 		isComplete = true
 	}
 	

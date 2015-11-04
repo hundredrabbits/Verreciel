@@ -80,6 +80,16 @@ class PanelCargo : Panel
 		}
 	}
 	
+	func removeEvent(target:Event)
+	{
+		port.event.content = []
+		for event in port.event.content {
+			if event == target { continue }
+			port.event.content.append(event)
+		}
+		bang()
+	}
+	
 	override func touch(id:Int = 0)
 	{
 		bang()
@@ -92,9 +102,7 @@ class PanelCargo : Panel
 		// Update cargohold
 		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
 		for item in port.event.content {
-			if item.size > 0 {
-				newCargohold.content.append(item)
-			}
+			newCargohold.content.append(item)
 		}
 		port.event = newCargohold
 		
@@ -159,6 +167,8 @@ class PanelCargo : Panel
 		isUploading = false
 		bang()
 	}
+	
+	// MARK: Installation -
 	
 	override func onInstallationBegin()
 	{

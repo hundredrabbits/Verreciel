@@ -74,8 +74,16 @@ class PanelMission : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if capsule.isDocked { panelUpdate() ; questPanel.opacity = 0 ; locationPanel.opacity = 1 }
-		else{ missionUpdate() ; questPanel.opacity = 1 ; locationPanel.opacity = 0 }
+		if capsule.isDocked && capsule.dock.isComplete == false {
+			panelUpdate()
+			questPanel.opacity = 0
+			locationPanel.opacity = 1
+		}
+		else{
+			missionUpdate()
+			questPanel.opacity = 1
+			locationPanel.opacity = 0
+		}
 	}
 	
 	func missionUpdate()
@@ -130,7 +138,8 @@ class PanelMission : Panel
 	
 	func connectToLocation(location:Location)
 	{
-		locationPanel.replace(location.panel())
+		locationPanel.empty()
+		locationPanel.add(location.panel())
 	}
 	
 	func disconnectFromLocation()

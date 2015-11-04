@@ -16,8 +16,6 @@ class LocationRepair : Location
 		icon.replace(icons.placeholder())
 		
 		self.interaction = "repairing"
-		
-		self.interface = panel()
 	}
 	
 	override func panel() -> Panel

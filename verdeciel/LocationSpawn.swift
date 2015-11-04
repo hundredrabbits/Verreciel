@@ -14,7 +14,6 @@ class LocationSpawn : Location
 		self.note = ""
 		self.mesh = structures.placeholder
 		self.interaction = "respawning"
-		self.interface = panel()
 		self.icon.replace(icons.placeholder())
 	}
 

@@ -24,8 +24,6 @@ class LocationGate : Location
 		wantLabel = SCNLabel(text: want.name!, color:white)
 		
 		self.interaction = "trading"
-
-		self.interface = panel()
 	}
 	
 	override func animateMesh(mesh:SCNNode)

@@ -1,10 +1,5 @@
-//
-//  File.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-08-28.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore

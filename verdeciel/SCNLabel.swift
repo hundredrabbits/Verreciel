@@ -57,7 +57,6 @@ class SCNLabel : SCNNode
 	
 	func removeLetters()
 	{
-		activeText = ""
 		for letterCur in nodeOffset.childNodes {
 			letterCur.removeFromParentNode()
 		}
@@ -73,20 +72,31 @@ class SCNLabel : SCNNode
 		adjustAlignment()
 	}
 	
-	func update(text:String, force:Bool = false)
+	func update(color:UIColor, force:Bool = false)
 	{
-		if text == activeText && force == false { return }
+		if self.color == color { return }
+		self.color = color
+		removeLetters()
+		addLetters(activeText, scale: activeScale)
+		adjustAlignment()
+	}
+	
+	func update(text:String)
+	{
+		if text == activeText { return }
 		removeLetters()
 		activeText = text
 		addLetters(activeText, scale: activeScale)
 		adjustAlignment()
 	}
-
+	
 	func updateColor(color:UIColor)
 	{
 		if self.color == color { return }
 		self.color = color
-		update(activeText,force:true)
+		removeLetters()
+		addLetters(activeText, scale: activeScale)
+		adjustAlignment()
 	}
 	
 	func letter(letter:String,scale:Float) -> SCNNode

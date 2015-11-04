@@ -16,8 +16,6 @@ class LocationTelescope : Location
 		icon.replace(icons.placeholder())
 		
 		self.interaction = "respawning"
-		
-		self.interface = panel()
 	}
 	
 	override func panel() -> Panel

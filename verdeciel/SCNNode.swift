@@ -87,7 +87,7 @@ extension SCNNode
 	
 	func empty()
 	{
-		for node in self.childNodes {
+		for node in childNodes {
 			node.removeFromParentNode()
 		}
 	}

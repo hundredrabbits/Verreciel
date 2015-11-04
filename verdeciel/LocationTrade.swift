@@ -17,6 +17,8 @@ class LocationTrade : Location
 	{
 		super.init(name: name, at: at)
 		
+		print("created location")
+		
 		self.at = at
 		self.size = size
 		self.note = ""
@@ -28,10 +30,10 @@ class LocationTrade : Location
 		wantPort.addRequirement(want)
 		givePort = SCNPort(host: self)
 		givePort.event = give
+		wantLabel = SCNLabel(text: wantPort.requirement.name!, color:white)
+		giveLabel = SCNLabel(text: givePort.event.name!, color:grey)
 		
 		self.interaction = "trading"
-		
-		self.interface = panel()
 	}
 	
 	// MARK: Panels -
@@ -39,38 +41,62 @@ class LocationTrade : Location
 	override func panel() -> SCNNode
 	{
 		let newPanel = SCNNode()
+		let spacingLeft:Float = 0.4
 		
 		// Want
-		let tradeWantLabel = SCNLabel(text: "Trade", color:grey)
-		tradeWantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.6, z: 0)
-		newPanel.addChildNode(tradeWantLabel)
 		
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
 		wantPort.enable()
 		wantPort.input = eventTypes.item
 		newPanel.addChildNode(wantPort)
 		
-		wantLabel = SCNLabel(text: wantPort.requirement.name!, color:white)
-		wantLabel.position = SCNVector3(x: -1.5 + 0.3, y: 0.3, z: 0)
+		let tradeLabel = SCNLabel(text: "< Trade", color:grey)
+		tradeLabel.position = SCNVector3(x: spacingLeft, y: spacingLeft, z: 0)
+		wantPort.addChildNode(tradeLabel)
+		
+		wantLabel.position = SCNVector3(x: spacingLeft, y: 0, z: 0)
 		wantPort.output = eventTypes.item
-		newPanel.addChildNode(wantLabel)
+		wantPort.addChildNode(wantLabel)
 		
 		// Give
-		let tradeGiveLabel = SCNLabel(text: "for", color:grey)
-		tradeGiveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.2, z: 0)
-		newPanel.addChildNode(tradeGiveLabel)
+		let forLabel = SCNLabel(text: "> For", color:grey)
+		forLabel.position = SCNVector3(x: spacingLeft, y: spacingLeft, z: 0)
+		givePort.addChildNode(forLabel)
 		
-		givePort.position = SCNVector3(x: -1.5, y: -0.5, z: 0)
+		givePort.position = SCNVector3(x:-1.5, y: -0.7, z: 0)
 		newPanel.addChildNode(givePort)
 		
-		giveLabel = SCNLabel(text: givePort.event.name!, color:grey)
-		giveLabel.position = SCNVector3(x: -1.5 + 0.3, y: -0.5, z: 0)
-		newPanel.addChildNode(giveLabel)
+		giveLabel.position = SCNVector3(x: spacingLeft, y: 0, z: 0)
+		givePort.addChildNode(giveLabel)
 		
 		givePort.disable()
 		
 		return newPanel
 	}
+	
+	func panelUpdate()
+	{
+		if givePort.event == nil {
+			wantLabel.update("--", color:grey)
+			giveLabel.update("--", color:grey)
+			givePort.disable()
+			wantPort.disable()
+		}
+		else if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
+			wantLabel.update(wantPort.requirement.name!, color:cyan)
+			giveLabel.update(givePort.event.name!, color:white)
+			wantPort.enable()
+			givePort.enable()
+		}
+		else{
+			wantLabel.update(wantPort.requirement.name!, color:white)
+			giveLabel.update(givePort.event.name!, color:grey)
+			wantPort.enable()
+			givePort.disable()
+		}
+	}
+	
+	// MARK: I/O -
 	
 	override func listen(event: Event)
 	{
@@ -82,14 +108,20 @@ class LocationTrade : Location
 	{
 		if givePort.connection == nil { print("No connection") ; return }
 		if givePort.connection.host != cargo { print("Not routed to cargo") ; return }
-		if givePort.event == nil { completeTrade() ; return }
 		
+		wantPort.addEvent(wantPort.syphon())
 		givePort.connection.host.listen(givePort.event)
-		
+
 		update()
 	}
 	
 	override func update()
+	{
+		panelUpdate()
+		iconUpdate()
+	}
+	
+	func iconUpdate()
 	{
 		if givePort.event == nil { isComplete = true }
 		
@@ -101,26 +133,6 @@ class LocationTrade : Location
 		}
 		else {
 			icon.replace(icons.trade(red))
-		}
-		
-		// 
-		
-		if givePort.event == nil {
-			wantLabel.update("--", color:grey)
-			giveLabel.update("--", color:grey)
-			givePort.disable()
-			wantPort.disable()
-			return
-		}
-		if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
-			wantLabel.updateColor(white)
-			giveLabel.updateColor(white)
-			givePort.enable()
-		}
-		else{
-			wantLabel.updateColor(grey)
-			giveLabel.updateColor(grey)
-			givePort.disable()
 		}
 	}
 

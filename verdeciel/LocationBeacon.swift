@@ -18,8 +18,6 @@ class LocationBeacon : Location
 		self.interaction = "> message"
 		self.mesh = structures.beacon
 		icon.replace(icons.placeholder())
-		
-		self.interface = panel()
 	}
 	
 	override func panel() -> Panel

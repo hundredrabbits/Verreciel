@@ -14,8 +14,6 @@ class LocationStation : Location
 		self.note = ""
 		self.mesh = structures.station
 		icon.replace(icons.placeholder())
-		
-		self.interface = panel()
 	}
 	
 	override func panel() -> Panel
