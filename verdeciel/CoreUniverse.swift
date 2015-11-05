@@ -31,7 +31,7 @@ class CoreUniverse : SCNNode
 	var loiqe_landing = locations.loiqe.landing()
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_horadric = locations.loiqe.horadric()
-	var loiqe_gate = locations.loiqe.gate()
+	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_cargo = locations.loiqe.cargo()
 	
 	func addLoiqe()
@@ -41,7 +41,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_landing)
 		addChildNode(loiqe_city)
 		addChildNode(loiqe_horadric)
-		addChildNode(loiqe_gate)
+		addChildNode(loiqe_portal)
 		addChildNode(loiqe_cargo)
 	}
 	
@@ -140,8 +140,8 @@ class CoreUniverse : SCNNode
 	{
 		loiqe_landing.connect(loiqe_city)
 		loiqe_city.connect(loiqe_horadric)
-		loiqe_horadric.connect(loiqe_gate)
-		loiqe_gate.connect(falvet_toLoiqe)
+		loiqe_horadric.connect(loiqe_portal)
+		loiqe_portal.connect(falvet_toLoiqe)
 		
 		venic_city.connect(venic_waypoint)
 		

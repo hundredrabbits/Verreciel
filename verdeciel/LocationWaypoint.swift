@@ -12,7 +12,7 @@ class LocationWaypoint : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		self.mesh = structures.placeholder
+		self.mesh = structures.placeholder()
 		icon.replace(icons.placeholder())
 	}
 	

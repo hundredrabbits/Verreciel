@@ -24,7 +24,7 @@ class LocationCargo : Location
 		self.size = 1
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
-		self.mesh = structures.cargo
+		self.mesh = structures.cargo()
 		icon.replace(icons.none())
 		
 		port1 = SCNPort(host: self)

@@ -8,24 +8,7 @@ import Foundation
 
 class StructuresLibrary
 {
-	init()
-	{
-		// Complete
-		placeholder = _placeholder()
-		cargo = _cargo()
-		
-		// Todo
-		trade = _trade()
-		horadric = _horadric()
-		
-		cyanine = _cyanine()
-		test = _test()
-		star = _star()
-	}
-	
-	var placeholder:SCNNode!
-	
-	func _placeholder() -> SCNNode
+	func placeholder() -> SCNNode
 	{
 		let mesh = SCNNode()
 		let radius:Float = 3
@@ -43,9 +26,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var cargo:SCNNode!
-	
-	func _cargo() -> SCNNode
+	func cargo() -> SCNNode
 	{
 		let mesh = SCNNode()
 		let radius:Float = 1
@@ -77,7 +58,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func _test2() -> SCNNode!
+	func test2() -> SCNNode!
 	{
 		let mesh = SCNNode()
 		let radius:Float = 5
@@ -97,9 +78,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var cyanine:SCNNode!
-	
-	func _cyanine() -> SCNNode!
+	func cyanine() -> SCNNode!
 	{
 		let mesh = SCNNode()
 		let color:UIColor = cyan
@@ -131,9 +110,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var test:SCNNode!
-	
-	func _test() -> SCNNode
+	func test() -> SCNNode
 	{
 		let mesh = SCNNode()
 		let radius:Float = 4
@@ -173,9 +150,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var star:SCNNode!
-	
-	func _star() -> SCNNode
+	func star() -> SCNNode
 	{
 		let mesh = SCNNode()
 		var radius:Float = 2.75
@@ -200,9 +175,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var portal:SCNNode!
-	
-	func _portal() -> SCNNode
+	func portal() -> SCNNode
 	{
 		let mesh = SCNNode()
 		let color:UIColor = cyan
@@ -227,41 +200,43 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	var trade:SCNNode!
+	func trade(radius:Float = 2.5, tunnels:Int = 30, depth:Float = 0.5) -> SCNNode
+	{
+		let mesh = SCNNode()
+		
+		let offset = SCNNode()
+		offset.position = SCNVector3(0,2.75,0)
+		mesh.addChildNode(offset)
+		
+		var i = 0
+		while i < tunnels {
+			let root = SCNNode()
+			
+			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),radius), color: white))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),radius), nodeB: SCNVector3(radius,depth * Float(i),0), color: white))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),-radius), color: white))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),-radius), nodeB: SCNVector3(-radius,depth * Float(i),0), color: white))
+			
+			offset.addChildNode(root)
+			i += 1
+		}
+		
+		return mesh
+	}
 	
-	func _trade() -> SCNNode
+	func horadric() -> SCNNode
 	{
 		let mesh = SCNNode()
 		return mesh
 	}
 	
-	var horadric:SCNNode!
-	
-	func _horadric() -> SCNNode
+	func beacon() -> SCNNode
 	{
 		let mesh = SCNNode()
 		return mesh
 	}
 	
-	var beacon:SCNNode!
-	
-	func _beacon() -> SCNNode
-	{
-		let mesh = SCNNode()
-		return mesh
-	}
-	
-	var station:SCNNode!
-	
-	func _station() -> SCNNode
-	{
-		let mesh = SCNNode()
-		return mesh
-	}
-	
-	var gate:SCNNode!
-	
-	func _gate() -> SCNNode
+	func station() -> SCNNode
 	{
 		let mesh = SCNNode()
 		return mesh

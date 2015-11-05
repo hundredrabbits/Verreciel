@@ -20,7 +20,7 @@ class LocationHoradric : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		self.mesh = structures.horadric
+		self.mesh = structures.horadric()
 		icon.replace(icons.unseen())
 		
 		self.interaction = "trading"

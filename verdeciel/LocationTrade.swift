@@ -22,7 +22,7 @@ class LocationTrade : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		self.mesh = structures.trade
+		self.mesh = structures.trade()
 		
 		icon.replace(icons.unseen())
 		
@@ -137,6 +137,17 @@ class LocationTrade : Location
 		
 		givePort.event = nil
 		update()
+	}
+	
+	// MARK: Mesh -
+	
+	override func animateMesh(mesh:SCNNode)
+	{
+		var nodeCount:Float = 1
+		for node in (mesh.childNodes.first?.childNodes)! {
+			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1 * nodeCount/10)))
+			nodeCount += 1
+		}
 	}
 	
 	// MARK: Defaults -

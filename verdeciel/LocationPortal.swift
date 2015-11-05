@@ -19,7 +19,7 @@ class LocationPortal : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
-		self.mesh = structures.portal
+		self.mesh = structures.portal()
 		icon.replace(icons.placeholder())
 	}
 	

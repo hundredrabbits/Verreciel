@@ -9,6 +9,6 @@ class RecipesLibrary
 	
 	init()
 	{
-		horadric.append( Recipe(name: "loiqe key", ingredients: [items.loiqeKeyFragment1, items.loiqeKeyFragment2], result: items.loiqeKey) )
+		horadric.append( Recipe(name: "loiqe key", ingredients: [items.loiqePortalFragment1, items.loiqePortalFragment2], result: items.loiqePortal) )
 	}
 }

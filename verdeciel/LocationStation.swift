@@ -12,7 +12,7 @@ class LocationStation : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		self.mesh = structures.station
+		self.mesh = structures.station()
 		icon.replace(icons.unseen())
 	}
 	

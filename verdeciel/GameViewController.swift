@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_horadric.at
+		capsule.at = universe.loiqe_city.at
 		radar.install()
 		pilot.install()
 		
@@ -88,7 +88,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		mission.install()
 		
 		cargo.port.event.content.append(items.loiqePortalFragment1)
-		cargo.port.event.content.append(items.loiqePortalFragment1)		
+		cargo.port.event.content.append(items.loiqePortalFragment2)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

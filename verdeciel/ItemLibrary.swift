@@ -18,9 +18,9 @@ class ItemLibrary
 	let materia = Event(newName: "materia", size: 1, type: eventTypes.item, details: itemTypes.card, note:"trade for loiqe key", isQuest:true)
 	let cyanineKey = Event(newName: "Cyanine Key", size: 1, type: eventTypes.item, details: itemTypes.key, note:"unlocks the portal to cyanine", isQuest:true)
 	
-	let loiqePortal = Event(newName: "loiqe key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete radio", isQuest:true)
-	let loiqePortalFragment1 = Event(newName: "Portal fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
-	let loiqePortalFragment2 = Event(newName: "Portal fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	let loiqePortal = Event(newName: "loiqe portal key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	let loiqePortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	let loiqePortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
 	
 	// Batteries
 	let cell1  = Event(newName: "cell", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")

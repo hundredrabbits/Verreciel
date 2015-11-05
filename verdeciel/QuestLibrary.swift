@@ -45,7 +45,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.loiqePortalFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.loiqePortal) }, result: { journey.install() }) )
-		tutorial.append( Quest(name:"Unlock loiqe gate", predicate:{ universe.loiqe_gate.isComplete == true }, result: { progress.install() }) )
+		tutorial.append( Quest(name:"Unlock loiqe gate", predicate:{ universe.loiqe_portal.isComplete == true }, result: { progress.install() }) )
 	}
 	
 	// MARK: Tutorial -

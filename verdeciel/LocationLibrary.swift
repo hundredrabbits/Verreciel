@@ -58,9 +58,9 @@ class Loiqe
 		return LocationHoradric(name:"Horadric", at: CGPoint(x: offset.x - 1, y: offset.y))
 	}
 	
-	func gate() -> LocationPortal
+	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "gate", at:CGPoint(x: offset.x, y: offset.y + 1), destination: CGPoint(x: 0,y: 0) )
+		return LocationPortal(name: "portal", at:CGPoint(x: offset.x, y: offset.y + 1), destination: CGPoint(x: 0,y: 0) )
 	}
 	
 	func cargo() -> LocationCargo
