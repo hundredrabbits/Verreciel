@@ -119,6 +119,15 @@ class LocationHoradric : Location
 		else if isKnown == false	{ icon.replace(icons.horadric(white)) }
 	}
 	
+	// MARK: Mesh -
+	
+	override func animateMesh(mesh:SCNNode)
+	{
+		for node in (mesh.childNodes.first?.childNodes)! {
+			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		}
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

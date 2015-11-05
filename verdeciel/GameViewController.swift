@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_city.at
+		capsule.at = universe.loiqe_portal.at
 		radar.install()
 		pilot.install()
 		
@@ -87,7 +87,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		console.install()
 		mission.install()
 		
-		cargo.port.event.content.append(items.loiqePortalFragment1)
+		cargo.port.event.content.append(items.loiqePortal)
 		cargo.port.event.content.append(items.loiqePortalFragment2)
 	}
 	

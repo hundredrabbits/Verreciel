@@ -256,9 +256,9 @@ class Falvet
 		return LocationStation(name:"Loiqe Repairs", at: CGPoint(x: offset.x - 1.5, y: offset.y))
 	}
 	
-	func toLoiqe() -> LocationHoradric
+	func toLoiqe() -> LocationStation
 	{
-		return LocationHoradric(name:"Passage", at: CGPoint(x: offset.x, y: offset.y - 1.5))
+		return LocationStation(name:"Passage", at: CGPoint(x: offset.x, y: offset.y - 1.5))
 	}
 	
 	func toValen() -> LocationStation
