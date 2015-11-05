@@ -17,11 +17,7 @@ class ItemLibrary
 	// Quest items
 	let materia = Event(newName: "materia", size: 1, type: eventTypes.item, details: itemTypes.card, note:"trade for loiqe key", isQuest:true)
 	let cyanineKey = Event(newName: "Cyanine Key", size: 1, type: eventTypes.item, details: itemTypes.key, note:"unlocks the portal to cyanine", isQuest:true)
-	
-	let loiqePortal = Event(newName: "loiqe portal key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
-	let loiqePortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
-	let loiqePortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
-	
+
 	// Batteries
 	let cell1  = Event(newName: "cell", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
 	let cell2  = Event(newName: "cell", size: 1, type: eventTypes.item, details: itemTypes.battery, note:"gives little power")
@@ -42,4 +38,16 @@ class ItemLibrary
 	
 	// Misc
 	let waste = Event(newName: "waste", size: 3, type: eventTypes.item, details: itemTypes.waste, note:"useless junk")
+	
+	let valenPortalKey = Event(newName: "valen key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	let valenPortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	let valenPortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	
+	let senniPortalKey = Event(newName: "senni key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	let senniPortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	let senniPortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	
+	let usulPortalKey = Event(newName: "usul key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	let usulPortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
+	let usulPortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal", isQuest:true)
 }

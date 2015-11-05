@@ -87,8 +87,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		console.install()
 		mission.install()
 		
-		cargo.port.event.content.append(items.loiqePortal)
-		cargo.port.event.content.append(items.loiqePortalFragment2)
+		cargo.port.event.content.append(items.valenPortalKey)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

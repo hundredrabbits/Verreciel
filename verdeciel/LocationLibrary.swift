@@ -8,7 +8,7 @@ import Foundation
 
 class LocationLibrary
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -3.5))
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
 	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
 	let venic = Venic(offset: CGPoint(x: 4,y: -4))
 	let valen = Valen(offset: CGPoint(x: 4,y: 0))
@@ -50,7 +50,7 @@ class Loiqe
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqePortalFragment1)
+		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
@@ -60,12 +60,12 @@ class Loiqe
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal", at:CGPoint(x: offset.x, y: offset.y + 1), destination: CGPoint(x: 0,y: 0) )
+		return LocationPortal(name: "portal", at:CGPoint(x: offset.x, y: offset.y + 1), key: nil, rightName: "Valen", leftName:"Usul")
 	}
 	
 	func cargo() -> LocationCargo
 	{
-		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y), item: items.loiqePortalFragment2)
+		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y), item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -99,11 +99,9 @@ class Usul
 		return location
 	}
 	
-	func waypoint() -> LocationStation
+	func portal() -> LocationPortal
 	{
-		let location = LocationStation(name: "station")
-		location.at = CGPoint(x: offset.x + 1, y: offset.y)
-		return location
+		return LocationPortal(name: "portal", at:CGPoint(x: offset.x + 1, y: offset.y), key: items.usulPortalKey, rightName: "Loiqe", leftName:"Senni")
 	}
 }
 
@@ -130,11 +128,9 @@ class Valen
 		return location
 	}
 	
-	func waypoint() -> LocationStation
+	func portal() -> LocationPortal
 	{
-		let location = LocationStation(name: "station")
-		location.at = CGPoint(x: offset.x - 1, y: offset.y)
-		return location
+		return LocationPortal(name: "portal", at:CGPoint(x: offset.x - 1, y: offset.y), key: items.valenPortalKey, rightName: "Senni", leftName:"Loiqe")
 	}
 	
 	func telescope() -> LocationStation
@@ -199,7 +195,7 @@ class Senni
 		return location
 	}
 	
-	func portal() -> LocationStation
+	func station() -> LocationStation
 	{
 		let location = LocationStation(name:"Loiqe Repairs")
 		location.at = CGPoint(x: offset.x + 1, y: offset.y)
@@ -227,11 +223,9 @@ class Senni
 		return location
 	}
 	
-	func waypoint() -> LocationStation
+	func portal() -> LocationPortal
 	{
-		let location = LocationStation(name: "station")
-		location.at = CGPoint(x: offset.x, y: offset.y - 1)
-		return location
+		return LocationPortal(name: "portal", at:CGPoint(x: offset.x, y: offset.y - 1), key: items.senniPortalKey, rightName: "Usul", leftName:"Valen")
 	}
 }
 

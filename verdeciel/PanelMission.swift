@@ -110,13 +110,7 @@ class PanelMission : Panel
 		if isInstalled == false { return }
 		
 		locationPanel.update()
-		
-		if capsule.dock.isComplete == true {
-			label.update(capsule.dock.name!, color: cyan)
-		}
-		else{
-			label.update(capsule.dock.name!, color: red)
-		}
+		label.update(capsule.dock.name!)
 	}
 	
 	// MARK: Ports -

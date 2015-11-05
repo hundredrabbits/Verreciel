@@ -115,18 +115,15 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func portal() -> SCNNode
+	func portal(radius:Float = 5, sides:Int = 72, depth:Float = 0.5, color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 5
-		let color:UIColor = red
-		let sides:Int = 72
 		let verticalOffset:Float = 8
 		
 		var i = 0
 		while i < sides {
 			let root = SCNNode()
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,verticalOffset,0), nodeB: SCNVector3(0,verticalOffset/2,radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,verticalOffset * 3,0), nodeB: SCNVector3(0,verticalOffset/2,radius), color: color))
 			mesh.addChildNode(root)
 			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
 			i += 1

@@ -22,6 +22,7 @@ class CoreUniverse : SCNNode
 		addFalvet()
 		
 		connectPaths()
+		connectPortals()
 	}
 	
 	// MARK: Loiqe -
@@ -49,13 +50,13 @@ class CoreUniverse : SCNNode
 	
 	var usul = locations.usul.star()
 	var usul_city = locations.usul.city()
-	var usul_waypoint = locations.usul.waypoint()
+	var usul_portal = locations.usul.portal()
 	
 	func addUsul()
 	{
 		addChildNode(usul)
 		addChildNode(usul_city)
-		addChildNode(usul_waypoint)
+		addChildNode(usul_portal)
 	}
 	
 	// MARK: Valen -
@@ -63,14 +64,14 @@ class CoreUniverse : SCNNode
 	var valen = locations.valen.star()
 	var valen_city = locations.valen.city()
 	var valen_telescope = locations.valen.telescope()
-	var valen_waypoint = locations.valen.waypoint()
+	var valen_portal = locations.valen.portal()
 	
 	func addValen()
 	{
 		addChildNode(valen)
 		addChildNode(valen_city)
 		addChildNode(valen_telescope)
-		addChildNode(valen_waypoint)
+		addChildNode(valen_portal)
 	}
 	
 	// MARK: Venic -
@@ -90,7 +91,7 @@ class CoreUniverse : SCNNode
 	
 	var senni = locations.senni.star()
 	var senni_city = locations.senni.city()
-	var senni_waypoint = locations.senni.waypoint()
+	var senni_station = locations.senni.portal()
 	var senni_telescope = locations.senni.telescope()
 	var senni_portal = locations.senni.portal()
 	var senni_service = locations.senni.service()
@@ -100,7 +101,7 @@ class CoreUniverse : SCNNode
 	{
 		addChildNode(senni)
 		addChildNode(senni_city)
-		addChildNode(senni_waypoint)
+		addChildNode(senni_station)
 		addChildNode(senni_telescope)
 		addChildNode(senni_portal)
 		addChildNode(senni_service)
@@ -136,6 +137,16 @@ class CoreUniverse : SCNNode
 	
 	// MARK: Misc -
 	
+	func connectPortals()
+	{
+		loiqe_portal.isUnlocked = true
+		
+		usul_portal.addPortals(loiqe_portal, left: senni_portal)
+		senni_portal.addPortals(usul_portal, left: valen_portal)
+		valen_portal.addPortals(senni_portal, left: loiqe_portal)
+		loiqe_portal.addPortals(valen_portal, left: usul_portal)
+	}
+	
 	func connectPaths()
 	{
 		loiqe_landing.connect(loiqe_city)
@@ -145,12 +156,12 @@ class CoreUniverse : SCNNode
 		
 		venic_city.connect(venic_waypoint)
 		
-		falvet_toUsul.connect(usul_waypoint)
-		falvet_toValen.connect(valen_waypoint)
-		falvet_toSenni.connect(senni_waypoint)
+		falvet_toUsul.connect(usul_portal)
+		falvet_toValen.connect(valen_portal)
+		falvet_toSenni.connect(senni_portal)
 		
 		valen_telescope.connect(venic_waypoint)
-		valen_city.connect(valen_waypoint)
+		valen_city.connect(valen_portal)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)
@@ -160,7 +171,7 @@ class CoreUniverse : SCNNode
 		senni_telescope.connect(senni_service)
 		senni_spawn.connect(senni_portal)
 		senni_service.connect(senni_portal)
-		senni_portal.connect(senni_waypoint)
+		senni_portal.connect(senni_portal)
 	}
 	
 	required init?(coder aDecoder: NSCoder)
