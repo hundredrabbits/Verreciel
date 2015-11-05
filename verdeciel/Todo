@@ -9,36 +9,29 @@
 - Complete tutorial
 - Warnings
 - Interface sounds
-- Seen/ icons
-
-seen = white
-completed = cyan
-incomplete = red
 
 ================
 *    ACTIVE
 ================
 
-- Add stars while docking
+- Make Portal Panels
 
-- Bank location
-- Shut off the suns
-
-- UI Installs
 - Add comms in UI
 
-- Add quest pointers
-
 - Add harvest location 4 in falvet
+- Add Bank location
 
-- Signal converter panel?
-- Audio mute panel
+- Add Signal converter panel?
+- Add Audio mute panel
 
-- Add dimensional gates(with item requirements)
+- Fix issue with pilot going in circles
+- Make sure that only ingredients are in the recipe at horadric
 
 ================
 *    GENRAL
 ================
+
+- Shut off the suns
 
 > Universe
 

@@ -87,7 +87,6 @@ class PanelCargo : Panel
 			if event == target { continue }
 			port.event.content.append(event)
 		}
-		bang()
 	}
 	
 	override func touch(id:Int = 0)

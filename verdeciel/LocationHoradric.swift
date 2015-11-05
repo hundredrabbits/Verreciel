@@ -103,20 +103,12 @@ class LocationHoradric : Location
 		if outPort.connection == nil { print("No connection") ; return }
 		if outPort.event == nil { return }
 		
-		outPort.connection.host.listen(outPort.event)
-		completeTrade()
-	}
-	
-	func completeTrade()
-	{
-		if inPort1.origin != nil { inPort1.syphon() }
-		if inPort2.origin != nil { inPort2.syphon() }
-		if inPort3.origin != nil { inPort3.syphon() }
-		if inPort4.origin != nil { inPort4.syphon() }
+		if inPort1.origin != nil { inPort1.addEvent(inPort1.syphon()) ; inPort1.removeEvent() }
+		if inPort2.origin != nil { inPort2.addEvent(inPort2.syphon()) ; inPort2.removeEvent() }
+		if inPort3.origin != nil { inPort3.addEvent(inPort3.syphon()) ; inPort3.removeEvent() }
+		if inPort4.origin != nil { inPort4.addEvent(inPort4.syphon()) ; inPort4.removeEvent() }
 		
-		cargo.bang()
-		outPort.event = nil
-		label.update("--", color: grey)
+		outPort.connection.host.listen(outPort.event)
 	}
 	
 	// MARK: Icon -

@@ -50,7 +50,7 @@ class Loiqe
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqeKeyFragment1)
+		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.loiqePortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
@@ -65,7 +65,7 @@ class Loiqe
 	
 	func cargo() -> LocationCargo
 	{
-		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y), item: items.loiqeKeyFragment2)
+		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y), item: items.loiqePortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon

@@ -38,13 +38,13 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
 		tutorial.append( Quest(name:"Undock from Landing", predicate:{ capsule.dock == nil }, result: { radar.install() }) )
 		tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.loiqeKeyFragment1) == true }, result: { }) )
+		tutorial.append( Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.loiqePortalFragment1) == true }, result: { }) )
 		tutorial.append( Quest(name:"Press horadric on radar", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
 		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.loiqeKeyFragment2) == true }, result: { exploration.install() }) )
-		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.loiqeKey) }, result: { journey.install() }) )
+		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.loiqePortalFragment2) == true }, result: { exploration.install() }) )
+		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.loiqePortal) }, result: { journey.install() }) )
 		tutorial.append( Quest(name:"Unlock loiqe gate", predicate:{ universe.loiqe_gate.isComplete == true }, result: { progress.install() }) )
 	}
 	

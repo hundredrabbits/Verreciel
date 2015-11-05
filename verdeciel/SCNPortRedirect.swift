@@ -11,6 +11,7 @@ class SCNPortRedirect : SCNPort
 	override func removeEvent()
 	{
 		let redirectedHost = console.port.origin.host as! PanelCargo
+		if event == nil { print("missing event in: \(self)") }
 		redirectedHost.removeEvent(event)
 	}
 }
