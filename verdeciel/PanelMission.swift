@@ -76,13 +76,9 @@ class PanelMission : Panel
 	{
 		if capsule.isDocked && capsule.dock.isComplete == false {
 			panelUpdate()
-			questPanel.opacity = 0
-			locationPanel.opacity = 1
 		}
 		else{
 			missionUpdate()
-			questPanel.opacity = 1
-			locationPanel.opacity = 0
 		}
 	}
 	
@@ -136,15 +132,42 @@ class PanelMission : Panel
 	
 	// MARK: Custom -
 	
+	func complete()
+	{
+		print("fire!")
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		locationPanel.position = SCNVector3(0,0,-0.5)
+		locationPanel.opacity = 0
+		SCNTransaction.setCompletionBlock({
+			self.questPanel.position = SCNVector3(0,0,-0.5)
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(0.5)
+			self.questPanel.position = SCNVector3(0,0,0)
+			self.questPanel.opacity = 1
+			SCNTransaction.commit()
+		})
+		SCNTransaction.commit()
+		
+		if capsule.isDocked {
+			capsule.dock.isComplete = true
+		}
+	}
+	
 	func connectToLocation(location:Location)
 	{
 		locationPanel.empty()
 		locationPanel.add(location.panel())
+		locationPanel.opacity = 1
+		questPanel.opacity = 0
 	}
 	
 	func disconnectFromLocation()
 	{
 		locationPanel.empty()
+		locationPanel.opacity = 0
+		questPanel.opacity = 1
 	}
 	
 	override func onInstallationBegin()

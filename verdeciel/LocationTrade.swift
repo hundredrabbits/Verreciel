@@ -119,12 +119,14 @@ class LocationTrade : Location
 	{
 		panelUpdate()
 		iconUpdate()
+		
+		if givePort.event == nil && isComplete == false {
+			mission.complete()
+		}
 	}
 	
 	func iconUpdate()
 	{
-		if givePort.event == nil { isComplete = true }
-		
 		if isKnown == false {
 			icon.replace(icons.trade(grey))
 		}

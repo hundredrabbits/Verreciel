@@ -7,27 +7,29 @@
 ================
 
 - Complete tutorial
-- Completed locations display quest list instead of panel
+- Animation completed location
+- Warnings
+- Interface sounds
+- Display world map button
+- Link radar(telescope) to helmet?
+
+seen = white
+completed = cyan
+incomplete = red
 
 ================
 *    ACTIVE
 ================
 
-- Fix issue with trading where the wires are not gone.
-- Fix issue with trading where the panel flickers
-- Create radar icons for locations in Loiqe
 - Add stars while docking
 
 - Bank location
 
-- Warnings
 
-- Link radar(telescope) to helmet?
 - UI Installs
 - Add comms in UI
 
 - Add quest pointers
-- Mission/Panel Toggle?
 
 - Add harvest location 4 in falvet
 
@@ -35,10 +37,6 @@
 - Audio mute panel
 
 - Add dimensional gates(with item requirements)
-
-seen = white
-completed = cyan
-incomplete = red
 
 ================
 *    GENRAL
