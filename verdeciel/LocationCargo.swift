@@ -25,7 +25,7 @@ class LocationCargo : Location
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
 		self.mesh = structures.cargo
-		icon.replace(icons.cargo())
+		icon.replace(icons.none())
 		
 		port1 = SCNPort(host: self)
 		port1.event = item
@@ -109,15 +109,7 @@ class LocationCargo : Location
 	{
 		if port1.event == nil && port2.event == nil { isComplete = true }
 		
-		if isKnown == false {
-			icon.replace(icons.cargo(grey))
-		}
-		else if isComplete == true {
-			icon.replace(icons.cargo(cyan))
-		}
-		else {
-			icon.replace(icons.cargo(red))
-		}
+		updateIcon()
 	}
 	
 	// MARK: I/O
@@ -140,6 +132,18 @@ class LocationCargo : Location
 			node.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 0.125)))
 		}
 	}
+	
+	// MARK: Icon -
+	
+	override func updateIcon()
+	{
+		if isSeen == false			{ icon.replace(icons.cargo(grey)) }
+		else if isKnown == false	{ icon.replace(icons.cargo(white)) }
+		else if isComplete == true	{ icon.replace(icons.cargo(cyan)) }
+		else						{ icon.replace(icons.cargo(red)) }
+	}
+	
+	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
 	{

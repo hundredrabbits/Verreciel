@@ -21,7 +21,7 @@ class LocationHoradric : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.horadric
-		icon.replace(icons.horadric())
+		icon.replace(icons.unseen())
 		
 		self.interaction = "trading"
 	}
@@ -118,6 +118,16 @@ class LocationHoradric : Location
 		outPort.event = nil
 		label.update("--", color: grey)
 	}
+	
+	// MARK: Icon -
+	
+	override func updateIcon()
+	{
+		if isSeen == false			{ icon.replace(icons.horadric(grey)) }
+		else if isKnown == false	{ icon.replace(icons.horadric(white)) }
+	}
+	
+	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
 	{

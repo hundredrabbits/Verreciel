@@ -24,7 +24,7 @@ class LocationTrade : Location
 		self.note = ""
 		self.mesh = structures.trade
 		
-		icon.replace(icons.placeholder())
+		icon.replace(icons.unseen())
 		
 		wantPort = SCNPort(host: self)
 		wantPort.addRequirement(want)
@@ -118,22 +118,16 @@ class LocationTrade : Location
 	override func update()
 	{
 		if givePort.event == nil && isComplete == false { mission.complete() }
-		
 		panelUpdate()
-		iconUpdate()
+		updateIcon()
 	}
 	
-	func iconUpdate()
+	override func updateIcon()
 	{
-		if isKnown == false {
-			icon.replace(icons.trade(grey))
-		}
-		else if isComplete == true {
-			icon.replace(icons.trade(cyan))
-		}
-		else {
-			icon.replace(icons.trade(red))
-		}
+		if isSeen == false			{ icon.replace(icons.trade(grey)) }
+		else if isKnown == false	{ icon.replace(icons.trade(white)) }
+		else if isComplete == true	{ icon.replace(icons.trade(cyan)) }
+		else						{ icon.replace(icons.trade(red)) }
 	}
 
 	func completeTrade()
@@ -144,6 +138,8 @@ class LocationTrade : Location
 		givePort.event = nil
 		update()
 	}
+	
+	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
 	{

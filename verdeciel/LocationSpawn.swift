@@ -14,7 +14,7 @@ class LocationSpawn : Location
 		self.note = ""
 		self.mesh = structures.placeholder
 		self.interaction = "respawning"
-		self.icon.replace(icons.placeholder())
+		self.icon.replace(icons.none())
 	}
 
 	override func panel() -> SCNNode
@@ -27,6 +27,15 @@ class LocationSpawn : Location
 	{
 		
 	}
+	
+	// MARK: Triggers -
+	
+	override func onSight()
+	{
+		icon.replace(icons.placeholder())
+	}
+	
+	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

@@ -195,7 +195,6 @@ class CorePlayer : SCNNode
 	
 	func hideStarmap()
 	{
-		
 		capsule.mesh.opacity = 1
 		radar.decals.opacity = 1
 		radar.header.opacity = 1

@@ -51,7 +51,7 @@ class Location : Event
 //		icon.geometry = SCNPlane(width: 0.5, height: 0.5)
 //		icon.geometry?.firstMaterial?.diffuse.contents = red
 		
-		label = SCNLabel(text: name, scale: 0.06, align: alignment.center, color: grey)
+		label = SCNLabel(text: "", scale: 0.06, align: alignment.center, color: grey)
 		label.position = SCNVector3(0,-0.3,-0.35)
 		self.addChildNode(label)
 		
@@ -100,6 +100,12 @@ class Location : Event
 	
 	override func lateUpdate()
 	{
+		
+	}
+	
+	func updateIcon()
+	{
+	
 	}
 	
 	func onSight()
@@ -107,6 +113,8 @@ class Location : Event
 		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
 		update()
+		updateIcon()
+		label.update(name!)
 	}
 	
 	func onApproach()
