@@ -117,12 +117,10 @@ class LocationTrade : Location
 	
 	override func update()
 	{
+		if givePort.event == nil && isComplete == false { mission.complete() }
+		
 		panelUpdate()
 		iconUpdate()
-		
-		if givePort.event == nil && isComplete == false {
-			mission.complete()
-		}
 	}
 	
 	func iconUpdate()

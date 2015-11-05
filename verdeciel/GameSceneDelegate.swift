@@ -17,5 +17,11 @@ class SceneDelegate: SCNView, SCNSceneRendererDelegate
 		
 		space.fixedUpdate()
 		quests.update()
+		ui.updatePort()
+	}
+	
+	func renderer(renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: NSTimeInterval)
+	{
+		ui.updatePort()
 	}
 }

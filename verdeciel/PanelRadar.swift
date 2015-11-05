@@ -23,6 +23,9 @@ class PanelRadar : Panel
 	var targetter:SCNNode!
 	var targetterFar:SCNNode!
 	
+	var mapPort:SCNPort!
+	var handle:SCNHandle!
+	
 	// MARK: Default -
 	
 	override func setup()
@@ -75,7 +78,24 @@ class PanelRadar : Panel
 		port.input = eventTypes.location
 		port.output = eventTypes.location
 		
-		footer.addChildNode(SCNHandle(destination: SCNVector3(1,0,0)))
+		// Map Port
+		
+		mapPort = SCNPort(host: self, input: eventTypes.map, output: eventTypes.map)
+		mapPort.position = SCNVector3(0,-0.6,templates.radius)
+		mapPort.enable()
+		mapPort.addEvent(items.starmap)
+		
+		let mapPortInputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.right)
+		let mapPortOutputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.left)
+		mapPortInputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
+		mapPortOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
+		mapPort.addChildNode(mapPortInputLabel)
+		mapPort.addChildNode(mapPortOutputLabel)
+		
+		footer.addChildNode(mapPort)
+		
+		handle = SCNHandle(destination: SCNVector3(1,0,0))
+		footer.addChildNode(handle)
 	}
 	
 	override func installedFixedUpdate()
@@ -92,9 +112,12 @@ class PanelRadar : Panel
 	
 	override func bang()
 	{
-		if port.connection == nil { return }
-		if port.event == nil { return }
-		port.connection.host.listen(port.event)
+		if mapPort.connection != nil && mapPort.event != nil {
+			mapPort.connection.host.listen(mapPort.event)
+		}
+		if port.connection != nil && port.event != nil {
+			port.connection.host.listen(port.event)
+		}
 	}
 
 	// MARK: Custom -

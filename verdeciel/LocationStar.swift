@@ -15,7 +15,7 @@ class LocationStar : Location
 		self.color = color
 		self.mesh = structures.star
 		self.details = itemTypes.star
-		icon.replace(icons.placeholder())
+		icon.replace(icons.star(red))
 	}
 
 	required init(coder aDecoder: NSCoder)

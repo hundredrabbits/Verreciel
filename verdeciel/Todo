@@ -7,7 +7,6 @@
 ================
 
 - Complete tutorial
-- Animation completed location
 - Warnings
 - Interface sounds
 - Display world map button
@@ -24,7 +23,7 @@ incomplete = red
 - Add stars while docking
 
 - Bank location
-
+- Shut off the suns
 
 - UI Installs
 - Add comms in UI

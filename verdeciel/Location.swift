@@ -160,10 +160,7 @@ class Location : Event
 		let verticalDistance = abs(capsule.at.y - at.y)
 		let horizontalDistance = abs(capsule.at.x - at.x)
 		
-		if player.inRadar == true {
-			self.opacity = 1
-		}
-		else if Float(verticalDistance) > templates.topMargin {
+		if Float(verticalDistance) > templates.topMargin {
 			self.opacity = 0
 		}
 		else if Float(horizontalDistance) > templates.right {
@@ -185,6 +182,11 @@ class Location : Event
 		if isRadioQuest == true {
 			opacity = 0
 			if radar.port.origin != nil && radar.port.origin.event != nil && radar.port.origin.event == self { opacity = 1 }
+		}
+		
+		if player.isConnectedToRadar == true {
+			self.opacity = 1
+			wire.opacity = 1
 		}
 	}
 	

@@ -24,8 +24,6 @@ class LocationHoradric : Location
 		icon.replace(icons.horadric())
 		
 		self.interaction = "trading"
-		
-		isComplete = true
 	}
 	
 	override func panel() -> SCNNode
@@ -87,6 +85,16 @@ class LocationHoradric : Location
 				outPort.event = recipe.result
 				outPort.enable()
 			}
+		}
+	}
+	
+	func iconUpdate()
+	{
+		if isKnown == false {
+			icon.replace(icons.trade(grey))
+		}
+		else {
+			icon.replace(icons.trade(white))
 		}
 	}
 	

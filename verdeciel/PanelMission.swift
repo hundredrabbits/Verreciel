@@ -134,40 +134,89 @@ class PanelMission : Panel
 	
 	func complete()
 	{
-		print("fire!")
+		// Animate
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
+		
 		locationPanel.position = SCNVector3(0,0,-0.5)
 		locationPanel.opacity = 0
+		
 		SCNTransaction.setCompletionBlock({
+
 			self.questPanel.position = SCNVector3(0,0,-0.5)
+			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)
+			
 			self.questPanel.position = SCNVector3(0,0,0)
 			self.questPanel.opacity = 1
+			
+			SCNTransaction.setCompletionBlock({
+				capsule.dock.isComplete = true
+				capsule.dock.update()
+			})
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
-		
-		if capsule.isDocked {
-			capsule.dock.isComplete = true
-		}
 	}
 	
 	func connectToLocation(location:Location)
 	{
+		if location.isComplete == true { return }
+		
 		locationPanel.empty()
 		locationPanel.add(location.panel())
-		locationPanel.opacity = 1
+		
+		// Animate
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		questPanel.position = SCNVector3(0,0,-0.5)
 		questPanel.opacity = 0
+		
+		SCNTransaction.setCompletionBlock({
+			
+			self.locationPanel.position = SCNVector3(0,0,-0.5)
+			
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(0.5)
+			
+			self.locationPanel.position = SCNVector3(0,0,0)
+			self.locationPanel.opacity = 1
+			
+			SCNTransaction.commit()
+		})
+		SCNTransaction.commit()
 	}
 	
 	func disconnectFromLocation()
 	{
-		locationPanel.empty()
+		// Animate
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		locationPanel.position = SCNVector3(0,0,-0.5)
 		locationPanel.opacity = 0
-		questPanel.opacity = 1
+		
+		SCNTransaction.setCompletionBlock({
+			
+			self.questPanel.position = SCNVector3(0,0,-0.5)
+			
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(0.5)
+			
+			self.questPanel.position = SCNVector3(0,0,0)
+			self.questPanel.opacity = 1
+			
+			SCNTransaction.setCompletionBlock({
+				self.locationPanel.empty()
+			})
+			SCNTransaction.commit()
+		})
+		SCNTransaction.commit()
 	}
 	
 	override func onInstallationBegin()

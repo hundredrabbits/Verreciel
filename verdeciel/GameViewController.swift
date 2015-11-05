@@ -135,8 +135,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		ui.eulerAngles.x += Float(degToRad(dragY/4)) * 0.975
 		ui.eulerAngles.y += Float(degToRad(dragX/4)) * 0.95
-
-		ui.fixedUpdate()
+		
+		ui.updatePort()
 	}
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -145,6 +145,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		player.canAlign = true
 		ui.canAlign = true
+		ui.updatePort()
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)

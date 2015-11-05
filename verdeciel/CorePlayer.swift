@@ -24,15 +24,15 @@ class CorePlayer : SCNNode
 	var magic:Int
 	
 	var port:SCNPort!
+	var activePort:SCNPort!
 	var event:Event!
 	var handle:SCNHandle!
-	
-	var inRadar:Bool = false
 	
 	var trigger:SCNTrigger!
 	var triggerLabel:SCNLabel!
 	
 	var isLocked:Bool = false
+	var isConnectedToRadar = false
 	
 	override init()
 	{
@@ -48,12 +48,10 @@ class CorePlayer : SCNNode
 		self.camera?.aperture = 100
 		self.camera?.automaticallyAdjustsZRange = true
 		
+		port = SCNPort(host: self, input: eventTypes.map, output: eventTypes.generic)
+		port.enable()
+		
 		addInterface()
-	}
-	
-	override func bang()
-	{
-		leaveRadar()
 	}
 	
 	func addInterface()
@@ -89,25 +87,25 @@ class CorePlayer : SCNNode
 		if port.isEnabled == false { return }
 		
 		// Select origin
-		if self.port == nil {
-			self.port = port
+		if activePort == nil {
+			activePort = port
 			port.activate()
 			return
 		}
 		
 		// Remove origin
-		if self.port == port {
+		if activePort == port {
 			port.desactivate()
 			port.disconnect()
-			self.port = nil
+			activePort = nil
 			return
 		}
 		
 		// Connect
-		self.port.connect(port)
+		activePort.connect(port)
 		port.update()
-		self.port.update()
-		self.port = nil
+		activePort.update()
+		activePort = nil
 	}
 	
 	func message(text:String)
@@ -135,60 +133,15 @@ class CorePlayer : SCNNode
 		alertLabel.update("")
 		alertLabel.opacity = 0
 	}
-	
-	func enterRadar()
-	{
-		self.inRadar = true
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2.5)
-		
-		player.position = SCNVector3(13,0,0)
-		
-		radar.eventPivot.position = SCNVector3(0,0,-14)
-		radar.shipCursor.position = SCNVector3(0,0,-14)
-		
-		SCNTransaction.setCompletionBlock({ self.trigger.opacity = 1 })
-		SCNTransaction.commit()
-		
-		for newEvent in universe.childNodes {
-			let event = newEvent as! Location
-			event.wire.opacity = 1
-			event.opacity = 1
-		}
-	}
-	
-	func leaveRadar()
-	{
-		self.inRadar = false
-		self.trigger.opacity = 0
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2.5)
-		
-		player.position = SCNVector3(0,0,0)
-		
-		radar.eventPivot.position = SCNVector3(0,0,0)
-		radar.shipCursor.position = SCNVector3(0,0,0)
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
 
-		for newEvent in universe.childNodes {
-			let event = newEvent as! Location
-			event.wire.opacity = 0
-			event.opacity = 0
-		}
-	}
-	
 	override func fixedUpdate()
 	{
-		if player.isLocked == false {
-//			player.eulerAngles.z = sin((time.elapsed)/60) * 0.04
-//			ui.eulerAngles.z = sin((time.elapsed)/60) * 0.03
-		}
-
 		flickerAlert()
+		
+		// Check is starmap is still connected
+		if port.origin == nil && isConnectedToRadar == true {
+			hideStarmap()
+		}
 	}
 	
 	func flickerAlert()
@@ -220,6 +173,36 @@ class CorePlayer : SCNNode
 			handle.enable()
 			handle = nil
 		}
+	}
+	
+	override func listen(event: Event)
+	{
+		if event == items.starmap {
+			showStarmap()
+		}
+	}
+	
+	func showStarmap()
+	{
+		capsule.mesh.opacity = 0
+		radar.decals.opacity = 0
+		radar.header.opacity = 0
+		radar.handle.opacity = 0
+		thruster.opacity = 0
+		pilot.opacity = 0
+		isConnectedToRadar = true
+	}
+	
+	func hideStarmap()
+	{
+		
+		capsule.mesh.opacity = 1
+		radar.decals.opacity = 1
+		radar.header.opacity = 1
+		radar.handle.opacity = 1
+		thruster.opacity = 1
+		pilot.opacity = 1
+		isConnectedToRadar = false
 	}
 	
 	required init(coder aDecoder: NSCoder)

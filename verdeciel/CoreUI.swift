@@ -74,6 +74,9 @@ class CoreUI: SCNNode
 		
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: 0.1, y: 1.4, z: 0), color: grey))
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: -0.1, y: 1.4, z: 0), color: grey))
+		
+		visor.addChildNode(player.port)
+		player.port.position = SCNVector3(0,-3,-2.5)
 	}
 	
 	override func fixedUpdate()
@@ -92,6 +95,16 @@ class CoreUI: SCNNode
 				eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.1
 			}
 		}
+		updatePort()
+	}
+
+	func updatePort()
+	{
+		if player.port.origin == nil { return }
+		
+		let test = convertPosition(player.port.position, toNode: player.port.origin)
+		player.port.origin.wire.update(SCNVector3(0,0,0), nodeB:SCNVector3( test.x, test.y, test.z ) )
+		player.port.origin.wire.fixedUpdate()
 	}
 	
 	func addMessage(message:String)
