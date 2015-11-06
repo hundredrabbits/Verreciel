@@ -44,7 +44,6 @@ class CoreCapsule: SCNNode
 	
 	override func fixedUpdate()
 	{
-		service()
 		docking()
 		warping()
 	}
@@ -179,7 +178,7 @@ class CoreCapsule: SCNNode
 		
 		var approachSpeed:CGFloat = 0.001
 		
-		let distanceRatio = distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5
+		let distanceRatio = distanceBetweenTwoPoints(at, point2: dock.at)/0.5
 		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 		
 		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
@@ -260,12 +259,6 @@ class CoreCapsule: SCNNode
 			mesh.addChildNode(line3)
 			i += 1
 		}
-	}
-	
-	func service()
-	{
-		if dock == nil { return }
-		if dock.service == services.hull && capsule.hull < 100 { capsule.hull += 0.5 }
 	}
 	
 	func isDockedAtLocation(location:Location) -> Bool
