@@ -12,7 +12,7 @@ class ItemLibrary
 {
 	// Ship events
 	let playerCargo = Event(newName: "player cargo", size: 1, type: eventTypes.cargo, details: itemTypes.panel, note:"need description", isQuest:true)
-	let starmap = Event(newName: "starmap", size: 1, type: eventTypes.map, details: itemTypes.panel, note:"need description", isQuest:true)
+	let starmap = Event(newName: "starmap", size: 1, type: eventTypes.map, details: itemTypes.panel, note:"route to helmet", isQuest:true)
 	
 	// Quest items
 	let materia = Event(newName: "materia", size: 1, type: eventTypes.item, details: itemTypes.card, note:"trade for loiqe key", isQuest:true)

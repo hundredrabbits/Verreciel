@@ -162,7 +162,7 @@ class PanelBattery : Panel
 	{
 		if event.details != itemTypes.battery { return }
 		
-		if port.origin != nil && port.origin.event != nil && isUploading == false {
+		if port.origin != nil && port.origin.event != nil && isUploading == false && port.origin.host != battery {
 			uploadItem(event)
 		}
 	}

@@ -66,6 +66,7 @@ class PanelPilot : Panel
 		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
 			target = capsule.closestKnownLocation()
 			radar.addTarget(target)
+			ui.addWarning("radiations")
 		}
 		else if capsule.closestKnownLocation().distance > 1.35 && capsule.isWarping == false {
 			target = capsule.closestKnownLocation()

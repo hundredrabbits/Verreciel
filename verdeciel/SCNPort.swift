@@ -169,6 +169,8 @@ class SCNPort : SCNNode
 		if port.origin != nil { print("Port already has input: (\(port.origin))") ; return }
 		if port.connection != nil && port.connection == self { print("Loop") ; return }
 		
+		disconnect()
+		
 		connection = port
 		connection.origin = self
 		
