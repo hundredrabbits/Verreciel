@@ -1,6 +1,9 @@
-//  Created by Devine Lu Linvega on 2015-10-07.
-//  Copyright © 2015 XXIIVV. All rights reserved.
+//  Created by Devine Lu Linvega on 2015-06-22.
+//  Copyright (c) 2015 XXIIVV. All rights reserved.
 
+import UIKit
+import QuartzCore
+import SceneKit
 import Foundation
 
 class QuestLibrary
@@ -46,7 +49,22 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
 		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
-		tutorial.append( Quest(name:"Route Portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
+		tutorial.append( Quest(name:"Route Portal to capsule", predicate:{ pilot.port.origin != nil && pilot.port.origin.event == universe.valen_portal && thruster.port.origin != nil && thruster.port.origin.event.type == eventTypes.drive }, result: { }) )
+		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { self.endDemo() }) )
+	}
+	
+	func endDemo()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(10)
+		
+		capsule.opacity = 0
+		
+		SCNTransaction.setCompletionBlock({
+			ui.addWarning("end of igf demo")
+		})
+		
+		SCNTransaction.commit()
 	}
 	
 	// MARK: Tutorial -

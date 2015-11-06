@@ -89,10 +89,11 @@ class CoreCapsule: SCNNode
 	
 	// MARK: Warping -
 	
-	func warp(destionation:Location)
+	func warp(destination:Location)
 	{
-		radar.addTarget(destionation)
-		warp = destionation
+		destination.isKnown = true
+		radar.addTarget(destination)
+		warp = destination
 		isWarping = true
 		undock()
 	}

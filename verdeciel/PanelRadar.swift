@@ -1,10 +1,5 @@
-//
-//  displayNode.swift
-//  Verreciel
-//
 //  Created by Devine Lu Linvega on 2015-06-22.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -134,10 +129,12 @@ class PanelRadar : Panel
 				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
 				targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
 				targetterFar.opacity = 1
+				targetter.updateChildrenColors(clear)
 			}
 			else{
 				targetter.position = SCNVector3(port.event.at.x - capsule.at.x,port.event.at.y - capsule.at.y,0)
 				targetterFar.opacity = 0
+				targetter.updateChildrenColors(red)
 			}
 			targetter.blink()
 		}
