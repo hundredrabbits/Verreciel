@@ -105,6 +105,13 @@ class SCNCommand : SCNNode
 			port.disable()
 		}
 	}
+	
+	override func fixedUpdate()
+	{
+		if console.port.origin == nil {
+			port.disable()
+		}
+	}
 
 	required init?(coder aDecoder: NSCoder)
 	{

@@ -51,7 +51,7 @@ class CoreUI: SCNNode
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: 0.01, y: -1.275, z: 0), color: grey))
 		
-		displayHealth = SCNLabel(text: "99hp", scale: textSize, align: alignment.left, color:white)
+		displayHealth = SCNLabel(text: "99HP", scale: textSize, align: alignment.left, color:white)
 		displayHealth.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
 		displayLeft.addChildNode(displayHealth)
 		
@@ -74,7 +74,7 @@ class CoreUI: SCNNode
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: -0.01, y: -1.275, z: 0), color: grey))
 		
-		displayMagic = SCNLabel(text: "16mp", scale: textSize, align: alignment.right, color:white)
+		displayMagic = SCNLabel(text: "0MP", scale: textSize, align: alignment.right, color:white)
 		displayMagic.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
 		displayRight.addChildNode(displayMagic)
 		
@@ -87,7 +87,7 @@ class CoreUI: SCNNode
 		
 		// Center
 		
-		warningLabel = SCNLabel(text: "--", scale: 0.1, align: alignment.center, color: red)
+		warningLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center, color: red)
 		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
 		visor.addChildNode(warningLabel)
 		

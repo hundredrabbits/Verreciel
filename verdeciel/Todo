@@ -4,19 +4,21 @@
 *    IGF
 ================
 
+- Limit explorable distance
+
 - Interface sounds
-- Warnings
 - Complete tutorial
 - Make sure that only ingredients are in the recipe at horadric
 - Take decent screenshots for IGF
 - Make IGF build
-- Limit explorable distance
 - Installation add warning
+- Fix cargo location clipping(larger further)
 
 ================
 *    GENRAL
 ================
 
+- Find second battery
 - Add Signal converter panel?
 - Add Audio mute panel
 - Add harvest location 4 in falvet

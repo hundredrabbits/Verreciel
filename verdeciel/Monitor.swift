@@ -82,8 +82,6 @@ class Monitor : SCNNode
 	func installation()
 	{
 		installer = SCNNode()
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1 + 0.1,0), nodeB: SCNVector3(0.1,-0.1 + 0.1,0), color: grey))
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1 + 0.1,0), nodeB: SCNVector3(0.1,0.1 + 0.1,0), color: grey))
 		installer.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 0.5)
 		installProgressBar.position = SCNVector3(-0.25,-0.2,0)

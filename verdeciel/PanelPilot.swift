@@ -65,7 +65,7 @@ class PanelPilot : Panel
 		if port.isReceivingType(eventTypes.location) {
 			target = port.origin.event as! Location
 		}
-		else if capsule.dock != nil {
+		else if capsule.dock != nil && capsule.at != capsule.dock.at {
 			target = capsule.dock
 		}
 		else{
@@ -110,6 +110,7 @@ class PanelPilot : Panel
 	
 	override func onInstallationBegin()
 	{
+		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -135)
 	}
 }

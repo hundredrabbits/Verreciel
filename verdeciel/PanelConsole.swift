@@ -164,6 +164,7 @@ class PanelConsole : Panel
 	
 	override func onInstallationComplete()
 	{
+		ui.addWarning("Installing", duration: 3)
 		boot()
 	}
 }

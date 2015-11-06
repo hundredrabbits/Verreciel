@@ -89,7 +89,7 @@ class LocationTrade : Location
 			givePort.enable()
 		}
 		else{
-			wantLabel.update(wantPort.requirement.name!, color:white)
+			wantLabel.update(wantPort.requirement.name!, color:red)
 			giveLabel.update(givePort.event.name!, color:grey)
 			wantPort.enable()
 			givePort.disable()
