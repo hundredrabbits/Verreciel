@@ -221,7 +221,7 @@ class SCNPort : SCNNode
 		return false
 	}
 	
-	func isReceivingFromLocationType(type:eventTypes) -> Bool
+	func isReceivingType(type:eventTypes) -> Bool
 	{
 		if origin != nil && origin.event != nil && origin.event.type == type { return true }
 		return false

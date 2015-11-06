@@ -91,6 +91,7 @@ class CoreCapsule: SCNNode
 	
 	func warpDown()
 	{
+		thruster.speed = 1
 		if thruster.actualSpeed > 1 { thruster.actualSpeed -= 0.1 }
 		else{
 			isWarping = false

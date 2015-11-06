@@ -62,8 +62,11 @@ class PanelPilot : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if port.origin != nil && port.origin.event != nil && port.origin.event.type == eventTypes.location {
+		if port.isReceivingType(eventTypes.location) {
 			target = port.origin.event as! Location
+		}
+		else if capsule.dock != nil {
+			target = capsule.dock
 		}
 		else{
 			target = nil
