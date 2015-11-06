@@ -21,16 +21,28 @@ class Recipe
 	
 	func isValid(inputs:Array<Event>) -> Bool
 	{
+		print("--")
+		// Check if ingredients are all inputs
 		for ingredient in ingredients {
 			var isFound:Bool = false
 			for input in inputs {
 				if input == ingredient { isFound = true }
 			}
-			if isFound == false {
-				print("missing \(ingredient.name)")
-				return false
-			}
+			print("ingredient: \(ingredient.name) -> \(isFound)")
+			if isFound == false { print("hit") ; return false }
 		}
+		
+		print("..")
+		
+		// Check if inputs are all ingredients
+		for input in inputs {
+			var isFound:Bool = false
+			for ingredient in ingredients {
+				if input == ingredient { isFound = true }
+			}
+			print("input: \(input.name) -> \(isFound)")
+			if isFound == false { return false }
+		}		
 		return true
 	}
 }

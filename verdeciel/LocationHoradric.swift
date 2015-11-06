@@ -68,6 +68,16 @@ class LocationHoradric : Location
 	
 	override func listen(event: Event)
 	{
+		
+	}
+	
+	override func dockedUpdate()
+	{
+		verifyRecipes()
+	}
+	
+	func verifyRecipes()
+	{
 		var ingredients:Array<Event> = []
 		
 		if inPort1.origin != nil && inPort1.origin.event != nil { ingredients.append(inPort1.origin.event) }
@@ -75,7 +85,8 @@ class LocationHoradric : Location
 		if inPort3.origin != nil && inPort3.origin.event != nil { ingredients.append(inPort3.origin.event) }
 		if inPort4.origin != nil && inPort4.origin.event != nil { ingredients.append(inPort4.origin.event) }
 		
-		if ingredients.count < 2 { label.update("incompatible", color: grey) ; return }
+		print("> \(ingredients)")
+		if ingredients.count < 2 { label.update("add ingredient", color: grey) ; return }
 		
 		// Check for recipies
 		
@@ -84,6 +95,11 @@ class LocationHoradric : Location
 				label.update(recipe.name, color: white)
 				outPort.event = recipe.result
 				outPort.enable()
+			}
+			else{
+				label.update("unknown receipe", color: red)
+				outPort.event = nil
+				outPort.disable()
 			}
 		}
 	}
