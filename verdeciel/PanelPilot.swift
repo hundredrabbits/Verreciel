@@ -68,7 +68,7 @@ class PanelPilot : Panel
 			radar.addTarget(target)
 			ui.addWarning("radiations")
 		}
-		else if capsule.closestKnownLocation().distance > 1.35 && capsule.isWarping == false {
+		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false {
 			target = capsule.closestKnownLocation()
 			radar.addTarget(target)
 		}
@@ -108,7 +108,6 @@ class PanelPilot : Panel
 		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
 		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
-		
 	}
 	
 	

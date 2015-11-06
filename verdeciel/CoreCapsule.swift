@@ -91,6 +91,7 @@ class CoreCapsule: SCNNode
 	
 	func warp(destionation:Location)
 	{
+		radar.addTarget(destionation)
 		warp = destionation
 		isWarping = true
 		undock()

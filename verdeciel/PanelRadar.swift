@@ -145,6 +145,9 @@ class PanelRadar : Panel
 
 	func addTarget(event:Location)
 	{
+		if capsule.dock != nil && capsule.isDocked == false { print("currently docking..") ; return }
+		if capsule.isWarping == true { print("currently warping..") ; return }
+		
 		port.event = event
 		
 		updateTarget()

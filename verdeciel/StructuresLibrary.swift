@@ -136,7 +136,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func trade(radius:Float = 2.5, tunnels:Int = 30, depth:Float = 0.5) -> SCNNode
+	func trade(radius:Float = 2.5, tunnels:Int = 45, depth:Float = 0.5) -> SCNNode
 	{
 		let mesh = SCNNode()
 		
@@ -152,6 +152,8 @@ class StructuresLibrary
 			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),radius), nodeB: SCNVector3(radius,depth * Float(i),0), color: white))
 			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),-radius), color: white))
 			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),-radius), nodeB: SCNVector3(-radius,depth * Float(i),0), color: white))
+			
+			root.eulerAngles.y = Float(i * (360/45))
 			
 			offset.addChildNode(root)
 			i += 1

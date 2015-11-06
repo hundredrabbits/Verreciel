@@ -143,11 +143,7 @@ class LocationTrade : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		var nodeCount:Float = 1
-		for node in (mesh.childNodes.first?.childNodes)! {
-			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1 * nodeCount/10)))
-			nodeCount += 1
-		}
+		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
 	}
 	
 	// MARK: Defaults -

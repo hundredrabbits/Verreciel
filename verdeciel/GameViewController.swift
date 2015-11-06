@@ -70,7 +70,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 
-		startingState()
+		debugState()
 	}
 	
 	func startingState()
@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_horadric.at
+		capsule.at = universe.loiqe_portal.at
 		radar.install()
 		pilot.install()
 		
@@ -91,6 +91,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		cargo.port.event.content.append(items.valenPortalFragment1)
 		cargo.port.event.content.append(items.valenPortalFragment2)
 		cargo.port.event.content.append(items.waste)
+		cargo.port.event.content.append(items.valenPortalKey)
 		universe.valen_portal.isUnlocked = true
 		
 		battery.cellPort1.connect(battery.thrusterPort)
