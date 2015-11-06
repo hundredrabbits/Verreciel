@@ -170,9 +170,7 @@ class CoreUI: SCNNode
 	}
 	
 	func addWarning(warning:String,duration:Double! = nil)
-	{
-		if self.warning == warning { return }
-		
+	{		
 		self.warning = warning
 		
 		SCNTransaction.begin()

@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_landing.at
+		capsule.at = universe.loiqe_horadric.at
 		radar.install()
 		pilot.install()
 		
@@ -88,7 +88,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		mission.install()
 		thruster.install()
 		
-		cargo.port.event.content.append(items.valenPortalKey)
+		cargo.port.event.content.append(items.valenPortalFragment1)
+		cargo.port.event.content.append(items.valenPortalFragment2)
+		cargo.port.event.content.append(items.waste)
 		universe.valen_portal.isUnlocked = true
 		
 		battery.cellPort1.connect(battery.thrusterPort)

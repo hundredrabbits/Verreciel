@@ -4,20 +4,19 @@
 *    IGF
 ================
 
-- Limit explorable distance
-
-- Interface sounds
 - Complete tutorial
 - Make sure that only ingredients are in the recipe at horadric
+- Disable approaching the sun
+
 - Take decent screenshots for IGF
 - Make IGF build
-- Installation add warning
-- Fix cargo location clipping(larger further)
+- Make IGF Video
 
 ================
 *    GENRAL
 ================
 
+- Interface sounds
 - Find second battery
 - Add Signal converter panel?
 - Add Audio mute panel

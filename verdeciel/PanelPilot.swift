@@ -62,7 +62,10 @@ class PanelPilot : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if port.isReceivingType(eventTypes.location) {
+		if capsule.closestLocation.distance > 1.35 && capsule.isWarping == false {
+			target = capsule.closestLocation
+		}
+		else if port.isReceivingType(eventTypes.location) {
 			target = port.origin.event as! Location
 		}
 		else if capsule.dock != nil && capsule.at != capsule.dock.at {
@@ -94,7 +97,9 @@ class PanelPilot : Panel
 		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
 		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
 		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+		
 	}
+	
 	
 	func turnLeft(deg:CGFloat)
 	{
