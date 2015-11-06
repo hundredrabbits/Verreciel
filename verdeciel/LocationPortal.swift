@@ -41,6 +41,23 @@ class LocationPortal : Location
 		self.key = key
 		self.rightName = rightName
 		self.leftName = leftName
+		
+		rightPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
+		leftKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
+		rightThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
+		rightKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
+		leftPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
+		leftThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
+		
+		leftThrusterLabel = SCNLabel(text: "> Thruster", color:grey)
+		leftPilotLabel = SCNLabel(text: "> Pilot", color:grey)
+		leftKeyLabel = SCNLabel(text: "\(leftName) key",color:red)
+		rightThrusterLabel = SCNLabel(text: "> Thruster", color:white)
+		rightPilotLabel = SCNLabel(text: "> Pilot", color:white)
+		rightKeyLabel = SCNLabel(text: "\(rightName) key",color:red)
+		
+		rightThrusterPort.addEvent(items.warpDrive)
+		leftThrusterPort.addEvent(items.warpDrive)
 	}
 	
 	// MARK: Panel - 
@@ -53,27 +70,21 @@ class LocationPortal : Location
 		
 		let right = SCNNode()
 		
-		rightKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
 		rightKeyPort.position = SCNVector3(templates.leftMargin + 0.9,0.6,0)
 		right.addChildNode(rightKeyPort)
 		
-		rightKeyLabel = SCNLabel(text: "\(rightName) key",color:red)
 		rightKeyLabel.position = SCNVector3(0.4,0,0)
 		rightKeyPort.addChildNode(rightKeyLabel)
 		
-		rightPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
 		rightPilotPort.position = SCNVector3(templates.leftMargin + 0.9,0.2,0)
 		right.addChildNode(rightPilotPort)
 		
-		rightPilotLabel = SCNLabel(text: "> Pilot", color:white)
 		rightPilotLabel.position = SCNVector3(0.4,0,0)
 		rightPilotPort.addChildNode(rightPilotLabel)
 		
-		rightThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
 		rightThrusterPort.position = SCNVector3(templates.leftMargin + 0.9,-0.2,0)
 		right.addChildNode(rightThrusterPort)
 		
-		rightThrusterLabel = SCNLabel(text: "> Thruster", color:white)
 		rightThrusterLabel.position = SCNVector3(0.4,0,0)
 		rightThrusterPort.addChildNode(rightThrusterLabel)
 		
@@ -92,27 +103,21 @@ class LocationPortal : Location
 		
 		let left = SCNNode()
 		
-		leftKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
 		leftKeyPort.position = SCNVector3(templates.leftMargin + 0.9,0.6,0)
 		left.addChildNode(leftKeyPort)
 		
-		leftKeyLabel = SCNLabel(text: "\(leftName) key",color:red)
 		leftKeyLabel.position = SCNVector3(0.4,0,0)
 		leftKeyPort.addChildNode(leftKeyLabel)
 		
-		leftPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
 		leftPilotPort.position = SCNVector3(templates.leftMargin + 0.9,0.2,0)
 		left.addChildNode(leftPilotPort)
 		
-		leftPilotLabel = SCNLabel(text: "> Pilot", color:grey)
 		leftPilotLabel.position = SCNVector3(0.4,0,0)
 		leftPilotPort.addChildNode(leftPilotLabel)
 		
-		leftThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
 		leftThrusterPort.position = SCNVector3(templates.leftMargin + 0.9,-0.2,0)
 		left.addChildNode(leftThrusterPort)
 		
-		leftThrusterLabel = SCNLabel(text: "> Thruster", color:grey)
 		leftThrusterLabel.position = SCNVector3(0.4,0,0)
 		leftThrusterPort.addChildNode(leftThrusterLabel)
 		
@@ -134,15 +139,40 @@ class LocationPortal : Location
 		newPanel.addChildNode(right)
 		newPanel.addChildNode(left)
 		
-		rightPilotPort.enable()
-		rightThrusterPort.enable()
-		
 		return newPanel
 	}
 	
-	override func dockedUpdate()
+	// MARK: I/O
+	
+	override func listen(event: Event)
+	{
+		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
+			left.isUnlocked = true
+			leftKeyPort.addEvent(leftKeyPort.syphon())
+			cargo.bang()
+			mesh.replace(structures.portal(color:cyan))
+		}
+		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
+			right.isUnlocked = true
+			rightKeyPort.addEvent(rightKeyPort.syphon())
+			rightKeyPort.disable()
+			cargo.bang()
+			mesh.replace(structures.portal(color:cyan))
+		}
+		update()
+	}
+	
+	override func onDock()
+	{
+		if right.isUnlocked == true || left.isUnlocked == true {
+			mesh.replace(structures.portal(color:cyan))
+		}
+	}
+	
+	override func update()
 	{
 		if left.isUnlocked == true {
+			leftKeyPort.disable()
 			leftPilotPort.enable()
 			leftThrusterPort.enable()
 			leftKeyLabel.updateColor(cyan)
@@ -150,6 +180,7 @@ class LocationPortal : Location
 			leftThrusterLabel.updateColor(white)
 		}
 		else{
+			leftKeyPort.enable()
 			leftPilotPort.disable()
 			leftThrusterPort.disable()
 			leftKeyLabel.updateColor(red)
@@ -158,6 +189,7 @@ class LocationPortal : Location
 		}
 		
 		if right.isUnlocked == true {
+			rightKeyPort.disable()
 			rightPilotPort.enable()
 			rightThrusterPort.enable()
 			rightKeyLabel.updateColor(cyan)
@@ -165,6 +197,7 @@ class LocationPortal : Location
 			rightThrusterLabel.updateColor(white)
 		}
 		else{
+			rightKeyPort.enable()
 			rightPilotPort.disable()
 			rightThrusterPort.disable()
 			rightKeyLabel.updateColor(red)
@@ -187,12 +220,23 @@ class LocationPortal : Location
 	{
 		self.right = right
 		self.left = left
+		rightPilotPort.addEvent(right)
+		leftPilotPort.addEvent(left)
 	}
 	
 	func addKeys(right:Event,left:Event)
 	{
 		self.rightKeyPort.requirement = right
 		self.leftKeyPort.requirement = left
+	}
+	
+	// MARK: Mesh -
+	
+	override func animateMesh(mesh:SCNNode)
+	{
+		if right.isUnlocked == true || left.isUnlocked == true {
+			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		}
 	}
 	
 	// MARK: Defaults -

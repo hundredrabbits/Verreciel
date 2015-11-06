@@ -62,19 +62,24 @@ class PanelPilot : Panel
 	
 	override func installedFixedUpdate()
 	{
+		if port.origin != nil && port.origin.event != nil && port.origin.event.type == eventTypes.location {
+			target = port.origin.event as! Location
+		}
+		else{
+			target = nil
+		}
+		
 		if target == nil { return }
 		
-		let left = target.calculateAlignment(capsule.direction - 1)
-		let right = target.calculateAlignment(capsule.direction + 1)
+		let left = target.calculateAlignment(capsule.direction - 0.5)
+		let right = target.calculateAlignment(capsule.direction + 0.5)
 		
-		targetDirection = target.align
-		
-		if Int(target.align) >= 0 {
-			if Int(left) < Int(right) {
-				self.turnLeft(1 + (targetDirection % 1))
+		if target.align >= 0 {
+			if left <= right {
+				self.turnLeft(target.align * 0.025)
 			}
-			else if Int(left) > Int(right) {
-				self.turnRight(1 + (targetDirection % 1))
+			else if left > right {
+				self.turnRight(target.align * 0.025)
 			}
 		}
 		

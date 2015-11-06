@@ -80,6 +80,7 @@ enum eventTypes
 	case unknown
 	
 	case generic
+	case drive
 	
 	case portal
 	case cargo

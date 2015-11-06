@@ -80,7 +80,7 @@ class PanelThruster : Panel
 		interface.addChildNode(accelerate)
 		interface.addChildNode(decelerate)
 		
-		port.input = eventTypes.location
+		port.input = eventTypes.drive
 		port.output = eventTypes.unknown
 		
 		let buttonWidth = 0.65

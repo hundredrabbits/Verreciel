@@ -14,8 +14,8 @@
 *    ACTIVE
 ================
 
-- Add portal mesh
-- Make Portal Panels
+- Warp animation
+- Warp controls
 
 - Add comms in UI
 
@@ -25,7 +25,6 @@
 - Add Signal converter panel?
 - Add Audio mute panel
 
-- Fix issue with pilot going in circles
 - Make sure that only ingredients are in the recipe at horadric
 
 ================
