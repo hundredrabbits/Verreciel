@@ -13,13 +13,19 @@ class CoreUI: SCNNode
 	var visor:SCNNode = SCNNode()
 	var displayLeft:SCNNode!
 	var displayRight:SCNNode!
+	
 	var displayHealth:SCNLabel!
 	var displayMagic:SCNLabel!
-	var displayMessage:SCNLabel!
-	var displayPassive:SCNLabel!
+	
+	var messageLabel:SCNLabel!
+	var passiveLabel:SCNLabel!
+	var warningLabel:SCNLabel!
 	
 	var message:String = ""
 	var passive:String = ""
+	var warning:String = ""
+	
+	var warningTimer:NSTimer!
 	
 	let textSize:Float = 0.025
 	let visorDepth = -1.3
@@ -38,6 +44,8 @@ class CoreUI: SCNNode
 	
 	func setupVisor()
 	{
+		// Left
+		
 		displayLeft = SCNNode()
 		displayLeft.position = SCNVector3(-0.5,0,visorDepth)
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
@@ -47,17 +55,19 @@ class CoreUI: SCNNode
 		displayHealth.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
 		displayLeft.addChildNode(displayHealth)
 		
-		displayMessage = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: white)
-		displayMessage.position = SCNVector3(0,1.35,visorDepth)
-		visor.addChildNode(displayMessage)
+		messageLabel = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: white)
+		messageLabel.position = SCNVector3(0,1.35,visorDepth)
+		visor.addChildNode(messageLabel)
 		
-		displayPassive = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: grey)
-		displayPassive.position = SCNVector3(0,-1.2,visorDepth)
-		visor.addChildNode(displayPassive)
+		passiveLabel = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: grey)
+		passiveLabel.position = SCNVector3(0,-1.2,visorDepth)
+		visor.addChildNode(passiveLabel)
 		
 		displayLeft.eulerAngles.y = Float(degToRad(10))
 		
 		visor.addChildNode(displayLeft)
+		
+		// Right
 		
 		displayRight = SCNNode()
 		displayRight.position = SCNVector3(0.5,0,visorDepth)
@@ -74,6 +84,12 @@ class CoreUI: SCNNode
 		
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: 0.1, y: 1.4, z: 0), color: grey))
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: 1.4, z: 0), nodeB: SCNVector3(x: -0.1, y: 1.4, z: 0), color: grey))
+		
+		// Center
+		
+		warningLabel = SCNLabel(text: "--", scale: 0.1, align: alignment.center, color: red)
+		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
+		visor.addChildNode(warningLabel)
 		
 		visor.addChildNode(player.port)
 		player.port.position = SCNVector3(0,-3,-2.5)
@@ -115,16 +131,16 @@ class CoreUI: SCNNode
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
-		displayMessage.position = SCNVector3(0,1.375,self.visorDepth - 0.01)
-		displayMessage.opacity = 0
-		displayMessage.updateColor(cyan)
+		messageLabel.position = SCNVector3(0,1.375,self.visorDepth - 0.01)
+		messageLabel.opacity = 0
+		messageLabel.updateColor(cyan)
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
-			self.displayMessage.update(self.message)
-			self.displayMessage.position = SCNVector3(0,1.375,self.visorDepth)
-			self.displayMessage.opacity = 1
-			self.displayMessage.updateColor(white)
+			self.messageLabel.update(self.message)
+			self.messageLabel.position = SCNVector3(0,1.375,self.visorDepth)
+			self.messageLabel.opacity = 1
+			self.messageLabel.updateColor(white)
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
@@ -138,16 +154,49 @@ class CoreUI: SCNNode
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
-		displayPassive.position = SCNVector3(0,-1.2,self.visorDepth - 0.01)
-		displayPassive.opacity = 0
+		passiveLabel.position = SCNVector3(0,-1.2,self.visorDepth - 0.01)
+		passiveLabel.opacity = 0
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
-			self.displayPassive.update(self.passive)
-			self.displayPassive.position = SCNVector3(0,-1.2,self.visorDepth)
-			self.displayPassive.opacity = 1
+			self.passiveLabel.update(self.passive)
+			self.passiveLabel.position = SCNVector3(0,-1.2,self.visorDepth)
+			self.passiveLabel.opacity = 1
 			SCNTransaction.commit()
 		})
+		SCNTransaction.commit()
+	}
+	
+	func addWarning(warning:String)
+	{
+		if self.warning == warning { return }
+		
+		self.warning = warning
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.1)
+		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.3)
+		warningLabel.opacity = 0
+		SCNTransaction.setCompletionBlock({
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(0.1)
+			self.warningLabel.update(self.warning)
+			self.warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
+			self.warningLabel.opacity = 1
+			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
+			SCNTransaction.commit()
+		})
+		SCNTransaction.commit()
+	}
+	
+	func hideWarning()
+	{
+		warningTimer.invalidate()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
+		warningLabel.opacity = 0
 		SCNTransaction.commit()
 	}
 	

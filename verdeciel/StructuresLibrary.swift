@@ -8,6 +8,12 @@ import Foundation
 
 class StructuresLibrary
 {
+	func none() -> SCNNode
+	{
+		let mesh = SCNNode()
+		return mesh
+	}
+	
 	func placeholder() -> SCNNode
 	{
 		let mesh = SCNNode()

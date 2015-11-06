@@ -12,7 +12,7 @@ class LocationSpawn : Location
 		self.at = at
 		self.size = size
 		self.note = ""
-		self.mesh = structures.placeholder()
+		self.mesh = structures.none()
 		self.interaction = "respawning"
 		self.icon.replace(icons.none())
 	}
