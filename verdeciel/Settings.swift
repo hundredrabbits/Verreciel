@@ -79,27 +79,16 @@ enum eventTypes
 	case none
 	case unknown
 	
+	case location
+	case item
+	case portal
+	
 	case generic
 	case drive
 	
-	case portal
 	case cargo
-	case station
-	case beacon
-	case city
-	case star
-	case cell
-	
-	case location
-	case item
-	case npc
-	case battery
-	case waypoint
-	case ammo
-	case cypher
 	case map
-	case warp
-	case panel
+	case battery
 }
 
 enum itemTypes

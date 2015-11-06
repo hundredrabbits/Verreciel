@@ -35,6 +35,7 @@ class LocationPortal : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
+		self.type = eventTypes.portal
 		self.mesh = structures.portal()
 		icon.replace(icons.placeholder())
 		

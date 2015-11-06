@@ -41,7 +41,6 @@ class CoreCapsule: SCNNode
 	override func fixedUpdate()
 	{
 		service()
-		systems()
 		docking()
 	}
 	
@@ -163,16 +162,6 @@ class CoreCapsule: SCNNode
 			line3.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
 			mesh.addChildNode(line3)
 			i += 1
-		}
-	}
-	
-	func systems()
-	{
-		if battery.oxygenPort.origin != nil {
-			if battery.oxygenPort.origin.event.type == eventTypes.cell && capsule.oxygen < 100 { capsule.oxygen += 0.5 }
-		}
-		if battery.shieldPort.origin != nil {
-			if battery.shieldPort.origin.event.type == eventTypes.cell && capsule.shield < 100 { capsule.shield += 0.5 }
 		}
 	}
 	

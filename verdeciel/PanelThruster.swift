@@ -129,7 +129,11 @@ class PanelThruster : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if battery.isThrusterPowered() == false {
+		// Check for warp
+		if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingFromLocationType(eventTypes.portal) == true {
+			modeWaitingForWarp()
+		}
+		else if battery.isThrusterPowered() == false {
 			speed = 0
 			modeUnpowered()
 		}
@@ -144,11 +148,15 @@ class PanelThruster : Panel
 		}
 		
 		update()
-	
 		thrust()
 	}
 	
 	// MARK: Custom -
+	
+	func modeWaitingForWarp()
+	{
+		print("!!")
+	}
 	
 	func modeUnpowered()
 	{
