@@ -19,6 +19,10 @@ class CoreCapsule: SCNNode
 	
 	var isDocked:Bool = false
 	var dock:Location!
+	
+	var isWarping:Bool = false
+	var warp:Location!
+	
 	var mesh:SCNNode!
 	
 	// MARK: Default -
@@ -42,9 +46,60 @@ class CoreCapsule: SCNNode
 	{
 		service()
 		docking()
+		warping()
 	}
 	
-	// MARK: Custom -
+	// MARK: Warping -
+	
+	func warp(destionation:Location)
+	{
+		warp = destionation
+		isWarping = true
+		undock()
+	}
+	
+	func warping()
+	{
+		if isWarping == false { return }
+	
+		if warp.distance > 1.5 {
+			warpUp()
+		}
+		else{
+			warpDown()
+		}
+		
+		warpTravel()
+	}
+	
+	func warpTravel()
+	{
+		let speed:Float = Float(thruster.actualSpeed)/600
+		let angle:CGFloat = CGFloat((capsule.direction) % 360)
+		
+		let angleRad = degToRad(angle)
+		
+		capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
+		capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
+	}
+	
+	func warpUp()
+	{
+		if thruster.actualSpeed < 10 { thruster.actualSpeed += 0.025 }
+		space.starTimer += thruster.actualSpeed
+	}
+	
+	func warpDown()
+	{
+		if thruster.actualSpeed > 1 { thruster.actualSpeed -= 0.1 }
+		else{
+			isWarping = false
+			warp = nil
+		}
+		space.starTimer += thruster.actualSpeed
+	}
+
+	// MARK: Docking -
 	
 	func interfaceSetup()
 	{
@@ -117,6 +172,7 @@ class CoreCapsule: SCNNode
 	
 	func undock()
 	{
+		dock.disconnectPanel()
 		isDocked = false
 		dock = nil
 		thruster.enable()

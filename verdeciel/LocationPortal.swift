@@ -35,7 +35,6 @@ class LocationPortal : Location
 		self.size = 1
 		self.note = ""
 		self.color = color
-		self.type = eventTypes.portal
 		self.mesh = structures.portal()
 		icon.replace(icons.placeholder())
 		
@@ -229,6 +228,17 @@ class LocationPortal : Location
 	{
 		self.rightKeyPort.requirement = right
 		self.leftKeyPort.requirement = left
+	}
+	
+	override func disconnectPanel()
+	{
+		leftThrusterPort.disconnect()
+		leftPilotPort.disconnect()
+		leftKeyPort.disconnect()
+		
+		rightThrusterPort.disconnect()
+		rightPilotPort.disconnect()
+		rightKeyPort.disconnect()
 	}
 	
 	// MARK: Mesh -

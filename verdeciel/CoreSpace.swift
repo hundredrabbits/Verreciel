@@ -29,8 +29,8 @@ class CoreSpace: SCNNode
 		if capsule.sector == sectors.opal { sceneView.backgroundColor = whiteTone }
 		if capsule.sector == sectors.vermiles { sceneView.backgroundColor = redTone }
 		if capsule.sector == sectors.void { sceneView.backgroundColor = greyTone }
-
-		if starTimer > 2 {
+		
+		while starTimer > 2 {
 			addStar()
 			starTimer -= 2
 		}

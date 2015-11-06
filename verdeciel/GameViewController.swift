@@ -86,8 +86,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		cargo.install()
 		console.install()
 		mission.install()
+		thruster.install()
 		
 		cargo.port.event.content.append(items.valenPortalKey)
+		universe.valen_portal.isUnlocked = true
+		
+		battery.cellPort1.connect(battery.thrusterPort)
+		
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

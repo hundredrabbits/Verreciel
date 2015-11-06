@@ -31,6 +31,8 @@ class PanelThruster : Panel
 	
 	var trigger:SCNTrigger!
 	
+	var canWarp:Bool = false
+	
 	// MARK: Default -
 	
 	override func setup()
@@ -105,9 +107,20 @@ class PanelThruster : Panel
 
 	override func touch(id:Int = 0)
 	{
-		if id == 0 { speedDown() ; return }
-		if id == 1 { speedUp() ; return }
-		if id == 2 { capsule.undock() ; return }
+		if id == 0 {
+			speedDown()
+		}
+		else if id == 1 {
+			speedUp()
+		}
+		if id == 2 {
+			if canWarp == true {
+				capsule.warp(pilot.port.origin.event as! Location)
+			}
+			else{
+				capsule.undock()
+			}
+		}
 	}
 	
 	override func update()
@@ -129,9 +142,17 @@ class PanelThruster : Panel
 	
 	override func installedFixedUpdate()
 	{
+		canWarp = false
+		
+		update()
+		
 		// Check for warp
-		if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingFromLocationType(eventTypes.portal) == true {
+		if capsule.isWarping == true {
+			modeWarping()
+		}
+		else if port.isReceiving(items.warpDrive) == true {
 			modeWaitingForWarp()
+			canWarp = true
 		}
 		else if battery.isThrusterPowered() == false {
 			speed = 0
@@ -147,15 +168,48 @@ class PanelThruster : Panel
 			modeFlight()
 		}
 		
-		update()
 		thrust()
 	}
 	
 	// MARK: Custom -
 	
+	func modeWarping()
+	{
+		label.updateColor(cyan)
+		details.update("warping", color: red)
+		trigger.disable()
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
+		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
+		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
+		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+		
+		line1.blink()
+		line2.blink()
+		line3.blink()
+		line4.blink()
+	}
+	
 	func modeWaitingForWarp()
 	{
-		print("!!")
+		label.updateColor(cyan)
+		details.update("warp", color: red)
+		trigger.opacity = 1
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
+		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
+		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
+		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
 	}
 	
 	func modeUnpowered()
@@ -167,8 +221,8 @@ class PanelThruster : Panel
 		
 		accelerate.disable()
 		decelerate.disable()
-		accelerate.updateChildrenColors(clear)
-		decelerate.updateChildrenColors(clear)
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
 		
 		line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1
 		line2.opacity = 0 ; cutLine2Left.opacity = 1 ; cutLine2Right.opacity = 1
@@ -260,6 +314,7 @@ class PanelThruster : Panel
 	
 	func thrust()
 	{
+		if capsule.isWarping == true { speed = 100 ; return }
 		if capsule.isDocked ==  true { speed = 0 ; actualSpeed = 0 ; return }
 		
 		if speed * 10 > Int(actualSpeed * 10) {
