@@ -32,7 +32,6 @@
 		574156DC1BE12F24008B6C44 /* RecipesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */; };
 		574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574156DE1BE12FAA008B6C44 /* Recipe.swift */; };
 		5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741B0671BB5C9B7000F7FEF /* Instance.swift */; };
-		5745646E1BD3D87000A57C83 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */; };
 		5748AD9E1BC8476000C47468 /* QuestLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748AD9D1BC8476000C47468 /* QuestLibrary.swift */; };
 		5748ADA01BC8583B00C47468 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748AD9F1BC8583B00C47468 /* Quest.swift */; };
 		5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748ADA11BC85C7B00C47468 /* Settings.swift */; };
@@ -100,7 +99,6 @@
 		574156DB1BE12F24008B6C44 /* RecipesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesLibrary.swift; sourceTree = "<group>"; };
 		574156DE1BE12FAA008B6C44 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		5741B0671BB5C9B7000F7FEF /* Instance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
-		5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		5748AD9D1BC8476000C47468 /* QuestLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestLibrary.swift; sourceTree = "<group>"; };
 		5748AD9F1BC8583B00C47468 /* Quest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5748ADA11BC85C7B00C47468 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				5734D45B1B5AAA7800BF0048 /* Todo */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
-				5745646D1BD3D87000A57C83 /* GameSceneDelegate.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
 				5796144C1BE00EF800421D69 /* Monitors */,
@@ -423,7 +420,6 @@
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,
-				5745646E1BD3D87000A57C83 /* GameSceneDelegate.swift in Sources */,
 				574E5FC01BC578E1008130AB /* LocationTrade.swift in Sources */,
 				579EA8EB1BE853F600B384C7 /* IconsLibrary.swift in Sources */,
 				5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */,

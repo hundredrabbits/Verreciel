@@ -10,8 +10,6 @@ var scene = SCNScene()
 var touchOrigin = CGPoint()
 var touchPosition = CGPoint()
 
-var sceneDelegate:SceneDelegate!
-
 class GameViewController: UIViewController, SCNSceneRendererDelegate
 {
     override func viewDidLoad()
@@ -33,9 +31,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
 		sceneView.preferredFramesPerSecond = 25
 		sceneView.playing = true
-		
-		sceneDelegate = SceneDelegate()
-		sceneView.delegate = sceneDelegate
+
+		sceneView.delegate = self
 	}
 	
 	func initialize()
@@ -169,6 +166,17 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			let result: AnyObject! = hitResults[0]
 			result.node.touch()
 		}
+	}
+	
+	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
+	{
+		capsule._fixedUpdate()
+		player._fixedUpdate()
+		ui._fixedUpdate()
+		
+		space.fixedUpdate()
+		quests.update()
+		ui.updatePort()
 	}
 	
 	override func prefersStatusBarHidden() -> Bool
