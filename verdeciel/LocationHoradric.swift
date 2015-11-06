@@ -85,25 +85,28 @@ class LocationHoradric : Location
 		if inPort3.origin != nil && inPort3.origin.event != nil { ingredients.append(inPort3.origin.event) }
 		if inPort4.origin != nil && inPort4.origin.event != nil { ingredients.append(inPort4.origin.event) }
 		
-		print("> \(ingredients)")
 		if ingredients.count < 2 { label.update("add ingredient", color: grey) ; return }
 		
 		// Check for recipies
 		
+		var activeRecipe:Recipe!
+		
 		for recipe in recipes.horadric {
-			if recipe.isValid(ingredients) == true {
-				label.update(recipe.name, color: white)
-				outPort.event = recipe.result
-				outPort.enable()
-			}
-			else{
-				label.update("unknown receipe", color: red)
-				outPort.event = nil
-				outPort.disable()
-			}
+			if recipe.isValid(ingredients) == true { activeRecipe = recipe }
+		}
+		
+		if activeRecipe != nil {
+			label.update(activeRecipe.name, color: white)
+			outPort.event = activeRecipe.result
+			outPort.enable()
+		}
+		else{
+			label.update("unknown receipe", color: red)
+			outPort.event = nil
+			outPort.disable()
 		}
 	}
-	
+
 	func iconUpdate()
 	{
 		if isKnown == false {

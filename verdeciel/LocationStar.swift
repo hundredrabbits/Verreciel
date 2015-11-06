@@ -15,6 +15,7 @@ class LocationStar : Location
 		self.color = color
 		self.mesh = structures.star()
 		self.details = itemTypes.star
+		self.locationType = locationTypes.star
 		icon.replace(icons.star_unseen(red))
 		label.update(name)
 	}
@@ -25,6 +26,13 @@ class LocationStar : Location
 	{
 		if isSeen == true			{ icon.replace(icons.star(red)) }
 		else if isComplete == true	{ icon.replace(icons.star(cyan)) }
+	}
+	
+	override func onApproach()
+	{
+		print("* EVENT    | Approached \(self.name!)")
+		space.startInstance(self)
+		update()
 	}
 	
 	// MARK: Defaults -

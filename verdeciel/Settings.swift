@@ -91,6 +91,12 @@ enum eventTypes
 	case battery
 }
 
+enum locationTypes
+{
+	case generic
+	case star
+}
+
 enum itemTypes
 {
 	case unknown

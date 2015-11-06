@@ -36,6 +36,8 @@ class Location : Event
 	var mesh:SCNNode!
 	var icon = SCNNode()
 	
+	var locationType:locationTypes = locationTypes.generic
+	
 	init(name:String = "", at: CGPoint! = nil)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)

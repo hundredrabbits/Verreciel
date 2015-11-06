@@ -42,7 +42,8 @@ class Recipe
 			}
 			print("input: \(input.name) -> \(isFound)")
 			if isFound == false { return false }
-		}		
+		}
+		
 		return true
 	}
 }

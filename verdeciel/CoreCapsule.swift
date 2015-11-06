@@ -16,7 +16,6 @@ class CoreCapsule: SCNNode
 	
 	var direction:CGFloat! = 1
 	var sector:sectors = sectors.normal
-	var closestLocation:Location!
 	
 	var isDocked:Bool = false
 	var dock:Location!
@@ -48,12 +47,36 @@ class CoreCapsule: SCNNode
 		service()
 		docking()
 		warping()
-		
-		_closestLocation()
 	}
 	
-	func _closestLocation()
+	func closestLocationOfType(type:locationTypes) -> Location
 	{
+		var closestLocation:Location!
+		for location in universe.childNodes {
+			let location = location as! Location
+			if location.locationType != type { continue }
+			if closestLocation == nil { closestLocation = location }
+			if location.distance > closestLocation.distance { continue }
+			closestLocation = location
+		}
+		return closestLocation
+	}
+	
+	func closestLocation() -> Location
+	{
+		var closestLocation:Location!
+		for location in universe.childNodes {
+			let location = location as! Location
+			if closestLocation == nil { closestLocation = location }
+			if location.distance > closestLocation.distance { continue }
+			closestLocation = location
+		}
+		return closestLocation
+	}
+	
+	func closestKnownLocation() -> Location
+	{
+		var closestLocation:Location!
 		for location in universe.childNodes {
 			let location = location as! Location
 			if location.isKnown == false { continue }
@@ -61,6 +84,7 @@ class CoreCapsule: SCNNode
 			if location.distance > closestLocation.distance { continue }
 			closestLocation = location
 		}
+		return closestLocation
 	}
 	
 	// MARK: Warping -

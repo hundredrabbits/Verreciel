@@ -62,11 +62,18 @@ class PanelPilot : Panel
 	
 	override func installedFixedUpdate()
 	{
-		if capsule.closestLocation.distance > 1.35 && capsule.isWarping == false {
-			target = capsule.closestLocation
+		// Approaching the sun
+		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
+			target = capsule.closestKnownLocation()
+			radar.addTarget(target)
+		}
+		else if capsule.closestKnownLocation().distance > 1.35 && capsule.isWarping == false {
+			target = capsule.closestKnownLocation()
+			radar.addTarget(target)
 		}
 		else if port.isReceivingType(eventTypes.location) {
 			target = port.origin.event as! Location
+			radar.addTarget(target)
 		}
 		else if capsule.dock != nil && capsule.at != capsule.dock.at {
 			target = capsule.dock
@@ -89,7 +96,10 @@ class PanelPilot : Panel
 			}
 		}
 		
-		details.update(String(format: "%.0f",target.align))
+		if target.align > 25 { details.update(String(format: "%.0f",target.align), color:red) }
+		else if target.align < 1 { details.update("ok", color:cyan) }
+		else{ details.update(String(format: "%.0f",target.align), color:white) }
+		
 		
 		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
 		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
