@@ -71,8 +71,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		settings.applicationIsReady = true
 
 		startingState()
-		
-		ui.addWarning("Welcome to Verreciel")
 	}
 	
 	func startingState()

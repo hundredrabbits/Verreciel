@@ -348,6 +348,7 @@ class PanelThruster : Panel
 	
 	override func onInstallationBegin()
 	{
+		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -45)
 	}
 }

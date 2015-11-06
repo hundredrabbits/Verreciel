@@ -112,6 +112,8 @@ class CoreUI: SCNNode
 			}
 		}
 		updatePort()
+		
+		warningLabel.blink()
 	}
 
 	func updatePort()
@@ -167,7 +169,7 @@ class CoreUI: SCNNode
 		SCNTransaction.commit()
 	}
 	
-	func addWarning(warning:String)
+	func addWarning(warning:String,duration:Double! = nil)
 	{
 		if self.warning == warning { return }
 		
@@ -176,14 +178,15 @@ class CoreUI: SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
 		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.3)
-		warningLabel.opacity = 0
+		warningLabel.update("")
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.warningLabel.update(self.warning)
 			self.warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-			self.warningLabel.opacity = 1
-			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
+			if duration != nil {
+				SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
+			}
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
@@ -191,12 +194,14 @@ class CoreUI: SCNNode
 	
 	func hideWarning()
 	{
-		warningTimer.invalidate()
+		if warningTimer != nil {
+			warningTimer.invalidate()
+		}
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-		warningLabel.opacity = 0
+		warningLabel.update("")
 		SCNTransaction.commit()
 	}
 	

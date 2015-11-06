@@ -82,7 +82,6 @@ class Panel : SCNNode
 		if isInstalling == true {
 			installProgress += CGFloat(arc4random_uniform(100))/50
 			installProgressBar.update(installProgress)
-//			label.update("Installing \(Int(installProgress))%", color: grey)
 			installProgressBar.opacity = 1
 			if installProgress >= 100 {
 				installed()
@@ -171,12 +170,11 @@ class Panel : SCNNode
 	
 	func onInstallationBegin()
 	{
-	
+		
 	}
 	
 	func onInstallationComplete()
 	{
-		
 	}
 	
 	required init?(coder aDecoder: NSCoder)
