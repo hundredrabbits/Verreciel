@@ -137,15 +137,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		touchOrigin = touchPosition
 
-//		player.eulerAngles.x += Float(degToRad(dragY/4))
-//		player.eulerAngles.y += Float(degToRad(dragX/4))
-        player.accelY += Float(degToRad(dragX/4))
-        player.accelX += Float(degToRad(dragY/4))
+        player.accelY += Float(degToRad(dragX/6))
+        player.accelX += Float(degToRad(dragY/6))
 		
-//		ui.eulerAngles.x += Float(degToRad(dragY/4)) * 0.975
-//		ui.eulerAngles.y += Float(degToRad(dragX/4)) * 0.95
-		ui.accelX += Float(degToRad(dragY/4)) * 0.975
-        ui.accelY += Float(degToRad(dragX/4)) * 0.95
+		ui.accelX += Float(degToRad(dragY/6)) * 0.975
+        ui.accelY += Float(degToRad(dragX/6)) * 0.95
         
 		ui.updatePort()
 	}
