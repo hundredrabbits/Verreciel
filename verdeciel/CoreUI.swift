@@ -112,6 +112,12 @@ class CoreUI: SCNNode
             // closer to 1 for more 'momentum'
             accelX *= 0.75;
             accelY *= 0.75;
+            if abs(accelX) < 0.005 {
+                accelX = 0; //if it gets too small just drop to zero
+            }
+            if abs(accelY) < 0.005 {
+                accelY = 0; //if it gets too small just drop to zero
+            }
         }
         
 		if canAlign == true {
