@@ -177,23 +177,24 @@ class CorePlayer : SCNNode
 	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
 	{
         player.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
-        //if degrees is less than zero. convert it to 0-360 (rather than -360 - 0)
-        if player.eulerAngles.y < 0 {
-            player.eulerAngles.y = Float(2 * M_PI) + player.eulerAngles.y
+        //if degrees is more than zero. convert it to -360 - 0)
+        //doing -360 - 0 because all of this functions inputs seem to be -deg
+        if player.eulerAngles.y > 0 {
+            player.eulerAngles.y = player.eulerAngles.y - Float(2 * M_PI)
         }
-        //if it's more than 180, subtract 360 degrees (this will put as between -180 and 180 degrees
-        if player.eulerAngles.y > Float(M_PI) {
-            player.eulerAngles.y -= Float(2 * M_PI)
+        //if it's less than -180, add 360 degrees
+        if player.eulerAngles.y < -Float(M_PI) {
+            player.eulerAngles.y += Float(2 * M_PI)
         }
         
         ui.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
-        //if degrees is less than zero. convert it to 0-360 (rather than -360 - 0)
-        if ui.eulerAngles.y < 0 {
-            ui.eulerAngles.y = Float(2 * M_PI) + ui.eulerAngles.y
+        //if degrees is more than zero. convert it to -360 - 0)
+        if ui.eulerAngles.y > 0 {
+            ui.eulerAngles.y = ui.eulerAngles.y - Float(2 * M_PI)
         }
-        //if it's more than 180, subtract 360 degrees (this will put as between -180 and 180 degrees
-        if ui.eulerAngles.y > Float(M_PI) {
-            ui.eulerAngles.y -= Float(2 * M_PI)
+        //if it's less than -180, add 360 degrees
+        if ui.eulerAngles.y < -Float(M_PI) {
+            ui.eulerAngles.y += Float(2 * M_PI)
         }
         
 		player.isLocked = true
