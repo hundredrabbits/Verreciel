@@ -104,6 +104,10 @@ class CoreUI: SCNNode
             ui.eulerAngles.x += accelX;
             ui.eulerAngles.y += accelY;
             
+            //keeps us within 2pi
+            ui.eulerAngles.x = Float(Double(ui.eulerAngles.x) % (2 * M_PI))
+            ui.eulerAngles.y = Float(Double(ui.eulerAngles.y) % (2 * M_PI))
+            
             //dampening
             // closer to 1 for more 'momentum'
             accelX *= 0.75;
