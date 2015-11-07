@@ -29,6 +29,9 @@ class CoreUI: SCNNode
 	
 	let textSize:Float = 0.025
 	let visorDepth = -1.3
+    
+    var accelX:Float = 0;
+    var accelY:Float = 0;
 	
 	override init()
 	{
@@ -97,6 +100,16 @@ class CoreUI: SCNNode
 	
 	override func fixedUpdate()
 	{
+        if !player.isLocked {
+            ui.eulerAngles.x += accelX;
+            ui.eulerAngles.y += accelY;
+            
+            //dampening
+            // closer to 1 for more 'momentum'
+            accelX *= 0.75;
+            accelY *= 0.75;
+        }
+        
 		if canAlign == true {
 			if (eulerAngles.y - player.eulerAngles.y) > 0.0001 && eulerAngles.y > player.eulerAngles.y {
 				eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.1

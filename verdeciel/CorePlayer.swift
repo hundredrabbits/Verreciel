@@ -33,6 +33,9 @@ class CorePlayer : SCNNode
 	
 	var isLocked:Bool = false
 	var isConnectedToRadar = false
+    
+    var accelX:Float = 0;
+    var accelY:Float = 0;
 	
 	override init()
 	{
@@ -137,6 +140,20 @@ class CorePlayer : SCNNode
 	override func fixedUpdate()
 	{
 		flickerAlert()
+        
+        if !isLocked {
+            player.eulerAngles.x += accelX
+            player.eulerAngles.y += accelY
+
+            //should keep the values within 2pi rads
+            player.eulerAngles.x = Float(Double(player.eulerAngles.x) % (2 * M_PI))
+            player.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
+
+            //dampening
+            // closer to 1 for more 'momentum'
+            accelX *= 0.75
+            accelY *= 0.75
+        }
 		
 		// Check is starmap is still connected
 		if port.origin == nil && isConnectedToRadar == true {
@@ -153,9 +170,26 @@ class CorePlayer : SCNNode
 	
 	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
 	{
-		player.eulerAngles.y = Float(degToRad(radToDeg(CGFloat(player.eulerAngles.y)) % 360))
-		ui.eulerAngles.y = Float(degToRad(radToDeg(CGFloat(ui.eulerAngles.y)) % 360))
-		
+        player.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
+        //if degrees is less than zero. convert it to 0-360 (rather than -360 - 0)
+        if player.eulerAngles.y < 0 {
+            player.eulerAngles.y = Float(2 * M_PI) + player.eulerAngles.y
+        }
+        //if it's more than 180, subtract 360 degrees (this will put as between -180 and 180 degrees
+        if player.eulerAngles.y > Float(M_PI) {
+            player.eulerAngles.y -= Float(2 * M_PI)
+        }
+        
+        ui.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
+        //if degrees is less than zero. convert it to 0-360 (rather than -360 - 0)
+        if ui.eulerAngles.y < 0 {
+            ui.eulerAngles.y = Float(2 * M_PI) + ui.eulerAngles.y
+        }
+        //if it's more than 180, subtract 360 degrees (this will put as between -180 and 180 degrees
+        if ui.eulerAngles.y > Float(M_PI) {
+            ui.eulerAngles.y -= Float(2 * M_PI)
+        }
+        
 		player.isLocked = true
 		
 		SCNTransaction.begin()
