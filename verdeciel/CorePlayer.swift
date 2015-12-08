@@ -27,6 +27,7 @@ class CorePlayer : SCNNode
 	var activePort:SCNPort!
 	var event:Event!
 	var handle:SCNHandle!
+	var handleTimer:NSTimer!
 	
 	var trigger:SCNTrigger!
 	var triggerLabel:SCNLabel!
@@ -243,6 +244,22 @@ class CorePlayer : SCNNode
 		thruster.opacity = 1
 		pilot.opacity = 1
 		isConnectedToRadar = false
+	}
+	
+	// MARK: Handles -
+	
+	func center()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		player.position = SCNVector3(0,0,0)
+		ui.position = SCNVector3(0,0,0)
+		SCNTransaction.commit()
+		
+		if player.handle != nil {
+			player.handle.enable()
+			player.handle = nil
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

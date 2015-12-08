@@ -71,6 +71,8 @@ class SCNHandle : SCNNode
 		
 		player.handle = self
 		player.handle.disable()
+		
+		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: player, selector: Selector("center"), userInfo: nil, repeats: false)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

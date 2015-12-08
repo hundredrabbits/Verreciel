@@ -210,15 +210,18 @@ class Location : Event
 	
 	override func touch(id:Int)
 	{
-		if isSeen == false { return }
+		if isSeen == false { print("Unseen..") ; return }
 		
 		if radar.port.event == nil {
+			print("Added target")
 			radar.addTarget(self)
 		}
 		else if radar.port.event == self {
+			print("Removed target")
 			radar.removeTarget()
 		}
 		else{
+			print("Added target")
 			radar.addTarget(self)
 		}
 	}

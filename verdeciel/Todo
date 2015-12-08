@@ -10,10 +10,8 @@
 - Add Bank location
 - Shut off the suns
 - Food mechanics(Hunger Points)
-- Keep generating stars when approaching instances
 - Add ship doodads
 - Add space doodads
-- Add floaty feels to the Player
 - Unlock map port
 - Unlock hatch panel
 - Begin Valen quest
@@ -22,6 +20,13 @@
 - Remove IGF build blockers
 - Install cloak quest
 - Second battery quest
+- Save / Load Mechanics
+- Floating feel
+
+> Playthrough issues
+
+- Text is too long for "Press Horadric in radar"
+- Issue with the radar's targetting
 
 > Universe
 

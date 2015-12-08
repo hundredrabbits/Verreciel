@@ -77,8 +77,7 @@ class PanelRadar : Panel
 		
 		mapPort = SCNPort(host: self, input: eventTypes.map, output: eventTypes.map)
 		mapPort.position = SCNVector3(0,-0.6,templates.radius)
-		mapPort.enable()
-		mapPort.addEvent(items.starmap)
+		mapPort.disable()
 		
 		let mapPortInputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.right)
 		let mapPortOutputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.left)
@@ -142,8 +141,8 @@ class PanelRadar : Panel
 
 	func addTarget(event:Location)
 	{
-		if capsule.dock != nil && capsule.isDocked == false { print("currently docking..") ; return }
-		if capsule.isWarping == true { print("currently warping..") ; return }
+		if capsule.dock != nil && capsule.isDocked == false { return }
+		if capsule.isWarping == true { return }
 		
 		port.event = event
 		
@@ -156,6 +155,12 @@ class PanelRadar : Panel
 				print("Overlapping event: \(newEvent.name!) -> \(event.position.x)")
 			}
 		}
+	}
+	
+	override func onInstallationComplete()
+	{
+		mapPort.enable()
+		mapPort.addEvent(items.starmap)
 	}
 	
 	func removeTarget()

@@ -48,7 +48,7 @@ var debug = Debug()
 
 // Colors
 var black:UIColor = UIColor(white: 0, alpha: 1)
-var grey:UIColor = UIColor(white: 0.4, alpha: 1)
+var grey:UIColor = UIColor(white: 0.5, alpha: 1)
 var greyTone:UIColor = UIColor(white: 0.2, alpha: 1)
 var white:UIColor = UIColor.whiteColor()
 var whiteTone:UIColor = UIColor(white: 0.8, alpha: 1)
