@@ -72,7 +72,7 @@ class Event : SCNNode
 		}
 	}
 	
-	func panel() -> SCNNode
+	func panel() -> SCNNode!
 	{
 		return Panel()
 	}

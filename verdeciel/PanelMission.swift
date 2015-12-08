@@ -13,12 +13,13 @@ class PanelMission : Panel
 	var questPanel:SCNNode!
 	
 	var quest1 = SCNLabel()
-	var quest1Details = SCNLabel(text: "", align: alignment.right, color:grey)
+	var quest1Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest2 = SCNLabel()
-	var quest2Details = SCNLabel(text: "", align: alignment.right, color:grey)
+	var quest2Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest3 = SCNLabel()
+	var quest3Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest4 = SCNLabel()
-	var quest5 = SCNLabel()
+	var quest4Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	
 	// MARK: Default -
 	
@@ -43,24 +44,25 @@ class PanelMission : Panel
 		questPanel = SCNNode()
 		questPanel.position = SCNVector3(0,0,0)
 		
-		quest1.position = SCNVector3(x: templates.leftMargin, y: 0.8, z: 0)
+		quest1.position = SCNVector3(x: templates.leftMargin, y: 1, z: 0)
 		questPanel.addChildNode(quest1)
-		quest1Details.position = SCNVector3(x: templates.rightMargin, y: 0.8, z: 0)
-		questPanel.addChildNode(quest1Details)
+		quest1Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest1.addChildNode(quest1Progress)
 		
 		quest2.position = SCNVector3(x: templates.leftMargin, y: 0.4, z: 0)
 		questPanel.addChildNode(quest2)
-		quest2Details.position = SCNVector3(x: templates.rightMargin, y: 0.4, z: 0)
-		questPanel.addChildNode(quest2Details)
+		quest2Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest2.addChildNode(quest2Progress)
 		
-		quest3.position = SCNVector3(x: templates.leftMargin, y: 0, z: 0)
+		quest3.position = SCNVector3(x: templates.leftMargin, y: -0.2, z: 0)
 		questPanel.addChildNode(quest3)
+		quest3Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest3.addChildNode(quest3Progress)
 		
-		quest4.position = SCNVector3(x: templates.leftMargin, y: -0.4, z: 0)
+		quest4.position = SCNVector3(x: templates.leftMargin, y: -0.8, z: 0)
 		questPanel.addChildNode(quest4)
-		
-		quest5.position = SCNVector3(x: templates.leftMargin, y: -0.8, z: 0)
-		questPanel.addChildNode(quest5)
+		quest4Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest4.addChildNode(quest4Progress)
 		
 		interface.addChildNode(questPanel)
 		
@@ -93,16 +95,15 @@ class PanelMission : Panel
 		
 		// Tutorial Quest Line
 		quest1.update((latestTutorialQuest.name!))
-		quest1Details.update("\(quests.tutorialQuestId)/\(quests.tutorial.count)")
+//		quest1Details.update("\(quests.tutorialQuestId)/\(quests.tutorial.count)")
 		
 		// Falvet Quest Line
 		quest2.update((latestFalvetQuest.name!))
-		quest2Details.update("\(quests.falvetQuestId)/\(quests.falvet.count)")
+//		quest2Details.update("\(quests.falvetQuestId)/\(quests.falvet.count)")
 		
-		quest2.update("--")
-		quest3.update("--")
-		quest4.update("--")
-		quest5.update("--")
+		quest2.update("FUCK")
+		quest3.update(">THAT")
+		quest4.update(">>SHIT")
 	}
 	
 	func panelUpdate()

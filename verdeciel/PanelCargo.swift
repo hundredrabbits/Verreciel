@@ -150,6 +150,7 @@ class PanelCargo : Panel
 	
 	func uploadProcess()
 	{
+		if port.origin == nil { details.update("error", color: grey) ; uploadProgress = 0 ; return }
 		uploadProgress += CGFloat(arc4random_uniform(100))/50
 		details.update("Upload \(Int(uploadProgress))%", color: grey)
 		if uploadProgress >= 100 {
@@ -159,8 +160,8 @@ class PanelCargo : Panel
 	
 	func uploadCompleted()
 	{
-		let test = port.syphon()
-		port.event.content.append(test)
+		let event = port.syphon()
+		port.event.content.append(event)
 		
 		uploadProgress = 0
 		isUploading = false

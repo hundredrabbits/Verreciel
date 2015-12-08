@@ -15,12 +15,12 @@ class LocationSpawn : Location
 		self.mesh = structures.none()
 		self.interaction = "respawning"
 		self.icon.replace(icons.spawn())
+		self.isComplete = true
 	}
 
-	override func panel() -> SCNNode
+	override func panel() -> SCNNode!
 	{
-		let newPanel = SCNNode()
-		return newPanel
+		return nil
 	}
 	
 	override func listen(event: Event)
