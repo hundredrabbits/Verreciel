@@ -179,6 +179,7 @@ class CorePlayer : SCNNode
 	{
 		let normalizedDeg = radToDeg(CGFloat(player.eulerAngles.y)) % 360
 		player.eulerAngles.y = Float(degToRad(normalizedDeg))
+		ui.eulerAngles.y = Float(degToRad(normalizedDeg))
 		
 		print("+ PLAYER   | LookAt(from:\(radToDeg(CGFloat(player.eulerAngles.y))),to:\(deg))")
 		

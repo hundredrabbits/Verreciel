@@ -67,11 +67,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 
-		debugState()
+		startingState()
 	}
 	
 	func startingState()
 	{
+		mission.install()
 	}
 	
 	func debugState()

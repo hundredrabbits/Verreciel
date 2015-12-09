@@ -12,13 +12,13 @@ class PanelMission : Panel
 
 	var questPanel:SCNNode!
 	
-	var quest1 = SCNLabel()
+	var quest1 = SCNLabel(scale:0.09)
 	var quest1Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest2 = SCNLabel()
+	var quest2 = SCNLabel(scale:0.09)
 	var quest2Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest3 = SCNLabel()
+	var quest3 = SCNLabel(scale:0.09)
 	var quest3Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest4 = SCNLabel()
+	var quest4 = SCNLabel(scale:0.09)
 	var quest4Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	
 	// MARK: Default -
@@ -46,12 +46,14 @@ class PanelMission : Panel
 		
 		quest1.position = SCNVector3(x: templates.leftMargin, y: 1, z: 0)
 		questPanel.addChildNode(quest1)
-		quest1Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest1Progress.position = SCNVector3(x: 0, y: -0.3, z: 0)
+		quest1Progress.eulerAngles.y = Float( degToRad(180))
 		quest1.addChildNode(quest1Progress)
 		
 		quest2.position = SCNVector3(x: templates.leftMargin, y: 0.4, z: 0)
 		questPanel.addChildNode(quest2)
-		quest2Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
+		quest2Progress.position = SCNVector3(x: 0, y: -0.3, z: 0)
+		quest2Progress.eulerAngles.y = Float( degToRad(180))
 		quest2.addChildNode(quest2Progress)
 		
 		quest3.position = SCNVector3(x: templates.leftMargin, y: -0.2, z: 0)
@@ -79,9 +81,7 @@ class PanelMission : Panel
 		if capsule.isDocked && capsule.dock.isComplete == false {
 			panelUpdate()
 		}
-		else{
-			missionUpdate()
-		}
+		missionUpdate()
 	}
 	
 	func missionUpdate()
@@ -92,18 +92,28 @@ class PanelMission : Panel
 		
 		let latestTutorialQuest = quests.tutorial[quests.tutorialQuestId]
 		let latestFalvetQuest = quests.falvet[quests.falvetQuestId]
+		let latestSenniQuest = quests.senni[quests.senniQuestId]
+		let latestUsulQuest = quests.usul[quests.usulQuestId]
 		
 		// Tutorial Quest Line
-		quest1.update((latestTutorialQuest.name!))
-//		quest1Details.update("\(quests.tutorialQuestId)/\(quests.tutorial.count)")
+		let tutorialProgress = CGFloat(quests.tutorialQuestId) / CGFloat(quests.tutorial.count)
+		quest1.update(latestTutorialQuest.name!)
+		quest1Progress.update(tutorialProgress * 100)
 		
 		// Falvet Quest Line
-		quest2.update((latestFalvetQuest.name!))
-//		quest2Details.update("\(quests.falvetQuestId)/\(quests.falvet.count)")
+		let falvetProgress = CGFloat(quests.falvetQuestId) / CGFloat(quests.falvet.count)
+		quest2.update(latestFalvetQuest.name!)
+		quest2Progress.update(falvetProgress * 100)
 		
-		quest2.update("FUCK")
-		quest3.update(">THAT")
-		quest4.update(">>SHIT")
+		// Senni Quest Line
+		let senniProgress = CGFloat(quests.senniQuestId) / CGFloat(quests.senni.count)
+		quest3.update(latestSenniQuest.name!)
+		quest3Progress.update(senniProgress * 100)
+		
+		// Usul Quest Line
+		let usulProgress = CGFloat(quests.usulQuestId) / CGFloat(quests.usul.count)
+		quest4.update(latestUsulQuest.name!)
+		quest4Progress.update(usulProgress * 100)
 	}
 	
 	func panelUpdate()

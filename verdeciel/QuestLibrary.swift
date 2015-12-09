@@ -12,6 +12,10 @@ class QuestLibrary
 	var tutorialQuestId:Int = 0
 	var falvet:Array<Quest> = []
 	var falvetQuestId:Int = 0
+	var senni:Array<Quest> = []
+	var senniQuestId:Int = 0
+	var usul:Array<Quest> = []
+	var usulQuestId:Int = 0
 	
 	init()
 	{
@@ -25,16 +29,8 @@ class QuestLibrary
 	
 	func _tutorial()
 	{
-		_tutorialPart1()
-
-		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
-	}
-	
-	func _tutorialPart1()
-	{
 		tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.isThrusterPowered() == true }, result: { thruster.install() }) )
-		tutorial.append( Quest(name:"Press undock on thruster", predicate:{ capsule.dock == nil }, result: { }) )
+		tutorial.append( Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { }) )
 		tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { mission.install() }) )
 		tutorial.append( Quest(name:"Wait for arrival", predicate:{ universe.loiqe_landing.isKnown == true }, result: { cargo.install() }) )
 		tutorial.append( Quest(name:"Route materia to cargo", predicate:{ cargo.contains(items.materia) }, result: { console.install() }) )
@@ -50,29 +46,27 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
 		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
 		tutorial.append( Quest(name:"Route Portal to capsule", predicate:{ pilot.port.origin != nil && pilot.port.origin.event == universe.valen_portal && thruster.port.origin != nil && thruster.port.origin.event.type == eventTypes.drive }, result: { }) )
-		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { self.endDemo() }) )
+		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { }) )
+		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
 	}
-	
-	func endDemo()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(10)
-		
-		capsule.opacity = 0
-		
-		SCNTransaction.setCompletionBlock({
-			ui.addWarning("end of igf demo")
-		})
-		
-		SCNTransaction.commit()
-	}
-	
-	// MARK: Tutorial -
 	
 	func _falvet()
 	{
-		falvet.append( Quest(name:"--", predicate:{ capsule.dock != nil }, result: { }) )
+		falvet.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
 		falvet.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+	}
+	
+	func _senni()
+	{
+		senni.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
+		senni.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+	}
+	
+	func _usul()
+	{
+		usul.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
+		usul.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
 	}
 	
 	func update()
