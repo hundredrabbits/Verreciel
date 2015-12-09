@@ -114,6 +114,10 @@ class PanelMission : Panel
 		let usulProgress = CGFloat(quests.usulQuestId) / CGFloat(quests.usul.count)
 		quest4.update(latestUsulQuest.name!)
 		quest4Progress.update(usulProgress * 100)
+		
+		if quests.falvetQuestId == 0 { quest2.update(grey) } else{ quest2.update(white) }
+		if quests.senniQuestId == 0 { quest3.update(grey) } else{ quest3.update(white) }
+		if quests.usulQuestId == 0 { quest4.update(grey) } else{ quest4.update(white) }
 	}
 	
 	func panelUpdate()
@@ -133,6 +137,7 @@ class PanelMission : Panel
 	
 	override func bang()
 	{
+		
 	}
 	
 	// MARK: Custom -

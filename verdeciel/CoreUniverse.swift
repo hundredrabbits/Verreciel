@@ -138,9 +138,7 @@ class CoreUniverse : SCNNode
 	// MARK: Misc -
 	
 	func connectPortals()
-	{
-		loiqe_portal.isUnlocked = true
-		
+	{		
 		usul_portal.addPortals(loiqe_portal, left: senni_portal)
 		senni_portal.addPortals(usul_portal, left: valen_portal)
 		valen_portal.addPortals(senni_portal, left: loiqe_portal)

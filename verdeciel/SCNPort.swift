@@ -145,6 +145,7 @@ class SCNPort : SCNNode
 	func disable()
 	{
 		isEnabled = false
+		disconnect()
 		trigger.disable()
 	}
 	

@@ -67,26 +67,25 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 
-		startingState()
+		debugState()
 	}
 	
 	func startingState()
 	{
-		mission.install()
 	}
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_spawn.at
-//		universe.loiqe_portal.isKnown = true
+		capsule.at = universe.loiqe_portal.at
+		universe.loiqe_portal.isKnown = true
 		
-		radar.install()
-		pilot.install()
-		
-		cargo.install()
-		console.install()
-		mission.install()
-		thruster.install()
+//		radar.install()
+//		pilot.install()
+//		
+//		cargo.install()
+//		console.install()
+//		mission.install()
+//		thruster.install()
 		
 		quests.tutorial[0].complete()
 		quests.tutorial[1].complete()
@@ -104,13 +103,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.tutorial[13].complete()
 		quests.tutorial[14].complete()
 		
-		cargo.port.event.content.append(items.valenPortalFragment1)
-		cargo.port.event.content.append(items.valenPortalFragment2)
-		cargo.port.event.content.append(items.waste)
 		cargo.port.event.content.append(items.valenPortalKey)
-		universe.valen_portal.isUnlocked = true
 		
 		battery.cellPort1.connect(battery.thrusterPort)
+		cargo.port.connect(console.port)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

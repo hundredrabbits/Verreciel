@@ -24,7 +24,6 @@ class LocationPortal : Location
 	var rightName:String!
 	var leftName:String!
 	
-	var isUnlocked:Bool = false
 	var key:Event!
 	
 	init(name:String,at: CGPoint, key: Event!, rightName:String, leftName:String)
@@ -147,16 +146,14 @@ class LocationPortal : Location
 	override func listen(event: Event)
 	{
 		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
-			left.isUnlocked = true
-			leftKeyPort.addEvent(leftKeyPort.syphon())
-			cargo.bang()
+//			leftKeyPort.addEvent(leftKeyPort.syphon())
+//			cargo.bang()
 			mesh.replace(structures.portal(color:cyan))
 		}
 		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
-			right.isUnlocked = true
-			rightKeyPort.addEvent(rightKeyPort.syphon())
-			rightKeyPort.disable()
-			cargo.bang()
+//			rightKeyPort.addEvent(rightKeyPort.syphon())
+//			rightKeyPort.disable()
+//			cargo.bang()
 			mesh.replace(structures.portal(color:cyan))
 		}
 		update()
@@ -164,15 +161,14 @@ class LocationPortal : Location
 	
 	override func onDock()
 	{
-		if right.isUnlocked == true || left.isUnlocked == true {
-			mesh.replace(structures.portal(color:cyan))
-		}
+//		if right.isUnlocked == true || left.isUnlocked == true {
+//			mesh.replace(structures.portal(color:cyan))
+//		}
 	}
 	
 	override func update()
 	{
-		if left.isUnlocked == true {
-			leftKeyPort.disable()
+		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
 			leftPilotPort.enable()
 			leftThrusterPort.enable()
 			leftKeyLabel.updateColor(cyan)
@@ -180,7 +176,6 @@ class LocationPortal : Location
 			leftThrusterLabel.updateColor(white)
 		}
 		else{
-			leftKeyPort.enable()
 			leftPilotPort.disable()
 			leftThrusterPort.disable()
 			leftKeyLabel.updateColor(red)
@@ -188,8 +183,8 @@ class LocationPortal : Location
 			leftThrusterLabel.updateColor(grey)
 		}
 		
-		if right.isUnlocked == true {
-			rightKeyPort.disable()
+		
+		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
 			rightPilotPort.enable()
 			rightThrusterPort.enable()
 			rightKeyLabel.updateColor(cyan)
@@ -197,7 +192,6 @@ class LocationPortal : Location
 			rightThrusterLabel.updateColor(white)
 		}
 		else{
-			rightKeyPort.enable()
 			rightPilotPort.disable()
 			rightThrusterPort.disable()
 			rightKeyLabel.updateColor(red)
@@ -245,9 +239,9 @@ class LocationPortal : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		if right.isUnlocked == true || left.isUnlocked == true {
-			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
-		}
+//		if right.isUnlocked == true || left.isUnlocked == true {
+//			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+//		}
 	}
 	
 	// MARK: Defaults -

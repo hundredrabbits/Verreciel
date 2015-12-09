@@ -73,7 +73,7 @@ class CoreCapsule: SCNNode
 		return closestLocation
 	}
 	
-	func closestKnownLocation() -> Location
+	func closestKnownLocation() -> Location!
 	{
 		var closestLocation:Location!
 		for location in universe.childNodes {

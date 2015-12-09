@@ -21,6 +21,8 @@ class QuestLibrary
 	{
 		_tutorial()
 		_falvet()
+		_senni()
+		_usul()
 		
 		ui.addMessage(tutorial.first!.name)
 	}
@@ -44,29 +46,36 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
-		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
-		tutorial.append( Quest(name:"Route Portal to capsule", predicate:{ pilot.port.origin != nil && pilot.port.origin.event == universe.valen_portal && thruster.port.origin != nil && thruster.port.origin.event.type == eventTypes.drive }, result: { }) )
-		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { }) )
-		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Approach falvet", predicate:{ universe.falvet_toUsul.isKnown == true }, result: { }) )
+//		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
+//		tutorial.append( Quest(name:"Route portal to thruster", predicate:{ pilot.port.origin != nil && pilot.port.origin.event == universe.valen_portal && thruster.port.origin != nil && thruster.port.origin.event.type == eventTypes.drive }, result: { }) )
+//		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { }) )
+//		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
+		
+		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
 	func _falvet()
 	{
 		falvet.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
 		falvet.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+		
+		falvet.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
 	func _senni()
 	{
 		senni.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
 		senni.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+		
+		senni.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
 	func _usul()
 	{
 		usul.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
 		usul.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+		
+		usul.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
 	func update()
