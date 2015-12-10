@@ -71,7 +71,7 @@ class PanelMission : Panel
 		port.input = eventTypes.item
 		port.output = eventTypes.unknown
 		
-		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1)))
+		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1),host:self))
 		
 		locationPanel.opacity = 0
 	}

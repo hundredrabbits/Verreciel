@@ -11,12 +11,14 @@ class SCNHandle : SCNNode
 	var destination:SCNVector3!
 	var selectionLine:SCNLine!
 	var trigger:SCNTrigger!
+	var host:Panel!
 	
 	var isEnabled:Bool = true
 	
-	init(destination:SCNVector3 = SCNVector3())
+	init(destination:SCNVector3 = SCNVector3(), host:Panel)
 	{
 		self.destination = destination
+		self.host = host
 		
 		super.init()
 		
@@ -61,18 +63,7 @@ class SCNHandle : SCNNode
 	
 	override func touch(id:Int = 0)
 	{
-		if player.handle != nil { player.handle.enable() }
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2.5)
-		player.position = destination
-		ui.position = destination
-		SCNTransaction.commit()
-		
-		player.handle = self
-		player.handle.disable()
-		
-		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: player, selector: Selector("center"), userInfo: nil, repeats: false)
+		player.holdHandle(self)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

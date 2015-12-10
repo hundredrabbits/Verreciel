@@ -76,7 +76,7 @@ class PanelConsole : Panel
 		port.input = eventTypes.generic
 		port.output = eventTypes.unknown
 		
-		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0)))
+		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
 	
 	override func start()

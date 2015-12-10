@@ -88,7 +88,7 @@ class PanelRadar : Panel
 		
 		footer.addChildNode(mapPort)
 		
-		handle = SCNHandle(destination: SCNVector3(1,0,0))
+		handle = SCNHandle(destination: SCNVector3(1,0,0),host:self)
 		footer.addChildNode(handle)
 	}
 	

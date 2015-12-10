@@ -15,7 +15,7 @@ class CoreUI: SCNNode
 	var displayRight:SCNNode!
 	
 	var leftHandLabel:SCNLabel!
-	var displayMagic:SCNLabel!
+	var rightHandLabel:SCNLabel!
 	
 	var messageLabel:SCNLabel!
 	var passiveLabel:SCNLabel!
@@ -77,9 +77,9 @@ class CoreUI: SCNNode
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
 		displayRight.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: -0.01, y: -1.275, z: 0), color: grey))
 		
-		displayMagic = SCNLabel(text: "0MP", scale: textSize, align: alignment.right, color:white)
-		displayMagic.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
-		displayRight.addChildNode(displayMagic)
+		rightHandLabel = SCNLabel(text: "--", scale: textSize, align: alignment.right, color:white)
+		rightHandLabel.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
+		displayRight.addChildNode(rightHandLabel)
 		
 		displayRight.eulerAngles.y = Float(degToRad(-10))
 		

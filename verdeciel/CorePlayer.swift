@@ -24,10 +24,7 @@ class CorePlayer : SCNNode
 	var magic:Int
 	
 	var port:SCNPort!
-	var activePort:SCNPort!
 	var event:Event!
-	var handle:SCNHandle!
-	var handleTimer:NSTimer!
 	
 	var trigger:SCNTrigger!
 	var triggerLabel:SCNLabel!
@@ -170,10 +167,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.setCompletionBlock({ player.isLocked = false })
 		SCNTransaction.commit()
 		
-		if handle != nil {
-			handle.enable()
-			handle = nil
-		}
+		releaseHandle()
 	}
 	
 	override func listen(event: Event)
@@ -205,49 +199,85 @@ class CorePlayer : SCNNode
 		isConnectedToRadar = false
 	}
 	
-	// MARK: Handles -
+	// MARK: Left Hand -
 	
-	func center()
-	{
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2.5)
-		player.position = SCNVector3(0,0,0)
-		ui.position = SCNVector3(0,0,0)
-		SCNTransaction.commit()
-		
-		if player.handle != nil {
-			player.handle.enable()
-			player.handle = nil
-		}
-	}
-	
-	// MARK: Hands -
+	var activePort:SCNPort!
 	
 	func holdPort(port:SCNPort)
 	{
 		ui.leftHandLabel.update("\(port.host.name!)", color: white)
+		
 		activePort = port
 		port.activate()
 	}
 	
 	func connectPorts(from:SCNPort,to:SCNPort)
 	{
+		ui.leftHandLabel.update("--", color: grey)
+		
 		activePort = nil
 		from.connect(to)
 		from.desactivate()
 		to.desactivate()
 		from.update()
 		to.update()
-		ui.leftHandLabel.update("--", color: grey)
 	}
 	
 	func releasePort()
 	{
 		ui.leftHandLabel.update("--", color: grey)
+		
 		activePort.desactivate()
 		activePort.disconnect()
 		activePort = nil
 	}
+	
+	// MARK: Right Hand -
+
+	var activeHandle:SCNHandle!
+	var handleTimer:NSTimer!
+	
+	func holdHandle(handle:SCNHandle)
+	{
+		releaseHandle()
+		
+		ui.rightHandLabel.update(handle.host.name!, color: white)
+		
+		activeHandle = handle
+		activeHandle.disable()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		player.position = activeHandle.destination
+		ui.position = activeHandle.destination
+		SCNTransaction.commit()
+	}
+	
+	func releaseHandle()
+	{
+		ui.rightHandLabel.update("--", color: grey)
+		
+		if activeHandle == nil { return }
+		activeHandle.enable()
+		activeHandle = nil
+		
+		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "releaseHandleAuto", userInfo: nil, repeats: false)
+	}
+	
+	func releaseHandleAuto()
+	{
+		ui.rightHandLabel.update("--", color: grey)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2.5)
+		player.position = SCNVector3(0,0,0)
+		ui.position = SCNVector3(0,0,0)
+		SCNTransaction.commit()
+		
+		releaseHandle()
+	}
+	
+	// MARK: Default -
 	
 	required init(coder aDecoder: NSCoder)
 	{
