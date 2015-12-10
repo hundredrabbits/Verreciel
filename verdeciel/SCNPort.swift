@@ -66,10 +66,22 @@ class SCNPort : SCNNode
 		sprite_output.addChildNode(SCNLine(nodeA: SCNVector3(x: -radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius, z: 0),color:white))
 		addChildNode(sprite_output)
 	}
+	
+	// MARK: Touch -
 
 	override func touch(id:Int = 0)
 	{
-		player.activatePort(self)
+		if isEnabled == false { return }
+		
+		if player.activePort == nil {
+			player.holdPort(self)
+		}
+		else if player.activePort == self {
+			player.releasePort()
+		}
+		else if player.activePort != self {
+			player.connectPorts(player.activePort, to:self)
+		}		
 	}
 	
 	override func fixedUpdate()

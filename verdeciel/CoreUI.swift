@@ -14,7 +14,7 @@ class CoreUI: SCNNode
 	var displayLeft:SCNNode!
 	var displayRight:SCNNode!
 	
-	var displayHealth:SCNLabel!
+	var leftHandLabel:SCNLabel!
 	var displayMagic:SCNLabel!
 	
 	var messageLabel:SCNLabel!
@@ -54,9 +54,9 @@ class CoreUI: SCNNode
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.2, y: -1.3, z: 0), nodeB: SCNVector3(x: 0, y: -1.3, z: 0), color: grey))
 		displayLeft.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -1.3, z: 0), nodeB: SCNVector3(x: 0.01, y: -1.275, z: 0), color: grey))
 		
-		displayHealth = SCNLabel(text: "99HP", scale: textSize, align: alignment.left, color:white)
-		displayHealth.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
-		displayLeft.addChildNode(displayHealth)
+		leftHandLabel = SCNLabel(text: "--", scale: textSize, align: alignment.left, color:grey)
+		leftHandLabel.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
+		displayLeft.addChildNode(leftHandLabel)
 		
 		messageLabel = SCNLabel(text: "--", scale: textSize, align: alignment.center, color: white)
 		messageLabel.position = SCNVector3(0,1.35,visorDepth)

@@ -86,32 +86,6 @@ class CorePlayer : SCNNode
 		self.event = event
 	}
 	
-	func activatePort(port:SCNPort)
-	{
-		if port.isEnabled == false { return }
-		
-		// Select origin
-		if activePort == nil {
-			activePort = port
-			port.activate()
-			return
-		}
-		
-		// Remove origin
-		if activePort == port {
-			port.desactivate()
-			port.disconnect()
-			activePort = nil
-			return
-		}
-		
-		// Connect
-		activePort.connect(port)
-		port.update()
-		activePort.update()
-		activePort = nil
-	}
-	
 	func message(text:String)
 	{
 		messageLabel.update(text)
@@ -245,6 +219,34 @@ class CorePlayer : SCNNode
 			player.handle.enable()
 			player.handle = nil
 		}
+	}
+	
+	// MARK: Hands -
+	
+	func holdPort(port:SCNPort)
+	{
+		ui.leftHandLabel.update("\(port.host.name!)", color: white)
+		activePort = port
+		port.activate()
+	}
+	
+	func connectPorts(from:SCNPort,to:SCNPort)
+	{
+		activePort = nil
+		from.connect(to)
+		from.desactivate()
+		to.desactivate()
+		from.update()
+		to.update()
+		ui.leftHandLabel.update("--", color: grey)
+	}
+	
+	func releasePort()
+	{
+		ui.leftHandLabel.update("--", color: grey)
+		activePort.desactivate()
+		activePort.disconnect()
+		activePort = nil
 	}
 	
 	required init(coder aDecoder: NSCoder)
