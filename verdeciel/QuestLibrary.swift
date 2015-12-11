@@ -39,6 +39,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )
 		tutorial.append( Quest(name:"Undock from Landing", predicate:{ capsule.dock == nil }, result: { radar.install() }) )
 		tutorial.append( Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: {  }) )
+		// Create Portal Key
 		tutorial.append( Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { }) )
 		tutorial.append( Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
@@ -46,11 +47,12 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
-//		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.valen_portal.isUnlocked == true }, result: { progress.install() }) )
-//		tutorial.append( Quest(name:"Route portal to thruster", predicate:{ pilot.port.origin != nil && pilot.port.origin.event == universe.valen_portal && thruster.port.origin != nil && thruster.port.origin.event.type == eventTypes.drive }, result: { }) )
-//		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isDocked == false }, result: { }) )
-//		tutorial.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet_toLoiqe.isKnown == true }, result: { }) )
-		
+		// Reach Valen
+		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }) )
+		tutorial.append( Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }) )
+		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { progress.install() }) )
+		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
+		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
@@ -89,6 +91,10 @@ class QuestLibrary
 		}
 		if falvet[falvetQuestId].isCompleted == true {
 			falvetQuestId += 1
+		}
+		
+		if pilot.port.origin != nil {
+			print(pilot.port.origin.event)
 		}
 	}
 }

@@ -15,7 +15,7 @@ class CoreCapsule: SCNNode
 	var at:CGPoint = universe.loiqe_spawn.at
 	
 	var direction:CGFloat! = 1
-	var sector:sectors = sectors.normal
+	var sector:sectors = .normal
 	
 	var isDocked:Bool = false
 	var dock:Location!

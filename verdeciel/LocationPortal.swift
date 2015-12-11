@@ -146,14 +146,9 @@ class LocationPortal : Location
 	override func listen(event: Event)
 	{
 		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
-//			leftKeyPort.addEvent(leftKeyPort.syphon())
-//			cargo.bang()
 			mesh.replace(structures.portal(color:cyan))
 		}
 		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
-//			rightKeyPort.addEvent(rightKeyPort.syphon())
-//			rightKeyPort.disable()
-//			cargo.bang()
 			mesh.replace(structures.portal(color:cyan))
 		}
 		update()
@@ -182,7 +177,6 @@ class LocationPortal : Location
 			leftPilotLabel.updateColor(grey)
 			leftThrusterLabel.updateColor(grey)
 		}
-		
 		
 		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
 			rightPilotPort.enable()

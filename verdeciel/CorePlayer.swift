@@ -251,6 +251,8 @@ class CorePlayer : SCNNode
 		player.position = activeHandle.destination
 		ui.position = activeHandle.destination
 		SCNTransaction.commit()
+		
+		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "releaseHandleAuto", userInfo: nil, repeats: false)
 	}
 	
 	func releaseHandle()
@@ -261,7 +263,7 @@ class CorePlayer : SCNNode
 		activeHandle.enable()
 		activeHandle = nil
 		
-		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "releaseHandleAuto", userInfo: nil, repeats: false)
+		if player.handleTimer != nil { player.handleTimer.invalidate() }
 	}
 	
 	func releaseHandleAuto()
@@ -274,7 +276,8 @@ class CorePlayer : SCNNode
 		ui.position = SCNVector3(0,0,0)
 		SCNTransaction.commit()
 		
-		releaseHandle()
+		activeHandle.enable()
+		activeHandle = nil
 	}
 	
 	// MARK: Default -
