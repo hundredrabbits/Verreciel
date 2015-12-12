@@ -31,6 +31,6 @@ class MonitorExploration : Monitor
 	
 	override func onInstallationBegin()
 	{
-		player.lookAt(deg: -180)
+//		player.lookAt(deg: -180)
 	}
 }

@@ -150,7 +150,7 @@ class PanelThruster : Panel
 		if capsule.isWarping == true {
 			modeWarping()
 		}
-		else if port.isReceiving(items.warpDrive) == true {
+		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingType(eventTypes.location) == true {
 			modeWaitingForWarp()
 			canWarp = true
 		}
@@ -176,13 +176,13 @@ class PanelThruster : Panel
 	func modeWarping()
 	{
 		label.updateColor(cyan)
-		details.update("warping", color: red)
-		trigger.disable()
+		details.update("warping..", color: grey)
+		trigger.disable() // todo
 		
 		accelerate.disable()
 		decelerate.disable()
-		accelerate.updateChildrenColors(grey)
-		decelerate.updateChildrenColors(grey)
+		accelerate.updateChildrenColors(clear)
+		decelerate.updateChildrenColors(clear)
 		
 		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
 		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0

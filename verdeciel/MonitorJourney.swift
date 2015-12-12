@@ -23,6 +23,6 @@ class MonitorJourney : Monitor
 	
 	override func onInstallationBegin()
 	{
-		player.lookAt(deg: -90)
+//		player.lookAt(deg: -90)
 	}
 }

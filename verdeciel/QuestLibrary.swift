@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2015-06-22.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 
@@ -44,14 +45,14 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
 		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: {  }) )
+		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: { progress.install() }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { exploration.install() }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
 		// Reach Valen
 		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }) )
-		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { progress.install() }) )
-		tutorial.append( Quest(name:"Warp valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
+		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }) )
+		tutorial.append( Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
@@ -91,10 +92,6 @@ class QuestLibrary
 		}
 		if falvet[falvetQuestId].isCompleted == true {
 			falvetQuestId += 1
-		}
-		
-		if pilot.port.origin != nil {
-			print(pilot.port.origin.event)
 		}
 	}
 }

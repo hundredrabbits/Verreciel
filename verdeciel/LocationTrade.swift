@@ -17,8 +17,6 @@ class LocationTrade : Location
 	{
 		super.init(name: name, at: at)
 		
-		print("created location")
-		
 		self.at = at
 		self.size = size
 		self.note = ""

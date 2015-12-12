@@ -230,7 +230,7 @@ class SCNPort : SCNNode
 		return syph
 	}
 	
-	func isReceiving(event:Event) -> Bool
+	func isReceiving(event:Event!) -> Bool
 	{
 		if origin != nil && origin.event != nil && origin.event == event { return true }
 		return false

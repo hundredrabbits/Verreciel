@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2015-07-07.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 
@@ -21,6 +22,6 @@ class MonitorProgress : Monitor
 	
 	override func onInstallationBegin()
 	{
-		player.lookAt(deg: -270)
+//		player.lookAt(deg: -270)
 	}
 }

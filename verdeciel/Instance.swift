@@ -20,8 +20,6 @@ class Instance : SCNNode
 		self.addChildNode(mesh)
 		
 		print("> INSTANCE | Begin \(event.name!)")
-
-		self.update()
 	}
 	
 	override func update()

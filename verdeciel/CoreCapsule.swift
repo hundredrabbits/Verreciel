@@ -130,13 +130,17 @@ class CoreCapsule: SCNNode
 	
 	func warpDown()
 	{
+		// todo: Make sure the capsule reaches its destination, unlock controls.
 		thruster.speed = 1
 		if thruster.actualSpeed > 1 { thruster.actualSpeed -= 0.1 }
-		else{
-			isWarping = false
-			warp = nil
-		}
+		else{ warpStop() }
 		space.starTimer += thruster.actualSpeed
+	}
+	
+	func warpStop()
+	{
+		isWarping = false
+		warp = nil
 	}
 
 	// MARK: Docking -

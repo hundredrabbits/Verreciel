@@ -131,7 +131,6 @@ class LocationPortal : Location
 		left.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0), nodeB: SCNVector3(templates.leftMargin + 0.4 + 0.4,0.2,0), color: grey))
 		left.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin,0.6,0), nodeB: SCNVector3(templates.leftMargin + 0.4 + 0.4,0.6,0), color: grey))
 		
-		
 		right.position = SCNVector3(0,0.5,0)
 		left.position = SCNVector3(0,-0.9,0)
 		
@@ -156,14 +155,14 @@ class LocationPortal : Location
 	
 	override func onDock()
 	{
-//		if right.isUnlocked == true || left.isUnlocked == true {
-//			mesh.replace(structures.portal(color:cyan))
-//		}
+		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true || rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
+			mesh.replace(structures.portal(color:cyan))
+		}
 	}
 	
 	override func update()
 	{
-		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
+		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true {
 			leftPilotPort.enable()
 			leftThrusterPort.enable()
 			leftKeyLabel.updateColor(cyan)
@@ -178,7 +177,7 @@ class LocationPortal : Location
 			leftThrusterLabel.updateColor(grey)
 		}
 		
-		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
+		if rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
 			rightPilotPort.enable()
 			rightThrusterPort.enable()
 			rightKeyLabel.updateColor(cyan)
@@ -233,9 +232,9 @@ class LocationPortal : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-//		if right.isUnlocked == true || left.isUnlocked == true {
-//			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
-//		}
+		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true || rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
+			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		}
 	}
 	
 	// MARK: Defaults -
