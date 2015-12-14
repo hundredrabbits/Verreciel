@@ -26,17 +26,15 @@ class Location : Event
 	var isComplete:Bool = false
 	
 	var interface = SCNNode()
+	var locationType:locationTypes = locationTypes.generic
 	
+	// Radar
+	var mesh:SCNNode!
+	var icon = SCNNode()
 	var label = SCNLabel()
-	
 	var trigger = SCNNode()
 	var wire:SCNLine!
 	var connection:Event!
-	
-	var mesh:SCNNode!
-	var icon = SCNNode()
-	
-	var locationType:locationTypes = locationTypes.generic
 	
 	init(name:String = "", at: CGPoint! = nil)
 	{

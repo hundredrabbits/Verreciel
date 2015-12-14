@@ -57,6 +57,15 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
 		tutorial.append( Quest(name:"Reach Valen", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }) )
 		// Start Valen
+		tutorial.append( Quest(name:"Visit the bank", predicate:{ universe.valen_bank.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Collect Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) }, result: { }) )
+		tutorial.append( Quest(name:"Collect Waste", predicate:{ cargo.contains(items.waste) }, result: { hatch.install() }) )
+		tutorial.append( Quest(name:"Route Waste to hatch", predicate:{ !cargo.contains(items.waste) }, result: { }) )
+		tutorial.append( Quest(name:"Reach capsule", predicate:{ universe.valen_capsule.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Collect record I", predicate:{ cargo.contains(items.record_i) }, result: { radio.install() }) )
+		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record_i) }, result: { }) )
+		tutorial.append( Quest(name:"Collect cell", predicate:{ cargo.contains(items.cell2) }, result: { }) )
+		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { battery.installShield() }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
@@ -98,5 +107,16 @@ class QuestLibrary
 		if falvet[falvetQuestId].isCompleted == true {
 			falvetQuestId += 1
 		}
+	}
+	
+	func skipTo(id:Int)
+	{
+		tutorialQuestId = 0
+		while tutorialQuestId < id {
+			tutorial[tutorialQuestId].complete()
+			tutorialQuestId += 1
+		}
+		ui.addMessage(tutorial[tutorialQuestId].name)
+		update()
 	}
 }

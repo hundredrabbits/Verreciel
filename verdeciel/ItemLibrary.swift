@@ -39,6 +39,8 @@ class ItemLibrary
 	// Misc
 	let waste = Event(newName: "waste", size: 3, type: eventTypes.item, details: itemTypes.waste, note:"useless junk")
 	
+	let loiqePortalKey = Event(newName: "loiqe key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	
 	let valenPortalKey = Event(newName: "valen key", size: 1, type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
 	let valenPortalFragment1 = Event(newName: "Key fragment 1", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
 	let valenPortalFragment2 = Event(newName: "Key fragment 2", size: 1, type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)

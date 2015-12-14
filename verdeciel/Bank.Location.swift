@@ -14,7 +14,7 @@ class LocationBank : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.none()
-		self.icon.replace(icons.spawn())
+		self.icon.replace(icons.bank())
 		self.isComplete = true
 	}
 	
@@ -26,13 +26,6 @@ class LocationBank : Location
 	override func listen(event: Event)
 	{
 		
-	}
-	
-	// MARK: Triggers -
-	
-	override func onSight()
-	{
-		icon.replace(icons.spawn())
 	}
 	
 	// MARK: Defaults -

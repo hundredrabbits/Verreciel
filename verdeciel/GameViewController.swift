@@ -52,7 +52,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		scene.rootNode.addChildNode(ui)
 		
 		time = CoreTime()
-		quests = QuestLibrary()
 	}
 	
 	func start()
@@ -77,31 +76,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	func debugState()
 	{
 		capsule.at = universe.valen_portal.at
-		universe.loiqe_portal.isKnown = true
-		
-//		radar.install()
-//		pilot.install()
-//		
-//		cargo.install()
-//		console.install()
-//		mission.install()
-//		thruster.install()
-		
-		quests.tutorial[0].complete()
-		quests.tutorial[1].complete()
-		quests.tutorial[2].complete()
-		quests.tutorial[3].complete()
-		quests.tutorial[4].complete()
-		quests.tutorial[5].complete()
-		quests.tutorial[6].complete()
-		quests.tutorial[7].complete()
-		quests.tutorial[8].complete()
-		quests.tutorial[9].complete()
-		quests.tutorial[10].complete()
-		quests.tutorial[11].complete()
-		quests.tutorial[12].complete()
-		quests.tutorial[13].complete()
-		quests.tutorial[14].complete()
+		capsule.dock = universe.valen_portal
+		capsule.dock.isKnown = true
+
+		quests.skipTo(19)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
 		

@@ -24,6 +24,19 @@ class IconsLibrary
 		return spriteNode
 	}
 	
+	func bank(color:UIColor = white,size:Float = 0.1) -> SCNNode
+	{
+		let spriteNode = SCNNode()
+		
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
+		
+		return spriteNode
+	}
+	
 	func spawn(color:UIColor = grey,size:Float = 0.1) -> SCNNode
 	{
 		let spriteNode = SCNNode()

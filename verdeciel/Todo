@@ -4,23 +4,18 @@
 
 - Interface sounds
 - Add Signal converter panel?
-- Add Audio mute panel
 - Add harvest location 4 in falvet
-- Add Bank location
 - Shut off the suns
 - Add ship doodads
 - Add space doodads
 - Unlock map port
-- Unlock hatch panel
-- Begin Valen quest
 - Make harvest quest
 - Telemetrists!?
-- Install cloak quest
-- Second battery quest
 - Save / Load Mechanics
 - Floating feel
 - Docking breaks if going away
 - Merge keys to make master portal key
+- Scanner
 
 > Playthrough issues
 
@@ -29,14 +24,6 @@
 > Warping
 
 > Valen Flow
-
-- Find Loiqe Portal key
-- Deposit something at the bank
-- Find audio
-- Install radio
-- Unlock map port
-- Second battery
-- Cloak
 
 > Universe
 
@@ -50,7 +37,6 @@
 > Event Types
 
 	> Items
-	- Add repair kits
 	- Add maps
 	- Add ammo
 	- Portal Keys

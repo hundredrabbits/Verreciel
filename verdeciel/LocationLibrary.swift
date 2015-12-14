@@ -123,7 +123,7 @@ class Valen
 	
 	func bank() -> LocationBank
 	{
-		let location = LocationBank(name:"Bank Of Valen",system:.valen)
+		let location = LocationBank(name:"Bank",system:.valen)
 		location.at = CGPoint(x: offset.x, y: offset.y + 1)
 		return location
 	}
