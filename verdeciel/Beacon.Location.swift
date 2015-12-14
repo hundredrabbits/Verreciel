@@ -7,7 +7,7 @@ class LocationBeacon : Location
 {
 	var message:String = ""
 	
-	init(name:String,at: CGPoint = CGPoint(), system:Systems, message:String)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String)
 	{
 		super.init(name:name, at:at)
 		
@@ -17,7 +17,6 @@ class LocationBeacon : Location
 		self.size = 1
 		self.note = ""
 		self.message = message
-		self.interaction = "> message"
 		self.mesh = structures.beacon()
 		icon.replace(icons.placeholder())
 	}

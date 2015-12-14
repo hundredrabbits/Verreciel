@@ -32,8 +32,6 @@ class LocationTrade : Location
 		givePort.event = give
 		wantLabel = SCNLabel(text: wantPort.requirement.name!, color:white)
 		giveLabel = SCNLabel(text: givePort.event.name!, color:grey)
-		
-		self.interaction = "trading"
 	}
 	
 	// MARK: Panels -

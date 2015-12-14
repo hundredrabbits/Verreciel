@@ -62,14 +62,14 @@ class CoreUniverse : SCNNode
 	// MARK: Valen -
 	
 	var valen = locations.valen.star()
-	var valen_city = locations.valen.city()
+	var valen_bank = locations.valen.bank()
 	var valen_telescope = locations.valen.telescope()
 	var valen_portal = locations.valen.portal()
 	
 	func addValen()
 	{
 		addChildNode(valen)
-		addChildNode(valen_city)
+		addChildNode(valen_bank)
 		addChildNode(valen_telescope)
 		addChildNode(valen_portal)
 	}
@@ -159,7 +159,7 @@ class CoreUniverse : SCNNode
 		falvet_toSenni.connect(senni_portal)
 		
 		valen_telescope.connect(venic_waypoint)
-		valen_city.connect(valen_portal)
+		valen_bank.connect(valen_portal)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)

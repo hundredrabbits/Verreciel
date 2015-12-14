@@ -6,7 +6,6 @@ import Foundation
 class Location : Event
 {
 	var system:Systems!
-	var interaction = "connected"
 	
 	var angle:CGFloat!
 	var align:CGFloat!

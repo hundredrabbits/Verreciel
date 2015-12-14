@@ -76,7 +76,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.at = universe.loiqe_portal.at
+		capsule.at = universe.valen_portal.at
 		universe.loiqe_portal.isKnown = true
 		
 //		radar.install()

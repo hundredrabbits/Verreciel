@@ -13,7 +13,7 @@ class LocationHoradric : Location
 	var outPort:SCNPort!
 	var outLabel:SCNLabel!
 	
-	init(name:String = "", system:Systems,at: CGPoint = CGPoint())
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint())
 	{
 		super.init(name: name, at: at)
 		
@@ -24,8 +24,6 @@ class LocationHoradric : Location
 		self.note = ""
 		self.mesh = structures.horadric()
 		icon.replace(icons.unseen())
-		
-		self.interaction = "trading"
 	}
 	
 	override func panel() -> SCNNode

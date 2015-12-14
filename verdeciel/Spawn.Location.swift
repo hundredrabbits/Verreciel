@@ -15,7 +15,6 @@ class LocationSpawn : Location
 		self.size = size
 		self.note = ""
 		self.mesh = structures.none()
-		self.interaction = "respawning"
 		self.icon.replace(icons.spawn())
 		self.isComplete = true
 	}

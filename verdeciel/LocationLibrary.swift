@@ -45,7 +45,7 @@ class Loiqe
 	
 	func landing() -> LocationCargo
 	{
-		return LocationCargo(name: "Loiqe Landings", at:CGPoint(x: offset.x, y: offset.y - 2),system:.loiqe, item: items.materia)
+		return LocationCargo(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), item: items.materia)
 	}
 	
 	func city() -> LocationTrade
@@ -65,7 +65,7 @@ class Loiqe
 	
 	func cargo() -> LocationCargo
 	{
-		return LocationCargo(name: "cargo", at: CGPoint(x: offset.x - 2, y: offset.y),system:.loiqe, item: items.valenPortalFragment2)
+		return LocationCargo(name: "cargo", system:.loiqe, at: CGPoint(x: offset.x - 2, y: offset.y), item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -121,9 +121,9 @@ class Valen
 		return location
 	}
 	
-	func city() -> LocationStation
+	func bank() -> LocationBank
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.valen)
+		let location = LocationBank(name:"Bank Of Valen",system:.valen)
 		location.at = CGPoint(x: offset.x, y: offset.y + 1)
 		return location
 	}
