@@ -15,11 +15,12 @@ class LocationCargo : Location
 	
 	var locationLabel:SCNLabel!
 	
-	init(name:String,at: CGPoint = CGPoint(), item:Event!, item2:Event! = nil, isRadioQuest:Bool = false)
+	init(name:String,at: CGPoint = CGPoint(), system:Systems, item:Event!, item2:Event! = nil, isRadioQuest:Bool = false)
 	{
 		super.init(name:name, at:at)
 		
 		self.name = name
+		self.system = system
 		self.at = at
 		self.size = 1
 		self.note = ""

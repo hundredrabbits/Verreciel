@@ -13,10 +13,12 @@ class LocationHoradric : Location
 	var outPort:SCNPort!
 	var outLabel:SCNLabel!
 	
-	init(name:String = "",at: CGPoint = CGPoint())
+	init(name:String = "", system:Systems,at: CGPoint = CGPoint())
 	{
 		super.init(name: name, at: at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = size
 		self.note = ""

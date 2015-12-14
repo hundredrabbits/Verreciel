@@ -5,10 +5,12 @@ import Foundation
 
 class LocationStar : Location
 {
-	init(name:String,at: CGPoint = CGPoint(), color:UIColor = red)
+	init(name:String,at: CGPoint = CGPoint(), system:Systems, color:UIColor = red)
 	{
 		super.init(name:name, at:at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = 1
 		self.note = ""

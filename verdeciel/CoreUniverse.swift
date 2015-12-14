@@ -172,6 +172,17 @@ class CoreUniverse : SCNNode
 		senni_portal.connect(senni_portal)
 	}
 	
+	func unlock(system:Systems)
+	{
+		print("! SYSTEM(Unlock) \(system)")
+		for location in self.childNodes {
+			let location = location as! Location
+			if location.system != system { continue }
+			print("  > \(location.name!)")
+			location.isAccessible = true
+		}
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

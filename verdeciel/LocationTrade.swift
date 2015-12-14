@@ -13,10 +13,12 @@ class LocationTrade : Location
 	
 	var unlocked:Bool = false
 	
-	init(name:String = "",at: CGPoint = CGPoint(), want:Event,give:Event)
+	init(name:String = "",at: CGPoint = CGPoint(), system:Systems, want:Event,give:Event)
 	{
 		super.init(name: name, at: at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = size
 		self.note = ""

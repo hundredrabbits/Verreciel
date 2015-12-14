@@ -5,10 +5,12 @@ import Foundation
 
 class LocationWaypoint : Location
 {
-	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0))
+	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0), system:Systems)
 	{
 		super.init(name:name, at:at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = size
 		self.note = ""

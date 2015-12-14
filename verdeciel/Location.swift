@@ -5,7 +5,7 @@ import Foundation
 
 class Location : Event
 {
-	var service = services.none
+	var system:Systems!
 	var interaction = "connected"
 	
 	var angle:CGFloat!
@@ -18,6 +18,7 @@ class Location : Event
 	var inSight:Bool = false
 	
 	var isRadioQuest:Bool = false
+	var isAccessible:Bool = false
 	
 	var isTargetted:Bool = false
 	var isKnown:Bool = false
@@ -210,6 +211,7 @@ class Location : Event
 	
 	override func touch(id:Int)
 	{
+		if isAccessible == false { print("Unaccessible") ; return }
 		if isSeen == false { print("Unseen..") ; return }
 		
 		if radar.port.event == nil {

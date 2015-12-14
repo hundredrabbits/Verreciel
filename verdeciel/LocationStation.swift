@@ -5,10 +5,12 @@ import Foundation
 
 class LocationStation : Location
 {
-	init(name:String = "",at: CGPoint = CGPoint(), size: Float = 1)
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), size: Float = 1)
 	{
 		super.init(name:name, at:at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = size
 		self.note = ""

@@ -26,10 +26,12 @@ class LocationPortal : Location
 	
 	var key:Event!
 	
-	init(name:String,at: CGPoint, key: Event!, rightName:String, leftName:String)
+	init(name:String, system:Systems, at: CGPoint, key: Event!, rightName:String, leftName:String)
 	{
 		super.init(name:name, at:at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = 1
 		self.note = ""

@@ -74,6 +74,16 @@ enum sectors
 	case void
 }
 
+enum Systems
+{
+	case loiqe
+	case valen
+	case falvet
+	case senni
+	case usul
+	case venic
+}
+
 enum eventTypes
 {
 	case none

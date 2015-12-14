@@ -26,12 +26,14 @@ class QuestLibrary
 		_usul()
 		
 		ui.addMessage(tutorial.first!.name)
+		universe.unlock(.loiqe)
 	}
 	
 	// MARK: Tutorial -
 	
 	func _tutorial()
 	{
+		// Start Loiqe
 		tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.isThrusterPowered() == true }, result: { thruster.install() }) )
 		tutorial.append( Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { }) )
 		tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { mission.install() }) )
@@ -53,6 +55,9 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
+		tutorial.append( Quest(name:"Reach Valen", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }) )
+		// Start Valen
+		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}

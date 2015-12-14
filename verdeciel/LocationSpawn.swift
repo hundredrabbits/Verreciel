@@ -5,10 +5,12 @@ import Foundation
 
 class LocationSpawn : Location
 {
-	init(name:String = "",at: CGPoint = CGPoint())
+	init(name:String = "",at: CGPoint = CGPoint(), system:Systems)
 	{
 		super.init(name: name, at: at)
 		
+		self.name = name
+		self.system = system
 		self.at = at
 		self.size = size
 		self.note = ""
