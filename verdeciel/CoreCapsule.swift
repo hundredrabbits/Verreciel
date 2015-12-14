@@ -145,8 +145,6 @@ class CoreCapsule: SCNNode
 		warp = nil
 		thruster.trigger.enable()
 	}
-
-	// MARK: Docking -
 	
 	func interfaceSetup()
 	{
@@ -178,6 +176,17 @@ class CoreCapsule: SCNNode
 		progress.eulerAngles.y = mission.eulerAngles.y
 	}
 	
+	// MARK: Docking -
+	
+	func dock(newDock:Location)
+	{
+		print("init dock")
+		dock = newDock
+		thruster.disable()
+		
+		ui.addPassive("Approaching \(dock.name!)")
+	}
+	
 	func docking()
 	{
 		if dock == nil { return }
@@ -206,15 +215,6 @@ class CoreCapsule: SCNNode
 		ui.addPassive("Docked at \(dock.name!)")
 		
 		mission.connectToLocation(dock)
-	}
-	
-	func dock(newDock:Location)
-	{
-		print("init dock")
-		dock = newDock
-		thruster.disable()
-		
-		ui.addPassive("Approaching \(dock.name!)")
 	}
 	
 	func undock()

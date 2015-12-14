@@ -62,10 +62,10 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Collect Waste", predicate:{ cargo.contains(items.waste) }, result: { hatch.install() }) )
 		tutorial.append( Quest(name:"Route Waste to hatch", predicate:{ !cargo.contains(items.waste) }, result: { }) )
 		tutorial.append( Quest(name:"Reach capsule", predicate:{ universe.valen_capsule.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Collect record I", predicate:{ cargo.contains(items.record_i) }, result: { radio.install() }) )
-		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record_i) }, result: { }) )
-		tutorial.append( Quest(name:"Collect cell", predicate:{ cargo.contains(items.cell2) }, result: { }) )
-		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { battery.installShield() }) )
+//		tutorial.append( Quest(name:"Collect record I", predicate:{ cargo.contains(items.record1) }, result: { radio.install() }) )
+//		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record1) }, result: { }) )
+//		tutorial.append( Quest(name:"Collect cell", predicate:{ cargo.contains(items.cell2) }, result: { }) )
+//		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { battery.installShield() }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )

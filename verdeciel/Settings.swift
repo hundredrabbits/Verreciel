@@ -114,6 +114,7 @@ enum itemTypes
 	case part
 	case panel
 	case key
+	case record
 }
 
 enum services

@@ -12,5 +12,21 @@ class SCNPortRedirect : SCNPort
 	{
 		let redirectedHost = console.port.origin.host as! PanelCargo
 		redirectedHost.removeEvent(event)
+		redirectedHost.bang()
+		disable()
+	}
+	
+	override func disable()
+	{
+		isEnabled = false
+		disconnect()
+		trigger.disable()
+	}
+	
+	override func disconnect()
+	{
+		if self.connection != nil { self.connection.origin = nil }
+		self.connection = nil
+		wire.disable()
 	}
 }

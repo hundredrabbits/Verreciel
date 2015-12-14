@@ -82,8 +82,9 @@ class PanelCargo : Panel
 	
 	func removeEvent(target:Event)
 	{
+		let history = port.event.content
 		port.event.content = []
-		for event in port.event.content {
+		for event in history {
 			if event == target { continue }
 			port.event.content.append(event)
 		}
@@ -96,7 +97,7 @@ class PanelCargo : Panel
 	
 	override func update()
 	{
-		print("Update cargo")
+		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold
 		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)

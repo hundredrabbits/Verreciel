@@ -35,12 +35,7 @@ class SCNCommand : SCNNode
 		
 		super.init()
 		
-		if host != nil {
-			port = SCNPortRedirect(host: host)
-		}
-		else{
-			port = SCNPortRedirect(host: self)
-		}
+		port = SCNPortRedirect(host: self)
 		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
 		port.opacity = 0
 		port.event = event
@@ -96,13 +91,6 @@ class SCNCommand : SCNNode
 		else{
 			headLineTop.opacity = 0
 			headLineDown.opacity = 0
-		}
-	}
-	
-	override func update()
-	{
-		if port.event == nil {
-			port.disable()
 		}
 	}
 	

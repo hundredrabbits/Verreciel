@@ -205,7 +205,7 @@ class CorePlayer : SCNNode
 	
 	func holdPort(port:SCNPort)
 	{
-		ui.leftHandLabel.update("\(port.host.name!)", color: white)
+		if port.host != nil && port.host.name != nil { ui.leftHandLabel.update("\(port.host!.name!)", color: white) }	
 		
 		activePort = port
 		port.activate()

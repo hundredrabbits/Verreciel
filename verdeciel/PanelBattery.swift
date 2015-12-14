@@ -122,7 +122,7 @@ class PanelBattery : Panel
 			cellLabel1.update(cellPort1.event.name!, color: white)
 			cellPort1.enable()
 		}
-		else{
+		else if cellPort1.isEnabled == true{
 			cellLabel1.update("--", color: grey)
 			cellPort1.disable()
 		}
@@ -131,7 +131,7 @@ class PanelBattery : Panel
 			cellLabel2.update(cellPort2.event.name!, color: white)
 			cellPort2.enable()
 		}
-		else{
+		else if cellPort2.isEnabled == true{
 			cellLabel2.update("--", color: grey)
 			cellPort2.disable()
 		}
@@ -140,7 +140,7 @@ class PanelBattery : Panel
 			cellLabel3.update(cellPort3.event.name!, color: white)
 			cellPort3.enable()
 		}
-		else{
+		else if cellPort3.isEnabled == true{
 			cellLabel3.update("--", color: grey)
 			cellPort3.disable()
 		}
@@ -220,6 +220,14 @@ class PanelBattery : Panel
 	func isThrusterPowered() -> Bool
 	{
 		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.details == itemTypes.battery { return true }
+		return false
+	}
+	
+	func hasCell(target:Event) -> Bool
+	{
+		if cellPort1.event == target { return true }
+		if cellPort2.event == target { return true }
+		if cellPort3.event == target { return true }
 		return false
 	}
 }

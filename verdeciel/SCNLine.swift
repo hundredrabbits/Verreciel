@@ -35,6 +35,7 @@ class SCNLine : SCNNode
 		line.firstMaterial?.lightingModelName = SCNLightingModelConstant
 		line.firstMaterial?.diffuse.contents = color
 		self.geometry = line
+		opacity = 1
 	}
 	
 	func updateHeight(height:Float)
@@ -46,6 +47,7 @@ class SCNLine : SCNNode
 	func reset()
 	{
 		geometry = nil
+		opacity = 0
 	}
 	
 	func updateColor(color:UIColor)

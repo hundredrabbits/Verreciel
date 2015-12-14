@@ -112,20 +112,17 @@ class SCNPort : SCNNode
 		}
 		
 		// Wire
-		if connection != nil{
-			wire.isActive = true
-			
-			if connection == nil {
-				wire.isEnabled = false
-			}
-			else if event == nil {
-				wire.isActive = false
-			}
-			else if event.type != connection.input && connection.input != eventTypes.generic {
-				wire.isCompatible = false
-			}
-			else {
+		wire.isActive = false
+		if connection != nil {
+			if connection != nil && event != nil {
 				wire.isActive = true
+			}
+		}
+		
+		// Compatibility
+		wire.isCompatible = false
+		if connection != nil {
+			if event.type == connection.input || connection.input == eventTypes.generic {
 				wire.isCompatible = true
 			}
 		}
@@ -182,8 +179,6 @@ class SCNPort : SCNNode
 		if port.origin != nil { print("Port already has input: (\(port.origin))") ; return }
 		if port.connection != nil && port.connection == self { print("Loop") ; return }
 		
-		disconnect()
-		
 		connection = port
 		connection.origin = self
 		
@@ -191,21 +186,19 @@ class SCNPort : SCNNode
 		
 		host.bang()
 		wire.enable()
-	}
-	
-	func hasEvent(type:eventTypes = eventTypes.none) -> Bool
-	{
-		if event == nil { return false }
-		if event.type == eventTypes.none && event != nil { return true }
-		if event.type == type { return true }
-		return false
+		
+		connection.onConnect()
+		self.onConnect()
 	}
 	
 	override func disconnect()
 	{
-		if self.connection == nil { return }
+		if connection == nil { return }
 	
 		let targetOrigin = self.connection.host
+		
+		connection.onDisconnect()
+		self.onDisconnect()
 		
 		self.connection.origin = nil
 		connection.update()
@@ -217,6 +210,14 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
+	func hasEvent(type:eventTypes = eventTypes.none) -> Bool
+	{
+		if event == nil { return false }
+		if event.type == eventTypes.none && event != nil { return true }
+		if event.type == type { return true }
+		return false
+	}
+	
 	func strip()
 	{
 		disconnect()
@@ -225,15 +226,16 @@ class SCNPort : SCNNode
 	
 	func syphon() -> Event
 	{
-		let syph = origin.event
+		let stored_origin = origin
 		
-		print("syphon from : \(origin)")
-		origin.removeEvent()
-		origin.host.update()
-		origin.update()
-		origin.disconnect()
+		print("syphon \(stored_origin)")
 		
-		return syph
+		stored_origin.removeEvent()
+		stored_origin.host.update()
+		stored_origin.update()
+		stored_origin.disconnect()
+		
+		return stored_origin.event
 	}
 	
 	func isReceiving(event:Event!) -> Bool
@@ -251,6 +253,16 @@ class SCNPort : SCNNode
 	override func bang()
 	{
 		print("Warning! Bang on SCNPort")
+	}
+	
+	func onConnect()
+	{
+		print("connected")
+	}
+	
+	func onDisconnect()
+	{
+		print("disconnected")
 	}
 	
 	required init(coder aDecoder: NSCoder)

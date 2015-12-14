@@ -65,6 +65,7 @@ class CoreUniverse : SCNNode
 	var valen_bank = locations.valen.bank()
 	var valen_telescope = locations.valen.telescope()
 	var valen_portal = locations.valen.portal()
+	var valen_capsule = locations.valen.capsule()
 	
 	func addValen()
 	{
@@ -72,6 +73,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_bank)
 		addChildNode(valen_telescope)
 		addChildNode(valen_portal)
+		addChildNode(valen_capsule)
 	}
 	
 	// MARK: Venic -

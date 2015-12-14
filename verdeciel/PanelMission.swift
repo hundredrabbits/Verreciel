@@ -81,7 +81,9 @@ class PanelMission : Panel
 		if capsule.isDocked && capsule.dock.isComplete == false {
 			panelUpdate()
 		}
-		missionUpdate()
+		else{
+			missionUpdate()
+		}
 	}
 	
 	func missionUpdate()
@@ -124,8 +126,8 @@ class PanelMission : Panel
 	{
 		if isInstalled == false { return }
 		
-		locationPanel.update()
 		label.update(capsule.dock.name!)
+		locationPanel.update()
 	}
 	
 	// MARK: Ports -

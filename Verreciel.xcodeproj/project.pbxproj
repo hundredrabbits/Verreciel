@@ -55,6 +55,7 @@
 		57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */; };
 		57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9621BC6C3DB00EA35F6 /* String.swift */; };
 		57C222F61C1F218A005092A4 /* Bank.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F51C1F218A005092A4 /* Bank.Location.swift */; };
+		57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F71C1F6038005092A4 /* SCNPortSlot.swift */; };
 		57C915171BC45E91009454C4 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C915161BC45E91009454C4 /* Panel.swift */; };
 		57CA80981BB9CEA3000D31F7 /* Cargo.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* Cargo.Location.swift */; };
 		57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA937A1BC9A9A50089337F /* SCNWire.swift */; };
@@ -124,6 +125,7 @@
 		57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
 		57A5F9621BC6C3DB00EA35F6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		57C222F51C1F218A005092A4 /* Bank.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bank.Location.swift; sourceTree = "<group>"; };
+		57C222F71C1F6038005092A4 /* SCNPortSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPortSlot.swift; sourceTree = "<group>"; };
 		57C915161BC45E91009454C4 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		57CA80971BB9CEA3000D31F7 /* Cargo.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cargo.Location.swift; sourceTree = "<group>"; };
 		57CA937A1BC9A9A50089337F /* SCNWire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNWire.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				571728DE1BB03455002782A3 /* SCNNode.swift */,
 				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
+				57C222F71C1F6038005092A4 /* SCNPortSlot.swift */,
 				574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */,
 				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
@@ -448,6 +451,7 @@
 				573EDAB71B4B4FCE007C6D3C /* PanelThruster.swift in Sources */,
 				574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */,
 				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
+				57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */,
 				574AE3F71BC36DAE00432603 /* Waypoint.Location.swift in Sources */,
 				5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */,
 			);
