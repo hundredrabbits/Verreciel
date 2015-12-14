@@ -154,6 +154,10 @@ class PanelThruster : Panel
 			modeWaitingForWarp()
 			canWarp = true
 		}
+		else if port.isReceiving(items.warpDrive) == true {
+			modeMissingPilotForWarp()
+			canWarp = true
+		}
 		else if battery.isThrusterPowered() == false {
 			speed = 0
 			modeUnpowered()
@@ -177,7 +181,7 @@ class PanelThruster : Panel
 	{
 		label.updateColor(cyan)
 		details.update("warping..", color: grey)
-		trigger.disable() // todo
+		trigger.disable()
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -199,6 +203,23 @@ class PanelThruster : Panel
 	{
 		label.updateColor(cyan)
 		details.update("warp", color: red)
+		trigger.opacity = 1
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
+		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
+		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
+		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+	}
+	
+	func modeMissingPilotForWarp()
+	{
+		label.updateColor(red)
+		details.update("Pilot", color: grey)
 		trigger.opacity = 1
 		
 		accelerate.disable()

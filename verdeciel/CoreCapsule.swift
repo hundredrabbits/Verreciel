@@ -90,6 +90,8 @@ class CoreCapsule: SCNNode
 	
 	func warp(destination:Location)
 	{
+		dock.disconnectPanel()
+		
 		destination.isKnown = true
 		radar.addTarget(destination)
 		warp = destination
@@ -141,6 +143,7 @@ class CoreCapsule: SCNNode
 	{
 		isWarping = false
 		warp = nil
+		thruster.trigger.enable()
 	}
 
 	// MARK: Docking -

@@ -217,6 +217,12 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
+	func strip()
+	{
+		disconnect()
+		if origin != nil { origin.disconnect() }
+	}
+	
 	func syphon() -> Event
 	{
 		let syph = origin.event

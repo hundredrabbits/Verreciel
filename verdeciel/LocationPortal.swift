@@ -219,13 +219,13 @@ class LocationPortal : Location
 	
 	override func disconnectPanel()
 	{
-		leftThrusterPort.disconnect()
-		leftPilotPort.disconnect()
-		leftKeyPort.disconnect()
+		leftThrusterPort.strip()
+		leftPilotPort.strip()
+		leftKeyPort.strip()
 		
-		rightThrusterPort.disconnect()
-		rightPilotPort.disconnect()
-		rightKeyPort.disconnect()
+		rightThrusterPort.strip()
+		rightPilotPort.strip()
+		rightKeyPort.strip()
 	}
 	
 	// MARK: Mesh -
