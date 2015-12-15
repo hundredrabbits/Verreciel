@@ -33,7 +33,7 @@ class CoreUniverse : SCNNode
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
-	var loiqe_cargo = locations.loiqe.cargo()
+	var loiqe_cargo = locations.loiqe.satellite()
 	
 	func addLoiqe()
 	{
@@ -65,7 +65,7 @@ class CoreUniverse : SCNNode
 	var valen_bank = locations.valen.bank()
 	var valen_telescope = locations.valen.telescope()
 	var valen_portal = locations.valen.portal()
-	var valen_capsule = locations.valen.capsule()
+	var valen_satellite = locations.valen.satellite()
 	
 	func addValen()
 	{
@@ -73,7 +73,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_bank)
 		addChildNode(valen_telescope)
 		addChildNode(valen_portal)
-		addChildNode(valen_capsule)
+		addChildNode(valen_satellite)
 	}
 	
 	// MARK: Venic -
@@ -162,7 +162,7 @@ class CoreUniverse : SCNNode
 		
 		valen_telescope.connect(venic_waypoint)
 		valen_bank.connect(valen_portal)
-		valen_capsule.connect(valen_bank)
+		valen_satellite.connect(valen_bank)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)

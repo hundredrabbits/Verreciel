@@ -9,12 +9,15 @@ import Foundation
 
 class SCNPortSlot : SCNPort
 {
+	var hasDetails:Bool = false
 	var label:SCNLabel!
+	var details:SCNLabel!
 	
-	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown, align:alignment = alignment.left)
+	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown, align:alignment! = alignment.left, hasDetails:Bool = false)
 	{
 		super.init()
 		
+		self.hasDetails = hasDetails
 		self.input = input
 		self.output = output
 		
@@ -26,10 +29,17 @@ class SCNPortSlot : SCNPort
 		self.addChildNode(trigger)
 		
 		label = SCNLabel(text:"empty",scale:0.1,color:grey,align:align)
-		label.position = (align == .left) ? SCNVector3(0.3,0,0) : SCNVector3(-0.3,0,0)
 		self.addChildNode(label)
 		
+		details = SCNLabel(text:"",scale:0.075,color:grey,align:align)
+		self.addChildNode(details)
+		
 		self.host = host
+		
+		if align == nil { label.opacity = 0 ; details.opacity = 0 }
+		else if align == alignment.left { label.position = SCNVector3(0.3,0,0) ; details.position = SCNVector3(0.3,-0.3,0) }
+		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
+		else if align == alignment.center { label.position = SCNVector3(0,-0.4,0) ; details.position = SCNVector3(0,-0.3,0) }
 		
 		setup()
 		disable()
@@ -37,8 +47,16 @@ class SCNPortSlot : SCNPort
 	
 	override func update()
 	{
-		if event != nil { label.update(event.name!,color:white) }
-		else{ label.update("Empty",color:grey) }
+		details.opacity = (hasDetails == true) ? 1 : 0
+		
+		if event != nil {
+			label.update(event.name!,color:white)
+			details.update(event.note)
+		}
+		else{
+			label.update("Empty",color:grey)
+			details.update("--")
+		}
 	}
 	
 	// MARK: Upload -
@@ -77,6 +95,8 @@ class SCNPortSlot : SCNPort
 		uploadTimer.invalidate()
 		uploadPercentage = 0
 		update()
+		
+		host.onUploadComplete()
 	}
 	
 	func uploadCancel()

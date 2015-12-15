@@ -43,9 +43,9 @@ class Loiqe
 		return location
 	}
 	
-	func landing() -> LocationCargo
+	func landing() -> LocationSatellite
 	{
-		return LocationCargo(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), item: items.materia)
+		return LocationSatellite(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text here $will add soon.", item:items.materia)
 	}
 	
 	func city() -> LocationTrade
@@ -63,9 +63,9 @@ class Loiqe
 		return LocationPortal(name: "portal", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y + 1), key: nil, rightName: "Valen", leftName:"Usul")
 	}
 	
-	func cargo() -> LocationCargo
+	func satellite() -> LocationSatellite
 	{
-		return LocationCargo(name: "cargo", system:.loiqe, at: CGPoint(x: offset.x - 2, y: offset.y), item: items.valenPortalFragment2)
+		return LocationSatellite(name: "satellite", system:.loiqe, at: CGPoint(x: offset.x - 2, y: offset.y), message:"Missing text here $will add soon.", item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -121,9 +121,9 @@ class Valen
 		return location
 	}
 	
-	func capsule() -> LocationCargo
+	func satellite() -> LocationSatellite
 	{
-		let location = LocationCargo(name:"Capsule",system:.valen, item:items.record1)
+		let location = LocationSatellite(name:"Satellite",system:.valen, message:"derelict music machine $time ghost sleep $home.", item:items.record1)
 		location.at = CGPoint(x: offset.x, y: offset.y + 2)
 		return location
 	}

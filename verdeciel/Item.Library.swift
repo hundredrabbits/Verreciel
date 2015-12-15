@@ -56,6 +56,6 @@ class ItemLibrary
 	let warpDrive = Event(newName: "warpdrive", type: eventTypes.drive, details: itemTypes.panel, note:"local warpdrive", isQuest:true)
 	
 	// Records
-	let record1 = Event(newName: "record I", type: eventTypes.item, details: itemTypes.record, note:"music", isQuest:true)
+	let record1 = Event(newName: "a record", type: eventTypes.item, details: itemTypes.record, note:"an old dusty vynil", isQuest:true)
 	
 }

@@ -118,4 +118,9 @@ extension SCNNode
 	{
 		update()
 	}
+	
+	func onUploadComplete()
+	{
+		
+	}
 }

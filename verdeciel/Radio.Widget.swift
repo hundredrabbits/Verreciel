@@ -9,7 +9,8 @@ import Foundation
 
 class WidgetRadio : SCNNode
 {
-	var port:SCNPort!
+	var port:SCNPortSlot!
+	var label:SCNLabel!
 	
 	override init()
 	{
@@ -17,18 +18,30 @@ class WidgetRadio : SCNNode
 		
 		name = "radio"
 		
-		port = SCNPort(host: self, input: eventTypes.record, output: eventTypes.signal)
+		port = SCNPortSlot(host: self, input: eventTypes.record, output: eventTypes.signal, align: .left)
 		port.position = SCNVector3(0,-0.6,templates.radius)
-		port.disable()
+		port.enable()
 		
-		let inputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.right)
-		let outputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.left)
-		inputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
-		outputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
-		port.addChildNode(inputLabel)
-		port.addChildNode(outputLabel)
+		label = SCNLabel(text:"radio", align:.right)
+		label.position = SCNVector3(-0.3,0,0)
+		port.addChildNode(label)
 		
 		addChildNode(port)
+	}
+	
+	override func onUploadComplete()
+	{
+		playing()
+	}
+	
+	var time:NSTimer!
+	var seek:Int = 0
+	
+	func playing()
+	{
+		label.update("0:0\(seek)", color:red)
+		time = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("playing"), userInfo: nil, repeats: false)
+		seek += 1
 	}
 	
 	func install()

@@ -62,7 +62,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Collect Waste", predicate:{ cargo.contains(items.waste) }, result: { hatch.install() }) )
 		tutorial.append( Quest(name:"Route Waste to hatch", predicate:{ hatch.port.isReceiving(items.waste) }, result: { }) )
 		tutorial.append( Quest(name:"Jetison Waste", predicate:{ cargo.contains(items.waste) == false }, result: { }) )
-		tutorial.append( Quest(name:"Reach capsule", predicate:{ universe.valen_capsule.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Reach capsule", predicate:{ universe.valen_satellite.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Collect record I", predicate:{ cargo.contains(items.record1) }, result: { radio.install() }) )
 		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record1) }, result: { }) )
 		tutorial.append( Quest(name:"Collect cell", predicate:{ cargo.contains(items.cell2) }, result: { }) )

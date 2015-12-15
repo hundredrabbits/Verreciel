@@ -76,13 +76,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		let starting = universe.valen_capsule
+		let starting = universe.valen_satellite
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 
-		quests.skipTo(23)
+		quests.skipTo(25)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.record1)
