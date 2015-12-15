@@ -25,8 +25,17 @@ class SCNPortRedirect : SCNPort
 	
 	override func disconnect()
 	{
-		if self.connection != nil { self.connection.origin = nil }
+		if self.connection == nil { return }
+		
+		let stored_connection = self.connection
+		let stored_connection_host = self.connection.host
+		
+		self.connection.origin = nil
 		self.connection = nil
+		
+		stored_connection.onDisconnect()
+		stored_connection_host.onDisconnect()
+		
 		wire.disable()
 	}
 }

@@ -13,10 +13,7 @@ import Foundation
 
 class PanelHatch : Panel
 {
-	var outline1:SCNLine!
-	var outline2:SCNLine!
-	var outline3:SCNLine!
-	var outline4:SCNLine!
+	let outline = SCNNode()
 	
 	override func setup()
 	{
@@ -27,14 +24,16 @@ class PanelHatch : Panel
 		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
 		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
 		
-		outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
-		interface.addChildNode(outline1)
-		outline2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
-		interface.addChildNode(outline2)
-		outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.5, z: 0),color:red)
-		interface.addChildNode(outline3)
-		outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
-		interface.addChildNode(outline4)
+		let outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
+		outline.addChildNode(outline1)
+		let outline2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
+		outline.addChildNode(outline2)
+		let outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.5, z: 0),color:red)
+		outline.addChildNode(outline3)
+		let outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
+		outline.addChildNode(outline4)
+		
+		interface.addChildNode(outline)
 		
 		// Trigger
 		
@@ -53,80 +52,48 @@ class PanelHatch : Panel
 
 	override func touch(id:Int = 0)
 	{
+		print("touch")
 		bang()
 	}
 	
 	override func bang()
 	{
-//		if port.origin == nil { return }
-//		
-//		let command = port.origin.host as! SCNCommand
-//		
-//		if load.type != eventTypes.item {
-//			return
-//		}
-//		
-//		if command.port.event.size > 0 {
-//			command.port.event.size -= 1
-//			command.update()
-//		}
-//		
-//		if command.port.event.size < 1 {
-//			command.inject(SCNCommand(text: "--", details: itemTypes.unknown, color: grey, event: command.port.event))
-//			command.port.disconnect()
-//			self.load = nil
-//			cargo.bang()
-//		}
-//		
-//		update()
+		if port.origin == nil || port.origin.event == nil { print("Nothing to jetison") ; return }
+		if port.origin.event.isQuest == true { return }
+		
+		port.origin.removeEvent()
+		
+		update()
 	}
 	
 	override func update()
 	{
 		var load:Event!
 		
-		if port.origin == nil {
-			load = nil
-		}
-		else{
-			load = port.origin.event
-		}
+		load = (port.origin == nil) ? nil : port.origin.event
 		
-		if load != nil && load.type != eventTypes.item {
-			label.update("hatch")
+		if load != nil && load.type != eventTypes.item || load != nil && load.isQuest == true {
 			details.update("error", color: red)
-			outline1.color(red)
-			outline2.color(red)
-			outline3.color(red)
-			outline4.color(red)
-			return
+			outline.updateChildrenColors(red)
 		}
 		else if load != nil {
-			label.update("fire")
-			details.update("--", color: white)
-			outline1.color(cyan)
-			outline2.color(cyan)
-			outline3.color(cyan)
-			outline4.color(cyan)
+			details.update("jetison", color: cyan)
+			outline.updateChildrenColors(cyan)
 		}
 		else{
-			label.update("hatch")
-			details.update("")
-			outline1.color(grey)
-			outline2.color(grey)
-			outline3.color(grey)
-			outline4.color(grey)
+			details.update("empty", color: grey)
+			outline.updateChildrenColors(grey)
 		}
+	}
+	
+	override func onDisconnect()
+	{
+		update()
 	}
 	
 	override func listen(event:Event)
 	{
-		if event.isQuest == true {
-			details.update("error", color: red)
-		}
-		else{
-			self.update()
-		}
+		self.update()
 	}
 	
 	override func onInstallationBegin()

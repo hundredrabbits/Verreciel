@@ -111,4 +111,11 @@ extension SCNNode
 			node.color(color)
 		}
 	}
+	
+	// MARK: Triggers -
+	
+	func onDisconnect()
+	{
+		update()
+	}
 }

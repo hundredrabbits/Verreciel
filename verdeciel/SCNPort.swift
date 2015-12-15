@@ -262,7 +262,7 @@ class SCNPort : SCNNode
 		print("connected")
 	}
 	
-	func onDisconnect()
+	override func onDisconnect()
 	{
 		print("disconnected")
 	}
