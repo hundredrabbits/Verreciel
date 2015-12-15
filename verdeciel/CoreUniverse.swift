@@ -162,6 +162,7 @@ class CoreUniverse : SCNNode
 		
 		valen_telescope.connect(venic_waypoint)
 		valen_bank.connect(valen_portal)
+		valen_capsule.connect(valen_bank)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)

@@ -123,7 +123,7 @@ class Valen
 	
 	func capsule() -> LocationCargo
 	{
-		let location = LocationCargo(name:"Valen",system:.valen, item:items.record1)
+		let location = LocationCargo(name:"Capsule",system:.valen, item:items.record1)
 		location.at = CGPoint(x: offset.x, y: offset.y + 2)
 		return location
 	}

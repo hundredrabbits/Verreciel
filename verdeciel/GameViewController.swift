@@ -76,7 +76,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		let starting = universe.valen_bank
+		let starting = universe.valen_capsule
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
