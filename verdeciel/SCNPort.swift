@@ -122,7 +122,7 @@ class SCNPort : SCNNode
 		// Compatibility
 		wire.isCompatible = false
 		if connection != nil {
-			if event.type == connection.input || connection.input == eventTypes.generic {
+			if event != nil && event.type == connection.input || connection != nil && connection.input == eventTypes.generic {
 				wire.isCompatible = true
 			}
 		}
@@ -227,15 +227,16 @@ class SCNPort : SCNNode
 	func syphon() -> Event
 	{
 		let stored_origin = origin
-		
-		print("syphon \(stored_origin)")
+		let stored_event = origin.event
 		
 		stored_origin.removeEvent()
 		stored_origin.host.update()
 		stored_origin.update()
 		stored_origin.disconnect()
 		
-		return stored_origin.event
+		print("syphon \(stored_origin.name)'s \(stored_event.name)")
+		
+		return stored_event
 	}
 	
 	func isReceiving(event:Event!) -> Bool

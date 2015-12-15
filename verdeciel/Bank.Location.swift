@@ -64,6 +64,9 @@ class LocationBank : Location
 		port6.position = SCNVector3(templates.leftMargin,-templates.lineSpacing * 2.5,0)
 		newPanel.addChildNode(port6)
 		
+		port1.addEvent(items.cell3)
+		port1.update()
+		
 		return newPanel
 	}
 	

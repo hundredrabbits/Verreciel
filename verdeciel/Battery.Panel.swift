@@ -15,12 +15,9 @@ class PanelBattery : Panel
 	var radioLabel:SCNLabel!
 	var radioPort:SCNPort!
 	
-	var cellLabel1:SCNLabel!
-	var cellPort1:SCNPort!
-	var cellLabel2:SCNLabel!
-	var cellPort2:SCNPort!
-	var cellLabel3:SCNLabel!
-	var cellPort3:SCNPort!
+	var cellPort1:SCNPortSlot!
+	var cellPort2:SCNPortSlot!
+	var cellPort3:SCNPortSlot!
 	
 	override func setup()
 	{
@@ -41,25 +38,19 @@ class PanelBattery : Panel
 		
 		let distance:Float = 0.4
 		
-		cellPort1 = SCNPort(host: self)
+		cellPort1 = SCNPortSlot(host: self, input: eventTypes.battery, output: eventTypes.battery, align:.right)
 		cellPort1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
-		cellLabel1 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cellLabel1.position = SCNVector3(x: -0.2, y:0, z: 0)
-		cellPort1.addChildNode(cellLabel1)
+		cellPort1.enable()
 		interface.addChildNode(cellPort1)
 		
-		cellPort2 = SCNPort(host: self)
+		cellPort2 = SCNPortSlot(host: self, input: eventTypes.battery, output: eventTypes.battery, align:.right)
 		cellPort2.position = SCNVector3(x: -distance, y: 0, z: 0)
-		cellLabel2 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cellLabel2.position = SCNVector3(x: -0.2, y: 0, z: 0)
-		cellPort2.addChildNode(cellLabel2)
+		cellPort2.enable()
 		interface.addChildNode(cellPort2)
 		
-		cellPort3 = SCNPort(host: self)
+		cellPort3 = SCNPortSlot(host: self, input: eventTypes.battery, output: eventTypes.battery, align:.right)
 		cellPort3.position = SCNVector3(x: -distance, y: -templates.lineSpacing, z: 0)
-		cellLabel3 = SCNLabel(text: "cell", scale: 0.1, align: alignment.right)
-		cellLabel3.position = SCNVector3(x: -0.2, y: 0, z: 0)
-		cellPort3.addChildNode(cellLabel3)
+		cellPort3.enable()
 		interface.addChildNode(cellPort3)
 		
 		// Systems
@@ -113,100 +104,6 @@ class PanelBattery : Panel
 	override func start()
 	{
 		thrusterPort.enable()
-		cellPort1.addEvent(items.cell1)
-	}
-	
-	override func update()
-	{
-		if cellPort1.event != nil {
-			cellLabel1.update(cellPort1.event.name!, color: white)
-			cellPort1.enable()
-		}
-		else if cellPort1.isEnabled == true{
-			cellLabel1.update("--", color: grey)
-			cellPort1.disable()
-		}
-		
-		if cellPort2.event != nil {
-			cellLabel2.update(cellPort2.event.name!, color: white)
-			cellPort2.enable()
-		}
-		else if cellPort2.isEnabled == true{
-			cellLabel2.update("--", color: grey)
-			cellPort2.disable()
-		}
-		
-		if cellPort3.event != nil {
-			cellLabel3.update(cellPort3.event.name!, color: white)
-			cellPort3.enable()
-		}
-		else if cellPort3.isEnabled == true{
-			cellLabel3.update("--", color: grey)
-			cellPort3.disable()
-		}
-	}
-	
-	override func installedFixedUpdate()
-	{
-		if isUploading == true {
-			uploadProcess()
-		}
-		else if isInstalled == true {
-			update()
-		}
-	}
-	
-	// MARK: I/O
-	
-	override func listen(event:Event)
-	{
-		if event.details != itemTypes.battery { return }
-		
-		if port.origin != nil && port.origin.event != nil && isUploading == false && port.origin.host != battery {
-			uploadItem(event)
-		}
-	}
-	
-	override func bang()
-	{
-		if cellPort1.event != nil && cellPort1.connection != nil { cellPort1.connection.host.listen(cellPort1.event) }
-		if cellPort2.event != nil && cellPort2.connection != nil { cellPort2.connection.host.listen(cellPort2.event) }
-		if cellPort3.event != nil && cellPort3.connection != nil { cellPort3.connection.host.listen(cellPort3.event) }
-	}
-	
-	// MARK: Uploading -
-	
-	var isUploading:Bool = false
-	var uploadProgress:CGFloat = 0
-	
-	func uploadItem(item:Event)
-	{
-		isUploading = true
-	}
-	
-	func uploadProcess()
-	{
-		uploadProgress += CGFloat(arc4random_uniform(100))/50
-		
-		if cellPort1.event == nil { cellLabel1.update("\(Int(uploadProgress))%", color: grey) }
-		else if cellPort2.event == nil { cellLabel2.update("\(Int(uploadProgress))%", color: grey) }
-		else if cellPort3.event == nil { cellLabel3.update("\(Int(uploadProgress))%", color: grey) }
-		
-		if uploadProgress >= 100 {
-			uploadCompleted()
-		}
-	}
-	
-	func uploadCompleted()
-	{
-		if cellPort1.event == nil { cellPort1.addEvent(port.syphon()) }
-		else if cellPort2.event == nil { cellPort2.addEvent(port.syphon()) }
-		else if cellPort3.event == nil { cellPort3.addEvent(port.syphon()) }
-		else{ print("No available slots") }
-		
-		uploadProgress = 0
-		isUploading = false
-		cargo.bang()
 	}
 	
 	// MARK: Flags -

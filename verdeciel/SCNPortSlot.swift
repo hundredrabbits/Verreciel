@@ -9,9 +9,9 @@ import Foundation
 
 class SCNPortSlot : SCNPort
 {
-	let label = SCNLabel(text:"hey",scale:0.1,color:white)
+	var label:SCNLabel!
 	
-	override init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown)
+	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown, align:alignment = alignment.left)
 	{
 		super.init()
 		
@@ -25,7 +25,8 @@ class SCNPortSlot : SCNPort
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
 		
-		label.position = SCNVector3(0.3,0,0)
+		label = SCNLabel(text:"empty",scale:0.1,color:grey,align:align)
+		label.position = (align == .left) ? SCNVector3(0.3,0,0) : SCNVector3(-0.3,0,0)
 		self.addChildNode(label)
 		
 		self.host = host
@@ -36,17 +37,53 @@ class SCNPortSlot : SCNPort
 	
 	override func update()
 	{
-		
+		if event != nil { label.update(event.name!,color:white) }
+		else{ label.update("Empty",color:grey) }
 	}
+	
+	// MARK: Upload -
+	
+	var upload:Event!
+	var uploadTimer:NSTimer!
+	var uploadPercentage:Float = 0
 	
 	override func onConnect()
 	{
-		if (origin != nil) { addEvent(syphon()) ; label.update(event.name!) }
+		// Input
+		if origin != nil && origin.event != nil && event == nil {
+			upload = origin.event
+			uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("uploadProgress"), userInfo: nil, repeats: true)
+		}
+		
+		if connection != nil && event != nil { connection.host.listen(event) }
 	}
 	
-	override func bang()
+	func uploadProgress()
 	{
-		print("Warning! Bang on SCNPortSlot")
+		if origin == nil { uploadCancel() ; return }
+		
+		uploadPercentage += Float(arc4random_uniform(30))/10
+		if uploadPercentage > 100 {
+			uploadComplete()
+		}
+		else{
+			label.update("Upload \(Int(uploadPercentage))%", color:grey)
+		}
+	}
+	
+	func uploadComplete()
+	{
+		if (origin != nil) { addEvent(syphon()) }
+		uploadTimer.invalidate()
+		uploadPercentage = 0
+		update()
+	}
+	
+	func uploadCancel()
+	{
+		uploadTimer.invalidate()
+		uploadPercentage = 0
+		update()
 	}
 
 	required init(coder aDecoder: NSCoder)

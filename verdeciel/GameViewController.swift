@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2014-09-21.
 //  Copyright (c) 2014 XXIIVV. All rights reserved.
 
@@ -86,7 +87,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.waste)
 		
-		battery.cellPort1.connect(battery.thrusterPort)
 		cargo.port.connect(console.port)
 	}
 	
