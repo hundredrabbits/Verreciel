@@ -85,7 +85,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.skipTo(25)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
-		cargo.port.event.content.append(items.record1)
 		cargo.port.event.content.append(items.waste)
 		
 		cargo.port.connect(console.port)

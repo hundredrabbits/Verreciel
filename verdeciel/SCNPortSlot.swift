@@ -80,12 +80,12 @@ class SCNPortSlot : SCNPort
 	{
 		if origin == nil { uploadCancel() ; return }
 		
-		uploadPercentage += Float(arc4random_uniform(30))/10
+		uploadPercentage += Float(arc4random_uniform(60))/10
 		if uploadPercentage > 100 {
 			uploadComplete()
 		}
 		else{
-			label.update("Upload \(Int(uploadPercentage))%", color:grey)
+			label.update("\(Int(uploadPercentage))%", color:grey)
 		}
 	}
 	
