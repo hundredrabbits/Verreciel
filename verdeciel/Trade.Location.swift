@@ -20,7 +20,6 @@ class LocationTrade : Location
 		self.name = name
 		self.system = system
 		self.at = at
-		self.size = size
 		self.note = ""
 		self.mesh = structures.trade()
 		

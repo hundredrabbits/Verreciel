@@ -9,7 +9,10 @@ import Foundation
 class PanelBattery : Panel
 {
 	var oxygenPort:SCNPort!
+	
 	var shieldPort:SCNPort!
+	var shieldLabel:SCNLabel!
+	
 	var cloakPort:SCNPort!
 	var thrusterPort:SCNPort!
 	var radioLabel:SCNLabel!
@@ -78,7 +81,7 @@ class PanelBattery : Panel
 		
 		shieldPort = SCNPort(host: self, input:eventTypes.battery)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
-		let shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
+		shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		interface.addChildNode(shieldPort)
@@ -104,6 +107,14 @@ class PanelBattery : Panel
 	override func start()
 	{
 		thrusterPort.enable()
+	}
+	
+	// MARK: Add Modules -
+	
+	func installShield()
+	{
+		shieldPort.enable()
+		shieldLabel.update("shield",color:white)
 	}
 	
 	// MARK: Flags -

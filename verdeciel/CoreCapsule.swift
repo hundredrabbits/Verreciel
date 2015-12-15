@@ -174,6 +174,10 @@ class CoreCapsule: SCNNode
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y
 		progress.eulerAngles.y = mission.eulerAngles.y
+		
+		// Widgets
+		radar.footer.addChildNode(map)
+		console.footer.addChildNode(radio)
 	}
 	
 	// MARK: Docking -

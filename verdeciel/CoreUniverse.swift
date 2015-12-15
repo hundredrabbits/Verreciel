@@ -185,6 +185,12 @@ class CoreUniverse : SCNNode
 		}
 	}
 	
+	override func _start()
+	{
+		valen_bank.port1.addEvent(items.loiqePortalKey)
+		valen_bank.port2.addEvent(items.waste)
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

@@ -44,6 +44,8 @@
 		5769535D1C2060FE00A0CA39 /* Exploration.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */; };
 		5769535E1C2060FE00A0CA39 /* Journey.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */; };
 		5769535F1C2060FE00A0CA39 /* Progress.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */; };
+		576953631C206CEA00A0CA39 /* Map.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953621C206CEA00A0CA39 /* Map.Widget.swift */; };
+		576953651C206CF300A0CA39 /* Radio.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953641C206CF300A0CA39 /* Radio.Widget.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
@@ -114,6 +116,8 @@
 		5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exploration.Monitor.swift; sourceTree = "<group>"; };
 		5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journey.Monitor.swift; sourceTree = "<group>"; };
 		5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.Monitor.swift; sourceTree = "<group>"; };
+		576953621C206CEA00A0CA39 /* Map.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.Widget.swift; sourceTree = "<group>"; };
+		576953641C206CF300A0CA39 /* Radio.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radio.Widget.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.Location.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
@@ -314,10 +318,12 @@
 		5796144C1BE00EF800421D69 /* Monitors */ = {
 			isa = PBXGroup;
 			children = (
+				5796144A1BE00EE300421D69 /* Monitor.swift */,
 				5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */,
 				5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */,
 				5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */,
-				5796144A1BE00EE300421D69 /* Monitor.swift */,
+				576953621C206CEA00A0CA39 /* Map.Widget.swift */,
+				576953641C206CF300A0CA39 /* Radio.Widget.swift */,
 			);
 			name = Monitors;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				5726C6071BD46FFF00B924B2 /* CoreUI.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* CoreUniverse.swift in Sources */,
+				576953631C206CEA00A0CA39 /* Map.Widget.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* Pilot.Panel.swift in Sources */,
 				5796144B1BE00EE300421D69 /* Monitor.swift in Sources */,
@@ -425,6 +432,7 @@
 				57FA031F1BBA22FE0077D517 /* Star.Location.swift in Sources */,
 				57DACD8E1C1A194500971F10 /* CoreAudio.swift in Sources */,
 				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
+				576953651C206CF300A0CA39 /* Radio.Widget.swift in Sources */,
 				57C222F61C1F218A005092A4 /* Bank.Location.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* CoreSpace.swift in Sources */,
 				57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */,

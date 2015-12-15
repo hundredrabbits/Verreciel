@@ -12,7 +12,6 @@ class LocationSpawn : Location
 		self.name = name
 		self.system = system
 		self.at = at
-		self.size = size
 		self.note = ""
 		self.mesh = structures.none()
 		self.icon.replace(icons.spawn())

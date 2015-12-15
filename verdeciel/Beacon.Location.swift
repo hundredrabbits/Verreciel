@@ -14,7 +14,6 @@ class LocationBeacon : Location
 		self.name = name
 		self.system = system
 		self.at = at
-		self.size = 1
 		self.note = ""
 		self.message = message
 		self.mesh = structures.beacon()

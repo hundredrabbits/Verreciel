@@ -125,7 +125,7 @@ class PanelCargo : Panel
 	
 	override func listen(event:Event)
 	{
-		print("* CARGO    | Signal: \(event.name!) \(event.size)")
+		print("* CARGO    | Signal: \(event.name!)")
 		
 		if event.type != eventTypes.item { print("Not item") ; return }
 		

@@ -161,6 +161,7 @@ class SCNPort : SCNNode
 	func addEvent(event:Event)
 	{
 		self.event = event
+		update()
 	}
 	
 	func addRequirement(event:Event)

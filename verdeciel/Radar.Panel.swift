@@ -18,7 +18,6 @@ class PanelRadar : Panel
 	var targetter:SCNNode!
 	var targetterFar:SCNNode!
 	
-	var mapPort:SCNPort!
 	var handle:SCNHandle!
 	
 	// MARK: Default -
@@ -73,21 +72,6 @@ class PanelRadar : Panel
 		port.input = eventTypes.location
 		port.output = eventTypes.location
 		
-		// Map Port
-		
-		mapPort = SCNPort(host: self, input: eventTypes.map, output: eventTypes.map)
-		mapPort.position = SCNVector3(0,-0.6,templates.radius)
-		mapPort.disable()
-		
-		let mapPortInputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.right)
-		let mapPortOutputLabel = SCNLabel(text: "\(mapPort.input)", scale: 0.03, color:grey, align: alignment.left)
-		mapPortInputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
-		mapPortOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
-		mapPort.addChildNode(mapPortInputLabel)
-		mapPort.addChildNode(mapPortOutputLabel)
-		
-		footer.addChildNode(mapPort)
-		
 		handle = SCNHandle(destination: SCNVector3(1,0,0),host:self)
 		footer.addChildNode(handle)
 	}
@@ -106,9 +90,6 @@ class PanelRadar : Panel
 	
 	override func bang()
 	{
-		if mapPort.connection != nil && mapPort.event != nil {
-			mapPort.connection.host.listen(mapPort.event)
-		}
 		if port.connection != nil && port.event != nil {
 			port.connection.host.listen(port.event)
 		}
@@ -155,12 +136,6 @@ class PanelRadar : Panel
 				print("Overlapping event: \(newEvent.name!) -> \(event.position.x)")
 			}
 		}
-	}
-	
-	override func onInstallationComplete()
-	{
-		mapPort.enable()
-		mapPort.addEvent(items.starmap)
 	}
 	
 	func removeTarget()

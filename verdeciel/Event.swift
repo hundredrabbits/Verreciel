@@ -11,7 +11,6 @@ class Event : SCNNode
 	var targetNode:SCNNode!
 	
 	var at = CGPoint()
-	var size:Float = 1
 	var type:eventTypes!
 	var details:itemTypes
 	var note = String()
@@ -20,7 +19,7 @@ class Event : SCNNode
 	
 	var isQuest:Bool = false
 	
-	init(newName:String = "",at:CGPoint = CGPoint(),size:Float = 1,type:eventTypes = eventTypes.unknown,details:itemTypes = itemTypes.unknown, note:String = "", color:UIColor = grey, isQuest:Bool = false)
+	init(newName:String = "",at:CGPoint = CGPoint(),type:eventTypes = eventTypes.unknown,details:itemTypes = itemTypes.unknown, note:String = "", color:UIColor = grey, isQuest:Bool = false)
 	{
 		self.content = []
 		self.details = details
@@ -30,7 +29,6 @@ class Event : SCNNode
 		
 		self.name = newName
 		self.type = type
-		self.size = size
 		self.note = note
 		self.at = at
 		self.color = color
@@ -57,7 +55,6 @@ class Event : SCNNode
 	
 	override func update()
 	{
-		if size < 1 { remove() }
 	}
 	
 	func remove()
@@ -67,9 +64,6 @@ class Event : SCNNode
 	
 	func clean()
 	{
-		if self.size == 0 {
-			self.removeFromParentNode()
-		}
 	}
 	
 	func panel() -> SCNNode!
@@ -89,7 +83,6 @@ class Event : SCNNode
 	
 		newEvent.name = name
 		newEvent.type = type
-		newEvent.size = size
 		newEvent.note = note
 		newEvent.at = at
 		newEvent.color = color

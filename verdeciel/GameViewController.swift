@@ -82,9 +82,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 
-		quests.skipTo(20)
+		quests.skipTo(24)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
+		cargo.port.event.content.append(items.record1)
 		cargo.port.event.content.append(items.waste)
 		
 		cargo.port.connect(console.port)

@@ -22,7 +22,6 @@ class LocationCargo : Location
 		self.name = name
 		self.system = system
 		self.at = at
-		self.size = 1
 		self.note = ""
 		self.isRadioQuest = isRadioQuest
 		self.mesh = structures.cargo()
@@ -76,10 +75,10 @@ class LocationCargo : Location
 	
 	override func dockedUpdate()
 	{
-		if port1.event != nil && port1.event.size < 1 {
+		if port1.event != nil {
 			port1.event = nil
 		}
-		if port2.event != nil && port2.event.size < 1 {
+		if port2.event != nil {
 			port2.event = nil
 		}
 		

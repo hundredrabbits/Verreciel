@@ -12,7 +12,6 @@ class LocationStar : Location
 		self.name = name
 		self.system = system
 		self.at = at
-		self.size = 1
 		self.note = ""
 		self.color = color
 		self.mesh = structures.star()

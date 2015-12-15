@@ -21,6 +21,8 @@ let radar = PanelRadar()
 let journey = MonitorJourney()
 let exploration = MonitorExploration()
 let progress = MonitorProgress()
+let radio = WidgetRadio()
+let map = WidgetMap()
 
 // Generic
 var time:CoreTime!
@@ -95,6 +97,9 @@ enum eventTypes
 	case cargo
 	case map
 	case battery
+	
+	case record
+	case signal
 }
 
 enum locationTypes

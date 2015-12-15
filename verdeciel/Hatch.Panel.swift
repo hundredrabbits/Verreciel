@@ -13,8 +13,6 @@ import Foundation
 
 class PanelHatch : Panel
 {
-	var load:Event!
-
 	var outline1:SCNLine!
 	var outline2:SCNLine!
 	var outline3:SCNLine!
@@ -60,33 +58,38 @@ class PanelHatch : Panel
 	
 	override func bang()
 	{
-		if port.origin == nil { return }
-		
-		let command = port.origin.host as! SCNCommand
-		
-		if load.type != eventTypes.item {
-			return
-		}
-		
-		if command.port.event.size > 0 {
-			command.port.event.size -= 1
-			command.update()
-		}
-		
-		if command.port.event.size < 1 {
-			command.inject(SCNCommand(text: "--", details: itemTypes.unknown, color: grey, event: command.port.event))
-			command.port.disconnect()
-			self.load = nil
-			cargo.bang()
-		}
-		
-		update()
+//		if port.origin == nil { return }
+//		
+//		let command = port.origin.host as! SCNCommand
+//		
+//		if load.type != eventTypes.item {
+//			return
+//		}
+//		
+//		if command.port.event.size > 0 {
+//			command.port.event.size -= 1
+//			command.update()
+//		}
+//		
+//		if command.port.event.size < 1 {
+//			command.inject(SCNCommand(text: "--", details: itemTypes.unknown, color: grey, event: command.port.event))
+//			command.port.disconnect()
+//			self.load = nil
+//			cargo.bang()
+//		}
+//		
+//		update()
 	}
 	
 	override func update()
 	{
+		var load:Event!
+		
 		if port.origin == nil {
 			load = nil
+		}
+		else{
+			load = port.origin.event
 		}
 		
 		if load != nil && load.type != eventTypes.item {
@@ -100,7 +103,7 @@ class PanelHatch : Panel
 		}
 		else if load != nil {
 			label.update("fire")
-			details.update(String(Int(self.load.size)), color: white)
+			details.update("--", color: white)
 			outline1.color(cyan)
 			outline2.color(cyan)
 			outline3.color(cyan)
@@ -122,7 +125,6 @@ class PanelHatch : Panel
 			details.update("error", color: red)
 		}
 		else{
-			self.load = event
 			self.update()
 		}
 	}
