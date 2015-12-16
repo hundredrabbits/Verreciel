@@ -190,6 +190,7 @@ class CoreUniverse : SCNNode
 	{
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.waste)
+		valen_bank.port2.addEvent(items.cell2)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

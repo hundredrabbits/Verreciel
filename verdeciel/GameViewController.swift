@@ -81,6 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.dock = starting
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
+		
 
 		quests.skipTo(25)
 		
@@ -88,6 +89,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		cargo.port.event.content.append(items.waste)
 		
 		cargo.port.connect(console.port)
+		
+		battery.cellPort1.addEvent(items.cell1)
+		battery.cellPort1.connect(battery.thrusterPort)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

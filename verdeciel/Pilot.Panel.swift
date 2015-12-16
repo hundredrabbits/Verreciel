@@ -55,61 +55,46 @@ class PanelPilot : Panel
 		
 	}
 	
-	override func listen(event: Event)
-	{
-		target = event as! Location
-	}
-	
 	override func installedFixedUpdate()
 	{
 		// Approaching the sun
 		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
 			target = capsule.closestKnownLocation()
-			radar.addTarget(target)
-			ui.addWarning("radiations")
 		}
-		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false {
+		// Lost
+		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false{
 			target = capsule.closestKnownLocation()
-			radar.addTarget(target)
 		}
-		else if port.isReceivingType(eventTypes.location) {
+		// Port Location
+		else if port.isReceivingType(eventTypes.location) == true {
 			target = port.origin.event as! Location
-			radar.addTarget(target)
 		}
-		else if capsule.dock != nil && capsule.at != capsule.dock.at {
-			target = capsule.dock
-		}
+		// Nothing
 		else{
 			target = nil
 		}
 		
-		if target == nil { return }
-		
+		if target != nil { align() }
+	}
+	
+	func align()
+	{
 		let left = target.calculateAlignment(capsule.direction - 0.5)
 		let right = target.calculateAlignment(capsule.direction + 0.5)
 		
-		if target.align >= 0 {
-			if left <= right {
-				self.turnLeft(target.align * 0.025)
-			}
-			else if left > right {
-				self.turnRight(target.align * 0.025)
-			}
+		if left <= right {
+			turnLeft(target.align * 0.025)
+		}
+		else {
+			turnRight(target.align * 0.025)
 		}
 		
-		if target.align > 25 { details.update(String(format: "%.0f",target.align), color:red) }
-		else if target.align < 1 { details.update("ok", color:cyan) }
-		else{ details.update(String(format: "%.0f",target.align), color:white) }
+		if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
+		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
+		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
 		
-		
-		let targetDirectionNormal = Double(Float(targetDirection)/180) * 1
-		targetDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-		let staticDirectionNormal = Double(Float(capsule.direction)/180) * 1
-		staticDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * staticDirectionNormal))
-		let eventsDirectionNormal = Double(Float(targetDirection - capsule.direction)/180) * 1
-		eventsDirectionIndicator.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * eventsDirectionNormal))
+		print("\(left) - \(right)")
 	}
-	
 	
 	func turnLeft(deg:CGFloat)
 	{
