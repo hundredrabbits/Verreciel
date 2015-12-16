@@ -82,18 +82,18 @@ class PanelPilot : Panel
 		let left = target.calculateAlignment(capsule.direction - 0.5)
 		let right = target.calculateAlignment(capsule.direction + 0.5)
 		
+		let target_align = (target.align * 0.025) < 0.1 ? target.align : target.align * 0.025
+		
 		if left <= right {
-			turnLeft(target.align * 0.025)
+			turnLeft(target_align)
 		}
 		else {
-			turnRight(target.align * 0.025)
+			turnRight(target_align)
 		}
 		
 		if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
 		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
 		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
-		
-		print("\(left) - \(right)")
 	}
 	
 	func turnLeft(deg:CGFloat)
