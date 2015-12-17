@@ -33,10 +33,15 @@ class LocationStation : Location
 		nameLabel.position = SCNVector3(templates.rightMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(nameLabel)
 		
-		let button = SCNButton(host: self, text: "test", operation:0)
+		let button = SCNButton(host: self, text: "install shield", operation:0, width:1.2)
 		newPanel.addChildNode(button)
 		
 		return newPanel
+	}
+	
+	override func touch(id: Int)
+	{
+		if id == 0 { print("working") }
 	}
 	
 	// MARK: Icon -

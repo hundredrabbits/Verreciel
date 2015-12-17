@@ -13,33 +13,29 @@ class SCNButton : SCNNode
 	var text:String!
 	var trigger:SCNTrigger!
 	var label:SCNLabel!
+	var operation:Int!
 	
-	init(host:SCNNode,text:String,operation:Int)
+	init(host:SCNNode,text:String,operation:Int,width:Float = 0.65)
 	{
 		self.text = text
 		self.host = host
+		self.operation = operation
+		
 		super.init()
 		
-		setup()
-	}
-	
-	func setup()
-	{
-		let buttonWidth = 0.65
-		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth,-0.25,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth,0.25,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,-0.25,0), nodeB: SCNVector3(width,-0.25,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,0.25,0), nodeB: SCNVector3(width,0.25,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,0.25,0), nodeB: SCNVector3(-width - 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,-0.25,0), nodeB: SCNVector3(-width - 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(width,0.25,0), nodeB: SCNVector3(width + 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(nodeA: SCNVector3(width,-0.25,0), nodeB: SCNVector3(width + 0.25,0,0), color: red))
 		addChildNode(trigger)
 		
 		label = SCNLabel(text:self.text, align:.center)
 		addChildNode(label)
 	}
-	
+
 	func enable(newText:String)
 	{
 		self.text = newText
@@ -58,7 +54,7 @@ class SCNButton : SCNNode
 	
 	override func touch(id:Int = 0)
 	{
-		host.touch(id)
+		host.touch(self.operation)
 	}
 	
 	required init?(coder aDecoder: NSCoder)
