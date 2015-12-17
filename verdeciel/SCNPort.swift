@@ -29,7 +29,7 @@ class SCNPort : SCNNode
 	var sprite_output = SCNNode()
 	var sprite_input = SCNNode()
 	
-	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown)
+	init(host:SCNNode = SCNNode(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown)
 	{
 		super.init()
 		

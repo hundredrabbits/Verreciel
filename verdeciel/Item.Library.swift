@@ -58,4 +58,8 @@ class ItemLibrary
 	// Records
 	let record1 = Event(newName: "record", type: eventTypes.item, details: itemTypes.record, note:"an old audio tape", isQuest:true)
 	
+	// Currencies
+	
+	let credits = Event(newName: "credits", type: eventTypes.item, details: itemTypes.currency, note:"todo", isQuest:true)
+	
 }

@@ -13,7 +13,7 @@ class SCNPortSlot : SCNPort
 	var label:SCNLabel!
 	var details:SCNLabel!
 	
-	init(host:SCNNode = SCNNode(), position:SCNVector3 = SCNVector3(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown, align:alignment! = alignment.left, hasDetails:Bool = false)
+	init(host:SCNNode = SCNNode(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown, align:alignment! = alignment.left, hasDetails:Bool = false)
 	{
 		super.init()
 		

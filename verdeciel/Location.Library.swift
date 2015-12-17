@@ -142,7 +142,7 @@ class Valen
 	
 	func station() -> LocationStation
 	{
-		let location = LocationStation(name:"station",system:.valen)
+		let location = LocationStation(name:"station",system:.valen, requirement:items.credits)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y)
 		return location
 	}

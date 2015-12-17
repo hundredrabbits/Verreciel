@@ -5,7 +5,11 @@ import Foundation
 
 class LocationStation : Location
 {
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
+	var requirement:Event!
+	var port:SCNPortSlot!
+	var button:SCNButton!
+	
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red, requirement:Event! = nil)
 	{
 		super.init(name:name, at:at)
 		
@@ -14,6 +18,8 @@ class LocationStation : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.station()
+		
+		self.requirement = requirement
 	}
 	
 	override func update()
@@ -25,18 +31,31 @@ class LocationStation : Location
 	{
 		let newPanel = Panel()
 		
-		let requirementLabel = SCNLabel(text:"Requirement")
+		let requirementLabel = SCNLabel(text:"Exchange credits$install the shield.")
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		
-		let nameLabel = SCNLabel(text:"credits", color:red, align:alignment.right)
-		nameLabel.position = SCNVector3(templates.rightMargin,templates.topMargin-0.3,0)
-		newPanel.addChildNode(nameLabel)
-		
-		let button = SCNButton(host: self, text: "install shield", operation:0, width:1.2)
+		button = SCNButton(host: self, text: "install", operation:0)
+		button.position = SCNVector3(0,-1,0)
 		newPanel.addChildNode(button)
 		
+		port = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
+		port.position = SCNVector3(0,-0.2,0)
+		newPanel.addChildNode(port)
+		
+		let nameLabel = SCNLabel(text:"input", color:red, align:alignment.right)
+		nameLabel.position = SCNVector3(-0.3,0,0)
+		port.addChildNode(nameLabel)
+		
+		button.disable("install")
+		port.enable()
+		
 		return newPanel
+	}
+	
+	override func onUploadComplete()
+	{
+		if port.event == self.requirement { button.enable("install") }
 	}
 	
 	override func touch(id: Int)

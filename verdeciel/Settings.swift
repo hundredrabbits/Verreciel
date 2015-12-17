@@ -120,6 +120,7 @@ enum itemTypes
 	case panel
 	case key
 	case record
+	case currency
 }
 
 enum services

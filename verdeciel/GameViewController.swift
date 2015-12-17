@@ -87,6 +87,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.waste)
+		cargo.port.event.content.append(items.credits)
 		
 		cargo.port.connect(console.port)
 		
