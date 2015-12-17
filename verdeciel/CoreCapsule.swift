@@ -143,7 +143,7 @@ class CoreCapsule: SCNNode
 	{
 		isWarping = false
 		warp = nil
-		thruster.trigger.enable()
+		thruster.button.enable("??")
 	}
 	
 	func interfaceSetup()

@@ -40,6 +40,7 @@
 		574E5FBB1BC57749008130AB /* Item.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBA1BC57749008130AB /* Item.Library.swift */; };
 		574E5FC01BC578E1008130AB /* Trade.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* Trade.Location.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
+		5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5765C3311C235A0C001ED26E /* SCNButton.swift */; };
 		576953591C2060EC00A0CA39 /* Location.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953581C2060EC00A0CA39 /* Location.Library.swift */; };
 		5769535D1C2060FE00A0CA39 /* Exploration.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */; };
 		5769535E1C2060FE00A0CA39 /* Journey.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */; };
@@ -112,6 +113,7 @@
 		574E5FBA1BC57749008130AB /* Item.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.Library.swift; sourceTree = "<group>"; };
 		574E5FBF1BC578E1008130AB /* Trade.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trade.Location.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		5765C3311C235A0C001ED26E /* SCNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNButton.swift; sourceTree = "<group>"; };
 		576953581C2060EC00A0CA39 /* Location.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Library.swift; sourceTree = "<group>"; };
 		5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exploration.Monitor.swift; sourceTree = "<group>"; };
 		5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journey.Monitor.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				57DD808D1BC7005600A4146C /* SCNHandle.swift */,
+				5765C3311C235A0C001ED26E /* SCNButton.swift */,
 				571728DE1BB03455002782A3 /* SCNNode.swift */,
 				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
@@ -459,6 +462,7 @@
 				573EDAB71B4B4FCE007C6D3C /* Thruster.Panel.swift in Sources */,
 				574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */,
 				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
+				5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */,
 				57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */,
 				574AE3F71BC36DAE00432603 /* Waypoint.Location.swift in Sources */,
 				5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */,

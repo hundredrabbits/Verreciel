@@ -140,10 +140,10 @@ class Valen
 		return LocationPortal(name: "portal",system:.valen, at:CGPoint(x: offset.x - 1, y: offset.y), key: items.valenPortalKey, rightName: "Senni", leftName:"Loiqe")
 	}
 	
-	func telescope() -> LocationStation
+	func station() -> LocationStation
 	{
-		let location = LocationStation(name:"telescope",system:.valen)
-		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		let location = LocationStation(name:"station",system:.valen)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y)
 		return location
 	}
 }

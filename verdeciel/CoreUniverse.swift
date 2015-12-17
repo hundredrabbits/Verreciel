@@ -63,7 +63,7 @@ class CoreUniverse : SCNNode
 	
 	var valen = locations.valen.star()
 	var valen_bank = locations.valen.bank()
-	var valen_telescope = locations.valen.telescope()
+	var valen_station = locations.valen.station()
 	var valen_portal = locations.valen.portal()
 	var valen_satellite = locations.valen.satellite()
 	
@@ -71,7 +71,7 @@ class CoreUniverse : SCNNode
 	{
 		addChildNode(valen)
 		addChildNode(valen_bank)
-		addChildNode(valen_telescope)
+		addChildNode(valen_station)
 		addChildNode(valen_portal)
 		addChildNode(valen_satellite)
 	}
@@ -160,7 +160,7 @@ class CoreUniverse : SCNNode
 		falvet_toValen.connect(valen_portal)
 		falvet_toSenni.connect(senni_portal)
 		
-		valen_telescope.connect(venic_waypoint)
+		valen_station.connect(valen_bank)
 		valen_bank.connect(valen_portal)
 		valen_satellite.connect(valen_bank)
 		

@@ -29,7 +29,7 @@ class PanelThruster : Panel
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
-	var trigger:SCNTrigger!
+	var button:SCNButton!
 	
 	var canWarp:Bool = false
 	
@@ -44,6 +44,11 @@ class PanelThruster : Panel
 		line2 = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: grey)
 		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey)
 		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey)
+		
+		interface.addChildNode(line1)
+		interface.addChildNode(line2)
+		interface.addChildNode(line3)
+		interface.addChildNode(line4)
 		
 		cutLine1Left = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(-0.1, -0.3, 0), color: grey)
 		cutLine1Right = SCNLine(nodeA: SCNVector3(0.5, -0.3, 0), nodeB: SCNVector3(0.1, -0.3, 0), color: grey)
@@ -63,12 +68,8 @@ class PanelThruster : Panel
 		interface.addChildNode(cutLine4Left)
 		interface.addChildNode(cutLine4Right)
 		
-		interface.addChildNode(line1)
-		interface.addChildNode(line2)
-		interface.addChildNode(line3)
-		interface.addChildNode(line4)
-		
 		// Triggers
+		
 		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: 1)
 		accelerate.position = SCNVector3(0, 0.5, 0)
 		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: cyan))
@@ -85,17 +86,8 @@ class PanelThruster : Panel
 		port.input = eventTypes.drive
 		port.output = eventTypes.unknown
 		
-		let buttonWidth = 0.65
-		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth,-0.25,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth,0.25,0), color: red))
-		
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-buttonWidth,-0.25,0), nodeB: SCNVector3(-buttonWidth - 0.25,0,0), color: red))
-		
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(buttonWidth,-0.25,0), nodeB: SCNVector3(buttonWidth + 0.25,0,0), color: red))
-		details.addChildNode(trigger)
+		button = SCNButton(host:self, text: "undock", operation: 2)
+		details.addChildNode(button)
 	}
 	
 	override func start()
@@ -180,8 +172,7 @@ class PanelThruster : Panel
 	func modeWarping()
 	{
 		label.updateColor(cyan)
-		details.update("warping..", color: grey)
-		trigger.disable()
+		button.disable("warping")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -202,8 +193,7 @@ class PanelThruster : Panel
 	func modeWaitingForWarp()
 	{
 		label.updateColor(cyan)
-		details.update("warp", color: red)
-		trigger.opacity = 1
+		button.enable("warp")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -219,8 +209,7 @@ class PanelThruster : Panel
 	func modeMissingPilotForWarp()
 	{
 		label.updateColor(red)
-		details.update("Pilot", color: grey)
-		trigger.opacity = 1
+		button.disable("pilot")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -236,9 +225,8 @@ class PanelThruster : Panel
 	func modeUnpowered()
 	{
 		label.updateColor(grey)
-		details.update("unpowered", color: grey)
 		port.disable()
-		trigger.opacity = 0
+		button.disable("unpowered")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -254,9 +242,9 @@ class PanelThruster : Panel
 	func modeDocking()
 	{
 		label.updateColor(white)
-		details.update("Docking \( Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100 ))%", color: white)
 		port.enable()
-		trigger.opacity = 0
+		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
+		button.disable("docking \(dockingProgress)%")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -273,9 +261,8 @@ class PanelThruster : Panel
 	func modeDocked()
 	{
 		label.updateColor(white)
-		details.update("Undock", color:white)
 		port.enable()
-		trigger.opacity = 1
+		button.enable("undock")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -292,9 +279,8 @@ class PanelThruster : Panel
 	func modeFlight()
 	{
 		label.updateColor(white)
-		details.update(String(format: "%.1f", actualSpeed), color: grey)
 		port.enable()
-		trigger.opacity = 0
+		button.disable(String(format: "%.1f", actualSpeed))
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }

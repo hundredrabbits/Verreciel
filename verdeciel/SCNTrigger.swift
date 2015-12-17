@@ -34,6 +34,11 @@ class SCNTrigger : SCNNode
 		
 	}
 	
+	func debug()
+	{
+		self.geometry?.materials.first?.diffuse.contents = red
+	}
+	
 	func enable()
 	{
 		isEnabled = true
@@ -47,7 +52,8 @@ class SCNTrigger : SCNNode
 		self.geometry = SCNPlane(width: 0, height: 0)
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -5,7 +5,7 @@ import Foundation
 
 class LocationStation : Location
 {
-	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), size: Float = 1)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
 	{
 		super.init(name:name, at:at)
 		
@@ -14,26 +14,38 @@ class LocationStation : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.station()
-		icon.replace(icons.unseen())
 	}
 	
-	override func panel() -> Panel
+	override func update()
 	{
-		let newPanel = Panel()
+		updateIcon()
+	}
+	
+	override func panel() -> SCNNode!
+	{
+		let newPanel = SCNNode()
 		
-		let test = SCNLabel(text: "test", scale: 0.1, align: alignment.left)
-		newPanel.addChildNode(test)
+		let requirementLabel = SCNLabel(text:"Requirement")
+		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
+		newPanel.addChildNode(requirementLabel)
+		
+		let nameLabel = SCNLabel(text:"credits", color:red, align:alignment.right)
+		nameLabel.position = SCNVector3(templates.rightMargin,templates.topMargin-0.3,0)
+		newPanel.addChildNode(nameLabel)
+		
 		
 		return newPanel
 	}
 	
-	// MARK: Triggers -
+	// MARK: Icon -
 	
-	override func onSight()
+	override func updateIcon()
 	{
-		icon.replace(icons.placeholder())
+		if isSeen == false			{ icon.replace(icons.station(grey)) }
+		else if isKnown == false	{ icon.replace(icons.station(white)) }
+		else if isComplete == true	{ icon.replace(icons.station(cyan)) }
+		else						{ icon.replace(icons.station(red)) }
 	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
