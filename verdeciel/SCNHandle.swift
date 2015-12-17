@@ -11,11 +11,11 @@ class SCNHandle : SCNNode
 	var destination:SCNVector3!
 	var selectionLine:SCNLine!
 	var trigger:SCNTrigger!
-	var host:Panel!
+	var host:MainPanel!
 	
 	var isEnabled:Bool = true
 	
-	init(destination:SCNVector3 = SCNVector3(), host:Panel)
+	init(destination:SCNVector3 = SCNVector3(), host:MainPanel)
 	{
 		self.destination = destination
 		self.host = host

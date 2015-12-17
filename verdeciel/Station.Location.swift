@@ -21,9 +21,9 @@ class LocationStation : Location
 		updateIcon()
 	}
 	
-	override func panel() -> SCNNode!
+	override func panel() -> Panel!
 	{
-		let newPanel = SCNNode()
+		let newPanel = Panel()
 		
 		let requirementLabel = SCNLabel(text:"Requirement")
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
@@ -33,6 +33,8 @@ class LocationStation : Location
 		nameLabel.position = SCNVector3(templates.rightMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(nameLabel)
 		
+		let button = SCNButton(host: self, text: "test", operation:0)
+		newPanel.addChildNode(button)
 		
 		return newPanel
 	}

@@ -20,7 +20,7 @@ class LocationBeacon : Location
 		icon.replace(icons.placeholder())
 	}
 	
-	override func panel() -> Panel
+	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
 		

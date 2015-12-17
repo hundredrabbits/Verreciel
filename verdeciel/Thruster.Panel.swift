@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelThruster : Panel
+class PanelThruster : MainPanel
 {
 	var accelerate:SCNTrigger!
 	var decelerate:SCNTrigger!

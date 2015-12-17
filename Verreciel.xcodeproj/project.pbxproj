@@ -22,6 +22,7 @@
 		571728EA1BB07FB8002782A3 /* Battery.Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* Battery.Panel.swift */; };
 		572258151BB877C600DEC41E /* Portal.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* Portal.Location.swift */; };
 		5726C6071BD46FFF00B924B2 /* CoreUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726C6061BD46FFF00B924B2 /* CoreUI.swift */; };
+		5728E06E1C2363880098534E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728E06D1C2363880098534E /* Panel.swift */; };
 		5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573379591BD82F9B00310147 /* SCNVector3.swift */; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D45E1B5AB36D00BF0048 /* CoreTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45D1B5AB36D00BF0048 /* CoreTime.swift */; };
@@ -59,7 +60,7 @@
 		57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9621BC6C3DB00EA35F6 /* String.swift */; };
 		57C222F61C1F218A005092A4 /* Bank.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F51C1F218A005092A4 /* Bank.Location.swift */; };
 		57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F71C1F6038005092A4 /* SCNPortSlot.swift */; };
-		57C915171BC45E91009454C4 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C915161BC45E91009454C4 /* Panel.swift */; };
+		57C915171BC45E91009454C4 /* MainPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C915161BC45E91009454C4 /* MainPanel.swift */; };
 		57CA80981BB9CEA3000D31F7 /* Satellite.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* Satellite.Location.swift */; };
 		57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA937A1BC9A9A50089337F /* SCNWire.swift */; };
 		57DACD8E1C1A194500971F10 /* CoreAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DACD8D1C1A194500971F10 /* CoreAudio.swift */; };
@@ -95,6 +96,7 @@
 		571728E91BB07FB8002782A3 /* Battery.Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.Panel.swift; sourceTree = "<group>"; };
 		572258141BB877C600DEC41E /* Portal.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portal.Location.swift; sourceTree = "<group>"; };
 		5726C6061BD46FFF00B924B2 /* CoreUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUI.swift; sourceTree = "<group>"; };
+		5728E06D1C2363880098534E /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		573379591BD82F9B00310147 /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45D1B5AB36D00BF0048 /* CoreTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTime.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		57A5F9621BC6C3DB00EA35F6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		57C222F51C1F218A005092A4 /* Bank.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bank.Location.swift; sourceTree = "<group>"; };
 		57C222F71C1F6038005092A4 /* SCNPortSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPortSlot.swift; sourceTree = "<group>"; };
-		57C915161BC45E91009454C4 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		57C915161BC45E91009454C4 /* MainPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.swift; sourceTree = "<group>"; };
 		57CA80971BB9CEA3000D31F7 /* Satellite.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.Location.swift; sourceTree = "<group>"; };
 		57CA937A1BC9A9A50089337F /* SCNWire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNWire.swift; sourceTree = "<group>"; };
 		57DACD8D1C1A194500971F10 /* CoreAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreAudio.swift; sourceTree = "<group>"; };
@@ -248,7 +250,8 @@
 		5736277A1B4C06FE00899EBC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
-				57C915161BC45E91009454C4 /* Panel.swift */,
+				5728E06D1C2363880098534E /* Panel.swift */,
+				57C915161BC45E91009454C4 /* MainPanel.swift */,
 				571728E91BB07FB8002782A3 /* Battery.Panel.swift */,
 				571728E01BB049BB002782A3 /* Cargo.Panel.swift */,
 				57F645F61B4CC0C20088D115 /* Console.Panel.swift */,
@@ -412,6 +415,7 @@
 				574A33C51BEA92C100EB4C91 /* SCNPortRedirect.swift in Sources */,
 				5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */,
 				571728E11BB049BB002782A3 /* Cargo.Panel.swift in Sources */,
+				5728E06E1C2363880098534E /* Panel.swift in Sources */,
 				57CA80981BB9CEA3000D31F7 /* Satellite.Location.swift in Sources */,
 				571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */,
 				57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */,
@@ -449,7 +453,7 @@
 				578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* Mission.Panel.swift in Sources */,
 				57EDED221BC17321005DF3DE /* Beacon.Location.swift in Sources */,
-				57C915171BC45E91009454C4 /* Panel.swift in Sources */,
+				57C915171BC45E91009454C4 /* MainPanel.swift in Sources */,
 				5769535D1C2060FE00A0CA39 /* Exploration.Monitor.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* Battery.Panel.swift in Sources */,
 				57DD808E1BC7005600A4146C /* SCNHandle.swift in Sources */,

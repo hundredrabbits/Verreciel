@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelRadar : Panel
+class PanelRadar : MainPanel
 {
 	var x:Float = 0
 	var z:Float = 0

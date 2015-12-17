@@ -37,9 +37,9 @@ class LocationBank : Location
 		port6 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
 	}
 	
-	override func panel() -> SCNNode
+	override func panel() -> Panel!
 	{
-		let newPanel = SCNNode()
+		let newPanel = Panel()
 		
 		port1.enable()
 		port1.position = SCNVector3(templates.leftMargin,templates.lineSpacing * 2.5,0)

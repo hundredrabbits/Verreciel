@@ -62,9 +62,9 @@ class LocationPortal : Location
 	
 	// MARK: Panel - 
 	
-	override func panel() -> SCNNode
+	override func panel() -> Panel!
 	{
-		let newPanel = SCNNode()
+		let newPanel = Panel()
 		
 		// Right
 		

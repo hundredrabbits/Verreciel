@@ -29,9 +29,9 @@ class LocationSatellite : Location
 	
 	// MARK: Panel
 	
-	override func panel() -> SCNNode
+	override func panel() -> Panel!
 	{
-		let newPanel = SCNNode()
+		let newPanel = Panel()
 		
 		let nodeFrame = SCNNode()
 		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,0,0)

@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelMission : Panel
+class PanelMission : MainPanel
 {
 	var locationPanel:SCNNode!
 

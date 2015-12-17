@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelConsole : Panel
+class PanelConsole : MainPanel
 {
 	var consoleLine1:SCNCommand!
 	var consoleLine2:SCNCommand!

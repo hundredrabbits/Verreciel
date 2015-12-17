@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelCargo : Panel
+class PanelCargo : MainPanel
 {
 	var line1:SCNLine!
 	var line2:SCNLine!

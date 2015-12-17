@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelHatch : Panel
+class PanelHatch : MainPanel
 {
 	let outline = SCNNode()
 	

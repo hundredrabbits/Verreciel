@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelPilot : Panel
+class PanelPilot : MainPanel
 {
 	var target:Location!
 	var targetDirection = CGFloat()

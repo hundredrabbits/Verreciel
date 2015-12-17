@@ -18,7 +18,7 @@ class LocationSpawn : Location
 		self.isComplete = true
 	}
 
-	override func panel() -> SCNNode!
+	override func panel() -> Panel!
 	{
 		return nil
 	}

@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class PanelBattery : Panel
+class PanelBattery : MainPanel
 {
 	var oxygenPort:SCNPort!
 	

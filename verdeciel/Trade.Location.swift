@@ -35,9 +35,9 @@ class LocationTrade : Location
 	
 	// MARK: Panels -
 	
-	override func panel() -> SCNNode
+	override func panel() -> Panel!
 	{
-		let newPanel = SCNNode()
+		let newPanel = Panel()
 		let spacingLeft:Float = 0.4
 		
 		// Want
