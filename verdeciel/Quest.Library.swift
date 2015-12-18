@@ -10,13 +10,13 @@ import Foundation
 class QuestLibrary
 {
 	var tutorial:Array<Quest> = []
-	var tutorialQuestId:Int = 0
+	var tutorialProgress:Int = 0
 	var falvet:Array<Quest> = []
-	var falvetQuestId:Int = 0
+	var falvetProgress:Int = 0
 	var senni:Array<Quest> = []
-	var senniQuestId:Int = 0
+	var senniProgress:Int = 0
 	var usul:Array<Quest> = []
-	var usulQuestId:Int = 0
+	var usulProgress:Int = 0
 	
 	init()
 	{
@@ -47,9 +47,9 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
 		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: { progress.install() }) )
-		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { exploration.install() }) )
-		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() }) )
+		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: { }) )
+		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }) )
+		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() }) )
 		// Reach Valen
 		tutorial.append( Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }) )
@@ -99,26 +99,26 @@ class QuestLibrary
 	
 	func update()
 	{
-		let latestTutorial = tutorial[tutorialQuestId]
+		let latestTutorial = tutorial[tutorialProgress]
 		latestTutorial.validate()
 		
 		if latestTutorial.isCompleted == true {
-			tutorialQuestId += 1
-			ui.addMessage(tutorial[tutorialQuestId].name)
+			tutorialProgress += 1
+			ui.addMessage(tutorial[tutorialProgress].name)
 		}
-		if falvet[falvetQuestId].isCompleted == true {
-			falvetQuestId += 1
+		if falvet[falvetProgress].isCompleted == true {
+			falvetProgress += 1
 		}
 	}
 	
 	func skipTo(id:Int)
 	{
-		tutorialQuestId = 0
-		while tutorialQuestId < id {
-			tutorial[tutorialQuestId].complete()
-			tutorialQuestId += 1
+		tutorialProgress = 0
+		while tutorialProgress < id {
+			tutorial[tutorialProgress].complete()
+			tutorialProgress += 1
 		}
-		ui.addMessage(tutorial[tutorialQuestId].name)
+		ui.addMessage(tutorial[tutorialProgress].name)
 		update()
 	}
 }

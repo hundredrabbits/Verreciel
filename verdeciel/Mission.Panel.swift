@@ -92,34 +92,34 @@ class PanelMission : MainPanel
 		
 		label.update(name!, color: white)
 		
-		let latestTutorialQuest = quests.tutorial[quests.tutorialQuestId]
-		let latestFalvetQuest = quests.falvet[quests.falvetQuestId]
-		let latestSenniQuest = quests.senni[quests.senniQuestId]
-		let latestUsulQuest = quests.usul[quests.usulQuestId]
+		let latestTutorialQuest = quests.tutorial[quests.tutorialProgress]
+		let latestFalvetQuest = quests.falvet[quests.falvetProgress]
+		let latestSenniQuest = quests.senni[quests.senniProgress]
+		let latestUsulQuest = quests.usul[quests.usulProgress]
 		
 		// Tutorial Quest Line
-		let tutorialProgress = CGFloat(quests.tutorialQuestId) / CGFloat(quests.tutorial.count)
+		let tutorialProgress = CGFloat(quests.tutorialProgress) / CGFloat(quests.tutorial.count)
 		quest1.update(latestTutorialQuest.name!)
 		quest1Progress.update(tutorialProgress * 100)
 		
 		// Falvet Quest Line
-		let falvetProgress = CGFloat(quests.falvetQuestId) / CGFloat(quests.falvet.count)
+		let falvetProgress = CGFloat(quests.falvetProgress) / CGFloat(quests.falvet.count)
 		quest2.update(latestFalvetQuest.name!)
 		quest2Progress.update(falvetProgress * 100)
 		
 		// Senni Quest Line
-		let senniProgress = CGFloat(quests.senniQuestId) / CGFloat(quests.senni.count)
+		let senniProgress = CGFloat(quests.senniProgress) / CGFloat(quests.senni.count)
 		quest3.update(latestSenniQuest.name!)
 		quest3Progress.update(senniProgress * 100)
 		
 		// Usul Quest Line
-		let usulProgress = CGFloat(quests.usulQuestId) / CGFloat(quests.usul.count)
+		let usulProgress = CGFloat(quests.usulProgress) / CGFloat(quests.usul.count)
 		quest4.update(latestUsulQuest.name!)
 		quest4Progress.update(usulProgress * 100)
 		
-		if quests.falvetQuestId == 0 { quest2.update(grey) } else{ quest2.update(white) }
-		if quests.senniQuestId == 0 { quest3.update(grey) } else{ quest3.update(white) }
-		if quests.usulQuestId == 0 { quest4.update(grey) } else{ quest4.update(white) }
+		if quests.falvetProgress == 0 { quest2.update(grey) } else{ quest2.update(white) }
+		if quests.senniProgress == 0 { quest3.update(grey) } else{ quest3.update(white) }
+		if quests.usulProgress == 0 { quest4.update(grey) } else{ quest4.update(white) }
 	}
 	
 	func panelUpdate()

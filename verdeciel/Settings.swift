@@ -21,6 +21,7 @@ let radar = PanelRadar()
 let journey = MonitorJourney()
 let exploration = MonitorExploration()
 let progress = MonitorProgress()
+let complete = MonitorComplete()
 let radio = WidgetRadio()
 let map = WidgetMap()
 

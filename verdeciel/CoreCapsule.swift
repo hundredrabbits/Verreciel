@@ -153,6 +153,7 @@ class CoreCapsule: SCNNode
 		addChildNode(journey)
 		addChildNode(exploration)
 		addChildNode(progress)
+		addChildNode(complete)
 		
 		// Panels
 		addChildNode(battery)
@@ -175,6 +176,7 @@ class CoreCapsule: SCNNode
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y
 		progress.eulerAngles.y = mission.eulerAngles.y
+		complete.eulerAngles.y = radar.eulerAngles.y
 		
 		// Widgets
 		radar.footer.addChildNode(map)

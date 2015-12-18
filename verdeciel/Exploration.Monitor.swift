@@ -9,6 +9,7 @@ import Foundation
 class MonitorExploration : Monitor
 {
 	var distance:Float = 0
+	var knownLocations:Int = 0
 	
 	override func setup()
 	{
@@ -18,8 +19,7 @@ class MonitorExploration : Monitor
 	
 	override func installedFixedUpdate()
 	{
-		var knownLocations:Int = 0
-		
+		knownLocations = 0
 		for location in universe.childNodes {
 			let locationData = location as! Location
 			if locationData.isKnown == true {

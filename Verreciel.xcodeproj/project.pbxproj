@@ -48,6 +48,7 @@
 		5769535F1C2060FE00A0CA39 /* Progress.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */; };
 		576953631C206CEA00A0CA39 /* Map.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953621C206CEA00A0CA39 /* Map.Widget.swift */; };
 		576953651C206CF300A0CA39 /* Radio.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953641C206CF300A0CA39 /* Radio.Widget.swift */; };
+		57841A301C23ACD50005D7DA /* Complete.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
@@ -122,6 +123,7 @@
 		5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.Monitor.swift; sourceTree = "<group>"; };
 		576953621C206CEA00A0CA39 /* Map.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.Widget.swift; sourceTree = "<group>"; };
 		576953641C206CF300A0CA39 /* Radio.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radio.Widget.swift; sourceTree = "<group>"; };
+		57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complete.Monitor.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.Location.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				5796144A1BE00EE300421D69 /* Monitor.swift */,
 				5769535A1C2060FE00A0CA39 /* Exploration.Monitor.swift */,
 				5769535B1C2060FE00A0CA39 /* Journey.Monitor.swift */,
+				57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */,
 				5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */,
 				576953621C206CEA00A0CA39 /* Map.Widget.swift */,
 				576953641C206CF300A0CA39 /* Radio.Widget.swift */,
@@ -407,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57841A301C23ACD50005D7DA /* Complete.Monitor.swift in Sources */,
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
