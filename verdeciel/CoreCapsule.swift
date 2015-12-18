@@ -40,7 +40,7 @@ class CoreCapsule: SCNNode
 	
 	override func start()
 	{
-		battery.installed()
+		battery.install()
 	}
 	
 	override func fixedUpdate()

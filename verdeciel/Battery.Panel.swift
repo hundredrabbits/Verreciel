@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2015-07-07.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 
@@ -104,8 +105,12 @@ class PanelBattery : MainPanel
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 	}
 	
+	
 	override func start()
 	{
+		decals.opacity = 1
+		interface.opacity = 1
+		label.update("Battery", color: white)
 		thrusterPort.enable()
 	}
 	
@@ -118,6 +123,12 @@ class PanelBattery : MainPanel
 	}
 	
 	// MARK: Flags -
+	
+	override func onInstallationBegin()
+	{
+		ui.addWarning("Installing", duration: 3)
+		player.lookAt(deg: 0)
+	}
 	
 	func isRadioPowered() -> Bool
 	{

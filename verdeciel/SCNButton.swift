@@ -36,19 +36,19 @@ class SCNButton : SCNNode
 		addChildNode(label)
 	}
 
-	func enable(newText:String)
+	func enable(newText:String, outline:UIColor = red)
 	{
 		self.text = newText
 		label.update(self.text, color:white)
-		trigger.updateChildrenColors(red)
 		trigger.enable()
+		trigger.updateChildrenColors(outline)
 	}
 	
-	func disable(newText:String)
+	func disable(newText:String, outline:UIColor = red)
 	{
 		self.text = newText
 		label.update(self.text, color:grey)
-		trigger.updateChildrenColors(grey)
+		trigger.updateChildrenColors(outline)
 		trigger.disable()
 	}
 	

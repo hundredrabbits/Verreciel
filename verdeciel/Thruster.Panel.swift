@@ -244,7 +244,7 @@ class PanelThruster : MainPanel
 		label.updateColor(white)
 		port.enable()
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
-		button.disable("docking \(dockingProgress)%")
+		button.disable("docking \(dockingProgress)%", outline:clear)
 		
 		accelerate.disable()
 		decelerate.disable()

@@ -6,13 +6,17 @@ import Foundation
 class LocationStation : Location
 {
 	var requirement:Event!
-	var installation:()!
+	var installation:() -> Void
 	var installationName:String!
 	var port:SCNPortSlot!
 	var button:SCNButton!
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Event! = nil, installation:() -> Void, installationName:String)
 	{
+		self.installation = installation
+		self.requirement = requirement
+		self.installationName = installationName
+		
 		super.init(name:name,system:system, at:at)
 		
 		self.name = name
@@ -21,9 +25,6 @@ class LocationStation : Location
 		self.note = ""
 		self.mesh = structures.station()
 		
-		self.requirement = requirement
-		self.installation = installation()
-		self.installationName = installationName
 	}
 	
 	override func update()
@@ -47,7 +48,7 @@ class LocationStation : Location
 		port.position = SCNVector3(0,-0.2,0)
 		newPanel.addChildNode(port)
 		
-		let nameLabel = SCNLabel(text:"input", color:red, align:alignment.right)
+		let nameLabel = SCNLabel(text:"trade", color:red, align:alignment.right)
 		nameLabel.position = SCNVector3(-0.3,0,0)
 		port.addChildNode(nameLabel)
 		
