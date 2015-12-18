@@ -6,12 +6,14 @@ import Foundation
 class LocationStation : Location
 {
 	var requirement:Event!
+	var installation:()!
+	var installationName:String!
 	var port:SCNPortSlot!
 	var button:SCNButton!
 	
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red, requirement:Event! = nil)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Event! = nil, installation:() -> Void, installationName:String)
 	{
-		super.init(name:name, at:at)
+		super.init(name:name,system:system, at:at)
 		
 		self.name = name
 		self.system = system
@@ -20,6 +22,8 @@ class LocationStation : Location
 		self.mesh = structures.station()
 		
 		self.requirement = requirement
+		self.installation = installation()
+		self.installationName = installationName
 	}
 	
 	override func update()
@@ -31,7 +35,7 @@ class LocationStation : Location
 	{
 		let newPanel = Panel()
 		
-		let requirementLabel = SCNLabel(text:"Exchange credits$install the shield.")
+		let requirementLabel = SCNLabel(text:"Exchange \(requirement.name!)$install the \(installationName).")
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		

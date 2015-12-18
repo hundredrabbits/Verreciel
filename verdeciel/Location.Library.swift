@@ -92,10 +92,9 @@ class Usul
 		return location
 	}
 	
-	func city() -> LocationStation
+	func city() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.usul)
-		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		let location = Location(name:"Missing",system: .usul, at:CGPoint(x: offset.x, y: offset.y - 1))
 		return location
 	}
 	
@@ -142,7 +141,7 @@ class Valen
 	
 	func station() -> LocationStation
 	{
-		let location = LocationStation(name:"station",system:.valen, requirement:items.credits)
+		let location = LocationStation(name:"station",system:.valen, requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
 		location.at = CGPoint(x: offset.x + 1, y: offset.y)
 		return location
 	}
@@ -164,17 +163,15 @@ class Venic
 		return location
 	}
 	
-	func city() -> LocationStation
+	func city() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.venic)
-		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		let location = Location(name:"Missing",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y))
 		return location
 	}
 	
-	func waypoint() -> LocationStation
+	func waypoint() -> Location
 	{
-		let location = LocationStation(name: "station",system:.venic)
-		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		let location = Location(name: "station",system:.venic, at:CGPoint(x: offset.x, y: offset.y + 1))
 		return location
 	}
 }
@@ -195,38 +192,33 @@ class Senni
 		return location
 	}
 	
-	func city() -> LocationStation
+	func city() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.senni)
-		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		let location = Location(name:"Missing",system:.senni, at:CGPoint(x: offset.x - 1, y: offset.y))
 		return location
 	}
 	
-	func station() -> LocationStation
+	func station() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.senni)
-		location.at = CGPoint(x: offset.x + 1, y: offset.y)
+		let location = Location(name:"Missing",system:.senni, at:CGPoint(x: offset.x + 1, y: offset.y))
 		return location
 	}
 	
-	func service() -> LocationStation
+	func service() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.senni)
-		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x, y: offset.y + 1))
 		return location
 	}
 	
-	func spawn() -> LocationStation
+	func spawn() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.senni)
-		location.at = CGPoint(x: offset.x + 2, y: offset.y)
+		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x + 2, y: offset.y))
 		return location
 	}
 	
-	func telescope() -> LocationStation
+	func telescope() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.senni)
-		location.at = CGPoint(x: offset.x, y: offset.y + 2)
+		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x, y: offset.y + 2))
 		return location
 	}
 	
@@ -252,53 +244,48 @@ class Falvet
 		return location
 	}
 	
-	func toUsul() -> LocationStation
+	func toUsul() -> Location
 	{
-		return LocationStation(name:"Loiqe Repairs",system:.falvet, at: CGPoint(x: offset.x - 1.5, y: offset.y))
+		return Location(name:"Missing",system:.falvet, at: CGPoint(x: offset.x - 1.5, y: offset.y))
 	}
 	
-	func toLoiqe() -> LocationStation
+	func toLoiqe() -> Location
 	{
-		return LocationStation(name:"Passage",system:.falvet, at: CGPoint(x: offset.x, y: offset.y - 1.5))
+		return Location(name:"Passage",system:.falvet, at: CGPoint(x: offset.x, y: offset.y - 1.5))
 	}
 	
-	func toValen() -> LocationStation
+	func toValen() -> Location
 	{
-		return LocationStation(name:"Loiqe Repairs",system:.falvet, at: CGPoint(x: offset.x + 1.5, y: offset.y))
+		return Location(name:"Missing",system:.falvet, at: CGPoint(x: offset.x + 1.5, y: offset.y))
 	}
 	
-	func toSenni() -> LocationStation
+	func toSenni() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.falvet)
-		location.at = CGPoint(x: offset.x, y: offset.y + 1.5)
+		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x, y: offset.y + 1.5))
 		return location
 	}
 	
-	func service1() -> LocationStation
+	func service1() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.falvet)
-		location.at = CGPoint(x: offset.x + 1, y: offset.y + 1)
+		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x + 1, y: offset.y + 1))
 		return location
 	}
 	
-	func service2() -> LocationStation
+	func service2() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.falvet)
-		location.at = CGPoint(x: offset.x - 1, y: offset.y + 1)
+		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y + 1))
 		return location
 	}
 	
-	func service3() -> LocationStation
+	func service3() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.falvet)
-		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
+		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x + 1, y: offset.y - 1))
 		return location
 	}
 	
-	func service4() -> LocationStation
+	func service4() -> Location
 	{
-		let location = LocationStation(name:"Loiqe Repairs",system:.falvet)
-		location.at = CGPoint(x: offset.x - 1, y: offset.y - 1)
+		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
 		return location
 	}
 }

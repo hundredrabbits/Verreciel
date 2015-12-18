@@ -35,7 +35,7 @@ class Location : Event
 	var wire:SCNLine!
 	var connection:Event!
 	
-	init(name:String = "", at: CGPoint! = nil)
+	init(name:String = "",system:Systems, at: CGPoint)
 	{
 		super.init(newName:name, at:at, type:eventTypes.location)
 

@@ -5,9 +5,9 @@ import Foundation
 
 class LocationWaypoint : Location
 {
-	init(name:String = "",at:CGPoint = CGPoint(x: 0,y: 0), system:Systems)
+	override init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0))
 	{
-		super.init(name:name, at:at)
+		super.init(name:name, system:system, at:at)
 		
 		self.name = name
 		self.system = system

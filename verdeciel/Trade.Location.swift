@@ -15,7 +15,7 @@ class LocationTrade : Location
 	
 	init(name:String = "",at: CGPoint = CGPoint(), system:Systems, want:Event,give:Event)
 	{
-		super.init(name: name, at: at)
+		super.init(name: name,system:system, at: at)
 		
 		self.name = name
 		self.system = system

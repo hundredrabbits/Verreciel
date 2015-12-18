@@ -28,7 +28,7 @@ class LocationPortal : Location
 	
 	init(name:String, system:Systems, at: CGPoint, key: Event!, rightName:String, leftName:String)
 	{
-		super.init(name:name, at:at)
+		super.init(name:name,system:system, at:at)
 		
 		self.name = name
 		self.system = system

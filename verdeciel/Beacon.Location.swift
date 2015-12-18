@@ -9,7 +9,7 @@ class LocationBeacon : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String)
 	{
-		super.init(name:name, at:at)
+		super.init(name:name,system:system, at:at)
 		
 		self.name = name
 		self.system = system

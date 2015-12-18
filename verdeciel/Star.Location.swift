@@ -7,7 +7,7 @@ class LocationStar : Location
 {
 	init(name:String,at: CGPoint = CGPoint(), system:Systems, color:UIColor = red)
 	{
-		super.init(name:name, at:at)
+		super.init(name:name,system:system, at:at)
 		
 		self.name = name
 		self.system = system

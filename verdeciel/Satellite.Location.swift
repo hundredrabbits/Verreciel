@@ -10,7 +10,7 @@ class LocationSatellite : Location
 
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!)
 	{
-		super.init(name:name, at:at)
+		super.init(name:name, system:system, at:at)
 		
 		self.name = name
 		self.system = system
