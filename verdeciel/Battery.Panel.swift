@@ -128,12 +128,12 @@ class PanelBattery : MainPanel
 	
 	override func onConnect()
 	{
-		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.enable() }
+		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.refresh() }
 	}
 	
 	override func onDisconnect()
 	{
-		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.enable() }
+		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.refresh() }
 	}
 	
 	func isShieldPowered() -> Bool

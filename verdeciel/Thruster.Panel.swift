@@ -134,6 +134,10 @@ class PanelThruster : MainPanel
 		update()
 		
 		// Check for warp
+		if battery.thrusterPort.isReceivingItemOfType(.battery) == false {
+			speed = 0
+			modeUnpowered()
+		}
 		if capsule.isWarping == true {
 			modeWarping()
 		}
@@ -144,10 +148,6 @@ class PanelThruster : MainPanel
 		else if port.isReceiving(items.warpDrive) == true {
 			modeMissingPilotForWarp()
 			canWarp = true
-		}
-		else if battery.thrusterPort.isReceivingItemOfType(.battery) == false {
-			speed = 0
-			modeUnpowered()
 		}
 		else if capsule.isDocked == true {
 			modeDocked()

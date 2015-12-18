@@ -35,6 +35,7 @@ class SCNPortRedirect : SCNPort
 		
 		stored_connection.onDisconnect()
 		stored_connection_host.onDisconnect()
+		host.onDisconnect()
 		
 		wire.disable()
 	}

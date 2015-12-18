@@ -190,7 +190,6 @@ class SCNPort : SCNNode
 		
 		connection.host.onConnect()
 		connection.onConnect()
-		
 		self.onConnect()
 	}
 	
@@ -200,15 +199,15 @@ class SCNPort : SCNNode
 	
 		let targetOrigin = self.connection.host
 		
-		connection.onDisconnect()
-		self.onDisconnect()
-		
 		self.connection.origin = nil
 		connection.update()
+		connection.onDisconnect()
 		self.connection = nil
 		
 		targetOrigin.disconnect()
 		targetOrigin.update()
+		
+		self.onDisconnect()
 		
 		wire.disable()
 	}

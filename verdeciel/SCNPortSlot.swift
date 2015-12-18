@@ -76,6 +76,13 @@ class SCNPortSlot : SCNPort
 		if connection != nil && event != nil { connection.host.listen(event) }
 	}
 	
+	override func onDisconnect()
+	{
+		super.onDisconnect()
+		print(host)
+		host.onDisconnect()
+	}
+	
 	func uploadProgress()
 	{
 		if origin == nil { uploadCancel() ; return }
