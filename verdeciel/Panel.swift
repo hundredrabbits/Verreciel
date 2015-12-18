@@ -11,6 +11,8 @@ class Panel : SCNNode
 {
 	var isEnabled:Bool = false
 	
+	var root = SCNNode()
+	
 	override init()
 	{
 		super.init()
@@ -48,17 +50,18 @@ class Panel : SCNNode
 		if installPercentage > 100 {
 			onInstallationComplete()
 			installPercentage = 0
+			installTimer.invalidate()
 		}
 	}
 
 	func onInstallationBegin()
 	{
-		
+		print("+ PANEL    | Installing the \(name!)..")
 	}
 	
 	func onInstallationComplete()
 	{
-		
+		print("+ PANEL    | Installed the \(name!).")
 	}
 	
 	required init?(coder aDecoder: NSCoder)

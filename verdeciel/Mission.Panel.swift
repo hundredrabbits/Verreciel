@@ -23,23 +23,25 @@ class PanelMission : MainPanel
 	
 	// MARK: Default -
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "mission"
 		
 		// Decals
 		
-		decals.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
+		decalsNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
 		
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
 		locationPanel = Panel()
-		interface.addChildNode(locationPanel)
+		mainNode.addChildNode(locationPanel)
 	
 		questPanel = SCNNode()
 		questPanel.position = SCNVector3(0,0,0)
@@ -66,7 +68,7 @@ class PanelMission : MainPanel
 		quest4Progress.position = SCNVector3(x: templates.rightMargin * 2, y: -0.3, z: 0)
 		quest4.addChildNode(quest4Progress)
 		
-		interface.addChildNode(questPanel)
+		mainNode.addChildNode(questPanel)
 		
 		port.input = Item.self
 		port.output = Event.self
@@ -231,5 +233,10 @@ class PanelMission : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -180)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -22,11 +22,13 @@ class PanelRadar : MainPanel
 	
 	// MARK: Default -
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "radar"
 		
-		interface.addChildNode(eventPivot)
+		mainNode.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)
 		
 		// Ship
@@ -34,23 +36,23 @@ class PanelRadar : MainPanel
 		shipCursor = SCNNode()
 		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: 0.2, y: 0, z: 0),color:white))
 		shipCursor.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.2, z: 0),nodeB: SCNVector3(x: -0.2, y: 0, z: 0),color:white))
-		interface.addChildNode(shipCursor)
+		mainNode.addChildNode(shipCursor)
 		
 		targetterFar = SCNNode()
 		targetterFar.addChildNode(SCNLine(nodeA: SCNVector3(0.8,0,0), nodeB: SCNVector3(1,0,0), color: red))
 		targetterFar.opacity = 0
-		interface.addChildNode(targetterFar)
+		mainNode.addChildNode(targetterFar)
 		
 		// Decals
 		
-		decals.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
+		decalsNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
 		
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
-		decals.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
 		
 		// Targetter
 		let scale:Float = 0.3
@@ -65,7 +67,7 @@ class PanelRadar : MainPanel
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -scale, y: 0, z: depth), nodeB: SCNVector3(x: -scale * 0.8, y: scale * 0.2, z: depth), color: red))
 		targetter.addChildNode(SCNLine(nodeA: SCNVector3(x: -scale, y: 0, z: depth), nodeB: SCNVector3(x: -scale * 0.8, y: -scale * 0.2, z: depth), color: red))
 		targetter.opacity = 0
-		interface.addChildNode(targetter)
+		mainNode.addChildNode(targetter)
 		
 		self.position = SCNVector3(0,0,0)
 		
@@ -168,5 +170,10 @@ class PanelRadar : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -90)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

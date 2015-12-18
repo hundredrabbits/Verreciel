@@ -17,10 +17,12 @@ class PanelCargo : MainPanel
 	
 	var trigger:SCNTrigger!
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "cargo"
-		interface.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		mainNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
 		port.event = items.playerCargo
 
@@ -33,17 +35,17 @@ class PanelCargo : MainPanel
 		line5 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey)
 		line6 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey)
 		
-		interface.addChildNode(line1)
-		interface.addChildNode(line2)
-		interface.addChildNode(line3)
-		interface.addChildNode(line4)
-		interface.addChildNode(line5)
-		interface.addChildNode(line6)
+		mainNode.addChildNode(line1)
+		mainNode.addChildNode(line2)
+		mainNode.addChildNode(line3)
+		mainNode.addChildNode(line4)
+		mainNode.addChildNode(line5)
+		mainNode.addChildNode(line6)
 		
 		// Trigger
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
-		interface.addChildNode(trigger)
+		mainNode.addChildNode(trigger)
 		
 		port.input = Item.self
 		port.output = Item.self
@@ -51,8 +53,8 @@ class PanelCargo : MainPanel
 	
 	override func start()
 	{
-		decals.opacity = 0
-		interface.opacity = 0
+		decalsNode.opacity = 0
+		mainNode.opacity = 0
 		label.update("--", color: grey)
 		update()
 	}
@@ -172,5 +174,10 @@ class PanelCargo : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -225)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

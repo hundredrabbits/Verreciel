@@ -180,7 +180,7 @@ class CorePlayer : SCNNode
 	func showStarmap()
 	{
 		capsule.mesh.opacity = 0
-		radar.decals.opacity = 0
+		radar.decalsNode.opacity = 0
 		radar.header.opacity = 0
 		radar.handle.opacity = 0
 		thruster.opacity = 0
@@ -191,7 +191,7 @@ class CorePlayer : SCNNode
 	func hideStarmap()
 	{
 		capsule.mesh.opacity = 1
-		radar.decals.opacity = 1
+		radar.decalsNode.opacity = 1
 		radar.header.opacity = 1
 		radar.handle.opacity = 1
 		thruster.opacity = 1

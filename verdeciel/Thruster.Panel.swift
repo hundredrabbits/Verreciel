@@ -35,8 +35,10 @@ class PanelThruster : MainPanel
 	
 	// MARK: Default -
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "thruster"
 		
 		// Lines
@@ -45,10 +47,10 @@ class PanelThruster : MainPanel
 		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey)
 		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey)
 		
-		interface.addChildNode(line1)
-		interface.addChildNode(line2)
-		interface.addChildNode(line3)
-		interface.addChildNode(line4)
+		mainNode.addChildNode(line1)
+		mainNode.addChildNode(line2)
+		mainNode.addChildNode(line3)
+		mainNode.addChildNode(line4)
 		
 		cutLine1Left = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(-0.1, -0.3, 0), color: grey)
 		cutLine1Right = SCNLine(nodeA: SCNVector3(0.5, -0.3, 0), nodeB: SCNVector3(0.1, -0.3, 0), color: grey)
@@ -59,14 +61,14 @@ class PanelThruster : MainPanel
 		cutLine4Left = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(-0.1, 0.3, 0), color: grey)
 		cutLine4Right = SCNLine(nodeA: SCNVector3(0.5, 0.3, 0), nodeB: SCNVector3(0.1, 0.3, 0), color: grey)
 		
-		interface.addChildNode(cutLine1Left)
-		interface.addChildNode(cutLine1Right)
-		interface.addChildNode(cutLine2Left)
-		interface.addChildNode(cutLine2Right)
-		interface.addChildNode(cutLine3Left)
-		interface.addChildNode(cutLine3Right)
-		interface.addChildNode(cutLine4Left)
-		interface.addChildNode(cutLine4Right)
+		mainNode.addChildNode(cutLine1Left)
+		mainNode.addChildNode(cutLine1Right)
+		mainNode.addChildNode(cutLine2Left)
+		mainNode.addChildNode(cutLine2Right)
+		mainNode.addChildNode(cutLine3Left)
+		mainNode.addChildNode(cutLine3Right)
+		mainNode.addChildNode(cutLine4Left)
+		mainNode.addChildNode(cutLine4Right)
 		
 		// Triggers
 		
@@ -80,21 +82,14 @@ class PanelThruster : MainPanel
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))
 		
-		interface.addChildNode(accelerate)
-		interface.addChildNode(decelerate)
+		mainNode.addChildNode(accelerate)
+		mainNode.addChildNode(decelerate)
 		
 		port.input = Event.self
 		port.output = Event.self
 		
 		button = SCNButton(host:self, text: "undock", operation: 2)
 		details.addChildNode(button)
-	}
-	
-	override func start()
-	{
-		decals.opacity = 0
-		interface.opacity = 0
-		label.update("--", color: grey)
 	}
 
 	override func touch(id:Int = 0)
@@ -357,5 +352,10 @@ class PanelThruster : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -45)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

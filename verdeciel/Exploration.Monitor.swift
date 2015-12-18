@@ -11,8 +11,10 @@ class MonitorExploration : Monitor
 	var distance:Float = 0
 	var knownLocations:Int = 0
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "exploration"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
@@ -32,5 +34,10 @@ class MonitorExploration : Monitor
 	override func onInstallationBegin()
 	{
 //		player.lookAt(deg: -180)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -15,14 +15,16 @@ class PanelHatch : MainPanel
 {
 	let outline = SCNNode()
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "hatch"
 		
-		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
-		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
-		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
-		interface.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
+		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
+		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
+		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
+		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
 		
 		let outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
 		outline.addChildNode(outline1)
@@ -33,11 +35,11 @@ class PanelHatch : MainPanel
 		let outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
 		outline.addChildNode(outline4)
 		
-		interface.addChildNode(outline)
+		mainNode.addChildNode(outline)
 		
 		// Trigger
 		
-		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
+		mainNode.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 		
 		port.input = Item.self
 		port.output = Event.self
@@ -45,8 +47,8 @@ class PanelHatch : MainPanel
 	
 	override func start()
 	{
-		decals.opacity = 0
-		interface.opacity = 0
+		decalsNode.opacity = 0
+		mainNode.opacity = 0
 		label.update("--", color: grey)
 	}
 
@@ -104,5 +106,10 @@ class PanelHatch : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -315)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

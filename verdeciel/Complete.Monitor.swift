@@ -10,10 +10,17 @@ class MonitorComplete : Monitor
 {
 	var distance:Float = 0
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "complete"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+	}
+	
+	func setup()
+	{
+		
 	}
 	
 	override func refresh()
@@ -31,5 +38,10 @@ class MonitorComplete : Monitor
 	override func onInstallationBegin()
 	{
 //		player.lookAt(deg: 90)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -15,29 +15,31 @@ class PanelPilot : MainPanel
 	var staticDirectionIndicator = SCNNode()
 	var eventsDirectionIndicator = SCNNode()
 	
-	override func setup()
+	override init()
 	{
+		super.init()
+		
 		name = "pilot"
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))
-		interface.addChildNode(targetDirectionIndicator)
+		mainNode.addChildNode(targetDirectionIndicator)
 		
 		activeDirectionIndicator = SCNNode()
 		activeDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.4, -0.1), nodeB: SCNVector3(0, 0.55, -0), color: grey))
-		interface.addChildNode(activeDirectionIndicator)
+		mainNode.addChildNode(activeDirectionIndicator)
 		
 		staticDirectionIndicator = SCNNode()
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0, 0.4, -0), color: cyan))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, -0.1), nodeB: SCNVector3(0, -0.4, -0), color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0.2, 0, -0.1), nodeB: SCNVector3(0.4, 0, -0), color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(-0.2, 0, -0.1), nodeB: SCNVector3(-0.4, 0, -0), color: red))
-		interface.addChildNode(staticDirectionIndicator)
+		mainNode.addChildNode(staticDirectionIndicator)
 		
 		eventsDirectionIndicator = SCNNode()
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
-		interface.addChildNode(eventsDirectionIndicator)
+		mainNode.addChildNode(eventsDirectionIndicator)
 		
 		port.input = Location.self
 		port.output = Event.self
@@ -45,8 +47,8 @@ class PanelPilot : MainPanel
 	
 	override func start()
 	{
-		decals.opacity = 0
-		interface.opacity = 0
+		decalsNode.opacity = 0
+		mainNode.opacity = 0
 		label.update("--", color: grey)
 	}
 	
@@ -113,5 +115,10 @@ class PanelPilot : MainPanel
 	{
 		ui.addWarning("Installing", duration: 3)
 		player.lookAt(deg: -135)
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

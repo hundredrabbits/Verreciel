@@ -18,27 +18,19 @@ class Monitor : Panel
 		
 		name = "journey"
 		
-		addChildNode(interface)
-		interface.position = SCNVector3(0,0,templates.radius)
+		root.position = SCNVector3(0,0,templates.radius)
 		
 		label.update("0")
 		label.position = SCNVector3(0,0,0)
-		interface.addChildNode(label)
+		root.addChildNode(label)
 		
 		details.position = SCNVector3(0,0.2,0)
-		interface.addChildNode(details)
+		root.addChildNode(details)
 		
 		label.opacity = 0
 		details.opacity = 0
-
-		setup()
 		
 		details.update(name!)
-	}
-	
-	func setup()
-	{
-		
 	}
 	
 	// MARK: Installation -
@@ -54,7 +46,7 @@ class Monitor : Panel
 		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
 		installProgressBar.opacity = 0
 		installNode.addChildNode(installProgressBar)
-		interface.addChildNode(installNode)
+		root.addChildNode(installNode)
 	}
 	
 	override func installProgress()
@@ -64,7 +56,7 @@ class Monitor : Panel
 	
 	override func onInstallationComplete()
 	{
-		print("+ PANEL    | Installed the \(name!)")
+		super.onInstallationComplete()
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)

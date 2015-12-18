@@ -74,6 +74,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func startingState()
 	{
+		battery.cellPort1.addEvent(items.cell1)
 	}
 	
 	func debugState()
