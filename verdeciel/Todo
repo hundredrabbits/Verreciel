@@ -2,80 +2,27 @@
 *    GENRAL
 ================
 
-- Interface sounds
-- Add Signal converter panel?
-- Add harvest location 4 in falvet
-- Shut off the suns
+> Fluff
+- Floating feel
 - Add ship doodads
 - Add space doodads
-- Unlock map port
-- Make harvest quest
-- Telemetrists!?
+- Interface sounds
+
+> Playthrough
 - Save / Load Mechanics
-- Floating feel
-- Docking breaks if going away
-- Merge keys to make master portal key
-- Scanner
 - Loading a map/ adding stars
 - Add other stations(cloak -> approach private locations)
-
-> Playthrough issues
+- Scanner
+- Merge keys to make master portal key
+- Add Signal converter panel?
+- Telemetrists!?
 
 > Warping
 
 > Valen Flow
 - Derelict beacon
+- Shut off the suns
+- Make harvest quest
+- Unlock map port
 
-> Universe
-
-	> Events
-	- Warp animation align
-
-	> Add Vermil Portal to Usul
-	> Add cyanin Portal to Valen
-	> Add journey distance in the capsule
-
-> Event Types
-
-	> Items
-	- Add maps
-	- Add ammo
-	- Portal Keys
-
-	> Locations
-
-	> Stealthed events
-
-> Locations
-
-	- Invisible
-	- Sentries
-	- Hostile
-	- Node
-	- Shield (cyan requires shield + 4)
-
-> Capsule
-
-	> Radar
-	- Create better radar sprites
-
-	> Pilot
-
-	> Cargo
-	- decline transfer when cargo is full
-
-	> Battery
-	- Allow sending batteries directly into the cell ports
-
-================
-*    Notes
-================
-
-> Universe Hierarchy
-	> Normal
-		> Vermiles
-			> Opal
-			> Void
-		> Cyanine
-			> Opal
-			> Void
+> Bugs
