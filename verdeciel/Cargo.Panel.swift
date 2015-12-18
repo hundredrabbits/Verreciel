@@ -102,7 +102,7 @@ class PanelCargo : MainPanel
 		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold
-//		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
+//		let newCargohold = Event(name: "cargohold", type: eventTypes.cargo)
 //		for item in port.event.content {
 //			newCargohold.content.append(item)
 //		}
