@@ -1,10 +1,6 @@
-//
-//  ItemLibrary.swift
-//  Verreciel
-//
+
 //  Created by Devine Lu Linvega on 2015-10-07.
 //  Copyright © 2015 XXIIVV. All rights reserved.
-//
 
 import Foundation
 
@@ -59,7 +55,5 @@ class ItemLibrary
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Currencies
-	
 	let credits = Item(name: "credits", type: .currency, note:"todo", isQuest:true)
-	
 }

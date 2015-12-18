@@ -145,7 +145,7 @@ class PanelThruster : MainPanel
 			modeMissingPilotForWarp()
 			canWarp = true
 		}
-		else if battery.isThrusterPowered() == false {
+		else if battery.thrusterPort.isReceivingItemOfType(.battery) == false {
 			speed = 0
 			modeUnpowered()
 		}

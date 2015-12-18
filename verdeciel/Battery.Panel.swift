@@ -121,21 +121,24 @@ class PanelBattery : MainPanel
 	
 	// MARK: Flags -
 	
-	override func onInstallationBegin()
+	override func listen(event: Event)
 	{
-		super.onInstallationBegin()
-		player.lookAt(deg: 0)
+		
 	}
 	
-	func isRadioPowered() -> Bool
+	override func onConnect()
+	{
+		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.enable() }
+	}
+	
+	override func onDisconnect()
+	{
+		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.enable() }
+	}
+	
+	func isShieldPowered() -> Bool
 	{
 		if radioPort.origin != nil && radioPort.origin.event != nil && radioPort.origin.event.details == itemTypes.battery { return true }
-		return false
-	}
-	
-	func isThrusterPowered() -> Bool
-	{
-		if thrusterPort.origin != nil && thrusterPort.origin.event != nil && thrusterPort.origin.event.details == itemTypes.battery { return true }
 		return false
 	}
 	
@@ -145,6 +148,12 @@ class PanelBattery : MainPanel
 		if cellPort2.event == target { return true }
 		if cellPort3.event == target { return true }
 		return false
+	}
+	
+	override func onInstallationBegin()
+	{
+		super.onInstallationBegin()
+		player.lookAt(deg: 0)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

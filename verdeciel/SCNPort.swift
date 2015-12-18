@@ -121,10 +121,8 @@ class SCNPort : SCNNode
 		
 		// Compatibility
 		wire.isCompatible = false
-		if connection != nil {
-//			if event != nil && event.type == connection.input || connection != nil && connection.input == .generic {
-//				wire.isCompatible = true
-//			}
+		if connection != nil && output == connection.input {
+			wire.isCompatible = true
 		}
 		
 		// Blink
@@ -190,7 +188,9 @@ class SCNPort : SCNNode
 		host.bang()
 		wire.enable()
 		
+		connection.host.onConnect()
 		connection.onConnect()
+		
 		self.onConnect()
 	}
 	
@@ -247,9 +247,16 @@ class SCNPort : SCNNode
 		return false
 	}
 	
-	func isReceivingType(type:Event) -> Bool
+	func isReceivingItemOfType(type:itemTypes) -> Bool
 	{
-//		if origin != nil && origin.event != nil && origin.event.type == type { return true }
+		if origin == nil { return false }
+		if origin.event == nil { return false }
+		if (origin.event is Item) == false { return false }
+		
+		let source = origin.event as! Item
+		
+		if source.type == type { return true }
+		
 		return false
 	}
 	
@@ -258,7 +265,7 @@ class SCNPort : SCNNode
 		print("Warning! Bang on SCNPort")
 	}
 	
-	func onConnect()
+	override func onConnect()
 	{
 		print("connected")
 	}

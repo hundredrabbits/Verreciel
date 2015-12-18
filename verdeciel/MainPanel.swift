@@ -110,6 +110,7 @@ class MainPanel : Panel
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()
+		port.enable()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

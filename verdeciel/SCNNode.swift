@@ -114,6 +114,11 @@ extension SCNNode
 	
 	// MARK: Triggers -
 	
+	func onConnect()
+	{
+		update()
+	}
+	
 	func onDisconnect()
 	{
 		update()
