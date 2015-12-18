@@ -49,7 +49,7 @@ class CorePlayer : SCNNode
 		self.camera?.aperture = 100
 		self.camera?.automaticallyAdjustsZRange = true
 		
-		port = SCNPort(host: self, input: eventTypes.map, output: eventTypes.generic)
+		port = SCNPort(host: self, input: Event.self, output: Event.self)
 		port.enable()
 		
 		addInterface()

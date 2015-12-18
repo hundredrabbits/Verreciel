@@ -39,8 +39,8 @@ class PanelPilot : MainPanel
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		interface.addChildNode(eventsDirectionIndicator)
 		
-		port.input = eventTypes.location
-		port.output = eventTypes.unknown
+		port.input = Location.self
+		port.output = Event.self
 	}
 	
 	override func start()
@@ -55,24 +55,25 @@ class PanelPilot : MainPanel
 		
 	}
 	
-	override func installedFixedUpdate()
+	override func fixedUpdate()
 	{
-		// Approaching the sun
-		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
-			target = capsule.closestKnownLocation()
-		}
-		// Lost
-		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false{
-			target = capsule.closestKnownLocation()
-		}
-		// Port Location
-		else if port.isReceivingType(eventTypes.location) == true {
-			target = port.origin.event as! Location
-		}
-		// Nothing
-		else{
-			target = nil
-		}
+		
+//		// Approaching the sun
+//		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
+//			target = capsule.closestKnownLocation()
+//		}
+//		// Lost
+//		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false{
+//			target = capsule.closestKnownLocation()
+//		}
+//		// Port Location
+////		else if port.isReceivingType(Location.self) == true {
+////			target = port.origin.event as! Location
+////		}
+//		// Nothing
+//		else{
+//			target = nil
+//		}
 		
 		if target != nil { align() }
 	}

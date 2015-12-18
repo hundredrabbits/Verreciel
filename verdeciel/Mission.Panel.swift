@@ -68,15 +68,15 @@ class PanelMission : MainPanel
 		
 		interface.addChildNode(questPanel)
 		
-		port.input = eventTypes.item
-		port.output = eventTypes.unknown
+		port.input = Item.self
+		port.output = Event.self
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1),host:self))
 		
 		locationPanel.opacity = 0
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		if capsule.isDocked && capsule.dock.isComplete == false {
 			panelUpdate()
@@ -88,8 +88,6 @@ class PanelMission : MainPanel
 	
 	func missionUpdate()
 	{
-		if isInstalled == false { return }
-		
 		label.update(name!, color: white)
 		
 		let latestTutorialQuest = quests.tutorial[quests.tutorialProgress]
@@ -124,8 +122,6 @@ class PanelMission : MainPanel
 	
 	func panelUpdate()
 	{
-		if isInstalled == false { return }
-		
 		label.update(capsule.dock.name!)
 		locationPanel.update()
 	}

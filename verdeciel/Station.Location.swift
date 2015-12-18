@@ -44,7 +44,7 @@ class LocationStation : Location
 		button.position = SCNVector3(0,-1,0)
 		newPanel.addChildNode(button)
 		
-		port = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
+		port = SCNPortSlot(host: self, input: Event.self, output: Event.self)
 		port.position = SCNVector3(0,-0.2,0)
 		newPanel.addChildNode(port)
 		
@@ -65,7 +65,7 @@ class LocationStation : Location
 	
 	override func touch(id: Int)
 	{
-		if id == 0 { print("working") }
+		if id == 0 { self.installation() }
 	}
 	
 	// MARK: Icon -

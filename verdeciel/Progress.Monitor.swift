@@ -15,7 +15,7 @@ class MonitorProgress : Monitor
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		label.update("4/39")
 	}

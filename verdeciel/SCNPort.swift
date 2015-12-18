@@ -8,8 +8,8 @@ import Foundation
 
 class SCNPort : SCNNode
 {
-	var input:eventTypes!
-	var output:eventTypes!
+	var input:Event.Type!
+	var output:Event.Type!
 	
 	var isActive:Bool = false
 	var isEnabled:Bool = true
@@ -29,7 +29,7 @@ class SCNPort : SCNNode
 	var sprite_output = SCNNode()
 	var sprite_input = SCNNode()
 	
-	init(host:SCNNode = SCNNode(), input:eventTypes = eventTypes.unknown, output:eventTypes = eventTypes.unknown)
+	init(host:SCNNode = SCNNode(), input:Event.Type = Event.self, output:Event.Type = Event.self)
 	{
 		super.init()
 		
@@ -122,9 +122,9 @@ class SCNPort : SCNNode
 		// Compatibility
 		wire.isCompatible = false
 		if connection != nil {
-			if event != nil && event.type == connection.input || connection != nil && connection.input == eventTypes.generic {
-				wire.isCompatible = true
-			}
+//			if event != nil && event.type == connection.input || connection != nil && connection.input == .generic {
+//				wire.isCompatible = true
+//			}
 		}
 		
 		// Blink
@@ -211,11 +211,10 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
-	func hasEvent(type:eventTypes = eventTypes.none) -> Bool
+	func hasEvent(target:Event) -> Bool
 	{
 		if event == nil { return false }
-		if event.type == eventTypes.none && event != nil { return true }
-		if event.type == type { return true }
+//		if event is target { return true }
 		return false
 	}
 	
@@ -246,9 +245,9 @@ class SCNPort : SCNNode
 		return false
 	}
 	
-	func isReceivingType(type:eventTypes) -> Bool
+	func isReceivingType(type:Event) -> Bool
 	{
-		if origin != nil && origin.event != nil && origin.event.type == type { return true }
+//		if origin != nil && origin.event != nil && origin.event.type == type { return true }
 		return false
 	}
 	

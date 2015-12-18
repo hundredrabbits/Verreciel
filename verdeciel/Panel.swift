@@ -16,6 +16,11 @@ class Panel : SCNNode
 		super.init()
 	}
 	
+	func refresh()
+	{
+		
+	}
+	
 	func enable()
 	{
 		isEnabled = true
@@ -24,6 +29,36 @@ class Panel : SCNNode
 	func disable()
 	{
 		isEnabled = false
+	}
+	
+	// MARK: Installation -
+	
+	var installTimer:NSTimer!
+	var installPercentage:Float = 0
+	
+	func install()
+	{
+		onInstallationBegin()
+		installTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("installProgress"), userInfo: nil, repeats: true)
+	}
+	
+	func installProgress()
+	{
+		installPercentage += Float(arc4random_uniform(60))/10
+		if installPercentage > 100 {
+			onInstallationComplete()
+			installPercentage = 0
+		}
+	}
+
+	func onInstallationBegin()
+	{
+		
+	}
+	
+	func onInstallationComplete()
+	{
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

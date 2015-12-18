@@ -83,8 +83,8 @@ class PanelThruster : MainPanel
 		interface.addChildNode(accelerate)
 		interface.addChildNode(decelerate)
 		
-		port.input = eventTypes.drive
-		port.output = eventTypes.unknown
+		port.input = Event.self
+		port.output = Event.self
 		
 		button = SCNButton(host:self, text: "undock", operation: 2)
 		details.addChildNode(button)
@@ -132,7 +132,7 @@ class PanelThruster : MainPanel
 		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0 } else { line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1 }
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		canWarp = false
 		
@@ -142,7 +142,7 @@ class PanelThruster : MainPanel
 		if capsule.isWarping == true {
 			modeWarping()
 		}
-		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingType(eventTypes.location) == true {
+		else if port.isReceiving(items.warpDrive) == true  { // && pilot.port.isReceivingType(eventTypes.location) == true
 			modeWaitingForWarp()
 			canWarp = true
 		}

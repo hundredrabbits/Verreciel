@@ -16,7 +16,7 @@ class LocationStar : Location
 		self.color = color
 		self.mesh = structures.star()
 		self.details = itemTypes.star
-		self.locationType = locationTypes.star
+		self.type = locationTypes.star
 		icon.replace(icons.star_unseen(red))
 		label.update(name)
 	}

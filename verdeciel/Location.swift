@@ -25,7 +25,7 @@ class Location : Event
 	var isComplete:Bool = false
 	
 	var interface = SCNNode()
-	var locationType:locationTypes = locationTypes.generic
+	var type:locationTypes = .generic
 	
 	// Radar
 	var mesh:SCNNode!
@@ -37,7 +37,7 @@ class Location : Event
 	
 	init(name:String = "",system:Systems, at: CGPoint)
 	{
-		super.init(newName:name, at:at, type:eventTypes.location)
+		super.init(newName:name, at:at)
 
 		self.at = at
 		

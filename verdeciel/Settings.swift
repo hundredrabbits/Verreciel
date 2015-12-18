@@ -26,12 +26,13 @@ let radio = WidgetRadio()
 let map = WidgetMap()
 
 // Generic
-var time:CoreTime!
 var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
 var ui:CoreUI!
+var game:CoreGame!
+var time:CoreTime!
 
 // Collections
 var quests = QuestLibrary()
@@ -83,26 +84,6 @@ enum Systems
 	case venic
 }
 
-enum eventTypes
-{
-	case none
-	case unknown
-	
-	case location
-	case item
-	case portal
-	
-	case generic
-	case drive
-	
-	case cargo
-	case map
-	case battery
-	
-	case record
-	case signal
-}
-
 enum locationTypes
 {
 	case generic
@@ -122,6 +103,11 @@ enum itemTypes
 	case key
 	case record
 	case currency
+	
+	// special
+	case drive
+	case map
+	case cargo
 }
 
 enum services

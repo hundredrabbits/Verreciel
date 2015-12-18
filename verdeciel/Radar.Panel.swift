@@ -69,14 +69,14 @@ class PanelRadar : MainPanel
 		
 		self.position = SCNVector3(0,0,0)
 		
-		port.input = eventTypes.location
-		port.output = eventTypes.location
+		port.input = Location.self
+		port.output = Location.self
 		
 		handle = SCNHandle(destination: SCNVector3(1,0,0),host:self)
 		footer.addChildNode(handle)
 	}
 	
-	override func installedFixedUpdate()
+	override func fixedUpdate()
 	{
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
@@ -84,6 +84,7 @@ class PanelRadar : MainPanel
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
+		scan()
 	}
 	
 	// MARK: Ports -
@@ -142,6 +143,25 @@ class PanelRadar : MainPanel
 	{
 		port.event = nil
 		targetter.opacity = 0
+	}
+	
+	// MARK: Scan -
+	
+	var closestStar:Location!
+	
+	func scan()
+	{
+//		for location in universe.childNodes {
+//			let location = location as! Location
+//			if location.type == .star {
+//				if closestStar == nil {
+//					closestStar = location
+//				}
+//				else if( location.distance < closestStar.distance ){
+//					closestStar = location
+//				}
+//			}
+//		}
 	}
 	
 	override func onInstallationBegin()

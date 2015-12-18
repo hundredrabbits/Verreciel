@@ -9,7 +9,6 @@ import Foundation
 
 class CoreTime : NSObject
 {
-	var time:NSTimer!
 	var elapsed:Float = 0
 	
 	override init()
@@ -19,7 +18,13 @@ class CoreTime : NSObject
 	
 	func start()
 	{
-		time = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("onSeconds"), userInfo: nil, repeats: true)
+	}
+	
+	func onSeconds()
+	{
+		game.refresh()
 	}
 	
 	func tic()

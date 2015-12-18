@@ -18,7 +18,7 @@ class WidgetRadio : SCNNode
 		
 		name = "radio"
 		
-		port = SCNPortSlot(host: self, input: eventTypes.record, output: eventTypes.signal, align: .left)
+		port = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .left)
 		port.position = SCNVector3(0,-0.6,templates.radius)
 		port.enable()
 		

@@ -44,7 +44,7 @@ class LocationTrade : Location
 		
 		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
 		wantPort.enable()
-		wantPort.input = eventTypes.item
+		wantPort.input = Item.self
 		newPanel.addChildNode(wantPort)
 		
 		let tradeLabel = SCNLabel(text: "< Trade", color:grey)
@@ -52,7 +52,7 @@ class LocationTrade : Location
 		wantPort.addChildNode(tradeLabel)
 		
 		wantLabel.position = SCNVector3(x: spacingLeft, y: 0, z: 0)
-		wantPort.output = eventTypes.item
+		wantPort.output = Item.self
 		wantPort.addChildNode(wantLabel)
 		
 		// Give

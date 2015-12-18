@@ -17,7 +17,7 @@ class MonitorExploration : Monitor
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		knownLocations = 0
 		for location in universe.childNodes {

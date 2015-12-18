@@ -16,7 +16,7 @@ class MonitorComplete : Monitor
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		let questProgress:Float = Float(quests.tutorialProgress + quests.falvetProgress + quests.senniProgress + quests.usulProgress)
 		let questSum:Float = Float(quests.tutorial.count + quests.falvet.count + quests.senni.count + quests.usul.count)

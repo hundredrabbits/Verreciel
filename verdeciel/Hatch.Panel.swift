@@ -39,8 +39,8 @@ class PanelHatch : MainPanel
 		
 		interface.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 		
-		port.input = eventTypes.item
-		port.output = eventTypes.unknown
+		port.input = Item.self
+		port.output = Event.self
 	}
 	
 	override func start()
@@ -72,11 +72,15 @@ class PanelHatch : MainPanel
 		
 		load = (port.origin == nil) ? nil : port.origin.event
 		
-		if load != nil && load.type != eventTypes.item || load != nil && load.isQuest == true {
-			details.update("error", color: red)
-			outline.updateChildrenColors(red)
-		}
-		else if load != nil {
+		// todo
+//		if load != nil && load.type != Item.self || load != nil && load.isQuest == true {
+//			details.update("error", color: red)
+//			outline.updateChildrenColors(red)
+//		}
+//		else
+		
+			
+		if load != nil {
 			details.update("jetison", color: cyan)
 			outline.updateChildrenColors(cyan)
 		}

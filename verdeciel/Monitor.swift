@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Monitor : SCNNode
+class Monitor : Panel
 {
 	let label = SCNLabel(text: "", scale: 0.08, align: alignment.center)
 	let details = SCNLabel(text: "", scale: 0.04, align: alignment.center, color: grey)
@@ -30,8 +30,7 @@ class Monitor : SCNNode
 		
 		label.opacity = 0
 		details.opacity = 0
-		
-		installation()
+
 		setup()
 		
 		details.update(name!)
@@ -42,60 +41,30 @@ class Monitor : SCNNode
 		
 	}
 	
-	override func fixedUpdate()
-	{
-		if isInstalling == true {
-			installProgress += CGFloat(arc4random_uniform(100))/50
-			installProgressBar.update(installProgress)
-			installProgressBar.opacity = 1
-			if installProgress >= 100 {
-				installed()
-				installer.opacity = 0
-				isInstalling = false
-			}
-		}
-		
-		if isInstalled == true {
-			installedFixedUpdate()
-		}
-	}
-	
-	func installedFixedUpdate()
-	{
-		
-	}
-	
 	// MARK: Installation -
 	
-	var isInstalling:Bool = false
-	var isInstalled:Bool = false
-	var installer:SCNNode = SCNNode()
-	var installProgress:CGFloat = 0
+	var installNode:SCNNode = SCNNode()
 	var installProgressBar = SCNProgressBar(width: 1)
 	
-	func install()
+	override func onInstallationBegin()
 	{
-		isInstalling = true
-		onInstallationBegin()
-	}
-	
-	func installation()
-	{
-		installer = SCNNode()
-		installer.position = SCNVector3(0,0,0)
+		installNode = SCNNode()
+		installNode.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 0.5)
 		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
 		installProgressBar.opacity = 0
-		installer.addChildNode(installProgressBar)
-		interface.addChildNode(installer)
+		installNode.addChildNode(installProgressBar)
+		interface.addChildNode(installNode)
 	}
 	
-	func installed()
+	override func installProgress()
+	{
+		super.installProgress()
+	}
+	
+	override func onInstallationComplete()
 	{
 		print("+ PANEL    | Installed the \(name!)")
-		
-		isInstalled = true
-		installer.opacity = 0
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
@@ -103,16 +72,8 @@ class Monitor : SCNNode
 		details.opacity = 1
 		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
 		SCNTransaction.commit()
-	}
-	
-	func onInstallationBegin()
-	{
 		
-	}
-	
-	func onInstallationComplete()
-	{
-		
+		installNode.removeFromParentNode()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

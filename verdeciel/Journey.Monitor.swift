@@ -16,7 +16,7 @@ class MonitorJourney : Monitor
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
 	}
 	
-	override func installedFixedUpdate()
+	override func refresh()
 	{
 		label.update("\(Int(distance/100))")
 	}

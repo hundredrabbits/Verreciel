@@ -53,6 +53,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		scene.rootNode.addChildNode(ui)
 		
 		time = CoreTime()
+		game = CoreGame()
 	}
 	
 	func start()
@@ -64,10 +65,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		ui._start()
 		
 		time.start()
+		game.start()
 		
 		settings.applicationIsReady = true
-
-		debugState()
+		
+		startingState()
 	}
 	
 	func startingState()
@@ -149,6 +151,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			let result: AnyObject! = hitResults[0]
 			result.node.touch()
 		}
+		game.refresh()
 	}
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
@@ -158,7 +161,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		ui._fixedUpdate()
 		
 		space.fixedUpdate()
-		quests.update()
 		ui.updatePort()
 	}
 	

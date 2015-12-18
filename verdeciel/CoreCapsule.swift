@@ -54,7 +54,7 @@ class CoreCapsule: SCNNode
 		var closestLocation:Location!
 		for location in universe.childNodes {
 			let location = location as! Location
-			if location.locationType != type { continue }
+			if location.type != type { continue }
 			if closestLocation == nil { closestLocation = location }
 			if location.distance > closestLocation.distance { continue }
 			closestLocation = location

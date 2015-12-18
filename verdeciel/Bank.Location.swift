@@ -29,12 +29,12 @@ class LocationBank : Location
 		self.mesh = structures.none()
 		self.icon.replace(icons.bank())
 		
-		port1 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
-		port2 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
-		port3 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
-		port4 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
-		port5 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
-		port6 = SCNPortSlot(host: self, input: eventTypes.generic, output: eventTypes.generic)
+		port1 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port2 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port3 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port4 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port5 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port6 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
 	}
 	
 	override func panel() -> Panel!

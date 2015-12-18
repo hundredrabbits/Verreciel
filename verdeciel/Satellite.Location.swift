@@ -21,7 +21,7 @@ class LocationSatellite : Location
 		
 		self.message = message
 		
-		port = SCNPortSlot(host: self, hasDetails:true)
+		port = SCNPortSlot(host: self, input:Item.self, output:Item.self, hasDetails:true)
 		
 		if item != nil { port.addEvent(item) }
 		update()

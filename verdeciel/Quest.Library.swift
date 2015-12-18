@@ -18,6 +18,8 @@ class QuestLibrary
 	var usul:Array<Quest> = []
 	var usulProgress:Int = 0
 	
+	var updateTimer:NSTimer!
+	
 	init()
 	{
 		_tutorial()
@@ -97,7 +99,7 @@ class QuestLibrary
 		usul.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
 	
-	func update()
+	func refresh()
 	{
 		let latestTutorial = tutorial[tutorialProgress]
 		latestTutorial.validate()
@@ -105,9 +107,6 @@ class QuestLibrary
 		if latestTutorial.isCompleted == true {
 			tutorialProgress += 1
 			ui.addMessage(tutorial[tutorialProgress].name)
-		}
-		if falvet[falvetProgress].isCompleted == true {
-			falvetProgress += 1
 		}
 	}
 	
@@ -119,6 +118,6 @@ class QuestLibrary
 			tutorialProgress += 1
 		}
 		ui.addMessage(tutorial[tutorialProgress].name)
-		update()
+		refresh()
 	}
 }

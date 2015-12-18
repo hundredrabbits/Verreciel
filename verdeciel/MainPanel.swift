@@ -27,8 +27,6 @@ class MainPanel : Panel
 		
 		initialSetup()
 		setup()
-		
-		installation()
 		start()
 	}
 	
@@ -74,92 +72,44 @@ class MainPanel : Panel
 	
 	override func fixedUpdate()
 	{
-		if isInstalling == true {
-			installProgress += CGFloat(arc4random_uniform(100))/50
-			installProgressBar.update(installProgress)
-			installProgressBar.opacity = 1
-			if installProgress >= 100 {
-				installed()
-				installer.opacity = 0
-				isInstalling = false
-			}
-		}
-		
-		if isInstalled == true {
-			if port.hasEvent(port.output) == true { portOutputLabel.updateColor(white) } else { portOutputLabel.updateColor(grey) }
-			installedFixedUpdate()
-		}
-	}
-	
-	func installedFixedUpdate()
-	{
-		
+		// Todo
+//		if port.hasEvent(port.output) == true { portOutputLabel.updateColor(white) } else { portOutputLabel.updateColor(grey) }
 	}
 	
 	// MARK: Installation -
-
-	var isInstalling:Bool = false
-	var isInstalled:Bool = false
-	var installer:SCNNode = SCNNode()
-	var installProgress:CGFloat = 0
+	
+	var installNode:SCNNode = SCNNode()
 	var installProgressBar = SCNProgressBar(width: 1)
 	
-	func install()
+	override func onInstallationBegin()
 	{
-		isInstalling = true
-		onInstallationBegin()
-	}
-	
-	func installation()
-	{
-		installer = SCNNode()
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,0.1,0), nodeB: SCNVector3(0.1,-0.1,0), color: grey))
-		installer.addChildNode(SCNLine(nodeA: SCNVector3(-0.1,-0.1,0), nodeB: SCNVector3(0.1,0.1,0), color: grey))
-		installer.position = SCNVector3(0,0,templates.radius)
-		installProgressBar = SCNProgressBar(width: 1)
-		installProgressBar.position = SCNVector3(-0.5,-0.5,0)
+		installNode = SCNNode()
+		installNode.position = SCNVector3(0,0,0)
+		installProgressBar = SCNProgressBar(width: 0.5)
+		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
 		installProgressBar.opacity = 0
-		installer.addChildNode(installProgressBar)
-		self.addChildNode(installer)
-		
-		label.update("--", color: grey)
-		interface.opacity = 0
-		decals.opacity = 0
-		details.opacity = 0
+		installNode.addChildNode(installProgressBar)
+		interface.addChildNode(installNode)
 	}
 	
-	func installed()
+	override func installProgress()
+	{
+		super.installProgress()
+		label.update("\(installPercentage)%")
+	}
+	
+	override func onInstallationComplete()
 	{
 		print("+ PANEL    | Installed the \(name!)")
 		
-		portInputLabel.update("\(port.input)")
-		portOutputLabel.update("\(port.output)")
-		
-		isInstalled = true
-		installer.opacity = 0
-		
-		label.update(name!, color: white)
-		decals.position = SCNVector3(0,0,templates.radius - 0.5)
-		interface.position = SCNVector3(0,0,templates.radius + 1)
-		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
-		decals.opacity = 1
-		decals.position = SCNVector3(0,0,templates.radius)
-		interface.opacity = 1
-		interface.position = SCNVector3(0,0,templates.radius)
+		label.opacity = 1
 		details.opacity = 1
-		SCNTransaction.setCompletionBlock({ self.port.enable() ; self.onInstallationComplete() })
+		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
 		SCNTransaction.commit()
-	}
-	
-	func onInstallationBegin()
-	{
 		
-	}
-	
-	func onInstallationComplete()
-	{
+		installNode.removeFromParentNode()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

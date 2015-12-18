@@ -45,8 +45,8 @@ class PanelCargo : MainPanel
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
 		interface.addChildNode(trigger)
 		
-		port.input = eventTypes.item
-		port.output = eventTypes.cargo
+		port.input = Item.self
+		port.output = Item.self
 	}
 	
 	override func start()
@@ -57,13 +57,13 @@ class PanelCargo : MainPanel
 		update()
 	}
 	
-	override func installedFixedUpdate()
-	{
-		if isUploading == true { uploadProcess() }
-		else{
-			details.update("\(port.event.content.count)/6")
-		}
-	}
+//	override func installedFixedUpdate()
+//	{
+//		if isUploading == true { uploadProcess() }
+//		else{
+//			details.update("\(port.event.content.count)/6")
+//		}
+//	}
 	
 	func contains(event:Event) -> Bool
 	{
@@ -100,11 +100,11 @@ class PanelCargo : MainPanel
 		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold
-		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
-		for item in port.event.content {
-			newCargohold.content.append(item)
-		}
-		port.event = newCargohold
+//		let newCargohold = Event(newName: "cargohold", type: eventTypes.cargo)
+//		for item in port.event.content {
+//			newCargohold.content.append(item)
+//		}
+//		port.event = newCargohold
 		
 		line1.color(grey)
 		line2.color(grey)
@@ -126,10 +126,7 @@ class PanelCargo : MainPanel
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
-		
-		if event.type != eventTypes.item { print("Not item") ; return }
-		
-		uploadItem(event)
+		if event is Item { uploadItem(event) }
 	}
 	
 	override func bang()

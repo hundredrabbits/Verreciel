@@ -70,8 +70,8 @@ class PanelConsole : MainPanel
 		
 		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
 		
-		port.input = eventTypes.generic
-		port.output = eventTypes.unknown
+		port.input = Event.self
+		port.output = Event.self
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
@@ -88,9 +88,8 @@ class PanelConsole : MainPanel
 		commands.append(command)
 	}
 	
-	func refresh()
+	override func refresh()
 	{
-		if isInstalled == false { return }
 		if commands.count > 6 { commands.removeAtIndex(0) ; update() }
 	}
 	

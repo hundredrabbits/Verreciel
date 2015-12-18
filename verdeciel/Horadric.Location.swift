@@ -30,10 +30,10 @@ class LocationHoradric : Location
 		let newPanel = Panel()
 		let distance:CGFloat = 0.7
 		
-		inPort1 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
-		inPort2 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
-		inPort3 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
-		inPort4 = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
+		inPort1 = SCNPort(host: self, input: Item.self, output: Item.self)
+		inPort2 = SCNPort(host: self, input: Item.self, output: Item.self)
+		inPort3 = SCNPort(host: self, input: Item.self, output: Item.self)
+		inPort4 = SCNPort(host: self, input: Item.self, output: Item.self)
 		
 		inPort1.enable()
 		inPort2.enable()
@@ -45,7 +45,7 @@ class LocationHoradric : Location
 		inPort3.position = SCNVector3(distance,0,0)
 		inPort4.position = SCNVector3(-distance,0,0)
 		
-		outPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.generic)
+		outPort = SCNPort(host: self, input: Item.self, output: Event.self)
 		
 		newPanel.addChildNode(inPort1)
 		newPanel.addChildNode(inPort2)

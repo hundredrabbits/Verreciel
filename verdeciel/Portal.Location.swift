@@ -42,12 +42,12 @@ class LocationPortal : Location
 		self.rightName = rightName
 		self.leftName = leftName
 		
-		rightPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
-		leftKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
-		rightThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
-		rightKeyPort = SCNPort(host: self, input: eventTypes.item, output: eventTypes.none)
-		leftPilotPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
-		leftThrusterPort = SCNPort(host: self, input: eventTypes.none, output: eventTypes.location)
+		rightPilotPort = SCNPort(host: self, input: Event.self, output: Location.self)
+		leftKeyPort = SCNPort(host: self, input: Item.self, output: Event.self)
+		rightThrusterPort = SCNPort(host: self, input: Event.self, output: Location.self)
+		rightKeyPort = SCNPort(host: self, input: Item.self, output: Event.self)
+		leftPilotPort = SCNPort(host: self, input: Event.self, output: Location.self)
+		leftThrusterPort = SCNPort(host: self, input: Event.self, output: Location.self)
 		
 		leftThrusterLabel = SCNLabel(text: "> Thruster", color:grey)
 		leftPilotLabel = SCNLabel(text: "> Pilot", color:grey)

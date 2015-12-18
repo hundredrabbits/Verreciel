@@ -11,55 +11,55 @@ import Foundation
 class ItemLibrary
 {
 	// Ship events
-	let playerCargo = Event(newName: "player cargo", type: eventTypes.cargo, details: itemTypes.panel, note:"need description", isQuest:true)
-	let starmap = Event(newName: "starmap", type: eventTypes.map, details: itemTypes.panel, note:"route to helmet", isQuest:true)
+	let playerCargo = Item(newName: "player cargo", type: .cargo, note:"need description", isQuest:true)
+	let starmap = Item(newName: "starmap", type: .map, note:"route to helmet", isQuest:true)
 	
 	// Quest items
-	let materia = Event(newName: "materia", type: eventTypes.item, details: itemTypes.card, note:"trade for loiqe key", isQuest:true)
-	let cyanineKey = Event(newName: "Cyanine Key", type: eventTypes.item, details: itemTypes.key, note:"unlocks the portal to cyanine", isQuest:true)
+	let materia = Item(newName: "materia", type: .card, note:"trade for loiqe key", isQuest:true)
+	let cyanineKey = Item(newName: "Cyanine Key", type: .key, note:"unlocks the portal to cyanine", isQuest:true)
 
 	// Batteries
-	let cell1  = Event(newName: "cell", type: eventTypes.item, details: itemTypes.battery, note:"gives little power", isQuest:true)
-	let cell2  = Event(newName: "cell", type: eventTypes.item, details: itemTypes.battery, note:"gives little power", isQuest:true)
-	let cell3  = Event(newName: "cell", type: eventTypes.item, details: itemTypes.battery, note:"gives little power", isQuest:true)
-	let cell4  = Event(newName: "cell", type: eventTypes.item, details: itemTypes.battery, note:"gives little power", isQuest:true)
-	let array1 = Event(newName: "array", type: eventTypes.item, details: itemTypes.battery, note:"gives medium power", isQuest:true)
-	let array2 = Event(newName: "array", type: eventTypes.item, details: itemTypes.battery, note:"gives medium power", isQuest:true)
-	let array3 = Event(newName: "array", type: eventTypes.item, details: itemTypes.battery, note:"gives medium power", isQuest:true)
-	let array4 = Event(newName: "array", type: eventTypes.item, details: itemTypes.battery, note:"gives medium power", isQuest:true)
-	let grid1 = Event(newName: "grid", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let grid2 = Event(newName: "grid", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let grid3 = Event(newName: "grid", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let grid4 = Event(newName: "grid", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let matrix1 = Event(newName: "matrix I", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let matrix2 = Event(newName: "matrix II", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let matrix3 = Event(newName: "matrix III", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
-	let matrix4 = Event(newName: "matrix IV", type: eventTypes.item, details: itemTypes.battery, note:"gives large power", isQuest:true)
+	let cell1  = Item(newName: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let cell2  = Item(newName: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let cell3  = Item(newName: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let cell4  = Item(newName: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let array1 = Item(newName: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let array2 = Item(newName: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let array3 = Item(newName: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let array4 = Item(newName: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let grid1 = Item(newName: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let grid2 = Item(newName: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let grid3 = Item(newName: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let grid4 = Item(newName: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let matrix1 = Item(newName: "matrix I", type: .battery, note:"gives large power", isQuest:true)
+	let matrix2 = Item(newName: "matrix II", type: .battery, note:"gives large power", isQuest:true)
+	let matrix3 = Item(newName: "matrix III", type: .battery, note:"gives large power", isQuest:true)
+	let matrix4 = Item(newName: "matrix IV", type: .battery, note:"gives large power", isQuest:true)
 	
 	// Misc
-	let waste = Event(newName: "waste", type: eventTypes.item, details: itemTypes.waste, note:"useless junk")
+	let waste = Item(newName: "waste", type: .waste, note:"useless junk")
 	
-	let loiqePortalKey = Event(newName: "loiqe key", type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
+	let loiqePortalKey = Item(newName: "loiqe key", type: .card, note:"complete key", isQuest:true)
 	
-	let valenPortalKey = Event(newName: "valen key",  type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
-	let valenPortalFragment1 = Event(newName: "Key fragment 1", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
-	let valenPortalFragment2 = Event(newName: "Key fragment 2", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
+	let valenPortalKey = Item(newName: "valen key", type: .card, note:"complete key", isQuest:true)
+	let valenPortalFragment1 = Item(newName: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment2 = Item(newName: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let senniPortalKey = Event(newName: "senni key", type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
-	let senniPortalFragment1 = Event(newName: "Key fragment 1", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
-	let senniPortalFragment2 = Event(newName: "Key fragment 2", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
+	let senniPortalKey = Item(newName: "senni key", type: .card, note:"complete key", isQuest:true)
+	let senniPortalFragment1 = Item(newName: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
+	let senniPortalFragment2 = Item(newName: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let usulPortalKey = Event(newName: "usul key", type: eventTypes.item, details: itemTypes.card, note:"complete key", isQuest:true)
-	let usulPortalFragment1 = Event(newName: "Key fragment 1", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
-	let usulPortalFragment2 = Event(newName: "Key fragment 2", type: eventTypes.item, details: itemTypes.part, note:"half a Portal key", isQuest:true)
+	let usulPortalKey = Item(newName: "usul key", type: .card, note:"complete key", isQuest:true)
+	let usulPortalFragment1 = Item(newName: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
+	let usulPortalFragment2 = Item(newName: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let warpDrive = Event(newName: "warpdrive", type: eventTypes.drive, details: itemTypes.panel, note:"local warpdrive", isQuest:true)
+	let warpDrive = Item(newName: "warpdrive", type: .drive, note:"local warpdrive", isQuest:true)
 	
 	// Records
-	let record1 = Event(newName: "record", type: eventTypes.item, details: itemTypes.record, note:"an old audio tape", isQuest:true)
+	let record1 = Item(newName: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Currencies
 	
-	let credits = Event(newName: "credits", type: eventTypes.item, details: itemTypes.currency, note:"todo", isQuest:true)
+	let credits = Item(newName: "credits", type: .currency, note:"todo", isQuest:true)
 	
 }

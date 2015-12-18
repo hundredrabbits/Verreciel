@@ -17,7 +17,7 @@ class WidgetMap : SCNNode
 		
 		name = "map"
 		
-		port = SCNPort(host: self, input: eventTypes.map, output: eventTypes.map)
+		port = SCNPort(host: self, input: Event.self, output: Event.self)
 		port.position = SCNVector3(0,-0.6,templates.radius)
 		port.disable()
 		
