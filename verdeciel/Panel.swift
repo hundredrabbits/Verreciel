@@ -36,7 +36,7 @@ class Panel : SCNNode
 	// MARK: Installation -
 	
 	var installTimer:NSTimer!
-	var installPercentage:Float = 0
+	var installPercentage:CGFloat = 0
 	
 	func install()
 	{
@@ -46,7 +46,7 @@ class Panel : SCNNode
 	
 	func installProgress()
 	{
-		installPercentage += Float(arc4random_uniform(60))/10
+		installPercentage += CGFloat(arc4random_uniform(60))/10
 		if installPercentage > 100 {
 			onInstallationComplete()
 			installPercentage = 0

@@ -53,7 +53,12 @@ class MainPanel : Panel
 		portOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
 		
 		portInputLabel.update("\(port.input)")
-		portOutputLabel.update("\(port.input)")		
+		portOutputLabel.update("\(port.input)")
+		
+		// Start
+		
+		mainNode.opacity = 0
+		decalsNode.opacity = 0
 	}
 	
 	// MARK: Installation -
@@ -70,8 +75,8 @@ class MainPanel : Panel
 		
 		installNode = SCNNode()
 		installNode.position = SCNVector3(0,0,0)
-		installProgressBar = SCNProgressBar(width: 0.5)
-		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
+		installProgressBar = SCNProgressBar(width: 1)
+		installProgressBar.position = SCNVector3(-installProgressBar.width/2,-0.3,0)
 		installProgressBar.opacity = 1
 		installNode.addChildNode(installProgressBar)
 		
@@ -83,20 +88,28 @@ class MainPanel : Panel
 	override func installProgress()
 	{
 		super.installProgress()
-		installLabel.update("\(installPercentage)%")
+		installLabel.update("Install \(installPercentage)%")
+		installProgressBar.update(installPercentage)
 	}
 	
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()
 		
+		mainNode.position = SCNVector3(0,0,-0.2)
+		mainNode.opacity = 0
+		decalsNode.position = SCNVector3(0,0,-0.4)
+		decalsNode.opacity = 0
+		
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		label.opacity = 1
-		details.opacity = 1
+		SCNTransaction.setAnimationDuration(0.7)
+		mainNode.position = SCNVector3(0,0,0)
+		mainNode.opacity = 1
+		decalsNode.position = SCNVector3(0,0,0)
+		decalsNode.opacity = 1
 		SCNTransaction.commit()
 		
-//		installNode.removeFromParentNode()
+		installNode.removeFromParentNode()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
