@@ -116,6 +116,7 @@ class QuestLibrary
 			tutorial[tutorialProgress].complete()
 			tutorialProgress += 1
 		}
+		print(tutorialProgress)
 		ui.addMessage(tutorial[tutorialProgress].name)
 		refresh()
 	}

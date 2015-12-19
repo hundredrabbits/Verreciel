@@ -29,7 +29,7 @@ class SCNCommand : SCNNode
 		self.head = head
 
 		label = SCNLabel(text: self.text, scale: 0.1, align: alignment.left)
-		detailsLabel = SCNLabel(text: "", scale: 0.1, align: alignment.right)
+		detailsLabel = SCNLabel(text: details, scale: 0.1, align: alignment.right)
 		detailsLabel.position = SCNVector3((templates.rightMargin * 2) - 0.2, 0, 0)
 		detailsLabel.updateColor(grey)
 		
@@ -69,7 +69,7 @@ class SCNCommand : SCNNode
 		port.event = command.port.event
 		
 		label.update(command.text, color: self.color)
-		detailsLabel.update("")
+		detailsLabel.update(details)
 		
 		if port.event != nil {
 			port.opacity = 1
@@ -77,11 +77,6 @@ class SCNCommand : SCNNode
 		}
 		else{
 			port.opacity = 0
-		}
-		
-		if command.details != nil {
-			self.details = command.details
-			detailsLabel.update("\(details)")
 		}
 		
 		if command.head == true {

@@ -121,7 +121,7 @@ class SCNPort : SCNNode
 		
 		// Compatibility
 		wire.isCompatible = false
-		if connection != nil && output == connection.input {
+		if connection != nil && (output == connection.input) {
 			wire.isCompatible = true
 		}
 		

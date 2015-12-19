@@ -48,11 +48,11 @@ class Panel : SCNNode
 	
 	func installProgress()
 	{
+		installPercentage += CGFloat(arc4random_uniform(60))/10
+		
 		if installPercentage > 100 {
 			onInstallationComplete()
-			return
 		}
-		installPercentage += CGFloat(arc4random_uniform(60))/10
 	}
 
 	func onInstallationBegin()
