@@ -125,6 +125,12 @@ class PanelMission : MainPanel
 		locationPanel.update()
 	}
 	
+	override func refresh()
+	{
+		if capsule.dock != nil && capsule.dock.isComplete == true { label.update(cyan) }
+		else{ label.update(white) }
+	}
+	
 	// MARK: Ports -
 	
 	override func listen(event:Event)
@@ -162,6 +168,7 @@ class PanelMission : MainPanel
 			SCNTransaction.setCompletionBlock({
 				capsule.dock.isComplete = true
 				capsule.dock.update()
+				self.refresh()
 			})
 			SCNTransaction.commit()
 		})
@@ -192,6 +199,7 @@ class PanelMission : MainPanel
 			
 			self.locationPanel.position = SCNVector3(0,0,0)
 			self.locationPanel.opacity = 1
+			self.refresh()
 			
 			SCNTransaction.commit()
 		})
@@ -215,6 +223,7 @@ class PanelMission : MainPanel
 			
 			self.questPanel.position = SCNVector3(0,0,0)
 			self.questPanel.opacity = 1
+			self.refresh()
 			
 			SCNTransaction.setCompletionBlock({
 				self.locationPanel.empty()

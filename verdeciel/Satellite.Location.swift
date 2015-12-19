@@ -56,6 +56,12 @@ class LocationSatellite : Location
 		updateIcon()
 	}
 	
+	override func onUploadComplete()
+	{
+		isComplete = true
+		mission.complete()
+	}
+	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

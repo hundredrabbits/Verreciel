@@ -71,7 +71,6 @@ class SCNPortSlot : SCNPort
 	override func onDisconnect()
 	{
 		super.onDisconnect()
-		print(host)
 		host.onDisconnect()
 	}
 	

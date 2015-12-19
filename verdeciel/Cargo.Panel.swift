@@ -122,6 +122,8 @@ class PanelCargo : MainPanel
 		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
+		
+		details.update("\(port.event.content.count)/6")
 	}
 	
 	// MARK: I/O -
@@ -165,12 +167,14 @@ class PanelCargo : MainPanel
 	}
 	func uploadComplete()
 	{
-		if (port.origin != nil) { port.addEvent(port.syphon()) }
+		if (port.origin != nil) {
+			let origin = port.origin.host
+			port.event.content.append(port.syphon())
+			origin.onUploadComplete()
+		}
 		uploadTimer.invalidate()
 		uploadPercentage = 0
 		refresh()
-		
-		onUploadComplete()
 	}
 	
 	func uploadCancel()
