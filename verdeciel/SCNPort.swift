@@ -285,6 +285,13 @@ class SCNPort : SCNNode
 		print("disconnected")
 	}
 	
+	func IO(direction:Event.Type) -> String
+	{
+		if input is Item.Type { return "item" }
+		if input is Location.Type { return "location" }
+		return "generic"
+	}
+	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

@@ -52,9 +52,6 @@ class MainPanel : Panel
 		portInputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
 		portOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
 		
-		portInputLabel.update("\(port.input)")
-		portOutputLabel.update("\(port.input)")
-		
 		// Start
 		
 		mainNode.opacity = 0
@@ -62,6 +59,8 @@ class MainPanel : Panel
 		footer.opacity = 0
 		
 		label.update("--", color:grey)
+		
+		start()
 	}
 	
 	// MARK: Installation -
@@ -115,8 +114,12 @@ class MainPanel : Panel
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()
+		
 		port.enable()
 		label.update(name!, color: white)
+		
+		portInputLabel.update(port.IO(port.input))
+		portOutputLabel.update(port.IO(port.output))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

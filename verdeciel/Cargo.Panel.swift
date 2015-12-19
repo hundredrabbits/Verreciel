@@ -133,6 +133,12 @@ class PanelCargo : MainPanel
 		port.connection.host.listen(port.event)
 	}
 	
+	override func onUploadComplete()
+	{
+		refresh()
+		bang()
+	}
+	
 	// MARK: Upload -
 	
 	var upload:Event!
@@ -164,6 +170,7 @@ class PanelCargo : MainPanel
 			let origin = port.origin.host
 			port.event.content.append(port.syphon())
 			origin.onUploadComplete()
+			self.onUploadComplete()
 		}
 		uploadTimer.invalidate()
 		uploadPercentage = 0
