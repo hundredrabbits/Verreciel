@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2015-08-28.
 //  Copyright (c) 2015 XXIIVV. All rights reserved.
 
@@ -97,16 +98,16 @@ class PanelCargo : MainPanel
 		bang()
 	}
 	
-	override func update()
+	override func refresh()
 	{
 		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold
-//		let newCargohold = Event(name: "cargohold", type: eventTypes.cargo)
-//		for item in port.event.content {
-//			newCargohold.content.append(item)
-//		}
-//		port.event = newCargohold
+		let newCargohold = Event(name: "cargohold")
+		for item in port.event.content {
+			newCargohold.content.append(item)
+		}
+		port.event = newCargohold
 		
 		line1.color(grey)
 		line2.color(grey)
@@ -128,7 +129,7 @@ class PanelCargo : MainPanel
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
-		if event is Item { uploadItem(event) }
+		if event is Item { upload(event) }
 	}
 	
 	override func bang()
@@ -140,32 +141,43 @@ class PanelCargo : MainPanel
 	
 	// MARK: Upload -
 	
-	var isUploading:Bool = false
-	var uploadProgress:CGFloat = 0
+	var upload:Event!
+	var uploadTimer:NSTimer!
+	var uploadPercentage:Float = 0
 	
-	func uploadItem(item:Event)
+	func upload(item:Event)
 	{
-		isUploading = true
+		upload = item
+		uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("uploadProgress"), userInfo: nil, repeats: true)
 	}
 	
-	func uploadProcess()
+	func uploadProgress()
 	{
-		if port.origin == nil { details.update("error", color: grey) ; uploadProgress = 0 ; return }
-		uploadProgress += CGFloat(arc4random_uniform(100))/50
-		details.update("Upload \(Int(uploadProgress))%", color: grey)
-		if uploadProgress >= 100 {
-			uploadCompleted()
+		if port.origin == nil { uploadCancel() ; return }
+		
+		uploadPercentage += Float(arc4random_uniform(60))/10
+		if uploadPercentage > 100 {
+			uploadComplete()
+		}
+		else{
+			details.update("\(Int(uploadPercentage))%", color:grey)
 		}
 	}
-	
-	func uploadCompleted()
+	func uploadComplete()
 	{
-		let event = port.syphon()
-		port.event.content.append(event)
+		if (port.origin != nil) { port.addEvent(port.syphon()) }
+		uploadTimer.invalidate()
+		uploadPercentage = 0
+		refresh()
 		
-		uploadProgress = 0
-		isUploading = false
-		bang()
+		onUploadComplete()
+	}
+	
+	func uploadCancel()
+	{
+		uploadTimer.invalidate()
+		uploadPercentage = 0
+		refresh()
 	}
 	
 	// MARK: Installation -

@@ -166,7 +166,6 @@ class PanelThruster : MainPanel
 	
 	func modeWarping()
 	{
-		label.updateColor(cyan)
 		button.disable("warping")
 		
 		accelerate.disable()
@@ -187,7 +186,6 @@ class PanelThruster : MainPanel
 	
 	func modeWaitingForWarp()
 	{
-		label.updateColor(cyan)
 		button.enable("warp")
 		
 		accelerate.disable()
@@ -203,7 +201,6 @@ class PanelThruster : MainPanel
 	
 	func modeMissingPilotForWarp()
 	{
-		label.updateColor(red)
 		button.disable("pilot")
 		
 		accelerate.disable()
@@ -219,8 +216,6 @@ class PanelThruster : MainPanel
 	
 	func modeUnpowered()
 	{
-		label.updateColor(grey)
-		port.disable()
 		button.disable("unpowered")
 		
 		accelerate.disable()
@@ -236,8 +231,6 @@ class PanelThruster : MainPanel
 	
 	func modeDocking()
 	{
-		label.updateColor(white)
-		port.enable()
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
 		button.disable("docking \(dockingProgress)%", outline:clear)
 		
@@ -255,8 +248,6 @@ class PanelThruster : MainPanel
 	
 	func modeDocked()
 	{
-		label.updateColor(white)
-		port.enable()
 		button.enable("undock")
 		
 		accelerate.disable()
@@ -273,8 +264,6 @@ class PanelThruster : MainPanel
 	
 	func modeFlight()
 	{
-		label.updateColor(white)
-		port.enable()
 		button.disable(String(format: "%.1f", actualSpeed))
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }

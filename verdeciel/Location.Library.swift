@@ -45,7 +45,7 @@ class Loiqe
 	
 	func landing() -> LocationSatellite
 	{
-		return LocationSatellite(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text here $will add soon.", item:items.materia)
+		return LocationSatellite(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text$will add it soon$soon..", item:items.materia)
 	}
 	
 	func city() -> LocationTrade

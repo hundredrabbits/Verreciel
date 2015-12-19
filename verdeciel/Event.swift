@@ -17,14 +17,14 @@ class Event : SCNNode
 	
 	var isQuest:Bool = false
 	
-	init(newName:String = "",at:CGPoint = CGPoint(), note:String = "", color:UIColor = grey, isQuest:Bool = false)
+	init(name:String = "",at:CGPoint = CGPoint(), note:String = "", color:UIColor = grey, isQuest:Bool = false)
 	{
 		self.content = []
 		self.isQuest = isQuest
 
 		super.init()
 		
-		self.name = newName
+		self.name = name
 		self.note = note
 		self.at = at
 		self.color = color

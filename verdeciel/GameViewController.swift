@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		startingState()
+		debugState()
 	}
 	
 	func startingState()
@@ -79,20 +79,23 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		let starting = universe.valen_station
+		let starting = universe.loiqe_landing
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 		
-
-		quests.skipTo(25)
+		quests.skipTo(2)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.waste)
 		cargo.port.event.content.append(items.credits)
 		
-		cargo.port.connect(console.port)
+//		cargo.port.connect(console.port)
+		
+		cargo.install()
+		mission.install()
+		console.install()
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

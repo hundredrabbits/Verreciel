@@ -11,7 +11,6 @@ class ItemLibrary
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
 	
 	// Quest items
-	let materia = Item(name: "materia", type: .card, note:"trade for loiqe key", isQuest:true)
 	let cyanineKey = Item(name: "Cyanine Key", type: .key, note:"unlocks the portal to cyanine", isQuest:true)
 
 	// Batteries
@@ -55,5 +54,6 @@ class ItemLibrary
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Currencies
-	let credits = Item(name: "credits", type: .currency, note:"todo", isQuest:true)
+	let materia = Item(name: "materia", type: .card, note:"a trading currency", isQuest:true)
+	let credits = Item(name: "credits", type: .currency, note:"a trading currency", isQuest:true)
 }

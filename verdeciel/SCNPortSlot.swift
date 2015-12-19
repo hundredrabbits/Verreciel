@@ -59,20 +59,12 @@ class SCNPortSlot : SCNPort
 		}
 	}
 	
-	// MARK: Upload -
-	
-	var upload:Event!
-	var uploadTimer:NSTimer!
-	var uploadPercentage:Float = 0
-	
 	override func onConnect()
 	{
 		// Input
 		if origin != nil && origin.event != nil && event == nil {
-			upload = origin.event
-			uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("uploadProgress"), userInfo: nil, repeats: true)
+			upload(origin.event as! Item)
 		}
-		
 		if connection != nil && event != nil { connection.host.listen(event) }
 	}
 	
@@ -81,6 +73,18 @@ class SCNPortSlot : SCNPort
 		super.onDisconnect()
 		print(host)
 		host.onDisconnect()
+	}
+	
+	// MARK: Upload -
+	
+	var upload:Event!
+	var uploadTimer:NSTimer!
+	var uploadPercentage:Float = 0
+	
+	func upload(item:Item)
+	{
+		upload = item
+		uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("uploadProgress"), userInfo: nil, repeats: true)
 	}
 	
 	func uploadProgress()

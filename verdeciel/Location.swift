@@ -37,7 +37,7 @@ class Location : Event
 	
 	init(name:String = "",system:Systems, at: CGPoint)
 	{
-		super.init(newName:name, at:at)
+		super.init(name:name, at:at)
 
 		self.at = at
 		
