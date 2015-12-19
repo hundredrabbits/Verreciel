@@ -90,7 +90,6 @@ class PanelThruster : MainPanel
 		
 		button = SCNButton(host:self, text: "undock", operation: 2)
 		details.addChildNode(button)
-		
 	}
 
 	override func touch(id:Int = 0)

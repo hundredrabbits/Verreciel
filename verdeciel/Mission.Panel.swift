@@ -77,7 +77,7 @@ class PanelMission : MainPanel
 		locationPanel.opacity = 0
 	}
 	
-	override func refresh()
+	override func fixedUpdate()
 	{
 		if capsule.isDocked && capsule.dock.isComplete == false {
 			panelUpdate()
@@ -89,8 +89,6 @@ class PanelMission : MainPanel
 	
 	func missionUpdate()
 	{
-		label.update(name!, color: white)
-		
 		let latestTutorialQuest = quests.tutorial[quests.tutorialProgress]
 		let latestFalvetQuest = quests.falvet[quests.falvetProgress]
 		let latestSenniQuest = quests.senni[quests.senniProgress]
@@ -202,8 +200,6 @@ class PanelMission : MainPanel
 	
 	func disconnectFromLocation()
 	{
-		// Animate
-		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		

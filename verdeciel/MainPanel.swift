@@ -59,6 +59,7 @@ class MainPanel : Panel
 		
 		mainNode.opacity = 0
 		decalsNode.opacity = 0
+		footer.opacity = 0
 		
 		label.update("--", color:grey)
 	}
@@ -109,6 +110,7 @@ class MainPanel : Panel
 		mainNode.opacity = 1
 		decalsNode.position = SCNVector3(0,0,0)
 		decalsNode.opacity = 1
+		footer.opacity = 1
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()
