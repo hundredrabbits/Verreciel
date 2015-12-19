@@ -264,7 +264,7 @@ class PanelThruster : MainPanel
 	
 	func modeFlight()
 	{
-		button.disable(String(format: "%.1f", actualSpeed))
+		button.disable(String(format: "%.1f", actualSpeed), outline:clear)
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }

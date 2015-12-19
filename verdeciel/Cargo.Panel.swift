@@ -60,14 +60,6 @@ class PanelCargo : MainPanel
 		update()
 	}
 	
-//	override func installedFixedUpdate()
-//	{
-//		if isUploading == true { uploadProcess() }
-//		else{
-//			details.update("\(port.event.content.count)/6")
-//		}
-//	}
-	
 	func contains(event:Event) -> Bool
 	{
 		for newEvent in port.event.content {
@@ -165,6 +157,7 @@ class PanelCargo : MainPanel
 			details.update("\(Int(uploadPercentage))%", color:grey)
 		}
 	}
+	
 	func uploadComplete()
 	{
 		if (port.origin != nil) {

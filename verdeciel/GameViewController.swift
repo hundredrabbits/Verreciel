@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		debugState()
+		startingState()
 	}
 	
 	func startingState()
@@ -85,7 +85,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 		
-		quests.skipTo(2)
+//		quests.skipTo(2)
 		
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.waste)

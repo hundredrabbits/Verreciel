@@ -91,6 +91,7 @@ class MainPanel : Panel
 	override func installProgress()
 	{
 		super.installProgress()
+		
 		installLabel.update("Install \(Int(installPercentage))%")
 		installProgressBar.update(installPercentage)
 	}

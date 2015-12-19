@@ -37,8 +37,7 @@ class QuestLibrary
 	{
 		// Start Loiqe
 		tutorial.append( Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }) )
-		tutorial.append( Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { }) )
-		tutorial.append( Quest(name:"Press arrow to accelerate", predicate:{ thruster.speed > 0 }, result: { mission.install() }) )
+		tutorial.append( Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { mission.install() }) )
 		tutorial.append( Quest(name:"Wait for arrival", predicate:{ universe.loiqe_landing.isKnown == true }, result: { cargo.install() }) )
 		tutorial.append( Quest(name:"Route materia to cargo", predicate:{ cargo.contains(items.materia) }, result: { console.install() }) )
 		tutorial.append( Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }) )

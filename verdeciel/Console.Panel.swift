@@ -165,6 +165,7 @@ class PanelConsole : MainPanel
 	
 	override func onInstallationComplete()
 	{
+		super.onInstallationComplete()
 		boot()
 	}
 	
