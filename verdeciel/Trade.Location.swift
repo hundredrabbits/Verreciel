@@ -5,11 +5,8 @@ import Foundation
 
 class LocationTrade : Location
 {
-	var wantPort:SCNPort!
-	var wantLabel:SCNLabel!
-	
-	var givePort:SCNPort!
-	var giveLabel:SCNLabel!
+	var wantPort:SCNPortSlot!
+	var givePort:SCNPortSlot!
 	
 	var unlocked:Bool = false
 	
@@ -26,12 +23,10 @@ class LocationTrade : Location
 		
 		icon.replace(icons.unseen())
 		
-		wantPort = SCNPort(host: self)
+		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self, placeholder:"\(want.name!)")
 		wantPort.addRequirement(want)
-		givePort = SCNPort(host: self)
-		givePort.event = give
-		wantLabel = SCNLabel(text: wantPort.requirement.name!, color:white)
-		giveLabel = SCNLabel(text: givePort.event.name!, color:grey)
+		givePort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
+		givePort.addEvent(give)
 	}
 	
 	// MARK: Panels -
@@ -39,7 +34,6 @@ class LocationTrade : Location
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
-		let spacingLeft:Float = 0.4
 		
 		// Want
 		
@@ -48,76 +42,45 @@ class LocationTrade : Location
 		wantPort.input = Item.self
 		newPanel.addChildNode(wantPort)
 		
-		let tradeLabel = SCNLabel(text: "< Trade", color:grey)
-		tradeLabel.position = SCNVector3(x: spacingLeft, y: spacingLeft, z: 0)
+		let tradeLabel = SCNLabel(text: "Give", color:white)
+		tradeLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
 		wantPort.addChildNode(tradeLabel)
 		
-		wantLabel.position = SCNVector3(x: spacingLeft, y: 0, z: 0)
-		wantPort.output = Item.self
-		wantPort.addChildNode(wantLabel)
-		
 		// Give
-		let forLabel = SCNLabel(text: "> For", color:grey)
-		forLabel.position = SCNVector3(x: spacingLeft, y: spacingLeft, z: 0)
+		let forLabel = SCNLabel(text: "Take", color:white)
+		forLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
 		givePort.addChildNode(forLabel)
 		
 		givePort.position = SCNVector3(x:-1.5, y: -0.7, z: 0)
 		newPanel.addChildNode(givePort)
-		
-		giveLabel.position = SCNVector3(x: spacingLeft, y: 0, z: 0)
-		givePort.addChildNode(giveLabel)
 		
 		givePort.disable()
 		
 		return newPanel
 	}
 	
-	func panelUpdate()
+	override func onUploadComplete()
 	{
-		if givePort.event == nil {
-			wantLabel.update("--", color:grey)
-			giveLabel.update("--", color:grey)
-			givePort.disable()
-			wantPort.disable()
-		}
-		else if wantPort.origin != nil && wantPort.origin.event == wantPort.requirement {
-			wantLabel.update(wantPort.requirement.name!, color:cyan)
-			giveLabel.update(givePort.event.name!, color:white)
-			wantPort.enable()
+		refresh()
+	}
+	
+	override func onDisconnect()
+	{
+		refresh()
+	}
+	
+	func refresh()
+	{
+		if wantPort.event != nil && wantPort.event == wantPort.requirement {
 			givePort.enable()
 		}
 		else{
-			wantLabel.update(wantPort.requirement.name!, color:red)
-			giveLabel.update(givePort.event.name!, color:grey)
-			wantPort.enable()
 			givePort.disable()
 		}
-	}
-	
-	// MARK: I/O -
-	
-	override func listen(event: Event)
-	{
-		if wantPort.origin == nil { return }
-		update()
-	}
-	
-	override func bang()
-	{
-		if givePort.connection == nil { print("No connection") ; return }
-		if givePort.connection.host != cargo { print("Not routed to cargo") ; return }
 		
-		wantPort.addEvent(wantPort.syphon())
-		givePort.connection.host.listen(givePort.event)
-
-		update()
-	}
-	
-	override func update()
-	{
-		if givePort.event == nil && isComplete == false { mission.complete() }
-		panelUpdate()
-		updateIcon()
+		if givePort.event == nil {
+			mission.complete()
+		}
 	}
 	
 	override func updateIcon()
@@ -126,15 +89,6 @@ class LocationTrade : Location
 		else if isKnown == false	{ icon.replace(icons.trade(white)) }
 		else if isComplete == true	{ icon.replace(icons.trade(cyan)) }
 		else						{ icon.replace(icons.trade(red)) }
-	}
-
-	func completeTrade()
-	{
-		if wantPort.origin != nil { wantPort.syphon() }
-		if givePort.connection != nil {	givePort.disconnect() }
-		
-		givePort.event = nil
-		update()
 	}
 	
 	// MARK: Mesh -

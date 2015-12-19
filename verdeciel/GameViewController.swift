@@ -79,9 +79,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(3)
+		quests.skipTo(6)
 		
-		let starting = universe.loiqe_landing
+		let starting = universe.loiqe_city
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
@@ -90,6 +90,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		cargo.port.event.content.append(items.valenPortalKey)
 		cargo.port.event.content.append(items.waste)
 		cargo.port.event.content.append(items.credits)
+		cargo.port.event.content.append(items.materia)
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

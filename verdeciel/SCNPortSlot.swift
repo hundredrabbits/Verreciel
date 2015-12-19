@@ -12,11 +12,13 @@ class SCNPortSlot : SCNPort
 	var hasDetails:Bool = false
 	var label:SCNLabel!
 	var details:SCNLabel!
+	var placeholder:String!
 	
-	init(host:SCNNode = SCNNode(), input:Event.Type, output:Event.Type, align:alignment! = .left, hasDetails:Bool = false)
+	init(host:SCNNode = SCNNode(), input:Event.Type, output:Event.Type, align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
 	{
 		super.init(host:host, input:input, output:output)
 		
+		self.placeholder = placeholder
 		self.hasDetails = hasDetails
 		self.input = input
 		self.output = output
@@ -28,7 +30,7 @@ class SCNPortSlot : SCNPort
 		trigger.position = SCNVector3(0,0,-0.1)
 		self.addChildNode(trigger)
 		
-		label = SCNLabel(text:"empty",scale:0.1,color:grey,align:align)
+		label = SCNLabel(text:placeholder,scale:0.1,color:grey,align:align)
 		self.addChildNode(label)
 		
 		details = SCNLabel(text:"",scale:0.075,color:grey,align:align)
@@ -57,6 +59,11 @@ class SCNPortSlot : SCNPort
 			label.update("Empty",color:grey)
 			details.update("--")
 		}
+		
+		if isEnabled == false { label.update(grey) }
+		else if requirement != nil && event != nil && requirement == event { label.update(cyan) }
+		else if event != nil { label.update(white) }
+		else{ label.update(grey) }
 	}
 	
 	override func onConnect()
