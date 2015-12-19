@@ -90,6 +90,7 @@ class PanelThruster : MainPanel
 		
 		button = SCNButton(host:self, text: "undock", operation: 2)
 		details.addChildNode(button)
+		
 	}
 
 	override func touch(id:Int = 0)
@@ -127,7 +128,7 @@ class PanelThruster : MainPanel
 		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0 } else { line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1 }
 	}
 	
-	override func refresh()
+	override func fixedUpdate()
 	{
 		canWarp = false
 		
@@ -141,7 +142,7 @@ class PanelThruster : MainPanel
 		if capsule.isWarping == true {
 			modeWarping()
 		}
-		else if port.isReceiving(items.warpDrive) == true  { // && pilot.port.isReceivingType(eventTypes.location) == true
+		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingLocationOfType(.portal) == true {
 			modeWaitingForWarp()
 			canWarp = true
 		}
@@ -350,7 +351,7 @@ class PanelThruster : MainPanel
 	
 	override func onInstallationBegin()
 	{
-		ui.addWarning("Installing", duration: 3)
+		super.onInstallationBegin()
 		player.lookAt(deg: -45)
 	}
 	

@@ -31,6 +31,7 @@ class LocationPortal : Location
 		super.init(name:name,system:system, at:at)
 		
 		self.name = name
+		self.type = .portal
 		self.system = system
 		self.at = at
 		self.note = ""

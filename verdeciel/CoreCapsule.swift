@@ -49,7 +49,7 @@ class CoreCapsule: SCNNode
 		warping()
 	}
 	
-	func closestLocationOfType(type:locationTypes) -> Location
+	func closestLocationOfType(type:LocationTypes) -> Location
 	{
 		var closestLocation:Location!
 		for location in universe.childNodes {

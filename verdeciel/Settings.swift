@@ -84,15 +84,25 @@ enum Systems
 	case venic
 }
 
-enum locationTypes
+enum LocationTypes
 {
 	case generic
+	
 	case star
+	case portal
+	case horadric
+	case trade
+	case waypoint
+	case station
+	case satellite
+	case bank
+	case spawn
 }
 
-enum itemTypes
+enum ItemTypes
 {
-	case unknown
+	case generic
+	
 	case battery
 	case card
 	case star

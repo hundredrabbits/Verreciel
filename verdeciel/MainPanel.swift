@@ -59,6 +59,8 @@ class MainPanel : Panel
 		
 		mainNode.opacity = 0
 		decalsNode.opacity = 0
+		
+		label.update("--", color:grey)
 	}
 	
 	// MARK: Installation -
@@ -88,7 +90,7 @@ class MainPanel : Panel
 	override func installProgress()
 	{
 		super.installProgress()
-		installLabel.update("Install \(installPercentage)%")
+		installLabel.update("Install \(Int(installPercentage))%")
 		installProgressBar.update(installPercentage)
 	}
 	
@@ -111,6 +113,7 @@ class MainPanel : Panel
 		
 		installNode.removeFromParentNode()
 		port.enable()
+		label.update(name!, color: white)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

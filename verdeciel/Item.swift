@@ -9,9 +9,9 @@ import Foundation
 
 class Item : Event
 {
-	var type:itemTypes!
+	var type:ItemTypes!
 	
-	init(name:String = "",type:itemTypes = itemTypes.unknown, note:String = "", isQuest:Bool = false)
+	init(name:String = "",type:ItemTypes = ItemTypes.generic, note:String = "", isQuest:Bool = false)
 	{
 		super.init()
 		

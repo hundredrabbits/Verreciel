@@ -23,6 +23,7 @@ class LocationBank : Location
 		super.init(name: name,system:system, at:at)
 		
 		self.name = name
+		self.type = .bank
 		self.system = system
 		self.at = at
 		self.note = ""

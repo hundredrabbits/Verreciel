@@ -138,11 +138,11 @@ class PanelConsole : MainPanel
 		if port.origin.host == cargo {
 			addLine(SCNCommand(text: port.origin.host.name!, color: grey, head:true))
 			for item in event.content {
-				self.addLine(SCNCommand(text: item.name!, details: item.details, color: white, event: item, head:item.isQuest))
+				self.addLine(SCNCommand(text: item.name!, details: "!!", color: white, event: item, head:item.isQuest))
 			}
 		}
 		else if port.origin.event != nil {
-			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: port.origin.event.details, head:true))
+			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
 			self.addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
 		}
 	}
@@ -159,7 +159,7 @@ class PanelConsole : MainPanel
 	
 	override func onInstallationBegin()
 	{
-		ui.addWarning("Installing", duration: 3)
+		super.onInstallationBegin()
 		player.lookAt(deg: -270)
 	}
 	

@@ -9,7 +9,7 @@ import Foundation
 class SCNCommand : SCNNode
 {
 	var text:String!
-	var details:itemTypes!
+	var details:String!
 	var color:UIColor!
 	
 	var head:Bool!
@@ -21,7 +21,7 @@ class SCNCommand : SCNNode
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "",details:itemTypes = itemTypes.unknown,color:UIColor = white,event:Event! = nil, head:Bool = false, host:SCNNode! = nil)
+	init(text:String = "", details:String! = "", color:UIColor = white,event:Event! = nil, head:Bool = false, host:SCNNode! = nil)
 	{
 		self.text = text
 		self.details = details
@@ -79,7 +79,7 @@ class SCNCommand : SCNNode
 			port.opacity = 0
 		}
 		
-		if command.details != itemTypes.unknown {
+		if command.details != nil {
 			self.details = command.details
 			detailsLabel.update("\(details)")
 		}

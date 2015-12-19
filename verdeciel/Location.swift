@@ -25,7 +25,7 @@ class Location : Event
 	var isComplete:Bool = false
 	
 	var interface = SCNNode()
-	var type:locationTypes = .generic
+	var type:LocationTypes = .generic
 	
 	// Radar
 	var mesh:SCNNode!

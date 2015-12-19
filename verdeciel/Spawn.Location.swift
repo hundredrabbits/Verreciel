@@ -10,6 +10,7 @@ class LocationSpawn : Location
 		super.init(name: name,system:system, at: at)
 		
 		self.name = name
+		self.type = .spawn
 		self.system = system
 		self.at = at
 		self.note = ""

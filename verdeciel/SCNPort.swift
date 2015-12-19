@@ -246,13 +246,26 @@ class SCNPort : SCNNode
 		return false
 	}
 	
-	func isReceivingItemOfType(type:itemTypes) -> Bool
+	func isReceivingItemOfType(type:ItemTypes) -> Bool
 	{
 		if origin == nil { return false }
 		if origin.event == nil { return false }
 		if (origin.event is Item) == false { return false }
 		
 		let source = origin.event as! Item
+		
+		if source.type == type { return true }
+		
+		return false
+	}
+	
+	func isReceivingLocationOfType(type:LocationTypes) -> Bool
+	{
+		if origin == nil { return false }
+		if origin.event == nil { return false }
+		if (origin.event is Location) == false { return false }
+		
+		let source = origin.event as! Location
 		
 		if source.type == type { return true }
 		

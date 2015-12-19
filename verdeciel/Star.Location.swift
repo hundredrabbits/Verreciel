@@ -10,13 +10,13 @@ class LocationStar : Location
 		super.init(name:name,system:system, at:at)
 		
 		self.name = name
+		self.type = .star
 		self.system = system
 		self.at = at
 		self.note = ""
 		self.color = color
 		self.mesh = structures.star()
-		self.details = itemTypes.star
-		self.type = locationTypes.star
+		self.type = LocationTypes.star
 		icon.replace(icons.star_unseen(red))
 		label.update(name)
 	}

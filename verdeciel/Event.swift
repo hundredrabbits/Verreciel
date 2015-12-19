@@ -11,17 +11,15 @@ class Event : SCNNode
 	var targetNode:SCNNode!
 	
 	var at = CGPoint()
-	var details:itemTypes
 	var note = String()
 	var content:Array<Event>!
 	var color = grey
 	
 	var isQuest:Bool = false
 	
-	init(newName:String = "",at:CGPoint = CGPoint(),details:itemTypes = itemTypes.unknown, note:String = "", color:UIColor = grey, isQuest:Bool = false)
+	init(newName:String = "",at:CGPoint = CGPoint(), note:String = "", color:UIColor = grey, isQuest:Bool = false)
 	{
 		self.content = []
-		self.details = details
 		self.isQuest = isQuest
 
 		super.init()
@@ -76,7 +74,6 @@ class Event : SCNNode
 		let newEvent = Event()
 		
 		newEvent.content = content
-		newEvent.details = details
 		newEvent.isQuest = isQuest
 	
 		newEvent.name = name

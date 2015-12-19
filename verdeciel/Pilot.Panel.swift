@@ -61,7 +61,7 @@ class PanelPilot : MainPanel
 	{
 		
 //		// Approaching the sun
-//		if capsule.closestLocationOfType(locationTypes.star).distance < 0.25 {
+//		if capsule.closestLocationOfType(LocationTypes.star).distance < 0.25 {
 //			target = capsule.closestKnownLocation()
 //		}
 //		// Lost
@@ -113,7 +113,7 @@ class PanelPilot : MainPanel
 	
 	override func onInstallationBegin()
 	{
-		ui.addWarning("Installing", duration: 3)
+		super.onInstallationBegin()
 		player.lookAt(deg: -135)
 	}
 	

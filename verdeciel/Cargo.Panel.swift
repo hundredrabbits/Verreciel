@@ -172,7 +172,7 @@ class PanelCargo : MainPanel
 	
 	override func onInstallationBegin()
 	{
-		ui.addWarning("Installing", duration: 3)
+		super.onInstallationBegin()
 		player.lookAt(deg: -225)
 	}
 	

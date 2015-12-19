@@ -18,6 +18,7 @@ class LocationHoradric : Location
 		super.init(name: name,system:system, at: at)
 		
 		self.name = name
+		self.type = .horadric
 		self.system = system
 		self.at = at
 		self.note = ""

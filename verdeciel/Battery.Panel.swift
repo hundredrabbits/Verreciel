@@ -105,8 +105,6 @@ class PanelBattery : MainPanel
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 		
 		// Start
-		
-		label.update("Battery", color: white)
 		thrusterPort.enable()
 	}
 	
@@ -138,7 +136,6 @@ class PanelBattery : MainPanel
 	
 	func isShieldPowered() -> Bool
 	{
-		if radioPort.origin != nil && radioPort.origin.event != nil && radioPort.origin.event.details == itemTypes.battery { return true }
 		return false
 	}
 	

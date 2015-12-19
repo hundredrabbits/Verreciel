@@ -10,6 +10,7 @@ class LocationWaypoint : Location
 		super.init(name:name, system:system, at:at)
 		
 		self.name = name
+		self.type = .waypoint
 		self.system = system
 		self.at = at
 		self.note = ""
