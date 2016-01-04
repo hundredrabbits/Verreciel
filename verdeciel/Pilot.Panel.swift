@@ -59,23 +59,11 @@ class PanelPilot : MainPanel
 	
 	override func fixedUpdate()
 	{
+		target = nil
 		
-//		// Approaching the sun
-//		if capsule.closestLocationOfType(LocationTypes.star).distance < 0.25 {
-//			target = capsule.closestKnownLocation()
-//		}
-//		// Lost
-//		else if capsule.closestKnownLocation().distance > 1.45 && capsule.isWarping == false{
-//			target = capsule.closestKnownLocation()
-//		}
-//		// Port Location
-////		else if port.isReceivingType(Location.self) == true {
-////			target = port.origin.event as! Location
-////		}
-//		// Nothing
-//		else{
-//			target = nil
-//		}
+		if port.isReceivingEventOfTypeLocation(){
+			target = port.origin.event as! Location
+		}
 		
 		if target != nil { align() }
 	}

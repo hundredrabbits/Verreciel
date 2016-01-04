@@ -20,6 +20,7 @@ class LocationTrade : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.trade()
+		self.isComplete = false
 		
 		icon.replace(icons.unseen())
 		
@@ -59,6 +60,11 @@ class LocationTrade : Location
 		return newPanel
 	}
 	
+	override func onDock()
+	{
+		mission.refresh()
+	}
+	
 	override func onUploadComplete()
 	{
 		refresh()
@@ -81,14 +87,23 @@ class LocationTrade : Location
 		if givePort.event == nil {
 			mission.complete()
 		}
+		
+		updateIcon()
+	}
+	
+	override func onComplete()
+	{
+		super.onComplete()
+		
+		updateIcon()
 	}
 	
 	override func updateIcon()
 	{
 		if isSeen == false			{ icon.replace(icons.trade(grey)) }
-		else if isKnown == false	{ icon.replace(icons.trade(white)) }
-		else if isComplete == true	{ icon.replace(icons.trade(cyan)) }
-		else						{ icon.replace(icons.trade(red)) }
+		else if isComplete == nil	{ icon.updateChildrenColors(white) }
+		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
+		else						{ icon.updateChildrenColors(red)  }
 	}
 	
 	// MARK: Mesh -

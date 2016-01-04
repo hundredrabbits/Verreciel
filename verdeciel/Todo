@@ -17,7 +17,7 @@
 - Add Signal converter panel?
 - Telemetrists!?
 - Create Generic : Event type event
-
+- Trade quest completion color
 
 > Warping
 
@@ -30,3 +30,4 @@
 
 > Bugs
 - Fix pilot animation
+- Issue with UI offset animation

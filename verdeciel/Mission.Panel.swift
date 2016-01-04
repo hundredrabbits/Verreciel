@@ -79,7 +79,7 @@ class PanelMission : MainPanel
 	
 	override func fixedUpdate()
 	{
-		if capsule.isDocked && capsule.dock.isComplete == false {
+		if capsule.isDocked && capsule.dock.isComplete != nil && capsule.dock.isComplete == false {
 			panelUpdate()
 		}
 		else{
@@ -127,8 +127,11 @@ class PanelMission : MainPanel
 	
 	override func refresh()
 	{
-		if capsule.dock != nil && capsule.dock.isComplete == true { label.update(cyan) }
-		else{ label.update(white) }
+		if capsule.dock == nil { label.update(white) ; return }
+		if capsule.dock.isComplete == nil { label.update(white) ; return }
+		
+		if capsule.dock.isComplete == true { label.update(cyan) }
+		else{ label.update(red) }
 	}
 	
 	// MARK: Ports -
@@ -167,7 +170,7 @@ class PanelMission : MainPanel
 			
 			SCNTransaction.setCompletionBlock({
 				capsule.dock.isComplete = true
-				capsule.dock.update()
+				capsule.dock.onComplete()
 				self.refresh()
 			})
 			SCNTransaction.commit()
@@ -177,7 +180,7 @@ class PanelMission : MainPanel
 	
 	func connectToLocation(location:Location)
 	{
-		if location.isComplete == true { return }
+		if location.isComplete != nil && location.isComplete == true { return }
 		
 		locationPanel.empty()
 		locationPanel.add(location.panel())

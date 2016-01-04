@@ -22,7 +22,7 @@ class Location : Event
 	var isKnown:Bool = false
 	var isSeen:Bool = false
 	var isSelected:Bool = false
-	var isComplete:Bool = false
+	var isComplete:Bool! = nil
 	
 	var interface = SCNNode()
 	var type:LocationTypes = .generic
@@ -46,9 +46,6 @@ class Location : Event
 		
 		addChildNode(trigger)
 		addChildNode(icon)
-		
-//		icon.geometry = SCNPlane(width: 0.5, height: 0.5)
-//		icon.geometry?.firstMaterial?.diffuse.contents = red
 		
 		label = SCNLabel(text: "", scale: 0.06, align: alignment.center, color: grey)
 		label.position = SCNVector3(0,-0.3,-0.35)
@@ -135,6 +132,11 @@ class Location : Event
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
 		update()
+	}
+	
+	func onComplete()
+	{
+		
 	}
 	
 	func sightUpdate()
