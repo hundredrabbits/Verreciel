@@ -99,11 +99,15 @@ class SCNPortSlot : SCNPort
 		
 		uploadPercentage += Float(arc4random_uniform(60))/10
 		if uploadPercentage > 100 {
+			origin.wire.isUploading = false
 			uploadComplete()
+			
 		}
 		else{
+			origin.wire.isUploading = true
 			label.update("\(Int(uploadPercentage))%", color:grey)
 		}
+	
 	}
 	
 	func uploadComplete()

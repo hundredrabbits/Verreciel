@@ -79,6 +79,7 @@ class LocationSatellite : Location
 	{
 		if isSeen == false			{ icon.replace(icons.satellite(grey)) }
 		else if isKnown == false	{ icon.replace(icons.satellite(white)) }
+		else if isComplete == nil	{ icon.replace(icons.satellite(white)) }
 		else if isComplete == true	{ icon.replace(icons.satellite(cyan)) }
 		else						{ icon.replace(icons.satellite(red)) }
 	}

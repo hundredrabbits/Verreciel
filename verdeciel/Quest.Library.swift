@@ -48,7 +48,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
 		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Reach the cargo", predicate:{ universe.loiqe_cargo.isKnown }, result: { }) )
+		tutorial.append( Quest(name:"Reach the satellite", predicate:{ universe.loiqe_satellite.isKnown }, result: { }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() }) )
 		// Reach Valen

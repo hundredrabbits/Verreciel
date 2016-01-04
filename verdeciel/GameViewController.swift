@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(10)
+		quests.skipTo(6)
 		
 		let starting = universe.loiqe_city
 		capsule.at = starting.at

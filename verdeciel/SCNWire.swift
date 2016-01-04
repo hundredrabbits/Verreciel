@@ -26,6 +26,7 @@ class SCNWire : SCNNode
 	var isEnabled:Bool = true
 	var isActive:Bool = false
 	var isCompatible:Bool = false
+	var isUploading:Bool = false
 	
 	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
 	{
@@ -83,6 +84,11 @@ class SCNWire : SCNNode
 			segment4.draw( vertex3, nodeB: vertex4, color: white)
 			segment5.draw( vertex4, nodeB: nodeB, color: red)
 		}
+		
+		if isUploading == true {
+//			blink()
+			// TODO
+		}
 	}
 	
 	func update(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
@@ -115,6 +121,13 @@ class SCNWire : SCNNode
 		segment3.reset()
 		segment4.reset()
 		segment5.reset()
+	}
+	
+	override func blink()
+	{
+		for node in childNodes {
+			node.opacity = 0
+		}
 	}
 	
 	override func color(color: UIColor)

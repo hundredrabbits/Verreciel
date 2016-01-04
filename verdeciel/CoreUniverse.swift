@@ -33,7 +33,7 @@ class CoreUniverse : SCNNode
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
-	var loiqe_cargo = locations.loiqe.satellite()
+	var loiqe_satellite = locations.loiqe.satellite()
 	
 	func addLoiqe()
 	{
@@ -43,7 +43,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_city)
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)
-		addChildNode(loiqe_cargo)
+		addChildNode(loiqe_satellite)
 	}
 	
 	// MARK: Usul -

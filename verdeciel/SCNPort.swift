@@ -121,8 +121,10 @@ class SCNPort : SCNNode
 		
 		// Compatibility
 		wire.isCompatible = false
-		if connection != nil && (output == connection.input) {
-			wire.isCompatible = true
+		if connection != nil {
+			if output == Event.self { wire.isCompatible = true }
+			else if input == Event.self { wire.isCompatible = true }
+			else if output == connection.input { wire.isCompatible = true }
 		}
 		
 		// Blink
@@ -213,7 +215,6 @@ class SCNPort : SCNNode
 	func hasEvent(target:Event) -> Bool
 	{
 		if event == nil { return false }
-//		if event is target { return true }
 		return false
 	}
 	
