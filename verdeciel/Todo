@@ -7,6 +7,7 @@
 - Add ship doodads
 - Add space doodads
 - Interface sounds
+- Blink wire on transfer
 
 > Playthrough
 - Save / Load Mechanics
@@ -29,5 +30,4 @@
 - Install radio at station
 
 > Bugs
-- Fix pilot animation
 - Issue with UI offset animation

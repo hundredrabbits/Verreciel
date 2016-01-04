@@ -73,7 +73,7 @@ class PanelPilot : MainPanel
 		let left = target.calculateAlignment(capsule.direction - 0.5)
 		let right = target.calculateAlignment(capsule.direction + 0.5)
 		
-		let target_align = (target.align * 0.025) < 0.1 ? target.align : target.align * 0.025
+		let target_align = abs(target.align * 0.025) < 0.1 ? target.align : target.align * 0.025
 		
 		if left <= right {
 			turnLeft(target_align)
@@ -82,9 +82,7 @@ class PanelPilot : MainPanel
 			turnRight(target_align)
 		}
 		
-		if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
-		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
-		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
+		animate()
 	}
 	
 	func turnLeft(deg:CGFloat)
@@ -97,6 +95,16 @@ class PanelPilot : MainPanel
 	{
 		capsule.direction = capsule.direction + deg
 		capsule.direction = capsule.direction % 360
+	}
+	
+	func animate()
+	{
+		targetDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction)) * -1
+		staticDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction))
+		
+		if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
+		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
+		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
 	}
 	
 	override func onInstallationBegin()
