@@ -62,7 +62,7 @@ class Monitor : Panel
 		SCNTransaction.setAnimationDuration(0.5)
 		label.opacity = 1
 		details.opacity = 1
-		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
+//		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()

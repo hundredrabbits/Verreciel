@@ -18,6 +18,7 @@
 - Telemetrists!?
 - Create Generic : Event type event
 - Trade quest completion color on mission panel label
+- Event for went approaching stars without the cloak
 
 > Warping
 
@@ -30,3 +31,4 @@
 
 > Bugs
 - Issue with UI offset animation
+- Issue with docking when approaching a distant target

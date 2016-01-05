@@ -84,11 +84,6 @@ class SCNWire : SCNNode
 			segment4.draw( vertex3, nodeB: vertex4, color: white)
 			segment5.draw( vertex4, nodeB: nodeB, color: red)
 		}
-		
-		if isUploading == true {
-			if time.elapsed % 2 == 0 { opacity = 1 }
-			else { opacity = 0 }
-		}
 	}
 	
 	func update(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())

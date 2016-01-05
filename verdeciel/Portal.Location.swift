@@ -199,10 +199,10 @@ class LocationPortal : Location
 	
 	override func updateIcon()
 	{
-		if isSeen == false			{ icon.replace(icons.portal(grey)) }
-		else if isKnown == false	{ icon.replace(icons.portal(white)) }
-		else if isComplete == true	{ icon.replace(icons.portal(cyan)) }
-		else						{ icon.replace(icons.portal(red)) }
+		if isSeen == false			{ icon.updateChildrenColors(grey) }
+		else if isComplete == nil	{ icon.updateChildrenColors(white) }
+		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
+		else						{ icon.updateChildrenColors(red)  }
 	}
 	
 	func addPortals(right:LocationPortal,left:LocationPortal)

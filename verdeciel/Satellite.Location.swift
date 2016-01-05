@@ -18,7 +18,9 @@ class LocationSatellite : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.cargo()
-		icon.replace(icons.none())
+		self.isComplete = false
+		
+		icon.replace(icons.unseen())
 		
 		self.message = message
 		
@@ -62,6 +64,20 @@ class LocationSatellite : Location
 		mission.complete()
 	}
 	
+	override func onComplete()
+	{
+		super.onComplete()
+		updateIcon()
+	}
+	
+	override func updateIcon()
+	{
+		if isSeen == false			{ icon.updateChildrenColors(grey) }
+		else if isComplete == nil	{ icon.updateChildrenColors(white) }
+		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
+		else						{ icon.updateChildrenColors(red)  }
+	}
+	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)
@@ -71,17 +87,6 @@ class LocationSatellite : Location
 			node.eulerAngles.x = Float(degToRad(CGFloat(time.elapsed * 0.25)))
 			node.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 0.125)))
 		}
-	}
-	
-	// MARK: Icon -
-	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.replace(icons.satellite(grey)) }
-		else if isKnown == false	{ icon.replace(icons.satellite(white)) }
-		else if isComplete == nil	{ icon.replace(icons.satellite(white)) }
-		else if isComplete == true	{ icon.replace(icons.satellite(cyan)) }
-		else						{ icon.replace(icons.satellite(red)) }
 	}
 	
 	// MARK: Defaults -

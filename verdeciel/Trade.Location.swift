@@ -94,7 +94,6 @@ class LocationTrade : Location
 	override func onComplete()
 	{
 		super.onComplete()
-		
 		updateIcon()
 	}
 	
