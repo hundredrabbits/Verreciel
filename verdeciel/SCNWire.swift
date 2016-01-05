@@ -86,8 +86,8 @@ class SCNWire : SCNNode
 		}
 		
 		if isUploading == true {
-//			blink()
-			// TODO
+			if time.elapsed % 2 == 0 { opacity = 1 }
+			else { opacity = 0 }
 		}
 	}
 	

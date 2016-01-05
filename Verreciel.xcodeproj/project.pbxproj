@@ -234,9 +234,9 @@
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				571728DE1BB03455002782A3 /* SCNNode.swift */,
 				57DD808D1BC7005600A4146C /* SCNHandle.swift */,
 				5765C3311C235A0C001ED26E /* SCNButton.swift */,
-				571728DE1BB03455002782A3 /* SCNNode.swift */,
 				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
 				57C222F71C1F6038005092A4 /* SCNPortSlot.swift */,
