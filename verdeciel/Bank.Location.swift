@@ -36,33 +36,34 @@ class LocationBank : Location
 		port4 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
 		port5 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
 		port6 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		
+		port1.enable()
+		port2.enable()
+		port3.enable()
+		port4.enable()
+		port5.enable()
+		port6.enable()
 	}
 	
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
 		
-		port1.enable()
 		port1.position = SCNVector3(templates.leftMargin,templates.lineSpacing * 2.5,0)
 		newPanel.addChildNode(port1)
 		
-		port2.enable()
 		port2.position = SCNVector3(templates.leftMargin,templates.lineSpacing * 1.5,0)
 		newPanel.addChildNode(port2)
 		
-		port3.enable()
 		port3.position = SCNVector3(templates.leftMargin,templates.lineSpacing * 0.5,0)
 		newPanel.addChildNode(port3)
 		
-		port4.enable()
 		port4.position = SCNVector3(templates.leftMargin,-templates.lineSpacing * 0.5,0)
 		newPanel.addChildNode(port4)
 		
-		port5.enable()
 		port5.position = SCNVector3(templates.leftMargin,-templates.lineSpacing * 1.5,0)
 		newPanel.addChildNode(port5)
 		
-		port6.enable()
 		port6.position = SCNVector3(templates.leftMargin,-templates.lineSpacing * 2.5,0)
 		newPanel.addChildNode(port6)
 		

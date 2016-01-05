@@ -81,6 +81,12 @@ class SCNPortSlot : SCNPort
 		host.onDisconnect()
 	}
 	
+	override func addEvent(event:Event)
+	{
+		super.addEvent(event)
+		update()
+	}
+	
 	// MARK: Upload -
 	
 	var upload:Event!

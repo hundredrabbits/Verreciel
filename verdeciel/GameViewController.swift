@@ -79,18 +79,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(6)
+		quests.skipTo(18)
 		
-		let starting = universe.loiqe_city
+		let starting = universe.valen_portal
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 		
+		cargo.port.event.content.append(items.loiqePortalKey)
 		cargo.port.event.content.append(items.valenPortalKey)
-		cargo.port.event.content.append(items.waste)
-		cargo.port.event.content.append(items.credits)
-		cargo.port.event.content.append(items.materia)
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

@@ -141,9 +141,9 @@ class PanelBattery : MainPanel
 	
 	func hasCell(target:Event) -> Bool
 	{
-		if cellPort1.event == target { return true }
-		if cellPort2.event == target { return true }
-		if cellPort3.event == target { return true }
+		if cellPort1.event != nil && cellPort1.event == target { return true }
+		if cellPort2.event != nil && cellPort2.event == target { return true }
+		if cellPort3.event != nil && cellPort3.event == target { return true }
 		return false
 	}
 	
