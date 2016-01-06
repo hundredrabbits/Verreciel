@@ -50,6 +50,7 @@
 		57841A301C23ACD50005D7DA /* Complete.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */; };
+		578D63F31C3C7DA1000AAC04 /* Harvest.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578D63F21C3C7DA1000AAC04 /* Harvest.Location.swift */; };
 		579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* CorePlayer.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		5797B83C1BE7DD09004EE1F7 /* Structures.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */; };
@@ -127,6 +128,7 @@
 		57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complete.Monitor.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.Location.swift; sourceTree = "<group>"; };
+		578D63F21C3C7DA1000AAC04 /* Harvest.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Harvest.Location.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* CorePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlayer.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.Library.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				57C222F51C1F218A005092A4 /* Bank.Location.swift */,
+				578D63F21C3C7DA1000AAC04 /* Harvest.Location.swift */,
 				57EDED211BC17321005DF3DE /* Beacon.Location.swift */,
 				574156D91BE12E6C008B6C44 /* Horadric.Location.swift */,
 				572258141BB877C600DEC41E /* Portal.Location.swift */,
@@ -461,6 +464,7 @@
 				574E5FBB1BC57749008130AB /* Item.Library.swift in Sources */,
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* CorePlayer.swift in Sources */,
+				578D63F31C3C7DA1000AAC04 /* Harvest.Location.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */,
 				579CE71E1C246040009E02F5 /* CoreGame.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* Mission.Panel.swift in Sources */,

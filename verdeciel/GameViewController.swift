@@ -79,9 +79,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(18)
+		quests.skipTo(18 + 11)
 		
-		let starting = universe.valen_portal
+		let starting = universe.valen_bank
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true

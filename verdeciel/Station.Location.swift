@@ -25,7 +25,7 @@ class LocationStation : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.station()
-		
+		self.isComplete = false
 	}
 	
 	override func update()
@@ -41,7 +41,7 @@ class LocationStation : Location
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		
-		button = SCNButton(host: self, text: "install", operation:0)
+		button = SCNButton(host: self, text: "install", operation:1)
 		button.position = SCNVector3(0,-1,0)
 		newPanel.addChildNode(button)
 		
@@ -66,17 +66,18 @@ class LocationStation : Location
 	
 	override func touch(id: Int)
 	{
-		if id == 0 { self.installation() }
+		super.touch(id)
+		if id == 1 { self.installation() }
 	}
 	
 	// MARK: Icon -
 	
 	override func updateIcon()
 	{
-		if isSeen == false			{ icon.replace(icons.station(grey)) }
-		else if isKnown == false	{ icon.replace(icons.station(white)) }
-		else if isComplete == true	{ icon.replace(icons.station(cyan)) }
-		else						{ icon.replace(icons.station(red)) }
+		if isSeen == false			{ icon.replace(icons.trade(grey)) }
+		else if isComplete == nil	{ icon.updateChildrenColors(white) }
+		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
+		else						{ icon.updateChildrenColors(red)  }
 	}
 	// MARK: Defaults -
 	

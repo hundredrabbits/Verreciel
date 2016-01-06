@@ -66,7 +66,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Reach satellite", predicate:{ universe.valen_satellite.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Collect record", predicate:{ cargo.contains(items.record1) }, result: { radio.install() }) )
 		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record1) }, result: { }) )
-		tutorial.append( Quest(name:"Collect cell", predicate:{ cargo.contains(items.cell2) }, result: { }) )
+		tutorial.append( Quest(name:"Collect cell at bank", predicate:{ cargo.contains(items.cell2) }, result: { }) )
 		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { }) )
 		tutorial.append( Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }) )
 		
