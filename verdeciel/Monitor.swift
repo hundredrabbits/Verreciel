@@ -16,11 +16,10 @@ class Monitor : Panel
 	{
 		super.init()
 		
-		name = "journey"
+		name = ""
 		
 		root.position = SCNVector3(0,0,templates.radius)
 		
-		label.update("0")
 		label.position = SCNVector3(0,0,0)
 		root.addChildNode(label)
 		
@@ -30,7 +29,8 @@ class Monitor : Panel
 		label.opacity = 0
 		details.opacity = 0
 		
-		details.update(name!)
+		details.update("")
+		label.update("--")
 	}
 	
 	// MARK: Installation -
@@ -62,7 +62,7 @@ class Monitor : Panel
 		SCNTransaction.setAnimationDuration(0.5)
 		label.opacity = 1
 		details.opacity = 1
-//		SCNTransaction.setCompletionBlock({ self.onInstallationComplete() })
+		SCNTransaction.setCompletionBlock({ self.refresh() })
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()

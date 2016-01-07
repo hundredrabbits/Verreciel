@@ -17,6 +17,9 @@ class MonitorExploration : Monitor
 		
 		name = "exploration"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+		
+		label.update("--")
+		details.update(name!)
 	}
 	
 	override func refresh()

@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		quests.skipTo(18 + 15)
 		
-		let starting = universe.valen_station
+		let starting = universe.valen
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true

@@ -16,6 +16,7 @@ class Panel : SCNNode
 	override init()
 	{
 		super.init()
+		addChildNode(root)
 	}
 	
 	func refresh()

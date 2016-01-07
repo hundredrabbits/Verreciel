@@ -14,6 +14,9 @@ class MonitorProgress : Monitor
 		super.init()
 		name = "progress"
 		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+		
+		label.update("--")
+		details.update(name!)
 	}
 	
 	override func refresh()

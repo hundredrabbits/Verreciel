@@ -116,6 +116,8 @@ class StructuresLibrary
 			i++
 		}
 		
+		mesh.position = SCNVector3(0,4,0)
+		
 		return mesh
 	}
 	
