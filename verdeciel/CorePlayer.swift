@@ -44,7 +44,7 @@ class CorePlayer : SCNNode
 		
 		self.camera = SCNCamera()
 		self.camera?.xFov = 75
-		self.name = "cameraNode"
+		self.name = "helmet"
 		self.position = SCNVector3(x: 0, y: 0, z: 0)
 		self.camera?.aperture = 100
 		self.camera?.automaticallyAdjustsZRange = true

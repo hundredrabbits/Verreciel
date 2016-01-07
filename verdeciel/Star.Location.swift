@@ -22,6 +22,12 @@ class LocationStar : Location
 		label.update(name)
 	}
 	
+	override func onSight()
+	{
+		icon.replace(icons.star(red))
+		updateIcon()
+	}
+	
 	override func onApproach()
 	{
 		print("* EVENT    | Approached \(self.name!)")

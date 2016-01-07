@@ -57,7 +57,6 @@ class PanelCargo : MainPanel
 		decalsNode.opacity = 0
 		mainNode.opacity = 0
 		label.update("--", color: grey)
-		update()
 	}
 	
 	func contains(event:Event) -> Bool

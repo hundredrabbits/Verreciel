@@ -7,6 +7,7 @@
 - Add ship doodads
 - Add space doodads
 - Interface sounds
+- Fix stars
 
 > Playthrough
 - Save / Load Mechanics
@@ -25,13 +26,10 @@
 - Unlock map port
 - Combione credits/materia quests
 
-> Warping
-- Find credits
-- Trade for shield
-- Shut of Valen
--
-
 > Valen Flow
+- Find credits(Harvest)
+- Trade for shield install(Station)
+- Shut of Valen(Star)
 
 > Bugs
 - Issue with UI offset animation

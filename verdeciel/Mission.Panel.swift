@@ -80,7 +80,7 @@ class PanelMission : MainPanel
 	override func fixedUpdate()
 	{
 		if capsule.isDocked && capsule.dock.isComplete != nil && capsule.dock.isComplete == false {
-			panelUpdate()
+			locationPanel.update()
 		}
 		else{
 			missionUpdate()
@@ -117,12 +117,6 @@ class PanelMission : MainPanel
 		if quests.falvetProgress == 0 { quest2.update(grey) } else{ quest2.update(white) }
 		if quests.senniProgress == 0 { quest3.update(grey) } else{ quest3.update(white) }
 		if quests.usulProgress == 0 { quest4.update(grey) } else{ quest4.update(white) }
-	}
-	
-	func panelUpdate()
-	{
-		label.update(capsule.dock.name!)
-		locationPanel.update()
 	}
 	
 	override func refresh()
@@ -180,7 +174,7 @@ class PanelMission : MainPanel
 	
 	func connectToLocation(location:Location)
 	{
-		if location.isComplete != nil && location.isComplete == true { return }
+		if location.isComplete != nil && location.isComplete == true { label.update(name!) ; return }
 		
 		locationPanel.empty()
 		locationPanel.add(location.panel())
@@ -196,6 +190,7 @@ class PanelMission : MainPanel
 		SCNTransaction.setCompletionBlock({
 			
 			self.locationPanel.position = SCNVector3(0,0,-0.5)
+			self.label.update(capsule.dock.name!)
 			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)
@@ -220,6 +215,7 @@ class PanelMission : MainPanel
 		SCNTransaction.setCompletionBlock({
 			
 			self.questPanel.position = SCNVector3(0,0,-0.5)
+			self.label.update(self.name!)
 			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)

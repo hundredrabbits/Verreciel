@@ -303,8 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				57C222F51C1F218A005092A4 /* Bank.Location.swift */,
-				578D63F21C3C7DA1000AAC04 /* Harvest.Location.swift */,
 				57EDED211BC17321005DF3DE /* Beacon.Location.swift */,
+				578D63F21C3C7DA1000AAC04 /* Harvest.Location.swift */,
 				574156D91BE12E6C008B6C44 /* Horadric.Location.swift */,
 				572258141BB877C600DEC41E /* Portal.Location.swift */,
 				57CA80971BB9CEA3000D31F7 /* Satellite.Location.swift */,
