@@ -8,6 +8,7 @@ class LocationStar : Location
 	var button:SCNButton!
 	var portA:SCNPort!
 	var portB:SCNPort!
+	var twin:Location!
 	
 	init(name:String,at: CGPoint = CGPoint(), system:Systems, color:UIColor = red)
 	{
@@ -60,7 +61,15 @@ class LocationStar : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { mission.complete() }
+		if id == 1 {  }
+	}
+	
+	override func onDisconnect()
+	{
+		if portB.origin != portA {
+			isComplete = true
+			capsule.teleport(twin)
+		}
 	}
 	
 	// MARK: Defaults -

@@ -74,7 +74,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Install shield", predicate:{ universe.valen_station.isComplete == true }, result: { }) )
 		tutorial.append( Quest(name:"Route cell to shield", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { }) )
 		tutorial.append( Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() }) )
+		tutorial.append( Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() ; universe.unlock(.cyanine) }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
@@ -82,8 +82,8 @@ class QuestLibrary
 	
 	func _falvet()
 	{
-		falvet.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
-		falvet.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
+		falvet.append( Quest(name:"Locked", predicate:{ universe.valen.isComplete == true }, result: { }) )
+		falvet.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet.isSeen == true }, result: { }) )
 		
 		falvet.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
 	}
@@ -112,6 +112,13 @@ class QuestLibrary
 		if latestTutorial.isCompleted == true {
 			tutorialProgress += 1
 			ui.addMessage(tutorial[tutorialProgress].name)
+		}
+		
+		let latestFalvet = falvet[falvetProgress]
+		latestFalvet.validate()
+		
+		if latestFalvet.isCompleted == true {
+			falvetProgress += 1
 		}
 	}
 	

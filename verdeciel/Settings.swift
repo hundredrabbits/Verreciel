@@ -82,6 +82,7 @@ enum Systems
 	case senni
 	case usul
 	case venic
+	case cyanine
 }
 
 enum LocationTypes

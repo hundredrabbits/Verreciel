@@ -14,6 +14,7 @@ class LocationLibrary
 	let valen = Valen(offset: CGPoint(x: 4,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 4))
 	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
+	let cyanine = Cyanine(offset: CGPoint(x: 200,y: 200))
 	
 	init()
 	{
@@ -293,4 +294,57 @@ class Falvet
 		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
 		return location
 	}
+}
+
+class Cyanine
+{
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func star() -> LocationStar
+	{
+		let location = LocationStar(name:"Cyanine",system:.cyanine)
+		location.at = offset
+		return location
+	}
+	
+	func valen() -> LocationStar
+	{
+		let location = LocationStar(name:"Valen",system:.cyanine)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y)
+		return location
+	}
+	
+	func venic() -> LocationStar
+	{
+		let location = LocationStar(name:"Venic",system:.cyanine)
+		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
+		return location
+	}
+	
+	func senni() -> LocationStar
+	{
+		let location = LocationStar(name:"Venic",system:.cyanine)
+		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+		return location
+	}
+	
+	func loiqe() -> LocationStar
+	{
+		let location = LocationStar(name:"Loiqe",system:.cyanine)
+		location.at = CGPoint(x: offset.x, y: offset.y - 1)
+		return location
+	}
+	
+	func usul() -> LocationStar
+	{
+		let location = LocationStar(name:"Usul",system:.cyanine)
+		location.at = CGPoint(x: offset.x - 1, y: offset.y)
+		return location
+	}
+
 }

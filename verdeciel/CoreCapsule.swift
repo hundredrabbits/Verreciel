@@ -277,6 +277,16 @@ class CoreCapsule: SCNNode
 		}
 	}
 	
+	func teleport(location:Location)
+	{
+		dock = location
+		at = location.at
+		isDocked = true
+		dock.onDock()
+		mission.connectToLocation(dock)
+		ui.addPassive("Docked at \(dock.name!)")
+	}
+	
 	func isDockedAtLocation(location:Location) -> Bool
 	{
 		if isDocked == true && dock != nil && dock == location { return true }

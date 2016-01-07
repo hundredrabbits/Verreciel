@@ -21,6 +21,8 @@ class CoreUniverse : SCNNode
 		addSenni()
 		addFalvet()
 		
+		addCyanine()
+		
 		connectPaths()
 		connectPortals()
 	}
@@ -177,6 +179,27 @@ class CoreUniverse : SCNNode
 		senni_portal.connect(senni_portal)
 	}
 	
+	// MARK: Cyanine -
+	
+	var cyanine = locations.cyanine.star()
+	var cyanine_valen = locations.cyanine.valen()
+	var cyanine_venic = locations.cyanine.venic()
+	var cyanine_senni = locations.cyanine.senni()
+	var cyanine_usul = locations.cyanine.usul()
+	var cyanine_loiqe = locations.cyanine.loiqe()
+	
+	func addCyanine()
+	{
+		addChildNode(cyanine)
+		addChildNode(cyanine_valen)
+		addChildNode(cyanine_venic)
+		addChildNode(cyanine_senni)
+		addChildNode(cyanine_usul)
+		addChildNode(cyanine_loiqe)
+	}
+	
+	// MARK: Tools
+	
 	func unlock(system:Systems)
 	{
 		print("! SYSTEM(Unlock) \(system)")
@@ -193,7 +216,23 @@ class CoreUniverse : SCNNode
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.waste)
 		valen_bank.port3.addEvent(items.cell2)
+		
+		// Setup Twin Stars
+		
+		loiqe.twin = cyanine_loiqe
+		valen.twin = cyanine_valen
+		venic.twin = cyanine_venic
+		senni.twin = cyanine_senni
+		usul.twin = cyanine_usul
+		
+		cyanine_loiqe.twin = universe.loiqe
+		cyanine_valen.twin = universe.valen
+		cyanine_venic.twin = universe.venic
+		cyanine_senni.twin = universe.senni
+		cyanine_usul.twin = universe.usul
 	}
+	
+	// Default
 	
 	required init?(coder aDecoder: NSCoder)
 	{

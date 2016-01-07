@@ -208,6 +208,7 @@ class SCNPort : SCNNode
 		targetOrigin.update()
 		
 		self.onDisconnect()
+		self.host.onDisconnect()
 		
 		wire.disable()
 	}

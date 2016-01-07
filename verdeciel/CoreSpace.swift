@@ -25,10 +25,8 @@ class CoreSpace: SCNNode
 	
 	override func fixedUpdate()
 	{
-		if capsule.sector == sectors.cyanine { sceneView.backgroundColor = cyanTone }
-		if capsule.sector == sectors.opal { sceneView.backgroundColor = whiteTone }
-		if capsule.sector == sectors.vermiles { sceneView.backgroundColor = redTone }
-		if capsule.sector == sectors.void { sceneView.backgroundColor = greyTone }
+		if capsule.closestKnownLocation().system == Systems.cyanine { sceneView.backgroundColor = whiteTone }
+		else { sceneView.backgroundColor = black }
 		
 		while starTimer > 2 {
 			addStar()
