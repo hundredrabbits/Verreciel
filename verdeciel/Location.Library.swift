@@ -314,35 +314,35 @@ class Cyanine
 	
 	func valen() -> LocationStar
 	{
-		let location = LocationStar(name:"Valen",system:.cyanine)
+		let location = LocationStar(name:"Valen II",system:.cyanine)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y)
 		return location
 	}
 	
 	func venic() -> LocationStar
 	{
-		let location = LocationStar(name:"Venic",system:.cyanine)
+		let location = LocationStar(name:"Venic II",system:.cyanine)
 		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
 		return location
 	}
 	
 	func senni() -> LocationStar
 	{
-		let location = LocationStar(name:"Venic",system:.cyanine)
+		let location = LocationStar(name:"Senni II",system:.cyanine)
 		location.at = CGPoint(x: offset.x, y: offset.y + 1)
 		return location
 	}
 	
 	func loiqe() -> LocationStar
 	{
-		let location = LocationStar(name:"Loiqe",system:.cyanine)
+		let location = LocationStar(name:"Loiqe II",system:.cyanine)
 		location.at = CGPoint(x: offset.x, y: offset.y - 1)
 		return location
 	}
 	
 	func usul() -> LocationStar
 	{
-		let location = LocationStar(name:"Usul",system:.cyanine)
+		let location = LocationStar(name:"Usul II",system:.cyanine)
 		location.at = CGPoint(x: offset.x - 1, y: offset.y)
 		return location
 	}

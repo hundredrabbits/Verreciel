@@ -19,17 +19,19 @@
 - Add Signal converter panel?
 - Telemetrists!? Twin Suns
 - Create Generic : Event type event
-- Trade quest completion color on mission panel label
 - Event for when approaching stars without the cloak
 - Derelict beacon
-- Shut off the suns
-- Make harvest quest
 - Unlock map port
-- Combione credits/materia quests
 - Add docking button/trigger to thruster
+- Stars only display as star if apporachable(shield strengt)
 
-> Valen Flow
-- Unlock second quest
+> Venic Flow
+- Harvest Materia
+- Get cell 3, create grid1
+- Get grid2
+- Require Alta, get recipe somewhere
+- Get record 2
+- Install Map Port at station for alta
 
 > Bugs
 - Issue with UI offset animation

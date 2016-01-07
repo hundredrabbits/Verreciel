@@ -284,6 +284,7 @@ class CoreCapsule: SCNNode
 		isDocked = true
 		dock.onDock()
 		mission.connectToLocation(dock)
+		radar.removeTarget()
 		ui.addPassive("Docked at \(dock.name!)")
 	}
 	

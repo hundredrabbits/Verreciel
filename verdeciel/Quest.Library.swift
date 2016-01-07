@@ -57,6 +57,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
 		tutorial.append( Quest(name:"Reach Valen system", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }) )
+		
 		// Start Valen(18)
 		tutorial.append( Quest(name:"Visit the bank", predicate:{ universe.valen_bank.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Collect Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) }, result: { }) )
@@ -75,6 +76,10 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Route cell to shield", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { }) )
 		tutorial.append( Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() ; universe.unlock(.cyanine) }) )
+		
+		// Start Venic
+		tutorial.append( Quest(name:"Reach venic II", predicate:{ universe.cyanine_venic.isKnown == true }, result: {  }) )
+		tutorial.append( Quest(name:"Cross to venic", predicate:{ universe.venic.isKnown == true }, result: { universe.unlock(.venic) }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )

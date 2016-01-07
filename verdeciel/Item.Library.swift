@@ -17,19 +17,15 @@ class ItemLibrary
 	let cell1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let cell2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let cell3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let cell4  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let array1 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
 	let array2 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
 	let array3 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
-	let array4 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
 	let grid1 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
 	let grid2 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
 	let grid3 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
-	let grid4 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
 	let matrix1 = Item(name: "matrix I", type: .battery, note:"gives large power", isQuest:true)
 	let matrix2 = Item(name: "matrix II", type: .battery, note:"gives large power", isQuest:true)
 	let matrix3 = Item(name: "matrix III", type: .battery, note:"gives large power", isQuest:true)
-	let matrix4 = Item(name: "matrix IV", type: .battery, note:"gives large power", isQuest:true)
 	
 	// Misc
 	let waste = Item(name: "waste", type: .waste, note:"useless junk")
@@ -54,6 +50,9 @@ class ItemLibrary
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Harvest
-	let materia = Item(name: "materia", type: .currency, note:"a trading currency", isQuest:true)
-	let credits = Item(name: "credits", type: .currency, note:"a trading currency", isQuest:true)
+	let materia = Item(name: "materia", type: .currency, note:"a trading currency")
+	let alta = Item(name: "materia", type: .currency, note:"a trading currency")
+	let credits = Item(name: "credits", type: .currency, note:"a trading currency")
+	let ingot = Item(name: "credits", type: .currency, note:"a trading currency")
+	
 }
