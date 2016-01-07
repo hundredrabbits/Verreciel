@@ -97,14 +97,6 @@ class LocationTrade : Location
 		updateIcon()
 	}
 	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.replace(icons.trade(grey)) }
-		else if isComplete == nil	{ icon.updateChildrenColors(white) }
-		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
-		else						{ icon.updateChildrenColors(red)  }
-	}
-	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

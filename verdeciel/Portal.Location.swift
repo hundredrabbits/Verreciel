@@ -195,16 +195,6 @@ class LocationPortal : Location
 		}
 	}
 	
-	// MARK: Icon -
-	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.updateChildrenColors(grey) }
-		else if isComplete == nil	{ icon.updateChildrenColors(white) }
-		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
-		else						{ icon.updateChildrenColors(red)  }
-	}
-	
 	func addPortals(right:LocationPortal,left:LocationPortal)
 	{
 		self.right = right

@@ -101,7 +101,10 @@ class Location : Event
 	
 	func updateIcon()
 	{
-	
+		if isSeen == false			{ icon.updateChildrenColors(grey) }
+		else if isComplete == nil	{ icon.updateChildrenColors(white) }
+		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
+		else						{ icon.updateChildrenColors(red)  }
 	}
 	
 	func onSight()

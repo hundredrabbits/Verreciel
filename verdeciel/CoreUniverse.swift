@@ -66,6 +66,7 @@ class CoreUniverse : SCNNode
 	var valen_station = locations.valen.station()
 	var valen_portal = locations.valen.portal()
 	var valen_satellite = locations.valen.satellite()
+	var valen_harvest = locations.valen.harvest()
 	
 	func addValen()
 	{
@@ -74,6 +75,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_station)
 		addChildNode(valen_portal)
 		addChildNode(valen_satellite)
+		addChildNode(valen_harvest)
 	}
 	
 	// MARK: Venic -

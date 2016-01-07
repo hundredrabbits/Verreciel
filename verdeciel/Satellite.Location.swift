@@ -70,14 +70,6 @@ class LocationSatellite : Location
 		updateIcon()
 	}
 	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.updateChildrenColors(grey) }
-		else if isComplete == nil	{ icon.updateChildrenColors(white) }
-		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
-		else						{ icon.updateChildrenColors(red)  }
-	}
-	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

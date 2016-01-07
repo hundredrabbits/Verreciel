@@ -48,7 +48,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }) )
 		tutorial.append( Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }) )
 		tutorial.append( Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }) )
-		tutorial.append( Quest(name:"Reach the satellite", predicate:{ universe.loiqe_satellite.isKnown }, result: { }) )
+		tutorial.append( Quest(name:"Reach satellite", predicate:{ universe.loiqe_satellite.isKnown }, result: { }) )
 		tutorial.append( Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }) )
 		tutorial.append( Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() }) )
 		// Reach Valen
@@ -56,7 +56,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }) )
 		tutorial.append( Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }) )
-		tutorial.append( Quest(name:"Reach Valen", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }) )
+		tutorial.append( Quest(name:"Reach Valen system", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }) )
 		// Start Valen(18)
 		tutorial.append( Quest(name:"Visit the bank", predicate:{ universe.valen_bank.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Collect Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) }, result: { }) )
@@ -69,6 +69,11 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Collect cell at bank", predicate:{ cargo.contains(items.cell2) }, result: { }) )
 		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { }) )
 		tutorial.append( Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Find credits", predicate:{ cargo.contains(items.credits) == true }, result: { }) )
+		tutorial.append( Quest(name:"Install shield", predicate:{ universe.valen_harvest.isComplete == true }, result: { }) )
+		tutorial.append( Quest(name:"Route cell to shield", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { }) )
+		tutorial.append( Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }) )
+		tutorial.append( Quest(name:"Shut off the sun", predicate:{ universe.valen.isComplete == true }, result: { }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )

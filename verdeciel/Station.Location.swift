@@ -25,6 +25,7 @@ class LocationStation : Location
 		self.at = at
 		self.note = ""
 		self.mesh = structures.station()
+		self.icon.replace(icons.station())
 		self.isComplete = false
 	}
 	
@@ -70,15 +71,6 @@ class LocationStation : Location
 		if id == 1 { self.installation() }
 	}
 	
-	// MARK: Icon -
-	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.replace(icons.trade(grey)) }
-		else if isComplete == nil	{ icon.updateChildrenColors(white) }
-		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
-		else						{ icon.updateChildrenColors(red)  }
-	}
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

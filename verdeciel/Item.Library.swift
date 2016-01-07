@@ -53,7 +53,7 @@ class ItemLibrary
 	// Records
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
-	// Currencies
+	// Harvest
 	let materia = Item(name: "materia", type: .currency, note:"a trading currency", isQuest:true)
 	let credits = Item(name: "credits", type: .currency, note:"a trading currency", isQuest:true)
 }

@@ -130,14 +130,6 @@ class LocationHoradric : Location
 		outPort.connection.host.listen(outPort.event)
 	}
 	
-	// MARK: Icon -
-	
-	override func updateIcon()
-	{
-		if isSeen == false			{ icon.replace(icons.horadric(grey)) }
-		else if isKnown == false	{ icon.replace(icons.horadric(white)) }
-	}
-	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

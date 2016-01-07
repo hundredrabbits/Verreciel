@@ -5,7 +5,9 @@ import Foundation
 
 class LocationHarvest : Location
 {
-	override init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0))
+	var currency:Item!
+	
+	init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0), grows:Item)
 	{
 		super.init(name:name, system:system, at:at)
 		
@@ -16,6 +18,8 @@ class LocationHarvest : Location
 		self.note = ""
 		self.mesh = structures.placeholder()
 		icon.replace(icons.placeholder())
+		
+		currency = grows
 	}
 	
 	required init(coder aDecoder: NSCoder)

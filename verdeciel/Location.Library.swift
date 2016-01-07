@@ -139,6 +139,11 @@ class Valen
 		return LocationPortal(name: "portal",system:.valen, at:CGPoint(x: offset.x - 1, y: offset.y), key: items.valenPortalKey, rightName: "Senni", leftName:"Loiqe")
 	}
 	
+	func harvest() -> LocationHarvest
+	{
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), grows: items.credits)
+	}
+	
 	func station() -> LocationStation
 	{
 		let location = LocationStation(name:"station",system:.valen, requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")

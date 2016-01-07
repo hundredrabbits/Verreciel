@@ -17,16 +17,9 @@ class LocationStar : Location
 		self.color = color
 		self.mesh = structures.star()
 		self.type = LocationTypes.star
+		self.isComplete = false
 		icon.replace(icons.star_unseen(red))
 		label.update(name)
-	}
-	
-	// MARK: Icon -
-	
-	override func updateIcon()
-	{
-		if isSeen == true			{ icon.replace(icons.star(red)) }
-		else if isComplete == true	{ icon.replace(icons.star(cyan)) }
 	}
 	
 	override func onApproach()
