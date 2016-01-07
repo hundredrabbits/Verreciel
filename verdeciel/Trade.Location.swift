@@ -91,12 +91,6 @@ class LocationTrade : Location
 		updateIcon()
 	}
 	
-	override func onComplete()
-	{
-		super.onComplete()
-		updateIcon()
-	}
-	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

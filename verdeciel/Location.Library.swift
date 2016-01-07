@@ -141,7 +141,7 @@ class Valen
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), grows: items.credits)
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), grows: Item(name: items.credits.name!, type: items.credits.type, note:items.credits.note))
 	}
 	
 	func station() -> LocationStation

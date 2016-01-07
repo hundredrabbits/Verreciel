@@ -68,9 +68,10 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record1) }, result: { }) )
 		tutorial.append( Quest(name:"Collect cell at bank", predicate:{ cargo.contains(items.cell2) }, result: { }) )
 		tutorial.append( Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { }) )
+		// Valen Shut Off The Sun
 		tutorial.append( Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }) )
-		tutorial.append( Quest(name:"Find credits", predicate:{ cargo.contains(items.credits) == true }, result: { }) )
-		tutorial.append( Quest(name:"Install shield", predicate:{ universe.valen_harvest.isComplete == true }, result: { }) )
+		tutorial.append( Quest(name:"Find credits", predicate:{ cargo.contains(items.credits.name!,type: items.credits.type) == true }, result: { }) )
+		tutorial.append( Quest(name:"Install shield", predicate:{ universe.valen_station.isComplete == true }, result: { }) )
 		tutorial.append( Quest(name:"Route cell to shield", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { }) )
 		tutorial.append( Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Shut off the sun", predicate:{ universe.valen.isComplete == true }, result: { }) )

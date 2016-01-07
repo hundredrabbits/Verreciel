@@ -5,13 +5,13 @@ import Foundation
 
 class LocationStation : Location
 {
-	var requirement:Event!
+	var requirement:Item!
 	var installation:() -> Void
 	var installationName:String!
 	var port:SCNPortSlot!
 	var button:SCNButton!
 	
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Event! = nil, installation:() -> Void, installationName:String)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Item! = nil, installation:() -> Void, installationName:String)
 	{
 		self.installation = installation
 		self.requirement = requirement
@@ -62,13 +62,14 @@ class LocationStation : Location
 	
 	override func onUploadComplete()
 	{
-		if port.event == self.requirement { button.enable("install") }
+		let trade = port.event as! Item
+		if trade.name == self.requirement.name && trade.type == self.requirement.type { button.enable("install") }
 	}
 	
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { self.installation() }
+		if id == 1 { self.installation() ; mission.complete() }
 	}
 	
 	// MARK: Defaults -

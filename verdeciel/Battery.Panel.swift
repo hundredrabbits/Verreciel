@@ -81,14 +81,14 @@ class PanelBattery : MainPanel
 		mainNode.addChildNode(oxygenPort)
 		
 		shieldPort = SCNPort(host: self, input:Item.self)
-		shieldPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
+		shieldPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
 		shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		mainNode.addChildNode(shieldPort)
 		
 		cloakPort = SCNPort(host: self, input:Item.self)
-		cloakPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
+		cloakPort.position = SCNVector3(x: distance, y:  2 * templates.lineSpacing, z: 0)
 		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		cloakLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		cloakPort.addChildNode(cloakLabel)

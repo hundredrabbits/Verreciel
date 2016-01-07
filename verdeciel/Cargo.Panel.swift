@@ -61,8 +61,17 @@ class PanelCargo : MainPanel
 	
 	func contains(event:Event) -> Bool
 	{
-		for newEvent in port.event.content {
-			if newEvent == event { return true }
+		for item in port.event.content {
+			if item == event { return true }
+		}
+		return false
+	}
+	
+	func contains(name:String,type:ItemTypes) -> Bool
+	{
+		for item in port.event.content {
+			let item = item as! Item
+			if item.name == name && item.type == type { return true }
 		}
 		return false
 	}

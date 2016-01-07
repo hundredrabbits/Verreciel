@@ -139,7 +139,7 @@ class Location : Event
 	
 	func onComplete()
 	{
-		
+		updateIcon()
 	}
 	
 	func sightUpdate()

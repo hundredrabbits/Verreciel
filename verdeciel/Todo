@@ -8,6 +8,7 @@
 - Add space doodads
 - Interface sounds
 - Fix stars
+- Shield Visuals
 
 > Playthrough
 - Save / Load Mechanics
@@ -25,10 +26,9 @@
 - Make harvest quest
 - Unlock map port
 - Combione credits/materia quests
+- Add docking button/trigger to thruster
 
 > Valen Flow
-- Find credits(Harvest)
-- Trade for shield install(Station)
 - Shut of Valen(Star)
 
 > Bugs
@@ -36,3 +36,5 @@
 - Issue with docking when approaching a distant target
 - Release touch when installing animation
 - Monitors don't show'
+- Generic port display as incompatible
+- Cargo full trigger

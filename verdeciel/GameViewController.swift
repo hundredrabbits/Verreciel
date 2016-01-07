@@ -79,9 +79,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(18 + 11)
+		quests.skipTo(18 + 15)
 		
-		let starting = universe.valen_bank
+		let starting = universe.valen_station
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
@@ -89,8 +89,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		cargo.port.event.content.append(items.loiqePortalKey)
 		cargo.port.event.content.append(items.valenPortalKey)
+		cargo.port.event.content.append(items.credits)
 		
 		battery.cellPort1.addEvent(items.cell1)
+		battery.cellPort2.addEvent(items.cell2)
 		battery.cellPort1.connect(battery.thrusterPort)
 	}
 	

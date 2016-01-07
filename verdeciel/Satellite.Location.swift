@@ -64,12 +64,6 @@ class LocationSatellite : Location
 		mission.complete()
 	}
 	
-	override func onComplete()
-	{
-		super.onComplete()
-		updateIcon()
-	}
-	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)
