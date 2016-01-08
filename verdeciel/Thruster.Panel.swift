@@ -115,10 +115,10 @@ class PanelThruster : MainPanel
 		maxSpeed = 0
 		
 		if battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event != nil {
-			if battery.thrusterPort.origin.event == items.cell1 || battery.thrusterPort.origin.event == items.cell2 || battery.thrusterPort.origin.event == items.cell3 || battery.thrusterPort.origin.event == items.cell4 { maxSpeed = 1 }
-			if battery.thrusterPort.origin.event == items.array1 || battery.thrusterPort.origin.event == items.array2 || battery.thrusterPort.origin.event == items.array3 || battery.thrusterPort.origin.event == items.array4 { maxSpeed = 2 }
-			if battery.thrusterPort.origin.event == items.grid1 || battery.thrusterPort.origin.event == items.grid2 || battery.thrusterPort.origin.event == items.grid3 || battery.thrusterPort.origin.event == items.grid4 { maxSpeed = 3 }
-			if battery.thrusterPort.origin.event == items.matrix1 || battery.thrusterPort.origin.event == items.matrix2 || battery.thrusterPort.origin.event == items.matrix3 || battery.thrusterPort.origin.event == items.matrix4 { maxSpeed = 4 }
+			if battery.thrusterPort.origin.event == items.cell1 || battery.thrusterPort.origin.event == items.cell2 || battery.thrusterPort.origin.event == items.cell3 { maxSpeed = 1 }
+			if battery.thrusterPort.origin.event == items.array1 || battery.thrusterPort.origin.event == items.array2 || battery.thrusterPort.origin.event == items.array3 { maxSpeed = 2 }
+			if battery.thrusterPort.origin.event == items.grid1 || battery.thrusterPort.origin.event == items.grid2 || battery.thrusterPort.origin.event == items.grid3 { maxSpeed = 3 }
+			if battery.thrusterPort.origin.event == items.matrix1 || battery.thrusterPort.origin.event == items.matrix2 || battery.thrusterPort.origin.event == items.matrix3 { maxSpeed = 4 }
 		}
 		
 		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0 } else { line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1 }

@@ -83,13 +83,13 @@ class CoreUniverse : SCNNode
 	// MARK: Venic -
 	
 	var venic = locations.venic.star()
-	var venic_city = locations.venic.city()
+	var venic_station = locations.venic.station()
 	var venic_waypoint = locations.venic.waypoint()
 	
 	func addVenic()
 	{
 		addChildNode(venic)
-		addChildNode(venic_city)
+		addChildNode(venic_station)
 		addChildNode(venic_waypoint)
 	}
 	
@@ -158,7 +158,7 @@ class CoreUniverse : SCNNode
 		loiqe_horadric.connect(loiqe_portal)
 		loiqe_portal.connect(falvet_toLoiqe)
 		
-		venic_city.connect(venic_waypoint)
+		venic_station.connect(venic_waypoint)
 		
 		falvet_toUsul.connect(usul_portal)
 		falvet_toValen.connect(valen_portal)

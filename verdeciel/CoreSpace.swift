@@ -63,6 +63,8 @@ class CoreSpace: SCNNode
 	
 	func startInstance(location:Location)
 	{
+		print(location)
+		print(location.mesh)
 		structuresRoot.addChildNode(Instance(event: location))
 	}
 	

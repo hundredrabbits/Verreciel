@@ -169,10 +169,15 @@ class Venic
 		return location
 	}
 	
-	func city() -> Location
+	func station() -> LocationStar
 	{
-		let location = Location(name:"Missing",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y))
+		let location = LocationStar(name:"Venic",system:.venic)
+		location.at = offset
 		return location
+		
+//		let location = LocationStation(name:"station",system:.venic, requirement:items.alta, installation:{ map.install() }, installationName:"Map")
+//		location.at = CGPoint(x: offset.x, y: offset.y + 1)
+//		return location
 	}
 	
 	func waypoint() -> Location

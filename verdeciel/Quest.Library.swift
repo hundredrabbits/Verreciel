@@ -77,7 +77,7 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }) )
 		tutorial.append( Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() ; universe.unlock(.cyanine) }) )
 		
-		// Start Venic
+		// Start Venic(35)
 		tutorial.append( Quest(name:"Reach venic II", predicate:{ universe.cyanine_venic.isKnown == true }, result: {  }) )
 		tutorial.append( Quest(name:"Cross to venic", predicate:{ universe.venic.isKnown == true }, result: { universe.unlock(.venic) }) )
 		
