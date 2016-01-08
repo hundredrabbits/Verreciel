@@ -88,6 +88,8 @@ enum Systems
 enum Chapters
 {
 	case tutorial
+	case cyanine
+	case vermil
 }
 
 enum LocationTypes

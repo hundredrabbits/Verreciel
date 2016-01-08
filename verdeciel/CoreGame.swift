@@ -21,6 +21,6 @@ class CoreGame
 	
 	func refresh()
 	{
-		quests.refresh()
+//		quests.refresh()
 	}
 }

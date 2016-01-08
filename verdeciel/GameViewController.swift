@@ -78,14 +78,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	}
 	
 	func debugState()
-	{
-		quests.skipTo(35 + 1)
+	{		
+		universe.loiqe.isComplete = true
 		
 		let starting = universe.loiqe
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
+		
+		mission.install()
 		
 		cargo.port.event.content.append(items.loiqePortalKey)
 		cargo.port.event.content.append(items.valenPortalKey)

@@ -9,23 +9,22 @@ import Foundation
 
 class QuestLibrary
 {
-	var tutorial:Array<Quest> = []
-	var tutorialProgress:Int = 0
-	var falvet:Array<Quest> = []
-	var falvetProgress:Int = 0
-	var senni:Array<Quest> = []
-	var senniProgress:Int = 0
-	var usul:Array<Quest> = []
-	var usulProgress:Int = 0
-	
-	var updateTimer:NSTimer!
-	
-	var questlog:Dictionary<Chapters,Dictionary<String,Array<Quest>>>!
-	
+	var active:Chapters = Chapters.tutorial
+	var questlog:Dictionary<Chapters,Array<Dictionary<String,Array<Quest>>>> = [Chapters:Array]()
 	
 	init()
 	{
-		questlog[Chapters.tutorial]! = ["Flight" :
+		questlog[Chapters.tutorial] = []
+		questlog[Chapters.cyanine] = []
+		questlog[Chapters.vermil] = []
+		addTutorial()
+		addCyanine()
+		addVermil()
+	}
+	
+	func addTutorial()
+	{
+		questlog[.tutorial]?.append(["Flight" :
 			[
 				Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 				Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { mission.install() }),
@@ -35,8 +34,8 @@ class QuestLibrary
 				Quest(name:"Undock from Landing", predicate:{ capsule.dock == nil }, result: { radar.install() }),
 				Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: {  })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["A Portal Key" :
+		])
+		questlog[.tutorial]?.append(["A Portal Key" :
 			[
 				Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { }),
 				Quest(name:"Select horadric", predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_horadric }, result: { pilot.install() }),
@@ -46,8 +45,8 @@ class QuestLibrary
 				Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }),
 				Quest(name:"Combine fragments at Horadric", predicate:{ cargo.contains(items.valenPortalKey) }, result: { })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["Reach Valen" :
+		])
+		questlog[.tutorial]?.append(["Reach Valen" :
 			[
 				Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }),
 				Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
@@ -55,8 +54,8 @@ class QuestLibrary
 				Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }),
 				Quest(name:"Reach Valen system", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["Valen" :
+		])
+		questlog[.tutorial]?.append(["Valen" :
 			[
 				Quest(name:"Visit the bank", predicate:{ universe.valen_bank.isKnown == true }, result: { }),
 				Quest(name:"Collect Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) }, result: { }),
@@ -69,8 +68,8 @@ class QuestLibrary
 				Quest(name:"Collect cell at bank", predicate:{ cargo.contains(items.cell2) }, result: { }),
 				Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["Extinguish the sun" :
+		])
+		questlog[.tutorial]?.append(["Extinguish the sun" :
 			[
 				Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }),
 				Quest(name:"Find credits", predicate:{ cargo.contains(items.credits.name!,type: items.credits.type) == true }, result: { }),
@@ -79,8 +78,8 @@ class QuestLibrary
 				Quest(name:"Reach Valen star", predicate:{ universe.valen.isKnown == true }, result: { }),
 				Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() ; universe.unlock(.cyanine) })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["Venic" :
+		])
+		questlog[.tutorial]?.append(["Venic" :
 			[
 				Quest(name:"Reach venic II", predicate:{ universe.cyanine_venic.isKnown == true }, result: { universe.unlock(.venic) }),
 				Quest(name:"Cross to venic", predicate:{ universe.venic.isKnown == true }, result: {  }),
@@ -88,106 +87,44 @@ class QuestLibrary
 				Quest(name:"Find array", predicate:{ universe.venic_satellite.isComplete == true }, result: {  }),
 				Quest(name:"Combine cells at Horadric", predicate:{ cargo.contains(items.array2) == true }, result: {  })
 			]
-		]
-		questlog[Chapters.tutorial]! = ["Create Venic Key" :
+		])
+		questlog[.tutorial]?.append(["Create Venic Key" :
 			[
 				Quest(name:"Get fragment at", predicate:{ universe.cyanine_venic.isKnown == true }, result: { universe.unlock(.venic) })
 			]
-		]
-		
-		
-		
-		
-		
-		_tutorial()
-		_falvet()
-		_senni()
-		_usul()
-		
-		ui.addMessage(tutorial.first!.name)
-		universe.unlock(.loiqe)
+		])
 	}
 	
-	// MARK: Tutorial -
-	
-	func _tutorial()
+	func addCyanine()
 	{
-		
-		
-		
-		
-		// Start Loiqe
-		
-		// Create Portal Key
-		// Reach Valen
-		
-		
-		// Start Valen(18)
-		
-		// Valen Shut Off The Sun
-		
-		// Start Venic(35)
-		
-		
-		// Create Venic Key
-		
-		
-		
-		// Exit
-		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
+		questlog[.cyanine]?.append(["--" :
+			[
+				Quest(name:"Unlock at Venic", predicate:{ universe.cyanine_venic.isKnown == true }, result: { universe.unlock(.venic) })
+			]
+		])
 	}
 	
-	func _falvet()
+	func addVermil()
 	{
-		falvet.append( Quest(name:"Locked", predicate:{ universe.valen.isComplete == true }, result: { }) )
-		falvet.append( Quest(name:"Reach falvet system", predicate:{ universe.falvet.isSeen == true }, result: { }) )
-		
-		falvet.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
+		questlog[.vermil]?.append(["--" :
+			[
+				Quest(name:"Unlock at Usul", predicate:{ universe.cyanine_venic.isKnown == true }, result: { universe.unlock(.venic) })
+			]
+		])
 	}
 	
-	func _senni()
+	func setActive(chapter:Chapters)
 	{
-		senni.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
-		senni.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
-		
-		senni.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
+		active = chapter
 	}
 	
-	func _usul()
+	func latestQuestAndTask(chapter:Chapters) -> Array<String>// Dictionary<String,Array<Quest>>
 	{
-		usul.append( Quest(name:"Locked", predicate:{ capsule.dock != nil }, result: { }) )
-		usul.append( Quest(name:"Begin falvet", predicate:{ battery.thrusterPort.origin != nil }, result: { }) )
-		
-		usul.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )
-	}
-	
-	func refresh()
-	{
-		let latestTutorial = tutorial[tutorialProgress]
-		latestTutorial.validate()
-		
-		if latestTutorial.isCompleted == true {
-			tutorialProgress += 1
-			ui.addMessage(tutorial[tutorialProgress].name)
-		}
-		
-		let latestFalvet = falvet[falvetProgress]
-		latestFalvet.validate()
-		
-		if latestFalvet.isCompleted == true {
-			falvetProgress += 1
-		}
-	}
-	
-	func skipTo(id:Int)
-	{
-		tutorialProgress = 0
-		while tutorialProgress < id {
-			tutorial[tutorialProgress].complete()
-			tutorialProgress += 1
-		}
-		print(tutorialProgress)
-		ui.addMessage(tutorial[tutorialProgress].name)
-		refresh()
+		let test = questlog[chapter]!.first!
+		return [test.keys.first!,test.values.first![0].name]
 	}
 }
+
+
+
+
