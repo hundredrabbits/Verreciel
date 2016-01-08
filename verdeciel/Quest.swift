@@ -25,6 +25,9 @@ class Quest
 		if predicate() {
 			complete()
 		}
+		else{
+			isCompleted = false
+		}
 	}
 	
 	func complete()

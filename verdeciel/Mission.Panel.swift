@@ -16,19 +16,19 @@ class PanelMission : MainPanel
 	var quest1Label = SCNLabel(text: "--", align:.left)
 	var quest1Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest1Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest1Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
+	var quest1Completion = SCNLabel(text: "", scale:0.07, align:.right, color: grey)
 	
 	var quest2:SCNTrigger!
 	var quest2Label = SCNLabel(text: "--", align:.left)
 	var quest2Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest2Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest2Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
+	var quest2Completion = SCNLabel(text: "", scale:0.07, align:.right, color: grey)
 	
 	var quest3:SCNTrigger!
 	var quest3Label = SCNLabel(text: "--", align:.left)
 	var quest3Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest3Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
-	var quest3Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
+	var quest3Completion = SCNLabel(text: "", scale:0.07, align:.right, color: grey)
 	
 	var selector = SCNLabel(text: ">", align:.left)
 	
