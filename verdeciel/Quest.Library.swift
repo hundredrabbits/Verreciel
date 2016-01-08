@@ -113,6 +113,29 @@ class QuestLibrary
 		])
 	}
 	
+	func refresh()
+	{
+		validateChapter(.tutorial)
+	}
+	
+	func validateChapter(chapter:Chapters)
+	{
+		for mission in questlog[chapter]!{
+			let quest = validateMission(mission)
+			if quest == nil { continue }
+			print("Current Quest: \(quest.name)")
+		}
+	}
+	
+	func validateMission(mission:Dictionary<String, Array<Quest>>) -> Quest!
+	{
+		for quest in mission.values.first! {
+			quest.validate()
+			if quest.isCompleted == false { return quest }
+		}
+		return nil
+	}
+	
 	func setActive(chapter:Chapters)
 	{
 		active = chapter
