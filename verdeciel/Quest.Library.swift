@@ -11,6 +11,7 @@ class QuestLibrary
 {
 	var active:Chapters = Chapters.tutorial
 	var questlog:Dictionary<Chapters,Array<Dictionary<String,Array<Quest>>>> = [Chapters:Array]()
+	var latest:Dictionary<Chapters,Array<String>> = [Chapters:Array]()
 	
 	init()
 	{
@@ -115,15 +116,17 @@ class QuestLibrary
 	
 	func refresh()
 	{
-		validateChapter(.tutorial)
+		validateChapter(active)
 	}
 	
 	func validateChapter(chapter:Chapters)
 	{
+		var missionId = 1
 		for mission in questlog[chapter]!{
 			let quest = validateMission(mission)
-			if quest == nil { continue }
-			print("Current Quest: \(quest.name)")
+			if quest == nil { missionId += 1 ; continue }
+			latest[chapter] = [mission.keys.first!,quest.name,"\(missionId)/\(mission.values.first!.count)"]
+			break
 		}
 	}
 	
@@ -139,12 +142,6 @@ class QuestLibrary
 	func setActive(chapter:Chapters)
 	{
 		active = chapter
-	}
-	
-	func latestQuestAndTask(chapter:Chapters) -> Array<String>
-	{
-		let test = questlog[chapter]!.first!
-		return [test.keys.first!,test.values.first![0].name,"1/\(test.values.first!.count)"]
 	}
 }
 

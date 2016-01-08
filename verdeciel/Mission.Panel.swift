@@ -148,17 +148,23 @@ class PanelMission : MainPanel
 	
 	func missionUpdate()
 	{
-		let chapter1 = quests.latestQuestAndTask(.tutorial)
+		if quests.latest[.tutorial] == nil { return }
+		
+		let chapter1 = quests.latest[.tutorial]!
 		quest1Label.update(chapter1[0])
 		quest1Details.update(chapter1[1])
 		quest1Completion.update(chapter1[2])
 		
-		let chapter2 = quests.latestQuestAndTask(.cyanine)
+		if quests.latest[.cyanine] == nil { return }
+		
+		let chapter2 = quests.latest[.cyanine]!
 		quest2Label.update(chapter2[0])
 		quest2Details.update(chapter2[1])
 		quest2Completion.update(chapter2[2])
 		
-		let chapter3 = quests.latestQuestAndTask(.vermil)
+		if quests.latest[.vermil] == nil { return }
+		
+		let chapter3 = quests.latest[.vermil]!
 		quest3Label.update(chapter3[0])
 		quest3Details.update(chapter3[1])
 		quest3Completion.update(chapter3[2])
