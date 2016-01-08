@@ -118,10 +118,10 @@ class QuestLibrary
 		active = chapter
 	}
 	
-	func latestQuestAndTask(chapter:Chapters) -> Array<String>// Dictionary<String,Array<Quest>>
+	func latestQuestAndTask(chapter:Chapters) -> Array<String>
 	{
 		let test = questlog[chapter]!.first!
-		return [test.keys.first!,test.values.first![0].name]
+		return [test.keys.first!,test.values.first![0].name,"1/\(test.values.first!.count)"]
 	}
 }
 

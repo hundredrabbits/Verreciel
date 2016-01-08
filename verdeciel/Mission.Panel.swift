@@ -151,14 +151,17 @@ class PanelMission : MainPanel
 		let chapter1 = quests.latestQuestAndTask(.tutorial)
 		quest1Label.update(chapter1[0])
 		quest1Details.update(chapter1[1])
+		quest1Completion.update(chapter1[2])
 		
 		let chapter2 = quests.latestQuestAndTask(.cyanine)
 		quest2Label.update(chapter2[0])
 		quest2Details.update(chapter2[1])
+		quest2Completion.update(chapter2[2])
 		
 		let chapter3 = quests.latestQuestAndTask(.vermil)
 		quest3Label.update(chapter3[0])
 		quest3Details.update(chapter3[1])
+		quest3Completion.update(chapter3[2])
 	}
 	
 	override func refresh()
