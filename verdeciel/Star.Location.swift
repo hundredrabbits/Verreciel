@@ -10,7 +10,7 @@ class LocationStar : Location
 	var portB:SCNPort!
 	var twin:Location!
 	
-	init(name:String,at: CGPoint = CGPoint(), system:Systems, color:UIColor = red)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
 	{
 		super.init(name:name,system:system, at:at)
 		

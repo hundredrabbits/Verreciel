@@ -10,7 +10,7 @@ class LocationTrade : Location
 	
 	var unlocked:Bool = false
 	
-	init(name:String = "",at: CGPoint = CGPoint(), system:Systems, want:Event,give:Event)
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
 		super.init(name: name,system:system, at: at)
 		

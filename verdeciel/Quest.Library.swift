@@ -78,8 +78,10 @@ class QuestLibrary
 		tutorial.append( Quest(name:"Extinguish the sun", predicate:{ universe.valen.isComplete == true }, result: { journey.install() ; exploration.install() ; progress.install() ; complete.install() ; universe.unlock(.cyanine) }) )
 		
 		// Start Venic(35)
-		tutorial.append( Quest(name:"Reach venic II", predicate:{ universe.cyanine_venic.isKnown == true }, result: {  }) )
-		tutorial.append( Quest(name:"Cross to venic", predicate:{ universe.venic.isKnown == true }, result: { universe.unlock(.venic) }) )
+		tutorial.append( Quest(name:"Reach venic II", predicate:{ universe.cyanine_venic.isKnown == true }, result: { universe.unlock(.venic) }) )
+		tutorial.append( Quest(name:"Cross to venic", predicate:{ universe.venic.isKnown == true }, result: {  }) )
+		tutorial.append( Quest(name:"Find cell", predicate:{ cargo.contains(items.cell3) == true }, result: {  }) )
+		tutorial.append( Quest(name:"Combine cells at Horadric", predicate:{ cargo.contains(items.grid1) == true }, result: {  }) )
 		
 		// Exit
 		tutorial.append( Quest(name:"END QUEST", predicate:{ universe.usul_city.isKnown == true }, result: { }) )

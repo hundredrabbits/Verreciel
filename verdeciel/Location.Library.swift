@@ -51,7 +51,7 @@ class Loiqe
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "Loiqe City", at: CGPoint(x: offset.x, y: offset.y - 1),system:.loiqe, want: items.materia, give: items.valenPortalFragment1)
+		return LocationTrade(name: "Loiqe City", system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
@@ -123,16 +123,12 @@ class Valen
 	
 	func satellite() -> LocationSatellite
 	{
-		let location = LocationSatellite(name:"Satellite",system:.valen, message:"derelict music machine $time ghost sleep $home.", item:items.record1)
-		location.at = CGPoint(x: offset.x, y: offset.y + 2)
-		return location
+		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), message:"derelict music machine $time ghost sleep $home.", item:items.record1)
 	}
 	
 	func bank() -> LocationBank
 	{
-		let location = LocationBank(name:"Bank",system:.valen)
-		location.at = CGPoint(x: offset.x, y: offset.y + 1)
-		return location
+		return LocationBank(name:"Bank",system:.valen, at: CGPoint(x: offset.x, y: offset.y + 1))
 	}
 	
 	func portal() -> LocationPortal
@@ -147,9 +143,7 @@ class Valen
 	
 	func station() -> LocationStation
 	{
-		let location = LocationStation(name:"station",system:.valen, requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
-		location.at = CGPoint(x: offset.x + 1, y: offset.y)
-		return location
+		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 2), requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
 	}
 }
 
@@ -164,26 +158,32 @@ class Venic
 	
 	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Venic",system:.venic)
-		location.at = offset
-		return location
+		return LocationStar(name:"Venic",system:.venic, at:offset)
 	}
 	
-	func station() -> LocationStar
+	func station() -> LocationStation
 	{
-		let location = LocationStar(name:"Venic",system:.venic)
-		location.at = offset
-		return location
-		
-//		let location = LocationStation(name:"station",system:.venic, requirement:items.alta, installation:{ map.install() }, installationName:"Map")
-//		location.at = CGPoint(x: offset.x, y: offset.y + 1)
-//		return location
+		return LocationStation(name:"station",system:.venic, at:CGPoint(x: offset.x, y: offset.y - 1), requirement:items.alta, installation:{ map.install() }, installationName:"Map")
 	}
 	
-	func waypoint() -> Location
+	func satellite() -> LocationSatellite
 	{
-		let location = Location(name: "station",system:.venic, at:CGPoint(x: offset.x, y: offset.y + 1))
-		return location
+		return LocationSatellite(name: "satellite",system:.venic, at:CGPoint(x: offset.x - 2, y: offset.y), message:"Missing",item:items.cell3)
+	}
+	
+	func city() -> LocationTrade
+	{
+		return LocationTrade(name: "city",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.credits,give:items.record2)
+	}
+	
+	func beacon() -> LocationBeacon
+	{
+		return LocationBeacon(name: "beacon",system:.venic, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Missing")
+	}
+	
+	func cargo() -> LocationSatellite
+	{
+		return LocationSatellite(name: "cargo",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y), message:"Missing",item:items.cell3)
 	}
 }
 

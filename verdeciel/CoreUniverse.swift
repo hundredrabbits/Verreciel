@@ -84,13 +84,19 @@ class CoreUniverse : SCNNode
 	
 	var venic = locations.venic.star()
 	var venic_station = locations.venic.station()
-	var venic_waypoint = locations.venic.waypoint()
+	var venic_satellite = locations.venic.satellite()
+	var venic_beacon = locations.venic.beacon()
+	var venic_cargo = locations.venic.cargo()
+	var venic_city = locations.venic.city()
 	
 	func addVenic()
 	{
 		addChildNode(venic)
 		addChildNode(venic_station)
-		addChildNode(venic_waypoint)
+		addChildNode(venic_satellite)
+		addChildNode(venic_beacon)
+		addChildNode(venic_cargo)
+		addChildNode(venic_city)
 	}
 	
 	// MARK: Senni -
@@ -141,44 +147,6 @@ class CoreUniverse : SCNNode
 		addChildNode(falvet_service4)
 	}
 	
-	// MARK: Misc -
-	
-	func connectPortals()
-	{		
-		usul_portal.addPortals(loiqe_portal, left: senni_portal)
-		senni_portal.addPortals(usul_portal, left: valen_portal)
-		valen_portal.addPortals(senni_portal, left: loiqe_portal)
-		loiqe_portal.addPortals(valen_portal, left: usul_portal)
-	}
-	
-	func connectPaths()
-	{
-		loiqe_landing.connect(loiqe_city)
-		loiqe_city.connect(loiqe_horadric)
-		loiqe_horadric.connect(loiqe_portal)
-		loiqe_portal.connect(falvet_toLoiqe)
-		
-		venic_station.connect(venic_waypoint)
-		
-		falvet_toUsul.connect(usul_portal)
-		falvet_toValen.connect(valen_portal)
-		falvet_toSenni.connect(senni_portal)
-		
-		valen_station.connect(valen_bank)
-		valen_bank.connect(valen_portal)
-		valen_satellite.connect(valen_bank)
-		
-		falvet_service1.connect(falvet_toValen)
-		falvet_service2.connect(falvet_toSenni)
-		falvet_service3.connect(falvet_toLoiqe)
-		falvet_service4.connect(falvet_toUsul)
-		
-		senni_telescope.connect(senni_service)
-		senni_spawn.connect(senni_portal)
-		senni_service.connect(senni_portal)
-		senni_portal.connect(senni_portal)
-	}
-	
 	// MARK: Cyanine -
 	
 	var cyanine = locations.cyanine.star()
@@ -199,6 +167,48 @@ class CoreUniverse : SCNNode
 	}
 	
 	// MARK: Tools
+	
+	
+	// MARK: Misc -
+	
+	func connectPortals()
+	{
+		usul_portal.addPortals(loiqe_portal, left: senni_portal)
+		senni_portal.addPortals(usul_portal, left: valen_portal)
+		valen_portal.addPortals(senni_portal, left: loiqe_portal)
+		loiqe_portal.addPortals(valen_portal, left: usul_portal)
+	}
+	
+	func connectPaths()
+	{
+		loiqe_landing.connect(loiqe_city)
+		loiqe_city.connect(loiqe_horadric)
+		loiqe_horadric.connect(loiqe_portal)
+		loiqe_portal.connect(falvet_toLoiqe)
+		
+		venic_satellite.connect(venic_city)
+		venic_city.connect(venic_station)
+		venic_beacon.connect(venic_cargo)
+		venic_cargo.connect(venic_station)
+		
+		falvet_toUsul.connect(usul_portal)
+		falvet_toValen.connect(valen_portal)
+		falvet_toSenni.connect(senni_portal)
+		
+		valen_station.connect(valen_bank)
+		valen_bank.connect(valen_portal)
+		valen_satellite.connect(valen_bank)
+		
+		falvet_service1.connect(falvet_toValen)
+		falvet_service2.connect(falvet_toSenni)
+		falvet_service3.connect(falvet_toLoiqe)
+		falvet_service4.connect(falvet_toUsul)
+		
+		senni_telescope.connect(senni_service)
+		senni_spawn.connect(senni_portal)
+		senni_service.connect(senni_portal)
+		senni_portal.connect(senni_portal)
+	}
 	
 	func unlock(system:Systems)
 	{

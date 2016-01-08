@@ -79,7 +79,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		quests.skipTo(35)
+		quests.skipTo(35 + 1)
 		
 		let starting = universe.venic
 		capsule.at = starting.at
