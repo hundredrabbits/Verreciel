@@ -25,14 +25,18 @@
 - Add docking button/trigger to thruster
 - Stars only display as star if apporachable(shield strengt)
 - Radio should be installed
+- Add constellation location(just visual, no docking)
+- Don't auto dock
+- Stars display different icon is unreachable
+- Click on mission panel to select quest
 
 > Venic Flow
-- Harvest Materia
-- Get cell 3, create grid1
-- Get grid2
-- Require Alta, get recipe somewhere
+- Get cell3(satellite), create array1
+- Get array2
+- Require Alta(station), get recipe somewhere(beacon)
 - Get record 2
 - Install Map Port at station for alta
+- Get Senni key
 
 > Bugs
 - Issue with UI offset animation

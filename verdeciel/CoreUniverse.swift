@@ -69,6 +69,7 @@ class CoreUniverse : SCNNode
 	var valen_portal = locations.valen.portal()
 	var valen_satellite = locations.valen.satellite()
 	var valen_harvest = locations.valen.harvest()
+	var valen_port = locations.valen.port()
 	
 	func addValen()
 	{
@@ -78,6 +79,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_portal)
 		addChildNode(valen_satellite)
 		addChildNode(valen_harvest)
+		addChildNode(valen_port)
 	}
 	
 	// MARK: Venic -
@@ -186,8 +188,8 @@ class CoreUniverse : SCNNode
 		loiqe_horadric.connect(loiqe_portal)
 		loiqe_portal.connect(falvet_toLoiqe)
 		
-		venic_satellite.connect(venic_city)
-		venic_city.connect(venic_station)
+		venic_city.connect(venic_satellite)
+		venic_satellite.connect(venic_station)
 		venic_beacon.connect(venic_cargo)
 		venic_cargo.connect(venic_station)
 		

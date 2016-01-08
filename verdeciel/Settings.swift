@@ -85,6 +85,11 @@ enum Systems
 	case cyanine
 }
 
+enum Chapters
+{
+	case tutorial
+}
+
 enum LocationTypes
 {
 	case generic

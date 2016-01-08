@@ -116,9 +116,7 @@ class Valen
 	
 	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Valen",system:.valen)
-		location.at = offset
-		return location
+		return LocationStar(name:"Valen",system:.valen, at: offset)
 	}
 	
 	func satellite() -> LocationSatellite
@@ -145,6 +143,11 @@ class Valen
 	{
 		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 2), requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
 	}
+	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment2)
+	}
 }
 
 class Venic
@@ -168,12 +171,12 @@ class Venic
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite",system:.venic, at:CGPoint(x: offset.x - 2, y: offset.y), message:"Missing",item:items.cell3)
+		return LocationSatellite(name: "satellite",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Missing",item:items.array2)
 	}
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "city",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.credits,give:items.record2)
+		return LocationTrade(name: "city",system:.venic, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credits,give:items.senniPortalFragment1)
 	}
 	
 	func beacon() -> LocationBeacon

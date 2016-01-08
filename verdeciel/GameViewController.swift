@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		quests.skipTo(35 + 1)
 		
-		let starting = universe.venic
+		let starting = universe.loiqe
 		capsule.at = starting.at
 		capsule.dock = starting
 		capsule.dock.isKnown = true
@@ -93,6 +93,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort2.addEvent(items.cell2)
+		battery.cellPort3.addEvent(items.cell3)
 		battery.cellPort1.connect(battery.thrusterPort)
 	}
 	
