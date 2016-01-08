@@ -11,7 +11,7 @@ class QuestLibrary
 {
 	var active:Chapters = Chapters.tutorial
 	var questlog:Dictionary<Chapters,Array<Dictionary<String,Array<Quest>>>> = [Chapters:Array]()
-	var latest:Dictionary<Chapters,Array<String>> = [Chapters:Array]()
+	var latest:Dictionary<Chapters,Array<Int>> = [Chapters:Array]()
 	
 	init()
 	{
@@ -121,20 +121,22 @@ class QuestLibrary
 	
 	func validateChapter(chapter:Chapters)
 	{
-		var missionId = 1
+		var missionId = 0
 		for mission in questlog[chapter]!{
-			let quest = validateMission(mission)
-			if quest == nil { missionId += 1 ; continue }
-			latest[chapter] = [mission.keys.first!,quest.name,"\(missionId)/\(mission.values.first!.count)"]
+			let questId = validateMission(mission)
+			if questId == nil { missionId += 1 ; continue }
+			latest[chapter] = [missionId,questId,mission.values.first!.count]
 			break
 		}
 	}
 	
-	func validateMission(mission:Dictionary<String, Array<Quest>>) -> Quest!
+	func validateMission(mission:Dictionary<String, Array<Quest>>) -> Int!
 	{
+		var questId = 0
 		for quest in mission.values.first! {
 			quest.validate()
-			if quest.isCompleted == false { return quest }
+			if quest.isCompleted == false { return questId }
+			questId += 1
 		}
 		return nil
 	}
@@ -142,6 +144,34 @@ class QuestLibrary
 	func setActive(chapter:Chapters)
 	{
 		active = chapter
+	}
+	
+	func latestMissionQuestCount(chapter:Chapters) -> Int
+	{
+		let latestMissionId = latest[chapter]![0]
+		let mission = questlog[chapter]![latestMissionId]
+		return mission.values.first!.count
+	}
+	
+	func latestMissionName(chapter:Chapters) -> String
+	{
+		let latestMissionId = latest[chapter]![0]
+		let mission = questlog[chapter]![latestMissionId]
+		return mission.keys.first!
+	}
+	
+	func latestQuestName(chapter:Chapters) -> String
+	{
+		let latestMissionId = latest[chapter]![0]
+		let mission = questlog[chapter]![latestMissionId]
+		let latestQuestId = latest[chapter]![1]
+		let quest = mission.values.first![latestQuestId]
+		return quest.name
+	}
+	
+	func questCount(chapter:Chapters) -> Int
+	{
+		return 0
 	}
 }
 

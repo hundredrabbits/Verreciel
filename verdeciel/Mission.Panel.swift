@@ -13,20 +13,20 @@ class PanelMission : MainPanel
 	var questPanel:SCNNode!
 	
 	var quest1:SCNTrigger!
-	var quest1Label = SCNLabel(text: "hey", align:.left)
-	var quest1Details = SCNLabel(text: "details", scale:0.07, align:.left)
+	var quest1Label = SCNLabel(text: "--", align:.left)
+	var quest1Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest1Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest1Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
 	
 	var quest2:SCNTrigger!
-	var quest2Label = SCNLabel(text: "hey", align:.left)
-	var quest2Details = SCNLabel(text: "details", scale:0.07, align:.left)
+	var quest2Label = SCNLabel(text: "--", align:.left)
+	var quest2Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest2Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest2Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
 	
 	var quest3:SCNTrigger!
-	var quest3Label = SCNLabel(text: "hey", align:.left)
-	var quest3Details = SCNLabel(text: "details", scale:0.07, align:.left)
+	var quest3Label = SCNLabel(text: "--", align:.left)
+	var quest3Details = SCNLabel(text: "locked", scale:0.07, align:.left)
 	var quest3Progress = SCNProgressBar(width: CGFloat(templates.leftMargin * Float(2.0)))
 	var quest3Completion = SCNLabel(text: "6/20", scale:0.07, align:.right, color: grey)
 	
@@ -149,25 +149,29 @@ class PanelMission : MainPanel
 	func missionUpdate()
 	{
 		if quests.latest[.tutorial] == nil { return }
+
+		quest1Label.update(quests.latestMissionName(.tutorial))
+		quest1Details.update(quests.latestQuestName(.tutorial))
 		
-		let chapter1 = quests.latest[.tutorial]!
-		quest1Label.update(chapter1[0])
-		quest1Details.update(chapter1[1])
-		quest1Completion.update(chapter1[2])
+		let current = quests.latest[.tutorial]![1]
+		let sum = quests.latestMissionQuestCount(.tutorial)
+	
+		quest1Completion.update("\(current + 1)/\(sum)")
+		quest1Progress.update(CGFloat(Float(current + 1)/Float(sum)) * 100)
 		
-		if quests.latest[.cyanine] == nil { return }
-		
-		let chapter2 = quests.latest[.cyanine]!
-		quest2Label.update(chapter2[0])
-		quest2Details.update(chapter2[1])
-		quest2Completion.update(chapter2[2])
-		
-		if quests.latest[.vermil] == nil { return }
-		
-		let chapter3 = quests.latest[.vermil]!
-		quest3Label.update(chapter3[0])
-		quest3Details.update(chapter3[1])
-		quest3Completion.update(chapter3[2])
+//		if quests.latest[.cyanine] == nil { return }
+//		
+//		let chapter2 = quests.latest[.cyanine]!
+//		quest2Label.update(chapter2[0])
+//		quest2Details.update(chapter2[1])
+//		quest2Completion.update(chapter2[2])
+//		
+//		if quests.latest[.vermil] == nil { return }
+//		
+//		let chapter3 = quests.latest[.vermil]!
+//		quest3Label.update(chapter3[0])
+//		quest3Details.update(chapter3[1])
+//		quest3Completion.update(chapter3[2])
 	}
 	
 	override func refresh()
