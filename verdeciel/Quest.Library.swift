@@ -15,6 +15,10 @@ class QuestLibrary
 	
 	init()
 	{
+		latest[.tutorial] = [0,0]
+		latest[.cyanine] = [0,0]
+		latest[.vermil] = [0,0]
+		
 		questlog[Chapters.tutorial] = []
 		questlog[Chapters.cyanine] = []
 		questlog[Chapters.vermil] = []
@@ -125,7 +129,10 @@ class QuestLibrary
 		for mission in questlog[chapter]!{
 			let questId = validateMission(mission)
 			if questId == nil { missionId += 1 ; continue }
-			latest[chapter] = [missionId,questId,mission.values.first!.count]
+			
+			if latest[chapter]![0] != missionId { latest[chapter]![0] = missionId ; missionUpdate() }
+			if latest[chapter]![1] != questId { latest[chapter]![1] = questId ; questUpdate() }
+
 			break
 		}
 	}
@@ -139,6 +146,29 @@ class QuestLibrary
 			questId += 1
 		}
 		return nil
+	}
+	
+	func missionUpdate()
+	{
+		print("Mission Update")
+	}
+	
+	func questUpdate()
+	{
+		print("Quest Update")
+		ui.addMessage(questWithId(latest[active]![0], questId: latest[active]![1]))
+	}
+	
+	func missionWithId(missionId:Int) -> String
+	{
+		return questlog[active]![missionId].keys.first!
+	}
+	
+	func questWithId(missionId:Int,questId:Int) -> String
+	{
+		let mission = questlog[active]![missionId]
+		let quest = mission.values.first![questId]
+		return quest.name
 	}
 	
 	func setActive(chapter:Chapters)

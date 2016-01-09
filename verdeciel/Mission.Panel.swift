@@ -150,14 +150,14 @@ class PanelMission : MainPanel
 	{
 		if quests.latest[.tutorial] == nil { return }
 
-		quest1Label.update(quests.latestMissionName(.tutorial))
-		quest1Details.update(quests.latestQuestName(.tutorial))
-		
-		let current = quests.latest[.tutorial]![1]
-		let sum = quests.latestMissionQuestCount(.tutorial)
-	
-		quest1Completion.update("\(current + 1)/\(sum)")
-		quest1Progress.update(CGFloat(Float(current + 1)/Float(sum)) * 100)
+//		quest1Label.update(quests.latestMissionName(.tutorial))
+//		quest1Details.update(quests.latestQuestName(.tutorial))
+//		
+//		let current = quests.latest[.tutorial]![1]
+//		let sum = quests.latestMissionQuestCount(.tutorial)
+//	
+//		quest1Completion.update("\(current + 1)/\(sum)")
+//		quest1Progress.update(CGFloat(Float(current + 1)/Float(sum)) * 100)
 		
 //		if quests.latest[.cyanine] == nil { return }
 //		
