@@ -151,52 +151,35 @@ class QuestLibrary
 	func missionUpdate()
 	{
 		print("Mission Update")
+		mission.refresh()
 	}
 	
 	func questUpdate()
 	{
 		print("Quest Update")
-		ui.addMessage(questWithId(latest[active]![0], questId: latest[active]![1]))
+		ui.addMessage(questWithId(active, missionId: latest[active]![0], questId: latest[active]![1]))
+		mission.refresh()
 	}
 	
-	func missionWithId(missionId:Int) -> String
+	func missionWithId(chapter:Chapters,missionId:Int) -> String
 	{
-		return questlog[active]![missionId].keys.first!
+		return questlog[chapter]![missionId].keys.first!
 	}
 	
-	func questWithId(missionId:Int,questId:Int) -> String
+	func questWithId(chapter:Chapters,missionId:Int,questId:Int) -> String
 	{
-		let mission = questlog[active]![missionId]
-		let quest = mission.values.first![questId]
-		return quest.name
+		let mission = questlog[chapter]![missionId]
+		return mission.values.first![questId].name
+	}
+	
+	func questsWithId(chapter:Chapters,missionId:Int) -> Array<Quest>
+	{
+		return questlog[.tutorial]![missionId].values.first!
 	}
 	
 	func setActive(chapter:Chapters)
 	{
 		active = chapter
-	}
-	
-	func latestMissionQuestCount(chapter:Chapters) -> Int
-	{
-		let latestMissionId = latest[chapter]![0]
-		let mission = questlog[chapter]![latestMissionId]
-		return mission.values.first!.count
-	}
-	
-	func latestMissionName(chapter:Chapters) -> String
-	{
-		let latestMissionId = latest[chapter]![0]
-		let mission = questlog[chapter]![latestMissionId]
-		return mission.keys.first!
-	}
-	
-	func latestQuestName(chapter:Chapters) -> String
-	{
-		let latestMissionId = latest[chapter]![0]
-		let mission = questlog[chapter]![latestMissionId]
-		let latestQuestId = latest[chapter]![1]
-		let quest = mission.values.first![latestQuestId]
-		return quest.name
 	}
 	
 	func questCount(chapter:Chapters) -> Int

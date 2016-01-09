@@ -120,9 +120,6 @@ class PanelMission : MainPanel
 		if capsule.isDocked && capsule.dock.isComplete != nil && capsule.dock.isComplete == false {
 			locationPanel.update()
 		}
-		else{
-			missionUpdate()
-		}
 	}
 	
 	override func touch(id: Int)
@@ -146,34 +143,6 @@ class PanelMission : MainPanel
 		SCNTransaction.commit()
 	}
 	
-	func missionUpdate()
-	{
-		if quests.latest[.tutorial] == nil { return }
-
-//		quest1Label.update(quests.latestMissionName(.tutorial))
-//		quest1Details.update(quests.latestQuestName(.tutorial))
-//		
-//		let current = quests.latest[.tutorial]![1]
-//		let sum = quests.latestMissionQuestCount(.tutorial)
-//	
-//		quest1Completion.update("\(current + 1)/\(sum)")
-//		quest1Progress.update(CGFloat(Float(current + 1)/Float(sum)) * 100)
-		
-//		if quests.latest[.cyanine] == nil { return }
-//		
-//		let chapter2 = quests.latest[.cyanine]!
-//		quest2Label.update(chapter2[0])
-//		quest2Details.update(chapter2[1])
-//		quest2Completion.update(chapter2[2])
-//		
-//		if quests.latest[.vermil] == nil { return }
-//		
-//		let chapter3 = quests.latest[.vermil]!
-//		quest3Label.update(chapter3[0])
-//		quest3Details.update(chapter3[1])
-//		quest3Completion.update(chapter3[2])
-	}
-	
 	override func refresh()
 	{
 		if capsule.dock == nil { label.update(white) ; return }
@@ -181,6 +150,13 @@ class PanelMission : MainPanel
 		
 		if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
+		
+		quest1Label.update(quests.missionWithId(.tutorial, missionId: quests.latest[.tutorial]![0]))
+		quest1Details.update(quests.questWithId(.tutorial, missionId: quests.latest[.tutorial]![0], questId: quests.latest[.tutorial]![1]))
+		let currentQuest = quests.latest[.tutorial]![1]
+		let questCount = quests.questsWithId(.tutorial, missionId: quests.latest[.tutorial]![0]).count
+		quest1Completion.update("\(currentQuest + 1)/\(questCount)")
+		quest1Progress.update( (CGFloat(currentQuest)/CGFloat(questCount)) * 100 )
 	}
 	
 	// MARK: Ports -
