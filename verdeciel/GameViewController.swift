@@ -86,6 +86,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 		
+		quests.skip(.tutorial)
+		
 //		universe.loiqe_landing.isKnown = true
 //		universe.loiqe_city.isKnown = true
 //		cargo.port.event.content.append(items.materia)

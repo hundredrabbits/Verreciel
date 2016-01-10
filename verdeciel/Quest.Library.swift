@@ -183,9 +183,16 @@ class QuestLibrary
 		active = chapter
 	}
 	
-	func questCount(chapter:Chapters) -> Int
+	func skip(chapter:Chapters)
 	{
-		return 0
+		for mission in questlog[chapter]! {
+			
+			let mission = mission.values.first!
+			for quest in mission {
+				quest.complete()
+			}
+		}
+		latest[chapter]![0] += 1
 	}
 }
 
