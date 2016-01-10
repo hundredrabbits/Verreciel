@@ -103,7 +103,7 @@ class PanelMission : MainPanel
 		quest3.addChildNode(quest3Completion)
 		
 		selector.position = SCNVector3(x: -templates.rightMargin - 0.25, y: 0, z: 0)
-		mainNode.addChildNode(selector)
+		questPanel.addChildNode(selector)
 		
 		mainNode.addChildNode(questPanel)
 		
@@ -145,17 +145,16 @@ class PanelMission : MainPanel
 	
 	override func refresh()
 	{
-		if capsule.dock == nil { label.update(white) ; return }
-		if capsule.dock.isComplete == nil { label.update(white) ; return }
-		
-		if capsule.dock.isComplete == true { label.update(cyan) }
+		if capsule.dock == nil { label.update(white) }
+		else if capsule.dock.isComplete == nil { label.update(white) }
+		else if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
 		
 		quest1Label.update(quests.missionWithId(.tutorial, missionId: quests.latest[.tutorial]![0]))
 		quest1Details.update(quests.questWithId(.tutorial, missionId: quests.latest[.tutorial]![0], questId: quests.latest[.tutorial]![1]))
 		let currentQuest = quests.latest[.tutorial]![1]
 		let questCount = quests.questsWithId(.tutorial, missionId: quests.latest[.tutorial]![0]).count
-		quest1Completion.update("\(currentQuest + 1)/\(questCount)")
+		quest1Completion.update("\(currentQuest)/\(questCount)")
 		quest1Progress.update( (CGFloat(currentQuest)/CGFloat(questCount)) * 100 )
 	}
 	

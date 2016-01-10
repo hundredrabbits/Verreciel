@@ -46,12 +46,12 @@ class Loiqe
 	
 	func landing() -> LocationSatellite
 	{
-		return LocationSatellite(name: "Loiqe Landings", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text$will add it soon$soon..", item:items.materia)
+		return LocationSatellite(name: "Landing", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text$will add it soon$soon..", item:items.materia)
 	}
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "Loiqe City", system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
+		return LocationTrade(name: "City", system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric

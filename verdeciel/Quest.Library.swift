@@ -32,12 +32,12 @@ class QuestLibrary
 		questlog[.tutorial]?.append(["Flight" :
 			[
 				Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
-				Quest(name:"Undock with thruster", predicate:{ capsule.dock == nil }, result: { mission.install() }),
+				Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { mission.install() }),
 				Quest(name:"Wait for arrival", predicate:{ universe.loiqe_landing.isKnown == true }, result: { cargo.install() }),
 				Quest(name:"Route materia to cargo", predicate:{ cargo.contains(items.materia) }, result: { console.install() }),
 				Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
-				Quest(name:"Undock from Landing", predicate:{ capsule.dock == nil }, result: { radar.install() }),
-				Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown }, result: {  })
+				Quest(name:"Undock from Landing", predicate:{ capsule.dock != universe.loiqe_landing && universe.loiqe_landing.isKnown == true }, result: { radar.install() }),
+				Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown == true }, result: { })
 			]
 		])
 		questlog[.tutorial]?.append(["A Portal Key" :
@@ -126,7 +126,8 @@ class QuestLibrary
 	func validateChapter(chapter:Chapters)
 	{
 		var missionId = 0
-		for mission in questlog[chapter]!{
+		for mission in questlog[chapter]! {
+			if missionId < latest[chapter]![0] { missionId += 1 ; continue}
 			let questId = validateMission(mission)
 			if questId == nil { missionId += 1 ; continue }
 			

@@ -86,7 +86,18 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.dock.isKnown = true
 		capsule.dock(starting)
 		
-		mission.install()
+//		universe.loiqe_landing.isKnown = true
+//		universe.loiqe_city.isKnown = true
+//		cargo.port.event.content.append(items.materia)
+//		
+//		cargo.install()
+//		console.install()
+//		radar.install()
+//		
+//		
+//		mission.install()
+//		
+//		mission.refresh()
 //
 //		cargo.port.event.content.append(items.loiqePortalKey)
 //		cargo.port.event.content.append(items.valenPortalKey)

@@ -60,11 +60,6 @@ class LocationTrade : Location
 		return newPanel
 	}
 	
-	override func onDock()
-	{
-		mission.refresh()
-	}
-	
 	override func onUploadComplete()
 	{
 		refresh()
