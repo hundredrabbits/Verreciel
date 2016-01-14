@@ -282,8 +282,8 @@
 				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
 				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
-				5748AD9F1BC8583B00C47468 /* Quest.swift */,
 				576DCEA51C483BCF007A7544 /* Mission.swift */,
+				5748AD9F1BC8583B00C47468 /* Quest.swift */,
 				574156DE1BE12FAA008B6C44 /* Recipe.swift */,
 			);
 			name = Objects;

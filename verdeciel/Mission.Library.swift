@@ -154,25 +154,12 @@ class MissionLibrary
 	
 	func refresh()
 	{
-		print(currentMission[active]!.name)
 		currentMission[active]?.validate()
 		if currentMission[active]?.isCompleted == true {
 			let nextMissionId = currentMission[active]!.id + 1
 			currentMission[active] = questlog[active]![nextMissionId]
+			mission.update()
 		}
-	}
-	
-	func missionUpdate()
-	{
-		print("Mission Update")
-		mission.refresh()
-	}
-	
-	func questUpdate()
-	{
-		print("Quest Update")
-//		ui.addMessage(questWithId(active, missionId: latest[active]![0], questId: latest[active]![1]))
-		mission.refresh()
 	}
 	
 	func setActive(chapter:Chapters)

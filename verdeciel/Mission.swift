@@ -24,10 +24,15 @@ class Mission
 	
 	func validate()
 	{
+		if currentQuest == nil { currentQuest = quests.first }
+		
 		for quest in quests {
 			quest.validate()
 			if quest.isCompleted == false {
 				currentQuest = quest
+				ui.addMessage(currentQuest.name)
+				mission.refresh()
+				return
 			}
 		}
 	}
