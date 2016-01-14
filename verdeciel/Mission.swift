@@ -6,13 +6,18 @@ import Foundation
 
 class Mission
 {
+	var id:Int = 0
 	var name:String = "Unknown"
-	var quests:Array<Quest> = []
+	var isCompleted:Bool = false
 	
-	init(name:String)
+	var quests:Array<Quest> = []
+	var predicate:() -> Bool
+	var result:() -> Void
+	
+	init(id:Int,name:String)
 	{
+		self.id = id
 		self.name = name
 	}
-	
 	
 }

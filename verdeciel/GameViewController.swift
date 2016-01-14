@@ -80,7 +80,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.loiqe_portal)
+		capsule.start(universe.loiqe_spawn)
 		universe.unlock(.loiqe)
 		
 		cargo.port.event.content.append(items.valenPortalKey)

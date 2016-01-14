@@ -11,27 +11,27 @@ class QuestLibrary
 {
 	var active:Chapters = Chapters.tutorial
 	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array]()
-	var latest:Dictionary<Chapters,Array<Int>> = [Chapters:Array]()
+	var currentMission:Dictionary<Chapters,Mission> = [Chapters:Mission]()
 	
 	init()
 	{
-		latest[.tutorial] = [0,-1]
-		latest[.cyanine] = [0,0]
-		latest[.vermil] = [0,0]
-		
 		questlog[Chapters.tutorial] = []
 		questlog[Chapters.cyanine] = []
 		questlog[Chapters.vermil] = []
 		addTutorial()
 		addCyanine()
 		addVermil()
+		
+		currentMission[.tutorial] = questlog[.tutorial]?.first
+		currentMission[.cyanine] = questlog[.tutorial]?.first
+		currentMission[.vermil] = questlog[.tutorial]?.first
 	}
 	
 	func addTutorial()
 	{
 		var m:Mission!
 		
-		m = Mission(name: "Flight")
+		m = Mission(id:0, name: "Flight")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { mission.install() }),
@@ -43,7 +43,7 @@ class QuestLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(name: "Portal Key")
+		m = Mission(id:1, name: "Portal Key")
 		m.quests = [
 			Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
 			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
@@ -54,7 +54,7 @@ class QuestLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(name: "Reach Valen")
+		m = Mission(id:2, name: "Reach Valen")
 		m.quests = [
 			Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }),
 			Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
@@ -64,7 +64,7 @@ class QuestLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(name: "Extinguish the sun")
+		m = Mission(id:3, name: "Extinguish the sun")
 		m.quests = [
 			Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }),
 			Quest(name:"Find credits", predicate:{ cargo.contains(items.credits.name!,type: items.credits.type) == true }, result: { }),
@@ -134,7 +134,7 @@ class QuestLibrary
 	{
 		var m:Mission!
 		
-		m = Mission(name: "--")
+		m = Mission(id:0,name: "--")
 		m.quests = [
 			Quest(name:"Unlock at Senni", predicate:{ universe.senni.isKnown == true }, result: { })
 		]
@@ -145,7 +145,7 @@ class QuestLibrary
 	{
 		var m:Mission!
 		
-		m = Mission(name: "--")
+		m = Mission(id:0,name: "--")
 		m.quests = [
 			Quest(name:"Unlock at Usul", predicate:{ universe.usul.isKnown == true }, result: { })
 		]
@@ -154,7 +154,11 @@ class QuestLibrary
 	
 	func refresh()
 	{
-//		validateChapter(active)
+		print(currentMission[active]!.name)
+		if currentMission[active]?.isCompleted == true {
+			let nextMissionId = currentMission[active]!.id + 1
+			currentMission[active] = questlog[active]![nextMissionId]
+		}
 	}
 	
 	func missionUpdate()
