@@ -150,12 +150,12 @@ class PanelMission : MainPanel
 		else if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
 		
-		quest1Label.update(quests.missionWithId(.tutorial, missionId: quests.latest[.tutorial]![0]))
-		quest1Details.update(quests.questWithId(.tutorial, missionId: quests.latest[.tutorial]![0], questId: quests.latest[.tutorial]![1]))
-		let currentQuest = quests.latest[.tutorial]![1]
-		let questCount = quests.questsWithId(.tutorial, missionId: quests.latest[.tutorial]![0]).count
-		quest1Completion.update("\(currentQuest)/\(questCount)")
-		quest1Progress.update( (CGFloat(currentQuest)/CGFloat(questCount)) * 100 )
+//		quest1Label.update(quests.missionWithId(.tutorial, missionId: quests.latest[.tutorial]![0]))
+//		quest1Details.update(quests.questWithId(.tutorial, missionId: quests.latest[.tutorial]![0], questId: quests.latest[.tutorial]![1]))
+//		let currentQuest = quests.latest[.tutorial]![1]
+//		let questCount = quests.questsWithId(.tutorial, missionId: quests.latest[.tutorial]![0]).count
+//		quest1Completion.update("\(currentQuest)/\(questCount)")
+//		quest1Progress.update( (CGFloat(currentQuest)/CGFloat(questCount)) * 100 )
 	}
 	
 	// MARK: Ports -

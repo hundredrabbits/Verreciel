@@ -47,6 +47,7 @@
 		5769535F1C2060FE00A0CA39 /* Progress.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */; };
 		576953631C206CEA00A0CA39 /* Map.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953621C206CEA00A0CA39 /* Map.Widget.swift */; };
 		576953651C206CF300A0CA39 /* Radio.Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953641C206CF300A0CA39 /* Radio.Widget.swift */; };
+		576DCEA61C483BCF007A7544 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576DCEA51C483BCF007A7544 /* Mission.swift */; };
 		57841A301C23ACD50005D7DA /* Complete.Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Spawn.Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */; };
@@ -125,6 +126,7 @@
 		5769535C1C2060FE00A0CA39 /* Progress.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.Monitor.swift; sourceTree = "<group>"; };
 		576953621C206CEA00A0CA39 /* Map.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.Widget.swift; sourceTree = "<group>"; };
 		576953641C206CF300A0CA39 /* Radio.Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radio.Widget.swift; sourceTree = "<group>"; };
+		576DCEA51C483BCF007A7544 /* Mission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		57841A2F1C23ACD50005D7DA /* Complete.Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complete.Monitor.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Spawn.Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.Location.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
 				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 				5748AD9F1BC8583B00C47468 /* Quest.swift */,
+				576DCEA51C483BCF007A7544 /* Mission.swift */,
 				574156DE1BE12FAA008B6C44 /* Recipe.swift */,
 			);
 			name = Objects;
@@ -449,6 +452,7 @@
 				5748AD9E1BC8476000C47468 /* Quest.Library.swift in Sources */,
 				579CE7221C247DF4009E02F5 /* Item.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* Console.Panel.swift in Sources */,
+				576DCEA61C483BCF007A7544 /* Mission.swift in Sources */,
 				576953591C2060EC00A0CA39 /* Location.Library.swift in Sources */,
 				572258151BB877C600DEC41E /* Portal.Location.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* Star.Location.swift in Sources */,

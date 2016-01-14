@@ -38,8 +38,13 @@ class CoreCapsule: SCNNode
 		interfaceSetup()
 	}
 	
-	override func start()
+	func start(location:Location)
 	{
+		at = location.at
+		dock = location
+		dock.isKnown = true
+		dock(location)
+		
 		battery.install()
 	}
 	

@@ -183,7 +183,6 @@ class CoreUniverse : SCNNode
 	
 	func connectPaths()
 	{
-		loiqe_landing.connect(loiqe_city)
 		loiqe_city.connect(loiqe_horadric)
 		loiqe_horadric.connect(loiqe_portal)
 		loiqe_portal.connect(falvet_toLoiqe)
