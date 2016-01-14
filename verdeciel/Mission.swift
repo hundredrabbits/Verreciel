@@ -11,8 +11,10 @@ class Mission
 	var isCompleted:Bool = false
 	
 	var quests:Array<Quest> = []
-	var predicate:() -> Bool
-	var result:() -> Void
+	var currentQuest:Quest!
+	
+//	var predicate:() -> Bool
+//	var result:() -> Void
 	
 	init(id:Int,name:String)
 	{
@@ -20,4 +22,13 @@ class Mission
 		self.name = name
 	}
 	
+	func validate()
+	{
+		for quest in quests {
+			quest.validate()
+			if quest.isCompleted == false {
+				currentQuest = quest
+			}
+		}
+	}
 }

@@ -89,6 +89,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 		
 		quests.refresh()
+		
+		mission.install()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

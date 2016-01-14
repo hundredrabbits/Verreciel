@@ -35,7 +35,7 @@ var game:CoreGame!
 var time:CoreTime!
 
 // Collections
-var quests = QuestLibrary()
+var quests = MissionLibrary()
 var items = ItemLibrary()
 var locations = LocationLibrary()
 var recipes = RecipesLibrary()

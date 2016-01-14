@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class QuestLibrary
+class MissionLibrary
 {
 	var active:Chapters = Chapters.tutorial
 	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array]()
@@ -155,6 +155,7 @@ class QuestLibrary
 	func refresh()
 	{
 		print(currentMission[active]!.name)
+		currentMission[active]?.validate()
 		if currentMission[active]?.isCompleted == true {
 			let nextMissionId = currentMission[active]!.id + 1
 			currentMission[active] = questlog[active]![nextMissionId]
