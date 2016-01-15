@@ -83,14 +83,21 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.start(universe.loiqe_spawn)
 		universe.unlock(.loiqe)
 		
-		cargo.port.event.content.append(items.valenPortalKey)
-		battery.cellPort1.connect(battery.thrusterPort)
+		quests.currentMission[Chapters.tutorial]?.complete()
+		
+//		universe.loiqe_spawn.isKnown = true
+//		universe.loiqe_landing.isKnown = true
+//		universe.loiqe_city.isKnown = true
+//		
+//		cargo.port.event.content.append(items.valenPortalKey)
+//		cargo.port.event.content.append(items.materia)
+//		battery.cellPort1.connect(battery.thrusterPort)
 
 		battery.cellPort1.addEvent(items.cell1)
 		
 		quests.refresh()
 		
-		mission.install()
+//		mission.install()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

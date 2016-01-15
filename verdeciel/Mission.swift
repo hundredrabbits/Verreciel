@@ -35,5 +35,15 @@ class Mission
 				return
 			}
 		}
+		
+		isCompleted = true
+	}
+	
+	func complete()
+	{
+		isCompleted = true
+		for quest in quests {
+			quest.complete()
+		}
 	}
 }

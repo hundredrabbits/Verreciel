@@ -158,6 +158,7 @@ class MissionLibrary
 		if currentMission[active]?.isCompleted == true {
 			let nextMissionId = currentMission[active]!.id + 1
 			currentMission[active] = questlog[active]![nextMissionId]
+			print("\(nextMissionId) -> \(currentMission[active]?.name)")
 			mission.update()
 		}
 	}
