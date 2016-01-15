@@ -58,8 +58,6 @@ class MainPanel : Panel
 		footer.opacity = 0
 		
 		label.update("--", color:grey)
-		
-		start()
 	}
 	
 	// MARK: Installation -

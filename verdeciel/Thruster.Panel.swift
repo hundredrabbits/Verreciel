@@ -138,7 +138,7 @@ class PanelThruster : MainPanel
 			speed = 0
 			modeUnpowered()
 		}
-		if capsule.isWarping == true {
+		else if capsule.isWarping == true {
 			modeWarping()
 		}
 		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingLocationOfType(.portal) == true {
@@ -186,7 +186,7 @@ class PanelThruster : MainPanel
 	
 	func modeWaitingForWarp()
 	{
-		button.enable("warp")
+		button.enable("warp", outline:cyan)
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -216,7 +216,7 @@ class PanelThruster : MainPanel
 	
 	func modeUnpowered()
 	{
-		button.disable("unpowered")
+		button.disable("unpowered", outline:clear)
 		
 		accelerate.disable()
 		decelerate.disable()

@@ -80,18 +80,17 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.loiqe_spawn)
+		capsule.start(universe.loiqe_portal)
 		universe.unlock(.loiqe)
+		
+		pilot.install()
 		
 		quests.currentMission[Chapters.tutorial]?.complete()
 		
-//		universe.loiqe_spawn.isKnown = true
-//		universe.loiqe_landing.isKnown = true
-//		universe.loiqe_city.isKnown = true
-//		
-//		cargo.port.event.content.append(items.valenPortalKey)
-//		cargo.port.event.content.append(items.materia)
-//		battery.cellPort1.connect(battery.thrusterPort)
+		cargo.addItems([items.valenPortalKey,items.materia])
+
+		
+		battery.cellPort1.connect(battery.thrusterPort)
 
 		battery.cellPort1.addEvent(items.cell1)
 		

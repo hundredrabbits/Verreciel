@@ -124,7 +124,6 @@ class PanelMission : MainPanel
 	
 	override func touch(id: Int)
 	{
-		
 		quest1Details.update(grey)
 		quest2Details.update(grey)
 		quest3Details.update(grey)
@@ -153,12 +152,12 @@ class PanelMission : MainPanel
 		else if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
 		
+		let currentMission = quests.currentMission[.tutorial]!
 		quest1Label.update(quests.currentMission[.tutorial]!.name)
-		quest1Details.update(quests.currentMission[.tutorial]!.currentQuest!.name)
-		let currentQuest = quests.currentMission[.tutorial]!.id
+		if currentMission.currentQuest != nil { quest1Details.update(quests.currentMission[.tutorial]!.currentQuest!.name) }
 		let questCount = quests.questlog[.tutorial]!.count
-		quest1Completion.update("\(currentQuest)/\(questCount)")
-		quest1Progress.update( (CGFloat(currentQuest)/CGFloat(questCount)) * 100 )
+		quest1Completion.update("\(currentMission.id)/\(questCount)")
+		quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 	}
 	
 	// MARK: Ports -

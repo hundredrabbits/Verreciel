@@ -47,21 +47,22 @@ class SCNPortSlot : SCNPort
 		disable()
 	}
 	
-	override func update()
+	func refresh()
 	{
 		details.opacity = (hasDetails == true) ? 1 : 0
 		
 		if event != nil {
-			label.update(event.name!,color:white)
+			label.update(event.name!)
 			details.update(event.note)
 		}
 		else{
-			label.update("Empty",color:grey)
+			label.update("Empty")
 			details.update("--")
 		}
 		
 		if isEnabled == false { label.update(grey) }
 		else if requirement != nil && event != nil && requirement == event { label.update(cyan) }
+		else if requirement != nil && event != nil && requirement != event { label.update(red) }
 		else if event != nil { label.update(white) }
 		else{ label.update(grey) }
 	}
@@ -84,7 +85,7 @@ class SCNPortSlot : SCNPort
 	override func addEvent(event:Event)
 	{
 		super.addEvent(event)
-		update()
+		refresh()
 	}
 	
 	// MARK: Upload -
@@ -113,7 +114,6 @@ class SCNPortSlot : SCNPort
 			origin.wire.isUploading = true
 			label.update("\(Int(uploadPercentage))%", color:grey)
 		}
-	
 	}
 	
 	func uploadComplete()
@@ -121,7 +121,7 @@ class SCNPortSlot : SCNPort
 		if (origin != nil) { addEvent(syphon()) }
 		uploadTimer.invalidate()
 		uploadPercentage = 0
-		update()
+		refresh()
 		
 		host.onUploadComplete()
 	}
@@ -130,7 +130,7 @@ class SCNPortSlot : SCNPort
 	{
 		uploadTimer.invalidate()
 		uploadPercentage = 0
-		update()
+		refresh()
 	}
 
 	required init(coder aDecoder: NSCoder)

@@ -22,18 +22,13 @@
 - Event for when approaching stars without the cloak
 - Derelict beacon
 - Unlock map port
-- Add docking button/trigger to thruster
 - Stars only display as star if apporachable(shield strengt)
 - Radio should be installed
 - Add constellation location(just visual, no docking)
 - Don't auto dock
+- Add docking button/trigger to thruster
 - Stars display different icon is unreachable
-- Click on mission panel to select quest
-- Put spawn closer to landing(Loiqe)
-- Thruster warp button outline color -> cyan
 - trade panel default item name grey
-- cargo displays as empty
-- Issue with mission completion
 
 > Venic Flow
 - Get cell3(satellite), create array1

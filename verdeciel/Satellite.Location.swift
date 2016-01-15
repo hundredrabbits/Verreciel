@@ -52,6 +52,11 @@ class LocationSatellite : Location
 		return newPanel
 	}
 	
+	override func onDock()
+	{
+		port.refresh()
+	}
+	
 	override func update()
 	{
 		if port.event == nil { isComplete = true }

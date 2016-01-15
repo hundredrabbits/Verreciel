@@ -75,7 +75,6 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		
 		/*
 		
 		missionPredicate = (cargo.contains(items.waste) == false && hatch.isInstalled == true )

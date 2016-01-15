@@ -39,9 +39,7 @@ class Loiqe
 	
 	func spawn() -> LocationSpawn
 	{
-		let location = LocationSpawn(name:"Awakening",system:.loiqe)
-		location.at = CGPoint(x: offset.x, y: offset.y - 3)
-		return location
+		return LocationSpawn(name:"Awakening",system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2.75))
 	}
 	
 	func landing() -> LocationSatellite

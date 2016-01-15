@@ -24,8 +24,6 @@ class PanelCargo : MainPanel
 		
 		name = "cargo"
 		mainNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		
-		port.event = items.playerCargo
 
 		// Quantity
 		
@@ -50,6 +48,8 @@ class PanelCargo : MainPanel
 		
 		port.input = Item.self
 		port.output = Item.self
+		
+		port.event = items.playerCargo
 	}
 	
 	override func start()
@@ -57,6 +57,8 @@ class PanelCargo : MainPanel
 		decalsNode.opacity = 0
 		mainNode.opacity = 0
 		label.update("--", color: grey)
+		
+		refresh()
 	}
 	
 	func contains(event:Event) -> Bool
@@ -76,11 +78,12 @@ class PanelCargo : MainPanel
 		return false
 	}
 	
-	func addEvents(events:Array<Event>)
+	func addItems(items:Array<Item>)
 	{
-		for event in events {
-			port.event.content.append(event)
+		for item in items {
+			port.event.content.append(item)
 		}
+		refresh()
 	}
 	
 	func removeEvent(target:Event)
@@ -95,11 +98,13 @@ class PanelCargo : MainPanel
 	
 	override func touch(id:Int = 0)
 	{
+		refresh()
 		bang()
 	}
 	
 	override func refresh()
 	{
+		print(port.event.content)
 		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold
@@ -136,7 +141,6 @@ class PanelCargo : MainPanel
 	
 	override func bang()
 	{
-		update()
 		if port.connection == nil { return }
 		port.connection.host.listen(port.event)
 	}
