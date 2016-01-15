@@ -148,7 +148,7 @@ class CoreUI: SCNNode
 		player.port.origin.wire.fixedUpdate()
 	}
 	
-	func addMessage(message:String)
+	func addMessage(message:String, color:UIColor = white)
 	{
 		if self.message == message { return }
 		
@@ -162,10 +162,9 @@ class CoreUI: SCNNode
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
-			self.messageLabel.update(self.message)
+			self.messageLabel.update(self.message, color:color)
 			self.messageLabel.position = SCNVector3(0,1.375,self.visorDepth)
 			self.messageLabel.opacity = 1
-			self.messageLabel.updateColor(white)
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()

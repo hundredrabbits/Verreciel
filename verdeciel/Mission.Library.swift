@@ -45,21 +45,19 @@ class MissionLibrary
 		
 		m = Mission(id:1, name: "Portal Key")
 		m.quests = [
-			Quest(name:"Trade materia for fragment", predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
+			Quest(name:"Trade materia for fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
 			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
-			Quest(name:"Reach Horadric", predicate:{ universe.loiqe_horadric.isKnown }, result: {  }),
-			Quest(name:"Reach satellite", predicate:{ universe.loiqe_satellite.isKnown }, result: { }),
-			Quest(name:"Collect second fragment", predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }),
-			Quest(name:"Combine fragments at Horadric", predicate:{ (cargo.contains(items.valenPortalKey) == true) }, result: { })
+			Quest(name:"Collect second fragment", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }),
+			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric,  predicate:{ (cargo.contains(items.valenPortalKey) == true) }, result: { })
 		]
 		questlog[.tutorial]?.append(m)
 		
 		m = Mission(id:2, name: "Reach Valen")
 		m.quests = [
-			Quest(name:"Unlock portal", predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }),
-			Quest(name:"Align to portal", predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
-			Quest(name:"Power Thruster", predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }),
-			Quest(name:"Warp to valen sector", predicate:{ capsule.isWarping == true }, result: { }),
+			Quest(name:"Unlock portal", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }),
+			Quest(name:"Align to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
+			Quest(name:"Power Thruster", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }),
+			Quest(name:"Warp to valen sector", location: universe.loiqe_portal, predicate:{ capsule.isWarping == true }, result: { }),
 			Quest(name:"Reach Valen system", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) })
 		]
 		questlog[.tutorial]?.append(m)
