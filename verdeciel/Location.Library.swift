@@ -134,12 +134,12 @@ class Valen
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), grows: Item(name: items.credits.name!, type: items.credits.type, note:items.credits.note))
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.credits.name!, type: items.credits.type, note:items.credits.note))
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 2), requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
+		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
 	}
 	
 	func port() -> LocationTrade

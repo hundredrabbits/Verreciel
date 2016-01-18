@@ -7,33 +7,15 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class WidgetMap : SCNNode
+class WidgetMap : Widget
 {
-	var port:SCNPort!
-	
 	override init()
 	{
 		super.init()
 		
 		name = "map"
 		
-		port = SCNPort(host: self, input: Event.self, output: Event.self)
-		port.position = SCNVector3(0,-0.6,templates.radius)
-		port.disable()
-		
-		let inputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.right)
-		let outputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.left)
-		inputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
-		outputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
-		port.addChildNode(inputLabel)
-		port.addChildNode(outputLabel)
-		
-		addChildNode(port)
-	}
-	
-	func install()
-	{
-		port.enable()
+		label.update(name!)
 	}
 
 	required init?(coder aDecoder: NSCoder)

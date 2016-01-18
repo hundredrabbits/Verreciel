@@ -31,7 +31,7 @@ class MissionLibrary
 	{
 		var m:Mission!
 		
-		m = Mission(id:0, name: "Flight")
+		m = Mission(id:0, name: "Flight Lesson")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { mission.install() }),
@@ -43,7 +43,7 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:1, name: "Portal Key")
+		m = Mission(id:1, name: "A Portal Key")
 		m.quests = [
 			Quest(name:"Trade materia for fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
 			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
@@ -52,15 +52,38 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:2, name: "Reach Valen")
+		m = Mission(id:2, name: "Portal Lesson")
 		m.quests = [
-			Quest(name:"Unlock portal", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: {  }),
+			Quest(name:"Unlock portal", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }),
-			Quest(name:"Warp to valen sector", location: universe.loiqe_portal, predicate:{ capsule.isWarping == true }, result: { }),
-			Quest(name:"Reach Valen system", predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) })
 		]
 		questlog[.tutorial]?.append(m)
+		
+		m = Mission(id:2, name: "Reach Valen")
+		m.quests = [
+			Quest(name:"Warp to Valen system", location: universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }),
+			Quest(name:"Reach the bank", location: universe.valen_bank, predicate:{ universe.valen_bank.isKnown == true }, result: {  }),
+			Quest(name:"Collect the loiqe key", location: universe.valen_bank, predicate:{ cargo.contains(items.loiqePortalKey) }, result: { })
+		]
+		questlog[.tutorial]?.append(m)
+		
+		m = Mission(id:2, name: "Install Radio")
+		m.quests = [
+			Quest(name:"Reach Station", location: universe.valen_station, predicate:{ universe.valen_station.isKnown == true }, result: { }),
+			Quest(name:"Reach Harvest", location: universe.valen_harvest, predicate:{ universe.valen_harvest.isKnown == true }, result: { }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains(items.credits) }, result: { }),
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
+		]
+		questlog[.tutorial]?.append(m)
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		m = Mission(id:3, name: "Extinguish the sun")
 		m.quests = [
