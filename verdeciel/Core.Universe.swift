@@ -96,6 +96,7 @@ class CoreUniverse : SCNNode
 	var venic_beacon = locations.venic.beacon()
 	var venic_cargo = locations.venic.cargo()
 	var venic_city = locations.venic.city()
+	var venic_port = locations.venic.port()
 	
 	func addVenic()
 	{
@@ -105,6 +106,7 @@ class CoreUniverse : SCNNode
 		addChildNode(venic_beacon)
 		addChildNode(venic_cargo)
 		addChildNode(venic_city)
+		addChildNode(venic_port)
 	}
 	
 	// MARK: Senni -
@@ -112,7 +114,7 @@ class CoreUniverse : SCNNode
 	var senni = locations.senni.star()
 	var senni_city = locations.senni.city()
 	var senni_station = locations.senni.portal()
-	var senni_telescope = locations.senni.telescope()
+	var senni_port = locations.senni.port()
 	var senni_portal = locations.senni.portal()
 	var senni_service = locations.senni.service()
 	var senni_spawn = locations.senni.spawn()
@@ -122,7 +124,7 @@ class CoreUniverse : SCNNode
 		addChildNode(senni)
 		addChildNode(senni_city)
 		addChildNode(senni_station)
-		addChildNode(senni_telescope)
+		addChildNode(senni_port)
 		addChildNode(senni_portal)
 		addChildNode(senni_service)
 		addChildNode(senni_spawn)
@@ -212,7 +214,7 @@ class CoreUniverse : SCNNode
 		falvet_service3.connect(falvet_toLoiqe)
 		falvet_service4.connect(falvet_toUsul)
 		
-		senni_telescope.connect(senni_service)
+		senni_port.connect(senni_service)
 		senni_spawn.connect(senni_portal)
 		senni_service.connect(senni_portal)
 		senni_portal.connect(senni_portal)

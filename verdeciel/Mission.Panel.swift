@@ -138,7 +138,7 @@ class PanelMission : MainPanel
 		SCNTransaction.setCompletionBlock({
 			if id == 1 { quests.setActive(Chapters.discovery) ; self.quest1Details.update(white) }
 			if id == 2 { quests.setActive(Chapters.capsule) ; self.quest2Details.update(white) }
-			if id == 3 { quests.setActive(Chapters.narative) ; self.quest3Details.update(white) }
+			if id == 3 { quests.setActive(Chapters.exploration) ; self.quest3Details.update(white) }
 		})
 		SCNTransaction.commit()
 		

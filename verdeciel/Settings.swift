@@ -91,7 +91,7 @@ enum Chapters
 {
 	case discovery
 	case capsule
-	case narative
+	case exploration
 }
 
 enum LocationTypes

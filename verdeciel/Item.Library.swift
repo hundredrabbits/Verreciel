@@ -44,6 +44,8 @@ class ItemLibrary
 	let usulPortalFragment1 = Item(name: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
 	let usulPortalFragment2 = Item(name: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
 	
+	let transPortalKey = Item(name: "trans portal key", type: .card, note:"complete key", isQuest:true)
+	
 	let warpDrive = Item(name: "warpdrive", type: .drive, note:"local warpdrive", isQuest:true)
 	
 	// Records

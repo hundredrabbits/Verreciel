@@ -17,14 +17,15 @@ class MissionLibrary
 	{
 		questlog[Chapters.discovery] = []
 		questlog[Chapters.capsule] = []
-		questlog[Chapters.narative] = []
+		questlog[Chapters.exploration] = []
 		
 		create_discoveryMissions()
 		create_capsuleMissions()
+		create_explorationMissions()
 		
 		currentMission[.discovery] = questlog[.discovery]?.first
 		currentMission[.capsule] = questlog[.capsule]?.first
-		currentMission[.narative] = questlog[.narative]?.first
+		currentMission[.exploration] = questlog[.exploration]?.first
 	}
 	
 	func create_discoveryMissions()
@@ -163,14 +164,14 @@ class MissionLibrary
 		]
 		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 1")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 1") // Input
 		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying == true }, result: {  }) ]
 		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 2")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 2") // Output
 		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route radio to radar", predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
+		m.quests = [ Quest(name:"Route radio to radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
 		questlog[.discovery]?.append(m)
 		
 		// Map
@@ -184,10 +185,15 @@ class MissionLibrary
 		]
 		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Map Tutorial 1")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Map Tutorial 1") // TODO: Add input tutorial
+		m.quests = [ Quest(name:"Power map in battery panel", predicate:{ battery.isMapPowered() == true }, result: { }) ]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Map Tutorial 2") // Input
 		m.quests = [ Quest(name:"Power map in battery panel", predicate:{ battery.isMapPowered() == true }, result: { }) ]
 		m.quests = [ Quest(name:"Route map to helmet", predicate:{ player.port.origin != nil && player.port.origin == map.port }, result: {  }) ]
 		questlog[.discovery]?.append(m)
+		
 		
 		// Shield
 		
@@ -200,7 +206,12 @@ class MissionLibrary
 		]
 		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1") // Input
+		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isShieldPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route shape to shield", predicate:{ shield.isActive == true }, result: { }) ]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 2") // TODO: Add output tutorial
 		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isShieldPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route shape to shield", predicate:{ shield.isActive == true }, result: { }) ]
 		questlog[.discovery]?.append(m)
@@ -216,9 +227,58 @@ class MissionLibrary
 		]
 		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1")
-		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route cypher to shield", predicate:{ enigma.isActive == true }, result: { }) ]
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Enigma Tutorial 1") // Input
+		m.quests = [ Quest(name:"Power Enigma in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route cypher to Enigma", predicate:{ enigma.isActive == true }, result: { }) ]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Enigma Tutorial 2") // TODO: Add output tutorial
+		m.quests = [ Quest(name:"Power Enigma in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
+		questlog[.discovery]?.append(m)
+	}
+	
+	func create_explorationMissions()
+	{
+		var m:Mission!
+		
+		// Portal Keys
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Valen Portal Key")
+		m.predicate = { cargo.contains(items.valenPortalKey) == true }
+		m.quests = [
+			Quest(name:"Aquire fragment I", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { }),
+			Quest(name:"Aquire fragment II", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: {  }),
+			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Senni Portal Key")
+		m.predicate = { cargo.contains(items.valenPortalKey) == true }
+		m.quests = [
+			Quest(name:"Aquire fragment I", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment1) == true }, result: { }),
+			Quest(name:"Aquire fragment II", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) == true }, result: {  }),
+			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Usul Portal Key")
+		m.predicate = { cargo.contains(items.usulPortalKey) == true }
+		m.quests = [
+			Quest(name:"Aquire fragment I", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
+			Quest(name:"Aquire fragment II", location: universe.venic_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
+			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Trans Portal Key")
+		m.predicate = { cargo.contains(items.transPortalKey) == true }
+		m.quests = [
+			Quest(name:"Aquire Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) == true }, result: { }),
+			Quest(name:"Aquire Valen Key", predicate:{ cargo.contains(items.valenPortalKey) == true }, result: { }),
+			Quest(name:"Aquire Senni Key", predicate:{ cargo.contains(items.senniPortalKey) == true }, result: { }),
+			Quest(name:"Aquire Usul Key", predicate:{ cargo.contains(items.usulPortalKey) == true }, result: { }),
+			Quest(name:"Combine all keys at Horadric", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
 		questlog[.discovery]?.append(m)
 	}
 	
@@ -236,7 +296,6 @@ class MissionLibrary
 	{
 		active = chapter
 	}
-	
 }
 
 

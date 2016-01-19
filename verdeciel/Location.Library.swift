@@ -69,9 +69,7 @@ class Loiqe
 	
 	func beacon() -> LocationBeacon
 	{
-		let location = LocationBeacon(name:"loiqe beacon",system:.loiqe,message:"Are you absolutely sure that you are ~in space ...")
-		location.at = CGPoint(x: offset.x, y: offset.y - 3)
-		return location
+		return LocationBeacon(name:"loiqe beacon",system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
 	}
 	
 	func port() -> LocationTrade
@@ -153,7 +151,7 @@ class Valen
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment2)
+		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment1)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -165,6 +163,7 @@ class Valen
 class Venic
 {
 	var offset:CGPoint!
+	var system:Systems = .venic
 	
 	init(offset:CGPoint)
 	{
@@ -173,32 +172,37 @@ class Venic
 	
 	func star() -> LocationStar
 	{
-		return LocationStar(name:"Venic",system:.venic, at:offset)
+		return LocationStar(name:"Venic",system:system, at:offset)
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.venic, at:CGPoint(x: offset.x, y: offset.y - 1), requirement:items.alta, installation:{ map.install() }, installationName:"Map")
+		return LocationStation(name:"station",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), requirement:items.alta, installation:{ map.install() }, installationName:"Map")
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite",system:.venic, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Missing",item:items.array2)
+		return LocationSatellite(name: "satellite",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Missing",item:items.array2)
 	}
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "city",system:.venic, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credits,give:items.senniPortalFragment1)
+		return LocationTrade(name: "city",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credits,give:items.senniPortalFragment1)
 	}
 	
 	func beacon() -> LocationBeacon
 	{
-		return LocationBeacon(name: "beacon",system:.venic, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Missing")
+		return LocationBeacon(name: "beacon",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Missing")
 	}
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name: "cargo",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y), message:"Missing",item:items.cell3)
+		return LocationSatellite(name: "cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), message:"Missing",item:items.cell3)
+	}
+	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x, y: offset.y + 2), want: items.alta, give: items.senniPortalFragment2, stealth:true)
 	}
 }
 
@@ -242,15 +246,14 @@ class Senni
 		return location
 	}
 	
-	func telescope() -> Location
-	{
-		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x, y: offset.y + 2))
-		return location
-	}
-	
 	func portal() -> LocationPortal
 	{
 		return LocationPortal(name: "portal",system:.senni, at:CGPoint(x: offset.x, y: offset.y - 1), key: items.senniPortalKey, rightName: "Usul", leftName:"Valen")
+	}
+	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "Port", system:.senni, at: CGPoint(x: offset.x, y: offset.y + 2), want: items.alta, give: items.senniPortalFragment2, stealth:true)
 	}
 }
 
