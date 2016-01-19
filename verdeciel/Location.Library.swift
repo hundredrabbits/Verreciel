@@ -45,7 +45,7 @@ class Loiqe
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "Harvest", system: system, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: "Materia", type: .currency, note: "[Missing]", isQuest: false))
+		return LocationHarvest(name: "Harvest", system: system, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.materia.name!, type: items.materia.type, note: items.materia.note))
 	}
 	
 	func city() -> LocationTrade

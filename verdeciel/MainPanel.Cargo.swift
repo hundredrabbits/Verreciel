@@ -69,11 +69,11 @@ class PanelCargo : MainPanel
 		return false
 	}
 	
-	func contains(name:String,type:ItemTypes) -> Bool
+	func containsLike(target:Item) -> Bool
 	{
 		for item in port.event.content {
-			let item = item as! Item
-			if item.name == name && item.type == type { return true }
+			if item.name == target.name && item.type == target.type { return true }
+			print("found: \(item.name), looking for: \(target.name)")
 		}
 		return false
 	}

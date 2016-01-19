@@ -12,7 +12,7 @@ class Event : SCNNode
 	
 	var at = CGPoint()
 	var note = String()
-	var content:Array<Event>!
+	var content:Array<Item>!
 	var color = grey
 	
 	var isQuest:Bool = false

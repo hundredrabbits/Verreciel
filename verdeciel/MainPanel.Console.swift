@@ -138,7 +138,6 @@ class PanelConsole : MainPanel
 		if port.origin.host == cargo {
 			addLine(SCNCommand(text: port.origin.host.name!, color: grey, head:true))
 			for item in event.content {
-				let item = item as! Item
 				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:item.isQuest))
 			}
 		}

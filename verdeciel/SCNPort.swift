@@ -225,10 +225,10 @@ class SCNPort : SCNNode
 		if origin != nil { origin.disconnect() }
 	}
 	
-	func syphon() -> Event
+	func syphon() -> Item
 	{
 		let stored_origin = origin
-		let stored_event = origin.event
+		let stored_event = origin.event as! Item
 		
 		stored_origin.removeEvent()
 		stored_origin.host.update()
