@@ -19,44 +19,12 @@ class MissionLibrary
 		questlog[Chapters.capsule] = []
 		questlog[Chapters.narative] = []
 		
-		create_capsuleMissions()
 		create_discoveryMissions()
+		create_capsuleMissions()
 		
 		currentMission[.discovery] = questlog[.discovery]?.first
 		currentMission[.capsule] = questlog[.capsule]?.first
 		currentMission[.narative] = questlog[.narative]?.first
-	}
-	
-	func create_capsuleMissions()
-	{
-		var m:Mission!
-		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install radio")
-		m.predicate = { radio.isInstalled == true }
-		m.quests = [
-			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[.discovery]?.append(m)
-		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Map")
-		m.predicate = { map.isInstalled == true }
-		m.quests = [
-			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
-			Quest(name:"Install map", location: universe.senni_station, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[.discovery]?.append(m)
-		
-		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Shield")
-		m.predicate = { battery.shieldPort.isEnabled == true }
-		m.quests = [
-			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
-			Quest(name:"Install shield", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
-		]
-		questlog[.discovery]?.append(m)
 	}
 	
 	func create_discoveryMissions()
@@ -180,31 +148,58 @@ class MissionLibrary
 */
 	}
 	
-	/*
-	
-	func addCyanine()
+	func create_capsuleMissions()
 	{
 		var m:Mission!
 		
-		m = Mission(id:0,name: "--")
-		m.quests = [
-			Quest(name:"Unlock at Senni", predicate:{ universe.senni.isKnown == true }, result: { })
-		]
-		questlog[.tutorial]?.append(m)
-	}
-	
-	func addVermil()
-	{
-		var m:Mission!
+		// Radio
 		
-		m = Mission(id:0,name: "--")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Radio")
+		m.predicate = { radio.isInstalled == true }
 		m.quests = [
-			Quest(name:"Unlock at Usul", predicate:{ universe.usul.isKnown == true }, result: { })
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ m.predicate() }, result: { })
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 1")
+		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying == true }, result: {  }) ]
+		questlog[.discovery]?.append(m)
+		
+		// Map
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Map")
+		m.predicate = { map.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install map", location: universe.senni_station, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Map Tutorial 1")
+		m.quests = [ Quest(name:"Power map in battery panel", predicate:{ battery.isMapPowered() == true }, result: { }) ]
+		m.quests = [ Quest(name:"Route map to helmet", predicate:{ player.port.origin != nil && player.port.origin == map.port }, result: {  }) ]
+		questlog[.discovery]?.append(m)
+		
+		// Shield
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Shield")
+		m.predicate = { battery.shieldPort.isEnabled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install shield", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1")
+		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isShieldPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route shape to shield", predicate:{ shield.isActive == true }, result: { }) ]
+		questlog[.discovery]?.append(m)
 	}
-
-*/
 	
 	func refresh()
 	{

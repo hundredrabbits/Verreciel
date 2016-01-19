@@ -8,11 +8,7 @@ import SceneKit
 import Foundation
 
 class CoreCapsule: SCNNode
-{
-	var hull:Float = 100
-	var shield:Float = 100
-	var oxygen:Float = 100
-	
+{	
 	var at:CGPoint = universe.loiqe_spawn.at
 	
 	var direction:CGFloat! = 1
@@ -189,6 +185,8 @@ class CoreCapsule: SCNNode
 		// Widgets
 		radar.footer.addChildNode(map)
 		battery.footer.addChildNode(radio)
+		console.footer.addChildNode(shield)
+		mission.footer.addChildNode(enigma)
 	}
 	
 	// MARK: Docking -

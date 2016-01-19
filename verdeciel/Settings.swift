@@ -24,6 +24,8 @@ let progress = MonitorProgress()
 let complete = MonitorComplete()
 let radio = WidgetRadio()
 let map = WidgetMap()
+let shield = WidgetShield()
+let enigma = WidgetEnigma()
 
 // Generic
 var universe:CoreUniverse!

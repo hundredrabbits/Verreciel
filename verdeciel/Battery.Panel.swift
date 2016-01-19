@@ -134,6 +134,21 @@ class PanelBattery : MainPanel
 		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.refresh() }
 	}
 	
+	func isThrusterPowered() -> Bool
+	{
+		return false
+	}
+	
+	func isRadioPowered() -> Bool
+	{
+		return false
+	}
+	
+	func isMapPowered() -> Bool
+	{
+		return false
+	}
+	
 	func isShieldPowered() -> Bool
 	{
 		return false
