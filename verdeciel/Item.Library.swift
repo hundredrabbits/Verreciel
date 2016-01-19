@@ -50,9 +50,14 @@ class ItemLibrary
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
+	// Enigma
+	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
+	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
+	
 	// Harvest
 	let materia = Item(name: "materia", type: .currency, note:"a trading currency")
 	let alta = Item(name: "materia", type: .currency, note:"a trading currency")
 	let credits = Item(name: "credits", type: .currency, note:"a trading currency")
 	let ingot = Item(name: "credits", type: .currency, note:"a trading currency")
+	let uli = Item(name: "credits", type: .currency, note:"the trading currency")
 }

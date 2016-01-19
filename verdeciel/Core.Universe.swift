@@ -55,12 +55,14 @@ class CoreUniverse : SCNNode
 	var usul = locations.usul.star()
 	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
+	var usul_satellite = locations.usul.satellite()
 	
 	func addUsul()
 	{
 		addChildNode(usul)
 		addChildNode(usul_station)
 		addChildNode(usul_portal)
+		addChildNode(usul_satellite)
 	}
 	
 	// MARK: Valen -

@@ -168,6 +168,11 @@ class MissionLibrary
 		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying == true }, result: {  }) ]
 		questlog[.discovery]?.append(m)
 		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Radio Tutorial 2")
+		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route radio to radar", predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
+		questlog[.discovery]?.append(m)
+		
 		// Map
 		
 		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Map")
@@ -187,7 +192,7 @@ class MissionLibrary
 		// Shield
 		
 		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Shield")
-		m.predicate = { battery.shieldPort.isEnabled == true }
+		m.predicate = { shield.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
 			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
@@ -198,6 +203,22 @@ class MissionLibrary
 		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1")
 		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isShieldPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route shape to shield", predicate:{ shield.isActive == true }, result: { }) ]
+		questlog[.discovery]?.append(m)
+		
+		// Enigma
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Enigma")
+		m.predicate = { enigma.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.cypher1.name!)", location: universe.usul_satellite, predicate:{ cargo.contains(items.cypher1) }, result: {  }),
+			Quest(name:"Collect \(items.uli.name!)", predicate:{ cargo.contains("uli", type: .currency) }, result: { }),
+			Quest(name:"Install enigma", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Shield Tutorial 1")
+		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route cypher to shield", predicate:{ enigma.isActive == true }, result: { }) ]
 		questlog[.discovery]?.append(m)
 	}
 	

@@ -105,6 +105,11 @@ class Usul
 	{
 		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.ingot, installation:{ map.install() }, installationName:"map")
 	}
+	
+	func satellite() -> LocationSatellite
+	{
+		return LocationSatellite(name:"Satellite",system:.usul, at:CGPoint(x: offset.x, y: offset.y - 2), message:"[missing]", item:items.cypher1)
+	}
 }
 
 class Valen

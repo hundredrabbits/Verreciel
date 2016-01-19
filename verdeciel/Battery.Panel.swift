@@ -42,7 +42,7 @@ class PanelBattery : MainPanel
 		
 		// Cells
 		
-		let distance:Float = 0.4
+		let distance:Float = 0.3
 		
 		cellPort1 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align:.right)
 		cellPort1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
@@ -64,35 +64,35 @@ class PanelBattery : MainPanel
 		enigmaPort = SCNPort(host: self, input:Item.self)
 		enigmaPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		enigmaLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
-		enigmaLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		enigmaLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		enigmaPort.addChildNode(enigmaLabel)
 		mainNode.addChildNode(enigmaPort)
 		
 		thrusterPort = SCNPort(host: self, input:Item.self)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
-		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		thrusterLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		mainNode.addChildNode(thrusterPort)
 		
 		radioPort = SCNPort(host: self, input:Item.self)
 		radioPort.position = SCNVector3(x: distance, y: 0, z: 0)
 		radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
-		radioLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		radioLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		radioPort.addChildNode(radioLabel)
 		mainNode.addChildNode(radioPort)
 		
 		mapPort = SCNPort(host: self, input:Item.self)
 		mapPort.position = SCNVector3(x: distance, y:  -templates.lineSpacing, z: 0)
 		mapLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
-		mapLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		mapLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		mapPort.addChildNode(mapLabel)
 		mainNode.addChildNode(mapPort)
 		
 		shieldPort = SCNPort(host: self, input:Item.self)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
 		shieldLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		shieldLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		mainNode.addChildNode(shieldPort)
 		
@@ -107,11 +107,10 @@ class PanelBattery : MainPanel
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 		
-		// Start
 		installThruster()
 	}
 	
-	// MARK: Add Modules -
+	// MARK: Modules -
 	
 	func installEnigma()
 	{
@@ -148,21 +147,10 @@ class PanelBattery : MainPanel
 		if player != nil { player.lookAt(deg: 0) }
 	}
 	
-	// MARK: Flags -
 	
-	override func listen(event: Event)
+	func isEnigmaPowered() -> Bool
 	{
-		
-	}
-	
-	override func onConnect()
-	{
-		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.refresh() }
-	}
-	
-	override func onDisconnect()
-	{
-		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.refresh() }
+		return false
 	}
 	
 	func isThrusterPowered() -> Bool
@@ -183,6 +171,23 @@ class PanelBattery : MainPanel
 	func isShieldPowered() -> Bool
 	{
 		return false
+	}
+	
+	// MARK: Flags -
+	
+	override func listen(event: Event)
+	{
+		
+	}
+	
+	override func onConnect()
+	{
+		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.refresh() }
+	}
+	
+	override func onDisconnect()
+	{
+		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.refresh() }
 	}
 	
 	func hasCell(target:Event) -> Bool

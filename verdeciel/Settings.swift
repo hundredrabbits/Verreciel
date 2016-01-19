@@ -123,6 +123,7 @@ enum ItemTypes
 	case key
 	case record
 	case currency
+	case cypher
 	
 	// special
 	case drive
