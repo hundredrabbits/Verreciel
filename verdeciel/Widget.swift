@@ -7,11 +7,10 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Widget : SCNNode
+class Widget : Panel
 {
 	var label:SCNLabel!
 	var port:SCNPort!
-	var isInstalled:Bool = false
 	
 	override init()
 	{
@@ -32,12 +31,7 @@ class Widget : SCNNode
 		label.position = SCNVector3(0,-0.35,0)
 		port.addChildNode(label)
 		
-		addChildNode(port)
-	}
-	
-	func install()
-	{
-		port.enable()
+		addChildNode(root)
 	}
 
 	required init?(coder aDecoder: NSCoder)
