@@ -196,6 +196,16 @@ class Location : Event
 			self.opacity = 1
 			wire.opacity = 1
 		}
+		
+		// Stealth
+		if isStealth == true {
+			if radar.port.origin != nil && radar.port.origin == radio.port {
+				self.opacity = 0.5
+			}
+			else{
+				self.opacity = 0
+			}
+		}
 	}
 	
 	func connect(event:Event)

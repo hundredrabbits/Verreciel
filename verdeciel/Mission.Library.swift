@@ -83,6 +83,7 @@ class MissionLibrary
 			Quest(name:"Route Radio to Radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }),
 			Quest(name:"Collect portal fragment", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment1) }, result: { }),
 			Quest(name:"Find Alta recipe", location: universe.valen_beacon, predicate:{ universe.valen_beacon.isKnown == true }, result: { }),
+			Quest(name:"Locate stealth port", location: universe.loiqe_city, predicate:{ universe.loiqe_port.isKnown == true }, result: { }),
 			Quest(name:"Trade alta for fragment", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) }, result: { }),
 			Quest(name:"Combine fragments at horadric", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.senniPortalKey) }, result: { }),
 		]

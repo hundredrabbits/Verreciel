@@ -76,9 +76,8 @@ class Loiqe
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "Port", system:.loiqe, at: CGPoint(x: offset.x + 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2)
-	}
-	
+		return LocationTrade(name: "Port", system:.loiqe, at: CGPoint(x: offset.x + 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+	}	
 }
 
 class Usul
