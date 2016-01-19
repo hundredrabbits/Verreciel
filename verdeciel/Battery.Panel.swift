@@ -62,7 +62,7 @@ class PanelBattery : MainPanel
 		// Systems
 		
 		enigmaPort = SCNPort(host: self, input:Item.self)
-		enigmaPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
+		enigmaPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		enigmaLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		enigmaLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		enigmaPort.addChildNode(enigmaLabel)
@@ -83,7 +83,7 @@ class PanelBattery : MainPanel
 		mainNode.addChildNode(radioPort)
 		
 		mapPort = SCNPort(host: self, input:Item.self)
-		mapPort.position = SCNVector3(x: distance, y:  2 * templates.lineSpacing, z: 0)
+		mapPort.position = SCNVector3(x: distance, y:  -templates.lineSpacing, z: 0)
 		mapLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		mapLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		mapPort.addChildNode(mapLabel)
@@ -117,35 +117,35 @@ class PanelBattery : MainPanel
 	{
 		enigmaPort.enable()
 		enigmaLabel.update("enigma",color:white)
-		player.lookAt(deg: 0)
+		if player != nil { player.lookAt(deg: 0) }
 	}
 	
 	func installThruster()
 	{
 		thrusterPort.enable()
 		thrusterLabel.update("thruster",color:white)
-		player.lookAt(deg: 0)
+		if player != nil { player.lookAt(deg: 0) }
 	}
 	
 	func installRadio()
 	{
 		radioPort.enable()
 		radioLabel.update("radio",color:white)
-		player.lookAt(deg: 0)
+		if player != nil { player.lookAt(deg: 0) }
 	}
 	
 	func installMap()
 	{
 		mapPort.enable()
 		mapLabel.update("map",color:white)
-		player.lookAt(deg: 0)
+		if player != nil { player.lookAt(deg: 0) }
 	}
 	
 	func installShield()
 	{
 		shieldPort.enable()
 		shieldLabel.update("shield",color:white)
-		player.lookAt(deg: 0)
+		if player != nil { player.lookAt(deg: 0) }
 	}
 	
 	// MARK: Flags -
