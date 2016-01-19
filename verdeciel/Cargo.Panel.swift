@@ -104,7 +104,6 @@ class PanelCargo : MainPanel
 	
 	override func refresh()
 	{
-		print(port.event.content)
 		print("+ PANEL    | Cargo: \(port.event.content.count) items")
 		
 		// Update cargohold

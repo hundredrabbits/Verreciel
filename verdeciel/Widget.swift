@@ -28,8 +28,8 @@ class Widget : SCNNode
 		port.addChildNode(inputLabel)
 		port.addChildNode(outputLabel)
 		
-		label = SCNLabel(text:"", align:.right)
-		label.position = SCNVector3(-0.3,0,0)
+		label = SCNLabel(text:"", scale:0.075, align:.center)
+		label.position = SCNVector3(0,-0.35,0)
 		port.addChildNode(label)
 		
 		addChildNode(port)

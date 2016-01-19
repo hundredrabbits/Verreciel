@@ -60,20 +60,19 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:2, name: "Reach Valen")
+		m = Mission(id:3, name: "Reach Valen")
 		m.quests = [
 			Quest(name:"Warp to Valen system", location: universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }),
-			Quest(name:"Reach the bank", location: universe.valen_bank, predicate:{ universe.valen_bank.isKnown == true }, result: {  }),
 			Quest(name:"Collect the loiqe key", location: universe.valen_bank, predicate:{ cargo.contains(items.loiqePortalKey) }, result: { })
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:2, name: "Install Radio")
+		m = Mission(id:4, name: "Install Radio")
 		m.quests = [
-			Quest(name:"Reach Station", location: universe.valen_station, predicate:{ universe.valen_station.isKnown == true }, result: { }),
-			Quest(name:"Reach Harvest", location: universe.valen_harvest, predicate:{ universe.valen_harvest.isKnown == true }, result: { }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains(items.credits) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { }),
+			Quest(name:"Route \(items.record1.name!) to radio", predicate:{ radio.isPlaying == true }, result: { }),
 		]
 		questlog[.tutorial]?.append(m)
 		
@@ -83,9 +82,7 @@ class MissionLibrary
 		
 		
 		
-		
-		
-		m = Mission(id:3, name: "Extinguish the sun")
+		m = Mission(id:6, name: "Extinguish the sun")
 		m.quests = [
 			Quest(name:"Reach station", predicate:{ universe.valen_station.isKnown == true }, result: { }),
 			Quest(name:"Find credits", predicate:{ cargo.contains(items.credits.name!,type: items.credits.type) == true }, result: { }),
@@ -178,7 +175,6 @@ class MissionLibrary
 		if currentMission[active]?.isCompleted == true {
 			let nextMissionId = currentMission[active]!.id + 1
 			currentMission[active] = questlog[active]![nextMissionId]
-			print("\(nextMissionId) -> \(currentMission[active]?.name)")
 			mission.update()
 		}
 	}

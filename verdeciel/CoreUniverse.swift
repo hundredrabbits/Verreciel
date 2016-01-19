@@ -196,9 +196,10 @@ class CoreUniverse : SCNNode
 		falvet_toValen.connect(valen_portal)
 		falvet_toSenni.connect(senni_portal)
 		
-		valen_station.connect(valen_bank)
-		valen_bank.connect(valen_portal)
 		valen_satellite.connect(valen_bank)
+		valen_bank.connect(valen_portal)
+		valen_station.connect(valen_portal)
+		valen_harvest.connect(valen_station)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)
@@ -225,6 +226,8 @@ class CoreUniverse : SCNNode
 	override func _start()
 	{
 		valen_bank.port1.addEvent(items.loiqePortalKey)
+		valen_bank.port1.addEvent(items.record1)
+		
 		valen_bank.port2.addEvent(items.waste)
 		valen_bank.port3.addEvent(items.cell2)
 		

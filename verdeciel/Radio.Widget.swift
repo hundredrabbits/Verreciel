@@ -14,7 +14,6 @@ class WidgetRadio : Widget
 		super.init()
 		
 		name = "radio"
-		
 		label.update(name!)
 	}
 	
@@ -25,6 +24,7 @@ class WidgetRadio : Widget
 	
 	var time:NSTimer!
 	var seek:Int = 0
+	var isPlaying:Bool = false
 	
 	func playing()
 	{

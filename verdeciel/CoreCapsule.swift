@@ -16,6 +16,7 @@ class CoreCapsule: SCNNode
 	var at:CGPoint = universe.loiqe_spawn.at
 	
 	var direction:CGFloat! = 1
+	var system:Systems = .loiqe
 	var sector:sectors = .normal
 	
 	var isDocked:Bool = false
@@ -52,6 +53,8 @@ class CoreCapsule: SCNNode
 	{
 		docking()
 		warping()
+		
+		system = closestLocation().system // Todo: Remove from fixed update
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

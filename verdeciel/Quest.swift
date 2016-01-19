@@ -22,7 +22,7 @@ class Quest
 		self.predicate = predicate
 		self.result = result
 	}
-	
+
 	func validate()
 	{
 		if predicate() {
