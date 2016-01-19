@@ -9,19 +9,21 @@ import Foundation
 
 class PanelBattery : MainPanel
 {
-	var oxygenPort:SCNPort!
-	
-	var shieldPort:SCNPort!
-	var shieldLabel:SCNLabel!
-	
-	var cloakPort:SCNPort!
-	var thrusterPort:SCNPort!
-	var radioLabel:SCNLabel!
-	var radioPort:SCNPort!
-	
 	var cellPort1:SCNPortSlot!
 	var cellPort2:SCNPortSlot!
 	var cellPort3:SCNPortSlot!
+	
+	var enigmaLabel:SCNLabel!
+	var thrusterLabel:SCNLabel!
+	var radioLabel:SCNLabel!
+	var mapLabel:SCNLabel!
+	var shieldLabel:SCNLabel!
+	
+	var enigmaPort:SCNPort!
+	var thrusterPort:SCNPort!
+	var radioPort:SCNPort!
+	var mapPort:SCNPort!
+	var shieldPort:SCNPort!
 	
 	override init()
 	{
@@ -59,9 +61,16 @@ class PanelBattery : MainPanel
 		
 		// Systems
 		
+		enigmaPort = SCNPort(host: self, input:Item.self)
+		enigmaPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
+		enigmaLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
+		enigmaLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		enigmaPort.addChildNode(enigmaLabel)
+		mainNode.addChildNode(enigmaPort)
+		
 		thrusterPort = SCNPort(host: self, input:Item.self)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
-		let thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
+		thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		mainNode.addChildNode(thrusterPort)
@@ -73,31 +82,25 @@ class PanelBattery : MainPanel
 		radioPort.addChildNode(radioLabel)
 		mainNode.addChildNode(radioPort)
 		
-		oxygenPort = SCNPort(host: self, input:Item.self)
-		oxygenPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
-		let oxygenLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
-		oxygenLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
-		oxygenPort.addChildNode(oxygenLabel)
-		mainNode.addChildNode(oxygenPort)
+		mapPort = SCNPort(host: self, input:Item.self)
+		mapPort.position = SCNVector3(x: distance, y:  2 * templates.lineSpacing, z: 0)
+		mapLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
+		mapLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
+		mapPort.addChildNode(mapLabel)
+		mainNode.addChildNode(mapPort)
 		
 		shieldPort = SCNPort(host: self, input:Item.self)
-		shieldPort.position = SCNVector3(x: distance, y: -templates.lineSpacing, z: 0)
-		shieldLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
+		shieldPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
+		shieldLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
 		shieldPort.addChildNode(shieldLabel)
 		mainNode.addChildNode(shieldPort)
 		
-		cloakPort = SCNPort(host: self, input:Item.self)
-		cloakPort.position = SCNVector3(x: distance, y:  2 * templates.lineSpacing, z: 0)
-		let cloakLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
-		cloakLabel.position = SCNVector3(x: 0.2, y: 0, z: 0)
-		cloakPort.addChildNode(cloakLabel)
-		mainNode.addChildNode(cloakPort)
-		
-		cloakLabel.update("--", color: grey)
-		shieldLabel.update("--", color: grey)
+		enigmaLabel.update("--", color: grey)
+		thrusterLabel.update("--", color: grey)
 		radioLabel.update("--", color: grey)
-		oxygenLabel.update("--", color: grey)
+		mapLabel.update("--", color: grey)
+		shieldLabel.update("--", color: grey)
 		
 		port.input = Item.self
 		port.output = Event.self
@@ -105,10 +108,38 @@ class PanelBattery : MainPanel
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 		
 		// Start
-		thrusterPort.enable()
+		installThruster()
 	}
 	
 	// MARK: Add Modules -
+	
+	func installEnigma()
+	{
+		enigmaPort.enable()
+		enigmaLabel.update("enigma",color:white)
+		player.lookAt(deg: 0)
+	}
+	
+	func installThruster()
+	{
+		thrusterPort.enable()
+		thrusterLabel.update("thruster",color:white)
+		player.lookAt(deg: 0)
+	}
+	
+	func installRadio()
+	{
+		radioPort.enable()
+		radioLabel.update("radio",color:white)
+		player.lookAt(deg: 0)
+	}
+	
+	func installMap()
+	{
+		mapPort.enable()
+		mapLabel.update("map",color:white)
+		player.lookAt(deg: 0)
+	}
 	
 	func installShield()
 	{

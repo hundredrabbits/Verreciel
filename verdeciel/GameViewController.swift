@@ -92,6 +92,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 		
+		battery.installMap()
+		battery.installEnigma()
+		battery.installShield()
+		battery.installRadio()
+		
 		cargo.addItems([items.valenPortalKey,items.materia])
 		
 		battery.cellPort1.connect(battery.thrusterPort)
