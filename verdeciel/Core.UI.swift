@@ -149,7 +149,7 @@ class CoreUI: SCNNode
 	}
 	
 	func addMessage(message:String, color:UIColor = white)
-	{
+	{		
 		if self.message == message { return }
 		
 		self.message = message

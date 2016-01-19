@@ -152,12 +152,45 @@ class PanelMission : MainPanel
 		else if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
 		
-		let currentMission = quests.currentMission[.discovery]!
-		quest1Label.update(quests.currentMission[.discovery]!.name)
-		if currentMission.currentQuest != nil { quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name) }
-		let questCount = quests.questlog[.discovery]!.count
-		quest1Completion.update("\(currentMission.id)/\(questCount)")
-		quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
+		var currentMission:Mission!
+		var questCount:Int!
+		
+		currentMission = quests.currentMission[.discovery]!
+		questCount = quests.questlog[.discovery]!.count
+		if currentMission.currentQuest != nil {
+			quest1Label.update(quests.currentMission[.discovery]!.name)
+			quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name)
+			quest1Completion.update("\(currentMission.id)/\(questCount)")
+			quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
+		}
+		
+		currentMission = quests.currentMission[.capsule]!
+		questCount = quests.questlog[.capsule]!.count
+		if currentMission.currentQuest != nil {
+			quest2Label.update(quests.currentMission[.capsule]!.name)
+			quest2Details.update(quests.currentMission[.capsule]!.currentQuest!.name)
+			quest2Completion.update("\(currentMission.id)/\(questCount)")
+			quest2Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
+		}
+		
+		currentMission = quests.currentMission[.exploration]!
+		questCount = quests.questlog[.exploration]!.count
+		if currentMission.currentQuest != nil {
+			quest3Label.update(quests.currentMission[.exploration]!.name)
+			quest3Details.update(quests.currentMission[.exploration]!.currentQuest!.name)
+			quest3Completion.update("\(currentMission.id)/\(questCount)")
+			quest3Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
+		}
+		
+		// Prompt Manager
+		
+		let currentQuest = quests.currentMission[quests.active]!.currentQuest
+		
+		if currentQuest != nil {
+			if currentQuest.location != nil && capsule.dock != currentQuest.location && capsule.system != currentQuest.location.system { ui.addMessage("Reach the \(currentQuest.location.system) system", color:cyan) }
+			else if currentQuest.location != nil && capsule.dock != currentQuest.location { ui.addMessage("Reach \(currentQuest.location.system) \(currentQuest.location.name!)", color:red) }
+			else { ui.addMessage(currentQuest.name) }
+		}
 	}
 	
 	// MARK: Ports -

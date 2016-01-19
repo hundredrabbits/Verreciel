@@ -27,6 +27,31 @@ class CoreUniverse : SCNNode
 		connectPortals()
 	}
 	
+	override func _start()
+	{
+		unlock(.loiqe)
+		
+		valen_bank.port1.addEvent(items.loiqePortalKey)
+		valen_bank.port1.addEvent(items.record1)
+		
+		valen_bank.port2.addEvent(items.waste)
+		valen_bank.port3.addEvent(items.cell2)
+		
+		// Setup Twin Stars
+		
+		loiqe.twin = cyanine_loiqe
+		valen.twin = cyanine_valen
+		venic.twin = cyanine_venic
+		senni.twin = cyanine_senni
+		usul.twin = cyanine_usul
+		
+		cyanine_loiqe.twin = universe.loiqe
+		cyanine_valen.twin = universe.valen
+		cyanine_venic.twin = universe.venic
+		cyanine_senni.twin = universe.senni
+		cyanine_usul.twin = universe.usul
+	}
+	
 	// MARK: Loiqe -
 	
 	var loiqe = locations.loiqe.star()
@@ -229,29 +254,6 @@ class CoreUniverse : SCNNode
 			print("  > \(location.name!)")
 			location.isAccessible = true
 		}
-	}
-	
-	override func _start()
-	{
-		valen_bank.port1.addEvent(items.loiqePortalKey)
-		valen_bank.port1.addEvent(items.record1)
-		
-		valen_bank.port2.addEvent(items.waste)
-		valen_bank.port3.addEvent(items.cell2)
-		
-		// Setup Twin Stars
-		
-		loiqe.twin = cyanine_loiqe
-		valen.twin = cyanine_valen
-		venic.twin = cyanine_venic
-		senni.twin = cyanine_senni
-		usul.twin = cyanine_usul
-		
-		cyanine_loiqe.twin = universe.loiqe
-		cyanine_valen.twin = universe.valen
-		cyanine_venic.twin = universe.venic
-		cyanine_senni.twin = universe.senni
-		cyanine_usul.twin = universe.usul
 	}
 	
 	// Default

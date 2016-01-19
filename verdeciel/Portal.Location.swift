@@ -158,6 +158,7 @@ class LocationPortal : Location
 	override func onDock()
 	{
 		super.onDock()
+		
 		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true || rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
 			mesh.replace(structures.portal(color:cyan))
 		}

@@ -31,9 +31,6 @@ class Mission
 			quest.validate()
 			if quest.isCompleted == false {
 				currentQuest = quest
-				if currentQuest.location != nil && capsule.dock != currentQuest.location && capsule.system != currentQuest.location.system { ui.addMessage("Reach the \(currentQuest.location.system) system", color:cyan) }
-				else if currentQuest.location != nil && capsule.dock != currentQuest.location { ui.addMessage("Reach \(currentQuest.location.system) \(currentQuest.location.name!)", color:red) }
-				else{ ui.addMessage(currentQuest.name) }
 				mission.refresh()
 				return
 			}

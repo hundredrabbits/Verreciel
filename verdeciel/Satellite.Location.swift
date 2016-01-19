@@ -54,6 +54,7 @@ class LocationSatellite : Location
 	
 	override func onDock()
 	{
+		super.onDock()
 		port.refresh()
 	}
 	

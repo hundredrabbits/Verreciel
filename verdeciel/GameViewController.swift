@@ -80,29 +80,30 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.loiqe_city)
-		universe.unlock(.loiqe)
-		universe.unlock(.valen)
+		capsule.start(universe.loiqe_spawn)
 		
-		radio.install()
-		
-		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		
-		battery.installMap()
-		battery.installEnigma()
-		battery.installShield()
-		battery.installRadio()
-		
-		cargo.addItems([items.valenPortalKey,items.materia])
-		
-		battery.cellPort1.connect(battery.thrusterPort)
 		battery.cellPort1.addEvent(items.cell1)
+//		battery.cellPort1.connect(battery.thrusterPort)
 		
-		quests.refresh()
+//		universe.unlock(.valen)
+//		
+//		radio.install()
+//		
+//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//		
+//		battery.installMap()
+//		battery.installEnigma()
+//		battery.installShield()
+//		battery.installRadio()
+//		
+//		cargo.addItems([items.valenPortalKey,items.materia])
+//		
+//		
+//		quests.refresh()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

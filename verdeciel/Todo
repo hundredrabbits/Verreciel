@@ -9,6 +9,7 @@
 - Interface sounds
 - Fix stars
 - Shield Visuals
+- Horadric combination animation
 
 > Playthrough
 - Save / Load Mechanics
@@ -29,6 +30,9 @@
 - Add docking button/trigger to thruster
 - Stars display different icon is unreachable
 - trade panel default item name grey
+- Reflect active quest change in UI
+- Hide capsule quests and exploration quests on start
+- Make Horadric slot Ports
 
 > Venic Flow
 - Get cell3(satellite), create array1
