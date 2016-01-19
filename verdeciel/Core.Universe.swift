@@ -56,7 +56,7 @@ class CoreUniverse : SCNNode
 	
 	var loiqe = locations.loiqe.star()
 	var loiqe_spawn = locations.loiqe.spawn()
-	var loiqe_landing = locations.loiqe.landing()
+	var loiqe_harvest = locations.loiqe.harvest()
 	var loiqe_city = locations.loiqe.city()
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
@@ -67,7 +67,7 @@ class CoreUniverse : SCNNode
 	{
 		addChildNode(loiqe)
 		addChildNode(loiqe_spawn)
-		addChildNode(loiqe_landing)
+		addChildNode(loiqe_harvest)
 		addChildNode(loiqe_city)
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)

@@ -23,6 +23,7 @@ class LocationLibrary
 
 class Loiqe
 {
+	var system:Systems = .venic
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -32,49 +33,49 @@ class Loiqe
 	
 	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Loiqe",system:.loiqe)
+		let location = LocationStar(name:"Loiqe",system:system)
 		location.at = offset
 		return location
 	}
 	
 	func spawn() -> LocationSpawn
 	{
-		return LocationSpawn(name:"Awakening",system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2.75))
+		return LocationSpawn(name:"Awakening",system:system, at:CGPoint(x: offset.x, y: offset.y - 2.75))
 	}
 	
-	func landing() -> LocationSatellite
+	func harvest() -> LocationHarvest
 	{
-		return LocationSatellite(name: "Landing", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y - 2), message:"Missing text$will add it soon$soon..", item:items.materia)
+		return LocationHarvest(name: "Harvest", system: system, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: "Materia", type: .currency, note: "[Missing]", isQuest: false))
 	}
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "City", system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
+		return LocationTrade(name: "City", system:system, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
 	{
-		return LocationHoradric(name:"Horadric",system:.loiqe, at: CGPoint(x: offset.x - 1, y: offset.y))
+		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x - 1, y: offset.y))
 	}
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal", system:.loiqe, at:CGPoint(x: offset.x, y: offset.y + 1), key: nil, rightName: "Valen", leftName:"Usul")
+		return LocationPortal(name: "portal", system:system, at:CGPoint(x: offset.x, y: offset.y + 1), key: nil, rightName: "Valen", leftName:"Usul")
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite", system:.loiqe, at: CGPoint(x: offset.x - 2, y: offset.y), message:"Missing text here $will add soon.", item: items.valenPortalFragment2)
+		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"Missing text here $will add soon.", item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
 	{
-		return LocationBeacon(name:"loiqe beacon",system:.loiqe, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
+		return LocationBeacon(name:"loiqe beacon",system:system, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
 	}
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "Port", system:.loiqe, at: CGPoint(x: offset.x + 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x + 2, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
 	}
 }
 
