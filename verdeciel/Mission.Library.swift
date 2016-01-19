@@ -42,7 +42,7 @@ class MissionLibrary
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_harvest.isKnown == true }, result: { cargo.install() }),
 			Quest(name:"Route materia to cargo", predicate:{ cargo.containsLike(items.materia) }, result: { console.install() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
-			Quest(name:"Undock from Landing", predicate:{ capsule.dock != universe.loiqe_harvest && universe.loiqe_harvest.isKnown == true }, result: { radar.install() }),
+			Quest(name:"Undock from Harvest", predicate:{ capsule.dock != universe.loiqe_harvest && universe.loiqe_harvest.isKnown == true }, result: { radar.install() }),
 			Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown == true }, result: { })
 		]
 		questlog[c]?.append(m)

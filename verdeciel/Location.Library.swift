@@ -23,7 +23,7 @@ class LocationLibrary
 
 class Loiqe
 {
-	var system:Systems = .venic
+	var system:Systems = .loiqe
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)

@@ -5,13 +5,12 @@ import Foundation
 
 class LocationHoradric : Location
 {
-	var inPort1:SCNPort!
-	var inPort2:SCNPort!
-	var inPort3:SCNPort!
-	var inPort4:SCNPort!
+	var inPort1:SCNPortSlot!
+	var inPort2:SCNPortSlot!
+	var inPort3:SCNPortSlot!
+	var inPort4:SCNPortSlot!
 	
-	var outPort:SCNPort!
-	var outLabel:SCNLabel!
+	var outPort:SCNPortSlot!
 	
 	override init(name:String = "", system:Systems, at: CGPoint = CGPoint())
 	{
@@ -29,12 +28,22 @@ class LocationHoradric : Location
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
-		let distance:CGFloat = 0.7
+		let distance:CGFloat = 0.5
 		
-		inPort1 = SCNPort(host: self, input: Item.self, output: Item.self)
-		inPort2 = SCNPort(host: self, input: Item.self, output: Item.self)
-		inPort3 = SCNPort(host: self, input: Item.self, output: Item.self)
-		inPort4 = SCNPort(host: self, input: Item.self, output: Item.self)
+		inPort1 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .center, hasDetails: false, placeholder: "-")
+		inPort2 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .center, hasDetails: false, placeholder: "-")
+		inPort3 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .left, hasDetails: false, placeholder: "-")
+		inPort4 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .right, hasDetails: false, placeholder: "-")
+		
+		inPort1.label.position = SCNVector3(0,0.4,0)
+		inPort2.label.position = SCNVector3(0,-0.4,0)
+		inPort3.label.position = SCNVector3(0.4,0,0)
+		inPort4.label.position = SCNVector3(-0.4,0,0)
+		
+		inPort1.label.activeScale = 0.08
+		inPort2.label.activeScale = 0.08
+		inPort3.label.activeScale = 0.08
+		inPort4.label.activeScale = 0.08
 		
 		inPort1.enable()
 		inPort2.enable()
@@ -46,7 +55,9 @@ class LocationHoradric : Location
 		inPort3.position = SCNVector3(distance,0,0)
 		inPort4.position = SCNVector3(-distance,0,0)
 		
-		outPort = SCNPort(host: self, input: Item.self, output: Event.self)
+		outPort = SCNPortSlot(host: self, input: Item.self, output: Event.self, placeholder: "")
+		outPort.label.position = SCNVector3(0.5,0.5,0)
+		outPort.label.activeScale = 0.08
 		
 		newPanel.addChildNode(inPort1)
 		newPanel.addChildNode(inPort2)
@@ -58,10 +69,6 @@ class LocationHoradric : Location
 		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.125,0), nodeB: SCNVector3(0,-distance + 0.125,0), color: grey))
 		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0.125,0,0), nodeB: SCNVector3(distance - 0.125,0,0), color: grey))
 		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(-0.125,0,0), nodeB: SCNVector3(-distance + 0.125,0,0), color: grey))
-		
-		label = SCNLabel(text: "--", scale: 0.1, align: alignment.center, color: grey)
-		label.position = SCNVector3(0,1.2,0)
-		newPanel.addChildNode(label)
 		
 		return newPanel
 	}
@@ -80,31 +87,46 @@ class LocationHoradric : Location
 	{
 		var ingredients:Array<Event> = []
 		
-		if inPort1.origin != nil && inPort1.origin.event != nil { ingredients.append(inPort1.origin.event) }
-		if inPort2.origin != nil && inPort2.origin.event != nil { ingredients.append(inPort2.origin.event) }
-		if inPort3.origin != nil && inPort3.origin.event != nil { ingredients.append(inPort3.origin.event) }
-		if inPort4.origin != nil && inPort4.origin.event != nil { ingredients.append(inPort4.origin.event) }
-		
-		if ingredients.count < 2 { label.update("add ingredient", color: grey) ; return }
+		if inPort1.event != nil { ingredients.append(inPort1.event) }
+		if inPort2.event != nil { ingredients.append(inPort2.event) }
+		if inPort3.event != nil { ingredients.append(inPort3.event) }
+		if inPort4.event != nil { ingredients.append(inPort4.event) }
 		
 		// Check for recipies
-		
-		var activeRecipe:Recipe!
-		
 		for recipe in recipes.horadric {
-			if recipe.isValid(ingredients) == true { activeRecipe = recipe }
+			if recipe.isValid(ingredients) == true { combine(recipe) ; break }
 		}
 		
-		if activeRecipe != nil {
-			label.update(activeRecipe.name, color: white)
-			outPort.event = activeRecipe.result
+		// Delivery mode
+		if outPort.event != nil {
+			inPort1.disable()
+			inPort2.disable()
+			inPort3.disable()
+			inPort4.disable()
 			outPort.enable()
 		}
+		// Awaiting mode
 		else{
-			label.update("unknown receipe", color: red)
-			outPort.event = nil
+			inPort1.enable()
+			inPort2.enable()
+			inPort3.enable()
+			inPort4.enable()
 			outPort.disable()
 		}
+	}
+	
+	// MARK: Combinatrix
+
+	
+	func combine(recipe:Recipe)
+	{
+		inPort1.removeEvent()
+		inPort2.removeEvent()
+		inPort3.removeEvent()
+		inPort4.removeEvent()
+		
+		outPort.addEvent(recipe.result)
+		outPort.enable()
 	}
 
 	func iconUpdate()
@@ -115,19 +137,6 @@ class LocationHoradric : Location
 		else {
 			icon.replace(icons.trade(white))
 		}
-	}
-	
-	override func bang()
-	{
-		if outPort.connection == nil { print("No connection") ; return }
-		if outPort.event == nil { return }
-		
-		if inPort1.origin != nil { inPort1.addEvent(inPort1.syphon()) ; inPort1.removeEvent() }
-		if inPort2.origin != nil { inPort2.addEvent(inPort2.syphon()) ; inPort2.removeEvent() }
-		if inPort3.origin != nil { inPort3.addEvent(inPort3.syphon()) ; inPort3.removeEvent() }
-		if inPort4.origin != nil { inPort4.addEvent(inPort4.syphon()) ; inPort4.removeEvent() }
-		
-		outPort.connection.host.listen(outPort.event)
 	}
 	
 	// MARK: Mesh -

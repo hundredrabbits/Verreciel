@@ -80,11 +80,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.loiqe_spawn)
+		capsule.start(universe.loiqe_horadric)
 		
 		battery.cellPort1.addEvent(items.cell1)
 		
-		
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		cargo.addItems([items.valenPortalFragment1, items.valenPortalFragment2])
 		
 //		battery.cellPort1.connect(battery.thrusterPort)
 		
@@ -92,7 +93,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 //		
 //		radio.install()
 //		
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+//
 //		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 //		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 //		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()

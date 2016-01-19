@@ -56,7 +56,7 @@ class SCNPortSlot : SCNPort
 			details.update(event.note)
 		}
 		else{
-			label.update("Empty")
+			label.update(placeholder)
 			details.update("--")
 		}
 		
@@ -65,6 +65,12 @@ class SCNPortSlot : SCNPort
 		else if requirement != nil && event != nil && requirement != event { label.update(red) }
 		else if event != nil { label.update(white) }
 		else{ label.update(grey) }
+	}
+	
+	override func removeEvent()
+	{
+		super.removeEvent()
+		refresh()
 	}
 	
 	override func onConnect()

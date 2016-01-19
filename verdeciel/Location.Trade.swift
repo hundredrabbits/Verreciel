@@ -71,7 +71,7 @@ class LocationTrade : Location
 	
 	func refresh()
 	{
-		if wantPort.event != nil && wantPort.event == wantPort.requirement {
+		if wantPort.event != nil && wantPort.event.name == wantPort.requirement.name {
 			givePort.enable()
 		}
 		else{
