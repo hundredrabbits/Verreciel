@@ -17,6 +17,7 @@ class Location : Event
 	var inSight:Bool = false
 	
 	var isAccessible:Bool = false
+	var isStealth:Bool = false
 	
 	var isTargetted:Bool = false
 	var isKnown:Bool = false

@@ -73,6 +73,12 @@ class Loiqe
 		location.at = CGPoint(x: offset.x, y: offset.y - 3)
 		return location
 	}
+	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "Port", system:.loiqe, at: CGPoint(x: offset.x + 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2)
+	}
+	
 }
 
 class Usul
@@ -144,7 +150,12 @@ class Valen
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment2)
+		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment2)
+	}
+	
+	func beacon() -> LocationBeacon
+	{
+		return LocationBeacon(name: "beacon", system: .venic, at:CGPoint(x: offset.x + 1, y: offset.y), message: "Combine 2 credits$create 1 alta")
 	}
 }
 

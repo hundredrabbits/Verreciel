@@ -188,7 +188,7 @@ class CoreCapsule: SCNNode
 		
 		// Widgets
 		radar.footer.addChildNode(map)
-		console.footer.addChildNode(radio)
+		battery.footer.addChildNode(radio)
 	}
 	
 	// MARK: Docking -

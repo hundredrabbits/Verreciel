@@ -36,6 +36,7 @@ class CoreUniverse : SCNNode
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
+	var loiqe_port = locations.loiqe.port()
 	
 	func addLoiqe()
 	{
@@ -46,6 +47,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)
 		addChildNode(loiqe_satellite)
+		addChildNode(loiqe_port)
 	}
 	
 	// MARK: Usul -
@@ -70,6 +72,7 @@ class CoreUniverse : SCNNode
 	var valen_satellite = locations.valen.satellite()
 	var valen_harvest = locations.valen.harvest()
 	var valen_port = locations.valen.port()
+	var valen_beacon = locations.valen.beacon()
 	
 	func addValen()
 	{
@@ -80,6 +83,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_satellite)
 		addChildNode(valen_harvest)
 		addChildNode(valen_port)
+		addChildNode(valen_beacon)
 	}
 	
 	// MARK: Venic -

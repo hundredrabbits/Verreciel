@@ -8,8 +8,6 @@ class LocationTrade : Location
 	var wantPort:SCNPortSlot!
 	var givePort:SCNPortSlot!
 	
-	var unlocked:Bool = false
-	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event)
 	{
 		super.init(name: name,system:system, at: at)

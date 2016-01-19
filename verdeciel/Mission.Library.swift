@@ -43,7 +43,7 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:1, name: "A Portal Key")
+		m = Mission(id:1, name: "Valen Portal Key")
 		m.quests = [
 			Quest(name:"Trade materia for fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
 			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
@@ -67,7 +67,8 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		m = Mission(id:4, name: "Install Radio")
+		m = Mission(id:4, name: "Radio Lesson")
+		m.predicate = { radio.isPlaying == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
 			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
@@ -76,11 +77,25 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
+		m = Mission(id:5, name: "Senni Portal Key")
+		m.predicate = { cargo.contains(items.senniPortalKey) == true }
+		m.quests = [
+			Quest(name:"Route Radio to Radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }),
+			Quest(name:"Collect portal fragment", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment1) }, result: { }),
+			Quest(name:"Find Alta recipe", location: universe.valen_beacon, predicate:{ universe.valen_beacon.isKnown == true }, result: { }),
+			Quest(name:"Trade alta for fragment", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) }, result: { }),
+			Quest(name:"Combine fragments at horadric", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.senniPortalKey) }, result: { }),
+		]
+		questlog[.tutorial]?.append(m)
 		
 		
 		
 		
 		
+		
+		
+		
+		/*
 		
 		m = Mission(id:6, name: "Extinguish the sun")
 		m.quests = [
@@ -93,8 +108,6 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 		
-		/*
-		
 		missionPredicate = (cargo.contains(items.waste) == false && hatch.isInstalled == true )
 		
 		questlog[.tutorial]?.append(["The hatch" :
@@ -106,28 +119,6 @@ class MissionLibrary
 				Quest(name:"Jetison Waste", predicate:{ missionPredicate || cargo.contains(items.waste) == false }, result: { })
 			]
 		])
-		
-		questlog[.tutorial]?.append(["Lost record" :
-			[
-				Quest(name:"Reach satellite", predicate:{ universe.valen_satellite.isKnown == true }, result: { }),
-				Quest(name:"Collect record", predicate:{ cargo.contains(items.record1) }, result: { radio.install() }),
-				Quest(name:"Route record to radio", predicate:{ radio.port.isReceiving(items.record1) }, result: { }),
-			]
-		])
-		
-		
-		
-		questlog[.tutorial]?.append(["Return to Loiqe" :
-			[
-				Quest(name:"Visit the bank", predicate:{ universe.valen_bank.isKnown == true }, result: { }),
-				Quest(name:"Collect Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) }, result: { })
-			]
-		])
-		
-		
-//				Quest(name:"Collect cell at bank", predicate:{ cargo.contains(items.cell2) }, result: { }),
-//		Quest(name:"Route cell to battery", predicate:{ battery.hasCell(items.cell2) }, result: { })
-		
 		
 		questlog[.tutorial]?.append(["Venic" :
 			[

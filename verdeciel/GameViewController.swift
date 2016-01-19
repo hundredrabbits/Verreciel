@@ -80,10 +80,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.valen_bank)
+		capsule.start(universe.loiqe_city)
 		universe.unlock(.loiqe)
 		universe.unlock(.valen)
 		
+		radio.install()
+		
+		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
 		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
 		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
 		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
