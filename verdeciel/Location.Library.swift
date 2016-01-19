@@ -77,7 +77,7 @@ class Loiqe
 	func port() -> LocationTrade
 	{
 		return LocationTrade(name: "Port", system:.loiqe, at: CGPoint(x: offset.x + 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
-	}	
+	}
 }
 
 class Usul
@@ -96,15 +96,14 @@ class Usul
 		return location
 	}
 	
-	func city() -> Location
-	{
-		let location = Location(name:"Missing",system: .usul, at:CGPoint(x: offset.x, y: offset.y - 1))
-		return location
-	}
-	
 	func portal() -> LocationPortal
 	{
 		return LocationPortal(name: "portal",system:.usul, at:CGPoint(x: offset.x + 1, y: offset.y), key: items.usulPortalKey, rightName: "Loiqe", leftName:"Senni")
+	}
+	
+	func station() -> LocationStation
+	{
+		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.ingot, installation:{ map.install() }, installationName:"map")
 	}
 }
 

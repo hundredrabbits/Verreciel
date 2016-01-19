@@ -86,11 +86,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		radio.install()
 		
-		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
-		quests.currentMission[Chapters.tutorial]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 		
 		cargo.addItems([items.valenPortalKey,items.materia])
 		

@@ -136,9 +136,9 @@ class PanelMission : MainPanel
 		if id == 3 { selector.position = SCNVector3(selector.position.x,quest3.position.y,0) }
 		
 		SCNTransaction.setCompletionBlock({
-			if id == 1 { quests.setActive(Chapters.tutorial) ; self.quest1Details.update(white) }
-			if id == 2 { quests.setActive(Chapters.cyanine) ; self.quest2Details.update(white) }
-			if id == 3 { quests.setActive(Chapters.vermil) ; self.quest3Details.update(white) }
+			if id == 1 { quests.setActive(Chapters.discovery) ; self.quest1Details.update(white) }
+			if id == 2 { quests.setActive(Chapters.capsule) ; self.quest2Details.update(white) }
+			if id == 3 { quests.setActive(Chapters.narative) ; self.quest3Details.update(white) }
 		})
 		SCNTransaction.commit()
 		
@@ -152,10 +152,10 @@ class PanelMission : MainPanel
 		else if capsule.dock.isComplete == true { label.update(cyan) }
 		else{ label.update(red) }
 		
-		let currentMission = quests.currentMission[.tutorial]!
-		quest1Label.update(quests.currentMission[.tutorial]!.name)
-		if currentMission.currentQuest != nil { quest1Details.update(quests.currentMission[.tutorial]!.currentQuest!.name) }
-		let questCount = quests.questlog[.tutorial]!.count
+		let currentMission = quests.currentMission[.discovery]!
+		quest1Label.update(quests.currentMission[.discovery]!.name)
+		if currentMission.currentQuest != nil { quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name) }
+		let questCount = quests.questlog[.discovery]!.count
 		quest1Completion.update("\(currentMission.id)/\(questCount)")
 		quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 	}

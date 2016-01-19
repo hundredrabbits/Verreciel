@@ -9,29 +9,63 @@ import Foundation
 
 class MissionLibrary
 {
-	var active:Chapters = Chapters.tutorial
+	var active:Chapters = Chapters.discovery
 	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array]()
 	var currentMission:Dictionary<Chapters,Mission> = [Chapters:Mission]()
 	
 	init()
 	{
-		questlog[Chapters.tutorial] = []
-		questlog[Chapters.cyanine] = []
-		questlog[Chapters.vermil] = []
-		addTutorial()
-		addCyanine()
-		addVermil()
+		questlog[Chapters.discovery] = []
+		questlog[Chapters.capsule] = []
+		questlog[Chapters.narative] = []
 		
-		currentMission[.tutorial] = questlog[.tutorial]?.first
-		currentMission[.cyanine] = questlog[.tutorial]?.first
-		currentMission[.vermil] = questlog[.tutorial]?.first
+		create_capsuleMissions()
+		create_discoveryMissions()
+		
+		currentMission[.discovery] = questlog[.discovery]?.first
+		currentMission[.capsule] = questlog[.capsule]?.first
+		currentMission[.narative] = questlog[.narative]?.first
 	}
 	
-	func addTutorial()
+	func create_capsuleMissions()
 	{
 		var m:Mission!
 		
-		m = Mission(id:0, name: "Flight Lesson")
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install radio")
+		m.predicate = { radio.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Map")
+		m.predicate = { map.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install map", location: universe.senni_station, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[.discovery]?.append(m)
+		
+		m = Mission(id:(questlog[.capsule]?.count)!, name: "Install Shield")
+		m.predicate = { battery.shieldPort.isEnabled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
+			Quest(name:"Install shield", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
+		]
+		questlog[.discovery]?.append(m)
+	}
+	
+	func create_discoveryMissions()
+	{
+		var m:Mission!
+		
+		// Loiqe
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Flight Lesson")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { mission.install() }),
@@ -41,43 +75,34 @@ class MissionLibrary
 			Quest(name:"Undock from Landing", predicate:{ capsule.dock != universe.loiqe_landing && universe.loiqe_landing.isKnown == true }, result: { radar.install() }),
 			Quest(name:"Dock at city", predicate:{ universe.loiqe_city.isKnown == true }, result: { })
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:1, name: "Valen Portal Key")
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Valen Portal Key")
 		m.quests = [
 			Quest(name:"Trade materia for fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
 			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
 			Quest(name:"Collect second fragment", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }),
 			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric,  predicate:{ (cargo.contains(items.valenPortalKey) == true) }, result: { })
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:2, name: "Portal Lesson")
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Portal Lesson")
 		m.quests = [
 			Quest(name:"Unlock portal", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: {  }),
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:3, name: "Reach Valen")
+		// Valen
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Reach Valen")
 		m.quests = [
-			Quest(name:"Warp to Valen system", location: universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) }),
-			Quest(name:"Collect the loiqe key", location: universe.valen_bank, predicate:{ cargo.contains(items.loiqePortalKey) }, result: { })
+			Quest(name:"Warp to Valen system", location: universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) })
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
 		
-		m = Mission(id:4, name: "Radio Lesson")
-		m.predicate = { radio.isPlaying == true }
-		m.quests = [
-			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.contains("credits", type: .currency) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { }),
-			Quest(name:"Route \(items.record1.name!) to radio", predicate:{ radio.isPlaying == true }, result: { }),
-		]
-		questlog[.tutorial]?.append(m)
-		
-		m = Mission(id:5, name: "Senni Portal Key")
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Senni Portal Key")
 		m.predicate = { cargo.contains(items.senniPortalKey) == true }
 		m.quests = [
 			Quest(name:"Route Radio to Radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }),
@@ -87,7 +112,23 @@ class MissionLibrary
 			Quest(name:"Trade alta for fragment", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) }, result: { }),
 			Quest(name:"Combine fragments at horadric", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.senniPortalKey) }, result: { }),
 		]
-		questlog[.tutorial]?.append(m)
+		questlog[.discovery]?.append(m)
+		
+		// Senni
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Reach Senni")
+		m.quests = [
+			Quest(name:"Warp to Senni system", location: universe.valen_portal, predicate:{ universe.senni_portal.isKnown == true }, result: { universe.unlock(.senni) })
+		]
+		questlog[.discovery]?.append(m)
+		
+		// Usul
+		
+		m = Mission(id:(questlog[.discovery]?.count)!, name: "Reach Usul")
+		m.quests = [
+			Quest(name:"Warp to Usul system", location: universe.senni_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { universe.unlock(.usul) })
+		]
+		questlog[.discovery]?.append(m)
 		
 		
 		
@@ -139,6 +180,8 @@ class MissionLibrary
 */
 	}
 	
+	/*
+	
 	func addCyanine()
 	{
 		var m:Mission!
@@ -160,6 +203,8 @@ class MissionLibrary
 		]
 		questlog[.tutorial]?.append(m)
 	}
+
+*/
 	
 	func refresh()
 	{

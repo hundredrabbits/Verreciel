@@ -53,13 +53,13 @@ class CoreUniverse : SCNNode
 	// MARK: Usul -
 	
 	var usul = locations.usul.star()
-	var usul_city = locations.usul.city()
+	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
 	
 	func addUsul()
 	{
 		addChildNode(usul)
-		addChildNode(usul_city)
+		addChildNode(usul_station)
 		addChildNode(usul_portal)
 	}
 	

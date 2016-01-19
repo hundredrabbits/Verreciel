@@ -87,9 +87,9 @@ enum Systems
 
 enum Chapters
 {
-	case tutorial
-	case cyanine
-	case vermil
+	case discovery
+	case capsule
+	case narative
 }
 
 enum LocationTypes
