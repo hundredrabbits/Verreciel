@@ -19,6 +19,11 @@ class WidgetShield : Widget
 		label.update(name!)
 	}
 	
+	override func onInstallationComplete()
+	{
+		battery.installShield()
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

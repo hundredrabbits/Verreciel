@@ -9,6 +9,10 @@ import Foundation
 
 class WidgetRadio : Widget
 {
+	var isPlaying:Bool = false
+	var time:NSTimer!
+	var seek:Int = 0
+	
 	override init()
 	{
 		super.init()
@@ -22,15 +26,16 @@ class WidgetRadio : Widget
 		playing()
 	}
 	
-	var time:NSTimer!
-	var seek:Int = 0
-	var isPlaying:Bool = false
-	
 	func playing()
 	{
 		label.update("0:0\(seek)", color:red)
 		time = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("playing"), userInfo: nil, repeats: false)
 		seek += 1
+	}
+	
+	override func onInstallationComplete()
+	{
+		battery.installRadio()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

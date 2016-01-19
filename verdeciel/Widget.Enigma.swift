@@ -19,6 +19,11 @@ class WidgetEnigma : Widget
 		label.update(name!)
 	}
 	
+	override func onInstallationComplete()
+	{
+		battery.installEnigma()
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

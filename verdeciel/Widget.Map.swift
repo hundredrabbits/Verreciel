@@ -16,6 +16,11 @@ class WidgetMap : Widget
 		name = "map"
 		label.update(name!)
 	}
+	
+	override func onInstallationComplete()
+	{
+		battery.installMap()
+	}
 
 	required init?(coder aDecoder: NSCoder)
 	{

@@ -83,6 +83,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule.start(universe.loiqe_spawn)
 		
 		battery.cellPort1.addEvent(items.cell1)
+		
+		
+		
 //		battery.cellPort1.connect(battery.thrusterPort)
 		
 //		universe.unlock(.valen)
