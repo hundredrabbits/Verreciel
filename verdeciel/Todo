@@ -18,13 +18,9 @@
 - Derelict beacon
 - Stars only display as star if apporachable(shield strengt)
 - Add constellation location(just visual, no docking)
-- Don't auto dock
-- Add docking button/trigger to thruster
 - Stars display different icon is unreachable
 - trade panel default item name grey
 - Hide capsule quests and exploration quests on start
-- Add Mission pre-requisites(started)
-- Add monitor installs to capsuleMissions
 
 > Venic Flow
 
@@ -36,3 +32,5 @@
 - Generic port display as incompatible
 - Cargo full trigger
 - Last quest catch
+- Don't auto dock
+- Add docking button/trigger to thruster

@@ -120,6 +120,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 2") // Output
 		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route radio to radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
+		m.quests = [ Quest(name:"--", predicate:{ true }, result: { progress.install() }) ]
 		questlog[c]?.append(m)
 		
 		// Map
@@ -141,6 +142,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Map Tutorial 2") // Input
 		m.quests = [ Quest(name:"Power map in battery panel", predicate:{ battery.isMapPowered() == true }, result: { }) ]
 		m.quests = [ Quest(name:"Route map to helmet", predicate:{ player.port.origin != nil && player.port.origin == map.port }, result: {  }) ]
+		m.quests = [ Quest(name:"--", predicate:{ true }, result: { exploration.install() }) ]
 		questlog[c]?.append(m)
 		
 		// Shield
@@ -163,6 +165,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Shield Tutorial 2") // TODO: Add output tutorial
 		m.quests = [ Quest(name:"Power shield in battery panel", predicate:{ battery.isShieldPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route shape to shield", predicate:{ shield.isActive == true }, result: { }) ]
+		m.quests = [ Quest(name:"--", predicate:{ true }, result: { journey.install() }) ]
 		questlog[c]?.append(m)
 		
 		// Enigma
@@ -184,6 +187,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Enigma Tutorial 2") // TODO: Add output tutorial
 		m.quests = [ Quest(name:"Power Enigma in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"--", predicate:{ true }, result: { complete.install() }) ]
 		questlog[c]?.append(m)
 	}
 	

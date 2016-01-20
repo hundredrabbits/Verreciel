@@ -8,11 +8,11 @@ import Foundation
 
 class LocationLibrary
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -4))
-	let usul  = Usul(offset: CGPoint(x: -4,y: 0))
-	let venic = Venic(offset: CGPoint(x: 4,y: -4))
-	let valen = Valen(offset: CGPoint(x: 4,y: 0))
-	let senni = Senni(offset: CGPoint(x: 0,y: 4))
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -10))
+	let usul  = Usul(offset: CGPoint(x: -10,y: 0))
+	let venic = Venic(offset: CGPoint(x: 10,y: -10))
+	let valen = Valen(offset: CGPoint(x: 10,y: 0))
+	let senni = Senni(offset: CGPoint(x: 0,y: 10))
 	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
 	let cyanine = Cyanine(offset: CGPoint(x: 200,y: 200))
 	

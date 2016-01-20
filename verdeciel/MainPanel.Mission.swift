@@ -157,7 +157,13 @@ class PanelMission : MainPanel
 		
 		currentMission = quests.currentMission[.discovery]!
 		questCount = quests.questlog[.discovery]!.count
-		if currentMission.currentQuest != nil {
+		if currentMission.requirement() != nil && currentMission.requirement() == false {
+			quest1Label.update("Locked", color:grey)
+			quest1Details.update("--")
+			quest1Completion.update("")
+			quest1Progress.update(0)
+		}
+		else if currentMission.currentQuest != nil {
 			quest1Label.update(quests.currentMission[.discovery]!.name)
 			quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name)
 			quest1Completion.update("\(currentMission.id)/\(questCount)")
@@ -166,7 +172,13 @@ class PanelMission : MainPanel
 		
 		currentMission = quests.currentMission[.capsule]!
 		questCount = quests.questlog[.capsule]!.count
-		if currentMission.currentQuest != nil {
+		if currentMission.requirement() != nil && currentMission.requirement() == false {
+			quest2Label.update("Locked", color:grey)
+			quest2Details.update("--")
+			quest2Completion.update("")
+			quest2Progress.update(0)
+		}
+		else if currentMission.currentQuest != nil {
 			quest2Label.update(quests.currentMission[.capsule]!.name)
 			quest2Details.update(quests.currentMission[.capsule]!.currentQuest!.name)
 			quest2Completion.update("\(currentMission.id)/\(questCount)")
@@ -175,7 +187,13 @@ class PanelMission : MainPanel
 		
 		currentMission = quests.currentMission[.exploration]!
 		questCount = quests.questlog[.exploration]!.count
-		if currentMission.currentQuest != nil {
+		if currentMission.requirement() != nil && currentMission.requirement() == false {
+			quest3Label.update("Locked", color:grey)
+			quest3Details.update("--")
+			quest3Completion.update("")
+			quest3Progress.update(0)
+		}
+		else if currentMission.currentQuest != nil {
 			quest3Label.update(quests.currentMission[.exploration]!.name)
 			quest3Details.update(quests.currentMission[.exploration]!.currentQuest!.name)
 			quest3Completion.update("\(currentMission.id)/\(questCount)")
