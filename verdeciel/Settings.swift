@@ -85,6 +85,8 @@ enum Systems
 	case usul
 	case venic
 	case cyanine
+	
+	case unknown
 }
 
 enum Chapters

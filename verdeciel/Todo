@@ -14,33 +14,19 @@
 > Playthrough
 - Save / Load Mechanics
 - Loading a map/ adding stars
-- Add other stations(cloak -> approach private locations)
-- Scanner
-- Merge keys to make master portal key
-- Add Signal converter panel?
 - Telemetrists!? Twin Suns
-- Create Generic : Event type event
-- Event for when approaching stars without the cloak
 - Derelict beacon
-- Unlock map port
 - Stars only display as star if apporachable(shield strengt)
-- Radio should be installed
 - Add constellation location(just visual, no docking)
 - Don't auto dock
 - Add docking button/trigger to thruster
 - Stars display different icon is unreachable
 - trade panel default item name grey
-- Reflect active quest change in UI
 - Hide capsule quests and exploration quests on start
-- Make Horadric slot Ports
+- Add Mission pre-requisites(started)
+- Add monitor installs to capsuleMissions
 
 > Venic Flow
-- Get cell3(satellite), create array1
-- Get array2
-- Require Alta(station), get recipe somewhere(beacon)
-- Get record 2
-- Install Map Port at station for alta
-- Get Senni key
 
 > Bugs
 - Issue with UI offset animation
@@ -49,3 +35,4 @@
 - Monitors don't show'
 - Generic port display as incompatible
 - Cargo full trigger
+- Last quest catch

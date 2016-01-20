@@ -50,7 +50,10 @@ class CoreCapsule: SCNNode
 		docking()
 		warping()
 		
-		system = closestLocation().system // Todo: Remove from fixed update
+		// Todo: Remove from fixed update
+		
+		let cl = closestLocation()
+		if cl.system != nil { system = cl.system }
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

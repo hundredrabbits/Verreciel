@@ -80,34 +80,27 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func debugState()
 	{
-		capsule.start(universe.loiqe_horadric)
+		universe.unlock(.valen)
+		universe.unlock(.senni)
+		
+		
+		capsule.start(universe.valen_portal)
 		
 		battery.cellPort1.addEvent(items.cell1)
 		
 		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		cargo.addItems([items.valenPortalFragment1, items.valenPortalFragment2])
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
 		
-//		battery.cellPort1.connect(battery.thrusterPort)
+		cargo.addItems([items.valenPortalKey])
 		
-//		universe.unlock(.valen)
-//		
-//		radio.install()
-//		
-//
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
+		battery.cellPort1.connect(battery.thrusterPort)
+		
 //		
 //		battery.installMap()
 //		battery.installEnigma()
 //		battery.installShield()
 //		battery.installRadio()
-//		
-//		cargo.addItems([items.valenPortalKey,items.materia])
-//		
-//		
-//		quests.refresh()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

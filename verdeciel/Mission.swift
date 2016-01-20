@@ -14,6 +14,7 @@ class Mission
 	var currentQuest:Quest!
 	
 	var predicate:() -> Bool! = { return nil }
+	var requirement:() -> Bool! = { return nil }
 	
 	init(id:Int,name:String)
 	{

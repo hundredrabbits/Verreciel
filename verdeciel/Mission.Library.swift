@@ -33,7 +33,7 @@ class MissionLibrary
 		let c:Chapters = .discovery
 		var m:Mission!
 		
-		// Loiqe
+		// Initial Tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Flight Lesson")
 		m.quests = [
@@ -47,16 +47,20 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key")
+		// Pilot and radar tutorial
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Navigation Lesson")
 		m.quests = [
-			Quest(name:"Trade materia for fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { pilot.install() }),
-			Quest(name:"Route radar to pilot", predicate:{ radar.port.connection != nil && radar.port.connection == pilot.port }, result: {  }),
-			Quest(name:"Collect second fragment", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true }, result: { }),
-			Quest(name:"Combine fragments at Horadric", location: universe.loiqe_horadric,  predicate:{ (cargo.contains(items.valenPortalKey) == true) }, result: { })
+			Quest(name:"Select satellite on radar", predicate:{ radar.port.event != nil }, result: { pilot.install() }),
+			Quest(name:"Route Radar to Pilot", predicate:{ pilot.port.origin != nil && pilot.port.origin == radar.port }, result: { }),
+			Quest(name:"Undock", predicate:{ capsule.isDocked == false }, result: {  })
 		]
 		questlog[c]?.append(m)
 		
+		// Portal location tutorial
+		
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
+		m.requirement = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Unlock portal", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
@@ -64,23 +68,29 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Valen
+		// Harvest Tutorial
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Reach Valen")
-		m.quests = [
-			Quest(name:"Warp to Valen system", location: universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { universe.unlock(.valen) })
-		]
-		questlog[c]?.append(m)
+		// Hatch Tutorial
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key")
-		m.predicate = { cargo.contains(items.senniPortalKey) == true }
+		// inspect something quest(bank)
+		
+		//
+		
+		
+		// create alta
+		
+		// create ingot
+		
+		// Combine cells quest
+		
+		// Find invisible location quest
+		
+		// decypher message quest
+		
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Last Quest")
 		m.quests = [
-			Quest(name:"Route Radio to Radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }),
-			Quest(name:"Collect portal fragment", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment1) }, result: { }),
-			Quest(name:"Find Alta recipe", location: universe.valen_beacon, predicate:{ universe.valen_beacon.isKnown == true }, result: { }),
-			Quest(name:"Locate stealth port", location: universe.loiqe_city, predicate:{ universe.loiqe_port.isKnown == true }, result: { }),
-			Quest(name:"Trade alta for fragment", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) }, result: { }),
-			Quest(name:"Combine fragments at horadric", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.senniPortalKey) }, result: { }),
+			Quest(name:"Unlock portal", location: universe.usul_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { universe.unlock(.valen) })
 		]
 		questlog[c]?.append(m)
 	}
@@ -93,6 +103,7 @@ class MissionLibrary
 		// Radio
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
+		m.requirement = { universe.valen_portal.isKnown == true }
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
@@ -114,6 +125,7 @@ class MissionLibrary
 		// Map
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Map")
+		m.requirement = { universe.valen_portal.isKnown == true }
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
@@ -134,6 +146,7 @@ class MissionLibrary
 		// Shield
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Shield")
+		m.requirement = { universe.senni_portal.isKnown == true }
 		m.predicate = { shield.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
@@ -155,6 +168,7 @@ class MissionLibrary
 		// Enigma
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Enigma")
+		m.requirement = { universe.usul_portal.isKnown == true }
 		m.predicate = { enigma.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.cypher1.name!)", location: universe.usul_satellite, predicate:{ cargo.contains(items.cypher1) }, result: {  }),
