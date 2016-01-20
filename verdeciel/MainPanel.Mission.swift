@@ -257,6 +257,7 @@ class PanelMission : MainPanel
 	
 	func connectToLocation(location:Location)
 	{
+		if isInstalled == false { return }
 		if location.isComplete != nil && location.isComplete == true { label.update(name!) ; return }
 		
 		locationPanel.empty()
