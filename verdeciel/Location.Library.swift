@@ -1,3 +1,4 @@
+
 //  Created by Devine Lu Linvega on 2015-10-07.
 //  Copyright © 2015 XXIIVV. All rights reserved.
 
@@ -77,6 +78,11 @@ class Loiqe
 	{
 		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x + 2, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
 	}
+	
+	func cargo() -> LocationSatellite
+	{
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y - 1), message:"[misssing]", item:items.cell3)
+	}
 }
 
 class Usul
@@ -152,12 +158,12 @@ class Valen
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.venic, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment1)
+		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment1)
 	}
 	
-	func beacon() -> LocationBeacon
+	func cargo() -> LocationSatellite
 	{
-		return LocationBeacon(name: "beacon", system: .venic, at:CGPoint(x: offset.x + 1, y: offset.y), message: "Combine 2 credits$create 1 alta")
+		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 1), message:"[misssing]", item:items.cell2)
 	}
 }
 

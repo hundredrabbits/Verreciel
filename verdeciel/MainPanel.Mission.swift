@@ -124,9 +124,9 @@ class PanelMission : MainPanel
 	
 	override func touch(id: Int)
 	{
-		quest1Details.update(grey)
-		quest2Details.update(grey)
-		quest3Details.update(grey)
+		quest1Label.update(grey)
+		quest2Label.update(grey)
+		quest3Label.update(grey)
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.2)
@@ -136,9 +136,9 @@ class PanelMission : MainPanel
 		if id == 3 { selector.position = SCNVector3(selector.position.x,quest3.position.y,0) }
 		
 		SCNTransaction.setCompletionBlock({
-			if id == 1 { quests.setActive(Chapters.discovery) ; self.quest1Details.update(white) }
-			if id == 2 { quests.setActive(Chapters.capsule) ; self.quest2Details.update(white) }
-			if id == 3 { quests.setActive(Chapters.exploration) ; self.quest3Details.update(white) }
+			if id == 1 { quests.setActive(Chapters.discovery) ; self.quest1Label.update(white) }
+			if id == 2 { quests.setActive(Chapters.capsule) ; self.quest2Label.update(white) }
+			if id == 3 { quests.setActive(Chapters.exploration) ; self.quest3Label.update(white) }
 		})
 		SCNTransaction.commit()
 		

@@ -70,6 +70,17 @@ class LocationBank : Location
 		return newPanel
 	}
 	
+	func contains(item:Item) -> Bool
+	{
+		if port1.event != nil && port1.event == item { return true }
+		if port2.event != nil && port2.event == item { return true }
+		if port3.event != nil && port3.event == item { return true }
+		if port4.event != nil && port4.event == item { return true }
+		if port5.event != nil && port5.event == item { return true }
+		if port6.event != nil && port6.event == item { return true }
+		return false
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

@@ -62,6 +62,7 @@ class CoreUniverse : SCNNode
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
 	var loiqe_port = locations.loiqe.port()
+	var loiqe_cargo = locations.loiqe.cargo()
 	
 	func addLoiqe()
 	{
@@ -73,6 +74,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_portal)
 		addChildNode(loiqe_satellite)
 		addChildNode(loiqe_port)
+		addChildNode(loiqe_cargo)
 	}
 	
 	// MARK: Usul -
@@ -99,7 +101,7 @@ class CoreUniverse : SCNNode
 	var valen_satellite = locations.valen.satellite()
 	var valen_harvest = locations.valen.harvest()
 	var valen_port = locations.valen.port()
-	var valen_beacon = locations.valen.beacon()
+	var valen_cargo = locations.valen.cargo()
 	
 	func addValen()
 	{
@@ -110,7 +112,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_satellite)
 		addChildNode(valen_harvest)
 		addChildNode(valen_port)
-		addChildNode(valen_beacon)
+		addChildNode(valen_cargo)
 	}
 	
 	// MARK: Venic -

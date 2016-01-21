@@ -280,6 +280,14 @@ class SCNPort : SCNNode
 		return true
 	}
 	
+	func isReceivingEventOfTypeItem() -> Bool
+	{
+		if origin == nil { return false }
+		if origin.event == nil { return false }
+		if (origin.event is Item) == false { return false }
+		return true
+	}
+	
 	override func bang()
 	{
 		print("Warning! Bang on SCNPort")

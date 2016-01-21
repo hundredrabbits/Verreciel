@@ -110,6 +110,14 @@ class PanelBattery : MainPanel
 		installThruster()
 	}
 	
+	func contains(item:Item) -> Bool
+	{
+		if cellPort1.event != nil && cellPort1.event == item { return true }
+		if cellPort2.event != nil && cellPort2.event == item { return true }
+		if cellPort3.event != nil && cellPort3.event == item { return true }
+		return false
+	}
+	
 	// MARK: Modules -
 	
 	func installEnigma()

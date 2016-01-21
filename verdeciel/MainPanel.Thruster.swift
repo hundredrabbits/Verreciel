@@ -167,7 +167,7 @@ class PanelThruster : MainPanel
 	
 	func modeWarping()
 	{
-		button.disable("warping")
+		button.disable("warping", outline:white)
 		
 		accelerate.disable()
 		decelerate.disable()
