@@ -2,7 +2,27 @@
 *    GENRAL
 ================
 
-> Fluff
+> Playthrough
+- Save / Load Mechanics
+- Loading a map/ adding stars
+- Stars only display as star if apporachable(shield strengt)
+- Add constellation location(just visual, no docking)
+- Stars display different icon is unreachable
+- trade panel default item name grey
+
+> Bugs
+- Issue with UI offset animation
+- Issue with docking when approaching a distant target
+- Release touch when installing camera animation
+- Monitors don't show
+- Generic port display as incompatible
+- Cargo full trigger
+- Last quest catch
+- Don't auto dock
+- Add docking button/trigger to thruster
+
+> Design
+- Add missing icons
 - Floating feel
 - Add ship doodads
 - Add space doodads
@@ -12,25 +32,6 @@
 - Horadric combination animation
 - Add constellation in warps
 
-> Playthrough
-- Save / Load Mechanics
-- Loading a map/ adding stars
+> Narative
 - Telemetrists!? Twin Suns
 - Derelict beacon
-- Stars only display as star if apporachable(shield strengt)
-- Add constellation location(just visual, no docking)
-- Stars display different icon is unreachable
-- trade panel default item name grey
-
-> Venic Flow
-
-> Bugs
-- Issue with UI offset animation
-- Issue with docking when approaching a distant target
-- Release touch when installing animation
-- Monitors don't show'
-- Generic port display as incompatible
-- Cargo full trigger
-- Last quest catch
-- Don't auto dock
-- Add docking button/trigger to thruster
