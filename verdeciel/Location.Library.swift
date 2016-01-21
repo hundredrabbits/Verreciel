@@ -81,7 +81,7 @@ class Loiqe
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y - 1), message:"[misssing]", item:items.cell3)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y - 1), message:"[misssing]", item:items.cell3, stealth:true)
 	}
 }
 

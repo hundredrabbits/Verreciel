@@ -322,6 +322,12 @@ class PanelMission : MainPanel
 		player.lookAt(deg: -180)
 	}
 	
+	override func onInstallationComplete()
+	{
+		super.onInstallationComplete()
+		touch(1)
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

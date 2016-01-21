@@ -8,7 +8,7 @@ class LocationSatellite : Location
 	var port:SCNPortSlot!
 	var message:String!
 
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, stealth:Bool = false)
 	{
 		super.init(name:name, system:system, at:at)
 		
