@@ -15,8 +15,9 @@ class Mission
 	
 	var predicate:() -> Bool! = { return nil }
 	var requirement:() -> Bool! = { return nil }
+	var task:String = "[Missing]"
 	
-	init(id:Int,name:String)
+	init(id:Int,name:String, task:String = "", requirement:() -> Bool = { return true } )
 	{
 		self.id = id
 		self.name = name

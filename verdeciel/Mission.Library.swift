@@ -61,6 +61,7 @@ class MissionLibrary
 		// Portal location tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
+		m.task = "Build Portal Key"
 		m.requirement = { cargo.contains(items.valenPortalKey) == true }
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
@@ -160,8 +161,7 @@ class MissionLibrary
 		
 		// Radio
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
-		m.requirement = { universe.valen_portal.isKnown == true }
+		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio", task: "Reach Valen System", requirement: { universe.valen_portal.isKnown == true })
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
@@ -258,6 +258,7 @@ class MissionLibrary
 		// Loiqe
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key")
+		m.task = "Find portal fragment"
 		m.requirement = { cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) }
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
@@ -340,6 +341,12 @@ class MissionLibrary
 		}
 		
 		mission.update()
+		
+		if currentMission[active]?.requirement() == false {
+			if active == .discovery { mission.touch(2) }
+			else if active == .capsule { mission.touch(3) }
+			else if active == .exploration { mission.touch(1) }
+		}
 	}
 	
 	func setActive(chapter:Chapters)

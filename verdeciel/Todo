@@ -9,8 +9,6 @@
 - Add constellation location(just visual, no docking)
 - Stars display different icon is unreachable
 - trade panel default item name grey
-- If active quest is locked, look for next quest
-- Don't display tips when the mission is locked
 
 > Bugs
 - Issue with UI offset animation

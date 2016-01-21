@@ -159,13 +159,13 @@ class PanelMission : MainPanel
 		questCount = quests.questlog[.discovery]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest1Label.update("Locked", color:grey)
-			quest1Details.update("--")
+			quest1Details.update(currentMission.task, color:grey)
 			quest1Completion.update("")
 			quest1Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest1Label.update(quests.currentMission[.discovery]!.name)
-			quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name)
+			quest1Label.update(quests.currentMission[.discovery]!.name, color:white)
+			quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name, color:grey)
 			quest1Completion.update("\(currentMission.id)/\(questCount)")
 			quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}
@@ -174,13 +174,13 @@ class PanelMission : MainPanel
 		questCount = quests.questlog[.capsule]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest2Label.update("Locked", color:grey)
-			quest2Details.update("--")
+			quest2Details.update(currentMission.task, color:grey)
 			quest2Completion.update("")
 			quest2Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest2Label.update(quests.currentMission[.capsule]!.name)
-			quest2Details.update(quests.currentMission[.capsule]!.currentQuest!.name)
+			quest2Label.update(quests.currentMission[.capsule]!.name, color:white)
+			quest2Details.update(quests.currentMission[.capsule]!.currentQuest!.name, color:grey)
 			quest2Completion.update("\(currentMission.id)/\(questCount)")
 			quest2Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}
@@ -189,26 +189,31 @@ class PanelMission : MainPanel
 		questCount = quests.questlog[.exploration]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest3Label.update("Locked", color:grey)
-			quest3Details.update("--")
+			quest3Details.update(currentMission.task, color:grey)
 			quest3Completion.update("")
 			quest3Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest3Label.update(quests.currentMission[.exploration]!.name)
-			quest3Details.update(quests.currentMission[.exploration]!.currentQuest!.name)
+			quest3Label.update(quests.currentMission[.exploration]!.name, color:white)
+			quest3Details.update(quests.currentMission[.exploration]!.currentQuest!.name, color:grey)
 			quest3Completion.update("\(currentMission.id)/\(questCount)")
 			quest3Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}
 		
-		// Prompt Manager
+		prompt()
+	}
+	
+	func prompt()
+	{
+		let activeMission = quests.currentMission[quests.active]!
+		let activeQuest = activeMission.currentQuest
 		
-		let currentQuest = quests.currentMission[quests.active]!.currentQuest
+		if activeQuest == nil { return }
+		if activeMission.requirement() != nil && activeMission.requirement() == false { return }
 		
-		if currentQuest != nil {
-			if currentQuest.location != nil && capsule.dock != currentQuest.location && capsule.system != currentQuest.location.system { ui.addMessage("Reach the \(currentQuest.location.system) system", color:cyan) }
-			else if currentQuest.location != nil && capsule.dock != currentQuest.location { ui.addMessage("Reach \(currentQuest.location.system) \(currentQuest.location.name!)", color:red) }
-			else { ui.addMessage(currentQuest.name) }
-		}
+		if activeQuest.location != nil && capsule.dock != activeQuest.location && capsule.system != activeQuest.location.system { ui.addMessage("Reach the \(activeQuest.location.system) system", color:cyan) }
+		else if activeQuest.location != nil && capsule.dock != activeQuest.location { ui.addMessage("Reach \(activeQuest.location.system) \(activeQuest.location.name!)", color:red) }
+		else { ui.addMessage(activeQuest.name) }
 	}
 	
 	// MARK: Ports -
