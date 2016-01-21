@@ -95,36 +95,53 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Cells tutorial
+		// Cells->Array tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Cells Lesson")
-		m.predicate = { cargo.contains(items.array1) == true }
+		m.predicate = { cargo.contains(items.array1) == true || battery.contains(items.array1) }
 		m.quests = [
 			Quest(name:"Find first Cell", location: universe.valen_harvest, predicate:{ cargo.contains(items.cell1) || battery.contains(items.cell1) || universe.valen_bank.contains(items.cell1) }, result: { }),
 			Quest(name:"Find second Cell", location: universe.valen_cargo, predicate:{ cargo.contains(items.cell2) || battery.contains(items.cell2) || universe.valen_bank.contains(items.cell2) }, result: { }),
 			Quest(name:"Find last Cell", location: universe.loiqe_cargo, predicate:{ cargo.contains(items.cell3) || battery.contains(items.cell3) || universe.valen_bank.contains(items.cell3) }, result: { }),
-			Quest(name:"Combine Cells", location: universe.loiqe_horadric, predicate:{ false }, result: { }), // add predicate
+			Quest(name:"Combine Cells", location: universe.loiqe_horadric, predicate:{ false }, result: { })
 		]
 		questlog[c]?.append(m)
 		
-		
-		
-		// Array Tutorial
+		// Array->Grid Tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Array Lesson")
-		m.predicate = { cargo.contains(items.grid1) == true }
+		m.predicate = { cargo.contains(items.grid1) == true || battery.contains(items.grid1) }
 		m.quests = [
 			Quest(name:"Find first Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array1) || battery.contains(items.array1) || universe.valen_bank.contains(items.array1) }, result: { }),
 			Quest(name:"Find second Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array2) || battery.contains(items.array2) || universe.valen_bank.contains(items.array2) }, result: { }),
 			Quest(name:"Find last Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array3) || battery.contains(items.array3) || universe.valen_bank.contains(items.array3) }, result: { }),
-			Quest(name:"Combine Arrays", location: universe.loiqe_horadric, predicate:{ false }, result: { }), // add predicate
+			Quest(name:"Combine Arrays", location: universe.loiqe_horadric, predicate:{ false }, result: { })
 		]
 		questlog[c]?.append(m)
 		
+		// Materia->Alta
 		
-		// create alta
+		m = Mission(id:(questlog[c]?.count)!, name: "Alta Lesson")
+		m.predicate = { cargo.containsLike(items.alta) == true }
+		m.quests = [
+			Quest(name:"Find materia", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) }, result: { }),
+			Quest(name:"Find second materia", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.materia) }, result: { }),
+			Quest(name:"Combine materias", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[c]?.append(m)
 		
-		// create ingot
+		// Credits->Ingot
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Ingot Lesson")
+		m.predicate = { cargo.containsLike(items.ingot) == true }
+		m.quests = [
+			Quest(name:"Find credits", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Find second credits", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.credits) }, result: { }),
+			Quest(name:"Combine credits", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		// Star interaction tutorial
 		
 		// enigma quest & tutorials - decypher radio signal quest
 		

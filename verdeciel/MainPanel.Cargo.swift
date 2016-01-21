@@ -78,6 +78,16 @@ class PanelCargo : MainPanel
 		return false
 	}
 	
+	func containsCount(count:Int,target:Item) -> Bool
+	{
+		var count_actual = 0
+		for item in port.event.content {
+			if item.name == target.name && item.type == target.type { count_actual += 1 }
+		}
+		if count == count_actual { return true }
+		return false
+	}
+	
 	func addItems(items:Array<Item>)
 	{
 		for item in items {
