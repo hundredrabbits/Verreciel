@@ -107,6 +107,10 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
+		
+		
+		// Array Tutorial
+		
 		m = Mission(id:(questlog[c]?.count)!, name: "Array Lesson")
 		m.predicate = { cargo.contains(items.grid1) == true }
 		m.quests = [
@@ -117,15 +121,12 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
+		
 		// create alta
 		
 		// create ingot
 		
-		// Combine cells quest
-		
-		// Find invisible location quest
-		
-		// decypher message quest
+		// enigma quest & tutorials - decypher radio signal quest
 		
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Last Quest")
@@ -158,9 +159,10 @@ class MissionLibrary
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 2") // Output
+		m.requirement = { universe.valen_cargo.isKnown == true }
 		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
 		m.quests = [ Quest(name:"Route radio to radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
-		m.quests = [ Quest(name:"--", predicate:{ true }, result: { progress.install() }) ]
+		m.quests = [ Quest(name:"Reach stealth location", predicate:{ false }, result: { progress.install() }) ]
 		questlog[c]?.append(m)
 		
 		// Map
