@@ -21,6 +21,8 @@ class Mission
 	{
 		self.id = id
 		self.name = name
+		self.task = task
+		self.requirement = requirement
 	}
 	
 	func validate()
