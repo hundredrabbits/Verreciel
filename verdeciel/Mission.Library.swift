@@ -55,7 +55,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Trade Lesson")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
-			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) }, result: { }),
+			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
 			Quest(name:"Trade materia for Fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -256,7 +256,7 @@ class MissionLibrary
 		
 		// Loiqe
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
+		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find valen portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire fragment I", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
@@ -267,7 +267,7 @@ class MissionLibrary
 		
 		// Valen
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key", task: "Find portal fragment", requirement:{ cargo.contains(items.senniPortalFragment1) || cargo.contains(items.senniPortalFragment2) } )
+		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key", task: "Find senni portal fragment", requirement:{ cargo.contains(items.senniPortalFragment1) || cargo.contains(items.senniPortalFragment2) } )
 		m.requirement = { cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) }
 		m.predicate = { cargo.contains(items.senniPortalKey) == true }
 		m.quests = [
@@ -279,7 +279,7 @@ class MissionLibrary
 		
 		// Senni
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key", task: "Find portal fragment", requirement:{ cargo.contains(items.usulPortalFragment1) || cargo.contains(items.usulPortalFragment2) } )
+		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key", task: "Find usul portal fragment", requirement:{ cargo.contains(items.usulPortalFragment1) || cargo.contains(items.usulPortalFragment2) } )
 		m.predicate = { cargo.contains(items.usulPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire fragment I", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
