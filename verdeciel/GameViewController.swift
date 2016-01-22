@@ -69,13 +69,43 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		debugState()
+		unlockedState()
 	}
 	
 	func startingState()
 	{
 		capsule.start(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.cell1)
+	}
+	
+	func unlockedState()
+	{
+		universe.unlock(.loiqe)
+		universe.unlock(.valen)
+		universe.unlock(.senni)
+		universe.unlock(.usul)
+		
+		pilot.install()
+		radar.install()
+		cargo.install()
+		hatch.install()
+		mission.install()
+		console.install()
+		
+		radio.install()
+		enigma.install()
+		map.install()
+		shield.install()
+//
+		exploration.install()
+		journey.install()
+		progress.install()
+		complete.install()
+		
+		capsule.start(universe.loiqe_portal)
+		
+		battery.cellPort1.addEvent(items.cell1)
+		battery.cellPort1.connect(battery.thrusterPort)
 	}
 	
 	func debugState()

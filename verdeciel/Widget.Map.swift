@@ -19,6 +19,7 @@ class WidgetMap : Widget
 	
 	override func onInstallationComplete()
 	{
+		super.onInstallationComplete()
 		battery.installMap()
 	}
 

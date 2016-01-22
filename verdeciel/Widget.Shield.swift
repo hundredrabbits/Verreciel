@@ -21,6 +21,7 @@ class WidgetShield : Widget
 	
 	override func onInstallationComplete()
 	{
+		super.onInstallationComplete()
 		battery.installShield()
 	}
 	

@@ -21,6 +21,7 @@ class WidgetEnigma : Widget
 	
 	override func onInstallationComplete()
 	{
+		super.onInstallationComplete()
 		battery.installEnigma()
 	}
 	
