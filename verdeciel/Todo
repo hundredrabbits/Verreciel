@@ -21,6 +21,7 @@
 - Don't auto dock
 - Add docking button/trigger to thruster
 - Reconnect monitors
+- Cannot warp if not aligned(Portal)
 
 > Design
 - Add missing icons
@@ -33,7 +34,7 @@
 - Horadric combination animation
 - Add constellation in warps
 - Harvest panel design
-- Transition colours between systems
+- Transition colours between systems (warp test)
 
 > Narative
 - Telemetrists!? Twin Suns

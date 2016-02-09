@@ -147,10 +147,12 @@ class PanelMission : MainPanel
 	
 	override func refresh()
 	{
-		if capsule.dock == nil { label.update(white) }
-		else if capsule.dock.isComplete == nil { label.update(white) }
-		else if capsule.dock.isComplete == true { label.update(cyan) }
-		else{ label.update(red) }
+		if( isInstalled == true ){
+			if capsule.dock == nil { label.update("mission",color:white) }
+			else if capsule.dock.isComplete == nil { label.update(capsule.dock.name!,color:white) }
+			else if capsule.dock.isComplete == true { label.update(capsule.dock.name!,color:cyan) }
+			else{ label.update(capsule.dock.name!,color:red) }
+		}
 		
 		var currentMission:Mission!
 		var questCount:Int!
@@ -262,11 +264,8 @@ class PanelMission : MainPanel
 	
 	func connectToLocation(location:Location)
 	{
-		if isInstalled == false { return }
-		if location.isComplete != nil && location.isComplete == true { label.update(name!) ; return }
-		
 		locationPanel.empty()
-		locationPanel.add(location.panel())
+		if location.panel() != nil { locationPanel.add(location.panel()) }
 		
 		// Animate
 		
@@ -304,7 +303,6 @@ class PanelMission : MainPanel
 		SCNTransaction.setCompletionBlock({
 			
 			self.questPanel.position = SCNVector3(0,0,-0.5)
-			self.label.update(self.name!)
 			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)
@@ -324,7 +322,7 @@ class PanelMission : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -180)
+//		player.lookAt(deg: -180)
 	}
 	
 	override func onInstallationComplete()

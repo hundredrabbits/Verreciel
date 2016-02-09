@@ -42,12 +42,12 @@ class LocationTrade : Location
 		wantPort.input = Item.self
 		newPanel.addChildNode(wantPort)
 		
-		let tradeLabel = SCNLabel(text: "Give", color:white)
+		let tradeLabel = SCNLabel(text: "< Give", color:white)
 		tradeLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
 		wantPort.addChildNode(tradeLabel)
 		
 		// Give
-		let forLabel = SCNLabel(text: "Take", color:white)
+		let forLabel = SCNLabel(text: "> Take", color:white)
 		forLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
 		givePort.addChildNode(forLabel)
 		
@@ -81,6 +81,9 @@ class LocationTrade : Location
 		if givePort.event == nil {
 			mission.complete()
 		}
+		
+		givePort.refresh()
+		wantPort.refresh()
 		
 		updateIcon()
 	}

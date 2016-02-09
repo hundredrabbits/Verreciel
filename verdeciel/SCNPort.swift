@@ -93,9 +93,6 @@ class SCNPort : SCNNode
 		if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)
 		}
-		else if requirement != nil {
-			sprite_input.updateChildrenColors(red)
-		}
 		else if origin == nil {
 			sprite_input.updateChildrenColors(grey)
 		}

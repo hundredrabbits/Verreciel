@@ -115,7 +115,8 @@ class PanelConsole : MainPanel
 	func boot()
 	{
 		clearLines()
-		addLine(SCNCommand(text: "Awaiting input..", head:true))
+		addLine(SCNCommand(text: "Awaiting input",color:grey))
+		addLine(SCNCommand(text: "/",color:grey))
 	}
 	
 	func clearLines()

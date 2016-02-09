@@ -96,13 +96,15 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		enigma.install()
 		map.install()
 		shield.install()
-//
+
 		exploration.install()
 		journey.install()
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_portal)
+		capsule.start(universe.loiqe_city)
+		
+		cargo.addItems([items.valenPortalKey, items.materia])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

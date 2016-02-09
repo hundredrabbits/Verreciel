@@ -47,6 +47,13 @@ class SCNPortSlot : SCNPort
 		disable()
 	}
 	
+	override func fixedUpdate()
+	{
+		super.fixedUpdate()
+		
+		if event != nil { sprite_input.updateChildrenColors(clear) }
+	}
+	
 	func refresh()
 	{
 		details.opacity = (hasDetails == true) ? 1 : 0
@@ -61,8 +68,8 @@ class SCNPortSlot : SCNPort
 		}
 		
 		if isEnabled == false { label.update(grey) }
-		else if requirement != nil && event != nil && requirement == event { label.update(cyan) }
-		else if requirement != nil && event != nil && requirement != event { label.update(red) }
+		else if requirement != nil && event != nil && requirement.name == event.name { label.update(cyan) }
+		else if requirement != nil && event != nil && requirement.name != event.name { label.update(red) }
 		else if event != nil { label.update(white) }
 		else{ label.update(grey) }
 	}

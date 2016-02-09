@@ -41,6 +41,7 @@ class CoreCapsule: SCNNode
 		dock = location
 		dock.isKnown = true
 		dock(location)
+		docked()
 		
 		battery.install()
 	}
@@ -51,7 +52,6 @@ class CoreCapsule: SCNNode
 		warping()
 		
 		// Todo: Remove from fixed update
-		
 		let cl = closestLocation()
 		if cl.system != nil { system = cl.system }
 	}
@@ -274,9 +274,9 @@ class CoreCapsule: SCNNode
 		
 		var i = 0
 		while i < 90 {
-			let line = SCNLine(nodeA: SCNVector3(-0.1,3,templates.radius), nodeB: SCNVector3(0.1,3,templates.radius), color: grey)
-			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
-			mesh.addChildNode(line)
+//			let line = SCNLine(nodeA: SCNVector3(-0.1,3,templates.radius), nodeB: SCNVector3(0.1,3,templates.radius), color: grey)
+//			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
+//			mesh.addChildNode(line)
 			i += 1
 		}
 	}

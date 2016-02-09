@@ -68,7 +68,7 @@ class CoreSpace: SCNNode
 	
 	func addStar()
 	{
-		if starsRoot.childNodes.count > 50 { return }
+		if starsRoot.childNodes.count > 100 { return }
 		
 		var randX = Int(arc4random_uniform(40)) - 20
 		var randZ = Int(arc4random_uniform(40)) - 20

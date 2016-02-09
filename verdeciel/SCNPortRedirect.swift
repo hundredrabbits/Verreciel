@@ -23,6 +23,12 @@ class SCNPortRedirect : SCNPort
 		trigger.disable()
 	}
 	
+	override func fixedUpdate()
+	{
+		super.fixedUpdate()
+		if event != nil { sprite_input.updateChildrenColors(clear) }
+	}
+	
 	override func disconnect()
 	{
 		if self.connection == nil { return }

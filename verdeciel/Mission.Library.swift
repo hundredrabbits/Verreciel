@@ -87,15 +87,6 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Hatch tutorial
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Hatch Lesson")
-		m.quests = [
-			Quest(name:"Find Credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
-			Quest(name:"Route credit to hatch", location: universe.valen_harvest, predicate:{ hatch.port.isReceivingItemOfType(.currency) }, result: {  })
-		]
-		questlog[c]?.append(m)
-		
 		// Cells->Array tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Cells Lesson")
@@ -105,6 +96,15 @@ class MissionLibrary
 			Quest(name:"Find second Cell", location: universe.valen_cargo, predicate:{ cargo.contains(items.cell2) || battery.contains(items.cell2) || universe.valen_bank.contains(items.cell2) }, result: { }),
 			Quest(name:"Find last Cell", location: universe.loiqe_cargo, predicate:{ cargo.contains(items.cell3) || battery.contains(items.cell3) || universe.valen_bank.contains(items.cell3) }, result: { }),
 			Quest(name:"Combine Cells", location: universe.loiqe_horadric, predicate:{ false }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		// Hatch tutorial
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Hatch Lesson")
+		m.quests = [
+			Quest(name:"Collect Credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Route credit to hatch", location: universe.valen_harvest, predicate:{ hatch.port.isReceivingItemOfType(.currency) }, result: {  })
 		]
 		questlog[c]?.append(m)
 		
