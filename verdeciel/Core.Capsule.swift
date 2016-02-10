@@ -56,6 +56,11 @@ class CoreCapsule: SCNNode
 		// Todo: Remove from fixed update
 		let cl = closestLocation()
 		if cl.system != nil { system = cl.system }
+		
+		// animate shield
+		shield.eulerAngles.x += 0.0001
+		shield.eulerAngles.y += 0.001
+		shield.eulerAngles.z += 0.01
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location
@@ -291,34 +296,100 @@ class CoreCapsule: SCNNode
 		// Ring 1
 		
 		geometries.append(SCNVector3(radius * 0.25,0,radius * 0.75))
-		geometries.append(SCNVector3(-radius * 0.25,0,radius * 0.75))
 		geometries.append(SCNVector3(radius * 0.75,0,radius * 0.25))
-		geometries.append(SCNVector3(-radius * 0.75,0,radius * 0.25))
-		
-		geometries.append(SCNVector3(radius * 0.25,0,-radius * 0.75))
-		geometries.append(SCNVector3(-radius * 0.25,0,-radius * 0.75))
 		geometries.append(SCNVector3(radius * 0.75,0,-radius * 0.25))
+		geometries.append(SCNVector3(radius * 0.25,0,-radius * 0.75))
+		
+		geometries.append(SCNVector3(-radius * 0.25,0,-radius * 0.75))
 		geometries.append(SCNVector3(-radius * 0.75,0,-radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.75,0,radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.25,0,radius * 0.75))
+		
 		
 		// Ring 2
 		
+		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,-radius * 0.5))
 		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,-radius * 0.5))
 		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,radius * 0.5))
 		
+		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,-radius * 0.5))
 		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,-radius * 0.5))
 		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,radius * 0.5))
 		
-//		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[8], color: white))
+		// Ring 3
 		
-		for location in geometries {
-			let node = SCNNode(geometry: SCNSphere(radius: 0.2))
-			node.position = location
-			shield.addChildNode(node)
-		}
+		geometries.append(SCNVector3(0,radius * 0.75,radius * 0.25))
+		geometries.append(SCNVector3(radius * 0.25,radius * 0.75,0))
+		geometries.append(SCNVector3(0,radius * 0.75,-radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.25,radius * 0.75,0))
+		
+		geometries.append(SCNVector3(0,-radius * 0.75,radius * 0.25))
+		geometries.append(SCNVector3(radius * 0.25,-radius * 0.75,0))
+		geometries.append(SCNVector3(0,-radius * 0.75,-radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.25,-radius * 0.75,0))
+		
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[12], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[12], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[8], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[8], color: white))
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[13], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[13], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[9], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[9], color: white))
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[14], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[14], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[10], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[10], color: white))
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[15], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[15], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[11], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[11], color: white))
+		
+		// Top circle
+		shield.addChildNode(SCNLine(nodeA: geometries[16], nodeB: geometries[17], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[17], nodeB: geometries[18], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[18], nodeB: geometries[19], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[19], nodeB: geometries[16], color: white))
+		
+		// Middle
+		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[1], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[2], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[3], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[4], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[5], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[6], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[7], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[0], color: white))
+		
+		// Bottom circle
+		shield.addChildNode(SCNLine(nodeA: geometries[20], nodeB: geometries[21], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[21], nodeB: geometries[22], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[22], nodeB: geometries[23], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[23], nodeB: geometries[20], color: white))
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[12], nodeB: geometries[21], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[13], nodeB: geometries[21], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[13], nodeB: geometries[22], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[14], nodeB: geometries[22], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[14], nodeB: geometries[23], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[15], nodeB: geometries[23], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[15], nodeB: geometries[20], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[12], nodeB: geometries[20], color: white))
+		
+		shield.addChildNode(SCNLine(nodeA: geometries[8], nodeB: geometries[17], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[9], nodeB: geometries[17], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[9], nodeB: geometries[18], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[10], nodeB: geometries[18], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[10], nodeB: geometries[19], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[11], nodeB: geometries[19], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[11], nodeB: geometries[16], color: white))
+		shield.addChildNode(SCNLine(nodeA: geometries[8], nodeB: geometries[16], color: white))
 	}
 	
 	func teleport(location:Location)
