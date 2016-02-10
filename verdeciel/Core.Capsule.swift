@@ -58,9 +58,9 @@ class CoreCapsule: SCNNode
 		if cl.system != nil { system = cl.system }
 		
 		// animate shield
-		shield.eulerAngles.x += 0.0001
-		shield.eulerAngles.y += 0.001
-		shield.eulerAngles.z += 0.01
+		shield.eulerAngles.x += 0.0005
+//		shield.eulerAngles.y += 0.001
+//		shield.eulerAngles.z += 0.00001
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location
@@ -290,106 +290,58 @@ class CoreCapsule: SCNNode
 		addChildNode(shield)
 		self.position = SCNVector3(0,0,0)
 		
-		let radius:CGFloat = 10
-		var geometries:Array<SCNVector3> = []
+		let radius:CGFloat = 6
+		var scale:CGFloat = 2.5
+		let sides:CGFloat = 8
 		
-		// Ring 1
-		
-		geometries.append(SCNVector3(radius * 0.25,0,radius * 0.75))
-		geometries.append(SCNVector3(radius * 0.75,0,radius * 0.25))
-		geometries.append(SCNVector3(radius * 0.75,0,-radius * 0.25))
-		geometries.append(SCNVector3(radius * 0.25,0,-radius * 0.75))
-		
-		geometries.append(SCNVector3(-radius * 0.25,0,-radius * 0.75))
-		geometries.append(SCNVector3(-radius * 0.75,0,-radius * 0.25))
-		geometries.append(SCNVector3(-radius * 0.75,0,radius * 0.25))
-		geometries.append(SCNVector3(-radius * 0.25,0,radius * 0.75))
-		
-		
-		// Ring 2
-		
-		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,radius * 0.5))
-		
-		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,radius * 0.5))
-		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,-radius * 0.5))
-		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,radius * 0.5))
-		
-		// Ring 3
-		
-		geometries.append(SCNVector3(0,radius * 0.75,radius * 0.25))
-		geometries.append(SCNVector3(radius * 0.25,radius * 0.75,0))
-		geometries.append(SCNVector3(0,radius * 0.75,-radius * 0.25))
-		geometries.append(SCNVector3(-radius * 0.25,radius * 0.75,0))
-		
-		geometries.append(SCNVector3(0,-radius * 0.75,radius * 0.25))
-		geometries.append(SCNVector3(radius * 0.25,-radius * 0.75,0))
-		geometries.append(SCNVector3(0,-radius * 0.75,-radius * 0.25))
-		geometries.append(SCNVector3(-radius * 0.25,-radius * 0.75,0))
-		
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[12], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[12], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[8], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[8], color: white))
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[13], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[13], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[9], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[9], color: white))
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[14], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[14], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[10], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[10], color: white))
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[15], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[15], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[11], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[11], color: white))
-		
-		// Top circle
-		shield.addChildNode(SCNLine(nodeA: geometries[16], nodeB: geometries[17], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[17], nodeB: geometries[18], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[18], nodeB: geometries[19], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[19], nodeB: geometries[16], color: white))
-		
-		// Middle
-		shield.addChildNode(SCNLine(nodeA: geometries[0], nodeB: geometries[1], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[2], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[2], nodeB: geometries[3], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[3], nodeB: geometries[4], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[4], nodeB: geometries[5], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[5], nodeB: geometries[6], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[6], nodeB: geometries[7], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[7], nodeB: geometries[0], color: white))
-		
-		// Bottom circle
-		shield.addChildNode(SCNLine(nodeA: geometries[20], nodeB: geometries[21], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[21], nodeB: geometries[22], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[22], nodeB: geometries[23], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[23], nodeB: geometries[20], color: white))
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[12], nodeB: geometries[21], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[13], nodeB: geometries[21], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[13], nodeB: geometries[22], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[14], nodeB: geometries[22], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[14], nodeB: geometries[23], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[15], nodeB: geometries[23], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[15], nodeB: geometries[20], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[12], nodeB: geometries[20], color: white))
-		
-		shield.addChildNode(SCNLine(nodeA: geometries[8], nodeB: geometries[17], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[9], nodeB: geometries[17], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[9], nodeB: geometries[18], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[10], nodeB: geometries[18], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[10], nodeB: geometries[19], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[11], nodeB: geometries[19], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[11], nodeB: geometries[16], color: white))
-		shield.addChildNode(SCNLine(nodeA: geometries[8], nodeB: geometries[16], color: white))
+		var i = 0
+		while i < Int(sides) {
+			scale = 2.5
+			// Face 1
+			let face1 = SCNNode()
+			let line1 = SCNLine(nodeA: SCNVector3(-scale,0,radius), nodeB: SCNVector3(0,scale,radius), color: grey)
+			let line2 = SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(scale,0,radius), color: grey)
+			let line3 = SCNLine(nodeA: SCNVector3(scale,0,radius), nodeB: SCNVector3(0,-scale,radius), color: grey)
+			let line4 = SCNLine(nodeA: SCNVector3(0,-scale,radius), nodeB: SCNVector3(-scale,0,radius), color: grey)
+			face1.addChildNode(line1)
+			face1.addChildNode(line2)
+			face1.addChildNode(line3)
+			face1.addChildNode(line4)
+			face1.eulerAngles.y += Float(degToRad(CGFloat(i) * (360/sides)))
+			shield.addChildNode(face1)
+			
+			// Face 2
+			scale = 1.9
+			let face2 = SCNNode()
+			let line5 = SCNLine(nodeA: SCNVector3(-scale,0,radius), nodeB: SCNVector3(0,scale,radius), color: grey)
+			let line6 = SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(scale,0,radius), color: grey)
+			let line7 = SCNLine(nodeA: SCNVector3(scale,0,radius), nodeB: SCNVector3(0,-scale,radius), color: grey)
+			let line8 = SCNLine(nodeA: SCNVector3(0,-scale,radius), nodeB: SCNVector3(-scale,0,radius), color: grey)
+			face2.addChildNode(line5)
+			face2.addChildNode(line6)
+			face2.addChildNode(line7)
+			face2.addChildNode(line8)
+			face2.eulerAngles.y += Float(degToRad(CGFloat(i) * (360/sides)))
+			face2.eulerAngles.x += Float(degToRad(40))
+			shield.addChildNode(face2)
+			
+			// Face 3
+			scale = 1.9
+			let face3 = SCNNode()
+			let line9 = SCNLine(nodeA: SCNVector3(-scale,0,radius), nodeB: SCNVector3(0,scale,radius), color: grey)
+			let line10 = SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(scale,0,radius), color: grey)
+			let line11 = SCNLine(nodeA: SCNVector3(scale,0,radius), nodeB: SCNVector3(0,-scale,radius), color: grey)
+			let line12 = SCNLine(nodeA: SCNVector3(0,-scale,radius), nodeB: SCNVector3(-scale,0,radius), color: grey)
+			face3.addChildNode(line9)
+			face3.addChildNode(line10)
+			face3.addChildNode(line11)
+			face3.addChildNode(line12)
+			face3.eulerAngles.y += Float(degToRad(CGFloat(i) * (360/sides)))
+			face3.eulerAngles.x -= Float(degToRad(40))
+			shield.addChildNode(face3)
+			
+			i += 1
+		}
 	}
 	
 	func teleport(location:Location)
