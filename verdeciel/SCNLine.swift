@@ -57,7 +57,13 @@ class SCNLine : SCNNode
 		draw(nodeA, nodeB: nodeB, color: color)
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	func setGrowth(percent:Float)
+	{
+		draw(SCNVector3(nodeA.x,nodeA.y,nodeA.z), nodeB: SCNVector3(nodeB.x * percent,nodeB.y * percent,nodeB.z * percent), color: color)
+	}
+	
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

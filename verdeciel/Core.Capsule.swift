@@ -23,7 +23,7 @@ class CoreCapsule: SCNNode
 	
 	var mesh:SCNNode!
 	
-	var shield = SCNNode()
+	var shieldRoot = SCNNode()
 	
 	// MARK: Default -
 	
@@ -58,11 +58,6 @@ class CoreCapsule: SCNNode
 		// Todo: Remove from fixed update
 		let cl = closestLocation()
 		if cl.system != nil { system = cl.system }
-		
-		// animate shield
-		shield.eulerAngles.x += 0.0005
-//		shield.eulerAngles.y += 0.001
-//		shield.eulerAngles.z += 0.00001
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

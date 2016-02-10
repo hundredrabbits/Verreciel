@@ -17,7 +17,7 @@ class Widget : Panel
 		super.init()
 		
 		port = SCNPort(host: self, input: Event.self, output: Event.self)
-		port.position = SCNVector3(0,-0.6,templates.radius)
+		port.position = SCNVector3(0,-0.7,templates.radius)
 		port.disable()
 		
 		let inputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.right)
@@ -28,7 +28,7 @@ class Widget : Panel
 		port.addChildNode(outputLabel)
 		
 		label = SCNLabel(text:"", scale:0.075, align:.center)
-		label.position = SCNVector3(0,-0.35,0)
+		label.position = SCNVector3(0,0.35,0)
 		port.addChildNode(label)
 		
 		root.addChildNode(port)

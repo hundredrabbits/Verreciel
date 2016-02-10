@@ -31,7 +31,8 @@ class SCNTriangle : SCNNode
 		self.geometry?.firstMaterial?.diffuse.contents = UIColor.blackColor()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -51,6 +51,7 @@
 		576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953621C206CEA00A0CA39 /* Widget.Map.swift */; };
 		576953651C206CF300A0CA39 /* Widget.Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953641C206CF300A0CA39 /* Widget.Radio.swift */; };
 		576DCEA61C483BCF007A7544 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576DCEA51C483BCF007A7544 /* Mission.swift */; };
+		5781FC0C1C6BC9500001A743 /* SCNRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5781FC0B1C6BC9500001A743 /* SCNRect.swift */; };
 		57841A301C23ACD50005D7DA /* Monitor.Complete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57841A2F1C23ACD50005D7DA /* Monitor.Complete.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */; };
@@ -133,6 +134,7 @@
 		576953621C206CEA00A0CA39 /* Widget.Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Map.swift; sourceTree = "<group>"; };
 		576953641C206CF300A0CA39 /* Widget.Radio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Radio.swift; sourceTree = "<group>"; };
 		576DCEA51C483BCF007A7544 /* Mission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		5781FC0B1C6BC9500001A743 /* SCNRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRect.swift; sourceTree = "<group>"; };
 		57841A2F1C23ACD50005D7DA /* Monitor.Complete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.Complete.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Spawn.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
+				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
 				57CA937A1BC9A9A50089337F /* SCNWire.swift */,
 				573379591BD82F9B00310147 /* SCNVector3.swift */,
@@ -465,6 +468,7 @@
 				5726C6071BD46FFF00B924B2 /* Core.UI.swift in Sources */,
 				576859101C4DE984009D3681 /* Widget.Enigma.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
+				5781FC0C1C6BC9500001A743 /* SCNRect.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* Core.Universe.swift in Sources */,
 				576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
