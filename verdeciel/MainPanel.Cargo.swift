@@ -50,6 +50,8 @@ class PanelCargo : MainPanel
 		port.output = Item.self
 		
 		port.event = items.playerCargo
+		
+		decalsNode.empty()
 	}
 	
 	func contains(event:Event) -> Bool

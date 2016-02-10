@@ -91,6 +91,8 @@ class PanelThruster : MainPanel
 		
 		button = SCNButton(host:self, text: "undock", operation: 2)
 		details.addChildNode(button)
+		
+		decalsNode.empty()
 	}
 
 	override func touch(id:Int = 0)
@@ -166,6 +168,18 @@ class PanelThruster : MainPanel
 	}
 	
 	// MARK: Custom -
+	
+	func onPowered()
+	{
+		print("\(name) is powered")
+		refresh()
+	}
+	
+	func onUnpowered()
+	{
+		print("\(name) is unpowered")
+		refresh()
+	}
 	
 	func modeWarping()
 	{

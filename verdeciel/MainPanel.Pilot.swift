@@ -43,6 +43,8 @@ class PanelPilot : MainPanel
 		
 		port.input = Location.self
 		port.output = Event.self
+		
+		decalsNode.empty()
 	}
 	
 	override func touch(id:Int = 0)

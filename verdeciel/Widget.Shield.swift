@@ -37,6 +37,20 @@ class WidgetShield : Widget
 //		capsule.shieldRoot.updateChildrenColors(red)
 	}
 	
+	func onPowered()
+	{
+		print("\(name) is powered")
+		refresh()
+		capsule.shieldRoot.opacity = 1
+	}
+	
+	func onUnpowered()
+	{
+		print("\(name) is unpowered")
+		refresh()
+		capsule.shieldRoot.opacity = 0
+	}
+	
 	func createShield()
 	{
 		capsule.addChildNode(capsule.shieldRoot)
@@ -88,6 +102,7 @@ class WidgetShield : Widget
 		}
 		
 		capsule.shieldRoot.eulerAngles.y = Float(degToRad(360/16))
+		capsule.shieldRoot.opacity = 0
 	}
 	
 	required init?(coder aDecoder: NSCoder)
