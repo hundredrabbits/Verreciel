@@ -8,18 +8,16 @@
 - Stars only display as star if apporachable(shield strengt)
 - Add constellation location(just visual, no docking)
 - Stars display different icon is unreachable
-- trade panel default item name grey
 
 > Bugs
 - Issue with UI offset animation
 - Issue with docking when approaching a distant target
 - Release touch when installing camera animation
 - Monitors don't show
-- Generic port display as incompatible
 - Cargo full trigger
 - Last quest catch
 - Don't auto dock
-- Add docking button/trigger to thruster
+- Add cancel docking button/trigger to thruster
 - Reconnect monitors
 - Cannot warp if not aligned(Portal)
 

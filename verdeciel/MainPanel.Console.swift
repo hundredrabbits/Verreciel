@@ -76,13 +76,6 @@ class PanelConsole : MainPanel
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
-	
-	override func start()
-	{
-		decalsNode.opacity = 0
-		mainNode.opacity = 0
-		label.update("--", color: grey)
-	}
 
 	func addLine(command:SCNCommand! = nil)
 	{
@@ -116,7 +109,7 @@ class PanelConsole : MainPanel
 	{
 		clearLines()
 		addLine(SCNCommand(text: "Awaiting input",color:grey))
-		addLine(SCNCommand(text: "/",color:grey))
+		addLine(SCNCommand(text: "--",color:grey))
 	}
 	
 	func clearLines()
@@ -137,14 +130,14 @@ class PanelConsole : MainPanel
 		}
 		
 		if port.origin.host == cargo {
-			addLine(SCNCommand(text: port.origin.host.name!, color: grey, head:true))
+			addLine(SCNCommand(text: "Connected \(port.origin.host.name!)", color: grey, head:true))
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:item.isQuest))
 			}
 		}
 		else if port.origin.event != nil {
 			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
-			self.addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
+			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
 		}
 	}
 	
@@ -156,6 +149,11 @@ class PanelConsole : MainPanel
 		if consoleLine4.port.connection != nil { consoleLine4.port.connection.host.listen(consoleLine4.port.event) }
 		if consoleLine5.port.connection != nil { consoleLine5.port.connection.host.listen(consoleLine5.port.event) }
 		if consoleLine6.port.connection != nil { consoleLine6.port.connection.host.listen(consoleLine6.port.event) }
+	}
+	
+	override func onDisconnect()
+	{
+		addLine(SCNCommand(text: "Disconnected", color: grey, head:true))
 	}
 	
 	override func onInstallationBegin()

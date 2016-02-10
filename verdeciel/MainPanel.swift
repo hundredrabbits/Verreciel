@@ -60,6 +60,13 @@ class MainPanel : Panel
 		label.update("--", color:grey)
 	}
 	
+	override func start()
+	{
+		decalsNode.opacity = 0
+		mainNode.opacity = 0
+		label.update("--", color: grey)
+	}
+	
 	// MARK: Installation -
 	
 	var installNode:SCNNode = SCNNode()

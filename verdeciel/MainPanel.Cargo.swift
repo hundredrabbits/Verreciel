@@ -52,15 +52,6 @@ class PanelCargo : MainPanel
 		port.event = items.playerCargo
 	}
 	
-	override func start()
-	{
-		decalsNode.opacity = 0
-		mainNode.opacity = 0
-		label.update("--", color: grey)
-		
-		refresh()
-	}
-	
 	func contains(event:Event) -> Bool
 	{
 		for item in port.event.content {

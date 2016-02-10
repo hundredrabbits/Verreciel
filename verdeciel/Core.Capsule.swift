@@ -23,6 +23,8 @@ class CoreCapsule: SCNNode
 	
 	var mesh:SCNNode!
 	
+	var shield:SCNNode!
+	
 	// MARK: Default -
 	
 	override init()
@@ -272,12 +274,50 @@ class CoreCapsule: SCNNode
 		mesh.position = SCNVector3(0,0,0)
 		addChildNode(mesh)
 		
-		var i = 0
-		while i < 90 {
-//			let line = SCNLine(nodeA: SCNVector3(-0.1,3,templates.radius), nodeB: SCNVector3(0.1,3,templates.radius), color: grey)
-//			line.eulerAngles.y += Float(degToRad(CGFloat(i) * 4))
-//			mesh.addChildNode(line)
-			i += 1
+		
+		createShield()
+	}
+	
+	func createShield()
+	{
+		shield = SCNNode()
+		shield.position = SCNVector3(0,0,0)
+		addChildNode(shield)
+		self.position = SCNVector3(0,0,0)
+		
+		let radius:CGFloat = 10
+		var geometries:Array<SCNVector3> = []
+		
+		// Ring 1
+		
+		geometries.append(SCNVector3(radius * 0.25,0,radius * 0.75))
+		geometries.append(SCNVector3(-radius * 0.25,0,radius * 0.75))
+		geometries.append(SCNVector3(radius * 0.75,0,radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.75,0,radius * 0.25))
+		
+		geometries.append(SCNVector3(radius * 0.25,0,-radius * 0.75))
+		geometries.append(SCNVector3(-radius * 0.25,0,-radius * 0.75))
+		geometries.append(SCNVector3(radius * 0.75,0,-radius * 0.25))
+		geometries.append(SCNVector3(-radius * 0.75,0,-radius * 0.25))
+		
+		// Ring 2
+		
+		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,-radius * 0.5))
+		geometries.append(SCNVector3(-radius * 0.5,radius * 0.5,radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,-radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,radius * 0.5,radius * 0.5))
+		
+		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,-radius * 0.5))
+		geometries.append(SCNVector3(-radius * 0.5,-radius * 0.5,radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,-radius * 0.5))
+		geometries.append(SCNVector3(radius * 0.5,-radius * 0.5,radius * 0.5))
+		
+//		shield.addChildNode(SCNLine(nodeA: geometries[1], nodeB: geometries[8], color: white))
+		
+		for location in geometries {
+			let node = SCNNode(geometry: SCNSphere(radius: 0.2))
+			node.position = location
+			shield.addChildNode(node)
 		}
 	}
 	

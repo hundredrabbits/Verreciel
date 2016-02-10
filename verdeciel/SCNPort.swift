@@ -298,6 +298,7 @@ class SCNPort : SCNNode
 	override func onDisconnect()
 	{
 		print("disconnected")
+		host.onDisconnect()
 	}
 	
 	func IO(direction:Event.Type) -> String

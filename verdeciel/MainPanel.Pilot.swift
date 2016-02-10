@@ -45,13 +45,6 @@ class PanelPilot : MainPanel
 		port.output = Event.self
 	}
 	
-	override func start()
-	{
-		decalsNode.opacity = 0
-		mainNode.opacity = 0
-		label.update("--", color: grey)
-	}
-	
 	override func touch(id:Int = 0)
 	{
 		

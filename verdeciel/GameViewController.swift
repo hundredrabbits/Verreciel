@@ -102,35 +102,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_city)
+		capsule.start(universe.loiqe_spawn)
 		
 		cargo.addItems([items.valenPortalKey, items.materia])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
-	}
-	
-	func debugState()
-	{
-		universe.unlock(.valen)
-		universe.unlock(.senni)
-		
-		capsule.start(universe.loiqe_spawn)
-		
-		battery.cellPort1.addEvent(items.cell1)
-		battery.cellPort1.connect(battery.thrusterPort)
-		
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-//		quests.currentMission[Chapters.discovery]?.complete() ; quests.refresh()
-		
-//		cargo.addItems([items.valenPortalKey])
-		
-		
-//		battery.installMap()
-//		battery.installEnigma()
-//		battery.installShield()
-//		battery.installRadio()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
