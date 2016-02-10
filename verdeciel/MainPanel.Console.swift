@@ -122,7 +122,7 @@ class PanelConsole : MainPanel
 		if port.origin.host == cargo {
 			addLine(SCNCommand(text: "Connected \(port.origin.host.name!)", color: grey, head:true))
 			for item in event.content {
-				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:item.isQuest))
+				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
 			}
 		}
 		else if port.origin.event != nil {

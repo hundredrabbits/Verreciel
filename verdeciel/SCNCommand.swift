@@ -29,19 +29,21 @@ class SCNCommand : SCNNode
 		self.head = head
 
 		label = SCNLabel(text: self.text, scale: 0.1, align: alignment.left)
+		label.position = SCNVector3(0.3, 0, 0)
+		
 		detailsLabel = SCNLabel(text: details, scale: 0.1, align: alignment.right)
-		detailsLabel.position = SCNVector3((templates.rightMargin * 2) - 0.2, 0, 0)
+		detailsLabel.position = SCNVector3(3.2, 0, 0)
 		detailsLabel.updateColor(grey)
 		
 		super.init()
 		
 		port = SCNPortRedirect(host: self)
-		port.position = SCNVector3((templates.rightMargin * 2), 0, 0)
+		port.position = SCNVector3(0, 0, 0)
 		port.opacity = 0
 		port.event = event
 
-		headLineTop = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, 0.1, 0), color: cyan)
-		headLineDown = SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(-0.2, -0.1, 0), color: cyan)
+		headLineTop = SCNLine(nodeA: SCNVector3(0.125, 0, 0), nodeB: SCNVector3(0, 0.125, 0), color: cyan)
+		headLineDown = SCNLine(nodeA: SCNVector3(0.125, 0, 0), nodeB: SCNVector3(0, -0.125, 0), color: cyan)
 		
 		self.addChildNode(label)
 		self.addChildNode(detailsLabel)

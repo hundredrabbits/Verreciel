@@ -4,7 +4,6 @@
 
 > Playthrough
 - Save / Load Mechanics
-- Loading a map/ adding stars
 - Stars only display as star if apporachable(shield strengt)
 - Add constellation location(just visual, no docking)
 - Stars display different icon is unreachable
@@ -13,12 +12,8 @@
 - Issue with UI offset animation
 - Issue with docking when approaching a distant target
 - Release touch when installing camera animation
-- Monitors don't show
 - Cargo full trigger
-- Last quest catch
-- Don't auto dock
 - Add cancel docking button/trigger to thruster
-- Reconnect monitors
 - Cannot warp if not aligned(Portal)
 
 > Design
@@ -28,7 +23,6 @@
 - Add space doodads
 - Interface sounds
 - Fix stars
-- Shield Visuals
 - Horadric combination animation
 - Add constellation in warps
 - Harvest panel design
