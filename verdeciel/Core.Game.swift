@@ -19,8 +19,13 @@ class CoreGame
 	
 	}
 	
-	func refresh()
+	func update()
 	{
 		quests.refresh()
+	}
+	
+	func onSeconds()
+	{
+		update()
 	}
 }

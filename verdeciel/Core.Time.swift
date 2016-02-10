@@ -24,7 +24,8 @@ class CoreTime : NSObject
 	
 	func onSeconds()
 	{
-		game.refresh()
+		game.onSeconds()
+		capsule.onSeconds()
 	}
 	
 	func tic()

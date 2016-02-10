@@ -102,7 +102,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_spawn)
+		capsule.start(universe.loiqe_portal)
 		
 		cargo.addItems([items.valenPortalKey, items.materia])
 		
@@ -164,7 +164,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			let result: AnyObject! = hitResults[0]
 			result.node.touch()
 		}
-		game.refresh()
+		game.update()
 	}
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)

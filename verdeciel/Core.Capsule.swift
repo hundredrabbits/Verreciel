@@ -54,10 +54,20 @@ class CoreCapsule: SCNNode
 		
 		docking()
 		warping()
-		
-		// Todo: Remove from fixed update
+	}
+	
+	func onSeconds()
+	{
 		let cl = closestLocation()
-		if cl.system != nil { system = cl.system }
+		if cl.system != nil && cl.system != system { onSystemEnter(cl.system) }
+	}
+	
+	func onSystemEnter(system:Systems)
+	{
+		print("Entering \(system)")
+		self.system = system
+		
+		// Todo: Animate colors
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location
