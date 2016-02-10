@@ -57,6 +57,8 @@ class SCNWire : SCNNode
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		if isEnabled == false || nodeB == nil { return }
 		if nodeA.x == nodeB.x && nodeA.y == nodeB.y && nodeA.z == nodeB.z { return }
 		

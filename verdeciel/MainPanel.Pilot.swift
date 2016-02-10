@@ -52,6 +52,8 @@ class PanelPilot : MainPanel
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		target = nil
 		
 		if port.isReceivingEventOfTypeLocation(){

@@ -79,6 +79,8 @@ class PanelRadar : MainPanel
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		eventView.position = SCNVector3(capsule.at.x * -1,capsule.at.y * -1,0)
 		
 		let directionNormal = Double(Float(capsule.direction)/180) * -1

@@ -111,6 +111,8 @@ class CorePlayer : SCNNode
 
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		flickerAlert()
         
         if !isLocked {

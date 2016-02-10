@@ -117,6 +117,8 @@ class PanelMission : MainPanel
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		if capsule.isDocked && capsule.dock.isComplete != nil && capsule.dock.isComplete == false {
 			locationPanel.update()
 		}

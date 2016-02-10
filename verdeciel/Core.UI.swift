@@ -100,6 +100,8 @@ class CoreUI: SCNNode
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
         if !player.isLocked {
             ui.eulerAngles.x += accelX;
             ui.eulerAngles.y += accelY;

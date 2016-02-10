@@ -99,6 +99,8 @@ class SCNCommand : SCNNode
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		if console.port.origin == nil {
 			port.disable()
 		}

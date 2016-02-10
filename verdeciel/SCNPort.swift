@@ -86,6 +86,8 @@ class SCNPort : SCNNode
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		sprite_input.opacity = 1
 		sprite_output.opacity = 1
 		

@@ -169,9 +169,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-		capsule._fixedUpdate()
-		player._fixedUpdate()
-		ui._fixedUpdate()
+		capsule.fixedUpdate()
+		player.fixedUpdate()
+		ui.fixedUpdate()
 		
 		space.fixedUpdate()
 		ui.updatePort()

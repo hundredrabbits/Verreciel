@@ -75,6 +75,8 @@ class Location : Event
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
@@ -93,11 +95,6 @@ class Location : Event
 		
 		radarCulling()
 		clean()
-	}
-	
-	override func lateUpdate()
-	{
-		
 	}
 	
 	func updateIcon()

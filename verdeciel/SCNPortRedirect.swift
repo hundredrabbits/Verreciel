@@ -26,6 +26,7 @@ class SCNPortRedirect : SCNPort
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()
+		
 		if event != nil { sprite_input.updateChildrenColors(clear) }
 	}
 	

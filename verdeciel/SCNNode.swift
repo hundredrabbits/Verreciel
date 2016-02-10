@@ -25,29 +25,11 @@ extension SCNNode
 	{
 	}
 	
-	func _fixedUpdate()
-	{
-		fixedUpdate()
-		for node in childNodes {
-			node._fixedUpdate()
-		}
-	}
-	
 	func fixedUpdate()
 	{
-	}
-	
-	func _lateUpdate()
-	{
-		lateUpdate()
 		for node in childNodes {
-			node._lateUpdate()
+			node.fixedUpdate()
 		}
-	}
-	
-	func lateUpdate()
-	{
-	
 	}
 	
 	func absolutePosition() -> SCNVector3

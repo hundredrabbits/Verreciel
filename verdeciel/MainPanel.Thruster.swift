@@ -130,6 +130,8 @@ class PanelThruster : MainPanel
 	
 	override func fixedUpdate()
 	{
+		super.fixedUpdate()
+		
 		canWarp = false
 		
 		update()
