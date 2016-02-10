@@ -52,13 +52,17 @@ class MainPanel : Panel
 		portOutputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
 		
 		// Decals
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.top,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.top,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.left + 0.2,templates.bottom,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.bottom + 0.2,0), nodeB: SCNVector3(templates.right - 0.2,templates.bottom,0), color: grey))
 		
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.left,templates.top - 0.2,0), nodeB: SCNVector3(templates.left,templates.bottom + 0.2,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(templates.right,templates.top - 0.2,0), nodeB: SCNVector3(templates.right,templates.bottom + 0.2,0), color: grey))
+		let width:CGFloat = 1.65
+		let height:CGFloat = 1.8
+		
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width,height,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,-height + 0.2,0), nodeB: SCNVector3(width,-height,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width + 0.2,-height + 0.2,0), color: grey))
+		
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width,height,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,-height + 0.2,0), nodeB: SCNVector3(-width,-height,0), color: grey))
+		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width - 0.2,-height + 0.2,0), color: grey))
 		
 		// Start
 		

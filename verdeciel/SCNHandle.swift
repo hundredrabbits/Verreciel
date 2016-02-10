@@ -40,10 +40,6 @@ class SCNHandle : SCNNode
 		selectionLine = SCNLine(nodeA: SCNVector3(x: -width + spacing, y: 0, z: height),nodeB: SCNVector3(x: width - spacing, y: 0, z: height),color:cyan)
 		addChildNode(selectionLine)
 		
-		let label = SCNLabel(text: "handle", scale: 0.03, align: alignment.center, color: grey)
-		label.position = SCNVector3(0,-0.2,0)
-		addChildNode(label)
-		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 0)
 		trigger.updateChildrenColors(red)
 		addChildNode(trigger)
