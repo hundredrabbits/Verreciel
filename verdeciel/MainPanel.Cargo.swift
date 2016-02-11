@@ -52,6 +52,8 @@ class PanelCargo : MainPanel
 		port.event = items.playerCargo
 		
 		decalsNode.empty()
+		
+		details.update("0", color:white)
 	}
 	
 	func contains(event:Event) -> Bool
@@ -130,7 +132,7 @@ class PanelCargo : MainPanel
 		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
 		
-		details.update("\(port.event.content.count)/6")
+		details.update("\(port.event.content.count)", color:white)
 	}
 	
 	// MARK: I/O -

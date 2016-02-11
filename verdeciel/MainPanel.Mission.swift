@@ -314,7 +314,7 @@ class PanelMission : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-//		player.lookAt(deg: -180)
+		player.lookAt(deg: -180)
 	}
 	
 	override func onInstallationComplete()

@@ -16,6 +16,9 @@
 - Add cancel docking button/trigger to thruster
 - Cannot warp if not aligned(Portal)
 
+(Harvest)
+- Connect timer
+
 > Design
 - Add missing icons
 - Floating feel
@@ -25,6 +28,7 @@
 - Fix stars
 - Horadric combination animation
 - Add constellation in warps
+- Animate change of Thruster state
 
 > Narative
 - Telemetrists!? Twin Suns

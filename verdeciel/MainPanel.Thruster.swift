@@ -328,11 +328,8 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(grey)
 		decelerate.updateChildrenColors(grey)
 		
-		line1.blink()
-		line1.color(white)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
+		lineLeft.color(clear)
+		lineRight.color(clear)
 	}
 	
 	func modeDocked()
@@ -342,16 +339,16 @@ class PanelThruster : MainPanel
 		interface_flight.opacity = 0
 		interface_dock.opacity = 1
 		interface_warp.opacity = 0
-		
-		interface_flight.opacity = 0
+
 		action.enable()
 		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(red)
 		decelerate.updateChildrenColors(red)
-		lineLeft.updateColor(red)
-		lineRight.updateColor(red)
+		
+		lineLeft.color(red)
+		lineRight.color(red)
 	}
 	
 	func modeFlight()
