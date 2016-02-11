@@ -11,7 +11,10 @@ class PanelThruster : MainPanel
 {
 	var accelerate:SCNTrigger!
 	var decelerate:SCNTrigger!
+	var action:SCNTrigger!
 	
+	// Speed Lines
+	var interface_flight = SCNNode()
 	var line1:SCNLine!
 	var line2:SCNLine!
 	var line3:SCNLine!
@@ -26,11 +29,18 @@ class PanelThruster : MainPanel
 	var cutLine4Left:SCNLine!
 	var cutLine4Right:SCNLine!
 	
+	// Docking
+	var interface_dock = SCNNode()
+	
+	// Warping
+	var interface_warp = SCNNode()
+	
+	var lineLeft:SCNLine!
+	var lineRight:SCNLine!
+	
 	var maxSpeed:Int = 0
 	var speed:Int = 0
 	var actualSpeed:Float = 0
-	
-	var button:SCNButton!
 	
 	var canWarp:Bool = false
 	
@@ -42,16 +52,19 @@ class PanelThruster : MainPanel
 		
 		name = "thruster"
 		
-		// Lines
+		// Flight
+		
+		mainNode.addChildNode(interface_flight)
+		
 		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
 		line2 = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: grey)
 		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey)
 		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey)
 		
-		mainNode.addChildNode(line1)
-		mainNode.addChildNode(line2)
-		mainNode.addChildNode(line3)
-		mainNode.addChildNode(line4)
+		interface_flight.addChildNode(line1)
+		interface_flight.addChildNode(line2)
+		interface_flight.addChildNode(line3)
+		interface_flight.addChildNode(line4)
 		
 		cutLine1Left = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(-0.1, -0.3, 0), color: grey)
 		cutLine1Right = SCNLine(nodeA: SCNVector3(0.5, -0.3, 0), nodeB: SCNVector3(0.1, -0.3, 0), color: grey)
@@ -62,14 +75,54 @@ class PanelThruster : MainPanel
 		cutLine4Left = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(-0.1, 0.3, 0), color: grey)
 		cutLine4Right = SCNLine(nodeA: SCNVector3(0.5, 0.3, 0), nodeB: SCNVector3(0.1, 0.3, 0), color: grey)
 		
-		mainNode.addChildNode(cutLine1Left)
-		mainNode.addChildNode(cutLine1Right)
-		mainNode.addChildNode(cutLine2Left)
-		mainNode.addChildNode(cutLine2Right)
-		mainNode.addChildNode(cutLine3Left)
-		mainNode.addChildNode(cutLine3Right)
-		mainNode.addChildNode(cutLine4Left)
-		mainNode.addChildNode(cutLine4Right)
+		interface_flight.addChildNode(cutLine1Left)
+		interface_flight.addChildNode(cutLine1Right)
+		interface_flight.addChildNode(cutLine2Left)
+		interface_flight.addChildNode(cutLine2Right)
+		interface_flight.addChildNode(cutLine3Left)
+		interface_flight.addChildNode(cutLine3Right)
+		interface_flight.addChildNode(cutLine4Left)
+		interface_flight.addChildNode(cutLine4Right)
+		
+		// Dock
+		
+		mainNode.addChildNode(interface_dock)
+		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(0, 0.1, 0), color: grey))
+		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(0.1, 0, 0), nodeB: SCNVector3(0, 0.1, 0), color: grey))
+		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, -0.1, 0), nodeB: SCNVector3(0, 0, 0), color: grey))
+		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(0.1, -0.1, 0), nodeB: SCNVector3(0, 0, 0), color: grey))
+		
+		// Warp
+		
+		mainNode.addChildNode(interface_warp)
+		var verticalOffset:CGFloat = 0.1
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		verticalOffset = -0.1
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		verticalOffset = 0.3
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		verticalOffset = -0.3
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		
+		
+		// Etcs
+		
+		lineLeft = SCNLine(nodeA: SCNVector3(-0.5, 0.5, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red)
+		mainNode.addChildNode(lineLeft)
+		lineRight = SCNLine(nodeA: SCNVector3(0.5, 0.5, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red)
+		mainNode.addChildNode(lineRight)
 		
 		// Triggers
 		
@@ -83,14 +136,16 @@ class PanelThruster : MainPanel
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
 		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))
 		
+		action = SCNTrigger(host: self, size: CGSize(width: 1.5, height: 1.5), operation: 2)
+		
 		mainNode.addChildNode(accelerate)
 		mainNode.addChildNode(decelerate)
+		mainNode.addChildNode(action)
 		
 		port.input = Event.self
 		port.output = Event.self
 		
-		button = SCNButton(host:self, text: "undock", operation: 2)
-		details.addChildNode(button)
+		details.update("--")
 		
 		decalsNode.empty()
 	}
@@ -183,7 +238,7 @@ class PanelThruster : MainPanel
 	
 	func modeWarping()
 	{
-		button.disable("warping", outline:white)
+		details.update("warping")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -203,22 +258,24 @@ class PanelThruster : MainPanel
 	
 	func modeWaitingForWarp()
 	{
-		button.enable("warp", outline:cyan)
+		details.update("warp")
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 0
+		interface_warp.opacity = 1
 		
 		accelerate.disable()
 		decelerate.disable()
-		accelerate.updateChildrenColors(grey)
-		decelerate.updateChildrenColors(grey)
+		accelerate.updateChildrenColors(cyan)
+		decelerate.updateChildrenColors(cyan)
 		
-		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
-		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
-		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
-		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+		lineLeft.color(cyan)
+		lineRight.color(cyan)
 	}
 	
 	func modeMissingPilotForWarp()
 	{
-		button.disable("pilot")
+		details.update("pilot")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -233,7 +290,7 @@ class PanelThruster : MainPanel
 	
 	func modeUnpowered()
 	{
-		button.disable("unpowered", outline:clear)
+		details.update("unpowered")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -249,7 +306,7 @@ class PanelThruster : MainPanel
 	func modeDocking()
 	{
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
-		button.disable("docking \(dockingProgress)%", outline:clear)
+		details.update("docking \(dockingProgress)%")
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -265,23 +322,22 @@ class PanelThruster : MainPanel
 	
 	func modeDocked()
 	{
-		button.enable("undock")
+		details.update("undock")
+		
+		interface_flight.opacity = 0
+		action.enable()
 		
 		accelerate.disable()
 		decelerate.disable()
-		accelerate.updateChildrenColors(grey)
-		decelerate.updateChildrenColors(grey)
-		
-		line1.opacity = 1
-		line1.color(grey)
-		line2.color(grey)
-		line3.color(grey)
-		line4.color(grey)
+		accelerate.updateChildrenColors(red)
+		decelerate.updateChildrenColors(red)
+		lineLeft.updateColor(red)
+		lineRight.updateColor(red)
 	}
 	
 	func modeFlight()
 	{
-		button.disable(String(format: "%.1f", actualSpeed), outline:clear)
+		details.update(String(format: "%.1f", actualSpeed))
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }
@@ -291,19 +347,14 @@ class PanelThruster : MainPanel
 		accelerate.enable()
 		decelerate.enable()
 		
-		if speed == maxSpeed {
-			accelerate.updateChildrenColors(grey)
-		}
-		else{
-			accelerate.updateChildrenColors(cyan)
-		}
+		accelerate.updateChildrenColors((speed == maxSpeed ? grey : cyan))
+		decelerate.updateChildrenColors((speed == 0 ? grey : red))
 		
-		if speed == 0 {
-			decelerate.updateChildrenColors(grey)
-		}
-		else{
-			decelerate.updateChildrenColors(red)
-		}
+		lineLeft.color(clear)
+		lineRight.color(clear)
+		
+		interface_dock.opacity = 0
+		interface_flight.opacity = 1
 	}
 	
 	func speedUp()

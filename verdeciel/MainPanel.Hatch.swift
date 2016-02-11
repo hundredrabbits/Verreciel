@@ -41,6 +41,8 @@ class PanelHatch : MainPanel
 		port.output = Event.self
 		
 		decalsNode.empty()
+		
+		details.update("--", color:white)
 	}
 
 	override func touch(id:Int = 0)

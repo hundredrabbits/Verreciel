@@ -13,7 +13,6 @@ class CoreCapsule: SCNNode
 	
 	var direction:CGFloat! = 1
 	var system:Systems = .loiqe
-	var sector:sectors = .normal
 	
 	var isDocked:Bool = false
 	var dock:Location!
@@ -175,7 +174,6 @@ class CoreCapsule: SCNNode
 	{
 		isWarping = false
 		warp = nil
-		thruster.button.enable("??")
 	}
 	
 	func interfaceSetup()

@@ -36,12 +36,12 @@ class CoreSpace: SCNNode
 		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
 		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
 		
-		if currentSpaceColor[0] < targetSpaceColor[0] { currentSpaceColor[0] += 0.01 }
-		if currentSpaceColor[0] > targetSpaceColor[0] { currentSpaceColor[0] -= 0.01 }
-		if currentSpaceColor[1] < targetSpaceColor[1] { currentSpaceColor[1] += 0.01 }
-		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
-		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
-		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
+		if currentStarsColor[0] < currentStarsColor[0] { currentStarsColor[0] += 0.01 }
+		if currentStarsColor[0] > currentStarsColor[0] { currentStarsColor[0] -= 0.01 }
+		if currentStarsColor[1] < currentStarsColor[1] { currentStarsColor[1] += 0.01 }
+		if currentStarsColor[1] > currentStarsColor[1] { currentStarsColor[1] -= 0.01 }
+		if currentStarsColor[2] < currentStarsColor[2] { currentStarsColor[2] += 0.01 }
+		if currentStarsColor[2] > currentStarsColor[2] { currentStarsColor[2] -= 0.01 }
 		
 		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
 	}
@@ -103,11 +103,7 @@ class CoreSpace: SCNNode
 			randZ = Int(arc4random_uniform(40)) - 20
 		}
 		
-		var color = white
-		if capsule.sector == sectors.cyanine { color = black }
-		if capsule.sector == sectors.vermiles { color = black }
-		if capsule.sector == sectors.opal { color = black }
-		if capsule.sector == sectors.void { color = grey }
+		let color = UIColor(red: space.targetSpaceColor[0], green: space.targetSpaceColor[1], blue: space.targetSpaceColor[2], alpha: 1)
 		
 		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
