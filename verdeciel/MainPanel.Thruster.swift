@@ -116,7 +116,6 @@ class PanelThruster : MainPanel
 		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
 		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
 		
-		
 		// Etcs
 		
 		lineLeft = SCNLine(nodeA: SCNVector3(-0.5, 0.5, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red)
@@ -240,6 +239,10 @@ class PanelThruster : MainPanel
 	{
 		details.update("warping")
 		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 0
+		interface_warp.opacity = 1
+		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(clear)
@@ -277,6 +280,10 @@ class PanelThruster : MainPanel
 	{
 		details.update("pilot")
 		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 0
+		interface_warp.opacity = 1
+		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(grey)
@@ -291,6 +298,10 @@ class PanelThruster : MainPanel
 	func modeUnpowered()
 	{
 		details.update("unpowered")
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 0
+		interface_warp.opacity = 0
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -307,6 +318,10 @@ class PanelThruster : MainPanel
 	{
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
 		details.update("docking \(dockingProgress)%")
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 1
+		interface_warp.opacity = 0
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -325,6 +340,10 @@ class PanelThruster : MainPanel
 		details.update("undock")
 		
 		interface_flight.opacity = 0
+		interface_dock.opacity = 1
+		interface_warp.opacity = 0
+		
+		interface_flight.opacity = 0
 		action.enable()
 		
 		accelerate.disable()
@@ -338,6 +357,10 @@ class PanelThruster : MainPanel
 	func modeFlight()
 	{
 		details.update(String(format: "%.1f", actualSpeed))
+		
+		interface_flight.opacity = 1
+		interface_dock.opacity = 0
+		interface_warp.opacity = 0
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }

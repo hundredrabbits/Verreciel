@@ -8,22 +8,20 @@ import Foundation
 
 class CoreSpace: SCNNode
 {
-	var structuresRoot:SCNNode!
-	var starsRoot:SCNNode!
-	var starTimer:Float = 0
-	var targetSpaceColor:Array<CGFloat>!
+	var structuresRoot = SCNNode()
+	var starsRoot = SCNNode()
 	
 	override init()
 	{
 		super.init()
 		
-		structuresRoot = SCNNode()
 		addChildNode(structuresRoot)
-		
-		starsRoot = SCNNode()
 		addChildNode(starsRoot)
 	}
 	
+	// Space Color
+	
+	var targetSpaceColor:Array<CGFloat>!
 	var currentSpaceColor:Array<CGFloat> = [0,0,0]
 	var currentStarsColor:Array<CGFloat> = [0,0,0]
 	
@@ -46,12 +44,41 @@ class CoreSpace: SCNNode
 		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
 	}
 	
+	// Stars
+	
+	var starTimer:Float = 0
+	
+	func addStar()
+	{
+		if starsRoot.childNodes.count > 100 { return }
+		
+		var randX = Int(arc4random_uniform(40)) - 20
+		var randZ = Int(arc4random_uniform(40)) - 20
+		
+		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
+			randX = Int(arc4random_uniform(40)) - 20
+			randZ = Int(arc4random_uniform(40)) - 20
+		}
+		
+		let color = UIColor(red: space.targetSpaceColor[0], green: space.targetSpaceColor[1], blue: space.targetSpaceColor[2], alpha: 1)
+		
+		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
+		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
+		starsRoot.addChildNode(newLine)
+	}
+	
+	// Instances
+	
+	func startInstance(location:Location)
+	{
+		structuresRoot.addChildNode(Instance(event: location))
+	}
+	
+	// Other
+	
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()
-		
-//		if capsule.closestKnownLocation().system == Systems.cyanine { sceneView.backgroundColor = whiteTone }
-//		else { sceneView.backgroundColor = black }
 		
 		while starTimer > 2 {
 			addStar()
@@ -59,6 +86,7 @@ class CoreSpace: SCNNode
 		}
 		
 		// Orientation
+		
 		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
 		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
 		
@@ -84,30 +112,6 @@ class CoreSpace: SCNNode
 		for instance in structuresRoot.childNodes{
 			instance.update()
 		}
-	}
-	
-	func startInstance(location:Location)
-	{
-		structuresRoot.addChildNode(Instance(event: location))
-	}
-	
-	func addStar()
-	{
-		if starsRoot.childNodes.count > 100 { return }
-		
-		var randX = Int(arc4random_uniform(40)) - 20
-		var randZ = Int(arc4random_uniform(40)) - 20
-		
-		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
-			randX = Int(arc4random_uniform(40)) - 20
-			randZ = Int(arc4random_uniform(40)) - 20
-		}
-		
-		let color = UIColor(red: space.targetSpaceColor[0], green: space.targetSpaceColor[1], blue: space.targetSpaceColor[2], alpha: 1)
-		
-		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
-		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
-		starsRoot.addChildNode(newLine)
 	}
 	
 	required init(coder aDecoder: NSCoder)

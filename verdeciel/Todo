@@ -16,10 +16,6 @@
 - Add cancel docking button/trigger to thruster
 - Cannot warp if not aligned(Portal)
 
-(Thruster)
-- Remove button from bottom
-- Undock from main interface
-
 > Design
 - Add missing icons
 - Floating feel
