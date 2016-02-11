@@ -46,7 +46,10 @@ class CoreCapsule: SCNNode
 		docked()
 		
 		battery.install()
+		
+		onSystemEnter(.valen)
 	}
+	
 	
 	override func fixedUpdate()
 	{
@@ -66,8 +69,15 @@ class CoreCapsule: SCNNode
 	{
 		print("Entering \(system)")
 		self.system = system
-		
-		// Todo: Animate colors
+
+		switch system {
+			case .valen  : space.targetSpaceColor = [0.2,0.2,0.2] ; space.currentStarsColor = [0.7,0.7,0.7]
+			case .falvet : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.5,0.5,0.5]
+			case .senni  : space.targetSpaceColor = [0.7,0.7,0.7] ; space.currentStarsColor = [0.0,0.0,0.0]
+			case .usul   : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,0.0,0.0]
+			case .nevic  : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.2,0.0,0.0]
+			default      : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,1.0,1.0]
+		}
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

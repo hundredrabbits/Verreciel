@@ -11,11 +11,10 @@ class LocationLibrary
 {
 	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -10))
 	let usul  = Usul(offset: CGPoint(x: -10,y: 0))
-	let venic = Venic(offset: CGPoint(x: 10,y: -10))
+	let nevic = Nevic(offset: CGPoint(x: 10,y: -10))
 	let valen = Valen(offset: CGPoint(x: 10,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 10))
 	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
-	let cyanine = Cyanine(offset: CGPoint(x: 200,y: 200))
 	
 	init()
 	{
@@ -167,10 +166,10 @@ class Valen
 	}
 }
 
-class Venic
+class Nevic
 {
 	var offset:CGPoint!
-	var system:Systems = .venic
+	var system:Systems = .nevic
 	
 	init(offset:CGPoint)
 	{
@@ -179,7 +178,7 @@ class Venic
 	
 	func star() -> LocationStar
 	{
-		return LocationStar(name:"Venic",system:system, at:offset)
+		return LocationStar(name:"nevic",system:system, at:offset)
 	}
 	
 	func station() -> LocationStation
@@ -324,57 +323,4 @@ class Falvet
 		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
 		return location
 	}
-}
-
-class Cyanine
-{
-	var offset:CGPoint!
-	
-	init(offset:CGPoint)
-	{
-		self.offset = offset
-	}
-	
-	func star() -> LocationStar
-	{
-		let location = LocationStar(name:"Cyanine",system:.cyanine)
-		location.at = offset
-		return location
-	}
-	
-	func valen() -> LocationStar
-	{
-		let location = LocationStar(name:"Valen II",system:.cyanine)
-		location.at = CGPoint(x: offset.x + 1, y: offset.y)
-		return location
-	}
-	
-	func venic() -> LocationStar
-	{
-		let location = LocationStar(name:"Venic II",system:.cyanine)
-		location.at = CGPoint(x: offset.x + 1, y: offset.y - 1)
-		return location
-	}
-	
-	func senni() -> LocationStar
-	{
-		let location = LocationStar(name:"Senni II",system:.cyanine)
-		location.at = CGPoint(x: offset.x, y: offset.y + 1)
-		return location
-	}
-	
-	func loiqe() -> LocationStar
-	{
-		let location = LocationStar(name:"Loiqe II",system:.cyanine)
-		location.at = CGPoint(x: offset.x, y: offset.y - 1)
-		return location
-	}
-	
-	func usul() -> LocationStar
-	{
-		let location = LocationStar(name:"Usul II",system:.cyanine)
-		location.at = CGPoint(x: offset.x - 1, y: offset.y)
-		return location
-	}
-
 }

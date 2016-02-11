@@ -16,12 +16,10 @@ class CoreUniverse : SCNNode
 		
 		addLoiqe()
 		addUsul()
-		addVenic()
+		addnevic()
 		addValen()
 		addSenni()
 		addFalvet()
-		
-		addCyanine()
 		
 		connectPaths()
 		connectPortals()
@@ -36,20 +34,6 @@ class CoreUniverse : SCNNode
 		
 		valen_bank.port2.addEvent(items.waste)
 		valen_bank.port3.addEvent(items.cell2)
-		
-		// Setup Twin Stars
-		
-		loiqe.twin = cyanine_loiqe
-		valen.twin = cyanine_valen
-		venic.twin = cyanine_venic
-		senni.twin = cyanine_senni
-		usul.twin = cyanine_usul
-		
-		cyanine_loiqe.twin = universe.loiqe
-		cyanine_valen.twin = universe.valen
-		cyanine_venic.twin = universe.venic
-		cyanine_senni.twin = universe.senni
-		cyanine_usul.twin = universe.usul
 	}
 	
 	// MARK: Loiqe -
@@ -115,25 +99,25 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_cargo)
 	}
 	
-	// MARK: Venic -
+	// MARK: nevic -
 	
-	var venic = locations.venic.star()
-	var venic_station = locations.venic.station()
-	var venic_satellite = locations.venic.satellite()
-	var venic_beacon = locations.venic.beacon()
-	var venic_cargo = locations.venic.cargo()
-	var venic_city = locations.venic.city()
-	var venic_port = locations.venic.port()
+	var nevic = locations.nevic.star()
+	var nevic_station = locations.nevic.station()
+	var nevic_satellite = locations.nevic.satellite()
+	var nevic_beacon = locations.nevic.beacon()
+	var nevic_cargo = locations.nevic.cargo()
+	var nevic_city = locations.nevic.city()
+	var nevic_port = locations.nevic.port()
 	
-	func addVenic()
+	func addnevic()
 	{
-		addChildNode(venic)
-		addChildNode(venic_station)
-		addChildNode(venic_satellite)
-		addChildNode(venic_beacon)
-		addChildNode(venic_cargo)
-		addChildNode(venic_city)
-		addChildNode(venic_port)
+		addChildNode(nevic)
+		addChildNode(nevic_station)
+		addChildNode(nevic_satellite)
+		addChildNode(nevic_beacon)
+		addChildNode(nevic_cargo)
+		addChildNode(nevic_city)
+		addChildNode(nevic_port)
 	}
 	
 	// MARK: Senni -
@@ -183,29 +167,7 @@ class CoreUniverse : SCNNode
 		addChildNode(falvet_service3)
 		addChildNode(falvet_service4)
 	}
-	
-	// MARK: Cyanine -
-	
-	var cyanine = locations.cyanine.star()
-	var cyanine_valen = locations.cyanine.valen()
-	var cyanine_venic = locations.cyanine.venic()
-	var cyanine_senni = locations.cyanine.senni()
-	var cyanine_usul = locations.cyanine.usul()
-	var cyanine_loiqe = locations.cyanine.loiqe()
-	
-	func addCyanine()
-	{
-		addChildNode(cyanine)
-		addChildNode(cyanine_valen)
-		addChildNode(cyanine_venic)
-		addChildNode(cyanine_senni)
-		addChildNode(cyanine_usul)
-		addChildNode(cyanine_loiqe)
-	}
-	
-	// MARK: Tools
-	
-	
+
 	// MARK: Misc -
 	
 	func connectPortals()
@@ -222,10 +184,10 @@ class CoreUniverse : SCNNode
 		loiqe_satellite.connect(loiqe_portal)
 		loiqe_portal.connect(loiqe_horadric)
 		
-		venic_city.connect(venic_satellite)
-		venic_satellite.connect(venic_station)
-		venic_beacon.connect(venic_cargo)
-		venic_cargo.connect(venic_station)
+		nevic_city.connect(nevic_satellite)
+		nevic_satellite.connect(nevic_station)
+		nevic_beacon.connect(nevic_cargo)
+		nevic_cargo.connect(nevic_station)
 		
 		falvet_toUsul.connect(usul_portal)
 		falvet_toValen.connect(valen_portal)

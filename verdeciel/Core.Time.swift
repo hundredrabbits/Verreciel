@@ -18,7 +18,7 @@ class CoreTime : NSObject
 	
 	func start()
 	{
-		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("tic"), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("onTic"), userInfo: nil, repeats: true)
 		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("onSeconds"), userInfo: nil, repeats: true)
 	}
 	
@@ -28,8 +28,9 @@ class CoreTime : NSObject
 		capsule.onSeconds()
 	}
 	
-	func tic()
+	func onTic()
 	{
 		elapsed += 1
+		space.onTic()
 	}
 }

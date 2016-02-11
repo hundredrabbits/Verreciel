@@ -283,7 +283,7 @@ class MissionLibrary
 		m.predicate = { cargo.contains(items.usulPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire fragment I", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.venic_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
+			Quest(name:"Aquire fragment II", location: universe.nevic_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
 			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)

@@ -65,6 +65,7 @@
 		579EA8EB1BE853F600B384C7 /* Icons.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579EA8EA1BE853F600B384C7 /* Icons.Library.swift */; };
 		57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
+		57A1E1991C6C18C80090106B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E1981C6C18C80090106B /* UIColor.swift */; };
 		57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */; };
 		57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9621BC6C3DB00EA35F6 /* String.swift */; };
 		57C222F61C1F218A005092A4 /* Location.Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F51C1F218A005092A4 /* Location.Bank.swift */; };
@@ -148,6 +149,7 @@
 		579EA8EA1BE853F600B384C7 /* Icons.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.Library.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Radar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		57A1E1981C6C18C80090106B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
 		57A5F9621BC6C3DB00EA35F6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		57C222F51C1F218A005092A4 /* Location.Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Bank.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				03DDE18A19CE497F008029A8 /* LaunchScreen.xib */,
 				03DDE18819CE497F008029A8 /* Images.xcassets */,
 				03DDE17E19CE497F008029A8 /* Info.plist */,
+				57A1E1981C6C18C80090106B /* UIColor.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				571728E51BB06413002782A3 /* SCNCommand.swift in Sources */,
 				5748AD9E1BC8476000C47468 /* Mission.Library.swift in Sources */,
 				579CE7221C247DF4009E02F5 /* Item.swift in Sources */,
+				57A1E1991C6C18C80090106B /* UIColor.swift in Sources */,
 				57F645F71B4CC0C20088D115 /* MainPanel.Console.swift in Sources */,
 				576DCEA61C483BCF007A7544 /* Mission.swift in Sources */,
 				576953591C2060EC00A0CA39 /* Location.Library.swift in Sources */,

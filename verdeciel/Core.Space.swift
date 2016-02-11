@@ -11,6 +11,7 @@ class CoreSpace: SCNNode
 	var structuresRoot:SCNNode!
 	var starsRoot:SCNNode!
 	var starTimer:Float = 0
+	var targetSpaceColor:Array<CGFloat>!
 	
 	override init()
 	{
@@ -21,6 +22,28 @@ class CoreSpace: SCNNode
 		
 		starsRoot = SCNNode()
 		addChildNode(starsRoot)
+	}
+	
+	var currentSpaceColor:Array<CGFloat> = [0,0,0]
+	var currentStarsColor:Array<CGFloat> = [0,0,0]
+	
+	func onTic()
+	{
+		if currentSpaceColor[0] < targetSpaceColor[0] { currentSpaceColor[0] += 0.01 }
+		if currentSpaceColor[0] > targetSpaceColor[0] { currentSpaceColor[0] -= 0.01 }
+		if currentSpaceColor[1] < targetSpaceColor[1] { currentSpaceColor[1] += 0.01 }
+		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
+		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
+		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
+		
+		if currentSpaceColor[0] < targetSpaceColor[0] { currentSpaceColor[0] += 0.01 }
+		if currentSpaceColor[0] > targetSpaceColor[0] { currentSpaceColor[0] -= 0.01 }
+		if currentSpaceColor[1] < targetSpaceColor[1] { currentSpaceColor[1] += 0.01 }
+		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
+		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
+		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
+		
+		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
 	}
 	
 	override func fixedUpdate()

@@ -83,8 +83,7 @@ enum Systems
 	case falvet
 	case senni
 	case usul
-	case venic
-	case cyanine
+	case nevic
 	
 	case unknown
 }
