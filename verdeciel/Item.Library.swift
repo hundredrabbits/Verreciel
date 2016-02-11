@@ -57,9 +57,9 @@ class ItemLibrary
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
 	
 	// Harvest
-	let materia = Item(name: "materia", type: .currency, note:"a trading currency")
-	let alta = Item(name: "materia", type: .currency, note:"a trading currency")
-	let credits = Item(name: "credits", type: .currency, note:"a trading currency")
-	let ingot = Item(name: "credits", type: .currency, note:"a trading currency")
-	let uli = Item(name: "credits", type: .currency, note:"the trading currency")
+	let materia = Item(name: "materia", type: .currency, note:"trading currency")
+	let alta = Item(name: "materia", type: .currency, note:"trading currency")
+	let credits = Item(name: "credits", type: .currency, note:"trading currency")
+	let ingot = Item(name: "credits", type: .currency, note:"trading currency")
+	let uli = Item(name: "credits", type: .currency, note:"trading currency")
 }
