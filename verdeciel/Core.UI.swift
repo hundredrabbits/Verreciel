@@ -193,7 +193,7 @@ class CoreUI: SCNNode
 		SCNTransaction.commit()
 	}
 	
-	func addWarning(warning:String,duration:Double! = nil)
+	func addWarning(warning:String,duration:Double! = 2)
 	{		
 		self.warning = warning
 		
@@ -206,9 +206,7 @@ class CoreUI: SCNNode
 			SCNTransaction.setAnimationDuration(0.1)
 			self.warningLabel.update(self.warning)
 			self.warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-			if duration != nil {
-				SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
-			}
+			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()

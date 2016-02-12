@@ -42,7 +42,7 @@ class PanelHatch : MainPanel
 		
 		decalsNode.empty()
 		
-		details.update("--", color:white)
+		details.update("empty", color: grey)
 	}
 
 	override func touch(id:Int = 0)
@@ -66,18 +66,16 @@ class PanelHatch : MainPanel
 		var load:Event!
 		
 		load = (port.origin == nil) ? nil : port.origin.event
-		
-		// todo
-//		if load != nil && load.type != Item.self || load != nil && load.isQuest == true {
-//			details.update("error", color: red)
-//			outline.updateChildrenColors(red)
-//		}
-//		else
-		
 			
 		if load != nil {
-			details.update("jetison", color: cyan)
-			outline.updateChildrenColors(cyan)
+			if load.isQuest == true && port.origin.IO(port.origin.input) == "item" {
+				details.update("error", color: red)
+				outline.updateChildrenColors(red)
+			}
+			else{
+				details.update("jetison", color: cyan)
+				outline.updateChildrenColors(cyan)
+			}
 		}
 		else{
 			details.update("empty", color: grey)

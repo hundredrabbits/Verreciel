@@ -53,7 +53,7 @@ class PanelCargo : MainPanel
 		
 		decalsNode.empty()
 		
-		details.update("0", color:white)
+		details.update("Empty", color: grey)
 	}
 	
 	func contains(event:Event) -> Bool
@@ -132,7 +132,12 @@ class PanelCargo : MainPanel
 		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
 		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
 		
-		details.update("\(port.event.content.count)", color:white)
+		if port.event.content.count == 0 {
+			details.update("Empty", color: grey)
+		}
+		else{
+			details.update("\(port.event.content.count)/6", color:white)
+		}
 	}
 	
 	// MARK: I/O -

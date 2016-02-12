@@ -6,7 +6,6 @@
 - Save / Load Mechanics
 - Add constellation location(just visual, no docking)
 - Hide stealthed events
-- Trigger flee mode upon approaching stars without sheilds
 - Hatch should not have colors unless it's loaded
 - Don't align pilot if target is current location
 
@@ -31,6 +30,7 @@
 - Add constellation in warps
 - Animate change of Thruster state
 - Combine records together
+- Update mission panel to fit within shield
 
 > Narative
 - Telemetrists!? Twin Suns

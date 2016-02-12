@@ -46,7 +46,7 @@ class PanelPilot : MainPanel
 		
 		decalsNode.empty()
 		
-		details.update("--", color:white)
+		details.update("Ready", color: grey)
 	}
 	
 	override func touch(id:Int = 0)
@@ -60,7 +60,10 @@ class PanelPilot : MainPanel
 		
 		target = nil
 		
-		if port.isReceivingEventOfTypeLocation(){
+		if capsule.isFleeing == true {
+			target = capsule.lastLocation
+		}
+		else if port.isReceivingEventOfTypeLocation(){
 			target = port.origin.event as! Location
 		}
 		
@@ -101,7 +104,8 @@ class PanelPilot : MainPanel
 		targetDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction)) * -1
 		staticDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction))
 		
-		if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
+		if capsule.isFleeing == true { details.update("Fleeing", color:red) }
+		else if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
 		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
 		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
 	}

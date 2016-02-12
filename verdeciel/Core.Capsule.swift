@@ -14,12 +14,6 @@ class CoreCapsule: SCNNode
 	var direction:CGFloat! = 1
 	var system:Systems = .loiqe
 	
-	var isDocked:Bool = false
-	var dock:Location!
-	
-	var isWarping:Bool = false
-	var warp:Location!
-	
 	var mesh:SCNNode!
 	
 	var shieldRoot = SCNNode()
@@ -119,6 +113,9 @@ class CoreCapsule: SCNNode
 	
 	// MARK: Warping -
 	
+	var isWarping:Bool = false
+	var warp:Location!
+
 	func warp(destination:Location)
 	{
 		dock.disconnectPanel()
@@ -216,6 +213,9 @@ class CoreCapsule: SCNNode
 	
 	// MARK: Docking -
 	
+	var isDocked:Bool = false
+	var dock:Location!
+	
 	func dock(newDock:Location)
 	{
 		print("init dock")
@@ -246,6 +246,9 @@ class CoreCapsule: SCNNode
 	
 	func docked()
 	{
+		lastLocation = dock
+		isFleeing = false
+		
 		isDocked = true
 		capsule.at = dock.at
 		dock.onDock()
@@ -265,6 +268,19 @@ class CoreCapsule: SCNNode
 		ui.addPassive("in flight")
 		
 		mission.disconnectFromLocation()
+	}
+	
+	// MARK: Fleeing -
+	
+	var isFleeing:Bool = false
+	var lastLocation:Location!
+	
+	func flee()
+	{
+		delay(2, block: {
+			self.isFleeing = true
+			ui.addWarning("Radiation warning", duration: 5)
+		})
 	}
 	
 	// MARK: Custom -

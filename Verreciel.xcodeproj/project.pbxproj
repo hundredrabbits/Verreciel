@@ -82,6 +82,7 @@
 		57F4FA111BB8CECF00AEE66C /* MainPanel.Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F4FA101BB8CECF00AEE66C /* MainPanel.Mission.swift */; };
 		57F645F11B4CA2700088D115 /* MainPanel.Hatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F01B4CA2700088D115 /* MainPanel.Hatch.swift */; };
 		57F645F71B4CC0C20088D115 /* MainPanel.Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F645F61B4CC0C20088D115 /* MainPanel.Console.swift */; };
+		57F66B441C6E5A38007E4B9F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F66B431C6E5A38007E4B9F /* Tools.swift */; };
 		57FA031D1BBA21490077D517 /* Location.Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031C1BBA21490077D517 /* Location.Station.swift */; };
 		57FA031F1BBA22FE0077D517 /* Location.Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA031E1BBA22FE0077D517 /* Location.Star.swift */; };
 /* End PBXBuildFile section */
@@ -166,6 +167,7 @@
 		57F4FA101BB8CECF00AEE66C /* MainPanel.Mission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Mission.swift; sourceTree = "<group>"; };
 		57F645F01B4CA2700088D115 /* MainPanel.Hatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Hatch.swift; sourceTree = "<group>"; };
 		57F645F61B4CC0C20088D115 /* MainPanel.Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Console.swift; sourceTree = "<group>"; };
+		57F66B431C6E5A38007E4B9F /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		57FA031C1BBA21490077D517 /* Location.Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Station.swift; sourceTree = "<group>"; };
 		57FA031E1BBA22FE0077D517 /* Location.Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Star.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 				5734D45B1B5AAA7800BF0048 /* Todo */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				03DDE18319CE497F008029A8 /* GameViewController.swift */,
+				57F66B431C6E5A38007E4B9F /* Tools.swift */,
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
 				5736277A1B4C06FE00899EBC /* Panels */,
@@ -456,6 +459,7 @@
 				57841A301C23ACD50005D7DA /* Monitor.Complete.swift in Sources */,
 				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
+				57F66B441C6E5A38007E4B9F /* Tools.swift in Sources */,
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
 				574E5FC21BC5AEA2008130AB /* Location.swift in Sources */,
 				57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */,

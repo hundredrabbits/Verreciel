@@ -58,6 +58,17 @@ class LocationStar : Location
 		return newPanel
 	}
 	
+	override func onApproach()
+	{
+		if shield.isActive == true {
+			super.onApproach()
+		}
+		else{
+			space.startInstance(self)
+			capsule.flee()
+		}
+	}
+	
 	override func touch(id: Int)
 	{
 		super.touch(id)
