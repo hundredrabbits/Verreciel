@@ -135,6 +135,9 @@ class PanelCargo : MainPanel
 		if port.event.content.count == 0 {
 			details.update("Empty", color: grey)
 		}
+		else if port.event.content.count == 6 {
+			details.update("\(port.event.content.count)/6", color: red)
+		}
 		else{
 			details.update("\(port.event.content.count)/6", color:white)
 		}

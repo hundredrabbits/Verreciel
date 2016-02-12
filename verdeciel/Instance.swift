@@ -24,27 +24,15 @@ class Instance : SCNNode
 	
 	override func update()
 	{
-		let distance = event.distance * 15.0
-		let newAngle = degToRad(abs(event.align))
+		let distance = (event.distance/2) * 100.0
 		
-		let flattenedDistance = CGFloat(cos(newAngle)) * distance // important
+		mesh.position = SCNVector3(0,distance,0)
 		
-		if event.align >= 90 {
-			self.position = SCNVector3(0,abs(flattenedDistance) * -1,0)
+		if capsule.isDockedAtLocation(event){
+			self.eulerAngles.z = Float(degToRad(0))
 		}
 		else{
-			self.position = SCNVector3(0,abs(flattenedDistance),0)
-		}
-		
-		event.animateMesh(mesh)
-		
-		if distance > 6 {
-			let normalized = distance - 6
-			let someVal = (1 - (normalized/1.5))
-			self.opacity = someVal
-		}
-		else{
-			self.opacity = 1
+			self.eulerAngles.z = Float(degToRad(event.align))
 		}
 		
 		if event.distance > 0.75 {

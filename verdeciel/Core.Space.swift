@@ -80,6 +80,12 @@ class CoreSpace: SCNNode
 	{
 		super.fixedUpdate()
 		
+		// Structures
+		for instance in structuresRoot.childNodes{
+			instance.update()
+		}
+		
+		/*
 		while starTimer > 2 {
 			addStar()
 			starTimer -= 2
@@ -108,10 +114,7 @@ class CoreSpace: SCNNode
 			if line.position.y < -20 { line.removeFromParentNode() }
 		}
 		
-		// Structures
-		for instance in structuresRoot.childNodes{
-			instance.update()
-		}
+*/
 	}
 	
 	required init(coder aDecoder: NSCoder)
