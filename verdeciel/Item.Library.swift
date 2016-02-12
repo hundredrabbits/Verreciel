@@ -61,5 +61,6 @@ class ItemLibrary
 	let alta = Item(name: "materia", type: .currency, note:"trading currency")
 	let credits = Item(name: "credits", type: .currency, note:"trading currency")
 	let ingot = Item(name: "credits", type: .currency, note:"trading currency")
+	let mynir = Item(name: "mynir", type: .currency, note:"trading currency")
 	let uli = Item(name: "credits", type: .currency, note:"trading currency")
 }

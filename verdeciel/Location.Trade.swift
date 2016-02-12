@@ -36,6 +36,10 @@ class LocationTrade : Location
 	{
 		let newPanel = Panel()
 		
+		let text = SCNLabel(text: "Trading \(wantPort.requirement.name!)$For \(givePort.event.name!)", align:.left)
+		text.position = SCNVector3(-1.5,1,0)
+		newPanel.addChildNode(text)
+		
 		// Want
 		
 		wantPort.position = SCNVector3(x: -1.2, y: -0.6, z: 0)
@@ -55,9 +59,6 @@ class LocationTrade : Location
 		wantLabel.position = SCNVector3(x: -1.5, y: 0, z: 0)
 		newPanel.addChildNode(wantLabel)
 		
-		let text = SCNLabel(text: "Trading \(wantPort.requirement.name!)$For \(givePort.event.name!)", align:.left)
-		text.position = SCNVector3(-1.5,1,0)
-		newPanel.addChildNode(text)
 		givePort.disable()
 		
 		return newPanel

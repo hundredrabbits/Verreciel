@@ -24,9 +24,11 @@ class LocationSatellite : Location
 		
 		self.message = message
 		
-		port = SCNPortSlot(host: self, input:Item.self, output:Item.self, hasDetails:true)
+		port = SCNPortSlot(host: self, input:Item.self, output:Item.self, hasDetails:true, align:.center)
+		port.position = SCNVector3(0,-0.4,0)
+		port.addEvent(item)
+		port.enable()
 		
-		if item != nil { port.addEvent(item) }
 		update()
 	}
 	
@@ -36,19 +38,12 @@ class LocationSatellite : Location
 	{
 		let newPanel = Panel()
 		
-		let nodeFrame = SCNNode()
-		nodeFrame.position = SCNVector3(templates.leftMargin + 0.3,0,0)
+		let text = SCNLabel(text: self.message, align:.left)
+		text.position = SCNVector3(-1.5,1,0)
+		newPanel.addChildNode(text)
 		
-		port.position = SCNVector3(x: 0, y: -0.5, z: 0)
-		port.enable()
-		nodeFrame.addChildNode(port)
-		
-		newPanel.addChildNode(nodeFrame)
-		
-		let messageLabel = SCNLabel(text: self.message)
-		messageLabel.position = SCNVector3(templates.leftMargin,templates.topMargin - 0.2,0)
-		newPanel.addChildNode(messageLabel)
-		
+		newPanel.addChildNode(port)
+	
 		return newPanel
 	}
 	

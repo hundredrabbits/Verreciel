@@ -243,6 +243,8 @@ class PanelThruster : MainPanel
 		interface_dock.opacity = 0
 		interface_warp.opacity = 1
 		
+		action.disable()
+		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(clear)
@@ -266,6 +268,8 @@ class PanelThruster : MainPanel
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
 		interface_warp.opacity = 1
+		
+		action.enable()
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -323,6 +327,8 @@ class PanelThruster : MainPanel
 		interface_dock.opacity = 1
 		interface_warp.opacity = 0
 		
+		action.disable()
+		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(grey)
@@ -363,6 +369,8 @@ class PanelThruster : MainPanel
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }
 		if speed > 2 { line3.color(white) } else { line3.color(grey) }
 		if speed > 3 { line4.color(white) } else { line4.color(grey) }
+		
+		action.disable()
 		
 		accelerate.enable()
 		decelerate.enable()

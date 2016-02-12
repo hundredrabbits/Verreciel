@@ -19,8 +19,9 @@ class RecipesLibrary
 		horadric.append( Recipe(name: "matrix", ingredients: [items.grid1, items.grid2, items.grid3], result: items.matrix1) )
 		
 		// Currencies
-		horadric.append( Recipe(name: "alta", ingredients: [items.materia, items.materia], result: Item(name: "atla", type: .currency, note:"trading currency")) )
+		horadric.append( Recipe(name: "alta", ingredients: [items.materia, items.materia], result: Item(name: "alta", type: .currency, note:"trading currency")) )
 		horadric.append( Recipe(name: "ingot", ingredients: [items.credits, items.credits], result: Item(name: "ingot", type: .currency, note:"trading currency")) )
-		horadric.append( Recipe(name: "uli", ingredients: [items.alta, items.ingot], result: Item(name: "uli", type: .currency, note:"trading currency")) )
+		horadric.append( Recipe(name: "mynir", ingredients: [items.materia, items.credits], result: Item(name: "mynir", type: .currency, note:"trading currency")) )
+		horadric.append( Recipe(name: "uli", ingredients: [items.alta, items.ingot, items.mynir], result: Item(name: "uli", type: .currency, note:"trading currency")) )
 	}
 }

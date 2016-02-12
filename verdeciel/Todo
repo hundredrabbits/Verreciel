@@ -28,9 +28,10 @@
 - Add space doodads
 - Interface sounds
 - Fix stars
-- Horadric combination animation
 - Add constellation in warps
 - Animate change of Thruster state
+- Combine records together
+- Horadric only combine when taking the output out
 
 > Narative
 - Telemetrists!? Twin Suns

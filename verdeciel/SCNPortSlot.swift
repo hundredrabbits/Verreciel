@@ -43,7 +43,7 @@ class SCNPortSlot : SCNPort
 		if align == nil { label.opacity = 0 ; details.opacity = 0 }
 		else if align == alignment.left { label.position = SCNVector3(0.3,0,0) ; details.position = SCNVector3(0.3,-0.3,0) }
 		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
-		else if align == alignment.center { label.position = SCNVector3(0,-0.4,0) ; details.position = SCNVector3(0,-0.7,0) }
+		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; details.position = SCNVector3(0,-0.8,0) }
 		
 		// Cross
 		addChildNode(sprite_cross)
