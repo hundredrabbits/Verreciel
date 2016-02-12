@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		startingState()
+		unlockedState()
 	}
 	
 	func startingState()
@@ -102,7 +102,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_harvest)
+		capsule.start(universe.loiqe_city)
 		
 		cargo.addItems([items.valenPortalKey, items.materia])
 		

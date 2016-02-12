@@ -55,7 +55,7 @@ class Loiqe
 	
 	func horadric() -> LocationHoradric
 	{
-		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x - 1, y: offset.y))
+		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x + 2, y: offset.y))
 	}
 	
 	func portal() -> LocationPortal
@@ -75,7 +75,7 @@ class Loiqe
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x + 2, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
 	}
 	
 	func cargo() -> LocationSatellite

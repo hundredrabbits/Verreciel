@@ -58,7 +58,11 @@ class SCNPortSlot : SCNPort
 	{
 		super.fixedUpdate()
 		
-		if event != nil {
+		if isEnabled == false {
+			sprite_input.updateChildrenColors(clear)
+			sprite_cross.updateChildrenColors(clear)
+		}
+		else if event != nil {
 			sprite_input.updateChildrenColors(clear)
 			sprite_cross.updateChildrenColors(grey)
 		}

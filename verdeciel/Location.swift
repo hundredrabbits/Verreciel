@@ -170,15 +170,7 @@ class Location : Event
 		let verticalDistance = abs(capsule.at.y - at.y)
 		let horizontalDistance = abs(capsule.at.x - at.x)
 		
-		if Float(verticalDistance) > templates.topMargin {
-			self.opacity = 0
-		}
-		else if Float(horizontalDistance) > templates.right {
-			self.opacity = 0
-		}
-		else {
-			self.opacity = 1
-		}
+		self.opacity = ( Float(verticalDistance) > 1.5 || Float(horizontalDistance) > 1.5 ) ? 0 : 1
 		
 		if connection != nil {
 			if connection.opacity == 1 {

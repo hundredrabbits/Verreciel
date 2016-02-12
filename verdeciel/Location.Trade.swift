@@ -23,8 +23,9 @@ class LocationTrade : Location
 		
 		icon.replace(icons.unseen())
 		
-		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self, placeholder:"\(want.name!)")
+		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
 		wantPort.addRequirement(want)
+		wantPort.label.update("--", color:grey)
 		givePort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
 		givePort.addEvent(give)
 	}
@@ -37,23 +38,26 @@ class LocationTrade : Location
 		
 		// Want
 		
-		wantPort.position = SCNVector3(x: -1.5, y: 0.3, z: 0)
+		wantPort.position = SCNVector3(x: -1.2, y: -0.6, z: 0)
 		wantPort.enable()
 		wantPort.input = Item.self
 		newPanel.addChildNode(wantPort)
 		
-		let tradeLabel = SCNLabel(text: "< Give", color:white)
-		tradeLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
-		wantPort.addChildNode(tradeLabel)
-		
 		// Give
-		let forLabel = SCNLabel(text: "> Take", color:white)
-		forLabel.position = SCNVector3(x: 0.3, y: 0.4, z: 0)
-		givePort.addChildNode(forLabel)
+		givePort.position = SCNVector3(x:0, y: -0.5, z: 0)
+		wantPort.addChildNode(givePort)
 		
-		givePort.position = SCNVector3(x:-1.5, y: -0.7, z: 0)
-		newPanel.addChildNode(givePort)
+		wantPort.addChildNode(SCNLine(nodeA: SCNVector3(-0.125,0,0), nodeB: SCNVector3(-0.3,0,0), color: grey))
+		wantPort.addChildNode(SCNLine(nodeA: SCNVector3(-0.3,0,0), nodeB: SCNVector3(-0.3,-0.5,0), color: grey))
+		wantPort.addChildNode(SCNLine(nodeA: SCNVector3(-0.3,-0.5,0), nodeB: SCNVector3(-0.125,-0.5,0), color: grey))
 		
+		let wantLabel = SCNLabel(text: "Trade Table", color:grey)
+		wantLabel.position = SCNVector3(x: -1.5, y: 0, z: 0)
+		newPanel.addChildNode(wantLabel)
+		
+		let text = SCNLabel(text: "Trading \(wantPort.requirement.name!)$For \(givePort.event.name!)", align:.left)
+		text.position = SCNVector3(-1.5,1,0)
+		newPanel.addChildNode(text)
 		givePort.disable()
 		
 		return newPanel
@@ -72,18 +76,20 @@ class LocationTrade : Location
 	func refresh()
 	{
 		if wantPort.event != nil && wantPort.event.name == wantPort.requirement.name {
+			wantPort.disable()
+			wantPort.label.update("Accepted",color:cyan)
 			givePort.enable()
+			givePort.label.update(white)
 		}
 		else{
+			wantPort.enable()
+			wantPort.label.update("Refused",color:red)
 			givePort.disable()
 		}
 		
 		if givePort.event == nil {
 			mission.complete()
 		}
-		
-		givePort.refresh()
-		wantPort.refresh()
 		
 		updateIcon()
 	}

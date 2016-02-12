@@ -182,7 +182,7 @@ class CoreUniverse : SCNNode
 	{
 		loiqe_city.connect(loiqe_satellite)
 		loiqe_satellite.connect(loiqe_portal)
-		loiqe_portal.connect(loiqe_horadric)
+		loiqe_horadric.connect(loiqe_satellite)
 		
 		nevic_city.connect(nevic_satellite)
 		nevic_satellite.connect(nevic_station)

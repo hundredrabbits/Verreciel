@@ -7,6 +7,8 @@
 - Stars only display as star if apporachable(shield strengt)
 - Add constellation location(just visual, no docking)
 - Stars display different icon is unreachable
+- Hide stealthed events
+- Trigger flee mode upon approaching stars without sheilds
 
 > Bugs
 - Issue with UI offset animation
