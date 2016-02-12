@@ -4,11 +4,11 @@
 
 > Playthrough
 - Save / Load Mechanics
-- Stars only display as star if apporachable(shield strengt)
 - Add constellation location(just visual, no docking)
-- Stars display different icon is unreachable
 - Hide stealthed events
 - Trigger flee mode upon approaching stars without sheilds
+- Hatch should not have colors unless it's loaded
+- Don't align pilot if target is current location
 
 > Bugs
 - Issue with UI offset animation
@@ -31,7 +31,6 @@
 - Add constellation in warps
 - Animate change of Thruster state
 - Combine records together
-- Horadric only combine when taking the output out
 
 > Narative
 - Telemetrists!? Twin Suns

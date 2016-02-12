@@ -120,7 +120,7 @@ class PanelConsole : MainPanel
 		}
 		
 		if port.origin.host == cargo {
-			addLine(SCNCommand(text: "Connected \(port.origin.host.name!)", color: grey, head:true))
+			addLine(SCNCommand(text: "\(port.origin.host.name!)", color: grey, head:true))
 			for item in event.content {
 				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
 			}
@@ -149,12 +149,14 @@ class PanelConsole : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -270)
+		
+		if debug.isActive == false { player.lookAt(deg: -270) }
 	}
 	
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()
+		
 		boot()
 	}
 	

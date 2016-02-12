@@ -109,7 +109,8 @@ class PanelPilot : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -135)
+		
+		if debug.isActive == false { player.lookAt(deg: -135) }
 	}
 	
 	required init?(coder aDecoder: NSCoder)

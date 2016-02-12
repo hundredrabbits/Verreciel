@@ -19,14 +19,6 @@ class WidgetShield : Widget
 		label.update(name!)
 	}
 	
-	override func onInstallationComplete()
-	{
-		super.onInstallationComplete()
-		battery.installShield()
-		
-		createShield()
-	}
-	
 	var growthVal:Float = 0
 	
 	override func fixedUpdate()
@@ -103,6 +95,15 @@ class WidgetShield : Widget
 		
 		capsule.shieldRoot.eulerAngles.y = Float(degToRad(360/16))
 		capsule.shieldRoot.opacity = 0
+	}
+	
+	
+	override func onInstallationComplete()
+	{
+		super.onInstallationComplete()
+		
+		battery.installShield()
+		createShield()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

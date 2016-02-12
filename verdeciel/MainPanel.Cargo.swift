@@ -205,7 +205,8 @@ class PanelCargo : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -225)
+		
+		if debug.isActive == false { player.lookAt(deg: -255) }
 	}
 	
 	required init?(coder aDecoder: NSCoder)

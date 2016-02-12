@@ -60,7 +60,6 @@ class LocationHoradric : Location
 		
 		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.2 - 0.125,0), nodeB: SCNVector3(0,-0.8 + 0.125,0), color: grey))
 		
-		
 		return newPanel
 	}
 	
@@ -98,10 +97,11 @@ class LocationHoradric : Location
 			inPort2.enable()
 			outPort.disable()
 		}
+		
+		if outPort.event == nil { outPort.label.update("out", color:grey) }
 	}
 	
 	// MARK: Combinatrix
-
 	
 	func combine(recipe:Recipe)
 	{

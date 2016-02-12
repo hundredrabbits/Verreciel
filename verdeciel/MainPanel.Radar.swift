@@ -161,7 +161,8 @@ class PanelRadar : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -90)
+		
+		if debug.isActive == false { player.lookAt(deg: -90) }
 	}
 	
 	required init?(coder aDecoder: NSCoder)

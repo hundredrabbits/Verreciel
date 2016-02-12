@@ -115,28 +115,28 @@ class PanelBattery : MainPanel
 	{
 		enigmaPort.enable()
 		enigmaLabel.update("enigma",color:white)
-		if player != nil { player.lookAt(deg: 0) }
+		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installThruster()
 	{
 		thrusterPort.enable()
 		thrusterLabel.update("thruster",color:white)
-		if player != nil { player.lookAt(deg: 0) }
+		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installRadio()
 	{
 		radioPort.enable()
 		radioLabel.update("radio",color:white)
-		if player != nil { player.lookAt(deg: 0) }
+		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installMap()
 	{
 		mapPort.enable()
 		mapLabel.update("map",color:white)
-		if player != nil { player.lookAt(deg: 0) }
+		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installShield()
@@ -202,7 +202,9 @@ class PanelBattery : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: 0)
+		
+		if debug.isActive == false { player.lookAt(deg: 0) }
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

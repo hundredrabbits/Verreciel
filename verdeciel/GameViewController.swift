@@ -74,12 +74,16 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func startingState()
 	{
+		debug.isActive = false
+		
 		capsule.start(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
 	func unlockedState()
 	{
+		debug.isActive = true
+		
 		universe.unlock(.loiqe)
 		universe.unlock(.valen)
 		universe.unlock(.senni)
@@ -104,7 +108,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		capsule.start(universe.loiqe_horadric)
 		
-		cargo.addItems([items.valenPortalKey, items.materia])
+		cargo.addItems([items.valenPortalKey, items.materia, items.credit])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

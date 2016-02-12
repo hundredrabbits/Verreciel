@@ -314,12 +314,14 @@ class PanelMission : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -180)
+		
+		if debug.isActive == false { player.lookAt(deg: -180) }
 	}
 	
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()
+		
 		touch(1)
 	}
 	

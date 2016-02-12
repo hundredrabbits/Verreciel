@@ -436,7 +436,8 @@ class PanelThruster : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -45)
+		
+		if debug.isActive == false { player.lookAt(deg: -45) }
 	}
 	
 	required init?(coder aDecoder: NSCoder)

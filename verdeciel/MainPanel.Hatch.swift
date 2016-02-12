@@ -98,7 +98,8 @@ class PanelHatch : MainPanel
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()
-		player.lookAt(deg: -315)
+		
+		if debug.isActive == false { player.lookAt(deg: -315) }
 	}
 	
 	required init?(coder aDecoder: NSCoder)

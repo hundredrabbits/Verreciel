@@ -103,7 +103,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Hatch Lesson")
 		m.quests = [
-			Quest(name:"Collect Credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Collect Credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Route credit to hatch", location: universe.valen_harvest, predicate:{ hatch.port.isReceivingItemOfType(.currency) }, result: {  })
 		]
 		questlog[c]?.append(m)
@@ -133,14 +133,14 @@ class MissionLibrary
 		
 		// Credits->Ingot
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Ingot Lesson")
-		m.predicate = { cargo.containsLike(items.ingot) == true }
-		m.quests = [
-			Quest(name:"Find credits", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
-			Quest(name:"Find second credits", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.credits) }, result: { }),
-			Quest(name:"Combine credits", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[c]?.append(m)
+//		m = Mission(id:(questlog[c]?.count)!, name: "Ingot Lesson")
+//		m.predicate = { cargo.containsLike(items.ingot) == true }
+//		m.quests = [
+//			Quest(name:"Find credits", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+//			Quest(name:"Find second credits", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.credits) }, result: { }),
+//			Quest(name:"Combine credits", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+//		]
+//		questlog[c]?.append(m)
 		
 		// Star interaction tutorial
 		
@@ -164,7 +164,7 @@ class MissionLibrary
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Install radio", location: universe.valen_station, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -188,7 +188,7 @@ class MissionLibrary
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Install map", location: universe.senni_station, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -210,7 +210,7 @@ class MissionLibrary
 		m.predicate = { shield.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
+			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Install shield", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
 		]
 		questlog[c]?.append(m)

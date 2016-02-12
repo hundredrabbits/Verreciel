@@ -107,7 +107,7 @@ class Usul
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.ingot, installation:{ map.install() }, installationName:"map")
+		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credit, installation:{ map.install() }, installationName:"map")
 	}
 	
 	func satellite() -> LocationSatellite
@@ -147,12 +147,12 @@ class Valen
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.credits.name!, type: items.credits.type, note:items.credits.note))
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.credit.name!, type: items.credit.type, note:items.credit.note))
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credits, installation:{ battery.installShield() }, installationName:"Shield")
+		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credit, installation:{ battery.installShield() }, installationName:"Shield")
 	}
 	
 	func port() -> LocationTrade
@@ -193,7 +193,7 @@ class Nevic
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "city",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credits,give:items.senniPortalFragment1)
+		return LocationTrade(name: "city",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credit,give:items.senniPortalFragment1)
 	}
 	
 	func beacon() -> LocationBeacon
