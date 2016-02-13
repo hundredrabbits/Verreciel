@@ -35,6 +35,8 @@ class Instance : SCNNode
 			self.eulerAngles.z = Float(degToRad(event.align))
 		}
 		
+		self.eulerAngles.y = Float(degToRad(capsule.direction))
+		
 		if event.distance > 0.75 {
 			leaveInstance()
 		}
