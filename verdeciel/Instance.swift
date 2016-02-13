@@ -9,15 +9,15 @@ import Foundation
 class Instance : SCNNode
 {
 	var event:Location!
-	var mesh:SCNNode!
+	var structure:SCNNode!
 	
 	init(event:Location)
 	{
 		super.init()
 		self.event = event
 		
-		mesh = event.mesh
-		self.addChildNode(mesh)
+		structure = event.structure
+		self.addChildNode(structure)
 		
 		print("> INSTANCE | Begin \(event.name!)")
 	}
@@ -26,7 +26,7 @@ class Instance : SCNNode
 	{
 		let distance = (event.distance/2) * 100.0
 		
-		mesh.position = SCNVector3(0,distance,0)
+		structure.position = SCNVector3(0,distance,0)
 		
 		if capsule.isDockedAtLocation(event){
 			self.eulerAngles.z = Float(degToRad(0))

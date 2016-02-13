@@ -17,7 +17,7 @@ class LocationHarvest : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.mesh = structures.placeholder()
+		self.structure = structures.harvest()
 		icon.replace(icons.placeholder())
 		
 		self.grows = grows

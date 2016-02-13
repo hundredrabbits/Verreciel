@@ -19,6 +19,8 @@ class StructuresLibrary
 		let mesh = SCNNode()
 		let radius:Float = 3
 		
+		print("! Missing structure")
+		
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(-radius,radius,0), nodeB: SCNVector3(0,radius,radius), color: grey))
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,radius), nodeB: SCNVector3(radius,radius,0), color: grey))
 		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,radius,0), nodeB: SCNVector3(0,radius,-radius), color: grey))
@@ -62,20 +64,21 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func cyanine() -> SCNNode!
+	func harvest() -> SCNNode!
 	{
 		let mesh = SCNNode()
 		let color:UIColor = cyan
-		let sides:Int = 90
-		let verticalOffset:Float = 4
+		let sides:Int = 45
+		let verticalOffset:Float = 12
+		let radius:Float = 9
 		
 		var i = 0
 		while i < sides {
-			let line = SCNLine(nodeA: SCNVector3(-0.75,-0.25,2.25), nodeB: SCNVector3(1,0.25,-2), color: color)
-			line.position = SCNVector3(0,verticalOffset,2.25)
 			let root = SCNNode()
 			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
-			root.addChildNode(line)
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0.5,verticalOffset,radius), nodeB: SCNVector3(-0.5,verticalOffset,radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,verticalOffset,radius), nodeB: SCNVector3(0,verticalOffset + 5,radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0.5,verticalOffset + 5,radius), nodeB: SCNVector3(-0.5,verticalOffset + 5,radius), color: color))
 			mesh.addChildNode(root)
 			i += 1
 		}
@@ -84,7 +87,7 @@ class StructuresLibrary
 		i = 0
 		while i < 3
 		{
-			let test = SCNLine(nodeA: SCNVector3(0,verticalOffset * 2,0.75), nodeB: SCNVector3(0,verticalOffset * 2,0.85), color: white)
+			let test = SCNLine(nodeA: SCNVector3(0,verticalOffset,0.75), nodeB: SCNVector3(0,verticalOffset,0.95), color: white)
 			test.eulerAngles.y = Float(degToRad(CGFloat(120 * i)))
 			aim.addChildNode(test)
 			i += 1
@@ -138,7 +141,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func trade(radius:Float = 2.5, tunnels:Int = 45, depth:Float = 0.5) -> SCNNode
+	func trade(radius:Float = 1.5, tunnels:Int = (Int(arc4random_uniform(3)) * 6), depth:Float = 0, color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()
 		
@@ -150,12 +153,12 @@ class StructuresLibrary
 		while i < tunnels {
 			let root = SCNNode()
 			
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),radius), color: white))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),radius), nodeB: SCNVector3(radius,depth * Float(i),0), color: white))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),-radius), color: white))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),-radius), nodeB: SCNVector3(-radius,depth * Float(i),0), color: white))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),radius), nodeB: SCNVector3(radius,depth * Float(i),0), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i) + 2,-radius), color: color))
+			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i) + 2,-radius), nodeB: SCNVector3(-radius,depth * Float(i),0), color: color))
 			
-			root.eulerAngles.y = Float(i * (360/45))
+			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
 			
 			offset.addChildNode(root)
 			i += 1

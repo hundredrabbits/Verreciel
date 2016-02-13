@@ -14,7 +14,7 @@ class LocationWaypoint : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.mesh = structures.placeholder()
+		self.structure = structures.placeholder()
 		icon.replace(icons.placeholder())
 	}
 	

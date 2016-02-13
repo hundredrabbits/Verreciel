@@ -36,7 +36,7 @@ class LocationPortal : Location
 		self.at = at
 		self.note = ""
 		self.color = color
-		self.mesh = structures.portal()
+		self.structure = structures.portal()
 		icon.replace(icons.placeholder())
 		
 		self.key = key
@@ -147,10 +147,10 @@ class LocationPortal : Location
 	override func listen(event: Event)
 	{
 		if leftKeyPort.origin != nil && leftKeyPort.origin.event == leftKeyPort.requirement {
-			mesh.replace(structures.portal(color:cyan))
+			structure.replace(structures.portal(color:cyan))
 		}
 		if rightKeyPort.origin != nil && rightKeyPort.origin.event == rightKeyPort.requirement {
-			mesh.replace(structures.portal(color:cyan))
+			structure.replace(structures.portal(color:cyan))
 		}
 		update()
 	}
@@ -160,7 +160,7 @@ class LocationPortal : Location
 		super.onDock()
 		
 		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true || rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
-			mesh.replace(structures.portal(color:cyan))
+			structure.replace(structures.portal(color:cyan))
 		}
 	}
 	

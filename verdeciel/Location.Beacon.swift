@@ -16,7 +16,7 @@ class LocationBeacon : Location
 		self.at = at
 		self.note = ""
 		self.message = message
-		self.mesh = structures.beacon()
+		self.structure = structures.beacon()
 		icon.replace(icons.placeholder())
 	}
 	

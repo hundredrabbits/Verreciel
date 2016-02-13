@@ -27,7 +27,7 @@ class LocationBank : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.mesh = structures.none()
+		self.structure = structures.none()
 		self.icon.replace(icons.bank())
 		
 		port1 = SCNPortSlot(host: self, input: Event.self, output: Event.self)

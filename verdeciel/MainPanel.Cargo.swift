@@ -136,7 +136,7 @@ class PanelCargo : MainPanel
 			details.update("Empty", color: grey)
 		}
 		else if port.event.content.count == 6 {
-			details.update("\(port.event.content.count)/6", color: red)
+			details.update("FULL", color: red)
 		}
 		else{
 			details.update("\(port.event.content.count)/6", color:white)
@@ -148,7 +148,7 @@ class PanelCargo : MainPanel
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
-		if event is Item { upload(event) }
+		if event is Item && port.event.content.count < 6 { upload(event) }
 	}
 	
 	override func bang()

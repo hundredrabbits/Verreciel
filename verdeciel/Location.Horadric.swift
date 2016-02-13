@@ -19,7 +19,7 @@ class LocationHoradric : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.mesh = structures.horadric()
+		self.structure = structures.horadric()
 		icon.replace(icons.unseen())
 	}
 	

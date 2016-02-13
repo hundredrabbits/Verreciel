@@ -17,7 +17,7 @@ class LocationTrade : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.mesh = structures.trade()
+		self.structure = structures.trade()
 		self.isComplete = false
 		self.isStealth = stealth
 		

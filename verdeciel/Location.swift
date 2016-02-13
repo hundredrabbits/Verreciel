@@ -29,7 +29,7 @@ class Location : Event
 	var type:LocationTypes = .generic
 	
 	// Radar
-	var mesh:SCNNode!
+	var structure:SCNNode!
 	var icon = SCNNode()
 	var label = SCNLabel()
 	var trigger = SCNNode()

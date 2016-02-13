@@ -20,7 +20,7 @@ class LocationStar : Location
 		self.at = at
 		self.note = ""
 		self.color = color
-		self.mesh = structures.star()
+		self.structure = structures.star()
 		self.type = LocationTypes.star
 		self.isComplete = false
 		icon.replace(icons.star(red))
