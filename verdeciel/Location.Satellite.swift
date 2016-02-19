@@ -17,7 +17,7 @@ class LocationSatellite : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.structure = structures.cargo()
+		self.structure = structures.satellite()
 		self.isComplete = false
 		
 		icon.replace(icons.unseen())

@@ -82,6 +82,14 @@ class Loiqe
 	{
 		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y - 1), message:"[misssing]", item:items.cell3, stealth:true)
 	}
+	
+	// Constellations
+	
+	func c_fog() -> LocationConstellation
+	{
+		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 1.5, y: offset.y), structure: structures.c_fog())
+	}
+	
 }
 
 class Usul

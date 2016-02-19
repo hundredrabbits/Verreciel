@@ -47,6 +47,7 @@ class CoreUniverse : SCNNode
 	var loiqe_satellite = locations.loiqe.satellite()
 	var loiqe_port = locations.loiqe.port()
 	var loiqe_cargo = locations.loiqe.cargo()
+	var loiqe_c_fog = locations.loiqe.c_fog()
 	
 	func addLoiqe()
 	{
@@ -59,6 +60,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_satellite)
 		addChildNode(loiqe_port)
 		addChildNode(loiqe_cargo)
+		addChildNode(loiqe_c_fog)
 	}
 	
 	// MARK: Usul -

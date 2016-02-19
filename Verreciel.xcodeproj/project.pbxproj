@@ -66,6 +66,7 @@
 		57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */; };
 		57A0F10F1B3DDABF0007650F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10E1B3DDABF0007650F /* Event.swift */; };
 		57A1E1991C6C18C80090106B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E1981C6C18C80090106B /* UIColor.swift */; };
+		57A518531C7501AD0012DABD /* Location.Constellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A518521C7501AD0012DABD /* Location.Constellation.swift */; };
 		57A5F9611BC6B6A000EA35F6 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */; };
 		57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F9621BC6C3DB00EA35F6 /* String.swift */; };
 		57C222F61C1F218A005092A4 /* Location.Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C222F51C1F218A005092A4 /* Location.Bank.swift */; };
@@ -151,6 +152,7 @@
 		57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Radar.swift; sourceTree = "<group>"; };
 		57A0F10E1B3DDABF0007650F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		57A1E1981C6C18C80090106B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		57A518521C7501AD0012DABD /* Location.Constellation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Constellation.swift; sourceTree = "<group>"; };
 		57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
 		57A5F9621BC6C3DB00EA35F6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		57C222F51C1F218A005092A4 /* Location.Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Bank.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				57FA031C1BBA21490077D517 /* Location.Station.swift */,
 				574E5FBF1BC578E1008130AB /* Location.Trade.swift */,
 				574AE3F61BC36DAE00432603 /* Location.Waypoint.swift */,
+				57A518521C7501AD0012DABD /* Location.Constellation.swift */,
 			);
 			name = Locations;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				578D63F31C3C7DA1000AAC04 /* Location.Harvest.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */,
 				579CE71E1C246040009E02F5 /* Core.Game.swift in Sources */,
+				57A518531C7501AD0012DABD /* Location.Constellation.swift in Sources */,
 				57F4FA111BB8CECF00AEE66C /* MainPanel.Mission.swift in Sources */,
 				57EDED221BC17321005DF3DE /* Location.Beacon.swift in Sources */,
 				57C915171BC45E91009454C4 /* MainPanel.swift in Sources */,
