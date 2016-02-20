@@ -85,19 +85,16 @@ class CoreSpace: SCNNode
 			instance.update()
 		}
 		
-		/*
+		// Stars
 		while starTimer > 2 {
 			addStar()
 			starTimer -= 2
 		}
-		
-		// Orientation
-		
-		let targetDirectionNormal = Double(Float(capsule.direction)/180) * 1
-		self.rotation = SCNVector4Make(0, 1, 0, Float(M_PI * targetDirectionNormal))
-		
-		// Stars
-		
+		updateStars()
+	}
+	
+	func updateStars()
+	{
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }
@@ -110,11 +107,9 @@ class CoreSpace: SCNNode
 			line.updateHeight(starSpeed + 0.1)
 			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50
 			line.updateColor(UIColor(white: CGFloat(distanceRatio), alpha: 1))
-
+			
 			if line.position.y < -20 { line.removeFromParentNode() }
 		}
-		
-*/
 	}
 	
 	required init(coder aDecoder: NSCoder)

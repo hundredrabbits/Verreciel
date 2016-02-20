@@ -38,12 +38,12 @@ class StructuresLibrary
 	{
 		let mesh = SCNNode()
 		let color:UIColor = cyan
-		let sides:Int = 8
+		let sides:Int = Int(arc4random_uniform(10)) + 3
 		let verticalOffset:Float = 5
-		let radius:Float = 4
+		let radius:Float = Float(2 + arc4random_uniform(2))
 		
-		let rand1 = 0.1 + (Float(arc4random_uniform(90))/100)
-		let rand2 = 0.1 + (Float(arc4random_uniform(90))/100)
+		let rand1 = (Float(arc4random_uniform(90))/100).clamp(0.2, 0.7)
+		let rand2 = (Float(arc4random_uniform(90))/100).clamp(0.2, 0.7)
 		
 		var i = 0
 		while i < sides {
