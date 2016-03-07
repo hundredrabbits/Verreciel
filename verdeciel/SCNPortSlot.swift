@@ -14,8 +14,6 @@ class SCNPortSlot : SCNPort
 	var details:SCNLabel!
 	var placeholder:String!
 	
-	var sprite_cross = SCNNode()
-	
 	init(host:SCNNode = SCNNode(), input:Event.Type, output:Event.Type, align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
 	{
 		super.init(host:host, input:input, output:output)
@@ -45,11 +43,6 @@ class SCNPortSlot : SCNPort
 		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
 		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; details.position = SCNVector3(0,-0.8,0) }
 		
-		// Cross
-		addChildNode(sprite_cross)
-		sprite_cross.addChildNode(SCNLine(nodeA: SCNVector3(0,radius/2,0), nodeB: SCNVector3(0,-radius/2,0), color: grey))
-		sprite_cross.addChildNode(SCNLine(nodeA: SCNVector3(radius/2,0,0), nodeB: SCNVector3(-radius/2,0,0), color: grey))
-		
 		setup()
 		disable()
 	}
@@ -60,15 +53,12 @@ class SCNPortSlot : SCNPort
 		
 		if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)
-			sprite_cross.updateChildrenColors(clear)
 		}
 		else if event != nil {
 			sprite_input.updateChildrenColors(clear)
-			sprite_cross.updateChildrenColors(grey)
 		}
 		else{
 			sprite_input.updateChildrenColors(grey)
-			sprite_cross.updateChildrenColors(clear)
 		}
 	}
 	
