@@ -95,6 +95,8 @@ class CoreSpace: SCNNode
 	
 	func updateStars()
 	{
+		starsRoot.rotation = SCNVector4Make(0, 1, 0, Float(degToRad(capsule.direction)))
+		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }

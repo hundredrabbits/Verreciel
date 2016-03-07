@@ -38,12 +38,12 @@ class StructuresLibrary
 	{
 		let mesh = SCNNode()
 		let color:UIColor = cyan
-		let sides:Int = Int(arc4random_uniform(10)) + 3
+		let sides:Int = Int(arc4random_uniform(7)) + 3
 		let verticalOffset:Float = 5
-		let radius:Float = Float(2 + arc4random_uniform(2))
+		let radius:Float = Float(20 + arc4random_uniform(5))/10
 		
-		let rand1 = (Float(arc4random_uniform(90))/100).clamp(0.2, 0.7)
-		let rand2 = (Float(arc4random_uniform(90))/100).clamp(0.2, 0.7)
+		let rand1 = (Float(arc4random_uniform(100))/100).clamp(0.4, 0.9)
+		let rand2 = (Float(arc4random_uniform(100))/100).clamp(0.7, 0.9)
 		
 		var i = 0
 		while i < sides {
@@ -172,44 +172,35 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func horadric(radius:Float = 2.5, tunnels:Int = 36, depth:Float = 0.5) -> SCNNode
+	func horadric(radius:CGFloat = 5, color:UIColor = grey) -> SCNNode
 	{
-		let dome:Float = 3
-		let strand:Float = 0.5
-		
 		let mesh = SCNNode()
 		
-		let offset = SCNNode()
-		offset.position = SCNVector3(0,4,0)
-		mesh.addChildNode(offset)
+		let cube1 = SCNCube(size: radius, color:color)
+		mesh.addChildNode(cube1)
 		
-		var i = 0
-		while i < tunnels {
-			let root = SCNNode()
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,dome,-strand), nodeB: SCNVector3(0,dome,strand), color: white))
-			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
-			root.eulerAngles.x = Float(degToRad(15))
-			offset.addChildNode(root)
-			
-			let root2 = SCNNode()
-			root2.addChildNode(SCNLine(nodeA: SCNVector3(0,dome,-strand), nodeB: SCNVector3(0,dome,strand), color: white))
-			root2.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
-			root2.eulerAngles.x = Float(degToRad(35))
-			offset.addChildNode(root2)
-			
-			let root3 = SCNNode()
-			root3.addChildNode(SCNLine(nodeA: SCNVector3(0,dome,-strand), nodeB: SCNVector3(0,dome,strand), color: white))
-			root3.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
-			root3.eulerAngles.x = Float(degToRad(55))
-			offset.addChildNode(root3)
-			
-			let root4 = SCNNode()
-			root4.addChildNode(SCNLine(nodeA: SCNVector3(0,dome,-strand), nodeB: SCNVector3(0,dome,strand), color: white))
-			root4.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
-			root4.eulerAngles.x = Float(degToRad(75))
-			offset.addChildNode(root4)
-			i += 1
-		}
+		let cube2 = SCNCube(size: radius, color:color)
+		cube2.eulerAngles.x = Float(degToRad(45))
+		mesh.addChildNode(cube2)
+		
+		cube2.line1.color(clear)
+		cube2.line6.color(clear)
+		
+		let cube3 = SCNCube(size: radius, color:color)
+		cube3.eulerAngles.y = Float(degToRad(45))
+		mesh.addChildNode(cube3)
+		
+		cube3.line9.color(clear)
+		cube3.line12.color(clear)
+		cube3.line10.color(clear)
+		cube3.line11.color(clear)
+		
+		let cube4 = SCNCube(size: radius, color:color)
+		cube4.eulerAngles.z = Float(degToRad(45))
+		mesh.addChildNode(cube4)
+		
+		cube4.line4.color(clear)
+		cube4.line7.color(clear)
 		
 		return mesh
 	}

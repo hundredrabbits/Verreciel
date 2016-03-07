@@ -56,6 +56,7 @@
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
 		578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */; };
 		578D63F31C3C7DA1000AAC04 /* Location.Harvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578D63F21C3C7DA1000AAC04 /* Location.Harvest.swift */; };
+		5790360D1C8DF38500BFD870 /* SCNCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790360C1C8DF38500BFD870 /* SCNCube.swift */; };
 		579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* Core.Player.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		5797B83C1BE7DD09004EE1F7 /* Structures.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */; };
@@ -142,6 +143,7 @@
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
 		578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Spawn.swift; sourceTree = "<group>"; };
 		578D63F21C3C7DA1000AAC04 /* Location.Harvest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Harvest.swift; sourceTree = "<group>"; };
+		5790360C1C8DF38500BFD870 /* SCNCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCube.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* Core.Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Player.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.Library.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
+				5790360C1C8DF38500BFD870 /* SCNCube.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
 				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
@@ -478,6 +481,7 @@
 				5726C6071BD46FFF00B924B2 /* Core.UI.swift in Sources */,
 				576859101C4DE984009D3681 /* Widget.Enigma.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
+				5790360D1C8DF38500BFD870 /* SCNCube.swift in Sources */,
 				5781FC0C1C6BC9500001A743 /* SCNRect.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* Core.Universe.swift in Sources */,
 				576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */,

@@ -106,7 +106,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_satellite)
+		capsule.start(universe.loiqe_horadric)
 		
 		cargo.addItems([items.valenPortalKey, items.materia, items.credit])
 		
