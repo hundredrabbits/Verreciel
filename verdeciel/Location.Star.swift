@@ -58,6 +58,17 @@ class LocationStar : Location
 		return newPanel
 	}
 	
+	override func sightUpdate()
+	{
+		let radiation = (1 - (distance/0.7))/0.6
+		
+		if radiation > 1 && capsule.isFleeing == false {
+			capsule.flee()
+		}
+		
+		capsule.radiation = radiation
+	}
+	
 	override func onApproach()
 	{
 		if shield.isActive == true {
@@ -65,7 +76,6 @@ class LocationStar : Location
 		}
 		else{
 			space.startInstance(self)
-			capsule.flee()
 		}
 	}
 	

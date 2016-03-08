@@ -212,17 +212,29 @@ class CoreUI: SCNNode
 		SCNTransaction.commit()
 	}
 	
+	func showWarning(warning:String)
+	{
+		self.warning = warning
+		self.warningLabel.update(self.warning)
+	}
+	
+	func showWarningUntil(warning:String, predicate:() -> Bool)
+	{
+		self.warning = warning
+		self.warningLabel.update(self.warning)
+		
+		if predicate() == true {
+			hideWarning()
+		}
+	}
+	
 	func hideWarning()
 	{
 		if warningTimer != nil {
 			warningTimer.invalidate()
 		}
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-		warningLabel.update("")
-		SCNTransaction.commit()
+		self.warning = ""
+		warningLabel.update(self.warning)
 	}
 	
 	required init(coder aDecoder: NSCoder)

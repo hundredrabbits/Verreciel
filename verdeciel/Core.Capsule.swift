@@ -18,6 +18,8 @@ class CoreCapsule: SCNNode
 	
 	var shieldRoot = SCNNode()
 	
+	var radiation:CGFloat = 0
+	
 	// MARK: Default -
 	
 	override init()
@@ -50,6 +52,10 @@ class CoreCapsule: SCNNode
 		
 		docking()
 		warping()
+		
+		if isFleeing == false && radiation > 0 { ui.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
+		else if isFleeing == true && radiation > 0.5 { ui.showWarning("Autopilot engaged") }
+		else{ ui.hideWarning() }
 	}
 	
 	func onSeconds()
@@ -277,10 +283,7 @@ class CoreCapsule: SCNNode
 	
 	func flee()
 	{
-		delay(2, block: {
-			self.isFleeing = true
-			ui.addWarning("Radiation warning", duration: 5)
-		})
+		self.isFleeing = true
 	}
 	
 	// MARK: Custom -

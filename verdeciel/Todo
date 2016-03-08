@@ -7,8 +7,6 @@
 - Hide stealthed events
 - Hatch should not have colors unless it's loaded
 - Don't align pilot if target is current location
-- Harvest location -> Connect timer to progress bar
-- Radiation warning before fleeing
 
 - Radio mission upon arriving in Valen
 - Move station and Harvest at the top of the star
@@ -36,6 +34,7 @@
 - Display stars bigger, for longer, slower
 - Horadric animate combination
 - First quests for 2-3 chapters don't display until started
+- Location structure color reflect state
 
 > Narative
 - Telemetrists!? Twin Suns

@@ -104,7 +104,7 @@ class PanelPilot : MainPanel
 		targetDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction)) * -1
 		staticDirectionIndicator.eulerAngles.z = Float(degToRad(capsule.direction))
 		
-		if capsule.isFleeing == true { details.update("Fleeing", color:red) }
+		if capsule.isFleeing == true { details.update("Auto", color:red) }
 		else if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
 		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
 		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
