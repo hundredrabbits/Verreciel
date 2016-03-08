@@ -17,7 +17,7 @@ class LocationTrade : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.structure = structures.trade()
+		self.structure.addChildNode(structures.trade())
 		self.isComplete = false
 		self.isStealth = stealth
 		
@@ -99,7 +99,7 @@ class LocationTrade : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		structure.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
 	}
 	
 	// MARK: Defaults -

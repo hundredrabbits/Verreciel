@@ -12,18 +12,20 @@ class SCNProgressBar : SCNNode
 	var progressLine:SCNLine!
 	var remainingLine:SCNLine!
 	var width:CGFloat = 0
+	var color:UIColor = red
 	
-	init(width:CGFloat)
+	init(width:CGFloat, color:UIColor = red)
 	{
 		super.init()
 		self.width = width
+		self.color = color
 		
 		addGeometry()
 	}
 	
 	func addGeometry()
 	{
-		progressLine = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(0,0,0), color: red)
+		progressLine = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(0,0,0), color: color)
 		self.addChildNode(progressLine)
 		remainingLine = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(width,0,0), color: grey)
 		self.addChildNode(remainingLine)
@@ -33,7 +35,7 @@ class SCNProgressBar : SCNNode
 	{
 		let to = width * (percent/100)
 		
-		progressLine.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(to,0,0), color: red).geometry
+		progressLine.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(to,0,0), color: color).geometry
 		remainingLine.geometry = SCNLine(nodeA: SCNVector3(to,0,0), nodeB: SCNVector3(width,0,0), color: grey).geometry
 	}
 	

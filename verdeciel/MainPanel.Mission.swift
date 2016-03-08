@@ -167,7 +167,7 @@ class PanelMission : MainPanel
 		currentMission = quests.currentMission[.capsule]!
 		questCount = quests.questlog[.capsule]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
-			quest2Label.update("Locked", color:grey)
+			quest2Label.update("--", color:grey)
 			quest2Details.update(currentMission.task, color:grey)
 			quest2Completion.update("")
 			quest2Progress.update(0)
@@ -182,7 +182,7 @@ class PanelMission : MainPanel
 		currentMission = quests.currentMission[.exploration]!
 		questCount = quests.questlog[.exploration]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
-			quest3Label.update("Locked", color:grey)
+			quest3Label.update("--", color:grey)
 			quest3Details.update(currentMission.task, color:grey)
 			quest3Completion.update("")
 			quest3Progress.update(0)

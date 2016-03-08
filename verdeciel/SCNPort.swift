@@ -215,6 +215,7 @@ class SCNPort : SCNNode
 	func hasEvent(target:Event) -> Bool
 	{
 		if event == nil { return false }
+		if event.name == target.name { return true }
 		return false
 	}
 	

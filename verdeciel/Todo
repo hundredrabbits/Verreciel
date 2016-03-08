@@ -24,9 +24,6 @@
 - Map Functionality
 - Loiqe City had no mesh
 
-(Harvest)
-- Connect timer
-
 > Design
 - Add missing icons
 - Floating feel
@@ -37,7 +34,6 @@
 - Animate change of Thruster state
 - Update mission panel to fit within shield
 - Display stars bigger, for longer, slower
-- Harvest location -> Animate rotation
 - Horadric animate combination
 - First quests for 2-3 chapters don't display until started
 

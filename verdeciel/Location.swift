@@ -29,7 +29,7 @@ class Location : Event
 	var type:LocationTypes = .generic
 	
 	// Radar
-	var structure:SCNNode!
+	var structure = SCNNode()
 	var icon = SCNNode()
 	var label = SCNLabel()
 	var trigger = SCNNode()
@@ -85,7 +85,7 @@ class Location : Event
 		if distance <= settings.sight { if inSight == false { onSight() ; inSight = true ; isSeen = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() }
+		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() ; animateMesh(self.structure) }
 		else{ inApproach = false }
 		
 		if distance <= settings.collision { if inCollision == false {  inCollision = true ; onCollision() } ; collisionUpdate() }

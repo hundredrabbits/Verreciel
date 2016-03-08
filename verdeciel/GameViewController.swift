@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		startingState()
+		unlockedState(universe.loiqe_harvest)
 	}
 	
 	func startingState()
@@ -80,7 +80,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
-	func unlockedState()
+	func unlockedState(location:Location = universe.loiqe_horadric)
 	{
 		debug.isActive = true
 		
@@ -106,7 +106,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		progress.install()
 		complete.install()
 		
-		capsule.start(universe.loiqe_horadric)
+		capsule.start(location)
 		
 		cargo.addItems([items.valenPortalKey, items.materia, items.credit])
 		
