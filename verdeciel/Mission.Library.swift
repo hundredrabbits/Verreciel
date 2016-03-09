@@ -56,7 +56,7 @@ class MissionLibrary
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
-			Quest(name:"Trade materia for Fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { })
+			Quest(name:"Trade materia for Fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
 		]
 		questlog[c]?.append(m)
 		
@@ -245,7 +245,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Enigma Tutorial 2") // TODO: Add output tutorial
 		m.quests = [ Quest(name:"Power Enigma in battery panel", predicate:{ battery.isEnigmaPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"--", predicate:{ true }, result: { complete.install() }) ]
+		m.quests = [ Quest(name:"--", predicate:{ true }, result: {  }) ]
 		questlog[c]?.append(m)
 	}
 	

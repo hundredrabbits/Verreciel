@@ -21,13 +21,14 @@ class MonitorComplete : Monitor
 		details.update(name!)
 	}
 	
-	func setup()
+	override func start()
 	{
-		
+		super.start()
 	}
 	
 	override func refresh()
 	{
+		
 //		let questProgress:Float = Float(quests.tutorialProgress + quests.falvetProgress + quests.senniProgress + quests.usulProgress)
 //		let questSum:Float = Float(quests.tutorial.count + quests.falvet.count + quests.senni.count + quests.usul.count)
 //		let explorationProgress:Float = Float(exploration.knownLocations)

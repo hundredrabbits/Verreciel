@@ -19,9 +19,26 @@ class MonitorProgress : Monitor
 		details.update(name!)
 	}
 	
+	override func start()
+	{
+		super.start()
+		
+	}
+	
 	override func refresh()
 	{
-		label.update("4/39")
+		var totalQuestLocations = 0
+		var totalQuestLocations_complete = 0
+		
+		for location in universe.childNodes {
+			let location = location as! Location
+			if location.isComplete != nil {
+				totalQuestLocations += 1
+				if location.isComplete == true { totalQuestLocations_complete += 1}
+			}
+		}
+		
+		label.update("\(totalQuestLocations_complete)/\(totalQuestLocations)")
 	}
 	
 	override func onInstallationBegin()
@@ -29,7 +46,8 @@ class MonitorProgress : Monitor
 //		player.lookAt(deg: -270)
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder)
+	{
 		fatalError("init(coder:) has not been implemented")
 	}
 }
