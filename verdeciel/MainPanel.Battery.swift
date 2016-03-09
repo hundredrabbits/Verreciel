@@ -30,6 +30,7 @@ class PanelBattery : MainPanel
 		super.init()
 		
 		name = "battery"
+		info = "[missing text]"
 	
 		// Cells
 		

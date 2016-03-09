@@ -16,6 +16,8 @@ class WidgetEnigma : Widget
 		super.init()
 		
 		name = "enigma"
+		info = "[missing text]"
+		
 		label.update(name!)
 	}
 	

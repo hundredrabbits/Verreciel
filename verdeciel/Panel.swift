@@ -9,6 +9,7 @@ import Foundation
 
 class Panel : SCNNode
 {
+	var info:String = ""
 	var isEnabled:Bool = false
 	
 	var root = SCNNode()

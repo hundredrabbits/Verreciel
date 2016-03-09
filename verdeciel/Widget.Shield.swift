@@ -16,6 +16,8 @@ class WidgetShield : Widget
 		super.init()
 	
 		name = "shield"
+		info = "[missing text]"
+		
 		label.update(name!)
 	}
 	

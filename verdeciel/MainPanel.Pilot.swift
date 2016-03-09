@@ -20,6 +20,7 @@ class PanelPilot : MainPanel
 		super.init()
 		
 		name = "pilot"
+		info = "[missing text]"
 		
 		targetDirectionIndicator = SCNNode()
 		targetDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.55, 0), nodeB: SCNVector3(0, 0.7, 0), color: white))

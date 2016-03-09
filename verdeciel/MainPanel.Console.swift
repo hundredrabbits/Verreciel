@@ -28,6 +28,7 @@ class PanelConsole : MainPanel
 		super.init()
 		
 		name = "console"
+		info = "[missing text]"
 	
 		consoleNode = SCNNode()
 		
@@ -125,10 +126,6 @@ class PanelConsole : MainPanel
 				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
 			}
 		}
-		else if port.origin.event != nil {
-			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
-			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
-		}
 	}
 	
 	override func bang()
@@ -139,6 +136,21 @@ class PanelConsole : MainPanel
 		if consoleLine4.port.connection != nil { consoleLine4.port.connection.host.listen(consoleLine4.port.event) }
 		if consoleLine5.port.connection != nil { consoleLine5.port.connection.host.listen(consoleLine5.port.event) }
 		if consoleLine6.port.connection != nil { consoleLine6.port.connection.host.listen(consoleLine6.port.event) }
+	}
+	
+	override func onConnect()
+	{
+		super.onConnect()
+		
+		if port.origin.event != nil {
+			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
+			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
+		}
+		else if port.origin.host is Panel {
+			let origin = port.origin.host as! Panel
+			addLine(SCNCommand(text: origin.name!, color: grey, details: "", head:true))
+			addLine(SCNCommand(text: "\(origin.info)", color: white))
+		}
 	}
 	
 	override func onDisconnect()

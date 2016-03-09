@@ -39,6 +39,7 @@ class PanelMission : MainPanel
 		super.init()
 		
 		name = "mission"
+		info = "[missing text]"
 	
 		locationPanel = Panel()
 		mainNode.addChildNode(locationPanel)
@@ -282,6 +283,8 @@ class PanelMission : MainPanel
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
+		
+		port.addEvent(location)
 	}
 	
 	func disconnectFromLocation()
@@ -309,6 +312,8 @@ class PanelMission : MainPanel
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
+		
+		port.removeEvent()
 	}
 	
 	override func onInstallationBegin()

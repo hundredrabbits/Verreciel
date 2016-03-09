@@ -14,6 +14,8 @@ class WidgetMap : Widget
 		super.init()
 		
 		name = "map"
+		info = "[missing text]"
+		
 		label.update(name!)
 	}
 	

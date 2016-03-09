@@ -51,6 +51,7 @@ class PanelThruster : MainPanel
 		super.init()
 		
 		name = "thruster"
+		info = "[missing text]"
 		
 		// Flight
 		

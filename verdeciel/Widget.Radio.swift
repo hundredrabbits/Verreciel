@@ -18,6 +18,8 @@ class WidgetRadio : Widget
 		super.init()
 		
 		name = "radio"
+		info = "[missing text]"
+		
 		label.update(name!)
 	}
 	

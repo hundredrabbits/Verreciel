@@ -21,6 +21,8 @@
 - Cannot warp if not aligned(Portal)
 - Map Functionality
 - Loiqe City had no mesh
+- Connecting something to console enables cargo item ports?!
+- When connected to location, add even in mission port
 
 > Design
 - Add missing icons
@@ -35,6 +37,7 @@
 - Horadric animate combination
 - First quests for 2-3 chapters don't display until started
 - Location structure color reflect state
+- Fade in structures
 
 > Narative
 - Telemetrists!? Twin Suns
