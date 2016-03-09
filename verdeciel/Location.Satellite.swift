@@ -55,13 +55,13 @@ class LocationSatellite : Location
 	
 	override func update()
 	{
-		if port.event == nil { isComplete = true }
+		if port.event == nil { self.complete() }
 		updateIcon()
 	}
 	
 	override func onUploadComplete()
 	{
-		isComplete = true
+		self.complete()
 		mission.complete()
 	}
 	

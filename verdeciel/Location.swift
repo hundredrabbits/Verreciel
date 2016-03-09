@@ -135,6 +135,12 @@ class Location : Event
 		update()
 	}
 	
+	func complete()
+	{
+		self.isComplete = true
+		self.structure.update() // TODO: Change the structure color to reflrect completion
+	}
+	
 	func onComplete()
 	{
 		updateIcon()

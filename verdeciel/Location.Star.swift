@@ -88,7 +88,7 @@ class LocationStar : Location
 	override func onDisconnect()
 	{
 		if portB.origin != portA {
-			isComplete = true
+			self.complete()
 			capsule.teleport(twin)
 		}
 	}

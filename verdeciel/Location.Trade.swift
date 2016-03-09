@@ -90,6 +90,7 @@ class LocationTrade : Location
 		
 		if givePort.event == nil {
 			mission.complete()
+			self.complete()
 		}
 		
 		updateIcon()

@@ -246,7 +246,6 @@ class PanelMission : MainPanel
 			self.questPanel.opacity = 1
 			
 			SCNTransaction.setCompletionBlock({
-				capsule.dock.isComplete = true
 				capsule.dock.onComplete()
 				self.refresh()
 			})
