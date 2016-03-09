@@ -34,6 +34,10 @@ class CoreUniverse : SCNNode
 		
 		valen_bank.port2.addEvent(items.waste)
 		valen_bank.port3.addEvent(items.cell2)
+		
+		for location in childNodes {
+			location.start()
+		}
 	}
 	
 	// MARK: Loiqe -

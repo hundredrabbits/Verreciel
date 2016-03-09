@@ -29,6 +29,12 @@ class LocationHarvest : Location
 		generationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("generate"), userInfo: nil, repeats: true)
 	}
 	
+	override func start()
+	{
+		super.start()
+		port.addEvent(grows)
+	}
+	
 	var generationTimer:NSTimer!
 	var generationCountdown:Int = 0
 	var generationRate:Int = 20

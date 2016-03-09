@@ -69,7 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_city)
+//		unlockedState(universe.loiqe_city)
+		startingState()
 	}
 	
 	func startingState()
