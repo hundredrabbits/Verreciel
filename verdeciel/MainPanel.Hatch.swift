@@ -45,6 +45,13 @@ class PanelHatch : MainPanel
 		
 		details.update("empty", color: grey)
 	}
+	
+	override func start()
+	{
+		super.start()
+		
+		update()
+	}
 
 	override func touch(id:Int = 0)
 	{
@@ -67,9 +74,9 @@ class PanelHatch : MainPanel
 		var load:Event!
 		
 		load = (port.origin == nil) ? nil : port.origin.event
-			
+		
 		if load != nil {
-			if load.isQuest == true && port.origin.IO(port.origin.input) == "item" {
+			if load.isQuest == true || (load is Item) == false {
 				details.update("error", color: red)
 				outline.updateChildrenColors(red)
 			}

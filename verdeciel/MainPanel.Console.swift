@@ -142,6 +142,8 @@ class PanelConsole : MainPanel
 	{
 		super.onConnect()
 		
+		if port.origin.host == cargo { return }
+		
 		if port.origin.event != nil {
 			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
 			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
