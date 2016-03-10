@@ -72,6 +72,13 @@ class LocationStation : Location
 		if id == 1 { self.installation() ; mission.complete() }
 	}
 	
+	override func complete()
+	{
+		super.complete()
+		structure.empty()
+		structure.add(structures.station(cyan))
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

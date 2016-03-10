@@ -96,6 +96,13 @@ class LocationTrade : Location
 		updateIcon()
 	}
 	
+	override func complete()
+	{
+		super.complete()
+		structure.empty()
+		structure.add(structures.trade(color:cyan))
+	}
+	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)

@@ -138,7 +138,6 @@ class Location : Event
 	func complete()
 	{
 		self.isComplete = true
-		self.structure.update() // TODO: Change the structure color to reflrect completion
 	}
 	
 	func onComplete()

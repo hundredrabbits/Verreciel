@@ -59,6 +59,13 @@ class LocationSatellite : Location
 		updateIcon()
 	}
 	
+	override func complete()
+	{
+		super.complete()
+		structure.empty()
+		structure.add(structures.satellite(color:cyan))
+	}
+	
 	override func onUploadComplete()
 	{
 		self.complete()
