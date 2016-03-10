@@ -224,7 +224,8 @@ class CoreCapsule: SCNNode
 	
 	func dock(newDock:Location)
 	{
-		print("init dock")
+		print("* DOCK     | Init: \(newDock.name)")
+		
 		dock = newDock
 		thruster.disable()
 		

@@ -301,12 +301,12 @@ class SCNPort : SCNNode
 	
 	override func onConnect()
 	{
-		print("connected")
+		print("* PORT     | \(host.name) is connected")
 	}
 	
 	override func onDisconnect()
 	{
-		print("disconnected")
+		print("* PORT     | \(host.name) is disconnected")
 		host.onDisconnect()
 	}
 	

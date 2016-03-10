@@ -226,13 +226,13 @@ class PanelThruster : MainPanel
 	
 	func onPowered()
 	{
-		print("\(name) is powered")
+		print("* THRUSTER | Powered: \(name)")
 		refresh()
 	}
 	
 	func onUnpowered()
 	{
-		print("\(name) is unpowered")
+		print("* THRUSTER | Powered: \(name)")
 		refresh()
 	}
 	
