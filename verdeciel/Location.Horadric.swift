@@ -70,7 +70,9 @@ class LocationHoradric : Location
 	
 	override func dockedUpdate()
 	{
-		verifyRecipes()
+		if inPort1.isEnabled == true && inPort2.isEnabled == true { verifyRecipes() }
+		
+		if combinationPercentage > 0 { self.structure.blink() }
 	}
 	
 	func verifyRecipes()
@@ -85,31 +87,52 @@ class LocationHoradric : Location
 			if recipe.isValid(ingredients) == true { combine(recipe) ; break }
 		}
 		
-		// Delivery mode
-		if outPort.event != nil {
-			inPort1.disable()
-			inPort2.disable()
-			outPort.enable()
-		}
-		// Awaiting mode
-		else{
-			inPort1.enable()
-			inPort2.enable()
-			outPort.disable()
-		}
-		
-		if outPort.event == nil { outPort.label.update("out", color:grey) }
+		if outPort.hasEvent() == false { outPort.label.update("out", color:grey) }
 	}
 	
 	// MARK: Combinatrix
 	
+	var combinationRecipe:Recipe!
+	var combinationTimer:NSTimer!
+	var combinationPercentage:CGFloat = 0
+	
 	func combine(recipe:Recipe)
+	{
+		inPort1.disable()
+		inPort2.disable()
+		inPort1.label.update(cyan)
+		inPort2.label.update(cyan)
+		
+		combinationRecipe = recipe
+		combineProgress()
+	}
+	
+	func combineProgress()
+	{
+		combinationPercentage += CGFloat(arc4random_uniform(60))/30
+		
+		if combinationPercentage > 100 {
+			onCombinationComplete()
+			return
+		}
+		else{
+			delay(0.05, block: { self.combineProgress() })
+		}
+		outPort.label.update("Assemblage \(Int(combinationPercentage))%", color:white)
+	}
+	
+	func onCombinationComplete()
 	{
 		inPort1.removeEvent()
 		inPort2.removeEvent()
+		inPort1.enable()
+		inPort2.enable()
 		
-		outPort.addEvent(recipe.result)
+		outPort.addEvent(combinationRecipe.result)
+		outPort.label.update(outPort.event.name!, color:grey)
 		outPort.enable()
+		
+		combinationPercentage = 0
 	}
 
 	func iconUpdate()
@@ -122,15 +145,28 @@ class LocationHoradric : Location
 		}
 	}
 	
-	// MARK: Mesh -
-	
-	override func animateMesh(mesh:SCNNode)
+	override func onAnimateMesh(mesh:SCNNode)
 	{
-		for node in (mesh.childNodes.first?.childNodes)! {
-			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
-		}
+		super.onAnimateMesh(mesh)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(9)
+		
+		mesh.childNodes[0].eulerAngles.y += Float(degToRad(22.5))
+		mesh.childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
+		
+		mesh.childNodes[2].eulerAngles.z += Float(degToRad(45))
+		mesh.childNodes[3].eulerAngles.z -= Float(degToRad(45))
+		
+		mesh.childNodes[4].eulerAngles.x += Float(degToRad(90))
+		mesh.childNodes[5].eulerAngles.x -= Float(degToRad(90))
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+		
+		delay(12, block: { self.onAnimateMesh(mesh) })
 	}
-	
+		
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

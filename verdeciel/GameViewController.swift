@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_city)
+		unlockedState(universe.loiqe_horadric)
 //		startingState()
 	}
 	
@@ -109,7 +109,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		capsule.start(location)
 		
-		cargo.addItems([items.valenPortalKey, items.materia, items.credit])
+		cargo.addItems([items.valenPortalFragment1, items.valenPortalFragment2, items.credit])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

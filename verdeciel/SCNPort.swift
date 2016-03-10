@@ -219,6 +219,12 @@ class SCNPort : SCNNode
 		return false
 	}
 	
+	func hasEvent() -> Bool
+	{
+		if event != nil { return true }
+		return false
+	}
+	
 	func strip()
 	{
 		disconnect()

@@ -133,6 +133,7 @@ class Location : Event
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
 		update()
+		onAnimateMesh(self.structure)
 	}
 	
 	func complete()
@@ -161,6 +162,11 @@ class Location : Event
 	}
 	
 	func dockedUpdate()
+	{
+		
+	}
+	
+	func onAnimateMesh(mesh:SCNNode)
 	{
 		
 	}

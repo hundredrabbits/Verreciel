@@ -11,6 +11,7 @@
 - Move station and Harvest at the top of the star
 - Return to Loiqe to get cell2
 - Radio quest crashes
+- Targetter becomes grey if docking
 
 > Bugs
 - Issue with UI offset animation
@@ -33,8 +34,6 @@
 - Update mission panel to fit within shield
 - Display stars bigger, for longer, slower
 - Horadric animate combination
-- First quests for 2-3 chapters don't display until started
-- Location structure color reflect state
 - Fade in structures
 
 > Narative

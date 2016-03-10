@@ -33,8 +33,8 @@ class ItemLibrary
 	let loiqePortalKey = Item(name: "loiqe key", type: .card, note:"complete key", isQuest:true)
 	
 	let valenPortalKey = Item(name: "valen key", type: .card, note:"complete key", isQuest:true)
-	let valenPortalFragment1 = Item(name: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
-	let valenPortalFragment2 = Item(name: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment1 = Item(name: "fragment", type: .part, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment2 = Item(name: "fragment", type: .part, note:"half a Portal key", isQuest:true)
 	
 	let senniPortalKey = Item(name: "senni key", type: .card, note:"complete key", isQuest:true)
 	let senniPortalFragment1 = Item(name: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)

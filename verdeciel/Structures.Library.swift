@@ -178,29 +178,45 @@ class StructuresLibrary
 		
 		let cube1 = SCNCube(size: radius, color:color)
 		mesh.addChildNode(cube1)
+		cube1.line9.color(clear)
+		cube1.line10.color(clear)
+		cube1.line11.color(clear)
+		cube1.line12.color(clear)
 		
 		let cube2 = SCNCube(size: radius, color:color)
-		cube2.eulerAngles.x = Float(degToRad(45))
 		mesh.addChildNode(cube2)
-		
-		cube2.line1.color(clear)
-		cube2.line6.color(clear)
+		cube2.line9.color(clear)
+		cube2.line10.color(clear)
+		cube2.line11.color(clear)
+		cube2.line12.color(clear)
 		
 		let cube3 = SCNCube(size: radius, color:color)
-		cube3.eulerAngles.y = Float(degToRad(45))
 		mesh.addChildNode(cube3)
-		
 		cube3.line9.color(clear)
-		cube3.line12.color(clear)
 		cube3.line10.color(clear)
 		cube3.line11.color(clear)
+		cube3.line12.color(clear)
 		
 		let cube4 = SCNCube(size: radius, color:color)
-		cube4.eulerAngles.z = Float(degToRad(45))
 		mesh.addChildNode(cube4)
+		cube4.line9.color(clear)
+		cube4.line10.color(clear)
+		cube4.line11.color(clear)
+		cube4.line12.color(clear)
 		
-		cube4.line4.color(clear)
-		cube4.line7.color(clear)
+		let cube5 = SCNCube(size: radius, color:color)
+		mesh.addChildNode(cube5)
+		cube5.line9.color(clear)
+		cube5.line10.color(clear)
+		cube5.line11.color(clear)
+		cube5.line12.color(clear)
+		
+		let cube6 = SCNCube(size: radius, color:color)
+		mesh.addChildNode(cube6)
+		cube6.line9.color(clear)
+		cube6.line10.color(clear)
+		cube6.line11.color(clear)
+		cube6.line12.color(clear)
 		
 		return mesh
 	}
