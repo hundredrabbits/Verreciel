@@ -268,6 +268,7 @@ class CoreCapsule: SCNNode
 	
 	func undock()
 	{
+		dock.onUndock()
 		dock.disconnectPanel()
 		isDocked = false
 		dock = nil

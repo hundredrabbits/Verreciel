@@ -145,26 +145,48 @@ class LocationHoradric : Location
 		}
 	}
 	
-	override func onAnimateMesh(mesh:SCNNode) // TODO: Stop animation when not in sight
+	override func onDock()
 	{
-		super.onAnimateMesh(mesh)
+		super.onDock()
 		
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(9)
+		SCNTransaction.setAnimationDuration(3)
+	
+			structure.childNodes[0].eulerAngles.y += Float(degToRad(22.5))
+			structure.childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
+			
+			structure.childNodes[2].eulerAngles.z += Float(degToRad(45))
+			structure.childNodes[3].eulerAngles.z -= Float(degToRad(45))
+			
+			structure.childNodes[4].eulerAngles.x += Float(degToRad(90))
+			structure.childNodes[5].eulerAngles.x -= Float(degToRad(90))
 		
-		mesh.childNodes[0].eulerAngles.y += Float(degToRad(22.5))
-		mesh.childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
-		
-		mesh.childNodes[2].eulerAngles.z += Float(degToRad(45))
-		mesh.childNodes[3].eulerAngles.z -= Float(degToRad(45))
-		
-		mesh.childNodes[4].eulerAngles.x += Float(degToRad(90))
-		mesh.childNodes[5].eulerAngles.x -= Float(degToRad(90))
+			structure.eulerAngles.y += Float(degToRad(90))
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+	}
+	
+	override func onUndock()
+	{
+		super.onUndock()
 		
-		delay(12, block: { self.onAnimateMesh(mesh) })
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		
+		structure.childNodes[0].eulerAngles.y = Float(degToRad(0))
+		structure.childNodes[1].eulerAngles.y = Float(degToRad(0))
+		
+		structure.childNodes[2].eulerAngles.z = Float(degToRad(0))
+		structure.childNodes[3].eulerAngles.z = Float(degToRad(0))
+		
+		structure.childNodes[4].eulerAngles.x = Float(degToRad(0))
+		structure.childNodes[5].eulerAngles.x = Float(degToRad(0))
+		
+		structure.eulerAngles.y = Float(degToRad(0))
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
 	}
 		
 	// MARK: Defaults -
