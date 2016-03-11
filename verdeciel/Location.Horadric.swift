@@ -145,7 +145,7 @@ class LocationHoradric : Location
 		}
 	}
 	
-	override func onAnimateMesh(mesh:SCNNode)
+	override func onAnimateMesh(mesh:SCNNode) // TODO: Stop animation when not in sight
 	{
 		super.onAnimateMesh(mesh)
 		

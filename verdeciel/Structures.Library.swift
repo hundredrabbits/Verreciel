@@ -47,7 +47,6 @@ class StructuresLibrary
 		
 		var i = 0
 		while i < sides {
-			
 			var e = 0
 			while e < sides {
 				let root = SCNNode()

@@ -95,25 +95,28 @@ class PanelRadar : MainPanel
 	
 	func updateTarget()
 	{		
-		if port.event != nil {
-			let shipNodePosition = CGPoint(x: CGFloat(capsule.at.x), y: CGFloat(capsule.at.y))
-			let eventNodePosition = CGPoint(x: CGFloat(port.event.at.x), y: CGFloat(port.event.at.y))
-			let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
-			
-			if distanceFromShip > 2 {
-				let angleTest = angleBetweenTwoPoints(capsule.at, point2: port.event.at, center: capsule.at)
-				let targetDirectionNormal = Double(Float(angleTest)/180) * 1
-				targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-				targetterFar.opacity = 1
-				targetter.updateChildrenColors(clear)
-			}
-			else{
-				targetter.position = SCNVector3(port.event.at.x - capsule.at.x,port.event.at.y - capsule.at.y,0)
-				targetterFar.opacity = 0
-				targetter.updateChildrenColors(red)
-			}
-			targetter.blink()
+		if port.hasEvent() == false { return }
+		
+		let shipNodePosition = CGPoint(x: CGFloat(capsule.at.x), y: CGFloat(capsule.at.y))
+		let eventNodePosition = CGPoint(x: CGFloat(port.event.at.x), y: CGFloat(port.event.at.y))
+		let distanceFromShip = Float(distanceBetweenTwoPoints(shipNodePosition,point2: eventNodePosition))
+		
+		if distanceFromShip > 2 {
+			let angleTest = angleBetweenTwoPoints(capsule.at, point2: port.event.at, center: capsule.at)
+			let targetDirectionNormal = Double(Float(angleTest)/180) * 1
+			targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
+			targetterFar.opacity = 1
 		}
+		else{
+			targetter.position = SCNVector3(port.event.at.x - capsule.at.x,port.event.at.y - capsule.at.y,0)
+			targetterFar.opacity = 0
+		}
+		
+		// Targetter
+		if distanceFromShip > 2 { targetter.updateChildrenColors(clear) }
+		else if capsule.dock != nil { targetter.updateChildrenColors(grey) ; targetter.opacity = 1 }
+		else{ targetter.updateChildrenColors(red) ; targetter.blink() }
+		
 	}
 
 	func addTarget(event:Location)

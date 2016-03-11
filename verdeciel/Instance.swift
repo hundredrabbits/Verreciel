@@ -24,8 +24,8 @@ class Instance : SCNNode
 	
 	override func update()
 	{
-		let distance = (event.distance/2) * 100.0
-		
+		let distance = pow(event.distance/settings.approach, 3) * 100.0
+	
 		structure.position = SCNVector3(0,distance,0)
 		
 		if capsule.isDockedAtLocation(event){
@@ -37,7 +37,7 @@ class Instance : SCNNode
 		
 		self.eulerAngles.y = Float(degToRad(capsule.direction))
 		
-		if event.distance > 0.75 {
+		if event.distance > settings.approach {
 			leaveInstance()
 		}
 	}

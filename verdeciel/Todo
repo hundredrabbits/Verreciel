@@ -11,11 +11,9 @@
 - Move station and Harvest at the top of the star
 - Return to Loiqe to get cell2
 - Radio quest crashes
-- Targetter becomes grey if docking
 
 > Bugs
 - Issue with UI offset animation
-- Issue with docking when approaching a distant target
 - Release touch when installing camera animation
 - Add cancel docking button/trigger to thruster
 - Cannot warp if not aligned(Portal)
@@ -27,13 +25,8 @@
 - Add missing icons
 - Floating feel
 - Add ship doodads
-- Add space doodads
 - Interface sounds
-- Add constellation in warps
-- Animate change of Thruster state
 - Update mission panel to fit within shield
-- Display stars bigger, for longer, slower
-- Fade in structures
 
 > Narative
 - Telemetrists!? Twin Suns
@@ -43,3 +36,6 @@
 
 > Extras
 - Combine records together
+
+
+

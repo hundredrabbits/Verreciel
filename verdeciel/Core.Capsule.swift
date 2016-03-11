@@ -259,6 +259,7 @@ class CoreCapsule: SCNNode
 		isDocked = true
 		capsule.at = dock.at
 		dock.onDock()
+		radar.removeTarget()
 		
 		ui.addPassive("Docked at \(dock.name!)")
 		
