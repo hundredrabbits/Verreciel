@@ -59,7 +59,7 @@ class Loiqe
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal", system:system, at:CGPoint(x: offset.x, y: offset.y + 1), key: nil, rightName: "Valen", leftName:"Usul")
+		return LocationPortal(name: "portal", system:system, at:CGPoint(x: offset.x, y: offset.y + 1), leftKey: items.usulPortalKey, rightKey: items.valenPortalKey, leftName:"Usul", rightName: "Valen")
 	}
 	
 	func satellite() -> LocationSatellite
@@ -109,7 +109,7 @@ class Usul
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.usul, at:CGPoint(x: offset.x + 1, y: offset.y), key: items.usulPortalKey, rightName: "Loiqe", leftName:"Senni")
+		return LocationPortal(name: "portal",system:.usul, at:CGPoint(x: offset.x + 1, y: offset.y), leftKey: items.senniPortalKey, rightKey: items.loiqePortalKey, leftName:"Senni", rightName: "Loiqe")
 	}
 	
 	func station() -> LocationStation
@@ -146,7 +146,7 @@ class Valen
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.valen, at:CGPoint(x: offset.x - 1, y: offset.y), key: items.valenPortalKey, rightName: "Senni", leftName:"Loiqe")
+		return LocationPortal(name: "portal",system:.valen, at:CGPoint(x: offset.x - 1, y: offset.y), leftKey: items.loiqePortalKey, rightKey: items.senniPortalKey, leftName:"Loiqe", rightName: "Senni")
 	}
 	
 	func harvest() -> LocationHarvest
@@ -219,7 +219,7 @@ class Senni
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.senni, at:CGPoint(x: offset.x, y: offset.y - 1), key: items.senniPortalKey, rightName: "Usul", leftName:"Valen")
+		return LocationPortal(name: "portal",system:.senni, at:CGPoint(x: offset.x, y: offset.y - 1), leftKey: items.valenPortalKey, rightKey: items.usulPortalKey, leftName:"Valen", rightName: "Usul")
 	}
 	
 	func port() -> LocationTrade

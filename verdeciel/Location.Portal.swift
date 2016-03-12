@@ -24,9 +24,10 @@ class LocationPortal : Location
 	var rightName:String!
 	var leftName:String!
 	
-	var key:Event!
+	var leftKey:Event!
+	var rightKey:Event!
 	
-	init(name:String, system:Systems, at: CGPoint, key: Event!, rightName:String, leftName:String)
+	init(name:String, system:Systems, at: CGPoint, leftKey: Event!, rightKey: Event!, leftName:String, rightName:String)
 	{
 		super.init(name:name,system:system, at:at)
 		
@@ -39,7 +40,8 @@ class LocationPortal : Location
 		self.structure = structures.portal()
 		icon.replace(icons.placeholder())
 		
-		self.key = key
+		self.leftKey = leftKey
+		self.rightKey = rightKey
 		self.rightName = rightName
 		self.leftName = leftName
 		
@@ -59,6 +61,12 @@ class LocationPortal : Location
 		
 		rightThrusterPort.addEvent(items.warpDrive)
 		leftThrusterPort.addEvent(items.warpDrive)
+		
+		leftKeyPort.enable()
+		leftKeyPort.requirement = leftKey
+		
+		rightKeyPort.enable()
+		rightKeyPort.requirement = rightKey
 	}
 	
 	// MARK: Panel - 
@@ -89,8 +97,6 @@ class LocationPortal : Location
 		rightThrusterLabel.position = SCNVector3(0.4,0,0)
 		rightThrusterPort.addChildNode(rightThrusterLabel)
 		
-		rightKeyPort.enable()
-		rightKeyPort.requirement = items.valenPortalKey
 		
 		right.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin,0,0), nodeB: SCNVector3(templates.leftMargin,0.6,0), color: grey))
 		right.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin,0,0), nodeB: SCNVector3(templates.leftMargin + 0.4,0,0), color: grey))
@@ -122,9 +128,6 @@ class LocationPortal : Location
 		leftThrusterLabel.position = SCNVector3(0.4,0,0)
 		leftThrusterPort.addChildNode(leftThrusterLabel)
 		
-		leftKeyPort.enable()
-		leftKeyPort.requirement = items.valenPortalKey
-		
 		left.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin,0,0), nodeB: SCNVector3(templates.leftMargin,0.6,0), color: grey))
 		left.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin,0,0), nodeB: SCNVector3(templates.leftMargin + 0.4,0,0), color: grey))
 		left.addChildNode(SCNLine(nodeA: SCNVector3(templates.leftMargin + 0.4,0,0), nodeB: SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0), color: grey))
@@ -143,6 +146,11 @@ class LocationPortal : Location
 	}
 	
 	// MARK: I/O
+	
+	override func onConnect()
+	{
+		print("! \(leftKeyPort.requirement.name) - \(rightKeyPort.requirement.name)")
+	}
 	
 	override func listen(event: Event)
 	{
