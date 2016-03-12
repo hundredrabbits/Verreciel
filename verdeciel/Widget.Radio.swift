@@ -9,7 +9,6 @@ import Foundation
 
 class WidgetRadio : Widget
 {
-	var isPlaying:Bool = false
 	var time:NSTimer!
 	var seek:Int = 0
 	
@@ -23,16 +22,10 @@ class WidgetRadio : Widget
 		label.update(name!)
 	}
 	
-	override func onUploadComplete()
+	func isPlaying() -> Bool
 	{
-		playing()
-	}
-	
-	func playing()
-	{
-		label.update("0:0\(seek)", color:red)
-		time = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("playing"), userInfo: nil, repeats: false)
-		seek += 1
+		if port.hasItemOfType(.record) { return true }
+		return false
 	}
 	
 	override func onInstallationComplete()

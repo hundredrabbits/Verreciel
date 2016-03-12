@@ -143,6 +143,7 @@ class Location : Event
 	func complete()
 	{
 		self.isComplete = true
+		progress.refresh()
 	}
 	
 	func onComplete()

@@ -19,7 +19,7 @@ class Widget : Panel
 		port = SCNPortSlot(host: self, input: Event.self, output: Event.self, align: .center, placeholder:"--")
 		port.position = SCNVector3(0,-0.7,templates.radius)
 		port.disable()
-		port.label.updateScale(0.075)
+		port.label.updateScale(0.05)
 		port.label.position = SCNVector3(0,-0.35,0)
 		
 		let inputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.right)

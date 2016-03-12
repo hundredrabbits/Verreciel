@@ -160,6 +160,7 @@ class PanelBattery : MainPanel
 	
 	func isRadioPowered() -> Bool
 	{
+		if radioPort.isReceivingItemOfType(ItemTypes.battery) { return true }
 		return false
 	}
 	

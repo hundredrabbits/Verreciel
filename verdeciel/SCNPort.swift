@@ -246,6 +246,8 @@ class SCNPort : SCNNode
 		return stored_event
 	}
 	
+	// MARK: Checks -
+	
 	func isReceiving(event:Event!) -> Bool
 	{
 		if origin != nil && origin.event != nil && origin.event == event { return true }
@@ -292,6 +294,15 @@ class SCNPort : SCNNode
 		if origin.event == nil { return false }
 		if (origin.event is Item) == false { return false }
 		return true
+	}
+	
+	func hasItemOfType(type:ItemTypes) -> Bool
+	{
+		if hasEvent() == false { return false }
+		if (event is Item) == false { return false }
+		let item = event as! Item
+		if item.type == type { return true }
+		return false
 	}
 	
 	override func bang()

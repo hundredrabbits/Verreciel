@@ -98,7 +98,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		mission.install()
 		console.install()
 		
-//		radio.install()
+		radio.install()
 		enigma.install()
 		map.install()
 		shield.install()

@@ -160,7 +160,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 1") // Input
 		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying() == true }, result: {  }) ]
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 2") // Output
