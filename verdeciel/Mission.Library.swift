@@ -94,7 +94,6 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Find first Cell", location: universe.valen_harvest, predicate:{ cargo.contains(items.cell1) || battery.contains(items.cell1) || universe.valen_bank.contains(items.cell1) }, result: { }),
 			Quest(name:"Find second Cell", location: universe.valen_cargo, predicate:{ cargo.contains(items.cell2) || battery.contains(items.cell2) || universe.valen_bank.contains(items.cell2) }, result: { }),
-			Quest(name:"Find last Cell", location: universe.loiqe_cargo, predicate:{ cargo.contains(items.cell3) || battery.contains(items.cell3) || universe.valen_bank.contains(items.cell3) }, result: { }),
 			Quest(name:"Combine Cells", location: universe.loiqe_horadric, predicate:{ false }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -115,7 +114,6 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Find first Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array1) || battery.contains(items.array1) || universe.valen_bank.contains(items.array1) }, result: { }),
 			Quest(name:"Find second Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array2) || battery.contains(items.array2) || universe.valen_bank.contains(items.array2) }, result: { }),
-			Quest(name:"Find last Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array3) || battery.contains(items.array3) || universe.valen_bank.contains(items.array3) }, result: { }),
 			Quest(name:"Combine Arrays", location: universe.loiqe_horadric, predicate:{ false }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -236,7 +234,7 @@ class MissionLibrary
 		let c:Chapters = .exploration
 		var m:Mission!
 		
-		// Loiqe
+		// Valen Portal Key
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find valen portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
@@ -247,14 +245,14 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Valen
+		// Senni Portal Key
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key", task: "Find senni portal fragment", requirement:{ cargo.contains(items.senniPortalFragment1) || cargo.contains(items.senniPortalFragment2) } )
 		m.requirement = { cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) }
 		m.predicate = { cargo.contains(items.senniPortalKey) == true }
 		m.quests = [
-			Quest(name:"Aquire fragment I", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment1) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalFragment2) == true }, result: {  }),
+			Quest(name:"Aquire fragment I", location: universe.valen_bank, predicate:{ cargo.contains(items.senniPortalFragment1) == true }, result: { }),
+			Quest(name:"Aquire fragment II", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment2) == true }, result: {  }),
 			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -265,7 +263,7 @@ class MissionLibrary
 		m.predicate = { cargo.contains(items.usulPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire fragment I", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.nevic_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
+			Quest(name:"Aquire fragment II", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
 			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)

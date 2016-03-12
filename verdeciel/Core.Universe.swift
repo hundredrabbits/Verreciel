@@ -16,7 +16,6 @@ class CoreUniverse : SCNNode
 		
 		addLoiqe()
 		addUsul()
-		addnevic()
 		addValen()
 		addSenni()
 		addFalvet()
@@ -30,10 +29,8 @@ class CoreUniverse : SCNNode
 		unlock(.loiqe)
 		
 		valen_bank.port1.addEvent(items.loiqePortalKey)
-		valen_bank.port1.addEvent(items.record1)
-		
-		valen_bank.port2.addEvent(items.waste)
-		valen_bank.port3.addEvent(items.cell2)
+		valen_bank.port2.addEvent(items.record1)
+		valen_bank.port3.addEvent(items.usulPortalFragment1)
 		
 		for location in childNodes {
 			location.start()
@@ -105,27 +102,6 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_cargo)
 	}
 	
-	// MARK: nevic -
-	
-	var nevic = locations.nevic.star()
-	var nevic_station = locations.nevic.station()
-	var nevic_satellite = locations.nevic.satellite()
-	var nevic_beacon = locations.nevic.beacon()
-	var nevic_cargo = locations.nevic.cargo()
-	var nevic_city = locations.nevic.city()
-	var nevic_port = locations.nevic.port()
-	
-	func addnevic()
-	{
-		addChildNode(nevic)
-		addChildNode(nevic_station)
-		addChildNode(nevic_satellite)
-		addChildNode(nevic_beacon)
-		addChildNode(nevic_cargo)
-		addChildNode(nevic_city)
-		addChildNode(nevic_port)
-	}
-	
 	// MARK: Senni -
 	
 	var senni = locations.senni.star()
@@ -190,19 +166,14 @@ class CoreUniverse : SCNNode
 		loiqe_satellite.connect(loiqe_portal)
 		loiqe_horadric.connect(loiqe_satellite)
 		
-		nevic_city.connect(nevic_satellite)
-		nevic_satellite.connect(nevic_station)
-		nevic_beacon.connect(nevic_cargo)
-		nevic_cargo.connect(nevic_station)
-		
 		falvet_toUsul.connect(usul_portal)
 		falvet_toValen.connect(valen_portal)
 		falvet_toSenni.connect(senni_portal)
 		
-		valen_satellite.connect(valen_bank)
 		valen_bank.connect(valen_portal)
 		valen_station.connect(valen_bank)
 		valen_harvest.connect(valen_bank)
+		valen_port.connect(valen_bank)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)

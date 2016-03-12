@@ -11,7 +11,6 @@ class LocationLibrary
 {
 	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -10))
 	let usul  = Usul(offset: CGPoint(x: -10,y: 0))
-	let nevic = Nevic(offset: CGPoint(x: 10,y: -10))
 	let valen = Valen(offset: CGPoint(x: 10,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 10))
 	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
@@ -80,7 +79,7 @@ class Loiqe
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y - 1), message:"[misssing]", item:items.cell3, stealth:true)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Horadric cell$with cell$make array", item:items.cell2, stealth:true)
 	}
 	
 	// Constellations
@@ -140,11 +139,6 @@ class Valen
 	
 	// North
 	
-	func satellite() -> LocationSatellite
-	{
-		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), message:"derelict music machine $time ghost sleep $home.", item:items.record1)
-	}
-	
 	func bank() -> LocationBank
 	{
 		return LocationBank(name:"Bank",system:.valen, at: CGPoint(x: offset.x, y: offset.y + 1))
@@ -167,60 +161,19 @@ class Valen
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.cell2)
+		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.array2)
 	}
 	
 	// South
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.alta,give:items.senniPortalFragment1)
-	}
-}
-
-class Nevic
-{
-	var offset:CGPoint!
-	var system:Systems = .nevic
-	
-	init(offset:CGPoint)
-	{
-		self.offset = offset
-	}
-	
-	func star() -> LocationStar
-	{
-		return LocationStar(name:"nevic",system:system, at:offset)
-	}
-	
-	func station() -> LocationStation
-	{
-		return LocationStation(name:"station",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), requirement:items.alta, installation:{ map.install() }, installationName:"Map")
+		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.alta,give:items.usulPortalFragment2)
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Missing",item:items.array2)
-	}
-	
-	func city() -> LocationTrade
-	{
-		return LocationTrade(name: "city",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.credit,give:items.senniPortalFragment1)
-	}
-	
-	func beacon() -> LocationBeacon
-	{
-		return LocationBeacon(name: "beacon",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Missing")
-	}
-	
-	func cargo() -> LocationSatellite
-	{
-		return LocationSatellite(name: "cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), message:"Missing",item:items.cell3)
-	}
-	
-	func port() -> LocationTrade
-	{
-		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x, y: offset.y + 2), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"horadric alta $with credit $for materia.", item:Item(name: items.materia.name!, type: items.materia.type, note:items.materia.note))
 	}
 }
 
