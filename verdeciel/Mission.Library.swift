@@ -262,8 +262,8 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key", task: "Find usul portal fragment", requirement:{ cargo.contains(items.usulPortalFragment1) || cargo.contains(items.usulPortalFragment2) } )
 		m.predicate = { cargo.contains(items.usulPortalKey) == true }
 		m.quests = [
-			Quest(name:"Aquire fragment I", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.senni_port, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
+			Quest(name:"Aquire fragment I", location: universe.senni_portal, predicate:{ cargo.contains(items.usulPortalFragment1) == true }, result: { }),
+			Quest(name:"Aquire fragment II", location: universe.senni_portal, predicate:{ cargo.contains(items.usulPortalFragment2) == true }, result: {  }),
 			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)

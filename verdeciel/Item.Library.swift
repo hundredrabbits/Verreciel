@@ -48,6 +48,10 @@ class ItemLibrary
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
+	// Maps
+	let map1 = Item(name: "Ghost Map", type: .map, note: "[missing]", isQuest: true)
+	let map2 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
+	
 	// Enigma
 	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)

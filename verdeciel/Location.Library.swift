@@ -74,12 +74,12 @@ class Loiqe
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, mapRequirement:items.map1)
 	}
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Horadric cell$with cell$make array", item:items.cell2, stealth:true)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Horadric cell$with cell$make array", item:items.cell2, mapRequirement:items.map1)
 	}
 	
 	// Constellations
@@ -193,38 +193,24 @@ class Senni
 		return location
 	}
 	
-	func city() -> Location
-	{
-		let location = Location(name:"Missing",system:.senni, at:CGPoint(x: offset.x - 1, y: offset.y))
-		return location
-	}
-	
-	func station() -> Location
-	{
-		let location = Location(name:"Missing",system:.senni, at:CGPoint(x: offset.x + 1, y: offset.y))
-		return location
-	}
-	
-	func service() -> Location
-	{
-		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x, y: offset.y + 1))
-		return location
-	}
-	
-	func spawn() -> Location
-	{
-		let location = Location(name:"Missing",system:.senni,at:CGPoint(x: offset.x + 2, y: offset.y))
-		return location
-	}
-	
 	func portal() -> LocationPortal
 	{
 		return LocationPortal(name: "portal",system:.senni, at:CGPoint(x: offset.x, y: offset.y - 1), leftKey: items.valenPortalKey, rightKey: items.usulPortalKey, leftName:"Valen", rightName: "Usul")
 	}
 	
-	func port() -> LocationTrade
+	func station() -> LocationStation
 	{
-		return LocationTrade(name: "Port", system:.senni, at: CGPoint(x: offset.x, y: offset.y + 2), want: items.alta, give: items.senniPortalFragment2, stealth:true)
+		return LocationStation(name:"station",system:.senni, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.credit, installation:{ map.install() }, installationName:"Map")
+	}
+	
+	func cargo() -> LocationSatellite
+	{
+		return LocationSatellite(name:"cargo",system:.senni, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.map1)
+	}
+	
+	func satellite() -> LocationSatellite
+	{
+		return LocationSatellite(name:"satellite",system:.senni, at:CGPoint(x: offset.x, y: offset.y + 1), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
 	}
 }
 

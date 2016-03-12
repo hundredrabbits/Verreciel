@@ -15,8 +15,16 @@ class WidgetMap : Widget
 		
 		name = "map"
 		info = "[missing text]"
+		requirement = ItemTypes.map
 		
 		label.update(name!)
+	}
+	
+	func hasMap(map:Item) -> Bool
+	{
+		if port.hasEvent() == false { return false }
+		if port.event == map { return true }
+		return false
 	}
 	
 	override func onInstallationComplete()

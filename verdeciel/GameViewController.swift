@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.valen_portal)
+		unlockedState(universe.senni_station)
 //		startingState()
 	}
 	
@@ -112,7 +112,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.valen_portal.isKnown = true
 		universe.loiqe_portal.isKnown = true
 		
-		cargo.addItems([items.senniPortalKey])
+		cargo.addItems([items.senniPortalKey, items.map1])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

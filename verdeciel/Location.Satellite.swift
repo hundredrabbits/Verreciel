@@ -8,7 +8,7 @@ class LocationSatellite : Location
 	var port:SCNPortSlot!
 	var message:String!
 
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, stealth:Bool = false)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, mapRequirement:Item! = nil)
 	{
 		super.init(name:name, system:system, at:at)
 		
@@ -19,6 +19,7 @@ class LocationSatellite : Location
 		self.note = ""
 		self.structure = structures.satellite()
 		self.isComplete = false
+		self.mapRequirement = mapRequirement
 		
 		icon.replace(icons.unseen())
 		

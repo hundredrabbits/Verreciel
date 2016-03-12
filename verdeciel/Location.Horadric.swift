@@ -132,6 +132,8 @@ class LocationHoradric : Location
 		outPort.label.update(outPort.event.name!, color:white)
 		outPort.enable()
 		
+		self.structure.opacity = 1
+		
 		combinationPercentage = 0
 	}
 

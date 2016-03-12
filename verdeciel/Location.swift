@@ -17,7 +17,7 @@ class Location : Event
 	var inSight:Bool = false
 	
 	var isAccessible:Bool = false
-	var isStealth:Bool = false
+	var mapRequirement:Item!
 	
 	var isTargetted:Bool = false
 	var isKnown:Bool = false
@@ -181,8 +181,21 @@ class Location : Event
 		let verticalDistance = abs(capsule.at.y - at.y)
 		let horizontalDistance = abs(capsule.at.x - at.x)
 		
-		self.opacity = ( Float(verticalDistance) > 1.5 || Float(horizontalDistance) > 1.5 ) ? 0 : 1
+		// In Sight
+		if Float(verticalDistance) <= 1.5 && Float(horizontalDistance) <= 1.5 {
+			if self.mapRequirement == nil {
+				self.opacity = 1
+			}
+			else if self.mapRequirement != nil {
+				self.opacity = (map.hasMap(self.mapRequirement) == true) ? 1 : 0
+			}
+		}
+		// Out Of Sight
+		else{
+			self.opacity = 0
+		}
 		
+		// Connections
 		if connection != nil {
 			if connection.opacity == 1 {
 				wire.opacity = 1
@@ -192,19 +205,10 @@ class Location : Event
 			}
 		}
 		
+		// TODO;
 		if player.isConnectedToRadar == true {
 			self.opacity = 1
 			wire.opacity = 1
-		}
-		
-		// Stealth
-		if isStealth == true {
-			if radar.port.origin != nil && radar.port.origin == radio.port {
-				self.opacity = 0.5
-			}
-			else{
-				self.opacity = 0
-			}
 		}
 	}
 	

@@ -8,7 +8,7 @@ class LocationTrade : Location
 	var wantPort:SCNPortSlot!
 	var givePort:SCNPortSlot!
 	
-	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, stealth:Bool = false)
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, mapRequirement:Item! = nil)
 	{
 		super.init(name: name,system:system, at: at)
 		
@@ -19,7 +19,7 @@ class LocationTrade : Location
 		self.note = ""
 		self.structure.addChildNode(structures.trade())
 		self.isComplete = false
-		self.isStealth = stealth
+		self.mapRequirement = mapRequirement
 		
 		icon.replace(icons.unseen())
 		

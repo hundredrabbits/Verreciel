@@ -11,6 +11,7 @@ class Widget : Panel
 {
 	var label:SCNLabel!
 	var port:SCNPortSlot!
+	var requirement:ItemTypes!
 	
 	override init()
 	{
@@ -36,6 +37,14 @@ class Widget : Panel
 		root.addChildNode(port)
 		
 		root.opacity = 0
+	}
+	
+	override func onUploadComplete()
+	{
+		if port.hasEvent() == false { return }
+		
+		if (port.event as! Item).type != requirement { port.label.update(red) }
+		else{ port.label.update(white) }
 	}
 	
 	// MARK: Installation -
