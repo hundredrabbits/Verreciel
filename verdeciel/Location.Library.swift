@@ -140,7 +140,7 @@ class Valen
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), message:"derelict music machine $time ghost sleep $home.", item:items.record1)
+		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), message:"derelict music machine $time ghost sleep $home.", item:items.record1)
 	}
 	
 	func bank() -> LocationBank
@@ -155,12 +155,12 @@ class Valen
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.credit.name!, type: items.credit.type, note:items.credit.note))
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(name: items.credit.name!, type: items.credit.type, note:items.credit.note))
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credit, installation:{ battery.installShield() }, installationName:"Shield")
+		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.credit, installation:{ radio.install() }, installationName:"Radio")
 	}
 	
 	func port() -> LocationTrade
@@ -170,7 +170,7 @@ class Valen
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 1), message:"[misssing]", item:items.cell2)
+		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[misssing]", item:items.cell2)
 	}
 }
 

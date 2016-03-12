@@ -73,14 +73,13 @@ class Widget : Panel
 	{
 		super.onInstallationComplete()
 		
-		root.opacity = 0
+		installNode.removeFromParentNode()
+		installNode.opacity = 0
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.7)
 		root.opacity = 1
 		SCNTransaction.commit()
-		
-		installNode.removeFromParentNode()
 		
 		port.enable()
 		label.update(name!, color: white)

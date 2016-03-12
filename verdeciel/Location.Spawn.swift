@@ -16,7 +16,6 @@ class LocationSpawn : Location
 		self.note = ""
 		self.structure = structures.none()
 		self.icon.replace(icons.spawn())
-		self.isComplete = true
 	}
 
 	override func panel() -> Panel!

@@ -73,7 +73,7 @@ class MissionLibrary
 		
 		// Console Inspect tutorials
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Inspect Lesson I")
+		m = Mission(id:(questlog[c]?.count)!, name: "Inspect Lesson I", requirement: { radio.isInstalled == true })
 		m.quests = [
 			Quest(name:"Reach bank", location: universe.valen_bank, predicate:{ capsule.isDockedAtLocation(universe.valen_bank) }, result: { }),
 			Quest(name:"Route item to console", location: universe.valen_bank, predicate:{ console.port.isReceivingEventOfTypeItem() }, result: {  })
@@ -131,17 +131,6 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Credits->Ingot
-		
-//		m = Mission(id:(questlog[c]?.count)!, name: "Ingot Lesson")
-//		m.predicate = { cargo.containsLike(items.ingot) == true }
-//		m.quests = [
-//			Quest(name:"Find credits", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.credits) }, result: { }),
-//			Quest(name:"Find second credits", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.credits) }, result: { }),
-//			Quest(name:"Combine credits", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-//		]
-//		questlog[c]?.append(m)
-		
 		// Star interaction tutorial
 		
 		// enigma quest & tutorials - decypher radio signal quest
@@ -165,7 +154,7 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
 			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ m.predicate() }, result: { })
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		

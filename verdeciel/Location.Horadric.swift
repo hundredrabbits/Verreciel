@@ -129,7 +129,7 @@ class LocationHoradric : Location
 		inPort2.enable()
 		
 		outPort.addEvent(combinationRecipe.result)
-		outPort.label.update(outPort.event.name!, color:grey)
+		outPort.label.update(outPort.event.name!, color:white)
 		outPort.enable()
 		
 		combinationPercentage = 0

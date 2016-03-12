@@ -114,8 +114,8 @@ class PanelRadar : MainPanel
 		
 		// Targetter
 		if distanceFromShip > 2 { targetter.updateChildrenColors(clear) }
-		else if capsule.dock != nil { targetter.updateChildrenColors(grey) ; targetter.opacity = 1 }
-		else{ targetter.updateChildrenColors(red) ; targetter.blink() }
+		else if port.event != capsule.dock { targetter.updateChildrenColors(red) ; targetter.blink() }
+		else{ targetter.updateChildrenColors(grey) ; targetter.opacity = 1  }
 		
 	}
 

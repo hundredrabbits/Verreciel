@@ -36,7 +36,7 @@ class SCNButton : SCNNode
 		addChildNode(label)
 	}
 
-	func enable(newText:String, outline:UIColor = red)
+	func enable(newText:String, outline:UIColor = cyan)
 	{
 		self.text = newText
 		label.update(self.text, color:white)

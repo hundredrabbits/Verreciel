@@ -201,8 +201,8 @@ class CoreUniverse : SCNNode
 		
 		valen_satellite.connect(valen_bank)
 		valen_bank.connect(valen_portal)
-		valen_station.connect(valen_portal)
-		valen_harvest.connect(valen_station)
+		valen_station.connect(valen_bank)
+		valen_harvest.connect(valen_bank)
 		
 		falvet_service1.connect(falvet_toValen)
 		falvet_service2.connect(falvet_toSenni)

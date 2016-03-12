@@ -70,7 +70,6 @@ class PanelCargo : MainPanel
 	{
 		for item in port.event.content {
 			if item.name == target.name && item.type == target.type { return true }
-			print("found: \(item.name), looking for: \(target.name)")
 		}
 		return false
 	}

@@ -38,14 +38,13 @@ class Panel : SCNNode
 	// MARK: Installation -
 	
 	var isInstalled:Bool = false
-	var installTimer:NSTimer!
 	var installPercentage:CGFloat = 0
 	
 	func install()
 	{
 		if isInstalled == true { return }
 		onInstallationBegin()
-		installTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("installProgress"), userInfo: nil, repeats: true)
+		self.installProgress()
 	}
 	
 	func installProgress()
@@ -54,6 +53,9 @@ class Panel : SCNNode
 		
 		if installPercentage > 100 {
 			onInstallationComplete()
+		}
+		else{
+			delay(0.05, block: { self.installProgress() })
 		}
 	}
 
@@ -66,7 +68,6 @@ class Panel : SCNNode
 	{
 		print("+ PANEL    | Installed the \(name!).")
 		installPercentage = 0
-		installTimer.invalidate()
 		isInstalled = true
 	}
 	
