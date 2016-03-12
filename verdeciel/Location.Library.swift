@@ -138,6 +138,8 @@ class Valen
 		return LocationStar(name:"Valen",system:.valen, at: offset)
 	}
 	
+	// North
+	
 	func satellite() -> LocationSatellite
 	{
 		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 2), message:"derelict music machine $time ghost sleep $home.", item:items.record1)
@@ -163,14 +165,16 @@ class Valen
 		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.credit, installation:{ radio.install() }, installationName:"Radio")
 	}
 	
-	func port() -> LocationTrade
-	{
-		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), want:items.alta,give:items.senniPortalFragment1)
-	}
-	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[misssing]", item:items.cell2)
+		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.cell2)
+	}
+	
+	// South
+	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.alta,give:items.senniPortalFragment1)
 	}
 }
 

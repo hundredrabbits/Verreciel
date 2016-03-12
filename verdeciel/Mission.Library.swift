@@ -163,13 +163,6 @@ class MissionLibrary
 		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying() == true }, result: {  }) ]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 2") // Output
-		m.requirement = { universe.valen_cargo.isKnown == true }
-		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route radio to radar", location: universe.valen_station, predicate:{ radar.port.origin != nil && radar.port.origin == radio.port }, result: {  }) ]
-		m.quests = [ Quest(name:"Reach stealth location", predicate:{ false }, result: { progress.install() }) ]
-		questlog[c]?.append(m)
-		
 		// Map
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Map")

@@ -79,7 +79,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		capsule.start(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.cell1)
-		
 	}
 	
 	func unlockedState(location:Location = universe.loiqe_horadric)
