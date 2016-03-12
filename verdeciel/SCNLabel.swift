@@ -90,6 +90,14 @@ class SCNLabel : SCNNode
 		adjustAlignment()
 	}
 	
+	func updateScale(scale:Float)
+	{
+		activeScale = scale
+		removeLetters()
+		addLetters(activeText, scale: activeScale)
+		adjustAlignment()		
+	}
+	
 	func updateColor(color:UIColor)
 	{
 		if self.color == color { return }
