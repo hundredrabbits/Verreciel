@@ -260,6 +260,9 @@ class PanelThruster : MainPanel
 		line2.blink()
 		line3.blink()
 		line4.blink()
+		
+		lineLeft.color(clear)
+		lineRight.color(clear)
 	}
 	
 	func modeWaitingForWarp()

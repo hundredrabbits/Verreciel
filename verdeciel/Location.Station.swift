@@ -24,7 +24,7 @@ class LocationStation : Location
 		self.system = system
 		self.at = at
 		self.note = ""
-		self.structure = structures.placeholder()
+		self.structure = structures.station()
 		self.icon.replace(icons.station())
 		self.isComplete = false
 	}

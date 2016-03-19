@@ -17,7 +17,7 @@ class LocationBeacon : Location
 		self.note = ""
 		self.message = message
 		self.structure = structures.beacon()
-		icon.replace(icons.placeholder())
+		icon.replace(icons.beacon())
 	}
 	
 	override func panel() -> Panel!

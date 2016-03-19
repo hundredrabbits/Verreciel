@@ -18,7 +18,7 @@ class LocationHarvest : Location
 		self.at = at
 		self.note = ""
 		self.structure = structures.harvest()
-		icon.replace(icons.placeholder())
+		icon.replace(icons.harvest())
 		
 		self.grows = grows
 		
@@ -86,11 +86,43 @@ class LocationHarvest : Location
 		return newPanel
 	}
 	
+	override func onDock()
+	{
+		super.onDock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		
+		for mesh in structure.childNodes {
+			mesh.eulerAngles.x = Float(degToRad(10))
+		}
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	}
+	
+	override func onUndock()
+	{
+		super.onUndock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(3)
+		
+		for mesh in structure.childNodes {
+			mesh.eulerAngles.x = Float(degToRad(0))
+		}
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+	}
+	
 	// MARK: Mesh -
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		if port.hasEvent(grows) == true {
+			mesh.eulerAngles.y += Float(degToRad(0.1))
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

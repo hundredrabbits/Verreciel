@@ -18,6 +18,7 @@ class WidgetRadio : Widget
 		
 		name = "radio"
 		info = "[missing text]"
+		requirement = ItemTypes.record
 		
 		label.update(name!)
 	}

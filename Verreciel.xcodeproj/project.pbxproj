@@ -37,7 +37,6 @@
 		5748ADA01BC8583B00C47468 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748AD9F1BC8583B00C47468 /* Quest.swift */; };
 		5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748ADA11BC85C7B00C47468 /* Settings.swift */; };
 		574A33C51BEA92C100EB4C91 /* SCNPortRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */; };
-		574AE3F71BC36DAE00432603 /* Location.Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AE3F61BC36DAE00432603 /* Location.Waypoint.swift */; };
 		574E5FBB1BC57749008130AB /* Item.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBA1BC57749008130AB /* Item.Library.swift */; };
 		574E5FC01BC578E1008130AB /* Location.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* Location.Trade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
@@ -125,7 +124,6 @@
 		5748AD9F1BC8583B00C47468 /* Quest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5748ADA11BC85C7B00C47468 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPortRedirect.swift; sourceTree = "<group>"; };
-		574AE3F61BC36DAE00432603 /* Location.Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Waypoint.swift; sourceTree = "<group>"; };
 		574E5FBA1BC57749008130AB /* Item.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.Library.swift; sourceTree = "<group>"; };
 		574E5FBF1BC578E1008130AB /* Location.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Trade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -331,7 +329,6 @@
 				57FA031E1BBA22FE0077D517 /* Location.Star.swift */,
 				57FA031C1BBA21490077D517 /* Location.Station.swift */,
 				574E5FBF1BC578E1008130AB /* Location.Trade.swift */,
-				574AE3F61BC36DAE00432603 /* Location.Waypoint.swift */,
 				57A518521C7501AD0012DABD /* Location.Constellation.swift */,
 			);
 			name = Locations;
@@ -540,7 +537,6 @@
 				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
 				5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */,
 				57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */,
-				574AE3F71BC36DAE00432603 /* Location.Waypoint.swift in Sources */,
 				5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

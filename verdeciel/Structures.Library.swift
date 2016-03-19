@@ -145,7 +145,7 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func trade(radius:Float = 1.5, tunnels:Int = (Int(arc4random_uniform(3)) * 6), depth:Float = 0, color:UIColor = red) -> SCNNode
+	func trade(radius:Float = 1.5, tunnels:Int = (Int(arc4random_uniform(3) + 2) * 4), depth:Float = 0, color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()
 		

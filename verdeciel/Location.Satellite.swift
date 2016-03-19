@@ -21,7 +21,7 @@ class LocationSatellite : Location
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		
-		icon.replace(icons.unseen())
+		icon.replace(icons.satellite())
 		
 		self.message = message
 		
@@ -77,10 +77,8 @@ class LocationSatellite : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		for node in mesh.childNodes {
-			node.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.5)))
-			node.eulerAngles.x = Float(degToRad(CGFloat(time.elapsed * 0.25)))
-			node.eulerAngles.z = Float(degToRad(CGFloat(time.elapsed * 0.125)))
+		if isComplete == true {
+			structure.eulerAngles.y = Float(degToRad(0.1))
 		}
 	}
 	

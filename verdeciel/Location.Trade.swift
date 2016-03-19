@@ -21,7 +21,7 @@ class LocationTrade : Location
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		
-		icon.replace(icons.unseen())
+		icon.replace(icons.trade())
 		
 		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
 		wantPort.addRequirement(want)
@@ -107,7 +107,7 @@ class LocationTrade : Location
 	
 	override func animateMesh(mesh:SCNNode)
 	{
-		structure.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+		structure.eulerAngles.y += Float(degToRad(0.1))
 	}
 	
 	// MARK: Defaults -

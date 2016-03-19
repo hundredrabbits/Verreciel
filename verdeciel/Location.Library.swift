@@ -79,7 +79,7 @@ class Loiqe
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"Horadric cell$with cell$make array", item:items.cell2, mapRequirement:items.map1)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y + 1), message:"Horadric cell$with cell$make array", item:items.cell2, mapRequirement:items.map1)
 	}
 	
 	// Constellations

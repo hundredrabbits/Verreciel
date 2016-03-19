@@ -23,7 +23,7 @@ class LocationStar : Location
 		self.structure = structures.star()
 		self.type = LocationTypes.star
 		self.isComplete = false
-		icon.replace(icons.star(red))
+		icon.replace(icons.star())
 		label.update(name)
 		
 		portA = SCNPort(host: self, input: Item.self, output: Item.self)

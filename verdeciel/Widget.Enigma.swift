@@ -17,6 +17,7 @@ class WidgetEnigma : Widget
 		
 		name = "enigma"
 		info = "[missing text]"
+		requirement = ItemTypes.cypher
 		
 		label.update(name!)
 	}

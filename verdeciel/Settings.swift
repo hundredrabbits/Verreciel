@@ -122,14 +122,15 @@ enum ItemTypes
 	case part
 	case panel
 	case key
-	case record
 	case currency
-	case cypher
 	
-	// special
 	case drive
-	case map
 	case cargo
+	
+	case field
+	case map
+	case record
+	case cypher
 }
 
 enum services

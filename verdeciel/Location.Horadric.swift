@@ -20,7 +20,7 @@ class LocationHoradric : Location
 		self.at = at
 		self.note = ""
 		self.structure = structures.horadric()
-		icon.replace(icons.unseen())
+		icon.replace(icons.horadric())
 	}
 	
 	override func panel() -> Panel!

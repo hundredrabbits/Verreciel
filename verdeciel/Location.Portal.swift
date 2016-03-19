@@ -38,7 +38,7 @@ class LocationPortal : Location
 		self.note = ""
 		self.color = color
 		self.structure = structures.portal()
-		icon.replace(icons.placeholder())
+		icon.replace(icons.portal())
 		
 		self.leftKey = leftKey
 		self.rightKey = rightKey

@@ -2,16 +2,10 @@
 *    NEW
 ================
 
-- Animate harvest
-- Spawn icon = none()
-- Missing Loiqe City structure
-- Missing Loiqe Satellite structure
 - Missing Loiqe Constellation structure
-- Warping icon is broken
 - Add constellation between warps
 - Add constellation in valen
 - Harvest is grey if no product ready
-- Missing Valen Station structure
 - Radio record should display cyan
 
 ================
