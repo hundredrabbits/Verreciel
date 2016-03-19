@@ -1,4 +1,20 @@
 ================
+*    NEW
+================
+
+- Animate harvest
+- Spawn icon = none()
+- Missing Loiqe City structure
+- Missing Loiqe Satellite structure
+- Missing Loiqe Constellation structure
+- Warping icon is broken
+- Add constellation between warps
+- Add constellation in valen
+- Harvest is grey if no product ready
+- Missing Valen Station structure
+- Radio record should display cyan
+
+================
 *    GENRAL
 ================
 
@@ -43,6 +59,7 @@
 
 > Extras
 - Combine records together
+- Combine keys together
 
 = Cells [Capsule, Loiqe Cargo]
 = Arrays [Horadric, Valen Cargo]
@@ -54,9 +71,4 @@
 = Senni Fragments [Valen Bank, Valen Port]
 = Usul Fragments [Senni City, Senni Satellite]
 
-> Valen Flow
-- Make Radio
-
-> Senni Flow
-- Install Map
-- Find scan
+- White sun?

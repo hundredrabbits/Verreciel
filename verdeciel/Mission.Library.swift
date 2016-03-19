@@ -9,33 +9,33 @@ import Foundation
 
 class MissionLibrary
 {
-	var active:Chapters = Chapters.discovery
+	var active:Chapters = Chapters.primary
 	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array]()
 	var currentMission:Dictionary<Chapters,Mission> = [Chapters:Mission]()
 	
 	init()
 	{
-		questlog[Chapters.discovery] = []
-		questlog[Chapters.capsule] = []
-		questlog[Chapters.exploration] = []
+		questlog[Chapters.primary] = []
+		questlog[Chapters.secondary] = []
+		questlog[Chapters.tertiary] = []
 		
-		create_discoveryMissions()
-		create_capsuleMissions()
-		create_explorationMissions()
+		create_primaryMissions()
+		create_secondaryMissions()
+		create_tertiaryMissions()
 		
-		currentMission[.discovery] = questlog[.discovery]?.first
-		currentMission[.capsule] = questlog[.capsule]?.first
-		currentMission[.exploration] = questlog[.exploration]?.first
+		currentMission[.primary] = questlog[.primary]?.first
+		currentMission[.secondary] = questlog[.secondary]?.first
+		currentMission[.tertiary] = questlog[.tertiary]?.first
 	}
 	
-	func create_discoveryMissions()
+	func create_primaryMissions()
 	{
-		let c:Chapters = .discovery
+		let c:Chapters = .primary
 		var m:Mission!
 		
 		// [Basic] Initial Tutorial
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Flight Lesson")
+		m = Mission(id:(questlog[c]?.count)!, name: "Flight")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
@@ -60,7 +60,18 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// [Location] Portal location tutorial
+		// Valen Portal Key
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find valen portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
+		m.predicate = { cargo.contains(items.valenPortalKey) == true }
+		m.quests = [
+			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
+			Quest(name:"Aquire \(items.valenPortalFragment2.name!)", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: {  }),
+			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		// Portal location tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson", task: "Build Valen Portal Key", requirement: { cargo.contains(items.valenPortalKey) == true })
 		m.predicate = { universe.valen_portal.isKnown == true }
@@ -140,9 +151,9 @@ class MissionLibrary
 		questlog[c]?.append(m)
 	}
 	
-	func create_capsuleMissions()
+	func create_secondaryMissions()
 	{
-		let c:Chapters = .capsule
+		let c:Chapters = .secondary
 		var m:Mission!
 		
 		// Radio
@@ -229,21 +240,10 @@ class MissionLibrary
 		questlog[c]?.append(m)
 	}
 	
-	func create_explorationMissions()
+	func create_tertiaryMissions()
 	{
-		let c:Chapters = .exploration
+		let c:Chapters = .tertiary
 		var m:Mission!
-		
-		// Valen Portal Key
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find valen portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
-		m.predicate = { cargo.contains(items.valenPortalKey) == true }
-		m.quests = [
-			Quest(name:"Aquire fragment I", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: {  }),
-			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[c]?.append(m)
 		
 		// Senni Portal Key
 		
@@ -284,30 +284,30 @@ class MissionLibrary
 	
 	func refresh()
 	{
-		currentMission[.discovery]?.validate()
-		if currentMission[.discovery]?.isCompleted == true {
-			let nextMissionId = currentMission[.discovery]!.id + 1
-			currentMission[.discovery] = questlog[.discovery]![nextMissionId]
+		currentMission[.primary]?.validate()
+		if currentMission[.primary]?.isCompleted == true {
+			let nextMissionId = currentMission[.primary]!.id + 1
+			currentMission[.primary] = questlog[.primary]![nextMissionId]
 		}
 		
-		currentMission[.capsule]?.validate()
-		if currentMission[.capsule]?.isCompleted == true {
-			let nextMissionId = currentMission[.capsule]!.id + 1
-			currentMission[.capsule] = questlog[.capsule]![nextMissionId]
+		currentMission[.secondary]?.validate()
+		if currentMission[.secondary]?.isCompleted == true {
+			let nextMissionId = currentMission[.secondary]!.id + 1
+			currentMission[.secondary] = questlog[.secondary]![nextMissionId]
 		}
 		
-		currentMission[.exploration]?.validate()
-		if currentMission[.exploration]?.isCompleted == true {
-			let nextMissionId = currentMission[.exploration]!.id + 1
-			currentMission[.exploration] = questlog[.exploration]![nextMissionId]
+		currentMission[.tertiary]?.validate()
+		if currentMission[.tertiary]?.isCompleted == true {
+			let nextMissionId = currentMission[.tertiary]!.id + 1
+			currentMission[.tertiary] = questlog[.tertiary]![nextMissionId]
 		}
 		
 		mission.update()
 		
 		if currentMission[active]?.requirement() == false {
-			if active == .discovery { mission.touch(2) }
-			else if active == .capsule { mission.touch(3) }
-			else if active == .exploration { mission.touch(1) }
+			if active == .primary { mission.touch(2) }
+			else if active == .secondary { mission.touch(3) }
+			else if active == .tertiary { mission.touch(1) }
 		}
 	}
 	

@@ -90,9 +90,9 @@ enum Systems
 
 enum Chapters
 {
-	case discovery
-	case capsule
-	case exploration
+	case primary
+	case secondary
+	case tertiary
 }
 
 enum LocationTypes

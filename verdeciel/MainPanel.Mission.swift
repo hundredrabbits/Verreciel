@@ -129,9 +129,9 @@ class PanelMission : MainPanel
 		if id == 3 { selector.position = SCNVector3(selector.position.x,quest3.position.y,0) }
 		
 		SCNTransaction.setCompletionBlock({
-			if id == 1 { quests.setActive(Chapters.discovery) ; self.quest1Label.update(white) }
-			if id == 2 { quests.setActive(Chapters.capsule) ; self.quest2Label.update(white) }
-			if id == 3 { quests.setActive(Chapters.exploration) ; self.quest3Label.update(white) }
+			if id == 1 { quests.setActive(Chapters.primary) ; self.quest1Label.update(white) }
+			if id == 2 { quests.setActive(Chapters.secondary) ; self.quest2Label.update(white) }
+			if id == 3 { quests.setActive(Chapters.tertiary) ; self.quest3Label.update(white) }
 		})
 		SCNTransaction.commit()
 		
@@ -150,8 +150,8 @@ class PanelMission : MainPanel
 		var currentMission:Mission!
 		var questCount:Int!
 		
-		currentMission = quests.currentMission[.discovery]!
-		questCount = quests.questlog[.discovery]!.count
+		currentMission = quests.currentMission[.primary]!
+		questCount = quests.questlog[.primary]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest1Label.update("Locked", color:grey)
 			quest1Details.update(currentMission.task, color:grey)
@@ -159,14 +159,14 @@ class PanelMission : MainPanel
 			quest1Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest1Label.update(quests.currentMission[.discovery]!.name, color:white)
-			quest1Details.update(quests.currentMission[.discovery]!.currentQuest!.name, color:grey)
+			quest1Label.update(quests.currentMission[.primary]!.name, color:white)
+			quest1Details.update(quests.currentMission[.primary]!.currentQuest!.name, color:grey)
 			quest1Completion.update("\(currentMission.id)/\(questCount)")
 			quest1Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}
 		
-		currentMission = quests.currentMission[.capsule]!
-		questCount = quests.questlog[.capsule]!.count
+		currentMission = quests.currentMission[.secondary]!
+		questCount = quests.questlog[.secondary]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest2Label.update("--", color:grey)
 			quest2Details.update(currentMission.task, color:grey)
@@ -174,14 +174,14 @@ class PanelMission : MainPanel
 			quest2Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest2Label.update(quests.currentMission[.capsule]!.name, color:white)
-			quest2Details.update(quests.currentMission[.capsule]!.currentQuest!.name, color:grey)
+			quest2Label.update(quests.currentMission[.secondary]!.name, color:white)
+			quest2Details.update(quests.currentMission[.secondary]!.currentQuest!.name, color:grey)
 			quest2Completion.update("\(currentMission.id)/\(questCount)")
 			quest2Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}
 		
-		currentMission = quests.currentMission[.exploration]!
-		questCount = quests.questlog[.exploration]!.count
+		currentMission = quests.currentMission[.tertiary]!
+		questCount = quests.questlog[.tertiary]!.count
 		if currentMission.requirement() != nil && currentMission.requirement() == false {
 			quest3Label.update("--", color:grey)
 			quest3Details.update(currentMission.task, color:grey)
@@ -189,8 +189,8 @@ class PanelMission : MainPanel
 			quest3Progress.update(0)
 		}
 		else if currentMission.currentQuest != nil {
-			quest3Label.update(quests.currentMission[.exploration]!.name, color:white)
-			quest3Details.update(quests.currentMission[.exploration]!.currentQuest!.name, color:grey)
+			quest3Label.update(quests.currentMission[.tertiary]!.name, color:white)
+			quest3Details.update(quests.currentMission[.tertiary]!.currentQuest!.name, color:grey)
 			quest3Completion.update("\(currentMission.id)/\(questCount)")
 			quest3Progress.update( (CGFloat(currentMission.id)/CGFloat(questCount)) * 100 )
 		}

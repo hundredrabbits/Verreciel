@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.senni_station)
-//		startingState()
+//		unlockedState(universe.senni_station)
+		startingState()
 	}
 	
 	func startingState()

@@ -72,13 +72,11 @@ class CoreCapsule: SCNNode
 		switch system {
 		case .valen  : space.targetSpaceColor = [0.2,0.2,0.2] ; space.currentStarsColor = [0.7,0.7,0.7] ; grey = UIColor(white: 0.5, alpha: 1)
 		case .falvet : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.5,0.5,0.5] ; grey = UIColor(white: 0.5, alpha: 1)
-		case .senni  : space.targetSpaceColor = [0.7,0.7,0.7] ; space.currentStarsColor = [0.0,0.0,0.0] ; grey = UIColor.blackColor()
+		case .senni  : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
 		case .usul   : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
 		case .nevic  : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.2,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
 		default      : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,1.0,1.0] ; grey = UIColor(white: 0.5, alpha: 1)
 		}
-		
-		
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

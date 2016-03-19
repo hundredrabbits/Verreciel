@@ -76,7 +76,7 @@ class PanelPilot : MainPanel
 		let left = target.calculateAlignment(capsule.direction - 0.5)
 		let right = target.calculateAlignment(capsule.direction + 0.5)
 		
-		let target_align = abs(target.align * 0.025) < 0.1 ? target.align : target.align * 0.025
+		let target_align = abs(target.align * 0.025) < 0.05 ? target.align : target.align * 0.025
 		
 		if left <= right {
 			turnLeft(target_align)
