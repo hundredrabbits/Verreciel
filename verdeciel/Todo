@@ -1,27 +1,21 @@
 ================
-*    NEW
+*    MAJOR
 ================
+
+================
+*    MINOR
+================
+
+> Playthrough
+- Save / Load Mechanics
 
 - Missing Loiqe Constellation structure
 - Add constellation between warps
 - Add constellation in valen
 - Harvest is grey if no product ready
-- Radio record should display cyan
+- Connect quest(Complete) monitor
 
-================
-*    GENRAL
-================
-
-> Playthrough
-- Save / Load Mechanics
-- Hide stealthed events
-- Don't align pilot if target is current location
-
-- Radio mission upon arriving in Valen
-- Move station and Harvest at the top of the star
-- Return to Loiqe to get cell2
-- Radio quest crashes
-
+> Display under-powered
 - shield need to be powered by array
 - radio needs to be powered by array
 - Map needs to be powered by grid

@@ -47,6 +47,22 @@ class Widget : Panel
 		else{ port.label.update(white) }
 	}
 	
+	// MARK: Powered
+	
+	func onPowered()
+	{
+		print("\(name) is powered")
+		label.update(white)
+		refresh()
+	}
+	
+	func onUnpowered()
+	{
+		print("\(name) is unpowered")
+		label.update(red)
+		refresh()
+	}
+	
 	// MARK: Installation -
 	
 	var installNode:SCNNode = SCNNode()

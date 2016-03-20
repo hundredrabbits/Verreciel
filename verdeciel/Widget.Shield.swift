@@ -27,23 +27,20 @@ class WidgetShield : Widget
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()
+	}
+	
+	override func onPowered()
+	{
+		super.onPowered()
 		
-//		capsule.shieldRoot.eulerAngles.x += 0.0005
-//		capsule.shieldRoot.updateChildrenColors(red)
+		port.enable()
 	}
 	
-	func onPowered()
+	override func onUnpowered()
 	{
-		print("\(name) is powered")
-		refresh()
-		capsule.shieldRoot.opacity = 1
-	}
-	
-	func onUnpowered()
-	{
-		print("\(name) is unpowered")
-		refresh()
-		capsule.shieldRoot.opacity = 0
+		super.onUnpowered()
+		
+		port.disable()
 	}
 	
 	func createShield()
@@ -99,8 +96,7 @@ class WidgetShield : Widget
 		capsule.shieldRoot.eulerAngles.y = Float(degToRad(360/16))
 		capsule.shieldRoot.opacity = 0
 	}
-	
-	
+
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()

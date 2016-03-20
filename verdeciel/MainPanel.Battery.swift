@@ -185,12 +185,18 @@ class PanelBattery : MainPanel
 	{
 		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.onPowered() }
 		if shieldPort.isReceivingItemOfType(.battery) == true { shield.onPowered() }
+		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onPowered() }
+		if mapPort.isReceivingItemOfType(.battery) == true { map.onPowered() }
+		if radioPort.isReceivingItemOfType(.battery) == true { radio.onPowered() }
 	}
 	
 	override func onDisconnect()
 	{
 		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.onUnpowered() }
 		if shieldPort.isReceivingItemOfType(.battery) == false { shield.onUnpowered() }
+		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onUnpowered() }
+		if mapPort.isReceivingItemOfType(.battery) == true { map.onUnpowered() }
+		if radioPort.isReceivingItemOfType(.battery) == true { radio.onUnpowered() }
 	}
 	
 	func hasCell(target:Event) -> Bool
