@@ -28,16 +28,16 @@ class ItemLibrary
 	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
 	
 	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
-	let valenPortalFragment1 = Item(name: "grey fragment", type: .part, note:"half a Portal key", isQuest:true)
-	let valenPortalFragment2 = Item(name: "grey fragment", type: .part, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment1 = Item(name: "valen key I", type: .fragment, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment2 = Item(name: "valen key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
-	let senniPortalFragment1 = Item(name: "red fragment", type: .part, note:"half a Portal key", isQuest:true)
-	let senniPortalFragment2 = Item(name: "red fragment", type: .part, note:"half a Portal key", isQuest:true)
+	let senniPortalFragment1 = Item(name: "senni key I", type: .fragment, note:"half a Portal key", isQuest:true)
+	let senniPortalFragment2 = Item(name: "senni key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
-	let usulPortalFragment1 = Item(name: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
-	let usulPortalFragment2 = Item(name: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
+	let usulPortalFragment1 = Item(name: "Usul Key I", type: .fragment, note:"half a Portal key", isQuest:true)
+	let usulPortalFragment2 = Item(name: "Usul Key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let masterRedKey = Item(name: "Red Key", type: .key, note: "[missing]", isQuest: true)
 	let masterCyanKey = Item(name: "Cyan Key", type: .key, note: "[missing]", isQuest: true)

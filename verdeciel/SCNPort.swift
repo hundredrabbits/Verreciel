@@ -212,19 +212,6 @@ class SCNPort : SCNNode
 		wire.disable()
 	}
 	
-	func hasEvent(target:Event) -> Bool
-	{
-		if event == nil { return false }
-		if event.name == target.name { return true }
-		return false
-	}
-	
-	func hasEvent() -> Bool
-	{
-		if event != nil { return true }
-		return false
-	}
-	
 	func strip()
 	{
 		disconnect()
@@ -247,6 +234,27 @@ class SCNPort : SCNNode
 	}
 	
 	// MARK: Checks -
+	
+	func hasEvent(target:Event) -> Bool
+	{
+		if event == nil { return false }
+		if event.name == target.name { return true }
+		return false
+	}
+	
+	func hasEvent() -> Bool
+	{
+		if event != nil { return true }
+		return false
+	}
+	
+	func hasItemOfType(target:ItemTypes) -> Bool
+	{
+		if event == nil { return false }
+		if (event is Item) == false { return false }
+		if (event as! Item).type == target { return true }
+		return false
+	}
 	
 	func isReceiving(event:Event!) -> Bool
 	{
@@ -296,14 +304,7 @@ class SCNPort : SCNNode
 		return true
 	}
 	
-	func hasItemOfType(type:ItemTypes) -> Bool
-	{
-		if hasEvent() == false { return false }
-		if (event is Item) == false { return false }
-		let item = event as! Item
-		if item.type == type { return true }
-		return false
-	}
+	// MARK: Etc..
 	
 	override func bang()
 	{

@@ -33,7 +33,7 @@ class MissionLibrary
 		let c:Chapters = .primary
 		var m:Mission!
 		
-		// [Basic] Initial Tutorial
+		// Loiqe
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Flight")
 		m.quests = [
@@ -50,8 +50,6 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// [Location] Trade location tutorial
-		
 		m = Mission(id:(questlog[c]?.count)!, name: "Trade Lesson")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
@@ -60,20 +58,16 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Valen Portal Key
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key", task: "Find valen portal fragment", requirement:{ cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) } )
+		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key")
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
 			Quest(name:"Aquire \(items.valenPortalFragment2.name!)", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: {  }),
-			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
+			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.valenPortalKey) == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		
-		// Portal location tutorial
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson", task: "Build Valen Portal Key", requirement: { cargo.contains(items.valenPortalKey) == true })
+		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
 			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
@@ -81,6 +75,26 @@ class MissionLibrary
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]
 		questlog[c]?.append(m)
+		
+		// Valen
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
+		m.predicate = { radio.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 1")
+		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
+		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  }) ]
+		questlog[c]?.append(m)
+		
+		
+		
+		
 		
 		// Console Inspect tutorials
 		
@@ -158,19 +172,7 @@ class MissionLibrary
 		
 		// Radio
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio", task: "Reach Valen System", requirement: { universe.valen_portal.isKnown == true })
-		m.predicate = { radio.isInstalled == true }
-		m.quests = [
-			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
-		]
-		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 1") // Input
-		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.isPlaying() == true }, result: {  }) ]
-		questlog[c]?.append(m)
 		
 		// Map
 		

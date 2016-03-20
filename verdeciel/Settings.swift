@@ -114,11 +114,12 @@ enum ItemTypes
 {
 	case generic
 	
+	case fragment
 	case battery
 	case star
 	case quest
 	case waste
-	case part
+
 	case panel
 	case key
 	case currency
