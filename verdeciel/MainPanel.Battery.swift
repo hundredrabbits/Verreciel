@@ -147,14 +147,15 @@ class PanelBattery : MainPanel
 		if player != nil { player.lookAt(deg: 0) }
 	}
 	
-	
 	func isEnigmaPowered() -> Bool
 	{
+		if enigmaPort.isReceivingItemOfType(ItemTypes.battery) { return true }
 		return false
 	}
 	
 	func isThrusterPowered() -> Bool
 	{
+		if thrusterPort.isReceivingItemOfType(ItemTypes.battery) { return true }
 		return false
 	}
 	
@@ -166,11 +167,13 @@ class PanelBattery : MainPanel
 	
 	func isMapPowered() -> Bool
 	{
+		if mapPort.isReceivingItemOfType(ItemTypes.battery) { return true }
 		return false
 	}
 	
 	func isShieldPowered() -> Bool
 	{
+		if shieldPort.isReceivingItemOfType(ItemTypes.battery) { return true }
 		return false
 	}
 	
@@ -183,20 +186,21 @@ class PanelBattery : MainPanel
 	
 	override func onConnect()
 	{
-		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.onPowered() }
-		if shieldPort.isReceivingItemOfType(.battery) == true { shield.onPowered() }
-		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onPowered() }
-		if mapPort.isReceivingItemOfType(.battery) == true { map.onPowered() }
-		if radioPort.isReceivingItemOfType(.battery) == true { radio.onPowered() }
+		refresh()
 	}
 	
 	override func onDisconnect()
 	{
-		if thrusterPort.isReceivingItemOfType(.battery) == false { thruster.onUnpowered() }
-		if shieldPort.isReceivingItemOfType(.battery) == false { shield.onUnpowered() }
-		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onUnpowered() }
-		if mapPort.isReceivingItemOfType(.battery) == true { map.onUnpowered() }
-		if radioPort.isReceivingItemOfType(.battery) == true { radio.onUnpowered() }
+		refresh()
+	}
+	
+	override func refresh()
+	{
+		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.onPowered() } else { thruster.onUnpowered() }
+		if shieldPort.isReceivingItemOfType(.battery) == true { shield.onUnpowered() } else { shield.onUnpowered() }
+		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onUnpowered() } else { enigma.onUnpowered() }
+		if mapPort.isReceivingItemOfType(.battery) == true { map.onUnpowered() } else { map.onUnpowered() }
+		if radioPort.isReceivingItemOfType(.battery) == true { radio.onUnpowered() } else { radio.onUnpowered() }
 	}
 	
 	func hasCell(target:Event) -> Bool
@@ -212,7 +216,6 @@ class PanelBattery : MainPanel
 		super.onInstallationBegin()
 		
 		if debug.isActive == false { player.lookAt(deg: 0) }
-		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

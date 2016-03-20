@@ -267,19 +267,6 @@ class MissionLibrary
 			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)
-		
-		// Trans Portal
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Trans Portal Key")
-		m.predicate = { cargo.contains(items.transPortalKey) == true }
-		m.quests = [
-			Quest(name:"Aquire Loiqe Key", predicate:{ cargo.contains(items.loiqePortalKey) == true }, result: { }),
-			Quest(name:"Aquire Valen Key", predicate:{ cargo.contains(items.valenPortalKey) == true }, result: { }),
-			Quest(name:"Aquire Senni Key", predicate:{ cargo.contains(items.senniPortalKey) == true }, result: { }),
-			Quest(name:"Aquire Usul Key", predicate:{ cargo.contains(items.usulPortalKey) == true }, result: { }),
-			Quest(name:"Combine all keys", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[c]?.append(m)
 	}
 	
 	func refresh()

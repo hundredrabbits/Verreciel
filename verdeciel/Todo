@@ -2,6 +2,10 @@
 *    MAJOR
 ================
 
+- Migrate missions to Primary
+- Playtest Primary Part I
+- Begin Fog Map Quests
+
 ================
 *    MINOR
 ================
@@ -12,14 +16,9 @@
 - Missing Loiqe Constellation structure
 - Add constellation between warps
 - Add constellation in valen
-- Harvest is grey if no product ready
+- (Harvest)If not ready, display grey
+- (Bank)If empty, display grey
 - Connect quest(Complete) monitor
-
-> Display under-powered
-- shield need to be powered by array
-- radio needs to be powered by array
-- Map needs to be powered by grid
-- enigma needs to be powered by matrix
 
 > Bugs
 - Issue with UI offset animation
@@ -27,27 +26,23 @@
 - Add cancel docking button/trigger to thruster
 - Cannot warp if not aligned(Portal)
 - Map Functionality
-- Loiqe City had no mesh
 - Connecting something to console enables cargo item ports?!
 
 > Design
-- Add missing icons
 - Floating feel
 - Add ship doodads
 - Interface sounds
 - Update mission panel to fit within shield
-- (Harvest)If not ready, display grey
-- (Bank)If empty, display grey
 
 > Narative
 - Telemetrists!? Twin Suns
 - Derelict beacon
 - "Look how much I have grown since we met in Hiversaires"
 - "I learnt your languages"
+- White sun?
 
 > Extras
 - Combine records together
-- Combine keys together
 
 = Cells [Capsule, Loiqe Cargo]
 = Arrays [Horadric, Valen Cargo]
@@ -59,4 +54,3 @@
 = Senni Fragments [Valen Bank, Valen Port]
 = Usul Fragments [Senni City, Senni Satellite]
 
-- White sun?

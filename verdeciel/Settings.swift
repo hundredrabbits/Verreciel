@@ -115,7 +115,6 @@ enum ItemTypes
 	case generic
 	
 	case battery
-	case card
 	case star
 	case quest
 	case waste

@@ -12,9 +12,8 @@ class Recipe
 	var ingredients:Array<Event> = []
 	var result:Event!
 	
-	init(name:String, ingredients:Array<Event>, result:Event)
+	init(ingredients:Array<Event>, result:Event)
 	{
-		self.name = name
 		self.ingredients = ingredients
 		self.result = result
 	}

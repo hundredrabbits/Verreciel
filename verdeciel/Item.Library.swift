@@ -6,12 +6,9 @@ import Foundation
 
 class ItemLibrary
 {
-	// Ship events
+	// Capsule
 	let playerCargo = Item(name: "player cargo", type: .cargo, note:"need description", isQuest:true)
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
-	
-	// Quest items
-	let cyanineKey = Item(name: "Cyanine Key", type: .key, note:"unlocks the portal to cyanine", isQuest:true)
 
 	// Batteries
 	let cell1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
@@ -26,21 +23,27 @@ class ItemLibrary
 	// Misc
 	let waste = Item(name: "waste", type: .waste, note:"useless junk")
 	
-	let loiqePortalKey = Item(name: "loiqe key", type: .card, note:"complete key", isQuest:true)
+	// Keys
 	
-	let valenPortalKey = Item(name: "valen key", type: .card, note:"complete key", isQuest:true)
+	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
+	
+	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
 	let valenPortalFragment1 = Item(name: "grey fragment", type: .part, note:"half a Portal key", isQuest:true)
 	let valenPortalFragment2 = Item(name: "grey fragment", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let senniPortalKey = Item(name: "senni key", type: .card, note:"complete key", isQuest:true)
+	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
 	let senniPortalFragment1 = Item(name: "red fragment", type: .part, note:"half a Portal key", isQuest:true)
 	let senniPortalFragment2 = Item(name: "red fragment", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let usulPortalKey = Item(name: "usul key", type: .card, note:"complete key", isQuest:true)
+	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
 	let usulPortalFragment1 = Item(name: "Key fragment 1", type: .part, note:"half a Portal key", isQuest:true)
 	let usulPortalFragment2 = Item(name: "Key fragment 2", type: .part, note:"half a Portal key", isQuest:true)
 	
-	let transPortalKey = Item(name: "trans portal key", type: .card, note:"complete key", isQuest:true)
+	let masterRedKey = Item(name: "Red Key", type: .key, note: "[missing]", isQuest: true)
+	let masterCyanKey = Item(name: "Cyan Key", type: .key, note: "[missing]", isQuest: true)
+	let masterWhiteKey = Item(name: "White Key", type: .key, note: "[missing]", isQuest: true)
+	
+	// Etc..
 	
 	let warpDrive = Item(name: "warpdrive", type: .drive, note:"local warpdrive", isQuest:true)
 	
@@ -49,8 +52,8 @@ class ItemLibrary
 	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Maps
-	let map1 = Item(name: "Ghost Map", type: .map, note: "[missing]", isQuest: true)
-	let map2 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
+	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
+	let map2 = Item(name: "Ghost Map", type: .map, note: "[missing]", isQuest: true)
 	
 	// Enigma
 	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
