@@ -41,7 +41,7 @@ class MissionLibrary
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
 			Quest(name:"Accelerate with Thruster", predicate:{ capsule.dock == nil && thruster.speed > 0 || capsule.dock != nil }, result: { mission.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_harvest.isKnown == true }, result: { cargo.install() }),
-			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() }),
+			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { }),
@@ -53,8 +53,8 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Trade Lesson")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
-			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
-			Quest(name:"Trade materia for Fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
+			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
+			Quest(name:"Trade \(items.currency1.name!) for \(items.valenPortalFragment1.type!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
 		]
 		questlog[c]?.append(m)
 		
@@ -82,7 +82,7 @@ class MissionLibrary
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
+			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
 			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -113,12 +113,6 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		
-		
-		
-		
-		
-		
 		// Star interaction tutorial
 		
 		// enigma quest & tutorials - decypher radio signal quest
@@ -134,6 +128,12 @@ class MissionLibrary
 	{
 		let c:Chapters = .secondary
 		var m:Mission!
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Last Quest")
+		m.quests = [
+			Quest(name:"Unlock portal", location: universe.usul_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { universe.unlock(.valen) })
+		]
+		questlog[c]?.append(m)
 		
 		// Map
 		

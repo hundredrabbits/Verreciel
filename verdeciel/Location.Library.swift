@@ -168,7 +168,7 @@ class Valen
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"horadric alta $with credit $for materia.", item:nil)
+		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"horadric alta $with credit $for materia.", item:Item(name: "missing", type: .currency, note: ""))
 	}
 }
 
