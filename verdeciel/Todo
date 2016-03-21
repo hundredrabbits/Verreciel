@@ -4,6 +4,7 @@
 
 - Migrate missions to Primary
 - Rotate undocked structures to angle instead of step
+- Battery's isPowered are not working
 
 ================
 *    MINOR
@@ -32,6 +33,7 @@
 - Add ship doodads
 - Interface sounds
 - Update mission panel to fit within shield
+- Combine records together
 
 > Narative
 - Telemetrists!? Twin Suns
@@ -39,9 +41,6 @@
 - "Look how much I have grown since we met in Hiversaires"
 - "I learnt your languages"
 - White sun?
-
-> Extras
-- Combine records together
 
 = Cells [Capsule, Loiqe Cargo]
 = Arrays [Horadric, Valen Cargo]

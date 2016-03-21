@@ -17,7 +17,6 @@ class RecipesLibrary
 	private func keys()
 	{
 		horadric.append( Recipe(ingredients: [items.valenPortalFragment1, items.valenPortalFragment2], result: items.valenPortalKey) )
-		horadric.append( Recipe(ingredients: [items.senniPortalFragment1, items.senniPortalFragment2], result: items.senniPortalKey) )
 		horadric.append( Recipe(ingredients: [items.usulPortalFragment1, items.usulPortalFragment2], result: items.usulPortalKey) )
 		
 		// Master Keys
@@ -36,9 +35,6 @@ class RecipesLibrary
 	
 	private func currencies()
 	{
-		horadric.append( Recipe(ingredients: [items.alta, items.credit], result: Item(name: items.materia.name!, type: items.materia.type, note:items.materia.note)) )
-		horadric.append( Recipe(ingredients: [items.materia, items.alta], result: Item(name: "mynir", type: .currency, note:"trading currency")) )
-		horadric.append( Recipe(ingredients: [items.materia, items.credit], result: Item(name: "uli", type: .currency, note:"trading currency")) )
-		horadric.append( Recipe(ingredients: [items.mynir, items.uli], result: Item(name: "natal", type: .currency, note:"trading currency")) )
+		horadric.append( Recipe(ingredients: [items.currency1, items.currency2], result: Item(name: items.currency3.name!, type: items.currency3.type, note:items.currency3.note)) )
 	}
 }

@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-//		unlockedState(universe.loiqe_city)
-		startingState()
+		unlockedState(universe.valen_bank)
+//		startingState()
 	}
 	
 	func startingState()

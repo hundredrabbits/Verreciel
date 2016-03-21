@@ -166,7 +166,6 @@ class CoreCapsule: SCNNode
 	
 	func warpDown()
 	{
-		// todo: Make sure the capsule reaches its destination, unlock controls.
 		thruster.speed = 1
 		if thruster.actualSpeed > 1 { thruster.actualSpeed -= 0.1 }
 		else{ warpStop() }

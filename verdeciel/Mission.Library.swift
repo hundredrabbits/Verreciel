@@ -41,7 +41,7 @@ class MissionLibrary
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
 			Quest(name:"Accelerate with Thruster", predicate:{ capsule.dock == nil && thruster.speed > 0 || capsule.dock != nil }, result: { mission.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_harvest.isKnown == true }, result: { cargo.install() }),
-			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) }, result: { console.install() }),
+			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { }),
@@ -53,7 +53,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Trade Lesson")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
-			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
+			Quest(name:"Route materia to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
 			Quest(name:"Trade materia for Fragment", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
 		]
 		questlog[c]?.append(m)
@@ -78,81 +78,46 @@ class MissionLibrary
 		
 		// Valen
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
+		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio") //TODO: should collect second cell?
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
+			Quest(name:"Collect credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
 			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Radio Tutorial 1")
-		m.quests = [ Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }) ]
-		m.quests = [ Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  }) ]
-		questlog[c]?.append(m)
-		
-		
-		
-		
-		
-		// Console Inspect tutorials
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Inspect Lesson I", requirement: { radio.isInstalled == true })
+		m = Mission(id:(questlog[c]?.count)!, name: "Radio Lesson")
 		m.quests = [
-			Quest(name:"Reach bank", location: universe.valen_bank, predicate:{ capsule.isDockedAtLocation(universe.valen_bank) }, result: { }),
-			Quest(name:"Route item to console", location: universe.valen_bank, predicate:{ console.port.isReceivingEventOfTypeItem() }, result: {  })
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.cell2) }, result: {  }),
+			Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }),
+			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
 		]
 		questlog[c]?.append(m)
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Inspect Lesson II")
-		m.quests = [
-			Quest(name:"Reach bank", location: universe.valen_bank, predicate:{ capsule.isDockedAtLocation(universe.valen_bank) }, result: { }),
-			Quest(name:"Route radar to console", location: universe.valen_bank, predicate:{ console.port.isReceivingEventOfTypeLocation() }, result: { })
-		]
-		questlog[c]?.append(m)
-		
-		// Cells->Array tutorial
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Cells Lesson")
-		m.predicate = { cargo.contains(items.array1) == true || battery.contains(items.array1) }
-		m.quests = [
-			Quest(name:"Find first Cell", location: universe.valen_harvest, predicate:{ cargo.contains(items.cell1) || battery.contains(items.cell1) || universe.valen_bank.contains(items.cell1) }, result: { }),
-			Quest(name:"Find second Cell", location: universe.valen_cargo, predicate:{ cargo.contains(items.cell2) || battery.contains(items.cell2) || universe.valen_bank.contains(items.cell2) }, result: { }),
-			Quest(name:"Combine Cells", location: universe.loiqe_horadric, predicate:{ false }, result: { })
-		]
-		questlog[c]?.append(m)
-		
-		// Hatch tutorial
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Hatch Lesson")
 		m.quests = [
-			Quest(name:"Collect Credit", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
-			Quest(name:"Route credit to hatch", location: universe.valen_harvest, predicate:{ hatch.port.isReceivingItemOfType(.currency) }, result: {  })
+			Quest(name:"Collect Waste", location: universe.valen_bank, predicate:{ cargo.containsLike(items.waste) }, result: { hatch.install() }),
+			Quest(name:"Route waste to hatch", location: universe.valen_harvest, predicate:{ hatch.port.hasItemLike(items.waste) }, result: {  })
 		]
 		questlog[c]?.append(m)
 		
-		// Array->Grid Tutorial
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Array Lesson")
-		m.predicate = { cargo.contains(items.grid1) == true || battery.contains(items.grid1) }
+		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key")
+		m.predicate = { cargo.contains(items.senniPortalKey) }
 		m.quests = [
-			Quest(name:"Find first Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array1) || battery.contains(items.array1) || universe.valen_bank.contains(items.array1) }, result: { }),
-			Quest(name:"Find second Array", location: universe.valen_harvest, predicate:{ cargo.contains(items.array2) || battery.contains(items.array2) || universe.valen_bank.contains(items.array2) }, result: { }),
-			Quest(name:"Combine Arrays", location: universe.loiqe_horadric, predicate:{ false }, result: { })
+			
+			Quest(name:"Aquire \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
+			Quest(name:"Aquire \(items.currency1.name!)", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { }),
+			Quest(name:"Combine currencies", location: universe.loiqe_horadric, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
+			Quest(name:"Aquire \(items.senniPortalKey.name)", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalKey) }, result: { })
 		]
 		questlog[c]?.append(m)
 		
-		// Materia->Alta
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Alta Lesson")
-		m.predicate = { cargo.containsLike(items.alta) == true }
-		m.quests = [
-			Quest(name:"Find materia", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.materia) }, result: { }),
-			Quest(name:"Find second materia", location: universe.loiqe_harvest, predicate:{ cargo.containsCount(2,target: items.materia) }, result: { }),
-			Quest(name:"Combine materias", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[c]?.append(m)
+		
+		
+		
+		
 		
 		// Star interaction tutorial
 		
@@ -170,10 +135,6 @@ class MissionLibrary
 		let c:Chapters = .secondary
 		var m:Mission!
 		
-		// Radio
-		
-		
-		
 		// Map
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Map")
@@ -181,7 +142,7 @@ class MissionLibrary
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
+//			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Install map", location: universe.senni_station, predicate:{ m.predicate() }, result: { })
 		]
 		questlog[c]?.append(m)
@@ -203,7 +164,7 @@ class MissionLibrary
 		m.predicate = { shield.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
+//			Quest(name:"Collect credits", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.credit) }, result: { }),
 			Quest(name:"Install shield", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
 		]
 		questlog[c]?.append(m)
@@ -226,7 +187,7 @@ class MissionLibrary
 		m.predicate = { enigma.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.cypher1.name!)", location: universe.usul_satellite, predicate:{ cargo.contains(items.cypher1) }, result: {  }),
-			Quest(name:"Collect \(items.uli.name!)", predicate:{ cargo.containsLike(items.uli) }, result: { }),
+//			Quest(name:"Collect \(items.uli.name!)", predicate:{ cargo.containsLike(items.uli) }, result: { }),
 			Quest(name:"Install enigma", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
 		]
 		questlog[c]?.append(m)
@@ -246,20 +207,6 @@ class MissionLibrary
 	{
 		let c:Chapters = .tertiary
 		var m:Mission!
-		
-		// Senni Portal Key
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key", task: "Find senni portal fragment", requirement:{ cargo.contains(items.senniPortalFragment1) || cargo.contains(items.senniPortalFragment2) } )
-		m.requirement = { cargo.contains(items.valenPortalFragment1) || cargo.contains(items.valenPortalFragment2) }
-		m.predicate = { cargo.contains(items.senniPortalKey) == true }
-		m.quests = [
-			Quest(name:"Aquire fragment I", location: universe.valen_bank, predicate:{ cargo.contains(items.senniPortalFragment1) == true }, result: { }),
-			Quest(name:"Aquire fragment II", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalFragment2) == true }, result: {  }),
-			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ m.predicate() }, result: { })
-		]
-		questlog[c]?.append(m)
-		
-		// Senni
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key", task: "Find usul portal fragment", requirement:{ cargo.contains(items.usulPortalFragment1) || cargo.contains(items.usulPortalFragment2) } )
 		m.predicate = { cargo.contains(items.usulPortalKey) == true }

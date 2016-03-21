@@ -44,12 +44,12 @@ class Loiqe
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "Harvest", system: system, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.materia.name!, type: items.materia.type, note: items.materia.note))
+		return LocationHarvest(name: "Harvest", system: system, at:CGPoint(x: offset.x, y: offset.y - 2), grows: Item(name: items.currency1.name!, type: items.currency1.type, note: items.currency1.note))
 	}
 	
 	func city() -> LocationTrade
 	{
-		return LocationTrade(name: "City", system:system, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.materia, give: items.valenPortalFragment1)
+		return LocationTrade(name: "City", system:system, at: CGPoint(x: offset.x, y: offset.y - 1), want: items.currency1, give: items.valenPortalFragment1)
 	}
 	
 	func horadric() -> LocationHoradric
@@ -70,11 +70,6 @@ class Loiqe
 	func beacon() -> LocationBeacon
 	{
 		return LocationBeacon(name:"loiqe beacon",system:system, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
-	}
-	
-	func port() -> LocationTrade
-	{
-		return LocationTrade(name: "Port", system:system, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.alta, give: items.senniPortalFragment2, mapRequirement:items.map1)
 	}
 	
 	func cargo() -> LocationSatellite
@@ -114,7 +109,7 @@ class Usul
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.credit, installation:{ map.install() }, installationName:"map")
+		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency3, installation:{ map.install() }, installationName:"map")
 	}
 	
 	func satellite() -> LocationSatellite
@@ -151,29 +146,29 @@ class Valen
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(name: items.credit.name!, type: items.credit.type, note:items.credit.note))
+		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(name: items.currency2.name!, type: items.currency2.type, note:items.currency2.note))
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.credit, installation:{ radio.install() }, installationName:"Radio")
+		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.currency2, installation:{ radio.install() }, installationName:"Radio")
 	}
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.array2)
+		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.cell2)
 	}
 	
 	// South
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.alta,give:items.usulPortalFragment2)
+		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.currency3, give:items.senniPortalKey)
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"horadric alta $with credit $for materia.", item:Item(name: items.materia.name!, type: items.materia.type, note:items.materia.note))
+		return LocationSatellite(name:"Satellite",system:.valen, at:CGPoint(x: offset.x, y: offset.y - 1), message:"horadric alta $with credit $for materia.", item:nil)
 	}
 }
 
@@ -200,7 +195,7 @@ class Senni
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.senni, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.credit, installation:{ map.install() }, installationName:"Map")
+		return LocationStation(name:"station",system:.senni, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.currency3, installation:{ map.install() }, installationName:"Map")
 	}
 	
 	func cargo() -> LocationSatellite

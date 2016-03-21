@@ -32,8 +32,6 @@ class ItemLibrary
 	let valenPortalFragment2 = Item(name: "valen key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
-	let senniPortalFragment1 = Item(name: "senni key I", type: .fragment, note:"half a Portal key", isQuest:true)
-	let senniPortalFragment2 = Item(name: "senni key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
 	let usulPortalFragment1 = Item(name: "Usul Key I", type: .fragment, note:"half a Portal key", isQuest:true)
@@ -60,10 +58,7 @@ class ItemLibrary
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
 	
 	// Harvest
-	let alta = Item(name: "alta", type: .currency, note:"trading currency")
-	let credit = Item(name: "credit", type: .currency, note:"trading currency")
-	let materia = Item(name: "materia", type: .currency, note:"trading currency")
-	let mynir = Item(name: "mynir", type: .currency, note:"trading currency")
-	let uli = Item(name: "uli", type: .currency, note:"trading currency")
-	let natal = Item(name: "natal", type: .currency, note:"trading currency")
+	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
+	let currency2 = Item(name: "materia", type: .currency, note:"trading currency")
+	let currency3 = Item(name: "natal", type: .currency, note:"trading currency")
 }

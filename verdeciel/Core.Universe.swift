@@ -46,7 +46,7 @@ class CoreUniverse : SCNNode
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
-	var loiqe_port = locations.loiqe.port()
+//	var loiqe_port = locations.loiqe.port()
 	var loiqe_cargo = locations.loiqe.cargo()
 	var loiqe_c_fog = locations.loiqe.c_fog()
 	
@@ -59,7 +59,7 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)
 		addChildNode(loiqe_satellite)
-		addChildNode(loiqe_port)
+//		addChildNode(loiqe_port)
 		addChildNode(loiqe_cargo)
 		addChildNode(loiqe_c_fog)
 	}

@@ -256,6 +256,14 @@ class SCNPort : SCNNode
 		return false
 	}
 	
+	func hasItemLike(target:Item) -> Bool
+	{
+		if event == nil { return false }
+		if (event is Item) == false { return false }
+		if (event as! Item).name == target { return true }
+		return false
+	}
+	
 	func isReceiving(event:Event!) -> Bool
 	{
 		if origin != nil && origin.event != nil && origin.event == event { return true }
