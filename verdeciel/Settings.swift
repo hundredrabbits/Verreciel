@@ -16,6 +16,8 @@ let cargo = PanelCargo()
 let thruster = PanelThruster()
 let console = PanelConsole()
 let radar = PanelRadar()
+let above = PanelAbove()
+let below = PanelBelow()
 
 // Monitors
 let journey = MonitorJourney()

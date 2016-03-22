@@ -196,6 +196,9 @@ class CoreCapsule: SCNNode
 		addChildNode(radar)
 		addChildNode(thruster)
 		
+		addChildNode(above)
+		addChildNode(below)
+		
 		hatch.eulerAngles.y = Float(degToRad(45))
 		console.eulerAngles.y = Float(degToRad(90))
 		cargo.eulerAngles.y = Float(degToRad(135))

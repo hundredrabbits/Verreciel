@@ -2,7 +2,6 @@
 *    MAJOR
 ================
 
-- Migrate missions to Primary
 - Rotate undocked structures to angle instead of step
 - Battery's isPowered are not working
 

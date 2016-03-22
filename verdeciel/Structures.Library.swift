@@ -87,17 +87,6 @@ class StructuresLibrary
 			i += 1
 		}
 		
-		let aim = SCNNode()
-		i = 0
-		while i < 3
-		{
-			let test = SCNLine(nodeA: SCNVector3(0,verticalOffset,0.75), nodeB: SCNVector3(0,verticalOffset,0.95), color: white)
-			test.eulerAngles.y = Float(degToRad(CGFloat(120 * i)))
-			aim.addChildNode(test)
-			i += 1
-		}
-		mesh.addChildNode(aim)
-		
 		return mesh
 	}
 	
