@@ -53,6 +53,7 @@ extension SCNNode
 	
 	func color(color:UIColor)
 	{
+		if geometry == nil { return }
 		self.geometry!.firstMaterial?.diffuse.contents = color
 	}
 	
@@ -87,10 +88,23 @@ extension SCNNode
 		else { opacity = 0 }
 	}
 	
+	func show()
+	{
+		opacity = 1
+	}
+	
+	func hide()
+	{
+		opacity = 0
+	}
+	
 	func updateChildrenColors(color:UIColor)
 	{
 		for node in self.childNodes {
 			node.color(color)
+			for subnode in node.childNodes {
+				subnode.color(color)
+			}
 		}
 	}
 	

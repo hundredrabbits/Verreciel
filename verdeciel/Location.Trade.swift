@@ -105,8 +105,10 @@ class LocationTrade : Location
 	
 	// MARK: Mesh -
 	
-	override func animateMesh(mesh:SCNNode)
+	override func animateMesh()
 	{
+		super.animateMesh()
+		
 		structure.eulerAngles.y += Float(degToRad(0.1))
 	}
 	

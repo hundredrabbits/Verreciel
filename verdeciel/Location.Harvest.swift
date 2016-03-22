@@ -53,6 +53,7 @@ class LocationHarvest : Location
 			
 		}
 		else {
+			refresh()
 			generationCountdown = 0
 			port.addEvent(grows)
 		}
@@ -86,6 +87,23 @@ class LocationHarvest : Location
 		return newPanel
 	}
 	
+	override func onUploadComplete()
+	{
+		refresh()
+	}
+
+	func refresh()
+	{
+		if port.hasEvent(grows) != true {
+			structure.updateChildrenColors(grey)
+			icon.updateChildrenColors(grey)
+		}
+		else{
+			structure.updateChildrenColors(cyan)
+			icon.updateChildrenColors(white)
+		}
+	}
+
 	override func onDock()
 	{
 		super.onDock()
@@ -99,6 +117,8 @@ class LocationHarvest : Location
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+		
+		refresh()
 	}
 	
 	override func onUndock()
@@ -114,14 +134,24 @@ class LocationHarvest : Location
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+		
+		refresh()
 	}
 	
 	// MARK: Mesh -
 	
-	override func animateMesh(mesh:SCNNode)
+	override func animateMesh()
 	{
+		super.animateMesh()
+		
 		if port.hasEvent(grows) == true {
-			mesh.eulerAngles.y += Float(degToRad(0.1))
+			structure.eulerAngles.y += Float(degToRad(0.1))
+		}
+		if port.hasEvent(grows) != true {
+			structure.blink()
+		}
+		else{
+			structure.show()
 		}
 	}
 	

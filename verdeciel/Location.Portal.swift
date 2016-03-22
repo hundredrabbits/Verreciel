@@ -232,10 +232,12 @@ class LocationPortal : Location
 	
 	// MARK: Mesh -
 	
-	override func animateMesh(mesh:SCNNode)
+	override func animateMesh()
 	{
+		super.animateMesh()
+		
 		if leftKeyPort.isReceiving(leftKeyPort.requirement) == true || rightKeyPort.isReceiving(rightKeyPort.requirement) == true {
-			mesh.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
+			structure.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
 		}
 	}
 	

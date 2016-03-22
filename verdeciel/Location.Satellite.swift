@@ -75,8 +75,10 @@ class LocationSatellite : Location
 	
 	// MARK: Mesh -
 	
-	override func animateMesh(mesh:SCNNode)
+	override func animateMesh()
 	{
+		super.animateMesh()
+		
 		if isComplete == true {
 			structure.eulerAngles.y = Float(degToRad(0.1))
 		}

@@ -85,7 +85,7 @@ class Location : Event
 		if distance <= settings.sight { if inSight == false { onSight() ; inSight = true ; isSeen = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() ; animateMesh(self.structure) }
+		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() ; animateMesh() }
 		else{ inApproach = false }
 		
 		if distance <= settings.collision { if inCollision == false {  inCollision = true ; onCollision() } ; collisionUpdate() }
@@ -171,7 +171,7 @@ class Location : Event
 		
 	}
 	
-	func animateMesh(mesh:SCNNode)
+	func animateMesh()
 	{
 		
 	}
