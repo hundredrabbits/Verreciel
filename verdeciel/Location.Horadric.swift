@@ -44,10 +44,6 @@ class LocationHoradric : Location
 		outPort.label.position = SCNVector3(0,-0.4,0)
 		outPort.label.update("Out")
 		
-		inPort1.label.activeScale = 0.08
-		inPort2.label.activeScale = 0.08
-		outPort.label.activeScale = 0.08
-		
 		newPanel.addChildNode(inPort1)
 		newPanel.addChildNode(inPort2)
 		newPanel.addChildNode(outPort)
@@ -63,17 +59,19 @@ class LocationHoradric : Location
 		return newPanel
 	}
 	
-	override func listen(event: Event)
-	{
-		
-	}
-	
 	override func dockedUpdate()
 	{
-		if inPort1.isEnabled == true && inPort2.isEnabled == true { verifyRecipes() }
+		if inPort1.isEnabled == true && inPort2.isEnabled == true {  }
 		
 		if combinationPercentage > 0 { self.structure.blink() }
 	}
+	
+	override func onUploadComplete()
+	{
+		verifyRecipes()
+	}
+	
+	var recipeValid:Recipe! = nil
 	
 	func verifyRecipes()
 	{
@@ -82,12 +80,48 @@ class LocationHoradric : Location
 		if inPort1.event != nil { ingredients.append(inPort1.event) }
 		if inPort2.event != nil { ingredients.append(inPort2.event) }
 		
-		// Check for recipies
 		for recipe in recipes.horadric {
-			if recipe.isValid(ingredients) == true { combine(recipe) ; break }
+			if recipe.isValid(ingredients) == true {
+				recipeValid = recipe
+				combine(recipe)
+				break
+			}
+			else{
+				recipeValid = nil
+			}
 		}
 		
-		if outPort.hasEvent() == false { outPort.label.update("out", color:grey) }
+		refresh()
+	}
+	
+	func refresh()
+	{
+		if outPort.hasEvent() == true {
+			inPort1.disable()
+			inPort2.disable()
+			outPort.enable()
+		}
+		else{
+			inPort1.enable()
+			inPort2.enable()
+			outPort.disable()
+		}
+		
+		if recipeValid != nil {
+			inPort1.label.update("IN", color: white)
+			inPort2.label.update("IN", color: white)
+			outPort.label.update(recipeValid.result.name!, color:cyan)
+		}
+		else if inPort1.event != nil && inPort2.event != nil {
+			inPort1.label.update("IN", color: grey)
+			inPort2.label.update("IN", color: grey)
+			outPort.label.update("error", color:red)
+		}
+		else {
+			if inPort1.event != nil { inPort1.label.update("IN", color: white) } else{ inPort1.label.update("IN", color: grey) }
+			if inPort2.event != nil { inPort2.label.update("IN", color: white) } else{ inPort2.label.update("IN", color: grey) }
+			outPort.label.update("Out", color:grey)
+		}
 	}
 	
 	// MARK: Combinatrix
@@ -125,16 +159,14 @@ class LocationHoradric : Location
 	{
 		inPort1.removeEvent()
 		inPort2.removeEvent()
-		inPort1.enable()
-		inPort2.enable()
 		
 		outPort.addEvent(combinationRecipe.result)
-		outPort.label.update(outPort.event.name!, color:white)
-		outPort.enable()
 		
 		self.structure.opacity = 1
 		
 		combinationPercentage = 0
+		
+		refresh()
 	}
 
 	func iconUpdate()
@@ -189,6 +221,13 @@ class LocationHoradric : Location
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
+		
+		retrieveItems()
+	}
+	
+	func retrieveItems()
+	{
+		print("RETRIEVE ITEMS!")
 	}
 		
 	// MARK: Defaults -

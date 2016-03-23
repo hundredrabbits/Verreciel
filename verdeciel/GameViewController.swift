@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-//		unlockedState(universe.valen_bank)
-		startingState()
+		unlockedState(universe.loiqe_horadric)
+//		startingState()
 	}
 	
 	func startingState()
@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
-	func unlockedState(location:Location = universe.loiqe_horadric)
+	func unlockedState(location:Location = universe.loiqe_satellite)
 	{
 		debug.isActive = true
 		
@@ -112,7 +112,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.valen_portal.isKnown = true
 		universe.loiqe_portal.isKnown = true
 		
-		cargo.addItems([items.senniPortalKey, items.map1, items.record1])
+		cargo.addItems([items.valenPortalFragment1, items.map1, items.valenPortalFragment2])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
