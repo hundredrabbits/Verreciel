@@ -29,7 +29,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		sceneView.showsStatistics = false
 		sceneView.backgroundColor = UIColor.blackColor()
 		sceneView.antialiasingMode = SCNAntialiasingMode.None
-		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
 		sceneView.preferredFramesPerSecond = 25
 		sceneView.playing = true
 
@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_horadric)
-//		startingState()
+//		unlockedState(universe.loiqe_horadric)
+		startingState()
 	}
 	
 	func startingState()

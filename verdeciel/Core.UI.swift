@@ -211,7 +211,7 @@ class CoreUI: SCNNode
 			SCNTransaction.setAnimationDuration(0.1)
 			self.warningLabel.update(self.warning)
 			self.warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("hideWarning"), userInfo: nil, repeats: false) })
+			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false) })
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()

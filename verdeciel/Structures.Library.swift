@@ -109,7 +109,7 @@ class StructuresLibrary
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,-radius * 1.5), nodeB: SCNVector3(-radius,distance,-radius * 1.5), color: color))
 			mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,distance,radius * 1.5), nodeB: SCNVector3(-radius,distance,radius * 1.5), color: color))
 			
-			i++
+			i += 1
 		}
 		
 		mesh.position = SCNVector3(0,4,0)
@@ -275,7 +275,6 @@ class StructuresLibrary
 		
 		return mesh
 	}
-	
 	
 	func c_tunnel(radius:Float = 1.5, color:UIColor = grey) -> SCNNode
 	{

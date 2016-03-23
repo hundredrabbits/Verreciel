@@ -28,7 +28,10 @@ class PanelAbove : Panel
 	override func fixedUpdate()
 	{
 		if thruster.speed > 0 {
-			root.eulerAngles.y += Float(degToRad(CGFloat(thruster.actualSpeed/5.0)))
+			root.updateChildrenColors(white)
+		}
+		else{
+			root.updateChildrenColors(grey)
 		}
 	}
 	

@@ -173,7 +173,7 @@ class PanelCargo : MainPanel
 	func upload(item:Event)
 	{
 		upload = item
-		uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("uploadProgress"), userInfo: nil, repeats: true)
+		uploadTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.uploadProgress), userInfo: nil, repeats: true)
 	}
 	
 	func uploadProgress()

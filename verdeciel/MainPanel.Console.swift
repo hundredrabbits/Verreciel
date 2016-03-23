@@ -60,7 +60,7 @@ class PanelConsole : MainPanel
 		
 		mainNode.addChildNode(consoleNode)
 		
-		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
+		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
 		
 		port.input = Event.self
 		port.output = Event.self

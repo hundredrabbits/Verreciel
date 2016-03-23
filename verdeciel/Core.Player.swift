@@ -86,7 +86,7 @@ class CorePlayer : SCNNode
 	func message(text:String)
 	{
 		messageLabel.update(text)
-		messageTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("clearMessage"), userInfo: nil, repeats: false)
+		messageTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(self.clearMessage), userInfo: nil, repeats: false)
 	}
 	
 	func clearMessage()
@@ -98,7 +98,7 @@ class CorePlayer : SCNNode
 	{
 		alertIsActive = true
 		alertLabel.update(text)
-		alertTimer = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: Selector("clearAlert"), userInfo: nil, repeats: false)
+		alertTimer = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: #selector(self.clearAlert), userInfo: nil, repeats: false)
 	}
 	
 	func clearAlert()
@@ -254,7 +254,7 @@ class CorePlayer : SCNNode
 		ui.position = activeHandle.destination
 		SCNTransaction.commit()
 		
-		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "releaseHandleAuto", userInfo: nil, repeats: false)
+		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.releaseHandleAuto), userInfo: nil, repeats: false)
 	}
 	
 	func releaseHandle()

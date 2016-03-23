@@ -166,8 +166,9 @@ class IconsLibrary
 		return spriteNode
 	}
 	
-	func portal(color:UIColor = grey,var size:Float = 0.1) -> SCNNode
+	func portal(color:UIColor = grey,size:Float = 0.1) -> SCNNode
 	{
+		var size = size
 		let spriteNode = SCNNode()
 		
 		spriteNode.addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))

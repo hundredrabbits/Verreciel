@@ -18,8 +18,8 @@ class CoreTime : NSObject
 	
 	func start()
 	{
-		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("onTic"), userInfo: nil, repeats: true)
-		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("onSeconds"), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.onTic), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.onSeconds), userInfo: nil, repeats: true)
 	}
 	
 	func onSeconds()

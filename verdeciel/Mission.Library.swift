@@ -10,7 +10,7 @@ import Foundation
 class MissionLibrary
 {
 	var active:Chapters = Chapters.primary
-	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array]()
+	var questlog:Dictionary<Chapters,Array<Mission>> = [Chapters:Array<Mission>]()
 	var currentMission:Dictionary<Chapters,Mission> = [Chapters:Mission]()
 	
 	init()

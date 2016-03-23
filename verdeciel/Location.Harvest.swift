@@ -26,7 +26,7 @@ class LocationHarvest : Location
 		port.position = SCNVector3(0,-0.5,0)
 		port.enable()
 		
-		generationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("generate"), userInfo: nil, repeats: true)
+		generationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.generate), userInfo: nil, repeats: true)
 	}
 	
 	override func start()

@@ -23,8 +23,8 @@ class SCNPort : SCNNode
 	
 	var origin:SCNPort!
 	
-	var host = SCNNode!()
-	var trigger = SCNTrigger!()
+	var host:SCNNode!
+	var trigger:SCNTrigger!
 	
 	var sprite_output = SCNNode()
 	var sprite_input = SCNNode()
