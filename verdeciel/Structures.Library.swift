@@ -260,13 +260,18 @@ class StructuresLibrary
 	func c_fog(color:UIColor = grey) -> SCNNode
 	{
 		let mesh = SCNNode()
-		let radius:Float = 3
 		
-		print("! Missing structure")
+		let hex1 = SCNHexa(radius: 6, color: grey)
+		hex1.position = SCNVector3(0,0,2)
+		mesh.addChildNode(hex1)
+		let hex2 = SCNHexa(radius: 6, color: grey)
+		hex2.position = SCNVector3(0,0,0)
+		mesh.addChildNode(hex2)
+		let hex3 = SCNHexa(radius: 6, color: grey)
+		hex3.position = SCNVector3(0,0,-2)
+		mesh.addChildNode(hex3)
 		
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(radius,0,0), nodeB: SCNVector3(-radius,0,0), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,radius,0), nodeB: SCNVector3(0,-radius,0), color: color))
-		mesh.addChildNode(SCNLine(nodeA: SCNVector3(0,0,radius), nodeB: SCNVector3(0,0,-radius), color: color))
+		mesh.eulerAngles.x = Float(degToRad(90))
 		
 		return mesh
 	}

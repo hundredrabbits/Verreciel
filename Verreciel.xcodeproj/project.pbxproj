@@ -42,6 +42,7 @@
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
 		5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3411CA1FAA10031524B /* Porthole.Above.swift */; };
 		5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3431CA1FACA0031524B /* Porthole.below.swift */; };
+		5759C3471CA21DC10031524B /* SCNHexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3461CA21DC10031524B /* SCNHexa.swift */; };
 		5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5765C3311C235A0C001ED26E /* SCNButton.swift */; };
 		5768590C1C4DA8EA009D3681 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5768590B1C4DA8EA009D3681 /* Widget.swift */; };
 		5768590E1C4DE866009D3681 /* Widget.Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5768590D1C4DE866009D3681 /* Widget.Shield.swift */; };
@@ -131,6 +132,7 @@
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5759C3411CA1FAA10031524B /* Porthole.Above.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.Above.swift; sourceTree = "<group>"; };
 		5759C3431CA1FACA0031524B /* Porthole.below.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.below.swift; sourceTree = "<group>"; };
+		5759C3461CA21DC10031524B /* SCNHexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNHexa.swift; sourceTree = "<group>"; };
 		5765C3311C235A0C001ED26E /* SCNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNButton.swift; sourceTree = "<group>"; };
 		5768590B1C4DA8EA009D3681 /* Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		5768590D1C4DE866009D3681 /* Widget.Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Shield.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				5790360C1C8DF38500BFD870 /* SCNCube.swift */,
 				570B1F671C910C2A00AAFF00 /* SCNOcta.swift */,
+				5759C3461CA21DC10031524B /* SCNHexa.swift */,
 				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
 				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
@@ -495,6 +498,7 @@
 				5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */,
 				5726C6071BD46FFF00B924B2 /* Core.UI.swift in Sources */,
 				576859101C4DE984009D3681 /* Widget.Enigma.swift in Sources */,
+				5759C3471CA21DC10031524B /* SCNHexa.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
 				5790360D1C8DF38500BFD870 /* SCNCube.swift in Sources */,
 				5781FC0C1C6BC9500001A743 /* SCNRect.swift in Sources */,

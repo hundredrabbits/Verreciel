@@ -16,7 +16,6 @@ class SCNRect : SCNNode
 		addChildNode(SCNLine(nodeA: SCNVector3(size.width/2,0,size.height/2), nodeB: SCNVector3(size.width/2,0,-size.height/2), color: color))
 		addChildNode(SCNLine(nodeA: SCNVector3(size.width/2,0,-size.height/2), nodeB: SCNVector3(-size.width/2,0,-size.height/2), color: color))
 		addChildNode(SCNLine(nodeA: SCNVector3(-size.width/2,0,-size.height/2), nodeB: SCNVector3(-size.width/2,0,size.height/2), color: color))
-		
 	}
 	
 	required init(coder aDecoder: NSCoder)
