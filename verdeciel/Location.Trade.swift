@@ -25,7 +25,7 @@ class LocationTrade : Location
 		
 		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
 		wantPort.addRequirement(want)
-		wantPort.label.update("--", color:grey)
+		wantPort.label.update("EMPTY", color:red)
 		givePort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
 		givePort.addEvent(give)
 	}

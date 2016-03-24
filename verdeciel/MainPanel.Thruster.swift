@@ -43,6 +43,7 @@ class PanelThruster : MainPanel
 	var actualSpeed:Float = 0
 	
 	var canWarp:Bool = false
+	var isLocked:Bool = false
 	
 	// MARK: Default -
 	
@@ -193,8 +194,10 @@ class PanelThruster : MainPanel
 		
 		update()
 		
-		// Check for warp
-		if battery.thrusterPort.isReceivingItemOfType(.battery) == false {
+		if isLocked == true {
+			modeLocked()
+		}
+		else if battery.thrusterPort.isReceivingItemOfType(.battery) == false {
 			speed = 0
 			modeUnpowered()
 		}
@@ -222,6 +225,18 @@ class PanelThruster : MainPanel
 		thrust()
 	}
 	
+	// MARK: Locking
+	
+	func lock()
+	{
+		isLocked = true
+	}
+	
+	func unlock()
+	{
+		isLocked = false
+	}
+	
 	// MARK: Custom -
 	
 	func onPowered()
@@ -234,6 +249,27 @@ class PanelThruster : MainPanel
 	{
 		print("* THRUSTER | Powered: \(name)")
 		refresh()
+	}
+	
+	// MARK: Modes -
+	
+	func modeLocked()
+	{
+		details.update("locked")
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 1
+		interface_warp.opacity = 0
+		
+		action.disable()
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		lineLeft.color(grey)
+		lineRight.color(grey)
 	}
 	
 	func modeWarping()
@@ -331,7 +367,7 @@ class PanelThruster : MainPanel
 		interface_dock.opacity = 1
 		interface_warp.opacity = 0
 		
-		action.disable()
+		action.enable()
 		
 		accelerate.disable()
 		decelerate.disable()

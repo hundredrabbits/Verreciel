@@ -6,6 +6,9 @@
 - Battery's isPowered are not working
 - Cancel docking button
 - Cannot undock from harvest during tutorial
+- Lock Thruster
+- If no target pilot shows nothing
+- If going too far, auto return
 
 ================
 *    MINOR

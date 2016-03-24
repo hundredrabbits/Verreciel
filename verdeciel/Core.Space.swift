@@ -86,9 +86,9 @@ class CoreSpace: SCNNode
 		}
 		
 		// Stars
-		while starTimer > 2 {
+		while starTimer > 4 {
 			addStar()
-			starTimer -= 2
+			starTimer -= 4
 		}
 		updateStars()
 	}

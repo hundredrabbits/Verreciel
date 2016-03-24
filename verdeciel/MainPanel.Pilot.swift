@@ -64,6 +64,9 @@ class PanelPilot : MainPanel
 		if capsule.isFleeing == true {
 			target = capsule.lastLocation
 		}
+		else if capsule.isReturning == true {
+			target = capsule.closestKnownLocation()
+		}
 		else if port.isReceivingEventOfTypeLocation(){
 			target = port.origin.event as! Location
 		}

@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-//		unlockedState(universe.loiqe_horadric)
-		startingState()
+		unlockedState(universe.loiqe_horadric)
+//		startingState()
 	}
 	
 	func startingState()
@@ -179,6 +179,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
+		glLineWidth(3)
+		
 		capsule.fixedUpdate()
 		player.fixedUpdate()
 		ui.fixedUpdate()
