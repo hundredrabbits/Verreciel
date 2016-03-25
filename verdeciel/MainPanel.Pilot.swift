@@ -72,6 +72,7 @@ class PanelPilot : MainPanel
 		}
 		
 		if target != nil { align() }
+		else{ details.update("--", color:grey) }
 	}
 	
 	func align()
@@ -111,7 +112,7 @@ class PanelPilot : MainPanel
 		if capsule.isFleeing == true { details.update("Auto", color:red) }
 		else if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
 		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
-		else{ details.update(String(format: "%.0f",abs(target.align)), color:white) }
+		else { details.update(String(format: "%.0f",abs(target.align)), color:white) }
 	}
 	
 	override func onInstallationBegin()

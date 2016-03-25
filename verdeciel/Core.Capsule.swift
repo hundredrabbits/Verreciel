@@ -54,7 +54,7 @@ class CoreCapsule: SCNNode
 		
 		if isFleeing == false && radiation > 0 { ui.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
 		else if isFleeing == true && radiation > 0.5 { ui.showWarning("Autopilot engaged") }
-		else if closestLocation().distance > 1.25 { autoReturn() ; ui.showWarning("Autopilot engaged") }
+		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; ui.showWarning("Autopilot engaged") }
 		else{ ui.hideWarning() }
 	}
 	
@@ -257,7 +257,7 @@ class CoreCapsule: SCNNode
 	{
 		lastLocation = dock
 		isFleeing = false
-		isReturning = false // TODO: Auto return
+		isReturning = false
 		
 		isDocked = true
 		capsule.at = dock.at
