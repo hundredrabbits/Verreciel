@@ -239,7 +239,7 @@ class CoreCapsule: SCNNode
 		if dock == nil { return }
 		if isDocked == true { return }
 		
-		var approachSpeed:CGFloat = 0.001
+		var approachSpeed:CGFloat = 0.005
 		
 		let distanceRatio = distanceBetweenTwoPoints(at, point2: dock.at)/0.5
 		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
@@ -250,7 +250,7 @@ class CoreCapsule: SCNNode
 		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
 		capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
 		
-		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.001 { docked() }
+		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.003 { docked() }
 	}
 	
 	func docked()

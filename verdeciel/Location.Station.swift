@@ -34,6 +34,8 @@ class LocationStation : Location
 		updateIcon()
 	}
 	
+	var tradeLabel:SCNLabel!
+	
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
@@ -50,9 +52,9 @@ class LocationStation : Location
 		port.position = SCNVector3(0,-0.2,0)
 		newPanel.addChildNode(port)
 		
-		let nameLabel = SCNLabel(text:"trade", color:red, align:alignment.right)
-		nameLabel.position = SCNVector3(-0.3,0,0)
-		port.addChildNode(nameLabel)
+		tradeLabel = SCNLabel(text:"trade", color:red, align:alignment.right)
+		tradeLabel.position = SCNVector3(-0.3,0,0)
+		port.addChildNode(tradeLabel)
 		
 		button.disable("install")
 		port.enable()
@@ -62,8 +64,11 @@ class LocationStation : Location
 	
 	override func onUploadComplete()
 	{
+		if port.hasEvent() == false { tradeLabel.update(grey) ; return }
+		
 		let trade = port.event as! Item
-		if trade.name == self.requirement.name && trade.type == self.requirement.type { button.enable("install") }
+		if trade.name == self.requirement.name && trade.type == self.requirement.type { button.enable("install") ; tradeLabel.update(cyan) }
+		else{ tradeLabel.update(red) }
 	}
 	
 	override func touch(id: Int)
