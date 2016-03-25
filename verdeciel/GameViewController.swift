@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.valen_cargo)
+		unlockedState(universe.valen_bank)
 //		startingState()
 	}
 	
@@ -81,9 +81,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
-	func unlockedState(location:Location = universe.valen_portal)
+	func unlockedState(location:Location = universe.valen_bank)
 	{
-		debug.isActive = true
+		debug.isActive = false
 		
 		universe.unlock(.loiqe)
 		universe.unlock(.valen)
@@ -118,7 +118,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		
-		quests.skip(.primary, id: 5)
+		quests.skip(.primary, id: 7)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

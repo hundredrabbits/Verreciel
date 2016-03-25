@@ -10,6 +10,7 @@ import Foundation
 class PanelHatch : MainPanel
 {
 	let outline = SCNNode()
+	var count:Int = 0
 	
 	override init()
 	{
@@ -55,18 +56,13 @@ class PanelHatch : MainPanel
 
 	override func touch(id:Int = 0)
 	{
-		print("touch")
-		bang()
-	}
-	
-	override func bang()
-	{
-		if port.origin == nil || port.origin.event == nil { print("Nothing to jetison") ; return }
+		if port.isReceiving() == false { return }
 		if port.origin.event.isQuest == true { return }
 		
 		port.origin.removeEvent()
-		
+		count += 1
 		update()
+		quests.refresh()
 	}
 	
 	override func update()

@@ -96,17 +96,21 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.cell2) || cargo.contains(items.cell2) }, result: {  }),
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.cell2) }, result: {  }),
-			Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }),
+			Quest(name:"Route cell to radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
 		]
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Hatch Lesson")
+		m.predicate = { hatch.count > 0 }
 		m.quests = [
 			Quest(name:"Collect Waste", location: universe.valen_bank, predicate:{ cargo.containsLike(items.waste) }, result: { hatch.install() }),
-			Quest(name:"Route waste to hatch", location: universe.valen_harvest, predicate:{ hatch.port.hasItemLike(items.waste) }, result: {  })
+			Quest(name:"Route waste to hatch", predicate:{ hatch.port.hasItemLike(items.waste) }, result: {  }),
+			Quest(name:"Jetison Waste", predicate:{ hatch.count > 0 }, result: {  })
 		]
 		questlog[c]?.append(m)
+		
+		// Valen South
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key")
 		m.predicate = { cargo.contains(items.senniPortalKey) }

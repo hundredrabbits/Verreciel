@@ -31,7 +31,8 @@ class CoreUniverse : SCNNode
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.record1)
 		valen_bank.port3.addEvent(items.usulPortalFragment1)
-		
+		valen_bank.port4.addEvent(Item(name: items.waste.name!, type: items.waste.type))
+			
 		for location in childNodes {
 			location.start()
 		}
