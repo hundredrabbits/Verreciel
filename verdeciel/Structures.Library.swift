@@ -270,6 +270,12 @@ class StructuresLibrary
 		let hex3 = SCNHexa(radius: 6, color: grey)
 		hex3.position = SCNVector3(0,0,-2)
 		mesh.addChildNode(hex3)
+		let hex4 = SCNHexa(radius: 6, color: grey)
+		hex4.position = SCNVector3(0,0,4)
+		mesh.addChildNode(hex4)
+		let hex5 = SCNHexa(radius: 6, color: grey)
+		hex5.position = SCNVector3(0,0,-4)
+		mesh.addChildNode(hex5)
 		
 		mesh.eulerAngles.x = Float(degToRad(90))
 		

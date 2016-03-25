@@ -52,7 +52,7 @@ class LocationStation : Location
 		port.position = SCNVector3(0,-0.2,0)
 		newPanel.addChildNode(port)
 		
-		tradeLabel = SCNLabel(text:"trade", color:red, align:alignment.right)
+		tradeLabel = SCNLabel(text:"trade", color:grey, align:alignment.right)
 		tradeLabel.position = SCNVector3(-0.3,0,0)
 		port.addChildNode(tradeLabel)
 		

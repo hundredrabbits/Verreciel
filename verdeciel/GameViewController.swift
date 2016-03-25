@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-//		unlockedState(universe.loiqe_horadric)
-		startingState()
+		unlockedState(universe.valen_cargo)
+//		startingState()
 	}
 	
 	func startingState()
@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
-	func unlockedState(location:Location = universe.loiqe_satellite)
+	func unlockedState(location:Location = universe.valen_portal)
 	{
 		debug.isActive = true
 		
@@ -96,6 +96,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		hatch.install()
 		mission.install()
 		console.install()
+		thruster.install()
 		
 		radio.install()
 		enigma.install()
@@ -112,12 +113,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.valen_portal.isKnown = true
 		universe.loiqe_portal.isKnown = true
 		
-		cargo.addItems([items.valenPortalFragment1, items.map1, items.valenPortalFragment2])
+		cargo.addItems([items.record1, Item(name: items.currency2.name!, type: items.currency2.type)])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		
-		mission.touch(2)
+		quests.skip(.primary, id: 5)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

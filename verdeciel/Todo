@@ -3,7 +3,12 @@
 ================
 
 - Rotate undocked structures to angle instead of step
-- Battery's isPowered are not working
+- Cannot warp if not aligned(Portal)
+- Add distance in above panel
+- Maybe move quest to below?!
+- Increase docking speed
+- Radio text color doesn't change on disconnect
+- Install Battery through Battry port
 
 ================
 *    MINOR
@@ -21,7 +26,6 @@
 - Issue with UI offset animation
 - Release touch when installing camera animation
 - Add cancel docking button/trigger to thruster
-- Cannot warp if not aligned(Portal)
 - Map Functionality
 - Connecting something to console enables cargo item ports?!
 
@@ -31,6 +35,8 @@
 - Interface sounds
 - Update mission panel to fit within shield
 - Combine records together
+- Animate docking on Trade Locations
+- Animate docking on Satellite Locations
 
 > Narative
 - Telemetrists!? Twin Suns

@@ -14,6 +14,7 @@ class Quest
 	var predicate:() -> Bool
 	var result:() -> Void
 	var isCompleted:Bool = false
+	var isSkipped:Bool = false
 	
 	init(name:String, location:Location! = nil, predicate:() -> Bool, result: () -> Void )
 	{
@@ -25,7 +26,10 @@ class Quest
 
 	func validate()
 	{
-		if predicate() {
+		if isSkipped == true {
+			isCompleted = true
+		}
+		else if predicate() {
 			complete()
 		}
 		else{

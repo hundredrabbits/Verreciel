@@ -81,9 +81,9 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Valen
+		// Arriving in Valen
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio") //TODO: should collect second cell?
+		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
@@ -94,7 +94,8 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Lesson")
 		m.quests = [
-			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.cell2) }, result: {  }),
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.cell2) || cargo.contains(items.cell2) }, result: {  }),
+			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.cell2) }, result: {  }),
 			Quest(name:"Power radio in battery panel", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
 		]
@@ -255,5 +256,10 @@ class MissionLibrary
 	func setActive(chapter:Chapters)
 	{
 		active = chapter
+	}
+	
+	func skip(chapter:Chapters,id:Int)
+	{
+		currentMission[chapter] = questlog[chapter]![id]
 	}
 }

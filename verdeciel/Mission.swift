@@ -28,7 +28,6 @@ class Mission
 	func validate()
 	{
 		if currentQuest == nil { currentQuest = quests.first }
-		
 		if predicate() != nil && predicate() == true { complete() }
 		
 		for quest in quests {

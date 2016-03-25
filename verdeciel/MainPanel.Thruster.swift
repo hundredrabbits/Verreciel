@@ -337,6 +337,9 @@ class PanelThruster : MainPanel
 		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
 		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
 		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+		
+		lineLeft.color(grey)
+		lineRight.color(grey)
 	}
 	
 	func modeUnpowered()
