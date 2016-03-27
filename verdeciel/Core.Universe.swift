@@ -30,8 +30,7 @@ class CoreUniverse : SCNNode
 		
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.record1)
-		valen_bank.port3.addEvent(items.usulPortalFragment1)
-		valen_bank.port4.addEvent(Item(name: items.waste.name!, type: items.waste.type))
+		valen_bank.port3.addEvent(Item(like:items.waste))
 			
 		for location in childNodes {
 			location.start()
@@ -84,7 +83,6 @@ class CoreUniverse : SCNNode
 	var valen_bank = locations.valen.bank()
 	var valen_station = locations.valen.station()
 	var valen_portal = locations.valen.portal()
-	var valen_satellite = locations.valen.satellite()
 	var valen_harvest = locations.valen.harvest()
 	var valen_port = locations.valen.port()
 	var valen_cargo = locations.valen.cargo()
@@ -95,7 +93,6 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_bank)
 		addChildNode(valen_station)
 		addChildNode(valen_portal)
-		addChildNode(valen_satellite)
 		addChildNode(valen_harvest)
 		addChildNode(valen_port)
 		addChildNode(valen_cargo)

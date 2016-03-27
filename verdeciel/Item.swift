@@ -20,6 +20,16 @@ class Item : Event
 		self.note = note
 		self.isQuest = isQuest
 	}
+	
+	init(like:Item)
+	{
+		super.init()
+		
+		self.name = like.name
+		self.type = like.type
+		self.note = like.note
+		self.isQuest = like.isQuest
+	}
 
 	required init(coder aDecoder: NSCoder)
 	{

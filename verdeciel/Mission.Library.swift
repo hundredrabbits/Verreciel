@@ -110,16 +110,40 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
+		m = Mission(id:(questlog[c]?.count)!, name: "Craft \(items.currency4)")
+		m.predicate = { cargo.containsLike(items.currency4) }
+		m.quests = [
+			Quest(name:"Aquire \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
+			Quest(name:"Aquire \(items.currency1.name!)", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { }),
+			Quest(name:"Combine currencies", location: universe.loiqe_horadric, predicate:{ cargo.containsLike(items.currency4) }, result: { })
+		]
+		questlog[c]?.append(m)
+		
 		// Valen South
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key")
 		m.predicate = { cargo.contains(items.senniPortalKey) }
 		m.quests = [
-			
-			Quest(name:"Aquire \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
-			Quest(name:"Aquire \(items.currency1.name!)", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { }),
-			Quest(name:"Combine currencies", location: universe.loiqe_horadric, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
-			Quest(name:"Aquire \(items.senniPortalKey.name)", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalKey) }, result: { })
+			Quest(name:"Aquire \(items.currency4.name!)", predicate:{ cargo.containsLike(items.currency4) }, result: { }),
+			Quest(name:"Trade \(items.currency4.name!) for \(items.senniPortalKey.name!)", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalKey) }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		// Senni
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Reach Senni System")
+		m.predicate = { universe.senni_portal.isKnown == true }
+		m.quests = [
+			Quest(name:"Reach Senni Portal", predicate:{ universe.senni_portal.isKnown == true }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Install Map")
+		m.predicate = { radio.isInstalled == true }
+		m.quests = [
+			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
+			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
+			Quest(name:"Install radio", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		

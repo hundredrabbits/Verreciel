@@ -61,4 +61,7 @@ class ItemLibrary
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
 	let currency2 = Item(name: "materia", type: .currency, note:"trading currency")
 	let currency3 = Item(name: "natal", type: .currency, note:"trading currency")
+	let currency4 = Item(name: "cur4", type: .currency, note:"From 1 & 2")
+	let currency5 = Item(name: "cur5", type: .currency, note:"From 2 & 3")
+	let currency6 = Item(name: "cur6", type: .currency, note:"From 4 & 5")
 }

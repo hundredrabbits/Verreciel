@@ -35,6 +35,6 @@ class RecipesLibrary
 	
 	private func currencies()
 	{
-		horadric.append( Recipe(ingredients: [items.currency1, items.currency2], result: Item(name: items.currency3.name!, type: items.currency3.type, note:items.currency3.note)) )
+		horadric.append( Recipe(ingredients: [items.currency1, items.currency2], result: Item(like:items.currency4)) )
 	}
 }

@@ -113,12 +113,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.valen_portal.isKnown = true
 		universe.loiqe_portal.isKnown = true
 		
-		cargo.addItems([items.record1, Item(name: items.currency2.name!, type: items.currency2.type)])
+		cargo.addItems([items.record1, Item(like:items.currency4)])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		
-		quests.skip(.primary, id: 7)
+		quests.skip(.primary, id: 8)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -180,7 +180,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-		glLineWidth(3)
+		glLineWidth(1)
 		
 		capsule.fixedUpdate()
 		player.fixedUpdate()
