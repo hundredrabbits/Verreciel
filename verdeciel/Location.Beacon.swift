@@ -9,11 +9,8 @@ class LocationBeacon : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, type: .beacon)
 		
-		self.name = name
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.message = message
 		self.structure = structures.beacon()

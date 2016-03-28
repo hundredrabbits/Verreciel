@@ -69,6 +69,10 @@ class PanelRadar : MainPanel
 		footer.addChildNode(handle)
 	}
 	
+	override func refresh()
+	{
+	}
+	
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()

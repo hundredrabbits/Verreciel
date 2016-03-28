@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.senni_station)
+		unlockedState(universe.senni_harvest)
 //		startingState()
 	}
 	
@@ -100,7 +100,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		radio.install()
 		enigma.install()
-//		map.install()
+		map.install()
 		shield.install()
 
 		exploration.install()
@@ -120,7 +120,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.connect(battery.thrusterPort)
 		battery.cellPort2.addEvent(items.cell2)
 		
-		quests.skip(.primary, id: 11)
+		quests.skip(.primary, id: 12)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

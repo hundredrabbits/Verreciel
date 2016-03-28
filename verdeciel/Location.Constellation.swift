@@ -11,12 +11,8 @@ class LocationConstellation : Location
 {
 	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:SCNNode = structures.none())
 	{
-		super.init(name:name, system:system, at:at)
+		super.init(name:name, system:system, at:at, type: .waypoint)
 		
-		self.name = name
-		self.type = .waypoint
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.structure = structure
 		icon.replace(icons.constellation())

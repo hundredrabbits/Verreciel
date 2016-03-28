@@ -36,11 +36,13 @@ class Location : Event
 	var wire:SCNLine!
 	var connection:Event!
 	
-	init(name:String = "",system:Systems = .unknown, at: CGPoint)
+	init(name:String = "",system:Systems = .unknown, at: CGPoint, type:LocationTypes)
 	{
 		super.init(name:name, at:at)
-
+		
+		self.name = name
 		self.at = at
+		self.system = system
 		
 		geometry = SCNPlane(width: 0.5, height: 0.5)
 		geometry?.firstMaterial?.diffuse.contents = clear
@@ -73,6 +75,11 @@ class Location : Event
 	func setup()
 	{
 	
+	}
+	
+	func refresh()
+	{
+		
 	}
 	
 	override func fixedUpdate()

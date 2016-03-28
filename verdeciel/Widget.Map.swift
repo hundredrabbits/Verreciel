@@ -27,6 +27,11 @@ class WidgetMap : Widget
 		return false
 	}
 	
+	override func onUploadComplete()
+	{
+		super.onUploadComplete()
+	}
+	
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()

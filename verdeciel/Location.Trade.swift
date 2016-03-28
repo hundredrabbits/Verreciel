@@ -10,12 +10,8 @@ class LocationTrade : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at)
+		super.init(name: name,system:system, at: at, type: .trade)
 		
-		self.name = name
-		self.type = .trade
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.structure.addChildNode(structures.trade())
 		self.isComplete = false
@@ -74,7 +70,7 @@ class LocationTrade : Location
 		refresh()
 	}
 	
-	func refresh()
+	override func refresh()
 	{
 		if wantPort.event != nil && wantPort.event.name == wantPort.requirement.name {
 			wantPort.disable()

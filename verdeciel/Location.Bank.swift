@@ -20,12 +20,8 @@ class LocationBank : Location
 	
 	override init(name:String = "", system:Systems, at: CGPoint = CGPoint())
 	{
-		super.init(name: name,system:system, at:at)
-		
-		self.name = name
-		self.type = .bank
-		self.system = system
-		self.at = at
+		super.init(name: name,system:system, at:at, type: .bank)
+	
 		self.note = ""
 		self.structure = structures.none()
 		self.icon.replace(icons.bank())

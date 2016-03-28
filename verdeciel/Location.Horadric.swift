@@ -12,13 +12,10 @@ class LocationHoradric : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at)
+		super.init(name: name,system:system, at: at, type: .horadric)
 		
-		self.name = name
-		self.type = .horadric
-		self.system = system
-		self.at = at
 		self.note = ""
+		self.mapRequirement = mapRequirement
 		self.structure = structures.horadric()
 		icon.replace(icons.horadric())
 	}
@@ -94,7 +91,7 @@ class LocationHoradric : Location
 		refresh()
 	}
 	
-	func refresh()
+	override func refresh()
 	{
 		if outPort.hasEvent() == true {
 			inPort1.disable()

@@ -17,12 +17,8 @@ class LocationStation : Location
 		self.requirement = requirement
 		self.installationName = installationName
 		
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, type: .station)
 		
-		self.name = name
-		self.type = .station
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.structure = structures.station()
 		self.icon.replace(icons.station())

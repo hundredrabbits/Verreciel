@@ -10,12 +10,8 @@ class LocationHarvest : Location
 	
 	init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0), grows:Item)
 	{
-		super.init(name:name, system:system, at:at)
+		super.init(name:name, system:system, at:at, type: .harvest)
 		
-		self.name = name
-		self.type = .waypoint
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.structure = structures.harvest()
 		icon.replace(icons.harvest())
@@ -92,7 +88,7 @@ class LocationHarvest : Location
 		refresh()
 	}
 
-	func refresh()
+	override func refresh()
 	{
 		if port.hasEvent(grows) != true {
 			structure.updateChildrenColors(grey)

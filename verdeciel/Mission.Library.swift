@@ -149,7 +149,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Map Lesson")
 		m.quests = [
-			Quest(name:"Route cell to map", predicate:{ battery.isMapPowered() == true }, result: {  }),
+			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
 			Quest(name:"Collect first array", location: universe.senni_satellite, predicate:{ battery.hasCell(items.array1) || cargo.contains(items.array1) }, result: {  }),
 			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.array1) }, result: {  }),

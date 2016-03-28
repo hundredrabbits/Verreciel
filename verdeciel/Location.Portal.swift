@@ -29,12 +29,8 @@ class LocationPortal : Location
 	
 	init(name:String, system:Systems, at: CGPoint, leftKey: Event!, rightKey: Event!, leftName:String, rightName:String)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, type: .portal)
 		
-		self.name = name
-		self.type = .portal
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.color = color
 		self.structure = structures.portal()

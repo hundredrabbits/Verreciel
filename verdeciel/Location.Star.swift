@@ -12,12 +12,8 @@ class LocationStar : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, type: .star)
 		
-		self.name = name
-		self.type = .star
-		self.system = system
-		self.at = at
 		self.note = ""
 		self.color = color
 		self.structure = structures.star()
