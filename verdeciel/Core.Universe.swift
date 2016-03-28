@@ -46,8 +46,8 @@ class CoreUniverse : SCNNode
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
-	var loiqe_cargo = locations.loiqe.cargo()
-	var loiqe_c_fog = locations.loiqe.c_fog()
+	var loiqe_c_fog = locations.loiqe.c_1()
+	var loiqe_fog = locations.loiqe.fog()
 	
 	func addLoiqe()
 	{
@@ -58,8 +58,8 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)
 		addChildNode(loiqe_satellite)
-		addChildNode(loiqe_cargo)
-		addChildNode(loiqe_c_fog)
+		// Fog
+		addChildNode(loiqe_fog)
 	}
 	
 	// MARK: Usul -
@@ -86,6 +86,7 @@ class CoreUniverse : SCNNode
 	var valen_harvest = locations.valen.harvest()
 	var valen_port = locations.valen.port()
 	var valen_cargo = locations.valen.cargo()
+	var valen_fog = locations.valen.fog()
 	
 	func addValen()
 	{
@@ -96,6 +97,8 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_harvest)
 		addChildNode(valen_port)
 		addChildNode(valen_cargo)
+		// Fog
+		addChildNode(valen_fog)
 	}
 	
 	// MARK: Senni -
@@ -105,8 +108,8 @@ class CoreUniverse : SCNNode
 	var senni_cargo = locations.senni.cargo()
 	var senni_portal = locations.senni.portal()
 	var senni_harvest = locations.senni.harvest()
-	var senni_satellite = locations.senni.satellite()
 	var senni_horadric = locations.senni.horadric()
+	var senni_fog = locations.senni.fog()
 	
 	func addSenni()
 	{
@@ -115,8 +118,9 @@ class CoreUniverse : SCNNode
 		addChildNode(senni_portal)
 		addChildNode(senni_cargo)
 		addChildNode(senni_harvest)
-		addChildNode(senni_satellite)
+		// Fog
 		addChildNode(senni_horadric)
+		addChildNode(senni_fog)
 	}
 	
 	// MARK: Falvet -
@@ -143,17 +147,19 @@ class CoreUniverse : SCNNode
 		loiqe_city.connect(loiqe_satellite)
 		loiqe_satellite.connect(loiqe_portal)
 		loiqe_horadric.connect(loiqe_satellite)
+		loiqe_fog.connect(loiqe_city)
 		
 		valen_bank.connect(valen_portal)
 		valen_station.connect(valen_bank)
 		valen_harvest.connect(valen_bank)
 		valen_port.connect(valen_bank)
+		valen_fog.connect(valen_port)
 		
 		senni_portal.connect(senni_cargo)
 		senni_cargo.connect(senni_harvest)
 		senni_harvest.connect(senni_station)
 		senni_station.connect(senni_portal)
-		senni_satellite.connect(senni_station)
+		senni_fog.connect(senni_station)
 		senni_horadric.connect(senni_harvest)
 	}
 	

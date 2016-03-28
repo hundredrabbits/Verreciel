@@ -72,18 +72,19 @@ class Loiqe
 		return LocationBeacon(name:"loiqe beacon",system:system, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
 	}
 	
-	func cargo() -> LocationSatellite
+	// Fog
+	
+	func fog() -> LocationTrade
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y + 1), message:"Horadric cell$with cell$make array", item:items.cell2, mapRequirement:items.map1)
+		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
 	// Constellations
 	
-	func c_fog() -> LocationConstellation
+	func c_1() -> LocationConstellation
 	{
 		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 1.5, y: offset.y), structure: structures.c_fog())
 	}
-	
 }
 
 class Usul
@@ -167,6 +168,11 @@ class Valen
 	{
 		return LocationTrade(name: "port",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
 	}
+	
+	func fog() -> LocationTrade
+	{
+		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
+	}
 }
 
 class Senni
@@ -211,9 +217,9 @@ class Senni
 		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x, y: offset.y + 2), mapRequirement: items.map1)
 	}
 	
-	func satellite() -> LocationSatellite
+	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.array1, mapRequirement: items.map1)
+		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.array1, mapRequirement: items.map1)
 	}
 }
 

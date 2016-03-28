@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.senni_harvest)
+		unlockedState(universe.loiqe_city)
 //		startingState()
 	}
 	

@@ -81,7 +81,7 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Arriving in Valen
+		// Go to Valen
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Radio")
 		m.predicate = { radio.isInstalled == true }
@@ -119,7 +119,7 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Valen South
+		// Go to Valen(South)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Senni Portal Key")
 		m.predicate = { cargo.contains(items.senniPortalKey) }
@@ -129,7 +129,7 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		// Senni
+		// Go to Senni
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Reach Senni System")
 		m.predicate = { universe.senni_portal.isKnown == true }
@@ -151,7 +151,7 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
-			Quest(name:"Collect first array", location: universe.senni_satellite, predicate:{ battery.hasCell(items.array1) || cargo.contains(items.array1) }, result: {  }),
+			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.array1) || cargo.contains(items.array1) }, result: {  }),
 			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.array1) }, result: {  }),
 		]
 		questlog[c]?.append(m)
@@ -168,9 +168,30 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Create Cyan key")
+		// Return to Loiqe
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Create \(items.currency5)")
 		m.quests = [
-			Quest(name:"Combine loiqe and senni keys", location: universe.senni_horadric, predicate:{ cargo.contains(items.masterCyanKey) }, result: {  }),
+			Quest(name:"Collect \(items.currency3)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
+			Quest(name:"Collect \(items.currency2)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
+			Quest(name:"Combine currencies", predicate:{ cargo.containsLike(items.currency5) }, result: { }),
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key")
+		m.quests = [
+			Quest(name:"Trade \(items.currency5)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.usulPortalFragment1) }, result: {  }),
+			Quest(name:"Trade \(items.currency4)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.usulPortalFragment2) }, result: {  }),
+			Quest(name:"Combine key fragments", predicate:{ cargo.contains(items.usulPortalKey) }, result: { }),
+		]
+		questlog[c]?.append(m)
+		
+		// Go to Usul
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Reach Usul System")
+		m.predicate = { universe.usul_portal.isKnown == true }
+		m.quests = [
+			Quest(name:"Reach Usul Portal", predicate:{ universe.usul_portal.isKnown == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		
