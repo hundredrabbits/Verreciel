@@ -2,11 +2,28 @@
 *    MAJOR
 ================
 
-- Rotate undocked structures to angle instead of step
-- Cannot warp if not aligned(Portal)
-- Add distance in above panel
-- Maybe move quest to below?!
-- Increase docking speed
+- Design Usul
+- Design Falvet(enter from star)
+- Create Enigma Lesson
+- Collect Map2 in Usul
+- Star quest
+- Inject cells, array, etc.
+- Map interaction
+- Map animation
+
+- Key combination quest
+- Secondary quests
+- Add beacons with secondary hints
+- Design star panel
+- Color star colors in Senni
+- Color star colors in Usul
+- Color star colors in Falvet
+- Collect Map3 in Falvet
+- Gather items in ports when undocking from a location
+- Enigma lesson
+- Radio in Pilot quest
+- Enigma in console quest
+- Collect shield quest
 
 ================
 *    MINOR
@@ -14,17 +31,20 @@
 
 > Playthrough
 - Save / Load Mechanics
-
 - Add constellation between warps
 - Add constellation in valen
 - (Bank)If empty, display grey
 - Connect quest(Complete) monitor
+- Rotate undocked structures to angle instead of step
+- Cannot warp if not aligned(Portal)
+- Add distance in above panel
+- Maybe move quest to below?!
+- Increase docking speed
 
 > Bugs
 - Issue with UI offset animation
 - Release touch when installing camera animation
 - Add cancel docking button/trigger to thruster
-- Map Functionality
 - Connecting something to console enables cargo item ports?!
 
 > Design
@@ -32,7 +52,6 @@
 - Add ship doodads
 - Interface sounds
 - Update mission panel to fit within shield
-- Combine records together
 - Animate docking on Trade Locations
 - Animate docking on Satellite Locations
 
@@ -42,14 +61,3 @@
 - "Look how much I have grown since we met in Hiversaires"
 - "I learnt your languages"
 - White sun?
-
-= Cells [Capsule, Loiqe Cargo]
-= Arrays [Horadric, Valen Cargo]
-= Grids [Horadric, Senni Cargo]
-= Matrix [Horadric, Usul Cargo]
-
-= Loiqe Fragments []
-= Valen Fragments [Loiqe City, Loiqe Satellite]
-= Senni Fragments [Valen Bank, Valen Port]
-= Usul Fragments [Senni City, Senni Satellite]
-
