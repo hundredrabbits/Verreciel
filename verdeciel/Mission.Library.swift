@@ -143,7 +143,16 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
 			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
-			Quest(name:"Install radio", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
+			Quest(name:"Install map", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Map Lesson")
+		m.quests = [
+			Quest(name:"Route cell to map", predicate:{ battery.isMapPowered() == true }, result: {  }),
+			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
+			Quest(name:"Collect first array", location: universe.senni_satellite, predicate:{ battery.hasCell(items.array1) || cargo.contains(items.array1) }, result: {  }),
+			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.array1) }, result: {  }),
 		]
 		questlog[c]?.append(m)
 		

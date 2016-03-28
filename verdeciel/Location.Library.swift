@@ -208,12 +208,12 @@ class Senni
 	
 	func horadric() -> LocationHoradric
 	{
-		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x + 2, y: offset.y), map: items.map1)
+		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x, y: offset.y + 2), mapRequirement: items.map1)
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x, y: offset.y + 1), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
+		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
 	}
 }
 

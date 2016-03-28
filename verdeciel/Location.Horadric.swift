@@ -10,7 +10,7 @@ class LocationHoradric : Location
 	
 	var outPort:SCNPortSlot!
 	
-	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), map:Item! = nil)
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), mapRequirement:Item! = nil)
 	{
 		super.init(name: name,system:system, at: at)
 		

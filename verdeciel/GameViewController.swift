@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.senni_portal)
+		unlockedState(universe.senni_station)
 //		startingState()
 	}
 	
@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.cell1)
 	}
 	
-	func unlockedState(location:Location = universe.valen_bank)
+	func unlockedState(location:Location = universe.senni_station)
 	{
 		debug.isActive = false
 		
@@ -114,12 +114,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.loiqe_portal.isKnown = true
 		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([items.record1, items.senniPortalKey])
+		cargo.addItems([items.record1, items.currency3, items.map1])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		
-		quests.skip(.primary, id: 9)
+		quests.skip(.primary, id: 11)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

@@ -32,6 +32,8 @@ class WidgetMap : Widget
 		super.onInstallationComplete()
 		
 		battery.installMap()
+		
+		if debug.isActive == false { player.lookAt(deg: -90) }
 	}
 
 	required init?(coder aDecoder: NSCoder)

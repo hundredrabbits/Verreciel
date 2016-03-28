@@ -9,16 +9,6 @@ class ItemLibrary
 	// Capsule
 	let playerCargo = Item(name: "player cargo", type: .cargo, note:"need description", isQuest:true)
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
-
-	// Batteries
-	let cell1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let cell2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let array1 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
-	let array2 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
-	let grid1 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
-	let grid2 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
-	let matrix1 = Item(name: "matrix I", type: .battery, note:"gives large power", isQuest:true)
-	let matrix2 = Item(name: "matrix II", type: .battery, note:"gives large power", isQuest:true)
 	
 	// Misc
 	let waste = Item(name: "waste", type: .waste, note:"useless junk")
@@ -64,4 +54,14 @@ class ItemLibrary
 	let currency4 = Item(name: "cur4", type: .currency, note:"From 1 & 2")
 	let currency5 = Item(name: "cur5", type: .currency, note:"From 2 & 3")
 	let currency6 = Item(name: "cur6", type: .currency, note:"From 4 & 5")
+	
+	// Batteries
+	let cell1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let cell2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let array1 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let array2 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
+	let grid1 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let grid2 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
+	let matrix1 = Item(name: "matrix I", type: .battery, note:"gives large power", isQuest:true)
+	let matrix2 = Item(name: "matrix II", type: .battery, note:"gives large power", isQuest:true)
 }

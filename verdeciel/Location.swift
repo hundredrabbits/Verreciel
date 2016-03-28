@@ -66,6 +66,8 @@ class Location : Event
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
 		angle = calculateAngle()
 		align = calculateAlignment()
+		
+		if mapRequirement != nil { label.update(white) }
 	}
 	
 	func setup()
@@ -187,7 +189,7 @@ class Location : Event
 				self.opacity = 1
 			}
 			else if self.mapRequirement != nil {
-				self.opacity = (map.hasMap(self.mapRequirement) == true) ? 1 : 0
+				self.opacity = (map.hasMap(self.mapRequirement) == true && battery.isMapPowered() == true) ? 1 : 0
 			}
 		}
 		// Out Of Sight
