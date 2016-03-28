@@ -57,6 +57,13 @@ class SCNLine : SCNNode
 		draw(nodeA, nodeB: nodeB, color: color)
 	}
 	
+	func update(color:UIColor)
+	{
+		if color == self.color { return }
+		self.color = color
+		draw(nodeA, nodeB: nodeB, color: color)
+	}
+	
 	func setGrowth(percent:Float)
 	{
 		draw(SCNVector3(nodeA.x,nodeA.y,nodeA.z), nodeB: SCNVector3(nodeB.x * percent,nodeB.y * percent,nodeB.z * percent), color: color)

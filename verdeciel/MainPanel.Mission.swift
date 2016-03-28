@@ -206,9 +206,9 @@ class PanelMission : MainPanel
 		if activeQuest == nil { return }
 		if activeMission.requirement() != nil && activeMission.requirement() == false { return }
 		
-		if activeQuest.location != nil && capsule.dock != activeQuest.location && capsule.system != activeQuest.location.system { ui.addMessage("Reach the \(activeQuest.location.system) system", color:cyan) }
-		else if activeQuest.location != nil && capsule.dock != activeQuest.location { ui.addMessage("Reach \(activeQuest.location.system) \(activeQuest.location.name!)", color:red) }
-		else { ui.addMessage(activeQuest.name) }
+		if activeQuest.location != nil && capsule.dock != activeQuest.location && capsule.system != activeQuest.location.system { helmet.addMessage("Reach the \(activeQuest.location.system) system", color:cyan) }
+		else if activeQuest.location != nil && capsule.dock != activeQuest.location { helmet.addMessage("Reach \(activeQuest.location.system) \(activeQuest.location.name!)", color:red) }
+		else { helmet.addMessage(activeQuest.name) }
 	}
 	
 	// MARK: Ports -

@@ -73,7 +73,7 @@ class Widget : Panel
 	{
 		super.onInstallationBegin()
 		
-		ui.addWarning("Installing", duration: 3)
+		helmet.addWarning("Installing", duration: 3)
 		
 		installNode = SCNNode()
 		installNode.position = SCNVector3(0,-0.6,templates.radius)

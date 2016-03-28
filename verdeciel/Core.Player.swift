@@ -152,7 +152,7 @@ class CorePlayer : SCNNode
 	{
 		let normalizedDeg = radToDeg(CGFloat(player.eulerAngles.y)) % 360
 		player.eulerAngles.y = Float(degToRad(normalizedDeg))
-		ui.eulerAngles.y = Float(degToRad(normalizedDeg))
+		helmet.eulerAngles.y = Float(degToRad(normalizedDeg))
 		
 		print("+ PLAYER   | LookAt(from:\(radToDeg(CGFloat(player.eulerAngles.y))),to:\(deg))")
 		
@@ -163,8 +163,8 @@ class CorePlayer : SCNNode
 		
 		player.position = position
 		player.eulerAngles.y = Float(degToRad(deg))
-		ui.position = position
-		ui.eulerAngles.y = Float(degToRad(deg))
+		helmet.position = position
+		helmet.eulerAngles.y = Float(degToRad(deg))
 		
 		SCNTransaction.setCompletionBlock({ player.isLocked = false })
 		SCNTransaction.commit()
@@ -207,7 +207,7 @@ class CorePlayer : SCNNode
 	
 	func holdPort(port:SCNPort)
 	{
-		if port.host != nil && port.host.name != nil { ui.leftHandLabel.update("\(port.host!.name!)", color: white) }	
+		if port.host != nil && port.host.name != nil { helmet.leftHandLabel.update("\(port.host!.name!)", color: white) }
 		
 		activePort = port
 		port.activate()
@@ -215,7 +215,7 @@ class CorePlayer : SCNNode
 	
 	func connectPorts(from:SCNPort,to:SCNPort)
 	{
-		ui.leftHandLabel.update("--", color: grey)
+		helmet.leftHandLabel.update("--", color: grey)
 		
 		activePort = nil
 		from.connect(to)
@@ -227,7 +227,7 @@ class CorePlayer : SCNNode
 	
 	func releasePort()
 	{
-		ui.leftHandLabel.update("--", color: grey)
+		helmet.leftHandLabel.update("--", color: grey)
 		
 		activePort.desactivate()
 		activePort.disconnect()
@@ -243,7 +243,7 @@ class CorePlayer : SCNNode
 	{
 		releaseHandle()
 		
-		ui.rightHandLabel.update(handle.host.name!, color: white)
+		helmet.rightHandLabel.update(handle.host.name!, color: white)
 		
 		activeHandle = handle
 		activeHandle.disable()
@@ -251,7 +251,7 @@ class CorePlayer : SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		player.position = activeHandle.destination
-		ui.position = activeHandle.destination
+		helmet.position = activeHandle.destination
 		SCNTransaction.commit()
 		
 		player.handleTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.releaseHandleAuto), userInfo: nil, repeats: false)
@@ -259,7 +259,7 @@ class CorePlayer : SCNNode
 	
 	func releaseHandle()
 	{
-		ui.rightHandLabel.update("--", color: grey)
+		helmet.rightHandLabel.update("--", color: grey)
 		
 		if activeHandle == nil { return }
 		activeHandle.enable()
@@ -270,12 +270,12 @@ class CorePlayer : SCNNode
 	
 	func releaseHandleAuto()
 	{
-		ui.rightHandLabel.update("--", color: grey)
+		helmet.rightHandLabel.update("--", color: grey)
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2.5)
 		player.position = SCNVector3(0,0,0)
-		ui.position = SCNVector3(0,0,0)
+		helmet.position = SCNVector3(0,0,0)
 		SCNTransaction.commit()
 		
 		activeHandle.enable()

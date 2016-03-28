@@ -67,7 +67,7 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if mapRequirement != nil { label.update(white) }
+		if mapRequirement != nil { label.update(cyan) }
 	}
 	
 	func setup()

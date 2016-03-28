@@ -52,10 +52,10 @@ class CoreCapsule: SCNNode
 		docking()
 		warping()
 		
-		if isFleeing == false && radiation > 0 { ui.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
-		else if isFleeing == true && radiation > 0.5 { ui.showWarning("Autopilot engaged") }
-		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; ui.showWarning("Autopilot engaged") }
-		else{ ui.hideWarning() }
+		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
+		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
+		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
+		else{ helmet.hideWarning() }
 	}
 	
 	func onSeconds()
@@ -231,7 +231,7 @@ class CoreCapsule: SCNNode
 		dock = newDock
 		thruster.disable()
 		
-		ui.addPassive("Approaching \(dock.name!)")
+		helmet.addPassive("Approaching \(dock.name!)")
 	}
 	
 	func docking()
@@ -264,7 +264,7 @@ class CoreCapsule: SCNNode
 		dock.onDock()
 		radar.removeTarget()
 		
-		ui.addPassive("Docked at \(dock.name!)")
+		helmet.addPassive("Docked at \(dock.name!)")
 		
 		mission.connectToLocation(dock)
 	}
@@ -277,7 +277,7 @@ class CoreCapsule: SCNNode
 		dock = nil
 		thruster.enable()
 		
-		ui.addPassive("in flight")
+		helmet.addPassive("in flight")
 		
 		mission.disconnectFromLocation()
 	}
@@ -335,7 +335,7 @@ class CoreCapsule: SCNNode
 		dock.onDock()
 		mission.connectToLocation(dock)
 		radar.removeTarget()
-		ui.addPassive("Docked at \(dock.name!)")
+		helmet.addPassive("Docked at \(dock.name!)")
 	}
 	
 	func isDockedAtLocation(location:Location) -> Bool

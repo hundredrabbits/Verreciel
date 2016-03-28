@@ -213,7 +213,7 @@ class Senni
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
+		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.array1, mapRequirement: items.map1)
 	}
 }
 

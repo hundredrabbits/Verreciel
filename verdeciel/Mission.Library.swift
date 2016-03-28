@@ -156,6 +156,12 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
+		m = Mission(id:(questlog[c]?.count)!, name: "Helmet Lesson")
+		m.quests = [
+			Quest(name:"Route map to helmet", predicate:{ helmet.isReceivingMap() }, result: {  })
+		]
+		questlog[c]?.append(m)
+		
 		// Star interaction tutorial
 		
 		// enigma quest & tutorials - decypher radio signal quest

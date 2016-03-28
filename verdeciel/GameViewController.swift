@@ -49,8 +49,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		space = CoreSpace()
 		scene.rootNode.addChildNode(space)
 		
-		ui = CoreUI()
-		scene.rootNode.addChildNode(ui)
+		helmet = Helmet()
+		scene.rootNode.addChildNode(helmet)
 		
 		time = CoreTime()
 		game = CoreGame()
@@ -62,7 +62,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		capsule._start()
 		player._start()
 		space._start()
-		ui._start()
+		helmet._start()
 		
 		time.start()
 		game.start()
@@ -118,6 +118,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
+		battery.cellPort2.addEvent(items.cell2)
 		
 		quests.skip(.primary, id: 11)
 	}
@@ -131,7 +132,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		}
 		
 		player.canAlign = false
-		ui.canAlign = false
+		helmet.canAlign = false
 	}
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -150,10 +151,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
         player.accelY += Float(degToRad(dragX/6))
         player.accelX += Float(degToRad(dragY/6))
 		
-		ui.accelX += Float(degToRad(dragY/6)) * 0.975
-        ui.accelY += Float(degToRad(dragX/6)) * 0.95
+		helmet.accelX += Float(degToRad(dragY/6)) * 0.975
+        helmet.accelY += Float(degToRad(dragX/6)) * 0.95
         
-		ui.updatePort()
+		helmet.updatePort()
 	}
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -161,8 +162,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		if player.isLocked == true { return }
 		
 		player.canAlign = true
-		ui.canAlign = true
-		ui.updatePort()
+		helmet.canAlign = true
+		helmet.updatePort()
 	}
 	
 	func handleTap(gestureRecognize: UIGestureRecognizer)
@@ -185,10 +186,10 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		capsule.fixedUpdate()
 		player.fixedUpdate()
-		ui.fixedUpdate()
+		helmet.fixedUpdate()
 		
 		space.fixedUpdate()
-		ui.updatePort()
+		helmet.updatePort()
 	}
 	
 	override func prefersStatusBarHidden() -> Bool

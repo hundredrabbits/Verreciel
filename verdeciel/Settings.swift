@@ -34,7 +34,7 @@ var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
-var ui:CoreUI!
+var helmet:Helmet!
 var game:CoreGame!
 var time:CoreTime!
 

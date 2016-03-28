@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CoreUI: SCNNode
+class Helmet: SCNNode
 {
 	var canAlign:Bool = false
 
@@ -103,12 +103,12 @@ class CoreUI: SCNNode
 		super.fixedUpdate()
 		
         if !player.isLocked {
-            ui.eulerAngles.x += accelX;
-            ui.eulerAngles.y += accelY;
+            helmet.eulerAngles.x += accelX;
+            helmet.eulerAngles.y += accelY;
             
             //keeps us within 2pi
-            ui.eulerAngles.x = Float(Double(ui.eulerAngles.x) % (2 * M_PI))
-            ui.eulerAngles.y = Float(Double(ui.eulerAngles.y) % (2 * M_PI))
+            helmet.eulerAngles.x = Float(Double(helmet.eulerAngles.x) % (2 * M_PI))
+            helmet.eulerAngles.y = Float(Double(helmet.eulerAngles.y) % (2 * M_PI))
             
             //dampening
             // closer to 1 for more 'momentum'
@@ -240,6 +240,12 @@ class CoreUI: SCNNode
 		}
 		self.warning = ""
 		warningLabel.update(self.warning)
+	}
+	
+	func isReceivingMap() -> Bool
+	{
+		if player.port.isReceivingItemOfType(.map) == true { return true }
+		return false
 	}
 	
 	required init(coder aDecoder: NSCoder)
