@@ -110,6 +110,8 @@ enum LocationTypes
 	case satellite
 	case bank
 	case spawn
+	case harvest
+	case beacon
 }
 
 enum ItemTypes

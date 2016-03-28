@@ -90,6 +90,7 @@ class SCNPortSlot : SCNPort
 	
 	override func onConnect()
 	{
+		super.onConnect()
 		// Input
 		if origin != nil && origin.event != nil && event == nil {
 			upload(origin.event as! Item)

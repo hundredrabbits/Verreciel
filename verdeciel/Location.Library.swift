@@ -229,53 +229,6 @@ class Falvet
 	
 	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Falvet",system:.falvet)
-		location.at = offset
-		return location
-	}
-	
-	func toUsul() -> Location
-	{
-		return Location(name:"Missing",system:system, at: CGPoint(x: offset.x - 1.5, y: offset.y))
-	}
-	
-	func toLoiqe() -> Location
-	{
-		return Location(name:"Passage",system:system, at: CGPoint(x: offset.x, y: offset.y - 1.5))
-	}
-	
-	func toValen() -> Location
-	{
-		return Location(name:"Missing",system:system, at: CGPoint(x: offset.x + 1.5, y: offset.y))
-	}
-	
-	func toSenni() -> Location
-	{
-		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x, y: offset.y + 1.5))
-		return location
-	}
-	
-	func service1() -> Location
-	{
-		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x + 1, y: offset.y + 1))
-		return location
-	}
-	
-	func service2() -> Location
-	{
-		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x - 1, y: offset.y + 1))
-		return location
-	}
-	
-	func service3() -> Location
-	{
-		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x + 1, y: offset.y - 1))
-		return location
-	}
-	
-	func service4() -> Location
-	{
-		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
-		return location
+		return LocationStar(name:"Falvet",system:.falvet,at:offset)
 	}
 }

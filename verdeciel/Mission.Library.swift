@@ -162,6 +162,18 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
+		m = Mission(id:(questlog[c]?.count)!, name: "Create Array from Cells")
+		m.quests = [
+			Quest(name:"Combine cells", location: universe.senni_horadric, predicate:{ cargo.contains(items.array1) }, result: {  }),
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Create Cyan key")
+		m.quests = [
+			Quest(name:"Combine loiqe and senni keys", location: universe.senni_horadric, predicate:{ cargo.contains(items.masterCyanKey) }, result: {  }),
+		]
+		questlog[c]?.append(m)
+		
 		// Star interaction tutorial
 		
 		// enigma quest & tutorials - decypher radio signal quest

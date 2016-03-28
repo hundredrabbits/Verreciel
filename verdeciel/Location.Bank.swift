@@ -18,7 +18,7 @@ class LocationBank : Location
 	var port6:SCNPort!
 	var port6Label:SCNLabel!
 	
-	override init(name:String = "", system:Systems, at: CGPoint = CGPoint())
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint())
 	{
 		super.init(name: name,system:system, at:at, type: .bank)
 	
