@@ -139,7 +139,7 @@ class MissionLibrary
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Install Map")
-		m.predicate = { radio.isInstalled == true }
+		m.predicate = { map.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
 			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),

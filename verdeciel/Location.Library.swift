@@ -88,6 +88,7 @@ class Loiqe
 
 class Usul
 {
+	var system:Systems = .usul
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -104,22 +105,23 @@ class Usul
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.usul, at:CGPoint(x: offset.x + 1, y: offset.y), leftKey: items.senniPortalKey, rightKey: items.loiqePortalKey, leftName:"Senni", rightName: "Loiqe")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), leftKey: items.senniPortalKey, rightKey: items.loiqePortalKey, leftName:"Senni", rightName: "Loiqe")
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.usul, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency4, installation:{ map.install() }, installationName:"map")
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency4, installation:{ map.install() }, installationName:"map")
 	}
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name:"Satellite",system:.usul, at:CGPoint(x: offset.x, y: offset.y - 2), message:"[missing]", item:items.cypher1)
+		return LocationSatellite(name:"Satellite",system:system, at:CGPoint(x: offset.x, y: offset.y - 2), message:"[missing]", item:items.cypher1)
 	}
 }
 
 class Valen
 {
+	var system:Systems = .valen
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -129,46 +131,47 @@ class Valen
 	
 	func star() -> LocationStar
 	{
-		return LocationStar(name:"Valen",system:.valen, at: offset)
+		return LocationStar(name:"Valen",system:system, at: offset)
 	}
 	
 	// North
 	
 	func bank() -> LocationBank
 	{
-		return LocationBank(name:"Bank",system:.valen, at: CGPoint(x: offset.x, y: offset.y + 1))
+		return LocationBank(name:"Bank",system:system, at: CGPoint(x: offset.x, y: offset.y + 1))
 	}
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.valen, at:CGPoint(x: offset.x - 1, y: offset.y), leftKey: items.loiqePortalKey, rightKey: items.senniPortalKey, leftName:"Loiqe", rightName: "Senni")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), leftKey: items.loiqePortalKey, rightKey: items.senniPortalKey, leftName:"Loiqe", rightName: "Senni")
 	}
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.valen, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(like:items.currency2))
+		return LocationHarvest(name: "harvest",system:system, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(like:items.currency2))
 	}
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:.valen, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.currency2, installation:{ radio.install() }, installationName:"Radio")
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 1, y: offset.y + 1), requirement:items.currency2, installation:{ radio.install() }, installationName:"Radio")
 	}
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.cell2)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.cell2)
 	}
 	
 	// South
 	
 	func port() -> LocationTrade
 	{
-		return LocationTrade(name: "port",system:.valen, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
+		return LocationTrade(name: "port",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
 	}
 }
 
 class Senni
 {
+	var system:Systems = .senni
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -178,39 +181,45 @@ class Senni
 	
 	func star() -> LocationStar
 	{
-		let location = LocationStar(name:"Senni",system:.senni)
-		location.at = offset
-		return location
+		return LocationStar(name:"Senni",system:system,at:offset)
 	}
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:.senni, at:CGPoint(x: offset.x, y: offset.y - 1), leftKey: items.valenPortalKey, rightKey: items.usulPortalKey, leftName:"Valen", rightName: "Usul")
-	}
-	
-	func station() -> LocationStation
-	{
-		return LocationStation(name:"station",system:.senni, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.currency4, installation:{ map.install() }, installationName:"Map")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), leftKey: items.valenPortalKey, rightKey: items.usulPortalKey, leftName:"Valen", rightName: "Usul")
 	}
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:.senni, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.map1)
-	}
-	
-	func satellite() -> LocationSatellite
-	{
-		return LocationSatellite(name:"satellite",system:.senni, at:CGPoint(x: offset.x, y: offset.y + 1), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"[misssing]", item:items.map1)
 	}
 	
 	func harvest() -> LocationHarvest
 	{
-		return LocationHarvest(name: "harvest",system:.senni, at:CGPoint(x: offset.x, y: offset.y + 2), grows: Item(like:items.currency3))
+		return LocationHarvest(name: "harvest",system:system, at:CGPoint(x: offset.x, y: offset.y + 1), grows: Item(like:items.currency3))
+	}
+	
+	func station() -> LocationStation
+	{
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.currency3, installation:{ map.install() }, installationName:"Map")
+	}
+	
+	//
+	
+	func horadric() -> LocationHoradric
+	{
+		return LocationHoradric(name:"Horadric",system:system, at: CGPoint(x: offset.x + 2, y: offset.y), map: items.map1)
+	}
+	
+	func satellite() -> LocationSatellite
+	{
+		return LocationSatellite(name:"satellite",system:system, at:CGPoint(x: offset.x, y: offset.y + 1), message:"[misssing]", item:items.map2, mapRequirement: items.map1)
 	}
 }
 
 class Falvet
 {
+	var system:Systems = .falvet
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -227,46 +236,46 @@ class Falvet
 	
 	func toUsul() -> Location
 	{
-		return Location(name:"Missing",system:.falvet, at: CGPoint(x: offset.x - 1.5, y: offset.y))
+		return Location(name:"Missing",system:system, at: CGPoint(x: offset.x - 1.5, y: offset.y))
 	}
 	
 	func toLoiqe() -> Location
 	{
-		return Location(name:"Passage",system:.falvet, at: CGPoint(x: offset.x, y: offset.y - 1.5))
+		return Location(name:"Passage",system:system, at: CGPoint(x: offset.x, y: offset.y - 1.5))
 	}
 	
 	func toValen() -> Location
 	{
-		return Location(name:"Missing",system:.falvet, at: CGPoint(x: offset.x + 1.5, y: offset.y))
+		return Location(name:"Missing",system:system, at: CGPoint(x: offset.x + 1.5, y: offset.y))
 	}
 	
 	func toSenni() -> Location
 	{
-		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x, y: offset.y + 1.5))
+		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x, y: offset.y + 1.5))
 		return location
 	}
 	
 	func service1() -> Location
 	{
-		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x + 1, y: offset.y + 1))
+		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x + 1, y: offset.y + 1))
 		return location
 	}
 	
 	func service2() -> Location
 	{
-		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y + 1))
+		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x - 1, y: offset.y + 1))
 		return location
 	}
 	
 	func service3() -> Location
 	{
-		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x + 1, y: offset.y - 1))
+		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x + 1, y: offset.y - 1))
 		return location
 	}
 	
 	func service4() -> Location
 	{
-		let location = Location(name:"Missing",system:.falvet,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
+		let location = Location(name:"Missing",system:system,at:CGPoint(x: offset.x - 1, y: offset.y - 1))
 		return location
 	}
 }

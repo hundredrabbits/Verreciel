@@ -105,6 +105,7 @@ class CoreUniverse : SCNNode
 	var senni_cargo = locations.senni.cargo()
 	var senni_portal = locations.senni.portal()
 	var senni_satellite = locations.senni.satellite()
+	var senni_harvest = locations.senni.harvest()
 	
 	func addSenni()
 	{
@@ -113,6 +114,7 @@ class CoreUniverse : SCNNode
 		addChildNode(senni_portal)
 		addChildNode(senni_cargo)
 		addChildNode(senni_satellite)
+		addChildNode(senni_harvest)
 	}
 	
 	// MARK: Falvet -
@@ -172,7 +174,9 @@ class CoreUniverse : SCNNode
 		falvet_service3.connect(falvet_toLoiqe)
 		falvet_service4.connect(falvet_toUsul)
 		
-		senni_cargo.connect(senni_station)
+		senni_portal.connect(senni_cargo)
+		senni_cargo.connect(senni_harvest)
+		senni_harvest.connect(senni_station)
 		senni_station.connect(senni_portal)
 	}
 	

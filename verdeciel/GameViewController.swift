@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.valen_bank)
+		unlockedState(universe.senni_portal)
 //		startingState()
 	}
 	
@@ -100,7 +100,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		radio.install()
 		enigma.install()
-		map.install()
+//		map.install()
 		shield.install()
 
 		exploration.install()
@@ -112,13 +112,14 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		universe.valen_portal.isKnown = true
 		universe.loiqe_portal.isKnown = true
+		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([items.record1, Item(like:items.currency4)])
+		cargo.addItems([items.record1, items.senniPortalKey])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		
-		quests.skip(.primary, id: 8)
+		quests.skip(.primary, id: 9)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

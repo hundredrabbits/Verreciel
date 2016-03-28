@@ -116,7 +116,6 @@ class PanelBattery : MainPanel
 	{
 		enigmaPort.enable()
 		enigmaLabel.update("enigma",color:white)
-		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installThruster()
@@ -130,14 +129,12 @@ class PanelBattery : MainPanel
 	{
 		radioPort.enable()
 		radioLabel.update("radio",color:white)
-		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installMap()
 	{
 		mapPort.enable()
 		mapLabel.update("map",color:white)
-		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
 	}
 	
 	func installShield()
