@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_city)
+		unlockedState(universe.usul_portal)
 //		startingState()
 	}
 	
@@ -114,13 +114,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.loiqe_portal.isKnown = true
 		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([items.record1, items.currency3, items.map1])
+		cargo.addItems([items.usulPortalFragment1, items.usulPortalFragment2, items.map1])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		battery.cellPort2.addEvent(items.cell2)
 		
-		quests.skip(.primary, id: 12)
+		quests.skip(.primary, id: 16)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

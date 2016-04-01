@@ -67,14 +67,14 @@ class CoreUniverse : SCNNode
 	var usul = locations.usul.star()
 	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
-	var usul_satellite = locations.usul.satellite()
+	var usul_wreck = locations.usul.wreck()
 	
 	func addUsul()
 	{
 		addChildNode(usul)
 		addChildNode(usul_station)
 		addChildNode(usul_portal)
-		addChildNode(usul_satellite)
+		addChildNode(usul_wreck)
 	}
 	
 	// MARK: Valen -
@@ -161,6 +161,8 @@ class CoreUniverse : SCNNode
 		senni_station.connect(senni_portal)
 		senni_fog.connect(senni_station)
 		senni_horadric.connect(senni_harvest)
+		
+		usul_wreck.connect(usul_portal)
 	}
 	
 	func unlock(system:Systems)

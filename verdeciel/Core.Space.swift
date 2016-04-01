@@ -24,6 +24,22 @@ class CoreSpace: SCNNode
 	var targetSpaceColor:Array<CGFloat>!
 	var currentSpaceColor:Array<CGFloat> = [0,0,0]
 	var currentStarsColor:Array<CGFloat> = [0,0,0]
+	var stars_color:UIColor = white
+	
+	func onSystemEnter(system:Systems)
+	{
+		print("Entering \(system)")
+		capsule.system = system
+		
+		switch system {
+		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+		case .falvet : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = red
+		case .usul   : targetSpaceColor = [0.3,0.0,0.0] ; stars_color = black
+		case .nevic  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
+		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
+		}
+	}
 	
 	func onTic()
 	{
@@ -60,9 +76,7 @@ class CoreSpace: SCNNode
 			randZ = Int(arc4random_uniform(40)) - 20
 		}
 		
-		let color = UIColor(red: space.targetSpaceColor[0], green: space.targetSpaceColor[1], blue: space.targetSpaceColor[2], alpha: 1)
-		
-		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: color)
+		let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: stars_color)
 		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
 		starsRoot.addChildNode(newLine)
 	}

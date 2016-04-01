@@ -8,10 +8,11 @@ class LocationHarvest : Location
 	var grows:Item!
 	var port:SCNPortSlot!
 	
-	init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0), grows:Item)
+	init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0), grows:Item, mapRequirement:Item! = nil)
 	{
 		super.init(name:name, system:system, at:at, type: .harvest)
 		
+		self.mapRequirement = mapRequirement
 		self.note = ""
 		self.structure = structures.harvest()
 		icon.replace(icons.harvest())

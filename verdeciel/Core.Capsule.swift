@@ -42,7 +42,7 @@ class CoreCapsule: SCNNode
 		
 		battery.install()
 		
-		onSystemEnter(.valen)
+		space.onSystemEnter(.valen)
 	}
 	
 	override func fixedUpdate()
@@ -61,22 +61,7 @@ class CoreCapsule: SCNNode
 	func onSeconds()
 	{
 		let cl = closestLocation()
-		if cl.system != nil && cl.system != system { onSystemEnter(cl.system) }
-	}
-	
-	func onSystemEnter(system:Systems)
-	{
-		print("Entering \(system)")
-		self.system = system
-
-		switch system {
-		case .valen  : space.targetSpaceColor = [0.2,0.2,0.2] ; space.currentStarsColor = [0.7,0.7,0.7] ; grey = UIColor(white: 0.5, alpha: 1)
-		case .falvet : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.5,0.5,0.5] ; grey = UIColor(white: 0.5, alpha: 1)
-		case .senni  : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
-		case .usul   : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
-		case .nevic  : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [0.2,0.0,0.0] ; grey = UIColor(white: 0.5, alpha: 1)
-		default      : space.targetSpaceColor = [0.0,0.0,0.0] ; space.currentStarsColor = [1.0,1.0,1.0] ; grey = UIColor(white: 0.5, alpha: 1)
-		}
+		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
 	}
 	
 	func closestLocationOfType(type:LocationTypes) -> Location

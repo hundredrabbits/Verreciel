@@ -11,7 +11,7 @@ class LocationStation : Location
 	var port:SCNPortSlot!
 	var button:SCNButton!
 	
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Item! = nil, installation:() -> Void, installationName:String)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Item! = nil, installation:() -> Void, installationName:String, mapRequirement:Item! = nil)
 	{
 		self.installation = installation
 		self.requirement = requirement
@@ -19,6 +19,7 @@ class LocationStation : Location
 		
 		super.init(name:name,system:system, at:at, type: .station)
 		
+		self.mapRequirement = mapRequirement
 		self.note = ""
 		self.structure = structures.station()
 		self.icon.replace(icons.station())

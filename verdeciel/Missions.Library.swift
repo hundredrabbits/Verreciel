@@ -179,10 +179,11 @@ class MissionLibrary
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Usul Portal Key")
+		m.predicate = { cargo.contains(items.usulPortalKey) }
 		m.quests = [
 			Quest(name:"Trade \(items.currency5)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.usulPortalFragment1) }, result: {  }),
 			Quest(name:"Trade \(items.currency4)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.usulPortalFragment2) }, result: {  }),
-			Quest(name:"Combine key fragments", predicate:{ cargo.contains(items.usulPortalKey) }, result: { }),
+			Quest(name:"Combine key fragments", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.usulPortalKey) }, result: { }),
 		]
 		questlog[c]?.append(m)
 		
@@ -191,7 +192,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Reach Usul System")
 		m.predicate = { universe.usul_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Reach Usul Portal", predicate:{ universe.usul_portal.isKnown == true }, result: { })
+			Quest(name:"Reach Usul Portal", location: universe.loiqe_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { })
 		]
 		questlog[c]?.append(m)
 		
@@ -201,7 +202,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Last Quest")
 		m.quests = [
-			Quest(name:"Unlock portal", location: universe.usul_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { universe.unlock(.valen) })
+			Quest(name:"Unlock portal", location: universe.falvet, predicate:{ universe.falvet.isKnown == true }, result: { universe.unlock(.valen) })
 		]
 		questlog[c]?.append(m)
 	}
@@ -268,7 +269,7 @@ class MissionLibrary
 		m.requirement = { universe.usul_portal.isKnown == true }
 		m.predicate = { enigma.isInstalled == true }
 		m.quests = [
-			Quest(name:"Collect \(items.cypher1.name!)", location: universe.usul_satellite, predicate:{ cargo.contains(items.cypher1) }, result: {  }),
+			Quest(name:"Collect \(items.cypher1.name!)", location: universe.usul_wreck, predicate:{ cargo.contains(items.cypher1) }, result: {  }),
 //			Quest(name:"Collect \(items.uli.name!)", predicate:{ cargo.containsLike(items.uli) }, result: { }),
 			Quest(name:"Install enigma", location: universe.usul_station, predicate:{ m.predicate() }, result: { }),
 		]
@@ -308,17 +309,17 @@ class MissionLibrary
 			currentMission[.primary] = questlog[.primary]![nextMissionId]
 		}
 		
-		currentMission[.secondary]?.validate()
-		if currentMission[.secondary]?.isCompleted == true {
-			let nextMissionId = currentMission[.secondary]!.id + 1
-			currentMission[.secondary] = questlog[.secondary]![nextMissionId]
-		}
-		
-		currentMission[.tertiary]?.validate()
-		if currentMission[.tertiary]?.isCompleted == true {
-			let nextMissionId = currentMission[.tertiary]!.id + 1
-			currentMission[.tertiary] = questlog[.tertiary]![nextMissionId]
-		}
+//		currentMission[.secondary]?.validate()
+//		if currentMission[.secondary]?.isCompleted == true {
+//			let nextMissionId = currentMission[.secondary]!.id + 1
+//			currentMission[.secondary] = questlog[.secondary]![nextMissionId]
+//		}
+//		
+//		currentMission[.tertiary]?.validate()
+//		if currentMission[.tertiary]?.isCompleted == true {
+//			let nextMissionId = currentMission[.tertiary]!.id + 1
+//			currentMission[.tertiary] = questlog[.tertiary]![nextMissionId]
+//		}
 		
 		mission.update()
 		

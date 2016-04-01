@@ -7,10 +7,11 @@ class LocationBeacon : Location
 {
 	var message:String = ""
 	
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String, mapRequirement:Item! = nil)
 	{
 		super.init(name:name,system:system, at:at, type: .beacon)
 		
+		self.mapRequirement = mapRequirement
 		self.note = ""
 		self.message = message
 		self.structure = structures.beacon()
