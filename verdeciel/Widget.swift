@@ -57,7 +57,6 @@ class Widget : Panel
 	
 	override func refresh()
 	{
-		print("\(name) -> \(isPowered())")
 		if isPowered() == true {
 			onPowered()
 		}
@@ -78,14 +77,12 @@ class Widget : Panel
 	
 	func onPowered()
 	{
-		print("\(name) is powered")
 		label.update(white)
 		port.enable()
 	}
 	
 	func onUnpowered()
 	{
-		print("\(name) is unpowered")
 		label.update(grey)
 		port.disable()
 	}

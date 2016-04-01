@@ -124,4 +124,11 @@ extension SCNNode
 	{
 		
 	}
+	
+	func redraw()
+	{
+		for node in self.childNodes {
+			node.redraw()
+		}
+	}
 }

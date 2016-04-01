@@ -23,7 +23,6 @@ class CoreSpace: SCNNode
 	
 	var targetSpaceColor:Array<CGFloat>!
 	var currentSpaceColor:Array<CGFloat> = [0,0,0]
-	var currentStarsColor:Array<CGFloat> = [0,0,0]
 	var stars_color:UIColor = white
 	
 	func onSystemEnter(system:Systems)
@@ -31,14 +30,22 @@ class CoreSpace: SCNNode
 		print("Entering \(system)")
 		capsule.system = system
 		
+		white = true_white
+		black = true_black
+		cyan = true_cyan
+		red = true_red
+		grey = true_grey
+		
 		switch system {
 		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		case .falvet : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = red
-		case .usul   : targetSpaceColor = [0.3,0.0,0.0] ; stars_color = black
+		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
+		case .usul   : targetSpaceColor = [0.7,0.3,0.3] ; stars_color = true_red ; red = true_white ; cyan = true_white ; grey = true_black
 		case .nevic  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		}
+		
+		capsule.redraw()
 	}
 	
 	func onTic()
@@ -49,13 +56,6 @@ class CoreSpace: SCNNode
 		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
 		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
 		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
-		
-		if currentStarsColor[0] < currentStarsColor[0] { currentStarsColor[0] += 0.01 }
-		if currentStarsColor[0] > currentStarsColor[0] { currentStarsColor[0] -= 0.01 }
-		if currentStarsColor[1] < currentStarsColor[1] { currentStarsColor[1] += 0.01 }
-		if currentStarsColor[1] > currentStarsColor[1] { currentStarsColor[1] -= 0.01 }
-		if currentStarsColor[2] < currentStarsColor[2] { currentStarsColor[2] += 0.01 }
-		if currentStarsColor[2] > currentStarsColor[2] { currentStarsColor[2] -= 0.01 }
 		
 		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
 	}

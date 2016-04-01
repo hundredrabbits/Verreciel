@@ -8,9 +8,9 @@ import Foundation
 
 class SCNLine : SCNNode
 {
-	var nodeA = SCNVector3()
-	var nodeB = SCNVector3()
-	var color = UIColor()
+	var nodeA:SCNVector3! = nil
+	var nodeB:SCNVector3! = nil
+	var color:UIColor! = nil
 	
 	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3(), color:UIColor = white)
 	{
@@ -62,6 +62,13 @@ class SCNLine : SCNNode
 		if color == self.color { return }
 		self.color = color
 		draw(nodeA, nodeB: nodeB, color: color)
+	}
+	
+	override func redraw()
+	{
+		// TODO: Use space.mod()
+		draw(nodeA, nodeB: nodeB, color: true_white)
+		super.redraw()
 	}
 	
 	func setGrowth(percent:Float)

@@ -51,15 +51,19 @@ var settings = Settings()
 var debug = Debug()
 
 // Colors
-var black:UIColor = UIColor(white: 0, alpha: 1)
-var grey:UIColor = UIColor(white: 0.5, alpha: 1)
-var greyTone:UIColor = UIColor(white: 0.2, alpha: 1)
-var white:UIColor = UIColor.whiteColor()
-var whiteTone:UIColor = UIColor(white: 0.8, alpha: 1)
-var red:UIColor = UIColor.redColor()
-var redTone:UIColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
-var cyan:UIColor = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
-var cyanTone:UIColor = UIColor(red: 0.24, green: 0.67, blue: 0.56, alpha: 1)
+
+let true_black = UIColor(white: 0, alpha: 1)
+let true_grey = UIColor(white: 0.5, alpha: 1)
+let true_red = UIColor.redColor()
+let true_cyan = UIColor(red: 0.44, green: 0.87, blue: 0.76, alpha: 1)
+let true_white = UIColor(white: 1, alpha: 1)
+
+var black:UIColor = true_black
+var grey:UIColor = true_grey
+var white:UIColor = true_white
+var red:UIColor = true_red
+var cyan:UIColor = true_cyan
+
 var clear:UIColor = UIColor(white: 0, alpha: 0)
 
 enum alignment
