@@ -26,11 +26,6 @@ class LocationStation : Location
 		self.isComplete = false
 	}
 	
-	override func update()
-	{
-		updateIcon()
-	}
-	
 	var tradeLabel:SCNLabel!
 	
 	override func panel() -> Panel!

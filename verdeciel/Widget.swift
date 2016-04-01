@@ -12,6 +12,7 @@ class Widget : Panel
 	var label:SCNLabel!
 	var port:SCNPortSlot!
 	var requirement:ItemTypes!
+	var isPowered:() -> Bool = { return false }
 	
 	override init()
 	{
@@ -39,6 +40,32 @@ class Widget : Panel
 		root.opacity = 0
 	}
 	
+	override func start()
+	{
+		refresh()
+	}
+	
+	override func onConnect()
+	{
+		refresh()
+	}
+	
+	override func onDisconnect()
+	{
+		refresh()
+	}
+	
+	override func refresh()
+	{
+		print("\(name) -> \(isPowered())")
+		if isPowered() == true {
+			onPowered()
+		}
+		else{
+			onUnpowered()
+		}
+	}
+	
 	override func onUploadComplete()
 	{
 		if port.hasEvent() == false { return }
@@ -53,14 +80,14 @@ class Widget : Panel
 	{
 		print("\(name) is powered")
 		label.update(white)
-		refresh()
+		port.enable()
 	}
 	
 	func onUnpowered()
 	{
 		print("\(name) is unpowered")
-		label.update(red)
-		refresh()
+		label.update(grey)
+		port.disable()
 	}
 	
 	// MARK: Installation -

@@ -18,6 +18,7 @@ class WidgetEnigma : Widget
 		name = "enigma"
 		info = "[missing text]"
 		requirement = ItemTypes.cypher
+		isPowered = { battery.isEnigmaPowered() }
 		
 		label.update(name!)
 	}

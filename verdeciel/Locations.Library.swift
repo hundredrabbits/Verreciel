@@ -111,7 +111,7 @@ class Usul
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency4, installation:{ enigma.install() }, installationName:"enigma", mapRequirement:items.map1)
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency4, installation:{ enigma.install() }, installationName:"enigma", mapRequirement:items.map2)
 	}
 	
 	func wreck() -> LocationSatellite

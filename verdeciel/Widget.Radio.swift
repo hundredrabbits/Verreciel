@@ -19,37 +19,9 @@ class WidgetRadio : Widget
 		name = "radio"
 		info = "[missing text]"
 		requirement = ItemTypes.record
+		isPowered = { battery.isRadioPowered() }
 		
 		label.update(name!)
-	}
-	
-	override func start()
-	{
-		refresh()
-	}
-	
-	override func onConnect()
-	{
-		refresh()
-	}
-	
-	override func onDisconnect()
-	{
-		refresh()
-	}
-	
-	override func refresh()
-	{
-		if battery.isRadioPowered() == true {
-			label.update(white)
-			port.enable()
-			port.label.update(white)
-		}
-		else{
-			label.update(grey)
-			port.disable()
-			port.label.update(grey)
-		}
 	}
 	
 	func isPlaying() -> Bool

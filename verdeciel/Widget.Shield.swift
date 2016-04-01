@@ -18,6 +18,7 @@ class WidgetShield : Widget
 		name = "shield"
 		info = "[missing text]"
 		requirement = ItemTypes.field
+		isPowered = { battery.isShieldPowered() }
 		
 		label.update(name!)
 	}

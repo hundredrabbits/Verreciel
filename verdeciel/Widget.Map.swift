@@ -16,6 +16,7 @@ class WidgetMap : Widget
 		name = "map"
 		info = "[missing text]"
 		requirement = ItemTypes.map
+		isPowered = { battery.isMapPowered() }
 		
 		label.update(name!)
 	}

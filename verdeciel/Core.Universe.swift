@@ -62,21 +62,6 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_fog)
 	}
 	
-	// MARK: Usul -
-	
-	var usul = locations.usul.star()
-	var usul_station = locations.usul.station()
-	var usul_portal = locations.usul.portal()
-	var usul_wreck = locations.usul.wreck()
-	
-	func addUsul()
-	{
-		addChildNode(usul)
-		addChildNode(usul_station)
-		addChildNode(usul_portal)
-		addChildNode(usul_wreck)
-	}
-	
 	// MARK: Valen -
 	
 	var valen = locations.valen.star()
@@ -121,6 +106,21 @@ class CoreUniverse : SCNNode
 		// Fog
 		addChildNode(senni_horadric)
 		addChildNode(senni_fog)
+	}
+	
+	// MARK: Usul -
+	
+	var usul = locations.usul.star()
+	var usul_station = locations.usul.station()
+	var usul_portal = locations.usul.portal()
+	var usul_wreck = locations.usul.wreck()
+	
+	func addUsul()
+	{
+		addChildNode(usul)
+		addChildNode(usul_station)
+		addChildNode(usul_portal)
+		addChildNode(usul_wreck)
 	}
 	
 	// MARK: Falvet -
