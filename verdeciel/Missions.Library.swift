@@ -202,7 +202,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Last Quest")
 		m.quests = [
-			Quest(name:"Unlock portal", location: universe.falvet, predicate:{ universe.falvet.isKnown == true }, result: { universe.unlock(.valen) })
+			Quest(name:"Unlock portal", location: universe.nevic, predicate:{ universe.nevic.isKnown == true }, result: { universe.unlock(.valen) })
 		]
 		questlog[c]?.append(m)
 	}

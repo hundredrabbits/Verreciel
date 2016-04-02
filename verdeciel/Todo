@@ -2,7 +2,7 @@
 *    MAJOR
 ================
 
-- Design Falvet(enter from star)
+- Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
 - Inject cells, array, etc.
 - Map interaction
@@ -10,7 +10,6 @@
 
 - Secondary quests
 - Add beacons with secondary hints
-- Design star panel
 - Color star colors in Senni
 - Color star colors in Usul
 - Color star colors in Falvet
@@ -21,10 +20,25 @@
 - Mining location? for bonus items(music, etc..)
 - Power quests(batteries)
 
+> Audio
+- Find audio1
+- Find audio2
+- Find audio3
+- Find audio4
+- Find audio5
+- Find audio6
+
+> Beacons
+- Loiqe
+- Valen
+- Senni
+- Usul
+- Falv
+
 > Usul
 
-- stars require master key(Key combination quest)
-
+> Loiqe
+- Path to falv(Gateway)
 
 ================
 *    MINOR

@@ -13,7 +13,7 @@ class LocationLibrary
 	let usul  = Usul(offset: CGPoint(x: -10,y: 0))
 	let valen = Valen(offset: CGPoint(x: 10,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 10))
-	let falvet = Falvet(offset: CGPoint(x: 0,y: 0))
+	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
 	
 	init()
 	{
@@ -233,9 +233,9 @@ class Senni
 	}
 }
 
-class Falvet
+class Nevic
 {
-	var system:Systems = .falvet
+	var system:Systems = .nevic
 	var offset:CGPoint!
 	
 	init(offset:CGPoint)
@@ -245,6 +245,11 @@ class Falvet
 	
 	func star() -> LocationStar
 	{
-		return LocationStar(name:"Falvet",system:.falvet,at:offset)
+		return LocationStar(name:"Nevic",system:.nevic,at:offset)
+	}
+	
+	func satellite() -> LocationSatellite
+	{
+		return LocationSatellite(name: "satellite", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 1), message: "[missing]", item: items.map3)
 	}
 }

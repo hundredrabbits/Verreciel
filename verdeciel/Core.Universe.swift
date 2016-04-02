@@ -18,7 +18,7 @@ class CoreUniverse : SCNNode
 		addUsul()
 		addValen()
 		addSenni()
-		addFalvet()
+		addNevic()
 		
 		connectPaths()
 		connectPortals()
@@ -129,13 +129,15 @@ class CoreUniverse : SCNNode
 		addChildNode(usul_silence)
 	}
 	
-	// MARK: Falvet -
+	// MARK: Nevic -
 	
-	var falvet = locations.falvet.star()
+	var nevic = locations.nevic.star()
+	var nevic_satellite = locations.nevic.satellite()
 	
-	func addFalvet()
+	func addNevic()
 	{
-		addChildNode(falvet)
+		addChildNode(nevic)
+		addChildNode(nevic_satellite)
 	}
 
 	// MARK: Misc -

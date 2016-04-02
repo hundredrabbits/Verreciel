@@ -42,6 +42,7 @@ class ItemLibrary
 	// Maps
 	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
 	let map2 = Item(name: "Ghost Map", type: .map, note: "[missing]", isQuest: true)
+	let map3 = Item(name: "Blind Map", type: .map, note: "[missing]", isQuest: true)
 	
 	// Enigma
 	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)

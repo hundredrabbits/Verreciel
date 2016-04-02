@@ -85,12 +85,13 @@ class LocationStar : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { print("!!!") }
+		if id == 1 { extinguish() }
 	}
 	
 	func extinguish()
 	{
 		print("? STAR     | Extinguished \(name)!")
+		isComplete = true
 	}
 	
 	override func onDisconnect()

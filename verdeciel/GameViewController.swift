@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.usul)
+		unlockedState(universe.nevic_satellite)
 //		startingState()
 	}
 	

@@ -86,7 +86,6 @@ enum Systems
 {
 	case loiqe
 	case valen
-	case falvet
 	case senni
 	case usul
 	case nevic
