@@ -113,7 +113,10 @@ class CoreUniverse : SCNNode
 	var usul = locations.usul.star()
 	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
+	// Ghost
 	var usul_wreck = locations.usul.wreck()
+	var usul_cargo = locations.usul.cargo()
+	var usul_silence = locations.usul.silence()
 	
 	func addUsul()
 	{
@@ -121,6 +124,9 @@ class CoreUniverse : SCNNode
 		addChildNode(usul_station)
 		addChildNode(usul_portal)
 		addChildNode(usul_wreck)
+		addChildNode(usul_station)
+		addChildNode(usul_cargo)
+		addChildNode(usul_silence)
 	}
 	
 	// MARK: Falvet -
@@ -163,6 +169,11 @@ class CoreUniverse : SCNNode
 		senni_horadric.connect(senni_harvest)
 		
 		usul_wreck.connect(usul_portal)
+		
+		usul_portal.connect(usul_cargo)
+		usul_cargo.connect(usul_silence)
+		usul_silence.connect(usul_station)
+		usul_station.connect(usul_portal)
 	}
 	
 	func unlock(system:Systems)

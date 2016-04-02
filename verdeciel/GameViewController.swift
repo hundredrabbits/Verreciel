@@ -114,7 +114,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.loiqe_portal.isKnown = true
 		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([items.usulPortalFragment1, items.usulPortalFragment2, items.map1])
+		cargo.addItems([items.shield1, items.usulPortalFragment2, items.map1])
 		
 		battery.cellPort1.addEvent(items.cell1)
 		battery.cellPort1.connect(battery.thrusterPort)

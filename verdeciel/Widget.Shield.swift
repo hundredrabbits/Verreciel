@@ -17,7 +17,7 @@ class WidgetShield : Widget
 	
 		name = "shield"
 		info = "[missing text]"
-		requirement = ItemTypes.field
+		requirement = ItemTypes.shield
 		isPowered = { battery.isShieldPowered() }
 		
 		label.update(name!)
@@ -25,16 +25,15 @@ class WidgetShield : Widget
 	
 	var growthVal:Float = 0
 	
-	override func fixedUpdate()
-	{
-		super.fixedUpdate()
-	}
-	
 	override func onPowered()
 	{
 		super.onPowered()
 		
 		port.enable()
+		
+		if port.hasItemOfType(.shield) == true {
+			capsule.shieldRoot.opacity = 1
+		}
 	}
 	
 	override func onUnpowered()
@@ -42,6 +41,7 @@ class WidgetShield : Widget
 		super.onUnpowered()
 		
 		port.disable()
+		capsule.shieldRoot.opacity = 0
 	}
 	
 	func createShield()

@@ -47,6 +47,9 @@ class ItemLibrary
 	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
 	
+	// Shields(fields)
+	let shield1 = Item(name: "shield 1", type: .shield, note:"[missing]", isQuest:true)
+	
 	// Harvest
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
 	let currency2 = Item(name: "materia", type: .currency, note:"trading currency")

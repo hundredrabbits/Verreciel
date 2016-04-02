@@ -196,10 +196,10 @@ class PanelBattery : MainPanel
 	override func refresh()
 	{
 		if thrusterPort.isReceivingItemOfType(.battery) == true { thruster.onPowered() } else { thruster.onUnpowered() }
-		if shieldPort.isReceivingItemOfType(.battery) == true { shield.onUnpowered() } else { shield.onUnpowered() }
-		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onUnpowered() } else { enigma.onUnpowered() }
-		if mapPort.isReceivingItemOfType(.battery) == true { map.onUnpowered() } else { map.onUnpowered() }
-		if radioPort.isReceivingItemOfType(.battery) == true { radio.onUnpowered() } else { radio.onUnpowered() }
+		if shieldPort.isReceivingItemOfType(.battery) == true { shield.onPowered() } else { shield.onUnpowered() }
+		if enigmaPort.isReceivingItemOfType(.battery) == true { enigma.onPowered() } else { enigma.onUnpowered() }
+		if mapPort.isReceivingItemOfType(.battery) == true { map.onPowered() } else { map.onUnpowered() }
+		if radioPort.isReceivingItemOfType(.battery) == true { radio.onPowered() } else { radio.onUnpowered() }
 	}
 	
 	func hasCell(target:Event) -> Bool

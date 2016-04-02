@@ -111,12 +111,22 @@ class Usul
 	
 	func station() -> LocationStation
 	{
-		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x, y: offset.y - 1), requirement:items.currency4, installation:{ enigma.install() }, installationName:"enigma", mapRequirement:items.map2)
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 2, y: offset.y - 1), requirement:items.currency4, installation:{ shield.install() }, installationName:"shield", mapRequirement:items.map2)
 	}
 	
 	func wreck() -> LocationSatellite
 	{
 		return LocationSatellite(name:"Wreck",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[missing]", item:items.map2, mapRequirement:items.map1)
+	}
+	
+	func cargo() -> LocationStation
+	{
+		return LocationStation(name:"cargo",system:system, at: CGPoint(x: offset.x + 2, y: offset.y + 1), requirement:items.currency4, installation:{ shield.install() }, installationName:"shield", mapRequirement:items.map2)
+	}
+	
+	func silence() -> LocationTrade
+	{
+		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x + 3, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map2)
 	}
 }
 

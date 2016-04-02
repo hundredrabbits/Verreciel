@@ -40,12 +40,10 @@ class CoreSpace: SCNNode
 		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		case .falvet : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
 		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
-		case .usul   : targetSpaceColor = [0.7,0.3,0.3] ; stars_color = true_red ; red = true_white ; cyan = true_white ; grey = true_black
+		case .usul   : targetSpaceColor = [0.3,0.3,0.3] ; stars_color = true_red
 		case .nevic  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		}
-		
-		capsule.redraw()
 	}
 	
 	func onTic()

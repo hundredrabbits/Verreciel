@@ -58,16 +58,17 @@ class LocationStar : Location
 	{
 		let radiation = (1 - (distance/0.7))/0.6
 		
-		if radiation > 1 && capsule.isFleeing == false {
-			capsule.flee()
+		if capsule.hasShield() == false {
+			if radiation > 1 && capsule.isFleeing == false {
+				capsule.flee()
+			}
+			capsule.radiation = radiation
 		}
-		
-		capsule.radiation = radiation
 	}
 	
 	override func onApproach()
 	{
-		if shield.isActive == true {
+		if capsule.hasShield() == true {
 			super.onApproach()
 		}
 		else{

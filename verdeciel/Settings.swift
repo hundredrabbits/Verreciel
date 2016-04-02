@@ -135,7 +135,7 @@ enum ItemTypes
 	case drive
 	case cargo
 	
-	case field
+	case shield
 	case map
 	case record
 	case cypher

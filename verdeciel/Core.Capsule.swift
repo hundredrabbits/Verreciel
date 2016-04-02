@@ -329,6 +329,12 @@ class CoreCapsule: SCNNode
 		return false
 	}
 	
+	func hasShield() -> Bool
+	{
+		if shield.isPowered() == true && shield.port.hasItemOfType(.shield) == true { return true }
+		return false
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
