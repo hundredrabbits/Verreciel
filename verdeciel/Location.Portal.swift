@@ -209,12 +209,6 @@ class LocationPortal : Location
 		leftPilotPort.addEvent(left)
 	}
 	
-	func addKeys(right:Event,left:Event)
-	{
-		self.rightKeyPort.requirement = right
-		self.leftKeyPort.requirement = left
-	}
-	
 	override func disconnectPanel()
 	{
 		leftThrusterPort.strip()

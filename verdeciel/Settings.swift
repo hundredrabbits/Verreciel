@@ -115,6 +115,7 @@ enum LocationTypes
 	case spawn
 	case harvest
 	case beacon
+	case gateway
 }
 
 enum ItemTypes

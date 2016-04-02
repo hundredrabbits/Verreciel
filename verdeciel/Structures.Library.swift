@@ -134,6 +134,23 @@ class StructuresLibrary
 		return mesh
 	}
 	
+	func gateway(radius:Float = 5, sides:Int = 16, depth:Float = 0.5, color:UIColor = red) -> SCNNode
+	{
+		let mesh = SCNNode()
+		let verticalOffset:Float = 8
+		
+		var i = 0
+		while i < sides {
+			let root = SCNNode()
+			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,verticalOffset * 3,0), nodeB: SCNVector3(0,verticalOffset/2,radius), color: color))
+			mesh.addChildNode(root)
+			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
+			i += 1
+		}
+		
+		return mesh
+	}
+	
 	func trade(radius:Float = 1.5, tunnels:Int = (Int(arc4random_uniform(3) + 2) * 4), depth:Float = 0, color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()

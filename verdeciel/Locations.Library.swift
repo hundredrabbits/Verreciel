@@ -79,6 +79,13 @@ class Loiqe
 		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
+	// Ghost
+	
+	func gateway() -> LocationGateway
+	{
+		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey)
+	}
+	
 	// Constellations
 	
 	func c_1() -> LocationConstellation
@@ -251,5 +258,10 @@ class Nevic
 	func satellite() -> LocationSatellite
 	{
 		return LocationSatellite(name: "satellite", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 1), message: "[missing]", item: items.map3)
+	}
+	
+	func gateway() -> LocationGateway
+	{
+		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey)
 	}
 }

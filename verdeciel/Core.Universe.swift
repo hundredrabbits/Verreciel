@@ -48,6 +48,7 @@ class CoreUniverse : SCNNode
 	var loiqe_satellite = locations.loiqe.satellite()
 	var loiqe_c_fog = locations.loiqe.c_1()
 	var loiqe_fog = locations.loiqe.fog()
+	var loiqe_gateway = locations.loiqe.gateway()
 	
 	func addLoiqe()
 	{
@@ -60,6 +61,8 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_satellite)
 		// Fog
 		addChildNode(loiqe_fog)
+		// Ghost
+		addChildNode(loiqe_gateway)
 	}
 	
 	// MARK: Valen -
@@ -133,11 +136,13 @@ class CoreUniverse : SCNNode
 	
 	var nevic = locations.nevic.star()
 	var nevic_satellite = locations.nevic.satellite()
+	var nevic_gateway = locations.nevic.gateway()
 	
 	func addNevic()
 	{
 		addChildNode(nevic)
 		addChildNode(nevic_satellite)
+		addChildNode(nevic_gateway)
 	}
 
 	// MARK: Misc -
@@ -148,6 +153,9 @@ class CoreUniverse : SCNNode
 		senni_portal.addPortals(usul_portal, left: valen_portal)
 		valen_portal.addPortals(senni_portal, left: loiqe_portal)
 		loiqe_portal.addPortals(valen_portal, left: usul_portal)
+		
+		loiqe_gateway.addDestination(nevic_gateway)
+		nevic_gateway.addDestination(loiqe_gateway)
 	}
 	
 	func connectPaths()
