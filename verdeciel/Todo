@@ -2,16 +2,12 @@
 *    MAJOR
 ================
 
-- Design Usul
 - Design Falvet(enter from star)
 - Create Enigma Lesson
-- Collect Map2 in Usul
-- Star quest
 - Inject cells, array, etc.
 - Map interaction
 - Map animation
 
-- Key combination quest
 - Secondary quests
 - Add beacons with secondary hints
 - Design star panel
@@ -20,18 +16,15 @@
 - Color star colors in Falvet
 - Collect Map3 in Falvet
 - Gather items in ports when undocking from a location
-- Enigma lesson
 - Radio in Pilot quest
 - Enigma in console quest
-- Collect shield quest
+- Mining location? for bonus items(music, etc..)
+- Power quests(batteries)
 
 > Usul
 
-- Install Shield
-- Find map2
-- Use Currency 6
-- Use Star(collect shield)
-- create master key -> use in stars
+- stars require master key(Key combination quest)
+
 
 ================
 *    MINOR

@@ -27,9 +27,9 @@ class ItemLibrary
 	let usulPortalFragment1 = Item(name: "Usul Key I", type: .fragment, note:"half a Portal key", isQuest:true)
 	let usulPortalFragment2 = Item(name: "Usul Key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
-	let masterRedKey = Item(name: "Red Key", type: .key, note: "[missing]", isQuest: true)
-	let masterCyanKey = Item(name: "Cyan Key", type: .key, note: "[missing]", isQuest: true)
-	let masterWhiteKey = Item(name: "White Key", type: .key, note: "[missing]", isQuest: true)
+	let verticalKey = Item(name: "Red Key", type: .key, note: "[missing]", isQuest: true)
+	let horizontalKey = Item(name: "Cyan Key", type: .key, note: "[missing]", isQuest: true)
+	let masterKey = Item(name: "White Key", type: .key, note: "[missing]", isQuest: true)
 	
 	// Etc..
 	

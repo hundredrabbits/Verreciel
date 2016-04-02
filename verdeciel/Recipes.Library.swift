@@ -21,9 +21,9 @@ class RecipesLibrary
 		
 		// Master Keys
 		
-		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.masterRedKey) )
-		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.masterCyanKey) )
-		horadric.append( Recipe(ingredients: [items.masterRedKey, items.masterCyanKey], result: items.masterWhiteKey) )
+		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.horizontalKey) )
+		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.verticalKey) )
+		horadric.append( Recipe(ingredients: [items.horizontalKey, items.verticalKey], result: items.masterKey) )
 	}
 	
 	private func batteries()

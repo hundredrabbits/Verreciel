@@ -6,9 +6,7 @@ import Foundation
 class LocationStar : Location
 {
 	var button:SCNButton!
-	var portA:SCNPort!
-	var portB:SCNPort!
-	var twin:Location!
+	var masterPort:SCNPort!
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
 	{
@@ -22,8 +20,7 @@ class LocationStar : Location
 		icon.replace(icons.star())
 		label.update(name)
 		
-		portA = SCNPort(host: self, input: Item.self, output: Item.self)
-		portB = SCNPort(host: self, input: Item.self, output: Item.self)
+		masterPort = SCNPort(host: self, input: Item.self, output: Item.self)
 	}
 	
 	override func panel() -> Panel!
@@ -34,24 +31,26 @@ class LocationStar : Location
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		
-		button = SCNButton(host: self, text: "install", operation:1, width:1.5)
+		button = SCNButton(host: self, text: "install", operation:1, width:1)
 		button.position = SCNVector3(0,-1,0)
 		newPanel.addChildNode(button)
 		
-		portA.position = SCNVector3(-0.5,-0.3,0)
-		portB.position = SCNVector3(0.5,-0.3,0)
+		masterPort.position = SCNVector3(-0,-0.3,0)
 		
-		portA.enable()
-		portB.enable()
+		masterPort.enable()
 		
-		portA.connect(portB)
+		newPanel.addChildNode(masterPort)
 		
-		newPanel.addChildNode(portA)
-		newPanel.addChildNode(portB)
-		
-		button.enable("extinguish the sun")
+		button.disable("extinguish")
 		
 		return newPanel
+	}
+	
+	override func onConnect()
+	{
+		if masterPort.isReceiving(items.masterKey) == true {
+			button.enable("extinguish")
+		}
 	}
 	
 	override func sightUpdate()
@@ -86,15 +85,16 @@ class LocationStar : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 {  }
+		if id == 1 { print("!!!") }
+	}
+	
+	func extinguish()
+	{
+		print("? STAR     | Extinguished \(name)!")
 	}
 	
 	override func onDisconnect()
 	{
-		if portB.origin != portA {
-			self.complete()
-			capsule.teleport(twin)
-		}
 	}
 	
 	// MARK: Defaults -
