@@ -158,7 +158,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Helmet Lesson")
 		m.quests = [
-			Quest(name:"Route map to helmet", predicate:{ helmet.isReceivingMap() }, result: {  })
+			Quest(name:"Route map to helmet", predicate:{ player.port.isReceivingFromPanel(map) == true }, result: {  })
 		]
 		questlog[c]?.append(m)
 		

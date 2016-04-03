@@ -272,6 +272,14 @@ class SCNPort : SCNNode
 		return false
 	}
 	
+	func isReceivingFromPanel(panel:Panel) -> Bool
+	{
+		if origin == nil { return false }
+		if (origin.host is Panel) == false { return false }
+		if origin.host == panel { return true }
+		return false
+	}
+	
 	func isReceiving(event:Event!) -> Bool
 	{
 		if origin != nil && origin.event != nil && origin.event == event { return true }

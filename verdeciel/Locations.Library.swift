@@ -83,7 +83,7 @@ class Loiqe
 	
 	func gateway() -> LocationGateway
 	{
-		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey)
+		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 2), key: items.masterKey)
 	}
 	
 	// Constellations

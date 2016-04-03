@@ -50,6 +50,7 @@ class ItemLibrary
 	
 	// Shields(fields)
 	let shield1 = Item(name: "shield 1", type: .shield, note:"[missing]", isQuest:true)
+	let shield2 = Item(name: "shield 2", type: .shield, note:"[missing]", isQuest:true)
 	
 	// Harvest
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")

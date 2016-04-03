@@ -42,7 +42,7 @@ class PanelHatch : MainPanel
 		port.input = Item.self
 		port.output = Event.self
 		
-		decalsNode.empty()
+		decals.empty()
 		
 		details.update("empty", color: grey)
 	}

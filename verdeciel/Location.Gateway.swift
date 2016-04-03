@@ -34,7 +34,7 @@ class LocationGateway : Location
 		ThrusterPort = SCNPort(host: self, input: Event.self, output: Location.self)
 		PilotPort = SCNPort(host: self, input: Event.self, output: Location.self)
 		
-		KeyLabel = SCNLabel(text: "\(destination.name) key",color:red)
+		KeyLabel = SCNLabel(text: "",color:red)
 		ThrusterLabel = SCNLabel(text: "> Thruster", color:white)
 		PilotLabel = SCNLabel(text: "> Pilot", color:grey)
 		

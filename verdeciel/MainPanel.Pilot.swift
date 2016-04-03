@@ -45,7 +45,7 @@ class PanelPilot : MainPanel
 		port.input = Location.self
 		port.output = Event.self
 		
-		decalsNode.empty()
+		decals.empty()
 		
 		details.update("Ready", color: grey)
 	}

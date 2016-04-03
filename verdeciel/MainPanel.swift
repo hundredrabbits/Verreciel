@@ -19,7 +19,7 @@ class MainPanel : Panel
 	let footer = SCNNode()
 	
 	var mainNode = SCNNode()
-	var decalsNode = SCNNode()
+	var decals = SCNNode()
 	
 	override init()
 	{
@@ -28,7 +28,7 @@ class MainPanel : Panel
 		name = "unknown"
 		root.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		root.addChildNode(mainNode)
-		root.addChildNode(decalsNode)
+		root.addChildNode(decals)
 		
 		// Header
 		port = SCNPort(host: self)
@@ -56,18 +56,18 @@ class MainPanel : Panel
 		let width:CGFloat = 1.65
 		let height:CGFloat = 1.8
 		
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width,height,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,-height + 0.2,0), nodeB: SCNVector3(width,-height,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width + 0.2,-height + 0.2,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width,height,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,-height + 0.2,0), nodeB: SCNVector3(width,-height,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(width + 0.2,height - 0.2,0), nodeB: SCNVector3(width + 0.2,-height + 0.2,0), color: grey))
 		
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width,height,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,-height + 0.2,0), nodeB: SCNVector3(-width,-height,0), color: grey))
-		decalsNode.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width - 0.2,-height + 0.2,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width,height,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,-height + 0.2,0), nodeB: SCNVector3(-width,-height,0), color: grey))
+		decals.addChildNode(SCNLine(nodeA: SCNVector3(-width - 0.2,height - 0.2,0), nodeB: SCNVector3(-width - 0.2,-height + 0.2,0), color: grey))
 		
 		// Start
 		
 		mainNode.opacity = 0
-		decalsNode.opacity = 0
+		decals.opacity = 0
 		footer.opacity = 0
 		
 		label.update("--", color:grey)
@@ -75,7 +75,7 @@ class MainPanel : Panel
 	
 	override func start()
 	{
-		decalsNode.opacity = 0
+		decals.opacity = 0
 		mainNode.opacity = 0
 		label.update("--", color: grey)
 	}
@@ -118,15 +118,15 @@ class MainPanel : Panel
 		
 		mainNode.position = SCNVector3(0,0,-0.2)
 		mainNode.opacity = 0
-		decalsNode.position = SCNVector3(0,0,-0.4)
-		decalsNode.opacity = 0
+		decals.position = SCNVector3(0,0,-0.4)
+		decals.opacity = 0
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.7)
 		mainNode.position = SCNVector3(0,0,0)
 		mainNode.opacity = 1
-		decalsNode.position = SCNVector3(0,0,0)
-		decalsNode.opacity = 1
+		decals.position = SCNVector3(0,0,0)
+		decals.opacity = 1
 		footer.opacity = 1
 		SCNTransaction.commit()
 		

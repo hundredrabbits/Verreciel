@@ -191,7 +191,7 @@ class Location : Event
 		let horizontalDistance = abs(capsule.at.x - at.x)
 		
 		// In Sight
-		if Float(verticalDistance) <= 1.5 && Float(horizontalDistance) <= 1.5 {
+		if Float(verticalDistance) <= 1.5 && Float(horizontalDistance) <= 1.5 || radar.overviewMode == true && distance < 7{
 			if self.mapRequirement == nil {
 				self.opacity = 1
 			}
@@ -212,12 +212,6 @@ class Location : Event
 			else{
 				wire.opacity = 0
 			}
-		}
-		
-		// TODO;
-		if player.isConnectedToRadar == true {
-			self.opacity = 1
-			wire.opacity = 1
 		}
 	}
 	

@@ -242,12 +242,6 @@ class Helmet: SCNNode
 		warningLabel.update(self.warning)
 	}
 	
-	func isReceivingMap() -> Bool
-	{
-		if player.port.isReceivingItemOfType(.map) == true { return true }
-		return false
-	}
-	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

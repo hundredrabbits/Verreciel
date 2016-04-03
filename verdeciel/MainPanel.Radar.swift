@@ -173,6 +173,37 @@ class PanelRadar : MainPanel
 		if debug.isActive == false { player.lookAt(deg: -90) }
 	}
 	
+	// MARK: Map
+	
+	var overviewMode:Bool = false
+	
+	func modeNormal()
+	{
+		print("+ RADAR    | Mode: Normal")
+		
+		overviewMode = false
+		
+		thruster.show()
+		pilot.show()
+		decals.show()
+		header.show()
+		footer.show()
+		handle.show()
+	}
+	
+	func modeOverview()
+	{
+		print("+ RADAR    | Mode: Overview")
+		
+		overviewMode = true
+		
+		thruster.hide()
+		pilot.hide()
+		decals.hide()
+		header.hide()
+		handle.hide()
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

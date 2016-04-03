@@ -148,7 +148,7 @@ class PanelThruster : MainPanel
 		
 		details.update("--")
 		
-		decalsNode.empty()
+		decals.empty()
 	}
 
 	override func touch(id:Int = 0)

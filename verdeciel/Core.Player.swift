@@ -30,7 +30,6 @@ class CorePlayer : SCNNode
 	var triggerLabel:SCNLabel!
 	
 	var isLocked:Bool = false
-	var isConnectedToRadar = false
     
     var accelX:Float = 0;
     var accelY:Float = 0;
@@ -134,11 +133,6 @@ class CorePlayer : SCNNode
                 accelY = 0; //if it gets too small just drop to zero
             }
         }
-		
-		// Check is starmap is still connected
-		if port.origin == nil && isConnectedToRadar == true {
-			hideStarmap()
-		}
 	}
 	
 	func flickerAlert()
@@ -170,35 +164,6 @@ class CorePlayer : SCNNode
 		SCNTransaction.commit()
 		
 		releaseHandle()
-	}
-	
-	override func listen(event: Event)
-	{
-		if event == items.starmap {
-			showStarmap()
-		}
-	}
-	
-	func showStarmap()
-	{
-		capsule.mesh.opacity = 0
-		radar.decalsNode.opacity = 0
-		radar.header.opacity = 0
-		radar.handle.opacity = 0
-		thruster.opacity = 0
-		pilot.opacity = 0
-		isConnectedToRadar = true
-	}
-	
-	func hideStarmap()
-	{
-		capsule.mesh.opacity = 1
-		radar.decalsNode.opacity = 1
-		radar.header.opacity = 1
-		radar.handle.opacity = 1
-		thruster.opacity = 1
-		pilot.opacity = 1
-		isConnectedToRadar = false
 	}
 	
 	// MARK: Left Hand -
@@ -280,6 +245,16 @@ class CorePlayer : SCNNode
 		
 		activeHandle.enable()
 		activeHandle = nil
+	}
+	
+	override func onConnect()
+	{
+		if port.isReceivingFromPanel(map) == true { radar.modeOverview() }
+	}
+	
+	override func onDisconnect()
+	{
+		if port.isReceivingFromPanel(map) != true { radar.modeNormal() }
 	}
 	
 	// MARK: Default -

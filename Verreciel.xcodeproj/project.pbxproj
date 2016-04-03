@@ -22,7 +22,7 @@
 		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; };
 		571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */; };
 		572258151BB877C600DEC41E /* Location.Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* Location.Portal.swift */; };
-		5726C6071BD46FFF00B924B2 /* Core.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726C6061BD46FFF00B924B2 /* Core.UI.swift */; };
+		5726C6071BD46FFF00B924B2 /* Core.Helmet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */; };
 		5728E06E1C2363880098534E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728E06D1C2363880098534E /* Panel.swift */; };
 		5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573379591BD82F9B00310147 /* SCNVector3.swift */; };
 		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
@@ -113,7 +113,7 @@
 		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
 		571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Battery.swift; sourceTree = "<group>"; };
 		572258141BB877C600DEC41E /* Location.Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Portal.swift; sourceTree = "<group>"; };
-		5726C6061BD46FFF00B924B2 /* Core.UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.UI.swift; sourceTree = "<group>"; };
+		5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Helmet.swift; sourceTree = "<group>"; };
 		5728E06D1C2363880098534E /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		573379591BD82F9B00310147 /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
 		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
@@ -303,7 +303,6 @@
 			children = (
 				57A0F10E1B3DDABF0007650F /* Event.swift */,
 				579CE7211C247DF4009E02F5 /* Item.swift */,
-				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
 				57A5F9621BC6C3DB00EA35F6 /* String.swift */,
 				576DCEA51C483BCF007A7544 /* Mission.swift */,
@@ -338,6 +337,7 @@
 		576E5DAF1BC5E5F8001D52A9 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
+				574E5FC11BC5AEA2008130AB /* Location.swift */,
 				57C222F51C1F218A005092A4 /* Location.Bank.swift */,
 				57EDED211BC17321005DF3DE /* Location.Beacon.swift */,
 				578D63F21C3C7DA1000AAC04 /* Location.Harvest.swift */,
@@ -360,7 +360,7 @@
 				579CE71F1C2460BA009E02F5 /* Core.Time.swift */,
 				579419711B58A3D200F9FF87 /* Core.Player.swift */,
 				579CE71D1C246040009E02F5 /* Core.Game.swift */,
-				5726C6061BD46FFF00B924B2 /* Core.UI.swift */,
+				5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */,
 				57DACD8D1C1A194500971F10 /* Core.Audio.swift */,
 				57F3D8C61B58215400B9B859 /* Core.Capsule.swift */,
 				5734D45F1B5AB4C400BF0048 /* Core.Universe.swift */,
@@ -499,7 +499,7 @@
 				57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */,
 				574156DC1BE12F24008B6C44 /* Recipes.Library.swift in Sources */,
 				5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */,
-				5726C6071BD46FFF00B924B2 /* Core.UI.swift in Sources */,
+				5726C6071BD46FFF00B924B2 /* Core.Helmet.swift in Sources */,
 				576859101C4DE984009D3681 /* Widget.Enigma.swift in Sources */,
 				5759C3471CA21DC10031524B /* SCNHexa.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,

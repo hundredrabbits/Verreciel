@@ -53,7 +53,7 @@ class PanelCargo : MainPanel
 		
 		port.event = items.playerCargo
 		
-		decalsNode.empty()
+		decals.empty()
 		
 		details.update("Empty", color: grey)
 	}
