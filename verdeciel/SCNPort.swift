@@ -330,6 +330,23 @@ class SCNPort : SCNNode
 		return false
 	}
 	
+	func isReceivingLocation() -> Bool
+	{
+		if origin == nil { return false }
+		if origin.event == nil { return false }
+		
+		if origin.event is Location { return true }
+		
+		return false
+	}
+	
+	func isReceivingLocationOfTypePortal() -> Bool
+	{
+		if isReceivingLocation() == false { return false }
+		if origin.event is LocationPortal { return true }
+		return false
+	}
+	
 	func isReceivingEventOfTypeLocation() -> Bool
 	{
 		if origin == nil { return false }

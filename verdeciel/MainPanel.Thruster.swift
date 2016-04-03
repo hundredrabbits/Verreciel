@@ -204,12 +204,11 @@ class PanelThruster : MainPanel
 		else if capsule.isWarping == true {
 			modeWarping()
 		}
-		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingLocationOfType(.portal) == true {
+		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingLocationOfTypePortal() == true && abs(pilot.target.align) == 0 {
 			modeWaitingForWarp()
 			canWarp = true
 		}
 		else if port.isReceiving(items.warpDrive) == true {
-			print("\(port.isReceiving(items.warpDrive))/\(pilot.port.isReceivingLocationOfType(.portal))")
 			modeMisaligned()
 			canWarp = true
 		}
