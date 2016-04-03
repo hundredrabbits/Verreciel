@@ -223,16 +223,6 @@ class Helmet: SCNNode
 		self.warningLabel.update(self.warning)
 	}
 	
-	func showWarningUntil(warning:String, predicate:() -> Bool)
-	{
-		self.warning = warning
-		self.warningLabel.update(self.warning)
-		
-		if predicate() == true {
-			hideWarning()
-		}
-	}
-	
 	func hideWarning()
 	{
 		if warningTimer != nil {
@@ -240,6 +230,15 @@ class Helmet: SCNNode
 		}
 		self.warning = ""
 		warningLabel.update(self.warning)
+	}
+	
+	func showWarningUntil(warning:String, predicate:() -> Bool)
+	{
+		showWarning(warning)
+		
+		if predicate() == true {
+			hideWarning()
+		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

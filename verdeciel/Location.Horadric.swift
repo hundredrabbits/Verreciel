@@ -53,6 +53,8 @@ class LocationHoradric : Location
 		
 		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.2 - 0.125,0), nodeB: SCNVector3(0,-0.8 + 0.125,0), color: grey))
 		
+		storage = [inPort1,inPort2,outPort]
+		
 		return newPanel
 	}
 	

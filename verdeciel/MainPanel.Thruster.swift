@@ -212,6 +212,9 @@ class PanelThruster : MainPanel
 			modeMisaligned()
 			canWarp = true
 		}
+		else if capsule.isDocked == true && capsule.dock.storedItems().count > 0 {
+			modeStorageBusy()
+		}
 		else if capsule.isDocked == true {
 			modeDocked()
 		}
@@ -383,6 +386,25 @@ class PanelThruster : MainPanel
 		
 		lineLeft.color(clear)
 		lineRight.color(clear)
+	}
+	
+	func modeStorageBusy()
+	{
+		details.update("Take \(capsule.dock.storedItems().first!.name!)", color:red)
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 1
+		interface_warp.opacity = 0
+		
+		action.disable()
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(grey)
+		decelerate.updateChildrenColors(grey)
+		
+		lineLeft.color(grey)
+		lineRight.color(grey)
 	}
 	
 	func modeDocked()

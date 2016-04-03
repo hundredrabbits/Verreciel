@@ -142,10 +142,9 @@ class LocationHarvest : Location
 		super.animateMesh()
 		
 		if port.hasEvent(grows) == false {
-			structure.blink()
+			structure.eulerAngles.y += Float(degToRad(0.15))
 		}
 		else{
-			structure.show()
 			structure.eulerAngles.y += Float(degToRad(0.1))
 		}
 	}

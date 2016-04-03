@@ -35,6 +35,8 @@ class Location : Event
 	var wire:SCNLine!
 	var connection:Event!
 	
+	var storage:Array<SCNPort> = []
+	
 	init(name:String = "",system:Systems = .unknown, at: CGPoint)
 	{
 		super.init(name:name, at:at)
@@ -263,6 +265,25 @@ class Location : Event
 		if (diff > 180){ diff = 360 - diff }
 		
 		return diff
+	}
+	
+	// MARK: Storage -
+	
+	func storedItems() -> Array<Event>
+	{
+		var collection:Array<Event> = []
+		for port in storage{
+			if port.hasEvent() == true && port.event.isQuest == true { collection.append(port.event) }
+		}
+		return collection
+	}
+	
+	func isStorageEmpty() -> Bool
+	{
+		for port in storage{
+			if port.hasEvent() == true { return true}
+		}
+		return false
 	}
 	
 	required init(coder aDecoder: NSCoder)
