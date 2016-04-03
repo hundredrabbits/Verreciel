@@ -10,8 +10,9 @@ import Foundation
 class Item : Event
 {
 	var type:ItemTypes!
+	var location:Location!
 	
-	init(name:String = "",type:ItemTypes = ItemTypes.generic, note:String = "", isQuest:Bool = false)
+	init(name:String = "",type:ItemTypes = ItemTypes.generic, location:Location! = nil, note:String = "", isQuest:Bool = false)
 	{
 		super.init()
 		
@@ -19,6 +20,7 @@ class Item : Event
 		self.type = type
 		self.note = note
 		self.isQuest = isQuest
+		self.location = location
 	}
 	
 	init(like:Item)

@@ -16,13 +16,14 @@ class LocationGateway : Location
 	
 	var key:Event!
 	
-	init(name:String, system:Systems, at: CGPoint, key: Event)
+	init(name:String, system:Systems, at: CGPoint, key: Event, mapRequirement:Item! = nil)
 	{
 		super.init(name:name,system:system, at:at, type: .gateway)
 		
 		self.note = ""
 		self.color = color
 		self.structure = structures.gateway()
+		self.mapRequirement = mapRequirement
 		icon.replace(icons.gateway())
 		
 		self.key = key

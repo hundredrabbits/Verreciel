@@ -149,11 +149,6 @@ class CoreUniverse : SCNNode
 	
 	func connectPortals()
 	{
-		usul_portal.addPortals(loiqe_portal, left: senni_portal)
-		senni_portal.addPortals(usul_portal, left: valen_portal)
-		valen_portal.addPortals(senni_portal, left: loiqe_portal)
-		loiqe_portal.addPortals(valen_portal, left: usul_portal)
-		
 		loiqe_gateway.addDestination(nevic_gateway)
 		nevic_gateway.addDestination(loiqe_gateway)
 	}
@@ -195,6 +190,16 @@ class CoreUniverse : SCNNode
 			print("  > \(location.name!)")
 			location.isAccessible = true
 		}
+	}
+	
+	func locationLike(target:Location) -> Location!
+	{
+		for location in childNodes {
+			let location = location as! Location
+			if location.name == target.name && location.system == target.system { return location }
+		}
+		
+		return nil
 	}
 	
 	// Default

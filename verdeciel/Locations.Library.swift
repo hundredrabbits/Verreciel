@@ -59,7 +59,7 @@ class Loiqe
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal", system:system, at:CGPoint(x: offset.x, y: offset.y + 1), leftKey: items.usulPortalKey, rightKey: items.valenPortalKey, leftName:"Usul", rightName: "Valen")
+		return LocationPortal(name: "portal", system:system, at:CGPoint(x: offset.x, y: offset.y + 1))
 	}
 	
 	func satellite() -> LocationSatellite
@@ -83,7 +83,7 @@ class Loiqe
 	
 	func gateway() -> LocationGateway
 	{
-		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 2), key: items.masterKey)
+		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 2), key: items.masterKey, mapRequirement: items.map2)
 	}
 	
 	// Constellations
@@ -113,7 +113,7 @@ class Usul
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), leftKey: items.senniPortalKey, rightKey: items.loiqePortalKey, leftName:"Senni", rightName: "Loiqe")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x + 1, y: offset.y))
 	}
 	
 	func station() -> LocationStation
@@ -161,7 +161,7 @@ class Valen
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), leftKey: items.loiqePortalKey, rightKey: items.senniPortalKey, leftName:"Loiqe", rightName: "Senni")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x - 1, y: offset.y))
 	}
 	
 	func harvest() -> LocationHarvest
@@ -209,7 +209,7 @@ class Senni
 	
 	func portal() -> LocationPortal
 	{
-		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), leftKey: items.valenPortalKey, rightKey: items.usulPortalKey, leftName:"Valen", rightName: "Usul")
+		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x, y: offset.y - 1))
 	}
 	
 	func cargo() -> LocationSatellite
@@ -262,6 +262,6 @@ class Nevic
 	
 	func gateway() -> LocationGateway
 	{
-		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey)
+		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey, mapRequirement: items.map2)
 	}
 }

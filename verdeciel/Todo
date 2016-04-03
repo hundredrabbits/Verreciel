@@ -2,11 +2,10 @@
 *    MAJOR
 ================
 
+- Quest monitor becomes location description when completed
 - Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
 - Inject cells, array, etc.
-- Map interaction
-- Map animation
 
 - Secondary quests
 - Add beacons with secondary hints
@@ -53,7 +52,6 @@
 - Rotate undocked structures to angle instead of step
 - Cannot warp if not aligned(Portal)
 - Add distance in above panel
-- Maybe move quest to below?!
 - Increase docking speed
 
 > Bugs
@@ -69,6 +67,7 @@
 - Update mission panel to fit within shield
 - Animate docking on Trade Locations
 - Animate docking on Satellite Locations
+- Map animation
 
 > Narative
 - Telemetrists!? Twin Suns

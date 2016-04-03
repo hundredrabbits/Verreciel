@@ -52,7 +52,7 @@ class MissionLibrary
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
-			Quest(name:"Trade \(items.currency1.name!) for \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
+			Quest(name:"Route \(items.currency1.name!) to trade table", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
 		]
 		questlog[c]?.append(m)
 		
@@ -75,7 +75,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
+//			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]

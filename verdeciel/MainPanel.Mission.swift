@@ -329,6 +329,13 @@ class PanelMission : MainPanel
 		touch(1)
 	}
 	
+	override func onConnect()
+	{
+		if capsule.isDocked == true {
+			capsule.dock.onConnect()
+		}
+	}
+	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

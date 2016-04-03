@@ -209,7 +209,8 @@ class PanelThruster : MainPanel
 			canWarp = true
 		}
 		else if port.isReceiving(items.warpDrive) == true {
-			modeMissingPilotForWarp()
+			print("\(port.isReceiving(items.warpDrive))/\(pilot.port.isReceivingLocationOfType(.portal))")
+			modeMisaligned()
 			canWarp = true
 		}
 		else if capsule.isDocked == true {
@@ -308,6 +309,7 @@ class PanelThruster : MainPanel
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
 		interface_warp.opacity = 1
+		interface_warp.updateChildrenColors(cyan)
 		
 		action.enable()
 		
@@ -320,13 +322,14 @@ class PanelThruster : MainPanel
 		lineRight.color(cyan)
 	}
 	
-	func modeMissingPilotForWarp()
+	func modeMisaligned()
 	{
-		details.update("pilot")
+		details.update("misaligned")
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
 		interface_warp.opacity = 1
+		interface_warp.updateChildrenColors(red)
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -340,6 +343,8 @@ class PanelThruster : MainPanel
 		
 		lineLeft.color(grey)
 		lineRight.color(grey)
+		
+		action.disable()
 	}
 	
 	func modeUnpowered()
