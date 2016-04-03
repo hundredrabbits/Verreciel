@@ -12,7 +12,7 @@ class LocationHoradric : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at, type: .horadric)
+		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
 		self.mapRequirement = mapRequirement

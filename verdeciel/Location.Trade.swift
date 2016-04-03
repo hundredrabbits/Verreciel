@@ -10,7 +10,7 @@ class LocationTrade : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at, type: .trade)
+		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
 		self.structure.addChildNode(structures.trade())

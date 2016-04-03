@@ -18,7 +18,7 @@ class LocationGateway : Location
 	
 	init(name:String, system:Systems, at: CGPoint, key: Event, mapRequirement:Item! = nil)
 	{
-		super.init(name:name,system:system, at:at, type: .gateway)
+		super.init(name:name,system:system, at:at)
 		
 		self.note = ""
 		self.color = color

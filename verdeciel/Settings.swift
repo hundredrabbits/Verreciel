@@ -100,24 +100,6 @@ enum Chapters
 	case tertiary
 }
 
-enum LocationTypes
-{
-	case generic
-	
-	case star
-	case portal
-	case horadric
-	case trade
-	case waypoint
-	case station
-	case satellite
-	case bank
-	case spawn
-	case harvest
-	case beacon
-	case gateway
-}
-
 enum ItemTypes
 {
 	case generic

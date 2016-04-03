@@ -8,9 +8,9 @@ class LocationPortal : Location
 	var pilotPort:SCNPort!
 	var thrusterPort:SCNPort!
 
-	init(name:String, system:Systems, at: CGPoint)
+	override init(name:String, system:Systems, at: CGPoint)
 	{
-		super.init(name:name,system:system, at:at, type: .portal)
+		super.init(name:name,system:system, at:at)
 		
 		pilotPort = SCNPort(host: self, input: nil, output: nil)
 		thrusterPort = SCNPort(host: self, input: nil, output: nil)

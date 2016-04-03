@@ -9,10 +9,10 @@ import Foundation
 
 class LocationLibrary
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -10))
-	let usul  = Usul(offset: CGPoint(x: -10,y: 0))
-	let valen = Valen(offset: CGPoint(x: 10,y: 0))
-	let senni = Senni(offset: CGPoint(x: 0,y: 10))
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -5))
+	let usul  = Usul(offset: CGPoint(x: -5,y: 0))
+	let valen = Valen(offset: CGPoint(x: 5,y: 0))
+	let senni = Senni(offset: CGPoint(x: 0,y: 5))
 	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
 	
 	init()

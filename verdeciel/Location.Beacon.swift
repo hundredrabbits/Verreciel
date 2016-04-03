@@ -9,7 +9,7 @@ class LocationBeacon : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String, mapRequirement:Item! = nil)
 	{
-		super.init(name:name,system:system, at:at, type: .beacon)
+		super.init(name:name,system:system, at:at)
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""

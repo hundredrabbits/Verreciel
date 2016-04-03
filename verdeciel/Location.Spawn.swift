@@ -5,9 +5,9 @@ import Foundation
 
 class LocationSpawn : Location
 {
-	init(name:String = "",system:Systems,at: CGPoint = CGPoint())
+	override init(name:String = "",system:Systems,at: CGPoint = CGPoint())
 	{
-		super.init(name: name,system:system, at: at, type: .spawn)
+		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
 		self.structure = structures.none()

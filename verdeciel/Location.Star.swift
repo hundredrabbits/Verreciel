@@ -10,12 +10,11 @@ class LocationStar : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
 	{
-		super.init(name:name,system:system, at:at, type: .star)
+		super.init(name:name,system:system, at:at)
 		
 		self.note = ""
 		self.color = color
 		self.structure = structures.star()
-		self.type = LocationTypes.star
 		self.isComplete = false
 		icon.replace(icons.star())
 		label.update(name)

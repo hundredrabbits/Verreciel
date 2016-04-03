@@ -64,19 +64,6 @@ class CoreCapsule: SCNNode
 		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
 	}
 	
-	func closestLocationOfType(type:LocationTypes) -> Location
-	{
-		var closestLocation:Location!
-		for location in universe.childNodes {
-			let location = location as! Location
-			if location.type != type { continue }
-			if closestLocation == nil { closestLocation = location }
-			if location.distance > closestLocation.distance { continue }
-			closestLocation = location
-		}
-		return closestLocation
-	}
-	
 	func closestLocation() -> Location
 	{
 		var closestLocation:Location!

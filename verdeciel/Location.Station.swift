@@ -17,7 +17,7 @@ class LocationStation : Location
 		self.requirement = requirement
 		self.installationName = installationName
 		
-		super.init(name:name,system:system, at:at, type: .station)
+		super.init(name:name,system:system, at:at)
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""

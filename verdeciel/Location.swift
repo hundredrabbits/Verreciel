@@ -26,7 +26,6 @@ class Location : Event
 	var isComplete:Bool! = nil
 	
 	var interface = SCNNode()
-	var type:LocationTypes = .generic
 	
 	// Radar
 	var structure = SCNNode()
@@ -36,7 +35,7 @@ class Location : Event
 	var wire:SCNLine!
 	var connection:Event!
 	
-	init(name:String = "",system:Systems = .unknown, at: CGPoint, type:LocationTypes)
+	init(name:String = "",system:Systems = .unknown, at: CGPoint)
 	{
 		super.init(name:name, at:at)
 		
