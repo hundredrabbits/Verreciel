@@ -324,4 +324,25 @@ class StructuresLibrary
 		
 		return mesh
 	}
+	
+	func c_door(color:UIColor = grey) -> SCNNode
+	{
+		let mesh = SCNNode()
+		
+		let hex1 = SCNHexa(radius: 6, color: grey)
+		hex1.position = SCNVector3(0,0,0)
+		mesh.addChildNode(hex1)
+		let hex2 = SCNHexa(radius: 6, color: grey)
+		hex2.position = SCNVector3(0,0,0)
+		mesh.addChildNode(hex2)
+		hex2.eulerAngles.z = Float(degToRad(45))
+		let hex3 = SCNHexa(radius: 6, color: grey)
+		hex3.position = SCNVector3(0,0,0)
+		mesh.addChildNode(hex3)
+		hex3.eulerAngles.z = Float(degToRad(-45))
+		
+		mesh.eulerAngles.x = Float(degToRad(90))
+		
+		return mesh
+	}
 }

@@ -24,8 +24,7 @@ class Instance : SCNNode
 	
 	override func update()
 	{
-//		let distance = pow(event.distance/settings.approach, 3) * 100.0
-		let distance = (event is LocationConstellation) ? event.distance/settings.approach * 100 : pow(event.distance/settings.approach, 3) * 100.0
+		let distance = (event is LocationConstellation) ? event.distance/settings.approach * 100 : pow(event.distance/settings.approach, 5) * 1000.0
 	
 		structure.position = SCNVector3(0,distance,0)
 		

@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_portal)
+		unlockedState(universe.loiqe_harvest)
 //		startingState()
 	}
 	

@@ -46,9 +46,10 @@ class CoreUniverse : SCNNode
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
-	var loiqe_c_fog = locations.loiqe.c_1()
 	var loiqe_fog = locations.loiqe.fog()
 	var loiqe_gateway = locations.loiqe.gateway()
+	var loiqe_c_1 = locations.loiqe.c_1()
+	var loiqe_c_2 = locations.loiqe.c_2()
 	
 	func addLoiqe()
 	{
@@ -63,6 +64,9 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_fog)
 		// Ghost
 		addChildNode(loiqe_gateway)
+		// Constellations
+		addChildNode(loiqe_c_1)
+		addChildNode(loiqe_c_2)
 	}
 	
 	// MARK: Valen -
