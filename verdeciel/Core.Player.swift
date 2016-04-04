@@ -30,9 +30,6 @@ class CorePlayer : SCNNode
 	var triggerLabel:SCNLabel!
 	
 	var isLocked:Bool = false
-    
-    var accelX:Float = 0;
-    var accelY:Float = 0;
 	
 	override init()
 	{
@@ -107,7 +104,10 @@ class CorePlayer : SCNNode
 		alertLabel.update("")
 		alertLabel.opacity = 0
 	}
-
+	
+	var accelX:Float = 0
+	var accelY:Float = 0
+	
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()
@@ -119,8 +119,8 @@ class CorePlayer : SCNNode
             player.eulerAngles.y += accelY
 
             //should keep the values within 2pi rads
-            player.eulerAngles.x = Float(Double(player.eulerAngles.x) % (2 * M_PI))
-            player.eulerAngles.y = Float(Double(player.eulerAngles.y) % (2 * M_PI))
+            player.eulerAngles.x = Float(Double(player.eulerAngles.x))
+            player.eulerAngles.y = Float(Double(player.eulerAngles.y))
 
             //dampening
             // closer to 1 for more 'momentum'

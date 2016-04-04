@@ -29,9 +29,6 @@ class Helmet: SCNNode
 	
 	let textSize:Float = 0.025
 	let visorDepth = -1.3
-    
-    var accelX:Float = 0;
-    var accelY:Float = 0;
 	
 	override init()
 	{
@@ -101,40 +98,18 @@ class Helmet: SCNNode
 	override func fixedUpdate()
 	{
 		super.fixedUpdate()
-		
-        if !player.isLocked {
-            helmet.eulerAngles.x += accelX;
-            helmet.eulerAngles.y += accelY;
-            
-            //keeps us within 2pi
-            helmet.eulerAngles.x = Float(Double(helmet.eulerAngles.x) % (2 * M_PI))
-            helmet.eulerAngles.y = Float(Double(helmet.eulerAngles.y) % (2 * M_PI))
-            
-            //dampening
-            // closer to 1 for more 'momentum'
-            accelX *= 0.75;
-            accelY *= 0.75;
-            if abs(accelX) < 0.005 {
-                accelX = 0; //if it gets too small just drop to zero
-            }
-            if abs(accelY) < 0.005 {
-                accelY = 0; //if it gets too small just drop to zero
-            }
-        }
         
-		if canAlign == true {
-			if (eulerAngles.y - player.eulerAngles.y) > 0.0001 && eulerAngles.y > player.eulerAngles.y {
-				eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.1
-			}
-			if (eulerAngles.y - player.eulerAngles.y) < -0.0001 && eulerAngles.y < player.eulerAngles.y {
-				eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.1
-			}
-			if (eulerAngles.x - player.eulerAngles.x) > 0.0001 && eulerAngles.x > player.eulerAngles.x {
-				eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.1
-			}
-			if (eulerAngles.x - player.eulerAngles.x) < -0.0001 && eulerAngles.y < player.eulerAngles.x {
-				eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.1
-			}
+		if eulerAngles.y > player.eulerAngles.y + 0.0001 {
+			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.8
+		}
+		else if eulerAngles.y < player.eulerAngles.y - 0.0001 {
+			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.8
+		}
+		if eulerAngles.x > player.eulerAngles.x + 0.0001 {
+			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.9
+		}
+		else if eulerAngles.y < player.eulerAngles.x - 0.0001 {
+			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.9
 		}
 		updatePort()
 		

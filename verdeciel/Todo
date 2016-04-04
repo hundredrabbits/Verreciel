@@ -46,14 +46,11 @@
 > Playthrough
 - Save / Load Mechanics
 - Add constellation in valen
-- (Bank)If empty, display grey
 - Connect quest(Complete) monitor
-- Rotate undocked structures to angle instead of step
 - Add distance in above panel
 - Increase docking speed
 
 > Bugs
-- Issue with UI offset animation
 - Release touch when installing camera animation
 - Connecting something to console enables cargo item ports?!
 

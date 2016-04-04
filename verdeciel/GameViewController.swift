@@ -150,9 +150,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 
         player.accelY += Float(degToRad(dragX/6))
         player.accelX += Float(degToRad(dragY/6))
-		
-		helmet.accelX += Float(degToRad(dragY/6)) * 0.975
-        helmet.accelY += Float(degToRad(dragX/6)) * 0.95
         
 		helmet.updatePort()
 	}
