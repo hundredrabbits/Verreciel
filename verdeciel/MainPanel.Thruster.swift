@@ -351,11 +351,11 @@ class PanelThruster : MainPanel
 	
 	func modeMisaligned()
 	{
-		details.update("misaligned")
+		details.update("misaligned", color:red)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
-		interface_warp.opacity = 1
+		interface_warp.blink()
 		interface_warp.updateChildrenColors(red)
 		
 		accelerate.disable()

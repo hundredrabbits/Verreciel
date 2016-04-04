@@ -31,6 +31,10 @@ class Instance : SCNNode
 		if capsule.isDockedAtLocation(event){
 			self.eulerAngles.z = Float(degToRad(0))
 		}
+		else if capsule.lastLocation == event {
+			self.eulerAngles.z = Float(degToRad(0))
+			structure.position = SCNVector3(0,distance * -1,0)
+		}
 		else{
 			self.eulerAngles.z = Float(degToRad(event.align))
 		}

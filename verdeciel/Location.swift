@@ -28,12 +28,13 @@ class Location : Event
 	var interface = SCNNode()
 	
 	// Radar
-	var structure = SCNNode()
 	var icon = SCNNode()
 	var label = SCNLabel()
 	var trigger = SCNNode()
 	var wire:SCNLine!
 	var connection:Event!
+	
+	var structure = SCNNode()
 	
 	var storage:Array<SCNPort> = []
 	
