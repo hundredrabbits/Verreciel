@@ -161,6 +161,7 @@ class PanelThruster : MainPanel
 		}
 		if id == 2 {
 			if canWarp == true {
+				(capsule.dock as! LocationPortal).onWarp()
 				capsule.warp(pilot.port.origin.event as! Location)
 			}
 			else{

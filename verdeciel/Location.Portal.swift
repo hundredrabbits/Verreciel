@@ -17,7 +17,7 @@ class LocationPortal : Location
 		super.init(name:name,system:system, at:at)
 		
 		keyLabel = SCNLabel(text: "input key", scale: 0.1, align: .center, color: white)
-		destinationLabel = SCNLabel(text: "destination", scale: 0.05, align: .center, color: grey)
+		destinationLabel = SCNLabel(text: "--", scale: 0.08, align: .center, color: grey)
 		pilotPort = SCNPort(host: self, input: nil, output: nil)
 		pilotLabel = SCNLabel(text: "pilot", scale: 0.1, align: .center, color: grey)
 		thrusterPort = SCNPort(host: self, input: nil, output: nil)
@@ -93,6 +93,13 @@ class LocationPortal : Location
 		keyLabel.update("no key", color:red)
 	}
 	
+	func onWarp()
+	{
+		pilotPort.disconnect()
+		thrusterPort.disconnect()
+		mission.port.disconnect()
+	}
+	
 	func unlock()
 	{
 		let key = mission.port.origin.event as! Item
@@ -101,6 +108,7 @@ class LocationPortal : Location
 		print("! KEY      | Reading: \(key.name!) -> \(destination.name!)")
 		
 		keyLabel.update(key.name!, color:cyan)
+		destinationLabel.update("to \(destination.system) \(destination.name!)")
 		
 		pilotPort.addEvent(destination)
 		pilotPort.enable()
