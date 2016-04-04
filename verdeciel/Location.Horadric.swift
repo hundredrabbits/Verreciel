@@ -107,6 +107,11 @@ class LocationHoradric : Location
 		}
 		
 		if recipeValid != nil {
+			inPort1.disable()
+			inPort2.disable()
+		}
+		
+		if recipeValid != nil {
 			inPort1.label.update("IN", color: white)
 			inPort2.label.update("IN", color: white)
 			outPort.label.update(recipeValid.result.name!, color:cyan)

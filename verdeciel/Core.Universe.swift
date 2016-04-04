@@ -50,6 +50,8 @@ class CoreUniverse : SCNNode
 	var loiqe_gateway = locations.loiqe.gateway()
 	var loiqe_c_1 = locations.loiqe.c_1()
 	var loiqe_c_2 = locations.loiqe.c_2()
+	var loiqe_c_3 = locations.loiqe.c_3()
+	var loiqe_c_4 = locations.loiqe.c_4()
 	
 	func addLoiqe()
 	{
@@ -67,6 +69,8 @@ class CoreUniverse : SCNNode
 		// Constellations
 		addChildNode(loiqe_c_1)
 		addChildNode(loiqe_c_2)
+		addChildNode(loiqe_c_3)
+		addChildNode(loiqe_c_4)
 	}
 	
 	// MARK: Valen -

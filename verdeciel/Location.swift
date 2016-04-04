@@ -239,11 +239,6 @@ class Location : Event
 			radar.addTarget(self)
 		}
 	}
-
-	func disconnectPanel()
-	{
-		
-	}
 	
 	func calculateAngle() -> CGFloat
 	{

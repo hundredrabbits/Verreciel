@@ -75,7 +75,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-//			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ universe.loiqe_portal.rightKeyPort.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
+			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.dock == universe.loiqe_portal && mission.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]

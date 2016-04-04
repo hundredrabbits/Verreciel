@@ -96,7 +96,9 @@ class CoreCapsule: SCNNode
 
 	func warp(destination:Location)
 	{
-		dock.disconnectPanel()
+		(dock as! LocationPortal).pilotPort.disconnect()
+		(dock as! LocationPortal).thrusterPort.disconnect()
+		mission.port.disconnect()
 		
 		destination.isKnown = true
 		radar.addTarget(destination)
@@ -244,7 +246,6 @@ class CoreCapsule: SCNNode
 	func undock()
 	{		
 		dock.onUndock()
-		dock.disconnectPanel()
 		isDocked = false
 		dock = nil
 		thruster.enable()

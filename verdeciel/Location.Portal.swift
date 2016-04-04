@@ -80,9 +80,8 @@ class LocationPortal : Location
 	
 	func validate()
 	{
-		if mission.port.isReceivingItemOfType(.key) == false { lock() ; return }
-		if (mission.port.origin.event is Item) != true { lock() ; return }
-		unlock()
+		if mission.port.isReceivingItemOfType(.key) == true { unlock() }
+		else{ lock() }
 	}
 	
 	func lock()
@@ -91,13 +90,8 @@ class LocationPortal : Location
 		pilotPort.disable()
 		thrusterPort.disable()
 		keyLabel.update("no key", color:red)
-	}
-	
-	func onWarp()
-	{
-		pilotPort.disconnect()
-		thrusterPort.disconnect()
-		mission.port.disconnect()
+		
+		structure.updateChildrenColors(red)
 	}
 	
 	func unlock()
@@ -113,6 +107,8 @@ class LocationPortal : Location
 		pilotPort.addEvent(destination)
 		pilotPort.enable()
 		thrusterPort.enable()
+		
+		structure.updateChildrenColors(cyan)
 	}
 	
 	override func animateMesh()

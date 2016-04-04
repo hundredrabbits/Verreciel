@@ -97,6 +97,16 @@ class Loiqe
 	{
 		return LocationConstellation(name: "vill", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5), structure: structures.c_door())
 	}
+	
+	func c_3() -> LocationConstellation
+	{
+		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 0.25, y: offset.y + 1.25), structure: structures.c_portal(color:grey))
+	}
+	
+	func c_4() -> LocationConstellation
+	{
+		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.25, y: offset.y + 1.25), structure: structures.c_portal(color:grey))
+	}
 }
 
 class Usul

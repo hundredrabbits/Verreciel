@@ -161,7 +161,6 @@ class PanelThruster : MainPanel
 		}
 		if id == 2 {
 			if canWarp == true {
-				(capsule.dock as! LocationPortal).onWarp()
 				capsule.warp(pilot.port.origin.event as! Location)
 			}
 			else{
@@ -206,8 +205,13 @@ class PanelThruster : MainPanel
 			modeWarping()
 		}
 		else if port.isReceiving(items.warpDrive) == true && pilot.port.isReceivingLocationOfTypePortal() == true && abs(pilot.target.align) == 0 {
-			modeWaitingForWarp()
-			canWarp = true
+			if pilot.port.origin.event != capsule.dock{
+				modeWaitingForWarp()
+				canWarp = true
+			}
+			else{
+				modeWarpError()
+			}
 		}
 		else if port.isReceiving(items.warpDrive) == true {
 			modeMisaligned()
@@ -307,7 +311,7 @@ class PanelThruster : MainPanel
 	
 	func modeWaitingForWarp()
 	{
-		details.update("warp")
+		details.update("warp", color:white)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
@@ -325,6 +329,26 @@ class PanelThruster : MainPanel
 		lineRight.color(cyan)
 	}
 	
+	func modeWarpError()
+	{
+		details.update("error", color:red)
+		
+		interface_flight.opacity = 0
+		interface_dock.opacity = 0
+		interface_warp.opacity = 1
+		interface_warp.updateChildrenColors(red)
+		
+		action.disable()
+		
+		accelerate.disable()
+		decelerate.disable()
+		accelerate.updateChildrenColors(red)
+		decelerate.updateChildrenColors(red)
+		
+		lineLeft.color(red)
+		lineRight.color(red)
+	}
+	
 	func modeMisaligned()
 	{
 		details.update("misaligned")
@@ -336,16 +360,16 @@ class PanelThruster : MainPanel
 		
 		accelerate.disable()
 		decelerate.disable()
-		accelerate.updateChildrenColors(grey)
-		decelerate.updateChildrenColors(grey)
+		accelerate.updateChildrenColors(red)
+		decelerate.updateChildrenColors(red)
 		
 		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
 		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
 		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
 		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
 		
-		lineLeft.color(grey)
-		lineRight.color(grey)
+		lineLeft.color(red)
+		lineRight.color(red)
 		
 		action.disable()
 	}
