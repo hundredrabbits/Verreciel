@@ -114,7 +114,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Loiqe Key")
 		m.predicate = { cargo.containsLike(items.loiqePortalKey) }
 		m.quests = [
-			Quest(name:"Collect \(items.loiqePortalKey)", location: universe.valen_bank, predicate:{ cargo.containsLike(items.loiqePortalKey) }, result: { })
+			Quest(name:"Collect \(items.loiqePortalKey.name!)", location: universe.valen_bank, predicate:{ cargo.containsLike(items.loiqePortalKey) }, result: { })
 		]
 		questlog[c]?.append(m)
 		

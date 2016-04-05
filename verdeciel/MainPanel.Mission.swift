@@ -258,6 +258,7 @@ class PanelMission : MainPanel
 	{
 		locationPanel.empty()
 		if location.panel() != nil { locationPanel.add(location.panel()) }
+		else{ return }
 		
 		// Animate
 		

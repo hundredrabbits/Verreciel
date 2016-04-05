@@ -163,6 +163,8 @@ class LocationHoradric : Location
 	{
 		inPort1.removeEvent()
 		inPort2.removeEvent()
+		inPort1.label.update(grey)
+		inPort2.label.update(grey)
 		
 		outPort.addEvent(combinationRecipe.result)
 		

@@ -83,6 +83,7 @@ class CoreUniverse : SCNNode
 	var valen_port = locations.valen.port()
 	var valen_cargo = locations.valen.cargo()
 	var valen_fog = locations.valen.fog()
+	var valen_c_1 = locations.valen.c_1()
 	var valen_c_3 = locations.valen.c_3()
 	var valen_c_4 = locations.valen.c_4()
 	
@@ -97,6 +98,7 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_cargo)
 		// Fog
 		addChildNode(valen_fog)
+		addChildNode(valen_c_1)
 		addChildNode(valen_c_3)
 		addChildNode(valen_c_4)
 	}
