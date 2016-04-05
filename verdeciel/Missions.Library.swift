@@ -52,7 +52,8 @@ class MissionLibrary
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
-			Quest(name:"Route \(items.currency1.name!) to trade table", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() })
+			Quest(name:"Route \(items.currency1.name!) to trade table", location: universe.loiqe_city, predicate:{ universe.loiqe_city.isTradeAccepted == true }, result: { }),
+			Quest(name:"Route \(items.valenPortalFragment1.name!) to cargo", predicate:{ cargo.contains(items.valenPortalFragment1) == true }, result: { progress.install() }),
 		]
 		questlog[c]?.append(m)
 		
@@ -75,7 +76,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.dock == universe.loiqe_portal && mission.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
+			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && mission.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]
@@ -110,7 +111,14 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Craft \(items.currency4)")
+		m = Mission(id:(questlog[c]?.count)!, name: "Loiqe Key")
+		m.predicate = { cargo.containsLike(items.loiqePortalKey) }
+		m.quests = [
+			Quest(name:"Collect \(items.loiqePortalKey)", location: universe.valen_bank, predicate:{ cargo.containsLike(items.loiqePortalKey) }, result: { })
+		]
+		questlog[c]?.append(m)
+		
+		m = Mission(id:(questlog[c]?.count)!, name: "Craft \(items.currency4.name!)")
 		m.predicate = { cargo.containsLike(items.currency4) }
 		m.quests = [
 			Quest(name:"Aquire \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
@@ -151,8 +159,8 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
-			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.array1) || cargo.contains(items.array1) }, result: {  }),
-			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.array1) }, result: {  }),
+			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.grid1) || cargo.contains(items.grid1) }, result: {  }),
+			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.grid1) }, result: {  }),
 		]
 		questlog[c]?.append(m)
 		
@@ -164,7 +172,7 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Create Array from Cells")
 		m.quests = [
-			Quest(name:"Combine cells", location: universe.senni_horadric, predicate:{ cargo.contains(items.array1) }, result: {  }),
+			Quest(name:"Combine cells", location: universe.senni_horadric, predicate:{ cargo.contains(items.array2) }, result: {  }),
 		]
 		questlog[c]?.append(m)
 		

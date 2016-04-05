@@ -263,7 +263,7 @@ class PanelThruster : MainPanel
 	
 	func modeLocked()
 	{
-		details.update("locked")
+		details.update("locked", color:grey)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 1
@@ -282,7 +282,7 @@ class PanelThruster : MainPanel
 	
 	func modeWarping()
 	{
-		details.update("warping")
+		details.update("warping", color:white)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
@@ -376,7 +376,7 @@ class PanelThruster : MainPanel
 	
 	func modeUnpowered()
 	{
-		details.update("unpowered")
+		details.update("unpowered", color:grey)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 0
@@ -396,7 +396,7 @@ class PanelThruster : MainPanel
 	func modeDocking()
 	{
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
-		details.update("docking \(dockingProgress)%")
+		details.update("docking \(dockingProgress)%", color:grey)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 1
@@ -434,7 +434,7 @@ class PanelThruster : MainPanel
 	
 	func modeDocked()
 	{
-		details.update("undock")
+		details.update("undock", color:white)
 		
 		interface_flight.opacity = 0
 		interface_dock.opacity = 1
@@ -453,7 +453,7 @@ class PanelThruster : MainPanel
 	
 	func modeFlight()
 	{
-		details.update(String(format: "%.1f", actualSpeed))
+		details.update(String(format: "%.1f", actualSpeed), color:white)
 		
 		interface_flight.opacity = 1
 		interface_dock.opacity = 0

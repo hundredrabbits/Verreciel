@@ -26,10 +26,17 @@ class LocationTrade : Location
 		givePort.addEvent(give)
 	}
 	
+	override func start()
+	{
+		refresh()
+	}
+	
 	// MARK: Panels -
 	
 	override func panel() -> Panel!
 	{
+		if isComplete == true { return nil }
+		
 		let newPanel = Panel()
 		
 		let text = SCNLabel(text: "Trading \(wantPort.requirement.name!)$For \(givePort.event.name!)", align:.left)
@@ -70,6 +77,8 @@ class LocationTrade : Location
 		refresh()
 	}
 	
+	var isTradeAccepted:Bool = false
+	
 	override func refresh()
 	{
 		if wantPort.event != nil && wantPort.event.name == wantPort.requirement.name {
@@ -77,11 +86,19 @@ class LocationTrade : Location
 			wantPort.label.update("Accepted",color:cyan)
 			givePort.enable()
 			givePort.label.update(white)
+			isTradeAccepted = true
 		}
-		else{
+		else if wantPort.event != nil && wantPort.event.name != wantPort.requirement.name {
 			wantPort.enable()
 			wantPort.label.update("Refused",color:red)
 			givePort.disable()
+			isTradeAccepted = false
+		}
+		else{
+			wantPort.enable()
+			wantPort.label.update("Empty",color:red)
+			givePort.disable()
+			isTradeAccepted = false
 		}
 		
 		if givePort.event == nil {

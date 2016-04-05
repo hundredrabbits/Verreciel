@@ -24,6 +24,11 @@ class WidgetRadio : Widget
 		label.update(name!)
 	}
 	
+	override func start()
+	{
+		super.start()
+	}
+	
 	func isPlaying() -> Bool
 	{
 		if port.hasItemOfType(.record) { return true }
@@ -35,6 +40,7 @@ class WidgetRadio : Widget
 		super.onInstallationComplete()
 		
 		battery.installRadio()
+		player.lookAt(deg: 0)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

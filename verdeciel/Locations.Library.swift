@@ -37,9 +37,9 @@ class Loiqe
 		return location
 	}
 	
-	func spawn() -> LocationSpawn
+	func spawn() -> LocationSatellite
 	{
-		return LocationSpawn(name:"Awakening",system:system, at:CGPoint(x: offset.x, y: offset.y - 2.75))
+		return LocationSatellite(name: "awakening", system: system, at: at:CGPoint(x: offset.x, y: offset.y - 2.75), message: "[missing]", item: items.array1)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -208,6 +208,11 @@ class Valen
 	
 	// Constellations
 	
+	func c_1() -> LocationConstellation
+	{
+		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5), structure: structures.c_fog())
+	}
+	
 	func c_3() -> LocationConstellation
 	{
 		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y + 0.25), structure: structures.c_portal(color:grey))
@@ -263,7 +268,7 @@ class Senni
 	
 	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.array1, mapRequirement: items.map1)
+		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.grid1, mapRequirement: items.map1)
 	}
 }
 

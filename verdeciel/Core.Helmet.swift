@@ -100,16 +100,16 @@ class Helmet: SCNNode
 		super.fixedUpdate()
         
 		if eulerAngles.y > player.eulerAngles.y + 0.0001 {
-			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.8
+			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.75
 		}
 		else if eulerAngles.y < player.eulerAngles.y - 0.0001 {
-			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.8
+			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.75
 		}
 		if eulerAngles.x > player.eulerAngles.x + 0.0001 {
-			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.9
+			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.85
 		}
 		else if eulerAngles.y < player.eulerAngles.x - 0.0001 {
-			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.9
+			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.85
 		}
 		updatePort()
 		

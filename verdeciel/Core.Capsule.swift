@@ -98,7 +98,7 @@ class CoreCapsule: SCNNode
 	{
 		(dock as! LocationPortal).pilotPort.disconnect()
 		(dock as! LocationPortal).thrusterPort.disconnect()
-		mission.port.disconnect()
+		if mission.port.origin != nil { mission.port.origin.disconnect() }
 		
 		destination.isKnown = true
 		radar.addTarget(destination)
