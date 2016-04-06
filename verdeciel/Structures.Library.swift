@@ -266,9 +266,28 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func station(color:UIColor = red) -> SCNNode
+	func station(size:CGFloat = 15, color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()
+		
+		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
+		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
+		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
+		return mesh
+	}
+	
+	func bank(radius:CGFloat = 4,color:UIColor = grey) -> SCNNode
+	{
+		let mesh = SCNNode()
+		
+		var i = 0
+		while i < 14 {
+			let rect = SCNRect(size:CGSize(width:radius,height:radius), color:white)
+			rect.position.y = Float((Float(i)/2) - 3.5)
+			mesh.addChildNode(rect)
+			i += 1
+		}
+		
 		return mesh
 	}
 	
@@ -278,19 +297,19 @@ class StructuresLibrary
 	{
 		let mesh = SCNNode()
 		
-		let hex1 = SCNHexa(radius: 6, color: grey)
+		let hex1 = SCNHexa(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,2)
 		mesh.addChildNode(hex1)
-		let hex2 = SCNHexa(radius: 6, color: grey)
+		let hex2 = SCNHexa(size: 6, color: grey)
 		hex2.position = SCNVector3(0,0,0)
 		mesh.addChildNode(hex2)
-		let hex3 = SCNHexa(radius: 6, color: grey)
+		let hex3 = SCNHexa(size: 6, color: grey)
 		hex3.position = SCNVector3(0,0,-2)
 		mesh.addChildNode(hex3)
-		let hex4 = SCNHexa(radius: 6, color: grey)
+		let hex4 = SCNHexa(size: 6, color: grey)
 		hex4.position = SCNVector3(0,0,4)
 		mesh.addChildNode(hex4)
-		let hex5 = SCNHexa(radius: 6, color: grey)
+		let hex5 = SCNHexa(size: 6, color: grey)
 		hex5.position = SCNVector3(0,0,-4)
 		mesh.addChildNode(hex5)
 		
@@ -329,14 +348,14 @@ class StructuresLibrary
 	{
 		let mesh = SCNNode()
 		
-		let hex1 = SCNHexa(radius: 6, color: grey)
+		let hex1 = SCNHexa(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,0)
 		mesh.addChildNode(hex1)
-		let hex2 = SCNHexa(radius: 6, color: grey)
+		let hex2 = SCNHexa(size: 6, color: grey)
 		hex2.position = SCNVector3(0,0,0)
 		mesh.addChildNode(hex2)
 		hex2.eulerAngles.z = Float(degToRad(45))
-		let hex3 = SCNHexa(radius: 6, color: grey)
+		let hex3 = SCNHexa(size: 6, color: grey)
 		hex3.position = SCNVector3(0,0,0)
 		mesh.addChildNode(hex3)
 		hex3.eulerAngles.z = Float(degToRad(-45))

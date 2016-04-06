@@ -2,9 +2,11 @@
 *    MAJOR
 ================
 
+- Trade should use location port
 - Design Stations structure
 - Design Bank structure
 - Animate widget updates
+- Re-color structure onComplete, don't reload
 
 - Quest monitor becomes location description when completed
 - Design Nevic(enter from star in Loiqe Map2)

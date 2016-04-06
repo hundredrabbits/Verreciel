@@ -147,6 +147,12 @@ class LocationHarvest : Location
 		else{
 			structure.eulerAngles.y += Float(degToRad(0.1))
 		}
+		
+		for node in structure.childNodes {
+			node.position.y = 0
+		}
+		
+		structure.childNodes[Int(Int(time.elapsed * 0.5) % 45)].position.y = 0.2
 	}
 	
 	required init(coder aDecoder: NSCoder)

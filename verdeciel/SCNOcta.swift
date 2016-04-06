@@ -18,7 +18,7 @@ class SCNOcta : SCNNode
 	var line7:SCNLine!
 	var line8:SCNLine!
 	
-	init(size:CGFloat, color:UIColor = white)
+	init(size:CGFloat, color:UIColor = white, eulerAngles:SCNVector3! = SCNVector3(0,0,0))
 	{
 		super.init()
 		
@@ -39,6 +39,8 @@ class SCNOcta : SCNNode
 		self.addChildNode(line7)
 		line8 = SCNLine(nodeA: SCNVector3(0,-size,0), nodeB: SCNVector3(size,0,-size), color: color)
 		self.addChildNode(line8)
+		
+		self.eulerAngles = eulerAngles
 	}
 	
 	required init(coder aDecoder: NSCoder)

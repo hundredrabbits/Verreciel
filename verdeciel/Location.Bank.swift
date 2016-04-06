@@ -23,7 +23,7 @@ class LocationBank : Location
 		super.init(name: name,system:system, at:at)
 	
 		self.note = ""
-		self.structure = structures.none()
+		self.structure = structures.bank()
 		self.icon.replace(icons.bank())
 		
 		port1 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
@@ -75,6 +75,49 @@ class LocationBank : Location
 		if port5.event != nil && port5.event == item { return true }
 		if port6.event != nil && port6.event == item { return true }
 		return false
+	}
+	
+	
+	override func onDock()
+	{
+		super.onDock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		
+		structure.opacity = 0
+		
+		var i = 0
+		for mesh in structure.childNodes {
+			mesh.position.y = Float((Float(i) * 0.25) - 1.75)
+			i += 1
+		}
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+		
+		refresh()
+	}
+	
+	override func onUndock()
+	{
+		super.onUndock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		
+		structure.opacity = 1
+		
+		var i = 0
+		for mesh in structure.childNodes {
+			mesh.position.y = Float((Float(i) * 0.5) - 3.5)
+			i += 1
+		}
+		
+		SCNTransaction.setCompletionBlock({ })
+		SCNTransaction.commit()
+		
+		refresh()
 	}
 	
 	// MARK: Defaults -

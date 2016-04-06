@@ -225,6 +225,7 @@
 				576BE0841BC8B8700046E43C /* Library */,
 				574156DD1BE12F61008B6C44 /* Objects */,
 				573627791B4C06E800899EBC /* Components */,
+				57780BB01CB49D8C005AB88C /* Shapes */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
 			);
 			path = verdeciel;
@@ -272,12 +273,6 @@
 				57858B221B546BD900DD9E4E /* SCNLine.swift */,
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
-				570599451B909E8E000F3E31 /* SCNPoly.swift */,
-				5790360C1C8DF38500BFD870 /* SCNCube.swift */,
-				570B1F671C910C2A00AAFF00 /* SCNOcta.swift */,
-				5759C3461CA21DC10031524B /* SCNHexa.swift */,
-				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
-				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
 				57CA937A1BC9A9A50089337F /* SCNWire.swift */,
 				573379591BD82F9B00310147 /* SCNVector3.swift */,
@@ -352,6 +347,19 @@
 				57C9F05F1CAF51F80050AE9E /* Location.Gateway.swift */,
 			);
 			name = Locations;
+			sourceTree = "<group>";
+		};
+		57780BB01CB49D8C005AB88C /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				570599451B909E8E000F3E31 /* SCNPoly.swift */,
+				5790360C1C8DF38500BFD870 /* SCNCube.swift */,
+				570B1F671C910C2A00AAFF00 /* SCNOcta.swift */,
+				5759C3461CA21DC10031524B /* SCNHexa.swift */,
+				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
+				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
+			);
+			name = Shapes;
 			sourceTree = "<group>";
 		};
 		579419731B58AEB100F9FF87 /* Core */ = {
