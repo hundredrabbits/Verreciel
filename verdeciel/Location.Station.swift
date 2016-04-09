@@ -107,6 +107,11 @@ class LocationStation : Location
 		structure.add(structures.station(color:cyan))
 	}
 	
+	override func details() -> String
+	{
+		return "\(installationName)"
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

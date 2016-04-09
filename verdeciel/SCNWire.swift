@@ -132,11 +132,6 @@ class SCNWire : SCNNode
 	func isCompatible() -> Bool
 	{
 		return true
-		
-		if host.connection == nil { return false }
-		if host.event == nil { return false }
-		
-		return false
 	}
 	
 	override func color(color: UIColor)

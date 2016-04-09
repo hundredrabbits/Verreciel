@@ -307,7 +307,6 @@ class MissionLibrary
 	{
 		currentMission[.primary]?.validate()
 		if currentMission[.primary]?.isCompleted == true {
-			print("COMPLETE!!")
 			let nextMissionId = currentMission[.primary]!.id + 1
 			currentMission[.primary] = questlog[.primary]![nextMissionId]
 		}

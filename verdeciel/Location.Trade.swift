@@ -123,6 +123,14 @@ class LocationTrade : Location
 		structure.eulerAngles.y += Float(degToRad(0.1))
 	}
 	
+	override func details() -> String
+	{
+		if givePort.hasItem() == true {
+			return "\(givePort.event.name!)"
+		}
+		return "empty"
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

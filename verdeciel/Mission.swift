@@ -35,6 +35,7 @@ class Mission
 			if quest.isCompleted == false {
 				currentQuest = quest
 				mission.refresh()
+				helmet.addMessage(currentQuest.name)
 				return
 			}
 		}

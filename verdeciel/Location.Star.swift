@@ -97,6 +97,14 @@ class LocationStar : Location
 	{
 	}
 	
+	override func details() -> String
+	{
+		if isComplete == true {
+			return "active"
+		}
+		return "frozen"
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

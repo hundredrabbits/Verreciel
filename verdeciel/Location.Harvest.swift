@@ -155,6 +155,11 @@ class LocationHarvest : Location
 		structure.childNodes[Int(Int(time.elapsed * 0.5) % 45)].position.y = 0.2
 	}
 	
+	override func details() -> String
+	{
+		return "\(grows.name!)"
+	}
+	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

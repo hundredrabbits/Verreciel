@@ -278,6 +278,11 @@ class Location : Event
 		return diff
 	}
 	
+	func details() -> String
+	{
+		return "--"
+	}
+	
 	// MARK: Storage -
 	
 	func storedItems() -> Array<Event>

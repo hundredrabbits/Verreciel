@@ -79,6 +79,14 @@ class LocationSatellite : Location
 		}
 	}
 	
+	override func details() -> String
+	{
+		if port.hasItem() == true {
+			return "\(port.event.name!)"
+		}
+		return "empty"
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
