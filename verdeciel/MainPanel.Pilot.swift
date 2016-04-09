@@ -41,10 +41,7 @@ class PanelPilot : MainPanel
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(0.2, 0, -0), color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, -0.1), nodeB: SCNVector3(-0.2, 0, -0), color: white))
 		mainNode.addChildNode(eventsDirectionIndicator)
-		
-		port.input = Location.self
-		port.output = Event.self
-		
+	
 		decals.empty()
 		
 		details.update("Ready", color: grey)

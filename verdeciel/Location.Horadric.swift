@@ -24,8 +24,8 @@ class LocationHoradric : Location
 	{
 		let newPanel = Panel()
 		
-		inPort1 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .center, hasDetails: false, placeholder: "In")
-		inPort2 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align: .center, hasDetails: false, placeholder: "In")
+		inPort1 = SCNPortSlot(host: self, align: .center, hasDetails: false, placeholder: "In")
+		inPort2 = SCNPortSlot(host: self, align: .center, hasDetails: false, placeholder: "In")
 		
 		inPort1.label.position = SCNVector3(0,0.5,0)
 		inPort2.label.position = SCNVector3(0,0.5,0)
@@ -36,7 +36,7 @@ class LocationHoradric : Location
 		inPort1.position = SCNVector3(0.6,0.6,0)
 		inPort2.position = SCNVector3(-0.6,0.6,0)
 		
-		outPort = SCNPortSlot(host: self, input: Item.self, output: Event.self, align: .center,placeholder: "")
+		outPort = SCNPortSlot(host: self, align: .center,placeholder: "")
 		outPort.position = SCNVector3(0,-0.8,0)
 		outPort.label.position = SCNVector3(0,-0.4,0)
 		outPort.label.update("Out")

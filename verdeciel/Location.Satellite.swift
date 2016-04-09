@@ -21,7 +21,7 @@ class LocationSatellite : Location
 		
 		self.message = message
 		
-		port = SCNPortSlot(host: self, input:Item.self, output:Item.self, hasDetails:true, align:.center)
+		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.4,0)
 		port.addEvent(item)
 		port.enable()

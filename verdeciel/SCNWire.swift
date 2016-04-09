@@ -8,6 +8,8 @@ import Foundation
 
 class SCNWire : SCNNode
 {
+	var host:SCNPort!
+	
 	var nodeA:SCNVector3!
 	var nodeB:SCNVector3!
 	var color:UIColor!
@@ -25,13 +27,13 @@ class SCNWire : SCNNode
 	
 	var isEnabled:Bool = true
 	var isActive:Bool = false
-	var isCompatible:Bool = false
 	var isUploading:Bool = false
 	
-	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
+	init(host:SCNPort, nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
 	{
 		super.init()
 		
+		self.host = host
 		self.nodeA = nodeA
 		self.nodeB = nodeB
 		
@@ -72,7 +74,7 @@ class SCNWire : SCNNode
 		vertex3.y += sin((time.elapsed + vertex3.x + vertex3.y + vertex3.z)/20) * 0.08
 		vertex4.y += sin((time.elapsed + vertex4.x + vertex4.y + vertex4.z)/20) * 0.05
 		
-		if isCompatible == false || isActive == false {
+		if isCompatible() == false {
 			segment1.draw( nodeA, nodeB: vertex1, color: white)
 			segment2.draw( vertex1, nodeB: vertex2, color: grey)
 			segment3.draw( vertex2, nodeB: vertex3, color: grey)
@@ -125,6 +127,16 @@ class SCNWire : SCNNode
 		for node in childNodes {
 			node.opacity = 0
 		}
+	}
+	
+	func isCompatible() -> Bool
+	{
+		if host.connection == nil { return false }
+		if host.event == nil { return false }
+		
+//		if host.connection.input is Item.Type == true && host.event is Item == false { return true }
+		
+		return false
 	}
 	
 	override func color(color: UIColor)

@@ -40,7 +40,7 @@ class LocationStation : Location
 		button.position = SCNVector3(0,-1,0)
 		newPanel.addChildNode(button)
 		
-		port = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port = SCNPortSlot(host: self)
 		port.position = SCNVector3(0,-0.2,0)
 		newPanel.addChildNode(port)
 		

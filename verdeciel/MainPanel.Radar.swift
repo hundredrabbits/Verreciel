@@ -62,9 +62,6 @@ class PanelRadar : MainPanel
 		
 		self.position = SCNVector3(0,0,0)
 		
-		port.input = Location.self
-		port.output = Location.self
-		
 		handle = SCNHandle(destination: SCNVector3(1,0,0),host:self)
 		footer.addChildNode(handle)
 	}

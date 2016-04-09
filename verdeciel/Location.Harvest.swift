@@ -19,7 +19,7 @@ class LocationHarvest : Location
 		
 		self.grows = grows
 		
-		port = SCNPortSlot(host: self, input:Item.self, output:Item.self, hasDetails:true, align:.center)
+		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.5,0)
 		port.enable()
 		

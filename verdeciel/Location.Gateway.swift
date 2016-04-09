@@ -28,12 +28,12 @@ class LocationGateway : Location
 		
 		self.key = key
 		
-		KeyPort = SCNPort(host: self, input: Item.self, output: Event.self)
-		ThrusterPort = SCNPort(host: self, input: Event.self, output: Location.self)
-		PilotPort = SCNPort(host: self, input: Event.self, output: Location.self)
-		KeyPort = SCNPort(host: self, input: Item.self, output: Event.self)
-		ThrusterPort = SCNPort(host: self, input: Event.self, output: Location.self)
-		PilotPort = SCNPort(host: self, input: Event.self, output: Location.self)
+		KeyPort = SCNPort(host: self)
+		ThrusterPort = SCNPort(host: self)
+		PilotPort = SCNPort(host: self)
+		KeyPort = SCNPort(host: self)
+		ThrusterPort = SCNPort(host: self)
+		PilotPort = SCNPort(host: self)
 		
 		KeyLabel = SCNLabel(text: "",color:red)
 		ThrusterLabel = SCNLabel(text: "> Thruster", color:white)

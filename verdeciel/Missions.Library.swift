@@ -35,13 +35,6 @@ class MissionLibrary
 		
 		// Loiqe
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Test")
-		m.quests = [
-			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
-			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
-		]
-		questlog[c]?.append(m)
-		
 		m = Mission(id:(questlog[c]?.count)!, name: "Flight")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),

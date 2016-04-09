@@ -8,9 +8,6 @@ import Foundation
 
 class SCNPort : SCNNode
 {
-	var input:Event.Type!
-	var output:Event.Type!
-	
 	var isActive:Bool = false
 	var isEnabled:Bool = true
 	
@@ -29,12 +26,9 @@ class SCNPort : SCNNode
 	var sprite_output = SCNNode()
 	var sprite_input = SCNNode()
 	
-	init(host:SCNNode = SCNNode(), input:Event.Type! = Event.self, output:Event.Type! = Event.self)
+	init(host:SCNNode = SCNNode())
 	{
 		super.init()
-		
-		self.input = input
-		self.output = output
 	
 		self.geometry = SCNPlane(width: 0.3, height: 0.3)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
@@ -51,7 +45,7 @@ class SCNPort : SCNNode
 	
 	func setup()
 	{
-		wire = SCNWire(nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))
+		wire = SCNWire(host:self, nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))
 		self.addChildNode(wire)
 		
 		sprite_input.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: radius/2, z: 0),nodeB: SCNVector3(x: radius/2, y: 0, z: 0),color:white))
@@ -116,14 +110,6 @@ class SCNPort : SCNNode
 			if connection != nil && event != nil {
 				wire.isActive = true
 			}
-		}
-		
-		// Compatibility
-		wire.isCompatible = false
-		if connection != nil {
-			if output == Event.self { wire.isCompatible = true }
-			else if input == Event.self { wire.isCompatible = true }
-			else if output == connection.input { wire.isCompatible = true }
 		}
 		
 		// Blink
@@ -373,13 +359,6 @@ class SCNPort : SCNNode
 	{
 		print("* PORT     | \(host.name) is disconnected")
 		host.onDisconnect()
-	}
-	
-	func IO(direction:Event.Type) -> String
-	{
-		if input is Item.Type { return "item" }
-		if input is Location.Type { return "location" }
-		return "generic"
 	}
 	
 	required init(coder aDecoder: NSCoder)

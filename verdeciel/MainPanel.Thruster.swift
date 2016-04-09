@@ -143,9 +143,6 @@ class PanelThruster : MainPanel
 		mainNode.addChildNode(decelerate)
 		mainNode.addChildNode(action)
 		
-		port.input = Event.self
-		port.output = Event.self
-		
 		details.update("--")
 		
 		decals.empty()

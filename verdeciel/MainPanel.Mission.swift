@@ -30,9 +30,6 @@ class PanelMission : MainPanel
 		
 		mainNode.addChildNode(questPanel)
 		
-		port.input = Item.self
-		port.output = Event.self
-		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1),host:self))
 		
 		locationPanel.opacity = 0

@@ -18,9 +18,9 @@ class LocationPortal : Location
 		
 		keyLabel = SCNLabel(text: "input key", scale: 0.1, align: .center, color: white)
 		destinationLabel = SCNLabel(text: "--", scale: 0.08, align: .center, color: grey)
-		pilotPort = SCNPort(host: self, input: nil, output: nil)
+		pilotPort = SCNPort(host: self)
 		pilotLabel = SCNLabel(text: "pilot", scale: 0.1, align: .center, color: grey)
-		thrusterPort = SCNPort(host: self, input: nil, output: nil)
+		thrusterPort = SCNPort(host: self)
 		thrusterLabel = SCNLabel(text: "thruster", scale: 0.08, align: .center, color: grey)
 		
 		self.note = ""

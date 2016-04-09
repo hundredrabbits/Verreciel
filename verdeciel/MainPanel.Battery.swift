@@ -36,52 +36,52 @@ class PanelBattery : MainPanel
 		
 		let distance:Float = 0.3
 		
-		cellPort1 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align:.right)
+		cellPort1 = SCNPortSlot(host: self, align:.right)
 		cellPort1.position = SCNVector3(x: -distance, y: templates.lineSpacing, z: 0)
 		cellPort1.enable()
 		mainNode.addChildNode(cellPort1)
 		
-		cellPort2 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align:.right)
+		cellPort2 = SCNPortSlot(host: self, align:.right)
 		cellPort2.position = SCNVector3(x: -distance, y: 0, z: 0)
 		cellPort2.enable()
 		mainNode.addChildNode(cellPort2)
 		
-		cellPort3 = SCNPortSlot(host: self, input: Item.self, output: Item.self, align:.right)
+		cellPort3 = SCNPortSlot(host: self, align:.right)
 		cellPort3.position = SCNVector3(x: -distance, y: -templates.lineSpacing, z: 0)
 		cellPort3.enable()
 		mainNode.addChildNode(cellPort3)
 		
 		// Systems
 		
-		enigmaPort = SCNPort(host: self, input:Item.self)
+		enigmaPort = SCNPort(host: self)
 		enigmaPort.position = SCNVector3(x: distance, y: 2 * templates.lineSpacing, z: 0)
 		enigmaLabel = SCNLabel(text: "shield", scale: 0.1, align: alignment.left)
 		enigmaLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		enigmaPort.addChildNode(enigmaLabel)
 		mainNode.addChildNode(enigmaPort)
 		
-		thrusterPort = SCNPort(host: self, input:Item.self)
+		thrusterPort = SCNPort(host: self)
 		thrusterPort.position = SCNVector3(x: distance, y: templates.lineSpacing, z: 0)
 		thrusterLabel = SCNLabel(text: "thruster", scale: 0.1, align: alignment.left)
 		thrusterLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		thrusterPort.addChildNode(thrusterLabel)
 		mainNode.addChildNode(thrusterPort)
 		
-		radioPort = SCNPort(host: self, input:Item.self)
+		radioPort = SCNPort(host: self)
 		radioPort.position = SCNVector3(x: distance, y: 0, z: 0)
 		radioLabel = SCNLabel(text: "radio", scale: 0.1, align: alignment.left)
 		radioLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		radioPort.addChildNode(radioLabel)
 		mainNode.addChildNode(radioPort)
 		
-		mapPort = SCNPort(host: self, input:Item.self)
+		mapPort = SCNPort(host: self)
 		mapPort.position = SCNVector3(x: distance, y:  -templates.lineSpacing, z: 0)
 		mapLabel = SCNLabel(text: "cloak", scale: 0.1, align: alignment.left)
 		mapLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
 		mapPort.addChildNode(mapLabel)
 		mainNode.addChildNode(mapPort)
 		
-		shieldPort = SCNPort(host: self, input:Item.self)
+		shieldPort = SCNPort(host: self)
 		shieldPort.position = SCNVector3(x: distance, y: 2 * -templates.lineSpacing, z: 0)
 		shieldLabel = SCNLabel(text: "oxygen", scale: 0.1, align: alignment.left)
 		shieldLabel.position = SCNVector3(x: 0.3, y: 0, z: 0)
@@ -93,9 +93,6 @@ class PanelBattery : MainPanel
 		radioLabel.update("--", color: grey)
 		mapLabel.update("--", color: grey)
 		shieldLabel.update("--", color: grey)
-		
-		port.input = Item.self
-		port.output = Event.self
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 		

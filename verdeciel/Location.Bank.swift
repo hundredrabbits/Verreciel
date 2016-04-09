@@ -26,12 +26,12 @@ class LocationBank : Location
 		self.structure = structures.bank()
 		self.icon.replace(icons.bank())
 		
-		port1 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
-		port2 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
-		port3 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
-		port4 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
-		port5 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
-		port6 = SCNPortSlot(host: self, input: Event.self, output: Event.self)
+		port1 = SCNPortSlot(host: self)
+		port2 = SCNPortSlot(host: self)
+		port3 = SCNPortSlot(host: self)
+		port4 = SCNPortSlot(host: self)
+		port5 = SCNPortSlot(host: self)
+		port6 = SCNPortSlot(host: self)
 		
 		port1.enable()
 		port2.enable()

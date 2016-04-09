@@ -48,9 +48,6 @@ class PanelCargo : MainPanel
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
 		mainNode.addChildNode(trigger)
 		
-		port.input = Item.self
-		port.output = Item.self
-		
 		port.event = items.playerCargo
 		
 		decals.empty()

@@ -19,10 +19,10 @@ class LocationTrade : Location
 		
 		icon.replace(icons.trade())
 		
-		wantPort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
+		wantPort = SCNPortSlot(host: self)
 		wantPort.addRequirement(want)
 		wantPort.label.update("EMPTY", color:red)
-		givePort = SCNPortSlot(host: self, input:Item.self, output: Item.self)
+		givePort = SCNPortSlot(host: self)
 		givePort.addEvent(give)
 	}
 	
@@ -47,7 +47,6 @@ class LocationTrade : Location
 		
 		wantPort.position = SCNVector3(x: -1.2, y: -0.6, z: 0)
 		wantPort.enable()
-		wantPort.input = Item.self
 		newPanel.addChildNode(wantPort)
 		
 		// Give

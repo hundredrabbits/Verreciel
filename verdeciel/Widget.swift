@@ -18,14 +18,14 @@ class Widget : Panel
 	{
 		super.init()
 		
-		port = SCNPortSlot(host: self, input: Event.self, output: Event.self, align: .center, placeholder:"--")
+		port = SCNPortSlot(host: self, align: .center, placeholder:"--")
 		port.position = SCNVector3(0,-0.7,templates.radius)
 		port.disable()
 		port.label.updateScale(0.05)
 		port.label.position = SCNVector3(0,-0.35,0)
 		
-		let inputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.right)
-		let outputLabel = SCNLabel(text: "\(port.input)", scale: 0.03, color:grey, align: alignment.left)
+		let inputLabel = SCNLabel(text: "something", scale: 0.03, color:grey, align: alignment.right)
+		let outputLabel = SCNLabel(text: "something", scale: 0.03, color:grey, align: alignment.left)
 		inputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
 		outputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
 		port.addChildNode(inputLabel)

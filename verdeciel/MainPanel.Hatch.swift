@@ -39,9 +39,6 @@ class PanelHatch : MainPanel
 		
 		mainNode.addChildNode(SCNTrigger(host: self, size: CGSize(width: 2, height: 2)))
 		
-		port.input = Item.self
-		port.output = Event.self
-		
 		decals.empty()
 		
 		details.update("empty", color: grey)

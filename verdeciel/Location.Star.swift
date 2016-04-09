@@ -19,7 +19,7 @@ class LocationStar : Location
 		icon.replace(icons.star())
 		label.update(name)
 		
-		masterPort = SCNPort(host: self, input: Item.self, output: Item.self)
+		masterPort = SCNPort(host: self)
 	}
 	
 	override func panel() -> Panel!

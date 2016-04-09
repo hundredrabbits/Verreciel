@@ -62,9 +62,6 @@ class PanelConsole : MainPanel
 		
 		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
 		
-		port.input = Event.self
-		port.output = Event.self
-		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
 

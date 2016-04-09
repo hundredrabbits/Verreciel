@@ -14,14 +14,12 @@ class SCNPortSlot : SCNPort
 	var details:SCNLabel!
 	var placeholder:String!
 	
-	init(host:SCNNode = SCNNode(), input:Event.Type, output:Event.Type, align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
+	init(host:SCNNode = SCNNode(), align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
 	{
-		super.init(host:host, input:input, output:output)
+		super.init(host:host)
 		
 		self.placeholder = placeholder
 		self.hasDetails = hasDetails
-		self.input = input
-		self.output = output
 		
 		self.geometry = SCNPlane(width: 0.3, height: 0.3)
 		self.geometry?.firstMaterial?.diffuse.contents = clear

@@ -134,9 +134,6 @@ class MainPanel : Panel
 		
 		port.enable()
 		label.update(name!, color: white)
-		
-		portInputLabel.update(port.IO(port.input))
-		portOutputLabel.update(port.IO(port.output))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
