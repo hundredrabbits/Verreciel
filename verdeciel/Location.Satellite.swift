@@ -66,7 +66,6 @@ class LocationSatellite : Location
 	override func onUploadComplete()
 	{
 		self.complete()
-		mission.complete()
 	}
 	
 	// MARK: Mesh -

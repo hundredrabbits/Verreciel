@@ -39,6 +39,13 @@ class Mission
 			}
 		}
 		isCompleted = true
+		onComplete()
+	}
+	
+	func onComplete()
+	{
+		helmet.addWarning(name, color:cyan, duration:3, flag:"mission")
+		completion.refresh()
 	}
 	
 	func complete()

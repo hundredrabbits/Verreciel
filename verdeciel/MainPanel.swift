@@ -90,7 +90,7 @@ class MainPanel : Panel
 	{
 		super.onInstallationBegin()
 		
-		helmet.addWarning("Installing", duration: 3)
+		helmet.addWarning("Installing", duration: 3, flag:"install")
 		
 		installNode = SCNNode()
 		installNode.position = SCNVector3(0,0,0)

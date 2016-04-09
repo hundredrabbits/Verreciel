@@ -69,8 +69,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.loiqe_horadric)
-//		startingState()
+//		unlockedState(universe.loiqe_horadric)
+		startingState()
 	}
 	
 	func startingState()
@@ -106,7 +106,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		exploration.install()
 		journey.install()
 		progress.install()
-		complete.install()
+		completion.install()
 		
 		capsule.start(location)
 		
@@ -114,11 +114,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.loiqe_portal.isKnown = true
 		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([Item(like: items.currency1), Item(like: items.currency2), items.map1])
+		cargo.addItems([Item(like: items.battery2), Item(like: items.battery3), items.map1])
 		
 		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
-		battery.cellPort2.addEvent(items.battery2)
+//		battery.cellPort2.addEvent(items.battery3)
 		
 		quests.skip(.primary, id: 16)
 	}

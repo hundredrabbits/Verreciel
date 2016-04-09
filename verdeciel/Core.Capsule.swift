@@ -52,10 +52,10 @@ class CoreCapsule: SCNNode
 		docking()
 		warping()
 		
-		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
-		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
-		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
-		else{ helmet.hideWarning() }
+//		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
+//		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
+//		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
+//		else{ helmet.hideWarning() }
 	}
 	
 	func onSeconds()
@@ -158,7 +158,7 @@ class CoreCapsule: SCNNode
 		addChildNode(journey)
 		addChildNode(exploration)
 		addChildNode(progress)
-		addChildNode(complete)
+		addChildNode(completion)
 		
 		// Panels
 		addChildNode(battery)
@@ -184,7 +184,7 @@ class CoreCapsule: SCNNode
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y
 		progress.eulerAngles.y = mission.eulerAngles.y
-		complete.eulerAngles.y = radar.eulerAngles.y
+		completion.eulerAngles.y = radar.eulerAngles.y
 		
 		// Widgets
 		radar.footer.addChildNode(map)

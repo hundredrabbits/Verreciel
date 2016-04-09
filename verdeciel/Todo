@@ -2,19 +2,13 @@
 *    MAJOR
 ================
 
-- Install Batteries from battery port
-- Trade should use location port
 - Design Stations structure
 - Re-color structure onComplete, don't reload
-
-- Quest Complete prompt
-- Blink Monitors upon quest complete
 
 - Quest monitor becomes location description when completed
 - Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
 
-- Secondary quests
 - Add beacons with secondary hints
 - Color star colors in Senni
 - Color star colors in Usul
@@ -23,7 +17,6 @@
 - Radio in Pilot quest
 - Enigma in console quest
 - Mining location? for bonus items(music, etc..)
-- Power quests(batteries)
 - Fix wires color
 
 > Audio
@@ -52,9 +45,6 @@
 
 > Playthrough
 - Save / Load Mechanics
-- Add constellation in valen
-- Connect quest(Complete) monitor
-- Add distance in above panel
 - Increase docking speed
 
 > Bugs
@@ -65,7 +55,6 @@
 - Floating feel
 - Add ship doodads
 - Interface sounds
-- Update mission panel to fit within shield
 - Animate docking on Trade Locations
 - Animate docking on Satellite Locations
 - Map animation

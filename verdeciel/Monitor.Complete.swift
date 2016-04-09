@@ -28,6 +28,8 @@ class MonitorComplete : Monitor
 	
 	override func refresh()
 	{
+		label.update(cyan)
+		delay(2, block: { self.label.update(white) })
 	}
 	
 	override func onInstallationBegin()

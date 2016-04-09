@@ -35,6 +35,13 @@ class MissionLibrary
 		
 		// Loiqe
 		
+		m = Mission(id:(questlog[c]?.count)!, name: "Test")
+		m.quests = [
+			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
+			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
+		]
+		questlog[c]?.append(m)
+		
 		m = Mission(id:(questlog[c]?.count)!, name: "Flight")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
@@ -307,29 +314,12 @@ class MissionLibrary
 	{
 		currentMission[.primary]?.validate()
 		if currentMission[.primary]?.isCompleted == true {
+			print("COMPLETE!!")
 			let nextMissionId = currentMission[.primary]!.id + 1
 			currentMission[.primary] = questlog[.primary]![nextMissionId]
 		}
 		
-//		currentMission[.secondary]?.validate()
-//		if currentMission[.secondary]?.isCompleted == true {
-//			let nextMissionId = currentMission[.secondary]!.id + 1
-//			currentMission[.secondary] = questlog[.secondary]![nextMissionId]
-//		}
-//		
-//		currentMission[.tertiary]?.validate()
-//		if currentMission[.tertiary]?.isCompleted == true {
-//			let nextMissionId = currentMission[.tertiary]!.id + 1
-//			currentMission[.tertiary] = questlog[.tertiary]![nextMissionId]
-//		}
-		
 		mission.update()
-		
-		if currentMission[active]?.requirement() == false {
-			if active == .primary { mission.touch(2) }
-			else if active == .secondary { mission.touch(3) }
-			else if active == .tertiary { mission.touch(1) }
-		}
 	}
 	
 	func setActive(chapter:Chapters)

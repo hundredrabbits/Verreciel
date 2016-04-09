@@ -19,13 +19,10 @@ class Helmet: SCNNode
 	
 	var messageLabel:SCNLabel!
 	var passiveLabel:SCNLabel!
-	var warningLabel:SCNLabel!
+	
 	
 	var message:String = ""
 	var passive:String = ""
-	var warning:String = ""
-	
-	var warningTimer:NSTimer!
 	
 	let textSize:Float = 0.025
 	let visorDepth = -1.3
@@ -173,47 +170,37 @@ class Helmet: SCNNode
 		SCNTransaction.commit()
 	}
 	
-	func addWarning(warning:String,duration:Double! = 2)
-	{		
-		self.warning = warning
+	var warningString:String = ""
+	var warningColor:UIColor = red
+	var warningLabel:SCNLabel!
+	var warningFlag:String!
+	
+	func addWarning(text:String, color:UIColor = red, duration:Double, flag:String)
+	{
+		warningString = text
+		warningColor = color
+		warningFlag = flag
 		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.1)
-		warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.3)
-		warningLabel.update("")
-		SCNTransaction.setCompletionBlock({
-			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(0.1)
-			self.warningLabel.update(self.warning)
-			self.warningLabel.position = SCNVector3(x: 0, y: 2, z: -3.25)
-			SCNTransaction.setCompletionBlock({ self.warningTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false) })
-			SCNTransaction.commit()
-		})
-		SCNTransaction.commit()
+		warningLabel.update(warningString,color:warningColor)
+		
+		delay(duration, block: { self.hideWarning(self.warningFlag) })
 	}
 	
-	func showWarning(warning:String)
+	func hideWarning(flag:String)
 	{
-		self.warning = warning
-		self.warningLabel.update(self.warning)
-	}
-	
-	func hideWarning()
-	{
-		if warningTimer != nil {
-			warningTimer.invalidate()
-		}
-		self.warning = ""
-		warningLabel.update(self.warning)
+		if flag != warningFlag { return }
+		warningFlag = ""
+		warningString = ""
+		self.warningLabel.update("")
 	}
 	
 	func showWarningUntil(warning:String, predicate:() -> Bool)
 	{
-		showWarning(warning)
-		
-		if predicate() == true {
-			hideWarning()
-		}
+//		showWarning(warning)
+//		
+//		if predicate() == true {
+//			hideWarning()
+//		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -96,7 +96,7 @@ class LocationStation : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { self.installation() ; self.complete() ; mission.complete() ;  }
+		if id == 1 { self.installation() ; self.complete()  }
 	}
 	
 	override func complete()
