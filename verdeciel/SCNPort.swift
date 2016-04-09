@@ -250,6 +250,13 @@ class SCNPort : SCNNode
 		return false
 	}
 	
+	func hasItem() -> Bool
+	{
+		if event == nil { return false }
+		if (event is Item) == true { return true }
+		return false
+	}
+	
 	func hasItemOfType(target:ItemTypes) -> Bool
 	{
 		if event == nil { return false }

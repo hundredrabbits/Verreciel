@@ -2,16 +2,17 @@
 *    MAJOR
 ================
 
+- Install Batteries from battery port
 - Trade should use location port
 - Design Stations structure
-- Design Bank structure
-- Animate widget updates
 - Re-color structure onComplete, don't reload
+
+- Quest Complete prompt
+- Blink Monitors upon quest complete
 
 - Quest monitor becomes location description when completed
 - Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
-- Inject cells, array, etc.
 
 - Secondary quests
 - Add beacons with secondary hints

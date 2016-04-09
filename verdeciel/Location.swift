@@ -37,6 +37,7 @@ class Location : Event
 	var structure = SCNNode()
 	
 	var storage:Array<SCNPort> = []
+	var isPortEnabled:Bool = false
 	
 	init(name:String = "",system:Systems = .unknown, at: CGPoint)
 	{
@@ -148,7 +149,21 @@ class Location : Event
 	
 	func onUndock()
 	{
+		retrieveStorage()
+	}
 	
+	func retrieveStorage()
+	{
+		if storage.count == 0 { return }
+		
+		print("* STORAGE  | Retrieving \(storage.count) items from \(name!)")
+		
+		for port in storage {
+			if port.hasItem() == true {
+				cargo.addItem(port.event as! Item)
+				port.removeEvent()
+			}
+		}
 	}
 	
 	func complete()

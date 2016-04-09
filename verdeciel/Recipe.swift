@@ -24,7 +24,7 @@ class Recipe
 		for ingredient in ingredients {
 			var isFound:Bool = false
 			for input in inputs {
-				if input == ingredient { isFound = true }
+				if input.name == ingredient.name { isFound = true }
 			}
 			if isFound == false { return false }
 		}
@@ -33,7 +33,7 @@ class Recipe
 		for input in inputs {
 			var isFound:Bool = false
 			for ingredient in ingredients {
-				if input == ingredient { isFound = true }
+				if input.name == ingredient.name { isFound = true }
 			}
 			if isFound == false { return false }
 		}

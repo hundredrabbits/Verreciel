@@ -89,7 +89,7 @@ class LocationBank : Location
 		
 		var i = 0
 		for mesh in structure.childNodes {
-			mesh.position.y = Float((Float(i) * 0.25) - 1.75)
+			mesh.eulerAngles.y = Float(degToRad((CGFloat(i) * 0.10)))
 			i += 1
 		}
 		
@@ -110,7 +110,7 @@ class LocationBank : Location
 		
 		var i = 0
 		for mesh in structure.childNodes {
-			mesh.position.y = Float((Float(i) * 0.5) - 3.5)
+			mesh.eulerAngles.y = 0
 			i += 1
 		}
 		

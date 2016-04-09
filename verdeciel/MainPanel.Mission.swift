@@ -285,6 +285,9 @@ class PanelMission : MainPanel
 		SCNTransaction.commit()
 		
 		port.addEvent(location)
+		
+		if location.isPortEnabled == true { port.enable() }
+		else{ port.disable() }
 	}
 	
 	func disconnectFromLocation()

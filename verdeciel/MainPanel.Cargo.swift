@@ -84,6 +84,12 @@ class PanelCargo : MainPanel
 		return false
 	}
 	
+	func addItem(item:Item)
+	{
+		port.event.content.append(item)
+		refresh()
+	}
+	
 	func addItems(items:Array<Item>)
 	{
 		for item in items {

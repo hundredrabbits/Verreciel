@@ -227,13 +227,6 @@ class LocationHoradric : Location
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
-		
-		retrieveItems()
-	}
-	
-	func retrieveItems()
-	{
-		print("RETRIEVE ITEMS!")
 	}
 		
 	// MARK: Defaults -
