@@ -131,10 +131,10 @@ class SCNWire : SCNNode
 	
 	func isCompatible() -> Bool
 	{
+		return true
+		
 		if host.connection == nil { return false }
 		if host.event == nil { return false }
-		
-//		if host.connection.input is Item.Type == true && host.event is Item == false { return true }
 		
 		return false
 	}
