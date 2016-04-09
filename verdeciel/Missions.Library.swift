@@ -95,8 +95,8 @@ class MissionLibrary
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Radio Lesson")
 		m.quests = [
-			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.cell2) || cargo.contains(items.cell2) }, result: {  }),
-			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.cell2) }, result: {  }),
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery1) || cargo.contains(items.battery2) }, result: {  }),
+			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery2) }, result: {  }),
 			Quest(name:"Route cell to radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
 		]
@@ -159,20 +159,14 @@ class MissionLibrary
 		m.quests = [
 			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
-			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.grid1) || cargo.contains(items.grid1) }, result: {  }),
-			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.grid1) }, result: {  }),
+			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.battery3) || cargo.contains(items.battery3) }, result: {  }),
+			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.battery3) }, result: {  }),
 		]
 		questlog[c]?.append(m)
 		
 		m = Mission(id:(questlog[c]?.count)!, name: "Helmet Lesson")
 		m.quests = [
 			Quest(name:"Route map to helmet", predicate:{ player.port.isReceivingFromPanel(map) == true }, result: {  })
-		]
-		questlog[c]?.append(m)
-		
-		m = Mission(id:(questlog[c]?.count)!, name: "Create Array from Cells")
-		m.quests = [
-			Quest(name:"Combine cells", location: universe.senni_horadric, predicate:{ cargo.contains(items.array2) }, result: {  }),
 		]
 		questlog[c]?.append(m)
 		

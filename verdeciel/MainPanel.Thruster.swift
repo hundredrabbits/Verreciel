@@ -174,10 +174,7 @@ class PanelThruster : MainPanel
 		maxSpeed = 0
 		
 		if battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event != nil {
-			if battery.thrusterPort.origin.event == items.cell1 || battery.thrusterPort.origin.event == items.cell2 { maxSpeed = 1 }
-			if battery.thrusterPort.origin.event == items.array1 || battery.thrusterPort.origin.event == items.array2 { maxSpeed = 2 }
-			if battery.thrusterPort.origin.event == items.grid1 || battery.thrusterPort.origin.event == items.grid2 { maxSpeed = 3 }
-			if battery.thrusterPort.origin.event == items.matrix1 || battery.thrusterPort.origin.event == items.matrix2 { maxSpeed = 4 }
+			maxSpeed = 3
 		}
 		
 		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0 } else { line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1 }

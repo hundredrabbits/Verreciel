@@ -61,12 +61,7 @@ class ItemLibrary
 	let currency6 = Item(name: "cur6", type: .currency, note:"From 4 & 5")
 	
 	// Batteries
-	let cell1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let cell2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let array1 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
-	let array2 = Item(name: "array", type: .battery, note:"gives medium power", isQuest:true)
-	let grid1 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
-	let grid2 = Item(name: "grid", type: .battery, note:"gives large power", isQuest:true)
-	let matrix1 = Item(name: "matrix I", type: .battery, note:"gives large power", isQuest:true)
-	let matrix2 = Item(name: "matrix II", type: .battery, note:"gives large power", isQuest:true)
+	let battery1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let battery2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let battery3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 }

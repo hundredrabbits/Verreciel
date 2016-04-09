@@ -78,7 +78,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		debug.isActive = false
 		
 		capsule.start(universe.loiqe_spawn)
-		battery.cellPort1.addEvent(items.cell1)
+		battery.cellPort1.addEvent(items.battery1)
 	}
 	
 	func unlockedState(location:Location = universe.senni_station)
@@ -116,9 +116,9 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		cargo.addItems([Item(like: items.currency1), Item(like: items.currency2), items.map1])
 		
-		battery.cellPort1.addEvent(items.cell1)
+		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
-		battery.cellPort2.addEvent(items.cell2)
+		battery.cellPort2.addEvent(items.battery2)
 		
 		quests.skip(.primary, id: 16)
 	}

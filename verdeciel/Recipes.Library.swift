@@ -10,7 +10,6 @@ class RecipesLibrary
 	init()
 	{
 		keys()
-		batteries()
 		currencies()
 	}
 	
@@ -24,13 +23,6 @@ class RecipesLibrary
 		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.horizontalKey) )
 		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.verticalKey) )
 		horadric.append( Recipe(ingredients: [items.horizontalKey, items.verticalKey], result: items.masterKey) )
-	}
-	
-	private func batteries()
-	{
-		horadric.append( Recipe(ingredients: [items.cell1, items.cell2], result: items.array1) )
-		horadric.append( Recipe(ingredients: [items.array1, items.array2], result: items.grid1) )
-		horadric.append( Recipe(ingredients: [items.grid1, items.grid2], result: items.matrix1) )
 	}
 	
 	private func currencies()
