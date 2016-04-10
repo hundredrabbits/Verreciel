@@ -34,7 +34,7 @@ class Location : Event
 	var wire:SCNLine!
 	var connection:Event!
 	
-	var structure = SCNNode()
+	var structure:Structure!
 	
 	var storage:Array<SCNPort> = []
 	var isPortEnabled:Bool = false
@@ -97,13 +97,13 @@ class Location : Event
 		if distance <= settings.sight { if inSight == false { onSight() ; inSight = true ; isSeen = true } ; sightUpdate() }
 		else{ inSight = false }
 		
-		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() ; animateMesh() }
+		if distance <= settings.approach { if inApproach == false { inApproach = true ; onApproach() } ; approachUpdate() }
 		else{ inApproach = false }
 		
-		if distance <= settings.collision { if inCollision == false {  inCollision = true ; onCollision() } ; collisionUpdate() }
+		if distance <= settings.collision { if inCollision == false {  inCollision = true ; onCollision() } }
 		else{ inCollision = false }
 		
-		if capsule.isDocked == true && capsule.dock == self { dockedUpdate() }
+		if capsule.isDocked == true && capsule.dock == self { dockUpdate() }
 		
 		radarCulling()
 		clean()
@@ -124,6 +124,7 @@ class Location : Event
 		update()
 		updateIcon()
 		label.update(name!)
+		structure.onSight()
 	}
 	
 	func onApproach()
@@ -145,6 +146,7 @@ class Location : Event
 		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
 		update()
+		structure.onDock()
 	}
 	
 	func onUndock()
@@ -179,7 +181,7 @@ class Location : Event
 	
 	func sightUpdate()
 	{
-		
+		structure.sightUpdate()
 	}
 	
 	func approachUpdate()
@@ -192,9 +194,9 @@ class Location : Event
 		
 	}
 	
-	func dockedUpdate()
+	func dockUpdate()
 	{
-		
+		structure.dockUpdate()
 	}
 	
 	func animateMesh()

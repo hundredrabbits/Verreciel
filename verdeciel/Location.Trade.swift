@@ -13,7 +13,7 @@ class LocationTrade : Location
 		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
-		self.structure.addChildNode(structures.trade())
+		structure = StructureTrade()
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		
@@ -110,20 +110,10 @@ class LocationTrade : Location
 	override func complete()
 	{
 		super.complete()
-		structure.empty()
-		structure.add(structures.trade(color:cyan))
+		structure.onComplete()
 		intercom.complete()
 	}
-	
-	// MARK: Mesh -
-	
-	override func animateMesh()
-	{
-		super.animateMesh()
-		
-		structure.eulerAngles.y += Float(degToRad(0.1))
-	}
-	
+
 	override func details() -> String
 	{
 		if givePort.hasItem() == true {

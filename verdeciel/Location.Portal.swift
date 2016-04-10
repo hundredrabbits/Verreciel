@@ -25,7 +25,7 @@ class LocationPortal : Location
 		
 		self.note = ""
 		self.color = color
-		self.structure = structures.portal()
+		structure = StructureDefault()
 		icon.replace(icons.portal())
 	}
 	

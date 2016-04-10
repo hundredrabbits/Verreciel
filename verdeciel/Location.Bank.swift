@@ -23,8 +23,8 @@ class LocationBank : Location
 		super.init(name: name,system:system, at:at)
 	
 		self.note = ""
-		self.structure = structures.bank()
-		self.icon.replace(icons.bank())
+		structure = StructureDefault()
+		icon.replace(icons.bank())
 		
 		port1 = SCNPortSlot(host: self)
 		port2 = SCNPortSlot(host: self)

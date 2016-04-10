@@ -151,32 +151,6 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func trade(radius:Float = 1.5, tunnels:Int = (Int(arc4random_uniform(3) + 2) * 4), depth:Float = 0, color:UIColor = red) -> SCNNode
-	{
-		let mesh = SCNNode()
-		
-		let offset = SCNNode()
-		offset.position = SCNVector3(0,2.75,0)
-		mesh.addChildNode(offset)
-		
-		var i = 0
-		while i < tunnels {
-			let root = SCNNode()
-			
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i),radius), color: color))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i),radius), nodeB: SCNVector3(radius,depth * Float(i),0), color: color))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(radius,depth * Float(i),0), nodeB: SCNVector3(0,depth * Float(i) + 2,-radius), color: color))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,depth * Float(i) + 2,-radius), nodeB: SCNVector3(-radius,depth * Float(i),0), color: color))
-			
-			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/tunnels))))
-			
-			offset.addChildNode(root)
-			i += 1
-		}
-		
-		return mesh
-	}
-	
 	func horadric(radius:CGFloat = 5, color:UIColor = grey) -> SCNNode
 	{
 		let mesh = SCNNode()

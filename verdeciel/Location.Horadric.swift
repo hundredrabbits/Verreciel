@@ -16,7 +16,7 @@ class LocationHoradric : Location
 		
 		self.note = ""
 		self.mapRequirement = mapRequirement
-		self.structure = structures.horadric()
+		structure = StructureDefault()
 		icon.replace(icons.horadric())
 	}
 	
@@ -58,7 +58,7 @@ class LocationHoradric : Location
 		return newPanel
 	}
 	
-	override func dockedUpdate()
+	override func dockUpdate()
 	{
 		if inPort1.isEnabled == true && inPort2.isEnabled == true {  }
 		

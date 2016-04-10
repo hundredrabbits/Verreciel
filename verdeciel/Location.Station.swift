@@ -21,7 +21,7 @@ class LocationStation : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		self.structure = structures.station()
+		structure = StructureDefault()
 		self.icon.replace(icons.station())
 		self.isComplete = false
 	}

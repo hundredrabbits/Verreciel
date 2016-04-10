@@ -22,7 +22,7 @@ class LocationGateway : Location
 		
 		self.note = ""
 		self.color = color
-		self.structure = structures.gateway()
+		structure = StructureDefault()
 		self.mapRequirement = mapRequirement
 		icon.replace(icons.gateway())
 		

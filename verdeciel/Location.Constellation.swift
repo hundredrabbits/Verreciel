@@ -9,12 +9,12 @@ import Foundation
 
 class LocationConstellation : Location
 {
-	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:SCNNode = structures.none())
+	override init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0))
 	{
 		super.init(name:name, system:system, at:at)
 		
 		self.note = ""
-		self.structure = structure
+		structure = StructureDefault()
 		icon.replace(icons.constellation())
 		
 		label.opacity = 0

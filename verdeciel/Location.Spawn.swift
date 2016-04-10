@@ -10,7 +10,7 @@ class LocationSpawn : Location
 		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
-		self.structure = structures.none()
+		structure = StructureDefault()
 		self.icon.replace(icons.none())
 	}
 

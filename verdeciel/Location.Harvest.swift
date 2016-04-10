@@ -14,7 +14,7 @@ class LocationHarvest : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		self.structure = structures.harvest()
+		structure = StructureDefault()
 		icon.replace(icons.harvest())
 		
 		self.grows = grows
