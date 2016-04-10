@@ -14,9 +14,10 @@ class MissionLibrary
 	init()
 	{
 		story = []
+		build()
 	}
 	
-	func create_primaryMissions()
+	func build()
 	{
 		var m:Mission!
 		
@@ -196,15 +197,22 @@ class MissionLibrary
 		story.append(m)
 	}
 	
+	func currentMission() -> Mission!
+	{
+		for mission in story {
+			mission.validate()
+			if mission.isCompleted == false {
+				return mission
+			}
+		}
+		return nil
+	}
+	
 	func refresh()
 	{
-//		currentMission[.primary]?.validate()
-//		if currentMission[.primary]?.isCompleted == true {
-//			let nextMissionId = currentMission[.primary]!.id + 1
-//			currentMission[.primary] = story[nextMissionId]
-//		}
-//		
-//		intercom.update()
+		let mission = currentMission()
+		
+		intercom.update()
 	}
 	
 }
