@@ -23,7 +23,7 @@ class MissionLibrary
 		
 		// Loiqe
 		
-		m = Mission(id:(story.count), name: "Reached the city")
+		m = Mission(id:(story.count), name: "Reach the city")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
@@ -36,7 +36,7 @@ class MissionLibrary
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Aquired Fragment")
+		m = Mission(id:(story.count), name: "Aquire Fragment")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
@@ -45,14 +45,14 @@ class MissionLibrary
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Learnt radar")
+		m = Mission(id:(story.count), name: "Use radar")
 		m.quests = [
 			Quest(name:"Select satellite on radar", location:universe.loiqe_city, predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_satellite }, result: { pilot.install() ; thruster.unlock() }),
 			Quest(name:"Route Radar to Pilot", predicate:{ pilot.port.origin != nil && pilot.port.origin == radar.port }, result: { })
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Combined fragments")
+		m = Mission(id:(story.count), name: "Combine fragments")
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
@@ -197,22 +197,23 @@ class MissionLibrary
 		story.append(m)
 	}
 	
-	func currentMission() -> Mission!
-	{
-		for mission in story {
-			mission.validate()
-			if mission.isCompleted == false {
-				return mission
-			}
-		}
-		return nil
-	}
+	// MARK: Tools -
+	
+	var currentMission:Mission = Mission(id:0, name: "--")
 	
 	func refresh()
 	{
-		let mission = currentMission()
-		
-		intercom.update()
+		currentMission.validate()
+		if currentMission.isCompleted == true {
+			updateCurrentMission()
+			helmet.addWarning(currentMission.name, color:cyan, duration:3, flag:"mission")
+		}
 	}
 	
+	func updateCurrentMission()
+	{
+		for mission in story {
+			if mission.isCompleted == false { currentMission = mission ; return }
+		}
+	}
 }

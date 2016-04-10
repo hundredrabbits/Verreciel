@@ -125,6 +125,11 @@ extension SCNNode
 		
 	}
 	
+	func onMissionComplete()
+	{
+	
+	}
+	
 	func redraw()
 	{
 		for node in self.childNodes {

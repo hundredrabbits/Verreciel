@@ -59,7 +59,7 @@ class PanelHatch : MainPanel
 		port.origin.removeEvent()
 		count += 1
 		update()
-		quests.refresh()
+		missions.refresh()
 	}
 	
 	override func update()

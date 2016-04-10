@@ -3,7 +3,7 @@
 ================
 
 - Change constellation in tutorial
-- Rename
+- Remove blink from render(), put in blink()
 
 ================
 *    MINOR

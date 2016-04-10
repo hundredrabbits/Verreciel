@@ -21,7 +21,7 @@ class CoreGame
 	
 	func update()
 	{
-		quests.refresh()
+		missions.refresh()
 	}
 	
 	func onSeconds()

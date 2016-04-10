@@ -15,13 +15,11 @@ class Mission
 	
 	var predicate:() -> Bool! = { return nil }
 	var requirement:() -> Bool! = { return nil }
-	var task:String = "[Missing]"
 	
-	init(id:Int,name:String, task:String = "", requirement:() -> Bool = { return true } )
+	init(id:Int,name:String, requirement:() -> Bool = { return true } )
 	{
 		self.id = id
 		self.name = name
-		self.task = task
 		self.requirement = requirement
 	}
 	
@@ -39,13 +37,10 @@ class Mission
 			}
 		}
 		isCompleted = true
-		onComplete()
 	}
 	
 	func prompt()
 	{
-		intercom.refresh()
-		
 		if currentQuest.location != nil {
 			if capsule.isDockedAtLocation(currentQuest.location) { helmet.addMessage(currentQuest.name) }
 			else if capsule.system == currentQuest.location.system { helmet.addMessage(currentQuest.location.name!, color:red) }
@@ -58,7 +53,6 @@ class Mission
 	
 	func onComplete()
 	{
-		helmet.addWarning(name, color:cyan, duration:3, flag:"mission")
 		completion.refresh()
 	}
 	
