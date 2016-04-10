@@ -34,7 +34,7 @@ class Mission
 			quest.validate()
 			if quest.isCompleted == false {
 				currentQuest = quest
-				mission.refresh()
+				intercom.refresh()
 				helmet.addMessage(currentQuest.name)
 				return
 			}

@@ -80,7 +80,7 @@ class LocationPortal : Location
 	
 	func validate()
 	{
-		if mission.port.isReceivingItemOfType(.key) == true { unlock() }
+		if intercom.port.isReceivingItemOfType(.key) == true { unlock() }
 		else{ lock() }
 	}
 	
@@ -96,7 +96,7 @@ class LocationPortal : Location
 	
 	func unlock()
 	{
-		let key = mission.port.origin.event as! Item
+		let key = intercom.port.origin.event as! Item
 		let destination = universe.locationLike(key.location)
 		
 		print("! KEY      | Reading: \(key.name!) -> \(destination.name!)")

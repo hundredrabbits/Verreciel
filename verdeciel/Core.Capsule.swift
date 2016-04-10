@@ -306,7 +306,7 @@ class CoreCapsule: SCNNode
 		at = location.at
 		isDocked = true
 		dock.onDock()
-		mission.connectToLocation(dock)
+		intercom.connectToLocation(dock)
 		radar.removeTarget()
 		helmet.addPassive("Docked at \(dock.name!)")
 	}
