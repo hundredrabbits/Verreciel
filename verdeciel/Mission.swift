@@ -35,8 +35,15 @@ class Mission
 			if quest.isCompleted == false {
 				currentQuest = quest
 				intercom.refresh()
-				helmet.addMessage(currentQuest.name)
-				return
+				
+				if currentQuest.location != nil {
+					if capsule.isDockedAtLocation(currentQuest.location) { helmet.addMessage(currentQuest.name) }
+					else if capsule.system == currentQuest.location.system { helmet.addMessage(currentQuest.location.name!, color:red) }
+					else{ helmet.addMessage("\(currentQuest.location.system)", color:cyan) }
+				}
+				else{
+					helmet.addMessage(currentQuest.name)
+				}
 			}
 		}
 		isCompleted = true

@@ -35,7 +35,7 @@ class MissionLibrary
 		
 		// Loiqe
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Awaken")
+		m = Mission(id:(questlog[c]?.count)!, name: "Reached the city")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
@@ -48,7 +48,7 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Aquired Portal Key Fragment")
+		m = Mission(id:(questlog[c]?.count)!, name: "Aquired Fragment")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
@@ -57,14 +57,14 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Aligned with destination")
+		m = Mission(id:(questlog[c]?.count)!, name: "Learnt radar")
 		m.quests = [
 			Quest(name:"Select satellite on radar", location:universe.loiqe_city, predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_satellite }, result: { pilot.install() ; thruster.unlock() }),
 			Quest(name:"Route Radar to Pilot", predicate:{ pilot.port.origin != nil && pilot.port.origin == radar.port }, result: { })
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Valen Portal Key")
+		m = Mission(id:(questlog[c]?.count)!, name: "Combined fragments")
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),

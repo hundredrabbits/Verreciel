@@ -105,6 +105,7 @@ class LocationStation : Location
 		
 		structure.empty()
 		structure.add(structures.station(color:cyan))
+		intercom.complete()
 	}
 	
 	override func details() -> String

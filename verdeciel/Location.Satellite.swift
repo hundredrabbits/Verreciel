@@ -61,6 +61,7 @@ class LocationSatellite : Location
 		super.complete()
 		structure.empty()
 		structure.add(structures.satellite(color:cyan))
+		intercom.complete()
 	}
 	
 	override func onUploadComplete()
