@@ -112,6 +112,7 @@ class LocationTrade : Location
 		super.complete()
 		structure.empty()
 		structure.add(structures.trade(color:cyan))
+		intercom.complete()
 	}
 	
 	// MARK: Mesh -

@@ -136,6 +136,22 @@ class SCNPortSlot : SCNPort
 		}
 	}
 	
+	func enable(text:String,color:UIColor! = nil)
+	{
+		super.enable()
+		
+		label.update(text)
+		if color != nil { label.update(text,color:color) }
+	}
+	
+	func disable(text:String,color:UIColor! = nil)
+	{
+		super.disable()
+		
+		label.update(text)
+		if color != nil { label.update(text,color:color) }
+	}
+	
 	func uploadComplete()
 	{
 		if (origin != nil) { addEvent(syphon()) }

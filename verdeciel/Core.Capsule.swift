@@ -98,7 +98,7 @@ class CoreCapsule: SCNNode
 	{
 		(dock as! LocationPortal).pilotPort.disconnect()
 		(dock as! LocationPortal).thrusterPort.disconnect()
-		if mission.port.origin != nil { mission.port.origin.disconnect() }
+		if intercom.port.origin != nil { intercom.port.origin.disconnect() }
 		
 		destination.isKnown = true
 		radar.addTarget(destination)
@@ -165,7 +165,7 @@ class CoreCapsule: SCNNode
 		addChildNode(hatch)
 		addChildNode(console)
 		addChildNode(cargo)
-		addChildNode(mission)
+		addChildNode(intercom)
 		addChildNode(pilot)
 		addChildNode(radar)
 		addChildNode(thruster)
@@ -176,21 +176,21 @@ class CoreCapsule: SCNNode
 		hatch.eulerAngles.y = Float(degToRad(45))
 		console.eulerAngles.y = Float(degToRad(90))
 		cargo.eulerAngles.y = Float(degToRad(135))
-		mission.eulerAngles.y = Float(degToRad(180))
+		intercom.eulerAngles.y = Float(degToRad(180))
 		pilot.eulerAngles.y = Float(degToRad(225))
 		radar.eulerAngles.y = Float(degToRad(270))
 		thruster.eulerAngles.y = Float(degToRad(315))
 		
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y
-		progress.eulerAngles.y = mission.eulerAngles.y
+		progress.eulerAngles.y = intercom.eulerAngles.y
 		completion.eulerAngles.y = radar.eulerAngles.y
 		
 		// Widgets
 		radar.footer.addChildNode(map)
 		battery.footer.addChildNode(radio)
 		console.footer.addChildNode(shield)
-		mission.footer.addChildNode(enigma)
+		intercom.footer.addChildNode(enigma)
 	}
 	
 	// MARK: Docking -
@@ -240,7 +240,7 @@ class CoreCapsule: SCNNode
 		
 		helmet.addPassive("Docked at \(dock.name!)")
 		
-		mission.connectToLocation(dock)
+		intercom.connectToLocation(dock)
 	}
 	
 	func undock()
@@ -252,7 +252,7 @@ class CoreCapsule: SCNNode
 		
 		helmet.addPassive("in flight")
 		
-		mission.disconnectFromLocation()
+		intercom.disconnectFromLocation()
 	}
 	
 	// MARK: Fleeing -

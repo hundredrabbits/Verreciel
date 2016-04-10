@@ -35,20 +35,20 @@ class MissionLibrary
 		
 		// Loiqe
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Flight")
+		m = Mission(id:(questlog[c]?.count)!, name: "Awaken")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
-			Quest(name:"Accelerate with Thruster", predicate:{ capsule.dock == nil && thruster.speed > 0 || capsule.dock != nil }, result: { mission.install() ; thruster.lock() }),
+			Quest(name:"Accelerate with Thruster", predicate:{ capsule.dock == nil && thruster.speed > 0 || capsule.dock != nil }, result: { intercom.install() ; thruster.lock() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_harvest.isKnown == true }, result: { cargo.install() ; thruster.lock() }),
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() ; thruster.unlock() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
-			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { }),
+			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort2.enable("empty",color:grey) }),
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Trade Lesson")
+		m = Mission(id:(questlog[c]?.count)!, name: "Aquired Portal Key Fragment")
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
@@ -57,7 +57,7 @@ class MissionLibrary
 		]
 		questlog[c]?.append(m)
 		
-		m = Mission(id:(questlog[c]?.count)!, name: "Radar Lesson")
+		m = Mission(id:(questlog[c]?.count)!, name: "Aligned with destination")
 		m.quests = [
 			Quest(name:"Select satellite on radar", location:universe.loiqe_city, predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_satellite }, result: { pilot.install() ; thruster.unlock() }),
 			Quest(name:"Route Radar to Pilot", predicate:{ pilot.port.origin != nil && pilot.port.origin == radar.port }, result: { })
@@ -76,7 +76,7 @@ class MissionLibrary
 		m = Mission(id:(questlog[c]?.count)!, name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && mission.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
+			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]
@@ -311,7 +311,7 @@ class MissionLibrary
 			currentMission[.primary] = questlog[.primary]![nextMissionId]
 		}
 		
-		mission.update()
+		intercom.update()
 	}
 	
 	func setActive(chapter:Chapters)

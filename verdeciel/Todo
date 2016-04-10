@@ -2,6 +2,13 @@
 *    MAJOR
 ================
 
+- Change constellation in tutorial
+- Rename
+
+================
+*    MINOR
+================
+
 - Design Stations structure
 - Re-color structure onComplete, don't reload
 
@@ -17,30 +24,6 @@
 - Enigma in console quest
 - Mining location? for bonus items(music, etc..)
 
-> Audio
-- Find audio1
-- Find audio2
-- Find audio3
-- Find audio4
-- Find audio5
-- Find audio6
-
-> Beacons
-- Loiqe
-- Valen
-- Senni
-- Usul
-- Falv
-
-> Usul
-
-> Loiqe
-- Path to falv(Gateway)
-
-================
-*    MINOR
-================
-
 > Playthrough
 - Save / Load Mechanics
 - Increase docking speed
@@ -53,9 +36,6 @@
 - Floating feel
 - Add ship doodads
 - Interface sounds
-- Animate docking on Trade Locations
-- Animate docking on Satellite Locations
-- Map animation
 
 > Narative
 - Telemetrists!? Twin Suns

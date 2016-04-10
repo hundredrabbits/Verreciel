@@ -11,7 +11,7 @@ import Foundation
 let battery = PanelBattery()
 let pilot = PanelPilot()
 let hatch = PanelHatch()
-let mission = PanelMission()
+let intercom = PanelIntercom()
 let cargo = PanelCargo()
 let thruster = PanelThruster()
 let console = PanelConsole()

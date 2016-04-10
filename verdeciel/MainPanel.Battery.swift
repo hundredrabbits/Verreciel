@@ -94,6 +94,9 @@ class PanelBattery : MainPanel
 		mapLabel.update("--", color: grey)
 		shieldLabel.update("--", color: grey)
 		
+		cellPort2.disable("--",color:grey)
+		cellPort3.disable("--",color:grey)
+		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
 		
 		installThruster()
@@ -212,6 +215,12 @@ class PanelBattery : MainPanel
 		super.onInstallationBegin()
 		
 		if debug.isActive == false { player.lookAt(deg: 0) }
+	}
+	
+	override func onInstallationComplete()
+	{
+		super.onInstallationComplete()
+		port.disable()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

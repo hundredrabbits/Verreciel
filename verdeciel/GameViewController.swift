@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-//		unlockedState(universe.loiqe_horadric)
+//		unlockedState(universe.loiqe_city, newItems:[Item(like: items.currency1), items.map1])
 		startingState()
 	}
 	
@@ -81,7 +81,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.battery1)
 	}
 	
-	func unlockedState(location:Location = universe.senni_station)
+	func unlockedState(location:Location = universe.senni_station, newItems:Array<Item> = [])
 	{
 		debug.isActive = false
 		
@@ -94,7 +94,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		radar.install()
 		cargo.install()
 		hatch.install()
-		mission.install()
+		intercom.install()
 		console.install()
 		thruster.install()
 		
@@ -114,7 +114,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		universe.loiqe_portal.isKnown = true
 		universe.senni_portal.isKnown = true
 		
-		cargo.addItems([Item(like: items.battery2), Item(like: items.battery3), items.map1])
+		cargo.addItems(newItems)
 		
 		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
