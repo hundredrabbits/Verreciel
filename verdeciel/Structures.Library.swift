@@ -68,28 +68,6 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func harvest() -> SCNNode!
-	{
-		let mesh = SCNNode()
-		let color:UIColor = cyan
-		let sides:Int = 45
-		let verticalOffset:Float = 12
-		let radius:Float = 9
-		
-		var i = 0
-		while i < sides {
-			let root = SCNNode()
-			root.eulerAngles.y = Float(degToRad(CGFloat(i * (360/sides))))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0.5,verticalOffset,radius), nodeB: SCNVector3(-0.5,verticalOffset,radius), color: color))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0,verticalOffset,radius), nodeB: SCNVector3(0,verticalOffset + 5,radius), color: color))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(0.5,verticalOffset + 5,radius), nodeB: SCNVector3(-0.5,verticalOffset + 5,radius), color: color))
-			mesh.addChildNode(root)
-			i += 1
-		}
-		
-		return mesh
-	}
-	
 	func star(color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()

@@ -14,7 +14,7 @@ class LocationHarvest : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		structure = StructureDefault()
+		structure = StructureHarvest()
 		icon.replace(icons.harvest())
 		
 		self.grows = grows
@@ -99,60 +99,6 @@ class LocationHarvest : Location
 			structure.updateChildrenColors(cyan)
 			icon.updateChildrenColors(white)
 		}
-	}
-
-	override func onDock()
-	{
-		super.onDock()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(3)
-		
-		for mesh in structure.childNodes {
-			mesh.eulerAngles.x = Float(degToRad(10))
-		}
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-		
-		refresh()
-	}
-	
-	override func onUndock()
-	{
-		super.onUndock()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(3)
-		
-		for mesh in structure.childNodes {
-			mesh.eulerAngles.x = Float(degToRad(0))
-		}
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-		
-		refresh()
-	}
-	
-	// MARK: Mesh -
-	
-	override func animateMesh()
-	{
-		super.animateMesh()
-		
-		if port.hasEvent(grows) == false {
-			structure.eulerAngles.y += Float(degToRad(0.15))
-		}
-		else{
-			structure.eulerAngles.y += Float(degToRad(0.1))
-		}
-		
-		for node in structure.childNodes {
-			node.position.y = 0
-		}
-		
-		structure.childNodes[Int(Int(time.elapsed * 0.5) % 45)].position.y = 0.2
 	}
 	
 	override func details() -> String
