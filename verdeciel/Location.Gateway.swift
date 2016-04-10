@@ -128,17 +128,6 @@ class LocationGateway : Location
 		}
 	}
 	
-	// MARK: Mesh -
-	
-	override func animateMesh()
-	{
-		super.animateMesh()
-		
-		if KeyPort.isReceiving(KeyPort.requirement) == true {
-			structure.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
-		}
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

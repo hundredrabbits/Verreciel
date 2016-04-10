@@ -13,7 +13,7 @@ class LocationSatellite : Location
 		super.init(name:name, system:system, at:at)
 		
 		self.note = ""
-		structure = StructureDefault()
+		structure = StructureSatellite()
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		
@@ -59,25 +59,13 @@ class LocationSatellite : Location
 	override func complete()
 	{
 		super.complete()
-		structure.empty()
-		structure.add(structures.satellite(color:cyan))
+		structure.onComplete()
 		intercom.complete()
 	}
 	
 	override func onUploadComplete()
 	{
 		self.complete()
-	}
-	
-	// MARK: Mesh -
-	
-	override func animateMesh()
-	{
-		super.animateMesh()
-		
-		if isComplete == true {
-			structure.eulerAngles.y = Float(degToRad(0.1))
-		}
 	}
 	
 	override func details() -> String

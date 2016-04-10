@@ -21,7 +21,7 @@ class LocationStation : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		structure = StructureDefault()
+		structure = StructureStation()
 		self.icon.replace(icons.station())
 		self.isComplete = false
 	}
@@ -63,36 +63,6 @@ class LocationStation : Location
 		else{ tradeLabel.update(red) }
 	}
 	
-	override func onDock()
-	{
-		super.onDock()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(5)
-		
-		structure.childNodes[0].eulerAngles.x = Float(degToRad(90))
-		structure.childNodes[1].eulerAngles.y = Float(degToRad(90))
-		structure.childNodes[2].eulerAngles.z = Float(degToRad(90))
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
-	
-	override func onUndock()
-	{
-		super.onDock()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(5)
-		
-		structure.childNodes[0].eulerAngles.x = Float(degToRad(0))
-		structure.childNodes[1].eulerAngles.y = Float(degToRad(0))
-		structure.childNodes[2].eulerAngles.z = Float(degToRad(0))
-		
-		SCNTransaction.setCompletionBlock({ })
-		SCNTransaction.commit()
-	}
-	
 	override func touch(id: Int)
 	{
 		super.touch(id)
@@ -103,8 +73,7 @@ class LocationStation : Location
 	{
 		super.complete()
 		
-		structure.empty()
-		structure.add(structures.station(color:cyan))
+		structure.onComplete()
 		intercom.complete()
 	}
 	

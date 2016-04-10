@@ -199,11 +199,6 @@ class Location : Event
 		structure.dockUpdate()
 	}
 	
-	func animateMesh()
-	{
-		
-	}
-	
 	func radarCulling()
 	{
 		let verticalDistance = abs(capsule.at.y - at.y)

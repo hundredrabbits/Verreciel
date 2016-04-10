@@ -17,9 +17,12 @@ class Structure : SCNNode
 		addChildNode(root)
 	}
 	
+	var morphTime:Int = 0
+	var morphTimer:NSTimer!
+	
 	func onDock()
 	{
-	
+		morph()
 	}
 	
 	func onSight()
@@ -45,6 +48,14 @@ class Structure : SCNNode
 	func sightUpdate()
 	{
 	
+	}
+	
+	func morph()
+	{
+		morphTime += 1
+		if capsule.isDocked == true {
+			delay(2, block: { self.morph() })
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)

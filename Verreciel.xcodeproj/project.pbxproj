@@ -65,6 +65,8 @@
 		5791F3B51CBACBD400E247D7 /* Structure.Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */; };
 		5791F3B71CBACE2200E247D7 /* Structure.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */; };
 		5791F3B91CBAD41500E247D7 /* Structure.Harvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */; };
+		5791F3BB1CBAD8D800E247D7 /* Structure.Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */; };
+		5791F3BD1CBAF39E00E247D7 /* Structure.Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */; };
 		579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* Core.Player.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		5797B83C1BE7DD09004EE1F7 /* Structures.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */; };
@@ -161,6 +163,8 @@
 		5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Bank.swift; sourceTree = "<group>"; };
 		5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Trade.swift; sourceTree = "<group>"; };
 		5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Harvest.swift; sourceTree = "<group>"; };
+		5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Satellite.swift; sourceTree = "<group>"; };
+		5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Station.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* Core.Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Player.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.Library.swift; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 				5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */,
 				5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */,
 				5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */,
+				5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */,
+				5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */,
 			);
 			name = Structures;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				57EDED221BC17321005DF3DE /* Location.Beacon.swift in Sources */,
 				5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */,
 				57C915171BC45E91009454C4 /* MainPanel.swift in Sources */,
+				5791F3BD1CBAF39E00E247D7 /* Structure.Station.swift in Sources */,
 				5769535D1C2060FE00A0CA39 /* Monitor.Exploration.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */,
 				57DD808E1BC7005600A4146C /* SCNHandle.swift in Sources */,
@@ -589,6 +596,7 @@
 				57F645F11B4CA2700088D115 /* MainPanel.Hatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,
 				57FA031D1BBA21490077D517 /* Location.Station.swift in Sources */,
+				5791F3BB1CBAD8D800E247D7 /* Structure.Satellite.swift in Sources */,
 				5791F3B71CBACE2200E247D7 /* Structure.Trade.swift in Sources */,
 				574156DA1BE12E6C008B6C44 /* Location.Horadric.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,

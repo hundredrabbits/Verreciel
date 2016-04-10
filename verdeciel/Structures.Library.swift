@@ -34,40 +34,6 @@ class StructuresLibrary
 		return mesh
 	}
 	
-	func satellite(radius:Float = 1.5, color:UIColor = red) -> SCNNode
-	{
-		let mesh = SCNNode()
-		let color:UIColor = cyan
-		let sides:Int = Int(arc4random_uniform(7)) + 3
-		let verticalOffset:Float = 5
-		let radius:Float = Float(20 + arc4random_uniform(5))/10
-		
-		let rand1 = (Float(arc4random_uniform(100))/100).clamp(0.4, 0.9)
-		let rand2 = (Float(arc4random_uniform(100))/100).clamp(0.7, 0.9)
-		
-		var i = 0
-		while i < sides {
-			var e = 0
-			while e < sides {
-				let root = SCNNode()
-				root.eulerAngles.y = Float(degToRad(CGFloat(Float(e) * Float(360/sides))))
-				mesh.addChildNode(root)
-				let branch1 = SCNLine(nodeA: SCNVector3(0,verticalOffset * rand1,radius * rand1 + 1), nodeB: SCNVector3((radius) * rand2,verticalOffset,radius * rand2 - 1), color: color)
-				let branch2 = SCNLine(nodeA: SCNVector3(0,verticalOffset * rand1,radius * rand1 + 1), nodeB: SCNVector3((-radius) * rand2,verticalOffset,radius * rand2 - 1), color: color)
-				root.addChildNode(branch1)
-				root.addChildNode(branch2)
-				branch1.addChildNode(SCNLine(nodeA: branch1.nodeB, nodeB: SCNVector3(radius * rand1 * rand2,verticalOffset,1 * rand2), color: grey))
-				branch1.addChildNode(SCNLine(nodeA: branch1.nodeB, nodeB: SCNVector3(-radius * rand1 * rand2,verticalOffset,1 * rand2), color: grey))
-				branch2.addChildNode(SCNLine(nodeA: branch2.nodeB, nodeB: SCNVector3(radius * rand1 * rand2,verticalOffset,1 * rand2), color: grey))
-				branch2.addChildNode(SCNLine(nodeA: branch2.nodeB, nodeB: SCNVector3(-radius * rand1 * rand2,verticalOffset,1 * rand2), color: grey))
-				e += 1
-			}
-			i += 1
-		}
-		
-		return mesh
-	}
-	
 	func star(color:UIColor = red) -> SCNNode
 	{
 		let mesh = SCNNode()
@@ -215,16 +181,6 @@ class StructuresLibrary
 		}
 		mesh.addChildNode(aim)
 		
-		return mesh
-	}
-	
-	func station(size:CGFloat = 15, color:UIColor = red) -> SCNNode
-	{
-		let mesh = SCNNode()
-		
-		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
-		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
-		mesh.addChildNode(SCNOcta(size: size, color: grey, eulerAngles: SCNVector3(0,0,0)))
 		return mesh
 	}
 	

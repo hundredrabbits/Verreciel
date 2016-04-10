@@ -111,13 +111,6 @@ class LocationPortal : Location
 		structure.updateChildrenColors(cyan)
 	}
 	
-	override func animateMesh()
-	{
-		super.animateMesh()
-		
-		structure.eulerAngles.y = Float(degToRad(CGFloat(time.elapsed * 0.1)))
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
