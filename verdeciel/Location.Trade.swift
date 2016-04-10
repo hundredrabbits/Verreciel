@@ -127,9 +127,9 @@ class LocationTrade : Location
 	override func details() -> String
 	{
 		if givePort.hasItem() == true {
-			return "\(givePort.event.name!)"
+			return "\((givePort.event as! Item).type)"
 		}
-		return "empty"
+		return "--"
 	}
 	
 	// MARK: Defaults -

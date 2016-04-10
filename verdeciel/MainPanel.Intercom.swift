@@ -100,12 +100,12 @@ class PanelIntercom : MainPanel
 			
 			systemValueLabel.update("\(target.system)")
 			distanceLabel.update("Distance")
-			distanceValueLabel.update("\(String(format: "%.2f",target.distance * 19))")
+			distanceValueLabel.update( (capsule.isDockedAtLocation(target) ? "docked" : "\(String(format: "%.2f",target.distance * 19))") )
 			typeLabel.update("type")
 			typeValueLabel.update("\(target.name!)")
 			detailsValueLabel.update(target.details())
 			
-			if target.isComplete == nil { statusValueLabel.update("ready", color:white) }
+			if target.isComplete == nil { statusValueLabel.update("--", color:white) }
 			else if target.isComplete == true { statusValueLabel.update("complete", color:cyan) }
 			else if target.isComplete == false { statusValueLabel.update("quest", color:red) }
 		}
@@ -113,8 +113,7 @@ class PanelIntercom : MainPanel
 			systemValueLabel.update("\(capsule.system)")
 			distanceLabel.update("Position")
 			distanceValueLabel.update("\(Int(capsule.at.x)),\(Int(capsule.at.y))")
-			typeLabel.update("quest")
-			typeValueLabel.update((quests.currentMission[quests.active]?.name)!)
+			typeValueLabel.update("--")
 			statusValueLabel.update("in flight", color:white)
 			detailsValueLabel.update("--")
 		}

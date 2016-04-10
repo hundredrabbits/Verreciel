@@ -119,8 +119,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
 //		battery.cellPort2.addEvent(items.battery3)
-		
-		quests.skip(.primary, id: 16)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
