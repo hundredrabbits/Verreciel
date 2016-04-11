@@ -103,12 +103,11 @@ class StructureStation : Structure
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		let deg1 = 22.5 * (CGFloat(morphTime * 123) % 8) % 180
-		let deg2 = 22.5 * (CGFloat(morphTime * 456) % 7) % 180
-		let deg3 = 22.5 * (CGFloat(morphTime * 678) % 6) % 180
+		let deg2 = 22.5 * (CGFloat(morphTime * 678) % 6) % 180
 		
 		for node in root.childNodes {
 			for subnode in node.childNodes	{
-				subnode.eulerAngles.z = Float(degToRad(deg1 - deg3))
+				subnode.eulerAngles.z = Float(degToRad(deg1 - deg2))
 				subnode.position.y = (2 - ((Float(morphTime) * 0.34) % 4)) * 0.6
 			}
 		}

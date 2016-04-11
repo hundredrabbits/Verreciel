@@ -11,6 +11,14 @@ class StructureBank : Structure
 	override init()
 	{
 		super.init()
+		
+		var i = 0
+		while i < 14 {
+			let rect = SCNRect(size:CGSize(width:6,height:6), color:white)
+			rect.position.y = Float((Float(i)/2) - 3.5)
+			root.addChildNode(rect)
+			i += 1
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)

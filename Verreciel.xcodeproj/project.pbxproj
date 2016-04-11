@@ -67,6 +67,8 @@
 		5791F3B91CBAD41500E247D7 /* Structure.Harvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */; };
 		5791F3BB1CBAD8D800E247D7 /* Structure.Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */; };
 		5791F3BD1CBAF39E00E247D7 /* Structure.Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */; };
+		5791F3BF1CBB090E00E247D7 /* Structure.Horadric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */; };
+		5791F3C11CBB0C2D00E247D7 /* Constellation.Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */; };
 		579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* Core.Player.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		5797B83C1BE7DD09004EE1F7 /* Structures.Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */; };
@@ -165,6 +167,8 @@
 		5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Harvest.swift; sourceTree = "<group>"; };
 		5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Satellite.swift; sourceTree = "<group>"; };
 		5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Station.swift; sourceTree = "<group>"; };
+		5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Horadric.swift; sourceTree = "<group>"; };
+		5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constellation.Tunnel.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* Core.Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Player.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		5797B83B1BE7DD09004EE1F7 /* Structures.Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.Library.swift; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 				5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */,
 				5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */,
 				5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */,
+				5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */,
+				5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */,
 			);
 			name = Structures;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* MainPanel.Pilot.swift in Sources */,
 				579CE7201C2460BA009E02F5 /* Core.Time.swift in Sources */,
+				5791F3C11CBB0C2D00E247D7 /* Constellation.Tunnel.swift in Sources */,
 				5791F3B91CBAD41500E247D7 /* Structure.Harvest.swift in Sources */,
 				5796144B1BE00EE300421D69 /* Monitor.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */,
@@ -581,6 +588,7 @@
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */,
 				578D63F31C3C7DA1000AAC04 /* Location.Harvest.swift in Sources */,
+				5791F3BF1CBB090E00E247D7 /* Structure.Horadric.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */,
 				579CE71E1C246040009E02F5 /* Core.Game.swift in Sources */,
 				57A518531C7501AD0012DABD /* Location.Constellation.swift in Sources */,
