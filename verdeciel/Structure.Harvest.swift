@@ -17,15 +17,15 @@ class StructureHarvest : Structure
 		root.position = SCNVector3(0,5,0)
 		
 		let color:UIColor = cyan
-		let value1:Float = 9
+		let value1:Float = 7
 		
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
 			node.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
-			node.addChildNode(SCNLine(nodeA: SCNVector3(0.5,0,value1), nodeB: SCNVector3(-0.5,0,value1), color: color))
 			node.addChildNode(SCNLine(nodeA: SCNVector3(0,0,value1), nodeB: SCNVector3(0,5,value1), color: color))
-			node.addChildNode(SCNLine(nodeA: SCNVector3(0.5,5,value1), nodeB: SCNVector3(-0.5,5,value1), color: color))
+			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(0.5,5.5,value1), color: color))
+			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(-0.5,5.5,value1), color: color))
 			root.addChildNode(node)
 			i += 1
 		}

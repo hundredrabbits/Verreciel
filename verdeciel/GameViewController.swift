@@ -69,7 +69,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		settings.applicationIsReady = true
 		
-		unlockedState(universe.valen_station, newItems:[Item(like: items.currency1), items.map1])
+		unlockedState(universe.loiqe_harvest, newItems:[Item(like: items.currency1), items.map1])
 //		startingState()
 	}
 	

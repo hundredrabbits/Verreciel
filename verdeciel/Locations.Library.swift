@@ -39,7 +39,7 @@ class Loiqe
 	
 	func spawn() -> LocationSatellite
 	{
-		return LocationSatellite(name: "awakening", system: system, at:CGPoint(x: offset.x, y: offset.y - 2.75), message: "[missing]", item: items.record2, mapRequirement: items.map1)
+		return LocationSatellite(name: "awakening", system: system, at:CGPoint(x: offset.x, y: offset.y - 2.75), structure:Structure(), message: "[missing]", item: items.record2, mapRequirement: items.map1)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -90,23 +90,23 @@ class Loiqe
 	
 	func c_1() -> LocationConstellation
 	{
-		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 1.5, y: offset.y))
+		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5), structure:ConstellationTunnel())
 	}
-	
-	func c_2() -> LocationConstellation
-	{
-		return LocationConstellation(name: "vill", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5))
-	}
-	
-	func c_3() -> LocationConstellation
-	{
-		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 0.25, y: offset.y + 1.25))
-	}
-	
-	func c_4() -> LocationConstellation
-	{
-		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.25, y: offset.y + 1.25))
-	}
+//	
+//	func c_2() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "vill", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5))
+//	}
+//	
+//	func c_3() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 0.25, y: offset.y + 1.25))
+//	}
+//	
+//	func c_4() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.25, y: offset.y + 1.25))
+//	}
 }
 
 class Usul
@@ -208,20 +208,20 @@ class Valen
 	
 	// Constellations
 	
-	func c_1() -> LocationConstellation
-	{
-		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5))
-	}
-	
-	func c_3() -> LocationConstellation
-	{
-		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y + 0.25))
-	}
-	
-	func c_4() -> LocationConstellation
-	{
-		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y - 0.25))
-	}
+//	func c_1() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5))
+//	}
+//	
+//	func c_3() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y + 0.25))
+//	}
+//	
+//	func c_4() -> LocationConstellation
+//	{
+//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y - 0.25))
+//	}
 }
 
 class Senni

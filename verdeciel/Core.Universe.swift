@@ -49,9 +49,9 @@ class CoreUniverse : SCNNode
 	var loiqe_fog = locations.loiqe.fog()
 	var loiqe_gateway = locations.loiqe.gateway()
 	var loiqe_c_1 = locations.loiqe.c_1()
-	var loiqe_c_2 = locations.loiqe.c_2()
-	var loiqe_c_3 = locations.loiqe.c_3()
-	var loiqe_c_4 = locations.loiqe.c_4()
+//	var loiqe_c_2 = locations.loiqe.c_2()
+//	var loiqe_c_3 = locations.loiqe.c_3()
+//	var loiqe_c_4 = locations.loiqe.c_4()
 	
 	func addLoiqe()
 	{
@@ -68,9 +68,9 @@ class CoreUniverse : SCNNode
 		addChildNode(loiqe_gateway)
 		// Constellations
 		addChildNode(loiqe_c_1)
-		addChildNode(loiqe_c_2)
-		addChildNode(loiqe_c_3)
-		addChildNode(loiqe_c_4)
+//		addChildNode(loiqe_c_2)
+//		addChildNode(loiqe_c_3)
+//		addChildNode(loiqe_c_4)
 	}
 	
 	// MARK: Valen -
@@ -83,9 +83,9 @@ class CoreUniverse : SCNNode
 	var valen_port = locations.valen.port()
 	var valen_cargo = locations.valen.cargo()
 	var valen_fog = locations.valen.fog()
-	var valen_c_1 = locations.valen.c_1()
-	var valen_c_3 = locations.valen.c_3()
-	var valen_c_4 = locations.valen.c_4()
+//	var valen_c_1 = locations.valen.c_1()
+//	var valen_c_3 = locations.valen.c_3()
+//	var valen_c_4 = locations.valen.c_4()
 	
 	func addValen()
 	{
@@ -98,9 +98,9 @@ class CoreUniverse : SCNNode
 		addChildNode(valen_cargo)
 		// Fog
 		addChildNode(valen_fog)
-		addChildNode(valen_c_1)
-		addChildNode(valen_c_3)
-		addChildNode(valen_c_4)
+//		addChildNode(valen_c_1)
+//		addChildNode(valen_c_3)
+//		addChildNode(valen_c_4)
 	}
 	
 	// MARK: Senni -
