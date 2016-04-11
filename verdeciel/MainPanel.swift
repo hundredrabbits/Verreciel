@@ -35,13 +35,13 @@ class MainPanel : Panel
 		header.addChildNode(port)
 		header.addChildNode(label)
 		addChildNode(header)
-		header.eulerAngles.x += Float(degToRad(templates.titlesAngle))
+		header.eulerAngles.x += (degToRad(templates.titlesAngle))
 		
 		// Footer
 		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		footer.addChildNode(details)
 		addChildNode(footer)
-		footer.eulerAngles.x = Float(degToRad(-templates.titlesAngle))
+		footer.eulerAngles.x = (degToRad(-templates.titlesAngle))
 		
 		// Decals
 		

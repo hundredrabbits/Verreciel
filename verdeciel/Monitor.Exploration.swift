@@ -16,7 +16,7 @@ class MonitorExploration : Monitor
 		super.init()
 		
 		name = "exploration"
-		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
 		label.update("--")
 		details.update(name!)

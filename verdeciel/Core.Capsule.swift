@@ -173,13 +173,13 @@ class CoreCapsule: SCNNode
 		addChildNode(above)
 		addChildNode(below)
 		
-		hatch.eulerAngles.y = Float(degToRad(45))
-		console.eulerAngles.y = Float(degToRad(90))
-		cargo.eulerAngles.y = Float(degToRad(135))
-		intercom.eulerAngles.y = Float(degToRad(180))
-		pilot.eulerAngles.y = Float(degToRad(225))
-		radar.eulerAngles.y = Float(degToRad(270))
-		thruster.eulerAngles.y = Float(degToRad(315))
+		hatch.eulerAngles.y = degToRad(45)
+		console.eulerAngles.y = degToRad(90)
+		cargo.eulerAngles.y = degToRad(135)
+		intercom.eulerAngles.y = degToRad(180)
+		pilot.eulerAngles.y = degToRad(225)
+		radar.eulerAngles.y = degToRad(270)
+		thruster.eulerAngles.y = degToRad(315)
 		
 		journey.eulerAngles.y = battery.eulerAngles.y
 		exploration.eulerAngles.y = console.eulerAngles.y

@@ -145,8 +145,8 @@ class CorePlayer : SCNNode
 	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
 	{
 		let normalizedDeg = radToDeg(CGFloat(player.eulerAngles.y)) % 360
-		player.eulerAngles.y = Float(degToRad(normalizedDeg))
-		helmet.eulerAngles.y = Float(degToRad(normalizedDeg))
+		player.eulerAngles.y = (degToRad(normalizedDeg))
+		helmet.eulerAngles.y = (degToRad(normalizedDeg))
 		
 		print("+ PLAYER   | LookAt(from:\(radToDeg(CGFloat(player.eulerAngles.y))),to:\(deg))")
 		
@@ -156,9 +156,9 @@ class CorePlayer : SCNNode
 		SCNTransaction.setAnimationDuration(2.5)
 		
 		player.position = position
-		player.eulerAngles.y = Float(degToRad(deg))
+		player.eulerAngles.y = (degToRad(deg))
 		helmet.position = position
-		helmet.eulerAngles.y = Float(degToRad(deg))
+		helmet.eulerAngles.y = (degToRad(deg))
 		
 		SCNTransaction.setCompletionBlock({ player.isLocked = false })
 		SCNTransaction.commit()

@@ -72,16 +72,16 @@ class StructureHoradric : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(3)
 		
-		root.childNodes[0].eulerAngles.y = Float(degToRad(0))
-		root.childNodes[1].eulerAngles.y = Float(degToRad(0))
+		root.childNodes[0].eulerAngles.y = (degToRad(0))
+		root.childNodes[1].eulerAngles.y = (degToRad(0))
 		
-		root.childNodes[2].eulerAngles.z = Float(degToRad(0))
-		root.childNodes[3].eulerAngles.z = Float(degToRad(0))
+		root.childNodes[2].eulerAngles.z = (degToRad(0))
+		root.childNodes[3].eulerAngles.z = (degToRad(0))
 		
-		root.childNodes[4].eulerAngles.x = Float(degToRad(0))
-		root.childNodes[5].eulerAngles.x = Float(degToRad(0))
+		root.childNodes[4].eulerAngles.x = (degToRad(0))
+		root.childNodes[5].eulerAngles.x = (degToRad(0))
 		
-		eulerAngles.y = Float(degToRad(0))
+		eulerAngles.y = (degToRad(0))
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
@@ -94,16 +94,16 @@ class StructureHoradric : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(3)
 		
-		root.childNodes[0].eulerAngles.y += Float(degToRad(22.5))
-		root.childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
+		root.childNodes[0].eulerAngles.y += (degToRad(22.5))
+		root.childNodes[1].eulerAngles.y -= (degToRad(22.5))
 		
-		root.childNodes[2].eulerAngles.z += Float(degToRad(45))
-		root.childNodes[3].eulerAngles.z -= Float(degToRad(45))
+		root.childNodes[2].eulerAngles.z += (degToRad(45))
+		root.childNodes[3].eulerAngles.z -= (degToRad(45))
 		
-		root.childNodes[4].eulerAngles.x += Float(degToRad(90))
-		root.childNodes[5].eulerAngles.x -= Float(degToRad(90))
+		root.childNodes[4].eulerAngles.x += (degToRad(90))
+		root.childNodes[5].eulerAngles.x -= (degToRad(90))
 		
-		eulerAngles.y += Float(degToRad(90))
+		eulerAngles.y += (degToRad(90))
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()

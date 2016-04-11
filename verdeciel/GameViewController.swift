@@ -146,8 +146,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		
 		touchOrigin = touchPosition
 
-        player.accelY += Float(degToRad(dragX/6))
-        player.accelX += Float(degToRad(dragY/6))
+        player.accelY += (degToRad(dragX/6))
+        player.accelX += (degToRad(dragY/6))
         
 		helmet.updatePort()
 	}

@@ -15,7 +15,7 @@ class MonitorJourney : Monitor
 		super.init()
 		
 		name = "journey"
-		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
 		label.update("--")
 		details.update(name!)

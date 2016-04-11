@@ -28,7 +28,7 @@ class ConstellationTunnel : Structure
 		hex5.position = SCNVector3(0,0,-4)
 		root.addChildNode(hex5)
 		
-		root.eulerAngles.x = Float(degToRad(90))
+		root.eulerAngles.x = degToRad(90)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

@@ -20,7 +20,7 @@ class StructureSatellite : Structure
 		while i < nodes {
 			
 			let axis = SCNNode()
-			axis.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			axis.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			
 			root.addChildNode(axis)
 			
@@ -29,15 +29,15 @@ class StructureSatellite : Structure
 			axis.addChildNode(shape)
 			
 			let shape2 = SCNHexa(size: 3, color: red)
-			shape2.eulerAngles.z = Float(degToRad(90))
+			shape2.eulerAngles.z = (degToRad(90))
 			shape.addChildNode(shape2)
 			
 			let shape3 = SCNHexa(size: 3, color: red)
-			shape3.eulerAngles.y = Float(degToRad(90))
+			shape3.eulerAngles.y = (degToRad(90))
 			shape.addChildNode(shape3)
 			
 			let shape4 = SCNHexa(size: 3, color: red)
-			shape4.eulerAngles.x = Float(degToRad(90))
+			shape4.eulerAngles.x = (degToRad(90))
 			shape.addChildNode(shape4)
 			
 			i += 1
@@ -101,14 +101,14 @@ class StructureSatellite : Structure
 	
 	override func sightUpdate()
 	{
-		root.eulerAngles.y += Float(degToRad(0.1))
+		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	override func dockUpdate()
 	{
 		for node in root.childNodes {
 			for subnode in node.childNodes {
-				subnode.eulerAngles.z += Float(degToRad(0.25))
+				subnode.eulerAngles.z += (degToRad(0.25))
 			}
 		}
 	}

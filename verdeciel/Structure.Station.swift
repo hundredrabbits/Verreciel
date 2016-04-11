@@ -23,12 +23,12 @@ class StructureStation : Structure
 		var i:Int = 0
 		while i < nodes {
 			let axis = SCNNode()
-			axis.eulerAngles.y = Float(degToRad(CGFloat(Float(i) * Float(360/nodes))))
+			axis.eulerAngles.y = (degToRad(CGFloat(Float(i) * Float(360/nodes))))
 			
 			let node = SCNHexa(size: 4, color: red)
-			node.eulerAngles.x = Float(degToRad(90))
+			node.eulerAngles.x = (degToRad(90))
 			let node1 = SCNHexa(size: 4, color: red)
-			node1.eulerAngles.y = Float(degToRad(90))
+			node1.eulerAngles.y = (degToRad(90))
 			
 			axis.addChildNode(node)
 			node.addChildNode(node1)
@@ -47,7 +47,7 @@ class StructureStation : Structure
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(0))
+			node.eulerAngles.x = (degToRad(0))
 		}
 		
 		SCNTransaction.commit()
@@ -61,7 +61,7 @@ class StructureStation : Structure
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(45))
+			node.eulerAngles.x = (degToRad(45))
 		}
 		
 		SCNTransaction.commit()
@@ -75,7 +75,7 @@ class StructureStation : Structure
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(45))
+			node.eulerAngles.x = (degToRad(45))
 		}
 		
 		SCNTransaction.commit()
@@ -90,7 +90,7 @@ class StructureStation : Structure
 	
 	override func sightUpdate()
 	{
-		root.eulerAngles.y += Float(degToRad(0.1))
+		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	override func dockUpdate()
@@ -109,7 +109,7 @@ class StructureStation : Structure
 		
 		for node in root.childNodes {
 			for subnode in node.childNodes	{
-				subnode.eulerAngles.z = Float(degToRad(deg1 - deg2))
+				subnode.eulerAngles.z = (degToRad(deg1 - deg2))
 				subnode.position.y = (2 - ((Float(morphTime) * 0.34) % 4)) * 0.6
 			}
 		}

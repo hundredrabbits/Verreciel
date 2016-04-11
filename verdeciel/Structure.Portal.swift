@@ -23,7 +23,7 @@ class StructurePortal : Structure
 			let node = SCNNode()
 			node.addChildNode(SCNLine(nodeA: SCNVector3(-value1,0 * 3,0), nodeB: SCNVector3(0,0/2,value1), color: red))
 			root.addChildNode(node)
-			node.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			i += 1
 		}
 	}

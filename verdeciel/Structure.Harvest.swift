@@ -22,7 +22,7 @@ class StructureHarvest : Structure
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
-			node.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			node.addChildNode(SCNLine(nodeA: SCNVector3(0,0,value1), nodeB: SCNVector3(0,5,value1), color: color))
 			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(0.5,5.5,value1), color: color))
 			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(-0.5,5.5,value1), color: color))
@@ -54,7 +54,7 @@ class StructureHarvest : Structure
 	
 	override func sightUpdate()
 	{
-		root.eulerAngles.y += Float(degToRad(0.1))
+		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

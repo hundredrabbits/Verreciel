@@ -43,7 +43,7 @@ class StructureTrade : Structure
 		
 		var i = 0
 		for node in root.childNodes	{
-			node.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			i += 1
 		}
 		
@@ -59,7 +59,7 @@ class StructureTrade : Structure
 		
 		var i = 0
 		for node in root.childNodes	{
-			node.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			i += 1
 		}
 		
@@ -89,7 +89,7 @@ class StructureTrade : Structure
 	
 	override func sightUpdate()
 	{
-		root.eulerAngles.y += Float(degToRad(0.1))
+		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

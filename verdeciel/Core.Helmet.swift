@@ -60,7 +60,7 @@ class Helmet: SCNNode
 		passiveLabel.position = SCNVector3(0,-1.2,visorDepth)
 		visor.addChildNode(passiveLabel)
 		
-		displayLeft.eulerAngles.y = Float(degToRad(10))
+		displayLeft.eulerAngles.y = degToRad(10)
 		
 		visor.addChildNode(displayLeft)
 		
@@ -75,7 +75,7 @@ class Helmet: SCNNode
 		rightHandLabel.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
 		displayRight.addChildNode(rightHandLabel)
 		
-		displayRight.eulerAngles.y = Float(degToRad(-10))
+		displayRight.eulerAngles.y = degToRad(-10)
 		
 		visor.addChildNode(displayRight)
 		

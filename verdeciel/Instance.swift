@@ -29,17 +29,17 @@ class Instance : SCNNode
 		structure.position = SCNVector3(0,distance,0)
 		
 		if capsule.isDockedAtLocation(event){
-			self.eulerAngles.z = Float(degToRad(0))
+			self.eulerAngles.z = (degToRad(0))
 		}
 		else if capsule.lastLocation == event {
-			self.eulerAngles.z = Float(degToRad(0))
+			self.eulerAngles.z = (degToRad(0))
 			structure.position = SCNVector3(0,distance * -1,0)
 		}
 		else{
-			self.eulerAngles.z = Float(degToRad(event.align))
+			self.eulerAngles.z = (degToRad(event.align))
 		}
 		
-		self.eulerAngles.y = Float(degToRad(capsule.direction))
+		self.eulerAngles.y = (degToRad(capsule.direction))
 		
 		if event.distance > settings.approach {
 			leaveInstance()

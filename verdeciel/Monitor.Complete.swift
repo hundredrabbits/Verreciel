@@ -15,7 +15,7 @@ class MonitorComplete : Monitor
 		super.init()
 		
 		name = "complete"
-		self.eulerAngles.x = Float(degToRad(templates.monitorsAngle))
+		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
 		label.update("--")
 		details.update(name!)
