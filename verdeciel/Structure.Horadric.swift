@@ -15,7 +15,7 @@ class StructureHoradric : Structure
 	{
 		super.init()
 		
-		root.position = SCNVector3(0,5,0)
+		root.position = SCNVector3(0,0,0)
 		
 		let cube1 = SCNCube(size: radius, color:grey)
 		root.addChildNode(cube1)
@@ -72,14 +72,14 @@ class StructureHoradric : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(3)
 		
-		childNodes[0].eulerAngles.y = Float(degToRad(0))
-		childNodes[1].eulerAngles.y = Float(degToRad(0))
+		root.childNodes[0].eulerAngles.y = Float(degToRad(0))
+		root.childNodes[1].eulerAngles.y = Float(degToRad(0))
 		
-		childNodes[2].eulerAngles.z = Float(degToRad(0))
-		childNodes[3].eulerAngles.z = Float(degToRad(0))
+		root.childNodes[2].eulerAngles.z = Float(degToRad(0))
+		root.childNodes[3].eulerAngles.z = Float(degToRad(0))
 		
-		childNodes[4].eulerAngles.x = Float(degToRad(0))
-		childNodes[5].eulerAngles.x = Float(degToRad(0))
+		root.childNodes[4].eulerAngles.x = Float(degToRad(0))
+		root.childNodes[5].eulerAngles.x = Float(degToRad(0))
 		
 		eulerAngles.y = Float(degToRad(0))
 		
@@ -94,24 +94,19 @@ class StructureHoradric : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(3)
 		
-		childNodes[0].eulerAngles.y += Float(degToRad(22.5))
-		childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
+		root.childNodes[0].eulerAngles.y += Float(degToRad(22.5))
+		root.childNodes[1].eulerAngles.y -= Float(degToRad(22.5))
 		
-		childNodes[2].eulerAngles.z += Float(degToRad(45))
-		childNodes[3].eulerAngles.z -= Float(degToRad(45))
+		root.childNodes[2].eulerAngles.z += Float(degToRad(45))
+		root.childNodes[3].eulerAngles.z -= Float(degToRad(45))
 		
-		childNodes[4].eulerAngles.x += Float(degToRad(90))
-		childNodes[5].eulerAngles.x -= Float(degToRad(90))
+		root.childNodes[4].eulerAngles.x += Float(degToRad(90))
+		root.childNodes[5].eulerAngles.x -= Float(degToRad(90))
 		
 		eulerAngles.y += Float(degToRad(90))
 		
 		SCNTransaction.setCompletionBlock({ })
 		SCNTransaction.commit()
-	}
-	
-	override func onComplete()
-	{
-		super.onComplete()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

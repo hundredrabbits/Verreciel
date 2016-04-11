@@ -8,17 +8,13 @@ import Foundation
 
 class StructureSatellite : Structure
 {
-	let nodes:Int = Int(arc4random_uniform(2)) + 2
+	let nodes:Int = Int(arc4random_uniform(2)) + 3
 	
 	override init()
 	{
 		super.init()
 		
 		root.position = SCNVector3(0,5,0)
-		
-		let value1:Float = Float(20 + arc4random_uniform(5))/10
-		let value2 = (Float(arc4random_uniform(100))/100).clamp(0.4, 2.9)
-		let value3 = (Float(arc4random_uniform(100))/100).clamp(0.7, 2.9)
 		
 		var i = 0
 		while i < nodes {
