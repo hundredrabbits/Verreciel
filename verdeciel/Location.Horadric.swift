@@ -16,7 +16,7 @@ class LocationHoradric : Location
 		
 		self.note = ""
 		self.mapRequirement = mapRequirement
-		structure = StructureDefault()
+		structure = StructureHoradric()
 		icon.replace(icons.horadric())
 	}
 	

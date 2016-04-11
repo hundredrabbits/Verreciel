@@ -152,6 +152,7 @@ class Location : Event
 	func onUndock()
 	{
 		retrieveStorage()
+		structure.onUndock()
 	}
 	
 	func retrieveStorage()

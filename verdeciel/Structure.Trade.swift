@@ -84,9 +84,7 @@ class StructureTrade : Structure
 	{
 		super.onComplete()
 		
-		for node in root.childNodes	{
-			node.updateChildrenColors(cyan)
-		}
+		updateChildrenColors(cyan)
 	}
 	
 	override func sightUpdate()

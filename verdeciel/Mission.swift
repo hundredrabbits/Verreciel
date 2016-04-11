@@ -43,8 +43,8 @@ class Mission
 	{
 		if currentQuest.location != nil {
 			if capsule.isDockedAtLocation(currentQuest.location) { helmet.addMessage(currentQuest.name) }
-			else if capsule.system == currentQuest.location.system { helmet.addMessage(currentQuest.location.name!, color:red) }
-			else{ helmet.addMessage("\(currentQuest.location.system)", color:cyan) }
+			else if capsule.system == currentQuest.location.system { helmet.addMessage("Reach \(currentQuest.location.system) \(currentQuest.location.name!)", color:red) }
+			else{ helmet.addMessage("Reach the \(currentQuest.location.system) system", color:cyan) }
 		}
 		else{
 			helmet.addMessage(currentQuest.name)

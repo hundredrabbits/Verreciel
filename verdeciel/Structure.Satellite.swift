@@ -8,7 +8,7 @@ import Foundation
 
 class StructureSatellite : Structure
 {
-	let nodes:Int = Int(arc4random_uniform(10)) + 4
+	let nodes:Int = Int(arc4random_uniform(2)) + 2
 	
 	override init()
 	{
@@ -17,27 +17,33 @@ class StructureSatellite : Structure
 		root.position = SCNVector3(0,5,0)
 		
 		let value1:Float = Float(20 + arc4random_uniform(5))/10
-		
 		let value2 = (Float(arc4random_uniform(100))/100).clamp(0.4, 2.9)
 		let value3 = (Float(arc4random_uniform(100))/100).clamp(0.7, 2.9)
 		
 		var i = 0
 		while i < nodes {
-			var e = 0
-			while e < nodes {
-				let node = SCNNode()
-				node.eulerAngles.y = Float(degToRad(CGFloat(Float(e) * Float(360/nodes))))
-				root.addChildNode(node)
-				let branch1 = SCNLine(nodeA: SCNVector3(0,0,value1 * value2 + 1), nodeB: SCNVector3((value1) * value3,0,value1 * value3 - 1), color: red)
-				let branch2 = SCNLine(nodeA: SCNVector3(0,0,value1 * value2 + 1), nodeB: SCNVector3((-value1) * value3,0,value1 * value3 - 1), color: red)
-				node.addChildNode(branch1)
-				node.addChildNode(branch2)
-				branch1.addChildNode(SCNLine(nodeA: branch1.nodeB, nodeB: SCNVector3(value1 * value2 * value3,0,1 * value3), color: grey))
-				branch1.addChildNode(SCNLine(nodeA: branch1.nodeB, nodeB: SCNVector3(-value1 * value2 * value3,0,1 * value3), color: grey))
-				branch2.addChildNode(SCNLine(nodeA: branch2.nodeB, nodeB: SCNVector3(value1 * value2 * value3,0,1 * value3), color: grey))
-				branch2.addChildNode(SCNLine(nodeA: branch2.nodeB, nodeB: SCNVector3(-value1 * value2 * value3,0,1 * value3), color: grey))
-				e += 1
-			}
+			
+			let axis = SCNNode()
+			axis.eulerAngles.y = Float(degToRad(CGFloat(i * (360/nodes))))
+			
+			root.addChildNode(axis)
+			
+			let shape = SCNHexa(size: 3, color: red)
+			shape.position.x = 0
+			axis.addChildNode(shape)
+			
+			let shape2 = SCNHexa(size: 3, color: red)
+			shape2.eulerAngles.z = Float(degToRad(90))
+			shape.addChildNode(shape2)
+			
+			let shape3 = SCNHexa(size: 3, color: red)
+			shape3.eulerAngles.y = Float(degToRad(90))
+			shape.addChildNode(shape3)
+			
+			let shape4 = SCNHexa(size: 3, color: red)
+			shape4.eulerAngles.x = Float(degToRad(90))
+			shape.addChildNode(shape4)
+			
 			i += 1
 		}
 	}
@@ -49,8 +55,10 @@ class StructureSatellite : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		
-		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(0))
+		for node in root.childNodes {
+			for subnode in node.childNodes {
+				subnode.position.x = 3
+			}
 		}
 		
 		SCNTransaction.commit()
@@ -63,8 +71,10 @@ class StructureSatellite : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		
-		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(45))
+		for node in root.childNodes {
+			for subnode in node.childNodes {
+				subnode.position.x = 3
+			}
 		}
 		
 		SCNTransaction.commit()
@@ -77,8 +87,10 @@ class StructureSatellite : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		
-		for node in root.childNodes	{
-			node.eulerAngles.x = Float(degToRad(45))
+		for node in root.childNodes {
+			for subnode in node.childNodes {
+				subnode.position.x = 0
+			}
 		}
 		
 		SCNTransaction.commit()
@@ -87,6 +99,8 @@ class StructureSatellite : Structure
 	override func onComplete()
 	{
 		super.onComplete()
+		
+		updateChildrenColors(cyan)
 	}
 	
 	override func sightUpdate()
@@ -97,7 +111,9 @@ class StructureSatellite : Structure
 	override func dockUpdate()
 	{
 		for node in root.childNodes {
-			node.eulerAngles.x += Float(degToRad(0.1))
+			for subnode in node.childNodes {
+				subnode.eulerAngles.z += Float(degToRad(0.25))
+			}
 		}
 	}
 	

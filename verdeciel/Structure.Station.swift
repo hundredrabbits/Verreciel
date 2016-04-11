@@ -84,6 +84,8 @@ class StructureStation : Structure
 	override func onComplete()
 	{
 		super.onComplete()
+		
+		updateChildrenColors(cyan)
 	}
 	
 	override func sightUpdate()
