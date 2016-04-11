@@ -6,7 +6,6 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-
 func degToRad(degrees:CGFloat) -> CGFloat
 {
 	return degrees / 180 * CGFloat(M_PI)

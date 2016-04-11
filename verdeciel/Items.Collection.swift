@@ -4,7 +4,7 @@
 
 import Foundation
 
-class ItemLibrary
+class ItemCollection
 {
 	// Capsule
 	let playerCargo = Item(name: "player cargo", type: .cargo, note:"need description", isQuest:true)

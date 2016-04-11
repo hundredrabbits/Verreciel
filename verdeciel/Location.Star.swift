@@ -14,7 +14,7 @@ class LocationStar : Location
 		
 		self.note = ""
 		self.color = color
-		structure = StructureDefault()
+		structure = StructureStar()
 		self.isComplete = false
 		icon.replace(icons.star())
 		label.update(name)

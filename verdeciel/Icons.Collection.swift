@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class IconsLibrary
+class IconsCollection
 {
 	func none() -> SCNNode
 	{

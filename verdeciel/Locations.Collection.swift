@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class LocationLibrary
+class LocationCollection
 {
 	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -5))
 	let usul  = Usul(offset: CGPoint(x: -5,y: 0))
@@ -92,21 +92,6 @@ class Loiqe
 	{
 		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5), structure:ConstellationTunnel())
 	}
-//	
-//	func c_2() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "vill", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5))
-//	}
-//	
-//	func c_3() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 0.25, y: offset.y + 1.25))
-//	}
-//	
-//	func c_4() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.25, y: offset.y + 1.25))
-//	}
 }
 
 class Usul
@@ -205,23 +190,6 @@ class Valen
 	{
 		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
-	
-	// Constellations
-	
-//	func c_1() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "fog", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5))
-//	}
-//	
-//	func c_3() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y + 0.25))
-//	}
-//	
-//	func c_4() -> LocationConstellation
-//	{
-//		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x - 1.25, y: offset.y - 0.25))
-//	}
 }
 
 class Senni

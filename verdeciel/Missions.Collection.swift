@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class MissionLibrary
+class MissionCollection
 {
 	var story:Array<Mission> = Array<Mission>()
 	

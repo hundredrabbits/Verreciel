@@ -3,7 +3,7 @@
 
 import Foundation
 
-class RecipesLibrary
+class RecipesCollection
 {
 	var horadric:Array<Recipe> = []
 	
