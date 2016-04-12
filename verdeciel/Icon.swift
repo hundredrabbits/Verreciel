@@ -8,6 +8,9 @@ import Foundation
 
 class Icon : SCNNode
 {
+	var color:UIColor = UIColor.purpleColor()
+	var size:Float = 0.1
+	
 	override init()
 	{
 		super.init()
