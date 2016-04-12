@@ -91,16 +91,6 @@ class SCNCommand : SCNNode
 		}
 	}
 	
-	/*
-	override func bang()
-	{
-		if port.connection == nil { return }
-		if port.event == nil { return }
-		
-		port.connection.host.listen(port.event)
-	}
-	*/
-	
 	override func whenRenderer()
 	{
 		super.whenRenderer()

@@ -43,7 +43,9 @@ class Panel : SCNNode
 	func install()
 	{
 		if isInstalled == true { return }
+		
 		onInstallationBegin()
+		
 		self.installProgress()
 	}
 	

@@ -67,6 +67,9 @@ class CoreSpace: SCNNode
 			instance.update()
 		}
 		
+		/*
+		
+		
 		// Stars
 		while starTimer > 4 && starsRoot.childNodes.count < 100 {
 			
@@ -111,6 +114,7 @@ class CoreSpace: SCNNode
 //		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
 //		
 //		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
+		*/
 	}
 	
 	required init(coder aDecoder: NSCoder)

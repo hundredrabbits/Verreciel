@@ -223,7 +223,7 @@ class PanelThruster : MainPanel
 		else {
 			modeFlight()
 		}
-		
+//
 		thrust()
 	}
 	

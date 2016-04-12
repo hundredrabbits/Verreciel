@@ -146,20 +146,6 @@ class PanelCargo : MainPanel
 		}
 	}
 	
-	// MARK: I/O -
-	/*
-	override func listen(event:Event)
-	{
-		print("* CARGO    | Signal: \(event.name!)")
-		if event is Item && port.event.content.count < 6 { upload(event) }
-	}
-	
-	override func bang()
-	{
-		if port.connection == nil { return }
-		port.connection.host.listen(port.event)
-	}
-	*/
 	override func onUploadComplete()
 	{
 		refresh()

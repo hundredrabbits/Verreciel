@@ -124,16 +124,6 @@ class PanelConsole : MainPanel
 			}
 		}
 	}
-	
-	override func bang()
-	{
-		if consoleLine1.port.connection != nil { consoleLine1.port.connection.host.listen(consoleLine1.port.event) }
-		if consoleLine2.port.connection != nil { consoleLine2.port.connection.host.listen(consoleLine2.port.event) }
-		if consoleLine3.port.connection != nil { consoleLine3.port.connection.host.listen(consoleLine3.port.event) }
-		if consoleLine4.port.connection != nil { consoleLine4.port.connection.host.listen(consoleLine4.port.event) }
-		if consoleLine5.port.connection != nil { consoleLine5.port.connection.host.listen(consoleLine5.port.event) }
-		if consoleLine6.port.connection != nil { consoleLine6.port.connection.host.listen(consoleLine6.port.event) }
-	}
 	*/
 	override func onConnect()
 	{

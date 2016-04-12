@@ -82,18 +82,7 @@ class PanelRadar : MainPanel
 		updateTarget()
 		scan()
 	}
-	
-	// MARK: Ports -
-	/*
-	
-	override func bang()
-	{
-		if port.connection != nil && port.event != nil {
-			port.connection.host.listen(port.event)
-		}
-	}
-	
-	*/
+
 	// MARK: Custom -
 	
 	func updateTarget()
