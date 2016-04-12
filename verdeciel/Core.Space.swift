@@ -113,9 +113,7 @@ class CoreSpace: SCNNode
 		else{ starSpeed = thruster.actualSpeed }
 		
 		let lineSpeed = Float(starSpeed) / 6
-		for node in starsRoot.childNodes
-		{
-			let line = node as! SCNLine
+		for line in starsRoot.childNodes as! [SCNLine] {
 			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
 			line.updateHeight(starSpeed + 0.1)
 			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50

@@ -30,8 +30,7 @@ class MonitorProgress : Monitor
 		var totalQuestLocations = 0
 		var totalQuestLocations_complete = 0
 		
-		for location in universe.childNodes {
-			let location = location as! Location
+		for location in universe.childNodes as! [Location] {
 			if location.isComplete != nil {
 				totalQuestLocations += 1
 				if location.isComplete == true { totalQuestLocations_complete += 1}

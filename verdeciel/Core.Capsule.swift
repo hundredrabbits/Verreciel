@@ -67,8 +67,7 @@ class CoreCapsule: SCNNode
 	func closestLocation() -> Location
 	{
 		var closestLocation:Location!
-		for location in universe.childNodes {
-			let location = location as! Location
+		for location in universe.childNodes as! [Location] {
 			if closestLocation == nil { closestLocation = location }
 			if location.distance > closestLocation.distance { continue }
 			closestLocation = location
@@ -79,8 +78,7 @@ class CoreCapsule: SCNNode
 	func closestKnownLocation() -> Location!
 	{
 		var closestLocation:Location!
-		for location in universe.childNodes {
-			let location = location as! Location
+		for location in universe.childNodes as! [Location] {
 			if location.isKnown == false { continue }
 			if closestLocation == nil { closestLocation = location }
 			if location.distance > closestLocation.distance { continue }

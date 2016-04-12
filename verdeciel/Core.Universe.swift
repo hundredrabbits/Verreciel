@@ -198,8 +198,7 @@ class CoreUniverse : SCNNode
 	func unlock(system:Systems)
 	{
 		print("! SYSTEM(Unlock) \(system)")
-		for location in self.childNodes {
-			let location = location as! Location
+		for location in self.childNodes as! [Location] {
 			if location.system != system { continue }
 			print("  > \(location.name!)")
 			location.isAccessible = true
@@ -208,8 +207,7 @@ class CoreUniverse : SCNNode
 	
 	func locationLike(target:Location) -> Location!
 	{
-		for location in childNodes {
-			let location = location as! Location
+		for location in childNodes as! [Location] {
 			if location.name == target.name && location.system == target.system { return location }
 		}
 		

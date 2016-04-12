@@ -26,12 +26,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		sceneView = self.view as! SCNView
 		sceneView.scene = scene
-		sceneView.showsStatistics = false
 		sceneView.backgroundColor = UIColor.blackColor()
 		sceneView.antialiasingMode = SCNAntialiasingMode.None
 		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
 		sceneView.preferredFramesPerSecond = 25
 		sceneView.playing = true
+		
+		sceneView.showsStatistics = true
 
 		sceneView.delegate = self
 	}
