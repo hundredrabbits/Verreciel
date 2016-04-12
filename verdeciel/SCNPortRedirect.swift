@@ -12,7 +12,6 @@ class SCNPortRedirect : SCNPort
 	{
 		let redirectedHost = console.port.origin.host as! PanelCargo
 		redirectedHost.removeEvent(event)
-		redirectedHost.bang()
 		disable()
 	}
 	

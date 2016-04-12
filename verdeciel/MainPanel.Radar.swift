@@ -84,6 +84,7 @@ class PanelRadar : MainPanel
 	}
 	
 	// MARK: Ports -
+	/*
 	
 	override func bang()
 	{
@@ -91,7 +92,8 @@ class PanelRadar : MainPanel
 			port.connection.host.listen(port.event)
 		}
 	}
-
+	
+	*/
 	// MARK: Custom -
 	
 	func updateTarget()
@@ -128,7 +130,6 @@ class PanelRadar : MainPanel
 		port.event = event
 		
 		updateTarget()
-		bang()
 		
 		// Check for overlapping events
 		for newEvent in eventView.childNodes {

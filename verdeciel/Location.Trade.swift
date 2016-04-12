@@ -28,6 +28,8 @@ class LocationTrade : Location
 	
 	override func start()
 	{
+		super.start()
+		
 		refresh()
 	}
 	

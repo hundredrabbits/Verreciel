@@ -21,11 +21,6 @@ class MonitorComplete : Monitor
 		details.update(name!)
 	}
 	
-	override func start()
-	{
-		super.start()
-	}
-	
 	override func refresh()
 	{
 		label.update(cyan)

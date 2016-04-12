@@ -19,11 +19,6 @@ class LocationSpawn : Location
 		return nil
 	}
 	
-	override func listen(event: Event)
-	{
-		
-	}
-	
 	// MARK: Triggers -
 	
 	override func onSight()

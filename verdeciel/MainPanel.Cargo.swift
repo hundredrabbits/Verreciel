@@ -108,7 +108,6 @@ class PanelCargo : MainPanel
 	override func touch(id:Int = 0)
 	{
 		refresh()
-		bang()
 	}
 	
 	override func refresh()
@@ -148,7 +147,7 @@ class PanelCargo : MainPanel
 	}
 	
 	// MARK: I/O -
-	
+	/*
 	override func listen(event:Event)
 	{
 		print("* CARGO    | Signal: \(event.name!)")
@@ -160,11 +159,10 @@ class PanelCargo : MainPanel
 		if port.connection == nil { return }
 		port.connection.host.listen(port.event)
 	}
-	
+	*/
 	override func onUploadComplete()
 	{
 		refresh()
-		bang()
 	}
 	
 	// MARK: Upload -

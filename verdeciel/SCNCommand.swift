@@ -91,6 +91,7 @@ class SCNCommand : SCNNode
 		}
 	}
 	
+	/*
 	override func bang()
 	{
 		if port.connection == nil { return }
@@ -98,6 +99,7 @@ class SCNCommand : SCNNode
 		
 		port.connection.host.listen(port.event)
 	}
+	*/
 	
 	override func fixedUpdate()
 	{

@@ -24,17 +24,19 @@ class CoreUniverse : SCNNode
 		connectPortals()
 	}
 	
-	override func _start()
+	override func start()
 	{
+		super.start()
+		
 		unlock(.loiqe)
 		
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.record1)
 		valen_bank.port3.addEvent(Item(like:items.waste))
-			
-		for location in childNodes {
-			location.start()
-		}
+		
+//		for location in childNodes {
+//			location.start()
+//		}
 	}
 	
 	// MARK: Loiqe -

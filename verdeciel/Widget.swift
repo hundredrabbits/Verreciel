@@ -40,11 +40,6 @@ class Widget : Panel
 		root.opacity = 0
 	}
 	
-	override func start()
-	{
-		refresh()
-	}
-	
 	override func onConnect()
 	{
 		refresh()

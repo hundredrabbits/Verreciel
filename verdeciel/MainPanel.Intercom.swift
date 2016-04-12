@@ -134,18 +134,6 @@ class PanelIntercom : MainPanel
 		}
 	}
 	
-	// MARK: Ports -
-	
-	override func listen(event:Event)
-	{
-		
-	}
-	
-	override func bang()
-	{
-		
-	}
-	
 	// MARK: Custom -
 	
 	func complete()

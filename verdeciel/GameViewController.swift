@@ -59,13 +59,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func start()
 	{
-		universe._start()
-		capsule._start()
-		player._start()
-		space._start()
-		helmet._start()
-		
-		time.start()
 		game.start()
 		
 		settings.applicationIsReady = true

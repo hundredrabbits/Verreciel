@@ -16,7 +16,12 @@ class CoreGame
 	
 	func start()
 	{
-	
+		universe.start()
+		capsule.start()
+		player.start()
+		space.start()
+		helmet.start()
+		time.start()
 	}
 	
 	func update()

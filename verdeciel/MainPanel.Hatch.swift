@@ -89,11 +89,6 @@ class PanelHatch : MainPanel
 		update()
 	}
 	
-	override func listen(event:Event)
-	{
-		self.update()
-	}
-	
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()

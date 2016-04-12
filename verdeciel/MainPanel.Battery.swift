@@ -175,12 +175,7 @@ class PanelBattery : MainPanel
 	}
 	
 	// MARK: Flags -
-	
-	override func listen(event: Event)
-	{
-		
-	}
-	
+
 	override func onConnect()
 	{
 		refresh()

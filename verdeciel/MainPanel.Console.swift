@@ -110,7 +110,7 @@ class PanelConsole : MainPanel
 		addLine(SCNCommand(text: "--", color: grey))
 		addLine(SCNCommand(text: "--", color: grey))
 	}
-	
+	/*
 	override func listen(event: Event)
 	{
 		for command in commands {
@@ -134,7 +134,7 @@ class PanelConsole : MainPanel
 		if consoleLine5.port.connection != nil { consoleLine5.port.connection.host.listen(consoleLine5.port.event) }
 		if consoleLine6.port.connection != nil { consoleLine6.port.connection.host.listen(consoleLine6.port.event) }
 	}
-	
+	*/
 	override func onConnect()
 	{
 		super.onConnect()

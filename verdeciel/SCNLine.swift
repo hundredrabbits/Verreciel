@@ -64,13 +64,6 @@ class SCNLine : SCNNode
 		draw(nodeA, nodeB: nodeB, color: color)
 	}
 	
-	override func redraw()
-	{
-		// TODO: Use space.mod()
-		draw(nodeA, nodeB: nodeB, color: true_white)
-		super.redraw()
-	}
-	
 	func setGrowth(percent:Float)
 	{
 		draw(SCNVector3(nodeA.x,nodeA.y,nodeA.z), nodeB: SCNVector3(nodeB.x * percent,nodeB.y * percent,nodeB.z * percent), color: color)

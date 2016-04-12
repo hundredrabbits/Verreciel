@@ -171,7 +171,6 @@ class SCNPort : SCNNode
 		
 		wire.update(SCNVector3(0, 0, 0), nodeB: convertPosition(SCNVector3(0, 0, 0), fromNode: port))
 		
-		host.bang()
 		wire.enable()
 		
 		connection.host.onConnect()
@@ -344,11 +343,6 @@ class SCNPort : SCNNode
 	}
 	
 	// MARK: Etc..
-	
-	override func bang()
-	{
-		print("Warning! Bang on SCNPort")
-	}
 	
 	override func onConnect()
 	{

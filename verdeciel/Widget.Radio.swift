@@ -24,11 +24,6 @@ class WidgetRadio : Widget
 		label.update(name!)
 	}
 	
-	override func start()
-	{
-		super.start()
-	}
-	
 	func isPlaying() -> Bool
 	{
 		if port.hasItemOfType(.record) { return true }

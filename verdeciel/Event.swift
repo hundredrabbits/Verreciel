@@ -37,6 +37,8 @@ class Event : SCNNode
 	
 	override func start()
 	{
+		super.start()
+		
 		print("@ EVENT    | \(self.name!)\(self.at)")
 		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)

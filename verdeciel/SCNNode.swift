@@ -13,25 +13,6 @@ extension SCNNode
 		print("! This node has no touch action")
 	}
 	
-	func _start()
-	{
-		start()
-		for node in childNodes {
-			node._start()
-		}
-	}
-	
-	func start()
-	{
-	}
-	
-	func fixedUpdate()
-	{
-		for node in childNodes {
-			node.fixedUpdate()
-		}
-	}
-	
 	func absolutePosition() -> SCNVector3
 	{
 		return convertPosition(SCNVector3(0, 0, 0), fromNode: self)
@@ -39,16 +20,6 @@ extension SCNNode
 	
 	func update()
 	{
-	}
-
-	func bang()
-	{
-		print("! This node has no bang action")
-	}
-	
-	func listen(event:Event)
-	{
-		print("! This node has no listen action")
 	}
 	
 	func color(color:UIColor)
@@ -84,7 +55,7 @@ extension SCNNode
 	
 	func blink()
 	{
-		if time.elapsed % 2 == 0 { opacity = 1 }
+		if time.elapsed % 5 == 0 { opacity = 1 }
 		else { opacity = 0 }
 	}
 	
@@ -108,6 +79,22 @@ extension SCNNode
 		}
 	}
 	
+	// MARK: Events -
+	
+	func start()
+	{
+		for node in childNodes {
+			node.start()
+		}
+	}
+	
+	func fixedUpdate()
+	{
+		for node in childNodes {
+			node.fixedUpdate()
+		}
+	}
+	
 	// MARK: Triggers -
 	
 	func onConnect()
@@ -128,12 +115,5 @@ extension SCNNode
 	func onMissionComplete()
 	{
 	
-	}
-	
-	func redraw()
-	{
-		for node in self.childNodes {
-			node.redraw()
-		}
 	}
 }

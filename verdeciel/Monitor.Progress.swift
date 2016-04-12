@@ -19,12 +19,6 @@ class MonitorProgress : Monitor
 		details.update(name!)
 	}
 	
-	override func start()
-	{
-		super.start()
-		
-	}
-	
 	override func refresh()
 	{
 		var totalQuestLocations = 0
