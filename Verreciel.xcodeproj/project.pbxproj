@@ -23,6 +23,7 @@
 		571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */; };
 		572258151BB877C600DEC41E /* Location.Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* Location.Portal.swift */; };
 		5726B7101CBD7E0900EF100B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726B70F1CBD7E0900EF100B /* Icon.swift */; };
+		5726B7121CBD80DA00EF100B /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726B7111CBD80DA00EF100B /* Structure.swift */; };
 		5726C6071BD46FFF00B924B2 /* Core.Helmet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */; };
 		5728E06E1C2363880098534E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728E06D1C2363880098534E /* Panel.swift */; };
 		5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573379591BD82F9B00310147 /* SCNVector3.swift */; };
@@ -61,17 +62,6 @@
 		578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */; };
 		578D63F31C3C7DA1000AAC04 /* Location.Harvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578D63F21C3C7DA1000AAC04 /* Location.Harvest.swift */; };
 		5790360D1C8DF38500BFD870 /* SCNCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790360C1C8DF38500BFD870 /* SCNCube.swift */; };
-		5791F3B01CBACAB800E247D7 /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3AF1CBACAB800E247D7 /* Structure.swift */; };
-		5791F3B31CBACB5300E247D7 /* Structure.default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B21CBACB5300E247D7 /* Structure.default.swift */; };
-		5791F3B51CBACBD400E247D7 /* Structure.Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */; };
-		5791F3B71CBACE2200E247D7 /* Structure.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */; };
-		5791F3B91CBAD41500E247D7 /* Structure.Harvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */; };
-		5791F3BB1CBAD8D800E247D7 /* Structure.Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */; };
-		5791F3BD1CBAF39E00E247D7 /* Structure.Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */; };
-		5791F3BF1CBB090E00E247D7 /* Structure.Horadric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */; };
-		5791F3C11CBB0C2D00E247D7 /* Constellation.Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */; };
-		5791F3C31CBB4DCD00E247D7 /* Structure.Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3C21CBB4DCD00E247D7 /* Structure.Star.swift */; };
-		5791F3C51CBB4E5D00E247D7 /* Structure.Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791F3C41CBB4E5D00E247D7 /* Structure.Portal.swift */; };
 		579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* Core.Player.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		579CE71E1C246040009E02F5 /* Core.Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579CE71D1C246040009E02F5 /* Core.Game.swift */; };
@@ -125,6 +115,7 @@
 		571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Battery.swift; sourceTree = "<group>"; };
 		572258141BB877C600DEC41E /* Location.Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Portal.swift; sourceTree = "<group>"; };
 		5726B70F1CBD7E0900EF100B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		5726B7111CBD80DA00EF100B /* Structure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
 		5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Helmet.swift; sourceTree = "<group>"; };
 		5728E06D1C2363880098534E /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		573379591BD82F9B00310147 /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
@@ -163,17 +154,6 @@
 		578B1AE11BCD513B00DC3FD6 /* Location.Spawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Spawn.swift; sourceTree = "<group>"; };
 		578D63F21C3C7DA1000AAC04 /* Location.Harvest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Harvest.swift; sourceTree = "<group>"; };
 		5790360C1C8DF38500BFD870 /* SCNCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCube.swift; sourceTree = "<group>"; };
-		5791F3AF1CBACAB800E247D7 /* Structure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
-		5791F3B21CBACB5300E247D7 /* Structure.default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.default.swift; sourceTree = "<group>"; };
-		5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Bank.swift; sourceTree = "<group>"; };
-		5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Trade.swift; sourceTree = "<group>"; };
-		5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Harvest.swift; sourceTree = "<group>"; };
-		5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Satellite.swift; sourceTree = "<group>"; };
-		5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Station.swift; sourceTree = "<group>"; };
-		5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Horadric.swift; sourceTree = "<group>"; };
-		5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constellation.Tunnel.swift; sourceTree = "<group>"; };
-		5791F3C21CBB4DCD00E247D7 /* Structure.Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Star.swift; sourceTree = "<group>"; };
-		5791F3C41CBB4E5D00E247D7 /* Structure.Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.Portal.swift; sourceTree = "<group>"; };
 		579419711B58A3D200F9FF87 /* Core.Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Player.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		579CE71D1C246040009E02F5 /* Core.Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Game.swift; sourceTree = "<group>"; };
@@ -311,7 +291,6 @@
 				57FE22A51C4ED7D6004383A8 /* MainPanels */,
 				57FE22A41C4ED7CE004383A8 /* Monitors */,
 				57FE22A31C4ED7C7004383A8 /* Widgets */,
-				5791F3B11CBACB3C00E247D7 /* Structures */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -319,6 +298,7 @@
 		574156DD1BE12F61008B6C44 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				5726B7111CBD80DA00EF100B /* Structure.swift */,
 				57A0F10E1B3DDABF0007650F /* Event.swift */,
 				579CE7211C247DF4009E02F5 /* Item.swift */,
 				5741B0671BB5C9B7000F7FEF /* Instance.swift */,
@@ -383,24 +363,6 @@
 				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 			);
 			name = Shapes;
-			sourceTree = "<group>";
-		};
-		5791F3B11CBACB3C00E247D7 /* Structures */ = {
-			isa = PBXGroup;
-			children = (
-				5791F3AF1CBACAB800E247D7 /* Structure.swift */,
-				5791F3B21CBACB5300E247D7 /* Structure.default.swift */,
-				5791F3B41CBACBD400E247D7 /* Structure.Bank.swift */,
-				5791F3B61CBACE2200E247D7 /* Structure.Trade.swift */,
-				5791F3B81CBAD41500E247D7 /* Structure.Harvest.swift */,
-				5791F3BA1CBAD8D800E247D7 /* Structure.Satellite.swift */,
-				5791F3BC1CBAF39E00E247D7 /* Structure.Station.swift */,
-				5791F3BE1CBB090E00E247D7 /* Structure.Horadric.swift */,
-				5791F3C21CBB4DCD00E247D7 /* Structure.Star.swift */,
-				5791F3C41CBB4E5D00E247D7 /* Structure.Portal.swift */,
-				5791F3C01CBB0C2D00E247D7 /* Constellation.Tunnel.swift */,
-			);
-			name = Structures;
 			sourceTree = "<group>";
 		};
 		579419731B58AEB100F9FF87 /* Core */ = {
@@ -542,6 +504,7 @@
 				5741B0681BB5C9B7000F7FEF /* Instance.swift in Sources */,
 				5726B7101CBD7E0900EF100B /* Icon.swift in Sources */,
 				571728E11BB049BB002782A3 /* MainPanel.Cargo.swift in Sources */,
+				5726B7121CBD80DA00EF100B /* Structure.swift in Sources */,
 				5728E06E1C2363880098534E /* Panel.swift in Sources */,
 				57CA80981BB9CEA3000D31F7 /* Location.Satellite.swift in Sources */,
 				5768590C1C4DA8EA009D3681 /* Widget.swift in Sources */,
@@ -549,26 +512,19 @@
 				57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */,
 				574156DC1BE12F24008B6C44 /* Recipes.Collection.swift in Sources */,
 				5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */,
-				5791F3C51CBB4E5D00E247D7 /* Structure.Portal.swift in Sources */,
 				5726C6071BD46FFF00B924B2 /* Core.Helmet.swift in Sources */,
 				576859101C4DE984009D3681 /* Widget.Enigma.swift in Sources */,
 				5759C3471CA21DC10031524B /* SCNHexa.swift in Sources */,
-				5791F3B31CBACB5300E247D7 /* Structure.default.swift in Sources */,
 				5748ADA01BC8583B00C47468 /* Quest.swift in Sources */,
 				5790360D1C8DF38500BFD870 /* SCNCube.swift in Sources */,
 				5781FC0C1C6BC9500001A743 /* SCNRect.swift in Sources */,
 				5734D4601B5AB4C400BF0048 /* Core.Universe.swift in Sources */,
 				576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */,
-				5791F3B01CBACAB800E247D7 /* Structure.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* MainPanel.Pilot.swift in Sources */,
 				579CE7201C2460BA009E02F5 /* Core.Time.swift in Sources */,
-				5791F3C11CBB0C2D00E247D7 /* Constellation.Tunnel.swift in Sources */,
-				5791F3B91CBAD41500E247D7 /* Structure.Harvest.swift in Sources */,
-				5791F3C31CBB4DCD00E247D7 /* Structure.Star.swift in Sources */,
 				5796144B1BE00EE300421D69 /* Monitor.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */,
-				5791F3B51CBACBD400E247D7 /* Structure.Bank.swift in Sources */,
 				570B1F681C910C2A00AAFF00 /* SCNOcta.swift in Sources */,
 				5768590E1C4DE866009D3681 /* Widget.Shield.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* Core.Capsule.swift in Sources */,
@@ -596,7 +552,6 @@
 				5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */,
 				579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */,
 				578D63F31C3C7DA1000AAC04 /* Location.Harvest.swift in Sources */,
-				5791F3BF1CBB090E00E247D7 /* Structure.Horadric.swift in Sources */,
 				578B1AE21BCD513B00DC3FD6 /* Location.Spawn.swift in Sources */,
 				579CE71E1C246040009E02F5 /* Core.Game.swift in Sources */,
 				57A518531C7501AD0012DABD /* Location.Constellation.swift in Sources */,
@@ -604,7 +559,6 @@
 				57EDED221BC17321005DF3DE /* Location.Beacon.swift in Sources */,
 				5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */,
 				57C915171BC45E91009454C4 /* MainPanel.swift in Sources */,
-				5791F3BD1CBAF39E00E247D7 /* Structure.Station.swift in Sources */,
 				5769535D1C2060FE00A0CA39 /* Monitor.Exploration.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */,
 				57DD808E1BC7005600A4146C /* SCNHandle.swift in Sources */,
@@ -612,8 +566,6 @@
 				57F645F11B4CA2700088D115 /* MainPanel.Hatch.swift in Sources */,
 				57A0F10F1B3DDABF0007650F /* Event.swift in Sources */,
 				57FA031D1BBA21490077D517 /* Location.Station.swift in Sources */,
-				5791F3BB1CBAD8D800E247D7 /* Structure.Satellite.swift in Sources */,
-				5791F3B71CBACE2200E247D7 /* Structure.Trade.swift in Sources */,
 				574156DA1BE12E6C008B6C44 /* Location.Horadric.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* MainPanel.Thruster.swift in Sources */,

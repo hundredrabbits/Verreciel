@@ -23,7 +23,7 @@ class LocationBank : Location
 		super.init(name: name,system:system, at:at)
 	
 		self.note = ""
-		structure = StructureDefault()
+		structure = Structure()
 		icon = IconBank()
 		
 		port1 = SCNPortSlot(host: self)
@@ -138,6 +138,27 @@ class IconBank : Icon
 	override init()
 	{
 		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class StructureBank : Structure
+{
+	override init()
+	{
+		super.init()
+		
+		var i = 0
+		while i < 14 {
+			let rect = SCNRect(size:CGSize(width:6,height:6), color:white)
+			rect.position.y = Float((Float(i)/2) - 3.5)
+			root.addChildNode(rect)
+			i += 1
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)
