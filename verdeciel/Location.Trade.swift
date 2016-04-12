@@ -26,9 +26,9 @@ class LocationTrade : Location
 		givePort.addEvent(give)
 	}
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		refresh()
 	}

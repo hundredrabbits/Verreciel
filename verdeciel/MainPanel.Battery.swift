@@ -98,7 +98,10 @@ class PanelBattery : MainPanel
 		cellPort3.disable("--",color:grey)
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,-1),host:self))
-		
+	}
+	
+	override func whenStart()
+	{
 		installThruster()
 	}
 	
@@ -122,7 +125,7 @@ class PanelBattery : MainPanel
 	{
 		thrusterPort.enable()
 		thrusterLabel.update("thruster",color:white)
-		if player != nil && debug.isActive == false { player.lookAt(deg: 0) }
+		player.lookAt(deg: 0)
 	}
 	
 	func installRadio()
@@ -209,7 +212,7 @@ class PanelBattery : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: 0) }
+		player.lookAt(deg: 0)
 	}
 	
 	override func onInstallationComplete()

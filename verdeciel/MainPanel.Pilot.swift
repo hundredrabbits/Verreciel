@@ -116,7 +116,7 @@ class PanelPilot : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -135) }
+		player.lookAt(deg: -135)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

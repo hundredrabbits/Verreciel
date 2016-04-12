@@ -65,7 +65,6 @@
 		579419721B58A3D200F9FF87 /* Core.Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579419711B58A3D200F9FF87 /* Core.Player.swift */; };
 		5796144B1BE00EE300421D69 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796144A1BE00EE300421D69 /* Monitor.swift */; };
 		579CE71E1C246040009E02F5 /* Core.Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579CE71D1C246040009E02F5 /* Core.Game.swift */; };
-		579CE7201C2460BA009E02F5 /* Core.Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579CE71F1C2460BA009E02F5 /* Core.Time.swift */; };
 		579CE7221C247DF4009E02F5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579CE7211C247DF4009E02F5 /* Item.swift */; };
 		579EA8EB1BE853F600B384C7 /* Icons.Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579EA8EA1BE853F600B384C7 /* Icons.Collection.swift */; };
 		57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */; };
@@ -157,7 +156,6 @@
 		579419711B58A3D200F9FF87 /* Core.Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Player.swift; sourceTree = "<group>"; };
 		5796144A1BE00EE300421D69 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		579CE71D1C246040009E02F5 /* Core.Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Game.swift; sourceTree = "<group>"; };
-		579CE71F1C2460BA009E02F5 /* Core.Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Time.swift; sourceTree = "<group>"; };
 		579CE7211C247DF4009E02F5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		579EA8EA1BE853F600B384C7 /* Icons.Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.Collection.swift; sourceTree = "<group>"; };
 		57A0F10C1B3DCD640007650F /* MainPanel.Radar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Radar.swift; sourceTree = "<group>"; };
@@ -368,9 +366,8 @@
 		579419731B58AEB100F9FF87 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				579CE71F1C2460BA009E02F5 /* Core.Time.swift */,
-				579419711B58A3D200F9FF87 /* Core.Player.swift */,
 				579CE71D1C246040009E02F5 /* Core.Game.swift */,
+				579419711B58A3D200F9FF87 /* Core.Player.swift */,
 				5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */,
 				57DACD8D1C1A194500971F10 /* Core.Audio.swift */,
 				57F3D8C61B58215400B9B859 /* Core.Capsule.swift */,
@@ -522,7 +519,6 @@
 				576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */,
 				03DDE18019CE497F008029A8 /* AppDelegate.swift in Sources */,
 				573EDAB51B4B4762007C6D3C /* MainPanel.Pilot.swift in Sources */,
-				579CE7201C2460BA009E02F5 /* Core.Time.swift in Sources */,
 				5796144B1BE00EE300421D69 /* Monitor.swift in Sources */,
 				57A0F10D1B3DCD640007650F /* MainPanel.Radar.swift in Sources */,
 				570B1F681C910C2A00AAFF00 /* SCNOcta.swift in Sources */,

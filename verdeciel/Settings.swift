@@ -30,13 +30,12 @@ let shield = WidgetShield()
 let enigma = WidgetEnigma()
 
 // Generic
+var game:CoreGame!
 var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
 var helmet:Helmet!
-var game:CoreGame!
-var time:CoreTime!
 
 // Collections
 var missions = MissionCollection()
@@ -47,7 +46,6 @@ var icons = IconsCollection()
 
 var templates = Templates()
 var settings = Settings()
-var debug = Debug()
 
 // Colors
 
@@ -72,15 +70,6 @@ enum alignment
 	case right
 }
 
-enum sectors
-{
-	case opal
-	case cyanine
-	case vermiles
-	case normal
-	case void
-}
-
 enum Systems
 {
 	case loiqe
@@ -90,13 +79,6 @@ enum Systems
 	case nevic
 	
 	case unknown
-}
-
-enum Chapters
-{
-	case primary
-	case secondary
-	case tertiary
 }
 
 enum ItemTypes
@@ -120,14 +102,6 @@ enum ItemTypes
 	case map
 	case record
 	case cypher
-}
-
-enum services
-{
-	case none
-	case electricity
-	case hull
-	case neutralize
 }
 
 struct Templates
@@ -154,14 +128,7 @@ struct Templates
 
 struct Settings
 {
-	var applicationIsReady:Bool = false
 	var sight:CGFloat = 2.0
 	var approach:CGFloat = 0.5
 	var collision:CGFloat = 0.5
-}
-
-struct Debug
-{
-	var isActive:Bool = false
-	var fixedUpdatedCount:Int = 0
 }

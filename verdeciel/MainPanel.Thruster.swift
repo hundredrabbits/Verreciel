@@ -525,7 +525,7 @@ class PanelThruster : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -45) }
+		player.lookAt(deg: -45)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

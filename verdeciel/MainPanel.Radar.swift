@@ -168,7 +168,7 @@ class PanelRadar : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -90) }
+		player.lookAt(deg: -90)
 	}
 	
 	// MARK: Map

@@ -26,7 +26,7 @@ extension SCNNode
 	
 	func blink()
 	{
-		if time.elapsed % 5 == 0 { opacity = 1 }
+		if game.time % 5 == 0 { opacity = 1 }
 		else { opacity = 0 }
 	}
 	
@@ -58,10 +58,10 @@ extension SCNNode
 	
 	// MARK: Events -
 	
-	func start()
+	func whenStart()
 	{
 		for node in childNodes {
-			node.start()
+			node.whenStart()
 		}
 	}
 	

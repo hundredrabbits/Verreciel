@@ -24,9 +24,9 @@ class CoreUniverse : SCNNode
 		connectPortals()
 	}
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		unlock(.loiqe)
 		

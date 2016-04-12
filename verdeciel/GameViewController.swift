@@ -41,27 +41,24 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		universe = CoreUniverse()
 		
-		capsule = CoreCapsule()
-		scene.rootNode.addChildNode(capsule)
+		game = CoreGame()
 		
 		player = CorePlayer()
 		scene.rootNode.addChildNode(player)
+		
+		capsule = CoreCapsule()
+		scene.rootNode.addChildNode(capsule)
 		
 		space = CoreSpace()
 		scene.rootNode.addChildNode(space)
 		
 		helmet = Helmet()
 		scene.rootNode.addChildNode(helmet)
-		
-		time = CoreTime()
-		game = CoreGame()
 	}
 	
 	func start()
 	{
 		game.start()
-		
-		settings.applicationIsReady = true
 		
 		unlockedState(universe.loiqe_city, newItems:[Item(like: items.currency1), items.map1])
 //		startingState()
@@ -69,16 +66,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func startingState()
 	{
-		debug.isActive = false
-		
 		capsule.start(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.battery1)
 	}
 	
 	func unlockedState(location:Location = universe.senni_station, newItems:Array<Item> = [])
 	{
-		debug.isActive = false
-		
 		universe.unlock(.loiqe)
 		universe.unlock(.valen)
 		universe.unlock(.senni)
@@ -166,7 +159,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			let result: AnyObject! = hitResults[0]
 			result.node.touch()
 		}
-		game.update()
 	}
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)

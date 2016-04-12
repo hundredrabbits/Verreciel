@@ -35,9 +35,9 @@ class Event : SCNNode
 	
 	// MARK: Basic -
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		print("@ EVENT    | \(self.name!)\(self.at)")
 		

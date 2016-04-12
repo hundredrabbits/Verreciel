@@ -65,9 +65,9 @@ class MainPanel : Panel
 		label.update("--", color:grey)
 	}
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		decals.opacity = 0
 		mainNode.opacity = 0

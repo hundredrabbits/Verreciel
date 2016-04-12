@@ -44,9 +44,9 @@ class PanelHatch : MainPanel
 		details.update("empty", color: grey)
 	}
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		update()
 	}
@@ -93,7 +93,7 @@ class PanelHatch : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -315) }
+		player.lookAt(deg: -315)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

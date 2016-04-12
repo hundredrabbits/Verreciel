@@ -161,7 +161,7 @@ class PanelConsole : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -270) }
+		player.lookAt(deg: -270)
 	}
 	
 	override func onInstallationComplete()

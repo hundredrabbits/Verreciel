@@ -234,7 +234,7 @@ class PanelIntercom : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -180) }
+		player.lookAt(deg: -180)
 	}
 	
 	override func onInstallationComplete()

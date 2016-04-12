@@ -216,7 +216,7 @@ class PanelCargo : MainPanel
 	{
 		super.onInstallationBegin()
 		
-		if debug.isActive == false { player.lookAt(deg: -225) }
+		player.lookAt(deg: -225)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

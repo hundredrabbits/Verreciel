@@ -9,28 +9,32 @@ import Foundation
 
 class CoreGame
 {
+	var time:Float = 0
+	
 	init()
 	{
-		
+		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.onTic), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.onSeconds), userInfo: nil, repeats: true)
 	}
 	
 	func start()
 	{
-		universe.start()
-		capsule.start()
-		player.start()
-		space.start()
-		helmet.start()
-		time.start()
+		universe.whenStart()
+		capsule.whenStart()
+		player.whenStart()
+		space.whenStart()
+		helmet.whenStart()
 	}
 	
-	func update()
+	@objc func onSeconds()
 	{
+		capsule.onSeconds()
 		missions.refresh()
 	}
 	
-	func onSeconds()
+	@objc func onTic()
 	{
-		update()
+		time += 1
+		space.whenStart()
 	}
 }

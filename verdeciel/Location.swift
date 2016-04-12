@@ -65,9 +65,9 @@ class Location : Event
 	
 	// MARK: System -
 	
-	override func start()
+	override func whenStart()
 	{
-		super.start()
+		super.whenStart()
 		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)
