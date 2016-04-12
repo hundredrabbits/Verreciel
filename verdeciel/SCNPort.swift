@@ -78,9 +78,9 @@ class SCNPort : SCNNode
 		}		
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		sprite_input.opacity = 1
 		sprite_output.opacity = 1

@@ -165,12 +165,12 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		glLineWidth(1)
 		
-		capsule.fixedUpdate()
-		player.fixedUpdate()
-		helmet.fixedUpdate()
+		capsule.whenRenderer()
+		player.whenRenderer()
+		helmet.whenRenderer()
 		
-		space.fixedUpdate()
-		helmet.updatePort()
+		space.whenRenderer()
+		helmet.whenRenderer()
 	}
 	
 	override func prefersStatusBarHidden() -> Bool

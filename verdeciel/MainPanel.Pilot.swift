@@ -52,9 +52,9 @@ class PanelPilot : MainPanel
 		
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		target = nil
 		

@@ -101,9 +101,9 @@ class SCNCommand : SCNNode
 	}
 	*/
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		if console.port.origin == nil {
 			port.disable()

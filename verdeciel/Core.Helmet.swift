@@ -92,9 +92,9 @@ class Helmet: SCNNode
 		player.port.position = SCNVector3(0,-3,-2.5)
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
         
 		if eulerAngles.y > player.eulerAngles.y + 0.0001 {
 			eulerAngles.y -= (eulerAngles.y - player.eulerAngles.y) * 0.75
@@ -124,7 +124,7 @@ class Helmet: SCNNode
 		
 		let test = convertPosition(player.port.position, toNode: player.port.origin)
 		player.port.origin.wire.update(SCNVector3(0,0,0), nodeB:SCNVector3( test.x, test.y, test.z ) )
-		player.port.origin.wire.fixedUpdate()
+		player.port.origin.wire.whenRenderer()
 	}
 	
 	func addMessage(message:String, color:UIColor = white)

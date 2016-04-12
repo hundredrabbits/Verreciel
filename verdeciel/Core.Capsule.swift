@@ -45,9 +45,9 @@ class CoreCapsule: SCNNode
 		space.onSystemEnter(.valen)
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		docking()
 		warping()

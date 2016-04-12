@@ -25,8 +25,10 @@ class PanelAbove : Panel
 		root.addChildNode(aim)
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
+		super.whenRenderer()
+		
 		if thruster.speed > 0 {
 			root.updateChildrenColors(white)
 		}

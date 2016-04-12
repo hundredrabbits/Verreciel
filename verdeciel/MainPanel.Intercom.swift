@@ -88,9 +88,9 @@ class PanelIntercom : MainPanel
 		locationPanel.opacity = 0
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		if capsule.isDocked && capsule.dock.isComplete != nil && capsule.dock.isComplete == false {
 			locationPanel.update()

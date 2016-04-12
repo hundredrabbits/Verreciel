@@ -75,9 +75,9 @@ class CoreSpace: SCNNode
 	
 	// Other
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		// Structures
 		for instance in structuresRoot.childNodes{

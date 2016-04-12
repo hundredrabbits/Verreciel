@@ -57,9 +57,9 @@ class SCNWire : SCNNode
 		segment5.draw( vertex4, nodeB: nodeB, color: red)
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		if isEnabled == false || nodeB == nil { return }
 		if nodeA.x == nodeB.x && nodeA.y == nodeB.y && nodeA.z == nodeB.z { return }

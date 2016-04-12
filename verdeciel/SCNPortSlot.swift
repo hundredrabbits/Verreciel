@@ -45,9 +45,9 @@ class SCNPortSlot : SCNPort
 		disable()
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		if isEnabled == false {
 			sprite_input.updateChildrenColors(clear)

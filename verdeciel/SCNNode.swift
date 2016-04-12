@@ -65,10 +65,10 @@ extension SCNNode
 		}
 	}
 	
-	func fixedUpdate()
+	func whenRenderer()
 	{
 		for node in childNodes {
-			node.fixedUpdate()
+			node.whenRenderer()
 		}
 	}
 	

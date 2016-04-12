@@ -87,9 +87,9 @@ class Location : Event
 		
 	}
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		position = SCNVector3(at.x,at.y,0)
 		distance = distanceBetweenTwoPoints(capsule.at, point2: at)

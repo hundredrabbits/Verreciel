@@ -108,9 +108,9 @@ class CorePlayer : SCNNode
 	var accelX:Float = 0
 	var accelY:Float = 0
 	
-	override func fixedUpdate()
+	override func whenRenderer()
 	{
-		super.fixedUpdate()
+		super.whenRenderer()
 		
 		flickerAlert()
         
