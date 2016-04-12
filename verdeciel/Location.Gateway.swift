@@ -96,7 +96,7 @@ class LocationGateway : Location
 	override func listen(event: Event)
 	{
 		if KeyPort.origin != nil && KeyPort.origin.event == KeyPort.requirement {
-			structure.replace(structures.portal(color:cyan))
+//			structure.replace(structures.portal(color:cyan))
 		}
 		update()
 	}
@@ -106,7 +106,7 @@ class LocationGateway : Location
 		super.onDock()
 		
 		if KeyPort.isReceiving(KeyPort.requirement) == true {
-			structure.replace(structures.portal(color:cyan))
+//			structure.replace(structures.portal(color:cyan))
 		}
 	}
 	

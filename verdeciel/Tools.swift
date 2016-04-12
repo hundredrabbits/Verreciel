@@ -8,7 +8,7 @@ import SceneKit
 
 func degToRad(degrees:CGFloat) -> Float
 {
-	return degrees / 180 * Float(M_PI)
+	return Float(degrees) / 180 * Float(M_PI)
 }
 
 func radToDeg(value:CGFloat) -> CGFloat

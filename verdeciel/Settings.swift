@@ -39,12 +39,11 @@ var game:CoreGame!
 var time:CoreTime!
 
 // Collections
-var missions = MissionLibrary()
-var items = ItemLibrary()
-var locations = LocationLibrary()
-var recipes = RecipesLibrary()
-var structures = StructuresLibrary()
-var icons = IconsLibrary()
+var missions = MissionCollection()
+var items = ItemCollection()
+var locations = LocationCollection()
+var recipes = RecipesCollection()
+var icons = IconsCollection()
 
 var templates = Templates()
 var settings = Settings()

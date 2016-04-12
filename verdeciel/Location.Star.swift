@@ -77,8 +77,7 @@ class LocationStar : Location
 	override func complete()
 	{
 		super.complete()
-		structure.empty()
-		structure.add(structures.star(cyan))
+		structure.onComplete()
 	}
 	
 	override func touch(id: Int)
