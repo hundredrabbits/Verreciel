@@ -16,7 +16,7 @@ class LocationHoradric : Location
 		
 		self.mapRequirement = mapRequirement
 		
-		structure = StructureHoradric()
+		structure = StructureHoradric(host:self)
 		icon = IconHoradric()
 	}
 	
@@ -201,9 +201,9 @@ class StructureHoradric : Structure
 	let nodes:Int = Int(arc4random_uniform(10)) + 4
 	let radius:CGFloat = 5
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,0,0)
 		

@@ -9,12 +9,45 @@ import Foundation
 class Structure : SCNNode
 {
 	let root = SCNNode()
+	var host:Location! = nil
 	
-	override init()
+	init(host:Location)
 	{
 		super.init()
 		
+		self.host = host
+		
 		addChildNode(root)
+	}
+	
+	override func whenRenderer()
+	{
+		let distance = (host is LocationConstellation) ? host.distance/settings.approach * 100 : pow(host.distance/settings.approach, 5) * 1000.0
+		
+		self.position = SCNVector3(0,distance,0)
+		
+		if capsule.isDockedAtLocation(host){
+			self.eulerAngles.z = (degToRad(0))
+		}
+		else if capsule.lastLocation == host {
+			self.eulerAngles.z = (degToRad(0))
+			self.position = SCNVector3(0,distance * -1,0)
+		}
+		else{
+			self.eulerAngles.z = (degToRad(host.align))
+		}
+		
+		self.eulerAngles.y = (degToRad(capsule.direction))
+		
+		if host.distance > settings.approach {
+			leaveInstance()
+		}
+	}
+	
+	func leaveInstance()
+	{
+		print("> INSTANCE | Leaving \(host.name!)")
+		self.removeFromParentNode()
 	}
 	
 	var morphTime:Int = 0

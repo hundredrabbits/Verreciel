@@ -53,7 +53,7 @@ class CoreSpace: SCNNode
 	
 	func startInstance(location:Location)
 	{
-		structuresRoot.addChildNode(Instance(event: location))
+		structuresRoot.addChildNode(location.structure)
 	}
 	
 	// Other
@@ -61,11 +61,6 @@ class CoreSpace: SCNNode
 	override func whenRenderer()
 	{
 		super.whenRenderer()
-		
-		// Structures
-		for instance in structuresRoot.childNodes {
-			instance.update()
-		}
 		
 		/*
 		

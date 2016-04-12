@@ -13,7 +13,7 @@ class LocationTrade : Location
 		super.init(name: name,system:system, at: at)
 		
 		self.note = ""
-		structure = StructureTrade()
+		structure = StructureTrade(host: self)
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		
@@ -148,9 +148,9 @@ class StructureTrade : Structure
 {
 	let nodes:Int = 24
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,5,0)
 		

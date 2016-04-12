@@ -14,7 +14,7 @@ class LocationHarvest : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		structure = StructureHarvest()
+		structure = StructureHarvest(host:self)
 		icon = IconHarvest()
 		
 		self.grows = grows
@@ -130,9 +130,9 @@ class StructureHarvest : Structure
 {
 	let nodes:Int = 45
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,5,0)
 		

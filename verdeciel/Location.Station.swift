@@ -21,7 +21,7 @@ class LocationStation : Location
 		
 		self.mapRequirement = mapRequirement
 		self.note = ""
-		structure = StructureStation()
+		structure = StructureStation(host: self)
 		icon = IconStation()
 		self.isComplete = false
 	}
@@ -108,9 +108,9 @@ class StructureStation : Structure
 {
 	let nodes:Int = 4 + Int(arc4random_uniform(4))
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,5,0)
 		

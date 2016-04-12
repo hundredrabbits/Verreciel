@@ -14,7 +14,7 @@ class LocationBeacon : Location
 		self.mapRequirement = mapRequirement
 		self.note = ""
 		self.message = message
-		structure = Structure()
+		structure = Structure(host:self)
 		icon = IconBeacon()
 	}
 	

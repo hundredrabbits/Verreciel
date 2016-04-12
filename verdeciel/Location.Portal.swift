@@ -26,7 +26,7 @@ class LocationPortal : Location
 		self.note = ""
 		self.color = color
 		
-		structure = Structure()
+		structure = Structure(host: self)
 		icon = IconPortal()
 	}
 	
@@ -137,9 +137,9 @@ class StructurePortal : Structure
 {
 	let nodes:Int = 52
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,5,0)
 		

@@ -14,7 +14,7 @@ class LocationStar : Location
 		
 		self.note = ""
 		self.color = color
-		structure = StructureStar()
+		structure = StructureStar(host: self)
 		self.isComplete = false
 		icon = IconStar()
 		label.update(name)
@@ -127,9 +127,9 @@ class IconStar : Icon
 
 class StructureStar : Structure
 {
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		var value1:Float = 2.75
 		

@@ -8,12 +8,12 @@ class LocationSatellite : Location
 	var port:SCNPortSlot!
 	var message:String!
 
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), structure:Structure = StructureSatellite(), message:String,item:Event!, mapRequirement:Item! = nil)
+	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, mapRequirement:Item! = nil)
 	{
 		super.init(name:name, system:system, at:at)
 		
 		self.note = ""
-		self.structure = structure
+		self.structure = StructureSatellite(host: self)
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		self.message = message
@@ -101,9 +101,9 @@ class StructureSatellite : Structure
 {
 	let nodes:Int = Int(arc4random_uniform(2)) + 3
 	
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		root.position = SCNVector3(0,5,0)
 		

@@ -23,7 +23,7 @@ class LocationBank : Location
 		super.init(name: name,system:system, at:at)
 	
 		self.note = ""
-		structure = Structure()
+		structure = Structure(host:self)
 		icon = IconBank()
 		
 		port1 = SCNPortSlot(host: self)
@@ -148,9 +148,9 @@ class IconBank : Icon
 
 class StructureBank : Structure
 {
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		var i = 0
 		while i < 14 {

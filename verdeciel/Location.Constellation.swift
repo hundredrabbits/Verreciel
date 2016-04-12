@@ -9,12 +9,12 @@ import Foundation
 
 class LocationConstellation : Location
 {
-	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:Structure)
+	override init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0))
 	{
 		super.init(name:name, system:system, at:at)
 		
 		self.note = ""
-		self.structure = structure
+		self.structure = ConstellationTunnel(host:self)
 		icon = IconConstellation()
 		
 		label.opacity = 0
@@ -48,9 +48,9 @@ class IconConstellation : Icon
 
 class ConstellationTunnel : Structure
 {
-	override init()
+	override init(host:Location)
 	{
-		super.init()
+		super.init(host: host)
 		
 		let hex1 = SCNHexa(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,2)
