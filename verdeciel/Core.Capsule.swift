@@ -32,7 +32,54 @@ class CoreCapsule: SCNNode
 		interfaceSetup()
 	}
 	
-	func start(location:Location)
+	override func whenRenderer()
+	{
+		super.whenRenderer()
+		
+		// Docking
+		
+		if dock != nil && isDocked != true {
+			
+			var approachSpeed:CGFloat = 0.005
+			
+			let distanceRatio = distanceBetweenTwoPoints(at, point2: dock.at)/0.5
+			approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
+			
+			var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
+			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			
+			capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
+			capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
+			
+			if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.003 { docked() }
+			
+		}
+		
+		// Warping
+		
+		if isWarping == true {
+			if warp.distance > 1.5 {
+				warpUp()
+			}
+			else{
+				warpDown()
+			}
+			let speed:Float = Float(thruster.actualSpeed)/600
+			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			
+			let angleRad = degToRad(angle)
+			
+			capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
+			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
+		}
+		
+//		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
+//		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
+//		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
+//		else{ helmet.hideWarning() }
+	}
+	
+	func beginAtLocation(location:Location)
 	{
 		at = location.at
 		dock = location
@@ -43,19 +90,6 @@ class CoreCapsule: SCNNode
 		battery.install()
 		
 		space.onSystemEnter(.valen)
-	}
-	
-	override func whenRenderer()
-	{
-		super.whenRenderer()
-		
-		docking()
-		warping()
-		
-//		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
-//		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
-//		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
-//		else{ helmet.hideWarning() }
 	}
 	
 	func onSeconds()
@@ -104,32 +138,7 @@ class CoreCapsule: SCNNode
 		isWarping = true
 		undock()
 	}
-	
-	func warping()
-	{
-		if isWarping == false { return }
-	
-		if warp.distance > 1.5 {
-			warpUp()
-		}
-		else{
-			warpDown()
-		}
-		
-		warpTravel()
-	}
-	
-	func warpTravel()
-	{
-		let speed:Float = Float(thruster.actualSpeed)/600
-		let angle:CGFloat = CGFloat((capsule.direction) % 360)
-		
-		let angleRad = degToRad(angle)
-		
-		capsule.at.x += CGFloat(speed) * CGFloat(sin(angleRad))
-		capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
-	}
-	
+
 	func warpUp()
 	{
 		if thruster.actualSpeed < 10 { thruster.actualSpeed += 0.025 }
@@ -204,25 +213,6 @@ class CoreCapsule: SCNNode
 		thruster.disable()
 		
 		helmet.addPassive("Approaching \(dock.name!)")
-	}
-	
-	func docking()
-	{
-		if dock == nil { return }
-		if isDocked == true { return }
-		
-		var approachSpeed:CGFloat = 0.005
-		
-		let distanceRatio = distanceBetweenTwoPoints(at, point2: dock.at)/0.5
-		approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
-		
-		var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
-		let angle:CGFloat = CGFloat((capsule.direction) % 360)
-
-		capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
-		capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
-		
-		if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.003 { docked() }
 	}
 	
 	func docked()
