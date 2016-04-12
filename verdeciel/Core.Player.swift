@@ -10,19 +10,6 @@ class CorePlayer : SCNNode
 {
 	var canAlign:Bool = true
 	
-	var displayHealth:SCNLabel!
-	var displayMagic:SCNLabel!
-	
-	var messageLabel:SCNLabel!
-	var messageTimer:NSTimer!
-	
-	var alertLabel:SCNLabel!
-	var alertTimer:NSTimer!
-	var alertIsActive:Bool = false
-	
-	var health:Int
-	var magic:Int
-	
 	var port:SCNPort!
 	var event:Event!
 	
@@ -33,9 +20,6 @@ class CorePlayer : SCNNode
 	
 	override init()
 	{
-		health = 99
-		magic = 99
-		
 		super.init()
 		
 		self.camera = SCNCamera()
@@ -62,47 +46,11 @@ class CorePlayer : SCNNode
 		triggerLabel = SCNLabel(text: "return to capsule", scale: 0.03, align: alignment.center, color: red)
 		triggerLabel.position = SCNVector3(0,0,0)
 		trigger.addChildNode(triggerLabel)
-		
-		alertLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
-		alertLabel.position = SCNVector3(x: 0, y: 1, z: -1.01)
-		alertLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(alertLabel)
-		
-		messageLabel = SCNLabel(text: "", scale: 0.03, align: alignment.center)
-		messageLabel.position = SCNVector3(x: 0, y: 1.1, z: -1.01)
-		messageLabel.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0.1)); // rotate 90 degrees
-		addChildNode(messageLabel)
 	}
 	
 	func activateEvent(event:Event)
 	{
 		self.event = event
-	}
-	
-	func message(text:String)
-	{
-		messageLabel.update(text)
-		messageTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(self.clearMessage), userInfo: nil, repeats: false)
-	}
-	
-	func clearMessage()
-	{
-		messageLabel.update("")
-	}
-	
-	func alert(text:String)
-	{
-		alertIsActive = true
-		alertLabel.update(text)
-		alertTimer = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: #selector(self.clearAlert), userInfo: nil, repeats: false)
-	}
-	
-	func clearAlert()
-	{
-		alertIsActive = false
-		alertTimer.invalidate()
-		alertLabel.update("")
-		alertLabel.opacity = 0
 	}
 	
 	var accelX:Float = 0
@@ -111,8 +59,6 @@ class CorePlayer : SCNNode
 	override func whenRenderer()
 	{
 		super.whenRenderer()
-		
-		flickerAlert()
         
         if !isLocked {
             player.eulerAngles.x += accelX
@@ -133,13 +79,6 @@ class CorePlayer : SCNNode
                 accelY = 0; //if it gets too small just drop to zero
             }
         }
-	}
-	
-	func flickerAlert()
-	{
-		if alertIsActive == false { return }
-		if alertLabel.opacity == 0 { alertLabel.opacity = 1}
-		else{ alertLabel.opacity = 0 }
 	}
 	
 	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
