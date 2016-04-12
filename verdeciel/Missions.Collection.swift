@@ -23,7 +23,7 @@ class MissionCollection
 		
 		// Loiqe
 		
-		m = Mission(id:(story.count), name: "Reach the city")
+		m = Mission(id:(story.count), name: "hey")
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),

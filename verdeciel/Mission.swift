@@ -7,7 +7,7 @@ import Foundation
 class Mission
 {
 	var id:Int = 0
-	var name:String = "Unknown"
+	var name:String = ""
 	var isCompleted:Bool = false
 	
 	var quests:Array<Quest> = []

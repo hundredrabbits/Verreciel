@@ -175,8 +175,10 @@ class Helmet: SCNNode
 	var warningLabel:SCNLabel!
 	var warningFlag:String!
 	
-	func addWarning(text:String, color:UIColor = red, duration:Double, flag:String)
+	func addWarning(text:String!, color:UIColor = red, duration:Double, flag:String)
 	{
+		if text == "" { return }
+		
 		warningString = text
 		warningColor = color
 		warningFlag = flag
@@ -192,15 +194,6 @@ class Helmet: SCNNode
 		warningFlag = ""
 		warningString = ""
 		self.warningLabel.update("")
-	}
-	
-	func showWarningUntil(warning:String, predicate:() -> Bool)
-	{
-//		showWarning(warning)
-//		
-//		if predicate() == true {
-//			hideWarning()
-//		}
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -26,7 +26,7 @@ extension SCNNode
 	
 	func blink()
 	{
-		if game.time % 5 == 0 { opacity = 1 }
+		if game.time % 3 == 0 { opacity = 1 }
 		else { opacity = 0 }
 	}
 	

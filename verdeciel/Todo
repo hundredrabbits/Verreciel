@@ -2,7 +2,6 @@
 *    MAJOR
 ================
 
-- Remove blink from render(), put in blink()
 
 ================
 *    MINOR
