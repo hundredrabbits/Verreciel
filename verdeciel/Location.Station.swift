@@ -22,7 +22,7 @@ class LocationStation : Location
 		self.mapRequirement = mapRequirement
 		self.note = ""
 		structure = StructureStation()
-		self.icon.replace(icons.station())
+		icon = IconStation()
 		self.isComplete = false
 	}
 	
@@ -85,6 +85,19 @@ class LocationStation : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconStation : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

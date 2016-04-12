@@ -11,24 +11,30 @@ class LocationSpawn : Location
 		
 		self.note = ""
 		structure = StructureDefault()
-		self.icon.replace(icons.none())
+		icon = IconSpawn()
 	}
 
 	override func panel() -> Panel!
 	{
 		return nil
 	}
-	
-	// MARK: Triggers -
-	
-	override func onSight()
-	{
-		icon.replace(icons.spawn())
-	}
-	
+
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconSpawn : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

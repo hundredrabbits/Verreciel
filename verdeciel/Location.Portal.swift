@@ -25,8 +25,9 @@ class LocationPortal : Location
 		
 		self.note = ""
 		self.color = color
+		
 		structure = StructureDefault()
-		icon.replace(icons.portal())
+		icon = IconPortal()
 	}
 	
 	// MARK: Panel - 
@@ -114,6 +115,19 @@ class LocationPortal : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconPortal : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

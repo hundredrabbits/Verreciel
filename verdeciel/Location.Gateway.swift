@@ -24,7 +24,7 @@ class LocationGateway : Location
 		self.color = color
 		structure = StructureDefault()
 		self.mapRequirement = mapRequirement
-		icon.replace(icons.gateway())
+		icon = IconGateway()
 		
 		self.key = key
 		
@@ -123,6 +123,19 @@ class LocationGateway : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconGateway : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

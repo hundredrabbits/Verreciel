@@ -15,7 +15,7 @@ class LocationBeacon : Location
 		self.note = ""
 		self.message = message
 		structure = StructureDefault()
-		icon.replace(icons.beacon())
+		icon = IconBeacon()
 	}
 	
 	override func panel() -> Panel!
@@ -47,6 +47,19 @@ class LocationBeacon : Location
 	}
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconBeacon : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

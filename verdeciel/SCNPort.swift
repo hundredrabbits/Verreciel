@@ -179,7 +179,7 @@ class SCNPort : SCNNode
 		self.onConnect()
 	}
 	
-	override func disconnect()
+	func disconnect()
 	{
 		if connection == nil { return }
 	
@@ -190,7 +190,7 @@ class SCNPort : SCNNode
 		connection.onDisconnect()
 		self.connection = nil
 		
-		targetOrigin.disconnect()
+		targetOrigin.onDisconnect()
 		targetOrigin.update()
 		
 		self.onDisconnect()

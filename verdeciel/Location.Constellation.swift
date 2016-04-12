@@ -15,7 +15,7 @@ class LocationConstellation : Location
 		
 		self.note = ""
 		self.structure = structure
-		icon.replace(icons.constellation())
+		icon = IconConstellation()
 		
 		label.opacity = 0
 	}
@@ -28,6 +28,19 @@ class LocationConstellation : Location
 	}
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconConstellation : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

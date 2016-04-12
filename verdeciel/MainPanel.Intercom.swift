@@ -168,7 +168,7 @@ class PanelIntercom : MainPanel
 	func connectToLocation(location:Location)
 	{
 		locationPanel.empty()
-		if location.panel() != nil { locationPanel.add(location.panel()) }
+		if location.panel() != nil { locationPanel.addChildNode(location.panel()) }
 		else{ return }
 		
 		// Animate

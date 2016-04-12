@@ -13,43 +13,14 @@ extension SCNNode
 		print("! This node has no touch action")
 	}
 	
-	func absolutePosition() -> SCNVector3
-	{
-		return convertPosition(SCNVector3(0, 0, 0), fromNode: self)
-	}
-	
 	func update()
 	{
-	}
-	
-	func color(color:UIColor)
-	{
-		if geometry == nil { return }
-		self.geometry!.firstMaterial?.diffuse.contents = color
-	}
-	
-	func disconnect()
-	{
-		
-	}
-	
-	func replace(node:SCNNode)
-	{
-		self.empty()
-		self.add(node)
 	}
 	
 	func empty()
 	{
 		for node in childNodes {
 			node.removeFromParentNode()
-		}
-	}
-	
-	func add(node:SCNNode)
-	{
-		for child in node.childNodes {
-			self.addChildNode(child)
 		}
 	}
 	
@@ -77,6 +48,12 @@ extension SCNNode
 				subnode.color(color)
 			}
 		}
+	}
+	
+	func color(color:UIColor)
+	{
+		if geometry == nil { return }
+		self.geometry!.firstMaterial?.diffuse.contents = color
 	}
 	
 	// MARK: Events -

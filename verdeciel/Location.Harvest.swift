@@ -15,7 +15,7 @@ class LocationHarvest : Location
 		self.mapRequirement = mapRequirement
 		self.note = ""
 		structure = StructureHarvest()
-		icon.replace(icons.harvest())
+		icon = IconHarvest()
 		
 		self.grows = grows
 		
@@ -107,6 +107,20 @@ class LocationHarvest : Location
 	}
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+
+class IconHarvest : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

@@ -14,10 +14,10 @@ class LocationHoradric : Location
 	{
 		super.init(name: name,system:system, at: at)
 		
-		self.note = ""
 		self.mapRequirement = mapRequirement
+		
 		structure = StructureHoradric()
-		icon.replace(icons.horadric())
+		icon = IconHoradric()
 	}
 	
 	override func panel() -> Panel!
@@ -174,20 +174,23 @@ class LocationHoradric : Location
 		
 		refresh()
 	}
-
-	func iconUpdate()
-	{
-		if isKnown == false {
-			icon.replace(icons.trade(grey))
-		}
-		else {
-			icon.replace(icons.trade(white))
-		}
-	}
 		
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconHoradric : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

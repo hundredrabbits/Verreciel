@@ -16,10 +16,10 @@ class LocationSatellite : Location
 		self.structure = structure
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
-		
-		icon.replace(icons.satellite())
-		
 		self.message = message
+		
+		icon = IconSatellite()
+		
 		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.4,0)
@@ -79,6 +79,19 @@ class LocationSatellite : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconSatellite : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

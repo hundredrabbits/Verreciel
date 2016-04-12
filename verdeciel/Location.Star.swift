@@ -16,7 +16,7 @@ class LocationStar : Location
 		self.color = color
 		structure = StructureStar()
 		self.isComplete = false
-		icon.replace(icons.star())
+		icon = IconStar()
 		label.update(name)
 		
 		masterPort = SCNPort(host: self)
@@ -107,6 +107,19 @@ class LocationStar : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconStar : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}

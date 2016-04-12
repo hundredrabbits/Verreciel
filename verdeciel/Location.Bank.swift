@@ -24,7 +24,7 @@ class LocationBank : Location
 	
 		self.note = ""
 		structure = StructureDefault()
-		icon.replace(icons.bank())
+		icon = IconBank()
 		
 		port1 = SCNPortSlot(host: self)
 		port2 = SCNPortSlot(host: self)
@@ -128,6 +128,19 @@ class LocationBank : Location
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class IconBank : Icon
+{
+	override init()
+	{
+		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}
