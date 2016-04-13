@@ -48,13 +48,8 @@ class MainPanel : Panel
 		let width:CGFloat = 1.65
 		let height:CGFloat = 1.8
 		
-		decals.addChildNode(SCNLine(positions: [SCNVector3(width + 0.2,height - 0.2,0), SCNVector3(width,height,0)], color: grey))
-		decals.addChildNode(SCNLine(positions: [SCNVector3(width + 0.2,-height + 0.2,0), SCNVector3(width,-height,0)], color: grey))
-		decals.addChildNode(SCNLine(positions: [SCNVector3(width + 0.2,height - 0.2,0), SCNVector3(width + 0.2,-height + 0.2,0)], color: grey))
-		
-		decals.addChildNode(SCNLine(positions: [SCNVector3(-width - 0.2,height - 0.2,0), SCNVector3(-width,height,0)], color: grey))
-		decals.addChildNode(SCNLine(positions: [SCNVector3(-width - 0.2,-height + 0.2,0), SCNVector3(-width,-height,0)], color: grey))
-		decals.addChildNode(SCNLine(positions: [SCNVector3(-width - 0.2,height - 0.2,0), SCNVector3(-width - 0.2,-height + 0.2,0)], color: grey))
+		decals.addChildNode(SCNLine(positions: [SCNVector3(width + 0.2,height - 0.2,0), SCNVector3(width,height,0), SCNVector3(width + 0.2,height - 0.2,0), SCNVector3(width + 0.2,-height + 0.2,0), SCNVector3(width + 0.2,-height + 0.2,0), SCNVector3(width,-height,0)],color:grey))
+		decals.addChildNode(SCNLine(positions: [SCNVector3(-width - 0.2,height - 0.2,0), SCNVector3(-width,height,0), SCNVector3(-width - 0.2,-height + 0.2,0), SCNVector3(-width,-height,0), SCNVector3(-width - 0.2,height - 0.2,0), SCNVector3(-width - 0.2,-height + 0.2,0)],color:grey))
 		
 		// Start
 		

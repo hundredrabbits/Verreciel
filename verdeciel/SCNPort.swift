@@ -23,8 +23,8 @@ class SCNPort : SCNNode
 	var host:SCNNode!
 	var trigger:SCNTrigger!
 	
-	var sprite_output = SCNNode()
-	var sprite_input = SCNNode()
+	var sprite_output:SCNLine!
+	var sprite_input:SCNLine!
 	
 	init(host:SCNNode = SCNNode())
 	{
@@ -39,26 +39,16 @@ class SCNPort : SCNNode
 		
 		self.host = host
 		
-		setup()
-		disable()
-	}
-	
-	func setup()
-	{
+		sprite_input = SCNLine(positions: [SCNVector3(x: 0, y: radius/2, z: 0),  SCNVector3(x: radius/2, y: 0, z: 0), SCNVector3(x: radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: -radius/2, z: 0), SCNVector3(x: 0, y: -radius/2, z: 0),  SCNVector3(x: -radius/2, y: 0, z: 0), SCNVector3(x: -radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: radius/2, z: 0)], color: grey)
+		addChildNode(sprite_input)
+		
+		sprite_output = SCNLine(positions: [SCNVector3(x: 0, y: radius, z: 0),  SCNVector3(x: radius, y: 0, z: 0), SCNVector3(x: radius, y: 0, z: 0),  SCNVector3(x: 0, y: -radius, z: 0), SCNVector3(x: 0, y: -radius, z: 0),  SCNVector3(x: -radius, y: 0, z: 0), SCNVector3(x: -radius, y: 0, z: 0),  SCNVector3(x: 0, y: radius, z: 0)], color: grey)
+		addChildNode(sprite_output)
+		
 		wire = SCNWire(host:self, nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))
 		self.addChildNode(wire)
 		
-		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: radius/2, z: 0),  SCNVector3(x: radius/2, y: 0, z: 0)],color:white))
-		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: -radius/2, z: 0)],color:white))
-		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -radius/2, z: 0),  SCNVector3(x: -radius/2, y: 0, z: 0)],color:white))
-		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: -radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: radius/2, z: 0)],color:white))
-		addChildNode(sprite_input)
-		
-		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: radius, z: 0),  SCNVector3(x: radius, y: 0, z: 0)],color:white))
-		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: radius, y: 0, z: 0),  SCNVector3(x: 0, y: -radius, z: 0)],color:white))
-		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -radius, z: 0),  SCNVector3(x: -radius, y: 0, z: 0)],color:white))
-		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: -radius, y: 0, z: 0),  SCNVector3(x: 0, y: radius, z: 0)],color:white))
-		addChildNode(sprite_output)
+		disable()
 	}
 	
 	// MARK: Touch -
@@ -87,21 +77,21 @@ class SCNPort : SCNNode
 		
 		// Input
 		if isEnabled == false {
-			sprite_input.updateChildrenColors(clear)
+			sprite_input.update(cyan)
 		}
 		else if origin == nil {
-			sprite_input.updateChildrenColors(grey)
+			sprite_input.update(grey)
 		}
 		else {
-			sprite_input.updateChildrenColors(red)
+			sprite_input.update(red)
 		}
 
 		// Output
 		if event == nil || isEnabled == false {
-			sprite_output.updateChildrenColors(grey)
+			sprite_output.update(grey)
 		}
 		else {
-			sprite_output.updateChildrenColors(cyan)
+			sprite_output.update(cyan)
 		}
 		
 		// Wire

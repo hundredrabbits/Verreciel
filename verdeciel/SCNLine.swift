@@ -22,12 +22,18 @@ class SCNLine : SCNNode
 		draw(positions, color: self.color)
 	}
 	
-	func draw(positions:Array<SCNVector3>, color:UIColor)
+	func draw(vertices:Array<SCNVector3>, color:UIColor)
 	{
-		if positions.count < 2 { return }
-		var positionsList: [Float32] = [positions[0].x,positions[0].y,positions[0].z,positions[1].x,positions[1].y,positions[1].z,]
+		if vertices.count < 2 { return }
+	
+		var positionsList: [Float32] = []
+		
+		for vertex in vertices {
+			positionsList.appendContentsOf([vertex.x,vertex.y,vertex.z])
+		}
+		
 		let positionData = NSData(bytes: positionsList, length: sizeof(Float32)*positionsList.count)
-		let indices: [Int32] = [0, 1]
+		let indices: [Int32] = [0, 1, 2, 3, 4, 5, 6, 7]
 		let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
 		let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)
 		let element = SCNGeometryElement(data: indexData, primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indices.count, bytesPerIndex: sizeof(Int32))

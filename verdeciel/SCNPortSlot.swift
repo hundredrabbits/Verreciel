@@ -41,7 +41,6 @@ class SCNPortSlot : SCNPort
 		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
 		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; details.position = SCNVector3(0,-0.8,0) }
 		
-		setup()
 		disable()
 	}
 	
@@ -50,13 +49,13 @@ class SCNPortSlot : SCNPort
 		super.whenRenderer()
 		
 		if isEnabled == false {
-			sprite_input.updateChildrenColors(clear)
+			sprite_input.update(clear)
 		}
 		else if event != nil {
-			sprite_input.updateChildrenColors(clear)
+			sprite_input.update(clear)
 		}
 		else{
-			sprite_input.updateChildrenColors(grey)
+			sprite_input.update(grey)
 		}
 	}
 	
