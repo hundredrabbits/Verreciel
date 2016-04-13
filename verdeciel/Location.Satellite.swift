@@ -20,7 +20,6 @@ class LocationSatellite : Location
 		
 		icon = IconSatellite()
 		
-		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.4,0)
 		port.addEvent(item)
@@ -90,10 +89,10 @@ class IconSatellite : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

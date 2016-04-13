@@ -118,20 +118,20 @@ class IconStar : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:size * 2,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:-size * 2,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:0,y:size * 2,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:-size,z:0),nodeB: SCNVector3(x:0,y:-size * 2,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:size * 2,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:-size * 2,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:size * 2,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:-size,z:0),  SCNVector3(x:0,y:-size * 2,z:0)],color: color))
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size/2,y:size/2,z:0),nodeB: SCNVector3(x:size,y:size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size/2,y:size/2,z:0),nodeB: SCNVector3(x:-size,y:size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size/2,y:-size/2,z:0),nodeB: SCNVector3(x:size,y:-size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size/2,y:-size/2,z:0),nodeB: SCNVector3(x:-size,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size/2,y:size/2,z:0),  SCNVector3(x:size,y:size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size/2,y:size/2,z:0),  SCNVector3(x:-size,y:size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size/2,y:-size/2,z:0),  SCNVector3(x:size,y:-size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size/2,y:-size/2,z:0),  SCNVector3(x:-size,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -151,12 +151,12 @@ class StructureStar : Structure
 		var i = 0
 		while i < 20 {
 			value1 -= 0.125
-			root.addChildNode(SCNLine(nodeA: SCNVector3(value1 * 1.5,0,0), nodeB: SCNVector3(value1,0,-value1 * 1.5), color: red))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(value1 * 1.5,0,0), nodeB: SCNVector3(value1,0,value1 * 1.5), color: red))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-value1 * 1.5,0,0), nodeB: SCNVector3(-value1,0,-value1 * 1.5), color: red))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(-value1 * 1.5,0,0), nodeB: SCNVector3(-value1,0,value1 * 1.5), color: red))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(value1,0,-value1 * 1.5), nodeB: SCNVector3(-value1,0,-value1 * 1.5), color: red))
-			root.addChildNode(SCNLine(nodeA: SCNVector3(value1,0,value1 * 1.5), nodeB: SCNVector3(-value1,0,value1 * 1.5), color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(value1 * 1.5,0,0), SCNVector3(value1,0,-value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(value1 * 1.5,0,0), SCNVector3(value1,0,value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(-value1 * 1.5,0,0), SCNVector3(-value1,0,-value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(-value1 * 1.5,0,0), SCNVector3(-value1,0,value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(value1,0,-value1 * 1.5), SCNVector3(-value1,0,-value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(positions: [SCNVector3(value1,0,value1 * 1.5), SCNVector3(-value1,0,value1 * 1.5)], color: red))
 			i += 1
 		}
 	}

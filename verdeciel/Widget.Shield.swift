@@ -57,17 +57,17 @@ class WidgetShield : Widget
 			scale = 2.5
 			// Face 1
 			let face1 = SCNNode()
-			face1.addChildNode(SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(0,-scale,radius), color: color))
+			face1.addChildNode(SCNLine(positions: [SCNVector3(0,scale,radius), SCNVector3(0,-scale,radius)], color: color))
 			face1.eulerAngles.y += (degToRad(CGFloat(i) * (360/sides)))
 			capsule.shieldRoot.addChildNode(face1)
 			
 			// Face 2
 			scale = 1.9
 			let face2 = SCNNode()
-			let line5 = SCNLine(nodeA: SCNVector3(-scale,0,radius), nodeB: SCNVector3(0,scale,radius), color: color)
-			let line6 = SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(scale,0,radius), color: color)
-			let line7 = SCNLine(nodeA: SCNVector3(scale,0,radius), nodeB: SCNVector3(0,-scale,radius), color: color)
-			let line8 = SCNLine(nodeA: SCNVector3(0,-scale,radius), nodeB: SCNVector3(-scale,0,radius), color: color)
+			let line5 = SCNLine(positions: [SCNVector3(-scale,0,radius), SCNVector3(0,scale,radius)], color: color)
+			let line6 = SCNLine(positions: [SCNVector3(0,scale,radius), SCNVector3(scale,0,radius)], color: color)
+			let line7 = SCNLine(positions: [SCNVector3(scale,0,radius), SCNVector3(0,-scale,radius)], color: color)
+			let line8 = SCNLine(positions: [SCNVector3(0,-scale,radius), SCNVector3(-scale,0,radius)], color: color)
 			face2.addChildNode(line5)
 			face2.addChildNode(line6)
 			face2.addChildNode(line7)
@@ -79,10 +79,10 @@ class WidgetShield : Widget
 			// Face 3
 			scale = 1.9
 			let face3 = SCNNode()
-			let line9 = SCNLine(nodeA: SCNVector3(-scale,0,radius), nodeB: SCNVector3(0,scale,radius), color: color)
-			let line10 = SCNLine(nodeA: SCNVector3(0,scale,radius), nodeB: SCNVector3(scale,0,radius), color: color)
-			let line11 = SCNLine(nodeA: SCNVector3(scale,0,radius), nodeB: SCNVector3(0,-scale,radius), color: color)
-			let line12 = SCNLine(nodeA: SCNVector3(0,-scale,radius), nodeB: SCNVector3(-scale,0,radius), color: color)
+			let line9 = SCNLine(positions: [SCNVector3(-scale,0,radius), SCNVector3(0,scale,radius)], color: color)
+			let line10 = SCNLine(positions: [SCNVector3(0,scale,radius), SCNVector3(scale,0,radius)], color: color)
+			let line11 = SCNLine(positions: [SCNVector3(scale,0,radius), SCNVector3(0,-scale,radius)], color: color)
+			let line12 = SCNLine(positions: [SCNVector3(0,-scale,radius), SCNVector3(-scale,0,radius)], color: color)
 			face3.addChildNode(line9)
 			face3.addChildNode(line10)
 			face3.addChildNode(line11)

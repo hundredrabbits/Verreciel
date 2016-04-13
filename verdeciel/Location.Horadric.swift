@@ -45,13 +45,13 @@ class LocationHoradric : Location
 		newPanel.addChildNode(inPort2)
 		newPanel.addChildNode(outPort)
 		
-		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0.6,0.6 - 0.125,0), nodeB: SCNVector3(0.6,0.3 - 0.125,0), color: grey))
-		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(-0.6,0.6 - 0.125,0), nodeB: SCNVector3(-0.6,0.3 - 0.125,0), color: grey))
+		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0.6,0.6 - 0.125,0), SCNVector3(0.6,0.3 - 0.125,0)], color: grey))
+		newPanel.addChildNode(SCNLine(positions: [SCNVector3(-0.6,0.6 - 0.125,0), SCNVector3(-0.6,0.3 - 0.125,0)], color: grey))
 		
-		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.2 - 0.125,0), nodeB: SCNVector3(0.6,0.3 - 0.125,0), color: grey))
-		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.2 - 0.125,0), nodeB: SCNVector3(-0.6,0.3 - 0.125,0), color: grey))
+		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0,-0.2 - 0.125,0), SCNVector3(0.6,0.3 - 0.125,0)], color: grey))
+		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0,-0.2 - 0.125,0), SCNVector3(-0.6,0.3 - 0.125,0)], color: grey))
 		
-		newPanel.addChildNode(SCNLine(nodeA: SCNVector3(0,-0.2 - 0.125,0), nodeB: SCNVector3(0,-0.8 + 0.125,0), color: grey))
+		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0,-0.2 - 0.125,0), SCNVector3(0,-0.8 + 0.125,0)], color: grey))
 		
 		storage = [inPort1,inPort2,outPort]
 		
@@ -189,13 +189,13 @@ class IconHoradric : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

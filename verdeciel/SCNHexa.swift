@@ -13,13 +13,13 @@ class SCNHexa : SCNNode
 	{
 		super.init()
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(size/2,size/2,0), color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(size/2,-size/2,0), nodeB: SCNVector3(size/2,size/2,0), color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(size/2,-size/2,0), nodeB: SCNVector3(0,-size,0), color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(size/2,size/2,0)], color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(size/2,-size/2,0), SCNVector3(size/2,size/2,0)], color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(size/2,-size/2,0), SCNVector3(0,-size,0)], color: color))
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(-size/2,size/2,0), color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(-size/2,-size/2,0), nodeB: SCNVector3(-size/2,size/2,0), color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(-size/2,-size/2,0), nodeB: SCNVector3(0,-size,0), color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(-size/2,size/2,0)], color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(-size/2,-size/2,0), SCNVector3(-size/2,size/2,0)], color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(-size/2,-size/2,0), SCNVector3(0,-size,0)], color: color))
 		
 		self.eulerAngles = eulerAngles
 	}

@@ -47,7 +47,6 @@ class CoreSpace: SCNNode
 	
 	// Stars
 	
-	var starTimer:Float = 0
 	
 	// Instances
 	
@@ -58,32 +57,36 @@ class CoreSpace: SCNNode
 	
 	// Other
 	
+	var starTimer:Float = 0
+	
 	override func whenRenderer()
 	{
 		super.whenRenderer()
 		
-		/*
+		starsRoot.rotation = SCNVector4Make(0, 1, 0, (degToRad(capsule.direction)))
 		
+		/*
 		
 		// Stars
 		while starTimer > 4 && starsRoot.childNodes.count < 100 {
-			
-			var randX = Int(arc4random_uniform(40)) - 20
-			var randZ = Int(arc4random_uniform(40)) - 20
-			
-			while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
-				randX = Int(arc4random_uniform(40)) - 20
-				randZ = Int(arc4random_uniform(40)) - 20
-			}
-			
-			let newLine = SCNLine(nodeA: SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), nodeB: SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: stars_color)
-			newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
-			starsRoot.addChildNode(newLine)
-			
-			starTimer -= 4
+		
+		var randX = Int(arc4random_uniform(40)) - 20
+		var randZ = Int(arc4random_uniform(40)) - 20
+		
+		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
+		randX = Int(arc4random_uniform(40)) - 20
+		randZ = Int(arc4random_uniform(40)) - 20
 		}
 		
-		starsRoot.rotation = SCNVector4Make(0, 1, 0, (degToRad(capsule.direction)))
+		let newLine = SCNLine(positions: [SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: stars_color)
+		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
+		starsRoot.addChildNode(newLine)
+		
+		starTimer -= 4
+		}
+		
+		
+		
 		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }

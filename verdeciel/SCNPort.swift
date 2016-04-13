@@ -48,16 +48,16 @@ class SCNPort : SCNNode
 		wire = SCNWire(host:self, nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))
 		self.addChildNode(wire)
 		
-		sprite_input.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: radius/2, z: 0),nodeB: SCNVector3(x: radius/2, y: 0, z: 0),color:white))
-		sprite_input.addChildNode(SCNLine(nodeA: SCNVector3(x: radius/2, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: -radius/2, z: 0),color:white))
-		sprite_input.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -radius/2, z: 0),nodeB: SCNVector3(x: -radius/2, y: 0, z: 0),color:white))
-		sprite_input.addChildNode(SCNLine(nodeA: SCNVector3(x: -radius/2, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius/2, z: 0),color:white))
+		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: radius/2, z: 0),  SCNVector3(x: radius/2, y: 0, z: 0)],color:white))
+		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: -radius/2, z: 0)],color:white))
+		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -radius/2, z: 0),  SCNVector3(x: -radius/2, y: 0, z: 0)],color:white))
+		sprite_input.addChildNode(SCNLine(positions: [SCNVector3(x: -radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: radius/2, z: 0)],color:white))
 		addChildNode(sprite_input)
 		
-		sprite_output.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: radius, z: 0),nodeB: SCNVector3(x: radius, y: 0, z: 0),color:white))
-		sprite_output.addChildNode(SCNLine(nodeA: SCNVector3(x: radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: -radius, z: 0),color:white))
-		sprite_output.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: -radius, z: 0),nodeB: SCNVector3(x: -radius, y: 0, z: 0),color:white))
-		sprite_output.addChildNode(SCNLine(nodeA: SCNVector3(x: -radius, y: 0, z: 0),nodeB: SCNVector3(x: 0, y: radius, z: 0),color:white))
+		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: radius, z: 0),  SCNVector3(x: radius, y: 0, z: 0)],color:white))
+		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: radius, y: 0, z: 0),  SCNVector3(x: 0, y: -radius, z: 0)],color:white))
+		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -radius, z: 0),  SCNVector3(x: -radius, y: 0, z: 0)],color:white))
+		sprite_output.addChildNode(SCNLine(positions: [SCNVector3(x: -radius, y: 0, z: 0),  SCNVector3(x: 0, y: radius, z: 0)],color:white))
 		addChildNode(sprite_output)
 	}
 	

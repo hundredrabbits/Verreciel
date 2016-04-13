@@ -58,24 +58,24 @@ class PanelThruster : MainPanel
 		
 		mainNode.addChildNode(interface_flight)
 		
-		line1 = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(0.5, -0.3, 0), color: grey)
-		line2 = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(0.5, -0.1, 0), color: grey)
-		line3 = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(0.5, 0.1, 0), color: grey)
-		line4 = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(0.5, 0.3, 0), color: grey)
+		line1 = SCNLine(positions: [SCNVector3(-0.5, -0.3, 0), SCNVector3(0.5, -0.3, 0)], color: grey)
+		line2 = SCNLine(positions: [SCNVector3(-0.5, -0.1, 0), SCNVector3(0.5, -0.1, 0)], color: grey)
+		line3 = SCNLine(positions: [SCNVector3(-0.5, 0.1, 0), SCNVector3(0.5, 0.1, 0)], color: grey)
+		line4 = SCNLine(positions: [SCNVector3(-0.5, 0.3, 0), SCNVector3(0.5, 0.3, 0)], color: grey)
 		
 		interface_flight.addChildNode(line1)
 		interface_flight.addChildNode(line2)
 		interface_flight.addChildNode(line3)
 		interface_flight.addChildNode(line4)
 		
-		cutLine1Left = SCNLine(nodeA: SCNVector3(-0.5, -0.3, 0), nodeB: SCNVector3(-0.1, -0.3, 0), color: grey)
-		cutLine1Right = SCNLine(nodeA: SCNVector3(0.5, -0.3, 0), nodeB: SCNVector3(0.1, -0.3, 0), color: grey)
-		cutLine2Left = SCNLine(nodeA: SCNVector3(-0.5, -0.1, 0), nodeB: SCNVector3(-0.1, -0.1, 0), color: grey)
-		cutLine2Right = SCNLine(nodeA: SCNVector3(0.5, -0.1, 0), nodeB: SCNVector3(0.1, -0.1, 0), color: grey)
-		cutLine3Left = SCNLine(nodeA: SCNVector3(-0.5, 0.1, 0), nodeB: SCNVector3(-0.1, 0.1, 0), color: grey)
-		cutLine3Right = SCNLine(nodeA: SCNVector3(0.5, 0.1, 0), nodeB: SCNVector3(0.1, 0.1, 0), color: grey)
-		cutLine4Left = SCNLine(nodeA: SCNVector3(-0.5, 0.3, 0), nodeB: SCNVector3(-0.1, 0.3, 0), color: grey)
-		cutLine4Right = SCNLine(nodeA: SCNVector3(0.5, 0.3, 0), nodeB: SCNVector3(0.1, 0.3, 0), color: grey)
+		cutLine1Left = SCNLine(positions: [SCNVector3(-0.5, -0.3, 0), SCNVector3(-0.1, -0.3, 0)], color: grey)
+		cutLine1Right = SCNLine(positions: [SCNVector3(0.5, -0.3, 0), SCNVector3(0.1, -0.3, 0)], color: grey)
+		cutLine2Left = SCNLine(positions: [SCNVector3(-0.5, -0.1, 0), SCNVector3(-0.1, -0.1, 0)], color: grey)
+		cutLine2Right = SCNLine(positions: [SCNVector3(0.5, -0.1, 0), SCNVector3(0.1, -0.1, 0)], color: grey)
+		cutLine3Left = SCNLine(positions: [SCNVector3(-0.5, 0.1, 0), SCNVector3(-0.1, 0.1, 0)], color: grey)
+		cutLine3Right = SCNLine(positions: [SCNVector3(0.5, 0.1, 0), SCNVector3(0.1, 0.1, 0)], color: grey)
+		cutLine4Left = SCNLine(positions: [SCNVector3(-0.5, 0.3, 0), SCNVector3(-0.1, 0.3, 0)], color: grey)
+		cutLine4Right = SCNLine(positions: [SCNVector3(0.5, 0.3, 0), SCNVector3(0.1, 0.3, 0)], color: grey)
 		
 		interface_flight.addChildNode(cutLine1Left)
 		interface_flight.addChildNode(cutLine1Right)
@@ -89,53 +89,53 @@ class PanelThruster : MainPanel
 		// Dock
 		
 		mainNode.addChildNode(interface_dock)
-		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, 0, 0), nodeB: SCNVector3(0, 0.1, 0), color: grey))
-		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(0.1, 0, 0), nodeB: SCNVector3(0, 0.1, 0), color: grey))
-		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, -0.1, 0), nodeB: SCNVector3(0, 0, 0), color: grey))
-		interface_dock.addChildNode(SCNLine(nodeA: SCNVector3(0.1, -0.1, 0), nodeB: SCNVector3(0, 0, 0), color: grey))
+		interface_dock.addChildNode(SCNLine(positions: [SCNVector3(-0.1, 0, 0), SCNVector3(0, 0.1, 0)], color: grey))
+		interface_dock.addChildNode(SCNLine(positions: [SCNVector3(0.1, 0, 0), SCNVector3(0, 0.1, 0)], color: grey))
+		interface_dock.addChildNode(SCNLine(positions: [SCNVector3(-0.1, -0.1, 0), SCNVector3(0, 0, 0)], color: grey))
+		interface_dock.addChildNode(SCNLine(positions: [SCNVector3(0.1, -0.1, 0), SCNVector3(0, 0, 0)], color: grey))
 		
 		// Warp
 		
 		mainNode.addChildNode(interface_warp)
 		var verticalOffset:CGFloat = 0.1
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(-0.4, verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0.4, verticalOffset, 0)], color: cyan))
 		verticalOffset = -0.1
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(-0.4, verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0.4, verticalOffset, 0)], color: cyan))
 		verticalOffset = 0.3
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(-0.4, verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0.4, verticalOffset, 0)], color: cyan))
 		verticalOffset = -0.3
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0, 0.1 + verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(-0.1, verticalOffset, 0), nodeB: SCNVector3(-0.4, verticalOffset, 0), color: cyan))
-		interface_warp.addChildNode(SCNLine(nodeA: SCNVector3(0.1, verticalOffset, 0), nodeB: SCNVector3(0.4, verticalOffset, 0), color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0, 0.1 + verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(-0.1, verticalOffset, 0), SCNVector3(-0.4, verticalOffset, 0)], color: cyan))
+		interface_warp.addChildNode(SCNLine(positions: [SCNVector3(0.1, verticalOffset, 0), SCNVector3(0.4, verticalOffset, 0)], color: cyan))
 		
 		// Etcs
 		
-		lineLeft = SCNLine(nodeA: SCNVector3(-0.5, 0.5, 0), nodeB: SCNVector3(-0.5, -0.5, 0), color: red)
+		lineLeft = SCNLine(positions: [SCNVector3(-0.5, 0.5, 0), SCNVector3(-0.5, -0.5, 0)], color: red)
 		mainNode.addChildNode(lineLeft)
-		lineRight = SCNLine(nodeA: SCNVector3(0.5, 0.5, 0), nodeB: SCNVector3(0.5, -0.5, 0), color: red)
+		lineRight = SCNLine(positions: [SCNVector3(0.5, 0.5, 0), SCNVector3(0.5, -0.5, 0)], color: red)
 		mainNode.addChildNode(lineRight)
 		
 		// Triggers
 		
 		accelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: 1)
 		accelerate.position = SCNVector3(0, 0.5, 0)
-		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: cyan))
-		accelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, 0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: cyan))
+		accelerate.addChildNode(SCNLine(positions: [SCNVector3(0, 0.2, 0), SCNVector3(0.5, 0, 0)], color: cyan))
+		accelerate.addChildNode(SCNLine(positions: [SCNVector3(0, 0.2, 0), SCNVector3(-0.5, 0, 0)], color: cyan))
 		
 		decelerate = SCNTrigger(host: self, size: CGSize(width: 1, height: 1), operation: 0)
 		decelerate.position = SCNVector3(0, -0.5, 0)
-		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(0.5, 0, 0), color: red))
-		decelerate.addChildNode(SCNLine(nodeA: SCNVector3(0, -0.2, 0), nodeB: SCNVector3(-0.5, 0, 0), color: red))
+		decelerate.addChildNode(SCNLine(positions: [SCNVector3(0, -0.2, 0), SCNVector3(0.5, 0, 0)], color: red))
+		decelerate.addChildNode(SCNLine(positions: [SCNVector3(0, -0.2, 0), SCNVector3(-0.5, 0, 0)], color: red))
 		
 		action = SCNTrigger(host: self, size: CGSize(width: 1.5, height: 1.5), operation: 2)
 		

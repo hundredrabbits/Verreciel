@@ -22,22 +22,22 @@ class SCNOcta : SCNNode
 	{
 		super.init()
 		
-		line1 = SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(-size,0,size), color: color)
+		line1 = SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(-size,0,size)], color: color)
 		self.addChildNode(line1)
-		line2 = SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(size,0,size), color: color)
+		line2 = SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(size,0,size)], color: color)
 		self.addChildNode(line2)
-		line3 = SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(-size,0,-size), color: color)
+		line3 = SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(-size,0,-size)], color: color)
 		self.addChildNode(line3)
-		line4 = SCNLine(nodeA: SCNVector3(0,size,0), nodeB: SCNVector3(size,0,-size), color: color)
+		line4 = SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(size,0,-size)], color: color)
 		self.addChildNode(line4)
 		
-		line5 = SCNLine(nodeA: SCNVector3(0,-size,0), nodeB: SCNVector3(-size,0,size), color: color)
+		line5 = SCNLine(positions: [SCNVector3(0,-size,0), SCNVector3(-size,0,size)], color: color)
 		self.addChildNode(line5)
-		line6 = SCNLine(nodeA: SCNVector3(0,-size,0), nodeB: SCNVector3(size,0,size), color: color)
+		line6 = SCNLine(positions: [SCNVector3(0,-size,0), SCNVector3(size,0,size)], color: color)
 		self.addChildNode(line6)
-		line7 = SCNLine(nodeA: SCNVector3(0,-size,0), nodeB: SCNVector3(-size,0,-size), color: color)
+		line7 = SCNLine(positions: [SCNVector3(0,-size,0), SCNVector3(-size,0,-size)], color: color)
 		self.addChildNode(line7)
-		line8 = SCNLine(nodeA: SCNVector3(0,-size,0), nodeB: SCNVector3(size,0,-size), color: color)
+		line8 = SCNLine(positions: [SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color)
 		self.addChildNode(line8)
 		
 		self.eulerAngles = eulerAngles

@@ -25,9 +25,9 @@ class SCNProgressBar : SCNNode
 	
 	func addGeometry()
 	{
-		progressLine = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(0,0,0), color: color)
+		progressLine = SCNLine(positions: [SCNVector3(0,0,0), SCNVector3(0,0,0)], color: color)
 		self.addChildNode(progressLine)
-		remainingLine = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(width,0,0), color: grey)
+		remainingLine = SCNLine(positions: [SCNVector3(0,0,0), SCNVector3(width,0,0)], color: grey)
 		self.addChildNode(remainingLine)
 	}
 	
@@ -35,8 +35,8 @@ class SCNProgressBar : SCNNode
 	{
 		let to = width * (percent/100)
 		
-		progressLine.geometry = SCNLine(nodeA: SCNVector3(0,0,0), nodeB: SCNVector3(to,0,0), color: color).geometry
-		remainingLine.geometry = SCNLine(nodeA: SCNVector3(to,0,0), nodeB: SCNVector3(width,0,0), color: grey).geometry
+		progressLine.geometry = SCNLine(positions: [SCNVector3(0,0,0), SCNVector3(to,0,0)], color: color).geometry
+		remainingLine.geometry = SCNLine(positions: [SCNVector3(to,0,0), SCNVector3(width,0,0)], color: grey).geometry
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -24,12 +24,12 @@ class SCNButton : SCNNode
 		super.init()
 		
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 0.5), operation: 2)
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,-0.25,0), nodeB: SCNVector3(width,-0.25,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,0.25,0), nodeB: SCNVector3(width,0.25,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,0.25,0), nodeB: SCNVector3(-width - 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(-width,-0.25,0), nodeB: SCNVector3(-width - 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(width,0.25,0), nodeB: SCNVector3(width + 0.25,0,0), color: red))
-		trigger.addChildNode(SCNLine(nodeA: SCNVector3(width,-0.25,0), nodeB: SCNVector3(width + 0.25,0,0), color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(-width,-0.25,0), SCNVector3(width,-0.25,0)], color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(-width,0.25,0), SCNVector3(width,0.25,0)], color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(-width,0.25,0), SCNVector3(-width - 0.25,0,0)], color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(-width,-0.25,0), SCNVector3(-width - 0.25,0,0)], color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(width,0.25,0), SCNVector3(width + 0.25,0,0)], color: red))
+		trigger.addChildNode(SCNLine(positions: [SCNVector3(width,-0.25,0), SCNVector3(width + 0.25,0,0)], color: red))
 		addChildNode(trigger)
 		
 		label = SCNLabel(text:self.text, align:.center)

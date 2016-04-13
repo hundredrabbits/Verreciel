@@ -42,7 +42,6 @@ var missions = MissionCollection()
 var items = ItemCollection()
 var locations = LocationCollection()
 var recipes = RecipesCollection()
-var icons = IconsCollection()
 
 var templates = Templates()
 var settings = Settings()

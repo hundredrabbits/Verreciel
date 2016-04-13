@@ -19,18 +19,18 @@ class PanelHatch : MainPanel
 		name = "hatch"
 		info = "[missing text]"
 		
-		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0, y: 0.7, z: 0),nodeB: SCNVector3(x: 0.7, y: 0, z: 0),color:grey))
-		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: 0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
-		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.7, z: 0),color:grey))
-		mainNode.addChildNode(SCNLine(nodeA: SCNVector3(x: -0.7, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.7, z: 0),color:grey))
+		mainNode.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0.7, z: 0),  SCNVector3(x: 0.7, y: 0, z: 0)],color:grey))
+		mainNode.addChildNode(SCNLine(positions: [SCNVector3(x: 0.7, y: 0, z: 0), SCNVector3(x: 0, y: -0.7, z: 0)],color:grey))
+		mainNode.addChildNode(SCNLine(positions: [SCNVector3(x: -0.7, y: 0, z: 0), SCNVector3(x: 0, y: 0.7, z: 0)],color:grey))
+		mainNode.addChildNode(SCNLine(positions: [SCNVector3(x: -0.7, y: 0, z: 0), SCNVector3(x: 0, y: -0.7, z: 0)],color:grey))
 		
-		let outline1 = SCNLine(nodeA: SCNVector3(x: 0, y: 0.5, z: 0), nodeB:SCNVector3(x: 0.5, y: 0, z: 0),color:red)
+		let outline1 = SCNLine(positions: [SCNVector3(x: 0, y: 0.5, z: 0), SCNVector3(x: 0.5, y: 0, z: 0)],color:red)
 		outline.addChildNode(outline1)
-		let outline2 = SCNLine(nodeA: SCNVector3(x: 0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
+		let outline2 = SCNLine(positions: [SCNVector3(x: 0.5, y: 0, z: 0), SCNVector3(x: 0, y: -0.5, z: 0)],color:red)
 		outline.addChildNode(outline2)
-		let outline3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: 0.5, z: 0),color:red)
+		let outline3 = SCNLine(positions: [SCNVector3(x: -0.5, y: 0, z: 0), SCNVector3(x: 0, y: 0.5, z: 0)],color:red)
 		outline.addChildNode(outline3)
-		let outline4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0, z: 0), nodeB:SCNVector3(x: 0, y: -0.5, z: 0),color:red)
+		let outline4 = SCNLine(positions: [SCNVector3(x: -0.5, y: 0, z: 0), SCNVector3(x: 0, y: -0.5, z: 0)],color:red)
 		outline.addChildNode(outline4)
 		
 		mainNode.addChildNode(outline)

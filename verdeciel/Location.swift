@@ -57,7 +57,7 @@ class Location : Event
 		label.position = SCNVector3(0,-0.3,-0.35)
 		self.addChildNode(label)
 		
-		wire = SCNLine()
+		wire = SCNLine(positions: [],color:white)
 		wire.position = SCNVector3(0,0,-0.01)
 		wire.opacity = 0
 		self.addChildNode(wire)
@@ -235,7 +235,7 @@ class Location : Event
 	func connect(event:Event)
 	{
 		connection = event
-		self.wire.draw(SCNVector3(0,0,0), nodeB: SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0), color: grey)
+		self.wire.draw([SCNVector3(0,0,0), SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0)], color: grey)
 	}
 
 	// MARK: Events -

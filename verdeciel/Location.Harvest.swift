@@ -119,12 +119,12 @@ class IconHarvest : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:-size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:0,y:size,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:0,y:-size,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 		
-		addChildNode(SCNLine(nodeA: SCNVector3(x:size,y:0,z:0),nodeB: SCNVector3(x:-size,y:0,z:0),color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -150,9 +150,9 @@ class StructureHarvest : Structure
 		while i < nodes {
 			let node = SCNNode()
 			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
-			node.addChildNode(SCNLine(nodeA: SCNVector3(0,0,value1), nodeB: SCNVector3(0,5,value1), color: color))
-			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(0.5,5.5,value1), color: color))
-			node.addChildNode(SCNLine(nodeA: SCNVector3(0,5,value1), nodeB: SCNVector3(-0.5,5.5,value1), color: color))
+			node.addChildNode(SCNLine(positions: [SCNVector3(0,0,value1), SCNVector3(0,5,value1)], color: color))
+			node.addChildNode(SCNLine(positions: [SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1)], color: color))
+			node.addChildNode(SCNLine(positions: [SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
 			root.addChildNode(node)
 			i += 1
 		}

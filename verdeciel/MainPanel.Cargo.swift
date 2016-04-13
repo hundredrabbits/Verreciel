@@ -29,12 +29,12 @@ class PanelCargo : MainPanel
 
 		// Quantity
 		
-		line1 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.5, z: 0),color:grey)
-		line2 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.3, z: 0),color:grey)
-		line3 = SCNLine(nodeA: SCNVector3(x: -0.5, y: -0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: -0.1, z: 0),color:grey)
-		line4 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.1, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.1, z: 0),color:grey)
-		line5 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.3, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.3, z: 0),color:grey)
-		line6 = SCNLine(nodeA: SCNVector3(x: -0.5, y: 0.5, z: 0),nodeB: SCNVector3(x: 0.5, y: 0.5, z: 0),color:grey)
+		line1 = SCNLine(positions: [SCNVector3(x: -0.5, y: -0.5, z: 0),  SCNVector3(x: 0.5, y: -0.5, z: 0)],color:grey)
+		line2 = SCNLine(positions: [SCNVector3(x: -0.5, y: -0.3, z: 0),  SCNVector3(x: 0.5, y: -0.3, z: 0)],color:grey)
+		line3 = SCNLine(positions: [SCNVector3(x: -0.5, y: -0.1, z: 0),  SCNVector3(x: 0.5, y: -0.1, z: 0)],color:grey)
+		line4 = SCNLine(positions: [SCNVector3(x: -0.5, y: 0.1, z: 0),  SCNVector3(x: 0.5, y: 0.1, z: 0)],color:grey)
+		line5 = SCNLine(positions: [SCNVector3(x: -0.5, y: 0.3, z: 0),  SCNVector3(x: 0.5, y: 0.3, z: 0)],color:grey)
+		line6 = SCNLine(positions: [SCNVector3(x: -0.5, y: 0.5, z: 0),  SCNVector3(x: 0.5, y: 0.5, z: 0)],color:grey)
 		
 		mainNode.addChildNode(line1)
 		mainNode.addChildNode(line2)

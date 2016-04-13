@@ -8,25 +8,25 @@ import Foundation
 
 class SCNLine : SCNNode
 {
-	var nodeA:SCNVector3! = nil
+	var positions:Array<SCNVector3>!
 	var nodeB:SCNVector3! = nil
 	var color:UIColor! = nil
 	
-	init(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3(), color:UIColor = white)
+	init(positions:Array<SCNVector3>, color:UIColor = white)
 	{
-		self.nodeA = nodeA
-		self.nodeB = nodeB
+		self.positions = positions
 		self.color = color
 		
 		super.init()
 		
-		draw(self.nodeA, nodeB: self.nodeB, color: self.color)
+		draw(positions, color: self.color)
 	}
 	
-	func draw(nodeA: SCNVector3, nodeB: SCNVector3, color:UIColor)
+	func draw(positions:Array<SCNVector3>, color:UIColor)
 	{
-		let positions: [Float32] = [nodeA.x, nodeA.y, nodeA.z, nodeB.x, nodeB.y, nodeB.z]
-		let positionData = NSData(bytes: positions, length: sizeof(Float32)*positions.count)
+		if positions.count < 2 { return }
+		var positionsList: [Float32] = [positions[0].x,positions[0].y,positions[0].z,positions[1].x,positions[1].y,positions[1].z,]
+		let positionData = NSData(bytes: positionsList, length: sizeof(Float32)*positionsList.count)
 		let indices: [Int32] = [0, 1]
 		let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
 		let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)
@@ -41,7 +41,7 @@ class SCNLine : SCNNode
 	func updateHeight(height:Float)
 	{
 		self.nodeB = SCNVector3(nodeB.x,height,nodeB.z)
-		draw(nodeA, nodeB: nodeB, color: color)
+		draw(positions, color: color)
 	}
 	
 	func reset()
@@ -54,19 +54,14 @@ class SCNLine : SCNNode
 	{
 		if color == self.color { return }
 		self.color = color
-		draw(nodeA, nodeB: nodeB, color: color)
+		draw(positions, color: color)
 	}
 	
 	func update(color:UIColor)
 	{
 		if color == self.color { return }
 		self.color = color
-		draw(nodeA, nodeB: nodeB, color: color)
-	}
-	
-	func setGrowth(percent:Float)
-	{
-		draw(SCNVector3(nodeA.x,nodeA.y,nodeA.z), nodeB: SCNVector3(nodeB.x * percent,nodeB.y * percent,nodeB.z * percent), color: color)
+		draw(positions, color: color)
 	}
 	
 	required init(coder aDecoder: NSCoder)
