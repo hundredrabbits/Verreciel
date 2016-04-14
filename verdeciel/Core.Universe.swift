@@ -28,8 +28,6 @@ class CoreUniverse : SCNNode
 	{
 		super.whenStart()
 		
-		unlock(.loiqe)
-		
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.record1)
 		valen_bank.port3.addEvent(Item(like:items.waste))
@@ -196,17 +194,7 @@ class CoreUniverse : SCNNode
 		usul_silence.connect(usul_station)
 		usul_station.connect(usul_portal)
 	}
-	
-	func unlock(system:Systems)
-	{
-		print("! SYSTEM(Unlock) \(system)")
-		for location in self.childNodes as! [Location] {
-			if location.system != system { continue }
-			print("  > \(location.name!)")
-			location.isAccessible = true
-		}
-	}
-	
+
 	func locationLike(target:Location) -> Location!
 	{
 		for location in childNodes as! [Location] {

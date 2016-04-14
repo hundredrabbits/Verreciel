@@ -9,15 +9,9 @@ import Foundation
 
 class LocationConstellation : Location
 {
-	override init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0))
+	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0))
 	{
-		super.init(name:name, system:system, at:at)
-		
-		self.note = ""
-		self.structure = ConstellationTunnel(host:self)
-		icon = IconConstellation()
-		
-		label.opacity = 0
+		super.init(name:name, system:system, at:at, icon:IconConstellation(), structure:Structure())		
 	}
 	
 	override func onApproach()
@@ -53,9 +47,9 @@ class IconConstellation : Icon
 
 class ConstellationTunnel : Structure
 {
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		let hex1 = SCNHexa(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,2)

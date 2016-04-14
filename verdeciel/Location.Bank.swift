@@ -18,13 +18,9 @@ class LocationBank : Location
 	var port6:SCNPort!
 	var port6Label:SCNLabel!
 	
-	override init(name:String = "", system:Systems, at: CGPoint = CGPoint())
+	init(name:String = "", system:Systems, at: CGPoint = CGPoint())
 	{
-		super.init(name: name,system:system, at:at)
-	
-		self.note = ""
-		structure = Structure(host:self)
-		icon = IconBank()
+		super.init(name: name,system:system, at:at, icon:IconBank(), structure:StructureBank())
 		
 		port1 = SCNPortSlot(host: self)
 		port2 = SCNPortSlot(host: self)
@@ -139,6 +135,8 @@ class IconBank : Icon
 	{
 		super.init()
 		
+		color = white
+		
 		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
 		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
@@ -154,9 +152,9 @@ class IconBank : Icon
 
 class StructureBank : Structure
 {
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		var i = 0
 		while i < 14 {

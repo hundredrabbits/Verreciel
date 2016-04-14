@@ -9,13 +9,10 @@ class LocationBeacon : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String, mapRequirement:Item! = nil)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, icon:IconBeacon(), structure:Structure())
 		
 		self.mapRequirement = mapRequirement
-		self.note = ""
 		self.message = message
-		structure = Structure(host:self)
-		icon = IconBeacon()
 	}
 	
 	override func panel() -> Panel!

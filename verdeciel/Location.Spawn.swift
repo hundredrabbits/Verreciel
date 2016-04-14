@@ -5,13 +5,9 @@ import Foundation
 
 class LocationSpawn : Location
 {
-	override init(name:String = "",system:Systems,at: CGPoint = CGPoint())
+	init(name:String = "",system:Systems,at: CGPoint = CGPoint())
 	{
-		super.init(name: name,system:system, at: at)
-		
-		self.note = ""
-		structure = Structure(host:self)
-		icon = IconSpawn()
+		super.init(name: name,system:system, at: at, icon:IconSpawn(), structure:Structure())
 	}
 
 	override func panel() -> Panel!

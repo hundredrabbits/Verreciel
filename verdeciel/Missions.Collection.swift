@@ -64,7 +64,7 @@ class MissionCollection
 		m = Mission(id:(story.count), name: "Portal Lesson")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { universe.unlock(.valen) }),
+			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]
@@ -192,7 +192,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Last Quest")
 		m.quests = [
-			Quest(name:"Unlock portal", location: universe.nevic, predicate:{ universe.nevic.isKnown == true }, result: { universe.unlock(.valen) })
+			Quest(name:"Unlock portal", location: universe.nevic, predicate:{ universe.nevic.isKnown == true }, result: { })
 		]
 		story.append(m)
 	}

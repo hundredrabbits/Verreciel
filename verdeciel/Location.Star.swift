@@ -8,16 +8,11 @@ class LocationStar : Location
 	var button:SCNButton!
 	var masterPort:SCNPort!
 	
-	init(name:String, system:Systems, at: CGPoint = CGPoint(), color:UIColor = red)
+	init(name:String, system:Systems, at: CGPoint = CGPoint())
 	{
-		super.init(name:name,system:system, at:at)
-		
-		self.note = ""
-		self.color = color
-		structure = StructureStar(host: self)
+		super.init(name:name,system:system, at:at, icon:IconStar(), structure:StructureBank())
+				
 		self.isComplete = false
-		icon = IconStar()
-		label.update(name)
 		
 		masterPort = SCNPort(host: self)
 	}
@@ -72,12 +67,6 @@ class LocationStar : Location
 		else{
 			space.startInstance(self)
 		}
-	}
-	
-	override func complete()
-	{
-		super.complete()
-		structure.onComplete()
 	}
 	
 	override func touch(id: Int)
@@ -142,9 +131,9 @@ class IconStar : Icon
 
 class StructureStar : Structure
 {
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		var value1:Float = 2.75
 		

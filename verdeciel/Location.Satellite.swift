@@ -10,15 +10,11 @@ class LocationSatellite : Location
 
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, mapRequirement:Item! = nil)
 	{
-		super.init(name:name, system:system, at:at)
+		super.init(name:name, system:system, at:at, icon:IconSatellite(), structure:StructureSatellite())
 		
-		self.note = ""
-		self.structure = StructureSatellite(host: self)
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		self.message = message
-		
-		icon = IconSatellite()
 		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.4,0)
@@ -51,20 +47,12 @@ class LocationSatellite : Location
 	
 	override func update()
 	{
-		if port.event == nil { self.complete() }
-		updateIcon()
-	}
-	
-	override func complete()
-	{
-		super.complete()
-		structure.onComplete()
-		intercom.complete()
+		if port.event == nil { self.onComplete() }
 	}
 	
 	override func onUploadComplete()
 	{
-		self.complete()
+		self.onComplete()
 	}
 	
 	override func details() -> String
@@ -105,9 +93,9 @@ class StructureSatellite : Structure
 {
 	let nodes:Int = Int(arc4random_uniform(2)) + 3
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,5,0)
 		

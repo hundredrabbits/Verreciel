@@ -10,12 +10,9 @@ class LocationHarvest : Location
 	
 	init(name:String = "",system:Systems,at:CGPoint = CGPoint(x: 0,y: 0), grows:Item, mapRequirement:Item! = nil)
 	{
-		super.init(name:name, system:system, at:at)
+		super.init(name:name, system:system, at:at, icon:IconHarvest(), structure:StructureHarvest())
 		
 		self.mapRequirement = mapRequirement
-		self.note = ""
-		structure = StructureHarvest(host:self)
-		icon = IconHarvest()
 		
 		self.grows = grows
 		
@@ -137,9 +134,9 @@ class StructureHarvest : Structure
 {
 	let nodes:Int = 45
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,5,0)
 		

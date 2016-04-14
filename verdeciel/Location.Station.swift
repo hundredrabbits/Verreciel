@@ -17,12 +17,9 @@ class LocationStation : Location
 		self.requirement = requirement
 		self.installationName = installationName
 		
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, icon:IconStation(), structure:StructureStation())
 		
 		self.mapRequirement = mapRequirement
-		self.note = ""
-		structure = StructureStation(host: self)
-		icon = IconStation()
 		self.isComplete = false
 	}
 	
@@ -66,15 +63,7 @@ class LocationStation : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { self.installation() ; self.complete()  }
-	}
-	
-	override func complete()
-	{
-		super.complete()
-		
-		structure.onComplete()
-		intercom.complete()
+		if id == 1 { self.installation() ; self.onComplete() }
 	}
 	
 	override func details() -> String
@@ -114,9 +103,9 @@ class StructureStation : Structure
 {
 	let nodes:Int = 4 + Int(arc4random_uniform(4))
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,5,0)
 		

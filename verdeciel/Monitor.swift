@@ -10,7 +10,6 @@ class Monitor : Panel
 {
 	let label = SCNLabel(text: "", scale: 0.08, align: alignment.center)
 	let details = SCNLabel(text: "", scale: 0.04, align: alignment.center, color: grey)
-	let interface = SCNNode()
 	
 	override init()
 	{

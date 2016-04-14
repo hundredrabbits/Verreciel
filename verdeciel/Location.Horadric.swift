@@ -12,12 +12,9 @@ class LocationHoradric : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at)
+		super.init(name: name,system:system, at: at, icon:IconHoradric(), structure:StructureHoradric())
 		
 		self.mapRequirement = mapRequirement
-		
-		structure = StructureHoradric(host:self)
-		icon = IconHoradric()
 	}
 	
 	override func panel() -> Panel!
@@ -209,9 +206,9 @@ class StructureHoradric : Structure
 	let nodes:Int = Int(arc4random_uniform(10)) + 4
 	let radius:CGFloat = 5
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,0,0)
 		

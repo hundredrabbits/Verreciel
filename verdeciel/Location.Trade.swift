@@ -10,14 +10,10 @@ class LocationTrade : Location
 	
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, mapRequirement:Item! = nil)
 	{
-		super.init(name: name,system:system, at: at)
-		
-		self.note = ""
-		structure = StructureTrade(host: self)
+		super.init(name: name,system:system, at: at, icon:IconTrade(), structure:StructureTrade())
+
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
-		
-		icon = IconTrade()
 		
 		wantPort = SCNPortSlot(host: self)
 		wantPort.addRequirement(want)
@@ -103,17 +99,8 @@ class LocationTrade : Location
 		}
 		
 		if givePort.event == nil {
-			self.complete()
+			self.onComplete()
 		}
-		
-		updateIcon()
-	}
-	
-	override func complete()
-	{
-		super.complete()
-		structure.onComplete()
-		intercom.complete()
 	}
 
 	override func details() -> String
@@ -154,9 +141,9 @@ class StructureTrade : Structure
 {
 	let nodes:Int = 24
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,5,0)
 		

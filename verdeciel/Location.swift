@@ -16,7 +16,6 @@ class Location : Event
 	var inDiscovery:Bool = false
 	var inSight:Bool = false
 	
-	var isAccessible:Bool = false
 	var mapRequirement:Item!
 	
 	var isTargetted:Bool = false
@@ -25,42 +24,30 @@ class Location : Event
 	var isSelected:Bool = false
 	var isComplete:Bool! = nil
 	
-	var interface = SCNNode()
-	
-	// Radar
-	var icon = SCNNode()
-	var label = SCNLabel()
-	var trigger = SCNNode()
-	var wire:SCNLine!
-	var connection:Event!
-	
 	var structure:Structure!
+	var icon:Icon!
+	var connection:Location!
 	
 	var storage:Array<SCNPort> = []
 	var isPortEnabled:Bool = false
 	
-	init(name:String = "",system:Systems = .unknown, at: CGPoint)
+	init(name:String = "",system:Systems = .unknown, at: CGPoint, icon:Icon, structure:Structure)
 	{
 		super.init(name:name, at:at)
 		
 		self.name = name
 		self.at = at
 		self.system = system
+		self.icon = icon
+		self.structure = structure
 		
 		geometry = SCNPlane(width: 0.5, height: 0.5)
 		geometry?.firstMaterial?.diffuse.contents = clear
-		
-		addChildNode(trigger)
+	
 		addChildNode(icon)
 		
-		label = SCNLabel(text: "", scale: 0.06, align: alignment.center, color: grey)
-		label.position = SCNVector3(0,-0.3,-0.35)
-		self.addChildNode(label)
-		
-		wire = SCNLine(positions: [],color:white)
-		wire.position = SCNVector3(0,0,-0.01)
-		wire.opacity = 0
-		self.addChildNode(wire)
+		structure.addHost(self)
+		icon.addHost(self)
 	}
 	
 	// MARK: System -
@@ -74,7 +61,7 @@ class Location : Event
 		angle = calculateAngle()
 		align = calculateAlignment()
 		
-		if mapRequirement != nil { label.update(cyan) }
+		icon.onUpdate()
 	}
 	
 	func setup()
@@ -111,22 +98,13 @@ class Location : Event
 		clean()
 	}
 	
-	func updateIcon()
-	{
-		if isSeen == false			{ icon.updateChildrenColors(grey) }
-		else if isComplete == nil	{ icon.updateChildrenColors(white) }
-		else if isComplete == true	{ icon.updateChildrenColors(cyan)  }
-		else						{ icon.updateChildrenColors(red)  }
-	}
-	
 	func onSight()
 	{
 		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
 		update()
-		updateIcon()
-		label.update(name!)
 		structure.onSight()
+		icon.onUpdate()
 	}
 	
 	func onApproach()
@@ -135,6 +113,7 @@ class Location : Event
 		space.startInstance(self)
 		capsule.dock(self)
 		update()
+		
 	}
 	
 	func onCollision()
@@ -149,6 +128,7 @@ class Location : Event
 		isKnown = true
 		update()
 		structure.onDock()
+		icon.onUpdate()
 	}
 	
 	func onUndock()
@@ -171,15 +151,13 @@ class Location : Event
 		}
 	}
 	
-	func complete()
+	func onComplete()
 	{
 		self.isComplete = true
 		progress.refresh()
-	}
-	
-	func onComplete()
-	{
-		updateIcon()
+		icon.onUpdate()
+		structure.onComplete()
+		intercom.complete()
 	}
 	
 	func sightUpdate()
@@ -224,25 +202,24 @@ class Location : Event
 		// Connections
 		if connection != nil {
 			if connection.opacity == 1 {
-				wire.opacity = 1
+				icon.wire.opacity = 1
 			}
 			else{
-				wire.opacity = 0
+				icon.wire.opacity = 0
 			}
 		}
 	}
 	
-	func connect(event:Event)
+	func connect(location:Location)
 	{
-		connection = event
-		self.wire.draw([SCNVector3(0,0,0), SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0)], color: grey)
+		connection = location
+		icon.wire.draw([SCNVector3(0,0,0), SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0)], color: grey)
 	}
 
 	// MARK: Events -
 	
 	override func touch(id:Int)
 	{
-		if isAccessible == false { print("Unaccessible") ; return }
 		if isSeen == false { print("Unseen..") ; return }
 		
 		if radar.port.event == nil {

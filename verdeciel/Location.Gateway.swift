@@ -18,13 +18,9 @@ class LocationGateway : Location
 	
 	init(name:String, system:Systems, at: CGPoint, key: Event, mapRequirement:Item! = nil)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, icon:IconGateway(), structure:Structure())
 		
-		self.note = ""
-		self.color = color
-		structure = Structure(host: self)
 		self.mapRequirement = mapRequirement
-		icon = IconGateway()
 		
 		self.key = key
 		

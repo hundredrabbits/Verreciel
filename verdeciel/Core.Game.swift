@@ -36,12 +36,7 @@ class CoreGame
 	}
 	
 	func unlockedState(location:Location = universe.senni_station, newItems:Array<Item> = [])
-	{
-		universe.unlock(.loiqe)
-		universe.unlock(.valen)
-		universe.unlock(.senni)
-		universe.unlock(.usul)
-		
+	{		
 		pilot.install()
 		radar.install()
 		cargo.install()

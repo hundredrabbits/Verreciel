@@ -12,9 +12,9 @@ class LocationPortal : Location
 	var thrusterPort:SCNPort!
 	var thrusterLabel:SCNLabel!
 
-	override init(name:String, system:Systems, at: CGPoint)
+	init(name:String, system:Systems, at: CGPoint)
 	{
-		super.init(name:name,system:system, at:at)
+		super.init(name:name,system:system, at:at, icon:IconPortal(), structure:StructurePortal())
 		
 		keyLabel = SCNLabel(text: "input key", scale: 0.1, align: .center, color: white)
 		destinationLabel = SCNLabel(text: "--", scale: 0.08, align: .center, color: grey)
@@ -22,12 +22,6 @@ class LocationPortal : Location
 		pilotLabel = SCNLabel(text: "pilot", scale: 0.1, align: .center, color: grey)
 		thrusterPort = SCNPort(host: self)
 		thrusterLabel = SCNLabel(text: "thruster", scale: 0.08, align: .center, color: grey)
-		
-		self.note = ""
-		self.color = color
-		
-		structure = Structure(host: self)
-		icon = IconPortal()
 	}
 	
 	// MARK: Panel - 
@@ -126,6 +120,8 @@ class IconPortal : Icon
 	{
 		super.init()
 		
+		color = white
+		
 		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
 		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
@@ -152,9 +148,9 @@ class StructurePortal : Structure
 {
 	let nodes:Int = 52
 	
-	override init(host:Location)
+	override init()
 	{
-		super.init(host: host)
+		super.init()
 		
 		root.position = SCNVector3(0,5,0)
 		

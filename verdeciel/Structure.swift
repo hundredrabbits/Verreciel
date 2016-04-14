@@ -9,15 +9,18 @@ import Foundation
 class Structure : SCNNode
 {
 	let root = SCNNode()
-	var host:Location! = nil
+	var host:Location!
 	
-	init(host:Location)
+	override init()
 	{
 		super.init()
 		
-		self.host = host
-		
 		addChildNode(root)
+	}
+	
+	func addHost(host:Location)
+	{
+		self.host = host
 	}
 	
 	override func whenRenderer()
