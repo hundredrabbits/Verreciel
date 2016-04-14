@@ -135,13 +135,7 @@ class IconBank : Icon
 	{
 		super.init()
 		
-		color = white
-		
-		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
-		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
-		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
-		addChildNode(SCNLine(positions: [SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
-		addChildNode(SCNLine(positions: [SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

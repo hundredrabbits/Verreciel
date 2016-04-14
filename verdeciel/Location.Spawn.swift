@@ -29,8 +29,7 @@ class IconSpawn : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(positions: [SCNVector3(x:-size/2,y:size/2,z:0),  SCNVector3(x:size/2,y:size/2,z:0)],color: color))
-		addChildNode(SCNLine(positions: [SCNVector3(x:-size/2,y:-size/2,z:0),  SCNVector3(x:size/2,y:-size/2,z:0)],color: color))
+		addChildNode(SCNLine(positions: [SCNVector3(x:-size/2,y:size/2,z:0),  SCNVector3(x:size/2,y:size/2,z:0), SCNVector3(x:-size/2,y:-size/2,z:0),  SCNVector3(x:size/2,y:-size/2,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
