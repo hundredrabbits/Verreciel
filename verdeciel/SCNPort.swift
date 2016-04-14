@@ -26,7 +26,7 @@ class SCNPort : SCNNode
 	var sprite_output:SCNLine!
 	var sprite_input:SCNLine!
 	
-	init(host:SCNNode = SCNNode())
+	init(host:SCNNode)
 	{
 		super.init()
 	
@@ -77,7 +77,7 @@ class SCNPort : SCNNode
 		
 		// Input
 		if isEnabled == false {
-			sprite_input.update(cyan)
+			sprite_input.update(clear)
 		}
 		else if origin == nil {
 			sprite_input.update(grey)

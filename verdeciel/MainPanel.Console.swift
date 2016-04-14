@@ -118,20 +118,20 @@ class PanelConsole : MainPanel
 		}
 		
 		if port.origin.host == cargo {
-			addLine(SCNCommand(text: "\(port.origin.host.name!)", color: grey, head:true))
-			for item in event.content {
-				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
-			}
-		}
+					}
 	}
 	*/
 	override func onConnect()
 	{
 		super.onConnect()
 		
-		if port.origin.host == cargo { return }
-		
-		if port.origin.event != nil {
+		if port.isReceivingFromPanel(cargo) == true {
+			addLine(SCNCommand(text: "\(port.origin.host.name!)", color: grey, head:true))
+			for item in cargo.port.event.content {
+				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
+			}
+		}
+		else if port.origin.event != nil {
 			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
 			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
 		}

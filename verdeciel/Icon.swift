@@ -15,6 +15,7 @@ class Icon : SCNNode
 	
 	var label = SCNLabel()
 	var trigger = SCNNode()
+	var mesh = SCNNode()
 	var wire:SCNLine!
 	
 	override init()
@@ -30,6 +31,7 @@ class Icon : SCNNode
 		wire.opacity = 0
 		self.addChildNode(wire)
 		
+		addChildNode(mesh)
 		addChildNode(label)
 		addChildNode(trigger)
 		addChildNode(wire)
@@ -54,7 +56,7 @@ class Icon : SCNNode
 		else if host.isComplete == false { color = red }
 		else if host.isComplete == true { color = cyan }
 		
-		updateChildrenColors(color)
+		mesh.updateChildrenColors(color)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

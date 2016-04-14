@@ -151,6 +151,13 @@ class PanelCargo : MainPanel
 		refresh()
 	}
 	
+	override func onConnect()
+	{
+		if port.isReceivingEventOfTypeItem() == false { print("ERROR") ; return }
+		
+		upload(port.event)
+	}
+	
 	// MARK: Upload -
 	
 	var upload:Event!

@@ -125,7 +125,7 @@ class IconTrade : Icon
 	{
 		super.init()
 		
-		addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -151,10 +151,7 @@ class StructureTrade : Structure
 			
 			let node = SCNNode()
 			
-			node.addChildNode(SCNLine(positions: [SCNVector3(-value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i),value2)], color: red))
-			node.addChildNode(SCNLine(positions: [SCNVector3(0,value1 * Float(i),value2), SCNVector3(value2,value1 * Float(i),0)], color: red))
-			node.addChildNode(SCNLine(positions: [SCNVector3(value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i) + 2,-value2)], color: red))
-			node.addChildNode(SCNLine(positions: [SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(-value2,value1 * Float(i),0)], color: red))
+			node.addChildNode(SCNLine(positions: [SCNVector3(-value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i),value2), SCNVector3(0,value1 * Float(i),value2), SCNVector3(value2,value1 * Float(i),0), SCNVector3(value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(-value2,value1 * Float(i),0)], color: red))
 			
 			root.addChildNode(node)
 			i += 1

@@ -20,14 +20,10 @@ class PanelThruster : MainPanel
 	var line3:SCNLine!
 	var line4:SCNLine!
 	
-	var cutLine1Left:SCNLine!
-	var cutLine1Right:SCNLine!
-	var cutLine2Left:SCNLine!
-	var cutLine2Right:SCNLine!
-	var cutLine3Left:SCNLine!
-	var cutLine3Right:SCNLine!
-	var cutLine4Left:SCNLine!
-	var cutLine4Right:SCNLine!
+	var cutLine1:SCNLine!
+	var cutLine2:SCNLine!
+	var cutLine3:SCNLine!
+	var cutLine4:SCNLine!
 	
 	// Docking
 	var interface_dock = SCNNode()
@@ -68,23 +64,15 @@ class PanelThruster : MainPanel
 		interface_flight.addChildNode(line3)
 		interface_flight.addChildNode(line4)
 		
-		cutLine1Left = SCNLine(positions: [SCNVector3(-0.5, -0.3, 0), SCNVector3(-0.1, -0.3, 0)], color: grey)
-		cutLine1Right = SCNLine(positions: [SCNVector3(0.5, -0.3, 0), SCNVector3(0.1, -0.3, 0)], color: grey)
-		cutLine2Left = SCNLine(positions: [SCNVector3(-0.5, -0.1, 0), SCNVector3(-0.1, -0.1, 0)], color: grey)
-		cutLine2Right = SCNLine(positions: [SCNVector3(0.5, -0.1, 0), SCNVector3(0.1, -0.1, 0)], color: grey)
-		cutLine3Left = SCNLine(positions: [SCNVector3(-0.5, 0.1, 0), SCNVector3(-0.1, 0.1, 0)], color: grey)
-		cutLine3Right = SCNLine(positions: [SCNVector3(0.5, 0.1, 0), SCNVector3(0.1, 0.1, 0)], color: grey)
-		cutLine4Left = SCNLine(positions: [SCNVector3(-0.5, 0.3, 0), SCNVector3(-0.1, 0.3, 0)], color: grey)
-		cutLine4Right = SCNLine(positions: [SCNVector3(0.5, 0.3, 0), SCNVector3(0.1, 0.3, 0)], color: grey)
+		cutLine1 = SCNLine(positions: [SCNVector3(-0.5, -0.3, 0), SCNVector3(-0.1, -0.3, 0), SCNVector3(0.5, -0.3, 0), SCNVector3(0.1, -0.3, 0)], color: grey)
+		cutLine2 = SCNLine(positions: [SCNVector3(-0.5, -0.1, 0), SCNVector3(-0.1, -0.1, 0), SCNVector3(0.5, -0.1, 0), SCNVector3(0.1, -0.1, 0)], color: grey)
+		cutLine3 = SCNLine(positions: [SCNVector3(-0.5, 0.1, 0), SCNVector3(-0.1, 0.1, 0), SCNVector3(0.5, 0.1, 0), SCNVector3(0.1, 0.1, 0)], color: grey)
+		cutLine4 = SCNLine(positions: [SCNVector3(-0.5, 0.3, 0), SCNVector3(-0.1, 0.3, 0),SCNVector3(0.5, 0.3, 0), SCNVector3(0.1, 0.3, 0)], color: grey)
 		
-		interface_flight.addChildNode(cutLine1Left)
-		interface_flight.addChildNode(cutLine1Right)
-		interface_flight.addChildNode(cutLine2Left)
-		interface_flight.addChildNode(cutLine2Right)
-		interface_flight.addChildNode(cutLine3Left)
-		interface_flight.addChildNode(cutLine3Right)
-		interface_flight.addChildNode(cutLine4Left)
-		interface_flight.addChildNode(cutLine4Right)
+		interface_flight.addChildNode(cutLine1)
+		interface_flight.addChildNode(cutLine2)
+		interface_flight.addChildNode(cutLine3)
+		interface_flight.addChildNode(cutLine4)
 		
 		// Dock
 		
@@ -174,10 +162,10 @@ class PanelThruster : MainPanel
 			maxSpeed = 3
 		}
 		
-		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0 } else { line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1 }
-		if maxSpeed > 1 { line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0 } else { line2.opacity = 0 ; cutLine2Left.opacity = 1 ; cutLine2Right.opacity = 1 }
-		if maxSpeed > 2 { line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0 } else { line3.opacity = 0 ; cutLine3Left.opacity = 1 ; cutLine3Right.opacity = 1 }
-		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0 } else { line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1 }
+		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1.opacity = 0 } else { line1.opacity = 0 ; cutLine1.opacity = 1 }
+		if maxSpeed > 1 { line2.opacity = 1 ; cutLine2.opacity = 0 } else { line2.opacity = 0 ; cutLine2.opacity = 1 }
+		if maxSpeed > 2 { line3.opacity = 1 ; cutLine3.opacity = 0 } else { line3.opacity = 0 ; cutLine3.opacity = 1 }
+		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4.opacity = 0 } else { line4.opacity = 0 ; cutLine4.opacity = 1 }
 	}
 	
 	override func whenRenderer()
@@ -289,10 +277,10 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(clear)
 		decelerate.updateChildrenColors(clear)
 		
-		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
-		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
-		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
-		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+		line1.opacity = 1 ; cutLine1.opacity = 0
+		line2.opacity = 1 ; cutLine2.opacity = 0
+		line3.opacity = 1 ; cutLine3.opacity = 0
+		line4.opacity = 1 ; cutLine4.opacity = 0
 		
 		line1.blink()
 		line2.blink()
@@ -357,10 +345,10 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(red)
 		decelerate.updateChildrenColors(red)
 		
-		line1.opacity = 1 ; cutLine1Left.opacity = 0 ; cutLine1Right.opacity = 0
-		line2.opacity = 1 ; cutLine2Left.opacity = 0 ; cutLine2Right.opacity = 0
-		line3.opacity = 1 ; cutLine3Left.opacity = 0 ; cutLine3Right.opacity = 0
-		line4.opacity = 1 ; cutLine4Left.opacity = 0 ; cutLine4Right.opacity = 0
+		line1.opacity = 1 ; cutLine1.opacity = 0 
+		line2.opacity = 1 ; cutLine2.opacity = 0 
+		line3.opacity = 1 ; cutLine3.opacity = 0 
+		line4.opacity = 1 ; cutLine4.opacity = 0
 		
 		lineLeft.color(red)
 		lineRight.color(red)
@@ -381,10 +369,10 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(grey)
 		decelerate.updateChildrenColors(grey)
 		
-		line1.opacity = 0 ; cutLine1Left.opacity = 1 ; cutLine1Right.opacity = 1
-		line2.opacity = 0 ; cutLine2Left.opacity = 1 ; cutLine2Right.opacity = 1
-		line3.opacity = 0 ; cutLine3Left.opacity = 1 ; cutLine3Right.opacity = 1
-		line4.opacity = 0 ; cutLine4Left.opacity = 1 ; cutLine4Right.opacity = 1
+		line1.opacity = 0 ; cutLine1.opacity = 1
+		line2.opacity = 0 ; cutLine2.opacity = 1
+		line3.opacity = 0 ; cutLine3.opacity = 1
+		line4.opacity = 0 ; cutLine4.opacity = 1
 	}
 	
 	func modeDocking()

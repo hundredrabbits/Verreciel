@@ -116,7 +116,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-//		glLineWidth(1) TODO:
+		glLineWidth(1)
 		
 		capsule.whenRenderer()
 		player.whenRenderer()
