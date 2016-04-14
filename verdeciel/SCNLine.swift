@@ -35,7 +35,7 @@ class SCNLine : SCNNode
 		if vertices.count == 3 { print(positionsList) }
 		
 		let positionData = NSData(bytes: positionsList, length: sizeof(Float32)*positionsList.count)
-		let indices: [Int32] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+		let indices: [Int32] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 		let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
 		let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)
 		let element = SCNGeometryElement(data: indexData, primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indices.count, bytesPerIndex: sizeof(Int32))

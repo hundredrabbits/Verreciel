@@ -12,8 +12,6 @@
 		03DDE18719CE497F008029A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18519CE497F008029A8 /* Main.storyboard */; };
 		03DDE18919CE497F008029A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18819CE497F008029A8 /* Images.xcassets */; };
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
-		570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599451B909E8E000F3E31 /* SCNPoly.swift */; };
-		570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570599471B90A20B000F3E31 /* SCNTriangle.swift */; };
 		5705994C1B90D8D9000F3E31 /* Core.Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705994B1B90D8D9000F3E31 /* Core.Space.swift */; };
 		570B1F681C910C2A00AAFF00 /* SCNOcta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B1F671C910C2A00AAFF00 /* SCNOcta.swift */; };
 		571728DF1BB03455002782A3 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728DE1BB03455002782A3 /* SCNNode.swift */; };
@@ -101,8 +99,6 @@
 		03DDE18B19CE497F008029A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		03DDE19619CE497F008029A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
-		570599451B909E8E000F3E31 /* SCNPoly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPoly.swift; sourceTree = "<group>"; };
-		570599471B90A20B000F3E31 /* SCNTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTriangle.swift; sourceTree = "<group>"; };
 		5705994B1B90D8D9000F3E31 /* Core.Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Space.swift; sourceTree = "<group>"; };
 		570B1F671C910C2A00AAFF00 /* SCNOcta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNOcta.swift; sourceTree = "<group>"; };
 		571728DE1BB03455002782A3 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
@@ -347,11 +343,9 @@
 		57780BB01CB49D8C005AB88C /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
-				570599451B909E8E000F3E31 /* SCNPoly.swift */,
 				5790360C1C8DF38500BFD870 /* SCNCube.swift */,
 				570B1F671C910C2A00AAFF00 /* SCNOcta.swift */,
 				5759C3461CA21DC10031524B /* SCNHexa.swift */,
-				570599471B90A20B000F3E31 /* SCNTriangle.swift */,
 				5781FC0B1C6BC9500001A743 /* SCNRect.swift */,
 			);
 			name = Shapes;
@@ -485,7 +479,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57841A301C23ACD50005D7DA /* Monitor.Complete.swift in Sources */,
-				570599481B90A20B000F3E31 /* SCNTriangle.swift in Sources */,
 				03DDE18419CE497F008029A8 /* GameViewController.swift in Sources */,
 				57F66B441C6E5A38007E4B9F /* Tools.swift in Sources */,
 				57A5F9631BC6C3DB00EA35F6 /* String.swift in Sources */,
@@ -529,7 +522,6 @@
 				572258151BB877C600DEC41E /* Location.Portal.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* Location.Star.swift in Sources */,
 				57DACD8E1C1A194500971F10 /* Core.Audio.swift in Sources */,
-				570599461B909E8E000F3E31 /* SCNPoly.swift in Sources */,
 				576953651C206CF300A0CA39 /* Widget.Radio.swift in Sources */,
 				57C222F61C1F218A005092A4 /* Location.Bank.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* Core.Space.swift in Sources */,
