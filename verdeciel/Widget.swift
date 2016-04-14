@@ -24,13 +24,6 @@ class Widget : Panel
 		port.label.updateScale(0.05)
 		port.label.position = SCNVector3(0,-0.35,0)
 		
-		let inputLabel = SCNLabel(text: "something", scale: 0.03, color:grey, align: alignment.right)
-		let outputLabel = SCNLabel(text: "something", scale: 0.03, color:grey, align: alignment.left)
-		inputLabel.position = SCNVector3(-templates.margin * 0.5,0,0)
-		outputLabel.position = SCNVector3(templates.margin * 0.5,0,0)
-		port.addChildNode(inputLabel)
-		port.addChildNode(outputLabel)
-		
 		label = SCNLabel(text:"", scale:0.075, align:.center)
 		label.position = SCNVector3(0,0.35,0)
 		port.addChildNode(label)

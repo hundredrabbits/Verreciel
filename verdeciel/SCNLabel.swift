@@ -113,229 +113,113 @@ class SCNLabel : SCNNode
 		
 		let letter = letter.lowercaseString
 		
-		if letter == "a"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		if letter == "a"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "b"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "b"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "c"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "c"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "d"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "d"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "e"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
+		else if letter == "e"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
-		else if letter == "f"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
+		else if letter == "f"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
-		else if letter == "g"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
+		else if letter == "g"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
-		else if letter == "h"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "h"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "i"
-		{
+		else if letter == "i"{
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "j"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
+		else if letter == "j"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "k"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "k"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "l"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "l"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "m"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0)],color:self.color))
 		}
-		else if letter == "n"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "n"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "o"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
+		else if letter == "o"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0),SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
 		}
-		else if letter == "p"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
+		else if letter == "p"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
 		}
-		else if letter == "q"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "q"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "r"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "s"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "t"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "u"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
 		}
 		else if letter == "v"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
 		}
 		else if letter == "w"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "x"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
 		}
 		else if letter == "y"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "z"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "1"{
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
-			
 		}
 		else if letter == "2"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "3"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "4"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "5"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "6"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == "7"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
-		else if letter == "8"
-		{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+		else if letter == "8"{
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == "9"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == "0"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == ":"{
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale/2, z: 0), SCNVector3(x: scale/2, y: -scale/2, z: 0)],color:self.color))
@@ -353,16 +237,13 @@ class SCNLabel : SCNNode
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == "+"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
 		}
 		else if letter == ">"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:red))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:red))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == "<"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:red))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:red))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == ","{
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: 0, z: 0), SCNVector3(x: scale/2, y: -scale, z: 0)],color:self.color))
@@ -374,17 +255,10 @@ class SCNLabel : SCNNode
 			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale/2, y: scale, z: 0), SCNVector3(x: scale/2, y: 0, z: 0)],color:self.color))
 		}
 		else if letter == "%"{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: scale, y: 0, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
 		}
 		else{
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:self.color))
-			
+			letterPivot.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: 0, y: -scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: 0, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0), SCNVector3(x: scale, y: scale, z: 0), SCNVector3(x: scale, y: -scale, z: 0)],color:red))
 		}
 
 		return letterPivot
