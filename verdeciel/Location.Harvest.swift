@@ -156,17 +156,11 @@ class StructureHarvest : Structure
 	override func onUndock()
 	{
 		super.onUndock()
-		
 	}
 	
 	override func onDock()
 	{
 		super.onDock()
-	}
-	
-	override func onComplete()
-	{
-		super.onComplete()
 	}
 	
 	override func sightUpdate()

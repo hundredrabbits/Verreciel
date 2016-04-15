@@ -53,7 +53,11 @@ extension SCNNode
 	func color(color:UIColor)
 	{
 		if geometry == nil { return }
-		self.geometry!.firstMaterial?.diffuse.contents = color
+		if (self is SCNLine) == false { return }
+		
+		(self as! SCNLine).update(color)
+		
+//		self.geometry!.firstMaterial?.diffuse.contents = color
 	}
 	
 	// MARK: Events -

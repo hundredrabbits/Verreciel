@@ -332,6 +332,13 @@ class SCNPort : SCNNode
 		return true
 	}
 	
+	func isConnectedToPanel(panel:Panel) -> Bool
+	{
+		if connection == nil { return false }
+		if (connection.host as! Panel) == panel { return true }
+		return false
+	}
+	
 	// MARK: Etc..
 	
 	override func onConnect()

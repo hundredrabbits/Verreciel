@@ -108,6 +108,8 @@ class PanelCargo : MainPanel
 	override func touch(id:Int = 0)
 	{
 		refresh()
+		
+		if port.isConnectedToPanel(console) == true { console.onConnect() }
 	}
 	
 	override func refresh()
@@ -149,6 +151,8 @@ class PanelCargo : MainPanel
 	override func onUploadComplete()
 	{
 		refresh()
+		
+		if port.isConnectedToPanel(console) == true { console.onConnect() }
 	}
 	
 	override func onConnect()

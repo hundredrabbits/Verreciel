@@ -28,6 +28,8 @@ class LocationSatellite : Location
 	
 	override func panel() -> Panel!
 	{
+		if isComplete == true { return nil }
+		
 		let newPanel = Panel()
 		
 		let text = SCNLabel(text: self.message, align:.left)

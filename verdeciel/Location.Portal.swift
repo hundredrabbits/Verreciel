@@ -22,6 +22,7 @@ class LocationPortal : Location
 		pilotLabel = SCNLabel(text: "pilot", scale: 0.1, align: .center, color: grey)
 		thrusterPort = SCNPort(host: self)
 		thrusterLabel = SCNLabel(text: "thruster", scale: 0.08, align: .center, color: grey)
+		isPortEnabled = true
 	}
 	
 	// MARK: Panel - 

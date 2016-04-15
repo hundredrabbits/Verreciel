@@ -157,7 +157,6 @@ class PanelIntercom : MainPanel
 			self.defaultPanel.opacity = 1
 			
 			SCNTransaction.setCompletionBlock({
-				capsule.dock.onComplete()
 				self.refresh()
 			})
 			SCNTransaction.commit()
@@ -197,8 +196,8 @@ class PanelIntercom : MainPanel
 		
 		port.addEvent(location)
 		
-		if location.isPortEnabled == true { port.enable() }
-		else{ port.disable() }
+		if location.isPortEnabled == true { self.port.enable() }
+		else{ self.port.disable() }
 	}
 	
 	func disconnectFromLocation()
