@@ -21,6 +21,7 @@ class Structure : SCNNode
 	func addHost(host:Location)
 	{
 		self.host = host
+		update()
 	}
 	
 	override func whenRenderer()
@@ -63,7 +64,7 @@ class Structure : SCNNode
 	
 	func onSight()
 	{
-		
+		update()
 	}
 	
 	func onUndock()
@@ -73,7 +74,7 @@ class Structure : SCNNode
 	
 	func onComplete()
 	{
-	
+		update()
 	}
 	
 	func dockUpdate()
@@ -84,6 +85,13 @@ class Structure : SCNNode
 	func sightUpdate()
 	{
 	
+	}
+	
+	override func update()
+	{
+		if host.isComplete == nil { root.updateChildrenColors(white) }
+		else if host.isComplete == true { root.updateChildrenColors(cyan) }
+		else{ root.updateChildrenColors(red) }
 	}
 	
 	func morph()

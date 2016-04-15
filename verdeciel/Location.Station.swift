@@ -94,7 +94,6 @@ class IconStation : Icon
 	}
 }
 
-
 class StructureStation : Structure
 {
 	let nodes:Int = 4 + Int(arc4random_uniform(4))
@@ -176,10 +175,6 @@ class StructureStation : Structure
 	override func sightUpdate()
 	{
 		root.eulerAngles.y += (degToRad(0.1))
-	}
-	
-	override func dockUpdate()
-	{
 	}
 	
 	override func morph()

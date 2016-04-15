@@ -207,8 +207,6 @@ class StructureTrade : Structure
 	override func onComplete()
 	{
 		super.onComplete()
-		
-		updateChildrenColors(cyan)
 	}
 	
 	override func sightUpdate()

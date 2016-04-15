@@ -87,7 +87,7 @@ class LocationPortal : Location
 		thrusterPort.disable()
 		keyLabel.update("no key", color:red)
 		
-		structure.updateChildrenColors(red)
+		structure.root.updateChildrenColors(red)
 	}
 	
 	func unlock()
@@ -104,7 +104,7 @@ class LocationPortal : Location
 		pilotPort.enable()
 		thrusterPort.enable()
 		
-		structure.updateChildrenColors(cyan)
+		structure.root.updateChildrenColors(cyan)
 	}
 	
 	// MARK: Defaults -
@@ -154,6 +154,11 @@ class StructurePortal : Structure
 			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			i += 1
 		}
+	}
+	
+	override func update()
+	{
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

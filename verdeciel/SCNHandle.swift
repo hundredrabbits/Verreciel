@@ -48,13 +48,13 @@ class SCNHandle : SCNNode
 	func enable()
 	{
 		isEnabled = true
-		selectionLine.updateColor(cyan)
+		selectionLine.update(cyan)
 	}
 	
 	func disable()
 	{
 		isEnabled = false
-		selectionLine.updateColor(grey)
+		selectionLine.update(grey)
 	}
 	
 	override func touch(id:Int = 0)

@@ -9,9 +9,9 @@ import Foundation
 
 class LocationConstellation : Location
 {
-	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0))
+	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:Structure)
 	{
-		super.init(name:name, system:system, at:at, icon:IconConstellation(), structure:Structure())		
+		super.init(name:name, system:system, at:at, icon:IconConstellation(), structure:structure)
 	}
 	
 	override func onApproach()

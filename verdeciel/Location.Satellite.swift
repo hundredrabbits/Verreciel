@@ -55,6 +55,7 @@ class LocationSatellite : Location
 	override func onUploadComplete()
 	{
 		self.onComplete()
+		structure.update()
 	}
 	
 	override func details() -> String
@@ -178,7 +179,7 @@ class StructureSatellite : Structure
 	{
 		super.onComplete()
 		
-		updateChildrenColors(cyan)
+		update()
 	}
 	
 	override func sightUpdate()

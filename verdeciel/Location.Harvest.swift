@@ -84,16 +84,15 @@ class LocationHarvest : Location
 	override func onUploadComplete()
 	{
 		refresh()
+		structure.update()
 	}
 
 	override func refresh()
 	{
 		if port.hasEvent(grows) != true {
-			structure.updateChildrenColors(grey)
 			icon.updateChildrenColors(grey)
 		}
 		else{
-			structure.updateChildrenColors(cyan)
 			icon.updateChildrenColors(white)
 		}
 	}
@@ -148,19 +147,14 @@ class StructureHarvest : Structure
 		}
 	}
 	
-	override func onSight()
+	override func update()
 	{
-		super.onSight()
-	}
-	
-	override func onUndock()
-	{
-		super.onUndock()
-	}
-	
-	override func onDock()
-	{
-		super.onDock()
+		if (host as! LocationHarvest).port.hasEvent() != true {
+			root.updateChildrenColors(grey)
+		}
+		else{
+			root.updateChildrenColors(cyan)
+		}
 	}
 	
 	override func sightUpdate()
