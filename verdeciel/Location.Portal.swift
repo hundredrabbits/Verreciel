@@ -144,14 +144,12 @@ class StructurePortal : Structure
 		
 		root.position = SCNVector3(0,5,0)
 		
-		let value1:Float = 5
-		
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
-			node.addChildNode(SCNLine(positions: [SCNVector3(-value1,0 * 3,0), SCNVector3(0,0/2,value1)], color: red))
+			node.addChildNode(SCNLine(positions: [SCNVector3(1,1,0), SCNVector3(0,0,5)], color: red))
 			root.addChildNode(node)
-			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
 			i += 1
 		}
 	}

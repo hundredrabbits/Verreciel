@@ -21,7 +21,7 @@ class Structure : SCNNode
 	func addHost(host:Location)
 	{
 		self.host = host
-		update()
+//		update()
 	}
 	
 	override func whenRenderer()
