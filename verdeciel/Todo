@@ -4,16 +4,17 @@
 
 - Issue with constellation position
 - Add constellations in valen
-- Animate radio on installation(blink name?)
-- Animate map on installation(blink name?)
 - Harvest structure is grey when growth is complete
-- Portal, give error when key is for current location
 - Reflect cell count in thruster speed
-- When reaching horadric, align ship
 - Re-Implement radiation
-- Add record2 in Senni, on the right of the station
+- Make Usul space red
+- Add sounds
 
-- Lock some port input(Harvest)
+- Issue with stars
+- Console, old commands' ports return to active
+- Thruster speed, displays like 3.1
+- Animate portal
+- Warping capsule speed is 0?
 
 ================
 *    MINOR

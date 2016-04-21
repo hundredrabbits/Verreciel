@@ -53,6 +53,7 @@ class Event : SCNNode
 	
 	override func update()
 	{
+		super.update()
 	}
 	
 	func remove()

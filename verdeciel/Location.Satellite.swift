@@ -49,6 +49,8 @@ class LocationSatellite : Location
 	
 	override func update()
 	{
+		super.update()
+		
 		if port.event == nil { self.onComplete() }
 	}
 	
@@ -179,7 +181,8 @@ class StructureSatellite : Structure
 	{
 		super.onComplete()
 		
-		update()
+		print("WHAT!!")
+		root.updateChildrenColors(cyan)
 	}
 	
 	override func sightUpdate()

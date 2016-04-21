@@ -112,7 +112,7 @@ class PanelIntercom : MainPanel
 		else {
 			systemValueLabel.update("\(capsule.system)")
 			distanceLabel.update("Position")
-			distanceValueLabel.update("\(Int(capsule.at.x)),\(Int(capsule.at.y))")
+			distanceValueLabel.update("\(String(format: "%.1f",capsule.at.x)),\(String(format: "%.1f",capsule.at.y))")
 			typeValueLabel.update("--")
 			statusValueLabel.update("in flight", color:white)
 			detailsValueLabel.update("--")
@@ -241,7 +241,6 @@ class PanelIntercom : MainPanel
 		super.onInstallationComplete()
 		
 		touch(1)
-		port.disable()
 	}
 	
 	override func onConnect()

@@ -90,10 +90,10 @@ class LocationHarvest : Location
 	override func refresh()
 	{
 		if port.hasEvent(grows) != true {
-			icon.updateChildrenColors(grey)
+			icon.mesh.updateChildrenColors(grey)
 		}
 		else{
-			icon.updateChildrenColors(white)
+			icon.mesh.updateChildrenColors(white)
 		}
 	}
 	
@@ -149,6 +149,8 @@ class StructureHarvest : Structure
 	
 	override func update()
 	{
+		super.update()
+		
 		if (host as! LocationHarvest).port.hasEvent() != true {
 			root.updateChildrenColors(grey)
 		}

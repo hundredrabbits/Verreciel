@@ -64,7 +64,7 @@ class Structure : SCNNode
 	
 	func onSight()
 	{
-		update()
+	
 	}
 	
 	func onUndock()
@@ -89,7 +89,9 @@ class Structure : SCNNode
 	
 	override func update()
 	{
-		if host.isComplete == nil { root.updateChildrenColors(white) }
+		super.update()
+		
+		if host.isComplete == nil { root.updateChildrenColors(grey) }
 		else if host.isComplete == true { root.updateChildrenColors(cyan) }
 		else{ root.updateChildrenColors(red) }
 	}

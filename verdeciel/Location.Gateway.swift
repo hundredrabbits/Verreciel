@@ -100,6 +100,8 @@ class LocationGateway : Location
 	
 	override func update()
 	{
+		super.update()
+		
 		if KeyPort.isReceiving(KeyPort.requirement) == true {
 			PilotPort.enable()
 			ThrusterPort.enable()

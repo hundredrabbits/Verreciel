@@ -30,9 +30,9 @@ class WidgetRadio : Widget
 		return false
 	}
 	
-	override func onInstallationComplete()
+	override func onInstallationBegin()
 	{
-		super.onInstallationComplete()
+		super.onInstallationBegin()
 		
 		battery.installRadio()
 		player.lookAt(deg: 0)

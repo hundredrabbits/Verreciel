@@ -73,13 +73,6 @@ class SCNLine : SCNNode
 		opacity = 0
 	}
 	
-	func updateColor(color:UIColor)
-	{
-		if color == self.color { return }
-		self.color = color
-		update(vertices, color: color)
-	}
-	
 	func update(color:UIColor)
 	{
 		if color == self.color { return }

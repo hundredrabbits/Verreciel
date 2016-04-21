@@ -89,7 +89,7 @@ class CoreCapsule: SCNNode
 		
 		battery.install()
 		
-		space.onSystemEnter(.valen)
+		space.onSystemEnter(location.system)
 	}
 	
 	func onSeconds()

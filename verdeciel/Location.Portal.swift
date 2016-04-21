@@ -76,8 +76,21 @@ class LocationPortal : Location
 	
 	func validate()
 	{
-		if intercom.port.isReceivingItemOfType(.key) == true { unlock() }
+		if intercom.port.isReceivingItemOfType(.key) == true {
+			if (intercom.port.origin.event as! Item).location == capsule.lastLocation { inactive() }
+			else { unlock() }
+		}
 		else{ lock() }
+	}
+	
+	func inactive()
+	{
+		pilotPort.removeEvent()
+		pilotPort.disable()
+		thrusterPort.disable()
+		keyLabel.update("error", color:red)
+		
+		structure.root.updateChildrenColors(red)
 	}
 	
 	func lock()
@@ -156,7 +169,7 @@ class StructurePortal : Structure
 	
 	override func update()
 	{
-		
+		super.update()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

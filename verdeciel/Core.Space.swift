@@ -60,7 +60,7 @@ class CoreSpace: SCNNode
 	{
 		super.whenTime()
 		
-		if starsRoot.childNodes.count < 100 && journey.distance > lastStarAddedTime + 0.5  {
+		if starsRoot.childNodes.count < 100 && journey.distance > lastStarAddedTime + 1  {
 			let randX = Float(Int(arc4random_uniform(40)) - 20)
 			let randZ = Float(Int(arc4random_uniform(40)) - 20)
 			starsRoot.addChildNode(star(SCNVector3(x:randX,y:0,z:randZ)))
@@ -71,7 +71,7 @@ class CoreSpace: SCNNode
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }
 		
-		starSpeed *= 0.25
+		starSpeed *= 0.2
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.update([star.vertices.first!,SCNVector3(star.vertices.first!.x,star.vertices.first!.y + starSpeed + 0.1,star.vertices.first!.z)])
@@ -103,7 +103,7 @@ class CoreSpace: SCNNode
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }
 		
-		starSpeed *= 0.25
+		starSpeed *= 0.2
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.position = SCNVector3(x: star.position.x, y: star.position.y - starSpeed, z: star.position.z)

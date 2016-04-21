@@ -15,15 +15,15 @@ class ItemCollection
 	
 	// Keys
 	
-	let loiqePortalKey = Item(name: "loiqe key", type: .key, location:locations.loiqe.portal(), note:"complete key", isQuest:true)
+	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
 	
-	let valenPortalKey = Item(name: "valen key", type: .key, location:locations.valen.portal(), note:"complete key", isQuest:true)
+	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
 	let valenPortalFragment1 = Item(name: "key part 1", type: .fragment, note:"half a Portal key", isQuest:true)
 	let valenPortalFragment2 = Item(name: "key part 2", type: .fragment, note:"half a Portal key", isQuest:true)
 	
-	let senniPortalKey = Item(name: "senni key", type: .key, location:locations.senni.portal(), note:"complete key", isQuest:true)
+	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
 	
-	let usulPortalKey = Item(name: "usul key", type: .key, location:locations.usul.portal(), note:"complete key", isQuest:true)
+	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
 	let usulPortalFragment1 = Item(name: "Usul Key I", type: .fragment, note:"half a Portal key", isQuest:true)
 	let usulPortalFragment2 = Item(name: "Usul Key II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
@@ -64,4 +64,12 @@ class ItemCollection
 	let battery1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let battery2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let battery3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	
+	func whenStart()
+	{
+		loiqePortalKey.location = universe.loiqe_portal
+		valenPortalKey.location = universe.valen_portal
+		senniPortalKey.location = universe.senni_portal
+		usulPortalKey.location = universe.usul_portal
+	}
 }

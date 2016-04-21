@@ -44,9 +44,7 @@ extension SCNNode
 	{
 		for node in self.childNodes {
 			node.color(color)
-			for subnode in node.childNodes {
-				subnode.color(color)
-			}
+			node.updateChildrenColors(color)
 		}
 	}
 	
@@ -56,8 +54,6 @@ extension SCNNode
 		if (self is SCNLine) == false { return }
 		
 		(self as! SCNLine).update(color)
-		
-//		self.geometry!.firstMaterial?.diffuse.contents = color
 	}
 	
 	// MARK: Events -

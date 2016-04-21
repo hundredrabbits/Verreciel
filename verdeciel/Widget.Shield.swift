@@ -98,9 +98,9 @@ class WidgetShield : Widget
 		capsule.shieldRoot.opacity = 0
 	}
 
-	override func onInstallationComplete()
+	override func onInstallationBegin()
 	{
-		super.onInstallationComplete()
+		super.onInstallationBegin()
 		
 		battery.installShield()
 		createShield()

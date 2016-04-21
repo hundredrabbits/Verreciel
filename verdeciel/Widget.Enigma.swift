@@ -23,9 +23,9 @@ class WidgetEnigma : Widget
 		label.update(name!)
 	}
 	
-	override func onInstallationComplete()
+	override func onInstallationBegin()
 	{
-		super.onInstallationComplete()
+		super.onInstallationBegin()
 		
 		battery.installEnigma()
 	}

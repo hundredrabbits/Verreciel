@@ -24,8 +24,9 @@ class CoreGame
 		player.whenStart()
 		space.whenStart()
 		helmet.whenStart()
+		items.whenStart()
 		
-		unlockedState(universe.loiqe_portal, newItems:[Item(like: items.currency1), items.valenPortalKey])
+		unlockedState(universe.valen_portal, newItems:[items.loiqePortalKey, items.valenPortalKey])
 //		startingState()
 	}
 	
