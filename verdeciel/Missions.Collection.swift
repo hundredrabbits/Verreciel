@@ -32,7 +32,7 @@ class MissionCollection
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() ; thruster.unlock() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
-			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort2.enable("empty",color:grey) }),
+			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort3.enable("empty",color:grey) }),
 		]
 		story.append(m)
 		
@@ -57,11 +57,11 @@ class MissionCollection
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
 			Quest(name:"Aquire \(items.valenPortalFragment2.name!)", location: universe.loiqe_satellite, predicate:{ cargo.contains(items.valenPortalFragment2) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: {  }),
-			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.valenPortalKey) == true }, result: { })
+			Quest(name:"Combine fragments", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.valenPortalKey) == true }, result: { exploration.install() })
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Portal Lesson")
+		m = Mission(id:(story.count), name: "Use portal")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
 			Quest(name:"Route Key to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
@@ -77,13 +77,13 @@ class MissionCollection
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
 			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
-			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { })
+			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { journey.install() })
 		]
 		story.append(m)
 		
 		m = Mission(id:(story.count), name: "Radio Lesson")
 		m.quests = [
-			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery1) || cargo.contains(items.battery2) }, result: {  }),
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery2) || cargo.contains(items.battery2) }, result: {  }),
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery2) }, result: {  }),
 			Quest(name:"Route cell to radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
@@ -95,7 +95,7 @@ class MissionCollection
 		m.quests = [
 			Quest(name:"Collect Waste", location: universe.valen_bank, predicate:{ cargo.containsLike(items.waste) }, result: { hatch.install() }),
 			Quest(name:"Route waste to hatch", predicate:{ hatch.port.hasItemLike(items.waste) }, result: {  }),
-			Quest(name:"Jetison Waste", predicate:{ hatch.count > 0 }, result: {  })
+			Quest(name:"Jetison Waste", predicate:{ hatch.count > 0 }, result: { completion.install() })
 		]
 		story.append(m)
 		
@@ -147,8 +147,8 @@ class MissionCollection
 		m.quests = [
 			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
-			Quest(name:"Collect first array", location: universe.senni_fog, predicate:{ battery.hasCell(items.battery3) || cargo.contains(items.battery3) }, result: {  }),
-			Quest(name:"Install array in battery", predicate:{ battery.hasCell(items.battery3) }, result: {  }),
+			Quest(name:"Collect third cell", location: universe.senni_fog, predicate:{ battery.hasCell(items.battery3) || cargo.contains(items.battery3) }, result: {  }),
+			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery3) }, result: {  }),
 		]
 		story.append(m)
 		

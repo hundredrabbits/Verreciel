@@ -25,8 +25,8 @@ class CoreGame
 		space.whenStart()
 		helmet.whenStart()
 		
-		unlockedState(universe.loiqe_portal, newItems:[Item(like: items.currency1), items.valenPortalKey])
-//		startingState()
+//		unlockedState(universe.loiqe_portal, newItems:[Item(like: items.currency1), items.valenPortalKey])
+		startingState()
 	}
 	
 	func startingState()

@@ -140,7 +140,7 @@ class StructureHarvest : Structure
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
-			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
 			node.addChildNode(SCNLine(positions: [SCNVector3(0,0,value1), SCNVector3(0,5,value1), SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1), SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
 			root.addChildNode(node)
 			i += 1
