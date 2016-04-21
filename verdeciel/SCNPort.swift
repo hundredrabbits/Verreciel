@@ -39,10 +39,10 @@ class SCNPort : SCNNode
 		
 		self.host = host
 		
-		sprite_input = SCNLine(positions: [SCNVector3(x: 0, y: radius/2, z: 0),  SCNVector3(x: radius/2, y: 0, z: 0), SCNVector3(x: radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: -radius/2, z: 0), SCNVector3(x: 0, y: -radius/2, z: 0),  SCNVector3(x: -radius/2, y: 0, z: 0), SCNVector3(x: -radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: radius/2, z: 0)], color: grey)
+		sprite_input = SCNLine(vertices: [SCNVector3(x: 0, y: radius/2, z: 0),  SCNVector3(x: radius/2, y: 0, z: 0), SCNVector3(x: radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: -radius/2, z: 0), SCNVector3(x: 0, y: -radius/2, z: 0),  SCNVector3(x: -radius/2, y: 0, z: 0), SCNVector3(x: -radius/2, y: 0, z: 0),  SCNVector3(x: 0, y: radius/2, z: 0)], color: grey)
 		addChildNode(sprite_input)
 		
-		sprite_output = SCNLine(positions: [SCNVector3(x: 0, y: radius, z: 0),  SCNVector3(x: radius, y: 0, z: 0), SCNVector3(x: radius, y: 0, z: 0),  SCNVector3(x: 0, y: -radius, z: 0), SCNVector3(x: 0, y: -radius, z: 0),  SCNVector3(x: -radius, y: 0, z: 0), SCNVector3(x: -radius, y: 0, z: 0),  SCNVector3(x: 0, y: radius, z: 0)], color: grey)
+		sprite_output = SCNLine(vertices: [SCNVector3(x: 0, y: radius, z: 0),  SCNVector3(x: radius, y: 0, z: 0), SCNVector3(x: radius, y: 0, z: 0),  SCNVector3(x: 0, y: -radius, z: 0), SCNVector3(x: 0, y: -radius, z: 0),  SCNVector3(x: -radius, y: 0, z: 0), SCNVector3(x: -radius, y: 0, z: 0),  SCNVector3(x: 0, y: radius, z: 0)], color: grey)
 		addChildNode(sprite_output)
 		
 		wire = SCNWire(host:self, nodeA: SCNVector3(0, 0, 0), nodeB: SCNVector3(0, 0, 0))

@@ -15,7 +15,7 @@ class SCNOcta : SCNNode
 	{
 		super.init()
 		
-		mesh = SCNLine(positions: [SCNVector3(0,size,0), SCNVector3(-size,0,size), SCNVector3(0,size,0), SCNVector3(size,0,size), SCNVector3(0,size,0), SCNVector3(-size,0,-size), SCNVector3(0,size,0), SCNVector3(size,0,-size), SCNVector3(0,-size,0), SCNVector3(-size,0,size), SCNVector3(0,-size,0), SCNVector3(size,0,size), SCNVector3(0,-size,0), SCNVector3(-size,0,-size), SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color)
+		mesh = SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(-size,0,size), SCNVector3(0,size,0), SCNVector3(size,0,size), SCNVector3(0,size,0), SCNVector3(-size,0,-size), SCNVector3(0,size,0), SCNVector3(size,0,-size), SCNVector3(0,-size,0), SCNVector3(-size,0,size), SCNVector3(0,-size,0), SCNVector3(size,0,size), SCNVector3(0,-size,0), SCNVector3(-size,0,-size), SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color)
 		
 		self.eulerAngles = eulerAngles
 	}

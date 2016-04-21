@@ -142,7 +142,6 @@ class CoreCapsule: SCNNode
 	func warpUp()
 	{
 		if thruster.actualSpeed < 10 { thruster.actualSpeed += 0.025 }
-		space.starTimer += thruster.actualSpeed
 	}
 	
 	func warpDown()
@@ -150,7 +149,6 @@ class CoreCapsule: SCNNode
 		thruster.speed = 1
 		if thruster.actualSpeed > 1 { thruster.actualSpeed -= 0.1 }
 		else{ warpStop() }
-		space.starTimer += thruster.actualSpeed
 	}
 	
 	func warpStop()

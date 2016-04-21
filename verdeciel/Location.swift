@@ -213,7 +213,7 @@ class Location : Event
 	func connect(location:Location)
 	{
 		connection = location
-		icon.wire.draw([SCNVector3(0,0,0), SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0)], color: grey)
+		icon.wire.update([SCNVector3(0,0,0), SCNVector3( (connection.at.x - self.at.x),(connection.at.y - self.at.y),0)], color: grey)
 	}
 
 	// MARK: Events -

@@ -25,8 +25,8 @@ class CoreGame
 		space.whenStart()
 		helmet.whenStart()
 		
-//		unlockedState(universe.loiqe_portal, newItems:[Item(like: items.currency1), items.valenPortalKey])
-		startingState()
+		unlockedState(universe.loiqe_portal, newItems:[Item(like: items.currency1), items.valenPortalKey])
+//		startingState()
 	}
 	
 	func startingState()
@@ -77,6 +77,6 @@ class CoreGame
 	@objc func onTic()
 	{
 		time += 1
-		space.whenStart()
+		space.whenTime()
 	}
 }

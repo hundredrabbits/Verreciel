@@ -69,6 +69,13 @@ extension SCNNode
 		}
 	}
 	
+	func whenTime()
+	{
+		for node in childNodes {
+			node.whenTime()
+		}
+	}
+	
 	func whenRenderer()
 	{
 		for node in childNodes {

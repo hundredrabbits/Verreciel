@@ -17,6 +17,8 @@ class CoreSpace: SCNNode
 		
 		addChildNode(structuresRoot)
 		addChildNode(starsRoot)
+		
+		starsRoot.position = SCNVector3(0,40,0)
 	}
 	
 	// Space Color
@@ -45,9 +47,6 @@ class CoreSpace: SCNNode
 		}
 	}
 	
-	// Stars
-	
-	
 	// Instances
 	
 	func startInstance(location:Location)
@@ -55,9 +54,42 @@ class CoreSpace: SCNNode
 		structuresRoot.addChildNode(location.structure)
 	}
 	
-	// Other
+	var lastStarAddedTime:Float = 0
 	
-	var starTimer:Float = 0
+	override func whenTime()
+	{
+		super.whenTime()
+		
+		if starsRoot.childNodes.count < 100 && journey.distance > lastStarAddedTime + 0.5  {
+			let randX = Float(Int(arc4random_uniform(40)) - 20)
+			let randZ = Float(Int(arc4random_uniform(40)) - 20)
+			starsRoot.addChildNode(star(SCNVector3(x:randX,y:0,z:randZ)))
+			lastStarAddedTime = journey.distance
+		}
+		
+		var starSpeed = thruster.actualSpeed
+		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
+		else{ starSpeed = thruster.actualSpeed }
+		
+		starSpeed *= 0.25
+		
+		for star in starsRoot.childNodes as! [SCNLine] {
+			star.update([star.vertices.first!,SCNVector3(star.vertices.first!.x,star.vertices.first!.y + starSpeed + 0.1,star.vertices.first!.z)])
+		}
+		
+		// Background
+		
+		if currentSpaceColor[0] < targetSpaceColor[0] { currentSpaceColor[0] += 0.01 }
+		if currentSpaceColor[0] > targetSpaceColor[0] { currentSpaceColor[0] -= 0.01 }
+		if currentSpaceColor[1] < targetSpaceColor[1] { currentSpaceColor[1] += 0.01 }
+		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
+		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
+		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
+		
+		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
+	}
+	
+	// Other
 	
 	override func whenRenderer()
 	{
@@ -65,54 +97,23 @@ class CoreSpace: SCNNode
 		
 		starsRoot.rotation = SCNVector4Make(0, 1, 0, (degToRad(capsule.direction)))
 		
-		/*
-		
-		// Stars
-		while starTimer > 4 && starsRoot.childNodes.count < 100 {
-		
-		var randX = Int(arc4random_uniform(40)) - 20
-		var randZ = Int(arc4random_uniform(40)) - 20
-		
-		while( distanceBetweenTwoPoints(CGPoint(x: CGFloat(randX), y: CGFloat(randZ)), point2: CGPoint(x: 0, y: 0)) < 6 ){
-		randX = Int(arc4random_uniform(40)) - 20
-		randZ = Int(arc4random_uniform(40)) - 20
-		}
-		
-		let newLine = SCNLine(positions: [SCNVector3(x: Float(randX), y: 0, z: Float(randZ)), SCNVector3(x: Float(randX), y: 1, z: Float(randZ)), color: stars_color)
-		newLine.position = SCNVector3(x: newLine.position.x, y: 45, z: newLine.position.z)
-		starsRoot.addChildNode(newLine)
-		
-		starTimer -= 4
-		}
-		
-		
-		
+		// Update stars
 		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
 		else{ starSpeed = thruster.actualSpeed }
 		
-		let lineSpeed = Float(starSpeed) / 6
-		for line in starsRoot.childNodes as! [SCNLine] {
-			line.position = SCNVector3(x: line.position.x, y: line.position.y - lineSpeed, z: line.position.z)
-			line.updateHeight(starSpeed + 0.1)
-			let distanceRatio = (50-line.position.distance(SCNVector3(0,0,0)))/50
-			line.updateColor(UIColor(white: CGFloat(distanceRatio), alpha: 1))
-			
-			if line.position.y < -20 { line.removeFromParentNode() }
-		}
+		starSpeed *= 0.25
 		
-//		// Background
-//		
-//		if currentSpaceColor[0] < targetSpaceColor[0] { currentSpaceColor[0] += 0.01 }
-//		if currentSpaceColor[0] > targetSpaceColor[0] { currentSpaceColor[0] -= 0.01 }
-//		if currentSpaceColor[1] < targetSpaceColor[1] { currentSpaceColor[1] += 0.01 }
-//		if currentSpaceColor[1] > targetSpaceColor[1] { currentSpaceColor[1] -= 0.01 }
-//		if currentSpaceColor[2] < targetSpaceColor[2] { currentSpaceColor[2] += 0.01 }
-//		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
-//		
-//		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
-		*/
+		for star in starsRoot.childNodes as! [SCNLine] {
+			star.position = SCNVector3(x: star.position.x, y: star.position.y - starSpeed, z: star.position.z)
+			if star.position.y < -80 { star.removeFromParentNode() }
+		}
+	}
+	
+	func star(position:SCNVector3) -> SCNLine
+	{
+		return SCNLine(vertices: [position, SCNVector3(position.x,position.y + 1,position.z)], color: stars_color)
 	}
 	
 	required init(coder aDecoder: NSCoder)

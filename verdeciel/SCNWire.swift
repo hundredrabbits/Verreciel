@@ -14,11 +14,11 @@ class SCNWire : SCNNode
 	var nodeB:SCNVector3!
 	var color:UIColor!
 	
-	var segment1 = SCNLine(positions: [], color: white)
-	var segment2 = SCNLine(positions: [], color: white)
-	var segment3 = SCNLine(positions: [], color: white)
-	var segment4 = SCNLine(positions: [], color: white)
-	var segment5 = SCNLine(positions: [], color: white)
+	var segment1 = SCNLine(vertices: [], color: white)
+	var segment2 = SCNLine(vertices: [], color: white)
+	var segment3 = SCNLine(vertices: [], color: white)
+	var segment4 = SCNLine(vertices: [], color: white)
+	var segment5 = SCNLine(vertices: [], color: white)
 	
 	var vertex1 = SCNVector3()
 	var vertex2 = SCNVector3()
@@ -50,11 +50,11 @@ class SCNWire : SCNNode
 		vertex3 = SCNVector3(nodeB.x * 0.6,nodeB.y * 0.6,nodeB.z * 0.6)
 		vertex4 = SCNVector3(nodeB.x * 0.8,nodeB.y * 0.8,nodeB.z * 0.8)
 		
-		segment1.draw( [nodeA, vertex1], color: white)
-		segment2.draw( [vertex1, vertex2], color: red)
-		segment3.draw( [vertex2, vertex3], color: red)
-		segment4.draw( [vertex3, vertex4], color: red)
-		segment5.draw( [vertex4, nodeB], color: red)
+		segment1.update( [nodeA, vertex1], color: white)
+		segment2.update( [vertex1, vertex2], color: red)
+		segment3.update( [vertex2, vertex3], color: red)
+		segment4.update( [vertex3, vertex4], color: red)
+		segment5.update( [vertex4, nodeB], color: red)
 	}
 	
 	override func whenRenderer()
@@ -74,11 +74,11 @@ class SCNWire : SCNNode
 		vertex3.y += sin((game.time + vertex3.x + vertex3.y + vertex3.z)/20) * 0.08
 		vertex4.y += sin((game.time + vertex4.x + vertex4.y + vertex4.z)/20) * 0.05
 		
-		segment1.draw( [nodeA, vertex1], color: cyan)
-		segment2.draw( [vertex1, vertex2], color: white)
-		segment3.draw( [vertex2, vertex3], color: white)
-		segment4.draw( [vertex3, vertex4], color: white)
-		segment5.draw( [vertex4, nodeB], color: red)
+		segment1.update( [nodeA, vertex1], color: cyan)
+		segment2.update( [vertex1, vertex2], color: white)
+		segment3.update( [vertex2, vertex3], color: white)
+		segment4.update( [vertex3, vertex4], color: white)
+		segment5.update( [vertex4, nodeB], color: red)
 	}
 	
 	func update(nodeA: SCNVector3 = SCNVector3(), nodeB: SCNVector3 = SCNVector3())
@@ -91,11 +91,11 @@ class SCNWire : SCNNode
 		vertex3 = SCNVector3(nodeB.x * 0.6,nodeB.y * 0.6,nodeB.z * 0.6)
 		vertex4 = SCNVector3(nodeB.x * 0.8,nodeB.y * 0.8,nodeB.z * 0.8)
 		
-		segment1.draw( [nodeA, vertex1], color: white)
-		segment2.draw( [vertex1, vertex2], color: red)
-		segment3.draw( [vertex2, vertex3], color: red)
-		segment4.draw( [vertex3, vertex4], color: red)
-		segment5.draw( [vertex4, nodeB], color: red)
+		segment1.update( [nodeA, vertex1], color: white)
+		segment2.update( [vertex1, vertex2], color: red)
+		segment3.update( [vertex2, vertex3], color: red)
+		segment4.update( [vertex3, vertex4], color: red)
+		segment5.update( [vertex4, nodeB], color: red)
 	}
 	
 	func enable()

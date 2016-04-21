@@ -115,7 +115,7 @@ class IconHarvest : Icon
 	{
 		super.init()
 		
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:-size,y:0,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -141,7 +141,7 @@ class StructureHarvest : Structure
 		while i < nodes {
 			let node = SCNNode()
 			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
-			node.addChildNode(SCNLine(positions: [SCNVector3(0,0,value1), SCNVector3(0,5,value1), SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1), SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
+			node.addChildNode(SCNLine(vertices: [SCNVector3(0,0,value1), SCNVector3(0,5,value1), SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1), SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
 			root.addChildNode(node)
 			i += 1
 		}

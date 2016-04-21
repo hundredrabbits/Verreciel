@@ -5,7 +5,6 @@
 - Issue with constellation position
 - Horadric should be grey
 - Animate space color
-- Weird bank animation on undock(too busy, too fast)
 - Add constellations in valen
 - Animate radio on installation(blink name?)
 - Animate map on installation(blink name?)
@@ -13,7 +12,6 @@
 - Portal, give error when key is for current location
 - Reflect cell count in thruster speed
 - When reaching horadric, align ship
-- Make portal structure bigger
 - Re-Implement radiation
 - Re-Add stars
 - Add record2 in Senni, on the right of the station

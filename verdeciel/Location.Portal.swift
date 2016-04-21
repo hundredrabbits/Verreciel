@@ -48,11 +48,11 @@ class LocationPortal : Location
 		thrusterPort.position = SCNVector3(-0.8,-0.4,0)
 		thrusterLabel.position = SCNVector3(0,-0.4,0)
 		
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0.8,-0.275,0), SCNVector3(0.8,-0.1,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(-0.8,-0.275,0), SCNVector3(-0.8,-0.1,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0.8,-0.1,0), SCNVector3(-0.8,-0.1,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(0.8,-0.275,0), SCNVector3(0.8,-0.1,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(-0.8,-0.275,0), SCNVector3(-0.8,-0.1,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(0.8,-0.1,0), SCNVector3(-0.8,-0.1,0)], color: grey))
 		
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(0,0.1,0), SCNVector3(0,-0.1,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(0,0.1,0), SCNVector3(0,-0.1,0)], color: grey))
 		
 		thrusterPort.addEvent(items.warpDrive)
 		
@@ -123,9 +123,9 @@ class IconPortal : Icon
 		
 		color = white
 		
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0.075,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:-0.075,y:0,z:0)],color: color))
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0.075,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:-0.075,y:0,z:0)],color: color))
 		size = 0.05
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -142,12 +142,12 @@ class StructurePortal : Structure
 	{
 		super.init()
 		
-		root.position = SCNVector3(0,5,0)
+		root.position = SCNVector3(0,10,0)
 		
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
-			node.addChildNode(SCNLine(positions: [SCNVector3(1,1,0), SCNVector3(0,0,5)], color: red))
+			node.addChildNode(SCNLine(vertices: [SCNVector3(2,5,0), SCNVector3(0,0,10)], color: red))
 			root.addChildNode(node)
 			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
 			i += 1

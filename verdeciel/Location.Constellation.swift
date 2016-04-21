@@ -33,7 +33,7 @@ class IconConstellation : Icon
 	{
 		super.init()
 		
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:-size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:size,z:0)],color: color))
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:-size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

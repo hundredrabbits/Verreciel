@@ -51,9 +51,9 @@ class LocationTrade : Location
 		givePort.position = SCNVector3(x:0, y: -0.5, z: 0)
 		wantPort.addChildNode(givePort)
 		
-		wantPort.addChildNode(SCNLine(positions: [SCNVector3(-0.125,0,0), SCNVector3(-0.3,0,0)], color: grey))
-		wantPort.addChildNode(SCNLine(positions: [SCNVector3(-0.3,0,0), SCNVector3(-0.3,-0.5,0)], color: grey))
-		wantPort.addChildNode(SCNLine(positions: [SCNVector3(-0.3,-0.5,0), SCNVector3(-0.125,-0.5,0)], color: grey))
+		wantPort.addChildNode(SCNLine(vertices: [SCNVector3(-0.125,0,0), SCNVector3(-0.3,0,0)], color: grey))
+		wantPort.addChildNode(SCNLine(vertices: [SCNVector3(-0.3,0,0), SCNVector3(-0.3,-0.5,0)], color: grey))
+		wantPort.addChildNode(SCNLine(vertices: [SCNVector3(-0.3,-0.5,0), SCNVector3(-0.125,-0.5,0)], color: grey))
 		
 		let wantLabel = SCNLabel(text: "Trade Table", color:grey)
 		wantLabel.position = SCNVector3(x: -1.5, y: 0, z: 0)
@@ -125,7 +125,7 @@ class IconTrade : Icon
 	{
 		super.init()
 		
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -151,7 +151,7 @@ class StructureTrade : Structure
 			
 			let node = SCNNode()
 			
-			node.addChildNode(SCNLine(positions: [SCNVector3(-value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i),value2), SCNVector3(0,value1 * Float(i),value2), SCNVector3(value2,value1 * Float(i),0), SCNVector3(value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(-value2,value1 * Float(i),0)], color: red))
+			node.addChildNode(SCNLine(vertices: [SCNVector3(-value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i),value2), SCNVector3(0,value1 * Float(i),value2), SCNVector3(value2,value1 * Float(i),0), SCNVector3(value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(-value2,value1 * Float(i),0)], color: red))
 			
 			root.addChildNode(node)
 			i += 1

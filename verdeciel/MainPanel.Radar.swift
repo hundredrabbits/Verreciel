@@ -35,12 +35,12 @@ class PanelRadar : MainPanel
 		// Ship
 		
 		shipCursor = SCNNode()
-		shipCursor.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: 0.2, y: 0, z: 0)],color:white))
-		shipCursor.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: -0.2, y: 0, z: 0)],color:white))
+		shipCursor.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: 0.2, y: 0, z: 0)],color:white))
+		shipCursor.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: -0.2, y: 0, z: 0)],color:white))
 		mainNode.addChildNode(shipCursor)
 		
 		targetterFar = SCNNode()
-		targetterFar.addChildNode(SCNLine(positions: [SCNVector3(0.8,0,0), SCNVector3(1,0,0)], color: red))
+		targetterFar.addChildNode(SCNLine(vertices: [SCNVector3(0.8,0,0), SCNVector3(1,0,0)], color: red))
 		targetterFar.opacity = 0
 		mainNode.addChildNode(targetterFar)
 		
@@ -49,14 +49,14 @@ class PanelRadar : MainPanel
 		let scale:Float = 0.3
 		let depth:Float = 0
 		targetter = SCNNode()
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: scale * 0.2, y: scale * 0.8, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: -scale * 0.2, y: scale * 0.8, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: depth), SCNVector3(x: scale * 0.2, y: -scale * 0.8, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -scale, z: depth), SCNVector3(x: -scale * 0.2, y: -scale * 0.8, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: depth), SCNVector3(x: scale * 0.8, y: scale * 0.2, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: scale, y: 0, z: depth), SCNVector3(x: scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: scale * 0.2, z: depth)], color: red))
-		targetter.addChildNode(SCNLine(positions: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: scale * 0.2, y: scale * 0.8, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: -scale * 0.2, y: scale * 0.8, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -scale, z: depth), SCNVector3(x: scale * 0.2, y: -scale * 0.8, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -scale, z: depth), SCNVector3(x: -scale * 0.2, y: -scale * 0.8, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: scale, y: 0, z: depth), SCNVector3(x: scale * 0.8, y: scale * 0.2, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: scale, y: 0, z: depth), SCNVector3(x: scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: scale * 0.2, z: depth)], color: red))
+		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
 		targetter.opacity = 0
 		mainNode.addChildNode(targetter)
 		

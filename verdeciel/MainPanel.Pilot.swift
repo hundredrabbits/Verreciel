@@ -23,23 +23,23 @@ class PanelPilot : MainPanel
 		info = "[missing text]"
 		
 		targetDirectionIndicator = SCNNode()
-		targetDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, 0.55, 0), SCNVector3(0, 0.7, 0)], color: white))
+		targetDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.55, 0), SCNVector3(0, 0.7, 0)], color: white))
 		mainNode.addChildNode(targetDirectionIndicator)
 		
 		activeDirectionIndicator = SCNNode()
-		activeDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, 0.4, -0.1), SCNVector3(0, 0.55, -0)], color: grey))
+		activeDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.4, -0.1), SCNVector3(0, 0.55, -0)], color: grey))
 		mainNode.addChildNode(activeDirectionIndicator)
 		
 		staticDirectionIndicator = SCNNode()
-		staticDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, 0.2, -0.1), SCNVector3(0, 0.4, -0)], color: cyan))
-		staticDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, -0.2, -0.1), SCNVector3(0, -0.4, -0)], color: red))
-		staticDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0.2, 0, -0.1), SCNVector3(0.4, 0, -0)], color: red))
-		staticDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(-0.2, 0, -0.1), SCNVector3(-0.4, 0, -0)], color: red))
+		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(0, 0.4, -0)], color: cyan))
+		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, -0.2, -0.1), SCNVector3(0, -0.4, -0)], color: red))
+		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0.2, 0, -0.1), SCNVector3(0.4, 0, -0)], color: red))
+		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(-0.2, 0, -0.1), SCNVector3(-0.4, 0, -0)], color: red))
 		mainNode.addChildNode(staticDirectionIndicator)
 		
 		eventsDirectionIndicator = SCNNode()
-		eventsDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, 0.2, -0.1), SCNVector3(0.2, 0, -0)], color: white))
-		eventsDirectionIndicator.addChildNode(SCNLine(positions: [SCNVector3(0, 0.2, -0.1), SCNVector3(-0.2, 0, -0)], color: white))
+		eventsDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(0.2, 0, -0)], color: white))
+		eventsDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(-0.2, 0, -0)], color: white))
 		mainNode.addChildNode(eventsDirectionIndicator)
 	
 		decals.empty()

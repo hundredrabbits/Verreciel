@@ -8,25 +8,27 @@ import Foundation
 
 class SCNLine : SCNNode
 {
-	var positions:Array<SCNVector3>!
-	var nodeB:SCNVector3! = nil
+	var vertices:Array<SCNVector3>!
 	var color:UIColor! = nil
 	
-	init(positions:Array<SCNVector3>, color:UIColor = white)
+	init(vertices:Array<SCNVector3>, color:UIColor = white)
 	{
-		self.positions = positions
+		self.vertices = vertices
 		self.color = color
 		
 		super.init()
 		
-		draw(positions, color: self.color)
+		update(vertices, color: self.color)
 	}
 	
-	func draw(vertices:Array<SCNVector3>, color:UIColor)
+	func update(vertices:Array<SCNVector3>, color:UIColor)
 	{
 		if vertices.count < 2 { return }
 		if vertices.count % 2 == 1 { print("ERROR: Line vertices count is odd") ; return }
 	
+		self.vertices = vertices
+		self.color = color
+		
 		var positionsList: [Float32] = []
 		
 		for vertex in vertices {
@@ -65,12 +67,6 @@ class SCNLine : SCNNode
 		opacity = 1
 	}
 	
-	func updateHeight(height:Float)
-	{
-		self.nodeB = SCNVector3(nodeB.x,height,nodeB.z)
-		draw(positions, color: color)
-	}
-	
 	func reset()
 	{
 		geometry = nil
@@ -81,14 +77,20 @@ class SCNLine : SCNNode
 	{
 		if color == self.color { return }
 		self.color = color
-		draw(positions, color: color)
+		update(vertices, color: color)
 	}
 	
 	func update(color:UIColor)
 	{
 		if color == self.color { return }
 		self.color = color
-		draw(positions, color: color)
+		update(vertices, color: color)
+	}
+	
+	func update(vertices:Array<SCNVector3>)
+	{
+		self.vertices = vertices
+		update(vertices, color: color)
 	}
 	
 	required init(coder aDecoder: NSCoder)

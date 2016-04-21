@@ -45,8 +45,8 @@ class Helmet: SCNNode
 		
 		displayLeft = SCNNode()
 		displayLeft.position = SCNVector3(-0.5,0,visorDepth)
-		displayLeft.addChildNode(SCNLine(positions: [SCNVector3(x: -0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
-		displayLeft.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: 0.01, y: -1.275, z: 0)], color: grey))
+		displayLeft.addChildNode(SCNLine(vertices: [SCNVector3(x: -0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
+		displayLeft.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: 0.01, y: -1.275, z: 0)], color: grey))
 		
 		leftHandLabel = SCNLabel(text: "--", scale: textSize, align: alignment.left, color:grey)
 		leftHandLabel.position = SCNVector3(x: -0.2, y: -1.375, z: 0)
@@ -68,8 +68,8 @@ class Helmet: SCNNode
 		
 		displayRight = SCNNode()
 		displayRight.position = SCNVector3(0.5,0,visorDepth)
-		displayRight.addChildNode(SCNLine(positions: [SCNVector3(x: 0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
-		displayRight.addChildNode(SCNLine(positions: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: -0.01, y: -1.275, z: 0)], color: grey))
+		displayRight.addChildNode(SCNLine(vertices: [SCNVector3(x: 0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
+		displayRight.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: -0.01, y: -1.275, z: 0)], color: grey))
 		
 		rightHandLabel = SCNLabel(text: "--", scale: textSize, align: alignment.right, color:white)
 		rightHandLabel.position = SCNVector3(x: 0.2, y: -1.375, z: 0)
@@ -79,8 +79,8 @@ class Helmet: SCNNode
 		
 		visor.addChildNode(displayRight)
 		
-		displayRight.addChildNode(SCNLine(positions: [SCNVector3(x: 0.2, y: 1.4, z: 0), SCNVector3(x: 0.1, y: 1.4, z: 0)], color: grey))
-		displayLeft.addChildNode(SCNLine(positions: [SCNVector3(x: -0.2, y: 1.4, z: 0), SCNVector3(x: -0.1, y: 1.4, z: 0)], color: grey))
+		displayRight.addChildNode(SCNLine(vertices: [SCNVector3(x: 0.2, y: 1.4, z: 0), SCNVector3(x: 0.1, y: 1.4, z: 0)], color: grey))
+		displayLeft.addChildNode(SCNLine(vertices: [SCNVector3(x: -0.2, y: 1.4, z: 0), SCNVector3(x: -0.1, y: 1.4, z: 0)], color: grey))
 		
 		// Center
 		

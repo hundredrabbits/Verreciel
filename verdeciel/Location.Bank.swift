@@ -135,7 +135,9 @@ class IconBank : Icon
 	{
 		super.init()
 		
-		mesh.addChildNode(SCNLine(positions: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+//		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:size,y:0,z:0)],color: color))
+		
+		label.update("")
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -151,9 +153,9 @@ class StructureBank : Structure
 		super.init()
 		
 		var i = 0
-		while i < 14 {
+		while i < 7 {
 			let rect = SCNRect(size:CGSize(width:6,height:6), color:white)
-			rect.position.y = Float((Float(i)/2) - 3.5)
+			rect.position.y = Float((Float(i)) - 3.5)
 			root.addChildNode(rect)
 			i += 1
 		}

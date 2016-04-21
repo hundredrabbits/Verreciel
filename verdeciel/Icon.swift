@@ -26,7 +26,7 @@ class Icon : SCNNode
 		label.position = SCNVector3(0,-0.3,-0.35)
 		self.addChildNode(label)
 		
-		wire = SCNLine(positions: [],color:white)
+		wire = SCNLine(vertices: [],color:white)
 		wire.position = SCNVector3(0,0,-0.01)
 		wire.opacity = 0
 		self.addChildNode(wire)

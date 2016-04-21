@@ -67,13 +67,13 @@ class LocationGateway : Location
 		ThrusterLabel.position = SCNVector3(0.4,0,0)
 		ThrusterPort.addChildNode(ThrusterLabel)
 		
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin,0.6,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin + 0.4,0,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,-0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(positions: [SCNVector3(templates.leftMargin,0.6,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.6,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin,0.6,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin + 0.4,0,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,-0.2,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.2,0)], color: grey))
+		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0.6,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.6,0)], color: grey))
 		
 		return newPanel
 	}
