@@ -39,8 +39,8 @@ class CoreSpace: SCNNode
 		grey = true_grey
 		
 		switch system {
-		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-		case .nevic : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white
+		case .nevic : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
 		case .usul   : targetSpaceColor = [0.3,0.3,0.3] ; stars_color = true_red
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
