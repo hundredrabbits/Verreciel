@@ -85,7 +85,7 @@ class PanelIntercom : MainPanel
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(0,0,1),host:self))
 		
-		locationPanel.opacity = 0
+		locationPanel.hide()
 	}
 	
 	override func whenRenderer()
@@ -144,7 +144,7 @@ class PanelIntercom : MainPanel
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		locationPanel.position = SCNVector3(0,0,-0.5)
-		locationPanel.opacity = 0
+		locationPanel.hide()
 		
 		SCNTransaction.setCompletionBlock({
 
@@ -154,7 +154,7 @@ class PanelIntercom : MainPanel
 			SCNTransaction.setAnimationDuration(0.5)
 			
 			self.defaultPanel.position = SCNVector3(0,0,0)
-			self.defaultPanel.opacity = 1
+			self.defaultPanel.show()
 			
 			SCNTransaction.setCompletionBlock({
 				self.refresh()
@@ -176,7 +176,7 @@ class PanelIntercom : MainPanel
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		defaultPanel.position = SCNVector3(0,0,-0.5)
-		defaultPanel.opacity = 0
+		defaultPanel.hide()
 		
 		SCNTransaction.setCompletionBlock({
 			
@@ -187,7 +187,7 @@ class PanelIntercom : MainPanel
 			SCNTransaction.setAnimationDuration(0.5)
 			
 			self.locationPanel.position = SCNVector3(0,0,0)
-			self.locationPanel.opacity = 1
+			self.locationPanel.show()
 			self.refresh()
 			
 			SCNTransaction.commit()
@@ -206,7 +206,7 @@ class PanelIntercom : MainPanel
 		SCNTransaction.setAnimationDuration(0.5)
 		
 		locationPanel.position = SCNVector3(0,0,-0.5)
-		locationPanel.opacity = 0
+		locationPanel.hide()
 		
 		SCNTransaction.setCompletionBlock({
 			
@@ -216,7 +216,7 @@ class PanelIntercom : MainPanel
 			SCNTransaction.setAnimationDuration(0.5)
 			
 			self.defaultPanel.position = SCNVector3(0,0,0)
-			self.defaultPanel.opacity = 1
+			self.defaultPanel.show()
 			self.refresh()
 			
 			SCNTransaction.setCompletionBlock({

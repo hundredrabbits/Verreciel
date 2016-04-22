@@ -28,7 +28,7 @@ class Icon : SCNNode
 		
 		wire = SCNLine(vertices: [],color:white)
 		wire.position = SCNVector3(0,0,-0.01)
-		wire.opacity = 0
+		wire.hide()
 		self.addChildNode(wire)
 		
 		addChildNode(mesh)

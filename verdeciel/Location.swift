@@ -189,7 +189,7 @@ class Location : Event
 		// In Sight
 		if Float(verticalDistance) <= 1.5 && Float(horizontalDistance) <= 1.5 || radar.overviewMode == true && distance < 7{
 			if self.mapRequirement == nil {
-				self.opacity = 1
+				self.show()
 			}
 			else if self.mapRequirement != nil {
 				self.opacity = (map.hasMap(self.mapRequirement) == true && battery.isMapPowered() == true) ? 1 : 0
@@ -197,16 +197,16 @@ class Location : Event
 		}
 		// Out Of Sight
 		else{
-			self.opacity = 0
+			self.hide()
 		}
 		
 		// Connections
 		if connection != nil {
 			if connection.opacity == 1 {
-				icon.wire.opacity = 1
+				icon.wire.show()
 			}
 			else{
-				icon.wire.opacity = 0
+				icon.wire.hide()
 			}
 		}
 	}

@@ -40,7 +40,7 @@ class CorePlayer : SCNNode
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75))
 		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
 		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))
-		trigger.opacity = 0
+		trigger.hide()
 		addChildNode(trigger)
 		
 		triggerLabel = SCNLabel(text: "return to capsule", scale: 0.03, align: alignment.center, color: red)

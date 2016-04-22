@@ -36,7 +36,7 @@ class SCNPortSlot : SCNPort
 		
 		self.host = host
 		
-		if align == nil { label.opacity = 0 ; details.opacity = 0 }
+		if align == nil { label.hide() ; details.hide() }
 		else if align == alignment.left { label.position = SCNVector3(0.3,0,0) ; details.position = SCNVector3(0.3,-0.3,0) }
 		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
 		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; details.position = SCNVector3(0,-0.8,0) }

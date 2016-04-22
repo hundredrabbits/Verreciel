@@ -72,8 +72,8 @@ class SCNPort : SCNNode
 	{
 		super.whenRenderer()
 		
-		sprite_input.opacity = 1
-		sprite_output.opacity = 1
+		sprite_input.show()
+		sprite_output.show()
 		
 		// Input
 		if isEnabled == false {

@@ -53,9 +53,9 @@ class MainPanel : Panel
 		
 		// Start
 		
-		mainNode.opacity = 0
-		decals.opacity = 0
-		footer.opacity = 0
+		mainNode.hide()
+		decals.hide()
+		footer.hide()
 		
 		label.update("--", color:grey)
 	}
@@ -64,8 +64,8 @@ class MainPanel : Panel
 	{
 		super.whenStart()
 		
-		decals.opacity = 0
-		mainNode.opacity = 0
+		decals.hide()
+		mainNode.hide()
 		label.update("--", color: grey)
 	}
 	
@@ -85,7 +85,7 @@ class MainPanel : Panel
 		installNode.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 1)
 		installProgressBar.position = SCNVector3(-installProgressBar.width/2,-0.3,0)
-		installProgressBar.opacity = 1
+		installProgressBar.show()
 		installNode.addChildNode(installProgressBar)
 		
 		installNode.addChildNode(installLabel)
@@ -106,17 +106,17 @@ class MainPanel : Panel
 		super.onInstallationComplete()
 		
 		mainNode.position = SCNVector3(0,0,-0.2)
-		mainNode.opacity = 0
+		mainNode.hide()
 		decals.position = SCNVector3(0,0,-0.4)
-		decals.opacity = 0
+		decals.hide()
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.7)
 		mainNode.position = SCNVector3(0,0,0)
-		mainNode.opacity = 1
+		mainNode.show()
 		decals.position = SCNVector3(0,0,0)
-		decals.opacity = 1
-		footer.opacity = 1
+		decals.show()
+		footer.show()
 		SCNTransaction.commit()
 		
 		installNode.removeFromParentNode()

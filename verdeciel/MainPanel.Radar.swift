@@ -41,7 +41,7 @@ class PanelRadar : MainPanel
 		
 		targetterFar = SCNNode()
 		targetterFar.addChildNode(SCNLine(vertices: [SCNVector3(0.8,0,0), SCNVector3(1,0,0)], color: red))
-		targetterFar.opacity = 0
+		targetterFar.hide()
 		mainNode.addChildNode(targetterFar)
 		
 		// Targetter
@@ -57,7 +57,7 @@ class PanelRadar : MainPanel
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: scale, y: 0, z: depth), SCNVector3(x: scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: scale * 0.2, z: depth)], color: red))
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: -scale, y: 0, z: depth), SCNVector3(x: -scale * 0.8, y: -scale * 0.2, z: depth)], color: red))
-		targetter.opacity = 0
+		targetter.hide()
 		mainNode.addChildNode(targetter)
 		
 		self.position = SCNVector3(0,0,0)
@@ -97,17 +97,17 @@ class PanelRadar : MainPanel
 			let angleTest = angleBetweenTwoPoints(capsule.at, point2: port.event.at, center: capsule.at)
 			let targetDirectionNormal = Double(Float(angleTest)/180) * 1
 			targetterFar.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * targetDirectionNormal))
-			targetterFar.opacity = 1
+			targetterFar.show()
 		}
 		else{
 			targetter.position = SCNVector3(port.event.at.x - capsule.at.x,port.event.at.y - capsule.at.y,0)
-			targetterFar.opacity = 0
+			targetterFar.hide()
 		}
 		
 		// Targetter
 		if distanceFromShip > 2 { targetter.updateChildrenColors(clear) }
 		else if port.event != capsule.dock { targetter.updateChildrenColors(red) ; targetter.blink() }
-		else{ targetter.updateChildrenColors(grey) ; targetter.opacity = 1  }
+		else{ targetter.updateChildrenColors(grey) ; targetter.show()  }
 		
 	}
 
@@ -131,7 +131,7 @@ class PanelRadar : MainPanel
 	func removeTarget()
 	{
 		port.event = nil
-		targetter.opacity = 0
+		targetter.hide()
 	}
 	
 	// MARK: Scan -

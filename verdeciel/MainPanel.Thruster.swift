@@ -162,10 +162,10 @@ class PanelThruster : MainPanel
 			maxSpeed = 3
 		}
 		
-		if maxSpeed > 0 { line1.opacity = 1 ; cutLine1.opacity = 0 } else { line1.opacity = 0 ; cutLine1.opacity = 1 }
-		if maxSpeed > 1 { line2.opacity = 1 ; cutLine2.opacity = 0 } else { line2.opacity = 0 ; cutLine2.opacity = 1 }
-		if maxSpeed > 2 { line3.opacity = 1 ; cutLine3.opacity = 0 } else { line3.opacity = 0 ; cutLine3.opacity = 1 }
-		if maxSpeed > 3 { line4.opacity = 1 ; cutLine4.opacity = 0 } else { line4.opacity = 0 ; cutLine4.opacity = 1 }
+		if maxSpeed > 0 { line1.show() ; cutLine1.hide() } else { line1.hide() ; cutLine1.show() }
+		if maxSpeed > 1 { line2.show() ; cutLine2.hide() } else { line2.hide() ; cutLine2.show() }
+		if maxSpeed > 2 { line3.show() ; cutLine3.hide() } else { line3.hide() ; cutLine3.show() }
+		if maxSpeed > 3 { line4.show() ; cutLine4.hide() } else { line4.hide() ; cutLine4.show() }
 	}
 	
 	override func whenRenderer()
@@ -247,9 +247,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("locked", color:grey)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 1
-		interface_warp.opacity = 0
+		interface_flight.hide()
+		interface_dock.show()
+		interface_warp.hide()
 		
 		action.disable()
 		
@@ -266,9 +266,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("warping", color:white)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 0
-		interface_warp.opacity = 1
+		interface_flight.hide()
+		interface_dock.hide()
+		interface_warp.show()
 		
 		action.disable()
 		
@@ -277,10 +277,10 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(clear)
 		decelerate.updateChildrenColors(clear)
 		
-		line1.opacity = 1 ; cutLine1.opacity = 0
-		line2.opacity = 1 ; cutLine2.opacity = 0
-		line3.opacity = 1 ; cutLine3.opacity = 0
-		line4.opacity = 1 ; cutLine4.opacity = 0
+		line1.show() ; cutLine1.hide()
+		line2.show() ; cutLine2.hide()
+		line3.show() ; cutLine3.hide()
+		line4.show() ; cutLine4.hide()
 		
 		line1.blink()
 		line2.blink()
@@ -295,9 +295,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("warp", color:white)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 0
-		interface_warp.opacity = 1
+		interface_flight.hide()
+		interface_dock.hide()
+		interface_warp.show()
 		interface_warp.updateChildrenColors(cyan)
 		
 		action.enable()
@@ -315,9 +315,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("error", color:red)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 0
-		interface_warp.opacity = 1
+		interface_flight.hide()
+		interface_dock.hide()
+		interface_warp.show()
 		interface_warp.updateChildrenColors(red)
 		
 		action.disable()
@@ -335,8 +335,8 @@ class PanelThruster : MainPanel
 	{
 		details.update("misaligned", color:red)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 0
+		interface_flight.hide()
+		interface_dock.hide()
 		interface_warp.blink()
 		interface_warp.updateChildrenColors(red)
 		
@@ -345,10 +345,10 @@ class PanelThruster : MainPanel
 		accelerate.updateChildrenColors(red)
 		decelerate.updateChildrenColors(red)
 		
-		line1.opacity = 1 ; cutLine1.opacity = 0 
-		line2.opacity = 1 ; cutLine2.opacity = 0 
-		line3.opacity = 1 ; cutLine3.opacity = 0 
-		line4.opacity = 1 ; cutLine4.opacity = 0
+		line1.show() ; cutLine1.hide() 
+		line2.show() ; cutLine2.hide() 
+		line3.show() ; cutLine3.hide() 
+		line4.show() ; cutLine4.hide()
 		
 		lineLeft.color(red)
 		lineRight.color(red)
@@ -360,19 +360,19 @@ class PanelThruster : MainPanel
 	{
 		details.update("unpowered", color:grey)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 0
-		interface_warp.opacity = 0
+		interface_flight.hide()
+		interface_dock.hide()
+		interface_warp.hide()
 		
 		accelerate.disable()
 		decelerate.disable()
 		accelerate.updateChildrenColors(grey)
 		decelerate.updateChildrenColors(grey)
 		
-		line1.opacity = 0 ; cutLine1.opacity = 1
-		line2.opacity = 0 ; cutLine2.opacity = 1
-		line3.opacity = 0 ; cutLine3.opacity = 1
-		line4.opacity = 0 ; cutLine4.opacity = 1
+		line1.hide() ; cutLine1.show()
+		line2.hide() ; cutLine2.show()
+		line3.hide() ; cutLine3.show()
+		line4.hide() ; cutLine4.show()
 	}
 	
 	func modeDocking()
@@ -380,9 +380,9 @@ class PanelThruster : MainPanel
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
 		details.update("docking \(dockingProgress)%", color:grey)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 1
-		interface_warp.opacity = 0
+		interface_flight.hide()
+		interface_dock.show()
+		interface_warp.hide()
 		
 		action.enable()
 		
@@ -399,9 +399,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("Take \(capsule.dock.storedItems().first!.name!)", color:red)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 1
-		interface_warp.opacity = 0
+		interface_flight.hide()
+		interface_dock.show()
+		interface_warp.hide()
 		
 		action.disable()
 		
@@ -418,9 +418,9 @@ class PanelThruster : MainPanel
 	{
 		details.update("undock", color:white)
 		
-		interface_flight.opacity = 0
-		interface_dock.opacity = 1
-		interface_warp.opacity = 0
+		interface_flight.hide()
+		interface_dock.show()
+		interface_warp.hide()
 
 		action.enable()
 		
@@ -437,9 +437,9 @@ class PanelThruster : MainPanel
 	{
 		details.update(String(format: "%.1f", actualSpeed), color:white)
 		
-		interface_flight.opacity = 1
-		interface_dock.opacity = 0
-		interface_warp.opacity = 0
+		interface_flight.show()
+		interface_dock.hide()
+		interface_warp.hide()
 		
 		if speed > 0 { line1.color(white) } else { line1.color(grey) }
 		if speed > 1 { line2.color(white) } else { line2.color(grey) }
@@ -457,8 +457,8 @@ class PanelThruster : MainPanel
 		lineLeft.color(clear)
 		lineRight.color(clear)
 		
-		interface_dock.opacity = 0
-		interface_flight.opacity = 1
+		interface_dock.hide()
+		interface_flight.show()
 	}
 	
 	func speedUp()

@@ -32,7 +32,7 @@ class WidgetShield : Widget
 		port.enable()
 		
 		if port.hasItemOfType(.shield) == true {
-			capsule.shieldRoot.opacity = 1
+			capsule.shieldRoot.show()
 		}
 	}
 	
@@ -41,7 +41,7 @@ class WidgetShield : Widget
 		super.onUnpowered()
 		
 		port.disable()
-		capsule.shieldRoot.opacity = 0
+		capsule.shieldRoot.hide()
 	}
 	
 	func createShield()
@@ -95,7 +95,7 @@ class WidgetShield : Widget
 		}
 		
 		capsule.shieldRoot.eulerAngles.y = (degToRad(360/16))
-		capsule.shieldRoot.opacity = 0
+		capsule.shieldRoot.hide()
 	}
 
 	override func onInstallationBegin()

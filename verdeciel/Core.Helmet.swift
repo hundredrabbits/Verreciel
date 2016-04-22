@@ -30,17 +30,9 @@ class Helmet: SCNNode
 	override init()
 	{
 		super.init()
-		setup()
-	}
-	
-	func setup()
-	{
-		setupVisor()
+		
 		addChildNode(visor)
-	}
-	
-	func setupVisor()
-	{
+		
 		// Left
 		
 		displayLeft = SCNNode()
@@ -136,14 +128,14 @@ class Helmet: SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
 		messageLabel.position = SCNVector3(0,1.375,self.visorDepth - 0.01)
-		messageLabel.opacity = 0
+		messageLabel.hide()
 		messageLabel.updateColor(cyan)
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.messageLabel.update(self.message, color:color)
 			self.messageLabel.position = SCNVector3(0,1.375,self.visorDepth)
-			self.messageLabel.opacity = 1
+			self.messageLabel.show()
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()
@@ -158,13 +150,13 @@ class Helmet: SCNNode
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
 		passiveLabel.position = SCNVector3(0,-1.2,self.visorDepth - 0.01)
-		passiveLabel.opacity = 0
+		passiveLabel.hide()
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.passiveLabel.update(self.passive)
 			self.passiveLabel.position = SCNVector3(0,-1.2,self.visorDepth)
-			self.passiveLabel.opacity = 1
+			self.passiveLabel.show()
 			SCNTransaction.commit()
 		})
 		SCNTransaction.commit()

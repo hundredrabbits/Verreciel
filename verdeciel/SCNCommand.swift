@@ -39,7 +39,7 @@ class SCNCommand : SCNNode
 		
 		port = SCNPortRedirect(host: self)
 		port.position = SCNVector3(0, 0, 0)
-		port.opacity = 0
+		port.hide()
 		port.event = event
 
 		headLineTop = SCNLine(vertices: [SCNVector3(0.125, 0, 0), SCNVector3(0, 0.125, 0)], color: cyan)
@@ -52,12 +52,12 @@ class SCNCommand : SCNNode
 		self.addChildNode(headLineDown)
 		
 		if head == true {
-			headLineTop.opacity = 1
-			headLineDown.opacity = 1
+			headLineTop.show()
+			headLineDown.show()
 		}
 		else{
-			headLineTop.opacity = 0
-			headLineDown.opacity = 0
+			headLineTop.hide()
+			headLineDown.hide()
 		}
 	}
 	
@@ -74,20 +74,20 @@ class SCNCommand : SCNNode
 		detailsLabel.update(details)
 		
 		if port.event != nil {
-			port.opacity = 1
+			port.show()
 			port.enable()
 		}
 		else{
-			port.opacity = 0
+			port.hide()
 		}
 		
 		if command.head == true {
-			headLineTop.opacity = 1
-			headLineDown.opacity = 1
+			headLineTop.show()
+			headLineDown.show()
 		}
 		else{
-			headLineTop.opacity = 0
-			headLineDown.opacity = 0
+			headLineTop.hide()
+			headLineDown.hide()
 		}
 	}
 	

@@ -25,8 +25,8 @@ class Monitor : Panel
 		details.position = SCNVector3(0,0.2,0)
 		root.addChildNode(details)
 		
-		label.opacity = 0
-		details.opacity = 0
+		label.hide()
+		details.hide()
 		
 		details.update("")
 		label.update("--")
@@ -43,7 +43,7 @@ class Monitor : Panel
 		installNode.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 0.5)
 		installProgressBar.position = SCNVector3(-0.25,-0.2,0)
-		installProgressBar.opacity = 0
+		installProgressBar.hide()
 		installNode.addChildNode(installProgressBar)
 		root.addChildNode(installNode)
 	}
@@ -59,8 +59,8 @@ class Monitor : Panel
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
-		label.opacity = 1
-		details.opacity = 1
+		label.show()
+		details.show()
 		SCNTransaction.setCompletionBlock({ self.refresh() })
 		SCNTransaction.commit()
 		

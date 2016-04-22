@@ -165,7 +165,7 @@ class LocationHoradric : Location
 		
 		outPort.addEvent(combinationRecipe.result)
 		
-		self.structure.opacity = 1
+		self.structure.show()
 		
 		combinationPercentage = 0
 		

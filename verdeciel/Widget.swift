@@ -30,7 +30,7 @@ class Widget : Panel
 		
 		root.addChildNode(port)
 		
-		root.opacity = 0
+		root.hide()
 	}
 	
 	override func onConnect()
@@ -113,11 +113,11 @@ class Widget : Panel
 		super.onInstallationComplete()
 		
 		installNode.removeFromParentNode()
-		installNode.opacity = 0
+		installNode.hide()
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.7)
-		root.opacity = 1
+		root.show()
 		SCNTransaction.commit()
 		
 		port.enable()

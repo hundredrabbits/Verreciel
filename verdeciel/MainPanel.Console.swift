@@ -9,142 +9,42 @@ import Foundation
 
 class PanelConsole : MainPanel
 {
-	var consoleLine1:SCNCommand!
-	var consoleLine2:SCNCommand!
-	var consoleLine3:SCNCommand!
-	var consoleLine4:SCNCommand!
-	var consoleLine5:SCNCommand!
-	var consoleLine6:SCNCommand!
-	
-	var commands:Array<SCNCommand> = [SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand(),SCNCommand()]
-	
-	var consoleNode:SCNNode!
-	
-	var refreshTimer:NSTimer!
-	var radioPort:SCNPortSlot!
-	
+	var lines:Array<ConsoleLine> = [ConsoleLine(),ConsoleLine(),ConsoleLine(),ConsoleLine(),ConsoleLine(),ConsoleLine()]
+
 	override init()
 	{
 		super.init()
 		
 		name = "console"
 		info = "[missing text]"
-	
-		consoleNode = SCNNode()
 		
-		consoleNode.position = SCNVector3(0,0,0)
+		lines[0].position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 2.5, z: 0)
+		lines[1].position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 1.5, z: 0)
+		lines[2].position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 0.5, z: 0)
+		lines[3].position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 0.5, z: 0)
+		lines[4].position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 1.5, z: 0)
+		lines[5].position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 2.5, z: 0)
 		
-		consoleLine1 = SCNCommand(host:self)
-		consoleLine1.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 2.5, z: 0)
-		consoleNode.addChildNode(consoleLine1)
-		
-		consoleLine2 = SCNCommand(host:self)
-		consoleLine2.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 1.5, z: 0)
-		consoleNode.addChildNode(consoleLine2)
-		
-		consoleLine3 = SCNCommand(host:self)
-		consoleLine3.position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 0.5, z: 0)
-		consoleNode.addChildNode(consoleLine3)
-		
-		consoleLine4 = SCNCommand(host:self)
-		consoleLine4.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 0.5, z: 0)
-		consoleNode.addChildNode(consoleLine4)
-		
-		consoleLine5 = SCNCommand(host:self)
-		consoleLine5.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 1.5, z: 0)
-		consoleNode.addChildNode(consoleLine5)
-		
-		consoleLine6 = SCNCommand(host:self)
-		consoleLine6.position = SCNVector3(x: templates.leftMargin, y: -templates.lineSpacing * 2.5, z: 0)
-		consoleNode.addChildNode(consoleLine6)
-		
-		mainNode.addChildNode(consoleNode)
-		
-		refreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
+		for line in lines {
+			mainNode.addChildNode(line)
+		}
 		
 		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
-
-	func addLine(command:SCNCommand! = nil)
+	
+	override func whenStart()
 	{
-		commands.append(command)
+		let payload = ConsolePayload(data: [ConsoleData(text:"hey",details:"details",event:items.valenPortalKey), ConsoleData(text:"hey 2",details:"wat",event:items.loiqePortalKey)])
+		inject(payload)
 	}
 	
-	override func refresh()
+	func inject(payload:ConsolePayload)
 	{
-		if commands.count > 6 { commands.removeAtIndex(0) ; update() }
-	}
-	
-	override func update()
-	{
-		if port.origin != nil {
-			port.origin.host.update()
+		var id = 0
+		for data in payload.data {
+			lines[id].update(data)
+			id += 1
 		}
-		
-		consoleLine1.inject(commands[0])
-		consoleLine2.inject(commands[1])
-		consoleLine3.inject(commands[2])
-		consoleLine4.inject(commands[3])
-		consoleLine5.inject(commands[4])
-		consoleLine6.inject(commands[5])
-		
-		if port.origin == nil {
-			label.update("console")
-		}
-	}
-	
-	func boot()
-	{
-		clearLines()
-		addLine(SCNCommand(text: "Awaiting input",color:grey))
-		addLine(SCNCommand(text: "--",color:grey))
-	}
-	
-	func clearLines()
-	{
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-		addLine(SCNCommand(text: "--", color: grey))
-	}
-	/*
-	override func listen(event: Event)
-	{
-		for command in commands {
-			command.port.event = nil
-		}
-		
-		if port.origin.host == cargo {
-					}
-	}
-	*/
-	override func onConnect()
-	{
-		super.onConnect()
-		
-		if port.isReceivingFromPanel(cargo) == true {
-			addLine(SCNCommand(text: "\(port.origin.host.name!)", color: grey, head:true))
-			for item in cargo.port.event.content {
-				self.addLine(SCNCommand(text: item.name!, details: "\(item.type)", color: white, event: item, head:false))
-			}
-		}
-		else if port.origin.event != nil {
-			addLine(SCNCommand(text: port.origin.event.name!, color: grey, details: "", head:true))
-			addLine(SCNCommand(text: "\(port.origin.event.note)", color: white))
-		}
-		else if port.origin.host is Panel {
-			let origin = port.origin.host as! Panel
-			addLine(SCNCommand(text: origin.name!, color: grey, details: "", head:true))
-			addLine(SCNCommand(text: "\(origin.info)", color: white))
-		}
-	}
-	
-	override func onDisconnect()
-	{
-		addLine(SCNCommand(text: "Disconnected", color: grey, head:true))
 	}
 	
 	override func onInstallationBegin()
@@ -157,8 +57,6 @@ class PanelConsole : MainPanel
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()
-		
-		boot()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
@@ -166,3 +64,78 @@ class PanelConsole : MainPanel
 		fatalError("init(coder:) has not been implemented")
 	}
 }
+
+class ConsoleLine : SCNNode
+{
+	var port:SCNPortRedirect!
+	var textLabel:SCNLabel!
+	var detailsLabel:SCNLabel!
+	
+	var data:ConsoleData!
+	
+	var head:Bool!
+	
+	init(data:ConsoleData! = nil)
+	{
+		super.init()
+		
+		port = SCNPortRedirect(host: self)
+		port.position = SCNVector3(0, 0, 0)
+		port.hide()
+		addChildNode(port)
+		
+		textLabel = SCNLabel(scale: 0.1, align: alignment.left)
+		textLabel.position = SCNVector3(0.3, 0, 0)
+		addChildNode(textLabel)
+		
+		detailsLabel = SCNLabel(scale: 0.1, align: alignment.right, color:grey)
+		detailsLabel.position = SCNVector3(3.2, 0, 0)
+		addChildNode(detailsLabel)
+	}
+	
+	func update(data:ConsoleData)
+	{
+		textLabel.update(data.text)
+		detailsLabel.update(data.details)
+		if data.event != nil {
+			port.addEvent(data.event)
+			port.enable()
+			port.show()
+		}
+		else{
+			port.disable()
+			port.hide()
+		}
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class ConsoleData
+{
+	var text:String! = "text"
+	var details:String! = "details"
+	var event:Event! = nil
+	var color:UIColor!
+	
+	init(text:String! = nil, details:String! = nil, event:Event! = nil)
+	{
+		self.text = text
+		self.details = details
+		self.event = event
+	}
+}
+
+class ConsolePayload
+{
+	var data:Array<ConsoleData>! = [ConsoleData(),ConsoleData(),ConsoleData(),ConsoleData(),ConsoleData(),ConsoleData()]
+	
+	init(data:Array<ConsoleData>)
+	{
+		self.data = data
+	}
+}
+

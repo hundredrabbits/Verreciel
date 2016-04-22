@@ -81,7 +81,7 @@ class LocationBank : Location
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2)
 		
-		structure.opacity = 0
+		structure.hide()
 		
 		var i = 0
 		for mesh in structure.childNodes {
@@ -102,7 +102,7 @@ class LocationBank : Location
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(2)
 		
-		structure.opacity = 1
+		structure.show()
 		
 		var i = 0
 		for mesh in structure.childNodes {

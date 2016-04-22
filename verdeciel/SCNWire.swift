@@ -116,7 +116,7 @@ class SCNWire : SCNNode
 	override func blink()
 	{
 		for node in childNodes {
-			node.opacity = 0
+			node.hide()
 		}
 	}
 	

@@ -73,10 +73,17 @@ class CoreCapsule: SCNNode
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
 		}
 		
-//		if isFleeing == false && radiation > 0 { helmet.showWarning("Radiation \(String(format: "%.1f",radiation * 100))%") }
-//		else if isFleeing == true && radiation > 0.5 { helmet.showWarning("Autopilot engaged") }
-//		else if closestLocation().distance > 1.25 && isWarping == false { autoReturn() ; helmet.showWarning("Autopilot engaged") }
-//		else{ helmet.hideWarning() }
+		if isFleeing == true {
+			helmet.addWarning("AutoPilot", duration: 0.1, flag: "fleeing")
+		}
+		else if radiation > 0 {
+			helmet.addWarning("Radiation \(String(format: "%.1f",radiation * 100))%", duration: 0.1, flag: "radiation")
+		}
+		
+		if closestLocation().distance > 1.25 {
+			helmet.addWarning("Returning", duration: 0.1, flag: "returning")
+			autoReturn()
+		}
 	}
 	
 	func beginAtLocation(location:Location)
