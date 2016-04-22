@@ -8,6 +8,9 @@ import Foundation
 
 class Structure : SCNNode
 {
+	let rot = SCNNode()
+	let pos = SCNNode()
+	
 	let root = SCNNode()
 	var host:Location!
 	
@@ -15,7 +18,9 @@ class Structure : SCNNode
 	{
 		super.init()
 		
-		addChildNode(root)
+		addChildNode(rot)
+		rot.addChildNode(pos)
+		pos.addChildNode(root)
 	}
 	
 	func addHost(host:Location)
@@ -28,20 +33,20 @@ class Structure : SCNNode
 	{
 		let distance = (host is LocationConstellation) ? host.distance/settings.approach * 100 : pow(host.distance/settings.approach, 5) * 1000.0
 		
-		self.position = SCNVector3(0,distance,0)
+		pos.position = SCNVector3(0,distance,0)
 		
 		if capsule.isDockedAtLocation(host){
-			self.eulerAngles.z = (degToRad(0))
+			rot.eulerAngles.z = (degToRad(0))
 		}
 		else if capsule.lastLocation == host {
-			self.eulerAngles.z = (degToRad(0))
-			self.position = SCNVector3(0,distance * -1,0)
+			rot.eulerAngles.z = (degToRad(0))
+			pos.position = SCNVector3(0,distance * -1,0)
 		}
 		else{
-			self.eulerAngles.z = (degToRad(host.align))
+			rot.eulerAngles.z = (degToRad(host.align))
 		}
 		
-		self.eulerAngles.y = (degToRad(capsule.direction))
+		rot.eulerAngles.y = (degToRad(capsule.direction))
 		
 		if host.distance > settings.approach {
 			leaveInstance()

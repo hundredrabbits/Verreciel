@@ -42,7 +42,7 @@ class IconConstellation : Icon
 	}
 }
 
-class ConstellationTunnel : Structure
+class StructureTunnel : Structure
 {
 	override init()
 	{

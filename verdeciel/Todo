@@ -2,24 +2,22 @@
 *    MAJOR
 ================
 
-- Issue with constellation position
 - Add constellations in valen
 - Harvest structure is grey when growth is complete
-- Reflect cell count in thruster speed
+
 - Re-Implement radiation
 - Make Usul space red
 - Add sounds
 
-- Issue with stars
 - Console, old commands' ports return to active
 - Thruster speed, displays like 3.1
-- Animate portal
 - Warping capsule speed is 0?
 
 ================
 *    MINOR
 ================
 
+- Reflect cell count in thruster speed
 - Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
 

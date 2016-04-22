@@ -26,7 +26,7 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.valen_bank, newItems:[items.loiqePortalKey, items.valenPortalKey])
+		unlockedState(universe.loiqe_harvest, newItems:[items.loiqePortalKey, items.valenPortalKey])
 //		startingState()
 	}
 	
