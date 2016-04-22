@@ -75,6 +75,25 @@ class PanelConsole : MainPanel
 			lines[id].update(data)
 			id += 1
 		}
+		
+		// Animate
+		
+		var count = 0
+		for line in lines {
+			line.position.z = Float(count) * -0.1
+			line.opacity = 0
+			count += 1
+		}
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		for line in lines {
+			line.position.z = 0
+			line.opacity = 1
+		}
+		
+		SCNTransaction.commit()
 	}
 	
 	func defaultPayload() -> ConsolePayload

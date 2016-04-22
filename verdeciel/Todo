@@ -3,12 +3,10 @@
 ================
 
 - Add constellations in valen
-- Harvest structure is grey when growth is complete
 
 - Make Usul space red
 - Add sounds
 
-- Console, old commands' ports return to active
 - Thruster speed, displays like 3.1
 - Warping capsule speed is 0?
 
@@ -30,7 +28,6 @@
 
 > Bugs
 - Release touch when installing camera animation
-- Connecting something to console enables cargo item ports?!
 
 > Design
 - Floating feel
