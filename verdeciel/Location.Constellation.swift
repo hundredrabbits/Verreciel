@@ -9,9 +9,11 @@ import Foundation
 
 class LocationConstellation : Location
 {
-	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:Structure)
+	init(name:String = "", system:Systems, at:CGPoint = CGPoint(x: 0,y: 0), structure:Structure, isTargetable:Bool = false)
 	{
 		super.init(name:name, system:system, at:at, icon:IconConstellation(), structure:structure)
+		
+		self.isTargetable = false
 	}
 	
 	override func onApproach()
@@ -32,8 +34,9 @@ class IconConstellation : Icon
 	override init()
 	{
 		super.init()
-		
+		size = 0.02
 		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:-size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:size,z:0)],color: color))
+		label.hide()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

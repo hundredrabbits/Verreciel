@@ -50,6 +50,7 @@ class Structure : SCNNode
 		
 		if host.distance > settings.approach {
 			leaveInstance()
+			onLeave()
 		}
 	}
 	
@@ -80,6 +81,11 @@ class Structure : SCNNode
 	func onComplete()
 	{
 		update()
+	}
+	
+	func onLeave()
+	{
+		
 	}
 	
 	func dockUpdate()

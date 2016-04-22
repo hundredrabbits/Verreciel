@@ -128,8 +128,11 @@ class CoreCapsule: SCNNode
 
 	func warp(destination:Location)
 	{
-		(dock as! LocationPortal).pilotPort.disconnect()
-		(dock as! LocationPortal).thrusterPort.disconnect()
+		let portal = dock as! LocationPortal
+		
+		portal.pilotPort.disconnect()
+		portal.thrusterPort.disconnect()
+		portal.onWarp()
 		if intercom.port.origin != nil { intercom.port.origin.disconnect() }
 		
 		destination.isKnown = true

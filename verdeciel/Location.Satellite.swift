@@ -180,8 +180,7 @@ class StructureSatellite : Structure
 	override func onComplete()
 	{
 		super.onComplete()
-		
-		print("WHAT!!")
+	
 		root.updateChildrenColors(cyan)
 	}
 	

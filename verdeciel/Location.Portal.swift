@@ -76,6 +76,12 @@ class LocationPortal : Location
 		validate()
 	}
 	
+	func onWarp()
+	{
+		(structure as! StructurePortal).isWarping = true
+		(structure as! StructurePortal).onWarp()		
+	}
+	
 	func validate()
 	{
 		if intercom.port.isReceivingItemOfType(.key) == true {
@@ -102,7 +108,6 @@ class LocationPortal : Location
 		thrusterPort.disable()
 		keyLabel.update("no key", color:red)
 		
-		structure.root.updateChildrenColors(red)
 		(structure as! StructurePortal).onLock()
 	}
 	
@@ -120,7 +125,6 @@ class LocationPortal : Location
 		pilotPort.enable()
 		thrusterPort.enable()
 		
-		structure.root.updateChildrenColors(cyan)
 		(structure as! StructurePortal).onUnlock()
 	}
 	
@@ -153,6 +157,7 @@ class IconPortal : Icon
 
 class StructurePortal : Structure
 {
+	var isWarping:Bool = false
 	let nodes:Int = 52
 	
 	override init()
@@ -173,9 +178,25 @@ class StructurePortal : Structure
 		}
 	}
 	
+	func onWarp()
+	{
+		root.updateChildrenColors(cyan)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1.5)
+		
+		for node in root.childNodes {
+			node.childNodes.first!.position = SCNVector3(2,1,2)
+		}
+		
+		SCNTransaction.commit()
+	}
+	
 	func onUnlock()
 	{
 		super.onUndock()
+		
+		root.updateChildrenColors(cyan)
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
@@ -191,6 +212,10 @@ class StructurePortal : Structure
 	{
 		super.onUndock()
 		
+		if isWarping == true { return }
+		
+		root.updateChildrenColors(red)
+		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		
@@ -199,6 +224,11 @@ class StructurePortal : Structure
 		}
 		
 		SCNTransaction.commit()
+	}
+	
+	override func onLeave()
+	{
+		isWarping = false
 	}
 	
 	override func update()

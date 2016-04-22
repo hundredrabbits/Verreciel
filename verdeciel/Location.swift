@@ -18,7 +18,8 @@ class Location : Event
 	
 	var mapRequirement:Item!
 	
-	var isTargetted:Bool = false
+	var isTargetable:Bool = true
+	var isTargeted:Bool = false
 	var isKnown:Bool = false
 	var isSeen:Bool = false
 	var isSelected:Bool = false
@@ -220,7 +221,7 @@ class Location : Event
 	
 	override func touch(id:Int)
 	{
-		if isSeen == false { print("Unseen..") ; return }
+		if isTargetable == false { return }
 		
 		if radar.port.event == nil {
 			radar.addTarget(self)
