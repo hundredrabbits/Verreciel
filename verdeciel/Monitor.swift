@@ -34,12 +34,12 @@ class Monitor : Panel
 	
 	// MARK: Installation -
 	
-	var installNode:SCNNode = SCNNode()
+	var installNode:Empty = Empty()
 	var installProgressBar = SCNProgressBar(width: 1)
 	
 	override func onInstallationBegin()
 	{
-		installNode = SCNNode()
+		installNode = Empty()
 		installNode.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 0.5)
 		installProgressBar.position = SCNVector3(-0.25,-0.2,0)

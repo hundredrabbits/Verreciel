@@ -66,11 +66,6 @@ class LocationStation : Location
 		if id == 1 { self.installation() ; self.onComplete() }
 	}
 	
-	override func details() -> String
-	{
-		return "\(installationName)"
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
@@ -106,7 +101,7 @@ class StructureStation : Structure
 		
 		var i:Int = 0
 		while i < nodes {
-			let axis = SCNNode()
+			let axis = Empty()
 			axis.eulerAngles.y = (degToRad(CGFloat(Float(i) * Float(360/nodes))))
 			
 			let node = SCNHexa(size: 4, color: red)

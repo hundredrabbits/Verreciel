@@ -14,7 +14,6 @@
 		03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DDE18A19CE497F008029A8 /* LaunchScreen.xib */; };
 		5705994C1B90D8D9000F3E31 /* Core.Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705994B1B90D8D9000F3E31 /* Core.Space.swift */; };
 		570B1F681C910C2A00AAFF00 /* SCNOcta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B1F671C910C2A00AAFF00 /* SCNOcta.swift */; };
-		571728DF1BB03455002782A3 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728DE1BB03455002782A3 /* SCNNode.swift */; };
 		571728E11BB049BB002782A3 /* MainPanel.Cargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */; };
 		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; };
 		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; };
@@ -42,6 +41,7 @@
 		5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3411CA1FAA10031524B /* Porthole.Above.swift */; };
 		5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3431CA1FACA0031524B /* Porthole.below.swift */; };
 		5759C3471CA21DC10031524B /* SCNHexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3461CA21DC10031524B /* SCNHexa.swift */; };
+		576577591CCAA456002B1819 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576577581CCAA456002B1819 /* Empty.swift */; };
 		5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5765C3311C235A0C001ED26E /* SCNButton.swift */; };
 		5768590C1C4DA8EA009D3681 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5768590B1C4DA8EA009D3681 /* Widget.swift */; };
 		5768590E1C4DE866009D3681 /* Widget.Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5768590D1C4DE866009D3681 /* Widget.Shield.swift */; };
@@ -101,7 +101,6 @@
 		03DDE19719CE497F008029A8 /* verdecielTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verdecielTests.swift; sourceTree = "<group>"; };
 		5705994B1B90D8D9000F3E31 /* Core.Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Space.swift; sourceTree = "<group>"; };
 		570B1F671C910C2A00AAFF00 /* SCNOcta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNOcta.swift; sourceTree = "<group>"; };
-		571728DE1BB03455002782A3 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Cargo.swift; sourceTree = "<group>"; };
 		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
 		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		5759C3411CA1FAA10031524B /* Porthole.Above.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.Above.swift; sourceTree = "<group>"; };
 		5759C3431CA1FACA0031524B /* Porthole.below.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.below.swift; sourceTree = "<group>"; };
 		5759C3461CA21DC10031524B /* SCNHexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNHexa.swift; sourceTree = "<group>"; };
+		576577581CCAA456002B1819 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		5765C3311C235A0C001ED26E /* SCNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNButton.swift; sourceTree = "<group>"; };
 		5768590B1C4DA8EA009D3681 /* Widget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		5768590D1C4DE866009D3681 /* Widget.Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Shield.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		573627791B4C06E800899EBC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				571728DE1BB03455002782A3 /* SCNNode.swift */,
+				576577581CCAA456002B1819 /* Empty.swift */,
 				57DD808D1BC7005600A4146C /* SCNHandle.swift */,
 				5765C3311C235A0C001ED26E /* SCNButton.swift */,
 				571728E41BB06413002782A3 /* SCNCommand.swift */,
@@ -518,6 +518,7 @@
 				57F645F71B4CC0C20088D115 /* MainPanel.Console.swift in Sources */,
 				576DCEA61C483BCF007A7544 /* Mission.swift in Sources */,
 				576953591C2060EC00A0CA39 /* Locations.Collection.swift in Sources */,
+				576577591CCAA456002B1819 /* Empty.swift in Sources */,
 				57C9F0601CAF51F80050AE9E /* Location.Gateway.swift in Sources */,
 				572258151BB877C600DEC41E /* Location.Portal.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* Location.Star.swift in Sources */,
@@ -550,7 +551,6 @@
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* MainPanel.Thruster.swift in Sources */,
 				574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */,
-				571728DF1BB03455002782A3 /* SCNNode.swift in Sources */,
 				5765C3321C235A0C001ED26E /* SCNButton.swift in Sources */,
 				57C222F81C1F6038005092A4 /* SCNPortSlot.swift in Sources */,
 				5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */,

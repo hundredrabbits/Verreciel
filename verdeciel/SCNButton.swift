@@ -7,15 +7,15 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNButton : SCNNode
+class SCNButton : Empty
 {
-	var host:SCNNode!
+	var host:Empty!
 	var text:String!
 	var trigger:SCNTrigger!
 	var label:SCNLabel!
 	var operation:Int!
 	
-	init(host:SCNNode,text:String,operation:Int,width:Float = 0.65)
+	init(host:Empty,text:String,operation:Int,width:Float = 0.65)
 	{
 		self.text = text
 		self.host = host

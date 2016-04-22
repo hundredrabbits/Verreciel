@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNPort : SCNNode
+class SCNPort : Empty
 {
 	var isActive:Bool = false
 	var isEnabled:Bool = true
@@ -20,13 +20,13 @@ class SCNPort : SCNNode
 	
 	var origin:SCNPort!
 	
-	var host:SCNNode!
+	var host:Empty!
 	var trigger:SCNTrigger!
 	
 	var sprite_output:SCNLine!
 	var sprite_input:SCNLine!
 	
-	init(host:SCNNode)
+	init(host:Empty)
 	{
 		super.init()
 	
@@ -209,6 +209,8 @@ class SCNPort : SCNNode
 		
 		return stored_event
 	}
+	
+	// MARK: Validation
 	
 	// MARK: Checks -
 	

@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNProgressBar : SCNNode
+class SCNProgressBar : Empty
 {
 	var percent:CGFloat = 0
 	var progressLine:SCNLine!

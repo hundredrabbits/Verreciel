@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNRect : SCNNode
+class SCNRect : Empty
 {
 	init(size:CGSize, color:UIColor)
 	{

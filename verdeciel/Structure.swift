@@ -6,12 +6,12 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Structure : SCNNode
+class Structure : Empty
 {
-	let rot = SCNNode()
-	let pos = SCNNode()
+	let rot = Empty()
+	let pos = Empty()
 	
-	let root = SCNNode()
+	let root = Empty()
 	var host:Location!
 	
 	override init()

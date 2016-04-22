@@ -7,16 +7,16 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CoreCapsule: SCNNode
+class CoreCapsule: Empty
 {	
 	var at:CGPoint = universe.loiqe_spawn.at
 	
 	var direction:CGFloat! = 1
 	var system:Systems = .loiqe
 	
-	var mesh:SCNNode!
+	var mesh:Empty!
 	
-	var shieldRoot = SCNNode()
+	var shieldRoot = Empty()
 	
 	var radiation:CGFloat = 0
 	
@@ -291,7 +291,7 @@ class CoreCapsule: SCNNode
 		templates.radius = highNode[0].z
 		templates.margin = abs(templates.left - templates.leftMargin)
 		
-		mesh = SCNNode()
+		mesh = Empty()
 		mesh.position = SCNVector3(0,0,0)
 		addChildNode(mesh)
 	}

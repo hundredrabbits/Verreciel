@@ -13,11 +13,11 @@ class MainPanel : Panel
 	let details = SCNLabel(text: "", scale: 0.085, align: alignment.center)
 	var port:SCNPort!
 	
-	let header = SCNNode()
-	let footer = SCNNode()
+	let header = Empty()
+	let footer = Empty()
 	
-	var mainNode = SCNNode()
-	var decals = SCNNode()
+	var mainNode = Empty()
+	var decals = Empty()
 	
 	override init()
 	{
@@ -71,7 +71,7 @@ class MainPanel : Panel
 	
 	// MARK: Installation -
 	
-	var installNode:SCNNode = SCNNode()
+	var installNode:Empty = Empty()
 	var installProgressBar = SCNProgressBar(width: 1)
 	var installLabel = SCNLabel(text:"install", color:grey, align:.center)
 	
@@ -81,7 +81,7 @@ class MainPanel : Panel
 		
 		helmet.addWarning("Installing", duration: 3, flag:"install")
 		
-		installNode = SCNNode()
+		installNode = Empty()
 		installNode.position = SCNVector3(0,0,0)
 		installProgressBar = SCNProgressBar(width: 1)
 		installProgressBar.position = SCNVector3(-installProgressBar.width/2,-0.3,0)

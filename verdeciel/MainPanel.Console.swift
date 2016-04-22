@@ -32,10 +32,22 @@ class PanelConsole : MainPanel
 		footer.addChildNode(SCNHandle(destination: SCNVector3(-1,0,0),host:self))
 	}
 	
+	override func onConnect()
+	{
+		label.update("\(port.origin.host.name!) > Port", color:cyan)
+		inject(port.origin.event.payload())
+	}
+	
+	override func onDisconnect()
+	{
+		label.update("Console", color:grey)
+		inject(defaultPayload())
+	}
+	
 	override func whenStart()
 	{
-		let payload = ConsolePayload(data: [ConsoleData(text:"hey",details:"details",event:items.valenPortalKey), ConsoleData(text:"hey 2",details:"wat",event:items.loiqePortalKey)])
-		inject(payload)
+		label.update(grey)
+		inject(defaultPayload())
 	}
 	
 	func inject(payload:ConsolePayload)
@@ -45,6 +57,11 @@ class PanelConsole : MainPanel
 			lines[id].update(data)
 			id += 1
 		}
+	}
+	
+	func defaultPayload() -> ConsolePayload
+	{
+		return ConsolePayload(data: [ConsoleData(text:"hey",details:"details"), ConsoleData(text:"hey 2",details:"wat",event:items.loiqePortalKey)])
 	}
 	
 	override func onInstallationBegin()
@@ -65,7 +82,7 @@ class PanelConsole : MainPanel
 	}
 }
 
-class ConsoleLine : SCNNode
+class ConsoleLine : Empty
 {
 	var port:SCNPortRedirect!
 	var textLabel:SCNLabel!
@@ -97,6 +114,7 @@ class ConsoleLine : SCNNode
 	{
 		textLabel.update(data.text)
 		detailsLabel.update(data.details)
+		
 		if data.event != nil {
 			port.addEvent(data.event)
 			port.enable()

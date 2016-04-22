@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNHandle : SCNNode
+class SCNHandle : Empty
 {
 	var destination:SCNVector3!
 	var selectionLine:SCNLine!

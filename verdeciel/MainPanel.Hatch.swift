@@ -9,7 +9,7 @@ import Foundation
 
 class PanelHatch : MainPanel
 {
-	let outline = SCNNode()
+	let outline = Empty()
 	var count:Int = 0
 	
 	override init()

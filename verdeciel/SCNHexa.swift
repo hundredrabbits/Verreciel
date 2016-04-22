@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNHexa : SCNNode
+class SCNHexa : Empty
 {
 	init(size:CGFloat, color:UIColor = white, eulerAngles:SCNVector3! = SCNVector3(0,0,0))
 	{

@@ -77,7 +77,7 @@ class Widget : Panel
 	
 	// MARK: Installation -
 	
-	var installNode:SCNNode = SCNNode()
+	var installNode:Empty = Empty()
 	var installProgressBar = SCNProgressBar(width: 1)
 	var installLabel = SCNLabel(text:"install", scale:0.075, color:grey, align:.center)
 	
@@ -87,7 +87,7 @@ class Widget : Panel
 		
 		helmet.addWarning("Installing", duration: 3, flag:"install")
 		
-		installNode = SCNNode()
+		installNode = Empty()
 		installNode.position = SCNVector3(0,-0.6,templates.radius)
 		
 		installProgressBar = SCNProgressBar(width: 1)

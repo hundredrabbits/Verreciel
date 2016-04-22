@@ -6,13 +6,13 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Helmet: SCNNode
+class Helmet: Empty
 {
 	var canAlign:Bool = false
 
-	var visor:SCNNode = SCNNode()
-	var displayLeft:SCNNode!
-	var displayRight:SCNNode!
+	var visor:Empty = Empty()
+	var displayLeft:Empty!
+	var displayRight:Empty!
 	
 	var leftHandLabel:SCNLabel!
 	var rightHandLabel:SCNLabel!
@@ -35,7 +35,7 @@ class Helmet: SCNNode
 		
 		// Left
 		
-		displayLeft = SCNNode()
+		displayLeft = Empty()
 		displayLeft.position = SCNVector3(-0.5,0,visorDepth)
 		displayLeft.addChildNode(SCNLine(vertices: [SCNVector3(x: -0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
 		displayLeft.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: 0.01, y: -1.275, z: 0)], color: grey))
@@ -58,7 +58,7 @@ class Helmet: SCNNode
 		
 		// Right
 		
-		displayRight = SCNNode()
+		displayRight = Empty()
 		displayRight.position = SCNVector3(0.5,0,visorDepth)
 		displayRight.addChildNode(SCNLine(vertices: [SCNVector3(x: 0.2, y: -1.3, z: 0), SCNVector3(x: 0, y: -1.3, z: 0)], color: grey))
 		displayRight.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -1.3, z: 0), SCNVector3(x: -0.01, y: -1.275, z: 0)], color: grey))

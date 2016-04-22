@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNCommand : SCNNode
+class SCNCommand : Empty
 {
 	var text:String!
 	var details:String!
@@ -21,7 +21,7 @@ class SCNCommand : SCNNode
 	var headLineTop:SCNLine!
 	var headLineDown:SCNLine!
 	
-	init(text:String = "", details:String! = "", color:UIColor = white,event:Event! = nil, head:Bool = false, host:SCNNode! = nil)
+	init(text:String = "", details:String! = "", color:UIColor = white,event:Event! = nil, head:Bool = false, host:Empty! = nil)
 	{
 		self.text = text
 		self.details = details

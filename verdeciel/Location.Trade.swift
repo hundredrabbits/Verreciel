@@ -103,14 +103,6 @@ class LocationTrade : Location
 		}
 	}
 
-	override func details() -> String
-	{
-		if givePort.hasItem() == true {
-			return "\((givePort.event as! Item).type)"
-		}
-		return "--"
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
@@ -149,7 +141,7 @@ class StructureTrade : Structure
 		var i = 0
 		while i < nodes {
 			
-			let node = SCNNode()
+			let node = Empty()
 			
 			node.addChildNode(SCNLine(vertices: [SCNVector3(-value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i),value2), SCNVector3(0,value1 * Float(i),value2), SCNVector3(value2,value1 * Float(i),0), SCNVector3(value2,value1 * Float(i),0), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(0,value1 * Float(i) + 2,-value2), SCNVector3(-value2,value1 * Float(i),0)], color: red))
 			

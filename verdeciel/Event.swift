@@ -6,12 +6,12 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Event : SCNNode
+class Event : Empty
 {
-	var targetNode:SCNNode!
+	var targetNode:Empty!
 	
 	var at = CGPoint()
-	var note = String()
+	var details = String()
 	var content:Array<Item>!
 	var color = grey
 	
@@ -25,7 +25,7 @@ class Event : SCNNode
 		super.init()
 		
 		self.name = name
-		self.note = note
+		self.details = note
 		self.at = at
 		self.color = color
 		
@@ -65,7 +65,7 @@ class Event : SCNNode
 	{
 	}
 	
-	func panel() -> SCNNode!
+	func panel() -> Empty!
 	{
 		return Panel()
 	}
@@ -80,7 +80,7 @@ class Event : SCNNode
 		newEvent.isQuest = isQuest
 	
 		newEvent.name = name
-		newEvent.note = note
+		newEvent.details = details
 		newEvent.at = at
 		newEvent.color = color
 		

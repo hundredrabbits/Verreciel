@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Icon : SCNNode
+class Icon : Empty
 {
 	var host:Location!
 	
@@ -14,8 +14,8 @@ class Icon : SCNNode
 	var size:Float = 0.1
 	
 	var label = SCNLabel()
-	var trigger = SCNNode()
-	var mesh = SCNNode()
+	var trigger = Empty()
+	var mesh = Empty()
 	var wire:SCNLine!
 	
 	override init()

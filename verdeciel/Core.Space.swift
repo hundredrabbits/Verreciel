@@ -6,10 +6,10 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CoreSpace: SCNNode
+class CoreSpace: Empty
 {
-	var structuresRoot = SCNNode()
-	var starsRoot = SCNNode()
+	var structuresRoot = Empty()
+	var starsRoot = Empty()
 	
 	override init()
 	{

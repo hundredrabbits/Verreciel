@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNWire : SCNNode
+class SCNWire : Empty
 {
 	var host:SCNPort!
 	
@@ -115,7 +115,7 @@ class SCNWire : SCNNode
 	
 	override func blink()
 	{
-		for node in childNodes {
+		for node in childNodes as! [Empty] {
 			node.hide()
 		}
 	}

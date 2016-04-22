@@ -14,7 +14,7 @@ class PanelThruster : MainPanel
 	var action:SCNTrigger!
 	
 	// Speed Lines
-	var interface_flight = SCNNode()
+	var interface_flight = Empty()
 	var line1:SCNLine!
 	var line2:SCNLine!
 	var line3:SCNLine!
@@ -26,10 +26,10 @@ class PanelThruster : MainPanel
 	var cutLine4:SCNLine!
 	
 	// Docking
-	var interface_dock = SCNNode()
+	var interface_dock = Empty()
 	
 	// Warping
-	var interface_warp = SCNNode()
+	var interface_warp = Empty()
 	
 	var lineLeft:SCNLine!
 	var lineRight:SCNLine!

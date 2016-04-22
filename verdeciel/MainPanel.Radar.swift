@@ -11,12 +11,12 @@ class PanelRadar : MainPanel
 	var x:Float = 0
 	var z:Float = 0
 	
-	var eventPivot = SCNNode()
+	var eventPivot = Empty()
 	var eventView = universe
-	var shipCursor:SCNNode!
+	var shipCursor:Empty!
 	
-	var targetter:SCNNode!
-	var targetterFar:SCNNode!
+	var targetter:Empty!
+	var targetterFar:Empty!
 	
 	var handle:SCNHandle!
 	
@@ -34,12 +34,12 @@ class PanelRadar : MainPanel
 		
 		// Ship
 		
-		shipCursor = SCNNode()
+		shipCursor = Empty()
 		shipCursor.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: 0.2, y: 0, z: 0)],color:white))
 		shipCursor.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: 0.2, z: 0),  SCNVector3(x: -0.2, y: 0, z: 0)],color:white))
 		mainNode.addChildNode(shipCursor)
 		
-		targetterFar = SCNNode()
+		targetterFar = Empty()
 		targetterFar.addChildNode(SCNLine(vertices: [SCNVector3(0.8,0,0), SCNVector3(1,0,0)], color: red))
 		targetterFar.hide()
 		mainNode.addChildNode(targetterFar)
@@ -48,7 +48,7 @@ class PanelRadar : MainPanel
 		
 		let scale:Float = 0.3
 		let depth:Float = 0
-		targetter = SCNNode()
+		targetter = Empty()
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: scale * 0.2, y: scale * 0.8, z: depth)], color: red))
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: scale, z: depth), SCNVector3(x: -scale * 0.2, y: scale * 0.8, z: depth)], color: red))
 		targetter.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: -scale, z: depth), SCNVector3(x: scale * 0.2, y: -scale * 0.8, z: depth)], color: red))

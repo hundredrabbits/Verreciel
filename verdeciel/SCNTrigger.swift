@@ -6,14 +6,14 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNTrigger : SCNNode
+class SCNTrigger : Empty
 {
 	var isEnabled:Bool = true
-	let host:SCNNode!
+	let host:Empty!
 	let operation:Int!
 	var size:CGSize!
 	
-	init(host:SCNNode,size:CGSize,operation:Int = 0)
+	init(host:Empty,size:CGSize,operation:Int = 0)
 	{
 		self.operation = operation
 		self.host = host

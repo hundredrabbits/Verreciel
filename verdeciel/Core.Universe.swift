@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CoreUniverse : SCNNode
+class CoreUniverse : Empty
 {
 	override init()
 	{

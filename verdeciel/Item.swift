@@ -18,7 +18,7 @@ class Item : Event
 		
 		self.name = name
 		self.type = type
-		self.note = note
+		self.details = details
 		self.isQuest = isQuest
 		self.location = location
 	}
@@ -29,7 +29,7 @@ class Item : Event
 		
 		self.name = like.name
 		self.type = like.type
-		self.note = like.note
+		self.details = like.details
 		self.isQuest = like.isQuest
 	}
 

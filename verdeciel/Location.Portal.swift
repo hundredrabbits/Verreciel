@@ -168,7 +168,7 @@ class StructurePortal : Structure
 		
 		var i = 0
 		while i < nodes {
-			let node = SCNNode()
+			let node = Empty()
 			let line = SCNLine(vertices: [SCNVector3(2,2,0), SCNVector3(0,0,10)], color: red)
 			line.position = SCNVector3(-2,0,0)
 			node.addChildNode(line)

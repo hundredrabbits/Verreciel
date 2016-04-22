@@ -110,7 +110,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		if hitResults.count > 0
 		{
 			let result: AnyObject! = hitResults[0]
-			result.node.touch()
+			(result.node as! Empty).touch()
 		}
 	}
 	

@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class CorePlayer : SCNNode
+class CorePlayer : Empty
 {
 	var canAlign:Bool = true
 	

@@ -97,11 +97,6 @@ class LocationHarvest : Location
 		}
 	}
 	
-	override func details() -> String
-	{
-		return "\(grows.name!)"
-	}
-	
 	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
@@ -139,7 +134,7 @@ class StructureHarvest : Structure
 		
 		var i = 0
 		while i < nodes {
-			let node = SCNNode()
+			let node = Empty()
 			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
 			node.addChildNode(SCNLine(vertices: [SCNVector3(0,0,value1), SCNVector3(0,5,value1), SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1), SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
 			root.addChildNode(node)

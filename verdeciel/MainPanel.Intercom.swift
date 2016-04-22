@@ -8,9 +8,9 @@ import Foundation
 
 class PanelIntercom : MainPanel
 {
-	var locationPanel:SCNNode!
+	var locationPanel:Empty!
 	
-	var defaultPanel:SCNNode!
+	var defaultPanel:Empty!
 	
 	var systemLabel:SCNLabel!
 	var distanceLabel:SCNLabel!
@@ -38,7 +38,7 @@ class PanelIntercom : MainPanel
 		locationPanel = Panel()
 		mainNode.addChildNode(locationPanel)
 		
-		defaultPanel = SCNNode()
+		defaultPanel = Empty()
 		defaultPanel.position = SCNVector3(0,0,0)
 		
 		systemLabel = SCNLabel(text: "system", align: .right, color: grey)
@@ -103,7 +103,7 @@ class PanelIntercom : MainPanel
 			distanceValueLabel.update( (capsule.isDockedAtLocation(target) ? "docked" : "\(String(format: "%.2f",target.distance * 19))") )
 			typeLabel.update("type")
 			typeValueLabel.update("\(target.name!)")
-			detailsValueLabel.update(target.details())
+			detailsValueLabel.update(target.details)
 			
 			if target.isComplete == nil { statusValueLabel.update("--", color:white) }
 			else if target.isComplete == true { statusValueLabel.update("complete", color:cyan) }

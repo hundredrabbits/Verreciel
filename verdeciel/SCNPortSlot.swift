@@ -14,7 +14,7 @@ class SCNPortSlot : SCNPort
 	var details:SCNLabel!
 	var placeholder:String!
 	
-	init(host:SCNNode = SCNNode(), align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
+	init(host:Empty = Empty(), align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
 	{
 		super.init(host:host)
 		
@@ -65,7 +65,7 @@ class SCNPortSlot : SCNPort
 		
 		if event != nil {
 			label.update(event.name!)
-			details.update(event.note)
+			details.update(event.details)
 		}
 		else{
 			label.update(placeholder)

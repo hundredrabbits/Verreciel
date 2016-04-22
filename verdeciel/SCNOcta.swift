@@ -7,7 +7,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNOcta : SCNNode
+class SCNOcta : Empty
 {
 	var mesh:SCNLine!
 	

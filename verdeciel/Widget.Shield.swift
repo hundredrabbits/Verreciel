@@ -56,14 +56,14 @@ class WidgetShield : Widget
 		while i < Int(sides) {
 			scale = 2.5
 			// Face 1
-			let face1 = SCNNode()
+			let face1 = Empty()
 			face1.addChildNode(SCNLine(vertices: [SCNVector3(0,scale,radius), SCNVector3(0,-scale,radius)], color: color))
 			face1.eulerAngles.y += (degToRad(CGFloat(i) * (360/sides)))
 			capsule.shieldRoot.addChildNode(face1)
 			
 			// Face 2
 			scale = 1.9
-			let face2 = SCNNode()
+			let face2 = Empty()
 			let line5 = SCNLine(vertices: [SCNVector3(-scale,0,radius), SCNVector3(0,scale,radius)], color: color)
 			let line6 = SCNLine(vertices: [SCNVector3(0,scale,radius), SCNVector3(scale,0,radius)], color: color)
 			let line7 = SCNLine(vertices: [SCNVector3(scale,0,radius), SCNVector3(0,-scale,radius)], color: color)
@@ -78,7 +78,7 @@ class WidgetShield : Widget
 			
 			// Face 3
 			scale = 1.9
-			let face3 = SCNNode()
+			let face3 = Empty()
 			let line9 = SCNLine(vertices: [SCNVector3(-scale,0,radius), SCNVector3(0,scale,radius)], color: color)
 			let line10 = SCNLine(vertices: [SCNVector3(0,scale,radius), SCNVector3(scale,0,radius)], color: color)
 			let line11 = SCNLine(vertices: [SCNVector3(scale,0,radius), SCNVector3(0,-scale,radius)], color: color)

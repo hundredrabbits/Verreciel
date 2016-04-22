@@ -1,13 +1,19 @@
-//  Created by Devine Lu Linvega on 2015-09-21.
-//  Copyright © 2015 XXIIVV. All rights reserved.
+
+//  Created by Devine Lu Linvega on 2016-04-22.
+//  Copyright © 2016 XXIIVV. All rights reserved.
 
 import UIKit
 import QuartzCore
 import SceneKit
 import Foundation
 
-extension SCNNode
+class Empty : SCNNode
 {
+	override init()
+	{
+		super.init()
+	}
+	
 	func touch(id:Int = 0)
 	{
 		print("! This node has no touch action")
@@ -42,7 +48,7 @@ extension SCNNode
 	
 	func updateChildrenColors(color:UIColor)
 	{
-		for node in self.childNodes {
+		for node in self.childNodes as! [Empty] {
 			node.color(color)
 			node.updateChildrenColors(color)
 		}
@@ -60,21 +66,21 @@ extension SCNNode
 	
 	func whenStart()
 	{
-		for node in childNodes {
+		for node in childNodes as! [Empty] {
 			node.whenStart()
 		}
 	}
 	
 	func whenTime()
 	{
-		for node in childNodes {
+		for node in childNodes as! [Empty] {
 			node.whenTime()
 		}
 	}
 	
 	func whenRenderer()
 	{
-		for node in childNodes {
+		for node in childNodes as! [Empty] {
 			node.whenRenderer()
 		}
 	}
@@ -98,6 +104,18 @@ extension SCNNode
 	
 	func onMissionComplete()
 	{
+		
+	}
 	
+	// MARK: Extras -
+	
+	func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[ConsoleData(text: "Missing details", details: "--")])
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
 	}
 }

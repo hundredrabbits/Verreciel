@@ -60,14 +60,6 @@ class LocationSatellite : Location
 		structure.update()
 	}
 	
-	override func details() -> String
-	{
-		if port.hasItem() == true {
-			return "\(port.event.name!)"
-		}
-		return "empty"
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)
@@ -104,7 +96,7 @@ class StructureSatellite : Structure
 		var i = 0
 		while i < nodes {
 			
-			let axis = SCNNode()
+			let axis = Empty()
 			axis.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
 			
 			root.addChildNode(axis)

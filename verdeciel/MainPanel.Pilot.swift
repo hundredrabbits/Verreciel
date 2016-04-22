@@ -10,10 +10,10 @@ class PanelPilot : MainPanel
 {
 	var target:Location!
 	var targetDirection = CGFloat()
-	var targetDirectionIndicator = SCNNode()
-	var activeDirectionIndicator = SCNNode()
-	var staticDirectionIndicator = SCNNode()
-	var eventsDirectionIndicator = SCNNode()
+	var targetDirectionIndicator = Empty()
+	var activeDirectionIndicator = Empty()
+	var staticDirectionIndicator = Empty()
+	var eventsDirectionIndicator = Empty()
 	
 	override init()
 	{
@@ -22,22 +22,22 @@ class PanelPilot : MainPanel
 		name = "pilot"
 		info = "[missing text]"
 		
-		targetDirectionIndicator = SCNNode()
+		targetDirectionIndicator = Empty()
 		targetDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.55, 0), SCNVector3(0, 0.7, 0)], color: white))
 		mainNode.addChildNode(targetDirectionIndicator)
 		
-		activeDirectionIndicator = SCNNode()
+		activeDirectionIndicator = Empty()
 		activeDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.4, -0.1), SCNVector3(0, 0.55, -0)], color: grey))
 		mainNode.addChildNode(activeDirectionIndicator)
 		
-		staticDirectionIndicator = SCNNode()
+		staticDirectionIndicator = Empty()
 		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(0, 0.4, -0)], color: cyan))
 		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, -0.2, -0.1), SCNVector3(0, -0.4, -0)], color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0.2, 0, -0.1), SCNVector3(0.4, 0, -0)], color: red))
 		staticDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(-0.2, 0, -0.1), SCNVector3(-0.4, 0, -0)], color: red))
 		mainNode.addChildNode(staticDirectionIndicator)
 		
-		eventsDirectionIndicator = SCNNode()
+		eventsDirectionIndicator = Empty()
 		eventsDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(0.2, 0, -0)], color: white))
 		eventsDirectionIndicator.addChildNode(SCNLine(vertices: [SCNVector3(0, 0.2, -0.1), SCNVector3(-0.2, 0, -0)], color: white))
 		mainNode.addChildNode(eventsDirectionIndicator)

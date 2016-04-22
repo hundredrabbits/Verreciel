@@ -116,11 +116,6 @@ class LocationBank : Location
 		refresh()
 	}
 	
-	override func details() -> String
-	{
-		return "6 items" // TODO:
-	}
-	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

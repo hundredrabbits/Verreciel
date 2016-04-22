@@ -7,12 +7,12 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Panel : SCNNode
+class Panel : Empty
 {
 	var info:String = ""
 	var isEnabled:Bool = false
 	
-	var root = SCNNode()
+	var root = Empty()
 	
 	override init()
 	{
@@ -71,6 +71,11 @@ class Panel : SCNNode
 		print("+ PANEL    | Installed the \(name!).")
 		installPercentage = 0
 		isInstalled = true
+	}
+	
+	override func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[ConsoleData(text: name!, details: "panel")])
 	}
 	
 	required init?(coder aDecoder: NSCoder)

@@ -13,7 +13,7 @@ class PanelAbove : Panel
 	{
 		super.init()
 		
-		let aim = SCNNode()
+		let aim = Empty()
 		var i = 0
 		while i < 3
 		{

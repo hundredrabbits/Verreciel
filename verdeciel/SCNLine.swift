@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNLine : SCNNode
+class SCNLine : Empty
 {
 	var vertices:Array<SCNVector3>!
 	var color:UIColor! = nil

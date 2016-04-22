@@ -6,12 +6,12 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNLabel : SCNNode
+class SCNLabel : Empty
 {
 	var activeText = String()
 	var activeScale:Float = 0.2
 	var activeAlignment:alignment!
-	var nodeOffset:SCNNode = SCNNode()
+	var nodeOffset:Empty = Empty()
 	var color:UIColor = UIColor.whiteColor()
 	
 	init(text:String = "",scale:Float = 0.1,align:alignment = alignment.left, color:UIColor = white)
@@ -107,9 +107,9 @@ class SCNLabel : SCNNode
 		adjustAlignment()
 	}
 	
-	func letter(letter:String,scale:Float) -> SCNNode
+	func letter(letter:String,scale:Float) -> Empty
 	{		
-		let letterPivot = SCNNode()
+		let letterPivot = Empty()
 		
 		let letter = letter.lowercaseString
 		
