@@ -7,6 +7,7 @@ import Foundation
 class ItemCollection
 {
 	// Capsule
+	let nataniev = Item(name: "nataniev", type: .cypher, note:"v0.3", isQuest:true)
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
 	
 	// Misc

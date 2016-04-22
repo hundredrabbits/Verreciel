@@ -34,6 +34,8 @@ class PanelConsole : MainPanel
 	
 	override func onConnect()
 	{
+		super.onDisconnect()
+		
 		nameLabel.update("\(port.origin.host.name!) > Port", color:cyan)
 		
 		if port.origin.event != nil {
@@ -49,14 +51,25 @@ class PanelConsole : MainPanel
 	
 	override func onDisconnect()
 	{
+		super.onDisconnect()
+		
 		nameLabel.update("Console", color:grey)
 		inject(defaultPayload())
 	}
 	
 	override func whenStart()
 	{
+		super.whenStart()
+		
 		nameLabel.update(grey)
 		inject(defaultPayload())
+	}
+	
+	override func whenTime()
+	{
+		super.whenTime()
+		
+		
 	}
 	
 	func clear()
@@ -98,7 +111,14 @@ class PanelConsole : MainPanel
 	
 	func defaultPayload() -> ConsolePayload
 	{
-		return ConsolePayload(data: [ConsoleData(text:"hey",details:"details"), ConsoleData(text:"hey 2",details:"wat",event:items.loiqePortalKey)])
+		return ConsolePayload(data: [
+			ConsoleData(text:"nataniev os",details:"", color:grey),
+			ConsoleData(text:"systems",details:"\(capsule.systemsCount())",color:grey),
+			ConsoleData(text:"installs",details:"\(capsule.systemsInstalledCount())",color:grey),
+			ConsoleData(text:"",color:grey),
+			ConsoleData(text:"",color:grey),
+			ConsoleData(text:"ready",color:grey),
+		])
 	}
 	
 	override func onInstallationBegin()
@@ -149,17 +169,20 @@ class ConsoleLine : Empty
 	
 	func update(data:ConsoleData)
 	{
-		textLabel.update(data.text, color:data.color)
 		detailsLabel.update(data.details)
 		
 		if data.event != nil {
+			textLabel.update("\(data.text)", color:data.color)
 			port.addEvent(data.event)
 			port.enable()
 			port.show()
+			textLabel.position = SCNVector3(0.3, 0, 0)
 		}
 		else{
+			textLabel.update("> \(data.text)", color:data.color)
 			port.disable()
 			port.hide()
+			textLabel.position = SCNVector3(0, 0, 0)
 		}
 	}
 	

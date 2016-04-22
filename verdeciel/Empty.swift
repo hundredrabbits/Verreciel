@@ -80,6 +80,13 @@ class Empty : SCNNode
 		}
 	}
 	
+	func whenSecond()
+	{
+		for node in childNodes as! [Empty] {
+			node.whenSecond()
+		}
+	}
+	
 	func whenRenderer()
 	{
 		for node in childNodes as! [Empty] {

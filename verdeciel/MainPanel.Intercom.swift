@@ -112,7 +112,7 @@ class PanelIntercom : MainPanel
 		else {
 			systemValueLabel.update("\(capsule.system)")
 			distanceLabel.update("Position")
-			distanceValueLabel.update("\(capsule.at.x),\(capsule.at.y)")
+			distanceValueLabel.update("\(Int(capsule.at.x)),\(Int(capsule.at.y))")
 			typeValueLabel.update("--")
 			statusValueLabel.update("in flight", color:white)
 			detailValueLabel.update("--")

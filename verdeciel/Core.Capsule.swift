@@ -99,8 +99,10 @@ class CoreCapsule: Empty
 		space.onSystemEnter(location.system)
 	}
 	
-	func onSeconds()
+	override func whenSecond()
 	{
+		super.whenSecond()
+		
 		let cl = closestLocation()
 		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
 	}
@@ -317,6 +319,26 @@ class CoreCapsule: Empty
 	{
 		if shield.isPowered() == true && shield.port.hasItemOfType(.shield) == true { return true }
 		return false
+	}
+	
+	// MARK: Systems -
+	
+	func systemsInstalledCount() -> Int
+	{
+		var count = 0
+		for node in childNodes {
+			if node is Panel && (node as! Panel).isInstalled == true { count += 1}
+		}
+		return count
+	}
+	
+	func systemsCount() -> Int
+	{
+		var count = 0
+		for node in childNodes {
+			if node is Panel { count += 1}
+		}
+		return count
 	}
 	
 	required init?(coder aDecoder: NSCoder)

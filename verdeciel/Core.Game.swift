@@ -14,7 +14,7 @@ class CoreGame
 	init()
 	{
 		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.onTic), userInfo: nil, repeats: true)
-		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.onSeconds), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.whenSecond), userInfo: nil, repeats: true)
 	}
 	
 	func start()
@@ -26,8 +26,8 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.loiqe_city, newItems:[items.loiqePortalKey, items.valenPortalKey])
-//		startingState()
+//		unlockedState(universe.loiqe_city, newItems:[items.loiqePortalKey, items.valenPortalKey])
+		startingState()
 	}
 	
 	func startingState()
@@ -69,9 +69,9 @@ class CoreGame
 		//		battery.cellPort2.addEvent(items.battery3)
 	}
 	
-	@objc func onSeconds()
+	@objc func whenSecond()
 	{
-		capsule.onSeconds()
+		capsule.whenSecond()
 		missions.refresh()
 	}
 	
