@@ -53,7 +53,7 @@ class PanelCargo : MainPanel
 		
 		decals.empty()
 		
-		details.update("Empty", color: grey)
+		detailsLabel.update("Empty", color: grey)
 	}
 	
 	func contains(event:Event) -> Bool
@@ -109,7 +109,7 @@ class PanelCargo : MainPanel
 	}
 	
 	override func touch(id:Int = 0)
-	{		
+	{
 		refresh()
 		
 		if port.isConnectedToPanel(console) == true { console.onConnect() }
@@ -141,13 +141,13 @@ class PanelCargo : MainPanel
 		if cargohold.content.count > 5 { line6.color( cargohold.content[5].isQuest == true ? cyan : white ) }
 		
 		if cargohold.content.count == 0 {
-			details.update("Empty", color: grey)
+			detailsLabel.update("Empty", color: grey)
 		}
 		else if cargohold.content.count == 6 {
-			details.update("FULL", color: red)
+			detailsLabel.update("FULL", color: red)
 		}
 		else{
-			details.update("\(cargohold.content.count)/6", color:white)
+			detailsLabel.update("\(cargohold.content.count)/6", color:white)
 		}
 	}
 	
@@ -186,7 +186,7 @@ class PanelCargo : MainPanel
 			uploadComplete()
 		}
 		else{
-			details.update("\(Int(uploadPercentage))%", color:grey)
+			detailsLabel.update("\(Int(uploadPercentage))%", color:grey)
 		}
 	}
 	
@@ -244,6 +244,12 @@ class CargoHold : Item
 		
 		for item in content {
 			data.append(ConsoleData(text: item.name!, details: "\(item.type)", event: item))
+		}
+		
+		var i = 0
+		while i < 6 - content.count {
+			data.append(ConsoleData(text: "--", color:grey))
+			i += 1
 		}
 		
 		return ConsolePayload(data: data)

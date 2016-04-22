@@ -17,13 +17,13 @@ class MonitorJourney : Monitor
 		name = "journey"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
-		label.update("--")
-		details.update(name!)
+		nameLabel.update("--")
+		detailsLabel.update(name!)
 	}
 	
 	override func refresh()
 	{
-		label.update("\(Int(distance/100))")
+		nameLabel.update("\(Int(distance/100))")
 	}
 	
 	override func onInstallationBegin()

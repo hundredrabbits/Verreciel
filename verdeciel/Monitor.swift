@@ -8,8 +8,8 @@ import Foundation
 
 class Monitor : Panel
 {
-	let label = SCNLabel(text: "", scale: 0.08, align: alignment.center)
-	let details = SCNLabel(text: "", scale: 0.04, align: alignment.center, color: grey)
+	let nameLabel = SCNLabel(text: "", scale: 0.08, align: alignment.center)
+	let detailsLabel = SCNLabel(text: "", scale: 0.04, align: alignment.center, color: grey)
 	
 	override init()
 	{
@@ -19,17 +19,17 @@ class Monitor : Panel
 		
 		root.position = SCNVector3(0,0,templates.radius)
 		
-		label.position = SCNVector3(0,0,0)
-		root.addChildNode(label)
+		nameLabel.position = SCNVector3(0,0,0)
+		root.addChildNode(nameLabel)
 		
-		details.position = SCNVector3(0,0.2,0)
-		root.addChildNode(details)
+		detailsLabel.position = SCNVector3(0,0.2,0)
+		root.addChildNode(detailsLabel)
 		
-		label.hide()
-		details.hide()
+		nameLabel.hide()
+		detailsLabel.hide()
 		
-		details.update("")
-		label.update("--")
+		detailsLabel.update("")
+		nameLabel.update("--")
 	}
 	
 	// MARK: Installation -
@@ -59,8 +59,8 @@ class Monitor : Panel
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
-		label.show()
-		details.show()
+		nameLabel.show()
+		detailsLabel.show()
 		SCNTransaction.setCompletionBlock({ self.refresh() })
 		SCNTransaction.commit()
 		

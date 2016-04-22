@@ -9,6 +9,8 @@ import Foundation
 
 class Empty : SCNNode
 {
+	var details:String = "[missing]"
+	
 	override init()
 	{
 		super.init()

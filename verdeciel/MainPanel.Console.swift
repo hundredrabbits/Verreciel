@@ -34,25 +34,39 @@ class PanelConsole : MainPanel
 	
 	override func onConnect()
 	{
-		label.update("\(port.origin.host.name!) > Port", color:cyan)
-		inject(port.origin.event.payload())
-		print(port.origin.event)
+		nameLabel.update("\(port.origin.host.name!) > Port", color:cyan)
+		
+		if port.origin.event != nil {
+			inject(port.origin.event.payload())
+		}
+		else{
+			inject(port.origin.payload())
+		}
 	}
 	
 	override func onDisconnect()
 	{
-		label.update("Console", color:grey)
+		nameLabel.update("Console", color:grey)
 		inject(defaultPayload())
 	}
 	
 	override func whenStart()
 	{
-		label.update(grey)
+		nameLabel.update(grey)
 		inject(defaultPayload())
+	}
+	
+	func clear()
+	{
+		for line in lines{
+			line.update(ConsoleData())
+		}
 	}
 	
 	func inject(payload:ConsolePayload)
 	{
+		clear()
+		
 		var id = 0
 		for data in payload.data {
 			lines[id].update(data)
@@ -113,7 +127,7 @@ class ConsoleLine : Empty
 	
 	func update(data:ConsoleData)
 	{
-		textLabel.update(data.text)
+		textLabel.update(data.text, color:data.color)
 		detailsLabel.update(data.details)
 		
 		if data.event != nil {
@@ -135,16 +149,17 @@ class ConsoleLine : Empty
 
 class ConsoleData
 {
-	var text:String! = "text"
-	var details:String! = "details"
+	var text:String = "text"
+	var details:String = "details"
 	var event:Event! = nil
 	var color:UIColor!
 	
-	init(text:String! = nil, details:String! = nil, event:Event! = nil)
+	init(text:String = "", details:String = "", event:Event! = nil, color:UIColor = white)
 	{
 		self.text = text
 		self.details = details
 		self.event = event
+		self.color = color
 	}
 }
 

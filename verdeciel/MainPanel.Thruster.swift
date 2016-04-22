@@ -131,7 +131,7 @@ class PanelThruster : MainPanel
 		mainNode.addChildNode(decelerate)
 		mainNode.addChildNode(action)
 		
-		details.update("--")
+		detailsLabel.update("--")
 		
 		decals.empty()
 	}
@@ -245,7 +245,7 @@ class PanelThruster : MainPanel
 	
 	func modeLocked()
 	{
-		details.update("locked", color:grey)
+		detailsLabel.update("locked", color:grey)
 		
 		interface_flight.hide()
 		interface_dock.show()
@@ -264,7 +264,7 @@ class PanelThruster : MainPanel
 	
 	func modeWarping()
 	{
-		details.update("warping", color:white)
+		detailsLabel.update("warping", color:white)
 		
 		interface_flight.hide()
 		interface_dock.hide()
@@ -293,7 +293,7 @@ class PanelThruster : MainPanel
 	
 	func modeWaitingForWarp()
 	{
-		details.update("warp", color:white)
+		detailsLabel.update("warp", color:white)
 		
 		interface_flight.hide()
 		interface_dock.hide()
@@ -313,7 +313,7 @@ class PanelThruster : MainPanel
 	
 	func modeWarpError()
 	{
-		details.update("error", color:red)
+		detailsLabel.update("error", color:red)
 		
 		interface_flight.hide()
 		interface_dock.hide()
@@ -333,7 +333,7 @@ class PanelThruster : MainPanel
 	
 	func modeMisaligned()
 	{
-		details.update("misaligned", color:red)
+		detailsLabel.update("misaligned", color:red)
 		
 		interface_flight.hide()
 		interface_dock.hide()
@@ -358,7 +358,7 @@ class PanelThruster : MainPanel
 	
 	func modeUnpowered()
 	{
-		details.update("unpowered", color:grey)
+		detailsLabel.update("unpowered", color:grey)
 		
 		interface_flight.hide()
 		interface_dock.hide()
@@ -378,7 +378,7 @@ class PanelThruster : MainPanel
 	func modeDocking()
 	{
 		let dockingProgress = Int((1 - distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at)/0.5) * 100)
-		details.update("docking \(dockingProgress)%", color:grey)
+		detailsLabel.update("docking \(dockingProgress)%", color:grey)
 		
 		interface_flight.hide()
 		interface_dock.show()
@@ -397,7 +397,7 @@ class PanelThruster : MainPanel
 	
 	func modeStorageBusy()
 	{
-		details.update("Take \(capsule.dock.storedItems().first!.name!)", color:red)
+		detailsLabel.update("Take \(capsule.dock.storedItems().first!.name!)", color:red)
 		
 		interface_flight.hide()
 		interface_dock.show()
@@ -416,7 +416,7 @@ class PanelThruster : MainPanel
 	
 	func modeDocked()
 	{
-		details.update("undock", color:white)
+		detailsLabel.update("undock", color:white)
 		
 		interface_flight.hide()
 		interface_dock.show()
@@ -435,7 +435,7 @@ class PanelThruster : MainPanel
 	
 	func modeFlight()
 	{
-		details.update(String(format: "%.1f", actualSpeed), color:white)
+		detailsLabel.update(String(format: "%.1f", actualSpeed), color:white)
 		
 		interface_flight.show()
 		interface_dock.hide()

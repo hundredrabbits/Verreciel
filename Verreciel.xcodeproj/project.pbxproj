@@ -16,7 +16,6 @@
 		570B1F681C910C2A00AAFF00 /* SCNOcta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B1F671C910C2A00AAFF00 /* SCNOcta.swift */; };
 		571728E11BB049BB002782A3 /* MainPanel.Cargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */; };
 		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; };
-		571728E51BB06413002782A3 /* SCNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E41BB06413002782A3 /* SCNCommand.swift */; };
 		571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */; };
 		572258151BB877C600DEC41E /* Location.Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* Location.Portal.swift */; };
 		5726B7101CBD7E0900EF100B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726B70F1CBD7E0900EF100B /* Icon.swift */; };
@@ -103,7 +102,6 @@
 		570B1F671C910C2A00AAFF00 /* SCNOcta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNOcta.swift; sourceTree = "<group>"; };
 		571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Cargo.swift; sourceTree = "<group>"; };
 		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
-		571728E41BB06413002782A3 /* SCNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNCommand.swift; sourceTree = "<group>"; };
 		571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Battery.swift; sourceTree = "<group>"; };
 		572258141BB877C600DEC41E /* Location.Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Portal.swift; sourceTree = "<group>"; };
 		5726B70F1CBD7E0900EF100B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 				576577581CCAA456002B1819 /* Empty.swift */,
 				57DD808D1BC7005600A4146C /* SCNHandle.swift */,
 				5765C3311C235A0C001ED26E /* SCNButton.swift */,
-				571728E41BB06413002782A3 /* SCNCommand.swift */,
 				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
 				57C222F71C1F6038005092A4 /* SCNPortSlot.swift */,
 				574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */,
@@ -511,7 +508,6 @@
 				5768590E1C4DE866009D3681 /* Widget.Shield.swift in Sources */,
 				57F3D8C71B58215400B9B859 /* Core.Capsule.swift in Sources */,
 				57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */,
-				571728E51BB06413002782A3 /* SCNCommand.swift in Sources */,
 				5748AD9E1BC8476000C47468 /* Missions.Collection.swift in Sources */,
 				579CE7221C247DF4009E02F5 /* Item.swift in Sources */,
 				57A1E1991C6C18C80090106B /* Extensions.swift in Sources */,

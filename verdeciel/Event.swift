@@ -11,7 +11,6 @@ class Event : Empty
 	var targetNode:Empty!
 	
 	var at = CGPoint()
-	var details = String()
 	var color = grey
 	
 	var isQuest:Bool = false
@@ -24,6 +23,7 @@ class Event : Empty
 		
 		self.name = name
 		self.details = note
+		
 		self.at = at
 		self.color = color
 		

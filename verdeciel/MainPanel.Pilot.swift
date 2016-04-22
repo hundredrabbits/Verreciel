@@ -44,7 +44,7 @@ class PanelPilot : MainPanel
 	
 		decals.empty()
 		
-		details.update("Ready", color: grey)
+		detailsLabel.update("Ready", color: grey)
 	}
 	
 	override func touch(id:Int = 0)
@@ -69,7 +69,7 @@ class PanelPilot : MainPanel
 		}
 		
 		if target != nil { align() }
-		else{ details.update("--", color:grey) }
+		else{ detailsLabel.update("--", color:grey) }
 	}
 	
 	func align()
@@ -106,10 +106,10 @@ class PanelPilot : MainPanel
 		targetDirectionIndicator.eulerAngles.z = (degToRad(capsule.direction)) * -1
 		staticDirectionIndicator.eulerAngles.z = (degToRad(capsule.direction))
 		
-		if capsule.isFleeing == true { details.update("Auto", color:red) }
-		else if abs(target.align) > 25 { details.update(String(format: "%.0f",abs(target.align)), color:red) }
-		else if abs(target.align) < 1 { details.update("ok", color:cyan) }
-		else { details.update(String(format: "%.0f",abs(target.align)), color:white) }
+		if capsule.isFleeing == true { detailsLabel.update("Auto", color:red) }
+		else if abs(target.align) > 25 { detailsLabel.update(String(format: "%.0f",abs(target.align)), color:red) }
+		else if abs(target.align) < 1 { detailsLabel.update("ok", color:cyan) }
+		else { detailsLabel.update(String(format: "%.0f",abs(target.align)), color:white) }
 	}
 	
 	override func onInstallationBegin()

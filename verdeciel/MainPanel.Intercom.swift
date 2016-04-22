@@ -16,13 +16,13 @@ class PanelIntercom : MainPanel
 	var distanceLabel:SCNLabel!
 	var typeLabel:SCNLabel!
 	var statusLabel:SCNLabel!
-	var detailsLabel:SCNLabel!
+	var detailLabel:SCNLabel!
 	
 	var systemValueLabel:SCNLabel!
 	var distanceValueLabel:SCNLabel!
 	var typeValueLabel:SCNLabel!
 	var statusValueLabel:SCNLabel!
-	var detailsValueLabel:SCNLabel!
+	var detailValueLabel:SCNLabel!
 
 	var selector = SCNLabel(text: ">", align:.left)
 	
@@ -73,13 +73,13 @@ class PanelIntercom : MainPanel
 		statusLabel.position = SCNVector3(-0.1,1 - 1.4,0)
 		statusValueLabel.position = SCNVector3(0.1,1 - 1.4,0)
 		
-		detailsLabel = SCNLabel(text: "details", align: .right, color: grey)
-		defaultPanel.addChildNode(detailsLabel)
-		detailsValueLabel = SCNLabel(text: "key", align: .left, color: white)
-		defaultPanel.addChildNode(detailsValueLabel)
+		detailLabel = SCNLabel(text: "details", align: .right, color: grey)
+		defaultPanel.addChildNode(detailLabel)
+		detailValueLabel = SCNLabel(text: "key", align: .left, color: white)
+		defaultPanel.addChildNode(detailValueLabel)
 		
-		detailsLabel.position = SCNVector3(-0.1,1 - 1.8,0)
-		detailsValueLabel.position = SCNVector3(0.1,1 - 1.8,0)
+		detailLabel.position = SCNVector3(-0.1,1 - 1.8,0)
+		detailValueLabel.position = SCNVector3(0.1,1 - 1.8,0)
 		
 		mainNode.addChildNode(defaultPanel)
 		
@@ -103,7 +103,7 @@ class PanelIntercom : MainPanel
 			distanceValueLabel.update( (capsule.isDockedAtLocation(target) ? "docked" : "\(String(format: "%.2f",target.distance * 19))") )
 			typeLabel.update("type")
 			typeValueLabel.update("\(target.name!)")
-			detailsValueLabel.update(target.details)
+			detailValueLabel.update(target.details)
 			
 			if target.isComplete == nil { statusValueLabel.update("--", color:white) }
 			else if target.isComplete == true { statusValueLabel.update("complete", color:cyan) }
@@ -115,7 +115,7 @@ class PanelIntercom : MainPanel
 			distanceValueLabel.update("\(capsule.at.x),\(capsule.at.y)")
 			typeValueLabel.update("--")
 			statusValueLabel.update("in flight", color:white)
-			detailsValueLabel.update("--")
+			detailValueLabel.update("--")
 		}
 	}
 	
@@ -127,10 +127,10 @@ class PanelIntercom : MainPanel
 	override func refresh()
 	{
 		if( isInstalled == true ){
-			if capsule.dock == nil { label.update("mission",color:white) }
-			else if capsule.dock.isComplete == nil { label.update(capsule.dock.name!,color:white) }
-			else if capsule.dock.isComplete == true { label.update(capsule.dock.name!,color:cyan) }
-			else{ label.update(capsule.dock.name!,color:red) }
+			if capsule.dock == nil { nameLabel.update("mission",color:white) }
+			else if capsule.dock.isComplete == nil { nameLabel.update(capsule.dock.name!,color:white) }
+			else if capsule.dock.isComplete == true { nameLabel.update(capsule.dock.name!,color:cyan) }
+			else{ nameLabel.update(capsule.dock.name!,color:red) }
 		}
 	}
 	

@@ -17,14 +17,14 @@ class MonitorComplete : Monitor
 		name = "complete"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
-		label.update("--")
-		details.update(name!)
+		nameLabel.update("--")
+		detailsLabel.update(name!)
 	}
 	
 	override func refresh()
 	{
-		label.update(cyan)
-		delay(2, block: { self.label.update(white) })
+		nameLabel.update(cyan)
+		delay(2, block: { self.nameLabel.update(white) })
 	}
 	
 	override func onInstallationBegin()

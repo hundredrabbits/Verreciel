@@ -9,8 +9,8 @@ import Foundation
 
 class MainPanel : Panel
 {
-	let label = SCNLabel(text: "", scale: 0.1, align: alignment.center)
-	let details = SCNLabel(text: "", scale: 0.085, align: alignment.center)
+	let nameLabel = SCNLabel(text: "", scale: 0.1, align: alignment.center)
+	let detailsLabel = SCNLabel(text: "", scale: 0.085, align: alignment.center)
 	var port:SCNPort!
 	
 	let header = Empty()
@@ -24,6 +24,7 @@ class MainPanel : Panel
 		super.init()
 		
 		name = "unknown"
+		details = "missing"
 		root.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		root.addChildNode(mainNode)
 		root.addChildNode(decals)
@@ -31,15 +32,15 @@ class MainPanel : Panel
 		// Header
 		port = SCNPort(host: self)
 		port.position = SCNVector3(x: 0, y: 0.4, z: templates.radius)
-		label.position = SCNVector3(x: 0, y:0, z: templates.radius)
+		nameLabel.position = SCNVector3(x: 0, y:0, z: templates.radius)
 		header.addChildNode(port)
-		header.addChildNode(label)
+		header.addChildNode(nameLabel)
 		addChildNode(header)
 		header.eulerAngles.x += (degToRad(templates.titlesAngle))
 		
 		// Footer
-		details.position = SCNVector3(x: 0, y: 0, z: templates.radius)
-		footer.addChildNode(details)
+		detailsLabel.position = SCNVector3(x: 0, y: 0, z: templates.radius)
+		footer.addChildNode(detailsLabel)
 		addChildNode(footer)
 		footer.eulerAngles.x = (degToRad(-templates.titlesAngle))
 		
@@ -57,7 +58,7 @@ class MainPanel : Panel
 		decals.hide()
 		footer.hide()
 		
-		label.update("--", color:grey)
+		nameLabel.update("--", color:grey)
 	}
 	
 	override func whenStart()
@@ -66,7 +67,7 @@ class MainPanel : Panel
 		
 		decals.hide()
 		mainNode.hide()
-		label.update("--", color: grey)
+		nameLabel.update("--", color: grey)
 	}
 	
 	// MARK: Installation -
@@ -122,7 +123,12 @@ class MainPanel : Panel
 		installNode.removeFromParentNode()
 		
 		port.enable()
-		label.update(name!, color: white)
+		nameLabel.update(name!, color: white)
+	}
+	
+	override func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[ConsoleData(text: details, details: "[missing]")])
 	}
 	
 	required init?(coder aDecoder: NSCoder)

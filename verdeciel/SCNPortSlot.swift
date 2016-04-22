@@ -11,7 +11,7 @@ class SCNPortSlot : SCNPort
 {
 	var hasDetails:Bool = false
 	var label:SCNLabel!
-	var details:SCNLabel!
+	var detailsLabel:SCNLabel!
 	var placeholder:String!
 	
 	init(host:Empty = Empty(), align:alignment! = .left, hasDetails:Bool = false, placeholder:String = "Empty")
@@ -31,8 +31,8 @@ class SCNPortSlot : SCNPort
 		label = SCNLabel(text:placeholder,scale:0.1,color:grey,align:align)
 		self.addChildNode(label)
 		
-		details = SCNLabel(text:"",scale:0.075,color:grey,align:align)
-		self.addChildNode(details)
+		detailsLabel = SCNLabel(text:"",scale:0.075,color:grey,align:align)
+		self.addChildNode(detailsLabel)
 		
 		self.host = host
 		
