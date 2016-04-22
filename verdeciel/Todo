@@ -2,7 +2,12 @@
 *    MAJOR
 ================
 
+- OnDock, align ship to 90' %
+- Add fog location in senni with record2
+
 - Add constellations in valen
+- Improve harvest panel
+- Intercom complete() animation bug
 
 - Make Usul space red
 - Add sounds

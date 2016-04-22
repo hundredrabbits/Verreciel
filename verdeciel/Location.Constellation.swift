@@ -68,6 +68,7 @@ class StructureTunnel : Structure
 		root.addChildNode(hex5)
 		
 		root.eulerAngles.x = degToRad(90)
+		root.eulerAngles.y = degToRad(90)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

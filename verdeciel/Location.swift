@@ -113,7 +113,13 @@ class Location : Event
 	{
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
-		capsule.dock(self)
+		// Don't try to dock if there is already a target
+		if radar.port.hasEvent() == true && radar.port.event == self {
+			capsule.dock(self)
+		}
+		else if radar.port.hasEvent() == false {
+			capsule.dock(self)
+		}
 		update()
 		
 	}

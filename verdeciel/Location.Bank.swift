@@ -79,7 +79,7 @@ class LocationBank : Location
 		super.onDock()
 		
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
+		SCNTransaction.setAnimationDuration(0.5)
 		
 		structure.hide()
 		
@@ -100,7 +100,7 @@ class LocationBank : Location
 		super.onUndock()
 		
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(2)
+		SCNTransaction.setAnimationDuration(0.5)
 		
 		structure.show()
 		

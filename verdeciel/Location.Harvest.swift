@@ -16,6 +16,8 @@ class LocationHarvest : Location
 		
 		self.grows = grows
 		
+		self.details = "grows \(self.grows.name!)"
+		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.position = SCNVector3(0,-0.5,0)
 		port.enable()
@@ -50,6 +52,7 @@ class LocationHarvest : Location
 			refresh()
 			generationCountdown = 0
 			port.addEvent(grows)
+			structure.update()
 		}
 		
 		if port.hasEvent(grows) == true {

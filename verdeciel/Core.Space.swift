@@ -69,9 +69,10 @@ class CoreSpace: Empty
 		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
+		else if capsule.isWarping == true { starSpeed = 10 }
 		else{ starSpeed = thruster.actualSpeed }
 		
-		starSpeed *= 0.2
+		starSpeed *= 0.15
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.update([star.vertices.first!,SCNVector3(star.vertices.first!.x,star.vertices.first!.y + starSpeed + 0.1,star.vertices.first!.z)])
@@ -101,9 +102,10 @@ class CoreSpace: Empty
 		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
+		else if capsule.isWarping == true { starSpeed = 10 }
 		else{ starSpeed = thruster.actualSpeed }
 		
-		starSpeed *= 0.2
+		starSpeed *= 0.15
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.position = SCNVector3(x: star.position.x, y: star.position.y - starSpeed, z: star.position.z)

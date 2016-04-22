@@ -178,6 +178,11 @@ class StructurePortal : Structure
 		}
 	}
 	
+	override func onSight()
+	{
+		onLock()
+	}
+	
 	func onWarp()
 	{
 		root.updateChildrenColors(cyan)

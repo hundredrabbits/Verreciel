@@ -64,9 +64,15 @@ class MissionCollection
 		m = Mission(id:(story.count), name: "Use portal")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route \(items.valenPortalKey) to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
+			Quest(name:"Route \(items.valenPortalKey.name!) to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
+		]
+		story.append(m)
+		
+		m = Mission(id:(story.count), name: "Warp")
+		m.quests = [
+			Quest(name:"Reach valen", location:universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { })
 		]
 		story.append(m)
 		
@@ -76,6 +82,7 @@ class MissionCollection
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery2) || cargo.contains(items.battery2) }, result: {  }),
 			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
 			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { journey.install() })
 		]
@@ -83,7 +90,6 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Radio Lesson")
 		m.quests = [
-			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery2) || cargo.contains(items.battery2) }, result: {  }),
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery2) }, result: {  }),
 			Quest(name:"Route cell to radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
@@ -94,7 +100,7 @@ class MissionCollection
 		m.predicate = { hatch.count > 0 }
 		m.quests = [
 			Quest(name:"Collect Waste", location: universe.valen_bank, predicate:{ cargo.containsLike(items.waste) }, result: { hatch.install() }),
-			Quest(name:"Route waste to hatch", predicate:{ hatch.port.hasItemLike(items.waste) }, result: {  }),
+			Quest(name:"Route waste to hatch", predicate:{ hatch.port.isReceivingItemLike(items.waste) }, result: {  }),
 			Quest(name:"Jetison Waste", predicate:{ hatch.count > 0 }, result: { completion.install() })
 		]
 		story.append(m)
@@ -127,16 +133,10 @@ class MissionCollection
 		
 		// Go to Senni
 		
-		m = Mission(id:(story.count), name: "Reach Senni System")
-		m.predicate = { universe.senni_portal.isKnown == true }
-		m.quests = [
-			Quest(name:"Reach Senni Portal", predicate:{ universe.senni_portal.isKnown == true }, result: { })
-		]
-		story.append(m)
-		
 		m = Mission(id:(story.count), name: "Install Map")
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
+			Quest(name:"Reach Senni", location: universe.valen_portal, predicate:{ universe.senni_portal.isKnown == true }, result: { }),
 			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
 			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
 			Quest(name:"Install map", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
@@ -162,8 +162,8 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Create \(items.currency5)")
 		m.quests = [
-			Quest(name:"Collect \(items.currency3)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
-			Quest(name:"Collect \(items.currency2)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
+			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
+			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
 			Quest(name:"Combine currencies", predicate:{ cargo.containsLike(items.currency5) }, result: { }),
 		]
 		story.append(m)

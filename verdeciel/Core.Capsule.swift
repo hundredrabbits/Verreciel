@@ -80,7 +80,7 @@ class CoreCapsule: Empty
 			helmet.addWarning("Radiation \(String(format: "%.1f",radiation * 100))%", duration: 0.1, flag: "radiation")
 		}
 		
-		if closestLocation().distance > 1.25 {
+		if closestLocation().distance > 1.25 && isWarping == false {
 			helmet.addWarning("Returning", duration: 0.1, flag: "returning")
 			autoReturn()
 		}

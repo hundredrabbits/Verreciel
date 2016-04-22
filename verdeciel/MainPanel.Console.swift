@@ -117,7 +117,7 @@ class PanelConsole : MainPanel
 			ConsoleData(text:"installs",details:"\(capsule.systemsInstalledCount())",color:grey),
 			ConsoleData(text:"",color:grey),
 			ConsoleData(text:"",color:grey),
-			ConsoleData(text:"ready",color:grey),
+			ConsoleData(text:"",color:grey),
 		])
 	}
 	
@@ -131,6 +131,8 @@ class PanelConsole : MainPanel
 	override func onInstallationComplete()
 	{
 		super.onInstallationComplete()
+		
+		inject(defaultPayload())
 	}
 	
 	required init?(coder aDecoder: NSCoder)

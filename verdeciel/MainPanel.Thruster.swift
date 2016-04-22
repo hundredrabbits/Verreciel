@@ -337,8 +337,7 @@ class PanelThruster : MainPanel
 		
 		interface_flight.hide()
 		interface_dock.hide()
-		interface_warp.blink()
-		interface_warp.updateChildrenColors(red)
+		interface_warp.updateChildrenColors(grey)
 		
 		accelerate.disable()
 		decelerate.disable()
@@ -477,7 +476,7 @@ class PanelThruster : MainPanel
 	
 	func thrust()
 	{
-		if capsule.isWarping == true { speed = 100 ; return }
+		if capsule.isWarping == true { speed = 100 ; journey.distance += actualSpeed ; return }
 		if capsule.isDocked ==  true { speed = 0 ; actualSpeed = 0 ; return }
 		
 		if speed * 10 > Int(actualSpeed * 10) {
