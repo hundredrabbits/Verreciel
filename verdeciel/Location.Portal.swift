@@ -71,6 +71,8 @@ class LocationPortal : Location
 	
 	override func onDock()
 	{
+		super.onDock()
+		
 		validate()
 	}
 	
@@ -101,6 +103,7 @@ class LocationPortal : Location
 		keyLabel.update("no key", color:red)
 		
 		structure.root.updateChildrenColors(red)
+		(structure as! StructurePortal).onLock()
 	}
 	
 	func unlock()
@@ -118,6 +121,7 @@ class LocationPortal : Location
 		thrusterPort.enable()
 		
 		structure.root.updateChildrenColors(cyan)
+		(structure as! StructurePortal).onUnlock()
 	}
 	
 	// MARK: Defaults -
@@ -160,11 +164,41 @@ class StructurePortal : Structure
 		var i = 0
 		while i < nodes {
 			let node = SCNNode()
-			node.addChildNode(SCNLine(vertices: [SCNVector3(2,5,0), SCNVector3(0,0,10)], color: red))
+			let line = SCNLine(vertices: [SCNVector3(2,2,0), SCNVector3(0,0,10)], color: red)
+			line.position = SCNVector3(-2,0,0)
+			node.addChildNode(line)
 			root.addChildNode(node)
 			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
 			i += 1
 		}
+	}
+	
+	func onUnlock()
+	{
+		super.onUndock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		for node in root.childNodes {
+			node.childNodes.first!.position = SCNVector3(0,0,0)
+		}
+		
+		SCNTransaction.commit()
+	}
+	
+	func onLock()
+	{
+		super.onUndock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		for node in root.childNodes {
+			node.childNodes.first!.position = SCNVector3(-2,0,0)
+		}
+		
+		SCNTransaction.commit()
 	}
 	
 	override func update()
