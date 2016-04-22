@@ -49,17 +49,10 @@ class Structure : Empty
 		rot.eulerAngles.y = (degToRad(capsule.direction))
 		
 		if host.distance > settings.approach {
-			leaveInstance()
 			onLeave()
 		}
 	}
-	
-	func leaveInstance()
-	{
-		print("> INSTANCE | Leaving \(host.name!)")
-		self.removeFromParentNode()
-	}
-	
+
 	var morphTime:Int = 0
 	var morphTimer:NSTimer!
 	
@@ -70,7 +63,12 @@ class Structure : Empty
 	
 	func onSight()
 	{
-	
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1.5)
+		
+		opacity = 1
+		
+		SCNTransaction.commit()
 	}
 	
 	func onUndock()
@@ -85,6 +83,21 @@ class Structure : Empty
 	
 	func onLeave()
 	{
+		print("> INSTANCE | Leaving \(host.name!)")
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(1.0)
+		
+		opacity = 0
+		SCNTransaction.setCompletionBlock({
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(0.1)
+			self.removeFromParentNode()
+			SCNTransaction.commit()
+		})
+		
+		SCNTransaction.commit()
+		
 		
 	}
 	
