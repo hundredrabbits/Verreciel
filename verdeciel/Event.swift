@@ -12,14 +12,12 @@ class Event : Empty
 	
 	var at = CGPoint()
 	var details = String()
-	var content:Array<Item>!
 	var color = grey
 	
 	var isQuest:Bool = false
 	
 	init(name:String = "",at:CGPoint = CGPoint(), note:String = "", color:UIColor = grey, isQuest:Bool = false)
 	{
-		self.content = []
 		self.isQuest = isQuest
 
 		super.init()
@@ -75,8 +73,7 @@ class Event : Empty
 	func duplicate() -> Event
 	{
 		let newEvent = Event()
-		
-		newEvent.content = content
+
 		newEvent.isQuest = isQuest
 	
 		newEvent.name = name

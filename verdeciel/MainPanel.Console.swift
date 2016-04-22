@@ -36,6 +36,7 @@ class PanelConsole : MainPanel
 	{
 		label.update("\(port.origin.host.name!) > Port", color:cyan)
 		inject(port.origin.event.payload())
+		print(port.origin.event)
 	}
 	
 	override func onDisconnect()

@@ -111,7 +111,7 @@ class Empty : SCNNode
 	
 	func payload() -> ConsolePayload
 	{
-		return ConsolePayload(data:[ConsoleData(text: "Missing details", details: "--")])
+		return ConsolePayload(data:[ConsoleData(text: "[missing]", details: "[missing]")])
 	}
 	
 	required init?(coder aDecoder: NSCoder)

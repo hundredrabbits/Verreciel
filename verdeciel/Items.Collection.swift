@@ -7,7 +7,6 @@ import Foundation
 class ItemCollection
 {
 	// Capsule
-	let playerCargo = Item(name: "player cargo", type: .cargo, note:"need description", isQuest:true)
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
 	
 	// Misc

@@ -18,12 +18,15 @@ class PanelCargo : MainPanel
 	
 	var trigger:SCNTrigger!
 	
+	var cargohold = CargoHold()
+	
 	override init()
 	{
 		super.init()
 		
 		name = "cargo"
 		info = "[missing text]"
+		port.event = cargohold
 		
 		mainNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 
@@ -48,8 +51,6 @@ class PanelCargo : MainPanel
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2, height: 2), operation: 1)
 		mainNode.addChildNode(trigger)
 		
-		port.event = items.playerCargo
-		
 		decals.empty()
 		
 		details.update("Empty", color: grey)
@@ -57,7 +58,7 @@ class PanelCargo : MainPanel
 	
 	func contains(event:Event) -> Bool
 	{
-		for item in port.event.content {
+		for item in cargohold.content {
 			if item == event { return true }
 		}
 		return false
@@ -65,7 +66,7 @@ class PanelCargo : MainPanel
 	
 	func containsLike(target:Item) -> Bool
 	{
-		for item in port.event.content {
+		for item in cargohold.content {
 			if item.name == target.name && item.type == target.type { return true }
 		}
 		return false
@@ -74,39 +75,41 @@ class PanelCargo : MainPanel
 	func containsCount(count:Int,target:Item) -> Bool
 	{
 		var count_actual = 0
-		for item in port.event.content {
+		for item in cargohold.content {
 			if item.name == target.name && item.type == target.type { count_actual += 1 }
 		}
 		if count == count_actual { return true }
 		return false
 	}
 	
-	func addItem(item:Item)
-	{
-		port.event.content.append(item)
-		refresh()
-	}
+	// MARK: Add - 
 	
 	func addItems(items:Array<Item>)
 	{
 		for item in items {
-			port.event.content.append(item)
+			addItem(item)
 		}
 		refresh()
 	}
 	
+	func addItem(item:Item)
+	{
+		cargohold.content.append(item)
+		refresh()
+	}
+
 	func removeEvent(target:Event)
 	{
-		let history = port.event.content
-		port.event.content = []
+		let history = cargohold.content
+		cargohold.content = []
 		for event in history {
 			if event == target { continue }
-			port.event.content.append(event)
+			cargohold.content.append(event)
 		}
 	}
 	
 	override func touch(id:Int = 0)
-	{
+	{		
 		refresh()
 		
 		if port.isConnectedToPanel(console) == true { console.onConnect() }
@@ -114,11 +117,11 @@ class PanelCargo : MainPanel
 	
 	override func refresh()
 	{
-		print("+ PANEL    | Cargo: \(port.event.content.count) items")
+		print("+ PANEL    | Cargo: \(cargohold.content.count) items")
 		
 		// Update cargohold
-		let newCargohold = Event(name: "cargohold")
-		for item in port.event.content {
+		let newCargohold = CargoHold()
+		for item in cargohold.content {
 			newCargohold.content.append(item)
 		}
 		port.event = newCargohold
@@ -130,21 +133,21 @@ class PanelCargo : MainPanel
 		line5.color(grey)
 		line6.color(grey)
 		
-		if port.event.content.count > 0 { line1.color( port.event.content[0].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 1 { line2.color( port.event.content[1].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 2 { line3.color( port.event.content[2].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 3 { line4.color( port.event.content[3].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 4 { line5.color( port.event.content[4].isQuest == true ? cyan : white ) }
-		if port.event.content.count > 5 { line6.color( port.event.content[5].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 0 { line1.color( cargohold.content[0].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 1 { line2.color( cargohold.content[1].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 2 { line3.color( cargohold.content[2].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 3 { line4.color( cargohold.content[3].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 4 { line5.color( cargohold.content[4].isQuest == true ? cyan : white ) }
+		if cargohold.content.count > 5 { line6.color( cargohold.content[5].isQuest == true ? cyan : white ) }
 		
-		if port.event.content.count == 0 {
+		if cargohold.content.count == 0 {
 			details.update("Empty", color: grey)
 		}
-		else if port.event.content.count == 6 {
+		else if cargohold.content.count == 6 {
 			details.update("FULL", color: red)
 		}
 		else{
-			details.update("\(port.event.content.count)/6", color:white)
+			details.update("\(cargohold.content.count)/6", color:white)
 		}
 	}
 	
@@ -191,7 +194,7 @@ class PanelCargo : MainPanel
 	{
 		if (port.origin != nil) {
 			let origin = port.origin.host
-			port.event.content.append(port.syphon())
+			cargohold.content.append(port.syphon())
 			origin.onUploadComplete()
 			self.onUploadComplete()
 		}
@@ -217,6 +220,36 @@ class PanelCargo : MainPanel
 	}
 	
 	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class CargoHold : Item
+{
+	var content:Array<Item> = []
+	
+	init()
+	{
+		super.init()
+		
+		name = "cargo"
+		type = .cargo
+		details = "[missing]"
+	}
+	
+	override func payload() -> ConsolePayload
+	{
+		var data:Array<ConsoleData> = []
+		
+		for item in content {
+			data.append(ConsoleData(text: item.name!, details: "\(item.type)", event: item))
+		}
+		
+		return ConsolePayload(data: data)
+	}
+	
+	required init(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}
