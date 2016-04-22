@@ -181,7 +181,7 @@ class PanelIntercom : MainPanel
 		SCNTransaction.setCompletionBlock({
 			
 			self.locationPanel.position = SCNVector3(0,0,-0.5)
-			self.label.update(capsule.dock.name!)
+			self.nameLabel.update(capsule.dock.name!)
 			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)

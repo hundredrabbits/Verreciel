@@ -41,7 +41,7 @@ class PanelHatch : MainPanel
 		
 		decals.empty()
 		
-		details.update("empty", color: grey)
+		detailsLabel.update("empty", color: grey)
 	}
 	
 	override func whenStart()
@@ -70,16 +70,16 @@ class PanelHatch : MainPanel
 		
 		if load != nil {
 			if load.isQuest == true || (load is Item) == false {
-				details.update("error", color: red)
+				detailsLabel.update("error", color: red)
 				outline.updateChildrenColors(red)
 			}
 			else{
-				details.update("jetison", color: cyan)
+				detailsLabel.update("jetison", color: cyan)
 				outline.updateChildrenColors(cyan)
 			}
 		}
 		else{
-			details.update("empty", color: grey)
+			detailsLabel.update("empty", color: grey)
 			outline.updateChildrenColors(grey)
 		}
 	}

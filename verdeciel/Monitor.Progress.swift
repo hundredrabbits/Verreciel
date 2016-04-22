@@ -15,8 +15,8 @@ class MonitorProgress : Monitor
 		name = "progress"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
-		label.update("--")
-		details.update(name!)
+		nameLabel.update("--")
+		detailsLabel.update(name!)
 	}
 	
 	override func refresh()
@@ -31,7 +31,7 @@ class MonitorProgress : Monitor
 			}
 		}
 		
-		label.update("\(totalQuestLocations_complete)/\(totalQuestLocations)")
+		nameLabel.update("\(totalQuestLocations_complete)/\(totalQuestLocations)")
 	}
 	
 	override func onInstallationBegin()

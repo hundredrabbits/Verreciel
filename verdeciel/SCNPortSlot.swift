@@ -36,10 +36,10 @@ class SCNPortSlot : SCNPort
 		
 		self.host = host
 		
-		if align == nil { label.hide() ; details.hide() }
-		else if align == alignment.left { label.position = SCNVector3(0.3,0,0) ; details.position = SCNVector3(0.3,-0.3,0) }
-		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; details.position = SCNVector3(-0.3,-0.3,0) }
-		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; details.position = SCNVector3(0,-0.8,0) }
+		if align == nil { label.hide() ; detailsLabel.hide() }
+		else if align == alignment.left { label.position = SCNVector3(0.3,0,0) ; detailsLabel.position = SCNVector3(0.3,-0.3,0) }
+		else if align == alignment.right { label.position = SCNVector3(-0.3,0,0) ; detailsLabel.position = SCNVector3(-0.3,-0.3,0) }
+		else if align == alignment.center { label.position = SCNVector3(0,-0.5,0) ; detailsLabel.position = SCNVector3(0,-0.8,0) }
 		
 		disable()
 	}
@@ -61,15 +61,15 @@ class SCNPortSlot : SCNPort
 	
 	func refresh()
 	{
-		details.opacity = (hasDetails == true) ? 1 : 0
+		detailsLabel.opacity = (hasDetails == true) ? 1 : 0
 		
 		if event != nil {
 			label.update(event.name!)
-			details.update(event.details)
+			detailsLabel.update(event.details)
 		}
 		else{
 			label.update(placeholder)
-			details.update("--")
+			detailsLabel.update("--")
 		}
 		
 		if isEnabled == false { label.update(grey) }

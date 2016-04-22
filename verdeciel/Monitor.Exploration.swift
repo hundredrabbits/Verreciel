@@ -18,8 +18,8 @@ class MonitorExploration : Monitor
 		name = "exploration"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
-		label.update("--")
-		details.update(name!)
+		nameLabel.update("--")
+		detailsLabel.update(name!)
 	}
 	
 	override func refresh()
@@ -31,7 +31,7 @@ class MonitorExploration : Monitor
 				knownLocations += 1
 			}
 		}
-		label.update("\(knownLocations)/\(universe.childNodes.count)")
+		nameLabel.update("\(knownLocations)/\(universe.childNodes.count)")
 	}
 	
 	override func onInstallationBegin()
