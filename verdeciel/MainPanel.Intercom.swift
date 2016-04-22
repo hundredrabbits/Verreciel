@@ -33,7 +33,7 @@ class PanelIntercom : MainPanel
 		super.init()
 		
 		name = "mission"
-		info = "[missing text]"
+		details = "displays informations"
 	
 		locationPanel = Panel()
 		mainNode.addChildNode(locationPanel)

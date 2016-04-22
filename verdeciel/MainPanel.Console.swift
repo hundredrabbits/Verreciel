@@ -16,7 +16,7 @@ class PanelConsole : MainPanel
 		super.init()
 		
 		name = "console"
-		info = "[missing text]"
+		details = "inspects events"
 		
 		lines[0].position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 2.5, z: 0)
 		lines[1].position = SCNVector3(x: templates.leftMargin, y: templates.lineSpacing * 1.5, z: 0)
@@ -39,8 +39,11 @@ class PanelConsole : MainPanel
 		if port.origin.event != nil {
 			inject(port.origin.event.payload())
 		}
+		else if port.origin.host != nil {
+			inject(port.origin.host.payload())
+		}
 		else{
-			inject(port.origin.payload())
+			print("* ERROR    | Missing origin")
 		}
 	}
 	

@@ -126,11 +126,6 @@ class MainPanel : Panel
 		nameLabel.update(name!, color: white)
 	}
 	
-	override func payload() -> ConsolePayload
-	{
-		return ConsolePayload(data:[ConsoleData(text: details, details: "[missing]")])
-	}
-	
 	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")

@@ -14,7 +14,7 @@ class WidgetMap : Widget
 		super.init()
 		
 		name = "map"
-		info = "[missing text]"
+		details = "[missing text]"
 		requirement = ItemTypes.map
 		isPowered = { battery.isMapPowered() }
 		

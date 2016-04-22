@@ -25,7 +25,7 @@ class PanelCargo : MainPanel
 		super.init()
 		
 		name = "cargo"
-		info = "[missing text]"
+		details = "stores items"
 		port.event = cargohold
 		
 		mainNode.position = SCNVector3(x: 0, y: 0, z: templates.radius)

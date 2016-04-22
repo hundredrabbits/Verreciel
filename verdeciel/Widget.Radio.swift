@@ -17,7 +17,7 @@ class WidgetRadio : Widget
 		super.init()
 		
 		name = "radio"
-		info = "[missing text]"
+		details = "[missing text]"
 		requirement = ItemTypes.record
 		isPowered = { battery.isRadioPowered() }
 		

@@ -9,7 +9,6 @@ import Foundation
 
 class Panel : Empty
 {
-	var info:String = ""
 	var isEnabled:Bool = false
 	
 	var root = Empty()
@@ -75,7 +74,10 @@ class Panel : Empty
 	
 	override func payload() -> ConsolePayload
 	{
-		return ConsolePayload(data:[ConsoleData(text: name!, details: "panel")])
+		return ConsolePayload(data:[
+			ConsoleData(text: "Capsule", details: "Panel"),
+			ConsoleData(text: details)
+		])
 	}
 	
 	required init?(coder aDecoder: NSCoder)

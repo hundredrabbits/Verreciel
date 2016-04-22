@@ -37,6 +37,7 @@ class Location : Event
 		super.init(name:name, at:at)
 		
 		self.name = name
+		self.details = "[missing]"
 		self.at = at
 		self.system = system
 		self.icon = icon
@@ -273,6 +274,18 @@ class Location : Event
 			if port.hasEvent() == true { return true}
 		}
 		return false
+	}
+	
+	override func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[
+			ConsoleData(text: "Name", details: "\(name!)"),
+			ConsoleData(text: "System", details: "\(system)"),
+			ConsoleData(text: "Position", details: "\(Int(at.x)),\(Int(at.y))"),
+			ConsoleData(text: "Distance", details: "\(Int(distance))"),
+			ConsoleData(text: "Angle", details: "\(Int(angle))"),
+			ConsoleData(text: details)
+			])
 	}
 	
 	required init(coder aDecoder: NSCoder)

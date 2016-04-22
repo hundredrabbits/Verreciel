@@ -27,7 +27,7 @@ class PanelRadar : MainPanel
 		super.init()
 		
 		name = "radar"
-		info = "[missing text]"
+		details = "displays locations"
 		
 		mainNode.addChildNode(eventPivot)
 		eventPivot.addChildNode(eventView)

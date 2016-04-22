@@ -16,7 +16,7 @@ class WidgetShield : Widget
 		super.init()
 	
 		name = "shield"
-		info = "[missing text]"
+		details = "[missing text]"
 		requirement = ItemTypes.shield
 		isPowered = { battery.isShieldPowered() }
 		

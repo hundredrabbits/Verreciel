@@ -48,7 +48,7 @@ class PanelThruster : MainPanel
 		super.init()
 		
 		name = "thruster"
-		info = "[missing text]"
+		details = "moves the capsule"
 		
 		// Flight
 		

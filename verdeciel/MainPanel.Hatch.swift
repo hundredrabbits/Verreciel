@@ -17,7 +17,7 @@ class PanelHatch : MainPanel
 		super.init()
 		
 		name = "hatch"
-		info = "[missing text]"
+		details = "jetisons items"
 		
 		mainNode.addChildNode(SCNLine(vertices: [SCNVector3(x: 0, y: 0.7, z: 0),  SCNVector3(x: 0.7, y: 0, z: 0)],color:grey))
 		mainNode.addChildNode(SCNLine(vertices: [SCNVector3(x: 0.7, y: 0, z: 0), SCNVector3(x: 0, y: -0.7, z: 0)],color:grey))

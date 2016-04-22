@@ -32,6 +32,14 @@ class Item : Event
 		self.details = like.details
 		self.isQuest = like.isQuest
 	}
+	
+	override func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[
+			ConsoleData(text: "Item", details: "\(type)"),
+			ConsoleData(text: details)
+			])
+	}
 
 	required init(coder aDecoder: NSCoder)
 	{
