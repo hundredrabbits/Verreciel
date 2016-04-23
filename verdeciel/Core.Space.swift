@@ -69,7 +69,7 @@ class CoreSpace: Empty
 		
 		var starSpeed = thruster.actualSpeed
 		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
-		else if capsule.isWarping == true { starSpeed = 10 }
+		else if capsule.isWarping == true { starSpeed = 40 }
 		else{ starSpeed = thruster.actualSpeed }
 		
 		starSpeed *= 0.15
@@ -88,24 +88,12 @@ class CoreSpace: Empty
 		if currentSpaceColor[2] > targetSpaceColor[2] { currentSpaceColor[2] -= 0.01 }
 		
 		sceneView.backgroundColor = UIColor(red: currentSpaceColor[0], green: currentSpaceColor[1], blue: currentSpaceColor[2], alpha: 1)
-	}
-	
-	// Other
-	
-	override func whenRenderer()
-	{
-		super.whenRenderer()
+		
+		// Etc
 		
 		starsRoot.rotation = SCNVector4Make(0, 1, 0, (degToRad(capsule.direction)))
 		
 		// Update stars
-		
-		var starSpeed = thruster.actualSpeed
-		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
-		else if capsule.isWarping == true { starSpeed = 10 }
-		else{ starSpeed = thruster.actualSpeed }
-		
-		starSpeed *= 0.15
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.position = SCNVector3(x: star.position.x, y: star.position.y - starSpeed, z: star.position.z)

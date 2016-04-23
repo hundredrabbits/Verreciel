@@ -142,14 +142,13 @@ class PanelCargo : MainPanel
 	
 	override func refresh()
 	{
-		print("+ PANEL    | Cargo: \(cargohold.content.count) items")
-		
-		// Update cargohold
 		let newCargohold = CargoHold()
 		for item in cargohold.content {
 			newCargohold.content.append(item)
 		}
 		port.event = newCargohold
+		
+		// Animate
 		
 		line1.color(grey)
 		line2.color(grey)

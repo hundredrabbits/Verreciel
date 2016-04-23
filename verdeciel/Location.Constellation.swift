@@ -19,8 +19,7 @@ class LocationConstellation : Location
 	override func onApproach()
 	{
 		super.onApproach()
-		
-		print("* EVENT    | Approached \(self.name!)")
+
 		space.startInstance(self)
 		update()
 	}

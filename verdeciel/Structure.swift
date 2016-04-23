@@ -63,14 +63,7 @@ class Structure : Empty
 	
 	func onSight()
 	{
-		hide()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		
 		show()
-		
-		SCNTransaction.commit()
 	}
 	
 	func onUndock()
@@ -87,16 +80,7 @@ class Structure : Empty
 	{
 		print("> INSTANCE | Leaving \(host.name!)")
 		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1.0)
-		
-		opacity = 0
-		
-		SCNTransaction.setCompletionBlock({
-			self.removeFromParentNode()
-		})
-		
-		SCNTransaction.commit()
+		self.removeFromParentNode()
 	}
 	
 	func dockUpdate()
