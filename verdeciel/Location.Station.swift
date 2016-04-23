@@ -104,9 +104,9 @@ class StructureStation : Structure
 			let axis = Empty()
 			axis.eulerAngles.y = (degToRad(CGFloat(Float(i) * Float(360/nodes))))
 			
-			let node = SCNHexa(size: 4, color: red)
+			let node = ShapeHexa(size: 4, color: red)
 			node.eulerAngles.x = (degToRad(90))
-			let node1 = SCNHexa(size: 4, color: red)
+			let node1 = ShapeHexa(size: 4, color: red)
 			node1.eulerAngles.y = (degToRad(90))
 			
 			axis.addChildNode(node)
@@ -114,8 +114,6 @@ class StructureStation : Structure
 			root.addChildNode(axis)
 			i += 1
 		}
-		
-		
 	}
 	
 	override func onSight()

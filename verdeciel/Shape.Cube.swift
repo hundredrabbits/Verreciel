@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNCube : Empty
+class ShapeCube : Empty
 {
 	var line1:SCNLine!
 	var line2:SCNLine!

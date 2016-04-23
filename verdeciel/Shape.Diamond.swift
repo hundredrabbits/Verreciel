@@ -7,17 +7,16 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class ShapeTriangle : Empty
+class ShapeDiamond : Empty
 {
-	var mesh:SCNLine!
-	
 	init(size:CGFloat, color:UIColor = white)
 	{
 		super.init()
 		addChildNode(SCNLine(vertices: [
-			SCNVector3(0,size,0), SCNVector3(-size/2,-size/2,size),
-			SCNVector3(-size/2,-size/2,0), SCNVector3(size/2,-size/2,size),
-			SCNVector3(size/2,-size/2,0), SCNVector3(0,size,0),
+			SCNVector3(0,0,size), SCNVector3(size,0,0),
+			SCNVector3(size,0,0), SCNVector3(0,0,-size),
+			SCNVector3(0,0,-size), SCNVector3(-size,0,0),
+			SCNVector3(-size,0,0), SCNVector3(0,0,size),
 		], color: color))
 	}
 	

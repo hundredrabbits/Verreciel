@@ -101,19 +101,19 @@ class StructureSatellite : Structure
 			
 			root.addChildNode(axis)
 			
-			let shape = SCNHexa(size: 3, color: red)
+			let shape = ShapeHexa(size: 3, color: red)
 			shape.position.x = 0
 			axis.addChildNode(shape)
 			
-			let shape2 = SCNHexa(size: 3, color: red)
+			let shape2 = ShapeHexa(size: 3, color: red)
 			shape2.eulerAngles.z = (degToRad(90))
 			shape.addChildNode(shape2)
 			
-			let shape3 = SCNHexa(size: 3, color: red)
+			let shape3 = ShapeHexa(size: 3, color: red)
 			shape3.eulerAngles.y = (degToRad(90))
 			shape.addChildNode(shape3)
 			
-			let shape4 = SCNHexa(size: 3, color: red)
+			let shape4 = ShapeHexa(size: 3, color: red)
 			shape4.eulerAngles.x = (degToRad(90))
 			shape.addChildNode(shape4)
 			

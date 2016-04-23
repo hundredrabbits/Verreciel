@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNRect : Empty
+class ShapeRect : Empty
 {
 	init(size:CGSize, color:UIColor)
 	{

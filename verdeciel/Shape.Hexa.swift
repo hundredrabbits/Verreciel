@@ -7,15 +7,13 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNHexa : Empty
+class ShapeHexa : Empty
 {
-	init(size:CGFloat, color:UIColor = white, eulerAngles:SCNVector3! = SCNVector3(0,0,0))
+	init(size:CGFloat, color:UIColor = white)
 	{
 		super.init()
 		
 		addChildNode(SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(size/2,size/2,0), SCNVector3(size/2,-size/2,0), SCNVector3(size/2,size/2,0), SCNVector3(size/2,-size/2,0), SCNVector3(0,-size,0), SCNVector3(0,size,0), SCNVector3(-size/2,size/2,0), SCNVector3(-size/2,-size/2,0), SCNVector3(-size/2,size/2,0), SCNVector3(-size/2,-size/2,0), SCNVector3(0,-size,0)], color: color))
-		
-		self.eulerAngles = eulerAngles
 	}
 	
 	required init(coder aDecoder: NSCoder)

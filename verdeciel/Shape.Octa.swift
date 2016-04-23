@@ -7,18 +7,13 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class SCNOcta : Empty
-{
-	var mesh:SCNLine!
-	
-	init(size:CGFloat, color:UIColor = white, eulerAngles:SCNVector3! = SCNVector3(0,0,0))
+class ShapeOcta : Empty
+{	
+	init(size:CGFloat, color:UIColor = white)
 	{
 		super.init()
 		
-		mesh = SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(-size,0,size), SCNVector3(0,size,0), SCNVector3(size,0,size), SCNVector3(0,size,0), SCNVector3(-size,0,-size), SCNVector3(0,size,0), SCNVector3(size,0,-size), SCNVector3(0,-size,0), SCNVector3(-size,0,size), SCNVector3(0,-size,0), SCNVector3(size,0,size), SCNVector3(0,-size,0), SCNVector3(-size,0,-size), SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color)
-		
-		self.eulerAngles = eulerAngles
-		addChildNode(mesh)
+		addChildNode(SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(-size,0,size), SCNVector3(0,size,0), SCNVector3(size,0,size), SCNVector3(0,size,0), SCNVector3(-size,0,-size), SCNVector3(0,size,0), SCNVector3(size,0,-size), SCNVector3(0,-size,0), SCNVector3(-size,0,size), SCNVector3(0,-size,0), SCNVector3(size,0,size), SCNVector3(0,-size,0), SCNVector3(-size,0,-size), SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color))
 	}
 	
 	required init(coder aDecoder: NSCoder)

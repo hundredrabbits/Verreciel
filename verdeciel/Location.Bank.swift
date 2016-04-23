@@ -147,7 +147,7 @@ class StructureBank : Structure
 		
 		var i = 0
 		while i < 7 {
-			let rect = SCNRect(size:CGSize(width:6,height:6), color:white)
+			let rect = ShapeRect(size:CGSize(width:6,height:6), color:white)
 			rect.position.y = Float((Float(i)) - 3.5)
 			root.addChildNode(rect)
 			i += 1

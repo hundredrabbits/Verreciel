@@ -51,19 +51,19 @@ class StructureTunnel : Structure
 	{
 		super.init()
 		
-		let hex1 = SCNHexa(size: 6, color: grey)
+		let hex1 = ShapeHexa(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,2)
 		root.addChildNode(hex1)
-		let hex2 = SCNHexa(size: 6, color: grey)
+		let hex2 = ShapeHexa(size: 6, color: grey)
 		hex2.position = SCNVector3(0,0,0)
 		root.addChildNode(hex2)
-		let hex3 = SCNHexa(size: 6, color: grey)
+		let hex3 = ShapeHexa(size: 6, color: grey)
 		hex3.position = SCNVector3(0,0,-2)
 		root.addChildNode(hex3)
-		let hex4 = SCNHexa(size: 6, color: grey)
+		let hex4 = ShapeHexa(size: 6, color: grey)
 		hex4.position = SCNVector3(0,0,4)
 		root.addChildNode(hex4)
-		let hex5 = SCNHexa(size: 6, color: grey)
+		let hex5 = ShapeHexa(size: 6, color: grey)
 		hex5.position = SCNVector3(0,0,-4)
 		root.addChildNode(hex5)
 		
@@ -83,9 +83,9 @@ class StructureDoor : Structure
 	{
 		super.init()
 		
-		root.addChildNode(ShapeTriangle(size: 5, color:grey))
-		root.addChildNode(ShapeTriangle(size: 3, color:grey))
-		root.addChildNode(ShapeTriangle(size: 1, color:grey))
+		root.addChildNode(ShapeDiamond(size: 5, color:grey))
+		root.addChildNode(ShapeDiamond(size: 3, color:grey))
+		root.addChildNode(ShapeDiamond(size: 1, color:grey))
 	}
 	
 	override func sightUpdate()
