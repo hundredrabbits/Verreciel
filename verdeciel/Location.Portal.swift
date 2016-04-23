@@ -181,6 +181,8 @@ class StructurePortal : Structure
 	
 	override func onSight()
 	{
+		super.onSight()
+		
 		onLock()
 	}
 	

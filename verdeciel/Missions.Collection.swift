@@ -91,7 +91,7 @@ class MissionCollection
 		m = Mission(id:(story.count), name: "Radio Lesson")
 		m.quests = [
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery2) }, result: {  }),
-			Quest(name:"Route cell to radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
+			Quest(name:"Power radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
 			Quest(name:"Route record to radio", predicate:{ radio.port.hasItemOfType(.record) }, result: {  })
 		]
 		story.append(m)

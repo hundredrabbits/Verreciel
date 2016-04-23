@@ -98,7 +98,30 @@ class PanelCargo : MainPanel
 		self.refresh()
 	}
 
-	func removeEvent(target:Event)
+	func removeItem(target:Item)
+	{
+		if cargohold.content.count == 1 { line1.position.x = 0.25 }
+		if cargohold.content.count == 2 { line2.position.x = 0.25 }
+		if cargohold.content.count == 3 { line3.position.x = 0.25 }
+		if cargohold.content.count == 4 { line4.position.x = 0.25 }
+		if cargohold.content.count == 5 { line5.position.x = 0.25 }
+		if cargohold.content.count == 6 { line6.position.x = 0.25 }
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		if cargohold.content.count == 1 { line1.position.x = 0 }
+		if cargohold.content.count == 2 { line2.position.x = 0 }
+		if cargohold.content.count == 3 { line3.position.x = 0 }
+		if cargohold.content.count == 4 { line4.position.x = 0 }
+		if cargohold.content.count == 5 { line5.position.x = 0 }
+		if cargohold.content.count == 6 { line6.position.x = 0 }
+		
+		SCNTransaction.setCompletionBlock({ self.removeTransfer(target) })
+		SCNTransaction.commit()
+	}
+	
+	func removeTransfer(target:Item)
 	{
 		let history = cargohold.content
 		cargohold.content = []
@@ -106,6 +129,8 @@ class PanelCargo : MainPanel
 			if event == target { continue }
 			cargohold.content.append(event)
 		}
+		
+		refresh()
 	}
 	
 	override func touch(id:Int = 0)

@@ -39,9 +39,7 @@ class SCNProgressRadial : Empty
 			else{ line.update(cyan) }
 			
 			i += 1
-		}
-		print(reach)
-		
+		}		
 	}
 	
 	required init?(coder aDecoder: NSCoder)

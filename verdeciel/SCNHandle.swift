@@ -32,10 +32,7 @@ class SCNHandle : Empty
 		let height:Float = 0.2
 		position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		
-		addChildNode(SCNLine(vertices: [SCNVector3(x: -width, y: 0, z: height),  SCNVector3(x: -width + spacing, y: 0, z: height)],color:grey) )
-		addChildNode(SCNLine(vertices: [SCNVector3(x: width, y: 0, z: height),  SCNVector3(x: width - spacing, y: 0, z: height)],color:grey) )
-		addChildNode(SCNLine(vertices: [SCNVector3(x: -width, y: 0, z: 0),  SCNVector3(x: -width, y: 0, z: height)],color:grey) )
-		addChildNode(SCNLine(vertices: [SCNVector3(x: width, y: 0, z: 0),  SCNVector3(x: width, y: 0, z: height)],color:grey) )
+		addChildNode(SCNLine(vertices: [SCNVector3(x: -width, y: 0, z: height),  SCNVector3(x: -width + spacing, y: 0, z: height), SCNVector3(x: width, y: 0, z: height),  SCNVector3(x: width - spacing, y: 0, z: height), SCNVector3(x: -width, y: 0, z: 0),  SCNVector3(x: -width, y: 0, z: height), SCNVector3(x: width, y: 0, z: 0),  SCNVector3(x: width, y: 0, z: height)],color:grey) )
 		
 		selectionLine = SCNLine(vertices: [SCNVector3(x: -width + spacing, y: 0, z: height),  SCNVector3(x: width - spacing, y: 0, z: height)],color:cyan)
 		addChildNode(selectionLine)

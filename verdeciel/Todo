@@ -2,6 +2,8 @@
 *    MAJOR
 ================
 
+- Bank is invisible
+- Update cargo when taking items out from console
 - Add fog location in senni with record2
 
 - Intercom complete() animation bug

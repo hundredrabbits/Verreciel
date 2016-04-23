@@ -16,7 +16,7 @@ class LocationHarvest : Location
 		
 		self.grows = grows
 		
-		self.details = "grows \(self.grows.name!)"
+		self.details = "\(self.grows.name!)"
 		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
 		port.enable()
@@ -52,7 +52,7 @@ class LocationHarvest : Location
 		}
 		
 		if port.hasEvent(grows) == true {
-			timeLeftLabel.update("DONE")
+			timeLeftLabel.update("")
 		}
 		else{
 			timeLeftLabel.update("\(generationRate-generationCountdown)")
@@ -66,7 +66,7 @@ class LocationHarvest : Location
 	{
 		let newPanel = Panel()
 		
-		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", scale:0.2, align:.center)
+		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", scale:0.15, align:.center)
 		timeLeftLabel.position = SCNVector3(0,0.5,0)
 		newPanel.addChildNode(timeLeftLabel)
 		

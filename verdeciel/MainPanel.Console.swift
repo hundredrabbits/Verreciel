@@ -57,6 +57,11 @@ class PanelConsole : MainPanel
 		inject(defaultPayload())
 	}
 	
+	override func onUploadComplete()
+	{
+		print("!!")
+	}
+	
 	override func whenStart()
 	{
 		super.whenStart()

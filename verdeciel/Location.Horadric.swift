@@ -250,11 +250,6 @@ class StructureHoradric : Structure
 		cube6.line12.color(clear)
 	}
 	
-	override func onSight()
-	{
-		super.onSight()
-	}
-	
 	override func onUndock()
 	{
 		super.onUndock()

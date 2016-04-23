@@ -63,6 +63,7 @@ class Structure : Empty
 	
 	func onSight()
 	{
+		opacity = 0
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(1.5)
 		
@@ -89,16 +90,12 @@ class Structure : Empty
 		SCNTransaction.setAnimationDuration(1.0)
 		
 		opacity = 0
+		
 		SCNTransaction.setCompletionBlock({
-			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(0.1)
 			self.removeFromParentNode()
-			SCNTransaction.commit()
 		})
 		
 		SCNTransaction.commit()
-		
-		
 	}
 	
 	func dockUpdate()
