@@ -190,6 +190,11 @@ class Valen
 	{
 		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
+	
+	func c_1() -> LocationConstellation
+	{
+		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5), structure: StructureDoor())
+	}
 }
 
 class Senni

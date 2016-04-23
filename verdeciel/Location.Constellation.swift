@@ -76,3 +76,25 @@ class StructureTunnel : Structure
 		fatalError("init(coder:) has not been implemented")
 	}
 }
+
+class StructureDoor : Structure
+{
+	override init()
+	{
+		super.init()
+		
+		root.addChildNode(ShapeTriangle(size: 5, color:grey))
+		root.addChildNode(ShapeTriangle(size: 3, color:grey))
+		root.addChildNode(ShapeTriangle(size: 1, color:grey))
+	}
+	
+	override func sightUpdate()
+	{
+		root.eulerAngles.y += 0.001
+	}
+	
+	required init?(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}

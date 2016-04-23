@@ -18,6 +18,7 @@ class SCNOcta : Empty
 		mesh = SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(-size,0,size), SCNVector3(0,size,0), SCNVector3(size,0,size), SCNVector3(0,size,0), SCNVector3(-size,0,-size), SCNVector3(0,size,0), SCNVector3(size,0,-size), SCNVector3(0,-size,0), SCNVector3(-size,0,size), SCNVector3(0,-size,0), SCNVector3(size,0,size), SCNVector3(0,-size,0), SCNVector3(-size,0,-size), SCNVector3(0,-size,0), SCNVector3(size,0,-size)], color: color)
 		
 		self.eulerAngles = eulerAngles
+		addChildNode(mesh)
 	}
 	
 	required init(coder aDecoder: NSCoder)
