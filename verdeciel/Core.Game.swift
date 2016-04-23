@@ -69,6 +69,11 @@ class CoreGame
 		//		battery.cellPort2.addEvent(items.battery3)
 	}
 	
+	func erase()
+	{
+		print("Game erased!")
+	}
+	
 	@objc func whenSecond()
 	{
 		capsule.whenSecond()

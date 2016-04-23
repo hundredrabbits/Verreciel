@@ -56,6 +56,12 @@ class PanelHatch : MainPanel
 		if port.isReceiving() == false { return }
 		if port.origin.event.isQuest == true { return }
 		
+		// TODO: Game Erase scheme
+		if port.origin.host == pilot {
+			game.erase()
+			return
+		}
+		
 		port.origin.removeEvent()
 		count += 1
 		update()
@@ -82,6 +88,17 @@ class PanelHatch : MainPanel
 			detailsLabel.update("empty", color: grey)
 			outline.updateChildrenColors(grey)
 		}
+	}
+	
+	override func onConnect()
+	{
+		if port.origin == nil { return }
+		if port.origin.host == nil { return }
+		if port.origin.host != pilot { return }
+		
+		// TODO: Game Erase scheme
+		detailsLabel.update("erase game ?", color: red)
+		outline.updateChildrenColors(red)
 	}
 	
 	override func onDisconnect()
