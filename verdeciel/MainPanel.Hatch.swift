@@ -92,13 +92,12 @@ class PanelHatch : MainPanel
 	
 	override func onConnect()
 	{
-		if port.origin == nil { return }
-		if port.origin.host == nil { return }
-		if port.origin.host != pilot { return }
+		super.onConnect()
 		
-		// TODO: Game Erase scheme
-		detailsLabel.update("erase game ?", color: red)
-		outline.updateChildrenColors(red)
+		if port.origin == nil && port.origin.host == nil && port.origin.host == pilot {
+			detailsLabel.update("erase game ?", color: red)
+			outline.updateChildrenColors(red)
+		}
 	}
 	
 	override func onDisconnect()

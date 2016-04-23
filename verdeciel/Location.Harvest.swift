@@ -66,7 +66,7 @@ class LocationHarvest : Location
 	{
 		let newPanel = Panel()
 		
-		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", scale:0.15, align:.center)
+		timeLeftLabel = SCNLabel(text: "", scale:0.15, align:.center)
 		timeLeftLabel.position = SCNVector3(0,0.5,0)
 		newPanel.addChildNode(timeLeftLabel)
 		
