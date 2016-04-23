@@ -94,28 +94,8 @@ class PanelCargo : MainPanel
 	
 	func addItem(item:Item)
 	{
-		if cargohold.content.count == 0 { line1.position.z = -0.5 }
-		if cargohold.content.count == 1 { line2.position.z = -0.5 }
-		if cargohold.content.count == 2 { line3.position.z = -0.5 }
-		if cargohold.content.count == 3 { line4.position.z = -0.5 }
-		if cargohold.content.count == 4 { line5.position.z = -0.5 }
-		if cargohold.content.count == 5 { line6.position.z = -0.5 }
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
-		
-		if cargohold.content.count == 0 { line1.position.z = -0.5 }
-		if cargohold.content.count == 1 { line2.position.z = 0 }
-		if cargohold.content.count == 2 { line3.position.z = 0 }
-		if cargohold.content.count == 3 { line4.position.z = 0 }
-		if cargohold.content.count == 4 { line5.position.z = 0 }
-		if cargohold.content.count == 5 { line6.position.z = 0 }
-		
-		SCNTransaction.setCompletionBlock({
-			self.cargohold.content.append(item)
-			self.refresh()
-		})
-		SCNTransaction.commit()
+		self.cargohold.content.append(item)
+		self.refresh()
 	}
 
 	func removeEvent(target:Event)
@@ -212,15 +192,38 @@ class PanelCargo : MainPanel
 	
 	func uploadComplete()
 	{
-		if (port.origin != nil) {
-			let origin = port.origin.host
-			cargohold.content.append(port.syphon())
+		if cargohold.content.count == 0 { line1.position.x = -0.25 }
+		if cargohold.content.count == 1 { line2.position.x = -0.25 }
+		if cargohold.content.count == 2 { line3.position.x = -0.25 }
+		if cargohold.content.count == 3 { line4.position.x = -0.25 }
+		if cargohold.content.count == 4 { line5.position.x = -0.25 }
+		if cargohold.content.count == 5 { line6.position.x = -0.25 }
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		if cargohold.content.count == 0 { line1.position.x = 0 }
+		if cargohold.content.count == 1 { line2.position.x = 0 }
+		if cargohold.content.count == 2 { line3.position.x = 0 }
+		if cargohold.content.count == 3 { line4.position.x = 0 }
+		if cargohold.content.count == 4 { line5.position.x = 0 }
+		if cargohold.content.count == 5 { line6.position.x = 0 }
+		
+		SCNTransaction.setCompletionBlock({ self.uploadTransfer() })
+		SCNTransaction.commit()
+	}
+	
+	func uploadTransfer()
+	{
+		if (self.port.origin != nil) {
+			let origin = self.port.origin.host
+			self.cargohold.content.append(self.port.syphon())
 			origin.onUploadComplete()
 			self.onUploadComplete()
 		}
-		uploadTimer.invalidate()
-		uploadPercentage = 0
-		refresh()
+		self.uploadTimer.invalidate()
+		self.uploadPercentage = 0
+		self.refresh()
 	}
 	
 	func uploadCancel()
