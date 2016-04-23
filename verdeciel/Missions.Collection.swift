@@ -121,13 +121,11 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		// Go to Valen(South)
-		
 		m = Mission(id:(story.count), name: "Senni Portal Key")
 		m.predicate = { cargo.contains(items.senniPortalKey) }
 		m.quests = [
 			Quest(name:"Aquire \(items.currency4.name!)", predicate:{ cargo.containsLike(items.currency4) }, result: { }),
-			Quest(name:"Trade \(items.currency4.name!) for \(items.senniPortalKey.name!)", location: universe.valen_port, predicate:{ cargo.contains(items.senniPortalKey) }, result: { })
+			Quest(name:"Trade \(items.currency4.name!) for \(items.senniPortalKey.name!)", location: universe.loiqe_port, predicate:{ cargo.contains(items.senniPortalKey) }, result: { })
 		]
 		story.append(m)
 		
@@ -136,7 +134,7 @@ class MissionCollection
 		m = Mission(id:(story.count), name: "Install Map")
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
-			Quest(name:"Reach Senni", location: universe.valen_portal, predicate:{ universe.senni_portal.isKnown == true }, result: { }),
+			Quest(name:"Reach Senni", predicate:{ universe.senni_portal.isKnown == true }, result: { }),
 			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
 			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
 			Quest(name:"Install map", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
@@ -192,7 +190,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Last Quest")
 		m.quests = [
-			Quest(name:"Unlock portal", location: universe.nevic, predicate:{ universe.nevic.isKnown == true }, result: { })
+			Quest(name:"Unlock portal", location: universe.usul, predicate:{ universe.usul.isKnown == true }, result: { })
 		]
 		story.append(m)
 	}

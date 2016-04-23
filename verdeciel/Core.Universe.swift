@@ -18,7 +18,7 @@ class CoreUniverse : Empty
 		addUsul()
 		addValen()
 		addSenni()
-		addNevic()
+//		addNevic()
 		
 		connectPaths()
 		connectPortals()
@@ -46,6 +46,7 @@ class CoreUniverse : Empty
 	var loiqe_horadric = locations.loiqe.horadric()
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
+	var loiqe_port = locations.loiqe.port()
 	var loiqe_fog = locations.loiqe.fog()
 	var loiqe_gateway = locations.loiqe.gateway()
 	var loiqe_c_1 = locations.loiqe.c_1()
@@ -62,6 +63,7 @@ class CoreUniverse : Empty
 		addChildNode(loiqe_horadric)
 		addChildNode(loiqe_portal)
 		addChildNode(loiqe_satellite)
+		addChildNode(loiqe_port)
 		// Fog
 		addChildNode(loiqe_fog)
 		// Ghost
@@ -80,7 +82,6 @@ class CoreUniverse : Empty
 	var valen_station = locations.valen.station()
 	var valen_portal = locations.valen.portal()
 	var valen_harvest = locations.valen.harvest()
-	var valen_port = locations.valen.port()
 	var valen_cargo = locations.valen.cargo()
 	var valen_fog = locations.valen.fog()
 	var valen_c_1 = locations.valen.c_1()
@@ -94,7 +95,6 @@ class CoreUniverse : Empty
 		addChildNode(valen_station)
 		addChildNode(valen_portal)
 		addChildNode(valen_harvest)
-		addChildNode(valen_port)
 		addChildNode(valen_cargo)
 		// Fog
 		addChildNode(valen_fog)
@@ -148,23 +148,23 @@ class CoreUniverse : Empty
 	
 	// MARK: Nevic -
 	
-	var nevic = locations.nevic.star()
-	var nevic_satellite = locations.nevic.satellite()
-	var nevic_gateway = locations.nevic.gateway()
-	
-	func addNevic()
-	{
-		addChildNode(nevic)
-		addChildNode(nevic_satellite)
-		addChildNode(nevic_gateway)
-	}
+//	var nevic = locations.nevic.star()
+//	var nevic_satellite = locations.nevic.satellite()
+//	var nevic_gateway = locations.nevic.gateway()
+//	
+//	func addNevic()
+//	{
+//		addChildNode(nevic)
+//		addChildNode(nevic_satellite)
+//		addChildNode(nevic_gateway)
+//	}
 
 	// MARK: Misc -
 	
 	func connectPortals()
 	{
-		loiqe_gateway.addDestination(nevic_gateway)
-		nevic_gateway.addDestination(loiqe_gateway)
+//		loiqe_gateway.addDestination(nevic_gateway)
+//		nevic_gateway.addDestination(loiqe_gateway)
 	}
 	
 	func connectPaths()
@@ -177,8 +177,6 @@ class CoreUniverse : Empty
 		valen_bank.connect(valen_portal)
 		valen_station.connect(valen_bank)
 		valen_harvest.connect(valen_bank)
-		valen_port.connect(valen_bank)
-		valen_fog.connect(valen_port)
 		
 		senni_portal.connect(senni_cargo)
 		senni_cargo.connect(senni_harvest)

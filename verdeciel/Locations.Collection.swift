@@ -13,7 +13,7 @@ class LocationCollection
 	let usul  = Usul(offset: CGPoint(x: -5,y: 0))
 	let valen = Valen(offset: CGPoint(x: 5,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 5))
-	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
+//	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
 	
 	init()
 	{
@@ -72,11 +72,16 @@ class Loiqe
 		return LocationBeacon(name:"loiqe beacon",system:system, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
 	}
 	
+	func port() -> LocationTrade
+	{
+		return LocationTrade(name: "port",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
+	}
+	
 	// Fog
 	
 	func fog() -> LocationTrade
 	{
-		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
+		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
 	// Ghost
@@ -180,11 +185,6 @@ class Valen
 	}
 	
 	// South
-	
-	func port() -> LocationTrade
-	{
-		return LocationTrade(name: "port",system:system, at:CGPoint(x: offset.x + 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
-	}
 	
 	func fog() -> LocationTrade
 	{

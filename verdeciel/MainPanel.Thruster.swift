@@ -76,6 +76,8 @@ class PanelThruster : MainPanel
 		interface_cutlines.addChildNode(cutLine3)
 		interface_cutlines.addChildNode(cutLine4)
 		
+		interface_cutlines.hide()
+		
 		// Dock
 		
 		mainNode.addChildNode(interface_dock)
