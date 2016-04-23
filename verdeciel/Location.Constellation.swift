@@ -18,6 +18,8 @@ class LocationConstellation : Location
 	
 	override func onApproach()
 	{
+		super.onApproach()
+		
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
 		update()
@@ -90,6 +92,8 @@ class StructureDoor : Structure
 	
 	override func sightUpdate()
 	{
+		super.sightUpdate()
+		
 		root.eulerAngles.y += 0.001
 	}
 	

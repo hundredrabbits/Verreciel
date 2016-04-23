@@ -295,7 +295,7 @@ class PanelThruster : MainPanel
 		
 		interface_flight.hide()
 		interface_dock.hide()
-		interface_warp.show()
+		interface_warp.blink()
 		
 		action.disable()
 		
@@ -360,7 +360,7 @@ class PanelThruster : MainPanel
 	
 	func modeMisaligned()
 	{
-		detailsLabel.update("misaligned", color:red)
+		detailsLabel.update("\(String(format: "%.1f",(abs(pilot.target.align)/180)*100))%", color:red)
 		
 		interface_flight.hide()
 		interface_dock.hide()

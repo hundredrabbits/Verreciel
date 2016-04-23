@@ -201,9 +201,7 @@ class StructurePortal : Structure
 	}
 	
 	func onUnlock()
-	{
-		super.onUndock()
-		
+	{		
 		root.updateChildrenColors(cyan)
 		
 		SCNTransaction.begin()
@@ -218,8 +216,6 @@ class StructurePortal : Structure
 	
 	func onLock()
 	{
-		super.onUndock()
-		
 		if isWarping == true { return }
 		
 		root.updateChildrenColors(red)

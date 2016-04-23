@@ -32,7 +32,7 @@ class MissionCollection
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) }, result: { console.install() ; thruster.unlock() }),
 			Quest(name:"Route cargo to console", predicate:{ cargo.port.connection != nil && cargo.port.connection == console.port }, result: { }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
-			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort3.enable("empty",color:grey) }),
+			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: {  }),
 		]
 		story.append(m)
 		
@@ -72,7 +72,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Warp")
 		m.quests = [
-			Quest(name:"Reach valen", location:universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { })
+			Quest(name:"Reach valen", location:universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort3.enable("empty",color:grey) })
 		]
 		story.append(m)
 		

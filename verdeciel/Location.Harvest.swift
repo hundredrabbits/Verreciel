@@ -80,6 +80,8 @@ class LocationHarvest : Location
 	
 	override func onUploadComplete()
 	{
+		super.onUploadComplete()
+		
 		refresh()
 		structure.update()
 	}
@@ -153,6 +155,8 @@ class StructureHarvest : Structure
 	
 	override func sightUpdate()
 	{
+		super.sightUpdate()
+		
 		root.eulerAngles.y += (degToRad(0.1))
 	}
 	

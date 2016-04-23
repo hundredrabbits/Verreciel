@@ -63,11 +63,12 @@ class Structure : Empty
 	
 	func onSight()
 	{
-		opacity = 0
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1.5)
+		hide()
 		
-		opacity = 1
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		show()
 		
 		SCNTransaction.commit()
 	}

@@ -31,7 +31,7 @@ class LocationStation : Location
 	{
 		let newPanel = Panel()
 		
-		let requirementLabel = SCNLabel(text:"Exchange \(requirement.name!)$install the \(installationName).")
+		let requirementLabel = SCNLabel(text:"Exchange \(requirement.name!)$install the \(installationName)")
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		

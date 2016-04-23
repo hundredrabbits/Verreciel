@@ -2,23 +2,15 @@
 *    MAJOR
 ================
 
-- Bank is invisible
-- Update cargo when taking items out from console
 - Add fog location in senni with record2
-
-- Intercom complete() animation bug
 
 - Make Usul space red
 - Add sounds
-
-- Thruster speed, displays like 3.1
-- Warping capsule speed is 0?
 
 ================
 *    MINOR
 ================
 
-- Reflect cell count in thruster speed
 - Design Nevic(enter from star in Loiqe Map2)
 - Create Enigma Lesson
 
@@ -36,7 +28,6 @@
 > Design
 - Floating feel
 - Add ship doodads
-- Interface sounds
 
 > Narative
 - Telemetrists!? Twin Suns
