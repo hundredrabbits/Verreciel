@@ -501,8 +501,8 @@ class PanelThruster : MainPanel
 		
 		if actualSpeed > 0
 		{
-			let speed:Float = Float(actualSpeed)/600
-			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			let speed:Float = actualSpeed/600
+			let angle:Float = capsule.direction % 360
 			
 			let angleRad = degToRad(angle)
 			

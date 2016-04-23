@@ -19,7 +19,6 @@ class LocationHarvest : Location
 		self.details = "grows \(self.grows.name!)"
 		
 		port = SCNPortSlot(host: self, hasDetails:true, align:.center)
-		port.position = SCNVector3(0,-0.5,0)
 		port.enable()
 		
 		generationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.generate), userInfo: nil, repeats: true)
@@ -38,15 +37,10 @@ class LocationHarvest : Location
 	func generate()
 	{
 		if port == nil { return }
-		if panelLabel == nil { return }
-		
-		if progress != nil {
-			progress.update(((CGFloat(generationCountdown)/CGFloat(generationRate)) * 100))
-		}
+		if timeLeftLabel == nil { return }
 		
 		if generationCountdown < generationRate && port.hasEvent(grows) == false {
 			generationCountdown += 1
-			
 		}
 		else {
 			refresh()
@@ -56,30 +50,34 @@ class LocationHarvest : Location
 		}
 		
 		if port.hasEvent(grows) == true {
-			panelLabel.update("\(self.grows.name!) production$Ready")
+			timeLeftLabel.update("Ready")
 		}
 		else{
-			panelLabel.update("\(self.grows.name!) production$Time Left \(generationRate-generationCountdown)")
+			timeLeftLabel.update("\(generationRate-generationCountdown)")
 		}
 	}
 	
-	var progress:SCNProgressBar!
-	var panelLabel:SCNLabel!
+	var timeLeftLabel:SCNLabel!
 	
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
 		
-		panelLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", align:.left)
-		panelLabel.position = SCNVector3(-1.5,1,0)
-		newPanel.addChildNode(panelLabel)
+		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", align:.center)
+		timeLeftLabel.position = SCNVector3(-1.5,1,0)
+		newPanel.addChildNode(timeLeftLabel)
 		
-		progress = SCNProgressBar(width: 3, color: cyan)
-		progress.position = SCNVector3(-1.5,0,0)
-		progress.update(30)
-		
-		newPanel.addChildNode(progress)
 		newPanel.addChildNode(port)
+		
+		var i:Float = 0
+		let count:Float = 52
+		
+		while i < count {
+			let line = SCNLine(vertices: [SCNVector3(0,1.0,0), SCNVector3(0,1.2,0)], color: cyan)
+			line.eulerAngles.z = degToRad(i * (360/count))
+			newPanel.addChildNode(line)
+			i += 1
+		}
 		
 		return newPanel
 	}
@@ -138,7 +136,7 @@ class StructureHarvest : Structure
 		var i = 0
 		while i < nodes {
 			let node = Empty()
-			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
+			node.eulerAngles.y = (degToRad(Float(i) * (360/Float(nodes))))
 			node.addChildNode(SCNLine(vertices: [SCNVector3(0,0,value1), SCNVector3(0,5,value1), SCNVector3(0,5,value1), SCNVector3(0.5,5.5,value1), SCNVector3(0,5,value1), SCNVector3(-0.5,5.5,value1)], color: color))
 			root.addChildNode(node)
 			i += 1

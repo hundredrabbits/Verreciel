@@ -87,7 +87,7 @@ class LocationBank : Location
 		
 		var i = 0
 		for mesh in structure.childNodes {
-			mesh.eulerAngles.y = (degToRad((CGFloat(i) * 0.10)))
+			mesh.eulerAngles.y = (degToRad((Float(i) * 0.10)))
 			i += 1
 		}
 		

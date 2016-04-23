@@ -98,7 +98,7 @@ class StructureSatellite : Structure
 		while i < nodes {
 			
 			let axis = Empty()
-			axis.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
+			axis.eulerAngles.y = (degToRad(Float(i * (360/nodes))))
 			
 			root.addChildNode(axis)
 			

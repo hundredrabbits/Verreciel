@@ -174,7 +174,7 @@ class StructurePortal : Structure
 			line.position = SCNVector3(-2,0,0)
 			node.addChildNode(line)
 			root.addChildNode(node)
-			node.eulerAngles.y = (degToRad(CGFloat(Float(i) * (360/Float(nodes)))))
+			node.eulerAngles.y = (degToRad(Float(Float(i) * (360/Float(nodes)))))
 			i += 1
 		}
 	}
@@ -234,12 +234,9 @@ class StructurePortal : Structure
 	
 	override func onLeave()
 	{
+		super.onLeave()
+		
 		isWarping = false
-	}
-	
-	override func update()
-	{
-		super.update()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

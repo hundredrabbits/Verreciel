@@ -81,8 +81,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 			touchPosition = touch.locationInView(self.view)
 		}
 		
-		let dragX = CGFloat(touchPosition.x - touchOrigin.x)
-		let dragY = CGFloat(touchPosition.y - touchOrigin.y)
+		let dragX = Float(touchPosition.x - touchOrigin.x)
+		let dragY = Float(touchPosition.y - touchOrigin.y)
 		
 		touchOrigin = touchPosition
 

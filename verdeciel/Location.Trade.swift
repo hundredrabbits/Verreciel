@@ -161,7 +161,7 @@ class StructureTrade : Structure
 		
 		var i = 0
 		for node in root.childNodes	{
-			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(Float(i * (360/nodes))))
 			i += 1
 		}
 		
@@ -177,7 +177,7 @@ class StructureTrade : Structure
 		
 		var i = 0
 		for node in root.childNodes	{
-			node.eulerAngles.y = (degToRad(CGFloat(i * (360/nodes))))
+			node.eulerAngles.y = (degToRad(Float(i * (360/nodes))))
 			i += 1
 		}
 		

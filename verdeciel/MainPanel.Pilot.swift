@@ -89,13 +89,13 @@ class PanelPilot : MainPanel
 		animate()
 	}
 	
-	func turnLeft(deg:CGFloat)
+	func turnLeft(deg:Float)
 	{
 		capsule.direction = capsule.direction - deg
 		capsule.direction = capsule.direction % 360
 	}
 	
-	func turnRight(deg:CGFloat)
+	func turnRight(deg:Float)
 	{
 		capsule.direction = capsule.direction + deg
 		capsule.direction = capsule.direction % 360

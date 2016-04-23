@@ -6,14 +6,14 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-func degToRad(degrees:CGFloat) -> Float
+func degToRad(degrees:Float) -> Float
 {
 	return Float(degrees) / 180 * Float(M_PI)
 }
 
-func radToDeg(value:CGFloat) -> CGFloat
+func radToDeg(value:Float) -> Float
 {
-	return CGFloat(Double(value) * 180.0 / M_PI)
+	return Float(Double(value) * 180.0 / M_PI)
 }
 
 func distanceBetweenTwoPoints(point1:CGPoint,point2:CGPoint) -> CGFloat

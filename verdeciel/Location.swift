@@ -7,8 +7,8 @@ class Location : Event
 {
 	var system:Systems!
 	
-	var angle:CGFloat!
-	var align:CGFloat!
+	var angle:Float!
+	var align:Float!
 	var distance:CGFloat!
 	
 	var inCollision:Bool = false
@@ -241,7 +241,7 @@ class Location : Event
 		}
 	}
 	
-	func calculateAngle() -> CGFloat
+	func calculateAngle() -> Float
 	{
 		let p1 = capsule.at
 		let p2 = self.at
@@ -252,10 +252,10 @@ class Location : Event
 		
 		let angle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
 		
-		return (360 - (radToDeg(angle) - 90)) % 360
+		return (360 - (radToDeg(Float(angle)) - 90)) % 360
 	}
 	
-	func calculateAlignment(direction:CGFloat = capsule.direction) -> CGFloat
+	func calculateAlignment(direction:Float = capsule.direction) -> Float
 	{
 		var diff = max(direction, self.angle) - min(direction, self.angle)
 		if (diff > 180){ diff = 360 - diff }

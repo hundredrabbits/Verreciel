@@ -26,8 +26,8 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-//		unlockedState(universe.loiqe_harvest, newItems:[items.loiqePortalKey, items.valenPortalKey])
-		startingState()
+		unlockedState(universe.loiqe_harvest, newItems:[items.loiqePortalKey, items.valenPortalKey])
+//		startingState()
 	}
 	
 	func startingState()

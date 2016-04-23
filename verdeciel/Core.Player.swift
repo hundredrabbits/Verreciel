@@ -81,13 +81,13 @@ class CorePlayer : Empty
         }
 	}
 	
-	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:CGFloat)
+	func lookAt(position:SCNVector3 = SCNVector3(0,0,0),deg:Float)
 	{
-		let normalizedDeg = radToDeg(CGFloat(player.eulerAngles.y)) % 360
+		let normalizedDeg = radToDeg(Float(player.eulerAngles.y)) % 360
 		player.eulerAngles.y = (degToRad(normalizedDeg))
 		helmet.eulerAngles.y = (degToRad(normalizedDeg))
 		
-		print("+ PLAYER   | LookAt(from:\(radToDeg(CGFloat(player.eulerAngles.y))),to:\(deg))")
+		print("+ PLAYER   | LookAt(from:\(radToDeg(Float(player.eulerAngles.y))),to:\(deg))")
 		
 		player.isLocked = true
 		

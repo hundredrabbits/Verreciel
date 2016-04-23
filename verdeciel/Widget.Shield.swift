@@ -49,7 +49,7 @@ class WidgetShield : Widget
 		capsule.addChildNode(capsule.shieldRoot)
 		let radius:CGFloat = 6
 		var scale:CGFloat = 2.5
-		let sides:CGFloat = 8
+		let sides:Float = 8
 		let color:UIColor = red
 		
 		var i = 0
@@ -58,7 +58,7 @@ class WidgetShield : Widget
 			// Face 1
 			let face1 = Empty()
 			face1.addChildNode(SCNLine(vertices: [SCNVector3(0,scale,radius), SCNVector3(0,-scale,radius)], color: color))
-			face1.eulerAngles.y += (degToRad(CGFloat(i) * (360/sides)))
+			face1.eulerAngles.y += (degToRad(Float(i) * (360/sides)))
 			capsule.shieldRoot.addChildNode(face1)
 			
 			// Face 2
@@ -72,7 +72,7 @@ class WidgetShield : Widget
 			face2.addChildNode(line6)
 			face2.addChildNode(line7)
 			face2.addChildNode(line8)
-			face2.eulerAngles.y += (degToRad(CGFloat(i) * (360/sides)))
+			face2.eulerAngles.y += (degToRad(Float(i) * (360/sides)))
 			face2.eulerAngles.x += (degToRad(40))
 			capsule.shieldRoot.addChildNode(face2)
 			
@@ -87,7 +87,7 @@ class WidgetShield : Widget
 			face3.addChildNode(line10)
 			face3.addChildNode(line11)
 			face3.addChildNode(line12)
-			face3.eulerAngles.y += (degToRad(CGFloat(i) * (360/sides)))
+			face3.eulerAngles.y += (degToRad(Float(i) * (360/sides)))
 			face3.eulerAngles.x -= (degToRad(40))
 			capsule.shieldRoot.addChildNode(face3)
 			

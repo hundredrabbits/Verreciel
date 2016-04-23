@@ -104,7 +104,7 @@ class StructureStation : Structure
 		var i:Int = 0
 		while i < nodes {
 			let axis = Empty()
-			axis.eulerAngles.y = (degToRad(CGFloat(Float(i) * Float(360/nodes))))
+			axis.eulerAngles.y = (degToRad(Float(Float(i) * Float(360/nodes))))
 			
 			let node = ShapeHexa(size: 4, color: red)
 			node.eulerAngles.x = (degToRad(90))
@@ -179,8 +179,8 @@ class StructureStation : Structure
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.5)
 		
-		let deg1 = 22.5 * (CGFloat(morphTime * 123) % 8) % 180
-		let deg2 = 22.5 * (CGFloat(morphTime * 678) % 6) % 180
+		let deg1 = 22.5 * (Float(morphTime * 123) % 8) % 180
+		let deg2 = 22.5 * (Float(morphTime * 678) % 6) % 180
 		
 		for node in root.childNodes {
 			for subnode in node.childNodes	{

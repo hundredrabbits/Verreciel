@@ -11,7 +11,7 @@ class CoreCapsule: Empty
 {	
 	var at:CGPoint = universe.loiqe_spawn.at
 	
-	var direction:CGFloat! = 1
+	var direction:Float! = 1
 	var system:Systems = .loiqe
 	
 	var mesh:Empty!
@@ -46,7 +46,7 @@ class CoreCapsule: Empty
 			approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 			
 			var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
-			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			let angle:Float = Float((capsule.direction) % 360)
 			
 			capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
@@ -65,7 +65,7 @@ class CoreCapsule: Empty
 				warpDown()
 			}
 			let speed:Float = Float(thruster.actualSpeed)/600
-			let angle:CGFloat = CGFloat((capsule.direction) % 360)
+			let angle:Float = Float((capsule.direction) % 360)
 			
 			let angleRad = degToRad(angle)
 			
