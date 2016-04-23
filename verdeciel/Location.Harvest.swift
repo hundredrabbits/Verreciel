@@ -39,6 +39,8 @@ class LocationHarvest : Location
 		if port == nil { return }
 		if timeLeftLabel == nil { return }
 		
+		progressRadial.update((Float(generationCountdown)/Float(generationRate)) * 100)
+		
 		if generationCountdown < generationRate && port.hasEvent(grows) == false {
 			generationCountdown += 1
 		}
@@ -50,7 +52,7 @@ class LocationHarvest : Location
 		}
 		
 		if port.hasEvent(grows) == true {
-			timeLeftLabel.update("Ready")
+			timeLeftLabel.update("DONE")
 		}
 		else{
 			timeLeftLabel.update("\(generationRate-generationCountdown)")
@@ -58,26 +60,20 @@ class LocationHarvest : Location
 	}
 	
 	var timeLeftLabel:SCNLabel!
+	var progressRadial:SCNProgressRadial!
 	
 	override func panel() -> Panel!
 	{
 		let newPanel = Panel()
 		
-		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", align:.center)
-		timeLeftLabel.position = SCNVector3(-1.5,1,0)
+		timeLeftLabel = SCNLabel(text: "\(self.grows.name!) production$Time Left 543", scale:0.2, align:.center)
+		timeLeftLabel.position = SCNVector3(0,0.5,0)
 		newPanel.addChildNode(timeLeftLabel)
 		
+		progressRadial = SCNProgressRadial(size:1.2, linesCount:52, color:cyan)
+		newPanel.addChildNode(progressRadial)
+		
 		newPanel.addChildNode(port)
-		
-		var i:Float = 0
-		let count:Float = 52
-		
-		while i < count {
-			let line = SCNLine(vertices: [SCNVector3(0,1.0,0), SCNVector3(0,1.2,0)], color: cyan)
-			line.eulerAngles.z = degToRad(i * (360/count))
-			newPanel.addChildNode(line)
-			i += 1
-		}
 		
 		return newPanel
 	}

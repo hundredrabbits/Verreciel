@@ -34,6 +34,7 @@
 		5748ADA01BC8583B00C47468 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748AD9F1BC8583B00C47468 /* Quest.swift */; };
 		5748ADA21BC85C7B00C47468 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748ADA11BC85C7B00C47468 /* Settings.swift */; };
 		574A33C51BEA92C100EB4C91 /* SCNPortRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */; };
+		574D27921CCBD3D100E73E94 /* SCNProgressRadial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D27911CCBD3D100E73E94 /* SCNProgressRadial.swift */; };
 		574E5FBB1BC57749008130AB /* Items.Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBA1BC57749008130AB /* Items.Collection.swift */; };
 		574E5FC01BC578E1008130AB /* Location.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* Location.Trade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
@@ -121,6 +122,7 @@
 		5748AD9F1BC8583B00C47468 /* Quest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		5748ADA11BC85C7B00C47468 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		574A33C41BEA92C100EB4C91 /* SCNPortRedirect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPortRedirect.swift; sourceTree = "<group>"; };
+		574D27911CCBD3D100E73E94 /* SCNProgressRadial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProgressRadial.swift; sourceTree = "<group>"; };
 		574E5FBA1BC57749008130AB /* Items.Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Items.Collection.swift; sourceTree = "<group>"; };
 		574E5FBF1BC578E1008130AB /* Location.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Trade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				57DCE9D41B38EDCF0054613E /* SCNLabel.swift */,
 				571728E21BB05595002782A3 /* SCNTrigger.swift */,
 				57A5F9601BC6B6A000EA35F6 /* SCNProgressBar.swift */,
+				574D27911CCBD3D100E73E94 /* SCNProgressRadial.swift */,
 				57CA937A1BC9A9A50089337F /* SCNWire.swift */,
 				573379591BD82F9B00310147 /* SCNVector3.swift */,
 				57A1E1981C6C18C80090106B /* Extensions.swift */,
@@ -518,6 +521,7 @@
 				576DCEA61C483BCF007A7544 /* Mission.swift in Sources */,
 				576953591C2060EC00A0CA39 /* Locations.Collection.swift in Sources */,
 				576577591CCAA456002B1819 /* Empty.swift in Sources */,
+				574D27921CCBD3D100E73E94 /* SCNProgressRadial.swift in Sources */,
 				57C9F0601CAF51F80050AE9E /* Location.Gateway.swift in Sources */,
 				572258151BB877C600DEC41E /* Location.Portal.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* Location.Star.swift in Sources */,
