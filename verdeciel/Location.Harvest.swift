@@ -32,7 +32,7 @@ class LocationHarvest : Location
 	
 	var generationTimer:NSTimer!
 	var generationCountdown:Int = 0
-	var generationRate:Int = 20
+	var generationRate:Int = 200
 	
 	func generate()
 	{

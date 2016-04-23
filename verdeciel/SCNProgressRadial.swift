@@ -20,7 +20,7 @@ class SCNProgressRadial : Empty
 		var i:Float = 0
 		
 		while i < linesCount {
-			let line = SCNLine(vertices: [SCNVector3(0,size - 0.2,0), SCNVector3(0.1,size,0)], color: color)
+			let line = SCNLine(vertices: [SCNVector3(0,size - 0.2,0), SCNVector3(0,size,0)], color: color)
 			line.eulerAngles.z = degToRad(i * (360/linesCount))
 			addChildNode(line)
 			i += 1
@@ -34,7 +34,8 @@ class SCNProgressRadial : Empty
 		var i:Float = 0
 		for line in childNodes as! [SCNLine] {
 			
-			if i > reach { line.update(grey) }
+			if reach == 0 { line.update(cyan) }
+			else if i > reach { line.update(grey) }
 			else{ line.update(cyan) }
 			
 			i += 1
