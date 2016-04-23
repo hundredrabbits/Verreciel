@@ -208,6 +208,17 @@ class PanelBattery : MainPanel
 		return false
 	}
 	
+	func cellCount() -> Int
+	{
+		var count = 0
+		
+		if cellPort1.hasItemOfType(.battery) == true { count += 1 }
+		if cellPort2.hasItemOfType(.battery) == true { count += 1 }
+		if cellPort3.hasItemOfType(.battery) == true { count += 1 }
+		
+		return count
+	}
+	
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()

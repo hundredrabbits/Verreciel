@@ -94,8 +94,28 @@ class PanelCargo : MainPanel
 	
 	func addItem(item:Item)
 	{
-		cargohold.content.append(item)
-		refresh()
+		if cargohold.content.count == 0 { line1.position.z = -0.5 }
+		if cargohold.content.count == 1 { line2.position.z = -0.5 }
+		if cargohold.content.count == 2 { line3.position.z = -0.5 }
+		if cargohold.content.count == 3 { line4.position.z = -0.5 }
+		if cargohold.content.count == 4 { line5.position.z = -0.5 }
+		if cargohold.content.count == 5 { line6.position.z = -0.5 }
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		if cargohold.content.count == 0 { line1.position.z = -0.5 }
+		if cargohold.content.count == 1 { line2.position.z = 0 }
+		if cargohold.content.count == 2 { line3.position.z = 0 }
+		if cargohold.content.count == 3 { line4.position.z = 0 }
+		if cargohold.content.count == 4 { line5.position.z = 0 }
+		if cargohold.content.count == 5 { line6.position.z = 0 }
+		
+		SCNTransaction.setCompletionBlock({
+			self.cargohold.content.append(item)
+			self.refresh()
+		})
+		SCNTransaction.commit()
 	}
 
 	func removeEvent(target:Event)

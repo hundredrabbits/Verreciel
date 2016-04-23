@@ -14,6 +14,7 @@ class LocationHoradric : Location
 	{
 		super.init(name: name,system:system, at: at, icon:IconHoradric(), structure:StructureHoradric())
 		
+		self.details = "unknown"
 		self.mapRequirement = mapRequirement
 	}
 	

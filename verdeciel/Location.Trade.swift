@@ -11,7 +11,9 @@ class LocationTrade : Location
 	init(name:String = "", system:Systems, at: CGPoint = CGPoint(), want:Event,give:Event, mapRequirement:Item! = nil)
 	{
 		super.init(name: name,system:system, at: at, icon:IconTrade(), structure:StructureTrade())
-
+		
+		details = give.name!
+		
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		

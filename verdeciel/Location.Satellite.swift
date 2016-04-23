@@ -12,6 +12,7 @@ class LocationSatellite : Location
 	{
 		super.init(name:name, system:system, at:at, icon:IconSatellite(), structure:StructureSatellite())
 		
+		self.details = item.name!
 		self.isComplete = false
 		self.mapRequirement = mapRequirement
 		self.message = message

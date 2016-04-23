@@ -22,6 +22,8 @@ class LocationBank : Location
 	{
 		super.init(name: name,system:system, at:at, icon:IconBank(), structure:StructureBank())
 		
+		self.details = "storage"
+		
 		port1 = SCNPortSlot(host: self)
 		port2 = SCNPortSlot(host: self)
 		port3 = SCNPortSlot(host: self)

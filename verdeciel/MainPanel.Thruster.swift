@@ -20,6 +20,7 @@ class PanelThruster : MainPanel
 	var line3:SCNLine!
 	var line4:SCNLine!
 	
+	var interface_cutlines = Empty()
 	var cutLine1:SCNLine!
 	var cutLine2:SCNLine!
 	var cutLine3:SCNLine!
@@ -34,7 +35,6 @@ class PanelThruster : MainPanel
 	var lineLeft:SCNLine!
 	var lineRight:SCNLine!
 	
-	var maxSpeed:Int = 0
 	var speed:Int = 0
 	var actualSpeed:Float = 0
 	
@@ -64,15 +64,17 @@ class PanelThruster : MainPanel
 		interface_flight.addChildNode(line3)
 		interface_flight.addChildNode(line4)
 		
+		mainNode.addChildNode(interface_cutlines)
+		
 		cutLine1 = SCNLine(vertices: [SCNVector3(-0.5, -0.3, 0), SCNVector3(-0.1, -0.3, 0), SCNVector3(0.5, -0.3, 0), SCNVector3(0.1, -0.3, 0)], color: grey)
 		cutLine2 = SCNLine(vertices: [SCNVector3(-0.5, -0.1, 0), SCNVector3(-0.1, -0.1, 0), SCNVector3(0.5, -0.1, 0), SCNVector3(0.1, -0.1, 0)], color: grey)
 		cutLine3 = SCNLine(vertices: [SCNVector3(-0.5, 0.1, 0), SCNVector3(-0.1, 0.1, 0), SCNVector3(0.5, 0.1, 0), SCNVector3(0.1, 0.1, 0)], color: grey)
 		cutLine4 = SCNLine(vertices: [SCNVector3(-0.5, 0.3, 0), SCNVector3(-0.1, 0.3, 0),SCNVector3(0.5, 0.3, 0), SCNVector3(0.1, 0.3, 0)], color: grey)
 		
-		interface_flight.addChildNode(cutLine1)
-		interface_flight.addChildNode(cutLine2)
-		interface_flight.addChildNode(cutLine3)
-		interface_flight.addChildNode(cutLine4)
+		interface_cutlines.addChildNode(cutLine1)
+		interface_cutlines.addChildNode(cutLine2)
+		interface_cutlines.addChildNode(cutLine3)
+		interface_cutlines.addChildNode(cutLine4)
 		
 		// Dock
 		
@@ -156,16 +158,10 @@ class PanelThruster : MainPanel
 	
 	override func update()
 	{
-		maxSpeed = 0
-		
-		if battery.thrusterPort.origin != nil && battery.thrusterPort.origin.event != nil {
-			maxSpeed = 3
-		}
-		
-		if maxSpeed > 0 { line1.show() ; cutLine1.hide() } else { line1.hide() ; cutLine1.show() }
-		if maxSpeed > 1 { line2.show() ; cutLine2.hide() } else { line2.hide() ; cutLine2.show() }
-		if maxSpeed > 2 { line3.show() ; cutLine3.hide() } else { line3.hide() ; cutLine3.show() }
-		if maxSpeed > 3 { line4.show() ; cutLine4.hide() } else { line4.hide() ; cutLine4.show() }
+		if maxSpeed() > 0 { line1.show() } else { line1.hide() }
+		if maxSpeed() > 1 { line2.show() } else { line2.hide() }
+		if maxSpeed() > 2 { line3.show() } else { line3.hide() }
+		line4.hide()
 	}
 	
 	override func whenRenderer()
@@ -242,6 +238,35 @@ class PanelThruster : MainPanel
 	}
 	
 	// MARK: Modes -
+	
+	func modeFlight()
+	{
+		detailsLabel.update(String(format: "%.1f", actualSpeed), color:white)
+		
+		interface_cutlines.hide()
+		interface_flight.show()
+		interface_dock.hide()
+		interface_warp.hide()
+		
+		if speed > 0 { line1.color(white) } else { line1.color(grey) }
+		if speed > 1 { line2.color(white) } else { line2.color(grey) }
+		if speed > 2 { line3.color(white) } else { line3.color(grey) }
+		if speed > 3 { line4.color(white) } else { line4.color(grey) }
+		
+		action.disable()
+		
+		accelerate.enable()
+		decelerate.enable()
+		
+		accelerate.updateChildrenColors((speed == maxSpeed() ? grey : cyan))
+		decelerate.updateChildrenColors((speed == 0 ? grey : red))
+		
+		lineLeft.color(clear)
+		lineRight.color(clear)
+		
+		interface_dock.hide()
+		interface_flight.show()
+	}
 	
 	func modeLocked()
 	{
@@ -432,37 +457,16 @@ class PanelThruster : MainPanel
 		lineRight.color(red)
 	}
 	
-	func modeFlight()
+	// MARK: Misc -
+	
+	func maxSpeed() -> Int
 	{
-		detailsLabel.update(String(format: "%.1f", actualSpeed), color:white)
-		
-		interface_flight.show()
-		interface_dock.hide()
-		interface_warp.hide()
-		
-		if speed > 0 { line1.color(white) } else { line1.color(grey) }
-		if speed > 1 { line2.color(white) } else { line2.color(grey) }
-		if speed > 2 { line3.color(white) } else { line3.color(grey) }
-		if speed > 3 { line4.color(white) } else { line4.color(grey) }
-		
-		action.disable()
-		
-		accelerate.enable()
-		decelerate.enable()
-		
-		accelerate.updateChildrenColors((speed == maxSpeed ? grey : cyan))
-		decelerate.updateChildrenColors((speed == 0 ? grey : red))
-		
-		lineLeft.color(clear)
-		lineRight.color(clear)
-		
-		interface_dock.hide()
-		interface_flight.show()
+		return battery.cellCount()
 	}
 	
 	func speedUp()
 	{
-		if speed < maxSpeed {
+		if speed < maxSpeed() {
 			speed += 1
 		}
 	}

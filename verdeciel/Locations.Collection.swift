@@ -176,7 +176,7 @@ class Valen
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[misssing]", item:items.battery2)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[missing]", item:items.battery2)
 	}
 	
 	// South

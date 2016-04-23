@@ -13,12 +13,14 @@ class LocationStation : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Item! = nil, installation:() -> Void, installationName:String, mapRequirement:Item! = nil)
 	{
+		
 		self.installation = installation
 		self.requirement = requirement
 		self.installationName = installationName
 		
 		super.init(name:name,system:system, at:at, icon:IconStation(), structure:StructureStation())
 		
+		self.details = installationName
 		self.mapRequirement = mapRequirement
 		self.isComplete = false
 	}

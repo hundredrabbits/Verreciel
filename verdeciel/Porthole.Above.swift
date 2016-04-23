@@ -20,7 +20,7 @@ class PanelAbove : Panel
 			let test = SCNLine(vertices: [SCNVector3(0,templates.radius * -2,0.75), SCNVector3(0,templates.radius * -2,0.95)], color: white)
 			test.eulerAngles.y = (degToRad(CGFloat(120 * i)))
 			aim.addChildNode(test)
-			aim.eulerAngles.y = degToRad(120)
+			aim.eulerAngles.y = degToRad(240)
 			i += 1
 		}
 		root.addChildNode(aim)

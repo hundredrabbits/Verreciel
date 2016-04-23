@@ -112,9 +112,9 @@ class PanelConsole : MainPanel
 	func defaultPayload() -> ConsolePayload
 	{
 		return ConsolePayload(data: [
-			ConsoleData(text:"nataniev os",details:"", color:grey),
-			ConsoleData(text:"systems",details:"\(capsule.systemsCount())",color:grey),
-			ConsoleData(text:"installs",details:"\(capsule.systemsInstalledCount())",color:grey),
+			ConsoleData(text:"nataniev os",details:"OK", color:white),
+			ConsoleData(text:"systems",details:"\(capsule.systemsInstalledCount())/\(capsule.systemsCount())",color:grey),
+			ConsoleData(text:"",details:"",color:grey),
 			ConsoleData(text:"",color:grey),
 			ConsoleData(text:"",color:grey),
 			ConsoleData(text:"",color:grey),
