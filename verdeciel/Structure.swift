@@ -31,6 +31,8 @@ class Structure : Empty
 	
 	override func whenRenderer()
 	{
+		super.whenRenderer()
+		
 		let distance = (host is LocationConstellation) ? host.distance/settings.approach * 100 : pow(host.distance/settings.approach, 5) * 1000.0
 		
 		pos.position = SCNVector3(0,distance,0)

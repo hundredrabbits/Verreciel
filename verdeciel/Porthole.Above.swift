@@ -20,15 +20,15 @@ class PanelAbove : Panel
 			let test = SCNLine(vertices: [SCNVector3(0,templates.radius * -2,0.75), SCNVector3(0,templates.radius * -2,0.95)], color: white)
 			test.eulerAngles.y = (degToRad(Float(120 * i)))
 			aim.addChildNode(test)
-			aim.eulerAngles.y = degToRad(240)
+			aim.eulerAngles.y = degToRad(0)
 			i += 1
 		}
 		root.addChildNode(aim)
 	}
 	
-	override func whenRenderer()
+	override func whenSecond()
 	{
-		super.whenRenderer()
+		super.whenSecond()
 		
 		if thruster.speed > 0 {
 			root.updateChildrenColors(white)
@@ -36,6 +36,11 @@ class PanelAbove : Panel
 		else{
 			root.updateChildrenColors(grey)
 		}
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		self.eulerAngles.y = degToRad(floor((radToDeg(player.eulerAngles.y)+22.5)/45) * 45)
+		SCNTransaction.commit()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
