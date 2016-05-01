@@ -26,7 +26,7 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-//		unlockedState(universe.loiqe_satellite, newItems:[items.loiqePortalKey, items.valenPortalKey])
+//		unlockedState(universe.senni_portal, newItems:[items.map1, items.valenPortalKey])
 		startingState()
 	}
 	
@@ -66,7 +66,10 @@ class CoreGame
 		
 		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
-		//		battery.cellPort2.addEvent(items.battery3)
+		battery.cellPort2.addEvent(items.battery2)
+		battery.cellPort2.connect(battery.mapPort)
+		battery.cellPort3.addEvent(items.battery3)
+		battery.cellPort3.connect(battery.shieldPort)
 	}
 	
 	func erase()

@@ -18,7 +18,7 @@ class LocationConstellation : Location
 	
 	override func onApproach()
 	{
-		super.onApproach()
+//		super.onApproach() // Disable docking
 
 		space.startInstance(self)
 		update()

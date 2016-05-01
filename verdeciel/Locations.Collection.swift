@@ -64,7 +64,7 @@ class Loiqe
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"Missing text here $will add soon$last line test", item: items.valenPortalFragment2)
+		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"The sartre$mechanism is$opening", item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
@@ -181,7 +181,7 @@ class Valen
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"[missing]", item:items.battery2)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Are you certain$that you are$in space.", item:items.battery2)
 	}
 	
 	// South

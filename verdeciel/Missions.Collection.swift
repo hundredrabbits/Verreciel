@@ -61,7 +61,7 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Use portal")
+		m = Mission(id:(story.count), name: "Portal Transit")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
 			Quest(name:"Route \(items.valenPortalKey.name!) to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
@@ -70,7 +70,7 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Warp")
+		m = Mission(id:(story.count), name: "Warp to valen")
 		m.quests = [
 			Quest(name:"Reach valen", location:universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort3.enable("empty",color:grey) })
 		]

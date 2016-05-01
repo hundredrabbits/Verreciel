@@ -74,7 +74,7 @@ class CoreCapsule: Empty
 		}
 		
 		if isFleeing == true {
-			helmet.addWarning("AutoPilot", duration: 0.1, flag: "fleeing")
+			helmet.addWarning("Auto-Pilot", duration: 0.1, flag: "fleeing")
 		}
 		else if radiation > 0 {
 			helmet.addWarning("Radiation \(String(format: "%.1f",radiation * 100))%", duration: 0.1, flag: "radiation")
@@ -228,7 +228,7 @@ class CoreCapsule: Empty
 	func docked()
 	{
 		lastLocation = dock
-		isFleeing = false
+		if isFleeing == true { isFleeing = false ; thruster.unlock() }
 		isReturning = false
 		
 		isDocked = true
@@ -261,6 +261,8 @@ class CoreCapsule: Empty
 	func flee()
 	{
 		self.isFleeing = true
+		thruster.lock()
+		thruster.speed = thruster.maxSpeed()
 	}
 	
 	var isReturning:Bool = false
