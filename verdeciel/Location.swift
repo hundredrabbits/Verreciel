@@ -114,7 +114,7 @@ class Location : Event
 		print("* EVENT    | Approached \(self.name!)")
 		space.startInstance(self)
 		// Don't try to dock if there is already a target
-		if radar.port.hasEvent() == true && radar.port.event == self {
+		if radar.port.hasEvent() == true && radar.port.event == self || capsule.isFleeing == true {
 			capsule.dock(self)
 		}
 		else if radar.port.hasEvent() == false {

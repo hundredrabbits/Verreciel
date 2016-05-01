@@ -112,7 +112,7 @@ class LocationHoradric : Location
 		if recipeValid != nil {
 			inPort1.label.update("IN", color: white)
 			inPort2.label.update("IN", color: white)
-			outPort.label.update(recipeValid.result.name!, color:cyan)
+			outPort.label.update(recipeValid.result.name!, color:white)
 		}
 		else if inPort1.event != nil && inPort2.event != nil {
 			inPort1.label.update("IN", color: grey)
@@ -154,7 +154,7 @@ class LocationHoradric : Location
 		else{
 			delay(0.05, block: { self.combineProgress() })
 		}
-		outPort.label.update("Assemblage \(Int(combinationPercentage))%", color:white)
+		outPort.label.update("\(Int(combinationPercentage))%", color:grey)
 	}
 	
 	func onCombinationComplete()

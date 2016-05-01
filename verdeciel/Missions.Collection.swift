@@ -52,7 +52,7 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Combine fragments")
+		m = Mission(id:(story.count), name: "Create portal key")
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
@@ -61,7 +61,7 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Portal Transit")
+		m = Mission(id:(story.count), name: "The Portal transit")
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
 			Quest(name:"Route \(items.valenPortalKey.name!) to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
