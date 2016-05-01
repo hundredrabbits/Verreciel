@@ -134,7 +134,6 @@ class MissionCollection
 		m = Mission(id:(story.count), name: "Install Map")
 		m.predicate = { map.isInstalled == true }
 		m.quests = [
-			Quest(name:"Reach Senni", predicate:{ universe.senni_portal.isKnown == true }, result: { }),
 			Quest(name:"Collect \(items.map1.name!)", location: universe.senni_cargo, predicate:{ cargo.contains(items.map1) }, result: {  }),
 			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: { }),
 			Quest(name:"Install map", location: universe.senni_station, predicate:{ map.isInstalled == true }, result: { })
@@ -156,31 +155,34 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		// Return to Loiqe
+		// Part 2
 		
-		m = Mission(id:(story.count), name: "Create \(items.currency5)")
-		m.quests = [
-			Quest(name:"Collect \(items.currency3.name!)", location: universe.senni_harvest, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
-			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
-			Quest(name:"Combine currencies", predicate:{ cargo.containsLike(items.currency5) }, result: { }),
-		]
-		story.append(m)
-		
-		m = Mission(id:(story.count), name: "Usul Portal Key")
+		m = Mission(id:(story.count), name: "Create \(items.usulPortalKey)")
 		m.predicate = { cargo.contains(items.usulPortalKey) }
 		m.quests = [
-			Quest(name:"Trade \(items.currency5)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.usulPortalFragment1) }, result: {  }),
-			Quest(name:"Trade \(items.currency4)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.usulPortalFragment2) }, result: {  }),
-			Quest(name:"Combine key fragments", location: universe.loiqe_horadric, predicate:{ cargo.contains(items.usulPortalKey) }, result: { }),
+			Quest(name:"Collect \(items.usulPortalFragment1.name!)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
+			Quest(name:"Collect \(items.usulPortalFragment2.name!)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
+			Quest(name:"Combine fragments", predicate:{ cargo.containsLike(items.usulPortalKey) }, result: { }),
 		]
 		story.append(m)
 		
 		// Go to Usul
 		
-		m = Mission(id:(story.count), name: "Reach Usul System")
-		m.predicate = { universe.usul_portal.isKnown == true }
+		m = Mission(id:(story.count), name: "Install Shield")
+		m.predicate = { map.isInstalled == true }
 		m.quests = [
-			Quest(name:"Reach Usul Portal", location: universe.loiqe_portal, predicate:{ universe.usul_portal.isKnown == true }, result: { })
+			Quest(name:"Install shield", location: universe.usul_station, predicate:{ shield.isInstalled == true }, result: {  }),
+		]
+		story.append(m)
+		
+		// Create end key
+		
+		m = Mission(id:(story.count), name: "Create \(items.endKey.name)")
+		m.predicate = { cargo.contains(items.endKey) }
+		m.quests = [
+			Quest(name:"Collect \(items.endKeyFragment1.name!)", predicate:{ cargo.contains(items.endKeyFragment1) }, result: {  }),
+			Quest(name:"Collect \(items.endKeyFragment2.name!)", predicate:{ cargo.contains(items.endKeyFragment2) }, result: {  }),
+			Quest(name:"Combine fragments", predicate:{ cargo.containsLike(items.endKey) }, result: { }),
 		]
 		story.append(m)
 		

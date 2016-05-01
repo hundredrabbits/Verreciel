@@ -47,12 +47,10 @@ class CoreUniverse : Empty
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
 	var loiqe_port = locations.loiqe.port()
+	
 	var loiqe_fog = locations.loiqe.fog()
 	var loiqe_gateway = locations.loiqe.gateway()
 	var loiqe_c_1 = locations.loiqe.c_1()
-//	var loiqe_c_2 = locations.loiqe.c_2()
-//	var loiqe_c_3 = locations.loiqe.c_3()
-//	var loiqe_c_4 = locations.loiqe.c_4()
 	
 	func addLoiqe()
 	{
@@ -70,9 +68,6 @@ class CoreUniverse : Empty
 		addChildNode(loiqe_gateway)
 		// Constellations
 		addChildNode(loiqe_c_1)
-//		addChildNode(loiqe_c_2)
-//		addChildNode(loiqe_c_3)
-//		addChildNode(loiqe_c_4)
 	}
 	
 	// MARK: Valen -
@@ -110,8 +105,10 @@ class CoreUniverse : Empty
 	var senni_cargo = locations.senni.cargo()
 	var senni_portal = locations.senni.portal()
 	var senni_harvest = locations.senni.harvest()
+	
 	var senni_horadric = locations.senni.horadric()
 	var senni_fog = locations.senni.fog()
+	var senni_wreck = locations.senni.wreck()
 	
 	func addSenni()
 	{
@@ -123,6 +120,7 @@ class CoreUniverse : Empty
 		// Fog
 		addChildNode(senni_horadric)
 		addChildNode(senni_fog)
+		addChildNode(senni_wreck)
 	}
 	
 	// MARK: Usul -

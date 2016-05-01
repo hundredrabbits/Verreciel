@@ -81,7 +81,7 @@ class Loiqe
 	
 	func fog() -> LocationTrade
 	{
-		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
+		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.currency5, give:items.usulPortalFragment2, mapRequirement: items.map1)
 	}
 	
 	// Ghost
@@ -184,11 +184,11 @@ class Valen
 		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Are you certain$that you are$in space.", item:items.battery2)
 	}
 	
-	// South
+	// Fog
 	
-	func fog() -> LocationTrade
+	func fog() -> LocationSatellite
 	{
-		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), want:items.currency5, give:items.usulPortalFragment1, mapRequirement: items.map1)
+		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
 	func c_1() -> LocationConstellation
@@ -232,7 +232,7 @@ class Senni
 		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.currency3, installation:{ map.install() }, installationName:"Map")
 	}
 	
-	//
+	// Fog Map
 	
 	func horadric() -> LocationHoradric
 	{
@@ -242,6 +242,11 @@ class Senni
 	func fog() -> LocationSatellite
 	{
 		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.battery3, mapRequirement: items.map1)
+	}
+	
+	func wreck() -> LocationSatellite
+	{
+		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[misssing]", item:items.record2, mapRequirement: items.map1)
 	}
 }
 
