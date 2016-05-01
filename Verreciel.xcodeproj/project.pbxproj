@@ -17,6 +17,7 @@
 		571728E11BB049BB002782A3 /* MainPanel.Cargo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */; };
 		571728E31BB05595002782A3 /* SCNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E21BB05595002782A3 /* SCNTrigger.swift */; };
 		571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */; };
+		571E38B71CD5A83700E8A39B /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E38B61CD5A83700E8A39B /* SCNNode.swift */; };
 		572258151BB877C600DEC41E /* Location.Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572258141BB877C600DEC41E /* Location.Portal.swift */; };
 		5726B7101CBD7E0900EF100B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726B70F1CBD7E0900EF100B /* Icon.swift */; };
 		5726B7121CBD80DA00EF100B /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726B7111CBD80DA00EF100B /* Structure.swift */; };
@@ -105,6 +106,7 @@
 		571728E01BB049BB002782A3 /* MainPanel.Cargo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Cargo.swift; sourceTree = "<group>"; };
 		571728E21BB05595002782A3 /* SCNTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNTrigger.swift; sourceTree = "<group>"; };
 		571728E91BB07FB8002782A3 /* MainPanel.Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Battery.swift; sourceTree = "<group>"; };
+		571E38B61CD5A83700E8A39B /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		572258141BB877C600DEC41E /* Location.Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Portal.swift; sourceTree = "<group>"; };
 		5726B70F1CBD7E0900EF100B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		5726B7111CBD80DA00EF100B /* Structure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				576577581CCAA456002B1819 /* Empty.swift */,
+				571E38B61CD5A83700E8A39B /* SCNNode.swift */,
 				57DD808D1BC7005600A4146C /* SCNHandle.swift */,
 				5765C3311C235A0C001ED26E /* SCNButton.swift */,
 				57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */,
@@ -545,6 +548,7 @@
 				57C915171BC45E91009454C4 /* MainPanel.swift in Sources */,
 				5769535D1C2060FE00A0CA39 /* Monitor.Exploration.swift in Sources */,
 				571728EA1BB07FB8002782A3 /* MainPanel.Battery.swift in Sources */,
+				571E38B71CD5A83700E8A39B /* SCNNode.swift in Sources */,
 				57DD808E1BC7005600A4146C /* SCNHandle.swift in Sources */,
 				5769535F1C2060FE00A0CA39 /* Monitor.Progress.swift in Sources */,
 				57F645F11B4CA2700088D115 /* MainPanel.Hatch.swift in Sources */,

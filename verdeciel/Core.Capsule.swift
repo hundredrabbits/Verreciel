@@ -263,6 +263,7 @@ class CoreCapsule: Empty
 		self.isFleeing = true
 		thruster.lock()
 		thruster.speed = thruster.maxSpeed()
+		radar.addTarget(capsule.lastLocation)
 	}
 	
 	var isReturning:Bool = false

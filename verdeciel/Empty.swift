@@ -64,36 +64,6 @@ class Empty : SCNNode
 		(self as! SCNLine).update(color)
 	}
 	
-	// MARK: Events -
-	
-	func whenStart()
-	{
-		for node in childNodes as! [Empty] {
-			node.whenStart()
-		}
-	}
-	
-	func whenTime()
-	{
-		for node in childNodes as! [Empty] {
-			node.whenTime()
-		}
-	}
-	
-	func whenSecond()
-	{
-		for node in childNodes as! [Empty] {
-			node.whenSecond()
-		}
-	}
-	
-	func whenRenderer()
-	{
-		for node in childNodes as! [Empty] {
-			node.whenRenderer()
-		}
-	}
-	
 	// MARK: Triggers -
 	
 	func onConnect()

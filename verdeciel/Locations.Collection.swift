@@ -64,7 +64,7 @@ class Loiqe
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"A sartre mechanism$ is opening.", item: items.valenPortalFragment2)
+		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"A sartre mechanism$is opening.", item: items.valenPortalFragment2)
 	}
 	
 	func beacon() -> LocationBeacon
