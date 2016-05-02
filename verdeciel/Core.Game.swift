@@ -26,7 +26,7 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.valen_portal, newItems:[items.map2, items.shield, items.endKey])
+		unlockedState(universe.valen_transit, newItems:[items.map2, items.shield, items.endKey])
 //		startingState()
 	}
 	
