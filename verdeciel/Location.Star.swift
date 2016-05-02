@@ -79,7 +79,7 @@ class LocationStar : Location
 	func extinguish()
 	{
 		print("? STAR     | Extinguished \(name)!")
-		isComplete = true
+		onComplete()
 	}
 	
 	override func onDisconnect()
@@ -119,7 +119,7 @@ class StructureStar : Structure
 		
 		var i:Float = 0
 		while i < 20 {
-			let shape = ShapeOctogon(size: CGFloat(i * 0.3))
+			let shape = ShapeOctogon(size: CGFloat(i * 0.3),color:red)
 			shape.eulerAngles.y = degToRad(22.5)
 			root.addChildNode(shape)
 			i += 1
@@ -135,11 +135,18 @@ class StructureStar : Structure
 		
 		var i:Float = 0
 		for node in root.childNodes {
-			node.position.y = i * 0.25
+			node.eulerAngles.y = degToRad(i * (90/Float(root.childNodes.count)))
 			i += 1
 		}
 		
 		SCNTransaction.commit()
+	}
+	
+	override func sightUpdate()
+	{
+		super.sightUpdate()
+		
+		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	override func onUndock()
@@ -151,6 +158,26 @@ class StructureStar : Structure
 		
 		for node in root.childNodes {
 			node.position.y = 0
+			node.eulerAngles.y = 0
+		}
+		
+		SCNTransaction.commit()
+	}
+	
+	override func onComplete()
+	{
+		super.onComplete()
+		
+		root.updateChildrenColors(cyan)
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		var i:Float = 0
+		for node in root.childNodes {
+			node.position.y = -i * 0.05
+			i += 1
+			node.eulerAngles.y = 0
 		}
 		
 		SCNTransaction.commit()
