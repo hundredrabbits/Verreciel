@@ -11,10 +11,10 @@ class ItemCollection
 	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
 	
 	// Misc
-	let waste = Item(name: "waste", type: .waste, note:"useless junk")
+	let waste = Item(name: "waste", type: .waste, note:"useless")
+	let kelp = Item(name: "space kelp", type: .waste, note:"useless")
 	
 	// Keys
-	
 	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
 	
 	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
@@ -44,16 +44,14 @@ class ItemCollection
 	
 	// Maps
 	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
-	let map2 = Item(name: "Ghost Map", type: .map, note: "[missing]", isQuest: true)
-	let map3 = Item(name: "Blind Map", type: .map, note: "[missing]", isQuest: true)
+	let map2 = Item(name: "Blind Map", type: .map, note: "[missing]", isQuest: true)
 	
 	// Enigma
 	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
 	
 	// Shields(fields)
-	let shield1 = Item(name: "shield 1", type: .shield, note:"[missing]", isQuest:true)
-	let shield2 = Item(name: "shield 2", type: .shield, note:"[missing]", isQuest:true)
+	let shield1 = Item(name: "glass", type: .shield, note:"[missing]", isQuest:true)
 	
 	// Harvest
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
@@ -61,12 +59,15 @@ class ItemCollection
 	let currency3 = Item(name: "natal", type: .currency, note:"trading currency")
 	let currency4 = Item(name: "alteria", type: .currency, note:"From 1 & 2")
 	let currency5 = Item(name: "nateria", type: .currency, note:"From 2 & 3")
-	let currency6 = Item(name: "ecco", type: .currency, note:"From 4 & 5")
+	let currency6 = Item(name: "echo", type: .currency, note:"From 4 & 5")
 	
 	// Batteries
 	let battery1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let battery2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	let battery3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	
+	// Echoes
+	let teapot  = Item(name: "a teapot", type: .special, note:"[missing]", isQuest:true)
 	
 	func whenStart()
 	{

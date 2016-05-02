@@ -97,6 +97,16 @@ class WidgetShield : Widget
 		capsule.shieldRoot.eulerAngles.y = (degToRad(360/16))
 		capsule.shieldRoot.hide()
 	}
+	
+	override func update()
+	{
+		if port.hasItemOfType(.shield) == true {
+			onPowered()
+		}
+		else{
+			onUnpowered()
+		}
+	}
 
 	override func onInstallationBegin()
 	{

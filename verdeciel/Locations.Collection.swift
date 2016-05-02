@@ -37,9 +37,9 @@ class Loiqe
 		return location
 	}
 	
-	func spawn() -> LocationSpawn
+	func spawn() -> LocationSatellite
 	{
-		return LocationSpawn(name: "awakening", system: system, at:CGPoint(x: offset.x, y: offset.y - 2.75))
+		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2.75), message:"[missing]", item: items.teapot, mapRequirement: items.map2)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -136,9 +136,11 @@ class Usul
 		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.map2, mapRequirement:items.map1)
 	}
 	
+	// MARK: Blind
+	
 	func silence() -> LocationTrade
 	{
-		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x + 3, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map1)
+		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map2)
 	}
 }
 
@@ -156,8 +158,6 @@ class Valen
 	{
 		return LocationStar(name:"Valen",system:system, at: offset)
 	}
-	
-	// North
 	
 	func bank() -> LocationBank
 	{
@@ -184,6 +184,11 @@ class Valen
 		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Are you certain$that you are$in space.", item:items.battery2)
 	}
 	
+	func market() -> LocationTrade
+	{
+		return LocationTrade(name: "market", system: system, at: CGPoint(x: offset.x + 1, y: offset.y - 1), want: items.waste, give: items.kelp)
+	}
+	
 	// MARK: Fog
 	
 	func transit() -> LocationTransit
@@ -204,6 +209,13 @@ class Valen
 	func c_1() -> LocationConstellation
 	{
 		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5), structure: StructureDoor())
+	}
+	
+	// MARK: Blind
+	
+	func void() -> LocationTrade
+	{
+		return LocationTrade(name: "void", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2), want: items.teapot, give: items.record4, mapRequirement: items.map2)
 	}
 }
 
@@ -262,5 +274,12 @@ class Senni
 	func wreck() -> LocationSatellite
 	{
 		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[misssing]", item:items.record2, mapRequirement: items.map1)
+	}
+	
+	// MARK: Silence
+	
+	func bog() -> LocationTrade
+	{
+		return LocationTrade(name: "bog", system:system, at: CGPoint(x: offset.x + 1, y: offset.y + 1), want: items.kelp, give: items.record5, mapRequirement: items.map2)
 	}
 }

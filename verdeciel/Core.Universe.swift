@@ -41,7 +41,7 @@ class CoreUniverse : Empty
 	var loiqe_portal = locations.loiqe.portal()
 	var loiqe_satellite = locations.loiqe.satellite()
 	var loiqe_port = locations.loiqe.port()
-	
+	// MARK: Fog
 	var loiqe_fog = locations.loiqe.fog()
 	var loiqe_transit = locations.loiqe.transit()
 	var loiqe_c_1 = locations.loiqe.c_1()
@@ -72,11 +72,13 @@ class CoreUniverse : Empty
 	var valen_portal = locations.valen.portal()
 	var valen_harvest = locations.valen.harvest()
 	var valen_cargo = locations.valen.cargo()
-	// Fog
+	// MARK: Fog
 	var valen_transit = locations.valen.transit()
 	var valen_fog = locations.valen.fog()
 	var valen_beacon = locations.valen.beacon()
 	var valen_c_1 = locations.valen.c_1()
+	// MARK: Blind
+	var valen_void = locations.valen.void()
 	
 	func addValen()
 	{
@@ -90,6 +92,8 @@ class CoreUniverse : Empty
 		addChildNode(valen_transit)
 		addChildNode(valen_fog)
 		addChildNode(valen_c_1)
+		// Blind
+		addChildNode(valen_void)
 	}
 	
 	// MARK: Senni -
@@ -99,11 +103,13 @@ class CoreUniverse : Empty
 	var senni_cargo = locations.senni.cargo()
 	var senni_portal = locations.senni.portal()
 	var senni_harvest = locations.senni.harvest()
-	// Fog
+	// MARK: Fog
 	var senni_transit = locations.senni.transit()
 	var senni_horadric = locations.senni.horadric()
 	var senni_fog = locations.senni.fog()
 	var senni_wreck = locations.senni.wreck()
+	// MARK: Blind
+	var senni_bog = locations.senni.bog()
 	
 	func addSenni()
 	{
@@ -117,16 +123,19 @@ class CoreUniverse : Empty
 		addChildNode(senni_horadric)
 		addChildNode(senni_fog)
 		addChildNode(senni_wreck)
+		// Blind
+		addChildNode(senni_bog)
 	}
 	
 	// MARK: Usul -
 	
 	var usul = locations.usul.star()
 	var usul_portal = locations.usul.portal()
-	// Fog
+	// MARK: Fog
 	var usul_transit = locations.usul.transit()
 	var usul_station = locations.usul.station()
 	var usul_telescope = locations.usul.telescope()
+	// MARK: Blind
 	var usul_silence = locations.usul.silence()
 	
 	func addUsul()
@@ -136,9 +145,10 @@ class CoreUniverse : Empty
 		addChildNode(usul_portal)
 		// Fog
 		addChildNode(usul_station)
-		addChildNode(usul_silence)
 		addChildNode(usul_transit)
 		addChildNode(usul_telescope)
+		// Blind
+		addChildNode(usul_silence)
 	}
 	
 	func connectPaths()

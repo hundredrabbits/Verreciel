@@ -42,7 +42,7 @@ class CoreSpace: Empty
 		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white
 		case .nevic : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
-		case .usul   : targetSpaceColor = [0.7,0.0,0.0] ; stars_color = true_white
+		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		}
 	}

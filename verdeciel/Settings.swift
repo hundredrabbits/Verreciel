@@ -101,6 +101,8 @@ enum ItemTypes
 	case map
 	case record
 	case cypher
+	
+	case special
 }
 
 struct Templates

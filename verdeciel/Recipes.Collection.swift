@@ -9,7 +9,7 @@ class RecipesCollection
 	
 	init()
 	{
-		horadric.append( Recipe(ingredients: [items.record1, items.record2], result: items.record5) )
+		horadric.append( Recipe(ingredients: [items.record1, items.record2], result: items.record3) )
 		
 		// Keys
 		
