@@ -94,8 +94,6 @@ class CoreCapsule: Empty
 		dock(location)
 		docked()
 		
-		battery.install()
-		
 		space.onSystemEnter(location.system)
 	}
 	

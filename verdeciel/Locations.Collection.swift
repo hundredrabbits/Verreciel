@@ -140,7 +140,7 @@ class Usul
 	
 	func silence() -> LocationTrade
 	{
-		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map2)
+		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x - 1, y: offset.y), want: items.currency6, give: items.shield, mapRequirement: items.map2)
 	}
 }
 

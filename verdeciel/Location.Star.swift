@@ -10,7 +10,7 @@ class LocationStar : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint())
 	{
-		super.init(name:name,system:system, at:at, icon:IconStar(), structure:StructureBank())
+		super.init(name:name,system:system, at:at, icon:IconStar(), structure:StructureStar())
 				
 		self.isComplete = false
 		
@@ -114,12 +114,15 @@ class StructureStar : Structure
 	{
 		super.init()
 		
+		root.position = SCNVector3(0,5,0)
+		
+		let scale:Float = 20
 		var value1:Float = 2.75
 		
 		var i = 0
 		while i < 20 {
 			value1 -= 0.125
-			root.addChildNode(SCNLine(vertices: [SCNVector3(value1 * 1.5,0,0), SCNVector3(value1,0,-value1 * 1.5), SCNVector3(value1 * 1.5,0,0), SCNVector3(value1,0,value1 * 1.5), SCNVector3(-value1 * 1.5,0,0), SCNVector3(-value1,0,-value1 * 1.5), SCNVector3(-value1 * 1.5,0,0), SCNVector3(-value1,0,value1 * 1.5), SCNVector3(value1,0,-value1 * 1.5), SCNVector3(-value1,0,-value1 * 1.5), SCNVector3(value1,0,value1 * 1.5), SCNVector3(-value1,0,value1 * 1.5)], color: red))
+			root.addChildNode(SCNLine(vertices: [SCNVector3(value1 * scale,0,0), SCNVector3(value1,0,-value1 * scale), SCNVector3(value1 * scale,0,0), SCNVector3(value1,0,value1 * scale), SCNVector3(-value1 * scale,0,0), SCNVector3(-value1,0,-value1 * scale), SCNVector3(-value1 * scale,0,0), SCNVector3(-value1,0,value1 * scale), SCNVector3(value1,0,-value1 * scale), SCNVector3(-value1,0,-value1 * scale), SCNVector3(value1,0,value1 * scale), SCNVector3(-value1,0,value1 * scale)], color: red))
 			i += 1
 		}
 	}

@@ -26,35 +26,37 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.valen_portal, newItems:[items.map2, items.shield1, items.endKey])
+		unlockedState(universe.valen_portal, newItems:[items.map2, items.shield, items.endKey])
 //		startingState()
 	}
 	
 	func startingState()
 	{
+		battery.install()
 		capsule.beginAtLocation(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.battery1)
 	}
 	
 	func unlockedState(location:Location = universe.senni_station, newItems:Array<Item> = [])
-	{		
-		pilot.install()
-		radar.install()
-		cargo.install()
-		hatch.install()
-		intercom.install()
-		console.install()
-		thruster.install()
+	{
+		battery.onInstallationComplete()
+		pilot.onInstallationComplete()
+		radar.onInstallationComplete()
+		cargo.onInstallationComplete()
+		hatch.onInstallationComplete()
+		intercom.onInstallationComplete()
+		console.onInstallationComplete()
+		thruster.onInstallationComplete()
 		
-		radio.install()
-		enigma.install()
-		map.install()
-		shield.install()
+		radio.onInstallationComplete()
+		enigma.onInstallationComplete()
+		map.onInstallationComplete()
+		shield.onInstallationComplete()
 		
-		exploration.install()
-		journey.install()
-		progress.install()
-		completion.install()
+		exploration.onInstallationComplete()
+		journey.onInstallationComplete()
+		progress.onInstallationComplete()
+		completion.onInstallationComplete()
 		
 		capsule.beginAtLocation(location)
 		
@@ -64,12 +66,22 @@ class CoreGame
 		
 		cargo.addItems(newItems)
 		
+		battery.cellPort1.enable()
+		battery.cellPort2.enable()
+		battery.cellPort3.enable()
+		
+		battery.installMap()
+		battery.installShield()
+		
 		battery.cellPort1.addEvent(items.battery1)
 		battery.cellPort1.connect(battery.thrusterPort)
 		battery.cellPort2.addEvent(items.battery2)
 		battery.cellPort2.connect(battery.mapPort)
 		battery.cellPort3.addEvent(items.battery3)
 		battery.cellPort3.connect(battery.shieldPort)
+		
+		radar.port.connect(pilot.port)
+		shield.port.addEvent(items.shield)
 	}
 	
 	func erase()

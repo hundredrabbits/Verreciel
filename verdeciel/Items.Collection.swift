@@ -52,7 +52,7 @@ class ItemCollection
 	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
 	
 	// Shields(fields)
-	let shield1 = Item(name: "glass", type: .shield, note:"[missing]", isQuest:true)
+	let shield = Item(name: "glass", type: .shield, note:"[missing]", isQuest:true)
 	
 	// Harvest
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")

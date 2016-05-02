@@ -19,29 +19,64 @@ class WidgetShield : Widget
 		details = "[missing text]"
 		requirement = ItemTypes.shield
 		isPowered = { battery.isShieldPowered() }
-		
 		label.update(name!)
 	}
 	
-	var growthVal:Float = 0
+	override func update()
+	{
+		if port.hasItemOfType(.shield) == true {
+			if battery.isShieldPowered() == true {
+				mode_powered()
+			}
+			else{
+				mode_unpowered()
+			}
+		}
+		else{
+			if battery.isShieldPowered() == true {
+				mode_blank()
+			}
+			else{
+				mode_none()
+			}
+		}
+	}
+	
+	func mode_powered()
+	{
+		capsule.shieldRoot.updateChildrenColors(cyan)
+		capsule.shieldRoot.show()
+	}
+	
+	func mode_unpowered()
+	{
+		capsule.shieldRoot.updateChildrenColors(grey)
+		capsule.shieldRoot.show()
+	}
+	
+	func mode_blank()
+	{
+		capsule.shieldRoot.updateChildrenColors(grey)
+		capsule.shieldRoot.show()
+	}
+	
+	func mode_none()
+	{
+		
+		capsule.shieldRoot.updateChildrenColors(clear)
+		capsule.shieldRoot.hide()
+	}
 	
 	override func onPowered()
 	{
-		super.onPowered()
-		
-		port.enable()
-		
-		if port.hasItemOfType(.shield) == true {
-			capsule.shieldRoot.show()
-		}
+		super.onPowered()		
+		update()
 	}
 	
 	override func onUnpowered()
 	{
 		super.onUnpowered()
-		
-		port.disable()
-		capsule.shieldRoot.hide()
+		update()
 	}
 	
 	func createShield()
@@ -97,23 +132,15 @@ class WidgetShield : Widget
 		capsule.shieldRoot.eulerAngles.y = (degToRad(360/16))
 		capsule.shieldRoot.hide()
 	}
-	
-	override func update()
-	{
-		if port.hasItemOfType(.shield) == true {
-			onPowered()
-		}
-		else{
-			onUnpowered()
-		}
-	}
 
-	override func onInstallationBegin()
+	override func onInstallationComplete()
 	{
-		super.onInstallationBegin()
+		super.onInstallationComplete()
 		
-		battery.installShield()
 		createShield()
+		battery.installShield()
+		
+		update()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
