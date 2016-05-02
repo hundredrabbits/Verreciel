@@ -102,7 +102,7 @@ enum ItemTypes
 	case record
 	case cypher
 	
-	case special
+	case unknown
 }
 
 struct Templates

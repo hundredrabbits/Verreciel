@@ -280,6 +280,6 @@ class Senni
 	
 	func bog() -> LocationTrade
 	{
-		return LocationTrade(name: "bog", system:system, at: CGPoint(x: offset.x + 1, y: offset.y + 1), want: items.kelp, give: items.record5, mapRequirement: items.map2)
+		return LocationTrade(name: "bog", system:system, at: CGPoint(x: offset.x + 1, y: offset.y + 1), want: items.kelp, give: items.record_oquonie, mapRequirement: items.map2)
 	}
 }

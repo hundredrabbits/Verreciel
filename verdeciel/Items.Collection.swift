@@ -40,7 +40,8 @@ class ItemCollection
 	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	let record3 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	let record4 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
-	let record5 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	
+	let record_oquonie = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Maps
 	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
@@ -67,7 +68,8 @@ class ItemCollection
 	let battery3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
 	
 	// Echoes
-	let teapot  = Item(name: "a teapot", type: .special, note:"[missing]", isQuest:true)
+	let teapot     = Item(name: "a teapot", type: .unknown, note:"[missing]", isQuest:true)
+	let nestorine  = Item(name: "a pillar", type: .unknown, note:"[missing]", isQuest:true)
 	
 	func whenStart()
 	{

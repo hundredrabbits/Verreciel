@@ -1,59 +1,21 @@
-- Animate Satellites, from flat to perspective
-- Star mesh
-- Satellite notes are item descriptions
-- Issue with exploration
-- Add quest help location
-
-================
-*    FLOW
-================
-
-> Fog Map Flow
-
-> Extras
-
-- Cold Star
-
-- Get teapot in Loiqe
-- Trade teapot for record4
-
 ================
 *    MAJOR
 ================
 
-- Add fog location in senni with record2
-
-- Make Usul space red
-- Add sounds
+- Animate Satellites, from flat to perspective
+- Star mesh
+- Fix Issue with exploration
+- Add quest help location
+- Playtest playthrough
+- Add credits
+- Add splash screen
+- Save / Load Mechanics
+- Sounds
 
 ================
 *    MINOR
 ================
 
-- Design Nevic(enter from star in Loiqe Map2)
-- Create Enigma Lesson
-
-- Add beacons with secondary hints
-- Radio in Pilot quest
-- Enigma in console quest
-- Mining location? for bonus items(music, etc..)
-
-> Playthrough
-- Save / Load Mechanics
-
-> Bugs
-- Release touch when installing camera animation
-
-> Design
-- Floating feel
-- Add ship doodads
-
-> Narative
-- Telemetrists!? Twin Suns
-- Derelict beacon
-- "Look how much I have grown since we met in Hiversaires"
-- "I learnt your languages"
-- White sun?
-- Stars going around the ship
-
-
+================
+*    FLOW
+================
