@@ -38,6 +38,9 @@ class ItemCollection
 	// Records
 	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	let record3 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	let record4 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	let record5 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
 	
 	// Maps
 	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)

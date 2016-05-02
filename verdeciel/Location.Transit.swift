@@ -8,6 +8,8 @@ class LocationTransit : Location
 	init(name:String, system:Systems, at: CGPoint, mapRequirement:Item! = nil)
 	{
 		super.init(name:name,system:system, at:at, icon:IconTransit(), structure:Structure())
+		
+		self.mapRequirement = mapRequirement
 	}
 	
 	// MARK: Panel -
@@ -32,6 +34,11 @@ class IconTransit : Icon
 	override init()
 	{
 		super.init()
+		
+		label.hide()
+		
+		size = 0.05
+		mesh.addChildNode(SCNLine(vertices: [SCNVector3(x:0,y:size,z:0),  SCNVector3(x:size,y:0,z:0), SCNVector3(x:-size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0), SCNVector3(x:0,y:size,z:0),  SCNVector3(x:-size,y:0,z:0), SCNVector3(x:size,y:0,z:0),  SCNVector3(x:0,y:-size,z:0)],color: color))
 	}
 	
 	required init?(coder aDecoder: NSCoder)

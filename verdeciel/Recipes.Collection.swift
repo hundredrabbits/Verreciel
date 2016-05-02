@@ -9,24 +9,19 @@ class RecipesCollection
 	
 	init()
 	{
-		keys()
-		currencies()
-	}
-	
-	private func keys()
-	{
+		horadric.append( Recipe(ingredients: [items.record1, items.record2], result: items.record5) )
+		
+		// Keys
+		
 		horadric.append( Recipe(ingredients: [items.valenPortalFragment1, items.valenPortalFragment2], result: items.valenPortalKey) )
 		horadric.append( Recipe(ingredients: [items.usulPortalFragment1, items.usulPortalFragment2], result: items.usulPortalKey) )
-		
-		// Master Keys
 		
 		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.endKeyFragment1) )
 		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.endKeyFragment2) )
 		horadric.append( Recipe(ingredients: [items.endKeyFragment1, items.endKeyFragment2], result: items.endKey) )
-	}
-	
-	private func currencies()
-	{
+		
+		// Currencies
+		
 		horadric.append( Recipe(ingredients: [items.currency1, items.currency2], result: Item(like:items.currency4)) )
 		horadric.append( Recipe(ingredients: [items.currency2, items.currency3], result: Item(like:items.currency5)) )
 		horadric.append( Recipe(ingredients: [items.currency4, items.currency5], result: Item(like:items.currency6)) )

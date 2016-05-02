@@ -122,25 +122,23 @@ class CoreUniverse : Empty
 	// MARK: Usul -
 	
 	var usul = locations.usul.star()
-	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
 	// Fog
 	var usul_transit = locations.usul.transit()
-	// Ghost
-	var usul_wreck = locations.usul.wreck()
-	var usul_cargo = locations.usul.cargo()
+	var usul_station = locations.usul.station()
+	var usul_telescope = locations.usul.telescope()
 	var usul_silence = locations.usul.silence()
 	
 	func addUsul()
 	{
 		addChildNode(usul)
-		addChildNode(usul_station)
+		
 		addChildNode(usul_portal)
-		addChildNode(usul_wreck)
+		// Fog
 		addChildNode(usul_station)
-		addChildNode(usul_cargo)
 		addChildNode(usul_silence)
 		addChildNode(usul_transit)
+		addChildNode(usul_telescope)
 	}
 	
 	func connectPaths()
@@ -157,18 +155,13 @@ class CoreUniverse : Empty
 		valen_beacon.connect(valen_fog)
 		
 		senni_portal.connect(senni_cargo)
-		senni_cargo.connect(senni_harvest)
-		senni_harvest.connect(senni_station)
+		senni_cargo.connect(senni_portal)
 		senni_station.connect(senni_portal)
 		senni_fog.connect(senni_station)
 		senni_horadric.connect(senni_harvest)
 		
-		usul_wreck.connect(usul_portal)
-		
-		usul_portal.connect(usul_cargo)
-		usul_cargo.connect(usul_silence)
-		usul_silence.connect(usul_station)
 		usul_station.connect(usul_portal)
+		usul_telescope.connect(usul_portal)
 		
 		// Transits
 		
@@ -176,6 +169,11 @@ class CoreUniverse : Empty
 		loiqe_transit.connect(valen_transit)
 		valen_transit.connect(senni_transit)
 		senni_transit.connect(usul_transit)
+		
+		loiqe_portal.connect(loiqe_transit)
+		valen_portal.connect(valen_transit)
+		senni_portal.connect(senni_transit)
+		usul_portal.connect(usul_transit)
 	}
 
 	func locationLike(target:Location) -> Location!

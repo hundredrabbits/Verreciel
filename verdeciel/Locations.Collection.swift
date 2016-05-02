@@ -119,31 +119,26 @@ class Usul
 		return LocationPortal(name: "portal",system:system, at:CGPoint(x: offset.x + 1, y: offset.y))
 	}
 	
-	func station() -> LocationStation
-	{
-		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 2, y: offset.y - 1), requirement:items.currency4, installation:{ shield.install() }, installationName:"shield", mapRequirement:items.map2)
-	}
-	
-	func wreck() -> LocationSatellite
-	{
-		return LocationSatellite(name:"Wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[missing]", item:items.map2, mapRequirement:items.map1)
-	}
-	
-	func cargo() -> LocationStation
-	{
-		return LocationStation(name:"cargo",system:system, at: CGPoint(x: offset.x + 2, y: offset.y + 1), requirement:items.currency4, installation:{ shield.install() }, installationName:"shield", mapRequirement:items.map2)
-	}
-	
-	func silence() -> LocationTrade
-	{
-		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x + 3, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map2)
-	}
-	
 	// MARK: Fog
 	
 	func transit() -> LocationTransit
 	{
 		return LocationTransit(name: "transit", system:system, at:CGPoint(x: offset.x + 2, y: offset.y), mapRequirement: items.map1)
+	}
+	
+	func station() -> LocationStation
+	{
+		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x, y: offset.y + 1), requirement:items.currency5, installation:{ shield.install() }, installationName:"shield", mapRequirement:items.map1)
+	}
+	
+	func telescope() -> LocationSatellite
+	{
+		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.map2, mapRequirement:items.map1)
+	}
+	
+	func silence() -> LocationTrade
+	{
+		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x + 3, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map1)
 	}
 }
 
