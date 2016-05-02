@@ -24,19 +24,19 @@ class MonitorExploration : Monitor
 	
 	override func refresh()
 	{
-		knownLocations = 0
-		for location in universe.childNodes {
-			let locationData = location as! Location
-			if locationData.isKnown == true {
-				knownLocations += 1
+		var kl = 0
+		for location in universe.childNodes as! [Location] {
+			if location.isKnown == true {
+				kl += 1
 			}
 		}
-		nameLabel.update("\(knownLocations)/\(universe.childNodes.count)")
-	}
-	
-	override func onInstallationBegin()
-	{
-//		player.lookAt(deg: -180)
+		
+		// MARK: Display
+		if kl > knownLocations {
+			nameLabel.update("\(knownLocations)/\(universe.childNodes.count)", color:cyan)
+			delay(2, block: { self.nameLabel.update(white) })
+			knownLocations = kl
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)

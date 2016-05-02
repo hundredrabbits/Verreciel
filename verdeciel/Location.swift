@@ -137,12 +137,14 @@ class Location : Event
 		update()
 		structure.onDock()
 		icon.onUpdate()
+		exploration.refresh()
 	}
 	
 	func onUndock()
 	{
 		retrieveStorage()
 		structure.onUndock()
+		exploration.refresh()
 	}
 	
 	func retrieveStorage()

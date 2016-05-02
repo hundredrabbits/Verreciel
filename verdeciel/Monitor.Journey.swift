@@ -21,14 +21,9 @@ class MonitorJourney : Monitor
 		detailsLabel.update(name!)
 	}
 	
-	override func refresh()
+	override func whenSecond()
 	{
 		nameLabel.update("\(Int(distance/100))")
-	}
-	
-	override func onInstallationBegin()
-	{
-//		player.lookAt(deg: -90)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

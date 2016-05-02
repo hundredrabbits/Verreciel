@@ -23,13 +23,7 @@ class MonitorComplete : Monitor
 	
 	override func refresh()
 	{
-		nameLabel.update(cyan)
-		delay(2, block: { self.nameLabel.update(white) })
-	}
-	
-	override func onInstallationBegin()
-	{
-//		player.lookAt(deg: 90)
+		// TODO: Display Quest ID / Sum Quests
 	}
 	
 	required init?(coder aDecoder: NSCoder)

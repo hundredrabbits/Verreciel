@@ -9,6 +9,8 @@ import Foundation
 
 class MonitorProgress : Monitor
 {
+	var completed:Int = 0
+	
 	override init()
 	{
 		super.init()
@@ -31,12 +33,12 @@ class MonitorProgress : Monitor
 			}
 		}
 		
-		nameLabel.update("\(totalQuestLocations_complete)/\(totalQuestLocations)")
-	}
-	
-	override func onInstallationBegin()
-	{
-//		player.lookAt(deg: -270)
+		// MARK: Display
+		if totalQuestLocations_complete > completed {
+			nameLabel.update("\(totalQuestLocations_complete)/\(totalQuestLocations)", color:cyan)
+			delay(2, block: { self.nameLabel.update(white) })
+			completed = totalQuestLocations_complete
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)
