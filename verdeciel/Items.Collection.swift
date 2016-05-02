@@ -18,17 +18,17 @@ class ItemCollection
 	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
 	
 	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
-	let valenPortalFragment1 = Item(name: "key part 1", type: .fragment, note:"half a Portal key", isQuest:true)
-	let valenPortalFragment2 = Item(name: "key part 2", type: .fragment, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment1 = Item(name: "key part I", type: .fragment, note:"half a Portal key", isQuest:true)
+	let valenPortalFragment2 = Item(name: "key part II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
 	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
 	
 	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
-	let usulPortalFragment1 = Item(name: "Usul Key I", type: .fragment, note:"half a Portal key", isQuest:true)
-	let usulPortalFragment2 = Item(name: "Usul Key II", type: .fragment, note:"half a Portal key", isQuest:true)
+	let usulPortalFragment1 = Item(name: "Key Part I", type: .fragment, note:"half a Portal key", isQuest:true)
+	let usulPortalFragment2 = Item(name: "Key Part II", type: .fragment, note:"half a Portal key", isQuest:true)
 	
-	let endKeyFragment1 = Item(name: "Key part 1", type: .key, note: "[missing]", isQuest: true)
-	let endKeyFragment2 = Item(name: "Key part 2", type: .key, note: "[missing]", isQuest: true)
+	let endKeyFragment1 = Item(name: "Key Part I", type: .key, note: "half a Portal key", isQuest: true)
+	let endKeyFragment2 = Item(name: "Key Part II", type: .key, note: "half a Portal key", isQuest: true)
 	let endKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true)
 	
 	// Etc..
@@ -56,9 +56,9 @@ class ItemCollection
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
 	let currency2 = Item(name: "materia", type: .currency, note:"trading currency")
 	let currency3 = Item(name: "natal", type: .currency, note:"trading currency")
-	let currency4 = Item(name: "cur4", type: .currency, note:"From 1 & 2")
-	let currency5 = Item(name: "cur5", type: .currency, note:"From 2 & 3")
-	let currency6 = Item(name: "cur6", type: .currency, note:"From 4 & 5")
+	let currency4 = Item(name: "alteria", type: .currency, note:"From 1 & 2")
+	let currency5 = Item(name: "nateria", type: .currency, note:"From 2 & 3")
+	let currency6 = Item(name: "ecco", type: .currency, note:"From 4 & 5")
 	
 	// Batteries
 	let battery1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)

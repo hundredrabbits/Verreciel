@@ -9,10 +9,10 @@ import Foundation
 
 class LocationCollection
 {
-	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -5))
-	let usul  = Usul(offset: CGPoint(x: -5,y: 0))
-	let valen = Valen(offset: CGPoint(x: 5,y: 0))
-	let senni = Senni(offset: CGPoint(x: 0,y: 5))
+	let loiqe = Loiqe(offset: CGPoint(x: 0,y: -3))
+	let usul  = Usul(offset: CGPoint(x: -3,y: 0))
+	let valen = Valen(offset: CGPoint(x: 3,y: 0))
+	let senni = Senni(offset: CGPoint(x: 0,y: 3))
 //	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
 	
 	init()
@@ -77,18 +77,16 @@ class Loiqe
 		return LocationTrade(name: "port",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), want:items.currency4, give:items.senniPortalKey)
 	}
 	
-	// Fog
+	// MARK: Fog
+	
+	func transit() -> LocationTransit
+	{
+		return LocationTransit(name: "transit", system:system, at:CGPoint(x: offset.x, y: offset.y + 2), mapRequirement: items.map1)
+	}
 	
 	func fog() -> LocationTrade
 	{
 		return LocationTrade(name: "fog",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), want:items.currency5, give:items.usulPortalFragment2, mapRequirement: items.map1)
-	}
-	
-	// Ghost
-	
-	func gateway() -> LocationGateway
-	{
-		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 2), key: items.masterKey, mapRequirement: items.map2)
 	}
 	
 	// Constellations
@@ -128,7 +126,7 @@ class Usul
 	
 	func wreck() -> LocationSatellite
 	{
-		return LocationSatellite(name:"Wreck",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[missing]", item:items.map2, mapRequirement:items.map1)
+		return LocationSatellite(name:"Wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[missing]", item:items.map2, mapRequirement:items.map1)
 	}
 	
 	func cargo() -> LocationStation
@@ -139,6 +137,13 @@ class Usul
 	func silence() -> LocationTrade
 	{
 		return LocationTrade(name: "silence", system: .usul, at: CGPoint(x: offset.x + 3, y: offset.y), want: items.currency6, give: items.shield1, mapRequirement: items.map2)
+	}
+	
+	// MARK: Fog
+	
+	func transit() -> LocationTransit
+	{
+		return LocationTransit(name: "transit", system:system, at:CGPoint(x: offset.x + 2, y: offset.y), mapRequirement: items.map1)
 	}
 }
 
@@ -184,11 +189,21 @@ class Valen
 		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Are you certain$that you are$in space.", item:items.battery2)
 	}
 	
-	// Fog
+	// MARK: Fog
+	
+	func transit() -> LocationTransit
+	{
+		return LocationTransit(name: "transit", system:system, at:CGPoint(x: offset.x - 2, y: offset.y), mapRequirement: items.map1)
+	}
 	
 	func fog() -> LocationSatellite
 	{
 		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.usulPortalFragment1, mapRequirement: items.map1)
+	}
+	
+	func beacon() -> LocationBeacon
+	{
+		return LocationBeacon(name: "beacon", system: system, at: CGPoint(x: offset.x, y: offset.y - 2), message: "[missing]", mapRequirement: items.map1)
 	}
 	
 	func c_1() -> LocationConstellation
@@ -232,7 +247,12 @@ class Senni
 		return LocationStation(name:"station",system:system, at: CGPoint(x: offset.x + 1, y: offset.y), requirement:items.currency3, installation:{ map.install() }, installationName:"Map")
 	}
 	
-	// Fog Map
+	// MARK: Fog
+	
+	func transit() -> LocationTransit
+	{
+		return LocationTransit(name: "transit", system:system, at:CGPoint(x: offset.x, y: offset.y - 2), mapRequirement: items.map1)
+	}
 	
 	func horadric() -> LocationHoradric
 	{
@@ -247,31 +267,5 @@ class Senni
 	func wreck() -> LocationSatellite
 	{
 		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[misssing]", item:items.record2, mapRequirement: items.map1)
-	}
-}
-
-class Nevic
-{
-	var system:Systems = .nevic
-	var offset:CGPoint!
-	
-	init(offset:CGPoint)
-	{
-		self.offset = offset
-	}
-	
-	func star() -> LocationStar
-	{
-		return LocationStar(name:"Nevic",system:.nevic,at:offset)
-	}
-	
-	func satellite() -> LocationSatellite
-	{
-		return LocationSatellite(name: "satellite", system: .nevic, at: CGPoint(x: offset.x,y: offset.y + 1), message: "[missing]", item: items.map3)
-	}
-	
-	func gateway() -> LocationGateway
-	{
-		return LocationGateway(name: "gateway", system: .nevic, at: CGPoint(x: offset.x,y: offset.y - 1), key: items.masterKey, mapRequirement: items.map2)
 	}
 }

@@ -26,7 +26,7 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.senni_portal, newItems:[items.map1, items.valenPortalKey])
+		unlockedState(universe.loiqe_portal, newItems:[items.map1, items.usulPortalFragment1, items.valenPortalKey])
 //		startingState()
 	}
 	

@@ -3,42 +3,11 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class LocationGateway : Location
+class LocationTransit : Location
 {
-	var KeyPort:SCNPort!
-	var ThrusterPort:SCNPort!
-	var PilotPort:SCNPort!
-	var KeyLabel:SCNLabel!
-	var ThrusterLabel:SCNLabel!
-	var PilotLabel:SCNLabel!
-	
-	var destination:LocationGateway!
-	
-	var key:Event!
-	
-	init(name:String, system:Systems, at: CGPoint, key: Event, mapRequirement:Item! = nil)
+	init(name:String, system:Systems, at: CGPoint, mapRequirement:Item! = nil)
 	{
-		super.init(name:name,system:system, at:at, icon:IconGateway(), structure:Structure())
-		
-		self.mapRequirement = mapRequirement
-		
-		self.key = key
-		
-		KeyPort = SCNPort(host: self)
-		ThrusterPort = SCNPort(host: self)
-		PilotPort = SCNPort(host: self)
-		KeyPort = SCNPort(host: self)
-		ThrusterPort = SCNPort(host: self)
-		PilotPort = SCNPort(host: self)
-		
-		KeyLabel = SCNLabel(text: "",color:red)
-		ThrusterLabel = SCNLabel(text: "> Thruster", color:white)
-		PilotLabel = SCNLabel(text: "> Pilot", color:grey)
-		
-		ThrusterPort.addEvent(items.warpDrive)
-		
-		KeyPort.enable()
-		KeyPort.requirement = key
+		super.init(name:name,system:system, at:at, icon:IconTransit(), structure:Structure())
 	}
 	
 	// MARK: Panel -
@@ -47,75 +16,7 @@ class LocationGateway : Location
 	{
 		let newPanel = Panel()
 
-		// Left
-		
-		KeyPort.position = SCNVector3(templates.leftMargin + 0.9,0.6,0)
-		newPanel.addChildNode(KeyPort)
-		
-		KeyLabel.position = SCNVector3(0.4,0,0)
-		KeyPort.addChildNode(KeyLabel)
-		
-		PilotPort.position = SCNVector3(templates.leftMargin + 0.9,0.2,0)
-		newPanel.addChildNode(PilotPort)
-		
-		PilotLabel.position = SCNVector3(0.4,0,0)
-		PilotPort.addChildNode(PilotLabel)
-		
-		ThrusterPort.position = SCNVector3(templates.leftMargin + 0.9,-0.2,0)
-		newPanel.addChildNode(ThrusterPort)
-		
-		ThrusterLabel.position = SCNVector3(0.4,0,0)
-		ThrusterPort.addChildNode(ThrusterLabel)
-		
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin,0.6,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0,0), SCNVector3(templates.leftMargin + 0.4,0,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4,0,0), SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4 + 0.2,-0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,-0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin + 0.4 + 0.2,0.2,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.2,0)], color: grey))
-		newPanel.addChildNode(SCNLine(vertices: [SCNVector3(templates.leftMargin,0.6,0), SCNVector3(templates.leftMargin + 0.4 + 0.4,0.6,0)], color: grey))
-		
 		return newPanel
-	}
-	
-	func addDestination(target:LocationGateway)
-	{
-		destination = target
-	}
-	
-	// MARK: I/O
-	
-	override func onConnect()
-	{
-	}
-	
-	override func onDock()
-	{
-		super.onDock()
-		
-		if KeyPort.isReceiving(KeyPort.requirement) == true {
-//			structure.replace(structures.portal(color:cyan))
-		}
-	}
-	
-	override func update()
-	{
-		super.update()
-		
-		if KeyPort.isReceiving(KeyPort.requirement) == true {
-			PilotPort.enable()
-			ThrusterPort.enable()
-			KeyLabel.updateColor(cyan)
-			PilotLabel.updateColor(white)
-			ThrusterLabel.updateColor(white)
-		}
-		else{
-			PilotPort.disable()
-			ThrusterPort.disable()
-			KeyLabel.updateColor(red)
-			PilotLabel.updateColor(grey)
-			ThrusterLabel.updateColor(grey)
-		}
 	}
 	
 	// MARK: Defaults -
@@ -126,7 +27,7 @@ class LocationGateway : Location
 	}
 }
 
-class IconGateway : Icon
+class IconTransit : Icon
 {
 	override init()
 	{

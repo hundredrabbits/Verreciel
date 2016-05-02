@@ -18,10 +18,8 @@ class CoreUniverse : Empty
 		addUsul()
 		addValen()
 		addSenni()
-//		addNevic()
 		
 		connectPaths()
-		connectPortals()
 	}
 	
 	override func whenStart()
@@ -31,10 +29,6 @@ class CoreUniverse : Empty
 		valen_bank.port1.addEvent(items.loiqePortalKey)
 		valen_bank.port2.addEvent(items.record1)
 		valen_bank.port3.addEvent(Item(like:items.waste))
-		
-//		for location in childNodes {
-//			location.start()
-//		}
 	}
 	
 	// MARK: Loiqe -
@@ -49,7 +43,7 @@ class CoreUniverse : Empty
 	var loiqe_port = locations.loiqe.port()
 	
 	var loiqe_fog = locations.loiqe.fog()
-	var loiqe_gateway = locations.loiqe.gateway()
+	var loiqe_transit = locations.loiqe.transit()
 	var loiqe_c_1 = locations.loiqe.c_1()
 	
 	func addLoiqe()
@@ -63,9 +57,9 @@ class CoreUniverse : Empty
 		addChildNode(loiqe_satellite)
 		addChildNode(loiqe_port)
 		// Fog
+		addChildNode(loiqe_transit)
 		addChildNode(loiqe_fog)
-		// Ghost
-		addChildNode(loiqe_gateway)
+		addChildNode(loiqe_transit)
 		// Constellations
 		addChildNode(loiqe_c_1)
 	}
@@ -78,10 +72,11 @@ class CoreUniverse : Empty
 	var valen_portal = locations.valen.portal()
 	var valen_harvest = locations.valen.harvest()
 	var valen_cargo = locations.valen.cargo()
+	// Fog
+	var valen_transit = locations.valen.transit()
 	var valen_fog = locations.valen.fog()
+	var valen_beacon = locations.valen.beacon()
 	var valen_c_1 = locations.valen.c_1()
-//	var valen_c_3 = locations.valen.c_3()
-//	var valen_c_4 = locations.valen.c_4()
 	
 	func addValen()
 	{
@@ -92,10 +87,9 @@ class CoreUniverse : Empty
 		addChildNode(valen_harvest)
 		addChildNode(valen_cargo)
 		// Fog
+		addChildNode(valen_transit)
 		addChildNode(valen_fog)
 		addChildNode(valen_c_1)
-//		addChildNode(valen_c_3)
-//		addChildNode(valen_c_4)
 	}
 	
 	// MARK: Senni -
@@ -105,7 +99,8 @@ class CoreUniverse : Empty
 	var senni_cargo = locations.senni.cargo()
 	var senni_portal = locations.senni.portal()
 	var senni_harvest = locations.senni.harvest()
-	
+	// Fog
+	var senni_transit = locations.senni.transit()
 	var senni_horadric = locations.senni.horadric()
 	var senni_fog = locations.senni.fog()
 	var senni_wreck = locations.senni.wreck()
@@ -118,6 +113,7 @@ class CoreUniverse : Empty
 		addChildNode(senni_cargo)
 		addChildNode(senni_harvest)
 		// Fog
+		addChildNode(senni_transit)
 		addChildNode(senni_horadric)
 		addChildNode(senni_fog)
 		addChildNode(senni_wreck)
@@ -128,6 +124,8 @@ class CoreUniverse : Empty
 	var usul = locations.usul.star()
 	var usul_station = locations.usul.station()
 	var usul_portal = locations.usul.portal()
+	// Fog
+	var usul_transit = locations.usul.transit()
 	// Ghost
 	var usul_wreck = locations.usul.wreck()
 	var usul_cargo = locations.usul.cargo()
@@ -142,27 +140,7 @@ class CoreUniverse : Empty
 		addChildNode(usul_station)
 		addChildNode(usul_cargo)
 		addChildNode(usul_silence)
-	}
-	
-	// MARK: Nevic -
-	
-//	var nevic = locations.nevic.star()
-//	var nevic_satellite = locations.nevic.satellite()
-//	var nevic_gateway = locations.nevic.gateway()
-//	
-//	func addNevic()
-//	{
-//		addChildNode(nevic)
-//		addChildNode(nevic_satellite)
-//		addChildNode(nevic_gateway)
-//	}
-
-	// MARK: Misc -
-	
-	func connectPortals()
-	{
-//		loiqe_gateway.addDestination(nevic_gateway)
-//		nevic_gateway.addDestination(loiqe_gateway)
+		addChildNode(usul_transit)
 	}
 	
 	func connectPaths()
@@ -170,11 +148,13 @@ class CoreUniverse : Empty
 		loiqe_city.connect(loiqe_satellite)
 		loiqe_satellite.connect(loiqe_portal)
 		loiqe_horadric.connect(loiqe_satellite)
-		loiqe_fog.connect(loiqe_city)
+		loiqe_fog.connect(loiqe_port)
 		
 		valen_bank.connect(valen_portal)
 		valen_station.connect(valen_bank)
 		valen_harvest.connect(valen_bank)
+		valen_fog.connect(valen_portal)
+		valen_beacon.connect(valen_fog)
 		
 		senni_portal.connect(senni_cargo)
 		senni_cargo.connect(senni_harvest)
@@ -189,6 +169,13 @@ class CoreUniverse : Empty
 		usul_cargo.connect(usul_silence)
 		usul_silence.connect(usul_station)
 		usul_station.connect(usul_portal)
+		
+		// Transits
+		
+		usul_transit.connect(loiqe_transit)
+		loiqe_transit.connect(valen_transit)
+		valen_transit.connect(senni_transit)
+		senni_transit.connect(usul_transit)
 	}
 
 	func locationLike(target:Location) -> Location!
