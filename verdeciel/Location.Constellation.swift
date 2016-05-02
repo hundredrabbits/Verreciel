@@ -52,24 +52,21 @@ class StructureTunnel : Structure
 	{
 		super.init()
 		
-		let hex1 = ShapeHexa(size: 6, color: grey)
+		let hex1 = ShapeHexagon(size: 6, color: grey)
 		hex1.position = SCNVector3(0,0,2)
 		root.addChildNode(hex1)
-		let hex2 = ShapeHexa(size: 6, color: grey)
+		let hex2 = ShapeHexagon(size: 6, color: grey)
 		hex2.position = SCNVector3(0,0,0)
 		root.addChildNode(hex2)
-		let hex3 = ShapeHexa(size: 6, color: grey)
+		let hex3 = ShapeHexagon(size: 6, color: grey)
 		hex3.position = SCNVector3(0,0,-2)
 		root.addChildNode(hex3)
-		let hex4 = ShapeHexa(size: 6, color: grey)
+		let hex4 = ShapeHexagon(size: 6, color: grey)
 		hex4.position = SCNVector3(0,0,4)
 		root.addChildNode(hex4)
-		let hex5 = ShapeHexa(size: 6, color: grey)
+		let hex5 = ShapeHexagon(size: 6, color: grey)
 		hex5.position = SCNVector3(0,0,-4)
 		root.addChildNode(hex5)
-		
-		root.eulerAngles.x = degToRad(90)
-		root.eulerAngles.y = degToRad(90)
 	}
 	
 	required init?(coder aDecoder: NSCoder)

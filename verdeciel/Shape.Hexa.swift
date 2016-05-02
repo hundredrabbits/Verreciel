@@ -7,13 +7,15 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class ShapeHexa : Empty
+class ShapeHexagon : Empty
 {
 	init(size:CGFloat, color:UIColor = white)
 	{
 		super.init()
 		
-		addChildNode(SCNLine(vertices: [SCNVector3(0,size,0), SCNVector3(size/2,size/2,0), SCNVector3(size/2,-size/2,0), SCNVector3(size/2,size/2,0), SCNVector3(size/2,-size/2,0), SCNVector3(0,-size,0), SCNVector3(0,size,0), SCNVector3(-size/2,size/2,0), SCNVector3(-size/2,-size/2,0), SCNVector3(-size/2,size/2,0), SCNVector3(-size/2,-size/2,0), SCNVector3(0,-size,0)], color: color))
+		let angle:CGFloat = 1.5
+		
+		addChildNode(SCNLine(vertices: [SCNVector3(0,0,size), SCNVector3(size/angle,0,size/angle), SCNVector3(size/angle,0,-size/angle), SCNVector3(size/angle,0,size/angle), SCNVector3(size/angle,0,-size/angle), SCNVector3(0,0,-size), SCNVector3(0,0,size), SCNVector3(-size/angle,0,size/angle), SCNVector3(-size/angle,0,-size/angle), SCNVector3(-size/angle,0,size/angle), SCNVector3(-size/angle,0,-size/angle), SCNVector3(0,0,-size)], color: color))
 	}
 	
 	required init(coder aDecoder: NSCoder)

@@ -14,6 +14,7 @@ class LocationStar : Location
 				
 		self.isComplete = false
 		
+		self.isComplete = false
 		masterPort = SCNPort(host: self)
 	}
 	
@@ -116,15 +117,43 @@ class StructureStar : Structure
 		
 		root.position = SCNVector3(0,5,0)
 		
-		let scale:Float = 20
-		var value1:Float = 2.75
-		
-		var i = 0
+		var i:Float = 0
 		while i < 20 {
-			value1 -= 0.125
-			root.addChildNode(SCNLine(vertices: [SCNVector3(value1 * scale,0,0), SCNVector3(value1,0,-value1 * scale), SCNVector3(value1 * scale,0,0), SCNVector3(value1,0,value1 * scale), SCNVector3(-value1 * scale,0,0), SCNVector3(-value1,0,-value1 * scale), SCNVector3(-value1 * scale,0,0), SCNVector3(-value1,0,value1 * scale), SCNVector3(value1,0,-value1 * scale), SCNVector3(-value1,0,-value1 * scale), SCNVector3(value1,0,value1 * scale), SCNVector3(-value1,0,value1 * scale)], color: red))
+			let shape = ShapeOctogon(size: CGFloat(i * 0.3))
+			shape.eulerAngles.y = degToRad(22.5)
+			root.addChildNode(shape)
 			i += 1
 		}
+	}
+	
+	override func onDock()
+	{
+		super.onDock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		var i:Float = 0
+		for node in root.childNodes {
+			node.position.y = i * 0.25
+			i += 1
+		}
+		
+		SCNTransaction.commit()
+	}
+	
+	override func onUndock()
+	{
+		super.onDock()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(0.5)
+		
+		for node in root.childNodes {
+			node.position.y = 0
+		}
+		
+		SCNTransaction.commit()
 	}
 	
 	required init?(coder aDecoder: NSCoder)

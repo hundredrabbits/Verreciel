@@ -80,7 +80,6 @@ class PanelRadar : MainPanel
 		shipCursor.rotation = SCNVector4Make(0, 0, 1, Float(M_PI * directionNormal))
 		
 		updateTarget()
-		scan()
 	}
 
 	// MARK: Custom -
@@ -132,25 +131,6 @@ class PanelRadar : MainPanel
 	{
 		port.event = nil
 		targetter.hide()
-	}
-	
-	// MARK: Scan -
-	
-	var closestStar:Location!
-	
-	func scan()
-	{
-//		for location in universe.childNodes {
-//			let location = location as! Location
-//			if location.type == .star {
-//				if closestStar == nil {
-//					closestStar = location
-//				}
-//				else if( location.distance < closestStar.distance ){
-//					closestStar = location
-//				}
-//			}
-//		}
 	}
 	
 	override func onInstallationBegin()

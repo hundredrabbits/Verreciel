@@ -31,7 +31,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate
 		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
 		sceneView.preferredFramesPerSecond = 30
 		sceneView.playing = true
-		sceneView.showsStatistics = false
+		sceneView.showsStatistics = true
 		sceneView.delegate = self
 	}
 	

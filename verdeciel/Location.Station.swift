@@ -13,7 +13,6 @@ class LocationStation : Location
 	
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), requirement:Item! = nil, installation:() -> Void, installationName:String, mapRequirement:Item! = nil)
 	{
-		
 		self.installation = installation
 		self.requirement = requirement
 		self.installationName = installationName
@@ -106,9 +105,9 @@ class StructureStation : Structure
 			let axis = Empty()
 			axis.eulerAngles.y = (degToRad(Float(Float(i) * Float(360/nodes))))
 			
-			let node = ShapeHexa(size: 4, color: red)
+			let node = ShapeHexagon(size: 4, color: red)
 			node.eulerAngles.x = (degToRad(90))
-			let node1 = ShapeHexa(size: 4, color: red)
+			let node1 = ShapeHexagon(size: 4, color: red)
 			node1.eulerAngles.y = (degToRad(90))
 			
 			axis.addChildNode(node)

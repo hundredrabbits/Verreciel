@@ -62,7 +62,6 @@ class WidgetShield : Widget
 	
 	func mode_none()
 	{
-		
 		capsule.shieldRoot.updateChildrenColors(clear)
 		capsule.shieldRoot.hide()
 	}
