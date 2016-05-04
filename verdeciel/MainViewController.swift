@@ -11,7 +11,7 @@ var scene = SCNScene()
 var touchOrigin = CGPoint()
 var touchPosition = CGPoint()
 
-class GameViewController: UIViewController, SCNSceneRendererDelegate
+class MainViewController: UIViewController, SCNSceneRendererDelegate
 {
     override func viewDidLoad()
 	{
