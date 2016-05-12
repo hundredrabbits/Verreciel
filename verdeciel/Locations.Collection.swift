@@ -13,6 +13,7 @@ class LocationCollection
 	let usul  = Usul(offset: CGPoint(x: -3,y: 0))
 	let valen = Valen(offset: CGPoint(x: 3,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 3))
+	let close = Close(offset: CGPoint(x: 0,y: 0))
 	
 	init()
 	{
@@ -280,5 +281,21 @@ class Senni
 	func bog() -> LocationTrade
 	{
 		return LocationTrade(name: "bog", system:system, at: CGPoint(x: offset.x + 1, y: offset.y + 1), want: items.kelp, give: items.record_oquonie, mapRequirement: items.map2)
+	}
+}
+
+class Close
+{
+	var system:Systems = .close
+	var offset:CGPoint!
+	
+	init(offset:CGPoint)
+	{
+		self.offset = offset
+	}
+	
+	func void() -> LocationClose
+	{
+		return LocationClose(name:"close",system:system,at:offset)
 	}
 }

@@ -78,8 +78,8 @@ enum Systems
 	case valen
 	case senni
 	case usul
-	case nevic
-	
+	case close
+
 	case unknown
 }
 

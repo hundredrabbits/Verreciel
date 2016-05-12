@@ -39,6 +39,7 @@
 		574E5FBB1BC57749008130AB /* Items.Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBA1BC57749008130AB /* Items.Collection.swift */; };
 		574E5FC01BC578E1008130AB /* Location.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* Location.Trade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
+		574F3CFB1CE4EA3B006B41F0 /* Location.Close.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574F3CFA1CE4EA3B006B41F0 /* Location.Close.swift */; };
 		5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3411CA1FAA10031524B /* Porthole.Above.swift */; };
 		5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3431CA1FACA0031524B /* Porthole.below.swift */; };
 		5759C3471CA21DC10031524B /* Shape.Hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3461CA21DC10031524B /* Shape.Hexa.swift */; };
@@ -130,6 +131,7 @@
 		574E5FBA1BC57749008130AB /* Items.Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Items.Collection.swift; sourceTree = "<group>"; };
 		574E5FBF1BC578E1008130AB /* Location.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Trade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		574F3CFA1CE4EA3B006B41F0 /* Location.Close.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Close.swift; sourceTree = "<group>"; };
 		5759C3411CA1FAA10031524B /* Porthole.Above.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.Above.swift; sourceTree = "<group>"; };
 		5759C3431CA1FACA0031524B /* Porthole.below.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.below.swift; sourceTree = "<group>"; };
 		5759C3461CA21DC10031524B /* Shape.Hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.Hexa.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				574E5FBF1BC578E1008130AB /* Location.Trade.swift */,
 				57A518521C7501AD0012DABD /* Location.Constellation.swift */,
 				57C9F05F1CAF51F80050AE9E /* Location.Transit.swift */,
+				574F3CFA1CE4EA3B006B41F0 /* Location.Close.swift */,
 			);
 			name = Locations;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				57FA031D1BBA21490077D517 /* Location.Station.swift in Sources */,
 				574156DA1BE12E6C008B6C44 /* Location.Horadric.swift in Sources */,
 				579B376E1CCAF4B400D66CC7 /* Shape.Diamond.swift in Sources */,
+				574F3CFB1CE4EA3B006B41F0 /* Location.Close.swift in Sources */,
 				57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */,
 				573EDAB71B4B4FCE007C6D3C /* MainPanel.Thruster.swift in Sources */,
 				574156DF1BE12FAA008B6C44 /* Recipe.swift in Sources */,

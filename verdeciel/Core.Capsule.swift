@@ -116,6 +116,16 @@ class CoreCapsule: Empty
 		return closestLocation
 	}
 	
+	func closestStar() -> LocationStar
+	{
+		if system == .loiqe { return universe.loiqe }
+		else if system == .valen { return universe.valen }
+		else if system == .senni { return universe.senni }
+		else if system == .usul { return universe.usul }
+		
+		return universe.loiqe
+	}
+	
 	func closestKnownLocation() -> Location!
 	{
 		var closestLocation:Location!

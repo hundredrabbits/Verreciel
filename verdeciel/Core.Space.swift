@@ -40,10 +40,13 @@ class CoreSpace: Empty
 		
 		switch system {
 		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white
-		case .nevic : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
 		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
+		}
+		
+		if capsule.closestStar().isComplete == true {
+			targetSpaceColor = [44/255,73/255,65/255]
 		}
 	}
 	

@@ -18,6 +18,7 @@ class CoreUniverse : Empty
 		addUsul()
 		addValen()
 		addSenni()
+		addClose()
 		
 		connectPaths()
 	}
@@ -142,6 +143,15 @@ class CoreUniverse : Empty
 		addChildNode(usul_silence)
 	}
 	
+	// MARK: Close -
+	
+	var close = locations.close.void()
+	
+	func addClose()
+	{
+		addChildNode(close)
+	}
+	
 	func connectPaths()
 	{
 		loiqe_city.connect(loiqe_satellite)
@@ -192,6 +202,15 @@ class CoreUniverse : Empty
 			if location.code == code { return location }
 		}
 		return nil
+	}
+	
+	func closeSystem(system:Systems)
+	{
+		for location in childNodes as! [Location] {
+			if location.system == system {
+				location.close()
+			}
+		}
 	}
 	
 	// Default

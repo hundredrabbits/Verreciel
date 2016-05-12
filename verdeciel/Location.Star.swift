@@ -82,6 +82,14 @@ class LocationStar : Location
 		onComplete()
 	}
 	
+	override func onComplete()
+	{
+		super.onComplete()
+		
+		space.onSystemEnter(capsule.system)
+		universe.closeSystem(system)
+	}
+	
 	override func onDisconnect()
 	{
 	}
