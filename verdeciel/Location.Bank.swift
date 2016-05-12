@@ -64,6 +64,18 @@ class LocationBank : Location
 		return newPanel
 	}
 	
+	func addItems(items:Array<Item>)
+	{
+		for item in items {
+			if port1.hasItem() == false { port1.addEvent(item) }
+			else if port2.hasItem() == false { port2.addEvent(item) }
+			else if port3.hasItem() == false { port3.addEvent(item) }
+			else if port4.hasItem() == false { port4.addEvent(item) }
+			else if port5.hasItem() == false { port5.addEvent(item) }
+			else if port6.hasItem() == false { port6.addEvent(item) }
+		}
+	}
+	
 	func contains(item:Item) -> Bool
 	{
 		if port1.event != nil && port1.event == item { return true }

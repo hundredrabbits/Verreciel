@@ -39,6 +39,8 @@ class WidgetRadio : Widget
 	
 	override func onInstallationComplete()
 	{
+		super.onInstallationComplete()
+		
 		battery.installRadio()
 	}
 	

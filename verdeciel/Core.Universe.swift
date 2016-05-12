@@ -21,16 +21,7 @@ class CoreUniverse : Empty
 		
 		connectPaths()
 	}
-	
-	override func whenStart()
-	{
-		super.whenStart()
 		
-		valen_bank.port1.addEvent(items.loiqePortalKey)
-		valen_bank.port2.addEvent(items.record1)
-		valen_bank.port3.addEvent(Item(like:items.waste))
-	}
-	
 	// MARK: Loiqe -
 	
 	var loiqe = locations.loiqe.star()
