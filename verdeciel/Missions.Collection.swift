@@ -307,7 +307,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Install Shield")
 		m.state = {
-			capsule.beginAtLocation(universe.senni_station)
+			capsule.beginAtLocation(universe.loiqe_horadric)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
@@ -326,7 +326,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "Create \(items.endPortalKey.name)")
 		m.state = {
-			capsule.beginAtLocation(universe.senni_station)
+			capsule.beginAtLocation(universe.usul_station)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
@@ -345,7 +345,7 @@ class MissionCollection
 
 		m = Mission(id:(story.count), name: "Last Quest")
 		m.state = {
-			capsule.beginAtLocation(universe.senni_station)
+			capsule.beginAtLocation(universe.loiqe_horadric)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)

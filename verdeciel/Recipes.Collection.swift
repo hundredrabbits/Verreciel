@@ -16,9 +16,9 @@ class RecipesCollection
 		horadric.append( Recipe(ingredients: [items.valenPortalFragment1, items.valenPortalFragment2], result: items.valenPortalKey) )
 		horadric.append( Recipe(ingredients: [items.usulPortalFragment1, items.usulPortalFragment2], result: items.usulPortalKey) )
 		
-		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.endKeyFragment1) )
-		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.endKeyFragment2) )
-		horadric.append( Recipe(ingredients: [items.endKeyFragment1, items.endKeyFragment2], result: items.endKey) )
+		horadric.append( Recipe(ingredients: [items.valenPortalKey, items.usulPortalKey], result: items.endPortalKeyFragment1) )
+		horadric.append( Recipe(ingredients: [items.loiqePortalKey, items.senniPortalKey], result: items.endPortalKeyFragment2) )
+		horadric.append( Recipe(ingredients: [items.endPortalKeyFragment1, items.endPortalKeyFragment2], result: items.endPortalKey) )
 		
 		// Currencies
 		

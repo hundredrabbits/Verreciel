@@ -37,9 +37,12 @@ class WidgetMap : Widget
 	{
 		super.onInstallationBegin()
 		
-		battery.installMap()
-		
 		player.lookAt(deg: -90)
+	}
+	
+	override func onInstallationComplete()
+	{
+		battery.installMap()
 	}
 
 	required init?(coder aDecoder: NSCoder)

@@ -43,7 +43,7 @@ class LocationStar : Location
 	
 	override func onConnect()
 	{
-		if masterPort.isReceiving(items.endKey) == true {
+		if masterPort.isReceiving(items.endPortalKey) == true {
 			button.enable("extinguish")
 		}
 	}

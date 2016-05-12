@@ -34,8 +34,12 @@ class WidgetRadio : Widget
 	{
 		super.onInstallationBegin()
 		
-		battery.installRadio()
 		player.lookAt(deg: 0)
+	}
+	
+	override func onInstallationComplete()
+	{
+		battery.installRadio()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
