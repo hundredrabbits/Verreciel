@@ -39,7 +39,7 @@ class Loiqe
 	
 	func spawn() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2.75), message:"[missing]", item: items.teapot, mapRequirement: items.map2)
+		return LocationSatellite(name: "spawn", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2.75), message:"[missing]", item: items.teapot, mapRequirement: items.map2)
 	}
 	
 	func harvest() -> LocationHarvest

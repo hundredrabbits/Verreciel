@@ -19,6 +19,8 @@ class CoreGame
 	
 	func start()
 	{
+		erase()
+		
 		universe.whenStart()
 		capsule.whenStart()
 		player.whenStart()
@@ -93,7 +95,10 @@ class CoreGame
 	
 	func erase()
 	{
-		print("Game erased!")
+		print("$ GAME     | Erase")
+		
+		let appDomain = NSBundle.mainBundle().bundleIdentifier!
+		NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
 	}
 	
 	// MARK: Memory -
@@ -164,21 +169,23 @@ class CoreGame
 		if let code = loadWithKey("bank-5") { if let item = loadItemWithCode(code) { universe.valen_bank.port5.addEvent(item) } }
 		if let code = loadWithKey("bank-6") { if let item = loadItemWithCode(code) { universe.valen_bank.port6.addEvent(item) } }
 		
-		if let code = loadWithKey("capsule-location") { capsule.dock(universe.locationWithCode(code)) }
+		if let code = loadWithKey("capsule-location") { capsule.beginAtLocation(universe.locationWithCode(code)) }
 		if let int = loadIntWithKey("capsule-quest-id") { missions.skipTo(int) }
 		
-		if loadBoolWithKey("capsule-panel-journey") == true { journey.install() }
-		if loadBoolWithKey("capsule-panel-exploration") == true { exploration.install() }
-		if loadBoolWithKey("capsule-panel-progress") == true { progress.install() }
-		if loadBoolWithKey("capsule-panel-completion") == true { completion.install() }
+		if loadBoolWithKey("capsule-panel-journey") == true { journey.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-exploration") == true { exploration.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-progress") == true { progress.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-completion") == true { completion.onInstallationComplete() }
 		
-		if loadBoolWithKey("capsule-panel-battery") == true { battery.install() }
-		if loadBoolWithKey("capsule-panel-hatch") == true { hatch.install() }
-		if loadBoolWithKey("capsule-panel-console") == true { console.install() }
-		if loadBoolWithKey("capsule-panel-cargo") == true { cargo.install() }
-		if loadBoolWithKey("capsule-panel-intercom") == true { intercom.install() }
-		if loadBoolWithKey("capsule-panel-radar") == true { radar.install() }
-		if loadBoolWithKey("capsule-panel-thruster") == true { thruster.install() }
+		if loadBoolWithKey("capsule-panel-battery") == true { battery.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-hatch") == true { hatch.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-console") == true { console.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-cargo") == true { cargo.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-intercom") == true { intercom.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-radar") == true { radar.onInstallationComplete() }
+		if loadBoolWithKey("capsule-panel-thruster") == true { thruster.onInstallationComplete() }
+		
+		print(loadBoolWithKey("capsule-panel-battery"))
 		
 		print("$ GAME     | Loading..done!")
 	}

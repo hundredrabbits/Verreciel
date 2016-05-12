@@ -10,7 +10,7 @@ class LocationSatellite : Location
 
 	init(name:String, system:Systems, at: CGPoint = CGPoint(), message:String,item:Event!, mapRequirement:Item! = nil)
 	{
-		super.init(name:name, system:system, at:at, icon:IconSatellite(), structure:StructureSatellite())
+		super.init(name:name, system:system, at:at, icon:IconSatellite(), structure:(name == "spawn" ? Structure() : StructureSatellite()))
 		
 		self.details = item.name!
 		self.isComplete = false
