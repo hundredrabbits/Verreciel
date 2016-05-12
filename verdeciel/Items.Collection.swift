@@ -23,9 +23,9 @@ class ItemCollection
 	let usulPortalFragment1 = Item(name: "Key Part I", type: .fragment, note:"half a Portal key", isQuest:true,code:"usul-key-1")
 	let usulPortalFragment2 = Item(name: "Key Part II", type: .fragment, note:"half a Portal key", isQuest:true,code:"usul-key-2")
 	
-	let endKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true,code:"end-key")
-	let endKeyFragment1 = Item(name: "Key Part I", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-1")
-	let endKeyFragment2 = Item(name: "Key Part II", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-2")
+	let endPortalKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true,code:"end-key")
+	let endPortalKeyFragment1 = Item(name: "Key Part I", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-1")
+	let endPortalKeyFragment2 = Item(name: "Key Part II", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-2")
 	
 	// Etc..
 	
