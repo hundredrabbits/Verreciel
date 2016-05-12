@@ -20,7 +20,7 @@ class CoreGame
 	
 	func start()
 	{
-		erase()
+//		erase()
 		
 		universe.whenStart()
 		capsule.whenStart()
@@ -29,18 +29,19 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-//		unlockedState()
+		print(memory.integerForKey("state"))
 		
-		new()
-		
-//		print("save something")
-//		memory.setValue("hello", forKey: "test")
-//		print("load something")
-//		print(loadWithKey("test"))
+		if memory.integerForKey("state") > 0 {
+			load(memory.integerForKey("state"))
+		}
+		else{
+			new()
+		}
 	}
 	
 	func new()
 	{
+		print("@ GAME     | New Game State")
 		battery.install()
 		capsule.beginAtLocation(universe.loiqe_spawn)
 		battery.cellPort1.addEvent(items.battery1)
@@ -48,11 +49,23 @@ class CoreGame
 	
 	func save(id:Int)
 	{
-		print("@ GAME     | Saved: #\(id)")
+		print("@ GAME     | Saved State to \(id)")
 		memory.setValue(id, forKey: "state")
 	}
 	
-	func unlockedState(location:Location = universe.loiqe_spawn, newItems:Array<Item> = [items.loiqePortalKey])
+	func load(id:Int)
+	{
+		print("@ GAME     | Loaded State to \(id)")
+		
+		for mission in missions.story {
+			if mission.id < id {
+				mission.complete()
+			}
+		}
+		missions.story[id].state()
+	}
+	
+	func debug(location:Location = universe.loiqe_spawn, newItems:Array<Item> = [items.loiqePortalKey])
 	{
 		battery.onInstallationComplete()
 		pilot.onInstallationComplete()
@@ -105,16 +118,6 @@ class CoreGame
 		
 		let appDomain = NSBundle.mainBundle().bundleIdentifier!
 		NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-	}
-	
-	// MARK: Tools -
-	
-	func loadWithKey(key:String) -> String!
-	{
-		if let result = memory.stringForKey(key) {
-			return result
-		}
-		return nil
 	}
 	
 	@objc func whenSecond()

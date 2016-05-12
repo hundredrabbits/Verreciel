@@ -34,12 +34,20 @@ class MissionCollection
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: {  }),
 		]
-		m.state = {
-			
-		}
 		story.append(m)
 		
 		m = Mission(id:(story.count), name: "Aquire Fragment")
+		m.state = {
+			capsule.beginAtLocation(universe.loiqe_city)
+			cargo.addItems([Item(like:items.currency1)])
+			battery.onInstallationComplete()
+			thruster.onInstallationComplete()
+			radar.onInstallationComplete()
+			
+			universe.loiqe_spawn.isKnown = true
+			universe.loiqe_harvest.isKnown = true
+			universe.loiqe_city.isKnown = true
+		}
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
 			Quest(name:"Route \(items.currency1.name!) to cargo", location: universe.loiqe_harvest, predicate:{ cargo.containsLike(items.currency1) || capsule.isDockedAtLocation(universe.loiqe_city) }, result: { }),
@@ -218,16 +226,12 @@ class MissionCollection
 		for mission in story {
 			if mission.isCompleted == false {
 				currentMission = mission
-				print("# MISSION  | Updated CurrentMission to: \(currentMission.id)")
-				
+				print("# ---------------------------")
+				print("# MISSION  | Reached to: \(currentMission.id)")
+				print("# ---------------------------")
+				game.save(currentMission.id)
 				return
 			}
 		}
-	}
-	
-	func skipTo(id:Int)
-	{
-		// TODO: 
-		print("!???")
 	}
 }
