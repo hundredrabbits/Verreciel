@@ -23,7 +23,14 @@ class MissionCollection
 		
 		// Loiqe
 		
+		// MARK: Part 0
+		
 		m = Mission(id:(story.count), name: "")
+		m.state = {
+			capsule.beginAtLocation(universe.loiqe_city)
+			battery.cellPort1.addEvent(items.battery1)
+			self.setToKnown([universe.loiqe_spawn])
+		}
 		m.quests = [
 			Quest(name:"Route cell to thruster", predicate:{ battery.thrusterPort.isReceivingItemOfType(.battery) == true }, result: { thruster.install() }),
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_spawn && universe.loiqe_spawn.isKnown == true }, result: { }),
@@ -36,17 +43,15 @@ class MissionCollection
 		]
 		story.append(m)
 		
+		// MARK: Part 1
+		
 		m = Mission(id:(story.count), name: "Aquire Fragment")
 		m.state = {
 			capsule.beginAtLocation(universe.loiqe_city)
+			battery.cellPort1.addEvent(items.battery1)
 			cargo.addItems([Item(like:items.currency1)])
-			battery.onInstallationComplete()
-			thruster.onInstallationComplete()
-			radar.onInstallationComplete()
-			
-			universe.loiqe_spawn.isKnown = true
-			universe.loiqe_harvest.isKnown = true
-			universe.loiqe_city.isKnown = true
+			self.setToInstalled([battery,thruster,radar])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city])
 		}
 		m.predicate = { cargo.contains(items.valenPortalFragment1) == true }
 		m.quests = [
@@ -56,14 +61,34 @@ class MissionCollection
 		]
 		story.append(m)
 		
+		// MARK: Part 2
+		
 		m = Mission(id:(story.count), name: "Use radar")
+		m.state = {
+			capsule.beginAtLocation(universe.loiqe_city)
+			battery.cellPort1.addEvent(items.battery1)
+			cargo.addItems([items.valenPortalFragment1])
+			self.setToInstalled([battery,thruster,radar,progress])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city])
+			self.setToCompleted([universe.loiqe_city])
+		}
 		m.quests = [
 			Quest(name:"Select satellite on radar", location:universe.loiqe_city, predicate:{ radar.port.event != nil && radar.port.event == universe.loiqe_satellite }, result: { pilot.install() ; thruster.unlock() }),
 			Quest(name:"Route Radar to Pilot", predicate:{ pilot.port.origin != nil && pilot.port.origin == radar.port }, result: { })
 		]
 		story.append(m)
 		
+		// MARK: Part 3
+		
 		m = Mission(id:(story.count), name: "Create portal key")
+		m.state = {
+			capsule.beginAtLocation(universe.loiqe_city)
+			battery.cellPort1.addEvent(items.battery1)
+			cargo.addItems([items.valenPortalFragment1])
+			self.setToInstalled([battery,thruster,radar,progress,pilot])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city])
+			self.setToCompleted([universe.loiqe_city])
+		}
 		m.predicate = { cargo.contains(items.valenPortalKey) == true }
 		m.quests = [
 			Quest(name:"Aquire \(items.valenPortalFragment1.name!)", location: universe.loiqe_city, predicate:{ cargo.contains(items.valenPortalFragment1) == true || capsule.isDockedAtLocation(universe.loiqe_horadric) == true }, result: { }),
@@ -72,34 +97,54 @@ class MissionCollection
 		]
 		story.append(m)
 		
+		// MARK: Part 4
+		
 		m = Mission(id:(story.count), name: "The Portal transit")
+		m.state = {
+			capsule.beginAtLocation(universe.loiqe_horadric)
+			battery.cellPort1.addEvent(items.battery1)
+			cargo.addItems([items.valenPortalKey])
+			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric])
+			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite])
+		}
 		m.predicate = { universe.valen_portal.isKnown == true }
 		m.quests = [
-			Quest(name:"Route \(items.valenPortalKey.name!) to Poral", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
+			Quest(name:"Route \(items.valenPortalKey.name!) to Portal", location: universe.loiqe_portal, predicate:{ capsule.isDockedAtLocation(universe.loiqe_portal) && intercom.port.isReceiving(items.valenPortalKey) == true }, result: { }),
 			Quest(name:"Align pilot to portal", location: universe.loiqe_portal, predicate:{ pilot.port.isReceiving(universe.valen_portal) == true }, result: {  }),
 			Quest(name:"Power Thruster with portal", location: universe.loiqe_portal, predicate:{ thruster.port.isReceiving(items.warpDrive) == true }, result: { }),
 		]
 		story.append(m)
 		
-		m = Mission(id:(story.count), name: "Warp to valen")
-		m.quests = [
-			Quest(name:"Reach valen", location:universe.loiqe_portal, predicate:{ universe.valen_portal.isKnown == true }, result: { battery.cellPort2.enable("empty",color:grey) ; battery.cellPort3.enable("empty",color:grey) })
-		]
-		story.append(m)
-		
-		// Go to Valen
+		// MARK: Part 5
 		
 		m = Mission(id:(story.count), name: "Install Radio")
+		m.state = {
+			capsule.beginAtLocation(universe.valen_portal)
+			battery.cellPort1.addEvent(items.battery1)
+			cargo.addItems([items.valenPortalKey])
+			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal])
+			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite])
+		}
 		m.predicate = { radio.isInstalled == true }
 		m.quests = [
 			Quest(name:"Collect \(items.record1.name!)", location: universe.valen_bank, predicate:{ cargo.contains(items.record1) }, result: {  }),
-			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery2) || cargo.contains(items.battery2) }, result: {  }),
+			Quest(name:"Collect second cell", location: universe.valen_cargo, predicate:{ battery.hasCell(items.battery2) || cargo.contains(items.battery2) }, result: { battery.cellPort2.enable("empty",color:grey) }),
 			Quest(name:"Collect \(items.currency2.name!)", location: universe.valen_harvest, predicate:{ cargo.containsLike(items.currency2) }, result: { }),
 			Quest(name:"Install radio", location: universe.valen_station, predicate:{ radio.isInstalled == true }, result: { journey.install() })
 		]
 		story.append(m)
 		
 		m = Mission(id:(story.count), name: "Radio Lesson")
+		m.state = {
+			capsule.beginAtLocation(universe.valen_portal)
+			battery.cellPort1.addEvent(items.battery1)
+			cargo.addItems([items.valenPortalKey])
+			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal])
+			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite])
+		}
 		m.quests = [
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery2) }, result: {  }),
 			Quest(name:"Power radio", predicate:{ battery.isRadioPowered() == true }, result: {  }),
@@ -155,7 +200,7 @@ class MissionCollection
 		m.quests = [
 			Quest(name:"Power Map in battery", predicate:{ battery.isMapPowered() == true }, result: {  }),
 			Quest(name:"Route fog to map", predicate:{ map.port.hasItemOfType(.map) }, result: {  }),
-			Quest(name:"Collect third cell", location: universe.senni_fog, predicate:{ battery.hasCell(items.battery3) || cargo.contains(items.battery3) }, result: {  }),
+			Quest(name:"Collect third cell", location: universe.senni_fog, predicate:{ battery.hasCell(items.battery3) || cargo.contains(items.battery3) }, result: {  battery.cellPort3.enable("empty",color:grey) }),
 			Quest(name:"Install cell in battery", predicate:{ battery.hasCell(items.battery3) }, result: {  }),
 		]
 		story.append(m)
@@ -209,6 +254,27 @@ class MissionCollection
 	}
 	
 	// MARK: Tools -
+	
+	func setToInstalled(panels:Array<Panel>)
+	{
+		for panel in panels {
+			panel.onInstallationComplete()
+		}
+	}
+	
+	func setToKnown(locations:Array<Location>)
+	{
+		for location in locations {
+			location.isKnown = true
+		}
+	}
+	
+	func setToCompleted(locations:Array<Location>)
+	{
+		for location in locations {
+			location.isComplete = true
+		}
+	}
 	
 	var currentMission:Mission = Mission(id:0, name: "--")
 	

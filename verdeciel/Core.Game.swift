@@ -31,20 +31,7 @@ class CoreGame
 		
 		print(memory.integerForKey("state"))
 		
-		if memory.integerForKey("state") > 0 {
-			load(memory.integerForKey("state"))
-		}
-		else{
-			new()
-		}
-	}
-	
-	func new()
-	{
-		print("@ GAME     | New Game State")
-		battery.install()
-		capsule.beginAtLocation(universe.loiqe_spawn)
-		battery.cellPort1.addEvent(items.battery1)
+		load(memory.integerForKey("state"))
 	}
 	
 	func save(id:Int)
