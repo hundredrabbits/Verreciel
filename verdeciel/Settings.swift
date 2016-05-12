@@ -9,6 +9,7 @@ import Foundation
 
 // Generic
 let version = "r1"
+let audio = CoreAudio()
 
 // Panels
 let battery = PanelBattery()

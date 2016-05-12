@@ -138,6 +138,8 @@ class PanelCargo : MainPanel
 		refresh()
 		
 		if port.isConnectedToPanel(console) == true { console.onConnect() }
+		
+		audio.playSound("click4")
 	}
 	
 	override func refresh()
@@ -180,6 +182,8 @@ class PanelCargo : MainPanel
 		refresh()
 		
 		if port.isConnectedToPanel(console) == true { console.onConnect() }
+		
+		audio.playSound("click3")
 	}
 	
 	override func onConnect()

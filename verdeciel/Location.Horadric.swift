@@ -141,6 +141,7 @@ class LocationHoradric : Location
 		
 		combinationRecipe = recipe
 		combineProgress()
+		audio.playSound("beep1")
 	}
 	
 	func combineProgress()
@@ -171,6 +172,7 @@ class LocationHoradric : Location
 		combinationPercentage = 0
 		
 		refresh()
+		audio.playSound("beep2")
 	}
 		
 	// MARK: Defaults -

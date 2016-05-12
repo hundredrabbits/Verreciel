@@ -144,9 +144,11 @@ class PanelThruster : MainPanel
 	{
 		if id == 0 {
 			speedDown()
+			audio.playSound("click3")
 		}
 		else if id == 1 {
 			speedUp()
+			audio.playSound("click4")
 		}
 		if id == 2 {
 			if canWarp == true {
@@ -155,6 +157,7 @@ class PanelThruster : MainPanel
 			else{
 				capsule.undock()
 			}
+			audio.playSound("click2")
 		}
 	}
 	

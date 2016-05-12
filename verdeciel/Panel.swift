@@ -63,6 +63,7 @@ class Panel : Empty
 	func onInstallationBegin()
 	{
 		print("+ PANEL    | Installing the \(name!)..")
+		audio.playSound("beep1")
 	}
 	
 	func onInstallationComplete()
@@ -70,6 +71,7 @@ class Panel : Empty
 		print("+ PANEL    | Installed the \(name!).")
 		installPercentage = 0
 		isInstalled = true
+		audio.playSound("beep2")
 	}
 	
 	override func payload() -> ConsolePayload

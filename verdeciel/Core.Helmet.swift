@@ -176,6 +176,7 @@ class Helmet: Empty
 		warningFlag = flag
 		
 		warningLabel.update(warningString,color:warningColor)
+		audio.playSound("beep3")
 		
 		delay(duration, block: { self.hideWarning(self.warningFlag) })
 	}

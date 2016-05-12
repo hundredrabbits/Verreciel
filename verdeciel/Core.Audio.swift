@@ -20,7 +20,7 @@ class CoreAudio
 	{
 		print(" AUDIO - Sound: \(soundName)")
 		
-		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound.\(soundName)", ofType: "mp3")!)
+		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("\(soundName)", ofType: "wav")!)
 		do{
 			sound_player = try AVAudioPlayer(contentsOfURL:coinSound)
 			sound_player.prepareToPlay()

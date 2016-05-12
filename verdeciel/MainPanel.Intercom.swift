@@ -122,6 +122,7 @@ class PanelIntercom : MainPanel
 	override func touch(id: Int)
 	{
 		refresh()
+		audio.playSound("click3")
 	}
 	
 	override func refresh()

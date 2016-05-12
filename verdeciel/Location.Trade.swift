@@ -69,6 +69,7 @@ class LocationTrade : Location
 	override func onUploadComplete()
 	{
 		refresh()
+		audio.playSound("beep2")
 	}
 	
 	override func onDisconnect()

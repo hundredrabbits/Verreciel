@@ -66,6 +66,7 @@ class PanelHatch : MainPanel
 		count += 1
 		update()
 		missions.refresh()
+		audio.playSound("click3")
 	}
 	
 	override func update()

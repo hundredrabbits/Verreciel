@@ -57,6 +57,7 @@ class SCNHandle : Empty
 	override func touch(id:Int = 0)
 	{
 		player.holdHandle(self)
+		audio.playSound("click4")
 	}
 	
 	required init?(coder aDecoder: NSCoder)

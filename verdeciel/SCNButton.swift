@@ -50,6 +50,7 @@ class SCNButton : Empty
 	override func touch(id:Int = 0)
 	{
 		host.touch(self.operation)
+		audio.playSound("click3")
 	}
 	
 	required init?(coder aDecoder: NSCoder)

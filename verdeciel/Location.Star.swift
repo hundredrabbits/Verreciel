@@ -73,7 +73,7 @@ class LocationStar : Location
 	override func touch(id: Int)
 	{
 		super.touch(id)
-		if id == 1 { extinguish() }
+		if id == 1 { extinguish() ; audio.playSound("click3") }
 	}
 	
 	func extinguish()

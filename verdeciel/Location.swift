@@ -140,6 +140,7 @@ class Location : Event
 		structure.onDock()
 		icon.onUpdate()
 		exploration.refresh()
+		audio.playSound("beep2")
 	}
 	
 	func onUndock()
@@ -170,6 +171,7 @@ class Location : Event
 		icon.onUpdate()
 		structure.onComplete()
 		intercom.complete()
+		audio.playSound("beep1")
 	}
 	
 	func sightUpdate()
@@ -236,12 +238,15 @@ class Location : Event
 		
 		if radar.port.event == nil {
 			radar.addTarget(self)
+			audio.playSound("click3")
 		}
 		else if radar.port.event == self {
 			radar.removeTarget()
+			audio.playSound("click2")
 		}
 		else{
 			radar.addTarget(self)
+			audio.playSound("click1")
 		}
 	}
 	

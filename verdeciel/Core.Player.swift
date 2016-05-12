@@ -139,6 +139,7 @@ class CorePlayer : Empty
 		
 		activePort = port
 		port.activate()
+		audio.playSound("click1")
 	}
 	
 	func connectPorts(from:SCNPort,to:SCNPort)
@@ -151,6 +152,7 @@ class CorePlayer : Empty
 		to.desactivate()
 		from.update()
 		to.update()
+		audio.playSound("click3")
 	}
 	
 	func releasePort()
@@ -160,6 +162,7 @@ class CorePlayer : Empty
 		activePort.desactivate()
 		activePort.disconnect()
 		activePort = nil
+		audio.playSound("click2")
 	}
 	
 	// MARK: Right Hand -
