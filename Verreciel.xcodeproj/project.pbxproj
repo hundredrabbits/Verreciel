@@ -99,6 +99,10 @@
 		57FB787D1CE52DFE003E3476 /* beep1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57FB787A1CE52DFE003E3476 /* beep1.wav */; };
 		57FB787E1CE52DFE003E3476 /* beep2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57FB787B1CE52DFE003E3476 /* beep2.wav */; };
 		57FB787F1CE52DFE003E3476 /* beep3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57FB787C1CE52DFE003E3476 /* beep3.wav */; };
+		57FB788D1CE5400B003E3476 /* ambience1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FB78891CE5400B003E3476 /* ambience1.mp3 */; };
+		57FB788E1CE5400B003E3476 /* ambience2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FB788A1CE5400B003E3476 /* ambience2.mp3 */; };
+		57FB788F1CE5400B003E3476 /* ambience3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FB788B1CE5400B003E3476 /* ambience3.mp3 */; };
+		57FB78901CE5400B003E3476 /* ambience4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FB788C1CE5400B003E3476 /* ambience4.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +202,10 @@
 		57FB787A1CE52DFE003E3476 /* beep1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep1.wav; sourceTree = "<group>"; };
 		57FB787B1CE52DFE003E3476 /* beep2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep2.wav; sourceTree = "<group>"; };
 		57FB787C1CE52DFE003E3476 /* beep3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep3.wav; sourceTree = "<group>"; };
+		57FB78891CE5400B003E3476 /* ambience1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambience1.mp3; sourceTree = "<group>"; };
+		57FB788A1CE5400B003E3476 /* ambience2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambience2.mp3; sourceTree = "<group>"; };
+		57FB788B1CE5400B003E3476 /* ambience3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambience3.mp3; sourceTree = "<group>"; };
+		57FB788C1CE5400B003E3476 /* ambience4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambience4.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +338,7 @@
 		574F3CFC1CE4F30B006B41F0 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				57FB78801CE53EBF003E3476 /* Ambiences */,
 				574F3CFE1CE4F31B006B41F0 /* Effects */,
 				574F3CFD1CE4F315006B41F0 /* Records */,
 			);
@@ -433,6 +442,17 @@
 			name = Splash;
 			sourceTree = "<group>";
 		};
+		57FB78801CE53EBF003E3476 /* Ambiences */ = {
+			isa = PBXGroup;
+			children = (
+				57FB78891CE5400B003E3476 /* ambience1.mp3 */,
+				57FB788A1CE5400B003E3476 /* ambience2.mp3 */,
+				57FB788B1CE5400B003E3476 /* ambience3.mp3 */,
+				57FB788C1CE5400B003E3476 /* ambience4.mp3 */,
+			);
+			name = Ambiences;
+			sourceTree = "<group>";
+		};
 		57FE22A31C4ED7C7004383A8 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,15 +553,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				57EAA5921CD9767C00E356C8 /* SplashTune.wav in Resources */,
+				57FB788E1CE5400B003E3476 /* ambience2.mp3 in Resources */,
 				03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */,
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
 				57FB787E1CE52DFE003E3476 /* beep2.wav in Resources */,
 				57EAA5911CD9767C00E356C8 /* SplashLogo.png in Resources */,
+				57FB788D1CE5400B003E3476 /* ambience1.mp3 in Resources */,
 				574F3D061CE4F34E006B41F0 /* click4.wav in Resources */,
+				57FB78901CE5400B003E3476 /* ambience4.mp3 in Resources */,
 				57FB787D1CE52DFE003E3476 /* beep1.wav in Resources */,
 				03DDE18719CE497F008029A8 /* Main.storyboard in Resources */,
 				57FB787F1CE52DFE003E3476 /* beep3.wav in Resources */,
 				574F3D051CE4F34E006B41F0 /* click3.wav in Resources */,
+				57FB788F1CE5400B003E3476 /* ambience3.mp3 in Resources */,
 				574F3D031CE4F34E006B41F0 /* click1.wav in Resources */,
 				574F3D041CE4F34E006B41F0 /* click2.wav in Resources */,
 				5734D45C1B5AAA7800BF0048 /* Todo in Resources */,

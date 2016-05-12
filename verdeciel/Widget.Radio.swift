@@ -30,6 +30,37 @@ class WidgetRadio : Widget
 		return false
 	}
 	
+	override func onPowered()
+	{
+		super.onPowered()
+		if port.hasItemOfType(.record) {
+			play()
+		}
+	}
+	
+	override func onUnpowered()
+	{
+		super.onUnpowered()
+		stop()
+	}
+	
+	func play()
+	{
+//		audio.playAmbient(port.event.name!)
+	}
+	
+	func stop()
+	{
+		audio.stopAmbient()
+	}
+	
+	override func onUploadComplete()
+	{
+		super.onUploadComplete()
+		
+		print("!!!!!!!!!")
+	}
+	
 	override func onInstallationBegin()
 	{
 		super.onInstallationBegin()

@@ -39,11 +39,11 @@ class CoreSpace: Empty
 		grey = true_grey
 		
 		switch system {
-		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white
-		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
-		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white
-		case .close  : targetSpaceColor = [0.6,0.6,0.6] ; stars_color = black
-		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
+		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white ; audio.playAmbience("ambience1")
+		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan ; audio.playAmbience("ambience2")
+		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white ; audio.playAmbience("ambience3")
+		case .close  : targetSpaceColor = [0.6,0.6,0.6] ; stars_color = black ; audio.playAmbience("ambience4")
+		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white ; audio.playAmbience("ambience3")
 		}
 		
 		if capsule.closestStar().isComplete == true {

@@ -182,13 +182,11 @@ class PanelBattery : MainPanel
 	override func onConnect()
 	{
 		refresh()
-		radio.onConnect()
 	}
 	
 	override func onDisconnect()
 	{
 		refresh()
-		radio.onDisconnect()
 	}
 	
 	override func refresh()

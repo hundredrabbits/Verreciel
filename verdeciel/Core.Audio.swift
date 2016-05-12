@@ -8,7 +8,7 @@ import Foundation
 
 class CoreAudio
 {
-	var ambient_player = AVAudioPlayer()
+	var ambience_player = AVAudioPlayer()
 	var sound_player = AVAudioPlayer()
 	
 	init()
@@ -16,34 +16,46 @@ class CoreAudio
 		
 	}
 	
+	var lastTimeSound:Float = 0
+	
 	func playSound(soundName:String)
 	{
 		print(" AUDIO - Sound: \(soundName)")
 		
-		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("\(soundName)", ofType: "wav")!)
+		if lastTimeSound == game.time { print("silenced") ; return }
+		
+		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(soundName, ofType: "wav")!)
 		do{
 			sound_player = try AVAudioPlayer(contentsOfURL:coinSound)
 			sound_player.prepareToPlay()
 			sound_player.play()
+			lastTimeSound = game.time
 			//			sound_player.numberOfLoops = -1
 		}catch {
 			print("Error getting the audio file")
 		}
 	}
 	
-	func playAmbient(ambientName:String)
+	func playAmbience(ambientName:String)
 	{
-		print(" AUDIO - Ambient: \(ambientName)")
+		print(" AUDIO - Ambience: \(ambientName)")
 		
-		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound.\(ambientName)", ofType: "mp3")!)
+		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(ambientName, ofType: "mp3")!)
 		do{
-			ambient_player = try AVAudioPlayer(contentsOfURL:coinSound)
-			ambient_player.prepareToPlay()
-			ambient_player.play()
-			sound_player.numberOfLoops = -1
+			ambience_player = try AVAudioPlayer(contentsOfURL:coinSound)
+			ambience_player.prepareToPlay()
+			ambience_player.play()
+			ambience_player.numberOfLoops = -1
+			ambience_player.volume = 1
 		}catch {
 			print("Error getting the audio file")
 		}
+	}
+	
+	func stopAmbient()
+	{
+		print(" AUDIO - Ambient: Stop!")
+		ambience_player.volume = 0
 	}
 	
 	required init?(coder aDecoder: NSCoder)
