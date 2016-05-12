@@ -34,6 +34,9 @@ class MissionCollection
 			Quest(name:"Undock with thruster", predicate:{ capsule.dock != universe.loiqe_harvest }, result: { radar.install() }),
 			Quest(name:"Wait for arrival", predicate:{ universe.loiqe_city.isKnown == true }, result: {  }),
 		]
+		m.state = {
+			
+		}
 		story.append(m)
 		
 		m = Mission(id:(story.count), name: "Aquire Fragment")
@@ -213,7 +216,12 @@ class MissionCollection
 	func updateCurrentMission()
 	{
 		for mission in story {
-			if mission.isCompleted == false { currentMission = mission ; return }
+			if mission.isCompleted == false {
+				currentMission = mission
+				print("# MISSION  | Updated CurrentMission to: \(currentMission.id)")
+				
+				return
+			}
 		}
 	}
 	

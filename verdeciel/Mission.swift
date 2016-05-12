@@ -9,6 +9,7 @@ class Mission
 	var id:Int = 0
 	var name:String = ""
 	var isCompleted:Bool = false
+	var state:() -> Void
 	
 	var quests:Array<Quest> = []
 	var currentQuest:Quest!
@@ -16,11 +17,12 @@ class Mission
 	var predicate:() -> Bool! = { return nil }
 	var requirement:() -> Bool! = { return nil }
 	
-	init(id:Int,name:String, requirement:() -> Bool = { return true } )
+	init(id:Int,name:String, requirement:() -> Bool = { return true }, state:() -> Void = { } )
 	{
 		self.id = id
 		self.name = name
 		self.requirement = requirement
+		self.state = state
 	}
 	
 	func validate()
