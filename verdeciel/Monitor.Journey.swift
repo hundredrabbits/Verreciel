@@ -23,6 +23,9 @@ class MonitorJourney : Monitor
 	
 	override func whenSecond()
 	{
+		super.whenSecond()
+		
+		// TODO: Add journey length
 		nameLabel.update("\(Int(distance/100))")
 	}
 	

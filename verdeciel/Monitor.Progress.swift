@@ -23,6 +23,8 @@ class MonitorProgress : Monitor
 	
 	override func refresh()
 	{
+		super.refresh()
+		
 		var totalQuestLocations = 0
 		var totalQuestLocations_complete = 0
 		

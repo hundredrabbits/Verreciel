@@ -23,7 +23,9 @@ class MonitorComplete : Monitor
 	
 	override func refresh()
 	{
-		// TODO: Display Quest ID / Sum Quests
+		super.refresh()
+		
+		nameLabel.update("\(missions.currentMission.id)/\(missions.story.count)")
 	}
 	
 	required init?(coder aDecoder: NSCoder)

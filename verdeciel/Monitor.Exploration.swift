@@ -24,19 +24,27 @@ class MonitorExploration : Monitor
 	
 	override func refresh()
 	{
+		super.refresh()
+		
 		var kl = 0
 		for location in universe.childNodes as! [Location] {
 			if location.isKnown == true {
 				kl += 1
 			}
+			print("\(location.system) \(location.name) -> \(location.isKnown)")
 		}
 		
 		// MARK: Display
 		if kl > knownLocations {
+			knownLocations = kl
 			nameLabel.update("\(knownLocations)/\(universe.childNodes.count)", color:cyan)
 			delay(2, block: { self.nameLabel.update(white) })
-			knownLocations = kl
 		}
+	}
+	
+	override func whenSecond()
+	{
+		refresh()
 	}
 	
 	required init?(coder aDecoder: NSCoder)
