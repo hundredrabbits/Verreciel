@@ -502,7 +502,7 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "At the close")
 		m.state = {
-			capsule.beginAtLocation(universe.usul)
+			capsule.beginAtLocation(universe.usul_transit)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
@@ -528,25 +528,6 @@ class MissionCollection
 		// MARK: Part 20
 		
 		m = Mission(id:(story.count), name: "End")
-		m.state = {
-			capsule.beginAtLocation(universe.usul)
-			battery.cellPort1.addEvent(items.battery1)
-			battery.cellPort2.addEvent(items.battery2)
-			battery.cellPort3.addEvent(items.battery3)
-			cargo.addItems([items.endPortalKey,items.map1])
-			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration,radio,journey,map,shield])
-			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal,universe.valen_station,universe.valen_cargo,universe.valen_bank,universe.senni_harvest])
-			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite,universe.valen_station,universe.valen_cargo,universe.loiqe_port,universe.senni_cargo,universe.valen_fog,universe.senni_station,universe.loiqe_fog,universe.usul_station,universe.senni_fog,universe.senni_wreck,universe.usul_telescope,universe.usul_silence,universe.loiqe,universe.valen,universe.senni,universe.usul])
-			battery.cellPort1.connect(battery.thrusterPort)
-			battery.cellPort2.connect(battery.mapPort)
-			battery.cellPort3.connect(battery.shieldPort)
-			radar.port.connect(pilot.port)
-			cargo.port.connect(console.port)
-			map.port.event = items.map2
-			radio.port.event = items.record2
-			shield.port.event = items.shield
-			universe.valen_bank.addItems([items.record1])
-		}
 		m.quests = [
 			Quest(name:"Stop", location: universe.loiqe, predicate:{ (1 > 2) == true }, result: {  })
 		]

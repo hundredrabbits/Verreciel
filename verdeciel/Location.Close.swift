@@ -22,6 +22,11 @@ class LocationClose : Location
 		return newPanel
 	}
 	
+	override func onDock()
+	{
+		player.eject()
+	}
+	
 	// MARK: Defaults -
 	
 	required init(coder aDecoder: NSCoder)

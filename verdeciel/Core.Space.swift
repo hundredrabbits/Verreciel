@@ -42,6 +42,7 @@ class CoreSpace: Empty
 		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white
 		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan
 		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white
+		case .close  : targetSpaceColor = [0.6,0.6,0.6] ; stars_color = black
 		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white
 		}
 		
@@ -63,6 +64,10 @@ class CoreSpace: Empty
 	{
 		super.whenTime()
 		
+		if capsule.isDockedAtLocation(universe.close) == true {
+			journey.distance += 3
+		}
+		
 		if starsRoot.childNodes.count < 100 && journey.distance > lastStarAddedTime + 1  {
 			let randX = Float(Int(arc4random_uniform(40)) - 20)
 			let randZ = Float(Int(arc4random_uniform(40)) - 20)
@@ -76,6 +81,10 @@ class CoreSpace: Empty
 		else{ starSpeed = thruster.actualSpeed }
 		
 		starSpeed *= 0.15
+		
+		if capsule.isDockedAtLocation(universe.close) == true {
+			starSpeed = 0.15
+		}
 		
 		for star in starsRoot.childNodes as! [SCNLine] {
 			star.update([star.vertices.first!,SCNVector3(star.vertices.first!.x,star.vertices.first!.y + starSpeed + 0.1,star.vertices.first!.z)])

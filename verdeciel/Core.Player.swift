@@ -105,6 +105,29 @@ class CorePlayer : Empty
 		releaseHandle()
 	}
 	
+	func eject()
+	{
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(2)
+		
+		player.position = SCNVector3(0,0,0)
+		capsule.opacity = 0
+		helmet.opacity = 0
+		
+		SCNTransaction.setCompletionBlock({
+		
+			SCNTransaction.begin()
+			SCNTransaction.setAnimationDuration(30)
+			
+			player.position = SCNVector3(0,5,0)
+			
+			SCNTransaction.setCompletionBlock({ })
+			SCNTransaction.commit()
+			
+		})
+		SCNTransaction.commit()
+	}
+	
 	// MARK: Left Hand -
 	
 	var activePort:SCNPort!
