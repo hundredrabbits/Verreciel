@@ -16,7 +16,7 @@ class WidgetEnigma : Widget
 		super.init()
 		
 		name = "enigma"
-		details = "[missing text]"
+		details = "extra"
 		requirement = ItemTypes.cypher
 		isPowered = { battery.isEnigmaPowered() }
 		

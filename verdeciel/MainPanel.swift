@@ -24,7 +24,7 @@ class MainPanel : Panel
 		super.init()
 		
 		name = "unknown"
-		details = "missing"
+		details = "unknown"
 		root.position = SCNVector3(x: 0, y: 0, z: templates.radius)
 		root.addChildNode(mainNode)
 		root.addChildNode(decals)

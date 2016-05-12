@@ -38,7 +38,7 @@ class Location : Event
 		super.init(name:name, at:at)
 		
 		self.name = name
-		self.details = "[missing]"
+		self.details = "unknown"
 		self.at = at
 		self.system = system
 		self.icon = icon

@@ -16,7 +16,7 @@ class WidgetShield : Widget
 		super.init()
 	
 		name = "shield"
-		details = "[missing text]"
+		details = "star protection"
 		requirement = ItemTypes.shield
 		isPowered = { battery.isShieldPowered() }
 		label.update(name!)

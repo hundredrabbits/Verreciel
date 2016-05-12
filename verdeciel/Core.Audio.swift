@@ -43,7 +43,7 @@ class CoreAudio
 	
 	func playAmbience(ambientName:String)
 	{
-		if ambientTrack == ambientName { return }
+		if ambientTrack != nil && ambientTrack == ambientName { return }
 		
 		print(" AUDIO - Ambience: \(ambientName)")
 		
@@ -73,7 +73,7 @@ class CoreAudio
 	
 	func playRecord(recordName:String)
 	{
-		if recordTrack == recordName { return }
+		if recordTrack != nil && recordTrack == recordName { return }
 		
 		print(" AUDIO - Record: \(recordName)")
 		

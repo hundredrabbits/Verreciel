@@ -39,7 +39,7 @@ class Loiqe
 	
 	func spawn() -> LocationSatellite
 	{
-		return LocationSatellite(name: "spawn", system:system, at: CGPoint(x: offset.x, y: offset.y - 2.75), message:"[missing]", item: items.teapot, mapRequirement: items.map2)
+		return LocationSatellite(name: "spawn", system:system, at: CGPoint(x: offset.x, y: offset.y - 2.75), message:"entry", item: items.teapot, mapRequirement: items.map2)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -133,7 +133,7 @@ class Usul
 	
 	func telescope() -> LocationSatellite
 	{
-		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.map2, mapRequirement:items.map1)
+		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"map archive", item:items.map2, mapRequirement:items.map1)
 	}
 	
 	// MARK: Blind
@@ -198,12 +198,12 @@ class Valen
 	
 	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"[missing]", item:items.usulPortalFragment1, mapRequirement: items.map1)
+		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"stealth", item:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
 	func beacon() -> LocationBeacon
 	{
-		return LocationBeacon(name: "beacon", system: system, at: CGPoint(x: offset.x, y: offset.y - 2), message: "[missing]", mapRequirement: items.map1)
+		return LocationBeacon(name: "beacon", system: system, at: CGPoint(x: offset.x, y: offset.y - 2), message: "scribbles", mapRequirement: items.map1)
 	}
 	
 	func c_1() -> LocationConstellation
@@ -241,7 +241,7 @@ class Senni
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"[misssing]", item:items.map1)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"adrift", item:items.map1)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -268,12 +268,12 @@ class Senni
 	
 	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"[misssing]", item:items.battery3, mapRequirement: items.map1)
+		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"stealth", item:items.battery3, mapRequirement: items.map1)
 	}
 	
 	func wreck() -> LocationSatellite
 	{
-		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"[misssing]", item:items.record2, mapRequirement: items.map1)
+		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"adrift", item:items.record2, mapRequirement: items.map1)
 	}
 	
 	// MARK: Silence

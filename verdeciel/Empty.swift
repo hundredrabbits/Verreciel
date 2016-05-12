@@ -9,7 +9,7 @@ import Foundation
 
 class Empty : SCNNode
 {
-	var details:String = "[missing]"
+	var details:String = "unknown"
 	
 	override init()
 	{
@@ -90,7 +90,7 @@ class Empty : SCNNode
 	
 	func payload() -> ConsolePayload
 	{
-		return ConsolePayload(data:[ConsoleData(text: "[missing]", details: "[missing]")])
+		return ConsolePayload(data:[ConsoleData(text: "unknown", details: "unknown")])
 	}
 	
 	required init?(coder aDecoder: NSCoder)

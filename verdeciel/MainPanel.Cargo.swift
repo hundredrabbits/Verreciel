@@ -286,7 +286,7 @@ class CargoHold : Item
 		
 		name = "cargo"
 		type = .cargo
-		details = "[missing]"
+		details = "storage"
 	}
 	
 	override func payload() -> ConsolePayload

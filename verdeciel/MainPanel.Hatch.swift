@@ -56,7 +56,6 @@ class PanelHatch : MainPanel
 		if port.isReceiving() == false { return }
 		if port.origin.event.isQuest == true { return }
 		
-		// TODO: Game Erase scheme
 		if port.origin.host == pilot {
 			game.erase()
 			return
