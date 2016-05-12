@@ -8,12 +8,15 @@ import Foundation
 
 class CoreAudio
 {
-	var ambience_player = AVAudioPlayer()
-	var sound_player = AVAudioPlayer()
+	var ambience_player:AVAudioPlayer!
+	var sound_player:AVAudioPlayer!
+	var record_player:AVAudioPlayer!
 	
 	init()
 	{
-		
+		ambience_player = AVAudioPlayer()
+		sound_player = AVAudioPlayer()
+		record_player = AVAudioPlayer()
 	}
 	
 	var lastTimeSound:Float = 0
@@ -36,8 +39,12 @@ class CoreAudio
 		}
 	}
 	
+	var ambientTrack:String! = nil
+	
 	func playAmbience(ambientName:String)
 	{
+		if ambientTrack == ambientName { return }
+		
 		print(" AUDIO - Ambience: \(ambientName)")
 		
 		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(ambientName, ofType: "mp3")!)
@@ -47,6 +54,7 @@ class CoreAudio
 			ambience_player.play()
 			ambience_player.numberOfLoops = -1
 			ambience_player.volume = 1
+			ambientTrack = ambientName
 		}catch {
 			print("Error getting the audio file")
 		}
@@ -54,8 +62,41 @@ class CoreAudio
 	
 	func stopAmbient()
 	{
+		if ambientTrack == nil { return }
+		
 		print(" AUDIO - Ambient: Stop!")
-		ambience_player.volume = 0
+		ambience_player = AVAudioPlayer()
+		ambientTrack = nil
+	}
+	
+	var recordTrack:String! = nil
+	
+	func playRecord(recordName:String)
+	{
+		if recordTrack == recordName { return }
+		
+		print(" AUDIO - Record: \(recordName)")
+		
+		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(recordName, ofType: "mp3")!)
+		do{
+			record_player = try AVAudioPlayer(contentsOfURL:coinSound)
+			record_player.prepareToPlay()
+			record_player.play()
+			record_player.numberOfLoops = -1
+			record_player.volume = 1
+			recordTrack = recordName
+		}catch {
+			print("Error getting the audio file")
+		}
+	}
+	
+	func stopRecord()
+	{
+		if recordTrack == nil { return }
+		
+		print(" AUDIO - Record: Stop!")
+		record_player = AVAudioPlayer()
+		recordTrack = nil
 	}
 	
 	required init?(coder aDecoder: NSCoder)

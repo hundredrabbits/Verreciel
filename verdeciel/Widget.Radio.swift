@@ -46,19 +46,24 @@ class WidgetRadio : Widget
 	
 	func play()
 	{
-//		audio.playAmbient(port.event.name!)
+		if (port.event is Item) == false { return }
+		audio.playRecord((port.event as! Item).code)
+		audio.stopAmbient()
 	}
 	
 	func stop()
 	{
-		audio.stopAmbient()
+		audio.stopRecord()
+		audio.playAmbience("ambience-1")
 	}
 	
 	override func onUploadComplete()
 	{
 		super.onUploadComplete()
 		
-		print("!!!!!!!!!")
+		if battery.isRadioPowered() == true {
+			play()
+		}
 	}
 	
 	override func onInstallationBegin()
