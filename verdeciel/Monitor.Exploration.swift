@@ -31,7 +31,6 @@ class MonitorExploration : Monitor
 			if location.isKnown == true {
 				kl += 1
 			}
-			print("\(location.system) \(location.name) -> \(location.isKnown)")
 		}
 		
 		// MARK: Display

@@ -14,7 +14,7 @@ class MonitorComplete : Monitor
 	{
 		super.init()
 		
-		name = "complete"
+		name = "missions"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
 		nameLabel.update("--")

@@ -20,7 +20,9 @@ class CoreGame
 	
 	func start()
 	{
-//		erase()
+		erase()
+		
+		save(15)
 		
 		universe.whenStart()
 		capsule.whenStart()
@@ -28,8 +30,6 @@ class CoreGame
 		space.whenStart()
 		helmet.whenStart()
 		items.whenStart()
-		
-		print(memory.integerForKey("state"))
 		
 		load(memory.integerForKey("state"))
 	}

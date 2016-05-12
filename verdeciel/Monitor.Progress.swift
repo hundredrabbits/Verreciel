@@ -14,7 +14,7 @@ class MonitorProgress : Monitor
 	override init()
 	{
 		super.init()
-		name = "progress"
+		name = "map"
 		self.eulerAngles.x = (degToRad(templates.monitorsAngle))
 		
 		nameLabel.update("--")
