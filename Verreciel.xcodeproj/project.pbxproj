@@ -40,6 +40,10 @@
 		574E5FC01BC578E1008130AB /* Location.Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FBF1BC578E1008130AB /* Location.Trade.swift */; };
 		574E5FC21BC5AEA2008130AB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E5FC11BC5AEA2008130AB /* Location.swift */; };
 		574F3CFB1CE4EA3B006B41F0 /* Location.Close.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574F3CFA1CE4EA3B006B41F0 /* Location.Close.swift */; };
+		574F3D031CE4F34E006B41F0 /* click1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574F3CFF1CE4F34E006B41F0 /* click1.wav */; };
+		574F3D041CE4F34E006B41F0 /* click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574F3D001CE4F34E006B41F0 /* click2.wav */; };
+		574F3D051CE4F34E006B41F0 /* click3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574F3D011CE4F34E006B41F0 /* click3.wav */; };
+		574F3D061CE4F34E006B41F0 /* click4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574F3D021CE4F34E006B41F0 /* click4.wav */; };
 		5759C3421CA1FAA10031524B /* Porthole.Above.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3411CA1FAA10031524B /* Porthole.Above.swift */; };
 		5759C3441CA1FACA0031524B /* Porthole.below.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3431CA1FACA0031524B /* Porthole.below.swift */; };
 		5759C3471CA21DC10031524B /* Shape.Hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759C3461CA21DC10031524B /* Shape.Hexa.swift */; };
@@ -132,6 +136,10 @@
 		574E5FBF1BC578E1008130AB /* Location.Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Trade.swift; sourceTree = "<group>"; };
 		574E5FC11BC5AEA2008130AB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		574F3CFA1CE4EA3B006B41F0 /* Location.Close.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Close.swift; sourceTree = "<group>"; };
+		574F3CFF1CE4F34E006B41F0 /* click1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click1.wav; sourceTree = "<group>"; };
+		574F3D001CE4F34E006B41F0 /* click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click2.wav; sourceTree = "<group>"; };
+		574F3D011CE4F34E006B41F0 /* click3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click3.wav; sourceTree = "<group>"; };
+		574F3D021CE4F34E006B41F0 /* click4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click4.wav; sourceTree = "<group>"; };
 		5759C3411CA1FAA10031524B /* Porthole.Above.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.Above.swift; sourceTree = "<group>"; };
 		5759C3431CA1FACA0031524B /* Porthole.below.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Porthole.below.swift; sourceTree = "<group>"; };
 		5759C3461CA21DC10031524B /* Shape.Hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.Hexa.swift; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 				574156DD1BE12F61008B6C44 /* Objects */,
 				573627791B4C06E800899EBC /* Components */,
 				57780BB01CB49D8C005AB88C /* Shapes */,
+				574F3CFC1CE4F30B006B41F0 /* Audio */,
 				03DDE17D19CE497F008029A8 /* Supporting Files */,
 			);
 			path = verdeciel;
@@ -310,6 +319,33 @@
 				5726B70F1CBD7E0900EF100B /* Icon.swift */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		574F3CFC1CE4F30B006B41F0 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				574F3CFE1CE4F31B006B41F0 /* Effects */,
+				574F3CFD1CE4F315006B41F0 /* Records */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		574F3CFD1CE4F315006B41F0 /* Records */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Records;
+			sourceTree = "<group>";
+		};
+		574F3CFE1CE4F31B006B41F0 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				574F3CFF1CE4F34E006B41F0 /* click1.wav */,
+				574F3D001CE4F34E006B41F0 /* click2.wav */,
+				574F3D011CE4F34E006B41F0 /* click3.wav */,
+				574F3D021CE4F34E006B41F0 /* click4.wav */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 		5759C3451CA1FB2A0031524B /* PortHoles */ = {
@@ -491,7 +527,11 @@
 				03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */,
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
 				57EAA5911CD9767C00E356C8 /* SplashLogo.png in Resources */,
+				574F3D061CE4F34E006B41F0 /* click4.wav in Resources */,
 				03DDE18719CE497F008029A8 /* Main.storyboard in Resources */,
+				574F3D051CE4F34E006B41F0 /* click3.wav in Resources */,
+				574F3D031CE4F34E006B41F0 /* click1.wav in Resources */,
+				574F3D041CE4F34E006B41F0 /* click2.wav in Resources */,
 				5734D45C1B5AAA7800BF0048 /* Todo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

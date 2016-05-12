@@ -27,7 +27,8 @@ class MissionCollection
 		
 		m = Mission(id:(story.count), name: "")
 		m.state = {
-			capsule.beginAtLocation(universe.loiqe_city)
+			capsule.beginAtLocation(universe.loiqe_spawn)
+			battery.onInstallationComplete()
 			battery.cellPort1.addEvent(items.battery1)
 			self.setToKnown([universe.loiqe_spawn])
 			universe.valen_bank.addItems([items.loiqePortalKey,items.record1,Item(like:items.waste)])

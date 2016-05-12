@@ -121,7 +121,8 @@ class CorePlayer : Empty
 			
 			player.position = SCNVector3(0,5,0)
 			
-			SCNTransaction.setCompletionBlock({ })
+			SCNTransaction.setCompletionBlock({
+			})
 			SCNTransaction.commit()
 			
 		})
