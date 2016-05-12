@@ -6,6 +6,7 @@ import Foundation
 class Location : Event
 {
 	var system:Systems!
+	var code:String!
 	
 	var angle:Float!
 	var align:Float!
@@ -42,6 +43,7 @@ class Location : Event
 		self.system = system
 		self.icon = icon
 		self.structure = structure
+		self.code = "\(system)-\(name)"
 		
 		geometry = SCNPlane(width: 0.5, height: 0.5)
 		geometry?.firstMaterial?.diffuse.contents = clear
@@ -138,6 +140,7 @@ class Location : Event
 		structure.onDock()
 		icon.onUpdate()
 		exploration.refresh()
+		game.save()
 	}
 	
 	func onUndock()

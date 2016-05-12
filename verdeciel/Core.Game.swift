@@ -26,11 +26,18 @@ class CoreGame
 		helmet.whenStart()
 		items.whenStart()
 		
-		unlockedState(universe.valen_transit, newItems:[items.map2, items.shield, items.endKey])
+		if loadWithKey("version") != nil {
+			load()
+		}
+		else{
+			new()
+		}
+		
+//		unlockedState(universe.valen_transit, newItems:[items.map2, items.shield, items.endKey])
 //		startingState()
 	}
 	
-	func startingState()
+	func new()
 	{
 		battery.install()
 		capsule.beginAtLocation(universe.loiqe_spawn)
@@ -87,6 +94,163 @@ class CoreGame
 	func erase()
 	{
 		print("Game erased!")
+	}
+	
+	// MARK: Memory -
+	
+	let memory = NSUserDefaults.standardUserDefaults()
+	
+	func save()
+	{
+		print("$ GAME     | Saving.. version: \(version)")
+		
+		// Generic
+		
+		memory.setValue(version, forKey: "version")
+		
+		// Inventory
+		var count = 0
+		for cargoItem in cargo.cargohold.content {
+			print("$ GAME     | Saving Cargo Item: \(cargoItem.code) in <cargo-\(count)>")
+			memory.setValue(cargoItem.code, forKey: "cargo-\(count)")
+			count += 1
+		}
+		
+		// Bank
+		if universe.valen_bank.port1.hasItem() == true { memory.setValue((universe.valen_bank.port1.event as! Item).code, forKey: "bank-1") }
+		if universe.valen_bank.port2.hasItem() == true { memory.setValue((universe.valen_bank.port2.event as! Item).code, forKey: "bank-2") }
+		if universe.valen_bank.port3.hasItem() == true { memory.setValue((universe.valen_bank.port3.event as! Item).code, forKey: "bank-3") }
+		if universe.valen_bank.port4.hasItem() == true { memory.setValue((universe.valen_bank.port4.event as! Item).code, forKey: "bank-4") }
+		if universe.valen_bank.port5.hasItem() == true { memory.setValue((universe.valen_bank.port5.event as! Item).code, forKey: "bank-5") }
+		if universe.valen_bank.port6.hasItem() == true { memory.setValue((universe.valen_bank.port6.event as! Item).code, forKey: "bank-6") }
+		
+		// Capsule
+		memory.setValue(capsule.lastLocation.code, forKey: "capsule-location")
+		
+		memory.setValue(journey.isInstalled, forKey: "capsule-panel-journey")
+		memory.setValue(exploration.isInstalled, forKey: "capsule-panel-exploration")
+		memory.setValue(progress.isInstalled, forKey: "capsule-panel-progress")
+		memory.setValue(completion.isInstalled, forKey: "capsule-panel-completion")
+		
+		memory.setValue(battery.isInstalled, forKey: "capsule-panel-battery")
+		memory.setValue(hatch.isInstalled, forKey: "capsule-panel-hatch")
+		memory.setValue(console.isInstalled, forKey: "capsule-panel-console")
+		memory.setValue(cargo.isInstalled, forKey: "capsule-panel-cargo")
+		memory.setValue(intercom.isInstalled, forKey: "capsule-panel-intercom")
+		memory.setValue(radar.isInstalled, forKey: "capsule-panel-radar")
+		memory.setValue(thruster.isInstalled, forKey: "capsule-panel-thruster")
+		
+		memory.synchronize()
+		print("$ GAME     | Saving..done!")
+	}
+	
+	func load()
+	{
+		print("$ GAME     | Loading..")
+		
+		if let str = loadWithKey("version") { print("$ GAME     | Loading.. version: \(str)") }
+		
+		if let code = loadWithKey("cargo-1") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		if let code = loadWithKey("cargo-2") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		if let code = loadWithKey("cargo-3") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		if let code = loadWithKey("cargo-4") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		if let code = loadWithKey("cargo-5") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		if let code = loadWithKey("cargo-6") { if let item = loadItemWithCode(code) { cargo.addItem(item) } }
+		
+		if let code = loadWithKey("bank-1") { if let item = loadItemWithCode(code) { universe.valen_bank.port1.addEvent(item) } }
+		if let code = loadWithKey("bank-2") { if let item = loadItemWithCode(code) { universe.valen_bank.port2.addEvent(item) } }
+		if let code = loadWithKey("bank-3") { if let item = loadItemWithCode(code) { universe.valen_bank.port3.addEvent(item) } }
+		if let code = loadWithKey("bank-4") { if let item = loadItemWithCode(code) { universe.valen_bank.port4.addEvent(item) } }
+		if let code = loadWithKey("bank-5") { if let item = loadItemWithCode(code) { universe.valen_bank.port5.addEvent(item) } }
+		if let code = loadWithKey("bank-6") { if let item = loadItemWithCode(code) { universe.valen_bank.port6.addEvent(item) } }
+		
+		if let code = loadWithKey("capsule-location") { capsule.dock(universe.locationWithCode(code)) }
+		if let int = loadIntWithKey("capsule-quest-id") { missions.skipTo(int) }
+		
+		if loadBoolWithKey("capsule-panel-journey") == true { journey.install() }
+		if loadBoolWithKey("capsule-panel-exploration") == true { exploration.install() }
+		if loadBoolWithKey("capsule-panel-progress") == true { progress.install() }
+		if loadBoolWithKey("capsule-panel-completion") == true { completion.install() }
+		
+		if loadBoolWithKey("capsule-panel-battery") == true { battery.install() }
+		if loadBoolWithKey("capsule-panel-hatch") == true { hatch.install() }
+		if loadBoolWithKey("capsule-panel-console") == true { console.install() }
+		if loadBoolWithKey("capsule-panel-cargo") == true { cargo.install() }
+		if loadBoolWithKey("capsule-panel-intercom") == true { intercom.install() }
+		if loadBoolWithKey("capsule-panel-radar") == true { radar.install() }
+		if loadBoolWithKey("capsule-panel-thruster") == true { thruster.install() }
+		
+		print("$ GAME     | Loading..done!")
+	}
+	
+	// MARK: Tools -
+	
+	func loadWithKey(key:String) -> String!
+	{
+		if let result = memory.stringForKey(key) {
+			return result
+		}
+		return nil
+	}
+	
+	func loadBoolWithKey(key:String) -> Bool
+	{
+		return memory.boolForKey(key)
+	}
+	
+	func loadIntWithKey(key:String) -> Int!
+	{
+		return memory.integerForKey(key)
+	}
+	
+	func loadItemWithCode(code:String) -> Item!
+	{
+		if code == items.waste.code { return items.waste }
+		if code == items.kelp.code { return items.kelp }
+		
+		if code == items.loiqePortalKey.code { return items.waste }
+		
+		if code == items.valenPortalKey.code { return items.waste }
+		if code == items.valenPortalFragment1.code { return items.waste }
+		if code == items.valenPortalFragment2.code { return items.waste }
+		
+		if code == items.senniPortalKey.code { return items.waste }
+		
+		if code == items.usulPortalKey.code { return items.waste }
+		if code == items.usulPortalFragment1.code { return items.waste }
+		if code == items.usulPortalFragment2.code { return items.waste }
+		
+		if code == items.endKey.code { return items.waste }
+		if code == items.endKeyFragment1.code { return items.waste }
+		if code == items.endKeyFragment2.code { return items.waste }
+		
+		if code == items.warpDrive.code { return items.waste }
+		if code == items.record1.code { return items.waste }
+		if code == items.record2.code { return items.waste }
+		if code == items.record3.code { return items.waste }
+		if code == items.record4.code { return items.waste }
+		if code == items.record_oquonie.code { return items.waste }
+		
+		if code == items.map1.code { return items.waste }
+		if code == items.map2.code { return items.waste }
+		
+		if code == items.shield.code { return items.waste }
+		
+		if code == items.currency1.code { return items.waste }
+		if code == items.currency2.code { return items.waste }
+		if code == items.currency3.code { return items.waste }
+		if code == items.currency4.code { return items.waste }
+		if code == items.currency5.code { return items.waste }
+		if code == items.currency6.code { return items.waste }
+		
+		if code == items.battery1.code { return items.waste }
+		if code == items.battery2.code { return items.waste }
+		if code == items.battery3.code { return items.waste }
+		
+		if code == items.teapot.code { return items.waste }
+		if code == items.nestorine.code { return items.waste }
+	
+		return nil
 	}
 	
 	@objc func whenSecond()

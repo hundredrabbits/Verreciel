@@ -9,10 +9,11 @@ import Foundation
 
 class Item : Event
 {
+	var code:String!
 	var type:ItemTypes!
 	var location:Location!
 	
-	init(name:String = "",type:ItemTypes = ItemTypes.generic, location:Location! = nil, note:String = "", isQuest:Bool = false)
+	init(name:String = "",type:ItemTypes = ItemTypes.generic, location:Location! = nil, note:String = "", isQuest:Bool = false, code:String)
 	{
 		super.init()
 		
@@ -21,6 +22,7 @@ class Item : Event
 		self.details = details
 		self.isQuest = isQuest
 		self.location = location
+		self.code = code
 	}
 	
 	init(like:Item)

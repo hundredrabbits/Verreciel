@@ -37,8 +37,6 @@ class Event : Empty
 	{
 		super.whenStart()
 		
-		print("@ EVENT    | \(self.name!)\(self.at)")
-		
 		self.geometry = SCNPlane(width: 0.5, height: 0.5)
 		self.geometry?.firstMaterial?.diffuse.contents = clear
 		

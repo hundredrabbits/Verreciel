@@ -216,4 +216,10 @@ class MissionCollection
 			if mission.isCompleted == false { currentMission = mission ; return }
 		}
 	}
+	
+	func skipTo(id:Int)
+	{
+		// TODO: 
+		print("!???")
+	}
 }

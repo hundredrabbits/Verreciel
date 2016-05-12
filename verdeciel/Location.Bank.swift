@@ -75,7 +75,6 @@ class LocationBank : Location
 		return false
 	}
 	
-	
 	override func onDock()
 	{
 		super.onDock()

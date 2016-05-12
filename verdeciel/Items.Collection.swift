@@ -6,70 +6,62 @@ import Foundation
 
 class ItemCollection
 {
-	// Capsule
-	let nataniev = Item(name: "nataniev", type: .cypher, note:"v0.3", isQuest:true)
-	let starmap = Item(name: "starmap", type: .map, note:"route to helmet", isQuest:true)
-	
 	// Misc
-	let waste = Item(name: "waste", type: .waste, note:"useless")
-	let kelp = Item(name: "space kelp", type: .waste, note:"useless")
+	let waste = Item(name: "waste", type: .waste, note:"useless", code:"waste")
+	let kelp = Item(name: "space kelp", type: .waste, note:"useless",code:"kelp")
 	
 	// Keys
-	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true)
+	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true,code:"loiqe-key")
 	
-	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true)
-	let valenPortalFragment1 = Item(name: "key part I", type: .fragment, note:"half a Portal key", isQuest:true)
-	let valenPortalFragment2 = Item(name: "key part II", type: .fragment, note:"half a Portal key", isQuest:true)
+	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true,code:"valen-key")
+	let valenPortalFragment1 = Item(name: "key part I", type: .fragment, note:"half a Portal key", isQuest:true,code:"valen-key-1")
+	let valenPortalFragment2 = Item(name: "key part II", type: .fragment, note:"half a Portal key", isQuest:true,code:"valen-key-2")
 	
-	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true)
+	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true,code:"senni-key")
 	
-	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true)
-	let usulPortalFragment1 = Item(name: "Key Part I", type: .fragment, note:"half a Portal key", isQuest:true)
-	let usulPortalFragment2 = Item(name: "Key Part II", type: .fragment, note:"half a Portal key", isQuest:true)
+	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true,code:"usul-key")
+	let usulPortalFragment1 = Item(name: "Key Part I", type: .fragment, note:"half a Portal key", isQuest:true,code:"usul-key-1")
+	let usulPortalFragment2 = Item(name: "Key Part II", type: .fragment, note:"half a Portal key", isQuest:true,code:"usul-key-2")
 	
-	let endKeyFragment1 = Item(name: "Key Part I", type: .key, note: "half a Portal key", isQuest: true)
-	let endKeyFragment2 = Item(name: "Key Part II", type: .key, note: "half a Portal key", isQuest: true)
-	let endKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true)
+	let endKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true,code:"end-key")
+	let endKeyFragment1 = Item(name: "Key Part I", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-1")
+	let endKeyFragment2 = Item(name: "Key Part II", type: .key, note: "half a Portal key", isQuest: true,code:"end-key-2")
 	
 	// Etc..
 	
-	let warpDrive = Item(name: "warpdrive", type: .drive, note:"local warpdrive", isQuest:true)
+	let warpDrive = Item(name: "warpdrive", type: .drive, note:"local warpdrive", isQuest:true,code:"warp")
 	
 	// Records
-	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
-	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
-	let record3 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
-	let record4 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	let record1 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true,code:"record-1")
+	let record2 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true,code:"record-2")
+	let record3 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true,code:"record-3")
+	let record4 = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true,code:"record-4")
 	
-	let record_oquonie = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true)
+	let record_oquonie = Item(name: "record", type: .record, note:"an old audio tape", isQuest:true,code:"record-5")
 	
 	// Maps
-	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true)
-	let map2 = Item(name: "Blind Map", type: .map, note: "[missing]", isQuest: true)
-	
-	// Enigma
-	let cypher1 = Item(name: "cypher 1", type: .cypher, note:"[missing]", isQuest:true)
-	let cypher2 = Item(name: "cypher 2", type: .cypher, note:"[missing]", isQuest:true)
+	let map1 = Item(name: "Fog Map", type: .map, note: "[missing]", isQuest: true,code:"map-1")
+	let map2 = Item(name: "Blind Map", type: .map, note: "[missing]", isQuest: true,code:"map-2")
 	
 	// Shields(fields)
-	let shield = Item(name: "glass", type: .shield, note:"[missing]", isQuest:true)
+	let shield = Item(name: "glass", type: .shield, note:"[missing]", isQuest:true,code:"shield-1")
 	
 	// Harvest
-	let currency1 = Item(name: "alta", type: .currency, note:"trading currency")
-	let currency2 = Item(name: "materia", type: .currency, note:"trading currency")
-	let currency3 = Item(name: "natal", type: .currency, note:"trading currency")
-	let currency4 = Item(name: "alteria", type: .currency, note:"From 1 & 2")
-	let currency5 = Item(name: "nateria", type: .currency, note:"From 2 & 3")
-	let currency6 = Item(name: "echo", type: .currency, note:"From 4 & 5")
+	let currency1 = Item(name: "alta", type: .currency, note:"trading currency",code:"currency-1")
+	let currency2 = Item(name: "materia", type: .currency, note:"trading currency",code:"currency-2")
+	let currency3 = Item(name: "natal", type: .currency, note:"trading currency",code:"currency-3")
+	let currency4 = Item(name: "alteria", type: .currency, note:"From 1 & 2",code:"currency-4")
+	let currency5 = Item(name: "nateria", type: .currency, note:"From 2 & 3",code:"currency-5")
+	let currency6 = Item(name: "echo", type: .currency, note:"From 4 & 5",code:"currency-6")
 	
 	// Batteries
-	let battery1  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let battery2  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
-	let battery3  = Item(name: "cell", type: .battery, note:"gives little power", isQuest:true)
+	let battery1  = Item(name: "cell", type: .battery, note:"gives power", isQuest:true,code:"battery-1")
+	let battery2  = Item(name: "cell", type: .battery, note:"gives power", isQuest:true,code:"battery-2")
+	let battery3  = Item(name: "cell", type: .battery, note:"gives power", isQuest:true,code:"battery-3")
 	
 	// Echoes
-	let teapot     = Item(name: "a teapot", type: .unknown, note:"[missing]", isQuest:true)
-	let nestorine  = Item(name: "a pillar", type: .unknown, note:"[missing]", isQuest:true)
+	let teapot     = Item(name: "a teapot", type: .unknown, note:"[missing]", isQuest:true,code:"echoes-1")
+	let nestorine  = Item(name: "a pillar", type: .unknown, note:"[missing]", isQuest:true,code:"echoes-2")
 	
 	func whenStart()
 	{

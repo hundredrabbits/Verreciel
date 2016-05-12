@@ -55,29 +55,17 @@ class StructureTransit : Structure
 		
 		root.position = SCNVector3(0,5,0)
 		
-		let count:Float = 16
+		let count:Float = 8
 		var i:Float = 0
 		while i < count {
 			let pivot = Empty()
 			pivot.eulerAngles.y = degToRad(i * Float(360/count))
 			root.addChildNode(pivot)
-			let shape = ShapeHexagon(size: 3, color:white)
-			shape.position.z = 5
+			let shape = ShapeHexagon(size: 2, color:grey)
+			shape.position.z = 3
 			pivot.addChildNode(shape)
 			i += 1
 		}
-	}
-	
-	override func sightUpdate()
-	{
-		super.sightUpdate()
-		
-		for pivot in root.childNodes {
-			pivot.childNodes.first!.eulerAngles.z = degToRad(sin(game.time * 0.005) * 22.5)
-			pivot.childNodes.first!.eulerAngles.y = degToRad(sin(game.time * 0.0075) * 45)
-		}
-		
-		root.eulerAngles.y += (degToRad(0.1))
 	}
 	
 	override func morph()
@@ -85,16 +73,19 @@ class StructureTransit : Structure
 		super.morph()
 		
 		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(0.5)
+		SCNTransaction.setAnimationDuration(1.0)
+		
+		root.eulerAngles.y = degToRad(Float(morphTime) * 45)
 		
 		for node in root.childNodes {
-			node.childNodes.first!.position.y = (2 - ((Float(morphTime) * 0.4) % 4)) * 0.8
-			node.childNodes.first!.position.z = (sin(game.time * 0.1) * 2)
-			node.childNodes.first!.position.x = (sin(Float(morphTime) * 0.2) * 2)
+			node.childNodes.first!.eulerAngles.z = degToRad(Float(morphTime) * 180)
+			node.childNodes.first!.eulerAngles.x = degToRad(Float(morphTime) * (90))
+			node.childNodes.first!.eulerAngles.y = degToRad(Float(morphTime) * (45))
 		}
-		
+
 		SCNTransaction.commit()
 	}
+	
 	
 	required init?(coder aDecoder: NSCoder)
 	{

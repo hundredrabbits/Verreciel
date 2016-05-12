@@ -195,6 +195,14 @@ class CoreUniverse : Empty
 		return nil
 	}
 	
+	func locationWithCode(code:String) -> Location!
+	{
+		for location in childNodes as! [Location] {
+			if location.code == code { return location }
+		}
+		return nil
+	}
+	
 	// Default
 	
 	required init?(coder aDecoder: NSCoder)

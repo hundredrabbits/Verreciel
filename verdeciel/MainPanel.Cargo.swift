@@ -278,7 +278,7 @@ class CargoHold : Item
 	
 	init()
 	{
-		super.init()
+		super.init(code:"cargo")
 		
 		name = "cargo"
 		type = .cargo

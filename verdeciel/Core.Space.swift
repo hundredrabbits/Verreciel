@@ -23,7 +23,7 @@ class CoreSpace: Empty
 	
 	// Space Color
 	
-	var targetSpaceColor:Array<CGFloat>!
+	var targetSpaceColor:Array<CGFloat> = [0,0,0]
 	var currentSpaceColor:Array<CGFloat> = [0,0,0]
 	var stars_color:UIColor = white
 	

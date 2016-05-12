@@ -7,6 +7,9 @@ import QuartzCore
 import SceneKit
 import Foundation
 
+// Generic
+let version = "r1"
+
 // Panels
 let battery = PanelBattery()
 let pilot = PanelPilot()
