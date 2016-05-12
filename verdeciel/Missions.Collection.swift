@@ -578,7 +578,7 @@ class MissionCollection
 			if mission.isCompleted == false {
 				currentMission = mission
 				print("# ---------------------------")
-				print("# MISSION  | Reached to: \(currentMission.id)")
+				print("# MISSION  | Reached: \(currentMission.id)")
 				print("# ---------------------------")
 				game.save(currentMission.id)
 				return

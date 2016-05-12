@@ -40,7 +40,6 @@ class Quest
 	func complete()
 	{
 		if isCompleted == true { return }
-		print("+ QUEST    | Complete: \(name!)")
 		isCompleted = true
 		self.result()
 	}

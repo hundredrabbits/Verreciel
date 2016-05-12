@@ -18,7 +18,6 @@ class Empty : SCNNode
 	
 	func touch(id:Int = 0)
 	{
-		print("! This node has no touch action")
 	}
 	
 	func update()

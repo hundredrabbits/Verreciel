@@ -44,9 +44,6 @@ class PanelConsole : MainPanel
 		else if port.origin.host != nil {
 			inject(port.origin.host.payload())
 		}
-		else{
-			print("* ERROR    | Missing origin")
-		}
 	}
 	
 	override func onDisconnect()
@@ -55,11 +52,6 @@ class PanelConsole : MainPanel
 		
 		nameLabel.update("Console", color:grey)
 		inject(defaultPayload())
-	}
-	
-	override func onUploadComplete()
-	{
-		print("!!")
 	}
 	
 	override func whenStart()
@@ -169,7 +161,7 @@ class ConsoleLine : Empty
 		textLabel.position = SCNVector3(0.3, 0, 0)
 		addChildNode(textLabel)
 		
-		detailsLabel = SCNLabel(scale: 0.1, align: alignment.right, color:grey)
+		detailsLabel = SCNLabel(scale: 0.075, align: alignment.right, color:grey)
 		detailsLabel.position = SCNVector3(3.2, 0, 0)
 		addChildNode(detailsLabel)
 	}

@@ -62,13 +62,11 @@ class Panel : Empty
 
 	func onInstallationBegin()
 	{
-		print("+ PANEL    | Installing the \(name!)..")
 		audio.playSound("beep1")
 	}
 	
 	func onInstallationComplete()
 	{
-		print("+ PANEL    | Installed the \(name!).")
 		installPercentage = 0
 		isInstalled = true
 		audio.playSound("beep2")

@@ -29,7 +29,6 @@ class CoreSpace: Empty
 	
 	func onSystemEnter(system:Systems)
 	{
-		print("Entering \(system)")
 		capsule.system = system
 		
 		white = true_white

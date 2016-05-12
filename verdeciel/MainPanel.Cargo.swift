@@ -188,7 +188,7 @@ class PanelCargo : MainPanel
 	
 	override func onConnect()
 	{
-		if port.isReceivingEventOfTypeItem() == false { print("ERROR") ; return }
+		if port.isReceivingEventOfTypeItem() == false { return }
 		
 		upload(port.event)
 	}

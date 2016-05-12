@@ -146,8 +146,6 @@ class PanelRadar : MainPanel
 	
 	func modeNormal()
 	{
-		print("+ RADAR    | Mode: Normal")
-		
 		overviewMode = false
 		
 		thruster.show()
@@ -159,9 +157,7 @@ class PanelRadar : MainPanel
 	}
 	
 	func modeOverview()
-	{
-		print("+ RADAR    | Mode: Overview")
-		
+	{		
 		overviewMode = true
 		
 		thruster.hide()

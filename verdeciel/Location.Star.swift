@@ -78,7 +78,6 @@ class LocationStar : Location
 	
 	func extinguish()
 	{
-		print("? STAR     | Extinguished \(name)!")
 		onComplete()
 	}
 	

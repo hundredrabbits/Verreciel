@@ -12,8 +12,6 @@ class CoreUniverse : Empty
 	{
 		super.init()
 		
-		print("@ UNIVERSE | Init")
-		
 		addLoiqe()
 		addUsul()
 		addValen()

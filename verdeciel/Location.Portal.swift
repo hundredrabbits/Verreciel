@@ -117,8 +117,6 @@ class LocationPortal : Location
 		let key = intercom.port.origin.event as! Item
 		let destination = universe.locationLike(key.location)
 		
-		print("! KEY      | Reading: \(key.name!) -> \(destination.name!)")
-		
 		keyLabel.update(key.name!, color:cyan)
 		destinationLabel.update("to \(destination.system) \(destination.name!)")
 		

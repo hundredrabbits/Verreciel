@@ -79,9 +79,7 @@ class Structure : Empty
 	}
 	
 	func onLeave()
-	{
-		print("> INSTANCE | Leaving \(host.name!)")
-		
+	{		
 		self.removeFromParentNode()
 	}
 	

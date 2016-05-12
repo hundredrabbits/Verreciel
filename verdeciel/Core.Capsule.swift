@@ -225,9 +225,7 @@ class CoreCapsule: Empty
 	var dock:Location!
 	
 	func dock(newDock:Location)
-	{
-		print("* DOCK     | Init: \(newDock.name)")
-		
+	{		
 		dock = newDock
 		thruster.disable()
 		

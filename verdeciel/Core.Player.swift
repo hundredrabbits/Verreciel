@@ -87,8 +87,6 @@ class CorePlayer : Empty
 		player.eulerAngles.y = (degToRad(normalizedDeg))
 		helmet.eulerAngles.y = (degToRad(normalizedDeg))
 		
-		print("+ PLAYER   | LookAt(from:\(radToDeg(Float(player.eulerAngles.y))),to:\(deg))")
-		
 		player.isLocked = true
 		
 		SCNTransaction.begin()

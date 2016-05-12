@@ -104,7 +104,6 @@ class Location : Event
 	
 	func onSight()
 	{
-		print("* EVENT    | Sighted \(self.name!)")
 		isSeen = true
 		update()
 		structure.onSight()
@@ -113,8 +112,6 @@ class Location : Event
 	
 	func onApproach()
 	{
-		print("* EVENT    | Approached \(self.name!)")
-		
 		space.startInstance(self)
 		// Don't try to dock if there is already a target
 		if radar.port.hasEvent() == true && radar.port.event == self || capsule.isFleeing == true {
@@ -128,13 +125,11 @@ class Location : Event
 	
 	func onCollision()
 	{
-		print("* EVENT    | Collided \(self.name!)")
 		update()
 	}
 	
 	func onDock()
 	{
-		print("* EVENT    | Docked at \(self.name!)")
 		isKnown = true
 		update()
 		structure.onDock()
@@ -153,8 +148,6 @@ class Location : Event
 	func retrieveStorage()
 	{
 		if storage.count == 0 { return }
-		
-		print("* STORAGE  | Retrieving \(storage.count) items from \(name!)")
 		
 		for port in storage {
 			if port.hasItem() == true {

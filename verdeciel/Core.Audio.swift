@@ -23,9 +23,7 @@ class CoreAudio
 	
 	func playSound(soundName:String)
 	{
-		print(" AUDIO - Sound: \(soundName)")
-		
-		if lastTimeSound == game.time { print("silenced") ; return }
+		if lastTimeSound == game.time { return }
 		
 		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(soundName, ofType: "wav")!)
 		do{
@@ -45,8 +43,6 @@ class CoreAudio
 	{
 		if ambientTrack != nil && ambientTrack == ambientName { return }
 		
-		print(" AUDIO - Ambience: \(ambientName)")
-		
 		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(ambientName, ofType: "mp3")!)
 		do{
 			ambience_player = try AVAudioPlayer(contentsOfURL:coinSound)
@@ -63,8 +59,7 @@ class CoreAudio
 	func stopAmbient()
 	{
 		if ambientTrack == nil { return }
-		
-		print(" AUDIO - Ambient: Stop!")
+	
 		ambience_player = AVAudioPlayer()
 		ambientTrack = nil
 	}
@@ -74,8 +69,6 @@ class CoreAudio
 	func playRecord(recordName:String)
 	{
 		if recordTrack != nil && recordTrack == recordName { return }
-		
-		print(" AUDIO - Record: \(recordName)")
 		
 		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(recordName, ofType: "mp3")!)
 		do{
@@ -94,7 +87,6 @@ class CoreAudio
 	{
 		if recordTrack == nil { return }
 		
-		print(" AUDIO - Record: Stop!")
 		record_player = AVAudioPlayer()
 		recordTrack = nil
 	}

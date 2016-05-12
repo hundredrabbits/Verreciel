@@ -104,11 +104,6 @@ class Helmet: Empty
 		
 		warningLabel.blink()
 	}
-	
-	override func onConnect()
-	{
-		print("Helmet mode is on!!")
-	}
 
 	func updatePort()
 	{

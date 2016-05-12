@@ -14,18 +14,18 @@ class ItemCollection
 	let loiqePortalKey = Item(name: "loiqe key", type: .key, note:"complete key", isQuest:true,code:"loiqe-key")
 	
 	let valenPortalKey = Item(name: "valen key", type: .key, note:"complete key", isQuest:true,code:"valen-key")
-	let valenPortalFragment1 = Item(name: "valen part I", type: .fragment, note:"half Portal key", isQuest:true,code:"valen-key-1")
-	let valenPortalFragment2 = Item(name: "valen part II", type: .fragment, note:"half Portal key", isQuest:true,code:"valen-key-2")
+	let valenPortalFragment1 = Item(name: "valen part 1", type: .fragment, note:"half Portal key", isQuest:true,code:"valen-key-1")
+	let valenPortalFragment2 = Item(name: "valen part 2", type: .fragment, note:"half Portal key", isQuest:true,code:"valen-key-2")
 	
 	let senniPortalKey = Item(name: "senni key", type: .key, note:"complete key", isQuest:true,code:"senni-key")
 	
 	let usulPortalKey = Item(name: "usul key", type: .key, note:"complete key", isQuest:true,code:"usul-key")
-	let usulPortalFragment1 = Item(name: "usul Part I", type: .fragment, note:"half Portal key", isQuest:true,code:"usul-key-1")
-	let usulPortalFragment2 = Item(name: "usul Part II", type: .fragment, note:"half Portal key", isQuest:true,code:"usul-key-2")
+	let usulPortalFragment1 = Item(name: "usul Part 1", type: .fragment, note:"half Portal key", isQuest:true,code:"usul-key-1")
+	let usulPortalFragment2 = Item(name: "usul Part 2", type: .fragment, note:"half Portal key", isQuest:true,code:"usul-key-2")
 	
 	let endPortalKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true,code:"end-key")
-	let endPortalKeyFragment1 = Item(name: "end Part I", type: .key, note: "half Portal key", isQuest: true,code:"end-key-1")
-	let endPortalKeyFragment2 = Item(name: "end Part II", type: .key, note: "half Portal key", isQuest: true,code:"end-key-2")
+	let endPortalKeyFragment1 = Item(name: "end Part 1", type: .key, note: "half Portal key", isQuest: true,code:"end-key-1")
+	let endPortalKeyFragment2 = Item(name: "end Part 2", type: .key, note: "half Portal key", isQuest: true,code:"end-key-2")
 	
 	// Etc..
 	

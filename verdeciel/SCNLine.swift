@@ -24,7 +24,7 @@ class SCNLine : Empty
 	func update(vertices:Array<SCNVector3>, color:UIColor)
 	{
 		if vertices.count < 2 { return }
-		if vertices.count % 2 == 1 { print("ERROR: Line vertices count is odd") ; return }
+		if vertices.count % 2 == 1 { return }
 	
 		self.vertices = vertices
 		self.color = color
@@ -35,7 +35,7 @@ class SCNLine : Empty
 			positionsList.appendContentsOf([vertex.x,vertex.y,vertex.z])
 		}
 		
-		if vertices.count == 3 { print(positionsList) }
+		if vertices.count == 3 { }
 		
 		let positionData = NSData(bytes: positionsList, length: sizeof(Float32)*positionsList.count)
 		
@@ -55,7 +55,7 @@ class SCNLine : Empty
 		else if vertices.count == 24 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] }
 		else if vertices.count == 26 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25] }
 		else if vertices.count == 28 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] }
-		else { print("ERROR: Line has too many vertices") ; indices = [] }
+		else { indices = [0,1] }
 
 		let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
 		let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)

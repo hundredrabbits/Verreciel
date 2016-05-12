@@ -73,9 +73,9 @@ class PanelIntercom : MainPanel
 		statusLabel.position = SCNVector3(-0.1,1 - 1.4,0)
 		statusValueLabel.position = SCNVector3(0.1,1 - 1.4,0)
 		
-		detailLabel = SCNLabel(text: "details", align: .right, color: grey)
+		detailLabel = SCNLabel(text: "details", scale:0.075, align: .right, color: grey)
 		defaultPanel.addChildNode(detailLabel)
-		detailValueLabel = SCNLabel(text: "key", align: .left, color: white)
+		detailValueLabel = SCNLabel(text: "key", scale:0.075, align: .left, color: white)
 		defaultPanel.addChildNode(detailValueLabel)
 		
 		detailLabel.position = SCNVector3(-0.1,1 - 1.8,0)

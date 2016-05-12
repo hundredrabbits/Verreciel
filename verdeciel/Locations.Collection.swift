@@ -64,12 +64,7 @@ class Loiqe
 	
 	func satellite() -> LocationSatellite
 	{
-		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"A sartre mechanism$is opening.", item: items.valenPortalFragment2)
-	}
-	
-	func beacon() -> LocationBeacon
-	{
-		return LocationBeacon(name:"loiqe beacon",system:system, at: CGPoint(x: offset.x, y: offset.y - 3), message:"Are you absolutely sure that you are ~in space ...")
+		return LocationSatellite(name: "satellite", system:system, at: CGPoint(x: offset.x + 1, y: offset.y), message:"something broken$half lost", item: items.valenPortalFragment2)
 	}
 	
 	func port() -> LocationTrade
@@ -133,7 +128,7 @@ class Usul
 	
 	func telescope() -> LocationSatellite
 	{
-		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"map archive", item:items.map2, mapRequirement:items.map1)
+		return LocationSatellite(name:"telescope",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"extra sight$map format", item:items.map2, mapRequirement:items.map1)
 	}
 	
 	// MARK: Blind
@@ -181,7 +176,7 @@ class Valen
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Are you certain$that you are$in space.", item:items.battery2)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x + 1, y: offset.y + 2), message:"Extra power$battery format", item:items.battery2)
 	}
 	
 	func market() -> LocationTrade
@@ -198,12 +193,12 @@ class Valen
 	
 	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"stealth", item:items.usulPortalFragment1, mapRequirement: items.map1)
+		return LocationSatellite(name: "fog",system:system, at:CGPoint(x: offset.x, y: offset.y - 1), message:"something broken$half lost", item:items.usulPortalFragment1, mapRequirement: items.map1)
 	}
 	
 	func beacon() -> LocationBeacon
 	{
-		return LocationBeacon(name: "beacon", system: system, at: CGPoint(x: offset.x, y: offset.y - 2), message: "scribbles", mapRequirement: items.map1)
+		return LocationBeacon(name: "beacon", system: system, at: CGPoint(x: offset.x, y: offset.y - 2), message: "scribbles$scribbles$scrib..", mapRequirement: items.map1)
 	}
 	
 	func c_1() -> LocationConstellation
@@ -241,7 +236,7 @@ class Senni
 	
 	func cargo() -> LocationSatellite
 	{
-		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"adrift", item:items.map1)
+		return LocationSatellite(name:"cargo",system:system, at:CGPoint(x: offset.x - 1, y: offset.y), message:"extra sight$map format", item:items.map1)
 	}
 	
 	func harvest() -> LocationHarvest
@@ -268,12 +263,12 @@ class Senni
 	
 	func fog() -> LocationSatellite
 	{
-		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"stealth", item:items.battery3, mapRequirement: items.map1)
+		return LocationSatellite(name:"fog",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Extra power$battery format", item:items.battery3, mapRequirement: items.map1)
 	}
 	
 	func wreck() -> LocationSatellite
 	{
-		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"adrift", item:items.record2, mapRequirement: items.map1)
+		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x - 2, y: offset.y), message:"Memories$radio format", item:items.record2, mapRequirement: items.map1)
 	}
 	
 	// MARK: Silence

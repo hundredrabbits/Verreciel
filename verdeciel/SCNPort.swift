@@ -151,9 +151,9 @@ class SCNPort : Empty
 	
 	func connect(port:SCNPort)
 	{
-		if port.isEnabled == false { print("Port is disabled") ; return }
-		if port.origin != nil { print("Port already has input: (\(port.origin))") ; return }
-		if port.connection != nil && port.connection == self { print("Loop") ; return }
+		if port.isEnabled == false { return }
+		if port.origin != nil {  return }
+		if port.connection != nil && port.connection == self { return }
 		
 		disconnect()
 		connection = port
@@ -204,8 +204,6 @@ class SCNPort : Empty
 		stored_origin.host.update()
 		stored_origin.update()
 		stored_origin.disconnect()
-		
-		print("syphon \(stored_origin.name)'s \(stored_event.name)")
 		
 		return stored_event
 	}
@@ -345,12 +343,12 @@ class SCNPort : Empty
 	
 	override func onConnect()
 	{
-		print("* PORT     | \(host.name) is connected")
+		super.onConnect()
 	}
 	
 	override func onDisconnect()
 	{
-		print("* PORT     | \(host.name) is disconnected")
+		super.onDisconnect()
 		host.onDisconnect()
 	}
 	
