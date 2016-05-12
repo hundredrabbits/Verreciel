@@ -43,5 +43,6 @@ class Quest
 		print("+ QUEST    | Complete: \(name!)")
 		isCompleted = true
 		self.result()
+		game.save()
 	}
 }

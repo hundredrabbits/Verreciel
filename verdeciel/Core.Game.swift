@@ -34,9 +34,6 @@ class CoreGame
 		else{
 			new()
 		}
-		
-//		unlockedState(universe.valen_transit, newItems:[items.map2, items.shield, items.endKey])
-//		startingState()
 	}
 	
 	func new()
@@ -146,6 +143,9 @@ class CoreGame
 		memory.setValue(thruster.isInstalled, forKey: "capsule-panel-thruster")
 		
 		memory.synchronize()
+		
+		print("!!!!!!!SAVE \(battery.isInstalled) ")
+		
 		print("$ GAME     | Saving..done!")
 	}
 	
@@ -185,7 +185,7 @@ class CoreGame
 		if loadBoolWithKey("capsule-panel-radar") == true { radar.onInstallationComplete() }
 		if loadBoolWithKey("capsule-panel-thruster") == true { thruster.onInstallationComplete() }
 		
-		print(loadBoolWithKey("capsule-panel-battery"))
+		print("!!!!!!!LOAD \(loadBoolWithKey("capsule-panel-battery")) ")
 		
 		print("$ GAME     | Loading..done!")
 	}

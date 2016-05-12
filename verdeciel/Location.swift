@@ -114,6 +114,7 @@ class Location : Event
 	func onApproach()
 	{
 		print("* EVENT    | Approached \(self.name!)")
+		
 		space.startInstance(self)
 		// Don't try to dock if there is already a target
 		if radar.port.hasEvent() == true && radar.port.event == self || capsule.isFleeing == true {
@@ -123,7 +124,6 @@ class Location : Event
 			capsule.dock(self)
 		}
 		update()
-		
 	}
 	
 	func onCollision()
@@ -140,7 +140,6 @@ class Location : Event
 		structure.onDock()
 		icon.onUpdate()
 		exploration.refresh()
-		game.save()
 	}
 	
 	func onUndock()

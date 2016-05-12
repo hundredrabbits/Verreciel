@@ -13,7 +13,6 @@ class LocationCollection
 	let usul  = Usul(offset: CGPoint(x: -3,y: 0))
 	let valen = Valen(offset: CGPoint(x: 3,y: 0))
 	let senni = Senni(offset: CGPoint(x: 0,y: 3))
-//	let nevic = Nevic(offset: CGPoint(x: 0,y: 0))
 	
 	init()
 	{
