@@ -31,6 +31,8 @@ class Helmet: Empty
 	{
 		super.init()
 		
+		print("^ Helmet | Init")
+		
 		addChildNode(visor)
 		
 		// Left

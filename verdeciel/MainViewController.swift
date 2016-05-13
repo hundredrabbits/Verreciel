@@ -42,8 +42,8 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		capsule = CoreCapsule()
 		scene.rootNode.addChildNode(capsule)
 		
-//		space = CoreSpace()
-//		scene.rootNode.addChildNode(space)
+		space = CoreSpace()
+		scene.rootNode.addChildNode(space)
 		
 		//
 		
@@ -52,9 +52,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { print("X Player is locked") ; return }
-		
-		print("touched!")
+		if player.isLocked == true { return }
 		
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
@@ -66,9 +64,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { print("X Player is locked") ; return }
-		
-		print("touched!")
+		if player.isLocked == true { return }
 		
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
@@ -87,9 +83,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { print("X Player is locked") ; return }
-		
-		print("touched!")
+		if player.isLocked == true { return }
 		
 		player.canAlign = true
 		helmet.canAlign = true
@@ -111,12 +105,12 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-//		glLineWidth(1)
+		glLineWidth(1)
 		
 //        game.doTic()
 //        game.doSecond()
 		
-		capsule.whenRenderer()
+//		capsule.whenRenderer()
 		player.whenRenderer()
 		helmet.whenRenderer()
 //		space.whenRenderer()

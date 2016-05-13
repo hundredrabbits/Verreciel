@@ -15,6 +15,8 @@ class CoreSpace: Empty
 	{
 		super.init()
 		
+		print("^ Space | Init")
+		
 		addChildNode(structuresRoot)
 		addChildNode(starsRoot)
 		

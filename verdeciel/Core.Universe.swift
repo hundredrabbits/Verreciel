@@ -11,6 +11,7 @@ class CoreUniverse : Empty
 	override init()
 	{
 		super.init()
+		print("^ Universe | Init")
 		
 		addLoiqe()
 		addUsul()

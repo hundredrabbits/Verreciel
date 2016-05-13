@@ -22,6 +22,8 @@ class CorePlayer : Empty
 	{
 		super.init()
 		
+		print("^ Player | Init")
+		
 		self.camera = SCNCamera()
 		self.camera?.xFov = 75
 		self.name = "helmet"
@@ -32,11 +34,6 @@ class CorePlayer : Empty
 		port = SCNPort(host: self)
 		port.enable()
 		
-		addInterface()
-	}
-	
-	func addInterface()
-	{
 		trigger = SCNTrigger(host: self, size: CGSize(width: 2,height: 0.75))
 		trigger.position = SCNVector3(x: 0, y: 0.9, z: -1.01)
 		trigger.rotation = SCNVector4Make(1, 0, 0, Float(M_PI/2 * 0))

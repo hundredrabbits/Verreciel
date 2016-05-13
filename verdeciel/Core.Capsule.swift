@@ -26,10 +26,67 @@ class CoreCapsule: Empty
 	{
 		super.init()
 		
-		self.direction = 0
+		print("^ Capsule | Init")
 		
-		nodeSetup()
-		interfaceSetup()
+		let scale:Float = 1
+		let height:Float = 1.5
+		
+		let highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
+		
+		templates.left = highNode[7].x
+		templates.right = highNode[0].x
+		templates.top = highNode[0].y
+		templates.bottom = -highNode[0].y
+		templates.leftMargin = highNode[7].x * 0.8
+		templates.rightMargin = highNode[0].x * 0.8
+		templates.topMargin = highNode[0].y * 0.8
+		templates.bottomMargin = -highNode[0].y * 0.8
+		templates.radius = highNode[0].z
+		templates.margin = abs(templates.left - templates.leftMargin)
+		
+		mesh = Empty()
+		mesh.position = SCNVector3(0,0,0)
+		self.direction = 0
+		addChildNode(mesh)
+		
+		// Interface
+		// Monitors
+		addChildNode(journey)
+		addChildNode(exploration)
+		addChildNode(progress)
+		addChildNode(completion)
+		
+		// Panels
+		addChildNode(battery)
+		addChildNode(hatch)
+		addChildNode(console)
+		addChildNode(cargo)
+		addChildNode(intercom)
+		addChildNode(pilot)
+		addChildNode(radar)
+		addChildNode(thruster)
+		
+		addChildNode(above)
+		addChildNode(below)
+		
+		hatch.eulerAngles.y = degToRad(45)
+		console.eulerAngles.y = degToRad(90)
+		cargo.eulerAngles.y = degToRad(135)
+		intercom.eulerAngles.y = degToRad(180)
+		pilot.eulerAngles.y = degToRad(225)
+		radar.eulerAngles.y = degToRad(270)
+		thruster.eulerAngles.y = degToRad(315)
+		
+		journey.eulerAngles.y = battery.eulerAngles.y
+		exploration.eulerAngles.y = console.eulerAngles.y
+		progress.eulerAngles.y = intercom.eulerAngles.y
+		completion.eulerAngles.y = radar.eulerAngles.y
+		
+		// Widgets
+		radar.footer.addChildNode(map)
+		battery.footer.addChildNode(radio)
+		console.footer.addChildNode(shield)
+		intercom.footer.addChildNode(enigma)
 	}
 	
 	override func whenRenderer()
@@ -100,7 +157,7 @@ class CoreCapsule: Empty
 		super.whenSecond()
 		
 		let cl = closestLocation()
-//		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
+		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
 	}
 	
 	func closestLocation() -> Location
@@ -176,47 +233,6 @@ class CoreCapsule: Empty
 		warp = nil
 	}
 	
-	func interfaceSetup()
-	{
-		// Monitors
-		addChildNode(journey)
-		addChildNode(exploration)
-		addChildNode(progress)
-		addChildNode(completion)
-		
-		// Panels
-		addChildNode(battery)
-		addChildNode(hatch)
-		addChildNode(console)
-		addChildNode(cargo)
-		addChildNode(intercom)
-		addChildNode(pilot)
-		addChildNode(radar)
-		addChildNode(thruster)
-		
-		addChildNode(above)
-		addChildNode(below)
-		
-		hatch.eulerAngles.y = degToRad(45)
-		console.eulerAngles.y = degToRad(90)
-		cargo.eulerAngles.y = degToRad(135)
-		intercom.eulerAngles.y = degToRad(180)
-		pilot.eulerAngles.y = degToRad(225)
-		radar.eulerAngles.y = degToRad(270)
-		thruster.eulerAngles.y = degToRad(315)
-		
-		journey.eulerAngles.y = battery.eulerAngles.y
-		exploration.eulerAngles.y = console.eulerAngles.y
-		progress.eulerAngles.y = intercom.eulerAngles.y
-		completion.eulerAngles.y = radar.eulerAngles.y
-		
-		// Widgets
-		radar.footer.addChildNode(map)
-		battery.footer.addChildNode(radio)
-		console.footer.addChildNode(shield)
-		intercom.footer.addChildNode(enigma)
-	}
-	
 	// MARK: Docking -
 	
 	var isDocked:Bool = false
@@ -279,32 +295,6 @@ class CoreCapsule: Empty
 	}
 	
 	// MARK: Custom -
-	
-	func nodeSetup()
-	{
-		var scale:Float = 0.25
-		var height:Float = -3.35
-		
-		scale = 1
-		height = 1.5
-		
-		var highNode = [SCNVector3(x: 2 * scale, y: height, z: -4 * scale),SCNVector3(x: 4 * scale, y: height, z: -2 * scale),SCNVector3(x: 4 * scale, y: height, z: 2 * scale),SCNVector3(x: 2 * scale, y: height, z: 4 * scale),SCNVector3(x: -2 * scale, y: height, z: 4 * scale),SCNVector3(x: -4 * scale, y: height, z: 2 * scale),SCNVector3(x: -4 * scale, y: height, z: -2 * scale),SCNVector3(x: -2 * scale, y: height, z: -4 * scale)]
-		
-		templates.left = highNode[7].x
-		templates.right = highNode[0].x
-		templates.top = highNode[0].y
-		templates.bottom = -highNode[0].y
-		templates.leftMargin = highNode[7].x * 0.8
-		templates.rightMargin = highNode[0].x * 0.8
-		templates.topMargin = highNode[0].y * 0.8
-		templates.bottomMargin = -highNode[0].y * 0.8
-		templates.radius = highNode[0].z
-		templates.margin = abs(templates.left - templates.leftMargin)
-		
-		mesh = Empty()
-		mesh.position = SCNVector3(0,0,0)
-		addChildNode(mesh)
-	}
 	
 	func teleport(location:Location)
 	{
