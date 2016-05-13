@@ -30,17 +30,18 @@ class SCNLine : Empty
 		self.color = color
 		
 		let geoSrc = SCNGeometrySource(vertices: UnsafePointer<SCNVector3>(vertices), count: vertices.count)
-		var elements:Array<SCNGeometryElement> = []
 		
 		var i:Int32 = 0
+        var indexes = [Int32]()
 		while i < Int32(vertices.count) {
-			let indexes : [Int32] = [i, i+1]
-			let geoElement = SCNGeometryElement(data: NSData(bytes: indexes, length: (sizeof(Int32) * indexes.count)), primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indexes.count, bytesPerIndex: sizeof(Int32))
-			elements.append(geoElement)
+            indexes += [i, i+1]
 			i += 2
 		}
+        
+        // PrimitiveCount should be the number of lines, not the number of vertices.
+        let geoElement = SCNGeometryElement(data: NSData(bytes: indexes, length: (sizeof(Int32) * indexes.count)), primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indexes.count / 2, bytesPerIndex: sizeof(Int32))
 		
-		self.geometry = SCNGeometry(sources: [geoSrc], elements: elements)
+		self.geometry = SCNGeometry(sources: [geoSrc], elements: [geoElement])
 		self.geometry!.firstMaterial?.lightingModelName = SCNLightingModelConstant
 		self.geometry!.firstMaterial?.diffuse.contents = color
 		opacity = 1
