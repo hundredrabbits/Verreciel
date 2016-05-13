@@ -47,7 +47,12 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		
 		//
 		
-//		game.start()
+//		universe.whenStart()
+//		player.whenStart()
+//		helmet.whenStart()
+//		capsule.whenStart()
+//		space.whenStart()
+//		game.whenStart()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
