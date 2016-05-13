@@ -79,7 +79,7 @@ class Structure : Empty
 	}
 	
 	func onLeave()
-	{		
+	{
 		self.removeFromParentNode()
 	}
 	
