@@ -23,7 +23,7 @@ class CoreAudio
 	
 	func playSound(soundName:String)
 	{
-		if game.time < lastTimeSound + 2 { print("\(game.time) - \(lastTimeSound)") ; return }
+		if game.time < lastTimeSound + 5 { print("\(game.time) - \(lastTimeSound)") ; return }
 		
 		let coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(soundName, ofType: "wav")!)
 		do{

@@ -161,14 +161,17 @@ class Helmet: Empty
 	var warningColor:UIColor = red
 	var warningLabel:SCNLabel!
 	var warningFlag:String!
+	var lastWarning:Float = 0
 	
 	func addWarning(text:String!, color:UIColor = red, duration:Double, flag:String)
 	{
+		if game.time - lastWarning <= 10 { return }
 		if text == "" { return }
 		
 		warningString = text
 		warningColor = color
 		warningFlag = flag
+		lastWarning = game.time
 		
 		warningLabel.update(warningString,color:warningColor)
 		audio.playSound("beep3")
