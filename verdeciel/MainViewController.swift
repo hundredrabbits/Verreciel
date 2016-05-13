@@ -17,13 +17,6 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		super.viewDidLoad()
 		
-		create()
-		initialize()
-		start()
-	}
-	
-	func create()
-	{
 		sceneView = self.view as! SCNView
 		sceneView.scene = scene
 		sceneView.backgroundColor = UIColor.blackColor()
@@ -31,12 +24,11 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
 		sceneView.preferredFramesPerSecond = 30
 		sceneView.playing = true
-		sceneView.showsStatistics = false
+		sceneView.showsStatistics = true
 		sceneView.delegate = self
-	}
-	
-	func initialize()
-	{
+		
+		//
+		
 		universe = CoreUniverse()
 		
 		game = CoreGame()
@@ -44,24 +36,25 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		player = CorePlayer()
 		scene.rootNode.addChildNode(player)
 		
+		helmet = Helmet()
+		scene.rootNode.addChildNode(helmet)
+		
 		capsule = CoreCapsule()
 		scene.rootNode.addChildNode(capsule)
 		
-		space = CoreSpace()
-		scene.rootNode.addChildNode(space)
+//		space = CoreSpace()
+//		scene.rootNode.addChildNode(space)
 		
-		helmet = Helmet()
-		scene.rootNode.addChildNode(helmet)
-	}
-	
-	func start()
-	{
-		game.start()
+		//
+		
+//		game.start()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { return }
+		if player.isLocked == true { print("X Player is locked") ; return }
+		
+		print("touched!")
 		
 		for touch: AnyObject in touches {
 			touchOrigin = touch.locationInView(self.view)
@@ -73,7 +66,9 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { return }
+		if player.isLocked == true { print("X Player is locked") ; return }
+		
+		print("touched!")
 		
 		for touch: AnyObject in touches {
 			touchPosition = touch.locationInView(self.view)
@@ -92,7 +87,9 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
 	{
-		if player.isLocked == true { return }
+		if player.isLocked == true { print("X Player is locked") ; return }
+		
+		print("touched!")
 		
 		player.canAlign = true
 		helmet.canAlign = true
@@ -114,15 +111,15 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
-		glLineWidth(1)
-        
-        game.doTic()
-        game.doSecond()
+//		glLineWidth(1)
+		
+//        game.doTic()
+//        game.doSecond()
 		
 		capsule.whenRenderer()
 		player.whenRenderer()
 		helmet.whenRenderer()
-		space.whenRenderer()
+//		space.whenRenderer()
 	}
 	
 	override func prefersStatusBarHidden() -> Bool

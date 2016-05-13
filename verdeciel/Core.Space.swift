@@ -63,6 +63,8 @@ class CoreSpace: Empty
 	{
 		super.whenTime()
 		
+		return
+		
 		if capsule.isDockedAtLocation(universe.close) == true {
 			journey.distance += 3
 		}

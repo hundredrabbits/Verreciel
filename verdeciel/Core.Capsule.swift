@@ -100,7 +100,7 @@ class CoreCapsule: Empty
 		super.whenSecond()
 		
 		let cl = closestLocation()
-		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
+//		if cl.system != nil && cl.system != system { space.onSystemEnter(cl.system) }
 	}
 	
 	func closestLocation() -> Location

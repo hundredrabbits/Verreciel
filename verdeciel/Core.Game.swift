@@ -90,7 +90,7 @@ class CoreGame
         {
             self.needsTic = false
             self.time += 1
-            space.whenTime()
+//            space.whenTime()
         }
     }
 }
