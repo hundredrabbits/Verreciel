@@ -45,6 +45,13 @@ class CorePlayer : Empty
 		trigger.addChildNode(triggerLabel)
 	}
 	
+	override func whenStart()
+	{
+		super.whenStart()
+		
+		print("+ Player | Start")
+	}
+	
 	func activateEvent(event:Event)
 	{
 		self.event = event

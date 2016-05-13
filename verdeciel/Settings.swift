@@ -39,7 +39,7 @@ var universe:CoreUniverse!
 var capsule:CoreCapsule!
 var player:CorePlayer!
 var space:CoreSpace!
-var helmet:Helmet!
+var helmet:CoreHelmet!
 
 // Collections
 var missions = MissionCollection()

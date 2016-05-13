@@ -6,7 +6,7 @@ import QuartzCore
 import SceneKit
 import Foundation
 
-class Helmet: Empty
+class CoreHelmet: Empty
 {
 	var canAlign:Bool = false
 
@@ -84,6 +84,13 @@ class Helmet: Empty
 		
 		visor.addChildNode(player.port)
 		player.port.position = SCNVector3(0,-3,-2.5)
+	}
+	
+	override func whenStart()
+	{
+		super.whenStart()
+		
+		print("+ Helmet | Start")
 	}
 	
 	override func whenRenderer()

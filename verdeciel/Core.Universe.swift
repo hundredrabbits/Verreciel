@@ -18,6 +18,13 @@ class CoreUniverse : Empty
 		addValen()
 		addSenni()
 		addClose()
+	}
+	
+	override func whenStart()
+	{
+		super.whenStart()
+		
+		print("+ Player | Start")
 		
 		connectPaths()
 	}

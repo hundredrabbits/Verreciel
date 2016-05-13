@@ -89,6 +89,13 @@ class CoreCapsule: Empty
 		intercom.footer.addChildNode(enigma)
 	}
 	
+	override func whenStart()
+	{
+		super.whenStart()
+		
+		print("+ Capsule | Start")
+	}
+	
 	override func whenRenderer()
 	{
 		super.whenRenderer()

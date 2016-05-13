@@ -30,29 +30,27 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		//
 		
 		universe = CoreUniverse()
-		
 		game = CoreGame()
-		
 		player = CorePlayer()
-		scene.rootNode.addChildNode(player)
-		
-		helmet = Helmet()
-		scene.rootNode.addChildNode(helmet)
-		
+		helmet = CoreHelmet()
 		capsule = CoreCapsule()
-		scene.rootNode.addChildNode(capsule)
-		
 		space = CoreSpace()
-		scene.rootNode.addChildNode(space)
 		
 		//
 		
-//		universe.whenStart()
-//		player.whenStart()
-//		helmet.whenStart()
-//		capsule.whenStart()
-//		space.whenStart()
-//		game.whenStart()
+		scene.rootNode.addChildNode(player)
+		scene.rootNode.addChildNode(helmet)
+		scene.rootNode.addChildNode(capsule)
+		scene.rootNode.addChildNode(space)
+		//
+		
+		universe.whenStart()
+		player.whenStart()
+		helmet.whenStart()
+		capsule.whenStart()
+		space.whenStart()
+		game.whenStart()
+		items.whenStart()
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

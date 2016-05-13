@@ -23,6 +23,13 @@ class CoreSpace: Empty
 		starsRoot.position = SCNVector3(0,40,0)
 	}
 	
+	override func whenStart()
+	{
+		super.whenStart()
+		
+		print("+ Space | Start")
+	}
+	
 	// Space Color
 	
 	var targetSpaceColor:Array<CGFloat> = [0,0,0]

@@ -19,19 +19,12 @@ class CoreGame
 //		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.whenSecond), userInfo: nil, repeats: true)
 	}
 	
-	func start()
+	func whenStart()
 	{
+		print("+ Game | Start")
+		
 		erase()
-		
 		save(5)
-		
-		universe.whenStart()
-		capsule.whenStart()
-		player.whenStart()
-		space.whenStart()
-		helmet.whenStart()
-		items.whenStart()
-		
 		load(memory.integerForKey("state"))
 	}
 	
