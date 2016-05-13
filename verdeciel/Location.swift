@@ -112,6 +112,7 @@ class Location : Event
 	
 	func onApproach()
 	{
+		if mapRequirement != nil && map.port.hasEvent(mapRequirement) == false { return }
 		space.startInstance(self)
 		// Don't try to dock if there is already a target
 		if radar.port.hasEvent() == true && radar.port.event == self || capsule.isFleeing == true {

@@ -174,7 +174,7 @@ class Helmet: Empty
 		lastWarning = game.time
 		
 		warningLabel.update(warningString,color:warningColor)
-		audio.playSound("beep3")
+		audio.playSound("beep2")
 		
 		delay(duration, block: { self.hideWarning(self.warningFlag) })
 	}

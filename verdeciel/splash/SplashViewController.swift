@@ -51,8 +51,8 @@ class SplashViewController: UIViewController
 		// Button
 		
 		button = UIButton(frame: CGRect(x: (view.frame.width/2) - 50, y: (view.frame.height) - 110, width: 100, height: 100))
-		button.backgroundColor = .redColor()
-		button.alpha = 0.5
+		button.backgroundColor = .blackColor()
+		button.alpha = 0.01
 		button.addTarget(self, action: #selector(self.support), forControlEvents:.TouchUpInside)
 		self.view.addSubview(button)
 		

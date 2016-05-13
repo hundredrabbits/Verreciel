@@ -52,7 +52,6 @@ class CoreCapsule: Empty
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(degToRad(angle)))
 			
 			if distanceBetweenTwoPoints(capsule.at, point2: capsule.dock.at) < 0.003 { docked() }
-			
 		}
 		
 		// Warping
@@ -73,16 +72,15 @@ class CoreCapsule: Empty
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
 		}
 		
-		if isFleeing == true {
-			helmet.addWarning("Auto-Pilot", duration: 0.1, flag: "fleeing")
+		if closestLocation().distance > 1.25 && isWarping == false {
+			helmet.addWarning("Returning", duration: 0.1, flag: "radiation")
+			autoReturn()
+		}
+		else if isFleeing == true {
+			helmet.addWarning("Auto-Pilot", duration: 0.1, flag: "radiation")
 		}
 		else if radiation > 0 {
 			helmet.addWarning("Radiation \(String(format: "%.1f",radiation * 100))%", duration: 0.1, flag: "radiation")
-		}
-		
-		if closestLocation().distance > 1.25 && isWarping == false {
-			helmet.addWarning("Returning", duration: 0.1, flag: "returning")
-			autoReturn()
 		}
 	}
 	

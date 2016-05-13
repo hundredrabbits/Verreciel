@@ -291,6 +291,6 @@ class Close
 	
 	func void() -> LocationClose
 	{
-		return LocationClose(name:"close",system:system,at:offset)
+		return LocationClose(name:"close",system:system,at:offset, mapRequirement: items.map2)
 	}
 }

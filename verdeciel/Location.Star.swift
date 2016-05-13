@@ -22,7 +22,7 @@ class LocationStar : Location
 	{
 		let newPanel = Panel()
 		
-		let requirementLabel = SCNLabel(text:"Valen's melting core$welcomes you.$")
+		let requirementLabel = SCNLabel(text:"the melting core$welcomes you.")
 		requirementLabel.position = SCNVector3(templates.leftMargin,templates.topMargin-0.3,0)
 		newPanel.addChildNode(requirementLabel)
 		

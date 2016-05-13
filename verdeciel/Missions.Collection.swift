@@ -390,7 +390,7 @@ class MissionCollection
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
-			cargo.addItems([items.loiqePortalKey,items.valenPortalKey,items.record1,items.senniPortalKey,items.map1,items.usulPortalKey])
+			cargo.addItems([items.loiqePortalKey,items.valenPortalKey,items.senniPortalKey,items.usulPortalKey])
 			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration,radio,journey,map])
 			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal,universe.valen_station,universe.valen_cargo,universe.valen_bank,universe.senni_harvest])
 			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite,universe.valen_station,universe.valen_cargo,universe.loiqe_port,universe.senni_cargo,universe.senni_station,universe.valen_fog,universe.loiqe_fog,universe.senni_fog,universe.senni_wreck])
@@ -411,13 +411,42 @@ class MissionCollection
 		
 		// MARK: Part 16
 		
-		m = Mission(id:(story.count), name: "Shield Tutorial")
+		m = Mission(id:(story.count), name: "Create \(items.endPortalKey.name!)")
 		m.state = {
 			capsule.beginAtLocation(universe.usul_station)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
-			cargo.addItems([items.loiqePortalKey,items.valenPortalKey,items.senniPortalKey,items.usulPortalKey,Item(like:items.currency4),Item(like:items.currency5)])
+			cargo.addItems([items.loiqePortalKey,items.valenPortalKey,items.senniPortalKey,items.usulPortalKey])
+			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration,radio,journey,map,shield])
+			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal,universe.valen_station,universe.valen_cargo,universe.valen_bank,universe.senni_harvest])
+			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite,universe.valen_station,universe.valen_cargo,universe.loiqe_port,universe.senni_cargo,universe.valen_fog,universe.senni_station,universe.loiqe_fog,universe.usul_station,universe.senni_fog,universe.senni_wreck])
+			battery.cellPort1.connect(battery.thrusterPort)
+			battery.cellPort2.connect(battery.mapPort)
+			battery.cellPort3.connect(battery.shieldPort)
+			radar.port.connect(pilot.port)
+			cargo.port.connect(console.port)
+			map.port.event = items.map1
+			radio.port.event = items.record2
+			universe.valen_bank.addItems([items.record1])
+		}
+		m.predicate = { cargo.contains(items.endPortalKey) }
+		m.quests = [
+			Quest(name:"Create \(items.endPortalKeyFragment1.name!)", predicate:{ cargo.contains(items.endPortalKeyFragment1) }, result: {  }),
+			Quest(name:"Create \(items.endPortalKeyFragment2.name!)", predicate:{ cargo.contains(items.endPortalKeyFragment2) }, result: {  }),
+			Quest(name:"Combine fragments", predicate:{ cargo.containsLike(items.endPortalKey) }, result: { }),
+		]
+		story.append(m)
+		
+		// MARK: Part 17
+		
+		m = Mission(id:(story.count), name: "Shield Tutorial")
+		m.state = {
+			capsule.beginAtLocation(universe.senni_horadric)
+			battery.cellPort1.addEvent(items.battery1)
+			battery.cellPort2.addEvent(items.battery2)
+			battery.cellPort3.addEvent(items.battery3)
+			cargo.addItems([items.endPortalKey,Item(like:items.currency4),Item(like:items.currency5)])
 			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration,radio,journey,map,shield])
 			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal,universe.valen_station,universe.valen_cargo,universe.valen_bank,universe.senni_harvest])
 			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite,universe.valen_station,universe.valen_cargo,universe.loiqe_port,universe.senni_cargo,universe.valen_fog,universe.senni_station,universe.loiqe_fog,universe.usul_station,universe.senni_fog,universe.senni_wreck])
@@ -430,7 +459,6 @@ class MissionCollection
 			radio.port.event = items.record2
 			universe.valen_bank.addItems([items.record1])
 		}
-		m.predicate = { cargo.contains(items.endPortalKey) }
 		m.quests = [
 			Quest(name:"Collect \(items.map2.name!)", location: universe.usul_telescope, predicate:{ map.port.hasEvent(items.map2) || cargo.contains(items.map2) }, result: { }),
 			Quest(name:"Route \(items.map2.name!) to map", predicate:{ map.port.hasEvent(items.map2) }, result: {  }),
@@ -440,40 +468,11 @@ class MissionCollection
 		]
 		story.append(m)
 		
-		// MARK: Part 17
-		
-		m = Mission(id:(story.count), name: "Create \(items.endPortalKey.name!)")
-		m.state = {
-			capsule.beginAtLocation(universe.usul_silence)
-			battery.cellPort1.addEvent(items.battery1)
-			battery.cellPort2.addEvent(items.battery2)
-			battery.cellPort3.addEvent(items.battery3)
-			cargo.addItems([items.loiqePortalKey,items.valenPortalKey,items.senniPortalKey,items.usulPortalKey,items.map1])
-			self.setToInstalled([battery,thruster,radar,progress,pilot,exploration,radio,journey,map,shield])
-			self.setToKnown([universe.loiqe_spawn,universe.loiqe_harvest,universe.loiqe_city,universe.loiqe_satellite,universe.loiqe_horadric,universe.loiqe_portal,universe.valen_station,universe.valen_cargo,universe.valen_bank,universe.senni_harvest])
-			self.setToCompleted([universe.loiqe_city,universe.loiqe_satellite,universe.valen_station,universe.valen_cargo,universe.loiqe_port,universe.senni_cargo,universe.valen_fog,universe.senni_station,universe.loiqe_fog,universe.usul_station,universe.senni_fog,universe.senni_wreck,universe.usul_telescope,universe.usul_silence])
-			battery.cellPort1.connect(battery.thrusterPort)
-			battery.cellPort2.connect(battery.mapPort)
-			battery.cellPort3.connect(battery.shieldPort)
-			radar.port.connect(pilot.port)
-			cargo.port.connect(console.port)
-			map.port.event = items.map2
-			radio.port.event = items.record2
-			shield.port.event = items.shield
-			universe.valen_bank.addItems([items.record1])
-		}
-		m.quests = [
-			Quest(name:"Collect \(items.endPortalKeyFragment1.name!)", predicate:{ cargo.contains(items.endPortalKeyFragment1) }, result: {  }),
-			Quest(name:"Collect \(items.endPortalKeyFragment2.name!)", predicate:{ cargo.contains(items.endPortalKeyFragment2) }, result: {  }),
-			Quest(name:"Combine fragments", predicate:{ cargo.containsLike(items.endPortalKey) }, result: { }),
-		]
-		story.append(m)
-		
 		// MARK: Part 18
 		
 		m = Mission(id:(story.count), name: "Close the mechanism")
 		m.state = {
-			capsule.beginAtLocation(universe.loiqe_horadric)
+			capsule.beginAtLocation(universe.usul_silence)
 			battery.cellPort1.addEvent(items.battery1)
 			battery.cellPort2.addEvent(items.battery2)
 			battery.cellPort3.addEvent(items.battery3)
@@ -492,10 +491,10 @@ class MissionCollection
 			universe.valen_bank.addItems([items.record1])
 		}
 		m.quests = [
-			Quest(name:"Extinguist the sun", location: universe.loiqe, predicate:{ universe.loiqe.isComplete == true }, result: {  }),
-			Quest(name:"Extinguist the sun", location: universe.valen, predicate:{ universe.valen.isComplete == true }, result: {  }),
-			Quest(name:"Extinguist the sun", location: universe.senni, predicate:{ universe.senni.isComplete == true }, result: {  }),
-			Quest(name:"Extinguist the sun", location: universe.usul, predicate:{ universe.usul.isComplete == true }, result: {  }),
+			Quest(name:"Extinguish the sun", location: universe.loiqe, predicate:{ universe.loiqe.isComplete == true }, result: {  }),
+			Quest(name:"Extinguish the sun", location: universe.valen, predicate:{ universe.valen.isComplete == true }, result: {  }),
+			Quest(name:"Extinguish the sun", location: universe.senni, predicate:{ universe.senni.isComplete == true }, result: {  }),
+			Quest(name:"Extinguish the sun", location: universe.usul, predicate:{ universe.usul.isComplete == true }, result: {  }),
 		]
 		story.append(m)
 		

@@ -190,7 +190,9 @@ class PanelCargo : MainPanel
 	{
 		if port.isReceivingEventOfTypeItem() == false { return }
 		
-		upload(port.event)
+		if cargohold.content.count < 6 {
+			upload(port.event)
+		}
 	}
 	
 	// MARK: Upload -

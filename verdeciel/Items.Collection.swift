@@ -24,8 +24,8 @@ class ItemCollection
 	let usulPortalFragment2 = Item(name: "usul Part 2", type: .fragment, note:"half Portal key", isQuest:true,code:"usul-key-2")
 	
 	let endPortalKey = Item(name: "End Key", type: .key, note: "[missing]", isQuest: true,code:"end-key")
-	let endPortalKeyFragment1 = Item(name: "end Part 1", type: .key, note: "half Portal key", isQuest: true,code:"end-key-1")
-	let endPortalKeyFragment2 = Item(name: "end Part 2", type: .key, note: "half Portal key", isQuest: true,code:"end-key-2")
+	let endPortalKeyFragment1 = Item(name: "horizontal part", type: .fragment, note: "half Portal key", isQuest: true,code:"end-key-1")
+	let endPortalKeyFragment2 = Item(name: "vertical part", type: .fragment, note: "half Portal key", isQuest: true,code:"end-key-2")
 	
 	// Etc..
 	
@@ -48,10 +48,10 @@ class ItemCollection
 	
 	// Harvest
 	let currency1 = Item(name: "alta", type: .currency, note:"trading currency",code:"currency-1")
-	let currency2 = Item(name: "materia", type: .currency, note:"trading currency",code:"currency-2")
-	let currency3 = Item(name: "natal", type: .currency, note:"trading currency",code:"currency-3")
-	let currency4 = Item(name: "alteria", type: .currency, note:"From 1 & 2",code:"currency-4")
-	let currency5 = Item(name: "nateria", type: .currency, note:"From 2 & 3",code:"currency-5")
+	let currency2 = Item(name: "ikov", type: .currency, note:"trading currency",code:"currency-2")
+	let currency3 = Item(name: "eral", type: .currency, note:"trading currency",code:"currency-3")
+	let currency4 = Item(name: "altiov", type: .currency, note:"From 1 & 2",code:"currency-4")
+	let currency5 = Item(name: "ikeral", type: .currency, note:"From 2 & 3",code:"currency-5")
 	let currency6 = Item(name: "echo", type: .currency, note:"From 4 & 5",code:"currency-6")
 	
 	// Batteries
