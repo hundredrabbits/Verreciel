@@ -72,32 +72,13 @@ class CoreSpace: Empty
 	{
 		super.whenTime()
 		
-//		return
-		
 		if capsule.isDockedAtLocation(universe.close) == true {
 			journey.distance += 3
 		}
 		
-		if starsRoot.childNodes.count < 100 && journey.distance > lastStarAddedTime + 1  {
-			let randX = Float(Int(arc4random_uniform(40)) - 20)
-			let randZ = Float(Int(arc4random_uniform(40)) - 20)
-			starsRoot.addChildNode(star(SCNVector3(x:randX,y:0,z:randZ)))
+		if starsRoot.childNodes.count < 75 && journey.distance > lastStarAddedTime + 10  {
+			starsRoot.addChildNode(StarCluster())
 			lastStarAddedTime = journey.distance
-		}
-		
-		var starSpeed = thruster.actualSpeed
-		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
-		else if capsule.isWarping == true { starSpeed = 40 }
-		else{ starSpeed = thruster.actualSpeed }
-		
-		starSpeed *= 0.15
-		
-		if capsule.isDockedAtLocation(universe.close) == true {
-			starSpeed = 0.15
-		}
-		
-		for star in starsRoot.childNodes as! [SCNLine] {
-			star.update([star.vertices.first!,SCNVector3(star.vertices.first!.x,star.vertices.first!.y + starSpeed + 0.1,star.vertices.first!.z)])
 		}
 		
 		// Background
@@ -114,13 +95,6 @@ class CoreSpace: Empty
 		// Etc
 		
 		starsRoot.rotation = SCNVector4Make(0, 1, 0, (degToRad(capsule.direction)))
-		
-		// Update stars
-		
-		for star in starsRoot.childNodes as! [SCNLine] {
-			star.position = SCNVector3(x: star.position.x, y: star.position.y - starSpeed, z: star.position.z)
-			if star.position.y < -80 { star.removeFromParentNode() }
-		}
 	}
 	
 	func star(position:SCNVector3) -> SCNLine
@@ -129,6 +103,67 @@ class CoreSpace: Empty
 	}
 	
 	required init(coder aDecoder: NSCoder)
+	{
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+
+class StarCluster : Empty
+{
+	let starsPositions:Array<SCNVector3> = [
+		SCNVector3(x:Float(Int(arc4random_uniform(40)) - 20),y:0,z:Float(Int(arc4random_uniform(40)) - 20)),
+		SCNVector3(x:Float(Int(arc4random_uniform(40)) - 20),y:0,z:Float(Int(arc4random_uniform(40)) - 20)),
+		SCNVector3(x:Float(Int(arc4random_uniform(40)) - 20),y:0,z:Float(Int(arc4random_uniform(40)) - 20)),
+		SCNVector3(x:Float(Int(arc4random_uniform(40)) - 20),y:0,z:Float(Int(arc4random_uniform(40)) - 20)),
+		SCNVector3(x:Float(Int(arc4random_uniform(40)) - 20),y:0,z:Float(Int(arc4random_uniform(40)) - 20))
+	]
+	
+	var mesh:SCNLine!
+	
+	override init()
+	{
+		super.init()
+		
+		mesh = SCNLine(vertices: [
+			starsPositions[0],SCNVector3(starsPositions[0].x,-1,starsPositions[0].z),
+			starsPositions[1],SCNVector3(starsPositions[1].x,-1,starsPositions[1].z),
+			starsPositions[2],SCNVector3(starsPositions[2].x,-1,starsPositions[2].z),
+			starsPositions[3],SCNVector3(starsPositions[3].x,-1,starsPositions[3].z),
+			starsPositions[4],SCNVector3(starsPositions[4].x,-1,starsPositions[4].z)
+			], color: white)
+		addChildNode(mesh)
+	}
+	
+	override func whenRenderer()
+	{
+		var starSpeed = thruster.actualSpeed
+		if capsule.isDocked == false && capsule.dock != nil { starSpeed = 0.3 }
+		else if capsule.isWarping == true { starSpeed = 40 }
+		else{ starSpeed = thruster.actualSpeed }
+		
+		starSpeed *= 0.15
+		
+		if capsule.isDockedAtLocation(universe.close) == true {
+			starSpeed = 0.15
+		}
+		
+		for star in childNodes as! [SCNLine] {
+			star.position = SCNVector3(x: 0, y: star.position.y - starSpeed, z: 0)
+			if star.position.y < -80 { star.removeFromParentNode() }
+		}
+		
+		mesh.update([
+			starsPositions[0],SCNVector3(starsPositions[0].x,starSpeed + 0.1,starsPositions[0].z),
+			starsPositions[1],SCNVector3(starsPositions[1].x,starSpeed + 0.1,starsPositions[1].z),
+			starsPositions[2],SCNVector3(starsPositions[2].x,starSpeed + 0.1,starsPositions[2].z),
+			starsPositions[3],SCNVector3(starsPositions[3].x,starSpeed + 0.1,starsPositions[3].z),
+			starsPositions[4],SCNVector3(starsPositions[4].x,starSpeed + 0.1,starsPositions[4].z)
+		])
+		
+	}
+	
+	required init?(coder aDecoder: NSCoder)
 	{
 		fatalError("init(coder:) has not been implemented")
 	}
