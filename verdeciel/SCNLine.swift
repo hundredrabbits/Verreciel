@@ -29,41 +29,20 @@ class SCNLine : Empty
 		self.vertices = vertices
 		self.color = color
 		
-		var positionsList: [Float32] = []
+		let geoSrc = SCNGeometrySource(vertices: UnsafePointer<SCNVector3>(vertices), count: vertices.count)
+		var elements:Array<SCNGeometryElement> = []
 		
-		for vertex in vertices {
-			positionsList.appendContentsOf([vertex.x,vertex.y,vertex.z])
+		var i:Int32 = 0
+		while i < Int32(vertices.count) {
+			let indexes : [Int32] = [i, i+1]
+			let geoElement = SCNGeometryElement(data: NSData(bytes: indexes, length: (sizeof(Int32) * indexes.count)), primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indexes.count, bytesPerIndex: sizeof(Int32))
+			elements.append(geoElement)
+			i += 2
 		}
 		
-		if vertices.count == 3 { }
-		
-		let positionData = NSData(bytes: positionsList, length: sizeof(Float32)*positionsList.count)
-		
-		var indices: [Int32]!
-		
-		if vertices.count == 2 { indices = [0, 1] }
-		else if vertices.count == 4 { indices = [0, 1, 2, 3] }
-		else if vertices.count == 6 { indices = [0, 1, 2, 3, 4, 5] }
-		else if vertices.count == 8 { indices = [0, 1, 2, 3, 4, 5, 6, 7] }
-		else if vertices.count == 10 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
-		else if vertices.count == 12 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] }
-		else if vertices.count == 14 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
-		else if vertices.count == 16 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] }
-		else if vertices.count == 18 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] }
-		else if vertices.count == 20 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] }
-		else if vertices.count == 22 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21] }
-		else if vertices.count == 24 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] }
-		else if vertices.count == 26 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25] }
-		else if vertices.count == 28 { indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] }
-		else { indices = [0,1] }
-
-		let indexData = NSData(bytes: indices, length: sizeof(Int32) * indices.count)
-		let source = SCNGeometrySource(data: positionData, semantic: SCNGeometrySourceSemanticVertex, vectorCount: indices.count, floatComponents: true, componentsPerVector: 3, bytesPerComponent: sizeof(Float32), dataOffset: 0, dataStride: sizeof(Float32) * 3)
-		let element = SCNGeometryElement(data: indexData, primitiveType: SCNGeometryPrimitiveType.Line, primitiveCount: indices.count, bytesPerIndex: sizeof(Int32))
-		let line = SCNGeometry(sources: [source], elements: [element])
-		line.firstMaterial?.lightingModelName = SCNLightingModelConstant
-		line.firstMaterial?.diffuse.contents = color
-		self.geometry = line
+		self.geometry = SCNGeometry(sources: [geoSrc], elements: elements)
+		self.geometry!.firstMaterial?.lightingModelName = SCNLightingModelConstant
+		self.geometry!.firstMaterial?.diffuse.contents = color
 		opacity = 1
 	}
 	

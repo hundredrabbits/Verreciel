@@ -19,7 +19,11 @@ class CoreGame
 	}
 	
 	func start()
-	{		
+	{
+		erase()
+		
+		save(5)
+		
 		universe.whenStart()
 		capsule.whenStart()
 		player.whenStart()
