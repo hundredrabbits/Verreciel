@@ -376,8 +376,8 @@ class MissionCollection
 		}
 		m.predicate = { cargo.contains(items.usulPortalKey) }
 		m.quests = [
-			Quest(name:"Collect \(items.usulPortalFragment1.name!)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.currency3) }, result: {  }),
-			Quest(name:"Collect \(items.usulPortalFragment2.name!)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.currency2) }, result: {  }),
+			Quest(name:"Collect \(items.usulPortalFragment1.name!)", location: universe.valen_fog, predicate:{ cargo.containsLike(items.usulPortalFragment1) }, result: {  }),
+			Quest(name:"Collect \(items.usulPortalFragment2.name!)", location: universe.loiqe_fog, predicate:{ cargo.containsLike(items.usulPortalFragment2) }, result: {  }),
 			Quest(name:"Combine fragments", predicate:{ cargo.containsLike(items.usulPortalKey) }, result: { }),
 		]
 		story.append(m)
@@ -559,6 +559,7 @@ class MissionCollection
 			}
 			location.isKnown = true
 		}
+		intercom.locationPanel.empty()
 	}
 	
 	var currentMission:Mission = Mission(id:0, name: "--")

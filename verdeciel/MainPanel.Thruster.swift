@@ -361,6 +361,9 @@ class PanelThruster : MainPanel
 	
 	func modeMisaligned()
 	{
+		if pilot.target == nil { return }
+		if pilot.target.align == nil { return }
+		
 		detailsLabel.update("\(String(format: "%.1f",(abs(pilot.target.align)/180)*100))%", color:red)
 		
 		interface_flight.hide()

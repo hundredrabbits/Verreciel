@@ -22,7 +22,7 @@ class CoreGame
 	{
 		erase()
 		
-		save(11)
+		save(15)
 		
 		universe.whenStart()
 		capsule.whenStart()
