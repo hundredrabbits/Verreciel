@@ -24,7 +24,7 @@ class CoreGame
 		print("+ Game | Start")
 		
 		erase()
-		save(18)
+		save(0)
 		load(memory.integerForKey("state"))
 	}
 	

@@ -24,7 +24,7 @@ class CoreUniverse : Empty
 	{
 		super.whenStart()
 		
-		print("+ Player | Start")
+		print("+ Universe | Start")
 		
 		connectPaths()
 	}
