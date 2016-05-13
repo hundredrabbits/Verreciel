@@ -42,6 +42,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		scene.rootNode.addChildNode(helmet)
 		scene.rootNode.addChildNode(capsule)
 		scene.rootNode.addChildNode(space)
+		
 		//
 		
 		universe.whenStart()
@@ -49,7 +50,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		helmet.whenStart()
 		capsule.whenStart()
 		space.whenStart()
-		game.whenStart()
+//		game.whenStart()
 		items.whenStart()
 	}
 	
