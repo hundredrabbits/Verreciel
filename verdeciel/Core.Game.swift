@@ -57,15 +57,36 @@ class CoreGame
 		NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
 	}
 	
+    var needsSecond = false
+    var needsTic = false
+    
 	@objc func whenSecond()
 	{
-		capsule.whenSecond()
-		missions.refresh()
+        self.needsSecond = true
 	}
 	
 	@objc func onTic()
 	{
-		time += 1
-		space.whenTime()
+        self.needsTic = true
 	}
+    
+    func doSecond()
+    {
+        if self.needsSecond == true
+        {
+            self.needsSecond = false
+            capsule.whenSecond()
+            missions.refresh()
+        }
+    }
+    
+    func doTic()
+    {
+        if self.needsTic == true
+        {
+            self.needsTic = false
+            self.time += 1
+            space.whenTime()
+        }
+    }
 }

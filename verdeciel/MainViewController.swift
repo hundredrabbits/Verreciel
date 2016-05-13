@@ -115,6 +115,9 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval)
 	{
 		glLineWidth(1)
+        
+        game.doTic()
+        game.doSecond()
 		
 		capsule.whenRenderer()
 		player.whenRenderer()

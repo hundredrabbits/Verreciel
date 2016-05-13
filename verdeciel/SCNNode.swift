@@ -11,6 +11,7 @@ extension SCNNode
 {
 	func whenStart()
 	{
+        let childNodes = self.childNodes
 		for node in childNodes {
 			node.whenStart()
 		}
@@ -18,6 +19,7 @@ extension SCNNode
 	
 	func whenTime()
 	{
+        let childNodes = self.childNodes
 		for node in childNodes {
 			node.whenTime()
 		}
@@ -25,6 +27,7 @@ extension SCNNode
 	
 	func whenSecond()
 	{
+        let childNodes = self.childNodes
 		for node in childNodes {
 			node.whenSecond()
 		}
@@ -32,6 +35,7 @@ extension SCNNode
 	
 	func whenRenderer()
 	{
+        let childNodes = self.childNodes
 		for node in childNodes {
 			node.whenRenderer()
 		}

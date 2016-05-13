@@ -8,8 +8,8 @@ import Foundation
 
 class SCNLine : Empty
 {
-	var vertices:Array<SCNVector3>!
-	var color:UIColor! = nil
+	var vertices:Array<SCNVector3>
+	var color:UIColor
 	
 	init(vertices:Array<SCNVector3>, color:UIColor = white)
 	{
