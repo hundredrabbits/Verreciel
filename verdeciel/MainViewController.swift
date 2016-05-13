@@ -50,7 +50,7 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 		helmet.whenStart()
 		capsule.whenStart()
 		space.whenStart()
-//		game.whenStart()
+		game.whenStart()
 		items.whenStart()
 	}
 	
@@ -111,13 +111,13 @@ class MainViewController: UIViewController, SCNSceneRendererDelegate
 	{
 		glLineWidth(1)
 		
-//        game.doTic()
-//        game.doSecond()
+        game.doTic()
+        game.doSecond()
 		
-//		capsule.whenRenderer()
+		capsule.whenRenderer()
 		player.whenRenderer()
 		helmet.whenRenderer()
-//		space.whenRenderer()
+		space.whenRenderer()
 	}
 	
 	override func prefersStatusBarHidden() -> Bool

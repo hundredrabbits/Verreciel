@@ -15,8 +15,8 @@ class CoreGame
 	init()
 	{
 		print("^ Game | Init")
-//		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.onTic), userInfo: nil, repeats: true)
-//		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.whenSecond), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.onTic), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.whenSecond), userInfo: nil, repeats: true)
 	}
 	
 	func whenStart()
@@ -24,7 +24,7 @@ class CoreGame
 		print("+ Game | Start")
 		
 		erase()
-		save(5)
+		save(18)
 		load(memory.integerForKey("state"))
 	}
 	
@@ -84,7 +84,7 @@ class CoreGame
         {
             self.needsTic = false
             self.time += 1
-//            space.whenTime()
+            space.whenTime()
         }
     }
 }
