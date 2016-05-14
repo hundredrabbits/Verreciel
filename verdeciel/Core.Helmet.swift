@@ -84,6 +84,11 @@ class CoreHelmet: Empty
 		
 		visor.addChildNode(player.port)
 		player.port.position = SCNVector3(0,-3,-2.5)
+		
+		// iPhone4
+		if sceneView.frame.width == 320 && sceneView.frame.height == 480 {
+			player.port.position = SCNVector3(0,-2,-2.5)
+		}
 	}
 	
 	override func whenStart()

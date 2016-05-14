@@ -86,9 +86,6 @@
 		57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
 		57DD808E1BC7005600A4146C /* SCNHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD808D1BC7005600A4146C /* SCNHandle.swift */; };
-		57EAA5911CD9767C00E356C8 /* SplashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 57EAA58E1CD9767C00E356C8 /* SplashLogo.png */; };
-		57EAA5921CD9767C00E356C8 /* SplashTune.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57EAA58F1CD9767C00E356C8 /* SplashTune.wav */; };
-		57EAA5931CD9767C00E356C8 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EAA5901CD9767C00E356C8 /* SplashViewController.swift */; };
 		57EDED221BC17321005DF3DE /* Location.Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDED211BC17321005DF3DE /* Location.Beacon.swift */; };
 		57F3D8C71B58215400B9B859 /* Core.Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3D8C61B58215400B9B859 /* Core.Capsule.swift */; };
 		57F4FA111BB8CECF00AEE66C /* MainPanel.Intercom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F4FA101BB8CECF00AEE66C /* MainPanel.Intercom.swift */; };
@@ -194,9 +191,6 @@
 		57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
 		57DD808D1BC7005600A4146C /* SCNHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNHandle.swift; sourceTree = "<group>"; };
-		57EAA58E1CD9767C00E356C8 /* SplashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashLogo.png; path = splash/SplashLogo.png; sourceTree = "<group>"; };
-		57EAA58F1CD9767C00E356C8 /* SplashTune.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SplashTune.wav; path = splash/SplashTune.wav; sourceTree = "<group>"; };
-		57EAA5901CD9767C00E356C8 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = splash/SplashViewController.swift; sourceTree = "<group>"; };
 		57EDED211BC17321005DF3DE /* Location.Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Beacon.swift; sourceTree = "<group>"; };
 		57F3D8C61B58215400B9B859 /* Core.Capsule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Capsule.swift; sourceTree = "<group>"; };
 		57F4FA101BB8CECF00AEE66C /* MainPanel.Intercom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Intercom.swift; sourceTree = "<group>"; };
@@ -253,7 +247,6 @@
 				57F66B431C6E5A38007E4B9F /* Tools.swift */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				03DDE18319CE497F008029A8 /* MainViewController.swift */,
-				57EAA5941CD9767F00E356C8 /* Splash */,
 				579419731B58AEB100F9FF87 /* Core */,
 				576E5DAF1BC5E5F8001D52A9 /* Locations */,
 				5736277A1B4C06FE00899EBC /* Panels */,
@@ -446,16 +439,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		57EAA5941CD9767F00E356C8 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				57EAA58E1CD9767C00E356C8 /* SplashLogo.png */,
-				57EAA58F1CD9767C00E356C8 /* SplashTune.wav */,
-				57EAA5901CD9767C00E356C8 /* SplashViewController.swift */,
-			);
-			name = Splash;
-			sourceTree = "<group>";
-		};
 		57FB78801CE53EBF003E3476 /* Ambiences */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,14 +550,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57EAA5921CD9767C00E356C8 /* SplashTune.wav in Resources */,
 				57FB788E1CE5400B003E3476 /* ambience-2.mp3 in Resources */,
 				03DDE18C19CE497F008029A8 /* LaunchScreen.xib in Resources */,
 				57FB78951CE54245003E3476 /* record-1.mp3 in Resources */,
 				57FB78961CE54245003E3476 /* record-2.mp3 in Resources */,
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
 				57FB787E1CE52DFE003E3476 /* beep2.wav in Resources */,
-				57EAA5911CD9767C00E356C8 /* SplashLogo.png in Resources */,
 				57FB788D1CE5400B003E3476 /* ambience-1.mp3 in Resources */,
 				57FB78971CE54245003E3476 /* record-3.mp3 in Resources */,
 				57D72BF51CE6A951005C7FE8 /* ambience-5.mp3 in Resources */,
@@ -644,7 +625,6 @@
 				572258151BB877C600DEC41E /* Location.Portal.swift in Sources */,
 				57FA031F1BBA22FE0077D517 /* Location.Star.swift in Sources */,
 				57DACD8E1C1A194500971F10 /* Core.Audio.swift in Sources */,
-				57EAA5931CD9767C00E356C8 /* SplashViewController.swift in Sources */,
 				576953651C206CF300A0CA39 /* Widget.Radio.swift in Sources */,
 				57C222F61C1F218A005092A4 /* Location.Bank.swift in Sources */,
 				5705994C1B90D8D9000F3E31 /* Core.Space.swift in Sources */,
@@ -792,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.verre;
 				PRODUCT_NAME = Verreciel;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -806,6 +787,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.verre;
 				PRODUCT_NAME = Verreciel;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -79,9 +79,13 @@ class CoreSpace: Empty
 			journey.distance += 3
 		}
 		
-		if starsRoot.childNodes.count < 75 && journey.distance > lastStarAddedTime + 10  {
+		if starsRoot.childNodes.count < 30 && journey.distance > lastStarAddedTime + 20  {
 			starsRoot.addChildNode(StarCluster())
 			lastStarAddedTime = journey.distance
+			print("added a star!")
+		}
+		else{
+			print("waiting for \(starsRoot.childNodes.count) to be under 75, \(journey.distance) to be over \(lastStarAddedTime + 10)")
 		}
 		
 		// Background
@@ -151,11 +155,6 @@ class StarCluster : Empty
 			starSpeed = 0.15
 		}
 		
-		for star in childNodes as! [SCNLine] {
-			star.position = SCNVector3(x: 0, y: star.position.y - starSpeed, z: 0)
-			if star.position.y < -80 { star.removeFromParentNode() }
-		}
-		
 		mesh.update([
 			starsPositions[0],SCNVector3(starsPositions[0].x,starSpeed + 0.1,starsPositions[0].z),
 			starsPositions[1],SCNVector3(starsPositions[1].x,starSpeed + 0.1,starsPositions[1].z),
@@ -163,6 +162,10 @@ class StarCluster : Empty
 			starsPositions[3],SCNVector3(starsPositions[3].x,starSpeed + 0.1,starsPositions[3].z),
 			starsPositions[4],SCNVector3(starsPositions[4].x,starSpeed + 0.1,starsPositions[4].z)
 		])
+		
+		position = SCNVector3(x: 0, y: position.y - starSpeed, z: 0)
+		
+		if position.y < -80 { removeFromParentNode() }
 		
 	}
 	
