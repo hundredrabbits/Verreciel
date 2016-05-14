@@ -82,10 +82,6 @@ class CoreSpace: Empty
 		if starsRoot.childNodes.count < 30 && journey.distance > lastStarAddedTime + 20  {
 			starsRoot.addChildNode(StarCluster())
 			lastStarAddedTime = journey.distance
-			print("added a star!")
-		}
-		else{
-			print("waiting for \(starsRoot.childNodes.count) to be under 75, \(journey.distance) to be over \(lastStarAddedTime + 10)")
 		}
 		
 		// Background
