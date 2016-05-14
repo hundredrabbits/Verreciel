@@ -25,5 +25,9 @@ class RecipesCollection
 		horadric.append( Recipe(ingredients: [items.currency1, items.currency2], result: Item(like:items.currency4)) )
 		horadric.append( Recipe(ingredients: [items.currency2, items.currency3], result: Item(like:items.currency5)) )
 		horadric.append( Recipe(ingredients: [items.currency4, items.currency5], result: Item(like:items.currency6)) )
+		
+		//
+		
+		horadric.append( Recipe(ingredients: [items.record1, items.record2], result: items.record4) )
 	}
 }

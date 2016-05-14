@@ -52,40 +52,7 @@ class StructureTransit : Structure
 	override init()
 	{
 		super.init()
-		
-		root.position = SCNVector3(0,5,0)
-		
-		let count:Float = 8
-		var i:Float = 0
-		while i < count {
-			let pivot = Empty()
-			pivot.eulerAngles.y = degToRad(i * Float(360/count))
-			root.addChildNode(pivot)
-			let shape = ShapeHexagon(size: 2, color:grey)
-			shape.position.z = 3
-			pivot.addChildNode(shape)
-			i += 1
-		}
 	}
-	
-	override func morph()
-	{
-		super.morph()
-		
-		SCNTransaction.begin()
-		SCNTransaction.setAnimationDuration(1.0)
-		
-		root.eulerAngles.y = degToRad(Float(morphTime) * 45)
-		
-		for node in root.childNodes {
-			node.childNodes.first!.eulerAngles.z = degToRad(Float(morphTime) * 180)
-			node.childNodes.first!.eulerAngles.x = degToRad(Float(morphTime) * (90))
-			node.childNodes.first!.eulerAngles.y = degToRad(Float(morphTime) * (45))
-		}
-
-		SCNTransaction.commit()
-	}
-	
 	
 	required init?(coder aDecoder: NSCoder)
 	{

@@ -22,9 +22,7 @@ class CoreGame
 	func whenStart()
 	{
 		print("+ Game | Start")
-		
-		erase()
-		save(0)
+	
 		load(memory.integerForKey("state"))
 	}
 	
@@ -37,6 +35,8 @@ class CoreGame
 	
 	func load(id:Int)
 	{
+		let id = (id == 20) ? 0 : id
+		
 		print("@ GAME     | Loaded State to \(id)")
 		
 		for mission in missions.story {

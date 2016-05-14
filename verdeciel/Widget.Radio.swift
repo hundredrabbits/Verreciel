@@ -54,7 +54,7 @@ class WidgetRadio : Widget
 	func stop()
 	{
 		audio.stopRecord()
-		audio.playAmbience("ambience-1")
+		space.onSystemEnter(capsule.system)
 	}
 	
 	override func onUploadComplete()

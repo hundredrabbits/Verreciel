@@ -81,6 +81,7 @@
 		57C9F0601CAF51F80050AE9E /* Location.Transit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C9F05F1CAF51F80050AE9E /* Location.Transit.swift */; };
 		57CA80981BB9CEA3000D31F7 /* Location.Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA80971BB9CEA3000D31F7 /* Location.Satellite.swift */; };
 		57CA937B1BC9A9A50089337F /* SCNWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA937A1BC9A9A50089337F /* SCNWire.swift */; };
+		57D72BF51CE6A951005C7FE8 /* ambience-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57D72BF41CE6A951005C7FE8 /* ambience-5.mp3 */; };
 		57DACD8E1C1A194500971F10 /* Core.Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DACD8D1C1A194500971F10 /* Core.Audio.swift */; };
 		57DB87001BAE389600DA5DE4 /* SCNPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */; };
 		57DCE9D51B38EDCF0054613E /* SCNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCE9D41B38EDCF0054613E /* SCNLabel.swift */; };
@@ -188,6 +189,7 @@
 		57C9F05F1CAF51F80050AE9E /* Location.Transit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Transit.swift; sourceTree = "<group>"; };
 		57CA80971BB9CEA3000D31F7 /* Location.Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.Satellite.swift; sourceTree = "<group>"; };
 		57CA937A1BC9A9A50089337F /* SCNWire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNWire.swift; sourceTree = "<group>"; };
+		57D72BF41CE6A951005C7FE8 /* ambience-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ambience-5.mp3"; sourceTree = "<group>"; };
 		57DACD8D1C1A194500971F10 /* Core.Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Audio.swift; sourceTree = "<group>"; };
 		57DB86FF1BAE389600DA5DE4 /* SCNPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPort.swift; sourceTree = "<group>"; };
 		57DCE9D41B38EDCF0054613E /* SCNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLabel.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				57FB788A1CE5400B003E3476 /* ambience-2.mp3 */,
 				57FB788B1CE5400B003E3476 /* ambience-3.mp3 */,
 				57FB788C1CE5400B003E3476 /* ambience-4.mp3 */,
+				57D72BF41CE6A951005C7FE8 /* ambience-5.mp3 */,
 			);
 			name = Ambiences;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				57EAA5911CD9767C00E356C8 /* SplashLogo.png in Resources */,
 				57FB788D1CE5400B003E3476 /* ambience-1.mp3 in Resources */,
 				57FB78971CE54245003E3476 /* record-3.mp3 in Resources */,
+				57D72BF51CE6A951005C7FE8 /* ambience-5.mp3 in Resources */,
 				574F3D061CE4F34E006B41F0 /* click4.wav in Resources */,
 				57FB78901CE5400B003E3476 /* ambience-4.mp3 in Resources */,
 				57FB787D1CE52DFE003E3476 /* beep1.wav in Resources */,

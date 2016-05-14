@@ -14,7 +14,7 @@ import AVFoundation
 class SplashViewController: UIViewController
 {
 	let name:String = "Verreciel"
-	let skip:Bool = true
+	let skip:Bool = false
 	
 	var logo:UIImageView!
 	var blink:UIView!

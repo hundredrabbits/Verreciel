@@ -47,14 +47,17 @@ class CoreSpace: Empty
 		grey = true_grey
 		
 		switch system {
-		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white ; audio.playAmbience("ambience-1")
-		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan ; audio.playAmbience("ambience-2")
-		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white ; audio.playAmbience("ambience-3")
-		case .close  : targetSpaceColor = [0.6,0.6,0.6] ; stars_color = black ; audio.playAmbience("ambience-4")
-		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white ; audio.playAmbience("ambience-3")
+		case .valen  : targetSpaceColor = [0.2,0.2,0.2] ; stars_color = white ; audio.playAmbience("ambience-2")
+		case .senni  : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = true_cyan ; audio.playAmbience("ambience-3")
+		case .usul   : targetSpaceColor = [0.2,0.0,0.0] ; stars_color = true_white ; audio.playAmbience("ambience-4")
+		case .close  : targetSpaceColor = [0.6,0.6,0.6] ; stars_color = black ; audio.playAmbience("ambience-5")
+		default      : targetSpaceColor = [0.0,0.0,0.0] ; stars_color = white ; audio.playAmbience("ambience-1")
 		}
 		
-		if capsule.closestStar().isComplete == true {
+		if player.isEjected == true {
+			targetSpaceColor = [0,0,0]
+		}
+		else if capsule.closestStar().isComplete == true {
 			targetSpaceColor = [44/255,73/255,65/255]
 		}
 	}

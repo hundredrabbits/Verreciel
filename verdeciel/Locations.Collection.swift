@@ -210,7 +210,12 @@ class Valen
 	
 	func void() -> LocationTrade
 	{
-		return LocationTrade(name: "void", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2), want: items.teapot, give: items.record4, mapRequirement: items.map2)
+		return LocationTrade(name: "void", system:system, at: CGPoint(x: offset.x + 1, y: offset.y - 2), want: items.teapot, give: items.kelp, mapRequirement: items.map2)
+	}
+	
+	func wreck() -> LocationSatellite
+	{
+		return LocationSatellite(name:"wreck",system:system, at:CGPoint(x: offset.x + 2, y: offset.y), message:"Memories$radio format", item:items.record3, mapRequirement: items.map2)
 	}
 }
 

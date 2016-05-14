@@ -60,8 +60,7 @@ class ItemCollection
 	let battery3  = Item(name: "cell", type: .battery, note:"power source", isQuest:true,code:"battery-3")
 	
 	// Echoes
-	let teapot     = Item(name: "a teapot", type: .unknown, note:"unknown", isQuest:true,code:"echoes-1")
-	let nestorine  = Item(name: "a pillar", type: .unknown, note:"unknown", isQuest:true,code:"echoes-2")
+	let teapot     = Item(name: "a teapot", type: .unknown, note:"is paradise", isQuest:true,code:"echoes-1")
 	
 	func whenStart()
 	{

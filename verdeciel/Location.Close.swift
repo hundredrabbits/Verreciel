@@ -25,6 +25,14 @@ class LocationClose : Location
 	override func onDock()
 	{
 		player.eject()
+		onComplete()
+		
+		SCNTransaction.begin()
+		SCNTransaction.setAnimationDuration(30)
+		
+		structure.opacity = 0
+		
+		SCNTransaction.commit()
 	}
 	
 	// MARK: Defaults -
@@ -90,6 +98,11 @@ class StructureClose : Structure
 		}
 		
 		SCNTransaction.commit()
+	}
+	
+	override func onComplete()
+	{
+	
 	}
 	
 	required init?(coder aDecoder: NSCoder)

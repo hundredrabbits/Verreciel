@@ -17,6 +17,7 @@ class CorePlayer : Empty
 	var triggerLabel:SCNLabel!
 	
 	var isLocked:Bool = false
+	var isEjected:Bool = false
 	
 	override init()
 	{
@@ -119,11 +120,13 @@ class CorePlayer : Empty
 		SCNTransaction.setCompletionBlock({
 		
 			SCNTransaction.begin()
-			SCNTransaction.setAnimationDuration(30)
+			SCNTransaction.setAnimationDuration(10)
 			
 			player.position = SCNVector3(0,5,0)
 			
 			SCNTransaction.setCompletionBlock({
+				player.isEjected = true
+				game.save(0)
 			})
 			SCNTransaction.commit()
 			
