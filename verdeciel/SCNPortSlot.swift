@@ -88,11 +88,12 @@ class SCNPortSlot : SCNPort
 	override func onConnect()
 	{
 		super.onConnect()
-		// Input
+
 		if origin != nil && origin.event != nil && event == nil {
-			upload(origin.event as! Item)
+			if origin.event is Item && (origin.event as! Item).type != .cargo {
+				upload(origin.event as! Item)
+			}
 		}
-//		if connection != nil && event != nil { connection.host.listen(event) }
 	}
 	
 	override func onDisconnect()

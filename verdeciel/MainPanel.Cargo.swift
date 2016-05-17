@@ -189,6 +189,7 @@ class PanelCargo : MainPanel
 	override func onConnect()
 	{
 		if port.isReceivingEventOfTypeItem() == false { return }
+		if port.event == nil { return }
 		
 		if cargohold.content.count < 6 {
 			upload(port.event)
@@ -289,6 +290,7 @@ class CargoHold : Item
 		name = "cargo"
 		type = .cargo
 		details = "storage"
+		isQuest = true
 	}
 	
 	override func payload() -> ConsolePayload
