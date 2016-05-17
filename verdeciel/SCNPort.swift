@@ -335,7 +335,7 @@ class SCNPort : Empty
 	func isConnectedToPanel(panel:Panel) -> Bool
 	{
 		if connection == nil { return false }
-		if (connection.host as! Panel) == panel { return true }
+		if (connection.host is Panel) && (connection.host as! Panel) == panel { return true }
 		return false
 	}
 	
