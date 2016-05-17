@@ -47,6 +47,7 @@ class WidgetRadio : Widget
 	func play()
 	{
 		if (port.event is Item) == false { return }
+		if (port.event as? Item)?.type != .record { return }
 		audio.playRecord((port.event as! Item).code)
 		audio.stopAmbient()
 	}
