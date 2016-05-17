@@ -13,6 +13,23 @@ class LocationClose : Location
 		self.mapRequirement = mapRequirement
 	}
 	
+	override func onApproach()
+	{
+		if mapRequirement != nil && map.port.hasEvent(mapRequirement) == false { return }
+		if universe.loiqe.isComplete != true || universe.valen.isComplete != true || universe.senni.isComplete != true || universe.usul.isComplete != true { return }
+		
+		space.startInstance(self)
+		// Don't try to dock if there is already a target
+		if radar.port.hasEvent() == true && radar.port.event == self || capsule.isFleeing == true {
+			capsule.dock(self)
+		}
+		else if radar.port.hasEvent() == false {
+			capsule.dock(self)
+		}
+		update()
+	}
+
+	
 	// MARK: Panel -
 	
 	override func panel() -> Panel!
