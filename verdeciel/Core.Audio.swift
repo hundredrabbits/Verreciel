@@ -1,6 +1,6 @@
 
 //  Created by Devine Lu Linvega on 2015-11-30.
-//  Copyright © 2015 XXIIVV. All rights reserved
+//  Copyright (c) 2016 XXIIVV. All rights reserved
 
 import SceneKit
 import AVFoundation
