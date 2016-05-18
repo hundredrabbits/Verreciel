@@ -1,6 +1,6 @@
 
 //  Created by Devine Lu Linvega on 2014-09-21.
-//  Copyright (c) 2014 XXIIVV. All rights reserved.
+//  Copyright (c) 2016 XXIIVV. All rights reserved.
 
 import UIKit
 import QuartzCore
