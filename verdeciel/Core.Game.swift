@@ -22,7 +22,6 @@ class CoreGame
 	func whenStart()
 	{
 		print("+ Game | Start")
-		
 		load(memory.integerForKey("state"))
 	}
 	
