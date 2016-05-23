@@ -20,7 +20,6 @@ class CoreHelmet: Empty
 	var messageLabel:SCNLabel!
 	var passiveLabel:SCNLabel!
 	
-	
 	var message:String = ""
 	var passive:String = ""
 	

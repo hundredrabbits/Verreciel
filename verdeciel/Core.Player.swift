@@ -228,6 +228,11 @@ class CorePlayer : Empty
 		if port.isReceivingFromPanel(map) != true { radar.modeNormal() }
 	}
 	
+	override func payload() -> ConsolePayload
+	{
+		return ConsolePayload(data:[ConsoleData(text: "TEST", details: "WAT")])
+	}
+	
 	// MARK: Default -
 	
 	required init(coder aDecoder: NSCoder)
