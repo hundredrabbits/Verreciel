@@ -117,6 +117,8 @@ class LocationPortal : Location
 		let key = intercom.port.origin.event as! Item
 		let destination = universe.locationLike(key.location)
 		
+		destination.isKnown = true
+		
 		keyLabel.update(key.name!, color:cyan)
 		destinationLabel.update("to \(destination.system) \(destination.name!)")
 		

@@ -136,7 +136,7 @@ class CoreCapsule: Empty
 			capsule.at.y += CGFloat(speed) * CGFloat(cos(angleRad))
 		}
 		
-		if closestLocation().distance > 1.25 && isWarping == false {
+		if closestKnownLocation().distance > 1.5 && isWarping == false {
 			helmet.addWarning("Returning", duration: 0.1, flag: "radiation")
 			autoReturn()
 		}
@@ -299,6 +299,9 @@ class CoreCapsule: Empty
 	func autoReturn()
 	{
 		self.isReturning = true
+		thruster.lock()
+		thruster.speed = thruster.maxSpeed()
+		radar.addTarget(capsule.lastLocation)
 	}
 	
 	// MARK: Custom -
