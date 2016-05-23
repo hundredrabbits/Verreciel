@@ -230,7 +230,7 @@ class CorePlayer : Empty
 	
 	override func payload() -> ConsolePayload
 	{
-		return ConsolePayload(data:[ConsoleData(text: "TEST", details: "WAT")])
+		return ConsolePayload(data:[ConsoleData(text: "Hiversaire unit", details: "type"),ConsoleData(text: "-", details: "status"),ConsoleData(text: "paradise", details: "boot"),ConsoleData(text: "ready.", details: "")])
 	}
 	
 	// MARK: Default -
