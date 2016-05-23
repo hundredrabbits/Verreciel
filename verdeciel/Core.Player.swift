@@ -220,17 +220,19 @@ class CorePlayer : Empty
 	
 	override func onConnect()
 	{
+		super.onConnect()
 		if port.isReceivingFromPanel(map) == true { radar.modeOverview() }
 	}
 	
 	override func onDisconnect()
 	{
+		super.onDisconnect()
 		if port.isReceivingFromPanel(map) != true { radar.modeNormal() }
 	}
 	
 	override func payload() -> ConsolePayload
 	{
-		return ConsolePayload(data:[ConsoleData(text: "Hiversaire unit", details: "type"),ConsoleData(text: "-", details: "status"),ConsoleData(text: "paradise", details: "boot"),ConsoleData(text: "ready.", details: "")])
+		return ConsolePayload(data:[ConsoleData(text: "Hiversaire unit", details: "type"),ConsoleData(text: "-", details: "-"),ConsoleData(text: "paradise", details: "console"),ConsoleData(text: "ready.", details: "status")])
 	}
 	
 	// MARK: Default -

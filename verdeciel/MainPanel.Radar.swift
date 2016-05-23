@@ -154,6 +154,10 @@ class PanelRadar : MainPanel
 		header.show()
 		footer.show()
 		handle.show()
+		
+		for location in universe.childNodes as! [Location] {
+			location.onRadarView()
+		}
 	}
 	
 	func modeOverview()
@@ -165,6 +169,10 @@ class PanelRadar : MainPanel
 		decals.hide()
 		header.hide()
 		handle.hide()
+		
+		for location in universe.childNodes as! [Location] {
+			location.onHelmetView()
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder)

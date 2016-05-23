@@ -120,11 +120,14 @@ class CoreHelmet: Empty
 
 	func updatePort()
 	{
-		if player.port.origin == nil { return }
-		
-		let test = convertPosition(player.port.position, toNode: player.port.origin)
-		player.port.origin.wire.update(SCNVector3(0,0,0), nodeB:SCNVector3( test.x, test.y, test.z ) )
-		player.port.origin.wire.whenRenderer()
+		if player.port.origin != nil {
+			let test = convertPosition(player.port.position, toNode: player.port.origin)
+			player.port.origin.wire.update(SCNVector3(0,0,0), nodeB:SCNVector3( test.x, test.y, test.z ) )
+		}
+		if player.port.connection != nil {
+			let test = convertPosition(player.port.position, fromNode: player.port.connection)
+			player.port.wire.update(SCNVector3( test.x, test.y, test.z ), nodeB:SCNVector3(0,0,0) )
+		}
 	}
 	
 	func addMessage(message:String, color:UIColor = white)

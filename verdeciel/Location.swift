@@ -102,6 +102,16 @@ class Location : Event
 		clean()
 	}
 	
+	func onRadarView()
+	{
+		icon.label.opacity = 1
+	}
+	
+	func onHelmetView()
+	{
+		icon.label.opacity = 0
+	}
+	
 	func onSight()
 	{
 		isSeen = true
