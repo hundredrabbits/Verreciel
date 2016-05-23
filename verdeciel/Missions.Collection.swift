@@ -534,7 +534,7 @@ class MissionCollection
 			helmet.addWarning("mechanism is closed", duration: 60, flag: "end")
 		}
 		m.quests = [
-			Quest(name:"Stop", location: universe.loiqe, predicate:{ (1 > 2) == true }, result: {  })
+			Quest(name:"Stop", location: universe.close, predicate:{ (1 > 2) == true }, result: {  })
 		]
 		story.append(m)
 	}
