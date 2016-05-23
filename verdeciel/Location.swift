@@ -131,6 +131,8 @@ class Location : Event
 	
 	func onDock()
 	{
+		if thruster.isLocked && universe.loiqe_city.isKnown == true { thruster.unlock() }
+		
 		isKnown = true
 		update()
 		structure.onDock()
