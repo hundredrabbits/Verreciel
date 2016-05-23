@@ -59,6 +59,7 @@
 		576953631C206CEA00A0CA39 /* Widget.Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953621C206CEA00A0CA39 /* Widget.Map.swift */; };
 		576953651C206CF300A0CA39 /* Widget.Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576953641C206CF300A0CA39 /* Widget.Radio.swift */; };
 		576DCEA61C483BCF007A7544 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576DCEA51C483BCF007A7544 /* Mission.swift */; };
+		5777EE391CF2B0E500D84638 /* record-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5777EE381CF2B0E500D84638 /* record-5.mp3 */; };
 		5781FC0C1C6BC9500001A743 /* Shape.Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5781FC0B1C6BC9500001A743 /* Shape.Rect.swift */; };
 		57841A301C23ACD50005D7DA /* Monitor.Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57841A2F1C23ACD50005D7DA /* Monitor.Completion.swift */; };
 		57858B231B546BD900DD9E4E /* SCNLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57858B221B546BD900DD9E4E /* SCNLine.swift */; };
@@ -164,6 +165,7 @@
 		576953621C206CEA00A0CA39 /* Widget.Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Map.swift; sourceTree = "<group>"; };
 		576953641C206CF300A0CA39 /* Widget.Radio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget.Radio.swift; sourceTree = "<group>"; };
 		576DCEA51C483BCF007A7544 /* Mission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		5777EE381CF2B0E500D84638 /* record-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "record-5.mp3"; sourceTree = "<group>"; };
 		5781FC0B1C6BC9500001A743 /* Shape.Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.Rect.swift; sourceTree = "<group>"; };
 		57841A2F1C23ACD50005D7DA /* Monitor.Completion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.Completion.swift; sourceTree = "<group>"; };
 		57858B221B546BD900DD9E4E /* SCNLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNLine.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 		574F3CFD1CE4F315006B41F0 /* Records */ = {
 			isa = PBXGroup;
 			children = (
+				5777EE381CF2B0E500D84638 /* record-5.mp3 */,
 				57FB78911CE54245003E3476 /* record-1.mp3 */,
 				57FB78921CE54245003E3476 /* record-2.mp3 */,
 				57FB78931CE54245003E3476 /* record-3.mp3 */,
@@ -555,6 +558,7 @@
 				57FB78951CE54245003E3476 /* record-1.mp3 in Resources */,
 				57FB78961CE54245003E3476 /* record-2.mp3 in Resources */,
 				03DDE18919CE497F008029A8 /* Images.xcassets in Resources */,
+				5777EE391CF2B0E500D84638 /* record-5.mp3 in Resources */,
 				57FB787E1CE52DFE003E3476 /* beep2.wav in Resources */,
 				57FB788D1CE5400B003E3476 /* ambience-1.mp3 in Resources */,
 				57FB78971CE54245003E3476 /* record-3.mp3 in Resources */,

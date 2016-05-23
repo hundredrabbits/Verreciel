@@ -183,7 +183,7 @@ class PanelIntercom : MainPanel
 			
 			self.locationPanel.position = SCNVector3(0,0,-0.5)
 			
-			if capsule.dock != nil { self.nameLabel.update() } 
+			if capsule.dock != nil { self.nameLabel.update() }
 			
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.5)
