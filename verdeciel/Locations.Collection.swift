@@ -88,7 +88,7 @@ class Loiqe
 	
 	func c_1() -> LocationConstellation
 	{
-		return LocationConstellation(name: "tunnel", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5), structure: StructureTunnel())
+		return LocationConstellation(name: "", system:system, at: CGPoint(x:offset.x, y: offset.y - 1.5), structure: StructureTunnel())
 	}
 }
 
@@ -203,7 +203,7 @@ class Valen
 	
 	func c_1() -> LocationConstellation
 	{
-		return LocationConstellation(name: "door", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5), structure: StructureDoor())
+		return LocationConstellation(name: "", system:system, at: CGPoint(x:offset.x + 0.5, y: offset.y + 1.5), structure: StructureDoor())
 	}
 	
 	// MARK: Blind
