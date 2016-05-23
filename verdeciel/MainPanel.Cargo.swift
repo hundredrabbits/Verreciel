@@ -188,8 +188,9 @@ class PanelCargo : MainPanel
 	
 	override func onConnect()
 	{
-		if port.isReceivingEventOfTypeItem() == false { return }
+		if port.isReceivingEventOfTypeItem() == false { detailsLabel.update("ERROR",color: red) ; return }
 		if port.event == nil { return }
+		if port.origin != nil && port.origin.host != nil && (port.origin.host is ConsoleLine){ detailsLabel.update("ERROR",color: red) ; return }
 		
 		if cargohold.content.count < 6 {
 			upload(port.event)
