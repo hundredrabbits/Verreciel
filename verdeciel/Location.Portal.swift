@@ -86,7 +86,7 @@ class LocationPortal : Location
 	func validate()
 	{
 		if intercom.port.isReceivingItemOfType(.key) == true {
-			if (intercom.port.origin.event as! Item).location == capsule.lastLocation { inactive() }
+			if (intercom.port.origin.event as! Item).location == nil || (intercom.port.origin.event as! Item).location == capsule.lastLocation { inactive() }
 			else { unlock() }
 		}
 		else{ lock() }
