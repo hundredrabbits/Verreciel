@@ -403,6 +403,9 @@ class PanelThruster : MainPanel
 		line2.hide() ; cutLine2.show()
 		line3.hide() ; cutLine3.show()
 		line4.hide() ; cutLine4.show()
+		
+		lineLeft.update(grey)
+		lineRight.update(grey)
 	}
 	
 	func modeDocking()
