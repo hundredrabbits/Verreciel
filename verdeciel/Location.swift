@@ -229,6 +229,7 @@ class Location : Event
 	override func touch(id:Int)
 	{
 		if isTargetable == false { return }
+		if thruster.isLocked == true { return }
 		
 		if radar.port.event == nil {
 			radar.addTarget(self)
