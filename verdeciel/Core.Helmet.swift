@@ -88,6 +88,11 @@ class CoreHelmet: Empty
 		if sceneView.frame.width == 320 && sceneView.frame.height == 480 {
 			player.port.position = SCNVector3(0,-2,-2.5)
 		}
+		// iPad
+		if sceneView.frame.width == 768 && sceneView.frame.height == 1024 {
+			player.port.position = SCNVector3(0,-2,-2.5)
+			messageLabel.position = SCNVector3(0,1.2,visorDepth)
+		}
 	}
 	
 	override func whenStart()
@@ -110,7 +115,7 @@ class CoreHelmet: Empty
 		if eulerAngles.x > player.eulerAngles.x + 0.0001 {
 			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.85
 		}
-		else if eulerAngles.y < player.eulerAngles.x - 0.0001 {
+		else if eulerAngles.x < player.eulerAngles.x - 0.0001 {
 			eulerAngles.x -= (eulerAngles.x - player.eulerAngles.x) * 0.85
 		}
 		updatePort()
@@ -138,14 +143,12 @@ class CoreHelmet: Empty
 		
 		SCNTransaction.begin()
 		SCNTransaction.setAnimationDuration(0.1)
-		messageLabel.position = SCNVector3(0,1.375,self.visorDepth - 0.01)
 		messageLabel.hide()
 		messageLabel.updateColor(cyan)
 		SCNTransaction.setCompletionBlock({
 			SCNTransaction.begin()
 			SCNTransaction.setAnimationDuration(0.1)
 			self.messageLabel.update(self.message, color:color)
-			self.messageLabel.position = SCNVector3(0,1.375,self.visorDepth)
 			self.messageLabel.show()
 			SCNTransaction.commit()
 		})
