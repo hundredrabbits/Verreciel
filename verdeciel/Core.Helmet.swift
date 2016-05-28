@@ -93,6 +93,11 @@ class CoreHelmet: Empty
 			player.port.position = SCNVector3(0,-2,-2.5)
 			messageLabel.position = SCNVector3(0,1.2,visorDepth)
 		}
+		// iPad Pro
+		if sceneView.frame.width == 1024 && sceneView.frame.height == 1366 {
+			player.port.position = SCNVector3(0,-2,-2.5)
+			messageLabel.position = SCNVector3(0,1.2,visorDepth)
+		}
 	}
 	
 	override func whenStart()
