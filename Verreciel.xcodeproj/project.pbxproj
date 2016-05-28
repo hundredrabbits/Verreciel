@@ -24,7 +24,6 @@
 		5726C6071BD46FFF00B924B2 /* Core.Helmet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */; };
 		5728E06E1C2363880098534E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728E06D1C2363880098534E /* Panel.swift */; };
 		5733795A1BD82F9B00310147 /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573379591BD82F9B00310147 /* SCNVector3.swift */; };
-		5734D45C1B5AAA7800BF0048 /* Todo in Resources */ = {isa = PBXBuildFile; fileRef = 5734D45B1B5AAA7800BF0048 /* Todo */; };
 		5734D4601B5AB4C400BF0048 /* Core.Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734D45F1B5AB4C400BF0048 /* Core.Universe.swift */; };
 		573EDAB51B4B4762007C6D3C /* MainPanel.Pilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB41B4B4762007C6D3C /* MainPanel.Pilot.swift */; };
 		573EDAB71B4B4FCE007C6D3C /* MainPanel.Thruster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573EDAB61B4B4FCE007C6D3C /* MainPanel.Thruster.swift */; };
@@ -130,7 +129,6 @@
 		5726C6061BD46FFF00B924B2 /* Core.Helmet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Helmet.swift; sourceTree = "<group>"; };
 		5728E06D1C2363880098534E /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		573379591BD82F9B00310147 /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
-		5734D45B1B5AAA7800BF0048 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
 		5734D45F1B5AB4C400BF0048 /* Core.Universe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.Universe.swift; sourceTree = "<group>"; };
 		573EDAB41B4B4762007C6D3C /* MainPanel.Pilot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Pilot.swift; sourceTree = "<group>"; };
 		573EDAB61B4B4FCE007C6D3C /* MainPanel.Thruster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPanel.Thruster.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 		03DDE17C19CE497F008029A8 /* verdeciel */ = {
 			isa = PBXGroup;
 			children = (
-				5734D45B1B5AAA7800BF0048 /* Todo */,
 				57F66B431C6E5A38007E4B9F /* Tools.swift */,
 				5748ADA11BC85C7B00C47468 /* Settings.swift */,
 				03DDE18319CE497F008029A8 /* MainViewController.swift */,
@@ -573,7 +570,6 @@
 				57FB788F1CE5400B003E3476 /* ambience-3.mp3 in Resources */,
 				574F3D031CE4F34E006B41F0 /* click1.wav in Resources */,
 				574F3D041CE4F34E006B41F0 /* click2.wav in Resources */,
-				5734D45C1B5AAA7800BF0048 /* Todo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -300,8 +300,8 @@ class CoreCapsule: Empty
 	{
 		self.isReturning = true
 		thruster.lock()
-		thruster.speed = thruster.maxSpeed()
-		radar.addTarget(capsule.lastLocation)
+		thruster.speed = 1
+		radar.addTarget(capsule.closestKnownLocation())
 	}
 	
 	// MARK: Custom -
