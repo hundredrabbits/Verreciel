@@ -104,12 +104,12 @@ class CoreCapsule: Empty
 		
 		if dock != nil && isDocked != true {
 			
-			var approachSpeed:CGFloat = 0.005
+			var approachSpeed:CGFloat = 0.5
 			
 			let distanceRatio = distanceBetweenTwoPoints(at, point2: dock.at)/0.5
 			approachSpeed = (CGFloat(approachSpeed) * CGFloat(distanceRatio))
 			
-			var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.0005 }
+			var speed:Float = Float(distanceRatio)/600 ; if speed < 0.0005 { speed = 0.005 }
 			let angle:Float = Float((capsule.direction) % 360)
 			
 			capsule.at.x += CGFloat(speed) * CGFloat(sin(degToRad(angle)))
