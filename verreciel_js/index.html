@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="scripts/logo.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+
+    <script type="text/javascript" src="scripts/three.min.js"></script>
+
+    <script type="text/javascript" src="scripts/core/demo.js"></script>
+
+    <script type="text/javascript" src="scripts/core/verreciel.js"></script>
+    <script type="text/javascript" src="scripts/core/game.js"></script>
+    <script type="text/javascript" src="scripts/core/music.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="links/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="links/main.css"/>
+
+    <title>Verreciel</title>
+  </head>
+  <body>
+    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
+      <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
+    </div>
+    <script>
+
+      var DEBUG = true;
+
+      var verreciel = new Verreciel();
+      
+      verreciel.install();
+
+      var logo = new Logo(document.getElementById("logo"));
+
+      setTimeout(function(){ logo.install(); }, 1500);
+      setTimeout(function(){ verreciel.start(); }, DEBUG ? 100 : 7000);
+
+      $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
+        $(logo.element).remove();
+      });
+
+    </script>
+  </body>
+</html>
