@@ -1,0 +1,12 @@
+class Items
+{
+  constructor()
+  {
+
+  }
+
+  whenStart()
+  {
+
+  }
+}

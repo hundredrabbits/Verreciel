@@ -2,45 +2,71 @@ class Game
 {
   constructor()
   {
-
+    console.log("^ Game | Init");
+    this.time = 0;
+    setTimeout(this.onTic.bind(this), 50);
+    setTimeout(this.whenSecond.bind(this), 1000);
   }
-
-  clear()
+  
+  whenStart()
   {
-    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    console.log("+ Game | Start");
+    this.load(this.state);
   }
-
-  save()
+  
+  save(id)
   {
-    this.clear();
-
-    console.info("Saving..");
-
-    // localStorage.x = verreciel.x;
+    console.log("@ GAME     | Saved State to \(id)");
+    for (c of document.cookie.split(";"))
+    {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    }
+    localStorage.state = id;
+    localStorage.version = version;
   }
-
-  load()
+  
+  load(id)
   {
-    console.info("Loading..");
-
-    // verreciel.x = parseFloat(localStorage.x);
+    id = (id == 20) ? 0 : id;
+    
+    console.log("@ GAME     | Loaded State to \(id)");
+    
+    for (let mission of verreciel.missions.story)
+    {
+      if (mission.id < id)
+      {
+        mission.complete();
+      }
+    }
+    verreciel.missions.story[id].state();
   }
-
-  is_found()
+  
+  get state()
   {
-    // if(localStorage.x && parseFloat(localStorage.x) > 0){
-      // return true;
-    // }
-    return false;
+    if ("state" in localStorage)
+    {
+      return parseInt(localStorage.state);
+    }
+    return 0;
   }
-
-  reset()
+  
+  erase()
   {
-    console.info("New Game..");
+    console.log("$ GAME     | Erase");
     localStorage.clear();
-
-    // verreciel.reset();
-
-    return "Created a new game.";
+  }
+  
+  whenSecond()
+  {
+    setTimeout(this.whenSecond.bind(this), 1000);
+    verreciel.capsule.whenSecond();
+    verreciel.missions.refresh();
+  }
+  
+  onTic()
+  {
+    setTimeout(this.onTic.bind(this), 50);
+    this.time += 1;
+    verreciel.space.whenTime();
   }
 }

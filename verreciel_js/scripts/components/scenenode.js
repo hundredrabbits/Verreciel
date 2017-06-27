@@ -2,12 +2,12 @@ class SceneNode extends THREE.LineSegments
 {
   constructor()
   {
-    super(null, SceneNode.material);
+    super(undefined, SceneNode.material);
   }
 
   whenStart()
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.whenStart();
     }
@@ -15,7 +15,7 @@ class SceneNode extends THREE.LineSegments
   
   whenTime()
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.whenTime();
     }
@@ -23,7 +23,7 @@ class SceneNode extends THREE.LineSegments
   
   whenSecond()
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.whenSecond();
     }
@@ -31,7 +31,7 @@ class SceneNode extends THREE.LineSegments
   
   whenRenderer()
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.whenRenderer();
     }

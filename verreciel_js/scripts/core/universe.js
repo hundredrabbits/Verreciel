@@ -1,0 +1,4 @@
+class Universe extends Empty
+{
+  
+}

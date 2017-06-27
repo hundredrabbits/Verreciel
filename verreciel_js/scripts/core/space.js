@@ -1,0 +1,4 @@
+class Space extends Empty
+{
+  
+}

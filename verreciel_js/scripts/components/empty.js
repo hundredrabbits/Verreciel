@@ -18,7 +18,7 @@ class Empty extends SceneNode
   
   empty()
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.removeFromParentNode();
     }
@@ -48,7 +48,7 @@ class Empty extends SceneNode
   
   updateChildrenColors(color)
   {
-    for (node of this.children)
+    for (let node of this.children)
     {
       node.color(color);
       node.updateChildrenColors(color);

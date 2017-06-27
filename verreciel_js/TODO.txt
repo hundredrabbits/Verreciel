@@ -6,3 +6,9 @@ Populate the core classes
   helmet
   capsule
   space
+
+Populate the collections
+
+Create the panels
+
+Create the monitors

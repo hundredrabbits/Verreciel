@@ -1,0 +1,4 @@
+class Capsule extends Empty
+{
+  
+}
