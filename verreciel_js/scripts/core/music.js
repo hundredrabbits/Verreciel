@@ -1,25 +1,25 @@
-function Music()
+class Music
 {
-  this.track_ambient = new Audio();
-  this.track_effect = new Audio();
-  this.track_record = new Audio();
-  
-  this.audio_catalog = {};
+  constructor()
+  {
+    this.track_ambient = new Audio();
+    this.track_effect = new Audio();
+    this.track_record = new Audio();
+    this.audio_catalog = {};
+    this.ambient_muted = false;
+    this.record_muted = false;
+  }
 
-  this.ambient_muted = false;
-  this.record_muted = false;
-
-  this.play_effect = function(name)
+  play_effect(name)
   {
     console.log("Effect: ",name);
     this.track_effect = this.fetch_audio(name, "effect", "media/audio/effect/"+name+".ogg");
     this.track_effect.play()
   }
 
-  this.play_record = function(name)
+  play_record(name)
   {
     if(this.track_record.name == name){ return; }
-    if(DEBUG){ return; }
 
     // Fadeout
     $(this.track_record).animate({volume: 0}, 1000, function(){
@@ -32,10 +32,9 @@ function Music()
     });
   }
 
-  this.play_ambient = function(name)
+  play_ambient(name)
   {
     if(this.track_ambient.name == name){ return; }
-    if(DEBUG){ return; }
 
     // Fadeout
     $(this.track_ambient).animate({volume: 0}, 1000, function(){
@@ -48,7 +47,7 @@ function Music()
     });
   }
 
-  this.fetch_audio = function(name, role, src, loop = false)
+  fetch_audio(name, role, src, loop = false)
   {
       var audio_id = role + "_" + name;
       if (!(audio_id in this.audio_catalog))
@@ -63,7 +62,7 @@ function Music()
       return this.audio_catalog[audio_id];
   }
 
-  this.pause_ambient = function()
+  pause_ambient()
   {
     this.ambient_muted = true;
 
@@ -72,7 +71,7 @@ function Music()
     });
   }
 
-  this.resume_ambient = function()
+  resume_ambient()
   {
     this.track_ambient.play();
     this.track_ambient.volume = 0;
@@ -80,7 +79,7 @@ function Music()
     this.ambient_muted = false;
   }
 
-  this.pause_record = function()
+  pause_record()
   {
     this.record_muted = true;
 
@@ -89,7 +88,7 @@ function Music()
     });
   }
 
-  this.resume_record = function()
+  resume_record()
   {
     this.track_record.play();
     this.track_record.volume = 0;

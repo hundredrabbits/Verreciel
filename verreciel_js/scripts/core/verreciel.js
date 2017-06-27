@@ -1,49 +1,49 @@
-function Verreciel()
+class Verreciel
 {
-  this.element = document.createElement("verreciel");
+  constructor() {
+    this.element = document.createElement("verreciel");
+    this.game = new Game();
+    this.music = new Music();
+    this.demo = new Demo();
+    this.started = false;
+  }
 
-  this.game = new Game();
-  this.music = new Music();
-  this.demo = new Demo();
-  
-  this.started = false;
-
-  this.install = function()
+  install()
   {
     document.body.appendChild(this.element);
     this.demo.install();
   }
 
-  this.start = function()
+  start()
   {
     console.info("Starting Verreciel");
 
-    document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
-    document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
-    document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
-    window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
+    document.addEventListener( "mousemove", this.mouse_move.bind(this), false );
+    document.addEventListener( "mousedown", this.mouse_down.bind(this), false );
+    document.addEventListener( "mouseup", this.mouse_up.bind(this), false );
+    window.addEventListener( "resize", this.window_resize.bind(this), false );
 
     this.demo.start();
     this.demo.resize(window.innerWidth, window.innerHeight);
     this.started = true;
   }
 
-  this.onDocumentMouseDown = function(event)
+  mouse_down(e)
   {
     
   }
 
-  this.onDocumentMouseMove = function(event)
+  mouse_move(e)
   {
     
   }
 
-  this.onDocumentMouseUp = function(event)
+  mouse_up(e)
   {
     
   }
 
-  this.onWindowResize = function()
+  window_resize()
   {
     this.demo.resize(window.innerWidth, window.innerHeight);
   }

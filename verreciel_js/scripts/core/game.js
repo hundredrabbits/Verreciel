@@ -1,11 +1,16 @@
-function Game()
+class Game
 {
-  this.clear = function()
+  constructor()
+  {
+
+  }
+
+  clear()
   {
     document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
   }
 
-  this.save = function()
+  save()
   {
     this.clear();
 
@@ -14,14 +19,14 @@ function Game()
     // localStorage.x = verreciel.x;
   }
 
-  this.load = function()
+  load()
   {
     console.info("Loading..");
 
     // verreciel.x = parseFloat(localStorage.x);
   }
 
-  this.is_found = function()
+  is_found()
   {
     // if(localStorage.x && parseFloat(localStorage.x) > 0){
       // return true;
@@ -29,7 +34,7 @@ function Game()
     return false;
   }
 
-  this.new = function()
+  reset()
   {
     console.info("New Game..");
     localStorage.clear();

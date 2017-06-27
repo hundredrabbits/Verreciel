@@ -1,6 +1,11 @@
-function Demo()
+class Demo
 {
-  this.install = function()
+  constructor()
+  {
+
+  }
+
+  install()
   {
     this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
     // this.camera.position.z = 1000;
@@ -10,7 +15,8 @@ function Demo()
     this.renderer.setSize( 0, 0 );
   }
 
-  this.resize = function(width, height) {
+  resize(width, height)
+  {
 
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
@@ -19,12 +25,14 @@ function Demo()
 
   }
 
-  this.animate = function() {
+  animate()
+  {
     requestAnimationFrame( this.animate.bind(this) );
     this.render();
   }
 
-  this.update = function() {
+  update()
+  {
     var time = Date.now() * 0.0001;
 
     // this.camera.position.y = Math.sin(time * 7) * 1000;
@@ -41,11 +49,12 @@ function Demo()
     setTimeout(this.update.bind(this), 20);
   }
 
-  this.render = function() {
+  render()
+  {
     this.renderer.render( this.scene, this.camera );
   }
   
-  this.start = function()
+  start()
   {
     var vertex1;
     var vertex2;
