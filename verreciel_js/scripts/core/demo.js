@@ -2,11 +2,6 @@ class Demo
 {
   constructor()
   {
-
-  }
-
-  install()
-  {
     this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
     // this.camera.position.z = 1000;
     this.scene = new THREE.Scene();
@@ -54,7 +49,7 @@ class Demo
     this.renderer.render( this.scene, this.camera );
   }
   
-  start()
+  whenStart()
   {
     var vertex1;
     var vertex2;

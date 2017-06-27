@@ -3,9 +3,8 @@
   <head>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script type="text/javascript" src="scripts/logo.js"></script>
-    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
-
-    <script type="text/javascript" src="scripts/three.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="lib/three.min.js"></script>
 
     <script type="text/javascript" src="scripts/core/demo.js"></script>
 
@@ -24,16 +23,14 @@
     </div>
     <script>
 
-      var DEBUG = true;
+      let DEBUG = true;
 
-      var verreciel = new Verreciel();
-      
-      verreciel.install();
+      let verreciel = new Verreciel();
 
-      var logo = new Logo(document.getElementById("logo"));
+      let logo = new Logo(document.getElementById("logo"));
 
       setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ verreciel.start(); }, DEBUG ? 100 : 7000);
+      setTimeout(function(){ verreciel.whenStart(); }, DEBUG ? 100 : 7000);
 
       $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
         $(logo.element).remove();
