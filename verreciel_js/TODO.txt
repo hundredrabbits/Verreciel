@@ -1,0 +1,12 @@
+TODO
+
+Populate the base classes
+  SceneNode
+  Empty
+
+Populate the core classes
+  universe
+  player
+  helmet
+  capsule
+  space
