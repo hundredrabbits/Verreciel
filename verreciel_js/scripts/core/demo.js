@@ -78,9 +78,10 @@ class Demo
 
     for( i = 0; i < 3; i++ ) {
 
-      material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors } );
+      // material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors } );
 
-      var line = new THREE.LineSegments( geometry, material );
+      var line = new Empty();
+      line.geometry = geometry;
       line.scale.x = line.scale.y = line.scale.z = 0.125 * (i + 1);
       line.rotation.y = Math.random() * Math.PI;
       line.updateMatrix();
