@@ -5,6 +5,8 @@ While // STUB is in the code,
   Populate the stubs you generate
   Commit when you're at a running state
 
+Detect, fix attempts at polymorphism
+
 Create a replacement for SCNTransaction
   This one's a toughie
   Keep track of what gets animated this way
@@ -25,3 +27,5 @@ Is Location::isKnown in the game state?
 
 Renamed map to nav and Map to Nav
   Do a correction pass
+
+ScenePortSlot::enable/disable with text and color became enableAndShow/disableAndShow
