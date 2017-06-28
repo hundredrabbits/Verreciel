@@ -11,7 +11,7 @@ Create a replacement for SCNTransaction
   If it's just a subset of things, then only a subset solution is required
   // TODO: SCNTransaction
 
-ThreeJS stuff in SceneLine
+ThreeJS stuff in components
   // TODO: THREEJS
 
 Capsule::dock and Capsule.dock
