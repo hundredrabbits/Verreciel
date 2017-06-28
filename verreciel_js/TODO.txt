@@ -12,3 +12,6 @@ Populate the collections
 Create the panels
 
 Create the monitors
+
+Run sanitizer
+  Diff the results of course

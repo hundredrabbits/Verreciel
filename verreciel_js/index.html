@@ -42,11 +42,12 @@
       let DEBUG = true;
 
       let verreciel = new Verreciel();
+      verreciel.install();
 
       let logo = new Logo(document.getElementById("logo"));
 
       setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ verreciel.whenStart(); }, DEBUG ? 100 : 7000);
+      setTimeout(function(){ verreciel.start(); }, DEBUG ? 100 : 7000);
 
       $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
         $(logo.element).remove();

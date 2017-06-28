@@ -2,6 +2,11 @@ class Verreciel
 {
   constructor()
   {
+
+  }
+
+  install()
+  {
     this.version = "r1";
 
     this.element = document.createElement("verreciel");
@@ -64,7 +69,7 @@ class Verreciel
     this.demo = new Demo();
   }
 
-  whenStart()
+  start()
   {
     console.info("Starting Verreciel");
 
