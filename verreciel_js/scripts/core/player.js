@@ -5,4 +5,6 @@ class Player extends Empty
     super();
     this.canAlign = true;
   }
+
+  // STUB
 }

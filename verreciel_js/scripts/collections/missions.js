@@ -8,11 +8,12 @@ class Missions
 
   build()
   {
-    this.story.push(new Mission());
+    // STUB
+    this.story.push(new Mission()); // TODO: REMOVE
   }
 
   refresh()
   {
-
+    // STUB
   }
 }

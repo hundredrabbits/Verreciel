@@ -8,6 +8,8 @@ class Helmet extends Empty
 
   updatePort()
   {
-
+    // STUB
   }
+
+  // STUB
 }
