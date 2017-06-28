@@ -47,7 +47,7 @@ class Verreciel
     // Collections
     this.missions = new Missions();
     this.items = new Items();
-    // this.locations = new Locations();
+    this.locations = new Locations();
     // this.recipes = new Recipess();
 
     // Colors
@@ -134,16 +134,16 @@ class Verreciel
       return;
     }
     
-    let dragX = Float(e.screenX - lastMousePosition.x);
-    let dragY = Float(e.screenY - lastMousePosition.y);
+    let dragX = e.screenX - this.lastMousePosition.x;
+    let dragY = e.screenY - this.lastMousePosition.y;
     
-    lastMousePosition.x = e.screenX;
-    lastMousePosition.y = e.screenY;
+    this.lastMousePosition.x = e.screenX;
+    this.lastMousePosition.y = e.screenY;
 
-    player.accelY += degToRad(dragX/6);
-    player.accelX += degToRad(dragY/6);
+    this.player.accelY += degToRad(dragX/6);
+    this.player.accelX += degToRad(dragY/6);
         
-    helmet.updatePort();
+    this.helmet.updatePort();
   }
 
   mouseUp(e)
@@ -155,7 +155,7 @@ class Verreciel
     
     this.player.canAlign = true;
     this.helmet.canAlign = true;
-    helmet.updatePort();
+    this.helmet.updatePort();
   }
 
   windowResize()
