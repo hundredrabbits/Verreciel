@@ -51,7 +51,7 @@ class SceneLabel extends Empty
   
   removeLetters()
   {
-    for (let letterCur in this.nodeOffset.children)
+    for (let letterCur of this.nodeOffset.children)
     {
       letterCur.removeFromParentNode();
     }

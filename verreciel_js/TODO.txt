@@ -1,5 +1,10 @@
 TODO
 
+While // STUB is in the code,
+  Populate a stub core class
+  Populate the stubs you generate
+  Commit when you're at a running state
+
 Create a replacement for SCNTransaction
   This one's a toughie
   Keep track of what gets animated this way
@@ -9,7 +14,14 @@ Create a replacement for SCNTransaction
 ThreeJS stuff in SceneLine
   // TODO: THREEJS
 
-Populate a stub core class
-Populate the stubs you generate
-Commit when you're at a running state
-Repeat
+Capsule::dock and Capsule.dock
+  The method is "dock"
+  The property is now "location"
+  Do a correction pass
+
+Is Location::isKnown in the game state?
+  Does it need to be?
+  Who calls Capsule::closestKnownLocation?
+
+Renamed map to nav and Map to Nav
+  Do a correction pass

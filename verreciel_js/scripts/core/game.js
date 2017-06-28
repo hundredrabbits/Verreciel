@@ -4,13 +4,13 @@ class Game
   {
     console.log("^ Game | Init");
     this.time = 0;
-    setTimeout(this.onTic.bind(this), 50);
-    setTimeout(this.whenSecond.bind(this), 1000);
   }
   
   whenStart()
   {
     console.log("+ Game | Start");
+    setTimeout(this.onTic.bind(this), 50);
+    setTimeout(this.whenSecond.bind(this), 1000);
     this.load(this.state);
   }
   

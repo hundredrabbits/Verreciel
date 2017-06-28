@@ -24,27 +24,27 @@ class Verreciel
     this.music = new Music();
 
     // Panels
-    // this.battery = new PanelBattery();
-    // this.pilot = new PanelPilot();
-    // this.hatch = new PanelHatch();
-    // this.intercom = new PanelIntercom();
-    // this.cargo = new PanelCargo();
-    // this.thruster = new PanelThruster();
-    // this.console = new PanelConsole();
-    // this.radar = new PanelRadar();
-    // this.above = new PanelAbove();
-    // this.below = new PanelBelow();
+    this.battery = new Battery();
+    this.pilot = new Pilot();
+    this.hatch = new Hatch();
+    this.intercom = new Intercom();
+    this.cargo = new Cargo();
+    this.thruster = new Thruster();
+    this.console = new Console();
+    this.radar = new Radar();
+    this.above = new Above();
+    this.below = new Below();
 
     // Monitors
     this.journey = new Journey();
-    // this.exploration = new Exploration();
-    // this.progress = new Progress();
-    // this.completion = new Complete();
+    this.exploration = new Exploration();
+    this.progress = new Progress();
+    this.completion = new Complete();
     
-    // this.radio = new WidgetRadio();
-    // this.map = new WidgetMap();
-    // this.shield = new WidgetShield();
-    // this.enigma = new WidgetEnigma();
+    this.radio = new Radio();
+    this.nav = new Nav();
+    this.shield = new Shield();
+    this.enigma = new Enigma();
 
     // Collections
     this.missions = new Missions();
