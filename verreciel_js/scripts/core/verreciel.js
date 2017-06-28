@@ -162,11 +162,11 @@ class Verreciel
 
   windowResize()
   {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    this.camera.aspect = width / height;
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( width, height );
+    this.renderer.setSize( this.width, this.height );
   }
 }
 

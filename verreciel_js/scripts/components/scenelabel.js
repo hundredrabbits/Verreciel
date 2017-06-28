@@ -26,7 +26,7 @@ class SceneLabel extends Empty
     else if (this.activeAlignment == Alignment.right)
     {
       let wordLength = this.activeText.length * this.activeScale * 1.5;
-      this.nodeOffset.position.set(-wordLength + (activeScale * 0.5), 0, 0);
+      this.nodeOffset.position.set(-wordLength + (this.activeScale * 0.5), 0, 0);
     }
   }
   

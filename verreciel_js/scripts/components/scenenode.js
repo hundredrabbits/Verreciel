@@ -44,6 +44,18 @@ class SceneNode extends THREE.LineSegments
       this.parent.remove(this);
     }
   }
+
+  convertPositionToNode(posiiton, node)
+  {
+    return new THREE.Vector3D(); // TODO: REMOVE
+    // TODO: THREEJS
+  }
+
+  convertPositionFromNode(posiiton, node)
+  {
+    return new THREE.Vector3D(); // TODO: REMOVE
+    // TODO: THREEJS
+  }
 }
 
 SceneNode.material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors } );
