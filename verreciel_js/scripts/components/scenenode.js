@@ -36,6 +36,14 @@ class SceneNode extends THREE.LineSegments
       node.whenRenderer();
     }
   }
+
+  removeFromParentNode()
+  {
+    if (this.parent != null)
+    {
+      this.parent.remove(this);
+    }
+  }
 }
 
 SceneNode.material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors } );

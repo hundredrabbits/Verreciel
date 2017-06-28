@@ -57,7 +57,7 @@ class Empty extends SceneNode
   
   color(color)
   {
-    if (geometry == null)
+    if (this.geometry.vertices.length == 0)
     {
       return;
     }

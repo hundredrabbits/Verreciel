@@ -1,17 +1,15 @@
 TODO
 
-Populate the core classes
-  universe
-  player
-  helmet
-  capsule
-  space
+Create a replacement for SCNTransaction
+  This one's a toughie
+  Keep track of what gets animated this way
+  If it's just a subset of things, then only a subset solution is required
+  // TODO: SCNTransaction
 
-Populate the collections
+ThreeJS stuff in SceneLine
+  // TODO: THREEJS
 
-Create the panels
-
-Create the monitors
-
-Run sanitizer
-  Diff the results of course
+Populate a stub core class
+Populate the stubs you generate
+Commit when you're at a running state
+Repeat

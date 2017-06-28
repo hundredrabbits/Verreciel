@@ -15,6 +15,7 @@ class Verreciel
     this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
     // this.camera.position.z = 1000;
     this.scene = new THREE.Scene();
+    this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( 0, 0 );
@@ -35,10 +36,11 @@ class Verreciel
     // this.below = new PanelBelow();
 
     // Monitors
-    // this.journey = new MonitorJourney();
-    // this.exploration = new MonitorExploration();
-    // this.progress = new MonitorProgress();
-    // this.completion = new MonitorComplete();
+    this.journey = new Journey();
+    // this.exploration = new Exploration();
+    // this.progress = new Progress();
+    // this.completion = new Complete();
+    
     // this.radio = new WidgetRadio();
     // this.map = new WidgetMap();
     // this.shield = new WidgetShield();
@@ -57,7 +59,7 @@ class Verreciel
     this.red = new THREE.Vector4(1, 0, 0, 1);
     this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
     this.clear = new THREE.Vector4(0, 0, 0, 0);
-    
+
     // Core
     this.game = new Game();
     this.universe = new Universe();

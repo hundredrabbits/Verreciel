@@ -2,11 +2,11 @@ class Music
 {
   constructor()
   {
-    this.trackAmbient = new Audio();
+    this.trackAmbience = new Audio();
     this.trackEffect = new Audio();
     this.trackRecord = new Audio();
     this.audioCatalog = {};
-    this.ambientMuted = false;
+    this.ambienceMuted = false;
     this.recordMuted = false;
   }
 
@@ -40,26 +40,26 @@ class Music
     });
   }
 
-  playAmbient(name)
+  playAmbience(name)
   {
-    if (this.trackAmbient.name == name)
+    if (this.trackAmbience.name == name)
     {
       return;
     }
 
     // Fadeout
-    $(this.trackAmbient).animate({volume: 0}, 1000, function()
+    $(this.trackAmbience).animate({volume: 0}, 1000, function()
     {
       console.log("Music: ",name);
 
-      verreciel.music.trackAmbient.pause();
-      verreciel.music.trackAmbient = verreciel.music.fetchAudio(name, "ambient", "media/audio/ambient/"+name+".mp3", true);
-      if (verreciel.music.ambientMuted == false)
+      verreciel.music.trackAmbience.pause();
+      verreciel.music.trackAmbience = verreciel.music.fetchAudio(name, "ambience", "media/audio/ambience/"+name+".mp3", true);
+      if (verreciel.music.ambienceMuted == false)
       {
-        verreciel.music.trackAmbient.play();
+        verreciel.music.trackAmbience.play();
       }
-      verreciel.music.trackAmbient.volume = 0;
-      $(verreciel.music.trackAmbient).animate({volume: 1}, 1000);
+      verreciel.music.trackAmbience.volume = 0;
+      $(verreciel.music.trackAmbience).animate({volume: 1}, 1000);
     });
   }
 
@@ -74,25 +74,25 @@ class Music
         audio.loop = loop;
         this.audioCatalog[audioId] = audio;
       }
-      this.audioCatalog[audioId].currentTime = 0;
+      this.audioCatalog[audioId].currenceTime = 0;
       return this.audioCatalog[audioId];
   }
 
-  pauseAmbient()
+  pauseAmbience()
   {
-    this.ambientMuted = true;
-    $(this.trackAmbient).animate({volume: 0}, 1000, function()
+    this.ambienceMuted = true;
+    $(this.trackAmbience).animate({volume: 0}, 1000, function()
     {
-      verreciel.music.trackAmbient.pause();
+      verreciel.music.trackAmbience.pause();
     });
   }
 
-  resumeAmbient()
+  resumeAmbience()
   {
-    this.trackAmbient.play();
-    this.trackAmbient.volume = 0;
-    $(this.trackAmbient).animate({volume: 1}, 1000);
-    this.ambientMuted = false;
+    this.trackAmbience.play();
+    this.trackAmbience.volume = 0;
+    $(this.trackAmbience).animate({volume: 1}, 1000);
+    this.ambienceMuted = false;
   }
 
   pauseRecord()
