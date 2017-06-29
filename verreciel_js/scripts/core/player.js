@@ -66,7 +66,7 @@ class Player extends Empty
     }
   }
   
-  lookAt(position = new THREE.Vector3(0,0,0), deg)
+  lookAt(/*position = new THREE.Vector3(0,0,0), */deg = 0)
   {
     let normalizedDeg = radToDeg(this.rotation.y) % 360;
     this.rotation.y = degToRad(normalizedDeg);

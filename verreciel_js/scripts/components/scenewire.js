@@ -113,7 +113,7 @@ class SceneWire extends Empty
     return true;
   }
   
-  color(color)
+  applyColor(color)
   {
     
   }

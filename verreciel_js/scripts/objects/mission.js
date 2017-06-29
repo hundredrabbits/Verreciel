@@ -15,9 +15,9 @@ class Mission
   {
     if (this.currentQuest == null)
     {
-      this.currentQuest = quests[0];
+      this.currentQuest = this.quests[0];
     }
-    if (predicate() == true)
+    if (this.predicate() == true)
     {
       this.complete();
     }
@@ -59,8 +59,9 @@ class Mission
         verreciel.helmet.addMessage("Reach the " + this.currentQuest.location.system + " system", verreciel.cyan);
       }
     }
-    else{
-      helmet.addMessage(this.currentQuest.name)
+    else
+    {
+      verreciel.helmet.addMessage(this.currentQuest.name);
     }
   }
   

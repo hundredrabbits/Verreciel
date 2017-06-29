@@ -2,7 +2,7 @@ class SceneNode extends THREE.LineSegments
 {
   constructor()
   {
-    super(undefined, SceneNode.material);
+    super(new THREE.Geometry(), SceneNode.material);
   }
 
   whenStart()

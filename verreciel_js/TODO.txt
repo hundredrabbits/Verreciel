@@ -26,6 +26,12 @@ Is Location::isKnown in the game state?
   Who calls Capsule::closestKnownLocation?
 
 Renamed map to nav and Map to Nav
+Rename mapPort to navPort
   Do a correction pass
 
+Renamed Empty::color to Empty::applyColor
+  Do a correction pass
+  This is the weird one, too
+
 ScenePortSlot::enable/disable with text and color became enableAndShow/disableAndShow
+

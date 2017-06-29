@@ -12,6 +12,14 @@ class Verreciel
     this.element = document.createElement("verreciel");
     document.body.appendChild(this.element);
 
+    // Colors
+    this.black = new THREE.Vector4(0, 0, 0, 1);
+    this.grey = new THREE.Vector4(0.5, 0.5, 0.5, 1);
+    this.white = new THREE.Vector4(1, 1, 1, 1);
+    this.red = new THREE.Vector4(1, 0, 0, 1);
+    this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
+    this.clear = new THREE.Vector4(0, 0, 0, 0);
+
     this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
     // this.camera.position.z = 1000;
     this.scene = new THREE.Scene();
@@ -47,18 +55,9 @@ class Verreciel
     this.enigma = new Enigma();
 
     // Collections
-    this.missions = new Missions();
     this.items = new Items();
     this.locations = new Locations();
-    // this.recipes = new Recipess();
-
-    // Colors
-    this.black = new THREE.Vector4(0, 0, 0, 1);
-    this.grey = new THREE.Vector4(0.5, 0.5, 0.5, 1);
-    this.white = new THREE.Vector4(1, 1, 1, 1);
-    this.red = new THREE.Vector4(1, 0, 0, 1);
-    this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
-    this.clear = new THREE.Vector4(0, 0, 0, 0);
+    // this.recipes = new Recipes();
 
     // Core
     this.game = new Game();
@@ -67,6 +66,8 @@ class Verreciel
     this.player = new Player();
     this.space = new Space();
     this.helmet = new Helmet();
+    
+    this.missions = new Missions();
 
     this.demo = new Demo();
   }
@@ -173,6 +174,24 @@ class Verreciel
 class Alignment extends Enum{} setEnumValues(Alignment, ['left', 'center', 'right',]);
 class Systems extends Enum{} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
 class ItemTypes extends Enum{} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);
+
+const Records =
+{
+  record1:"loique",
+  record2:"valen",
+  record3:"senni",
+  record4:"usul",
+  record5:"pillar"
+}
+
+const Ambience =
+{
+  ambience1:"fog",
+  ambience2:"ghost",
+  ambience3:"silent",
+  ambience4:"kelp",
+  ambience5:"close"
+}
 
 const Templates =
 {

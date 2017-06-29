@@ -50,12 +50,12 @@ class Empty extends SceneNode
   {
     for (let node of this.children)
     {
-      node.color(color);
+      node.applyColor(color);
       node.updateChildrenColors(color);
     }
   }
   
-  color(color)
+  applyColor(color)
   {
     if (this.geometry.vertices.length == 0)
     {

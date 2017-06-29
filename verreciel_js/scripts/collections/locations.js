@@ -229,7 +229,7 @@ class Senni
   
   station()
   {
-    return new LocationStation("station", this.system, new THREE.Vector2(this.offset.x + 1, this.offset.y), verreciel.items.currency3, function(){ verreciel.map.install(); }, "Map");
+    return new LocationStation("station", this.system, new THREE.Vector2(this.offset.x + 1, this.offset.y), verreciel.items.currency3, function(){ verreciel.nav.install(); }, "Map");
   }
   
   // MARK: Fog

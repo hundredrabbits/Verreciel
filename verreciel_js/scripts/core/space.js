@@ -36,36 +36,36 @@ class Space extends Empty
     {
       case Systems.valen:
         this.targetSpaceColor = [0.2,0.2,0.2];
-        this.stars_color = white;
-        verreciel.music.playAmbience("ambience-2");
+        this.stars_color = verreciel.white;
+        verreciel.music.playAmbience(Ambience.ambience2);
         break;
       case Systems.senni:
         this.targetSpaceColor = [0.0,0.0,0.0];
-        this.stars_color = true_cyan;
-        verreciel.music.playAmbience("ambience-3");
+        this.stars_color = verreciel.cyan;
+        verreciel.music.playAmbience(Ambience.ambience3);
         break;
       case Systems.usul:
         this.targetSpaceColor = [0.2,0.0,0.0];
-        this.stars_color = true_white;
-        verreciel.music.playAmbience("ambience-4");
+        this.stars_color = verreciel.white;
+        verreciel.music.playAmbience(Ambience.ambience4);
         break;
       case Systems.close:
         this.targetSpaceColor = [0.6,0.6,0.6];
-        this.stars_color = black;
-        verreciel.music.playAmbience("ambience-5");
+        this.stars_color = verreciel.black;
+        verreciel.music.playAmbience(Ambience.ambience5);
         break;
       default:
         this.targetSpaceColor = [0.0,0.0,0.0];
-        this.stars_color = white;
-        verreciel.music.playAmbience("ambience-1");
+        this.stars_color = verreciel.white;
+        verreciel.music.playAmbience(Ambience.ambience1);
         break;
     }
     
-    if (player.isEjected == true)
+    if (verreciel.player.isEjected == true)
     {
       this.targetSpaceColor = [0,0,0];
     }
-    else if (capsule.closestStar().isComplete == true)
+    else if (verreciel.capsule.closestStar().isComplete == true)
     {
       this.targetSpaceColor = [44 / 255, 73/255, 65/255];
     }
@@ -144,7 +144,7 @@ class StarCluster extends Empty
   whenRenderer()
   {
     var starSpeed = verreciel.thruster.actualSpeed;
-    if (verreciel.capsule.isDocked == false && verreciel.capsule.dock != null)
+    if (verreciel.capsule.isDocked == false && verreciel.capsule.location != null)
     {
       starSpeed = 0.3;
     }

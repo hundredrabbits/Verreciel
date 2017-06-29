@@ -57,41 +57,36 @@ class SceneLabel extends Empty
     }
   }
   
-  update(text, force = false, color)
+  update()
   {
-    if (text == this.activeText && color.equals(this.color) && force == false)
+    var text = this.activeText;
+    var color = this.color;
+    var force = false;
+
+    for (let arg of arguments)
     {
-      return;
+      if (typeof arg == "string")
+      {
+        text = arg;
+      }
+      else if (typeof arg == "boolean")
+      {
+        force = arg;
+      }
+      else if (arg instanceof THREE.Vector4)
+      {
+        color = arg;
+      }
     }
-    this.removeLetters();
-    this.activeText = text;
-    this.color = color;
-    this.addLetters(this.activeText, this.activeScale);
-    this.adjustAlignment();
-  }
-  
-  update(color, force = false)
-  {
-    if (this.color.equals(color))
+
+    if (this.activeText != text || !this.color.equals(color) || force == true)
     {
-      return;
+      this.removeLetters();
+      this.activeText = text;
+      this.color = color;
+      this.addLetters(this.activeText, this.activeScale);
+      this.adjustAlignment();
     }
-    this.color = color;
-    this.removeLetters();
-    this.addLetters(this.activeText, this.activeScale);
-    this.adjustAlignment();
-  }
-  
-  update(text)
-  {
-    if (text == this.activeText)
-    {
-      return;
-    }
-    this.removeLetters();
-    this.activeText = text;
-    this.addLetters(this.activeText, this.activeScale);
-    this.adjustAlignment();
   }
   
   updateScale(scale)

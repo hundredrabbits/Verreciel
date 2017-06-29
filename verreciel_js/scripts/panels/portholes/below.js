@@ -1,4 +1,7 @@
-class Below extends Panel 
+class Below extends Panel
 {
-  // STUB
+  constructor()
+  {
+    super();
+  }
 }

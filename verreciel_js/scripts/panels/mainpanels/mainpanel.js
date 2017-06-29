@@ -126,7 +126,7 @@ class MainPanel extends Panel
     // footer.show()
     // SCNTransaction.commit()
     
-    installNode.removeFromParentNode();
+    this.installNode.removeFromParentNode();
     
     this.port.enable();
     this.nameLabel.update(name, verreciel.white);

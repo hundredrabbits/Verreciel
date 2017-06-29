@@ -174,7 +174,7 @@ class Capsule extends Empty
     this.location.isKnown = true;
     this.dock(location);
     this.docked();
-    space.onSystemEnter(location.system);
+    verreciel.space.onSystemEnter(location.system);
   }
   
   whenSecond()
@@ -209,7 +209,7 @@ class Capsule extends Empty
   {
     var star = null;
 
-    switch (system)
+    switch (this.system)
     {
       case Systems.loiqe:
         star = verreciel.universe.loiqe;

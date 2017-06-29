@@ -12,18 +12,6 @@ class Item extends Event
     this.code = code;
   }
   
-  /*
-  constructor(like)
-  {
-    super.init()
-    
-    self.name = like.name
-    self.type = like.type
-    self.details = like.details
-    self.isQuest = like.isQuest
-  }
-  */
-  
   payload()
   {
     return new ConsolePayload([
@@ -31,4 +19,14 @@ class Item extends Event
       new ConsoleData(details),
     ]);
   }
+}
+
+Item.like = function(other)
+{
+  let item = new Item();
+  item.name = other.name;
+  item.type = other.type;
+  item.details = other.details;
+  item.isQuest = other.isQuest;
+  return item;
 }

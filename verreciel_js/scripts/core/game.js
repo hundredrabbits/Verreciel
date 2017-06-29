@@ -17,12 +17,12 @@ class Game
   save(id)
   {
     console.log("@ GAME     | Saved State to \(id)");
-    for (c of document.cookie.split(";"))
+    for (let c of document.cookie.split(";"))
     {
       document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     }
     localStorage.state = id;
-    localStorage.version = version;
+    localStorage.version = verreciel.version;
   }
   
   load(id)
