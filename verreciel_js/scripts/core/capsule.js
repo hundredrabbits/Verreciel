@@ -181,7 +181,7 @@ class Capsule extends Empty
   {
     super.whenSecond();
     let cl = this.closestLocation()
-    if (cl.system != null && cl.system != system)
+    if (cl.system != null && cl.system != this.system)
     {
       verreciel.space.onSystemEnter(cl.system);
     }

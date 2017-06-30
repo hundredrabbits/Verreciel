@@ -1,4 +1,192 @@
 class LocationBank extends Location
 {
-  // STUB
+  constructor(name = "", system, at = new THREE.Vector2())
+  {
+    super(name,system, at, new IconBank(), new StructureBank());
+    
+    this.details = "storage";
+    
+    this.port1 = new ScenePort(this);
+    this.port2 = new ScenePort(this);
+    this.port3 = new ScenePort(this);
+    this.port4 = new ScenePort(this);
+    this.port5 = new ScenePort(this);
+    this.port6 = new ScenePort(this);
+    
+    this.port1.enable();
+    this.port2.enable();
+    this.port3.enable();
+    this.port4.enable();
+    this.port5.enable();
+    this.port6.enable();
+  }
+  
+  panel()
+  {
+    let newPanel = new Panel();
+    
+    this.port1.position.set(Templates.leftMargin,Templates.lineSpacing * 2.5,0);
+    newPanel.add(this.port1);
+    
+    this.port2.position.set(Templates.leftMargin,Templates.lineSpacing * 1.5,0);
+    newPanel.add(this.port2);
+    
+    this.port3.position.set(Templates.leftMargin,Templates.lineSpacing * 0.5,0);
+    newPanel.add(this.port3);
+    
+    this.port4.position.set(Templates.leftMargin,-Templates.lineSpacing * 0.5,0);
+    newPanel.add(this.port4);
+    
+    this.port5.position.set(Templates.leftMargin,-Templates.lineSpacing * 1.5,0);
+    newPanel.add(this.port5);
+    
+    this.port6.position.set(Templates.leftMargin,-Templates.lineSpacing * 2.5,0);
+    newPanel.add(this.port6);
+    
+    return newPanel;
+  }
+  
+  addItems(items)
+  {
+    for (let item of items)
+    {
+      if (this.port1.hasItem() == false)
+      {
+        this.port1.addEvent(item);
+      }
+      else if (this.port2.hasItem() == false)
+      {
+        this.port2.addEvent(item);
+      }
+      else if (this.port3.hasItem() == false)
+      {
+        this.port3.addEvent(item);
+      }
+      else if (this.port4.hasItem() == false)
+      {
+        this.port4.addEvent(item);
+      }
+      else if (this.port5.hasItem() == false)
+      {
+        this.port5.addEvent(item);
+      }
+      else if (this.port6.hasItem() == false)
+      {
+        this.port6.addEvent(item);
+      }
+    }
+  }
+  
+  contains(item)
+  {
+    if (this.port1.event != null && this.port1.event == item)
+    {
+      return true;
+    }
+    if (this.port2.event != null && this.port2.event == item)
+    {
+      return true;
+    }
+    if (this.port3.event != null && this.port3.event == item)
+    {
+      return true;
+    }
+    if (this.port4.event != null && this.port4.event == item)
+    {
+      return true;
+    }
+    if (this.port5.event != null && this.port5.event == item)
+    {
+      return true;
+    }
+    if (this.port6.event != null && this.port6.event == item)
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  onDock()
+  {
+    super.onDock();
+    
+    // TODO: SCNTransaction
+
+    // SCNTransaction.begin()
+    // SCNTransaction.animationDuration = 0.5
+    
+    // this.structure.hide();
+    
+    // var i = 0;
+    // for (let mesh in this.structure.children)
+    // {
+    //   mesh.rotation.y = degToRad(i * 0.10);
+    //   i += 1;
+    // }
+    
+    // SCNTransaction.commit()
+    
+    this.refresh();
+  }
+  
+  onUndock()
+  {
+    super.onUndock();
+    
+    // TODO: SCNTransaction
+
+    // SCNTransaction.begin()
+    // SCNTransaction.animationDuration = 0.5
+    
+    // this.structure.show();
+    
+    // var i = 0;
+    // for (let mesh of this.structure.children)
+    // {
+    //   mesh.rotation.y = 0;
+    //   i += 1;
+    // }
+    
+    // SCNTransaction.commit()
+    
+    this.refresh();
+  }
+}
+
+class IconBank extends Icon
+{
+  constructor()
+  {
+    super();
+    
+    this.mesh.add(new SceneLine([
+      new THREE.Vector3(0,this.size,0),  
+      new THREE.Vector3(this.size,0,0), 
+      new THREE.Vector3(-this.size,0,0),  
+      new THREE.Vector3(0,-this.size,0), 
+      new THREE.Vector3(0,this.size,0),  
+      new THREE.Vector3(-this.size,0,0), 
+      new THREE.Vector3(this.size,0,0),  
+      new THREE.Vector3(0,-this.size,0), 
+      new THREE.Vector3(-this.size,0,0),  
+      new THREE.Vector3(this.size,0,0),
+    ], this.color));
+  }
+}
+
+class StructureBank extends Structure
+{
+  constructor()
+  {
+    super();
+    
+    var i = 0;
+    while (i < 7)
+    {
+      let rect = new Rect(new THREE.Vector2(6,6), verreciel.white);
+      rect.position.y = i - 3.5;
+      this.root.add(rect);
+      i += 1;
+    }
+  }
 }

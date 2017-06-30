@@ -98,19 +98,19 @@ class StructureSatellite extends Structure
       
       this.root.add(axis);
       
-      let shape = new ShapeHexagon(3, verreciel.red);
+      let shape = new Hexagon(3, verreciel.red);
       shape.position.x = 0;
       axis.add(shape);
       
-      let shape2 = new ShapeHexagon(3, verreciel.red);
+      let shape2 = new Hexagon(3, verreciel.red);
       shape2.rotation.z = degToRad(90);
       shape.add(shape2);
       
-      let shape3 = new ShapeHexagon(3, verreciel.red);
+      let shape3 = new Hexagon(3, verreciel.red);
       shape3.rotation.y = degToRad(90);
       shape.add(shape3);
       
-      let shape4 = new ShapeHexagon(3, verreciel.red);
+      let shape4 = new Hexagon(3, verreciel.red);
       shape4.rotation.x = degToRad(90);
       shape.add(shape4);
       

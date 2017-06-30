@@ -87,12 +87,12 @@ class SceneWire extends Empty
   
   enable()
   {
-    this.this.isEnabled = true;
+    this.isEnabled = true;
   }
   
   disable()
   {
-    this.this.isEnabled = false;
+    this.isEnabled = false;
     this.segment1.reset();
     this.segment2.reset();
     this.segment3.reset();

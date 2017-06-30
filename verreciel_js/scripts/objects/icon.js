@@ -35,7 +35,7 @@ class Icon extends Empty
     super.whenStart();
     if (this.host.mapRequirement != null)
     {
-      this.label.update(cyan);
+      this.label.update(verreciel.cyan);
     }
   }
   
@@ -47,11 +47,11 @@ class Icon extends Empty
     }
     else if (this.host.isComplete == false)
     {
-      this.color = red;
+      this.color = verreciel.red;
     }
     else if (this.host.isComplete == true)
     {
-      this.color = cyan;
+      this.color = verreciel.cyan;
     }
     
     this.mesh.updateChildrenColors(this.color);

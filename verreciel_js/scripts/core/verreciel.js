@@ -57,7 +57,7 @@ class Verreciel
     // Collections
     this.items = new Items();
     this.locations = new Locations();
-    // this.recipes = new Recipes();
+    this.recipes = new Recipes();
 
     // Core
     this.game = new Game();

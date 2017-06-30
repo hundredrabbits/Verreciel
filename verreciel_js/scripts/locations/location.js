@@ -30,7 +30,7 @@ class Location extends Event
   {
     super.whenStart();
     
-    this.position.set(at.x,at.y,0);
+    this.position.set(this.at.x,this.at.y,0);
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at);
     this.angle = this.calculateAngle();
     this.align = this.calculateAlignment();
