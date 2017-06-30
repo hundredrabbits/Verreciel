@@ -36,3 +36,11 @@ function delay(seconds, callback)
 {
   setTimeout(callback, seconds * 1000);
 }
+
+function assertArgs(args, length)
+{
+  if (args.length != length)
+  {
+    throw "INCORRECT ARGS: " + args.length + " != " + length;
+  }
+}

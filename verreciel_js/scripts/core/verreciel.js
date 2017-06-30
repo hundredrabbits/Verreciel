@@ -21,7 +21,6 @@ class Verreciel
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
     this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
-    // this.camera.position.z = 1000;
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );

@@ -388,7 +388,8 @@ class Capsule extends Empty
   systemsInstalledCount()
   {
     var count = 0;
-    for (panel in this.panels) {
+    for (let panel in this.panels)
+    {
       if (panel.isInstalled == true)
       {
         count += 1;

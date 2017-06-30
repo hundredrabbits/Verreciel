@@ -1,11 +1,8 @@
 TODO
 
-While // STUB is in the code,
-  Populate a stub core class
-  Populate the stubs you generate
-  Commit when you're at a running state
-
 Detect, fix attempts at polymorphism
+  Methods being called with different combinations of parameters, for instance
+    Create utility method that counts args
 
 Create a replacement for SCNTransaction
   This one's a toughie
