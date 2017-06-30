@@ -9,7 +9,7 @@ class Radar extends MainPanel
     this.overviewMode = false;
     
     this.eventPivot = new Empty();
-    this.eventView = verreciel.universe; // Yoink!
+    this.eventView = new Empty();
     
     this.name = "radar";
     this.details = "displays locations";

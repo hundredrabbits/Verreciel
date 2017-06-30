@@ -15,6 +15,20 @@ class Empty extends SceneNode
   {
 
   }
+
+  // TODO: REMOVE
+  add()
+  {
+    if (arguments[0] == null)
+    {
+      throw "NULL ADD";
+    }
+    if (!arguments[0] instanceof THREE.Object3D)
+    {
+      throw "ILLEGAL ADD";
+    }
+    super.add.apply(this, arguments);
+  }
   
   empty()
   {

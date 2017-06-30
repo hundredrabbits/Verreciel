@@ -5,6 +5,8 @@ class Universe extends Empty
     super();
     console.log("^ Universe | Init");
 
+    this.eventView = verreciel.radar.eventView;
+
     this.allLocations = [];
     
     // MARK: Loiqe -
@@ -77,7 +79,7 @@ class Universe extends Empty
   addLocation(child)
   {
     this.allLocations.push(child);
-    this.add(child);
+    this.eventView.add(child);
   }
 
   addLoiqe()

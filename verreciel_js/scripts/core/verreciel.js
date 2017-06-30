@@ -30,6 +30,11 @@ class Verreciel
     this.lastMousePosition = new THREE.Vector2();
     this.music = new Music();
 
+    // Collections
+    this.items = new Items();
+    this.locations = new Locations();
+    this.recipes = new Recipes();
+    
     // Panels
     this.battery = new Battery();
     this.pilot = new Pilot();
@@ -52,11 +57,6 @@ class Verreciel
     this.nav = new Nav();
     this.shield = new Shield();
     this.enigma = new Enigma();
-
-    // Collections
-    this.items = new Items();
-    this.locations = new Locations();
-    this.recipes = new Recipes();
 
     // Core
     this.game = new Game();
