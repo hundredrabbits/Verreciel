@@ -16,7 +16,7 @@ class Game
   
   save(id)
   {
-    console.log("@ GAME     | Saved State to \(id)");
+    console.log("@ GAME     | Saved State to " + id);
     for (let c of document.cookie.split(";"))
     {
       document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
@@ -29,7 +29,7 @@ class Game
   {
     id = (id == 20) ? 0 : id;
     
-    console.log("@ GAME     | Loaded State to \(id)");
+    console.log("@ GAME     | Loaded State to " + id);
     
     for (let mission of verreciel.missions.story)
     {
