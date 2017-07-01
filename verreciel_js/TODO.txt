@@ -2,12 +2,6 @@ TODO
 
 CHECK: Never override a method with a different signature
 
-Create a replacement for SCNTransaction
-  This one's a toughie
-  Keep track of what gets animated this way
-  If it's just a subset of things, then only a subset solution is required
-  // TODO: SCNTransaction
-
 ThreeJS stuff
   // TODO: THREEJS
   Raycast on click

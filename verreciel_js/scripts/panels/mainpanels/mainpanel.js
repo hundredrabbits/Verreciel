@@ -120,16 +120,14 @@ class MainPanel extends Panel
     this.decals.position.set(0,0,-0.4);
     this.decals.hide();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.7
-    // this.mainNode.position.set(0,0,0);
-    // this.mainNode.show();
-    // this.decals.position.set(0,0,0);
-    // this.decals.show();
-    // footer.show()
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.7;
+    this.mainNode.position.set(0,0,0);
+    this.mainNode.show();
+    this.decals.position.set(0,0,0);
+    this.decals.show();
+    this.footer.show();
+    verreciel.sceneTransaction.commit();
     
     this.installNode.removeFromParentNode();
     

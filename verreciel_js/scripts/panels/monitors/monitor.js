@@ -51,14 +51,12 @@ class Monitor extends Panel
     assertArgs(arguments, 0);
     super.onInstallationComplete();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
-    // this.nameLabel.show();
-    // this.detailsLabel.show();
-    // SCNTransaction.completionBlock = { self.refresh() }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
+    this.nameLabel.show();
+    this.detailsLabel.show();
+    verreciel.sceneTransaction.completionBlock = function(){ self.refresh() }.bind(this);
+    verreciel.sceneTransaction.commit();
     
     this.installNode.removeFromParentNode();
   }

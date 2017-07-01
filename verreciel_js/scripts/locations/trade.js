@@ -171,19 +171,17 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // var i = 0;
-    // for (let node of this.root.children)
-    // {
-    //   node.rotation.y = degToRad(i * 360/nodes);
-    //   i += 1;
-    // }
+    var i = 0;
+    for (let node of this.root.children)
+    {
+      node.rotation.y = degToRad(i * 360/nodes);
+      i += 1;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onUndock()
@@ -191,19 +189,17 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
     var i = 0;
-    // for (let node of this.root.children)
-    // {
-      // node.rotation.y = degToRad(i * 360/nodes);
-      // i += 1;
-    // }
+    for (let node of this.root.children)
+    {
+      node.rotation.y = degToRad(i * 360/nodes);
+      i += 1;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onDock()
@@ -211,17 +207,15 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onDock()
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-      // node.rotation.y = 0;
-    // }
+    for (let node of this.root.children)
+    {
+      node.rotation.y = 0;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onComplete()

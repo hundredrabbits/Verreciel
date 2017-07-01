@@ -131,38 +131,36 @@ class Cargo extends MainPanel
       this.line6.position.x = 0.25;
     }
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // if (this.cargohold.content.count == 1)
-    // {
-      // this.line1.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 2)
-    // {
-      // this.line2.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 3)
-    // {
-      // this.line3.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 4)
-    // {
-      // this.line4.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 5)
-    // {
-      // this.line5.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 6)
-    // {
-      // this.line6.position.x = 0;
-    // }
+    if (this.cargohold.content.count == 1)
+    {
+      this.line1.position.x = 0;
+    }
+    if (this.cargohold.content.count == 2)
+    {
+      this.line2.position.x = 0;
+    }
+    if (this.cargohold.content.count == 3)
+    {
+      this.line3.position.x = 0;
+    }
+    if (this.cargohold.content.count == 4)
+    {
+      this.line4.position.x = 0;
+    }
+    if (this.cargohold.content.count == 5)
+    {
+      this.line5.position.x = 0;
+    }
+    if (this.cargohold.content.count == 6)
+    {
+      this.line6.position.x = 0;
+    }
     
-    // SCNTransaction.completionBlock = { this.removeTransfer(target) }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.completionBlock = function(){ this.removeTransfer(target) }.bind(this);
+    verreciel.sceneTransaction.commit();
   }
   
   removeTransfer(target)
@@ -351,38 +349,36 @@ class Cargo extends MainPanel
       this.line6.position.x = -0.25;
     }
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // if (this.cargohold.content.count == 0)
-    // {
-      // this.line1.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 1)
-    // {
-      // this.line2.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 2)
-    // {
-      // this.line3.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 3)
-    // {
-      // this.line4.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 4)
-    // {
-      // this.line5.position.x = 0;
-    // }
-    // if (this.cargohold.content.count == 5)
-    // {
-      // this.line6.position.x = 0;
-    // }
+    if (this.cargohold.content.count == 0)
+    {
+      this.line1.position.x = 0;
+    }
+    if (this.cargohold.content.count == 1)
+    {
+      this.line2.position.x = 0;
+    }
+    if (this.cargohold.content.count == 2)
+    {
+      this.line3.position.x = 0;
+    }
+    if (this.cargohold.content.count == 3)
+    {
+      this.line4.position.x = 0;
+    }
+    if (this.cargohold.content.count == 4)
+    {
+      this.line5.position.x = 0;
+    }
+    if (this.cargohold.content.count == 5)
+    {
+      this.line6.position.x = 0;
+    }
     
-    // SCNTransaction.completionBlock = { this.uploadTransfer() }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.completionBlock = function(){ this.uploadTransfer() }.bind(this);
+    verreciel.sceneTransaction.commit();
   }
   
   uploadTransfer()

@@ -229,17 +229,15 @@ class StructurePortal extends Structure
     assertArgs(arguments, 0);
     this.root.updateChildrenColors(verreciel.cyan);
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 1.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 1.5;
     
-    // for (let node in this.root.children)
-    // {
-    //   node.children[0].position.set(2,1,2);
-    // }
+    for (let node in this.root.children)
+    {
+      node.children[0].position.set(2,1,2);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onUnlock()
@@ -247,17 +245,15 @@ class StructurePortal extends Structure
     assertArgs(arguments, 0);   
     this.root.updateChildrenColors(verreciel.cyan);
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node in this.root.children)
-    // {
-    //   node.children[0].position.set(0,0,0);
-    // }
+    for (let node in this.root.children)
+    {
+      node.children[0].position.set(0,0,0);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onLock()
@@ -270,17 +266,15 @@ class StructurePortal extends Structure
     
     this.root.updateChildrenColors(verreciel.red);
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node in this.root.children)
-    // {
-    //   node.children[0].position.set(-2,0,0);
-    // }
+    for (let node in this.root.children)
+    {
+      node.children[0].position.set(-2,0,0);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onLeave()

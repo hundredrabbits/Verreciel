@@ -1,14 +1,51 @@
-class SceneNode extends THREE.LineSegments
+class SceneNode
 {
   constructor()
   {
     assertArgs(arguments, 0);
-    let material = new THREE.LineBasicMaterial({
+    this.material = new THREE.LineBasicMaterial({
       color: 0xffffff,
       vertexColors: THREE.VertexColors,
     });
-    material.transparent = true;
-    super(new THREE.Geometry(), material);
+    this.material.transparent = true;
+    this.children = [];
+    this.geometry = new THREE.Geometry();
+    this.meat = new THREE.LineSegments(this.geometry, this.material);
+
+    var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
+
+    Object.defineProperties( this, {
+      position:
+      {
+        enumerable: true,
+        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "position")
+      },
+      rotation:
+      {
+        enumerable: true,
+        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "rotation")
+      },
+      opacity:
+      {
+        enumerable: true,
+        get: function() { return opacityProperty.value; },
+        set: function(value) { opacityProperty.value = value; }
+      }
+    });
+  }
+
+  add(other)
+  {
+    this.meat.add(other.meat);
+    this.children.push(other);
+    other.parent = this;
+  }
+
+  remove(other)
+  {
+    this.meat.remove(other.meat);
+    this.children.splice(this.children.indexOf(other), 1);
+    other.parent = null;
   }
 
   whenStart()

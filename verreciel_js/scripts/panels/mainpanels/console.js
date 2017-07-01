@@ -106,18 +106,16 @@ class Console extends MainPanel
       count += 1;
     }
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let line of this.lines) 
-    // {
-      // line.position.z = 0;
-      // line.opacity = 1;
-    // }
+    for (let line of this.lines) 
+    {
+      line.position.z = 0;
+      line.opacity = 1;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   defaultPayload()

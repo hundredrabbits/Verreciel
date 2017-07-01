@@ -165,20 +165,19 @@ class Helmet extends Empty
     
     this.message = message;
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.1
-    // this.messageLabel.hide();
-    // this.messageLabel.updateColor(verreciel.cyan);
-    // SCNTransaction.completionBlock = {
-      // SCNTransaction.begin()
-      // SCNTransaction.animationDuration = 0.1
-      // this.messageLabel.updateText(this.message, color);
-      // this.messageLabel.show();
-      // SCNTransaction.commit()
-    // }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.1;
+    this.messageLabel.hide();
+    this.messageLabel.updateColor(verreciel.cyan);
+    verreciel.sceneTransaction.completionBlock = function()
+    {
+      verreciel.sceneTransaction.begin();
+      verreciel.sceneTransaction.animationDuration = 0.1;
+      this.messageLabel.updateText(this.message, color);
+      this.messageLabel.show();
+      verreciel.sceneTransaction.commit();
+    }.bind(this);
+    verreciel.sceneTransaction.commit();
   }
   
   addPassive(passive)
@@ -191,21 +190,19 @@ class Helmet extends Empty
     
     this.passive = passive;
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.1
-    // this.passiveLabel.position.set(0,-1.2,this.visorDepth - 0.01);
-    // this.passiveLabel.hide();
-    // SCNTransaction.completionBlock = {
-      // SCNTransaction.begin()
-      // SCNTransaction.animationDuration = 0.1
-      // this.passiveLabel.updateText(this.passive);
-      // this.passiveLabel.position.set(0,-1.2,this.visorDepth);
-      // this.passiveLabel.show();
-      // SCNTransaction.commit()
-    // }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.1;
+    this.passiveLabel.position.set(0,-1.2,this.visorDepth - 0.01);
+    this.passiveLabel.hide();
+    verreciel.sceneTransaction.completionBlock = function(){
+      verreciel.sceneTransaction.begin();
+      verreciel.sceneTransaction.animationDuration = 0.1;
+      this.passiveLabel.updateText(this.passive);
+      this.passiveLabel.position.set(0,-1.2,this.visorDepth);
+      this.passiveLabel.show();
+      verreciel.sceneTransaction.commit();
+    }.bind(this);
+    verreciel.sceneTransaction.commit();
   }
   
   addWarning(text, color, duration, flag)

@@ -292,23 +292,21 @@ class StructureHoradric extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 3
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 3;
     
-    // this.root.children[0].rotation.y = degToRad(0);
-    // this.root.children[1].rotation.y = degToRad(0);
+    this.root.children[0].rotation.y = degToRad(0);
+    this.root.children[1].rotation.y = degToRad(0);
     
-    // this.root.children[2].rotation.z = degToRad(0);
-    // this.root.children[3].rotation.z = degToRad(0);
+    this.root.children[2].rotation.z = degToRad(0);
+    this.root.children[3].rotation.z = degToRad(0);
     
-    // this.root.children[4].rotation.x = degToRad(0);
-    // this.root.children[5].rotation.x = degToRad(0);
+    this.root.children[4].rotation.x = degToRad(0);
+    this.root.children[5].rotation.x = degToRad(0);
     
-    // this.rotation.y = degToRad(0)
+    this.rotation.y = degToRad(0);
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onDock()
@@ -316,23 +314,20 @@ class StructureHoradric extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 3
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 3;
     
-    // this.root.children[0].rotation.y += degToRad(22.5);
-    // this.root.children[1].rotation.y -= degToRad(22.5);
+    this.root.children[0].rotation.y += degToRad(22.5);
+    this.root.children[1].rotation.y -= degToRad(22.5);
     
-    // this.root.children[2].rotation.z += degToRad(45);
-    // this.root.children[3].rotation.z -= degToRad(45);
+    this.root.children[2].rotation.z += degToRad(45);
+    this.root.children[3].rotation.z -= degToRad(45);
     
-    // this.root.children[4].rotation.x += degToRad(90);
-    // this.root.children[5].rotation.x -= degToRad(90);
+    this.root.children[4].rotation.x += degToRad(90);
+    this.root.children[5].rotation.x -= degToRad(90);
     
-    // this.rotation.y += degToRad(90);
+    this.rotation.y += degToRad(90);
     
-    // SCNTransaction.completionBlock = { }
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
 }

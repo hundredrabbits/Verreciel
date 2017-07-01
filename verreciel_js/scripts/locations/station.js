@@ -131,17 +131,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   node.rotation.x = degToRad(0);
-    // }
+    for (let node of this.root.children)
+    {
+      node.rotation.x = degToRad(0);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onUndock()
@@ -149,17 +147,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   node.rotation.x = degToRad(45);
-    // }
+    for (let node of this.root.children)
+    {
+      node.rotation.x = degToRad(45);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onDock()
@@ -167,17 +163,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   node.rotation.x = degToRad(45);
-    // }
+    for (let node of this.root.children)
+    {
+      node.rotation.x = degToRad(45);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onComplete()
@@ -199,23 +193,21 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.morph();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // let deg1 = 22.5 * ((morphTime * 123) % 8) % 180;
-    // let deg2 = 22.5 * ((morphTime * 678) % 6) % 180;
+    let deg1 = 22.5 * ((morphTime * 123) % 8) % 180;
+    let deg2 = 22.5 * ((morphTime * 678) % 6) % 180;
     
-    // for (let node of this.root.children)
-    // {
-    //   for (let subnode of node.children)
-    //   {
-    //     subnode.rotation.z = degToRad(deg1 - deg2);
-    //     subnode.position.y = (2 - ((morphTime * 0.34) % 4)) * 0.6;
-    //   }
-    // }
+    for (let node of this.root.children)
+    {
+      for (let subnode of node.children)
+      {
+        subnode.rotation.z = degToRad(deg1 - deg2);
+        subnode.position.y = (2 - ((morphTime * 0.34) % 4)) * 0.6;
+      }
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
 }

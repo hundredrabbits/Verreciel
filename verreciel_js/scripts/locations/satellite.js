@@ -130,20 +130,18 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   for (let subnode of node.children)
-    //   {
-    //     subnode.position.x = 3;
-    //   }
-    // }
+    for (let node of this.root.children)
+    {
+      for (let subnode of node.children)
+      {
+        subnode.position.x = 3;
+      }
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onUndock()
@@ -151,20 +149,18 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   for (let subnode of node.children)
-    //   {
-    //     subnode.position.x = 3;
-    //   }
-    // }
+    for (let node of this.root.children)
+    {
+      for (let subnode of node.children)
+      {
+        subnode.position.x = 3;
+      }
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onDock()
@@ -172,20 +168,18 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-    //   for (let subnode of node.children)
-    //   {
-    //     subnode.position.x = 0;
-    //   }
-    // }
+    for (let node of this.root.children)
+    {
+      for (let subnode of node.children)
+      {
+        subnode.position.x = 0;
+      }
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onComplete()

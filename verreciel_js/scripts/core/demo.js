@@ -46,7 +46,7 @@ class Demo extends THREE.Group
     }
 
     for( i = 0; i < 3; i++ ) {
-      var line = new Empty();
+      var line = new Empty().meat;
       line.geometry = geometry;
       line.scale.x = line.scale.y = line.scale.z = 0.125 * (i + 1);
       line.rotation.y = Math.random() * Math.PI;

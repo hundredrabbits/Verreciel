@@ -32,6 +32,8 @@ class Verreciel
     this.lastMousePosition = new THREE.Vector2();
     this.music = new Music();
 
+    this.sceneTransaction = new SceneTransaction();
+
     // Collections
     this.items = new Items();
     this.locations = new Locations();
@@ -85,10 +87,13 @@ class Verreciel
 
     this.windowResize();
 
-    this.scene.add(this.player);
-    this.scene.add(this.helmet);
-    this.scene.add(this.capsule);
-    this.scene.add(this.space);
+    this.root = new Empty();
+    this.scene.add(this.root.meat);
+
+    this.root.add(this.player);
+    this.root.add(this.helmet);
+    this.root.add(this.capsule);
+    this.root.add(this.space);
 
     this.scene.add(this.demo);
 

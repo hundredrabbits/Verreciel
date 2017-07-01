@@ -152,32 +152,28 @@ class Intercom extends MainPanel
     assertArgs(arguments, 0);
     // Animate
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // this.locationPanel.position.set(0,0,-0.5);
-    // this.locationPanel.hide();
+    this.locationPanel.position.set(0,0,-0.5);
+    this.locationPanel.hide();
     
-    // SCNTransaction.completionBlock = {
+    verreciel.sceneTransaction.completionBlock = function(){
 
       // this.defaultPanel.position.set(0,0,-0.5);
       
-      // TODO: SCNTransaction
-
-      // SCNTransaction.begin()
-      // SCNTransaction.animationDuration = 0.5
+      verreciel.sceneTransaction.begin();
+      verreciel.sceneTransaction.animationDuration = 0.5;
       
-      // this.defaultPanel.position.set(0,0,0);
-      // this.defaultPanel.show();
+      this.defaultPanel.position.set(0,0,0);
+      this.defaultPanel.show();
       
-      // SCNTransaction.completionBlock = {
-        // this.refresh();
-      // }
-      // SCNTransaction.commit()
-    // }
-    // SCNTransaction.commit()
+      verreciel.sceneTransaction.completionBlock = function(){
+        this.refresh();
+      }.bind(this);
+      verreciel.sceneTransaction.commit();
+    }.bind(this);
+    verreciel.sceneTransaction.commit();
   }
   
   connectToLocation(location)
@@ -195,33 +191,31 @@ class Intercom extends MainPanel
     
     // Animate
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // this.defaultPanel.position.set(0,0,-0.5);
-    // this.defaultPanel.hide();
+    this.defaultPanel.position.set(0,0,-0.5);
+    this.defaultPanel.hide();
     
-    // SCNTransaction.completionBlock = {
+    verreciel.sceneTransaction.completionBlock = function(){
       
-      // this.locationPanel.position.set(0,0,-0.5);
+      this.locationPanel.position.set(0,0,-0.5);
       
-      // if (verreciel.capsule.location != null)
-      // {
-        // this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
-      // }
+      if (verreciel.capsule.location != null)
+      {
+        this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
+      }
       
-      // SCNTransaction.begin()
-      // SCNTransaction.animationDuration = 0.5
+      verreciel.sceneTransaction.begin();
+      verreciel.sceneTransaction.animationDuration = 0.5;
       
-      // this.locationPanel.position.set(0,0,0);
-      // this.locationPanel.show();
-      // this.refresh();
+      this.locationPanel.position.set(0,0,0);
+      this.locationPanel.show();
+      this.refresh();
       
-      // SCNTransaction.commit()
-    // }
-    // SCNTransaction.commit()
+      verreciel.sceneTransaction.commit();
+    }.bind(this);
+    verreciel.sceneTransaction.commit();
     
     this.port.addEvent(location);
     
@@ -238,31 +232,29 @@ class Intercom extends MainPanel
   disconnectFromLocation()
   {
     assertArgs(arguments, 0);
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // this.locationPanel.position.set(0,0,-0.5);
-    // this.locationPanel.hide();
+    this.locationPanel.position.set(0,0,-0.5);
+    this.locationPanel.hide();
     
-    // SCNTransaction.completionBlock = {
+    verreciel.sceneTransaction.completionBlock = function(){
       
-      // this.defaultPanel.position.set(0,0,-0.5);
+      this.defaultPanel.position.set(0,0,-0.5);
       
-      // SCNTransaction.begin()
-      // SCNTransaction.animationDuration = 0.5
+      verreciel.sceneTransaction.begin();
+      verreciel.sceneTransaction.animationDuration = 0.5;
       
-      // this.defaultPanel.position.set(0,0,0);
-      // this.defaultPanel.show();
-      // this.refresh();
+      this.defaultPanel.position.set(0,0,0);
+      this.defaultPanel.show();
+      this.refresh();
       
-      // SCNTransaction.completionBlock = {
-        // this.locationPanel.empty();
-      // }
-      // SCNTransaction.commit()
-    // }
-    // SCNTransaction.commit()
+      verreciel.sceneTransaction.completionBlock = function(){
+        this.locationPanel.empty();
+      }.bind(this);
+      verreciel.sceneTransaction.commit();
+    }.bind(this);
+    verreciel.sceneTransaction.commit();
     
     this.port.removeEvent();
   }

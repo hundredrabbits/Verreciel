@@ -32,11 +32,9 @@ class Above extends Panel
       this.root.updateChildrenColors(verreciel.grey);
     }
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
-    // this.rotation.y = degToRad(Math.floor((radToDeg(player.rotation.y)+22.5)/45) * 45);
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
+    this.rotation.y = degToRad(Math.floor((radToDeg(verreciel.player.rotation.y)+22.5)/45) * 45);
+    verreciel.sceneTransaction.commit();
   }
 }

@@ -163,19 +163,17 @@ class StructureStar extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    // TODO: SCNTransaction
-
-    SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // var i = 0;
-    // for (let node of this.root.children)
-    // {
-      // node.rotation.y = degToRad(i * (90/this.root.children.count));
-      // i += 1;
-    // }
+    var i = 0;
+    for (let node of this.root.children)
+    {
+      node.rotation.y = degToRad(i * (90/this.root.children.count));
+      i += 1;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   sightUpdate()
@@ -190,18 +188,16 @@ class StructureStar extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // for (let node of this.root.children)
-    // {
-      // node.position.y = 0;
-      // node.rotation.y = 0;
-    // }
+    for (let node of this.root.children)
+    {
+      node.position.y = 0;
+      node.rotation.y = 0;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onComplete()
@@ -211,19 +207,17 @@ class StructureStar extends Structure
     
     this.root.updateChildrenColors(cyan)
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 0.5
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 0.5;
     
-    // var i = 0;
-    // for (let node of this.root.children)
-    // {
-    //   node.position.y = -i * 0.05;
-    //   i += 1;
-    //   node.rotation.y = 0;
-    // }
+    var i = 0;
+    for (let node of this.root.children)
+    {
+      node.position.y = -i * 0.05;
+      i += 1;
+      node.rotation.y = 0;
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
 }

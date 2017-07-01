@@ -58,12 +58,12 @@ class LocationClose extends Location
     player.eject()
     onComplete()
     
-    SCNTransaction.begin()
-    SCNTransaction.animationDuration = 30
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 30;
     
-    structure.opacity = 0
+    structure.opacity = 0;
     
-    SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
 }
 
@@ -118,21 +118,19 @@ class StructureClose extends Structure
     assertArgs(arguments, 0);
     super.morph();
     
-    // TODO: SCNTransaction
-
-    // SCNTransaction.begin()
-    // SCNTransaction.animationDuration = 1.0
+    verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.animationDuration = 1.0;
     
-    // this.root.rotation.y = degToRad(morphTime * 45);
+    this.root.rotation.y = degToRad(morphTime * 45);
     
-    // for (let node in this.root.children)
-    // {
-    //   node.children[0].rotation.z = degToRad(morphTime * 180);
-    //   node.children[0].rotation.x = degToRad(morphTime * 90);
-    //   node.children[0].rotation.y = degToRad(morphTime * 45);
-    // }
+    for (let node in this.root.children)
+    {
+      node.children[0].rotation.z = degToRad(morphTime * 180);
+      node.children[0].rotation.x = degToRad(morphTime * 90);
+      node.children[0].rotation.y = degToRad(morphTime * 45);
+    }
     
-    // SCNTransaction.commit()
+    verreciel.sceneTransaction.commit();
   }
   
   onComplete()
