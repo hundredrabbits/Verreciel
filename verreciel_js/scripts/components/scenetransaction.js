@@ -128,20 +128,30 @@ class SceneProperty
   {
     assertArgs(arguments, 0, true);
 
-    var duration = this.sceneTransaction.animationDuration;
-    var oldValue = this.target[this.property];
-    var newValue = this.value;
+    let oldValue = this.target[this.property];
+    let newValue = this.value;
 
-    // console.log("~~~", oldValue, newValue, duration);
-
-    var percent = 0;
-    var target = this.target;
-    var property = this.property;
-
-    function tick(millisecondsElapsed)
+    if (oldValue == newValue)
     {
-      var percentElapsed = (millisecondsElapsed / 1000) / duration;
+      return;
+    }
+
+    let duration = this.sceneTransaction.animationDuration;
+    let target = this.target;
+    let property = this.property;
+    
+    var percent = 0;
+    var lastFrameTime = Date.now();
+    function tick()
+    {
+      let frameTime = Date.now();
+      let secondsElapsed = (frameTime - lastFrameTime) / 1000;
+      lastFrameTime = frameTime;
+
+      var percentElapsed = secondsElapsed / duration;
       percent += percentElapsed;
+
+      // console.log("~~~", property, ":", oldValue, "-", newValue, "/", duration, "s", secondsElapsed, "@", percent);
 
       if (percent > 1)
       {
@@ -150,12 +160,12 @@ class SceneProperty
 
       target[property] = newValue * percent + oldValue * (1 - percent);
 
-      if (percent == 1)
+      if (percent < 1)
       {
-        cancelAnimationFrame(frameID);
+        requestAnimationFrame(tick);
       }
     }
 
-    var frameID = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
 }

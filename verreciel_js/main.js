@@ -8,7 +8,7 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 560, height: 840, backgroundColor: '#000000', resizable:/*true*/false, autoHideMenuBar: true,icon: __dirname + '/icon.ico'})
+  win = new BrowserWindow({width: 560, height: 840, backgroundColor: '#000000', resizable:true, autoHideMenuBar: true,icon: __dirname + '/icon.ico'})
 
   win.loadURL(`file://${__dirname}/index.html`)
 
