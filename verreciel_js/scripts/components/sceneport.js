@@ -14,7 +14,7 @@ class ScenePort extends Empty
     // this.geometry = SCNPlane(width: 0.3, height: 0.3)
     // this.geometry?.firstMaterial?.diffuse.contents = clear
     
-    this.trigger = new SceneTrigger(this, new THREE.Vector2(1, 1));
+    this.trigger = new SceneTrigger(this, 1, 1);
     this.trigger.position.set(0,0,-0.1);
     this.add(this.trigger);
     
@@ -187,7 +187,7 @@ class ScenePort extends Empty
     this.connection = port;
     this.connection.origin = this;
     
-    this.wire.update(new THREE.Vector3(0, 0, 0), convertPositionFromNode(new THREE.Vector3(0, 0, 0), port));
+    this.wire.updateEnds(new THREE.Vector3(0, 0, 0), this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), port));
     
     this.wire.enable();
     
@@ -422,12 +422,12 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.event instanceof Item) == false)
+    if ((this.origin.event instanceof Item) == false)
     {
       return false;
     }
     
-    let source = origin.event;
+    let source = this.origin.event;
     
     if (source.type == type)
     {

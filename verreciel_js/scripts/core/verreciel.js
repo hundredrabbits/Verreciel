@@ -23,14 +23,17 @@ class Verreciel
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
     this.fps = 30;
-    this.camera = new THREE.PerspectiveCamera( 105, 1, 1, 3000 );
+    this.camera = new THREE.PerspectiveCamera( 105, 1, 1, 10000 );
+    this.raycaster = new THREE.Raycaster();
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( 0, 0 );
+
     this.element.appendChild( this.renderer.domElement );
     this.lastMousePosition = new THREE.Vector2();
+    this.mouseMoved = false;
     this.music = new Music();
 
     this.sceneTransaction = new SceneTransaction();
@@ -135,15 +138,18 @@ class Verreciel
 
   mouseDown(e)
   {
+    e.preventDefault();
     assertArgs(arguments, 1);
     this.mouseIsDown = true;
     if (this.player.isLocked)
     {
       return;
     }
+
+    this.mouseMoved = false;
     
-    this.lastMousePosition.x = e.screenX;
-    this.lastMousePosition.y = e.screenY;
+    this.lastMousePosition.x = e.clientX / this.width;
+    this.lastMousePosition.y = e.clientY / this.height;
     
     this.player.canAlign = false;
     this.helmet.canAlign = false;
@@ -151,6 +157,7 @@ class Verreciel
 
   mouseMove(e)
   {
+    e.preventDefault();
     assertArgs(arguments, 1);
     if (!this.mouseIsDown)
     {
@@ -161,20 +168,26 @@ class Verreciel
       return;
     }
     
-    let dragX = e.screenX - this.lastMousePosition.x;
-    let dragY = e.screenY - this.lastMousePosition.y;
-    
-    this.lastMousePosition.x = e.screenX;
-    this.lastMousePosition.y = e.screenY;
+    this.mouseMoved = true;
 
-    this.player.accelY += dragX / this.width  * 1;
-    this.player.accelX += dragY / this.height * 1;
+    let mouseX = e.clientX / this.width;
+    let mouseY = e.clientY / this.height;
+
+    let dragX = mouseX - this.lastMousePosition.x;
+    let dragY = mouseY - this.lastMousePosition.y;
+    
+    this.lastMousePosition.x = mouseX;
+    this.lastMousePosition.y = mouseY;
+
+    this.player.accelY += dragX;
+    this.player.accelX += dragY;
         
     this.helmet.updatePort();
   }
 
   mouseUp(e)
   {
+    e.preventDefault();
     assertArgs(arguments, 1);
     this.mouseIsDown = false;
     if (this.player.isLocked)
@@ -185,6 +198,28 @@ class Verreciel
     this.player.canAlign = true;
     this.helmet.canAlign = true;
     this.helmet.updatePort();
+
+    if (!this.mouseMoved)
+    {
+      event.preventDefault();
+      for (let intersect of this.getIntersectObjects())
+      {
+        if (intersect.object.node.method == Methods.interactiveRegion && intersect.object.node.touch(0))
+        {
+          break;
+        }
+      }
+    }
+  }
+
+  getIntersectObjects()
+  {
+    let mouse = new THREE.Vector2();
+    mouse.x =   this.lastMousePosition.x * 2 - 1;
+    mouse.y = - this.lastMousePosition.y * 2 + 1;
+
+    this.raycaster.setFromCamera(mouse, this.camera);
+    return this.raycaster.intersectObjects( this.scene.children, true );
   }
 
   windowResize()
@@ -198,6 +233,7 @@ class Verreciel
   }
 }
 
+class Methods extends Enum{} setEnumValues(Methods, ['lineArt', 'interactiveRegion']);
 class Alignment extends Enum{} setEnumValues(Alignment, ['left', 'center', 'right',]);
 class Systems extends Enum{} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
 class ItemTypes extends Enum{} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);

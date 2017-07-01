@@ -34,7 +34,7 @@ class Panel extends Empty
   install()
   {
     assertArgs(arguments, 0);
-    if (isInstalled == true)
+    if (this.isInstalled == true)
     {
       return;
     }

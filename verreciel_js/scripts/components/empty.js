@@ -1,9 +1,9 @@
 class Empty extends SceneNode
 {
-  constructor(graphical = false)
+  constructor(method = null)
   {
     assertArgs(arguments, 0);
-    super(graphical);
+    super(method);
     this.details = "unknown";
   }
 
@@ -83,13 +83,13 @@ class Empty extends SceneNode
   onConnect()
   {
     assertArgs(arguments, 0);
-    update();
+    this.update();
   }
   
   onDisconnect()
   {
     assertArgs(arguments, 0);
-    update();
+    this.update();
   }
   
   onUploadComplete()

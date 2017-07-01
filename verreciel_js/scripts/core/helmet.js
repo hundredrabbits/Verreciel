@@ -148,13 +148,13 @@ class Helmet extends Empty
     assertArgs(arguments, 0);
     if (verreciel.player.port.origin != null)
     {
-      let test = convertPositionToNode(verreciel.player.port.position, verreciel.player.port.origin);
-      verreciel.player.port.origin.wire.update(new THREE.Vector3(), test);
+      let test = this.convertPositionToNode(verreciel.player.port.position, verreciel.player.port.origin);
+      verreciel.player.port.origin.wire.updateEnds(new THREE.Vector3(), test);
     }
     if (verreciel.player.port.connection != null)
     {
-      let test = convertPositionFromNode(verreciel.player.port.position, verreciel.player.port.connection);
-      verreciel.player.port.wire.update(test, new THREE.Vector3());
+      let test = this.convertPositionFromNode(verreciel.player.port.position, verreciel.player.port.connection);
+      verreciel.player.port.wire.updateEnds(test, new THREE.Vector3());
     }
   }
   

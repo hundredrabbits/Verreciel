@@ -31,7 +31,7 @@ class Event extends Empty
     // this.geometry = SCNPlane(width: 0.5, height: 0.5)
     // this.geometry?.firstMaterial?.diffuse.contents = clear
     
-    let trigger = new SceneTrigger(this, new THREE.Vector2(1, 1));
+    let trigger = new SceneTrigger(this, 1, 1);
     trigger.position.set(0,0,-0.1);
     this.add(trigger);
   }

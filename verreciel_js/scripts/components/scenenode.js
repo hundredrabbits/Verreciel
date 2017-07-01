@@ -1,26 +1,35 @@
 class SceneNode
 {
-  constructor(graphical = false)
+  constructor(method = null)
   {
     assertArgs(arguments, 0);
-    this.graphical = graphical;
+    this.method = method;
     this.children = [];
     var masterOpacity = 1;
     
-    if (this.graphical)
-    {
-      console.log("GRAPHICAL");
-      this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
-      this.geometry = new THREE.Geometry();
-      this.meat = new THREE.LineSegments(this.geometry, this.material);
-      var color4 = new THREE.Vector4(1, 1, 1, 1);
-      var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
-    }
-    else
+    if (this.method == null)
     {
       this.meat = new THREE.Group();
     }
+    else
+    {
+      if (this.method == Methods.lineArt)
+      {
+        this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
+        this.geometry = new THREE.Geometry();
+        this.meat = new THREE.LineSegments(this.geometry, this.material);
+      } else if (this.method == Methods.interactiveRegion)
+      {
+        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true });
+        this.geometry = new THREE.Geometry();
+        this.meat = new THREE.Mesh(this.geometry, this.material);
+      }
+      
+      var color4 = new THREE.Vector4(1, 1, 1, 1);
+      var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
+    }
     
+    this.meat.node = this;
     this.meat.rotation.order = "YXZ";
 
     Object.defineProperties( this, {
@@ -40,7 +49,7 @@ class SceneNode
         get: function() { return masterOpacity; },
         set: function(value) {
           masterOpacity = value;
-          if (this.graphical) { opacityProperty.value = this.opacityFromTop * color4.w; }
+          if (this.method != null) { opacityProperty.value = this.opacityFromTop * color4.w; }
           for (let child of this.children)
           {
             child.opacity = child.opacity;
@@ -61,7 +70,7 @@ class SceneNode
       }
     });
 
-    if (this.graphical)
+    if (this.method != null)
     {
       Object.defineProperties( this, {
         color:
@@ -147,14 +156,14 @@ class SceneNode
   convertPositionToNode(position, node)
   {
     assertArgs(arguments, 2);
-    return new THREE.Vector3D(); // TODO: REMOVE
+    return new THREE.Vector3(); // TODO: REMOVE
     // TODO: THREEJS
   }
 
   convertPositionFromNode(position, node)
   {
     assertArgs(arguments, 2);
-    return new THREE.Vector3D(); // TODO: REMOVE
+    return new THREE.Vector3(); // TODO: REMOVE
     // TODO: THREEJS
   }
 }

@@ -29,7 +29,7 @@ class Hatch extends MainPanel
     
     // Trigger
     
-    this.mainNode.add(new SceneTrigger(this, new THREE.Vector2(2, 2)));
+    this.mainNode.add(new SceneTrigger(this, 2, 2));
     
     this.decals.empty();
     

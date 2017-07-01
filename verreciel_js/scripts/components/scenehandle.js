@@ -35,7 +35,7 @@ class SceneHandle extends Empty
     ], verreciel.cyan);
     this.add(this.selectionLine);
     
-    this.trigger = new SceneTrigger(this, new THREE.Vector2(2, 0.5), 0);
+    this.trigger = new SceneTrigger(this, 2, 0.5, 0);
     this.trigger.updateChildrenColors(verreciel.red); // Implies this was never used?
     this.add(this.trigger);
   }

@@ -275,7 +275,7 @@ class Location extends Event
   {
     assertArgs(arguments, 1);
     this.connection = location;
-    this.icon.wire.update(
+    this.icon.wire.updateEnds(
       [
         new THREE.Vector3(0,0,0), 
         new THREE.Vector3( (this.connection.at.x - this.at.x),(this.connection.at.y - this.at.y),0)

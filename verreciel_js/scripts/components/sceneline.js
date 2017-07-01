@@ -3,7 +3,7 @@ class SceneLine extends Empty
   constructor(vertices, color = verreciel.white)
   {
     assertArgs(arguments, 1);
-    super(true);
+    super(Methods.lineArt);
     this.updateGeometry(vertices, color);
   }
   

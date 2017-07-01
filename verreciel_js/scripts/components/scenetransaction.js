@@ -83,6 +83,14 @@ class ScenePropertyXYZ
     this.z = z;
   }
 
+  copy(other)
+  {
+    assertArgs(arguments, 1, true);
+    this.x = other.x;
+    this.y = other.y;
+    this.z = other.z;
+  }
+
   render()
   {
     assertArgs(arguments, 0, true);

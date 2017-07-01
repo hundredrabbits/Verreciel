@@ -88,17 +88,17 @@ class Thruster extends MainPanel
     
     // Triggers
     
-    this.accelerate = new SceneTrigger(this,new THREE.Vector2(1, 1), 1);
+    this.accelerate = new SceneTrigger(this, 1, 1, 1);
     this.accelerate.position.set(0, 0.5, 0);
     this.accelerate.add(new SceneLine([new THREE.Vector3(0, 0.2, 0), new THREE.Vector3(0.5, 0, 0)], verreciel.cyan));
     this.accelerate.add(new SceneLine([new THREE.Vector3(0, 0.2, 0), new THREE.Vector3(-0.5, 0, 0)], verreciel.cyan));
     
-    this.decelerate = new SceneTrigger(this, new THREE.Vector2(1, 1), 0);
+    this.decelerate = new SceneTrigger(this, 1, 1, 0);
     this.decelerate.position.set(0, -0.5, 0);
     this.decelerate.add(new SceneLine([new THREE.Vector3(0, -0.2, 0), new THREE.Vector3(0.5, 0, 0)], verreciel.red));
     this.decelerate.add(new SceneLine([new THREE.Vector3(0, -0.2, 0), new THREE.Vector3(-0.5, 0, 0)], verreciel.red));
     
-    this.action = new SceneTrigger(this, new THREE.Vector2(1.5, 1.5), 2);
+    this.action = new SceneTrigger(this, 1.5, 1.5, 2);
     
     this.mainNode.add(this.accelerate);
     this.mainNode.add(this.decelerate);

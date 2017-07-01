@@ -32,7 +32,7 @@ class Cargo extends MainPanel
     
     // Trigger
     
-    this.trigger = new SceneTrigger(this, new THREE.Vector2(2, 2), 1);
+    this.trigger = new SceneTrigger(this, 2, 2, 1);
     this.mainNode.add(this.trigger);
     
     this.decals.empty();

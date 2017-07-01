@@ -14,7 +14,7 @@ class ScenePortSlot extends ScenePort
     // this.geometry = SCNPlane(width: 0.3, height: 0.3)
     // this.geometry?.firstMaterial?.diffuse.contents = clear
     
-    this.trigger = new SceneTrigger(this, new THREE.Vector2(1, 1));
+    this.trigger = new SceneTrigger(this, 1, 1);
     this.trigger.position.set(0,0,-0.1);
     this.add(this.trigger);
     

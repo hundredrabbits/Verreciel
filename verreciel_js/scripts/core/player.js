@@ -18,7 +18,7 @@ class Player extends Empty
     this.port = new ScenePort(this);
     this.port.enable();
 
-    this.trigger = new SceneTrigger(this, new THREE.Vector2(2, 0.75));
+    this.trigger = new SceneTrigger(this, 2, 0.75);
     this.trigger.position.set(0, 0.9, -1.01);
     this.trigger.hide();
     this.add(this.trigger);
@@ -53,6 +53,8 @@ class Player extends Empty
 
       this.rotation.x = sanitizeAngle(this.rotation.x);
       this.rotation.y = sanitizeAngle(this.rotation.y);
+
+      this.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI * 2 / 3, this.rotation.x));
 
       //dampening
       // closer to 1 for more 'momentum'
@@ -175,8 +177,8 @@ class Player extends Empty
     
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 2.5;
-    this.position.set(this.activeHandle.destination);
-    verreciel.helmet.position.set(this.activeHandle.destination);
+    this.position.copy(this.activeHandle.destination);
+    verreciel.helmet.position.copy(this.activeHandle.destination);
     verreciel.sceneTransaction.commit();
     
     delay(5, this.releaseHandle.bind(this));
