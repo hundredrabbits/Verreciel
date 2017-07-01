@@ -120,7 +120,7 @@ class SceneWire extends Empty
     return true;
   }
   
-  applyColor(color)
+  updateColor(color)
   {
     assertArgs(arguments, 1);
     

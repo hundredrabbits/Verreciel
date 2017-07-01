@@ -3,7 +3,7 @@ class SceneLine extends Empty
   constructor(vertices, color = verreciel.white)
   {
     assertArgs(arguments, 1);
-    super();
+    super(true);
     this.updateGeometry(vertices, color);
   }
   
@@ -22,10 +22,6 @@ class SceneLine extends Empty
     this.vertices = vertices;
     this.geometry.vertices = vertices;
     this.color = color;
-  
-    // TODO: THREEJS - color
-
-    this.opacity = 1;
   }
   
   reset()

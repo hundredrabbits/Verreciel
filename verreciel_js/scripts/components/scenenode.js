@@ -1,16 +1,27 @@
 class SceneNode
 {
-  constructor()
+  constructor(graphical = false)
   {
     assertArgs(arguments, 0);
-    this.material = new THREE.LineBasicMaterial({ color: 0xffffff });
-    this.material.transparent = true;
+    this.graphical = graphical;
     this.children = [];
-    this.geometry = new THREE.Geometry();
-    this.meat = new THREE.LineSegments(this.geometry, this.material);
+    var masterOpacity = 1;
+    
+    if (this.graphical)
+    {
+      console.log("GRAPHICAL");
+      this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
+      this.geometry = new THREE.Geometry();
+      this.meat = new THREE.LineSegments(this.geometry, this.material);
+      var color4 = new THREE.Vector4(1, 1, 1, 1);
+      var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
+    }
+    else
+    {
+      this.meat = new THREE.Group();
+    }
+    
     this.meat.rotation.order = "YXZ";
-
-    var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
 
     Object.defineProperties( this, {
       position:
@@ -26,10 +37,51 @@ class SceneNode
       opacity:
       {
         enumerable: true,
-        get: function() { return opacityProperty.value; },
-        set: function(value) { opacityProperty.value = value; }
+        get: function() { return masterOpacity; },
+        set: function(value) {
+          masterOpacity = value;
+          if (this.graphical) { opacityProperty.value = this.opacityFromTop * color4.w; }
+          for (let child of this.children)
+          {
+            child.opacity = child.opacity;
+          }
+        }
+      },
+      opacityFromTop:
+      {
+        enumerable: false,
+        get : function() {
+          var total = masterOpacity;
+          if (this.parent != null)
+          {
+            total *= this.parent.opacityFromTop;
+          }
+          return total;
+        }
       }
     });
+
+    if (this.graphical)
+    {
+      Object.defineProperties( this, {
+        color:
+        {
+          enumerable: true,
+          get : function() { return color4; },
+          set : function(newColor) {
+            color4.copy(newColor);
+            this.material.color.r = color4.x;
+            this.material.color.g = color4.y;
+            this.material.color.b = color4.z;
+            opacityProperty.value = this.opacityFromTop * color4.w;
+            for (let child of this.children)
+            {
+              child.opacity = child.opacity;
+            }
+          }
+        }
+      });
+    }
   }
 
   add(other)
@@ -37,6 +89,7 @@ class SceneNode
     this.meat.add(other.meat);
     this.children.push(other);
     other.parent = this;
+    this.opacity = this.opacity;
   }
 
   remove(other)

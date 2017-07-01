@@ -1,9 +1,9 @@
 class Empty extends SceneNode
 {
-  constructor()
+  constructor(graphical = false)
   {
     assertArgs(arguments, 0);
-    super();
+    super(graphical);
     this.details = "unknown";
   }
 
@@ -72,25 +72,12 @@ class Empty extends SceneNode
     assertArgs(arguments, 1);
     for (let node of this.children)
     {
-      node.applyColor(color);
+      if (node.isGraphical)
+      {
+        node.updateColor(color);
+      }
       node.updateChildrenColors(color);
     }
-  }
-  
-  applyColor(color)
-  {
-    assertArgs(arguments, 1);
-    if (this.geometry.vertices.length == 0)
-    {
-      return;
-    }
-
-    if (!(this instanceof SceneLine))
-    {
-      return;
-    }
-    
-    this.updateColor(color); // TODO: move to SceneLine
   }
   
   onConnect()

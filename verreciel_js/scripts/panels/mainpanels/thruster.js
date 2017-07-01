@@ -274,35 +274,35 @@ class Thruster extends MainPanel
     
     if (this.speed > 0)
     {
-      this.line1.applyColor(verreciel.white);
+      this.line1.updateColor(verreciel.white);
     }
     else
     {
-      this.line1.applyColor(verreciel.grey);
+      this.line1.updateColor(verreciel.grey);
     }
     if (this.speed > 1)
     {
-      this.line2.applyColor(verreciel.white);
+      this.line2.updateColor(verreciel.white);
     }
     else
     {
-      this.line2.applyColor(verreciel.grey);
+      this.line2.updateColor(verreciel.grey);
     }
     if (this.speed > 2)
     {
-      this.line3.applyColor(verreciel.white);
+      this.line3.updateColor(verreciel.white);
     }
     else
     {
-      this.line3.applyColor(verreciel.grey);
+      this.line3.updateColor(verreciel.grey);
     }
     if (this.speed > 3)
     {
-      this.line4.applyColor(verreciel.white);
+      this.line4.updateColor(verreciel.white);
     }
     else
     {
-      this.line4.applyColor(verreciel.grey);
+      this.line4.updateColor(verreciel.grey);
     }
     
     this.action.disable();
@@ -313,8 +313,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors((this.speed == this.maxSpeed() ? verreciel.grey : verreciel.cyan));
     this.decelerate.updateChildrenColors((this.speed == 0 ? verreciel.grey : verreciel.red));
     
-    this.lineLeft.applyColor(verreciel.clear);
-    this.lineRight.applyColor(verreciel.clear);
+    this.lineLeft.updateColor(verreciel.clear);
+    this.lineRight.updateColor(verreciel.clear);
     
     this.interface_dock.hide();
     this.interface_flight.show();
@@ -336,8 +336,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.grey);
     this.decelerate.updateChildrenColors(verreciel.grey);
     
-    this.lineLeft.applyColor(verreciel.grey);
-    this.lineRight.applyColor(verreciel.grey);
+    this.lineLeft.updateColor(verreciel.grey);
+    this.lineRight.updateColor(verreciel.grey);
   }
   
   modeWarping()
@@ -370,8 +370,8 @@ class Thruster extends MainPanel
     this.line3.blink();
     this.line4.blink();
     
-    this.lineLeft.applyColor(verreciel.clear);
-    this.lineRight.applyColor(verreciel.clear);
+    this.lineLeft.updateColor(verreciel.clear);
+    this.lineRight.updateColor(verreciel.clear);
   }
   
   modeWaitingForWarp()
@@ -391,8 +391,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.cyan);
     this.decelerate.updateChildrenColors(verreciel.cyan);
     
-    this.lineLeft.applyColor(verreciel.cyan);
-    this.lineRight.applyColor(verreciel.cyan);
+    this.lineLeft.updateColor(verreciel.cyan);
+    this.lineRight.updateColor(verreciel.cyan);
   }
   
   modeWarpError()
@@ -412,8 +412,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.red);
     this.decelerate.updateChildrenColors(verreciel.red);
     
-    this.lineLeft.applyColor(verreciel.red);
-    this.lineRight.applyColor(verreciel.red);
+    this.lineLeft.updateColor(verreciel.red);
+    this.lineRight.updateColor(verreciel.red);
   }
   
   modeMisaligned()
@@ -448,8 +448,8 @@ class Thruster extends MainPanel
     this.line4.show();
     this.cutLine4.hide();
     
-    this.lineLeft.applyColor(verreciel.red);
-    this.lineRight.applyColor(verreciel.red);
+    this.lineLeft.updateColor(verreciel.red);
+    this.lineRight.updateColor(verreciel.red);
     
     this.action.disable();
   }
@@ -498,8 +498,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.grey);
     this.decelerate.updateChildrenColors(verreciel.grey);
     
-    this.lineLeft.applyColor(verreciel.clear);
-    this.lineRight.applyColor(verreciel.clear);
+    this.lineLeft.updateColor(verreciel.clear);
+    this.lineRight.updateColor(verreciel.clear);
   }
   
   modeStorageBusy()
@@ -518,8 +518,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.grey);
     this.decelerate.updateChildrenColors(verreciel.grey);
     
-    this.lineLeft.applyColor(verreciel.grey);
-    this.lineRight.applyColor(verreciel.grey);
+    this.lineLeft.updateColor(verreciel.grey);
+    this.lineRight.updateColor(verreciel.grey);
   }
   
   modeDocked()
@@ -538,8 +538,8 @@ class Thruster extends MainPanel
     this.accelerate.updateChildrenColors(verreciel.red);
     this.decelerate.updateChildrenColors(verreciel.red);
     
-    this.lineLeft.applyColor(verreciel.red);
-    this.lineRight.applyColor(verreciel.red);
+    this.lineLeft.updateColor(verreciel.red);
+    this.lineRight.updateColor(verreciel.red);
   }
   
   // MARK: Misc -
