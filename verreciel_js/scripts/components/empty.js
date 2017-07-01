@@ -47,24 +47,24 @@ class Empty extends SceneNode
     assertArgs(arguments, 0);
     if (game.time % 3 == 0)
     {
-      this.visible = true;
+      this.opacity = 1;
     }
     else
     {
-      this.visible = false;
+      this.opacity = 0;
     }
   }
   
   show()
   {
     assertArgs(arguments, 0);
-    this.visible = true;
+    this.opacity = 1;
   }
   
   hide()
   {
     assertArgs(arguments, 0);
-    this.visible = false;
+    this.opacity = 0;
   }
   
   updateChildrenColors(color)

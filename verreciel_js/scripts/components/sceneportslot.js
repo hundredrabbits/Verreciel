@@ -72,7 +72,7 @@ class ScenePortSlot extends ScenePort
   refresh()
   {
     assertArgs(arguments, 0);
-    this.detailsLabel.visible = this.hasDetails;
+    this.detailsLabel.opacity = this.hasDetails == true ? 1 : 0;
     
     if (this.event != null)
     {

@@ -102,7 +102,7 @@ class Console extends MainPanel
     for (let line of this.lines ) 
     {
       line.position.z = count * -0.1;
-      line.visible = false;
+      line.opacity = 0;
       count += 1;
     }
     
@@ -114,7 +114,7 @@ class Console extends MainPanel
     // for (let line of this.lines) 
     // {
       // line.position.z = 0;
-      // line.visible = true;
+      // line.opacity = 1;
     // }
     
     // SCNTransaction.commit()

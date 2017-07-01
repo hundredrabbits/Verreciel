@@ -104,8 +104,8 @@ class Player extends Empty
     // SCNTransaction.animationDuration = 2
     
     // this.position.set(0,0,0);
-    // capsule.visible = 0; // This should probably be a fade instead
-    // helmet.visible = 0; 
+    // verreciel.capsule.opacity = 0;
+    // verreciel.helmet.opacity = 0; 
     
     // SCNTransaction.completionBlock = {
     

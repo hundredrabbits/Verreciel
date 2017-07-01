@@ -112,13 +112,13 @@ class Location extends Event
   onRadarView()
   {
     assertArgs(arguments, 0);
-    this.icon.label.visible = true;
+    this.icon.label.opacity = 1;
   }
   
   onHelmetView()
   {
     assertArgs(arguments, 0);
-    this.icon.label.visible = visible;
+    this.icon.label.opacity = 0;
   }
   
   onSight()
@@ -248,7 +248,7 @@ class Location extends Event
       }
       else if (this.mapRequirement != null)
       {
-        this.visible = (verreciel.nav.hasMap(this.mapRequirement) == true && verreciel.battery.isNavPowered() == true) ? true : false;
+        this.opacity = (verreciel.nav.hasMap(this.mapRequirement) == true && verreciel.battery.isNavPowered() == true) ? 1 : 0;
       }
     }
     // Out Of Sight
@@ -260,11 +260,12 @@ class Location extends Event
     // Connections
     if (this.connection != null)
     {
-      if (this.connection.visible == true)
+      if (this.connection.opacity != 0)
       {
         this.icon.wire.show();
       }
-      else{
+      else
+      {
         this.icon.wire.hide();
       }
     }

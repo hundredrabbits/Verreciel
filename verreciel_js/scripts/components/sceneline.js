@@ -24,14 +24,14 @@ class SceneLine extends Empty
   
     // TODO: THREEJS
 
-    this.visible = true;
+    this.opacity = 1;
   }
   
   reset()
   {
     assertArgs(arguments, 0);
     // TODO: THREEJS
-    this.visible = false;
+    this.opacity = 0;
   }
   
   updateColor(color)

@@ -3,7 +3,12 @@ class SceneNode extends THREE.LineSegments
   constructor()
   {
     assertArgs(arguments, 0);
-    super(new THREE.Geometry(), SceneNode.material);
+    let material = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      vertexColors: THREE.VertexColors,
+    });
+    material.transparent = true;
+    super(new THREE.Geometry(), material);
   }
 
   whenStart()
@@ -66,4 +71,3 @@ class SceneNode extends THREE.LineSegments
   }
 }
 
-SceneNode.material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors } );
