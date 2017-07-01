@@ -220,27 +220,43 @@ const Ambience =
   ambience5:"close"
 }
 
-const Templates =
+const Templates = function()
 {
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  
-  radius: 0,
-  
-  margin: 0,
-  leftMargin: 0,
-  rightMargin: 0,
-  topMargin: 0,
-  bottomMargin: 0,
-  
-  titlesAngle: 22,
-  monitorsAngle: 47,
-  warningsAngle: 44,
-  
-  lineSpacing: 0.42,
-}
+  let templates = {
+    titlesAngle: 22,
+    monitorsAngle: 47,
+    warningsAngle: 44,
+    
+    lineSpacing: 0.42
+  };
+
+  let scale = 1;
+  let height = 1.5;
+
+  let highNode = [
+    new THREE.Vector3( 2 * scale, height, -4 * scale),
+    new THREE.Vector3( 4 * scale, height, -2 * scale),
+    new THREE.Vector3( 4 * scale, height,  2 * scale),
+    new THREE.Vector3( 2 * scale, height,  4 * scale),
+    new THREE.Vector3(-2 * scale, height,  4 * scale),
+    new THREE.Vector3(-4 * scale, height,  2 * scale),
+    new THREE.Vector3(-4 * scale, height, -2 * scale),
+    new THREE.Vector3(-2 * scale, height, -4 * scale),
+  ];
+
+  templates.left = highNode[7].x;
+  templates.right = highNode[0].x;
+  templates.top = highNode[0].y;
+  templates.bottom = -highNode[0].y;
+  templates.leftMargin = highNode[7].x * 0.8;
+  templates.rightMargin = highNode[0].x * 0.8;
+  templates.topMargin = highNode[0].y * 0.8;
+  templates.bottomMargin = -highNode[0].y * 0.8;
+  templates.radius = highNode[0].z;
+  templates.margin = Math.abs(templates.left - templates.leftMargin);
+
+  return templates;
+}();
 
 const Settings =
 {

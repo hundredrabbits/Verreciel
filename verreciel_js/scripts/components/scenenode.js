@@ -8,6 +8,7 @@ class SceneNode
     this.children = [];
     this.geometry = new THREE.Geometry();
     this.meat = new THREE.LineSegments(this.geometry, this.material);
+    this.meat.rotation.order = "YXZ";
 
     var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
 

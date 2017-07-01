@@ -20,31 +20,6 @@ class Capsule extends Empty
     this.isReturning = false;
     this.panels = [];
     
-    let scale = 1;
-    let height = 1.5;
-    
-    let highNode = [
-      new THREE.Vector3( 2 * scale, height, -4 * scale),
-      new THREE.Vector3( 4 * scale, height, -2 * scale),
-      new THREE.Vector3( 4 * scale, height,  2 * scale),
-      new THREE.Vector3( 2 * scale, height,  4 * scale),
-      new THREE.Vector3(-2 * scale, height,  4 * scale),
-      new THREE.Vector3(-4 * scale, height,  2 * scale),
-      new THREE.Vector3(-4 * scale, height, -2 * scale),
-      new THREE.Vector3(-2 * scale, height, -4 * scale),
-    ];
-    
-    Templates.left = highNode[7].x;
-    Templates.right = highNode[0].x;
-    Templates.top = highNode[0].y;
-    Templates.bottom = -highNode[0].y;
-    Templates.leftMargin = highNode[7].x * 0.8;
-    Templates.rightMargin = highNode[0].x * 0.8;
-    Templates.topMargin = highNode[0].y * 0.8;
-    Templates.bottomMargin = -highNode[0].y * 0.8;
-    Templates.radius = highNode[0].z;
-    Templates.margin = Math.abs(Templates.left - Templates.leftMargin);
-    
     this.mesh = new Empty();
     this.mesh.position.set(0,0,0);
     this.direction = 0;
