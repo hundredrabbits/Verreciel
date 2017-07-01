@@ -44,16 +44,15 @@ class Player extends Empty
   whenRenderer()
   {
     assertArgs(arguments, 0);
-    super.whenRenderer()
+    super.whenRenderer();
 
     if (!this.isLocked)
     {
-      this.rotation.x += accelX;
-      this.rotation.y += accelY;
+      this.rotation.x += this.accelX;
+      this.rotation.y += this.accelY;
 
-      //should keep the values within 2pi rads
-      // this.rotation.x = Float(Double(this.rotation.x)) // TODO: just what did this accomplish??
-      // this.rotation.y = Float(Double(this.rotation.y))
+      this.rotation.x = sanitizeAngle(this.rotation.x);
+      this.rotation.y = sanitizeAngle(this.rotation.y);
 
       //dampening
       // closer to 1 for more 'momentum'
@@ -68,6 +67,8 @@ class Player extends Empty
           this.accelY = 0; //if it gets too small just drop to zero
       }
     }
+
+    this.meat.add(verreciel.camera);
   }
   
   lookAt(deg = 0)

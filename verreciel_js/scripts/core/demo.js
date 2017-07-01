@@ -38,11 +38,6 @@ class Demo extends THREE.Group
 
       geometry.vertices.push( vertex1 );
       geometry.vertices.push( vertex2 );
-
-      var color = new THREE.Color( Math.random(), Math.random(), Math.random() );
-
-      geometry.colors.push(color);
-      geometry.colors.push(color);
     }
 
     for( i = 0; i < 3; i++ ) {

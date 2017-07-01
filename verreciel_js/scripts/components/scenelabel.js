@@ -55,9 +55,9 @@ class SceneLabel extends Empty
   removeLetters()
   {
     assertArgs(arguments, 0);
-    for (let letterCur of this.nodeOffset.children)
+    while (this.nodeOffset.children.length > 0)
     {
-      letterCur.removeFromParentNode();
+      this.nodeOffset.remove(this.nodeOffset.children[0]);
     }
   }
   
@@ -256,6 +256,7 @@ class SceneLabel extends Empty
         pivot.add(new SceneLine([new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, 0, 0), new THREE.Vector3(scale, 0, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(0, -scale, 0)], this.color));
         break;
       default:
+        console.warn("Bad letter: [" + char.toLowerCase() + "]");
         pivot.add(new SceneLine([new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(scale, -scale, 0)], red));
         break;
     }

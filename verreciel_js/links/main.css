@@ -2,6 +2,7 @@ body {
     background:black;
     overflow: hidden;
     margin: 0px;
+    cursor: pointer;
 }
 
 verreciel { 

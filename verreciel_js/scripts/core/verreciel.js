@@ -22,7 +22,8 @@ class Verreciel
     this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
-    this.camera = new THREE.PerspectiveCamera( 80, 1, 1, 3000 );
+    this.fps = 30;
+    this.camera = new THREE.PerspectiveCamera( 105, 1, 1, 3000 );
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -71,8 +72,6 @@ class Verreciel
     this.helmet = new Helmet();
     
     this.missions = new Missions();
-
-    this.demo = new Demo();
   }
 
   start()
@@ -80,6 +79,7 @@ class Verreciel
     assertArgs(arguments, 0);
     console.info("Starting Verreciel");
 
+    this.mouseIsDown = false;
     document.addEventListener( "mousemove", this.mouseMove.bind(this), false );
     document.addEventListener( "mousedown", this.mouseDown.bind(this), false );
     document.addEventListener( "mouseup", this.mouseUp.bind(this), false );
@@ -95,8 +95,6 @@ class Verreciel
     this.root.add(this.capsule);
     this.root.add(this.space);
 
-    this.scene.add(this.demo);
-
     this.universe.whenStart();
     this.player.whenStart();
     this.helmet.whenStart();
@@ -104,9 +102,8 @@ class Verreciel
     this.space.whenStart();
     this.game.whenStart();
     this.items.whenStart();
-    
-    this.demo.whenStart();
 
+    this.lastFrameTime = Date.now();
     this.update();
     this.render();
   }
@@ -114,20 +111,32 @@ class Verreciel
   update()
   {
     assertArgs(arguments, 0);
-    this.demo.update();
+    
     setTimeout(this.update.bind(this), 20);
   }
 
   render()
   {
     assertArgs(arguments, 0);
+    let frameTime = Date.now();
+
+    let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
+    if (framesElapsed > 1)
+    {
+      this.lastFrameTime = frameTime;
+      this.capsule.whenRenderer();
+      this.player.whenRenderer();
+      this.helmet.whenRenderer();
+      this.space.whenRenderer();
+      this.renderer.render( this.scene, this.camera );
+    }
     requestAnimationFrame( this.render.bind(this) );
-    this.renderer.render( this.scene, this.camera );
   }
 
   mouseDown(e)
   {
     assertArgs(arguments, 1);
+    this.mouseIsDown = true;
     if (this.player.isLocked)
     {
       return;
@@ -143,6 +152,10 @@ class Verreciel
   mouseMove(e)
   {
     assertArgs(arguments, 1);
+    if (!this.mouseIsDown)
+    {
+      return;
+    }
     if (this.player.isLocked)
     {
       return;
@@ -154,8 +167,8 @@ class Verreciel
     this.lastMousePosition.x = e.screenX;
     this.lastMousePosition.y = e.screenY;
 
-    this.player.accelY += degToRad(dragX/6);
-    this.player.accelX += degToRad(dragY/6);
+    this.player.accelY += dragX / this.width  * 1;
+    this.player.accelX += dragY / this.height * 1;
         
     this.helmet.updatePort();
   }
@@ -163,6 +176,7 @@ class Verreciel
   mouseUp(e)
   {
     assertArgs(arguments, 1);
+    this.mouseIsDown = false;
     if (this.player.isLocked)
     {
       return;

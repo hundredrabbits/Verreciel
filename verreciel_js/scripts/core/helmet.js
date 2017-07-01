@@ -118,7 +118,10 @@ class Helmet extends Empty
   {
     assertArgs(arguments, 0);
     super.whenRenderer();
-        
+    
+    this.rotation.x = sanitizeAngle(this.rotation.x);
+    this.rotation.y = sanitizeAngle(this.rotation.y);
+
     if (this.rotation.y > verreciel.player.rotation.y + 0.0001)
     {
       this.rotation.y -= (this.rotation.y - verreciel.player.rotation.y) * 0.75;

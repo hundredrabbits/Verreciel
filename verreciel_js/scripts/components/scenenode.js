@@ -3,10 +3,7 @@ class SceneNode
   constructor()
   {
     assertArgs(arguments, 0);
-    this.material = new THREE.LineBasicMaterial({
-      color: 0xffffff,
-      vertexColors: THREE.VertexColors,
-    });
+    this.material = new THREE.LineBasicMaterial({ color: 0xffffff });
     this.material.transparent = true;
     this.children = [];
     this.geometry = new THREE.Geometry();

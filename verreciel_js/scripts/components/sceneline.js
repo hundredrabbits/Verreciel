@@ -20,9 +20,10 @@ class SceneLine extends Empty
     }
 
     this.vertices = vertices;
+    this.geometry.vertices = vertices;
     this.color = color;
   
-    // TODO: THREEJS
+    // TODO: THREEJS - color
 
     this.opacity = 1;
   }
@@ -30,7 +31,8 @@ class SceneLine extends Empty
   reset()
   {
     assertArgs(arguments, 0);
-    // TODO: THREEJS
+    this.vertices = [];
+    this.geometry.vertices = [];
     this.opacity = 0;
   }
   

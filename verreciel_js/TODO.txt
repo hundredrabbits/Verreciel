@@ -3,6 +3,10 @@ TODO
 CHECK: Never override a method with a different signature
 
 ThreeJS stuff
+
+  OH MY GOD IT'S ALL WRONG
+    Figure out the problem with the panels
+
   // TODO: THREEJS
   Raycast on click
 

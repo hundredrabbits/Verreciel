@@ -26,8 +26,9 @@ class SceneTransaction
   commit()
   {
     assertArgs(arguments, 0, true);
-    for (let property in this.properties)
+    for (let property of this.properties)
     {
+      property.registered = false;
       property.commit();
     }
     this.properties.splice(0, this.properties.length);
@@ -72,13 +73,6 @@ class ScenePropertyXYZ
         set: function(value) { zProperty.value = value; }
       }
     });
-
-    this.commit = function()
-    {
-      xProperty.commit();
-      yProperty.commit();
-      zProperty.commit();
-    }
   }
 
   set(x, y, z)
@@ -115,8 +109,13 @@ class SceneProperty
         enumerable: false,
         get: function() { return value; },
         set: function(newValue) {
+
           value = newValue;
-          if (!sceneTransaction.begun)
+          if (sceneTransaction.begun)
+          {
+            this.sceneTransaction.registerProperty(this);
+          }
+          else
           {
             this.target[this.property] = value;
           }
@@ -129,11 +128,15 @@ class SceneProperty
   {
     assertArgs(arguments, 0, true);
 
-    var duration = sceneTransaction.animationDuration;
+    var duration = this.sceneTransaction.animationDuration;
     var oldValue = this.target[this.property];
     var newValue = this.value;
 
+    // console.log("~~~", oldValue, newValue, duration);
+
     var percent = 0;
+    var target = this.target;
+    var property = this.property;
 
     function tick(millisecondsElapsed)
     {
@@ -145,7 +148,7 @@ class SceneProperty
         percent = 1;
       }
 
-      this.target[this.property] = newValue * percent + oldValue * (1 - percent);
+      target[property] = newValue * percent + oldValue * (1 - percent);
 
       if (percent == 1)
       {

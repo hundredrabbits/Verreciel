@@ -36,6 +36,14 @@ function angleBetweenTwoPoints(point1, point2, center)
   return deg;
 }
 
+function sanitizeAngle(angle)
+{
+  while (angle.x < -Math.PI * 2) { angle.x += Math.PI * 2; }
+  while (angle.x >  Math.PI * 2) { angle.x -= Math.PI * 2; }
+  // TODO: the simpler implementation
+  return angle;
+}
+
 function delay(seconds, callback)
 {
   assertArgs(arguments, 2);

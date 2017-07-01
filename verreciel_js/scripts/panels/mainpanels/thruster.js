@@ -477,8 +477,8 @@ class Thruster extends MainPanel
     this.line4.hide();
     this.cutLine4.show();
     
-    this.lineLeft.updateColor(grey);
-    this.lineRight.updateColor(grey);
+    this.lineLeft.updateColor(verreciel.grey);
+    this.lineRight.updateColor(verreciel.grey);
   }
   
   modeDocking()

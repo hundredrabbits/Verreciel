@@ -145,7 +145,7 @@ class StarCluster extends Empty
       this.starsPositions[4], new THREE.Vector3(this.starsPositions[4].x, -1, this.starsPositions[4].z),
     ], verreciel.white);
 
-    this.add(mesh);
+    this.add(this.mesh);
   }
   
   whenRenderer()

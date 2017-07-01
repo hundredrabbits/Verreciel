@@ -53,7 +53,7 @@ class Location extends Event
     assertArgs(arguments, 0);
     super.whenRenderer();
     
-    this.position.set(at.x,at.y,0);
+    this.position.set(this.at.x,this.at.y,0);
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at);
     this.angle = this.calculateAngle();
     this.align = this.calculateAlignment();
@@ -80,7 +80,7 @@ class Location extends Event
         this.inApproach = true;
         this.onApproach();
       }
-      approachUpdate();
+      this.approachUpdate();
     }
     else
     {
@@ -100,7 +100,7 @@ class Location extends Event
       this.inCollision = false;
     }
     
-    if (verreciel.capsule.isDocked == true && this.capsule.location == this)
+    if (verreciel.capsule.isDocked == true && verreciel.capsule.location == this)
     {
       this.dockUpdate();
     }
