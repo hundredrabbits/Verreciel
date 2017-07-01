@@ -2,6 +2,7 @@ class Music
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     this.trackAmbience = new Audio();
     this.trackEffect = new Audio();
     this.trackRecord = new Audio();
@@ -12,6 +13,7 @@ class Music
 
   playEffect(name)
   {
+    assertArgs(arguments, 1);
     console.log("Effect: ",name);
     this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg");
     this.trackEffect.play()
@@ -19,6 +21,7 @@ class Music
 
   playRecord(name)
   {
+    assertArgs(arguments, 1);
     if (this.trackRecord.name == name)
     {
       return;
@@ -42,6 +45,7 @@ class Music
 
   playAmbience(name)
   {
+    assertArgs(arguments, 1);
     if (this.trackAmbience.name == name)
     {
       return;
@@ -65,21 +69,23 @@ class Music
 
   fetchAudio(name, role, src, loop = false)
   {
-      var audioId = role + "_" + name;
-      if (!(audioId in this.audioCatalog))
-      {
-        var audio = new Audio();
-        audio.name = name;
-        audio.src = src;
-        audio.loop = loop;
-        this.audioCatalog[audioId] = audio;
-      }
-      this.audioCatalog[audioId].currenceTime = 0;
-      return this.audioCatalog[audioId];
+    assertArgs(arguments, 3);
+    var audioId = role + "_" + name;
+    if (!(audioId in this.audioCatalog))
+    {
+      var audio = new Audio();
+      audio.name = name;
+      audio.src = src;
+      audio.loop = loop;
+      this.audioCatalog[audioId] = audio;
+    }
+    this.audioCatalog[audioId].currenceTime = 0;
+    return this.audioCatalog[audioId];
   }
 
   pauseAmbience()
   {
+    assertArgs(arguments, 0);
     this.ambienceMuted = true;
     $(this.trackAmbience).animate({volume: 0}, 1000, function()
     {
@@ -89,6 +95,7 @@ class Music
 
   resumeAmbience()
   {
+    assertArgs(arguments, 0);
     this.trackAmbience.play();
     this.trackAmbience.volume = 0;
     $(this.trackAmbience).animate({volume: 1}, 1000);
@@ -97,6 +104,7 @@ class Music
 
   pauseRecord()
   {
+    assertArgs(arguments, 0);
     this.recordMuted = true;
 
     $(this.trackRecord).animate({volume: 0}, 1000, function()
@@ -107,6 +115,7 @@ class Music
 
   resumeRecord()
   {
+    assertArgs(arguments, 0);
     this.trackRecord.play();
     this.trackRecord.volume = 0;
     $(this.trackRecord).animate({volume: 1}, 1000);

@@ -2,6 +2,7 @@ class Cube extends Empty
 {
   constructor(size, color = verreciel.white)
   {
+    assertArgs(arguments, 1);
     super();
     this.line1 = new SceneLine([THREE.Vector3(size,size,size), THREE.Vector3(-size,size,size)], color);
     this.add(this.line1);

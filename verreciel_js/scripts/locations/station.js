@@ -1,7 +1,8 @@
 class LocationStation extends Location
 {
-  constructor(name, system, at = new THREE.Vector2(), requirement = null, installation, installationName, mapRequirement = null)
+  constructor(name, system, at, requirement = null, installation, installationName, mapRequirement = null)
   {
+    assertArgs(arguments, 6);
     super(name,system, at, new IconStation(), new StructureStation());
     
     this.installation = installation;
@@ -14,6 +15,7 @@ class LocationStation extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     let requirementLabel = new SceneLabel("Exchange " + this.requirement.name + "$install the " + this.installationName);
@@ -28,11 +30,12 @@ class LocationStation extends Location
     this.port.position.set(0,-0.2,0);
     newPanel.add(this.port);
     
-    this.tradeLabel = new SceneLabel("trade", Alignment.right, verreciel.grey);
+    this.tradeLabel = new SceneLabel("trade", 0.1, Alignment.right, verreciel.grey);
     this.tradeLabel.position.set(-0.3,0,0);
     this.port.add(this.tradeLabel);
     
-    this.button.disableAndShow("install");
+    this.button.disable();
+    this.button.updateText("install");
     this.port.enable();
     
     return newPanel;
@@ -40,26 +43,29 @@ class LocationStation extends Location
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     if (this.port.hasEvent() == false)
     {
-      this.tradeLabel.update(verreciel.grey);
+      this.tradeLabel.updateColor(verreciel.grey);
       return;
     }
     
     let trade = this.port.event;
     if (trade instanceof Item && trade.name == this.requirement.name && trade.type == this.requirement.type)
     {
-      this.button.enableAndShow("install");
-      this.tradeLabel.update(verreciel.cyan);
+      this.button.enable();
+      this.button.updateText("install");
+      this.tradeLabel.updateColor(verreciel.cyan);
     }
     else
     {
-      this.tradeLabel.update(verreciel.red);
+      this.tradeLabel.updateColor(verreciel.red);
     }
   }
   
   touch(id)
   {
+    assertArgs(arguments, 1);
     super.touch(id);
     if (id == 1)
     {
@@ -74,6 +80,7 @@ class IconStation extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -95,6 +102,7 @@ class StructureStation extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -120,6 +128,7 @@ class StructureStation extends Structure
   
   onSight()
   {
+    assertArgs(arguments, 0);
     super.onSight();
     
     // TODO: SCNTransaction
@@ -137,6 +146,7 @@ class StructureStation extends Structure
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     super.onUndock();
     
     // TODO: SCNTransaction
@@ -154,6 +164,7 @@ class StructureStation extends Structure
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     // TODO: SCNTransaction
@@ -171,6 +182,7 @@ class StructureStation extends Structure
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     super.onComplete();
     
     this.updateChildrenColors(verreciel.cyan);
@@ -178,11 +190,13 @@ class StructureStation extends Structure
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1);
   }
   
   morph()
   {
+    assertArgs(arguments, 0);
     super.morph();
     
     // TODO: SCNTransaction

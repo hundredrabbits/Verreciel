@@ -2,6 +2,7 @@ class ScenePort extends Empty
 {
   constructor(host)
   {
+    assertArgs(arguments, 1);
     super();
 
     this.host = host;
@@ -52,6 +53,7 @@ class ScenePort extends Empty
 
   touch(id = 0)
   {
+    assertArgs(arguments, 1);
     if (this.isEnabled == false)
     {
       return false;
@@ -75,6 +77,7 @@ class ScenePort extends Empty
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     this.sprite_input.show();
@@ -120,22 +123,26 @@ class ScenePort extends Empty
   
   activate()
   {
+    assertArgs(arguments, 0);
     this.isActive = true;
   }
   
   desactivate()
   {
+    assertArgs(arguments, 0);
     this.isActive = false;
   }
   
   enable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = true;
     this.trigger.enable();
   }
   
   disable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = false;
     this.disconnect();
     this.trigger.disable();
@@ -143,22 +150,26 @@ class ScenePort extends Empty
   
   addEvent(event)
   {
+    assertArgs(arguments, 1);
     this.event = event;
     this.update();
   }
   
   addRequirement(event)
   {
+    assertArgs(arguments, 1);
     this.requirement = event;
   }
   
   removeEvent()
   {
+    assertArgs(arguments, 0);
     this.event = null;
   }
   
   connect(port)
   {
+    assertArgs(arguments, 1);
     if (port.isEnabled == false)
     {
       return;
@@ -188,6 +199,7 @@ class ScenePort extends Empty
   
   disconnect()
   {
+    assertArgs(arguments, 0);
     if (this.connection == null)
     {
       return;
@@ -214,6 +226,7 @@ class ScenePort extends Empty
   
   strip()
   {
+    assertArgs(arguments, 0);
     this.disconnect()
     if (this.origin != null)
     {
@@ -223,6 +236,7 @@ class ScenePort extends Empty
   
   syphon()
   {
+    assertArgs(arguments, 0);
     let stored_origin = this.origin;
     let stored_event = this.origin.event;
     
@@ -243,6 +257,7 @@ class ScenePort extends Empty
   
   hasEvent(target)
   {
+    assertArgs(arguments, 1);
     if (this.event == null)
     {
       return false;
@@ -256,6 +271,7 @@ class ScenePort extends Empty
   
   hasEvent()
   {
+    assertArgs(arguments, 0);
     if (event != null)
     {
       return true;
@@ -265,6 +281,7 @@ class ScenePort extends Empty
   
   hasItem()
   {
+    assertArgs(arguments, 0);
     if (event == null)
     {
       return false;
@@ -278,6 +295,7 @@ class ScenePort extends Empty
   
   hasItemOfType(target)
   {
+    assertArgs(arguments, 1);
     if (event == null)
     {
       return false;
@@ -295,6 +313,7 @@ class ScenePort extends Empty
   
   hasItemLike(target)
   {
+    assertArgs(arguments, 1);
     if (event == null)
     {
       return false;
@@ -312,6 +331,7 @@ class ScenePort extends Empty
   
   isReceiving()
   {
+    assertArgs(arguments, 0);
     if (this.origin != null && origin.event != null)
     {
       return true;
@@ -321,6 +341,7 @@ class ScenePort extends Empty
   
   isReceivingFromPanel(panel)
   {
+    assertArgs(arguments, 1);
     if (this.origin == null)
     {
       return false;
@@ -338,6 +359,7 @@ class ScenePort extends Empty
   
   isReceiving(event)
   {
+    assertArgs(arguments, 1);
     if (this.origin != null && origin.event != null && origin.event == event)
     {
       return true;
@@ -347,6 +369,7 @@ class ScenePort extends Empty
   
   isReceivingItem(item)
   {
+    assertArgs(arguments, 1);
     if (this.origin == null)
     {
       return false;
@@ -368,6 +391,7 @@ class ScenePort extends Empty
   
   isReceivingItemLike(target)
   {
+    assertArgs(arguments, 1);
     if (this.origin == null)
     {
       return false;
@@ -389,6 +413,7 @@ class ScenePort extends Empty
   
   isReceivingItemOfType(type)
   {
+    assertArgs(arguments, 1);
     if (this.origin == null)
     {
       return false;
@@ -414,6 +439,7 @@ class ScenePort extends Empty
   
   isReceivingLocation()
   {
+    assertArgs(arguments, 0);
     if (this.origin == null)
     {
       return false;
@@ -433,6 +459,7 @@ class ScenePort extends Empty
   
   isReceivingLocationOfTypePortal()
   {
+    assertArgs(arguments, 0);
     if (isReceivingLocation() == false)
     {
       return false;
@@ -446,6 +473,7 @@ class ScenePort extends Empty
   
   isReceivingEventOfTypeLocation()
   {
+    assertArgs(arguments, 0);
     if (this.origin == null)
     {
       return false;
@@ -463,6 +491,7 @@ class ScenePort extends Empty
   
   isReceivingEventOfTypeItem()
   {
+    assertArgs(arguments, 0);
     if (this.origin == null)
     {
       return false;
@@ -480,6 +509,7 @@ class ScenePort extends Empty
   
   isConnectedToPanel(panel)
   {
+    assertArgs(arguments, 1);
     if (connection == null)
     {
       return false;
@@ -495,11 +525,13 @@ class ScenePort extends Empty
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     super.onConnect();
   }
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     super.onDisconnect();
     this.host.onDisconnect();
   }

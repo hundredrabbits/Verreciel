@@ -1,8 +1,9 @@
 class Item extends Event
 {
-  constructor(name = "", type = ItemTypes.generic, location = null, details = "", isQuest = false, code)
+  constructor(name = "", type = ItemTypes.generic, location = null, details = "", isQuest = false, code = null)
   {
-    super();
+    assertArgs(arguments, 6);
+    super(name, new THREE.Vector2(), details, verreciel.grey, false);
     
     this.name = name;
     this.type = type;
@@ -14,6 +15,7 @@ class Item extends Event
   
   payload()
   {
+    assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData("Item", type),
       new ConsoleData(details),
@@ -23,10 +25,6 @@ class Item extends Event
 
 Item.like = function(other)
 {
-  let item = new Item();
-  item.name = other.name;
-  item.type = other.type;
-  item.details = other.details;
-  item.isQuest = other.isQuest;
-  return item;
+  assertArgs(arguments, 1);
+  return new Item(other.name, other.type, null, other.details, other.isQuest, null);
 }

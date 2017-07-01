@@ -2,6 +2,7 @@ class LocationTransit extends Location
 {
   constructor(name, system, at, mapRequirement = null)
   {
+    assertArgs(arguments, 3);
     super(name,system, at, new IconTransit(), new StructureTransit());
     
     this.mapRequirement = mapRequirement;
@@ -11,6 +12,7 @@ class LocationTransit extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
 
     return newPanel;
@@ -21,6 +23,7 @@ class IconTransit extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.label.hide();
@@ -43,6 +46,7 @@ class StructureTransit extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
   }
 }

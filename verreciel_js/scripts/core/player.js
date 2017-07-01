@@ -2,6 +2,7 @@ class Player extends Empty
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     console.log("^ Player | Init");
@@ -29,17 +30,20 @@ class Player extends Empty
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     console.log("+ Player | Start");
   }
   
   activateEvent(event)
   {
+    assertArgs(arguments, 1);
     this.event = event;
   }
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer()
 
     if (!this.isLocked)
@@ -66,8 +70,9 @@ class Player extends Empty
     }
   }
   
-  lookAt(/*position = new THREE.Vector3(0,0,0), */deg = 0)
+  lookAt(deg = 0)
   {
+    assertArgs(arguments, 1);
     let normalizedDeg = radToDeg(this.rotation.y) % 360;
     this.rotation.y = degToRad(normalizedDeg);
     verreciel.helmet.rotation.y = degToRad(normalizedDeg);
@@ -92,6 +97,7 @@ class Player extends Empty
   
   eject()
   {
+    assertArgs(arguments, 0);
     // TODO: SCNTransaction
 
     // SCNTransaction.begin()
@@ -122,9 +128,10 @@ class Player extends Empty
   
   holdPort(port)
   {
+    assertArgs(arguments, 1);
     if (port.host != null && port.host.name != null)
     {
-      verreciel.helmet.leftHandLabel.update(port.host.name, verreciel.white);
+      verreciel.helmet.leftHandLabel.updateText(port.host.name, verreciel.white);
     }
     
     this.activePort = port;
@@ -134,7 +141,8 @@ class Player extends Empty
   
   connectPorts(from, to)
   {
-    verreciel.helmet.leftHandLabel.update("--", verreciel.grey);
+    assertArgs(arguments, 2);
+    verreciel.helmet.leftHandLabel.updateText("--", verreciel.grey);
     
     this.activePort = null;
     from.connect(to);
@@ -147,7 +155,8 @@ class Player extends Empty
   
   releasePort()
   {
-    verreciel.helmet.leftHandLabel.update("--", verreciel.grey);
+    assertArgs(arguments, 0);
+    verreciel.helmet.leftHandLabel.updateText("--", verreciel.grey);
     
     this.activePort.desactivate();
     this.activePort.disconnect();
@@ -159,9 +168,10 @@ class Player extends Empty
 
   holdHandle(handle)
   {
+    assertArgs(arguments, 1);
     this.releaseHandle();
     
-    verreciel.helmet.rightHandLabel.update(handle.host.name, verreciel.white);
+    verreciel.helmet.rightHandLabel.updateText(handle.host.name, verreciel.white);
     
     this.activeHandle = handle;
     this.activeHandle.disable();
@@ -179,12 +189,13 @@ class Player extends Empty
   
   releaseHandle()
   {
+    assertArgs(arguments, 0);
     if (this.activeHandle == null)
     {
       return;
     }
 
-    verreciel.helmet.rightHandLabel.update("--", verreciel.grey);
+    verreciel.helmet.rightHandLabel.updateText("--", verreciel.grey);
     
     // TODO: SCNTransaction
 
@@ -200,6 +211,7 @@ class Player extends Empty
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     super.onConnect()
     if (port.isReceivingFromPanel(verreciel.nav) == true)
     {
@@ -209,6 +221,7 @@ class Player extends Empty
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     super.onDisconnect()
     if (port.isReceivingFromPanel(verreciel.nav) != true)
     {
@@ -218,6 +231,7 @@ class Player extends Empty
   
   payload()
   {
+    assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData("Hiversaire unit", "type"), 
       new ConsoleData("--", "--"),

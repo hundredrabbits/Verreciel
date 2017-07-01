@@ -2,11 +2,12 @@ class MainPanel extends Panel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.installNode = new Empty();
     this.installProgressBar = new SceneProgressBar(1);
-    this.installLabel = new SceneLabel("install", Alignment.center, verreciel.grey);
+    this.installLabel = new SceneLabel("install", 0.1, Alignment.center, verreciel.grey);
 
     this.nameLabel = new SceneLabel("", 0.1, Alignment.center);
     this.detailsLabel = new SceneLabel("", 0.085, Alignment.center);
@@ -66,22 +67,24 @@ class MainPanel extends Panel
     this.decals.hide();
     this.footer.hide();
     
-    this.nameLabel.update("--", verreciel.grey);
+    this.nameLabel.updateText("--", verreciel.grey);
   }
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     
     this.decals.hide();
     this.mainNode.hide();
-    this.nameLabel.update("--", verreciel.grey);
+    this.nameLabel.updateText("--", verreciel.grey);
   }
   
   // MARK: Installation -
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.helmet.addWarning("Installing", 3, "install");
@@ -100,14 +103,16 @@ class MainPanel extends Panel
   
   installProgress()
   {
+    assertArgs(arguments, 0);
     super.installProgress();
     
-    this.installLabel.update("Install " + this.installPercentage.toFixed(0) + "%");
+    this.installLabel.updateText("Install " + this.installPercentage.toFixed(0) + "%");
     this.installProgressBar.update(this.installPercentage);
   }
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.mainNode.position.set(0,0,-0.2);
@@ -129,6 +134,6 @@ class MainPanel extends Panel
     this.installNode.removeFromParentNode();
     
     this.port.enable();
-    this.nameLabel.update(name, verreciel.white);
+    this.nameLabel.updateText(name, verreciel.white);
   }
 }

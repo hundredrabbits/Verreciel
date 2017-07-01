@@ -1,7 +1,8 @@
 class LocationStar extends Location
 {
-  constructor(name, system, at = new THREE.Vector2())
+  constructor(name, system, at)
   {
+    assertArgs(arguments, 3);
     super(name, system, at, new IconStar(), new StructureStar());
     this.isComplete = false
     this.masterPort = new ScenePort(this);
@@ -9,6 +10,7 @@ class LocationStar extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     let requirementLabel = new SceneLabel("the melting core$welcomes you.");
@@ -25,21 +27,25 @@ class LocationStar extends Location
     
     newPanel.add(this.masterPort);
     
-    this.button.disableAndShow("extinguish");
+    this.button.disable();
+    this.button.updateText("extinguish");
     
     return newPanel;
   }
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     if (this.masterPort.isReceiving(verreciel.items.endPortalKey) == true)
     {
-      this.button.enableAndShow("extinguish");
+      this.button.enable();
+      this.button.updateText("extinguish");
     }
   }
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     let radiation = (1 - (this.distance/0.7))/0.6;
     
     if (verreciel.capsule.hasShield() == false)
@@ -54,6 +60,7 @@ class LocationStar extends Location
   
   onApproach()
   {
+    assertArgs(arguments, 0);
     if (verreciel.capsule.hasShield() == true)
     {
       super.onApproach();
@@ -66,6 +73,7 @@ class LocationStar extends Location
   
   touch(id)
   {
+    assertArgs(arguments, 1);
     super.touch(id);
     if (id == 1)
     { this.extinguish();
@@ -76,11 +84,13 @@ class LocationStar extends Location
   
   extinguish()
   {
+    assertArgs(arguments, 0);
     this.onComplete();
   }
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     super.onComplete();
     
     verreciel.space.onSystemEnter(verreciel.capsule.system);
@@ -89,6 +99,7 @@ class LocationStar extends Location
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
   }
 }
 
@@ -96,6 +107,7 @@ class IconStar extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -131,6 +143,7 @@ class StructureStar extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -147,6 +160,7 @@ class StructureStar extends Structure
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     // TODO: SCNTransaction
@@ -166,12 +180,14 @@ class StructureStar extends Structure
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     super.sightUpdate();
     this.root.rotation.y += degToRad(0.1);
   }
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     // TODO: SCNTransaction
@@ -190,6 +206,7 @@ class StructureStar extends Structure
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     super.onComplete()
     
     this.root.updateChildrenColors(cyan)

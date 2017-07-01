@@ -2,6 +2,7 @@ class ScenePortSlot extends ScenePort
 {
   constructor(host = new Empty(), align = Alignment.left, hasDetails = false, placeholder = "Empty")
   {
+    assertArgs(arguments, 1);
     super(host);
 
     this.placeholder = placeholder;
@@ -51,6 +52,7 @@ class ScenePortSlot extends ScenePort
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (this.isEnabled == false)
@@ -69,49 +71,52 @@ class ScenePortSlot extends ScenePort
   
   refresh()
   {
+    assertArgs(arguments, 0);
     this.detailsLabel.visible = this.hasDetails;
     
     if (this.event != null)
     {
-      this.label.update(this.event.name);
-      this.detailsLabel.update(this.event.details);
+      this.label.updateText(this.event.name);
+      this.detailsLabel.updateText(this.event.details);
     }
     else
     {
-      this.label.update(this.placeholder);
-      this.detailsLabel.update("--");
+      this.label.updateText(this.placeholder);
+      this.detailsLabel.updateText("--");
     }
     
     if (this.isEnabled == false)
     {
-      this.label.update(verreciel.grey);
+      this.label.updateColor(verreciel.grey);
     }
     else if (this.requirement != null && this.event != null && this.requirement.name == this.event.name)
     {
-      this.label.update(verreciel.cyan);
+      this.label.updateColor(verreciel.cyan);
     }
     else if (this.requirement != null && this.event != null && this.requirement.name != this.event.name)
     {
-      this.label.update(verreciel.red);
+      this.label.updateColor(verreciel.red);
     }
     else if (this.event != null)
     {
-      this.label.update(verreciel.white);
+      this.label.updateColor(verreciel.white);
     }
     else
     {
-      this.label.update(grey);
+      this.label.updateColor(verreciel.grey);
     }
   }
   
   removeEvent()
   {
+    assertArgs(arguments, 0);
     super.removeEvent();
     this.refresh();
   }
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     super.onConnect();
 
     if (this.origin != null && this.origin.event != null && this.event == null)
@@ -125,12 +130,14 @@ class ScenePortSlot extends ScenePort
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     super.onDisconnect();
     this.host.onDisconnect();
   }
   
   addEvent(event)
   {
+    assertArgs(arguments, 1);
     super.addEvent(event);
     this.refresh();
   }
@@ -139,12 +146,14 @@ class ScenePortSlot extends ScenePort
   
   upload(item)
   {
+    assertArgs(arguments, 1);
     this.upload = item;
     uploadProgress();
   }
   
   uploadProgress()
   {
+    assertArgs(arguments, 0);
     if (this.origin == null)
     {
       this.uploadCancel();
@@ -160,39 +169,20 @@ class ScenePortSlot extends ScenePort
     else
     {
       this.origin.wire.isUploading = true;
-      this.label.update(this.uploadPercentage.toFixed(0) + "%", verreciel.grey);
+      this.label.updateText(this.uploadPercentage.toFixed(0) + "%", verreciel.grey);
       delay(0.05, this.uploadProgress.bind(this));
     }
   }
   
-  enableAndShow(text, color = null)
+  updateText(text, color = null)
   {
-    super.enable();
-    if (color != null)
-    {
-      this.label.update(text, color);
-    }
-    else
-    {
-      this.label.update(text);
-    }
-  }
-  
-  disableAndShow(text, color = null)
-  {
-    super.disable();
-    if (color != null)
-    {
-      this.label.update(text, color);
-    }
-    else
-    {
-      this.label.update(text);
-    }
+    assertArgs(arguments, 1);
+    this.label.updateText(text, color);
   }
   
   uploadComplete()
   {
+    assertArgs(arguments, 0);
     if (this.origin != null)
     {
       this.addEvent(this.syphon());
@@ -204,6 +194,7 @@ class ScenePortSlot extends ScenePort
   
   uploadCancel()
   {
+    assertArgs(arguments, 0);
     this.uploadPercentage = 0;
     this.refresh();
   }

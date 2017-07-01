@@ -2,6 +2,7 @@ class LocationClose extends Location
 {
   constructor(name, system, at, mapRequirement = null)
   {
+    assertArgs(arguments, 3);
     super(name,system, at, new IconClose(), new StructureClose());
     
     this.isComplete = false;
@@ -10,7 +11,8 @@ class LocationClose extends Location
   
   onApproach()
   {
-    if (this.mapRequirement != null && map.port.hasEvent(this.mapRequirement) == false)
+    assertArgs(arguments, 0);
+    if (this.mapRequirement != null && nav.port.hasEvent(this.mapRequirement) == false)
     {
       return;
     }
@@ -44,6 +46,7 @@ class LocationClose extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     return newPanel;
@@ -51,6 +54,7 @@ class LocationClose extends Location
   
   onDock()
   {
+    assertArgs(arguments, 0);
     player.eject()
     onComplete()
     
@@ -67,6 +71,7 @@ class IconClose extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.label.hide();
@@ -89,6 +94,7 @@ class StructureClose extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -109,6 +115,7 @@ class StructureClose extends Structure
   
   morph()
   {
+    assertArgs(arguments, 0);
     super.morph();
     
     // TODO: SCNTransaction
@@ -130,6 +137,7 @@ class StructureClose extends Structure
   
   onComplete()
   {
+    assertArgs(arguments, 0);
   
   }
 }

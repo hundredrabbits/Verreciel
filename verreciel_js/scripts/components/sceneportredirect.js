@@ -2,6 +2,7 @@ class ScenePortRedirect extends ScenePort
 {
   removeEvent()
   {
+    assertArgs(arguments, 0);
     let redirectedHost = verreciel.console.port.origin.host;
     if (redirectedHost instanceof Cargo)
     {
@@ -12,6 +13,7 @@ class ScenePortRedirect extends ScenePort
   
   disable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = false;
     this.disconnect();
     this.trigger.disable();
@@ -19,6 +21,7 @@ class ScenePortRedirect extends ScenePort
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (this.event != null)
@@ -29,6 +32,7 @@ class ScenePortRedirect extends ScenePort
   
   disconnect()
   {
+    assertArgs(arguments, 0);
     if (this.connection == null)
     {
       return

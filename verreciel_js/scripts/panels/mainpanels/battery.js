@@ -2,6 +2,7 @@ class Battery extends MainPanel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.name = "battery";
@@ -63,25 +64,29 @@ class Battery extends MainPanel
     this.shieldPort.add(this.shieldLabel);
     this.mainNode.add(this.shieldPort);
     
-    this.enigmaLabel.update("--", verreciel.grey);
-    this.thrusterLabel.update("--", verreciel.grey);
-    this.radioLabel.update("--", verreciel.grey);
-    this.navLabel.update("--", verreciel.grey);
-    this.shieldLabel.update("--", verreciel.grey);
+    this.enigmaLabel.updateText("--", verreciel.grey);
+    this.thrusterLabel.updateText("--", verreciel.grey);
+    this.radioLabel.updateText("--", verreciel.grey);
+    this.navLabel.updateText("--", verreciel.grey);
+    this.shieldLabel.updateText("--", verreciel.grey);
     
-    this.cellPort2.disableAndShow("--", verreciel.grey);
-    this.cellPort3.disableAndShow("--", verreciel.grey);
+    this.cellPort2.disable();
+    this.cellPort2.show("--", verreciel.grey);
+    this.cellPort3.disable();
+    this.cellPort3.show("--", verreciel.grey);
     
     this.footer.add(new SceneHandle(new THREE.Vector3(0,0,-1), this));
   }
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     this.installThruster();
   }
   
   contains(item)
   {
+    assertArgs(arguments, 1);
     if (this.cellPort1.event != null && this.cellPort1.event == item)
     {
       return true;
@@ -101,33 +106,38 @@ class Battery extends MainPanel
   
   installEnigma()
   {
+    assertArgs(arguments, 0);
     this.enigmaPort.enable();
-    this.enigmaLabel.update("enigma",verreciel.white);;
+    this.enigmaLabel.updateText("enigma",verreciel.white);;
   }
   
   installThruster()
   {
+    assertArgs(arguments, 0);
     this.thrusterPort.enable();
-    this.thrusterLabel.update("thruster",verreciel.white);
+    this.thrusterLabel.updateText("thruster",verreciel.white);
     verreciel.player.lookAt(0);
   }
   
   installRadio()
   {
+    assertArgs(arguments, 0);
     this.radioPort.enable();
-    radioLabel.update("radio",verreciel.white);
+    radioLabel.updateText("radio",verreciel.white);
   }
   
   installNav()
   {
+    assertArgs(arguments, 0);
     this.navPort.enable();
-    this.navLabel.update("map",verreciel.white);
+    this.navLabel.updateText("map",verreciel.white);
   }
   
   installShield()
   {
+    assertArgs(arguments, 0);
     this.shieldPort.enable();
-    this.shieldLabel.update("shield",verreciel.white);
+    this.shieldLabel.updateText("shield",verreciel.white);
     if (verreciel.player != null)
     {
       verreciel.player.lookAt(0);
@@ -136,6 +146,7 @@ class Battery extends MainPanel
   
   isEnigmaPowered()
   {
+    assertArgs(arguments, 0);
     if (this.enigmaPort.isReceivingItemOfType(ItemTypes.battery))
     {
       return true;
@@ -145,6 +156,7 @@ class Battery extends MainPanel
   
   isThrusterPowered()
   {
+    assertArgs(arguments, 0);
     if (this.thrusterPort.isReceivingItemOfType(ItemTypes.battery))
     {
       return true;
@@ -154,6 +166,7 @@ class Battery extends MainPanel
   
   isRadioPowered()
   {
+    assertArgs(arguments, 0);
     if (this.radioPort.isReceivingItemOfType(ItemTypes.battery))
     {
       return true;
@@ -161,8 +174,9 @@ class Battery extends MainPanel
     return false;
   }
   
-  isMapPowered()
+  isNavPowered()
   {
+    assertArgs(arguments, 0);
     if (this.navPort.isReceivingItemOfType(ItemTypes.battery))
     {
       return true;
@@ -172,6 +186,7 @@ class Battery extends MainPanel
   
   isShieldPowered()
   {
+    assertArgs(arguments, 0);
     if (this.shieldPort.isReceivingItemOfType(ItemTypes.battery))
     {
       return true;
@@ -183,16 +198,19 @@ class Battery extends MainPanel
 
   onConnect()
   {
+    assertArgs(arguments, 0);
     this.refresh();
   }
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     this.refresh()
   }
   
   refresh()
   {
+    assertArgs(arguments, 0);
     if (this.thrusterPort.isReceivingItemOfType(ItemTypes.battery) == true)
     {
       verreciel.thruster.onPowered();
@@ -219,11 +237,11 @@ class Battery extends MainPanel
     }
     if (this.navPort.isReceivingItemOfType(ItemTypes.battery) == true)
     {
-      verreciel.map.onPowered();
+      verreciel.nav.onPowered();
     }
     else
     {
-      verreciel.map.onUnpowered();
+      verreciel.nav.onUnpowered();
     }
     if (this.radioPort.isReceivingItemOfType(ItemTypes.battery) == true)
     {
@@ -237,6 +255,7 @@ class Battery extends MainPanel
   
   hasCell(target)
   {
+    assertArgs(arguments, 1);
     if (this.cellPort1.event != null && this.cellPort1.event == target)
     {
       return true;
@@ -254,6 +273,7 @@ class Battery extends MainPanel
   
   cellCount()
   {
+    assertArgs(arguments, 0);
     var count = 0;
     
     if (this.cellPort1.hasItemOfType(ItemTypes.battery) == true)
@@ -274,12 +294,14 @@ class Battery extends MainPanel
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     verreciel.player.lookAt(0);
   }
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     this.port.disable();
   }

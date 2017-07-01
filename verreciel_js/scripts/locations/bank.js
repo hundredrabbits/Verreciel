@@ -1,7 +1,8 @@
 class LocationBank extends Location
 {
-  constructor(name = "", system, at = new THREE.Vector2())
+  constructor(name, system, at)
   {
+    assertArgs(arguments, 3);
     super(name,system, at, new IconBank(), new StructureBank());
     
     this.details = "storage";
@@ -23,6 +24,7 @@ class LocationBank extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     this.port1.position.set(Templates.leftMargin,Templates.lineSpacing * 2.5,0);
@@ -48,6 +50,7 @@ class LocationBank extends Location
   
   addItems(items)
   {
+    assertArgs(arguments, 1);
     for (let item of items)
     {
       if (this.port1.hasItem() == false)
@@ -79,6 +82,7 @@ class LocationBank extends Location
   
   contains(item)
   {
+    assertArgs(arguments, 1);
     if (this.port1.event != null && this.port1.event == item)
     {
       return true;
@@ -108,6 +112,7 @@ class LocationBank extends Location
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     // TODO: SCNTransaction
@@ -131,6 +136,7 @@ class LocationBank extends Location
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     super.onUndock();
     
     // TODO: SCNTransaction
@@ -157,6 +163,7 @@ class IconBank extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -178,6 +185,7 @@ class StructureBank extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     var i = 0;

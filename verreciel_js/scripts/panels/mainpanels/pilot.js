@@ -2,6 +2,7 @@ class Pilot extends MainPanel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.name = "pilot";
@@ -29,16 +30,18 @@ class Pilot extends MainPanel
   
     this.decals.empty();
     
-    this.detailsLabel.update("Ready", verreciel.grey);
+    this.detailsLabel.updateText("Ready", verreciel.grey);
   }
   
   touch(id = 0)
   {
+    assertArgs(arguments, 1);
     return true;
   }
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     this.target = null;
@@ -61,12 +64,13 @@ class Pilot extends MainPanel
     }
     else
     {
-      this.detailsLabel.update("--", verreciel.grey);
+      this.detailsLabel.updateText("--", verreciel.grey);
     }
   }
   
   align()
   {
+    assertArgs(arguments, 0);
     let left = this.target.calculateAlignment(verreciel.capsule.direction - 0.5);
     let right = this.target.calculateAlignment(verreciel.capsule.direction + 0.5);
     
@@ -85,41 +89,45 @@ class Pilot extends MainPanel
   
   turnLeft(deg)
   {
+    assertArgs(arguments, 1);
     verreciel.capsule.direction = verreciel.capsule.direction - deg;
     verreciel.capsule.direction = verreciel.capsule.direction % 360;
   }
   
   turnRight(deg)
   {
+    assertArgs(arguments, 1);
     verreciel.capsule.direction = verreciel.capsule.direction + deg;
     verreciel.capsule.direction = verreciel.capsule.direction % 360;
   }
   
   animate()
   {
+    assertArgs(arguments, 0);
     this.targetDirectionIndicator.rotation.z = degToRad(verreciel.capsule.direction) * -1;
     this.staticDirectionIndicator.rotation.z = degToRad(verreciel.capsule.direction);
     
     if (capsule.isFleeing == true)
     {
-      this.detailsLabel.update("Auto", verreciel.red);
+      this.detailsLabel.updateText("Auto", verreciel.red);
     }
     else if (Math.abs(this.target.align) > 25)
     {
-      this.detailsLabel.update(Math.abs(this.target.align).toFixed(0), verreciel.red);
+      this.detailsLabel.updateText(Math.abs(this.target.align).toFixed(0), verreciel.red);
     }
     else if (Math.abs(this.target.align) < 1)
     {
-      this.detailsLabel.update("ok", verreciel.cyan);
+      this.detailsLabel.updateText("ok", verreciel.cyan);
     }
     else 
     {
-      this.detailsLabel.update(Math.abs(this.target.align).toFixed(0), verreciel.white);
+      this.detailsLabel.updateText(Math.abs(this.target.align).toFixed(0), verreciel.white);
     }
   }
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     vertices.player.lookAt(-135);

@@ -2,11 +2,13 @@ class SceneNode extends THREE.LineSegments
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super(new THREE.Geometry(), SceneNode.material);
   }
 
   whenStart()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenStart();
@@ -15,6 +17,7 @@ class SceneNode extends THREE.LineSegments
   
   whenTime()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenTime();
@@ -23,6 +26,7 @@ class SceneNode extends THREE.LineSegments
   
   whenSecond()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenSecond();
@@ -31,6 +35,7 @@ class SceneNode extends THREE.LineSegments
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenRenderer();
@@ -39,20 +44,23 @@ class SceneNode extends THREE.LineSegments
 
   removeFromParentNode()
   {
+    assertArgs(arguments, 0);
     if (this.parent != null)
     {
       this.parent.remove(this);
     }
   }
 
-  convertPositionToNode(posiiton, node)
+  convertPositionToNode(position, node)
   {
+    assertArgs(arguments, 2);
     return new THREE.Vector3D(); // TODO: REMOVE
     // TODO: THREEJS
   }
 
-  convertPositionFromNode(posiiton, node)
+  convertPositionFromNode(position, node)
   {
+    assertArgs(arguments, 2);
     return new THREE.Vector3D(); // TODO: REMOVE
     // TODO: THREEJS
   }

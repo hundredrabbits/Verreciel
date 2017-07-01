@@ -1,7 +1,8 @@
 class LocationSatellite extends Location
 {
-  constructor(name, system, at = new THREE.Vector2(), message, item, mapRequirement = null)
+  constructor(name, system, at, message, item, mapRequirement = null)
   {
+    assertArgs(arguments, 5);
     super(name, system, at, new IconSatellite(), (name == "spawn" ? new Structure() : new StructureSatellite()));
     
     this.details = item.name;
@@ -21,6 +22,7 @@ class LocationSatellite extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     if (this.isComplete == true)
     {
       return null;
@@ -28,7 +30,7 @@ class LocationSatellite extends Location
     
     let newPanel = new Panel();
     
-    let text = new SceneLabel(this.message, Alignment.left);
+    let text = new SceneLabel(this.message, 0.1, Alignment.left);
     text.position.set(-1.5,1,0);
     newPanel.add(text);
     
@@ -39,12 +41,14 @@ class LocationSatellite extends Location
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     this.port.refresh();
   }
   
   update()
   {
+    assertArgs(arguments, 0);
     super.update();
     
     if (this.port.event == null)
@@ -55,6 +59,7 @@ class LocationSatellite extends Location
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     this.onComplete();
     this.structure.update();
   }
@@ -64,6 +69,7 @@ class IconSatellite extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -83,6 +89,7 @@ class StructureSatellite extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     let nodes = Math.floor(Math.random() * 2) + 3;
@@ -120,6 +127,7 @@ class StructureSatellite extends Structure
   
   onSight()
   {
+    assertArgs(arguments, 0);
     super.onSight();
     
     // TODO: SCNTransaction
@@ -140,6 +148,7 @@ class StructureSatellite extends Structure
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     super.onUndock();
     
     // TODO: SCNTransaction
@@ -160,6 +169,7 @@ class StructureSatellite extends Structure
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     // TODO: SCNTransaction
@@ -180,6 +190,7 @@ class StructureSatellite extends Structure
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     super.onComplete();
   
     this.root.updateChildrenColors(verreciel.cyan);
@@ -187,11 +198,13 @@ class StructureSatellite extends Structure
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1);
   }
   
   dockUpdate()
   {
+    assertArgs(arguments, 0);
     for (let node of this.root.children)
     {
       for (let subnode of node.children)

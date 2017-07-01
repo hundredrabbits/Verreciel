@@ -2,6 +2,7 @@ class SceneLabel extends Empty
 {
   constructor(text = "", scale = 0.1, align = Alignment.left, color = verreciel.white)
   {
+    assertArgs(arguments, 1);
     super();
 
     this.nodeOffset = new Empty();
@@ -18,6 +19,7 @@ class SceneLabel extends Empty
   
   adjustAlignment()
   {
+    assertArgs(arguments, 0);
     if (this.activeAlignment == Alignment.center)
     {
       let wordLength = this.activeText.length * this.activeScale * 1.5;
@@ -32,6 +34,7 @@ class SceneLabel extends Empty
   
   addLetters(text, scale)
   {
+    assertArgs(arguments, 2);
     var letterPos = 0;
     var linePos = 0;
     for (let letterCur of text)
@@ -51,35 +54,28 @@ class SceneLabel extends Empty
   
   removeLetters()
   {
+    assertArgs(arguments, 0);
     for (let letterCur of this.nodeOffset.children)
     {
       letterCur.removeFromParentNode();
     }
   }
   
-  update()
+  updateText(text, color = null)
   {
-    var text = this.activeText;
-    var color = this.color;
-    var force = false;
+    assertArgs(arguments, 1);
 
-    for (let arg of arguments)
+    if (text == null)
     {
-      if (typeof arg == "string")
-      {
-        text = arg;
-      }
-      else if (typeof arg == "boolean")
-      {
-        force = arg;
-      }
-      else if (arg instanceof THREE.Vector4)
-      {
-        color = arg;
-      }
+      text = this.activeText;
     }
 
-    if (this.activeText != text || !this.color.equals(color) || force == true)
+    if (color == null)
+    {
+      color = this.color;
+    }
+    
+    if (this.activeText != text || !this.color.equals(color))
     {
       this.removeLetters();
       this.activeText = text;
@@ -91,6 +87,7 @@ class SceneLabel extends Empty
   
   updateScale(scale)
   {
+    assertArgs(arguments, 1);
     this.activeScale = scale;
     this.removeLetters();
     this.addLetters(this.activeText, this.activeScale);
@@ -99,6 +96,7 @@ class SceneLabel extends Empty
   
   updateColor(color)
   {
+    assertArgs(arguments, 1);
     if (this.color.equals(color))
     {
       return;
@@ -110,7 +108,8 @@ class SceneLabel extends Empty
   }
   
   letter(char, scale)
-  {   
+  {
+    assertArgs(arguments, 2);
     let pivot = new Empty();
     switch (char.toLowerCase())
     {

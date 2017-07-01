@@ -1,8 +1,6 @@
 TODO
 
-Detect, fix attempts at polymorphism
-  Methods being called with different combinations of parameters, for instance
-    Create utility method that counts args
+CHECK: Never override a method with a different signature
 
 Create a replacement for SCNTransaction
   This one's a toughie
@@ -10,26 +8,19 @@ Create a replacement for SCNTransaction
   If it's just a subset of things, then only a subset solution is required
   // TODO: SCNTransaction
 
-ThreeJS stuff in components
+ThreeJS stuff
   // TODO: THREEJS
+  Raycast on click
 
-Capsule::dock and Capsule.dock
-  The method is "dock"
-  The property is now "location"
-  Do a correction pass
+Run a JavaScript linter
 
-Is Location::isKnown in the game state?
-  Does it need to be?
-  Who calls Capsule::closestKnownLocation?
+-------
 
-Renamed map to nav and Map to Nav
-Rename mapPort to navPort
-  Do a correction pass
+Play through the game
 
-Renamed Empty::color to Empty::applyColor
-  Do a correction pass
-  This is the weird one, too
+Rethink missions
+Walkthroughs, too
+State recovery
+  What are some states that cannot be returned to?
 
-ScenePortSlot::enable/disable with text and color became enableAndShow/disableAndShow
-
-Different constructors expect different values, jesus
+What should be interactive, when?

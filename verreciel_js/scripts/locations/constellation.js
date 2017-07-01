@@ -1,13 +1,15 @@
 class LocationConstellation extends Location
 {
-  constructor(name = "", system, at = new THREE.Vector2(), structure, isTargetable = false)
+  constructor(name, system, at, structure, isTargetable = false)
   {
+    assertArgs(arguments, 4);
     super(name, system, at, new IconConstellation(), structure);
     this.isTargetable = false;
   }
   
   onApproach()
   {
+    assertArgs(arguments, 0);
     // super.onApproach() // Disable docking
 
     verreciel.space.startInstance(this);
@@ -19,6 +21,7 @@ class IconConstellation extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     this.size = 0.02;
     this.mesh.add(new SceneLine([
@@ -39,6 +42,7 @@ class StructureTunnel extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     let hex1 = new Hexagon(6, verreciel.grey);
@@ -63,6 +67,7 @@ class StructureDoor extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.root.add(new Diamond(5, verreciel.grey));
@@ -72,6 +77,7 @@ class StructureDoor extends Structure
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     super.sightUpdate();
     
     root.rotation.y += 0.001;

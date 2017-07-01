@@ -2,17 +2,19 @@ class Progress extends Monitor
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     this.completed = 0;
     this.name = "map";
     this.rotation.x = degToRad(Templates.monitorsAngle);
     
-    this.nameLabel.update("--");
-    this.detailsLabel.update(this.name);
+    this.nameLabel.updateText("--");
+    this.detailsLabel.updateText(this.name);
   }
   
   refresh()
   {
+    assertArgs(arguments, 0);
     super.refresh();
     
     var totalQuestLocations = 0;
@@ -33,8 +35,8 @@ class Progress extends Monitor
     // MARK: Display
     if (totalQuestLocations_complete > this.completed)
     {
-      this.nameLabel.update(totalQuestLocations_complete + "/" + totalQuestLocations, verreiciel.cyan);
-      delay(2, function() { this.nameLabel.update(verreiciel.white); }.bind(this));
+      this.nameLabel.updateText(totalQuestLocations_complete + "/" + totalQuestLocations, verreiciel.cyan);
+      delay(2, function() { this.nameLabel.updateColor(verreiciel.white); }.bind(this));
       this.completed = totalQuestLocations_complete;
     }
   }

@@ -2,6 +2,7 @@ class Console extends MainPanel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.lines = [
@@ -33,9 +34,10 @@ class Console extends MainPanel
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     super.onDisconnect();
     
-    this.nameLabel.update(this.port.origin.host.name + " > Port", verreciel.cyan);
+    this.nameLabel.updateText(this.port.origin.host.name + " > Port", verreciel.cyan);
     
     if (this.port.origin.event != null)
     {
@@ -49,22 +51,25 @@ class Console extends MainPanel
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     super.onDisconnect();
     
-    this.nameLabel.update("Console", verreciel.grey);
+    this.nameLabel.updateText("Console", verreciel.grey);
     this.inject(this.defaultPayload());
   }
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     
-    this.nameLabel.update(verreciel.grey);
+    this.nameLabel.updateColor(verreciel.grey);
     this.inject(this.defaultPayload());
   }
   
   whenTime()
   {
+    assertArgs(arguments, 0);
     super.whenTime();
     
     
@@ -72,20 +77,22 @@ class Console extends MainPanel
   
   clear()
   {
+    assertArgs(arguments, 0);
     for (let line of this.lines) 
     {
-      line.update(new ConsoleData());
+      line.updateData(new ConsoleData());
     }
   }
   
   inject(payload)
   {
+    assertArgs(arguments, 1);
     this.clear();
     
     var id = 0;
     for (let data in payload.data)
     {
-      this.lines[id].update(data);
+      this.lines[id].updateData(data);
       id += 1;
     }
     
@@ -115,18 +122,20 @@ class Console extends MainPanel
   
   defaultPayload()
   {
+    assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData("nataniev os", "OK", verreciel.white),
-      new ConsoleData("systems", verreciel.capsule.systemsInstalledCount() + "/" + verreciel.capsule.systemsCount() ,verreciel.grey),
-      new ConsoleData("", "",verreciel.grey),
-      new ConsoleData("",verreciel.grey),
-      new ConsoleData("",verreciel.grey),
-      new ConsoleData("",verreciel.grey),
+      new ConsoleData("nataniev os", "OK", null, verreciel.white),
+      new ConsoleData("systems", verreciel.capsule.systemsInstalledCount() + "/" + verreciel.capsule.systemsCount() , null, verreciel.grey),
+      new ConsoleData("", "", null, verreciel.grey),
+      new ConsoleData("", "", null, verreciel.grey),
+      new ConsoleData("", "", null, verreciel.grey),
+      new ConsoleData("", "", null, verreciel.grey),
     ])
   }
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     this.player.lookAt(-270);
@@ -134,6 +143,7 @@ class Console extends MainPanel
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.inject(this.defaultPayload());
@@ -144,6 +154,7 @@ class ConsoleLine extends Empty
 {
   constructor(data = null)
   {
+    assertArgs(arguments, 0);
     super();
     
     this.port = new ScenePortRedirect(this);
@@ -158,15 +169,22 @@ class ConsoleLine extends Empty
     this.detailsLabel = new SceneLabel("", 0.075, Alignment.right, verreciel.grey);
     this.detailsLabel.position.set(3.2, 0, 0);
     this.add(this.detailsLabel);
+
+    // Missing, but surely this is correct?
+    if (data != null)
+    {
+      this.updateLine(data);
+    }
   }
   
-  update(data)
+  updateData(data)
   {
-    this.detailsLabel.update(data.details);
+    assertArgs(arguments, 1);
+    this.detailsLabel.updateText(data.details);
     
     if (data.event != null)
     {
-      this.textLabel.update(data.text, data.color);
+      this.textLabel.updateText(data.text, data.color);
       this.port.addEvent(data.event);
       this.port.enable();
       this.port.show();
@@ -174,7 +192,7 @@ class ConsoleLine extends Empty
     }
     else
     {
-      this.textLabel.update("> " + data.text, data.color);
+      this.textLabel.updateText("> " + data.text, data.color);
       this.port.disable();
       this.port.hide();
       this.textLabel.position.set(0, 0, 0);
@@ -186,6 +204,7 @@ class ConsoleData
 {
   constructor(text = "", details = "", event = null, color = verreciel.white)
   {
+    assertArgs(arguments, 0);
     this.text = text;
     this.details = details;
     this.event = event;
@@ -197,6 +216,7 @@ class ConsolePayload
 {
   constructor(data)
   {
+    assertArgs(arguments, 1);
     this.data = data;
   }
 }

@@ -2,16 +2,18 @@ class Nav extends Widget
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     this.name = "map";
     this.details = "disk drive";
     this.requirement = ItemTypes.map;
-    this.isPowered = function() { return battery.isMapPowered(); };
-    this.label.update(this.name);
+    this.isPowered = function() { return battery.isNavPowered(); };
+    this.label.updateText(this.name);
   }
   
   hasMap(map)
   {
+    assertArgs(arguments, 1);
     if (this.port.hasEvent() == false)
     {
       return false;
@@ -25,11 +27,13 @@ class Nav extends Widget
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     super.onUploadComplete();
   }
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-90);
@@ -37,6 +41,7 @@ class Nav extends Widget
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     verreciel.battery.installNav();
   }

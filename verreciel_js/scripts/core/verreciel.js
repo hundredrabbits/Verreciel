@@ -2,11 +2,13 @@ class Verreciel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
 
   }
 
   install()
   {
+    assertArgs(arguments, 0);
     this.version = "r1";
 
     this.element = document.createElement("verreciel");
@@ -73,6 +75,7 @@ class Verreciel
 
   start()
   {
+    assertArgs(arguments, 0);
     console.info("Starting Verreciel");
 
     document.addEventListener( "mousemove", this.mouseMove.bind(this), false );
@@ -105,18 +108,21 @@ class Verreciel
 
   update()
   {
+    assertArgs(arguments, 0);
     this.demo.update();
     setTimeout(this.update.bind(this), 20);
   }
 
   render()
   {
+    assertArgs(arguments, 0);
     requestAnimationFrame( this.render.bind(this) );
     this.renderer.render( this.scene, this.camera );
   }
 
   mouseDown(e)
   {
+    assertArgs(arguments, 1);
     if (this.player.isLocked)
     {
       return;
@@ -131,6 +137,7 @@ class Verreciel
 
   mouseMove(e)
   {
+    assertArgs(arguments, 1);
     if (this.player.isLocked)
     {
       return;
@@ -150,6 +157,7 @@ class Verreciel
 
   mouseUp(e)
   {
+    assertArgs(arguments, 1);
     if (this.player.isLocked)
     {
       return;
@@ -162,6 +170,7 @@ class Verreciel
 
   windowResize()
   {
+    assertArgs(arguments, 0);
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.camera.aspect = this.width / this.height;

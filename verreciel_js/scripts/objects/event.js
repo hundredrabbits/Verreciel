@@ -2,6 +2,7 @@ class Event extends Empty
 {
   constructor(name = "", at = new THREE.Vector2(), details = "", color = verreciel.grey, isQuest = false)
   {
+    assertArgs(arguments, 5);
     super();
 
     this.isQuest = isQuest;
@@ -22,6 +23,7 @@ class Event extends Empty
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     
     // TODO: THREEJS
@@ -38,20 +40,24 @@ class Event extends Empty
   
   update()
   {
+    assertArgs(arguments, 0);
     super.update();
   }
   
   remove()
   {
+    assertArgs(arguments, 0);
     this.removeFromParentNode();
   }
   
   clean()
   {
+    assertArgs(arguments, 0);
   }
   
   panel()
   {
+    assertArgs(arguments, 0);
     return new Panel();
   }
   
@@ -59,6 +65,7 @@ class Event extends Empty
   
   duplicate()
   {
+    assertArgs(arguments, 0);
     let newEvent = new Event();
     newEvent.isQuest = this.isQuest;
     newEvent.name = this.name;

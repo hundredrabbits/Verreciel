@@ -2,6 +2,7 @@ class Radio extends Widget
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.seek = 0;
@@ -10,11 +11,12 @@ class Radio extends Widget
     this.requirement = ItemTypes.record;
     this.isPowered = function() { return verreciel.battery.isRadioPowered(); };
     
-    this.label.update(this.name);
+    this.label.updateText(this.name);
   }
   
   isPlaying()
   {
+    assertArgs(arguments, 0);
     if (this.port.hasItemOfType(ItemTypes.record))
     {
       return true;
@@ -24,6 +26,7 @@ class Radio extends Widget
   
   onPowered()
   {
+    assertArgs(arguments, 0);
     super.onPowered()
     if (this.port.hasItemOfType(ItemTypes.record))
     {
@@ -33,12 +36,14 @@ class Radio extends Widget
   
   onUnpowered()
   {
+    assertArgs(arguments, 0);
     super.onUnpowered();
     this.stop();
   }
   
   play()
   {
+    assertArgs(arguments, 0);
     if ((this.port.event instanceof Item) == false)
     {
       return;
@@ -53,12 +58,14 @@ class Radio extends Widget
   
   stop()
   {
+    assertArgs(arguments, 0);
     verreciel.music.pauseRecord();
     verreciel.space.onSystemEnter(verreciel.capsule.system);
   }
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     super.onUploadComplete();
     
     if (verreciel.battery.isRadioPowered() == true)
@@ -69,12 +76,14 @@ class Radio extends Widget
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     verreciel.player.lookAt(0);
   }
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     verreciel.battery.installRadio();
   }

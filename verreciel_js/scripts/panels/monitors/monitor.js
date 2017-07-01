@@ -2,6 +2,7 @@ class Monitor extends Panel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.nameLabel = new SceneLabel("", 0.08, Alignment.center)
@@ -18,8 +19,8 @@ class Monitor extends Panel
     this.nameLabel.hide();
     this.detailsLabel.hide();
     
-    this.detailsLabel.update("");
-    this.nameLabel.update("--");
+    this.detailsLabel.updateText("");
+    this.nameLabel.updateText("--");
 
     this.installNode = new Empty();
     this.installProgressBar = new SceneProgressBar(1);
@@ -29,6 +30,7 @@ class Monitor extends Panel
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     this.installNode = new Empty();
     this.installNode.position.set(0,0,0);
     this.installProgressBar = new SceneProgressBar(0.5);
@@ -40,11 +42,13 @@ class Monitor extends Panel
   
   installProgress()
   {
+    assertArgs(arguments, 0);
     super.installProgress();
   }
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     // TODO: SCNTransaction

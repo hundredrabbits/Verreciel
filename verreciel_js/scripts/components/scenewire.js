@@ -2,6 +2,7 @@ class SceneWire extends Empty
 {
   constructor(host, nodeA = new THREE.Vector3(), nodeB = new THREE.Vector3())
   {
+    assertArgs(arguments, 3);
     super();
     
     this.segment1 = new SceneLine([], verreciel.white);
@@ -31,15 +32,16 @@ class SceneWire extends Empty
     this.vertex3 = new THREE.Vector3(this.nodeB.x * 0.6, this.nodeB.y * 0.6, this.nodeB.z * 0.6);
     this.vertex4 = new THREE.Vector3(this.nodeB.x * 0.8, this.nodeB.y * 0.8, this.nodeB.z * 0.8);
     
-    this.segment1.update( [this.nodeA, this.vertex1], verreciel.white);
-    this.segment2.update( [this.vertex1, this.vertex2], verreciel.red);
-    this.segment3.update( [this.vertex2, this.vertex3], verreciel.red);
-    this.segment4.update( [this.vertex3, this.vertex4], verreciel.red);
-    this.segment5.update( [this.vertex4, this.nodeB], verreciel.red);
+    this.segment1.updateGeometry( [this.nodeA, this.vertex1], verreciel.white);
+    this.segment2.updateGeometry( [this.vertex1, this.vertex2], verreciel.red);
+    this.segment3.updateGeometry( [this.vertex2, this.vertex3], verreciel.red);
+    this.segment4.updateGeometry( [this.vertex3, this.vertex4], verreciel.red);
+    this.segment5.updateGeometry( [this.vertex4, this.nodeB], verreciel.red);
   }
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (this.isEnabled == false || this.nodeB == null)
@@ -68,8 +70,9 @@ class SceneWire extends Empty
     this.segment5.update( [this.vertex4, this.nodeB], verreciel.red);
   }
   
-  update(nodeA = new THREE.Vector3(), nodeB = new THREE.Vector3())
+  updateNodes(nodeA = new THREE.Vector3(), nodeB = new THREE.Vector3())
   {
+    assertArgs(arguments, 2);
     this.nodeA = nodeA;
     this.nodeB = nodeB;
     
@@ -87,11 +90,13 @@ class SceneWire extends Empty
   
   enable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = true;
   }
   
   disable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = false;
     this.segment1.reset();
     this.segment2.reset();
@@ -102,6 +107,7 @@ class SceneWire extends Empty
   
   blink()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.hide();
@@ -110,11 +116,13 @@ class SceneWire extends Empty
   
   isCompatible()
   {
+    assertArgs(arguments, 0);
     return true;
   }
   
   applyColor(color)
   {
+    assertArgs(arguments, 1);
     
   }
 }

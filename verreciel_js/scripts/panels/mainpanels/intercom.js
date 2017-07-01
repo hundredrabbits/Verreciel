@@ -5,12 +5,13 @@ class Intercom extends MainPanel
   
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.name = "mission";
     this.details = "displays informations";
 
-    this.selector = new SceneLabel(">", Alignment.left);
+    this.selector = new SceneLabel(">", 0.1, Alignment.left);
   
     this.locationPanel = new Panel();
     this.mainNode.add(this.locationPanel);
@@ -18,33 +19,33 @@ class Intercom extends MainPanel
     this.defaultPanel = new Empty();
     this.defaultPanel.position.set(0,0,0);
     
-    this.systemLabel = new SceneLabel("system", Alignment.right, verreciel.grey);
+    this.systemLabel = new SceneLabel("system", 0.1, Alignment.right, verreciel.grey);
     this.defaultPanel.add(this.systemLabel);
-    this.systemValueLabel = new SceneLabel("Loiqe", Alignment.left, verreciel.white);
+    this.systemValueLabel = new SceneLabel("Loiqe", 0.1, Alignment.left, verreciel.white);
     this.defaultPanel.add(this.systemValueLabel);
     
     this.systemLabel.position.set(-0.1,1 - 0.2,0);
     this.systemValueLabel.position.set(0.1,1 - 0.2,0);
     
-    this.distanceLabel = new SceneLabel("distance", Alignment.right, verreciel.grey);
+    this.distanceLabel = new SceneLabel("distance", 0.1, Alignment.right, verreciel.grey);
     this.defaultPanel.add(this.distanceLabel);
-    this.distanceValueLabel = new SceneLabel("324.4", Alignment.left, verreciel.white);
+    this.distanceValueLabel = new SceneLabel("324.4", 0.1, Alignment.left, verreciel.white);
     this.defaultPanel.add(this.distanceValueLabel);
     
     this.distanceLabel.position.set(-0.1,1 - 0.6,0);
     this.distanceValueLabel.position.set(0.1,1 - 0.6,0);
     
-    this.typeLabel = new SceneLabel("type", Alignment.right, verreciel.grey);
+    this.typeLabel = new SceneLabel("type", 0.1, Alignment.right, verreciel.grey);
     this.defaultPanel.add(this.typeLabel);
-    this.typeValueLabel = new SceneLabel("harvest", Alignment.left, verreciel.white);
+    this.typeValueLabel = new SceneLabel("harvest", 0.1, Alignment.left, verreciel.white);
     this.defaultPanel.add(this.typeValueLabel);
     
     this.typeLabel.position.set(-0.1,1 - 1.0,0);
     this.typeValueLabel.position.set(0.1,1 - 1.0,0);
     
-    this.statusLabel = new SceneLabel("status", Alignment.right, verreciel.grey);
+    this.statusLabel = new SceneLabel("status", 0.1, Alignment.right, verreciel.grey);
     this.defaultPanel.add(this.statusLabel);
-    this.statusValueLabel = new SceneLabel("completed", Alignment.left, verreciel.white);
+    this.statusValueLabel = new SceneLabel("completed", 0.1, Alignment.left, verreciel.white);
     this.defaultPanel.add(this.statusValueLabel);
     
     this.statusLabel.position.set(-0.1,1 - 1.4,0);
@@ -67,6 +68,7 @@ class Intercom extends MainPanel
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (verreciel.capsule.isDocked && 
@@ -80,39 +82,40 @@ class Intercom extends MainPanel
     {
       let target = (verreciel.radar.port.hasEvent() == true ) ? verreciel.radar.port.event : verreciel.capsule.location;
       
-      this.systemValueLabel.update(target.system);
-      this.distanceLabel.update("Distance");
-      this.distanceValueLabel.update( (verreciel.capsule.isDockedAtLocation(target) ? "docked" : (target.distance * 19).toFixed(2)) );
-      this.typeLabel.update("type");
-      this.typeValueLabel.update(target.name);
-      this.detailValueLabel.update(target.details);
+      this.systemValueLabel.updateText(target.system);
+      this.distanceLabel.updateText("Distance");
+      this.distanceValueLabel.updateText( (verreciel.capsule.isDockedAtLocation(target) ? "docked" : (target.distance * 19).toFixed(2)) );
+      this.typeLabel.updateText("type");
+      this.typeValueLabel.updateText(target.name);
+      this.detailValueLabel.updateText(target.details);
       
       if (target.isComplete == null)
       {
-        this.statusValueLabel.update("--", verreciel.white);
+        this.statusValueLabel.updateText("--", verreciel.white);
       }
       else if (target.isComplete == true)
       {
-        this.statusValueLabel.update("complete", verreciel.cyan);
+        this.statusValueLabel.updateText("complete", verreciel.cyan);
       }
       else if (target.isComplete == false)
       {
-        this.statusValueLabel.update("quest", verreciel.red);
+        this.statusValueLabel.updateText("quest", verreciel.red);
       }
     }
     else
     {
-      this.systemValueLabel.update(verreciel.capsule.system);
-      this.distanceLabel.update("Position");
-      this.distanceValueLabel.update(verreciel.capsule.at.x.toFixed(0) + "," + verreciel.capsule.at.y.toFixed(0));
-      this.typeValueLabel.update("--");
-      this.statusValueLabel.update("in flight", verreciel.white);
-      this.detailValueLabel.update("--");
+      this.systemValueLabel.updateText(verreciel.capsule.system);
+      this.distanceLabel.updateText("Position");
+      this.distanceValueLabel.updateText(verreciel.capsule.at.x.toFixed(0) + "," + verreciel.capsule.at.y.toFixed(0));
+      this.typeValueLabel.updateText("--");
+      this.statusValueLabel.updateText("in flight", verreciel.white);
+      this.detailValueLabel.updateText("--");
     }
   }
   
   touch(id)
   {
+    assertArgs(arguments, 1);
     this.refresh();
     this.music.playEffect("click3");
     return false;
@@ -120,23 +123,24 @@ class Intercom extends MainPanel
   
   refresh()
   {
+    assertArgs(arguments, 0);
     if( this.isInstalled == true )
     {
       if (verreciel.capsule.location == null)
       {
-        this.nameLabel.update("mission", verreciel.white);
+        this.nameLabel.updateText("mission", verreciel.white);
       }
       else if (verreciel.capsule.location.isComplete == null)
       {
-        this.nameLabel.update(verreciel.capsule.location.name, verreciel.white);
+        this.nameLabel.updateText(verreciel.capsule.location.name, verreciel.white);
       }
       else if (verreciel.capsule.location.isComplete == true)
       {
-        this.nameLabel.update(verreciel.capsule.location.name, verreciel.cyan);
+        this.nameLabel.updateText(verreciel.capsule.location.name, verreciel.cyan);
       }
       else
       {
-        this.nameLabel.update(verreciel.capsule.location.name, verreciel.red);
+        this.nameLabel.updateText(verreciel.capsule.location.name, verreciel.red);
       }
     }
   }
@@ -145,6 +149,7 @@ class Intercom extends MainPanel
   
   complete()
   {
+    assertArgs(arguments, 0);
     // Animate
     
     // TODO: SCNTransaction
@@ -177,6 +182,7 @@ class Intercom extends MainPanel
   
   connectToLocation(location)
   {
+    assertArgs(arguments, 1);
     this.locationPanel.empty();
     if (location.panel() != null)
     {
@@ -203,7 +209,7 @@ class Intercom extends MainPanel
       
       // if (verreciel.capsule.location != null)
       // {
-        // this.nameLabel.update();
+        // this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
       // }
       
       // SCNTransaction.begin()
@@ -231,6 +237,7 @@ class Intercom extends MainPanel
   
   disconnectFromLocation()
   {
+    assertArgs(arguments, 0);
     // TODO: SCNTransaction
 
     // SCNTransaction.begin()
@@ -262,6 +269,7 @@ class Intercom extends MainPanel
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-180);
@@ -269,6 +277,7 @@ class Intercom extends MainPanel
   
   onInstallationComplete()
   {
+    assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.touch(1);
@@ -276,6 +285,7 @@ class Intercom extends MainPanel
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true)
     {
       verreciel.capsule.location.onConnect();
@@ -284,6 +294,7 @@ class Intercom extends MainPanel
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true)
     {
       verreciel.capsule.location.onDisconnect();

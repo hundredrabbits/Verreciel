@@ -2,6 +2,7 @@ class Cargo extends MainPanel
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.cargohold = new CargoHold();
@@ -36,11 +37,12 @@ class Cargo extends MainPanel
     
     this.decals.empty();
     
-    this.detailsLabel.update("Empty", verreciel.grey);
+    this.detailsLabel.updateText("Empty", verreciel.grey);
   }
   
   contains(event)
   {
+    assertArgs(arguments, 1);
     for (let item of this.cargohold.content)
     {
       if (item == event)
@@ -53,6 +55,7 @@ class Cargo extends MainPanel
   
   containsLike(target)
   {
+    assertArgs(arguments, 1);
     for (let item of this.cargohold.content)
     {
       if (item.name == target.name && item.type == target.type)
@@ -65,6 +68,7 @@ class Cargo extends MainPanel
   
   containsCount(count, target)
   {
+    assertArgs(arguments, 2);
     var count_actual = 0;
     for (let item of this.cargohold.content)
     {
@@ -84,6 +88,7 @@ class Cargo extends MainPanel
   
   addItems(items)
   {
+    assertArgs(arguments, 1);
     for (let item of items)
     {
       this.addItem(item);
@@ -93,12 +98,14 @@ class Cargo extends MainPanel
   
   addItem(item)
   {
+    assertArgs(arguments, 1);
     this.cargohold.content.push(item);
     this.refresh();
   }
 
   removeItem(target)
   {
+    assertArgs(arguments, 1);
     if (this.cargohold.content.count == 1)
     {
       this.line1.position.x = 0.25;
@@ -160,6 +167,7 @@ class Cargo extends MainPanel
   
   removeTransfer(target)
   {
+    assertArgs(arguments, 1);
     let history = this.cargohold.content;
     this.cargohold.content = [];
     for (let event of history)
@@ -176,6 +184,7 @@ class Cargo extends MainPanel
   
   touch(id = 0)
   {
+    assertArgs(arguments, 1);
     this.refresh();
     
     if (this.port.isConnectedToPanel(verreciel.console) == true)
@@ -190,6 +199,7 @@ class Cargo extends MainPanel
   
   refresh()
   {
+    assertArgs(arguments, 0);
     let newCargohold = new CargoHold();
     for (let item of this.cargohold.content)
     {
@@ -233,20 +243,21 @@ class Cargo extends MainPanel
     
     if (this.cargohold.content.count == 0)
     {
-      this.detailsLabel.update("Empty", verreciel.grey);
+      this.detailsLabel.updateText("Empty", verreciel.grey);
     }
     else if (this.cargohold.content.count == 6)
     {
-      this.detailsLabel.update("FULL", verreciel.red);
+      this.detailsLabel.updateText("FULL", verreciel.red);
     }
     else
     {
-      this.detailsLabel.update(this.cargohold.content.count + "/6", verreciel.white);
+      this.detailsLabel.updateText(this.cargohold.content.count + "/6", verreciel.white);
     }
   }
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     this.refresh();
     
     if (this.port.isConnectedToPanel(verreciel.console) == true)
@@ -259,9 +270,10 @@ class Cargo extends MainPanel
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     if (this.port.isReceivingEventOfTypeItem() == false)
     {
-      this.detailsLabel.update("ERROR",verreciel.red);
+      this.detailsLabel.updateText("ERROR",verreciel.red);
       return;
     }
     if (this.port.event == null)
@@ -270,7 +282,7 @@ class Cargo extends MainPanel
     }
     if (this.port.origin != null && this.port.origin.host != null && (this.port.origin.host instanceof ConsoleLine))
     {
-      this.detailsLabel.update("ERROR",verreciel.red);
+      this.detailsLabel.updateText("ERROR",verreciel.red);
       return;
     }
     
@@ -284,12 +296,14 @@ class Cargo extends MainPanel
   
   upload(item)
   {
+    assertArgs(arguments, 1);
     this.uploadedItem = item;
     this.uploadProgress();
   }
   
   uploadProgress()
   {
+    assertArgs(arguments, 0);
     if (this.port.origin == null)
     {
       this.uploadCancel();
@@ -303,7 +317,7 @@ class Cargo extends MainPanel
     }
     else
     {
-      this.detailsLabel.update(this.uploadPercentage.toFixed(0) + "%", verreciel.grey);
+      this.detailsLabel.updateText(this.uploadPercentage.toFixed(0) + "%", verreciel.grey);
     }
 
     delay(0.05, this.uploadProgress.bind(this));
@@ -311,6 +325,7 @@ class Cargo extends MainPanel
   
   uploadComplete()
   {
+    assertArgs(arguments, 0);
     if (this.cargohold.content.count == 0)
     {
       this.line1.position.x = -0.25;
@@ -372,6 +387,7 @@ class Cargo extends MainPanel
   
   uploadTransfer()
   {
+    assertArgs(arguments, 0);
     if (this.port.origin != null)
     {
       let origin = this.port.origin.host;
@@ -388,6 +404,7 @@ class Cargo extends MainPanel
   
   uploadCancel()
   {
+    assertArgs(arguments, 0);
     this.uploadPercentage = 0;
     this.refresh();
   }
@@ -396,6 +413,7 @@ class Cargo extends MainPanel
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-225);
@@ -406,18 +424,15 @@ class CargoHold extends Item
 {
   constructor()
   {
-    super("cargo");
+    assertArgs(arguments, 0);
+    super("cargo", ItemTypes.cargo, null, "storage", true, null);
 
     this.content = [];
-    
-    this.name = "cargo";
-    this.type = ItemTypes.cargo;
-    this.details = "storage";
-    this.isQuest = true;
   }
   
   payload()
   {
+    assertArgs(arguments, 0);
     var data = [];
     
     for (let item of this.content)
@@ -428,7 +443,7 @@ class CargoHold extends Item
     var i = 0;
     while (i < 6 - this.content.count)
     {
-      data.push(new ConsoleData("--", verreciel.grey));
+      data.push(new ConsoleData("--", "", null, verreciel.grey));
       i += 1;
     }
     

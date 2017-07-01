@@ -2,6 +2,7 @@ class Exploration extends Monitor
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.distance = 0;
@@ -10,12 +11,13 @@ class Exploration extends Monitor
     this.name = "exploration";
     this.rotation.x = degToRad(Templates.monitorsAngle);
     
-    this.nameLabel.update("--");
-    this.detailsLabel.update(this.name);
+    this.nameLabel.updateText("--");
+    this.detailsLabel.updateText(this.name);
   }
   
   refresh()
   {
+    assertArgs(arguments, 0);
     super.refresh();
     
     var kl = 0;
@@ -31,13 +33,14 @@ class Exploration extends Monitor
     if (kl > this.knownLocations)
     {
       this.knownLocations = kl;
-      this.nameLabel.update(this.knownLocations + "/" + verreciel.universe.allLocations.length, verreciel.cyan);
-      delay(2, function() { this.nameLabel.update(verreciel.white); }.bind(this));
+      this.nameLabel.updateText(this.knownLocations + "/" + verreciel.universe.allLocations.length, verreciel.cyan);
+      delay(2, function() { this.nameLabel.updateColor(verreciel.white); }.bind(this));
     }
   }
   
   whenSecond()
   {
+    assertArgs(arguments, 0);
     this.refresh();
   }
 }

@@ -1,7 +1,8 @@
 class LocationTrade extends Location
 {
-  constructor(name = "", system, at = new THREE.Vector(), want, give, mapRequirement = null)
+  constructor(name, system, at, want, give, mapRequirement = null)
   {
+    assertArgs(arguments, 5);
     super( name, system, at, new IconTrade(), new StructureTrade());
     
     this.details = give.name;
@@ -12,13 +13,14 @@ class LocationTrade extends Location
     
     this.wantPort = new ScenePortSlot(this);
     this.wantPort.addRequirement(want);
-    this.wantPort.label.update("EMPTY", verreciel.red);
+    this.wantPort.label.updateText("EMPTY", verreciel.red);
     this.givePort = new ScenePortSlot(this);
     this.givePort.addEvent(give);
   }
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     this.refresh();
   }
@@ -27,6 +29,7 @@ class LocationTrade extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     if (this.isComplete == true)
     {
       return null;
@@ -34,7 +37,7 @@ class LocationTrade extends Location
     
     let newPanel = new Panel();
     
-    let text = new SceneLabel("Trading " + this.wantPort.requirement.name + "$For " + this.givePort.event.name, Alignment.left);
+    let text = new SceneLabel("Trading " + this.wantPort.requirement.name + "$For " + this.givePort.event.name, 0.1, Alignment.left);
     text.position.set(-1.5,1,0);
     newPanel.add(text);
     
@@ -52,7 +55,7 @@ class LocationTrade extends Location
     this.wantPort.add(new SceneLine([new THREE.Vector3(-0.3,0,0), new THREE.Vector3(-0.3,-0.5,0)], verreciel.grey));
     this.wantPort.add(new SceneLine([new THREE.Vector3(-0.3,-0.5,0), new THREE.Vector3(-0.125,-0.5,0)], verreciel.grey));
     
-    let wantLabel = new SceneLabel("Trade Table", verreciel.grey);
+    let wantLabel = new SceneLabel("Trade Table", 0.1, Alignment.left, verreciel.grey);
     wantLabel.position.set( -1.5,  0,  0);
     newPanel.add(wantLabel);
     
@@ -63,36 +66,39 @@ class LocationTrade extends Location
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     refresh()
     audio.playSound("beep2")
   }
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     refresh()
   }
   
   refresh()
   {
+    assertArgs(arguments, 0);
     if (this.wantPort.event != null && this.wantPort.event.name == this.wantPort.requirement.name)
     {
       this.wantPort.disable();
-      this.wantPort.label.update("Accepted",verreciel.cyan);
+      this.wantPort.label.updateText("Accepted",verreciel.cyan);
       this.givePort.enable();
-      this.givePort.label.update(verreciel.white);
+      this.givePort.label.updateColor(verreciel.white);
       this.isTradeAccepted = true;
     }
     else if (this.wantPort.event != null && this.wantPort.event.name != this.wantPort.requirement.name)
     {
       this.wantPort.enable();
-      this.wantPort.label.update("Refused",verreciel.red);
+      this.wantPort.label.updateText("Refused",verreciel.red);
       this.givePort.disable();
       this.isTradeAccepted = false;
     }
     else
     {
       this.wantPort.enable();
-      this.wantPort.label.update("Empty",verreciel.red);
+      this.wantPort.label.updateText("Empty",verreciel.red);
       this.givePort.disable();
       this.isTradeAccepted = false;
     }
@@ -108,6 +114,7 @@ class IconTrade extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -129,6 +136,7 @@ class StructureTrade extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -160,6 +168,7 @@ class StructureTrade extends Structure
   
   onSight()
   {
+    assertArgs(arguments, 0);
     super.onSight();
     
     // TODO: SCNTransaction
@@ -179,6 +188,7 @@ class StructureTrade extends Structure
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     super.onUndock();
     
     // TODO: SCNTransaction
@@ -198,6 +208,7 @@ class StructureTrade extends Structure
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock()
     
     // TODO: SCNTransaction
@@ -215,11 +226,13 @@ class StructureTrade extends Structure
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     super.onComplete();
   }
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1);
   }
 }

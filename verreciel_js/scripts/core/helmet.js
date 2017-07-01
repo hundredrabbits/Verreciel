@@ -2,6 +2,7 @@ class Helmet extends Empty
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     console.log("^ Helmet | Init");
@@ -108,12 +109,14 @@ class Helmet extends Empty
   
   whenStart()
   {
+    assertArgs(arguments, 0);
     super.whenStart();
     console.log("+ Helmet | Start");
   }
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
         
     if (this.rotation.y > verreciel.player.rotation.y + 0.0001)
@@ -139,6 +142,7 @@ class Helmet extends Empty
 
   updatePort()
   {
+    assertArgs(arguments, 0);
     if (verreciel.player.port.origin != null)
     {
       let test = convertPositionToNode(verreciel.player.port.position, verreciel.player.port.origin);
@@ -151,8 +155,9 @@ class Helmet extends Empty
     }
   }
   
-  addMessage(message, color)
-  {   
+  addMessage(message, color = null)
+  {
+    assertArgs(arguments, 1);   
     if (this.message == message)
     {
       return;
@@ -169,7 +174,7 @@ class Helmet extends Empty
     // SCNTransaction.completionBlock = {
       // SCNTransaction.begin()
       // SCNTransaction.animationDuration = 0.1
-      // this.messageLabel.update(this.message, color);
+      // this.messageLabel.updateText(this.message, color);
       // this.messageLabel.show();
       // SCNTransaction.commit()
     // }
@@ -178,6 +183,7 @@ class Helmet extends Empty
   
   addPassive(passive)
   {
+    assertArgs(arguments, 1);
     if (this.passive == passive)
     {
       return;
@@ -194,7 +200,7 @@ class Helmet extends Empty
     // SCNTransaction.completionBlock = {
       // SCNTransaction.begin()
       // SCNTransaction.animationDuration = 0.1
-      // this.passiveLabel.update(this.passive);
+      // this.passiveLabel.updateText(this.passive);
       // this.passiveLabel.position.set(0,-1.2,this.visorDepth);
       // this.passiveLabel.show();
       // SCNTransaction.commit()
@@ -202,8 +208,9 @@ class Helmet extends Empty
     // SCNTransaction.commit()
   }
   
-  addWarning(text, color = verreciel.red, duration, flag)
+  addWarning(text, color, duration, flag)
   {
+    assertArgs(arguments, 4);
     if (verreciel.game.time - this.lastWarning <= 10)
     {
       return;
@@ -218,7 +225,7 @@ class Helmet extends Empty
     this.warningFlag = flag;
     this.lastWarning = verreciel.game.time;
     
-    this.warningLabel.update(this.warningString, this.warningColor);
+    this.warningLabel.updateText(this.warningString, this.warningColor);
     verreciel.music.playEffect("beep2");
     
     delay(duration, this.hideWarning.bind(this));
@@ -226,8 +233,9 @@ class Helmet extends Empty
   
   hideWarning()
   {
+    assertArgs(arguments, 0);
     this.warningFlag = "";
     this.warningString = "";
-    this.warningLabel.update("");
+    this.warningLabel.updateText("");
   }
 }

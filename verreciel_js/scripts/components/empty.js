@@ -2,17 +2,20 @@ class Empty extends SceneNode
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     this.details = "unknown";
   }
 
   touch(id = 0)
   {
+    assertArgs(arguments, 1);
     return false;
   }
   
   update()
   {
+    assertArgs(arguments, 0, true);
 
   }
 
@@ -32,6 +35,7 @@ class Empty extends SceneNode
   
   empty()
   {
+    assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.removeFromParentNode();
@@ -40,6 +44,7 @@ class Empty extends SceneNode
   
   blink()
   {
+    assertArgs(arguments, 0);
     if (game.time % 3 == 0)
     {
       this.visible = true;
@@ -52,16 +57,19 @@ class Empty extends SceneNode
   
   show()
   {
+    assertArgs(arguments, 0);
     this.visible = true;
   }
   
   hide()
   {
+    assertArgs(arguments, 0);
     this.visible = false;
   }
   
   updateChildrenColors(color)
   {
+    assertArgs(arguments, 1);
     for (let node of this.children)
     {
       node.applyColor(color);
@@ -71,6 +79,7 @@ class Empty extends SceneNode
   
   applyColor(color)
   {
+    assertArgs(arguments, 1);
     if (this.geometry.vertices.length == 0)
     {
       return;
@@ -86,26 +95,31 @@ class Empty extends SceneNode
   
   onConnect()
   {
-    update()
+    assertArgs(arguments, 0);
+    update();
   }
   
   onDisconnect()
   {
-    update()
+    assertArgs(arguments, 0);
+    update();
   }
   
   onUploadComplete()
   {
+    assertArgs(arguments, 0);
     
   }
   
   onMissionComplete()
   {
+    assertArgs(arguments, 0);
     
   }
   
   payload()
   {
+    assertArgs(arguments, 0);
     return new ConsolePayload([new ConsoleData("unknown", "unknown")]);
   }
 }

@@ -2,6 +2,7 @@ class Structure extends Empty
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
 
     this.morphTime = 0;
@@ -17,11 +18,13 @@ class Structure extends Empty
   
   addHost(host)
   {
+    assertArgs(arguments, 1);
     this.host = host;
   }
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     let distance;
@@ -60,41 +63,49 @@ class Structure extends Empty
 
   onDock()
   {
+    assertArgs(arguments, 0);
     this.morph();
   }
   
   onSight()
   {
+    assertArgs(arguments, 0);
     this.show();
   }
   
   onUndock()
   {
+    assertArgs(arguments, 0);
     
   }
   
   onComplete()
   {
+    assertArgs(arguments, 0);
     this.update();
   }
   
   onLeave()
   {
+    assertArgs(arguments, 0);
     this.removeFromParentNode();
   }
   
   dockUpdate()
   {
+    assertArgs(arguments, 0);
   
   }
   
   sightUpdate()
   {
+    assertArgs(arguments, 0);
   
   }
   
   update()
   {
+    assertArgs(arguments, 0);
     super.update();
     
     if (this.host.isComplete == null)
@@ -113,6 +124,7 @@ class Structure extends Empty
   
   morph()
   {
+    assertArgs(arguments, 0);
     this.morphTime += 1;
     if (verreciel.capsule.isDocked == true)
     {

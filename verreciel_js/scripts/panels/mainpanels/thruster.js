@@ -4,6 +4,7 @@ class Thruster extends MainPanel
   
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.interface_flight = new Empty();
@@ -103,13 +104,14 @@ class Thruster extends MainPanel
     this.mainNode.add(this.decelerate);
     this.mainNode.add(this.action);
     
-    this.detailsLabel.update("--");
+    this.detailsLabel.updateText("--");
     
     this.decals.empty();
   }
 
   touch(id = 0)
   {
+    assertArgs(arguments, 1);
     if (id == 0)
     {
       this.speedDown();
@@ -140,6 +142,7 @@ class Thruster extends MainPanel
   
   update()
   {
+    assertArgs(arguments, 0);
     if (this.maxSpeed() > 0)
     {
       this.line1.show();
@@ -169,6 +172,7 @@ class Thruster extends MainPanel
   
   whenRenderer()
   {
+    assertArgs(arguments, 0);
     super.whenRenderer();
     
     this.canWarp = false;
@@ -232,11 +236,13 @@ class Thruster extends MainPanel
   
   lock()
   {
+    assertArgs(arguments, 0);
     this.isLocked = true;
   }
   
   unlock()
   {
+    assertArgs(arguments, 0);
     this.isLocked = false;
   }
   
@@ -244,11 +250,13 @@ class Thruster extends MainPanel
   
   onPowered()
   {
+    assertArgs(arguments, 0);
     this.refresh();
   }
   
   onUnpowered()
   {
+    assertArgs(arguments, 0);
     this.refresh();
   }
   
@@ -256,7 +264,8 @@ class Thruster extends MainPanel
   
   modeFlight()
   {
-    this.detailsLabel.update(this.actualSpeed.toFixed(1), verreciel.white);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText(this.actualSpeed.toFixed(1), verreciel.white);
     
     this.interface_cutlines.hide();
     this.interface_flight.show();
@@ -313,7 +322,8 @@ class Thruster extends MainPanel
   
   modeLocked()
   {
-    this.detailsLabel.update("locked", verreciel.grey);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("locked", verreciel.grey);
     
     this.interface_flight.hide();
     this.interface_dock.show();
@@ -332,7 +342,8 @@ class Thruster extends MainPanel
   
   modeWarping()
   {
-    this.detailsLabel.update("warping", verreciel.white);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("warping", verreciel.white);
     
     this.interface_flight.hide();
     this.interface_dock.hide();
@@ -365,7 +376,8 @@ class Thruster extends MainPanel
   
   modeWaitingForWarp()
   {
-    this.detailsLabel.update("warp", verreciel.white);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("warp", verreciel.white);
     
     this.interface_flight.hide();
     this.interface_dock.hide();
@@ -385,7 +397,8 @@ class Thruster extends MainPanel
   
   modeWarpError()
   {
-    this.detailsLabel.update("error", verreciel.red);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("error", verreciel.red);
     
     this.interface_flight.hide();
     this.interface_dock.hide();
@@ -405,6 +418,7 @@ class Thruster extends MainPanel
   
   modeMisaligned()
   {
+    assertArgs(arguments, 0);
     if (verreciel.pilot.target == null)
     {
       return;
@@ -414,7 +428,7 @@ class Thruster extends MainPanel
       return;
     }
     
-    this.detailsLabel.update(((Math.abs(verreciel.pilot.target.align)/180)*100).toFixed(0) + "%", verreciel.red);
+    this.detailsLabel.updateText(((Math.abs(verreciel.pilot.target.align)/180)*100).toFixed(0) + "%", verreciel.red);
     
     this.interface_flight.hide();
     this.interface_dock.hide();
@@ -442,7 +456,8 @@ class Thruster extends MainPanel
   
   modeUnpowered()
   {
-    this.detailsLabel.update("unpowered", verreciel.grey);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("unpowered", verreciel.grey);
     
     this.interface_flight.hide();
     this.interface_dock.hide();
@@ -468,8 +483,9 @@ class Thruster extends MainPanel
   
   modeDocking()
   {
+    assertArgs(arguments, 0);
     let dockingProgress = Math.floor((1 - distanceBetweenTwoPoints(verreciel.capsule.at, verreciel.capsule.location.at)/0.5) * 100);
-    this.detailsLabel.update("docking "+ dockingProgress.toFixed(0) + "%", verreciel.grey);
+    this.detailsLabel.updateText("docking "+ dockingProgress.toFixed(0) + "%", verreciel.grey);
     
     this.interface_flight.hide();
     this.interface_dock.show();
@@ -488,7 +504,8 @@ class Thruster extends MainPanel
   
   modeStorageBusy()
   {
-    this.detailsLabel.update("Take " + verreciel.capsule.location.storedItems()[0].name, verreciel.red);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("Take " + verreciel.capsule.location.storedItems()[0].name, verreciel.red);
     
     this.interface_flight.hide();
     this.interface_dock.show();
@@ -507,7 +524,8 @@ class Thruster extends MainPanel
   
   modeDocked()
   {
-    this.detailsLabel.update("undock", verreciel.white);
+    assertArgs(arguments, 0);
+    this.detailsLabel.updateText("undock", verreciel.white);
     
     this.interface_flight.hide();
     this.interface_dock.show();
@@ -528,11 +546,13 @@ class Thruster extends MainPanel
   
   maxSpeed()
   {
+    assertArgs(arguments, 0);
     return verreciel.battery.cellCount();
   }
   
   speedUp()
   {
+    assertArgs(arguments, 0);
     if (this.speed < this.maxSpeed())
     {
       this.speed += 1;
@@ -541,6 +561,7 @@ class Thruster extends MainPanel
   
   speedDown()
   {
+    assertArgs(arguments, 0);
     if (this.speed >= 1)
     {
       this.speed -= 1;
@@ -549,6 +570,7 @@ class Thruster extends MainPanel
   
   thrust()
   {
+    assertArgs(arguments, 0);
     if (verreciel.capsule.isWarping == true)
     {
       this.speed = 100;
@@ -597,6 +619,7 @@ class Thruster extends MainPanel
   
   onInstallationBegin()
   {
+    assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-45);

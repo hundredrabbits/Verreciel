@@ -2,6 +2,7 @@ class LocationPortal extends Location
 {
   constructor(name, system, at)
   {
+    assertArgs(arguments, 3);
     super(name,system, at, new IconPortal(), new StructurePortal());
     
     this.details = "transit";
@@ -18,6 +19,7 @@ class LocationPortal extends Location
   
   panel()
   {
+    assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     this.pilotPort.add(this.pilotLabel);
@@ -50,16 +52,19 @@ class LocationPortal extends Location
   
   onConnect()
   {
+    assertArgs(arguments, 0);
     this.validate();
   }
   
   onDisconnect()
   {
+    assertArgs(arguments, 0);
     this.validate();
   }
   
   onDock()
   {
+    assertArgs(arguments, 0);
     super.onDock();
     
     this.validate();
@@ -67,6 +72,7 @@ class LocationPortal extends Location
   
   onWarp()
   {
+    assertArgs(arguments, 0);
     if (this.structure instanceof StructurePortal)
     {
       this.structure.isWarping = true;
@@ -76,6 +82,7 @@ class LocationPortal extends Location
   
   validate()
   {
+    assertArgs(arguments, 0);
     if (verreciel.intercom.port.isReceivingItemOfType(ItemTypes.key) == true)
     {
       let item = verreciel.intercom.port.origin.event;
@@ -96,20 +103,22 @@ class LocationPortal extends Location
   
   inactive()
   {
+    assertArgs(arguments, 0);
     this.pilotPort.removeEvent();
     this.pilotPort.disable();
     this.thrusterPort.disable();
-    this.keyLabel.update("error", verreciel.red);
+    this.keyLabel.updateText("error", verreciel.red);
     
     this.structure.root.updateChildrenColors(red);
   }
   
   lock()
   {
+    assertArgs(arguments, 0);
     this.pilotPort.removeEvent()
     this.pilotPort.disable()
     this.thrusterPort.disable()
-    this.keyLabel.update("no key", verreciel.red);
+    this.keyLabel.updateText("no key", verreciel.red);
     
     if (this.structure instanceof StructurePortal)
     {
@@ -119,6 +128,7 @@ class LocationPortal extends Location
   
   unlock()
   {
+    assertArgs(arguments, 0);
     let key = verreciel.intercom.port.origin.event;
 
     if (!(key instanceof Item))
@@ -130,8 +140,8 @@ class LocationPortal extends Location
     
     destination.isKnown = true;
     
-    this.keyLabel.update(key.name, verreciel.cyan);
-    this.destinationLabel.update("to " + destination.system + " " + destination.name);
+    this.keyLabel.updateText(key.name, verreciel.cyan);
+    this.destinationLabel.updateText("to " + destination.system + " " + destination.name);
     
     this.pilotPort.addEvent(destination);
     this.pilotPort.enable();
@@ -148,6 +158,7 @@ class IconPortal extends Icon
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.color = verreciel.white;
@@ -184,6 +195,7 @@ class StructurePortal extends Structure
 {
   constructor()
   {
+    assertArgs(arguments, 0);
     super();
     
     this.isWarping = false;
@@ -206,6 +218,7 @@ class StructurePortal extends Structure
   
   onSight()
   {
+    assertArgs(arguments, 0);
     super.onSight();
     
     this.onLock();
@@ -213,6 +226,7 @@ class StructurePortal extends Structure
   
   onWarp()
   {
+    assertArgs(arguments, 0);
     this.root.updateChildrenColors(verreciel.cyan);
     
     // TODO: SCNTransaction
@@ -229,7 +243,8 @@ class StructurePortal extends Structure
   }
   
   onUnlock()
-  {   
+  {
+    assertArgs(arguments, 0);   
     this.root.updateChildrenColors(verreciel.cyan);
     
     // TODO: SCNTransaction
@@ -247,6 +262,7 @@ class StructurePortal extends Structure
   
   onLock()
   {
+    assertArgs(arguments, 0);
     if (isWarping == true)
     {
       return;
@@ -269,6 +285,7 @@ class StructurePortal extends Structure
   
   onLeave()
   {
+    assertArgs(arguments, 0);
     super.onLeave();
     
     this.isWarping = false;

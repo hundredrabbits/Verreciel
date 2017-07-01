@@ -2,6 +2,7 @@ class SceneTrigger extends Empty
 {
   constructor(host, size, operation = 0)
   {
+    assertArgs(arguments, 2);
     super();
     this.isEnabled = true;
     this.operation = operation;
@@ -15,6 +16,7 @@ class SceneTrigger extends Empty
   
   touch(id)
   {
+    assertArgs(arguments, 1);
     if (isEnabled == false)
     {
       return false;
@@ -24,17 +26,20 @@ class SceneTrigger extends Empty
   
   update()
   {
+    assertArgs(arguments, 0);
     
   }
   
   debug()
   {
+    assertArgs(arguments, 0);
     // TODO: THREEJS
     // this.geometry?.materials.first?.diffuse.contents = red
   }
   
   enable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = true;
     // TODO: THREEJS
     // this.geometry = SCNPlane(width: size.width, height: size.height)
@@ -43,6 +48,7 @@ class SceneTrigger extends Empty
   
   disable()
   {
+    assertArgs(arguments, 0);
     this.isEnabled = false;
     // TODO: THREEJS
     // this.geometry = SCNPlane(width: 0, height: 0)
