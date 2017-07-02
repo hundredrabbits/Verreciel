@@ -50,10 +50,10 @@ class Structure extends Empty
     }
     else
     {
-      rot.rotation.z = degToRad(this.host.align);
+      this.rot.rotation.z = degToRad(this.host.align);
     }
     
-    rot.rotation.y = degToRad(verreciel.capsule.direction);
+    this.rot.rotation.y = degToRad(verreciel.capsule.direction);
     
     if (this.host.distance > Settings.approach)
     {

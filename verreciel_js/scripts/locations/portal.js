@@ -232,7 +232,7 @@ class StructurePortal extends Structure
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 1.5;
     
-    for (let node in this.root.children)
+    for (let node of this.root.children)
     {
       node.children[0].position.set(2,1,2);
     }
@@ -248,7 +248,7 @@ class StructurePortal extends Structure
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 0.5;
     
-    for (let node in this.root.children)
+    for (let node of this.root.children)
     {
       node.children[0].position.set(0,0,0);
     }
@@ -259,7 +259,7 @@ class StructurePortal extends Structure
   onLock()
   {
     assertArgs(arguments, 0);
-    if (isWarping == true)
+    if (this.isWarping == true)
     {
       return;
     }
@@ -269,7 +269,7 @@ class StructurePortal extends Structure
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 0.5;
     
-    for (let node in this.root.children)
+    for (let node of this.root.children)
     {
       node.children[0].position.set(-2,0,0);
     }

@@ -117,7 +117,7 @@ class Intercom extends MainPanel
   {
     assertArgs(arguments, 1);
     this.refresh();
-    this.music.playEffect("click3");
+    verreciel.music.playEffect("click3");
     return false;
   }
   

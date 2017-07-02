@@ -123,7 +123,7 @@ class StructureClose extends Structure
     
     this.root.rotation.y = degToRad(morphTime * 45);
     
-    for (let node in this.root.children)
+    for (let node of this.root.children)
     {
       node.children[0].rotation.z = degToRad(morphTime * 180);
       node.children[0].rotation.x = degToRad(morphTime * 90);

@@ -91,7 +91,7 @@ class Capsule extends Empty
       
       var approachSpeed = 0.5;
       
-      let distanceRatio = distanceBetweenTwoPoints(at, this.location.at)/0.5;
+      let distanceRatio = distanceBetweenTwoPoints(this.at, this.location.at)/0.5;
       approachSpeed = approachSpeed * distanceRatio;
       
       var speed = distanceRatio/600;
@@ -220,7 +220,7 @@ class Capsule extends Empty
   {
     assertArgs(arguments, 0);
     var closestLocation = null;
-    for (let location in verreciel.universe.allLocations)
+    for (let location of verreciel.universe.allLocations)
     {
       if (location.isKnown == false)
       {
@@ -385,7 +385,7 @@ class Capsule extends Empty
   {
     assertArgs(arguments, 0);
     var count = 0;
-    for (let panel in this.panels)
+    for (let panel of this.panels)
     {
       if (panel.isInstalled == true)
       {

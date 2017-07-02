@@ -2,11 +2,9 @@ TODO
 
 CHECK: Never override a method with a different signature
 
-Thruster is missing lines
 Progress bar weird issue
 Wires aren't displaying
-Above panel visibility
-Thruster is too slow?
+Locations come and go at odd angles
 
 Try MeshLine again
 

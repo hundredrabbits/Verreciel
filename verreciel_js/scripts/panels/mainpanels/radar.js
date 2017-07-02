@@ -132,7 +132,7 @@ class Radar extends MainPanel
     this.updateTarget();
     
     // Check for overlapping events
-    for (let newEvent in verreciel.universe.allLocations)
+    for (let newEvent of verreciel.universe.allLocations)
     {
       if (newEvent.position.x == event.position.x && newEvent.position.y == event.position.y && event != newEvent)
       {
@@ -170,7 +170,7 @@ class Radar extends MainPanel
     verpilot.footer.show();
     this.handle.show();
     
-    for (let location in verpilot.universe.allLocations)
+    for (let location of verpilot.universe.allLocations)
     {
       location.onRadarView();
     }
@@ -187,7 +187,7 @@ class Radar extends MainPanel
     verpilot.header.hide()
     this.handle.hide();
     
-    for (let location in verpilot.universe.allLocations)
+    for (let location of verpilot.universe.allLocations)
     {
       location.onHelmetView()
     }

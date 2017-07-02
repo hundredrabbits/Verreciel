@@ -133,7 +133,7 @@ class Location extends Event
   onApproach()
   {
     assertArgs(arguments, 0);
-    if (mapRequirement != null && verreciel.nav.port.hasEvent(mapRequirement) == false)
+    if (this.mapRequirement != null && verreciel.nav.port.hasEvent(this.mapRequirement) == false)
     {
       return;
     }
@@ -188,7 +188,7 @@ class Location extends Event
       return;
     }
     
-    for (let port in this.storage)
+    for (let port of this.storage)
     {
       if (port.hasItem() == true)
       {
@@ -340,7 +340,7 @@ class Location extends Event
   {
     assertArgs(arguments, 0);
     var collection = [];
-    for (let port in this.storage)
+    for (let port of this.storage)
     {
       if (port.hasEvent() == true && port.event.isQuest == true)
       {
@@ -354,7 +354,7 @@ class Location extends Event
   {
     assertArgs(arguments, 0);
     // TODO: Almost definitely a bug
-    for (let port in this.storage)
+    for (let port of this.storage)
     {
       if (port.hasEvent() == true)
       {

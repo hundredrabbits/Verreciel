@@ -121,7 +121,7 @@ class LocationBank extends Location
     this.structure.hide();
     
     var i = 0;
-    for (let mesh in this.structure.children)
+    for (let mesh of this.structure.children)
     {
       mesh.rotation.y = degToRad(i * 0.10);
       i += 1;

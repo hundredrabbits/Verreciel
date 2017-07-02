@@ -38,7 +38,7 @@ class LocationHarvest extends Location
       return;
     }
     
-    this.progressRadial.update(this.generationCountdown/this.generationRate * 100);
+    this.progressRadial.updatePercent(this.generationCountdown/this.generationRate * 100);
     
     if (this.generationCountdown < this.generationRate && this.port.hasEvent(this.grows) == false)
     {
@@ -93,11 +93,11 @@ class LocationHarvest extends Location
     assertArgs(arguments, 0);
     if (this.port.hasEvent(this.grows) != true)
     {
-      this.icon.mesh.updateChildrenColors(verwhite.grey);
+      this.icon.mesh.updateChildrenColors(verreciel.grey);
     }
     else
     {
-      this.icon.mesh.updateChildrenColors(verwhite.white);
+      this.icon.mesh.updateChildrenColors(verreciel.white);
     }
   }
 }
@@ -161,11 +161,11 @@ class StructureHarvest extends Structure
     
     if (this.host.port.hasEvent() != true)
     {
-      this.root.updateChildrenColors(vercyan.grey);
+      this.root.updateChildrenColors(verreciel.grey);
     }
     else
     {
-      this.root.updateChildrenColors(vercyan.cyan);
+      this.root.updateChildrenColors(verreciel.cyan);
     }
   }
   

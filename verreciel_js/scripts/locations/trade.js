@@ -144,9 +144,9 @@ class StructureTrade extends Structure
     let value1 = 3;
     let value2 = 5;
     
-    let nodes = 24;
+    this.nodes = 24;
     var i = 0;
-    while (i < nodes)
+    while (i < this.nodes)
     { 
       let node = new Empty();
       
@@ -177,7 +177,7 @@ class StructureTrade extends Structure
     var i = 0;
     for (let node of this.root.children)
     {
-      node.rotation.y = degToRad(i * 360/nodes);
+      node.rotation.y = degToRad(i * 360/this.nodes);
       i += 1;
     }
     
@@ -195,7 +195,7 @@ class StructureTrade extends Structure
     var i = 0;
     for (let node of this.root.children)
     {
-      node.rotation.y = degToRad(i * 360/nodes);
+      node.rotation.y = degToRad(i * 360/this.nodes);
       i += 1;
     }
     

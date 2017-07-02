@@ -88,9 +88,9 @@ class ScenePort extends Empty
     
     // Wire
     this.wire.isActive = false;
-    if (this.connection != null && event != null)
+    if (this.connection != null && this.event != null)
     {
-      wire.isActive = true;
+      this.wire.isActive = true;
     }
     
     // Blink
@@ -276,7 +276,7 @@ class ScenePort extends Empty
   hasEvent()
   {
     assertArgs(arguments, 0);
-    if (event != null)
+    if (this.event != null)
     {
       return true;
     }
@@ -286,11 +286,11 @@ class ScenePort extends Empty
   hasItem()
   {
     assertArgs(arguments, 0);
-    if (event == null)
+    if (this.event == null)
     {
       return false;
     }
-    if ((event instanceof Item) == true)
+    if ((this.event instanceof Item) == true)
     {
       return true;
     }
@@ -300,15 +300,15 @@ class ScenePort extends Empty
   hasItemOfType(target)
   {
     assertArgs(arguments, 1);
-    if (event == null)
+    if (this.event == null)
     {
       return false;
     }
-    if ((event instanceof Item) == false)
+    if ((this.event instanceof Item) == false)
     {
       return false;
     }
-    if (event.type == target)
+    if (this.event.type == target)
     {
       return true;
     }
@@ -318,15 +318,15 @@ class ScenePort extends Empty
   hasItemLike(target)
   {
     assertArgs(arguments, 1);
-    if (event == null)
+    if (this.event == null)
     {
       return false;
     }
-    if ((event instanceof Item) == false)
+    if ((this.event instanceof Item) == false)
     {
       return false;
     }
-    if (event.name == target.name)
+    if (this.event.name == target.name)
     {
       return true;
     }
@@ -336,7 +336,7 @@ class ScenePort extends Empty
   isReceiving()
   {
     assertArgs(arguments, 0);
-    if (this.origin != null && origin.event != null)
+    if (this.origin != null && this.origin.event != null)
     {
       return true;
     }
@@ -364,7 +364,7 @@ class ScenePort extends Empty
   isReceiving(event)
   {
     assertArgs(arguments, 1);
-    if (this.origin != null && origin.event != null && origin.event == event)
+    if (this.origin != null && this.origin.event != null && this.origin.event == event)
     {
       return true;
     }
@@ -382,7 +382,7 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.event instanceof Item) == false)
+    if ((this.origin.event instanceof Item) == false)
     {
       return false;
     }
@@ -404,7 +404,7 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.event instanceof Item) == false)
+    if ((this.origin.event instanceof Item) == false)
     {
       return false;
     }
@@ -486,7 +486,7 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.event instanceof Location) == false)
+    if ((this.origin.event instanceof Location) == false)
     {
       return false;
     }
@@ -504,7 +504,7 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.event instanceof Item) == false)
+    if ((this.origin.event instanceof Item) == false)
     {
       return false;
     }

@@ -42,7 +42,7 @@ class Mission
     assertArgs(arguments, 0);
     if (this.currentQuest.location != null)
     {
-      if (capsule.isDockedAtLocation(this.currentQuest.location))
+      if (verreciel.capsule.isDockedAtLocation(this.currentQuest.location))
       {
         verreciel.helmet.addMessage(this.currentQuest.name)
       }

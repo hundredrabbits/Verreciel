@@ -90,7 +90,7 @@ class Console extends MainPanel
     this.clear();
     
     var id = 0;
-    for (let data in payload.data)
+    for (let data of payload.data)
     {
       this.lines[id].updateData(data);
       id += 1;
