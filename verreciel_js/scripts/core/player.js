@@ -18,6 +18,8 @@ class Player extends Empty
     this.port = new ScenePort(this);
     this.port.enable();
 
+    // TODO: spacewalk
+    /*
     this.trigger = new SceneTrigger(this, 2, 0.75);
     this.trigger.position.set(0, 0.9, -1.01);
     this.trigger.hide();
@@ -26,6 +28,7 @@ class Player extends Empty
     this.triggerLabel = new SceneLabel("return to capsule", 0.03, Alignment.center, verreciel.red);
     this.triggerLabel.position.set(0,0,0);
     this.trigger.add(this.triggerLabel);
+    */
   }
   
   whenStart()

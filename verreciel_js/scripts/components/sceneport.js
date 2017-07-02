@@ -83,28 +83,8 @@ class ScenePort extends Empty
     this.sprite_input.show();
     this.sprite_output.show();
     
-    // Input
-    if (this.isEnabled == false)
-    {
-      this.sprite_input.updateColor(verreciel.clear);
-    }
-    else if (this.origin == null)
-    {
-      this.sprite_input.updateColor(verreciel.grey);
-    }
-    else
-    {
-      this.sprite_input.updateColor(verreciel.red);
-    }
-
-    // Output
-    if (this.event == null || this.isEnabled == false)
-    {
-      this.sprite_output.updateColor(verreciel.grey);
-    }
-    else {
-      this.sprite_output.updateColor(verreciel.cyan);
-    }
+    this.sprite_input.updateColor(this.inputColor());
+    this.sprite_output.updateColor(this.outputColor());
     
     // Wire
     this.wire.isActive = false;
@@ -119,6 +99,30 @@ class ScenePort extends Empty
       this.sprite_output.updateChildrenColors(verreciel.cyan);
       this.sprite_output.blink();
     }
+  }
+
+  inputColor()
+  {
+    if (this.isEnabled == false)
+    {
+      return verreciel.clear;
+    }
+    else if (this.origin == null)
+    {
+      return verreciel.grey;
+    }
+    
+    return verreciel.red;
+  }
+
+  outputColor()
+  {
+    if (this.event == null || this.isEnabled == false)
+    {
+      return verreciel.grey;
+    }
+    
+    return verreciel.cyan;
   }
   
   activate()

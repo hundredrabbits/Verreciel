@@ -2,11 +2,13 @@ TODO
 
 CHECK: Never override a method with a different signature
 
-distSquaredBetweenTwoPoints
-
+Thruster is missing lines
+Progress bar weird issue
 Wires aren't displaying
 Above panel visibility
 Thruster is too slow?
+
+Try MeshLine again
 
 Run a JavaScript linter
 
@@ -20,3 +22,6 @@ State recovery
   What are some states that cannot be returned to?
 
 What should be interactive, when?
+
+Spacewalk
+  Out the hatch, presumably

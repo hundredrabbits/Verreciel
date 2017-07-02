@@ -11,7 +11,7 @@ class SceneTrigger extends Empty
     this.geometry.fromBufferGeometry(new THREE.PlaneBufferGeometry(width * 0.5, height * 0.5));
     this.geometry.mergeVertices();
     
-    this.color = verreciel.clear;
+    this.color = DEBUG_TRIGGERS ? SceneTrigger.DEBUG_BLUE : verreciel.clear;
   }
   
   touch(id)
@@ -33,13 +33,22 @@ class SceneTrigger extends Empty
   {
     assertArgs(arguments, 0);
     this.isEnabled = true;
-    this.opacity = 1;
+    if (DEBUG_TRIGGERS)
+    {
+      this.color = SceneTrigger.DEBUG_BLUE;
+    }
   }
   
   disable()
   {
     assertArgs(arguments, 0);
     this.isEnabled = false;
-    this.opacity = 0;
+    if (DEBUG_TRIGGERS)
+    {
+      this.color = SceneTrigger.DEBUG_WHITE;
+    }
   }
 }
+
+SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 1);
+SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1);

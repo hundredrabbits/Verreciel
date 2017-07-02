@@ -50,23 +50,18 @@ class ScenePortSlot extends ScenePort
     this.disable();
   }
   
-  whenRenderer()
+  inputColor()
   {
-    assertArgs(arguments, 0);
-    super.whenRenderer();
-    
     if (this.isEnabled == false)
     {
-      this.sprite_input.updateColor(verreciel.clear);
+      return verreciel.clear;
     }
     else if (this.event != null)
     {
-      this.sprite_input.updateColor(verreciel.clear);
+      return verreciel.clear;
     }
-    else
-    {
-      this.sprite_input.updateColor(verreciel.grey);
-    }
+    
+    return verreciel.grey;
   }
   
   refresh()

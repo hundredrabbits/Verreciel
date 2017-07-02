@@ -3,6 +3,7 @@ class SceneNode
   constructor(method = null)
   {
     assertArgs(arguments, 0);
+    this.id = SceneNode.ids++;
     this.method = method;
     this.children = [];
     var masterOpacity = 1;
@@ -167,3 +168,4 @@ class SceneNode
   }
 }
 
+SceneNode.ids = 0;
