@@ -5,6 +5,7 @@ class SceneTransaction
     assertArgs(arguments, 0, true);
     this.begun = false;
     this.properties = [];
+    this.ease = Penner.easeOutQuart;
   }
 
   begin()
@@ -147,6 +148,7 @@ class SceneProperty
     let duration = this.sceneTransaction.animationDuration;
     let target = this.target;
     let property = this.property;
+    let ease = this.sceneTransaction.ease;
     
     var percent = 0;
     var lastFrameTime = Date.now();
@@ -166,7 +168,9 @@ class SceneProperty
         percent = 1;
       }
 
-      target[property] = newValue * percent + oldValue * (1 - percent);
+      let easedPercent = ease(percent, 0, 1, 1);
+
+      target[property] = newValue * easedPercent + oldValue * (1 - easedPercent);
 
       if (percent < 1)
       {
