@@ -121,6 +121,8 @@ class Verreciel
   render()
   {
     assertArgs(arguments, 0);
+    requestAnimationFrame( this.render.bind(this) );
+    
     let frameTime = Date.now();
 
     let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
@@ -133,7 +135,6 @@ class Verreciel
       this.space.whenRenderer();
       this.renderer.render( this.scene, this.camera );
     }
-    requestAnimationFrame( this.render.bind(this) );
   }
 
   mouseDown(e)
@@ -233,10 +234,10 @@ class Verreciel
   }
 }
 
-class Methods extends Enum{} setEnumValues(Methods, ['lineArt', 'interactiveRegion']);
-class Alignment extends Enum{} setEnumValues(Alignment, ['left', 'center', 'right',]);
-class Systems extends Enum{} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
-class ItemTypes extends Enum{} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);
+class Methods {} setEnumValues(Methods, ['lineArt', 'interactiveRegion']);
+class Alignment {} setEnumValues(Alignment, ['left', 'center', 'right',]);
+class Systems {} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
+class ItemTypes {} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);
 
 const Records =
 {

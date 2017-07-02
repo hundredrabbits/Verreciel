@@ -46,7 +46,7 @@ class Panel extends Empty
   installProgress()
   {
     assertArgs(arguments, 0);
-    this.installPercentage += Math.random(60) / 10;
+    this.installPercentage += Math.random() * 6;
     
     if (this.installPercentage > 100) {
       this.onInstallationComplete();

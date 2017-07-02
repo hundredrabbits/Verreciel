@@ -115,13 +115,13 @@ class Thruster extends MainPanel
     if (id == 0)
     {
       this.speedDown();
-      this.music.playEffect("click3");
+      verreciel.music.playEffect("click3");
       return true;
     }
     else if (id == 1)
     {
       this.speedUp();
-      this.music.playEffect("click4");
+      verreciel.music.playEffect("click4");
       return true;
     }
     if (id == 2)
@@ -134,7 +134,7 @@ class Thruster extends MainPanel
       {
         verreciel.capsule.undock();
       }
-      this.music.playEffect("click2");
+      verreciel.music.playEffect("click2");
       return true;
     }
     return false;

@@ -112,7 +112,7 @@ class Widget extends Panel
     assertArgs(arguments, 0);
     super.installProgress();
     this.installLabel.updateText("Install " + this.installPercentage.toFixed(0) + "%");
-    this.installProgressBar.update(this.installPercentage);
+    this.installProgressBar.updatePercent(this.installPercentage);
   }
   
   onInstallationComplete()

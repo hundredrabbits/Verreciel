@@ -156,15 +156,13 @@ class SceneNode
   convertPositionToNode(position, node)
   {
     assertArgs(arguments, 2);
-    return new THREE.Vector3(); // TODO: REMOVE
-    // TODO: THREEJS
+    return position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
   }
 
   convertPositionFromNode(position, node)
   {
     assertArgs(arguments, 2);
-    return new THREE.Vector3(); // TODO: REMOVE
-    // TODO: THREEJS
+    return position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
   }
 }
 

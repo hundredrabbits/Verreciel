@@ -210,7 +210,7 @@ class Helmet extends Empty
   
   addWarning(text, color, duration, flag)
   {
-    assertArgs(arguments, 4);
+    assertArgs(arguments, 3);
     if (verreciel.game.time - this.lastWarning <= 10)
     {
       return;

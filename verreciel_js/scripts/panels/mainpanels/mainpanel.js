@@ -91,7 +91,7 @@ class MainPanel extends Panel
     
     this.installNode = new Empty();
     this.installNode.position.set(0,0,0);
-    this.installProgressBar = SceneProgressBar(1);
+    this.installProgressBar = new SceneProgressBar(1);
     this.installProgressBar.position.set(-this.installProgressBar.width/2,-0.3,0);
     this.installProgressBar.show();
     this.installNode.add(this.installProgressBar);
@@ -107,7 +107,7 @@ class MainPanel extends Panel
     super.installProgress();
     
     this.installLabel.updateText("Install " + this.installPercentage.toFixed(0) + "%");
-    this.installProgressBar.update(this.installPercentage);
+    this.installProgressBar.updatePercent(this.installPercentage);
   }
   
   onInstallationComplete()
