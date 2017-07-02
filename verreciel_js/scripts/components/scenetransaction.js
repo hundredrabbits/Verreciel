@@ -50,25 +50,25 @@ class ScenePropertyXYZ
   {
     assertArgs(arguments, 3);
     var xyz = target[property];
-    var xProperty = new SceneProperty(sceneTransaction, xyz, "x", angles);
-    var yProperty = new SceneProperty(sceneTransaction, xyz, "y", angles);
-    var zProperty = new SceneProperty(sceneTransaction, xyz, "z", angles);
+    this.__xProperty = new SceneProperty(sceneTransaction, xyz, "x", angles);
+    this.__yProperty = new SceneProperty(sceneTransaction, xyz, "y", angles);
+    this.__zProperty = new SceneProperty(sceneTransaction, xyz, "z", angles);
     
     Object.defineProperties( this, {
       x:
       {
-        get: function() { return xProperty.value; },
-        set: function(value) { xProperty.value = value; }
+        get: function() { return this.__xProperty.value; },
+        set: function(value) { this.__xProperty.value = value; }
       },
       y:
       {
-        get: function() { return yProperty.value; },
-        set: function(value) { yProperty.value = value; }
+        get: function() { return this.__yProperty.value; },
+        set: function(value) { this.__yProperty.value = value; }
       },
       z:
       {
-        get: function() { return zProperty.value; },
-        set: function(value) { zProperty.value = value; }
+        get: function() { return this.__zProperty.value; },
+        set: function(value) { this.__zProperty.value = value; }
       }
     });
   }
@@ -79,6 +79,14 @@ class ScenePropertyXYZ
     this.x = x;
     this.y = y;
     this.z = z;
+  }
+
+  setNow(x, y, z)
+  {
+    assertArgs(arguments, 3, true);
+    this.__xProperty.setNow(x);
+    this.__yProperty.setNow(y);
+    this.__zProperty.setNow(z);
   }
 
   copy(other)
@@ -108,28 +116,36 @@ class SceneProperty
     this.property = property;
     this.isAngle = isAngle;
 
-    var value = this.target[this.property];
-    if (this.isAngle) { value = sanitizeAngle(value); }
+    this.__value = this.target[this.property];
+    if (this.isAngle) { this.__value = sanitizeAngle(this.__value); }
 
     Object.defineProperties( this, {
       value:
       {
-        get: function() { return value; },
+        get: function() { return this.__value; },
         set: function(newValue) {
           if (this.isAngle) { newValue = sanitizeAngle(newValue); }
-          if (value == newValue) { return; }
-          value = newValue;
+          if (this.__value == newValue) { return; }
+          this.__value = newValue;
           if (sceneTransaction.begun)
           {
             this.sceneTransaction.registerProperty(this);
           }
           else
           {
-            this.target[this.property] = value;
+            this.target[this.property] = this.__value;
           }
         }
       }
     });
+  }
+
+  setNow(newValue)
+  {
+    if (this.isAngle) { newValue = sanitizeAngle(newValue); }
+    if (this.__value == newValue) { return; }
+    this.__value = newValue;
+    this.target[this.property] = this.__value;
   }
 
   commit()

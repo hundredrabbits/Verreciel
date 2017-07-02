@@ -25,8 +25,8 @@ class SceneNode
         this.meat = new THREE.Mesh(this.geometry, this.material);
       }
       
-      var color4 = new THREE.Vector4(1, 1, 1, 1);
-      var opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
+      this.__color4 = new THREE.Vector4(1, 1, 1, 1);
+      this.__opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
     }
     
     this.meat.node = this;
@@ -45,12 +45,9 @@ class SceneNode
       {
         get: function() { return masterOpacity; },
         set: function(value) {
+          if (masterOpacity == value) { return; }
           masterOpacity = value;
-          if (this.method != null) { opacityProperty.value = this.opacityFromTop * color4.w; }
-          for (let child of this.children)
-          {
-            child.opacity = child.opacity;
-          }
+          this.whenInherit();
         }
       },
       opacityFromTop:
@@ -71,17 +68,13 @@ class SceneNode
       Object.defineProperties( this, {
         color:
         {
-          get : function() { return color4; },
+          get : function() { return this.__color4; },
           set : function(newColor) {
-            color4.copy(newColor);
-            this.material.color.r = color4.x;
-            this.material.color.g = color4.y;
-            this.material.color.b = color4.z;
-            opacityProperty.value = this.opacityFromTop * color4.w;
-            for (let child of this.children)
-            {
-              child.opacity = child.opacity;
-            }
+            this.__color4.copy(newColor);
+            this.material.color.r = this.__color4.x;
+            this.material.color.g = this.__color4.y;
+            this.material.color.b = this.__color4.z;
+            this.whenInherit();
           }
         }
       });
@@ -93,6 +86,7 @@ class SceneNode
     this.meat.add(other.meat);
     this.children.push(other);
     other.parent = this;
+    other.whenInherit();
     this.opacity = this.opacity;
   }
 
@@ -101,6 +95,18 @@ class SceneNode
     this.meat.remove(other.meat);
     this.children.splice(this.children.indexOf(other), 1);
     other.parent = null;
+  }
+
+  whenInherit()
+  {
+    if (this.method != null)
+    {
+      this.__opacityProperty.value = this.opacityFromTop * this.__color4.w;
+    }
+    for (let node of this.children)
+    {
+      node.whenInherit();
+    }
   }
 
   whenStart()

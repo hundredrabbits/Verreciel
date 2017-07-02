@@ -14,7 +14,7 @@ class Music
   playEffect(name)
   {
     assertArgs(arguments, 1);
-    console.log("Effect: ",name);
+    // console.log("Effect: ",name);
     this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg");
     this.trackEffect.play()
   }

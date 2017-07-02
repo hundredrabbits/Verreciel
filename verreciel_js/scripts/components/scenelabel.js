@@ -23,12 +23,12 @@ class SceneLabel extends Empty
     if (this.activeAlignment == Alignment.center)
     {
       let wordLength = this.activeText.length * this.activeScale * 1.5;
-      this.nodeOffset.position.set((-wordLength/2), 0, 0);
+      this.nodeOffset.position.setNow((-wordLength/2), 0, 0);
     }
     else if (this.activeAlignment == Alignment.right)
     {
       let wordLength = this.activeText.length * this.activeScale * 1.5;
-      this.nodeOffset.position.set(-wordLength + (this.activeScale * 0.5), 0, 0);
+      this.nodeOffset.position.setNow(-wordLength + (this.activeScale * 0.5), 0, 0);
     }
   }
   
@@ -46,7 +46,7 @@ class SceneLabel extends Empty
         continue;
       }
       let letterNode = this.letter(letterCur, scale);
-      letterNode.position.set(scale * 1.5 * letterPos, scale * linePos * -4.15, 0);
+      letterNode.position.setNow(scale * 1.5 * letterPos, scale * linePos * -4.15, 0);
       this.nodeOffset.add(letterNode);
       letterPos += 1;
     }
