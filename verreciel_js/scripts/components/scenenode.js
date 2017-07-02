@@ -35,17 +35,14 @@ class SceneNode
     Object.defineProperties( this, {
       position:
       {
-        enumerable: true,
         value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "position")
       },
       rotation:
       {
-        enumerable: true,
         value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "rotation")
       },
       opacity:
       {
-        enumerable: true,
         get: function() { return masterOpacity; },
         set: function(value) {
           masterOpacity = value;
@@ -58,7 +55,6 @@ class SceneNode
       },
       opacityFromTop:
       {
-        enumerable: false,
         get : function() {
           var total = masterOpacity;
           if (this.parent != null)
@@ -75,7 +71,6 @@ class SceneNode
       Object.defineProperties( this, {
         color:
         {
-          enumerable: true,
           get : function() { return color4; },
           set : function(newColor) {
             color4.copy(newColor);

@@ -36,12 +36,24 @@ function angleBetweenTwoPoints(point1, point2, center)
   return deg;
 }
 
-function sanitizeAngle(angle)
+function sanitizeAngle(angle, inDegrees = false)
 {
-  while (angle.x < -Math.PI * 2) { angle.x += Math.PI * 2; }
-  while (angle.x >  Math.PI * 2) { angle.x -= Math.PI * 2; }
-  // TODO: the simpler implementation
-  return angle;
+  return angle % ((inDegrees ? 360 : Math.PI * 2) * (angle < 0 ? -1 : 1));
+}
+
+function sanitizeDiffAngle(angle1, angle2, inDegrees = false)
+{
+  var diffAngle = sanitizeAngle(angle1) - sanitizeAngle(angle2);
+  let limit = inDegrees ? 180 : Math.PI;
+  if (diffAngle > limit)
+  {
+    diffAngle -= 2 * limit;
+  }
+  else if (diffAngle < -limit)
+  {
+    diffAngle += 2 * limit;
+  }
+  return diffAngle;
 }
 
 function delay(seconds, callback)

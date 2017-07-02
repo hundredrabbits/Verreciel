@@ -51,9 +51,6 @@ class Player extends Empty
       this.rotation.x += this.accelX;
       this.rotation.y += this.accelY;
 
-      this.rotation.x = sanitizeAngle(this.rotation.x);
-      this.rotation.y = sanitizeAngle(this.rotation.y);
-
       this.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI * 2 / 3, this.rotation.x));
 
       //dampening

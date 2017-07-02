@@ -2,7 +2,11 @@ TODO
 
 CHECK: Never override a method with a different signature
 
+distSquaredBetweenTwoPoints
+
 Wires aren't displaying
+Above panel visibility
+Thruster is too slow?
 
 Run a JavaScript linter
 

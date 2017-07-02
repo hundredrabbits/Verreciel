@@ -46,30 +46,27 @@ class SceneTransaction
 
 class ScenePropertyXYZ
 {
-  constructor(sceneTransaction, target, property)
+  constructor(sceneTransaction, target, property, angles = false)
   {
-    assertArgs(arguments, 3, true);
+    assertArgs(arguments, 3);
     var xyz = target[property];
-    var xProperty = new SceneProperty(sceneTransaction, xyz, "x");
-    var yProperty = new SceneProperty(sceneTransaction, xyz, "y");
-    var zProperty = new SceneProperty(sceneTransaction, xyz, "z");
+    var xProperty = new SceneProperty(sceneTransaction, xyz, "x", angles);
+    var yProperty = new SceneProperty(sceneTransaction, xyz, "y", angles);
+    var zProperty = new SceneProperty(sceneTransaction, xyz, "z", angles);
     
     Object.defineProperties( this, {
       x:
       {
-        enumerable: true,
         get: function() { return xProperty.value; },
         set: function(value) { xProperty.value = value; }
       },
       y:
       {
-        enumerable: true,
         get: function() { return yProperty.value; },
         set: function(value) { yProperty.value = value; }
       },
       z:
       {
-        enumerable: true,
         get: function() { return zProperty.value; },
         set: function(value) { zProperty.value = value; }
       }
@@ -103,22 +100,24 @@ class ScenePropertyXYZ
 
 class SceneProperty
 {
-  constructor(sceneTransaction, target, property)
+  constructor(sceneTransaction, target, property, isAngle = false)
   {
-    assertArgs(arguments, 3, true);
+    assertArgs(arguments, 3);
     this.sceneTransaction = sceneTransaction;
     this.target = target;
     this.property = property;
+    this.isAngle = isAngle;
 
     var value = this.target[this.property];
+    if (this.isAngle) { value = sanitizeAngle(value); }
 
     Object.defineProperties( this, {
       value:
       {
-        enumerable: false,
         get: function() { return value; },
         set: function(newValue) {
-
+          if (this.isAngle) { newValue = sanitizeAngle(newValue); }
+          if (value == newValue) { return; }
           value = newValue;
           if (sceneTransaction.begun)
           {
@@ -138,11 +137,17 @@ class SceneProperty
     assertArgs(arguments, 0, true);
 
     let oldValue = this.target[this.property];
+    if (this.isAngle) { oldValue = sanitizeAngle(oldValue); }
     let newValue = this.value;
 
     if (oldValue == newValue)
     {
       return;
+    }
+
+    if (this.isAngle)
+    {
+      oldValue = newValue - sanitizeDiffAngle(newValue, oldValue);
     }
 
     let duration = this.sceneTransaction.animationDuration;

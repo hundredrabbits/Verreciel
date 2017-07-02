@@ -119,24 +119,16 @@ class Helmet extends Empty
     assertArgs(arguments, 0);
     super.whenRenderer();
     
-    this.rotation.x = sanitizeAngle(this.rotation.x);
-    this.rotation.y = sanitizeAngle(this.rotation.y);
+    let diffRotationY = sanitizeDiffAngle(verreciel.player.rotation.y, this.rotation.y);
+    if (Math.abs(diffRotationY) > 0.001)
+    {
+      this.rotation.y += diffRotationY * 0.75;
+    }
 
-    if (this.rotation.y > verreciel.player.rotation.y + 0.0001)
+    let diffRotationX = sanitizeDiffAngle(verreciel.player.rotation.x, this.rotation.x);
+    if (Math.abs(diffRotationX) > 0.001)
     {
-      this.rotation.y -= (this.rotation.y - verreciel.player.rotation.y) * 0.75;
-    }
-    else if (this.rotation.y < verreciel.player.rotation.y - 0.0001)
-    {
-      this.rotation.y -= (this.rotation.y - verreciel.player.rotation.y) * 0.75;
-    }
-    if (this.rotation.x > verreciel.player.rotation.x + 0.0001)
-    {
-      this.rotation.x -= (this.rotation.x - verreciel.player.rotation.x) * 0.85;
-    }
-    else if (this.rotation.x < verreciel.player.rotation.x - 0.0001)
-    {
-      this.rotation.x -= (this.rotation.x - verreciel.player.rotation.x) * 0.85;
+      this.rotation.x += diffRotationX * 0.85;
     }
 
     this.updatePort();

@@ -141,12 +141,12 @@ class Verreciel
   {
     e.preventDefault();
     assertArgs(arguments, 1);
-    this.mouseIsDown = true;
     if (this.player.isLocked)
     {
       return;
     }
 
+    this.mouseIsDown = true;
     this.mouseMoved = false;
     
     this.lastMousePosition.x = e.clientX / this.width;
