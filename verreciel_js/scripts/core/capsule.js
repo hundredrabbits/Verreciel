@@ -133,16 +133,16 @@ class Capsule extends Empty
     
     if (this.closestKnownLocation().distance > 1.5 && this.isWarping == false)
     {
-      verreciel.helmet.addWarning("Returning", 0.1, "radiation");
+      verreciel.helmet.addWarning("Returning", null, 0.1, "radiation");
       this.autoReturn();
     }
     else if (this.isFleeing == true)
     {
-      verreciel.helmet.addWarning("Auto-Pilot", 0.1, "radiation");
+      verreciel.helmet.addWarning("Auto-Pilot", null, 0.1, "radiation");
     }
     else if (this.radiation > 0)
     {
-      verreciel.helmet.addWarning("Radiation " + (radiation * 100).toFixed(1) + "%", 0.1, "radiation");
+      verreciel.helmet.addWarning("Radiation " + (radiation * 100).toFixed(1) + "%", null, 0.1, "radiation");
     }
   }
   

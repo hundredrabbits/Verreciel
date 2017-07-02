@@ -221,7 +221,10 @@ class Helmet extends Empty
     }
     
     this.warningString = text;
-    this.warningColor = color;
+    if (color != null)
+    {
+      this.warningColor = color;
+    }
     this.warningFlag = flag;
     this.lastWarning = verreciel.game.time;
     

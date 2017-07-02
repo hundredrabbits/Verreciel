@@ -822,7 +822,7 @@ class Missions
     m = new Mission(this.story.length, "End");
     m.state = function() {
       verreciel.capsule.at = new THREE.Vector2(0,100);
-      verreciel.helmet.addWarning("mechanism is closed", 60, "end");
+      verreciel.helmet.addWarning("mechanism is closed", null, 60, "end");
     }
     m.quests = [
       new Quest(

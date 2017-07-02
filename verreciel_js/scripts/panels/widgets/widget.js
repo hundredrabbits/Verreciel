@@ -92,7 +92,7 @@ class Widget extends Panel
     assertArgs(arguments, 0);
     super.onInstallationBegin()
     
-    verreciel.helmet.addWarning("Installing", 3, "install");
+    verreciel.helmet.addWarning("Installing", null, 3, "install");
     
     this.installNode = new Empty();
     this.installNode.position.set(0,-0.6,Templates.radius);

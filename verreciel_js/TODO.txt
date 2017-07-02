@@ -2,9 +2,7 @@ TODO
 
 CHECK: Never override a method with a different signature
 
-ThreeJS stuff
-  Interactive planes
-  Raycast on click
+Wires aren't displaying
 
 Run a JavaScript linter
 
