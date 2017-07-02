@@ -36,9 +36,9 @@ class Empty extends SceneNode
   empty()
   {
     assertArgs(arguments, 0);
-    for (let node of this.children)
+    while (this.children.length > 0)
     {
-      node.removeFromParentNode();
+      this.remove(this.children[0]);
     }
   }
   
