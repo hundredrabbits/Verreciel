@@ -7,6 +7,7 @@ class SceneNode
     this.method = method;
     this.children = [];
     var masterOpacity = 1;
+    var masterVisible = true;
     
     if (this.method == null)
     {
@@ -53,14 +54,20 @@ class SceneNode
       },
       opacityFromTop:
       {
-        get : function() {
-          var total = masterOpacity;
-          if (this.parent != null)
-          {
-            total *= this.parent.opacityFromTop;
-          }
-          return total;
+        get : function() { return masterOpacity * (this.parent == null ? 1 : this.parent.opacityFromTop); }
+      },
+      visible:
+      {
+        get: function() { return masterVisible; },
+        set: function(value) {
+          if (masterVisible == value) { return; }
+          masterVisible = value;
+          this.whenInherit();
         }
+      },
+      visibleFromTop:
+      {
+        get : function() { return masterVisible && (this.parent == null ? true : this.parent.visibleFromTop); }
       }
     });
 
@@ -88,7 +95,6 @@ class SceneNode
     this.children.push(other);
     other.parent = this;
     other.whenInherit();
-    this.opacity = this.opacity;
   }
 
   remove(other)
@@ -104,6 +110,7 @@ class SceneNode
     {
       this.__opacityProperty.value = this.opacityFromTop * this.__color4.w;
     }
+    this.meat.visible = this.visibleFromTop;
     for (let node of this.children)
     {
       node.whenInherit();

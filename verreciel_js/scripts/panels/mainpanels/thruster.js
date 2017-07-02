@@ -112,6 +112,10 @@ class Thruster extends MainPanel
   touch(id = 0)
   {
     assertArgs(arguments, 1);
+    if (verreciel.battery.thrusterPort.isReceivingItemOfType(ItemTypes.battery) == false)
+    {
+      return false;
+    }
     if (id == 0)
     {
       this.speedDown();

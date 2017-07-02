@@ -29,7 +29,6 @@ class SceneLine extends Empty
     assertArgs(arguments, 0);
     this.vertices = [];
     this.geometry.vertices = [];
-    this.opacity = 0;
   }
   
   updateColor(color)

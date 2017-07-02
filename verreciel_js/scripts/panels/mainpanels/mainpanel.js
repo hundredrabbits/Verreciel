@@ -132,6 +132,6 @@ class MainPanel extends Panel
     this.installNode.removeFromParentNode();
     
     this.port.enable();
-    this.nameLabel.updateText(name, verreciel.white);
+    this.nameLabel.updateText(this.name, verreciel.white);
   }
 }
