@@ -18,12 +18,13 @@ class SceneNode
       if (this.method == Methods.lineArt)
       {
         this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
+        
         this.geometry = new THREE.Geometry();
         this.geometry.dynamic = true;
         this.meat = new THREE.LineSegments(this.geometry, this.material);
       } else if (this.method == Methods.interactiveRegion)
       {
-        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true });
+        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_TRIGGERS });
         this.geometry = new THREE.Geometry();
         this.geometry.dynamic = true;
         this.meat = new THREE.Mesh(this.geometry, this.material);
@@ -78,8 +79,10 @@ class SceneNode
       Object.defineProperties( this, {
         color:
         {
-          get : function() { return this.__color4; },
-          set : function(newColor) {
+          get: function() { return this.__color4; },
+          set: function(newColor) {
+            if (!this.material.visible) { return; }
+            if (this.__color4.equals(newColor)) { return; }
             this.__color4.copy(newColor);
             this.material.color.r = this.__color4.x;
             this.material.color.g = this.__color4.y;
@@ -111,7 +114,7 @@ class SceneNode
     if (this.method != null)
     {
       this.__opacityProperty.value = this.opacityFromTop * this.__color4.w;
-      this.meat.visible = this.visibleFromTop && this.opacityFromTop > 0;
+      this.meat.visible = this.visibleFromTop && this.opacityFromTop > 0; // This might mess up fade-outs
     }
     else
     {
@@ -168,15 +171,17 @@ class SceneNode
     }
   }
 
-  convertPositionToNode(position, node)
+  convertPositionToNode(xyz, node)
   {
     assertArgs(arguments, 2);
+    let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     return position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
   }
 
-  convertPositionFromNode(position, node)
+  convertPositionFromNode(xyz, node)
   {
     assertArgs(arguments, 2);
+    let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     return position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
   }
 }

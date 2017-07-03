@@ -11,7 +11,7 @@ class SceneTrigger extends Empty
     this.geometry.fromBufferGeometry(new THREE.PlaneBufferGeometry(width * 0.5, height * 0.5));
     this.geometry.mergeVertices();
     
-    this.color = DEBUG_TRIGGERS ? SceneTrigger.DEBUG_BLUE : verreciel.clear;
+    this.color = SceneTrigger.DEBUG_BLUE;
   }
   
   touch(id)
@@ -32,9 +32,9 @@ class SceneTrigger extends Empty
   enable()
   {
     assertArgs(arguments, 0);
-    this.isEnabled = true;
-    if (DEBUG_TRIGGERS)
+    if (!this.isEnabled)
     {
+      this.isEnabled = true;
       this.color = SceneTrigger.DEBUG_BLUE;
     }
   }
@@ -42,9 +42,9 @@ class SceneTrigger extends Empty
   disable()
   {
     assertArgs(arguments, 0);
-    this.isEnabled = false;
-    if (DEBUG_TRIGGERS)
+    if (this.isEnabled)
     {
+      this.isEnabled = false;
       this.color = SceneTrigger.DEBUG_WHITE;
     }
   }
