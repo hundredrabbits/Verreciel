@@ -56,7 +56,7 @@ class Pilot extends MainPanel
     }
     else if (this.port.isReceivingEventOfTypeLocation())
     {
-      this.target = port.origin.event;
+      this.target = this.port.origin.event;
     }
     
     if (this.target != null)
@@ -107,7 +107,7 @@ class Pilot extends MainPanel
     this.targetDirectionIndicator.rotation.z = degToRad(verreciel.capsule.direction) * -1;
     this.staticDirectionIndicator.rotation.z = degToRad(verreciel.capsule.direction);
     
-    if (capsule.isFleeing == true)
+    if (verreciel.capsule.isFleeing == true)
     {
       this.detailsLabel.updateText("Auto", verreciel.red);
     }
@@ -130,6 +130,6 @@ class Pilot extends MainPanel
     assertArgs(arguments, 0);
     super.onInstallationBegin();
     
-    vertices.player.lookAt(-135);
+    verreciel.player.lookAt(-135);
   }
 }

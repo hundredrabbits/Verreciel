@@ -163,14 +163,14 @@ class Radar extends MainPanel
     assertArgs(arguments, 0);
     this.overviewMode = false;
     
-    verpilot.thruster.show();
-    verpilot.pilot.show();
-    verpilot.decals.show();
-    verpilot.header.show();
-    verpilot.footer.show();
+    verreciel.thruster.show();
+    verreciel.pilot.show();
+    verreciel.decals.show();
+    verreciel.header.show();
+    verreciel.footer.show();
     this.handle.show();
     
-    for (let location of verpilot.universe.allLocations)
+    for (let location of verreciel.universe.allLocations)
     {
       location.onRadarView();
     }
@@ -181,13 +181,13 @@ class Radar extends MainPanel
     assertArgs(arguments, 0);   
     this.overviewMode = true;
     
-    verpilot.thruster.hide()
-    verpilot.pilot.hide()
-    verpilot.decals.hide()
-    verpilot.header.hide()
+    verreciel.thruster.hide()
+    verreciel.pilot.hide()
+    verreciel.decals.hide()
+    verreciel.header.hide()
     this.handle.hide();
     
-    for (let location of verpilot.universe.allLocations)
+    for (let location of verreciel.universe.allLocations)
     {
       location.onHelmetView()
     }

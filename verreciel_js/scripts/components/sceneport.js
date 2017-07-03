@@ -465,7 +465,7 @@ class ScenePort extends Empty
   isReceivingLocationOfTypePortal()
   {
     assertArgs(arguments, 0);
-    if (isReceivingLocation() == false)
+    if (this.isReceivingLocation() == false)
     {
       return false;
     }

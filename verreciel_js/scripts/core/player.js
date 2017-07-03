@@ -208,7 +208,7 @@ class Player extends Empty
   {
     assertArgs(arguments, 0);
     super.onConnect()
-    if (port.isReceivingFromPanel(verreciel.nav) == true)
+    if (this.port.isReceivingFromPanel(verreciel.nav) == true)
     {
       radar.modeOverview();
     }
@@ -218,7 +218,7 @@ class Player extends Empty
   {
     assertArgs(arguments, 0);
     super.onDisconnect()
-    if (port.isReceivingFromPanel(verreciel.nav) != true)
+    if (this.port.isReceivingFromPanel(verreciel.nav) != true)
     {
       radar.modeNormal();
     }

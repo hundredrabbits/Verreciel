@@ -114,7 +114,7 @@ class Capsule extends Empty
     
     if (this.isWarping == true)
     {
-      if (warp.distance > 1.5)
+      if (this.warp.distance > 1.5)
       {
         this.warpUp();
       }
@@ -251,7 +251,7 @@ class Capsule extends Empty
     portal.onWarp();
     if (verreciel.intercom.port.origin != null)
     {
-      intercom.port.origin.disconnect();
+      verreciel.intercom.port.origin.disconnect();
     }
     
     destination.isKnown = true;
@@ -266,7 +266,7 @@ class Capsule extends Empty
     assertArgs(arguments, 0);
     if (verreciel.thruster.actualSpeed < 10)
     {
-      thruster.actualSpeed += 0.025;
+      verreciel.thruster.actualSpeed += 0.025;
     }
   }
   

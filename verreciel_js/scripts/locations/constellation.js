@@ -80,6 +80,6 @@ class StructureDoor extends Structure
     assertArgs(arguments, 0);
     super.sightUpdate();
     
-    root.rotation.y += 0.001;
+    this.root.rotation.y += 0.001;
   }
 }
