@@ -183,7 +183,7 @@ class Location extends Event
   retrieveStorage()
   {
     assertArgs(arguments, 0);
-    if (this.storage.count == 0)
+    if (this.storage.length == 0)
     {
       return;
     }

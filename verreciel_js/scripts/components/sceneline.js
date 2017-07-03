@@ -21,6 +21,7 @@ class SceneLine extends Empty
 
     this.vertices = vertices;
     this.geometry.vertices = vertices;
+    this.geometry.verticesNeedUpdate = true;
     this.color = color;
   }
   
@@ -29,6 +30,7 @@ class SceneLine extends Empty
     assertArgs(arguments, 0);
     this.vertices = [];
     this.geometry.vertices = [];
+    this.geometry.verticesNeedUpdate = true;
   }
   
   updateColor(color)

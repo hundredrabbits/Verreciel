@@ -10,6 +10,12 @@ class SceneWire extends Empty
     this.segment3 = new SceneLine([], verreciel.white);
     this.segment4 = new SceneLine([], verreciel.white);
     this.segment5 = new SceneLine([], verreciel.white);
+
+    this.segment1.meat.frustumCulled = false;
+    this.segment2.meat.frustumCulled = false;
+    this.segment3.meat.frustumCulled = false;
+    this.segment4.meat.frustumCulled = false;
+    this.segment5.meat.frustumCulled = false;
     
     this.isEnabled = true;
     this.isActive = false;

@@ -216,7 +216,7 @@ class Thruster extends MainPanel
       this.modeMisaligned();
       this.canWarp = true;
     }
-    else if (verreciel.capsule.isDocked == true && verreciel.capsule.location.storedItems().count > 0)
+    else if (verreciel.capsule.isDocked == true && verreciel.capsule.location.storedItems().length > 0)
     {
       this.modeStorageBusy();
     }

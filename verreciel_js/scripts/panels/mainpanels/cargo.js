@@ -106,27 +106,27 @@ class Cargo extends MainPanel
   removeItem(target)
   {
     assertArgs(arguments, 1);
-    if (this.cargohold.content.count == 1)
+    if (this.cargohold.content.length == 1)
     {
       this.line1.position.x = 0.25;
     }
-    if (this.cargohold.content.count == 2)
+    if (this.cargohold.content.length == 2)
     {
       this.line2.position.x = 0.25;
     }
-    if (this.cargohold.content.count == 3)
+    if (this.cargohold.content.length == 3)
     {
       this.line3.position.x = 0.25;
     }
-    if (this.cargohold.content.count == 4)
+    if (this.cargohold.content.length == 4)
     {
       this.line4.position.x = 0.25;
     }
-    if (this.cargohold.content.count == 5)
+    if (this.cargohold.content.length == 5)
     {
       this.line5.position.x = 0.25;
     }
-    if (this.cargohold.content.count == 6)
+    if (this.cargohold.content.length == 6)
     {
       this.line6.position.x = 0.25;
     }
@@ -134,27 +134,27 @@ class Cargo extends MainPanel
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 0.5;
     
-    if (this.cargohold.content.count == 1)
+    if (this.cargohold.content.length == 1)
     {
       this.line1.position.x = 0;
     }
-    if (this.cargohold.content.count == 2)
+    if (this.cargohold.content.length == 2)
     {
       this.line2.position.x = 0;
     }
-    if (this.cargohold.content.count == 3)
+    if (this.cargohold.content.length == 3)
     {
       this.line3.position.x = 0;
     }
-    if (this.cargohold.content.count == 4)
+    if (this.cargohold.content.length == 4)
     {
       this.line4.position.x = 0;
     }
-    if (this.cargohold.content.count == 5)
+    if (this.cargohold.content.length == 5)
     {
       this.line5.position.x = 0;
     }
-    if (this.cargohold.content.count == 6)
+    if (this.cargohold.content.length == 6)
     {
       this.line6.position.x = 0;
     }
@@ -214,42 +214,42 @@ class Cargo extends MainPanel
     this.line5.updateColor(verreciel.grey);
     this.line6.updateColor(verreciel.grey);
     
-    if (this.cargohold.content.count > 0)
+    if (this.cargohold.content.length > 0)
     {
       this.line1.updateColor( this.cargohold.content[0].isQuest == true ? verreciel.cyan : verreciel.white )
     }
-    if (this.cargohold.content.count > 1)
+    if (this.cargohold.content.length > 1)
     {
       this.line2.updateColor( this.cargohold.content[1].isQuest == true ? verreciel.cyan : verreciel.white )
     }
-    if (this.cargohold.content.count > 2)
+    if (this.cargohold.content.length > 2)
     {
       this.line3.updateColor( this.cargohold.content[2].isQuest == true ? verreciel.cyan : verreciel.white )
     }
-    if (this.cargohold.content.count > 3)
+    if (this.cargohold.content.length > 3)
     {
       this.line4.updateColor( this.cargohold.content[3].isQuest == true ? verreciel.cyan : verreciel.white )
     }
-    if (this.cargohold.content.count > 4)
+    if (this.cargohold.content.length > 4)
     {
       this.line5.updateColor( this.cargohold.content[4].isQuest == true ? verreciel.cyan : verreciel.white )
     }
-    if (this.cargohold.content.count > 5)
+    if (this.cargohold.content.length > 5)
     {
       this.line6.updateColor( this.cargohold.content[5].isQuest == true ? verreciel.cyan : verreciel.white )
     }
     
-    if (this.cargohold.content.count == 0)
+    if (this.cargohold.content.length == 0)
     {
       this.detailsLabel.updateText("Empty", verreciel.grey);
     }
-    else if (this.cargohold.content.count == 6)
+    else if (this.cargohold.content.length == 6)
     {
       this.detailsLabel.updateText("FULL", verreciel.red);
     }
     else
     {
-      this.detailsLabel.updateText(this.cargohold.content.count + "/6", verreciel.white);
+      this.detailsLabel.updateText(this.cargohold.content.length + "/6", verreciel.white);
     }
   }
   
@@ -284,7 +284,7 @@ class Cargo extends MainPanel
       return;
     }
     
-    if (this.cargohold.content.count < 6)
+    if (this.cargohold.content.length < 6)
     {
       this.upload(this.port.event);
     }
@@ -324,27 +324,27 @@ class Cargo extends MainPanel
   uploadComplete()
   {
     assertArgs(arguments, 0);
-    if (this.cargohold.content.count == 0)
+    if (this.cargohold.content.length == 0)
     {
       this.line1.position.x = -0.25;
     }
-    if (this.cargohold.content.count == 1)
+    if (this.cargohold.content.length == 1)
     {
       this.line2.position.x = -0.25;
     }
-    if (this.cargohold.content.count == 2)
+    if (this.cargohold.content.length == 2)
     {
       this.line3.position.x = -0.25;
     }
-    if (this.cargohold.content.count == 3)
+    if (this.cargohold.content.length == 3)
     {
       this.line4.position.x = -0.25;
     }
-    if (this.cargohold.content.count == 4)
+    if (this.cargohold.content.length == 4)
     {
       this.line5.position.x = -0.25;
     }
-    if (this.cargohold.content.count == 5)
+    if (this.cargohold.content.length == 5)
     {
       this.line6.position.x = -0.25;
     }
@@ -352,27 +352,27 @@ class Cargo extends MainPanel
     verreciel.sceneTransaction.begin();
     verreciel.sceneTransaction.animationDuration = 0.5;
     
-    if (this.cargohold.content.count == 0)
+    if (this.cargohold.content.length == 0)
     {
       this.line1.position.x = 0;
     }
-    if (this.cargohold.content.count == 1)
+    if (this.cargohold.content.length == 1)
     {
       this.line2.position.x = 0;
     }
-    if (this.cargohold.content.count == 2)
+    if (this.cargohold.content.length == 2)
     {
       this.line3.position.x = 0;
     }
-    if (this.cargohold.content.count == 3)
+    if (this.cargohold.content.length == 3)
     {
       this.line4.position.x = 0;
     }
-    if (this.cargohold.content.count == 4)
+    if (this.cargohold.content.length == 4)
     {
       this.line5.position.x = 0;
     }
-    if (this.cargohold.content.count == 5)
+    if (this.cargohold.content.length == 5)
     {
       this.line6.position.x = 0;
     }
@@ -437,7 +437,7 @@ class CargoHold extends Item
     }
     
     var i = 0;
-    while (i < 6 - this.content.count)
+    while (i < 6 - this.content.length)
     {
       data.push(new ConsoleData("--", "", null, verreciel.grey));
       i += 1;

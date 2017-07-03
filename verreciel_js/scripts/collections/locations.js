@@ -35,7 +35,7 @@ class Loiqe
   harvest()
   {
     assertArgs(arguments, 0);
-    return new LocationHarvest("Harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y - 2), new Item(verreciel.items.currency1.name, ItemTypes.generic, null, "", false, null));
+    return new LocationHarvest("Harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y - 2), new Item(verreciel.items.currency1.name, ItemTypes.currency, null, "", false, null));
   }
   
   city()
@@ -171,7 +171,7 @@ class Valen
   harvest()
   {
     assertArgs(arguments, 0);
-    return new LocationHarvest("harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y + 2), new Item(verreciel.items.currency2.name, ItemTypes.generic, null, "", false, null));
+    return new LocationHarvest("harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y + 2), new Item(verreciel.items.currency2.name, ItemTypes.currency, null, "", false, null));
   }
   
   station()
@@ -263,7 +263,7 @@ class Senni
   harvest()
   {
     assertArgs(arguments, 0);
-    return new LocationHarvest("harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y + 1), new Item(verreciel.items.currency3.name, ItemTypes.generic, null, "", false, null));
+    return new LocationHarvest("harvest", this.system, new THREE.Vector2(this.offset.x, this.offset.y + 1), new Item(verreciel.items.currency3.name, ItemTypes.currency, null, "", false, null));
   }
   
   station()

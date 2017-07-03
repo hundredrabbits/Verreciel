@@ -28,7 +28,7 @@ class Verreciel
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
-    this.renderer.sortObjects = false;
+    // this.renderer.sortObjects = false;
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( 0, 0 );
 

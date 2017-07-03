@@ -19,11 +19,13 @@ class SceneNode
       {
         this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
         this.geometry = new THREE.Geometry();
+        this.geometry.dynamic = true;
         this.meat = new THREE.LineSegments(this.geometry, this.material);
       } else if (this.method == Methods.interactiveRegion)
       {
         this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent:true });
         this.geometry = new THREE.Geometry();
+        this.geometry.dynamic = true;
         this.meat = new THREE.Mesh(this.geometry, this.material);
       }
       
@@ -109,8 +111,12 @@ class SceneNode
     if (this.method != null)
     {
       this.__opacityProperty.value = this.opacityFromTop * this.__color4.w;
+      this.meat.visible = this.visibleFromTop && this.opacityFromTop > 0;
     }
-    this.meat.visible = this.visibleFromTop;
+    else
+    {
+      this.meat.visible = this.visibleFromTop;
+    }
     for (let node of this.children)
     {
       node.whenInherit();

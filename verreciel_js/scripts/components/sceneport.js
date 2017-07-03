@@ -514,11 +514,11 @@ class ScenePort extends Empty
   isConnectedToPanel(panel)
   {
     assertArgs(arguments, 1);
-    if (connection == null)
+    if (this.connection == null)
     {
       return false;
     }
-    if ((connection.host instanceof Panel) && connection.host == panel)
+    if ((this.connection.host instanceof Panel) && this.connection.host == panel)
     {
       return true;
     }

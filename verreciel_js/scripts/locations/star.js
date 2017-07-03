@@ -169,7 +169,7 @@ class StructureStar extends Structure
     var i = 0;
     for (let node of this.root.children)
     {
-      node.rotation.y = degToRad(i * (90/this.root.children.count));
+      node.rotation.y = degToRad(i * (90/this.root.children.length));
       i += 1;
     }
     
