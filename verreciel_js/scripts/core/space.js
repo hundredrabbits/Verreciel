@@ -12,12 +12,13 @@ class Space extends Empty
     this.stars_color = verreciel.white;
 
     this.lastStarAddedTime = 0;
+    this.starClusters = [];
 
     this.structuresRoot = new Empty();
     this.starsRoot = new Empty();
     this.add(this.structuresRoot);
     this.add(this.starsRoot);
-    
+
     this.starsRoot.position.set(0,40,0);
   }
   
@@ -94,7 +95,7 @@ class Space extends Empty
     
     if (this.starsRoot.children.length < 30 && verreciel.journey.distance > this.lastStarAddedTime + 20)
     {
-      this.starsRoot.add(new StarCluster());
+      this.starsRoot.add(this.fetchStarCluster());
       this.lastStarAddedTime = verreciel.journey.distance;
     }
     
@@ -118,6 +119,25 @@ class Space extends Empty
   {
     assertArgs(arguments, 1);
     return new SceneLine([this.position, new THREE.Vector3(this.position.x, this.position.y + 1, this.position.z)], this.stars_color);
+  }
+
+  fetchStarCluster()
+  {
+    var nextCluster = null;
+    for (let cluster of this.starClusters)
+    {
+      if (cluster.parent == null)
+      {
+        nextCluster = cluster;
+        break;
+      }
+    }
+    if (nextCluster == null)
+    {
+      nextCluster = new StarCluster();
+      this.starClusters.push(nextCluster);
+    }
+    return nextCluster;
   }
 }
 
