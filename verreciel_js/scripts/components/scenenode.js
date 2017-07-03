@@ -31,7 +31,7 @@ class SceneNode
       }
       
       this.__color4 = new THREE.Vector4(1, 1, 1, 1);
-      this.__opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity");
+      this.__opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity", false, true);
     }
     
     this.meat.node = this;
@@ -44,7 +44,7 @@ class SceneNode
       },
       rotation:
       {
-        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "rotation")
+        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "rotation", true)
       },
       opacity:
       {

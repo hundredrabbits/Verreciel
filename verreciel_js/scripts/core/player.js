@@ -181,11 +181,21 @@ class Player extends Empty
     verreciel.helmet.position.copy(this.activeHandle.destination);
     verreciel.sceneTransaction.commit();
     
-    delay(5, this.releaseHandle.bind(this));
+    if (this.lastDelay != null)
+    {
+      cancelDelay(this.lastDelay);
+      this.lastDelay = null;
+    }
+    this.lastDelay = delay(5, this.releaseHandle.bind(this));
   }
   
   releaseHandle()
   {
+    if (this.lastDelay != null)
+    {
+      cancelDelay(this.lastDelay);
+      this.lastDelay = null;
+    }
     assertArgs(arguments, 0);
     if (this.activeHandle == null)
     {
@@ -195,6 +205,7 @@ class Player extends Empty
     verreciel.helmet.rightHandLabel.updateText("--", verreciel.grey);
     
     verreciel.sceneTransaction.begin();
+    verreciel.sceneTransaction.ease = Penner.easeInOutQuad;
     verreciel.sceneTransaction.animationDuration = 2.5;
     this.position.set(0,0,0);
     verreciel.helmet.position.set(0,0,0);
