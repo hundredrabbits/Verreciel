@@ -47,29 +47,54 @@ class SceneTransaction
 
 class ScenePropertyXYZ
 {
-  constructor(sceneTransaction, target, property, angles = false)
+  constructor(sceneTransaction, target, property, angles = false, interrupt = false)
   {
     assertArgs(arguments, 3);
+    this.interrupt = interrupt;
     var xyz = target[property];
-    this.__xProperty = new SceneProperty(sceneTransaction, xyz, "x", angles);
-    this.__yProperty = new SceneProperty(sceneTransaction, xyz, "y", angles);
-    this.__zProperty = new SceneProperty(sceneTransaction, xyz, "z", angles);
+    this.__xProperty = new SceneProperty(sceneTransaction, xyz, "x", angles, interrupt);
+    this.__yProperty = new SceneProperty(sceneTransaction, xyz, "y", angles, interrupt);
+    this.__zProperty = new SceneProperty(sceneTransaction, xyz, "z", angles, interrupt);
     
     Object.defineProperties( this, {
       x:
       {
         get: function() { return this.__xProperty.value; },
-        set: function(value) { this.__xProperty.value = value; }
+        set: function(value)
+        {
+          let wasRunning = this.__xProperty.running;
+          this.__xProperty.value = value;
+          if (this.interrupt && wasRunning && !this.__xProperty.running)
+          {
+            this.fastForwardXYZ();
+          }
+        }
       },
       y:
       {
         get: function() { return this.__yProperty.value; },
-        set: function(value) { this.__yProperty.value = value; }
+        set: function(value)
+        {
+          let wasRunning = this.__yProperty.running;
+          this.__yProperty.value = value;
+          if (this.interrupt && wasRunning && !this.__yProperty.running)
+          {
+            this.fastForwardXYZ();
+          }
+        }
       },
       z:
       {
         get: function() { return this.__zProperty.value; },
-        set: function(value) { this.__zProperty.value = value; }
+        set: function(value)
+        {
+          let wasRunning = this.__zProperty.running;
+          this.__zProperty.value = value;
+          if (wasRunning && !this.__zProperty.running)
+          {
+            this.fastForwardXYZ();
+          }
+        }
       }
     });
   }
@@ -98,24 +123,22 @@ class ScenePropertyXYZ
     this.z = other.z;
   }
 
-  render()
+  fastForwardXYZ()
   {
-    assertArgs(arguments, 0, true);
-    this.x.render();
-    this.y.render();
-    this.z.render();
+    this.setNow(this.__xProperty.value, this.__yProperty.value, this.__zProperty.value);
   }
 }
 
 class SceneProperty
 {
-  constructor(sceneTransaction, target, property, isAngle = false)
+  constructor(sceneTransaction, target, property, isAngle = false, interrupt = false)
   {
     assertArgs(arguments, 3);
     this.sceneTransaction = sceneTransaction;
     this.target = target;
     this.property = property;
     this.isAngle = isAngle;
+    this.interrupt = interrupt;
 
     this.__value = this.target[this.property];
     if (this.isAngle) { this.__value = sanitizeAngle(this.__value); }
@@ -128,7 +151,10 @@ class SceneProperty
           if (this.running)
           {
             this.running = false;
-            this.target[this.property] = this.__value;
+            if (this.interrupt)
+            {
+              this.target[this.property] = this.__value;
+            }
           }
           if (this.isAngle) { newValue = sanitizeAngle(newValue); }
           if (this.__value == newValue) { return; }
@@ -152,6 +178,7 @@ class SceneProperty
     if (this.__value == newValue) { return; }
     this.__value = newValue;
     this.target[this.property] = this.__value;
+    this.running = false;
   }
 
   commit()
