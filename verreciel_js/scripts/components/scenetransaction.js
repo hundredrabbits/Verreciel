@@ -13,6 +13,7 @@ class SceneTransaction
     assertArgs(arguments, 0, true);
     this.begun = true;
     this.properties.splice(0, this.properties.length);
+    this.ease = Penner.easeOutQuart;
   }
 
   registerProperty(property)
@@ -124,6 +125,11 @@ class SceneProperty
       {
         get: function() { return this.__value; },
         set: function(newValue) {
+          if (this.running)
+          {
+            this.running = false;
+            this.target[this.property] = this.__value;
+          }
           if (this.isAngle) { newValue = sanitizeAngle(newValue); }
           if (this.__value == newValue) { return; }
           this.__value = newValue;
@@ -169,12 +175,14 @@ class SceneProperty
     let duration = this.sceneTransaction.animationDuration;
     let target = this.target;
     let property = this.property;
+    let owner = this;
     let ease = this.sceneTransaction.ease;
     
     var percent = 0;
     var lastFrameTime = Date.now();
     function tick()
     {
+      if (!owner.running) { return; }
       let frameTime = Date.now();
       let secondsElapsed = (frameTime - lastFrameTime) / 1000;
       lastFrameTime = frameTime;
@@ -197,8 +205,13 @@ class SceneProperty
       {
         requestAnimationFrame(tick);
       }
+      else
+      {
+        owner.running = false;
+      }
     }
 
+    this.running = true;
     requestAnimationFrame(tick);
   }
 }
