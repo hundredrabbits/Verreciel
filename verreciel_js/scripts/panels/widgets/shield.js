@@ -143,7 +143,7 @@ class Shield extends Widget
     assertArgs(arguments, 0);
     super.onInstallationComplete();
     this.createShield();
-    vertices.battery.installShield();
+    verreciel.battery.installShield();
     this.update();
   }
 }

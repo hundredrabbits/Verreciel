@@ -46,13 +46,12 @@ class Music
   playAmbience(name)
   {
     assertArgs(arguments, 1);
-    if (this.trackAmbience.name == name)
+    if (this.trackAmbience.name != null && this.trackAmbience.name == name)
     {
       return;
     }
 
-    // Fadeout
-    $(this.trackAmbience).animate({volume: 0}, 1000, function()
+    function fadeIn()
     {
       console.log("Music: ",name);
 
@@ -64,7 +63,17 @@ class Music
       }
       verreciel.music.trackAmbience.volume = 0;
       $(verreciel.music.trackAmbience).animate({volume: 1}, 1000);
-    });
+    }
+
+    if (this.trackAmbience.name != null)
+    {
+      // Fadeout
+      $(this.trackAmbience).animate({volume: 0}, 1000, fadeIn);
+    }
+    else
+    {
+      fadeIn();
+    }
   }
 
   fetchAudio(name, role, src, loop = false)

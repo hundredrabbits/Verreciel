@@ -17,8 +17,8 @@ class Item extends Event
   {
     assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData("Item", type),
-      new ConsoleData(details),
+      new ConsoleData("Item", this.type),
+      new ConsoleData(this.details),
     ]);
   }
 }

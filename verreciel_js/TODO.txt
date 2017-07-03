@@ -1,18 +1,21 @@
-TODO
 
-CHECK: Never override a method with a different signature
-
-Can't upload alta to cargo
 Locations come and go at odd angles
-Are stars too far away?
+Coming out of save can cause a UI hiccup
+When selecting locations on the map, the radar should update the console if it's connected to the console
+Cargo doesn't update console when an item is removed from the hold
+Wires don't auto-connect on game load
 
 Compare side by side with Swift build
 
+Remove jquery dependencies from audio
 Try MeshLine again
 
 Run a JavaScript linter
 
 -------
+
+LOOK OUT: Never override a method with a different signature
+
 
 Play through the game
 

@@ -142,7 +142,7 @@ class Capsule extends Empty
     }
     else if (this.radiation > 0)
     {
-      verreciel.helmet.addWarning("Radiation " + (radiation * 100).toFixed(1) + "%", null, 0.1, "radiation");
+      verreciel.helmet.addWarning("Radiation " + (this.radiation * 100).toFixed(1) + "%", null, 0.1, "radiation");
     }
   }
   

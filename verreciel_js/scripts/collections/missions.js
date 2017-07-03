@@ -107,7 +107,7 @@ class Missions
         "Route " + verreciel.items.valenPortalFragment1.name + " to verreciel.cargo",
         null,
         function() { return verreciel.cargo.contains(verreciel.items.valenPortalFragment1) == true; },
-        function() { progress.install(); }
+        function() { verreciel.progress.install(); }
       ),
     ]
     this.story.push(m);
@@ -149,7 +149,7 @@ class Missions
       verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_city)
       verreciel.battery.cellPort1.addEvent(verreciel.items.battery1)
       verreciel.cargo.addItems([verreciel.items.valenPortalFragment1])
-      verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,pilot])
+      verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot])
       verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city])
       verreciel.missions.setToCompleted([verreciel.universe.loiqe_city])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
@@ -175,7 +175,7 @@ class Missions
         "Combine fragments", 
         verreciel.universe.loiqe_horadric,
         function() { return verreciel.cargo.contains(verreciel.items.valenPortalKey) == true; },
-        function() { exploration.install(); }
+        function() { verreciel.exploration.install(); }
       )
     ]
     this.story.push(m);
@@ -257,7 +257,7 @@ class Missions
         "Install radio", 
         verreciel.universe.valen_station,
         function() { return verreciel.radio.isInstalled == true; },
-        function() { journey.install(); }
+        function() { verreciel.journey.install(); }
       )
     ]
     this.story.push(m);
@@ -323,7 +323,7 @@ class Missions
         "Collect Waste", 
         verreciel.universe.valen_bank,
         function() { return verreciel.cargo.containsLike(verreciel.items.waste); },
-        function() { hatch.install(); }
+        function() { verreciel.hatch.install(); }
       ),
       new Quest(
         "Route waste to hatch",
@@ -335,7 +335,7 @@ class Missions
         "Jetison Waste",
         null,
         function() { return hatch.count > 0; },
-        function() { completion.install(); }
+        function() { verreciel.completion.install(); }
       )
     ]
     this.story.push(m);

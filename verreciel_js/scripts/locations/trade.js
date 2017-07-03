@@ -67,14 +67,14 @@ class LocationTrade extends Location
   onUploadComplete()
   {
     assertArgs(arguments, 0);
-    refresh()
-    audio.playSound("beep2")
+    this.refresh()
+    verreciel.music.playEffect("beep2")
   }
   
   onDisconnect()
   {
     assertArgs(arguments, 0);
-    refresh()
+    this.refresh();
   }
   
   refresh()

@@ -136,7 +136,7 @@ class Console extends MainPanel
     assertArgs(arguments, 0);
     super.onInstallationBegin();
     
-    this.player.lookAt(-270);
+    verreciel.player.lookAt(-270);
   }
   
   onInstallationComplete()

@@ -35,8 +35,8 @@ class Progress extends Monitor
     // MARK: Display
     if (totalQuestLocations_complete > this.completed)
     {
-      this.nameLabel.updateText(totalQuestLocations_complete + "/" + totalQuestLocations, verreiciel.cyan);
-      delay(2, function() { this.nameLabel.updateColor(verreiciel.white); }.bind(this));
+      this.nameLabel.updateText(totalQuestLocations_complete + "/" + totalQuestLocations, verreciel.cyan);
+      delay(2, function() { this.nameLabel.updateColor(verreciel.white); }.bind(this));
       this.completed = totalQuestLocations_complete;
     }
   }

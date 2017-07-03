@@ -86,7 +86,7 @@ class LocationPortal extends Location
     if (verreciel.intercom.port.isReceivingItemOfType(ItemTypes.key) == true)
     {
       let item = verreciel.intercom.port.origin.event;
-      if (item instanceof Item && (item.location == null || item.location == capsule.lastLocation))
+      if (item instanceof Item && (item.location == null || item.location == verreciel.capsule.lastLocation))
       {
         this.inactive();
       }
@@ -109,7 +109,7 @@ class LocationPortal extends Location
     this.thrusterPort.disable();
     this.keyLabel.updateText("error", verreciel.red);
     
-    this.structure.root.updateChildrenColors(red);
+    this.structure.root.updateChildrenColors(verreciel.red);
   }
   
   lock()

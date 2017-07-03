@@ -80,9 +80,6 @@ class ScenePort extends Empty
     assertArgs(arguments, 0);
     super.whenRenderer();
     
-    this.sprite_input.show();
-    this.sprite_output.show();
-    
     this.sprite_input.updateColor(this.inputColor());
     this.sprite_output.updateColor(this.outputColor());
     
@@ -98,6 +95,10 @@ class ScenePort extends Empty
     {
       this.sprite_output.updateChildrenColors(verreciel.cyan);
       this.sprite_output.blink();
+    }
+    else
+    {
+      this.sprite_output.show();
     }
   }
 

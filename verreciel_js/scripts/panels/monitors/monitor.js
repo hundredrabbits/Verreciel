@@ -55,7 +55,7 @@ class Monitor extends Panel
     verreciel.sceneTransaction.animationDuration = 0.5;
     this.nameLabel.show();
     this.detailsLabel.show();
-    verreciel.sceneTransaction.completionBlock = function(){ self.refresh() }.bind(this);
+    verreciel.sceneTransaction.completionBlock = function(){ this.refresh() }.bind(this);
     verreciel.sceneTransaction.commit();
     
     this.installNode.removeFromParentNode();

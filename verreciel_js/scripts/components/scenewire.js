@@ -98,17 +98,14 @@ class SceneWire extends Empty
   {
     assertArgs(arguments, 0);
     this.isEnabled = true;
+    this.show();
   }
   
   disable()
   {
     assertArgs(arguments, 0);
     this.isEnabled = false;
-    this.segment1.reset();
-    this.segment2.reset();
-    this.segment3.reset();
-    this.segment4.reset();
-    this.segment5.reset();
+    this.hide();
   }
   
   blink()

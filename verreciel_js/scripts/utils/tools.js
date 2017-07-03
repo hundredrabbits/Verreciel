@@ -59,7 +59,13 @@ function sanitizeDiffAngle(angle1, angle2, inDegrees = false)
 function delay(seconds, callback)
 {
   assertArgs(arguments, 2);
-  setTimeout(callback, seconds * 1000);
+  return setTimeout(callback, seconds * 1000);
+}
+
+function cancelDelay(delayID)
+{
+  assertArgs(arguments, 1);
+  clearTimeout(delayID);
 }
 
 function assertArgs(args, length, exact = false)

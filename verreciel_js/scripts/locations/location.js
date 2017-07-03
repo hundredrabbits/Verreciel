@@ -293,7 +293,7 @@ class Location extends Event
     {
       return false;
     }
-    if (verreciel.thruster.isLocked == true && verreciel.game.state() > 2)
+    if (verreciel.thruster.isLocked == true && verreciel.game.state > 2)
     {
       return false;
     }
