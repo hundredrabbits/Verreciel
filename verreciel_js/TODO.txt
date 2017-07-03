@@ -6,7 +6,6 @@ Coming out of save can cause a UI hiccup
   Sideways helmet
 When selecting locations on the map, the radar should update the console if it's connected to the console
 Cargo doesn't update console when an item is removed from the hold
-Wires don't auto-connect on game load
 The handle logic is weird
   SCNTransaction's complete event isn't fast-forwarded, so it can mess up animations
 The Valen Bank isn't listing its contents

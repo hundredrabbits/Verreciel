@@ -99,6 +99,7 @@ class SceneNode
     this.meat.add(other.meat);
     this.children.push(other);
     other.parent = this;
+    other.meat.updateMatrixWorld(true);
     other.whenInherit();
   }
 
@@ -173,16 +174,22 @@ class SceneNode
 
   convertPositionToNode(xyz, node)
   {
+    this.meat.updateMatrixWorld(true);
+    node.meat.updateMatrixWorld(true);
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
-    return position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
+    position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
+    return position;
   }
 
   convertPositionFromNode(xyz, node)
   {
+    this.meat.updateMatrixWorld(true);
+    node.meat.updateMatrixWorld(true);
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
-    return position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
+    position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
+    return position;
   }
 }
 
