@@ -22,7 +22,7 @@ class Verreciel
     this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
-    this.fps = 30;
+    this.fps = 60;
     this.camera = new THREE.PerspectiveCamera( 105, 1, 0.1, 10000 );
     this.raycaster = new THREE.Raycaster();
     this.scene = new THREE.Scene();
