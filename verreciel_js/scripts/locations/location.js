@@ -11,11 +11,6 @@ class Location extends Event
     this.code = system + "-" + name;
     this.storage = [];
     
-    // TODO: THREEJS
-
-    // geometry = SCNPlane(width: 0.5, height: 0.5)
-    // geometry?.firstMaterial?.diffuse.contents = clear
-  
     this.add(this.icon);
     
     this.structure.addHost(this);
@@ -348,20 +343,6 @@ class Location extends Event
       }
     }
     return collection;
-  }
-  
-  isStorageEmpty()
-  {
-    assertArgs(arguments, 0);
-    // TODO: Almost definitely a bug
-    for (let port of this.storage)
-    {
-      if (port.hasEvent() == true)
-      {
-        return true;
-      }
-    }
-    return false;
   }
   
   payload()

@@ -12,11 +12,6 @@ class Event extends Empty
     
     this.at = at;
     this.color = color;
-    
-    // TODO: THREEJS
-
-    // this.geometry = SCNPlane(width: 0.5, height: 0.5)
-    // this.geometry?.firstMaterial?.diffuse.contents = red
   }
   
   // MARK: Basic -
@@ -25,11 +20,6 @@ class Event extends Empty
   {
     assertArgs(arguments, 0);
     super.whenStart();
-    
-    // TODO: THREEJS
-
-    // this.geometry = SCNPlane(width: 0.5, height: 0.5)
-    // this.geometry?.firstMaterial?.diffuse.contents = clear
     
     let trigger = new SceneTrigger(this, 1, 1);
     trigger.position.set(0,0,-0.1);
