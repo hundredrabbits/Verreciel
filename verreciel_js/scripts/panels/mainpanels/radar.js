@@ -165,7 +165,7 @@ class Radar extends MainPanel
     
     verreciel.thruster.show();
     verreciel.pilot.show();
-    verreciel.decals.show();
+    this.decals.show();
     verreciel.header.show();
     verreciel.footer.show();
     this.handle.show();
@@ -183,7 +183,7 @@ class Radar extends MainPanel
     
     verreciel.thruster.hide()
     verreciel.pilot.hide()
-    verreciel.decals.hide()
+    this.decals.hide()
     verreciel.header.hide()
     this.handle.hide();
     

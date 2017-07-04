@@ -221,7 +221,7 @@ class Player extends Empty
     super.onConnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) == true)
     {
-      radar.modeOverview();
+      verreciel.radar.modeOverview();
     }
   }
   
@@ -231,7 +231,7 @@ class Player extends Empty
     super.onDisconnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) != true)
     {
-      radar.modeNormal();
+      verreciel.radar.modeNormal();
     }
   }
   
