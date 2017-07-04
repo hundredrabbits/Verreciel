@@ -229,15 +229,15 @@ class StructurePortal extends Structure
     assertArgs(arguments, 0);
     this.root.updateChildrenColors(verreciel.cyan);
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 1.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 1.5;
     
     for (let node of this.root.children)
     {
       node.children[0].position.set(2,1,2);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onUnlock()
@@ -245,15 +245,15 @@ class StructurePortal extends Structure
     assertArgs(arguments, 0);   
     this.root.updateChildrenColors(verreciel.cyan);
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.children[0].position.set(0,0,0);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onLock()
@@ -266,15 +266,15 @@ class StructurePortal extends Structure
     
     this.root.updateChildrenColors(verreciel.red);
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.children[0].position.set(-2,0,0);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onLeave()

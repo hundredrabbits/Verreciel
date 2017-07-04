@@ -51,12 +51,12 @@ class Monitor extends Panel
     assertArgs(arguments, 0);
     super.onInstallationComplete();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     this.nameLabel.show();
     this.detailsLabel.show();
-    verreciel.sceneTransaction.completionBlock = function(){ this.refresh() }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.completionBlock = function(){ this.refresh() }.bind(this);
+    verreciel.animator.commit();
     
     this.installNode.removeFromParentNode();
   }

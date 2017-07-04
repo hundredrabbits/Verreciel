@@ -1,9 +1,6 @@
 
 Locations come and go at odd angles
   And it seems like you drag them along
-Coming out of save can cause a UI hiccup
-  Bouncing panels
-  Sideways helmet
 When selecting locations on the map, the radar should update the console if it's connected to the console
 Cargo doesn't update console when an item is removed from the hold
 The handle logic is weird

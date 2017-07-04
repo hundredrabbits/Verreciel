@@ -37,7 +37,7 @@ class Verreciel
     this.mouseMoved = false;
     this.music = new Music();
 
-    this.sceneTransaction = new SceneTransaction();
+    this.animator = new Animator();
 
     // Collections
     this.items = new Items();

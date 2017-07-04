@@ -32,9 +32,9 @@ class Above extends Panel
       this.root.updateChildrenColors(verreciel.grey);
     }
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     this.rotation.y = degToRad(Math.floor((radToDeg(verreciel.player.rotation.y)+22.5)/45) * 45);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
 }

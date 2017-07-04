@@ -171,8 +171,8 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     var i = 0;
     for (let node of this.root.children)
@@ -181,7 +181,7 @@ class StructureTrade extends Structure
       i += 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onUndock()
@@ -189,8 +189,8 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     var i = 0;
     for (let node of this.root.children)
@@ -199,7 +199,7 @@ class StructureTrade extends Structure
       i += 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onDock()
@@ -207,15 +207,15 @@ class StructureTrade extends Structure
     assertArgs(arguments, 0);
     super.onDock()
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.rotation.y = 0;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onComplete()

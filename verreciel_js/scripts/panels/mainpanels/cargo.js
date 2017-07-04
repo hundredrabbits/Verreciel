@@ -131,8 +131,8 @@ class Cargo extends MainPanel
       this.line6.position.x = 0.25;
     }
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     if (this.cargohold.content.length == 1)
     {
@@ -159,8 +159,8 @@ class Cargo extends MainPanel
       this.line6.position.x = 0;
     }
     
-    verreciel.sceneTransaction.completionBlock = function(){ this.removeTransfer(target) }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.completionBlock = function(){ this.removeTransfer(target) }.bind(this);
+    verreciel.animator.commit();
   }
   
   removeTransfer(target)
@@ -349,8 +349,8 @@ class Cargo extends MainPanel
       this.line6.position.x = -0.25;
     }
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     if (this.cargohold.content.length == 0)
     {
@@ -377,8 +377,8 @@ class Cargo extends MainPanel
       this.line6.position.x = 0;
     }
     
-    verreciel.sceneTransaction.completionBlock = function(){ this.uploadTransfer() }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.completionBlock = function(){ this.uploadTransfer() }.bind(this);
+    verreciel.animator.commit();
   }
   
   uploadTransfer()

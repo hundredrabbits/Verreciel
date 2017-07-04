@@ -48,7 +48,7 @@ class Player extends Empty
   {
     assertArgs(arguments, 0);
     super.whenRenderer();
-
+    
     if (!this.isLocked)
     {
       this.rotation.x += this.accelX;
@@ -71,6 +71,7 @@ class Player extends Empty
     }
 
     this.meat.add(verreciel.camera);
+    // verreciel.camera.position.z = 8;
   }
   
   lookAt(deg = 0)
@@ -82,16 +83,19 @@ class Player extends Empty
     
     this.isLocked = true;
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 2.5;
+    verreciel.animator.begin("look at");
+    verreciel.animator.animationDuration = 2.5;
     
     this.position.set(0, 0, 0); // ?
     this.rotation.y = degToRad(deg);
     verreciel.helmet.position.set(0, 0, 0); // ?
     verreciel.helmet.rotation.y = degToRad(deg);
     
-    verreciel.sceneTransaction.completionBlock = function(){ this.isLocked = false; }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.completionBlock = function(){ 
+      this.isLocked = false; 
+      verreciel.helmet.rotation.setNow(verreciel.helmet.rotation.x, this.rotation.y, verreciel.helmet.rotation.z);
+    }.bind(this);
+    verreciel.animator.commit();
     
     this.releaseHandle();
   }
@@ -99,28 +103,28 @@ class Player extends Empty
   eject()
   {
     assertArgs(arguments, 0);
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 2;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 2;
     
     this.position.set(0,0,0);
     verreciel.capsule.opacity = 0;
     verreciel.helmet.opacity = 0; 
     
-    verreciel.sceneTransaction.completionBlock = function(){
+    verreciel.animator.completionBlock = function(){
     
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 10;
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 10;
       
       this.position.set(0,5,0);
       
-      verreciel.sceneTransaction.completionBlock = function(){
+      verreciel.animator.completionBlock = function(){
         this.isEjected = true;
         game.save(0);
       }.bind(this);
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
       
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   // MARK: Left Hand -
@@ -175,11 +179,11 @@ class Player extends Empty
     this.activeHandle = handle;
     this.activeHandle.disable();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 2.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 2.5;
     this.position.copy(this.activeHandle.destination);
     verreciel.helmet.position.copy(this.activeHandle.destination);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     if (this.lastDelay != null)
     {
@@ -204,12 +208,12 @@ class Player extends Empty
 
     verreciel.helmet.rightHandLabel.updateText("--", verreciel.grey);
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.ease = Penner.easeInOutQuad;
-    verreciel.sceneTransaction.animationDuration = 2.5;
+    verreciel.animator.begin();
+    verreciel.animator.ease = Penner.easeInOutQuad;
+    verreciel.animator.animationDuration = 2.5;
     this.position.set(0,0,0);
     verreciel.helmet.position.set(0,0,0);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
 
     this.activeHandle.enable();
     this.activeHandle = null;

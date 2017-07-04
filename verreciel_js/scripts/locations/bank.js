@@ -115,8 +115,8 @@ class LocationBank extends Location
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     this.structure.hide();
     
@@ -127,7 +127,7 @@ class LocationBank extends Location
       i += 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.refresh();
   }
@@ -137,8 +137,8 @@ class LocationBank extends Location
     assertArgs(arguments, 0);
     super.onUndock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     this.structure.show();
     
@@ -149,7 +149,7 @@ class LocationBank extends Location
       i += 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.refresh();
   }

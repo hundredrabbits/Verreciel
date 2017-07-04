@@ -130,8 +130,8 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
@@ -141,7 +141,7 @@ class StructureSatellite extends Structure
       }
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onUndock()
@@ -149,8 +149,8 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
@@ -160,7 +160,7 @@ class StructureSatellite extends Structure
       }
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onDock()
@@ -168,8 +168,8 @@ class StructureSatellite extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
@@ -179,7 +179,7 @@ class StructureSatellite extends Structure
       }
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onComplete()

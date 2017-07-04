@@ -106,8 +106,8 @@ class Console extends MainPanel
       count += 1;
     }
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let line of this.lines) 
     {
@@ -115,7 +115,7 @@ class Console extends MainPanel
       line.opacity = 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   defaultPayload()

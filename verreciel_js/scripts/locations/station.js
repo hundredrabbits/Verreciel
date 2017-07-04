@@ -131,15 +131,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onSight();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.rotation.x = degToRad(0);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onUndock()
@@ -147,15 +147,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.rotation.x = degToRad(45);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onDock()
@@ -163,15 +163,15 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
       node.rotation.x = degToRad(45);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onComplete()
@@ -193,8 +193,8 @@ class StructureStation extends Structure
     assertArgs(arguments, 0);
     super.morph();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     let deg1 = 22.5 * ((morphTime * 123) % 8) % 180;
     let deg2 = 22.5 * ((morphTime * 678) % 6) % 180;
@@ -208,6 +208,6 @@ class StructureStation extends Structure
       }
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
 }

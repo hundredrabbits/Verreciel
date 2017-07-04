@@ -58,12 +58,12 @@ class LocationClose extends Location
     player.eject()
     onComplete()
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 30;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 30;
     
     structure.opacity = 0;
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
 }
 
@@ -118,8 +118,8 @@ class StructureClose extends Structure
     assertArgs(arguments, 0);
     super.morph();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 1.0;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 1.0;
     
     this.root.rotation.y = degToRad(morphTime * 45);
     
@@ -130,7 +130,7 @@ class StructureClose extends Structure
       node.children[0].rotation.y = degToRad(morphTime * 45);
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onComplete()

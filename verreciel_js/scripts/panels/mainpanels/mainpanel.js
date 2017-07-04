@@ -120,14 +120,14 @@ class MainPanel extends Panel
     this.decals.position.set(0,0,-0.4);
     this.decals.hide();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.7;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.7;
     this.mainNode.position.set(0,0,0);
     this.mainNode.show();
     this.decals.position.set(0,0,0);
     this.decals.show();
     this.footer.show();
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.installNode.removeFromParentNode();
     

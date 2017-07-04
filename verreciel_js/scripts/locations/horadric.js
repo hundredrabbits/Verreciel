@@ -292,8 +292,8 @@ class StructureHoradric extends Structure
     assertArgs(arguments, 0);
     super.onUndock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 3;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 3;
     
     this.root.children[0].rotation.y = degToRad(0);
     this.root.children[1].rotation.y = degToRad(0);
@@ -306,7 +306,7 @@ class StructureHoradric extends Structure
     
     this.rotation.y = degToRad(0);
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onDock()
@@ -314,8 +314,8 @@ class StructureHoradric extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 3;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 3;
     
     this.root.children[0].rotation.y += degToRad(22.5);
     this.root.children[1].rotation.y -= degToRad(22.5);
@@ -328,6 +328,6 @@ class StructureHoradric extends Structure
     
     this.rotation.y += degToRad(90);
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
 }

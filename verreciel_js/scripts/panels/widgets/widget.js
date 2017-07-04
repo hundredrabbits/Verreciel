@@ -123,10 +123,10 @@ class Widget extends Panel
     this.installNode.removeFromParentNode();
     this.installNode.hide();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.7;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.7;
     this.root.show();
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.port.enable();
     this.label.updateText(this.name, verreciel.white);

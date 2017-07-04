@@ -152,28 +152,28 @@ class Intercom extends MainPanel
     assertArgs(arguments, 0);
     // Animate
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     this.locationPanel.position.set(0,0,-0.5);
     this.locationPanel.hide();
     
-    verreciel.sceneTransaction.completionBlock = function(){
+    verreciel.animator.completionBlock = function(){
 
       // this.defaultPanel.position.set(0,0,-0.5);
       
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 0.5;
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 0.5;
       
       this.defaultPanel.position.set(0,0,0);
       this.defaultPanel.show();
       
-      verreciel.sceneTransaction.completionBlock = function(){
+      verreciel.animator.completionBlock = function(){
         this.refresh();
       }.bind(this);
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   connectToLocation(location)
@@ -191,13 +191,13 @@ class Intercom extends MainPanel
     
     // Animate
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     this.defaultPanel.position.set(0,0,-0.5);
     this.defaultPanel.hide();
     
-    verreciel.sceneTransaction.completionBlock = function(){
+    verreciel.animator.completionBlock = function(){
       
       this.locationPanel.position.set(0,0,-0.5);
       
@@ -206,16 +206,16 @@ class Intercom extends MainPanel
         this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
       }
       
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 0.5;
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 0.5;
       
       this.locationPanel.position.set(0,0,0);
       this.locationPanel.show();
       this.refresh();
       
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.port.addEvent(location);
     
@@ -232,29 +232,29 @@ class Intercom extends MainPanel
   disconnectFromLocation()
   {
     assertArgs(arguments, 0);
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     this.locationPanel.position.set(0,0,-0.5);
     this.locationPanel.hide();
     
-    verreciel.sceneTransaction.completionBlock = function(){
+    verreciel.animator.completionBlock = function(){
       
       this.defaultPanel.position.set(0,0,-0.5);
       
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 0.5;
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 0.5;
       
       this.defaultPanel.position.set(0,0,0);
       this.defaultPanel.show();
       this.refresh();
       
-      verreciel.sceneTransaction.completionBlock = function(){
+      verreciel.animator.completionBlock = function(){
         this.locationPanel.empty();
       }.bind(this);
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
     
     this.port.removeEvent();
   }

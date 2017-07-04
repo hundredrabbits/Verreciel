@@ -163,8 +163,8 @@ class StructureStar extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     var i = 0;
     for (let node of this.root.children)
@@ -173,7 +173,7 @@ class StructureStar extends Structure
       i += 1;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   sightUpdate()
@@ -188,8 +188,8 @@ class StructureStar extends Structure
     assertArgs(arguments, 0);
     super.onDock();
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     for (let node of this.root.children)
     {
@@ -197,7 +197,7 @@ class StructureStar extends Structure
       node.rotation.y = 0;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   onComplete()
@@ -207,8 +207,8 @@ class StructureStar extends Structure
     
     this.root.updateChildrenColors(cyan)
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.5;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
     
     var i = 0;
     for (let node of this.root.children)
@@ -218,6 +218,6 @@ class StructureStar extends Structure
       node.rotation.y = 0;
     }
     
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
 }

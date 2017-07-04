@@ -4,6 +4,27 @@ class Helmet extends Empty
   {
     assertArgs(arguments, 0);
     super();
+
+    // Useful snippet. I should put it somewhere else, but this is where I'd go looking for it.
+    /*
+    let node = this;
+    let ham = this.meat;
+    Object.defineProperty(ham.rotation, "y", {
+      get: function() { return ham.rotation._y; },
+      set: function(value) {
+        console.log(getStackTrace());
+        console.log(
+          value,
+          node.rotation.__yProperty.animation != null,
+          node.rotation.__yProperty.from,
+          node.rotation.__yProperty.to,
+          node.rotation.__yProperty.percent
+        );
+        console.log("");
+        return ham.rotation._y = value;
+      }
+    });
+    /**/
     
     console.log("^ Helmet | Init");
     
@@ -119,17 +140,22 @@ class Helmet extends Empty
     assertArgs(arguments, 0);
     super.whenRenderer();
     
+    let rotX = this.rotation.x;
+    let rotY = this.rotation.y;
+
     let diffRotationY = sanitizeDiffAngle(verreciel.player.rotation.y, this.rotation.y);
     if (Math.abs(diffRotationY) > 0.001)
     {
-      this.rotation.y += diffRotationY * 0.75;
+      rotY += diffRotationY * 0.75;
     }
 
     let diffRotationX = sanitizeDiffAngle(verreciel.player.rotation.x, this.rotation.x);
     if (Math.abs(diffRotationX) > 0.001)
     {
-      this.rotation.x += diffRotationX * 0.85;
+      rotX += diffRotationX * 0.85;
     }
+
+    this.rotation.setNow(rotX, rotY, this.rotation.z);
 
     this.updatePort();
     this.warningLabel.blink();
@@ -160,19 +186,19 @@ class Helmet extends Empty
     
     this.message = message;
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.1;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.1;
     this.messageLabel.hide();
     this.messageLabel.updateColor(verreciel.cyan);
-    verreciel.sceneTransaction.completionBlock = function()
+    verreciel.animator.completionBlock = function()
     {
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 0.1;
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 0.1;
       this.messageLabel.updateText(this.message, color);
       this.messageLabel.show();
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   addPassive(passive)
@@ -185,19 +211,19 @@ class Helmet extends Empty
     
     this.passive = passive;
     
-    verreciel.sceneTransaction.begin();
-    verreciel.sceneTransaction.animationDuration = 0.1;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.1;
     this.passiveLabel.position.set(0,-1.2,this.visorDepth - 0.01);
     this.passiveLabel.hide();
-    verreciel.sceneTransaction.completionBlock = function(){
-      verreciel.sceneTransaction.begin();
-      verreciel.sceneTransaction.animationDuration = 0.1;
+    verreciel.animator.completionBlock = function(){
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 0.1;
       this.passiveLabel.updateText(this.passive);
       this.passiveLabel.position.set(0,-1.2,this.visorDepth);
       this.passiveLabel.show();
-      verreciel.sceneTransaction.commit();
+      verreciel.animator.commit();
     }.bind(this);
-    verreciel.sceneTransaction.commit();
+    verreciel.animator.commit();
   }
   
   addWarning(text, color, duration, flag)

@@ -31,21 +31,16 @@ class SceneNode
       }
       
       this.__color4 = new THREE.Vector4(1, 1, 1, 1);
-      this.__opacityProperty = new SceneProperty(verreciel.sceneTransaction, this.material, "opacity", false, true);
+      this.__opacityProperty = new AnimatedProperty(verreciel.animator, this.material, "opacity", false, true);
     }
     
     this.meat.node = this;
     this.meat.rotation.order = "YXZ";
 
+    this.position = new AnimatedXYZ(verreciel.animator, this.meat, "position");
+    this.rotation = new AnimatedXYZ(verreciel.animator, this.meat, "rotation", true);
+
     Object.defineProperties( this, {
-      position:
-      {
-        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "position")
-      },
-      rotation:
-      {
-        value: new ScenePropertyXYZ(verreciel.sceneTransaction, this.meat, "rotation", true)
-      },
       opacity:
       {
         get: function() { return masterOpacity; },
