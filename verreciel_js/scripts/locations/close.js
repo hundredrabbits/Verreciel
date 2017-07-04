@@ -121,13 +121,13 @@ class StructureClose extends Structure
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 1.0;
     
-    this.root.rotation.y = degToRad(morphTime * 45);
+    this.root.rotation.y = degToRad(this.morphTime * 45);
     
     for (let node of this.root.children)
     {
-      node.children[0].rotation.z = degToRad(morphTime * 180);
-      node.children[0].rotation.x = degToRad(morphTime * 90);
-      node.children[0].rotation.y = degToRad(morphTime * 45);
+      node.children[0].rotation.z = degToRad(this.morphTime * 180);
+      node.children[0].rotation.x = degToRad(this.morphTime * 90);
+      node.children[0].rotation.y = degToRad(this.morphTime * 45);
     }
     
     verreciel.animator.commit();
