@@ -53,7 +53,15 @@ class Animation
     {
       requestAnimationFrame(this.tick.bind(this));
     }
-    else if (this.completionBlock != null)
+    else
+    {
+      verreciel.animator.completeAnimation(this.name);
+    }
+  }
+
+  complete()
+  {
+    if (this.completionBlock != null)
     {
       this.completionBlock();
     }

@@ -7,6 +7,7 @@ class Animator
     this.properties = [];
     this.ease = Penner.easeOutQuart;
     this.animationID = 1;
+    this.animations = {};
   }
 
   begin(name = null)
@@ -53,5 +54,18 @@ class Animator
     this.begun = false;
     this.animationDuration = 0;
     this.completionBlock = null;
+    this.animations[animation.name] = animation;
+    return animation.name;
+  }
+
+  completeAnimation(name)
+  {
+    let animation = this.animations[name];
+    if (animation == null)
+    {
+      return;
+    }
+    delete this.animations[name];
+    animation.complete();
   }
 }

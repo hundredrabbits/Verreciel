@@ -179,7 +179,7 @@ class Player extends Empty
     this.activeHandle = handle;
     this.activeHandle.disable();
     
-    verreciel.animator.begin();
+    verreciel.animator.begin("grip");
     verreciel.animator.animationDuration = 2.5;
     this.position.copy(this.activeHandle.destination);
     verreciel.helmet.position.copy(this.activeHandle.destination);
