@@ -9,6 +9,7 @@ class Animation
     this.completionBlock = completionBlock;
     this.percent = 0;
     this.lastFrameTime = Date.now();
+    this.completed = false;
 
     for (let property of this.properties)
     {
@@ -22,6 +23,10 @@ class Animation
 
   tick()
   {
+    if (this.completed)
+    {
+      return;
+    }
     let frameTime = Date.now();
     let secondsElapsed = (frameTime - this.lastFrameTime) / 1000;
     this.lastFrameTime = frameTime;
@@ -61,6 +66,7 @@ class Animation
 
   complete()
   {
+    this.completed = true;
     if (this.completionBlock != null)
     {
       this.completionBlock();

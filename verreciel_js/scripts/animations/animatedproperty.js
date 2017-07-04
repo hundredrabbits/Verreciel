@@ -23,6 +23,9 @@ class AnimatedProperty
 
   set value(newValue)
   {
+    if (this.isAngle) { newValue = sanitizeAngle(newValue); }
+    if (this.__value == newValue) { return; }
+
     // Stop any running animation
     if (this.animation != null)
     {
@@ -34,9 +37,6 @@ class AnimatedProperty
         this.target[this.property] = this.__value;
       }
     }
-
-    if (this.isAngle) { newValue = sanitizeAngle(newValue); }
-    if (this.__value == newValue) { return; }
 
     this.__value = newValue;
     if (this.animator.begun)
@@ -87,6 +87,7 @@ class AnimatedProperty
   interpolate(percent)
   {
     this.percent = percent;
-    this.target[this.property] = this.to * percent + this.from * (1 - percent);
+    this.__value = this.to * percent + this.from * (1 - percent);
+    this.target[this.property] = this.__value;
   }
 }

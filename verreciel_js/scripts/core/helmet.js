@@ -9,22 +9,63 @@ class Helmet extends Empty
     /*
     let node = this;
     let ham = this.meat;
-    Object.defineProperty(ham.rotation, "y", {
-      get: function() { return ham.rotation._y; },
+
+    let hamX = ham.position.x;
+    let hamY = ham.position.y;
+    let hamZ = ham.position.z;
+
+    Object.defineProperty(ham.position, "x", {
+      get: function() { return hamX; },
       set: function(value) {
+        console.log("x");
         console.log(getStackTrace());
         console.log(
           value,
-          node.rotation.__yProperty.animation != null,
-          node.rotation.__yProperty.from,
-          node.rotation.__yProperty.to,
-          node.rotation.__yProperty.percent
+          node.position.__xProperty.animation != null,
+          node.position.__xProperty.from,
+          node.position.__xProperty.to,
+          node.position.__xProperty.percent
         );
         console.log("");
-        return ham.rotation._y = value;
+        return hamX = value;
       }
     });
-    /**/
+
+    Object.defineProperty(ham.position, "y", {
+      get: function() { return hamY; },
+      set: function(value) {
+        console.log("y");
+        console.log(getStackTrace());
+        console.log(
+          value,
+          node.position.__yProperty.animation != null,
+          node.position.__yProperty.from,
+          node.position.__yProperty.to,
+          node.position.__yProperty.percent
+        );
+        console.log("");
+        return hamY = value;
+      }
+    });
+
+
+    Object.defineProperty(ham.position, "z", {
+      get: function() { return hamZ; },
+      set: function(value) {
+        console.log("z");
+        console.log(getStackTrace());
+        console.log(
+          value,
+          node.position.__zProperty.animation != null,
+          node.position.__zProperty.from,
+          node.position.__zProperty.to,
+          node.position.__zProperty.percent
+        );
+        console.log("");
+        return hamZ = value;
+      }
+    });
+    */
     
     console.log("^ Helmet | Init");
     

@@ -4,7 +4,7 @@ class Player extends Empty
   {
     assertArgs(arguments, 0);
     super();
-    
+
     console.log("^ Player | Init");
 
     this.canAlign = true;
@@ -195,6 +195,7 @@ class Player extends Empty
   
   releaseHandle()
   {
+    verreciel.animator.completeAnimation("grip");
     if (this.lastDelay != null)
     {
       cancelDelay(this.lastDelay);
