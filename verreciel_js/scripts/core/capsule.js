@@ -9,7 +9,7 @@ class Capsule extends Empty
     
     console.log("^ Capsule | Init");
 
-    this.at = verreciel.universe.loiqe_spawn.at;
+    this.at = verreciel.universe.loiqe_spawn.at.clone();
     this.direction = 1;
     this.system = Systems.loiqe;
     this.shieldRoot = new Empty();
@@ -149,7 +149,7 @@ class Capsule extends Empty
   beginAtLocation(location)
   {
     assertArgs(arguments, 1);
-    this.at = location.at;
+    this.at.copy(location.at);
     this.location = location;
     this.location.isKnown = true;
     this.dock(location);
@@ -313,7 +313,7 @@ class Capsule extends Empty
     this.isReturning = false;
     
     this.isDocked = true;
-    this.at = this.location.at;
+    this.at.copy(this.location.at);
     this.location.onDock();
     verreciel.radar.removeTarget();
     
@@ -359,7 +359,7 @@ class Capsule extends Empty
   {
     assertArgs(arguments, 1);
     this.location = location;
-    this.at = this.location.at;
+    this.at.copy(this.location.at);
     this.isDocked = true;
     this.location.onDock();
     verreciel.intercom.connectToLocation(this.location);
