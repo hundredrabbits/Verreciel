@@ -106,25 +106,36 @@
     <title>Verreciel</title>
   </head>
   <body>
-    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
-      <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
+    <div id='splash-container' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
+      <div id='logo-container' style='width:120px;height:120px; margin:25vh auto'></div>
     </div>
     <script>
+        let DEBUG_SKIP_LOGO = false;
+        let DEBUG_SHOW_TRIGGERS = false;
+        let DEBUG_DONT_SAVE = false;
+        let DEBUG_NO_MUSIC = false;
 
-      let DEBUG = true;
-      let DEBUG_TRIGGERS = false;
+        let verreciel = new Verreciel();
+        verreciel.install();
 
-      let verreciel = new Verreciel();
-      verreciel.install();
+        if (DEBUG_SKIP_LOGO)
+        {
+            $("#logo-container").remove();
+            $("#splash-container").animate({ opacity: 0 }, 1000);
+            verreciel.start();
+        }
+        else
+        {
+            var logo = new Logo($("#logo-container").get(0));
 
-      let logo = new Logo(document.getElementById("logo"));
+            setTimeout(function(){ logo.install(); }, 1500);
+            setTimeout(function(){ verreciel.start(); }, 7000);
 
-      setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ verreciel.start(); }, DEBUG ? 100 : 7000);
-
-      $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
-        $(logo.element).remove();
-      });
+            $("#splash-container").delay(7500).animate({ opacity: 0 }, 1000,function()
+            {
+                $("#logo-container").remove();
+            });
+        }
 
     </script>
   </body>

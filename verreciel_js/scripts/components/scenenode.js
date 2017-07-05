@@ -24,7 +24,7 @@ class SceneNode
         this.meat = new THREE.LineSegments(this.geometry, this.material);
       } else if (this.method == Methods.interactiveRegion)
       {
-        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_TRIGGERS });
+        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_SHOW_TRIGGERS });
         this.geometry = new THREE.Geometry();
         this.geometry.dynamic = true;
         this.meat = new THREE.Mesh(this.geometry, this.material);

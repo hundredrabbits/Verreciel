@@ -27,6 +27,12 @@ class Music
       return;
     }
 
+    if (DEBUG_NO_MUSIC == true)
+    {
+      console.log("Record: ", name, " (off by debug)");
+      return;
+    }
+
     // Fadeout
     $(this.trackRecord).animate({volume: 0}, 1000, function()
     {
@@ -48,6 +54,12 @@ class Music
     assertArgs(arguments, 1);
     if (this.trackAmbience.name != null && this.trackAmbience.name == name)
     {
+      return;
+    }
+
+    if (DEBUG_NO_MUSIC == true)
+    {
+      console.log("Music: ", name, " (off by debug)");
       return;
     }
 

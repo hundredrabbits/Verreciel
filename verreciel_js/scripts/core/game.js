@@ -19,6 +19,7 @@ class Game
   save(id)
   {
     assertArgs(arguments, 1);
+    if (DEBUG_DONT_SAVE) { return; }
     console.log("@ GAME     | Saved State to " + id);
     for (let c of document.cookie.split(";"))
     {
