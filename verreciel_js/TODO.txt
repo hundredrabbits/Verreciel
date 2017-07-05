@@ -27,5 +27,7 @@ State recovery
 
 What should be interactive, when?
 
+Maybe systems could slowly orbit their stars, and stars could orbit the center
+
 Spacewalk
   Out the hatch, presumably

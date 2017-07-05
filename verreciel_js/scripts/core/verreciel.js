@@ -108,15 +108,7 @@ class Verreciel
     this.items.whenStart();
 
     this.lastFrameTime = Date.now();
-    this.update();
     this.render();
-  }
-
-  update()
-  {
-    assertArgs(arguments, 0);
-    
-    setTimeout(this.update.bind(this), 20);
   }
 
   render()
