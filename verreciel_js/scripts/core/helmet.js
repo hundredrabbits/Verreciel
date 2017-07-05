@@ -217,7 +217,7 @@ class Helmet extends Empty
     }
   }
   
-  addMessage(message, color = null)
+  addMessage(message, color = verreciel.white)
   {
     assertArgs(arguments, 1);   
     if (this.message == message)

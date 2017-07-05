@@ -1,5 +1,6 @@
-Location structures come and go at odd angles
+Structure should appear above and docked when entering game
 Radar is a bit loopy
+  Angles might be fixed, now
 Helmet wire ends are miscalculated
 
 Compare side by side with Swift build

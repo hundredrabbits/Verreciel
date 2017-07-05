@@ -314,7 +314,7 @@ class Location extends Event
   {
     assertArgs(arguments, 0);
     let angle = angleBetweenTwoPoints(verreciel.capsule.at, this.at, verreciel.capsule.at);
-    return (360 - (radToDeg(angle) - 90)) % 360;
+    return (360 - (angle - 90)) % 360;
   }
   
   calculateAlignment(direction = verreciel.capsule.direction)
