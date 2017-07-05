@@ -357,32 +357,10 @@ class ScenePort extends Empty
     return false;
   }
   
-  isReceiving(event)
+  isReceivingEvent(event)
   {
     assertArgs(arguments, 1);
     if (this.origin != null && this.origin.event != null && this.origin.event == event)
-    {
-      return true;
-    }
-    return false;
-  }
-  
-  isReceivingItem(item)
-  {
-    assertArgs(arguments, 1);
-    if (this.origin == null)
-    {
-      return false;
-    }
-    if (this.origin.event == null)
-    {
-      return false;
-    }
-    if ((this.origin.event instanceof Item) == false)
-    {
-      return false;
-    }
-    if (this.origin.event == item)
     {
       return true;
     }

@@ -27,8 +27,7 @@ class LocationStar extends Location
     
     newPanel.add(this.masterPort);
     
-    this.button.disable();
-    this.button.updateText("extinguish");
+    this.button.disable("extinguish");
     
     return newPanel;
   }
@@ -36,7 +35,7 @@ class LocationStar extends Location
   onConnect()
   {
     assertArgs(arguments, 0);
-    if (this.masterPort.isReceiving(verreciel.items.endPortalKey) == true)
+    if (this.masterPort.isReceivingEvent(verreciel.items.endPortalKey) == true)
     {
       this.button.enable();
       this.button.updateText("extinguish");

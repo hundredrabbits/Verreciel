@@ -16,6 +16,6 @@ class Complete extends Monitor
   {
     assertArgs(arguments, 0);
     super.refresh();
-    this.nameLabel.updateText(missions.currentMission.id + "/" + missions.story.length);
+    this.nameLabel.updateText(verreciel.missions.currentMission.id + "/" + verreciel.missions.story.length);
   }
 }

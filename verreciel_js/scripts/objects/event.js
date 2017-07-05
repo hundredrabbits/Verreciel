@@ -50,18 +50,4 @@ class Event extends Empty
     assertArgs(arguments, 0);
     return new Panel();
   }
-  
-  // MARK: Debug -
-  
-  duplicate()
-  {
-    assertArgs(arguments, 0);
-    let newEvent = new Event();
-    newEvent.isQuest = this.isQuest;
-    newEvent.name = this.name;
-    newEvent.details = this.details;
-    newEvent.at = this.at;
-    newEvent.color = this.color;
-    return newEvent;
-  }
 }

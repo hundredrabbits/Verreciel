@@ -246,6 +246,9 @@ class SceneLabel extends Empty
       case ",":
         pivot.add(new SceneLine([new THREE.Vector3(scale/2, 0, 0), new THREE.Vector3(scale/2, -scale, 0)], this.color));
         break;
+      case "?":
+        pivot.add(new SceneLine([new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(scale, 0, 0), new THREE.Vector3(scale, 0, 0), new THREE.Vector3(scale/2, 0, 0), new THREE.Vector3(scale/2, 0, 0), new THREE.Vector3(scale/2, -scale / 4, 0), new THREE.Vector3(scale/2, -scale / 2, 0), new THREE.Vector3(scale/2, -scale, 0)], this.color));
+        break;
       case ".":
         pivot.add(new SceneLine([new THREE.Vector3(scale/2, 0, 0), new THREE.Vector3(scale/2, -scale, 0)], this.color));
         break;
@@ -257,7 +260,7 @@ class SceneLabel extends Empty
         break;
       default:
         console.warn("Bad letter: [" + char.toLowerCase() + "]");
-        pivot.add(new SceneLine([new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(scale, -scale, 0)], red));
+        pivot.add(new SceneLine([new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(0, -scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(scale, scale, 0), new THREE.Vector3(scale, -scale, 0)], verreciel.red));
         break;
     }
 

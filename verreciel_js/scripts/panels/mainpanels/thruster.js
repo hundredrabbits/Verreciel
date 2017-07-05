@@ -197,7 +197,7 @@ class Thruster extends MainPanel
       this.modeWarping();
     }
     else if (
-        this.port.isReceiving(verreciel.items.warpDrive) == true && 
+        this.port.isReceivingEvent(verreciel.items.warpDrive) == true && 
         verreciel.pilot.port.isReceivingLocationOfTypePortal() == true && 
         Math.abs(verreciel.pilot.target.align) == 0
     ) {
@@ -211,7 +211,7 @@ class Thruster extends MainPanel
         this.modeWarpError();
       }
     }
-    else if (this.port.isReceiving(verreciel.items.warpDrive) == true)
+    else if (this.port.isReceivingEvent(verreciel.items.warpDrive) == true)
     {
       this.modeMisaligned();
       this.canWarp = true;

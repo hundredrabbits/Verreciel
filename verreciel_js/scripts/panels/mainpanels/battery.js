@@ -123,7 +123,7 @@ class Battery extends MainPanel
   {
     assertArgs(arguments, 0);
     this.radioPort.enable();
-    radioLabel.updateText("radio",verreciel.white);
+    this.radioLabel.updateText("radio",verreciel.white);
   }
   
   installNav()

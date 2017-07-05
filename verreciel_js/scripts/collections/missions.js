@@ -200,19 +200,19 @@ class Missions
       new Quest(
         "Route " + verreciel.items.valenPortalKey.name + " to Portal", 
         verreciel.universe.loiqe_portal,
-        function() { return verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_portal) && verreciel.intercom.port.isReceiving(verreciel.items.valenPortalKey) == true; },
+        function() { return verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_portal) && verreciel.intercom.port.isReceivingEvent(verreciel.items.valenPortalKey) == true; },
         function() {}
       ),
       new Quest(
         "Align pilot to portal", 
         verreciel.universe.loiqe_portal,
-        function() { return verreciel.pilot.port.isReceiving(verreciel.universe.valen_portal) == true; },
+        function() { return verreciel.pilot.port.isReceivingEvent(verreciel.universe.valen_portal) == true; },
         function() {}
       ),
       new Quest(
         "Power Thruster with portal", 
         verreciel.universe.loiqe_portal,
-        function() { return verreciel.thruster.port.isReceiving(verreciel.items.warpDrive) == true; },
+        function() { return verreciel.thruster.port.isReceivingEvent(verreciel.items.warpDrive) == true; },
         function() {}
       ),
     ]
@@ -317,7 +317,7 @@ class Missions
       verreciel.cargo.port.connect(verreciel.console.port);
       verreciel.radio.port.event = verreciel.items.record1;
     }
-    m.predicate = function() { return hatch.count > 0; };
+    m.predicate = function() { return verreciel.hatch.count > 0; };
     m.quests = [
       new Quest(
         "Collect Waste", 
@@ -328,13 +328,13 @@ class Missions
       new Quest(
         "Route waste to hatch",
         null,
-        function() { return hatch.port.isReceivingItemLike(verreciel.items.waste); },
+        function() { return verreciel.hatch.port.isReceivingItemLike(verreciel.items.waste); },
         function() {}
       ),
       new Quest(
         "Jetison Waste",
         null,
-        function() { return hatch.count > 0; },
+        function() { return verreciel.hatch.count > 0; },
         function() { verreciel.completion.install(); }
       )
     ]

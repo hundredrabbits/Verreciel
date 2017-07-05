@@ -34,8 +34,7 @@ class LocationStation extends Location
     this.tradeLabel.position.set(-0.3,0,0);
     this.port.add(this.tradeLabel);
     
-    this.button.disable();
-    this.button.updateText("install");
+    this.button.disable("install");
     this.port.enable();
     
     return newPanel;
