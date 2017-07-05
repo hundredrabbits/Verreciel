@@ -10,6 +10,19 @@ class Location extends Event
     this.structure = structure;
     this.code = system + "-" + name;
     this.storage = [];
+
+    this.isDocked = false;
+    this.inCollision = false;
+    this.inApproach = false;
+    this.inDiscovery = false;
+    this.inSight = false;
+    this.isTargetable = true;
+    this.isTargeted = false;
+    this.isKnown = false;
+    this.isSeen = false;
+    this.isSelected = false;
+    this.isComplete = null;
+    this.isPortEnabled = false;
     
     this.add(this.icon);
     
@@ -123,6 +136,11 @@ class Location extends Event
     this.update();
     this.structure.onSight();
     this.icon.onUpdate();
+
+    if (this.isDocked)
+    {
+      this.structure.onDock();
+    }
   }
   
   onApproach()
@@ -159,6 +177,7 @@ class Location extends Event
       verreciel.thruster.unlock();
     }
     
+    this.isDocked = true;
     this.isKnown = true;
     this.update();
     this.structure.onDock();
@@ -170,6 +189,7 @@ class Location extends Event
   onUndock()
   {
     assertArgs(arguments, 0);
+    this.isDocked = false;
     this.retrieveStorage();
     this.structure.onUndock();
     verreciel.exploration.refresh();

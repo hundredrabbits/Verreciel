@@ -1,4 +1,3 @@
-Structure should appear above and docked when entering game
 Radar is a bit loopy
   Angles might be fixed, now
 Helmet wire ends are miscalculated
