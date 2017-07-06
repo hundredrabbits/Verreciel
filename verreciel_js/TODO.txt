@@ -1,23 +1,25 @@
 Helmet wire ends are miscalculated
 
 Compare side by side with Swift build
+  Does portal open properly?
+  Where do the star clusters go between Loiqe horadric and portal?
+  Horadric structure looks different when first visiting and when restoring save
 
-Remove jquery dependencies from audio
-Try MeshLine again
-
+Find a better method to draw lines
 Run a JavaScript linter
 
 -------
 
 LOOK OUT: Never override a method with a different signature
 
-Play through the game
-
-When selecting locations on the map, the radar should update the console if it's connected to the console
-Cargo doesn't update console when an item is removed from the hold
-Horadric ports should empty if you pipe from one to the other
+Console updates
+  When selecting locations on the map, the radar should update the console if it's connected to the console
+  Cargo doesn't update console when an item is removed from the hold
+  etc.  
 
 Rethink missions
+  They should be accumulative, at least in part
+
 Walkthroughs, too
 State recovery
   What are some states that cannot be returned to?

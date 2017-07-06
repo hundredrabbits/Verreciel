@@ -316,9 +316,9 @@ class Cargo extends MainPanel
     else
     {
       this.detailsLabel.updateText(this.uploadPercentage.toFixed(0) + "%", verreciel.grey);
+      delay(0.05, this.uploadProgress.bind(this));
     }
 
-    delay(0.05, this.uploadProgress.bind(this));
   }
   
   uploadComplete()

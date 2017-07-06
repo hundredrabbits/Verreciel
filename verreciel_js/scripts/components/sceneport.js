@@ -346,7 +346,7 @@ class ScenePort extends Empty
     {
       return false;
     }
-    if ((origin.host instanceof Panel) == false)
+    if ((this.origin.host instanceof Panel) == false)
     {
       return false;
     }

@@ -1,6 +1,6 @@
 class Item extends Event
 {
-  constructor(name = "", type = ItemTypes.generic, location = null, details = "", isQuest = false, code = null)
+  constructor(name, type, location, details, isQuest, code)
   {
     assertArgs(arguments, 6);
     super(name, new THREE.Vector2(), details, verreciel.grey, false);
