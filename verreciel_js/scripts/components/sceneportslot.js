@@ -137,7 +137,7 @@ class ScenePortSlot extends ScenePort
   upload(item)
   {
     assertArgs(arguments, 1);
-    this.upload = item;
+    this.uploadedItem = item;
     this.uploadProgress();
   }
   
