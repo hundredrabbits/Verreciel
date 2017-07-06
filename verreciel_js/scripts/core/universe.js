@@ -77,6 +77,13 @@ class Universe extends Empty
     this.addClose();
   }
 
+  whenStart()
+  {
+    super.whenStart();
+    console.log("+ Universe | Start");
+    this.connectPaths();
+  }
+
   addLocation(child)
   {
     assertArgs(arguments, 1);
@@ -160,37 +167,37 @@ class Universe extends Empty
   connectPaths()
   {
     assertArgs(arguments, 0);
-    loiqe_city.connect(loiqe_satellite);
-    loiqe_satellite.connect(loiqe_portal);
-    loiqe_horadric.connect(loiqe_satellite);
-    loiqe_fog.connect(loiqe_port);
+    this.loiqe_city.connect(this.loiqe_satellite);
+    this.loiqe_satellite.connect(this.loiqe_portal);
+    this.loiqe_horadric.connect(this.loiqe_satellite);
+    this.loiqe_fog.connect(this.loiqe_port);
     
-    valen_bank.connect(valen_portal);
-    valen_station.connect(valen_bank);
-    valen_harvest.connect(valen_bank);
-    valen_fog.connect(valen_portal);
-    valen_beacon.connect(valen_fog);
+    this.valen_bank.connect(this.valen_portal);
+    this.valen_station.connect(this.valen_bank);
+    this.valen_harvest.connect(this.valen_bank);
+    this.valen_fog.connect(this.valen_portal);
+    this.valen_beacon.connect(this.valen_fog);
     
-    senni_portal.connect(senni_cargo);
-    senni_cargo.connect(senni_portal);
-    senni_station.connect(senni_portal);
-    senni_fog.connect(senni_station);
-    senni_horadric.connect(senni_harvest);
+    this.senni_portal.connect(this.senni_cargo);
+    this.senni_cargo.connect(this.senni_portal);
+    this.senni_station.connect(this.senni_portal);
+    this.senni_fog.connect(this.senni_station);
+    this.senni_horadric.connect(this.senni_harvest);
     
-    usul_station.connect(usul_portal);
-    usul_telescope.connect(usul_portal);
+    this.usul_station.connect(this.usul_portal);
+    this.usul_telescope.connect(this.usul_portal);
     
     // Transits
     
-    usul_transit.connect(loiqe_transit);
-    loiqe_transit.connect(valen_transit);
-    valen_transit.connect(senni_transit);
-    senni_transit.connect(usul_transit);
+    this.usul_transit.connect(this.loiqe_transit);
+    this.loiqe_transit.connect(this.valen_transit);
+    this.valen_transit.connect(this.senni_transit);
+    this.senni_transit.connect(this.usul_transit);
     
-    loiqe_portal.connect(loiqe_transit);
-    valen_portal.connect(valen_transit);
-    senni_portal.connect(senni_transit);
-    usul_portal.connect(usul_transit);
+    this.loiqe_portal.connect(this.loiqe_transit);
+    this.valen_portal.connect(this.valen_transit);
+    this.senni_portal.connect(this.senni_transit);
+    this.usul_portal.connect(this.usul_transit);
   }
 
   locationLike(target)

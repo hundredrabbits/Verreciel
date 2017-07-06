@@ -10,7 +10,7 @@ class ScenePortRedirect extends ScenePort
       this.disable();
     }
   }
-  
+  /*
   disable()
   {
     assertArgs(arguments, 0);
@@ -18,16 +18,11 @@ class ScenePortRedirect extends ScenePort
     this.disconnect();
     this.trigger.disable();
   }
-  
+  */
   whenRenderer()
   {
     assertArgs(arguments, 0);
     super.whenRenderer();
-    
-    if (this.event != null)
-    {
-      this.sprite_input.updateChildrenColors(verreciel.clear);
-    }
   }
   
   disconnect()
