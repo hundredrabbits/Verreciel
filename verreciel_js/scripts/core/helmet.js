@@ -198,22 +198,20 @@ class Helmet extends Empty
 
     this.rotation.setNow(rotX, rotY, this.rotation.z);
 
-    this.updatePort();
     this.warningLabel.blink();
   }
 
-  updatePort()
+  updatePortWires()
   {
     assertArgs(arguments, 0);
-    if (verreciel.player.port.origin != null)
+    let port = verreciel.player.port;
+    if (port.origin != null)
     {
-      let test = this.convertPositionToNode(verreciel.player.port.position, verreciel.player.port.origin);
-      verreciel.player.port.origin.wire.updateEnds(new THREE.Vector3(), test);
+      port.origin.updateWire();
     }
-    if (verreciel.player.port.connection != null)
+    if (port.connection != null)
     {
-      let test = this.convertPositionFromNode(verreciel.player.port.position, verreciel.player.port.connection);
-      verreciel.player.port.wire.updateEnds(test, new THREE.Vector3());
+      port.updateWire();
     }
   }
   

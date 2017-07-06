@@ -158,6 +158,16 @@ class SceneNode
     }
   }
 
+  whenUpdateMatrix()
+  {
+    assertArgs(arguments, 0);
+    this.meat.updateMatrixWorld(false);
+    for (let node of this.children)
+    {
+      node.whenUpdateMatrix();
+    }
+  }
+
   removeFromParentNode()
   {
     assertArgs(arguments, 0);
@@ -169,8 +179,6 @@ class SceneNode
 
   convertPositionToNode(xyz, node)
   {
-    this.meat.updateMatrixWorld(true);
-    node.meat.updateMatrixWorld(true);
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
@@ -179,8 +187,6 @@ class SceneNode
 
   convertPositionFromNode(xyz, node)
   {
-    this.meat.updateMatrixWorld(true);
-    node.meat.updateMatrixWorld(true);
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));

@@ -3,10 +3,12 @@ class AnimatedXYZ
   constructor(animator, target, property, angles = false)
   {
     assertArgs(arguments, 3);
-    var xyz = target[property];
-    this.__xProperty = new AnimatedProperty(animator, xyz, "x", angles);
-    this.__yProperty = new AnimatedProperty(animator, xyz, "y", angles);
-    this.__zProperty = new AnimatedProperty(animator, xyz, "z", angles);
+    this.target = target;
+    this.property = property;
+    this.xyz = target[property];
+    this.__xProperty = new AnimatedProperty(animator, this.xyz, "x", angles);
+    this.__yProperty = new AnimatedProperty(animator, this.xyz, "y", angles);
+    this.__zProperty = new AnimatedProperty(animator, this.xyz, "z", angles);
   }
   
   get x() { return this.__xProperty.value; }

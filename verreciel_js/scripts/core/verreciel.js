@@ -122,10 +122,9 @@ class Verreciel
     if (framesElapsed > 1)
     {
       this.lastFrameTime = frameTime;
-      this.capsule.whenRenderer();
-      this.player.whenRenderer();
-      this.helmet.whenRenderer();
-      this.space.whenRenderer();
+      this.root.whenRenderer();
+      this.root.whenUpdateMatrix();
+      this.helmet.updatePortWires();
       this.renderer.render( this.scene, this.camera );
     }
   }
@@ -175,8 +174,6 @@ class Verreciel
 
     this.player.accelY += dragX;
     this.player.accelX += dragY;
-        
-    this.helmet.updatePort();
   }
 
   mouseUp(e)
@@ -191,7 +188,6 @@ class Verreciel
     
     this.player.canAlign = true;
     this.helmet.canAlign = true;
-    this.helmet.updatePort();
 
     if (!this.mouseMoved)
     {
