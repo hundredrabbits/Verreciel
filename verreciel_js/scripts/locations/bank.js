@@ -109,50 +109,6 @@ class LocationBank extends Location
     }
     return false;
   }
-  
-  onDock()
-  {
-    assertArgs(arguments, 0);
-    super.onDock();
-    
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
-    
-    // this.structure.hide();
-    
-    var i = 0;
-    for (let mesh of this.structure.children)
-    {
-      mesh.rotation.y = degToRad(i * 0.10);
-      i += 1;
-    }
-    
-    verreciel.animator.commit();
-    
-    this.refresh();
-  }
-  
-  onUndock()
-  {
-    assertArgs(arguments, 0);
-    super.onUndock();
-    
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
-    
-    // this.structure.show();
-    
-    var i = 0;
-    for (let mesh of this.structure.children)
-    {
-      mesh.rotation.y = 0;
-      i += 1;
-    }
-    
-    verreciel.animator.commit();
-    
-    this.refresh();
-  }
 }
 
 class IconBank extends Icon
@@ -192,5 +148,45 @@ class StructureBank extends Structure
       this.root.add(rect);
       i += 1;
     }
+  }
+
+  onDock()
+  {
+    super.onDock();
+
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
+    
+    this.hide();
+    
+    var i = 0;
+    for (let mesh of this.root.children)
+    {
+      mesh.rotation.y = degToRad(i * 0.10);
+      // mesh.rotation.y = degToRad((i - 3) * 10); // TODO: I think this would be more interesting
+      i += 1;
+    }
+    
+    verreciel.animator.commit();
+  }
+
+  onUndock()
+  {
+    super.onUndock();
+    
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.5;
+    
+    this.show();
+    
+    var i = 0;
+    for (let mesh of this.root.children)
+    {
+      mesh.rotation.y = 0;
+      i += 1;
+    }
+    
+    verreciel.animator.commit();
+    
   }
 }
