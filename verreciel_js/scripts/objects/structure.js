@@ -71,7 +71,7 @@ class Structure extends Empty
   onSight()
   {
     assertArgs(arguments, 0);
-    this.show();
+    // this.show();
   }
   
   onUndock()

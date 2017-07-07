@@ -118,7 +118,7 @@ class LocationBank extends Location
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
     
-    this.structure.hide();
+    // this.structure.hide();
     
     var i = 0;
     for (let mesh of this.structure.children)
@@ -140,7 +140,7 @@ class LocationBank extends Location
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
     
-    this.structure.show();
+    // this.structure.show();
     
     var i = 0;
     for (let mesh of this.structure.children)

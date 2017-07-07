@@ -199,7 +199,7 @@ class LocationHoradric extends Location
     
     this.outPort.addEvent(this.combinationRecipe.result);
     
-    this.structure.show();
+    // this.structure.show();
     
     this.combinationPercentage = 0;
     

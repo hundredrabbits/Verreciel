@@ -3,13 +3,14 @@ class Verreciel
   constructor()
   {
     assertArgs(arguments, 0);
-
   }
 
   install()
   {
     assertArgs(arguments, 0);
     this.version = "r1";
+
+    this.phase = Phase.install;
 
     this.element = document.createElement("verreciel");
     document.body.appendChild(this.element);
@@ -80,6 +81,8 @@ class Verreciel
 
   start()
   {
+    this.phase = Phase.start;
+
     assertArgs(arguments, 0);
     console.info("Starting Verreciel");
 
@@ -113,6 +116,8 @@ class Verreciel
 
   render()
   {
+    this.phase = Phase.render;
+
     assertArgs(arguments, 0);
     requestAnimationFrame( this.render.bind(this) );
     
@@ -127,6 +132,7 @@ class Verreciel
       this.helmet.updatePortWires();
       this.renderer.render( this.scene, this.camera );
     }
+    this.phase = Phase.idle;
   }
 
   mouseDown(e)
@@ -224,6 +230,7 @@ class Verreciel
 }
 
 class Methods {} setEnumValues(Methods, ['lineArt', 'interactiveRegion']);
+class Phase {} setEnumValues(Phase, ['init', 'start', 'render', 'idle']);
 class Alignment {} setEnumValues(Alignment, ['left', 'center', 'right',]);
 class Systems {} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
 class ItemTypes {} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);

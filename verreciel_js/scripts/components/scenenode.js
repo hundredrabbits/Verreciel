@@ -96,6 +96,10 @@ class SceneNode
     other.parent = this;
     other.meat.updateMatrixWorld(true);
     other.whenInherit();
+    if (verreciel.phase == Phase.render)
+    {
+      other.whenRenderer();
+    }
   }
 
   remove(other)
