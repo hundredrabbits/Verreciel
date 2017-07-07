@@ -1,11 +1,12 @@
 class AnimatedProperty
 {
-  constructor(animator, target, property, isAngle = false, snapToEnd = false)
+  constructor(animator, target, property, isAngle = false, snapToEnd = false, onChange = null)
   {
     assertArgs(arguments, 3);
     this.animator = animator;
     this.animation = null;
     this.registered = false;
+    this.onChange = onChange;
 
     this.target = target;
     this.property = property;
@@ -47,6 +48,10 @@ class AnimatedProperty
     {
       this.target[this.property] = this.__value;
     }
+    if (this.onChange != null)
+    {
+      this.onChange();
+    }
   }
 
   setNow(newValue)
@@ -60,6 +65,10 @@ class AnimatedProperty
 
     this.__value = newValue;
     this.target[this.property] = this.__value;
+    if (this.onChange != null)
+    {
+      this.onChange();
+    }
   }
 
   commit(animation)
@@ -89,5 +98,9 @@ class AnimatedProperty
     this.percent = percent;
     this.__value = this.to * percent + this.from * (1 - percent);
     this.target[this.property] = this.__value;
+    if (this.onChange != null)
+    {
+      this.onChange();
+    }
   }
 }

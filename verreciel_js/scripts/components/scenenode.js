@@ -6,8 +6,6 @@ class SceneNode
     this.id = SceneNode.ids++;
     this.method = method;
     this.children = [];
-    var masterOpacity = 1;
-    var masterVisible = true;
     
     if (this.method == null)
     {
@@ -31,8 +29,9 @@ class SceneNode
       }
       
       this.__color4 = new THREE.Vector4(1, 1, 1, 1);
-      this.__opacityProperty = new AnimatedProperty(verreciel.animator, this.material, "opacity", false, true);
     }
+
+    this.__opacityProperty = new AnimatedProperty(verreciel.animator, {opacity:1}, "opacity", false, true, this.whenInherit.bind(this));
     
     this.meat.node = this;
     this.meat.rotation.order = "YXZ";
@@ -40,50 +39,33 @@ class SceneNode
     this.position = new AnimatedXYZ(verreciel.animator, this.meat, "position");
     this.rotation = new AnimatedXYZ(verreciel.animator, this.meat, "rotation", true);
 
-    Object.defineProperties( this, {
-      opacity:
-      {
-        get: function() { return masterOpacity; },
-        set: function(value) {
-          if (masterOpacity == value) { return; }
-          masterOpacity = value;
-          this.whenInherit();
+    Object.defineProperties(this, {
+      opacity: {
+        get: function() { return this.__opacityProperty.value; },
+        set: function(newValue) { this.__opacityProperty.value = newValue; }
+      },
+      opacityFromTop: {
+        get: function()
+        {
+          var value = (this.parent == null) ? 1 : this.parent.opacityFromTop;
+          return value * this.__opacityProperty.value;
         }
-      },
-      opacityFromTop:
-      {
-        get : function() { return masterOpacity * (this.parent == null ? 1 : this.parent.opacityFromTop); }
-      },
-      visible:
-      {
-        get: function() { return masterVisible; },
-        set: function(value) {
-          if (masterVisible == value) { return; }
-          masterVisible = value;
-          this.whenInherit();
-        }
-      },
-      visibleFromTop:
-      {
-        get : function() { return masterVisible && (this.parent == null ? true : this.parent.visibleFromTop); }
       }
     });
 
     if (this.method != null)
     {
-      Object.defineProperties( this, {
-        color:
+      Object.defineProperty( this, "color", {
+        get: function() { return this.__color4; },
+        set: function(newColor)
         {
-          get: function() { return this.__color4; },
-          set: function(newColor) {
-            if (!this.material.visible) { return; }
-            if (this.__color4.equals(newColor)) { return; }
-            this.__color4.copy(newColor);
-            this.material.color.r = this.__color4.x;
-            this.material.color.g = this.__color4.y;
-            this.material.color.b = this.__color4.z;
-            this.whenInherit();
-          }
+          if (!this.material.visible) { return; }
+          if (this.__color4.equals(newColor)) { return; }
+          this.__color4.copy(newColor);
+          this.material.color.r = this.__color4.x;
+          this.material.color.g = this.__color4.y;
+          this.material.color.b = this.__color4.z;
+          this.updateMaterialOpacity();
         }
       });
     }
@@ -109,17 +91,18 @@ class SceneNode
     other.parent = null;
   }
 
-  whenInherit()
+  updateMaterialOpacity()
   {
     if (this.method != null)
     {
-      this.__opacityProperty.value = this.opacityFromTop * this.__color4.w;
-      this.meat.visible = this.visibleFromTop && this.opacityFromTop > 0; // This might mess up fade-outs
+      this.material.opacity = this.opacityFromTop * this.__color4.w;
     }
-    else
-    {
-      this.meat.visible = this.visibleFromTop;
-    }
+  }
+
+  whenInherit()
+  {
+    this.updateMaterialOpacity();
+
     for (let node of this.children)
     {
       node.whenInherit();
