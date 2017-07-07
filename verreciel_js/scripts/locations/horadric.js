@@ -317,16 +317,16 @@ class StructureHoradric extends Structure
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 3;
     
-    this.root.children[0].rotation.y += degToRad(22.5);
-    this.root.children[1].rotation.y -= degToRad(22.5);
+    this.root.children[0].rotation.y =  degToRad(22.5);
+    this.root.children[1].rotation.y = -degToRad(22.5);
     
-    this.root.children[2].rotation.z += degToRad(45);
-    this.root.children[3].rotation.z -= degToRad(45);
+    this.root.children[2].rotation.z =  degToRad(45);
+    this.root.children[3].rotation.z = -degToRad(45);
     
-    this.root.children[4].rotation.x += degToRad(90);
-    this.root.children[5].rotation.x -= degToRad(90);
+    this.root.children[4].rotation.x =  degToRad(90);
+    this.root.children[5].rotation.x = -degToRad(90);
     
-    this.rotation.y += degToRad(90);
+    this.rotation.y = degToRad(90);
     
     verreciel.animator.commit();
   }

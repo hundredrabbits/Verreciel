@@ -108,7 +108,7 @@ class Battery extends MainPanel
   {
     assertArgs(arguments, 0);
     this.enigmaPort.enable();
-    this.enigmaLabel.updateText("enigma",verreciel.white);;
+    this.enigmaLabel.updateText("enigma",verreciel.white);
   }
   
   installThruster()

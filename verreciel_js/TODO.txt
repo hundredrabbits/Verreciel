@@ -1,8 +1,9 @@
+Exploration is showing 39 as denominator, should be 38??
+Where do the star clusters go between Loiqe satellite and portal?
+  Breakpoint their requisition
 
 Compare side by side with Swift build
-  Does portal open properly?
-  Where do the star clusters go between Loiqe horadric and portal?
-  Horadric structure looks different when first visiting and when restoring save
+  game state: 5
 
 Find a better method to draw lines
 Run a JavaScript linter

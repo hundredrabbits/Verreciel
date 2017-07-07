@@ -64,6 +64,7 @@ class Structure extends Empty
   onDock()
   {
     assertArgs(arguments, 0);
+    this.show();
     this.morph();
   }
   

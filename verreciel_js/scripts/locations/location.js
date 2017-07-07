@@ -134,12 +134,15 @@ class Location extends Event
     assertArgs(arguments, 0);
     this.isSeen = true;
     this.update();
-    this.structure.onSight();
     this.icon.onUpdate();
 
     if (this.isDocked)
     {
       this.structure.onDock();
+    }
+    else
+    {
+      this.structure.onSight();
     }
   }
   
