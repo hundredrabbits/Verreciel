@@ -1,4 +1,3 @@
-Exploration is showing 39 as denominator, should be 38??
 Where do the star clusters go between Loiqe satellite and portal?
   Breakpoint their requisition
 

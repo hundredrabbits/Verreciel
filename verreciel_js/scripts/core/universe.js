@@ -103,7 +103,6 @@ class Universe extends Empty
     this.addLocation(this.loiqe_satellite);
     this.addLocation(this.loiqe_port);
     // Fog
-    this.addLocation(this.loiqe_transit);
     this.addLocation(this.loiqe_fog);
     this.addLocation(this.loiqe_transit);
     // Constellations
