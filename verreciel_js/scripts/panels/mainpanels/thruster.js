@@ -588,7 +588,11 @@ class Thruster extends MainPanel
       return;
     }
     
-    if (this.speed * 10 > Math.floor(this.actualSpeed * 10))
+    if (Math.abs(this.speed - this.actualSpeed) < 0.0001)
+    {
+      this.actualSpeed = this.speed;
+    }
+    else if (this.speed * 10 > Math.floor(this.actualSpeed * 10))
     {
       this.actualSpeed += 0.1;
     }

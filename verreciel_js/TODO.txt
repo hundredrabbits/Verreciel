@@ -1,6 +1,3 @@
-Where do the star clusters go between Loiqe satellite and portal?
-  Breakpoint their requisition
-
 Compare side by side with Swift build
   game state: 5
 

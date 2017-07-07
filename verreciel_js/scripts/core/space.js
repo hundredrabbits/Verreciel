@@ -129,6 +129,7 @@ class Space extends Empty
       if (cluster.parent == null)
       {
         nextCluster = cluster;
+        cluster.reset();
         break;
       }
     }
@@ -148,7 +149,13 @@ class StarCluster extends Empty
   {
     assertArgs(arguments, 0);
     super();
-    
+    this.mesh = new SceneLine([], verreciel.white);
+    this.add(this.mesh);
+    this.reset();
+  }
+
+  reset()
+  {
     this.starsPositions = [
       new THREE.Vector3(Math.floor(Math.random() * 40) - 20, 0, Math.floor(Math.random() * 40) - 20),
       new THREE.Vector3(Math.floor(Math.random() * 40) - 20, 0, Math.floor(Math.random() * 40) - 20),
@@ -157,15 +164,15 @@ class StarCluster extends Empty
       new THREE.Vector3(Math.floor(Math.random() * 40) - 20, 0, Math.floor(Math.random() * 40) - 20),
     ];
 
-    this.mesh = new SceneLine([
+    this.mesh.updateVertices([
       this.starsPositions[0], new THREE.Vector3(this.starsPositions[0].x, -1, this.starsPositions[0].z),
       this.starsPositions[1], new THREE.Vector3(this.starsPositions[1].x, -1, this.starsPositions[1].z),
       this.starsPositions[2], new THREE.Vector3(this.starsPositions[2].x, -1, this.starsPositions[2].z),
       this.starsPositions[3], new THREE.Vector3(this.starsPositions[3].x, -1, this.starsPositions[3].z),
       this.starsPositions[4], new THREE.Vector3(this.starsPositions[4].x, -1, this.starsPositions[4].z),
-    ], verreciel.white);
-
-    this.add(this.mesh);
+    ]);
+    
+    this.position.y = 0;
   }
   
   whenRenderer()
