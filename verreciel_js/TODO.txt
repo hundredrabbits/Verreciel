@@ -14,7 +14,8 @@ Foresight:
 -------
 
 Compare side by side with Swift build
-  game state: 6
+  game state: 9
+  iOS game state: 6
 
 Find a better method to draw lines
 Run a JavaScript linter
@@ -22,6 +23,9 @@ Run a JavaScript linter
 -------
 
 LOOK OUT: Never override a method with a different signature
+
+Render every location panel
+  Does it look good?
 
 Console updates
   When selecting locations on the map, the radar should update the console if it's connected to the console

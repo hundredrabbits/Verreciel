@@ -81,7 +81,7 @@ function Logo(target_element,is_looping)
 
   this.install = function()
   {
-    this.element.style.backgroundColor = "black";
+    // this.element.style.backgroundColor = "black";
     this.element.style.padding = (logo.width/2)+"px";
     this.container.style.width = logo.width+"px";
     this.container.style.height = logo.height+"px";

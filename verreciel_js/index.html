@@ -3,8 +3,6 @@
   <head>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script type="text/javascript" src="scripts/logo.js"></script>
-    <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
-    <!-- <script type="text/javascript" src="lib/three.min.js"></script> -->
     <script type="text/javascript" src="lib/three.js"></script>
     <script type="text/javascript" src="lib/easing.js"></script>
 
@@ -106,8 +104,8 @@
     <title>Verreciel</title>
   </head>
   <body>
-    <div id='splash-container' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
-      <div id='logo-container' style='width:120px;height:120px; margin:25vh auto'></div>
+    <div id='splashContainer'>
+      <div id='logoContainer' style='width:120px;height:120px; margin:25vh auto; background: none;'></div>
     </div>
     <script>
         let DEBUG_SKIP_LOGO = false;
@@ -118,23 +116,22 @@
         let verreciel = new Verreciel();
         verreciel.install();
 
+        let logoContainer = document.getElementById("logoContainer");
+        let splashContainer = document.getElementById("splashContainer");
+
         if (DEBUG_SKIP_LOGO)
         {
-            $("#logo-container").remove();
-            $("#splash-container").animate({ opacity: 0 }, 1000);
+            logoContainer.parentNode.removeChild(logoContainer);
+            splashContainer.style = "opacity: 0";
             verreciel.start();
         }
         else
         {
-            var logo = new Logo($("#logo-container").get(0));
-
-            setTimeout(function(){ logo.install(); }, 1500);
-            setTimeout(function(){ verreciel.start(); }, 7000);
-
-            $("#splash-container").delay(7500).animate({ opacity: 0 }, 1000,function()
-            {
-                $("#logo-container").remove();
-            });
+            var logo = new Logo(logoContainer);
+            delay(1.5, function(){ logo.install(); });
+            delay(7.0, function(){ verreciel.start(); });
+            delay(7.5, function(){ splashContainer.style = "opacity: 0"; });
+            delay(8.5, function(){ logoContainer.parentNode.removeChild(logoContainer); });
         }
 
     </script>
