@@ -59,7 +59,6 @@ class SceneNode
         get: function() { return this.__color4; },
         set: function(newColor)
         {
-          if (!this.material.visible) { return; }
           if (this.__color4.equals(newColor)) { return; }
           this.__color4.copy(newColor);
           this.material.color.r = this.__color4.x;
@@ -96,6 +95,10 @@ class SceneNode
     if (this.method != null)
     {
       this.material.opacity = this.opacityFromTop * this.__color4.w;
+      if (this.method == Methods.lineArt)
+      {
+        this.material.visible = this.material.opacity > 0;
+      }
     }
   }
 

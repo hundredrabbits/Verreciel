@@ -1,8 +1,5 @@
 Bugs in 5:
 
-  material visible = material opacity > 0
-    Purple map things tho
-
   Radio install button is missing its text
 
 -------
