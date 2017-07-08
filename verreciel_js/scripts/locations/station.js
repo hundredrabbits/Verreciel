@@ -52,8 +52,7 @@ class LocationStation extends Location
     let trade = this.port.event;
     if (trade instanceof Item && trade.name == this.requirement.name && trade.type == this.requirement.type)
     {
-      this.button.enable();
-      this.button.updateText("install");
+      this.button.enable("install");
       this.tradeLabel.updateColor(verreciel.cyan);
     }
     else

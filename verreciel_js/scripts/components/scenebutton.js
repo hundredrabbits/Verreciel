@@ -24,7 +24,7 @@ class SceneButton extends Empty
     ], verreciel.red))
     this.add(this.trigger);
     
-    this.label = new SceneLabel(this.text, Alignment.center);
+    this.label = new SceneLabel(this.text, 0.1, Alignment.center);
     this.add(this.label);
   }
 
@@ -47,6 +47,6 @@ class SceneButton extends Empty
   touch(id = 0)
   {
     verreciel.music.playEffect("click3");
-    return host.touch(this.operation);
+    return this.host.touch(this.operation);
   }
 }

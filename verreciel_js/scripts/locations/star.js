@@ -37,8 +37,7 @@ class LocationStar extends Location
     assertArgs(arguments, 0);
     if (this.masterPort.isReceivingEvent(verreciel.items.endPortalKey) == true)
     {
-      this.button.enable();
-      this.button.updateText("extinguish");
+      this.button.enable("extinguish");
     }
   }
   

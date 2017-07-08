@@ -1,6 +1,6 @@
-Bugs in 5:
+Bugs in 6:
 
-  Radio install button is missing its text
+  
 
 -------
 
