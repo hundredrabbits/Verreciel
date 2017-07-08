@@ -237,7 +237,7 @@ class ItemTypes {} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', '
 
 const Records =
 {
-  record1:"loique",
+  record1:"loiqe",
   record2:"valen",
   record3:"senni",
   record4:"usul",

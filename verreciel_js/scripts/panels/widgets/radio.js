@@ -14,23 +14,31 @@ class Radio extends Widget
     this.label.updateText(this.name);
   }
   
-  isPlaying()
+  // This is used when the missions system is assigning values to things
+  setRecord(record)
+  {
+    this.port.addEvent(record);
+    this.onUploadComplete();
+  }
+
+  update()
   {
     assertArgs(arguments, 0);
-    if (this.port.hasItemOfType(ItemTypes.record))
-    {
-      return true;
-    }
-    return false;
+    super.update();
+    this.refresh();
   }
-  
+
   onPowered()
   {
     assertArgs(arguments, 0);
     super.onPowered()
-    if (this.port.hasItemOfType(ItemTypes.record))
+    if (this.hasRecord())
     {
       this.play();
+    }
+    else
+    {
+      this.stop();
     }
   }
   
@@ -44,22 +52,19 @@ class Radio extends Widget
   play()
   {
     assertArgs(arguments, 0);
-    if ((this.port.event instanceof Item) == false)
-    {
-      return;
-    }
-    if (this.port.event.type != ItemTypes.record)
-    {
-      return;
-    }
-    verreciel.music.playRecord(this.port.event.code);
-    verreciel.music.pauseAmbient();
+    verreciel.music.playMusic(Records[this.port.event.code], "record");
   }
   
+  hasRecord()
+  {
+    assertArgs(arguments, 0);
+    let event = this.port.event;
+    return event != null && event instanceof Item && event.type == ItemTypes.record;
+  }
+
   stop()
   {
     assertArgs(arguments, 0);
-    verreciel.music.pauseRecord();
     verreciel.space.onSystemEnter(verreciel.capsule.system);
   }
   
@@ -70,7 +75,14 @@ class Radio extends Widget
     
     if (verreciel.battery.isRadioPowered() == true)
     {
-      this.play();
+      if (this.hasRecord())
+      {
+        this.play();
+      }
+      else
+      {
+        this.stop();
+      }
     }
   }
   

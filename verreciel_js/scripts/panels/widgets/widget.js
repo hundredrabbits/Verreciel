@@ -6,8 +6,9 @@ class Widget extends Panel
     super();
 
     this.isPowered = function(){ return false; };
+    this.requirement = null;
     
-    this.port = new ScenePortSlot(this, Alignment.center, "--");
+    this.port = new ScenePortSlot(this, Alignment.center, false, "--");
     this.port.position.set(0,-0.7,Templates.radius);
     this.port.disable();
     this.port.label.updateScale(0.05);
@@ -59,7 +60,7 @@ class Widget extends Panel
       return;
     }
     
-    if (this.port.event instanceof Item && this.port.event.type != requirement)
+    if (this.port.event instanceof Item && this.port.event.type != this.requirement)
     {
       this.port.label.updateColor(verreciel.red);
     }

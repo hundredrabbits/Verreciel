@@ -41,27 +41,27 @@ class Space extends Empty
       case Systems.valen:
         this.targetSpaceColor = [0.2,0.2,0.2];
         this.stars_color = verreciel.white;
-        verreciel.music.playAmbience(Ambience.ambience2);
+        verreciel.music.playMusic(Ambience.ambience2, "ambience");
         break;
       case Systems.senni:
         this.targetSpaceColor = [0.0,0.0,0.0];
         this.stars_color = verreciel.cyan;
-        verreciel.music.playAmbience(Ambience.ambience3);
+        verreciel.music.playMusic(Ambience.ambience3, "ambience");
         break;
       case Systems.usul:
         this.targetSpaceColor = [0.2,0.0,0.0];
         this.stars_color = verreciel.white;
-        verreciel.music.playAmbience(Ambience.ambience4);
+        verreciel.music.playMusic(Ambience.ambience4, "ambience");
         break;
       case Systems.close:
         this.targetSpaceColor = [0.6,0.6,0.6];
         this.stars_color = verreciel.black;
-        verreciel.music.playAmbience(Ambience.ambience5);
+        verreciel.music.playMusic(Ambience.ambience5, "ambience");
         break;
       default:
         this.targetSpaceColor = [0.0,0.0,0.0];
         this.stars_color = verreciel.white;
-        verreciel.music.playAmbience(Ambience.ambience1);
+        verreciel.music.playMusic(Ambience.ambience1, "ambience");
         break;
     }
     

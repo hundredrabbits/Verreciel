@@ -3,92 +3,42 @@ class Music
   constructor()
   {
     assertArgs(arguments, 0);
-    this.trackAmbience = new Audio();
     this.trackEffect = new Audio();
-    this.trackRecord = new Audio();
+    this.trackMusic = new Audio();
     this.audioCatalog = {};
-    this.ambienceMuted = false;
-    this.recordMuted = false;
   }
 
   playEffect(name)
   {
     assertArgs(arguments, 1);
     // console.log("Effect: ",name);
-    this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg");
+    this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg", false);
     this.trackEffect.play()
   }
 
-  playRecord(name)
+  playMusic(name, role)
   {
     assertArgs(arguments, 1);
-    if (this.trackRecord.name == name)
+    if (this.trackMusic.name == name)
     {
       return;
     }
 
     if (DEBUG_NO_MUSIC == true)
     {
-      console.log("Record: ", name, " (off by debug)");
+      console.log(role, ":", name, " (off by debug)");
       return;
     }
 
-    // Fadeout
-    $(this.trackRecord).animate({volume: 0}, 1000, function()
-    {
-      console.log("Record: ",name);
+    console.log(role, ":", name);
 
-      verreciel.music.trackRecord.pause();
-      verreciel.music.trackRecord = verreciel.music.fetchAudio(name, "record", "media/audio/record/"+name+".mp3", true);
-      if (verreciel.music.recordMuted == false)
-      {
-        verreciel.music.trackRecord.play();
-      }
-      verreciel.music.trackRecord.volume = 0;
-      $(verreciel.music.trackRecord).animate({volume: 1}, 1000);
-    });
+    this.trackMusic.pause();
+    this.trackMusic = this.fetchAudio(name, role, "media/audio/" + role + "/" + name + ".mp3", true);
+    this.trackMusic.currentTime = 0;
+    this.trackMusic.play();
   }
 
-  playAmbience(name)
-  {
-    assertArgs(arguments, 1);
-    if (this.trackAmbience.name != null && this.trackAmbience.name == name)
-    {
-      return;
-    }
-
-    if (DEBUG_NO_MUSIC == true)
-    {
-      console.log("Music: ", name, " (off by debug)");
-      return;
-    }
-
-    function fadeIn()
-    {
-      console.log("Music: ",name);
-
-      verreciel.music.trackAmbience.pause();
-      verreciel.music.trackAmbience = verreciel.music.fetchAudio(name, "ambience", "media/audio/ambience/"+name+".mp3", true);
-      if (verreciel.music.ambienceMuted == false)
-      {
-        verreciel.music.trackAmbience.play();
-      }
-      verreciel.music.trackAmbience.volume = 0;
-      $(verreciel.music.trackAmbience).animate({volume: 1}, 1000);
-    }
-
-    if (this.trackAmbience.name != null)
-    {
-      // Fadeout
-      $(this.trackAmbience).animate({volume: 0}, 1000, fadeIn);
-    }
-    else
-    {
-      fadeIn();
-    }
-  }
-
-  fetchAudio(name, role, src, loop = false)
+  fetchAudio(name, role, src, loop)
   {
     assertArgs(arguments, 3);
     var audioId = role + "_" + name;
@@ -102,44 +52,5 @@ class Music
     }
     this.audioCatalog[audioId].currenceTime = 0;
     return this.audioCatalog[audioId];
-  }
-
-  pauseAmbience()
-  {
-    assertArgs(arguments, 0);
-    this.ambienceMuted = true;
-    $(this.trackAmbience).animate({volume: 0}, 1000, function()
-    {
-      verreciel.music.trackAmbience.pause();
-    });
-  }
-
-  resumeAmbience()
-  {
-    assertArgs(arguments, 0);
-    this.trackAmbience.play();
-    this.trackAmbience.volume = 0;
-    $(this.trackAmbience).animate({volume: 1}, 1000);
-    this.ambienceMuted = false;
-  }
-
-  pauseRecord()
-  {
-    assertArgs(arguments, 0);
-    this.recordMuted = true;
-
-    $(this.trackRecord).animate({volume: 0}, 1000, function()
-    {
-      verreciel.music.trackRecord.pause();
-    });
-  }
-
-  resumeRecord()
-  {
-    assertArgs(arguments, 0);
-    this.trackRecord.play();
-    this.trackRecord.volume = 0;
-    $(this.trackRecord).animate({volume: 1}, 1000);
-    this.recordMuted = false;
   }
 }

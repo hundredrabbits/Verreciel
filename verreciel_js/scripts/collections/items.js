@@ -24,10 +24,10 @@ class Items
     this.warpDrive = new Item ("warpdrive", ItemTypes.drive, null, "local warpdrive", true, "warp");
 
     // "Records"
-    this.record1 = new Item ("record", ItemTypes.record, null, "audio format", true, "record-1");
-    this.record2 = new Item ("disk", ItemTypes.record, null, "audio format", true, "record-2");
-    this.record3 = new Item ("cassette", ItemTypes.record, null, "audio format", true, "record-3");
-    this.record4 = new Item ("drive", ItemTypes.record, null, "audio format", true, "record-4");
+    this.record1 = new Item ("record", ItemTypes.record, null, "audio format", true, "record1");
+    this.record2 = new Item ("disk", ItemTypes.record, null, "audio format", true, "record2");
+    this.record3 = new Item ("cassette", ItemTypes.record, null, "audio format", true, "record3");
+    this.record4 = new Item ("drive", ItemTypes.record, null, "audio format", true, "record4");
 
     // "Maps"
     this.map1 = new Item ("Fog Map", ItemTypes.map, null, "map expension", true, "map-1");

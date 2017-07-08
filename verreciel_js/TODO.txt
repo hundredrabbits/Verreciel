@@ -1,5 +1,23 @@
+Bugs in 5:
+
+  material visible = material opacity > 0
+    Purple map things tho
+
+  Radio install button is missing its text
+
+-------
+
+Foresight:
+
+  Verify that nav port shows name of map on game load
+    missions.js -> verreciel.nav.port.event = verreciel.items.map1;
+  Verify that shield port label is working properly on game load
+    missions.js -> verreciel.shield.port.event = verreciel.items.shield;
+
+-------
+
 Compare side by side with Swift build
-  game state: 5
+  game state: 6
 
 Find a better method to draw lines
 Run a JavaScript linter
