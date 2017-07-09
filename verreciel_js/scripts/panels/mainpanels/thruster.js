@@ -132,7 +132,7 @@ class Thruster extends MainPanel
     {
       if (this.canWarp == true)
       {
-        verreciel.capsule.warp(verreciel.pilot.port.origin.event);
+        verreciel.capsule.warpTo(verreciel.pilot.port.origin.event);
       }
       else
       {

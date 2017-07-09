@@ -12,7 +12,7 @@ class LocationClose extends Location
   onApproach()
   {
     assertArgs(arguments, 0);
-    if (this.mapRequirement != null && nav.port.hasEvent(this.mapRequirement) == false)
+    if (this.mapRequirement != null && verreciel.nav.port.hasEvent(this.mapRequirement) == false)
     {
       return;
     }

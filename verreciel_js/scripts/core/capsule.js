@@ -241,7 +241,7 @@ class Capsule extends Empty
   
   // MARK: Warping -
   
-  warp(destination)
+  warpTo(destination)
   {
     assertArgs(arguments, 1);
     let portal = this.location;

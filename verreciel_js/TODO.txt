@@ -1,6 +1,10 @@
-Bugs in 6:
+Bugs since 9:
 
+  Extra Loiqe key from game load?
   
+Other bugs:
+
+  Speed up all the install and upload progress
 
 -------
 
@@ -14,8 +18,8 @@ Foresight:
 -------
 
 Compare side by side with Swift build
-  game state: 9
-  iOS game state: 6
+  game state: 11
+  iOS game state: 11
 
 Find a better method to draw lines
 Run a JavaScript linter
@@ -34,6 +38,7 @@ Console updates
 
 Rethink missions
   They should be accumulative, at least in part
+  Keep Cargo connected to Console, why doncha
 
 Walkthroughs, too
 State recovery
