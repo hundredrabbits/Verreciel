@@ -308,7 +308,8 @@ class Cargo extends MainPanel
       return;
     }
     
-    this.uploadPercentage += Math.random() * 60/10;
+    this.uploadPercentage += Math.random() * 6;
+    this.uploadPercentage += 1; // Faster!
     if (this.uploadPercentage > 100)
     {
       this.uploadComplete();

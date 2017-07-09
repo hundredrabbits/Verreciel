@@ -377,7 +377,7 @@ class Missions
       verreciel.capsule.beginAtLocation(verreciel.universe.valen_station);
       verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
       verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.loiqePortalKey]);
+      verreciel.cargo.addItems([verreciel.items.valenPortalKey,verreciel.items.loiqePortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
       verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
       verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);

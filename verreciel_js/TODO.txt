@@ -1,10 +1,10 @@
-Bugs since 9:
+Bugs since 11:
 
-  Extra Loiqe key from game load?
+  
   
 Other bugs:
 
-  Speed up all the install and upload progress
+  
 
 -------
 

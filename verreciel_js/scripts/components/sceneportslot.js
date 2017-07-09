@@ -151,6 +151,7 @@ class ScenePortSlot extends ScenePort
     }
     
     this.uploadPercentage += Math.random() * 6;
+    this.uploadPercentage += 1; // Faster!
     if (this.uploadPercentage > 100)
     {
       this.origin.wire.isUploading = false;

@@ -47,6 +47,7 @@ class Panel extends Empty
   {
     assertArgs(arguments, 0);
     this.installPercentage += Math.random() * 6;
+    this.installPercentage += 1; // Faster!
     
     if (this.installPercentage > 100) {
       this.onInstallationComplete();
