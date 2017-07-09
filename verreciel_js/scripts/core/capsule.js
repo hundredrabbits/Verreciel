@@ -340,7 +340,7 @@ class Capsule extends Empty
     assertArgs(arguments, 0);
     this.isFleeing = true;
     verreciel.thruster.lock();
-    thruster.speed = verreciel.thruster.maxSpeed();
+    verreciel.thruster.speed = verreciel.thruster.maxSpeed();
     verreciel.radar.addTarget(this.lastLocation);
   }
   

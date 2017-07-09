@@ -5,6 +5,9 @@ class Missions
     assertArgs(arguments, 0);
     this.story = [];
     this.currentMission = new Mission(0, "--");
+
+    let u = verreciel.universe;
+    let i = verreciel.items;
     
     var m;
 
@@ -14,14 +17,14 @@ class Missions
     
     m = new Mission(this.story.length, "");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_spawn);
+      verreciel.capsule.beginAtLocation(u.loiqe_spawn);
       verreciel.battery.onInstallationComplete();
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn]);
-      verreciel.universe.valen_bank.addItems([
-        verreciel.items.loiqePortalKey,
-        verreciel.items.record1,
-        Item.like(verreciel.items.waste),
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.missions.setToKnown([u.loiqe_spawn]);
+      u.valen_bank.addItems([
+        i.loiqePortalKey,
+        i.record1,
+        Item.like(i.waste),
       ]);
     }
     m.quests = [
@@ -34,7 +37,7 @@ class Missions
       new Quest(
         "Undock with thruster",
         null,
-        function() { return verreciel.capsule.location != verreciel.universe.loiqe_spawn && verreciel.universe.loiqe_spawn.isKnown == true; },
+        function() { return verreciel.capsule.location != u.loiqe_spawn && u.loiqe_spawn.isKnown == true; },
         function() {}
       ),
       new Quest(
@@ -46,13 +49,13 @@ class Missions
       new Quest(
         "Wait for arrival",
         null,
-        function() { return verreciel.universe.loiqe_harvest.isKnown == true; },
+        function() { return u.loiqe_harvest.isKnown == true; },
         function() { verreciel.cargo.install() ; verreciel.thruster.lock(); }
       ),
       new Quest(
-        "Route " + verreciel.items.currency1.name + " to cargo", 
-        verreciel.universe.loiqe_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency1); },
+        "Route " + i.currency1.name + " to cargo", 
+        u.loiqe_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency1); },
         function() { verreciel.console.install() ; verreciel.thruster.unlock(); }
       ),
       new Quest(
@@ -64,13 +67,13 @@ class Missions
       new Quest(
         "Undock with thruster",
         null,
-        function() { return verreciel.capsule.location != verreciel.universe.loiqe_harvest; },
+        function() { return verreciel.capsule.location != u.loiqe_harvest; },
         function() { verreciel.radar.install(); }
       ),
       new Quest(
         "Wait for arrival",
         null,
-        function() { return verreciel.universe.loiqe_city.isKnown == true; },
+        function() { return u.loiqe_city.isKnown == true; },
         function() {}
       ),
     ]
@@ -80,33 +83,33 @@ class Missions
     
     m = new Mission(this.story.length, "Fragments");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_city);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.cargo.addItems([Item.like(verreciel.items.currency1)]);
+      verreciel.capsule.beginAtLocation(u.loiqe_city);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.cargo.addItems([Item.like(i.currency1)]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,verreciel.items.record1,Item.like(verreciel.items.waste)]);
+      u.valen_bank.addItems([i.loiqePortalKey,i.record1,Item.like(i.waste)]);
       verreciel.cargo.port.connect(verreciel.console.port);
     }
-    m.predicate = function() { return verreciel.cargo.contains(verreciel.items.valenPortalFragment1) == true; };
+    m.predicate = function() { return verreciel.cargo.contains(i.valenPortalFragment1) == true; };
     m.quests = [
       new Quest(
-        "Route " + verreciel.items.currency1.name + " to verreciel.cargo", 
-        verreciel.universe.loiqe_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency1) || verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_city); },
+        "Route " + i.currency1.name + " to verreciel.cargo", 
+        u.loiqe_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency1) || verreciel.capsule.isDockedAtLocation(u.loiqe_city); },
         function() {}
       ),
       new Quest(
-        "Route " + verreciel.items.currency1.name + " to trade table", 
-        verreciel.universe.loiqe_city,
-        function() { return verreciel.universe.loiqe_city.isTradeAccepted == true; },
+        "Route " + i.currency1.name + " to trade table", 
+        u.loiqe_city,
+        function() { return u.loiqe_city.isTradeAccepted == true; },
         function() {}
       ),
       new Quest(
-        "Route " + verreciel.items.valenPortalFragment1.name + " to verreciel.cargo",
+        "Route " + i.valenPortalFragment1.name + " to verreciel.cargo",
         null,
-        function() { return verreciel.cargo.contains(verreciel.items.valenPortalFragment1) == true; },
+        function() { return verreciel.cargo.contains(i.valenPortalFragment1) == true; },
         function() { verreciel.progress.install(); }
       ),
     ]
@@ -116,21 +119,21 @@ class Missions
     
     m = new Mission(this.story.length, "radar");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_city);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.cargo.addItems([verreciel.items.valenPortalFragment1]);
+      verreciel.capsule.beginAtLocation(u.loiqe_city);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.cargo.addItems([i.valenPortalFragment1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city]);
+      verreciel.missions.setToCompleted([u.loiqe_city]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,verreciel.items.record1,Item.like(verreciel.items.waste)]);
+      u.valen_bank.addItems([i.loiqePortalKey,i.record1,Item.like(i.waste)]);
       verreciel.cargo.port.connect(verreciel.console.port);
     }
     m.quests = [
       new Quest(
         "Select satellite on radar", 
-        verreciel.universe.loiqe_city,
-        function() { return verreciel.radar.port.event != null && verreciel.radar.port.event == verreciel.universe.loiqe_satellite; },
+        u.loiqe_city,
+        function() { return verreciel.radar.port.event != null && verreciel.radar.port.event == u.loiqe_satellite; },
         function() { verreciel.pilot.install() ; verreciel.thruster.unlock(); }
       ),
       new Quest(
@@ -146,35 +149,35 @@ class Missions
     
     m = new Mission(this.story.length, "portal");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_city)
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1)
-      verreciel.cargo.addItems([verreciel.items.valenPortalFragment1])
+      verreciel.capsule.beginAtLocation(u.loiqe_city)
+      verreciel.battery.cellPort1.addEvent(i.battery1)
+      verreciel.cargo.addItems([i.valenPortalFragment1])
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot])
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city])
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city])
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city])
+      verreciel.missions.setToCompleted([u.loiqe_city])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,verreciel.items.record1,Item.like(verreciel.items.waste)])
+      u.valen_bank.addItems([i.loiqePortalKey,i.record1,Item.like(i.waste)])
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
     }
-    m.predicate = function() { return verreciel.cargo.contains(verreciel.items.valenPortalKey) == true; };
+    m.predicate = function() { return verreciel.cargo.contains(i.valenPortalKey) == true; };
     m.quests = [
       new Quest(
-        "Aquire " + verreciel.items.valenPortalFragment1.name, 
-        verreciel.universe.loiqe_city,
-        function() { return verreciel.cargo.contains(verreciel.items.valenPortalFragment1) == true || verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_horadric) == true; },
+        "Aquire " + i.valenPortalFragment1.name, 
+        u.loiqe_city,
+        function() { return verreciel.cargo.contains(i.valenPortalFragment1) == true || verreciel.capsule.isDockedAtLocation(u.loiqe_horadric) == true; },
         function() {}
       ),
       new Quest(
-        "Aquire " + verreciel.items.valenPortalFragment2.name, 
-        verreciel.universe.loiqe_satellite,
-        function() { return verreciel.cargo.contains(verreciel.items.valenPortalFragment2) == true || verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_horadric) == true; },
+        "Aquire " + i.valenPortalFragment2.name, 
+        u.loiqe_satellite,
+        function() { return verreciel.cargo.contains(i.valenPortalFragment2) == true || verreciel.capsule.isDockedAtLocation(u.loiqe_horadric) == true; },
         function() {}
       ),
       new Quest(
         "Combine fragments", 
-        verreciel.universe.loiqe_horadric,
-        function() { return verreciel.cargo.contains(verreciel.items.valenPortalKey) == true; },
+        u.loiqe_horadric,
+        function() { return verreciel.cargo.contains(i.valenPortalKey) == true; },
         function() { verreciel.exploration.install(); }
       )
     ]
@@ -184,35 +187,35 @@ class Missions
     
     m = new Mission(this.story.length, "transit");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_horadric)
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1)
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey])
+      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.battery.cellPort1.addEvent(i.battery1)
+      verreciel.cargo.addItems([i.valenPortalKey])
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration])
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric])
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite])
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric])
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,verreciel.items.record1,Item.like(verreciel.items.waste)])
+      u.valen_bank.addItems([i.loiqePortalKey,i.record1,Item.like(i.waste)])
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
     }
-    m.predicate = function() { return verreciel.universe.valen_portal.isKnown == true; };
+    m.predicate = function() { return u.valen_portal.isKnown == true; };
     m.quests = [
       new Quest(
-        "Route " + verreciel.items.valenPortalKey.name + " to Portal", 
-        verreciel.universe.loiqe_portal,
-        function() { return verreciel.capsule.isDockedAtLocation(verreciel.universe.loiqe_portal) && verreciel.intercom.port.isReceivingEvent(verreciel.items.valenPortalKey) == true; },
+        "Route " + i.valenPortalKey.name + " to Portal", 
+        u.loiqe_portal,
+        function() { return verreciel.capsule.isDockedAtLocation(u.loiqe_portal) && verreciel.intercom.port.isReceivingEvent(i.valenPortalKey) == true; },
         function() {}
       ),
       new Quest(
         "Align pilot to portal", 
-        verreciel.universe.loiqe_portal,
-        function() { return verreciel.pilot.port.isReceivingEvent(verreciel.universe.valen_portal) == true; },
+        u.loiqe_portal,
+        function() { return verreciel.pilot.port.isReceivingEvent(u.valen_portal) == true; },
         function() {}
       ),
       new Quest(
         "Power Thruster with portal", 
-        verreciel.universe.loiqe_portal,
-        function() { return verreciel.thruster.port.isReceivingEvent(verreciel.items.warpDrive) == true; },
+        u.loiqe_portal,
+        function() { return verreciel.thruster.port.isReceivingEvent(i.warpDrive) == true; },
         function() {}
       ),
     ]
@@ -222,40 +225,40 @@ class Missions
     
     m = new Mission(this.story.length, "Radio");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.valen_portal);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey]);
+      verreciel.capsule.beginAtLocation(u.valen_portal);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.cargo.addItems([i.valenPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,verreciel.items.record1,Item.like(verreciel.items.waste)]);
+      u.valen_bank.addItems([i.loiqePortalKey,i.record1,Item.like(i.waste)]);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
     }
     m.predicate = function() { return verreciel.radio.isInstalled == true; };
     m.quests = [
       new Quest(
-        "Collect " + verreciel.items.record1.name, 
-        verreciel.universe.valen_bank,
-        function() { return verreciel.cargo.contains(verreciel.items.record1); },
+        "Collect " + i.record1.name, 
+        u.valen_bank,
+        function() { return verreciel.cargo.contains(i.record1); },
         function() {}
       ),
       new Quest(
         "Collect second cell", 
-        verreciel.universe.valen_cargo,
-        function() { return verreciel.battery.hasCell(verreciel.items.battery2) || verreciel.cargo.contains(verreciel.items.battery2); },
+        u.valen_cargo,
+        function() { return verreciel.battery.hasCell(i.battery2) || verreciel.cargo.contains(i.battery2); },
         function() { verreciel.battery.cellPort2.enable("empty", verreciel.grey); }
       ),
       new Quest(
-        "Collect " + verreciel.items.currency2.name, 
-        verreciel.universe.valen_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency2); },
+        "Collect " + i.currency2.name, 
+        u.valen_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency2); },
         function() {}
       ),
       new Quest(
         "Install radio", 
-        verreciel.universe.valen_station,
+        u.valen_station,
         function() { return verreciel.radio.isInstalled == true; },
         function() { verreciel.journey.install(); }
       )
@@ -266,14 +269,14 @@ class Missions
     
     m = new Mission(this.story.length, "Record");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.valen_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey,verreciel.items.record1]);
+      verreciel.capsule.beginAtLocation(u.valen_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.valenPortalKey,i.record1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,Item.like(verreciel.items.waste)]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo]);
+      u.valen_bank.addItems([i.loiqePortalKey,Item.like(i.waste)]);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
     }
@@ -281,7 +284,7 @@ class Missions
       new Quest(
         "Install cell in battery",
         null,
-        function() { return verreciel.battery.hasCell(verreciel.items.battery2); },
+        function() { return verreciel.battery.hasCell(i.battery2); },
         function() {}
       ),
       new Quest(
@@ -303,32 +306,32 @@ class Missions
     
     m = new Mission(this.story.length, "Hatch");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.valen_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey]);
+      verreciel.capsule.beginAtLocation(u.valen_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.valenPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey,Item.like(verreciel.items.waste)]);
+      u.valen_bank.addItems([i.loiqePortalKey,Item.like(i.waste)]);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
     m.predicate = function() { return verreciel.hatch.count > 0; };
     m.quests = [
       new Quest(
         "Collect Waste", 
-        verreciel.universe.valen_bank,
-        function() { return verreciel.cargo.containsLike(verreciel.items.waste); },
+        u.valen_bank,
+        function() { return verreciel.cargo.containsLike(i.waste); },
         function() { verreciel.hatch.install(); }
       ),
       new Quest(
         "Route waste to hatch",
         null,
-        function() { return verreciel.hatch.port.isReceivingItemLike(verreciel.items.waste); },
+        function() { return verreciel.hatch.port.isReceivingItemLike(i.waste); },
         function() {}
       ),
       new Quest(
@@ -345,26 +348,26 @@ class Missions
     m = new Mission(this.story.length, "Loiqe");
     
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.valen_bank);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey]);
+      verreciel.capsule.beginAtLocation(u.valen_bank);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.valenPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.hatch,verreciel.completion]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
-      verreciel.universe.valen_bank.addItems([verreciel.items.loiqePortalKey]);
+      u.valen_bank.addItems([i.loiqePortalKey]);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
-    m.predicate = function() { return verreciel.cargo.containsLike(verreciel.items.loiqePortalKey); };
+    m.predicate = function() { return verreciel.cargo.containsLike(i.loiqePortalKey); };
     m.quests = [
       new Quest(
-        "Collect " + verreciel.items.loiqePortalKey.name, 
-        verreciel.universe.valen_bank,
-        function() { return verreciel.cargo.containsLike(verreciel.items.loiqePortalKey); },
+        "Collect " + i.loiqePortalKey.name, 
+        u.valen_bank,
+        function() { return verreciel.cargo.containsLike(i.loiqePortalKey); },
         function() {}
       )
     ]
@@ -372,39 +375,39 @@ class Missions
     
     // MARK: Part 9
     
-    m = new Mission(this.story.length, verreciel.items.currency4.name);
+    m = new Mission(this.story.length, i.currency4.name);
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.valen_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.valenPortalKey,verreciel.items.loiqePortalKey]);
+      verreciel.capsule.beginAtLocation(u.valen_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.valenPortalKey,i.loiqePortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
-    m.predicate = function() { return verreciel.cargo.containsLike(verreciel.items.currency4); };
+    m.predicate = function() { return verreciel.cargo.containsLike(i.currency4); };
     m.quests = [
       new Quest(
-        "Aquire " + verreciel.items.currency2.name, 
-        verreciel.universe.valen_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency2); },
+        "Aquire " + i.currency2.name, 
+        u.valen_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency2); },
         function() {}
       ),
       new Quest(
-        "Aquire " + verreciel.items.currency1.name, 
-        verreciel.universe.loiqe_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency1); },
+        "Aquire " + i.currency1.name, 
+        u.loiqe_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency1); },
         function() {}
       ),
       new Quest(
         "Combine currencies", 
-        verreciel.universe.loiqe_horadric,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency4); },
+        u.loiqe_horadric,
+        function() { return verreciel.cargo.containsLike(i.currency4); },
         function() {}
       )
     ]
@@ -414,31 +417,31 @@ class Missions
     
     m = new Mission(this.story.length, "Senni");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_horadric);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,Item.like(verreciel.items.currency4)]);
+      verreciel.capsule.beginAtLocation(u.loiqe_horadric);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,Item.like(i.currency4)]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
-    m.predicate = function() { return verreciel.cargo.contains(verreciel.items.senniPortalKey); };
+    m.predicate = function() { return verreciel.cargo.contains(i.senniPortalKey); };
     m.quests = [
       new Quest(
-        "Aquire " + verreciel.items.currency4.name,
+        "Aquire " + i.currency4.name,
         null,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency4); },
+        function() { return verreciel.cargo.containsLike(i.currency4); },
         function() {}
       ),
       new Quest(
-        "Trade " + verreciel.items.currency4.name + " for " + verreciel.items.senniPortalKey.name,
-        verreciel.universe.loiqe_port,
-        function() { return verreciel.cargo.contains(verreciel.items.senniPortalKey); },
+        "Trade " + i.currency4.name + " for " + i.senniPortalKey.name,
+        u.loiqe_port,
+        function() { return verreciel.cargo.contains(i.senniPortalKey); },
         function() {}
       )
     ]
@@ -448,36 +451,36 @@ class Missions
     
     m = new Mission(this.story.length, "Map");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_port);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey]);
+      verreciel.capsule.beginAtLocation(u.loiqe_port);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
     m.predicate = function() { return verreciel.nav.isInstalled == true; };
     m.quests = [
       new Quest(
-        "Collect " + verreciel.items.map1.name, 
-        verreciel.universe.senni_cargo,
-        function() { return verreciel.cargo.contains(verreciel.items.map1); },
+        "Collect " + i.map1.name, 
+        u.senni_cargo,
+        function() { return verreciel.cargo.contains(i.map1); },
         function() {}
       ),
       new Quest(
-        "Collect " + verreciel.items.currency3.name, 
-        verreciel.universe.senni_harvest,
-        function() { return verreciel.cargo.containsLike(verreciel.items.currency3); },
+        "Collect " + i.currency3.name, 
+        u.senni_harvest,
+        function() { return verreciel.cargo.containsLike(i.currency3); },
         function() {}
       ),
       new Quest(
         "Install map", 
-        verreciel.universe.senni_station,
+        u.senni_station,
         function() { return verreciel.nav.isInstalled == true; },
         function() {}
       )
@@ -488,18 +491,18 @@ class Missions
     
     m = new Mission(this.story.length, "fog");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.senni_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey,verreciel.items.map1]);
+      verreciel.capsule.beginAtLocation(u.senni_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey,i.map1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_station,u.senni_cargo]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.radio.setRecord(verreciel.items.record1);
+      verreciel.radio.setRecord(i.record1);
     }
     m.quests = [
       new Quest(
@@ -516,14 +519,14 @@ class Missions
       ),
       new Quest(
         "Collect third cell", 
-        verreciel.universe.senni_fog,
-        function() { return verreciel.battery.hasCell(verreciel.items.battery3) || verreciel.cargo.contains(verreciel.items.battery3); },
+        u.senni_fog,
+        function() { return verreciel.battery.hasCell(i.battery3) || verreciel.cargo.contains(i.battery3); },
         function() {  verreciel.battery.cellPort3.enable("empty", verreciel.grey); }
       ),
       new Quest(
         "Install cell in battery",
         null,
-        function() { return verreciel.battery.hasCell(verreciel.items.battery3); },
+        function() { return verreciel.battery.hasCell(i.battery3); },
         function() {}
       ),
     ]
@@ -533,28 +536,28 @@ class Missions
     
     m = new Mission(this.story.length, "Helmet");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.senni_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey,verreciel.items.map1]);
+      verreciel.capsule.beginAtLocation(u.senni_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.senni_fog,verreciel.universe.senni_wreck]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.senni_station,u.senni_fog,u.senni_wreck]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map1;
-      verreciel.radio.setRecord(verreciel.items.record2);
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1]);
+      verreciel.nav.setMap(i.map1);
+      verreciel.radio.setRecord(i.record2);
+      u.valen_bank.addItems([i.record1]);
     }
     m.quests = [
       new Quest(
         "Route map to helmet",
         null,
-        function() { return player.port.isReceivingFromPanel(verreciel.nav) == true; },
+        function() { return verreciel.player.port.isReceivingFromPanel(verreciel.nav) == true; },
         function() {}
       )
     ]
@@ -562,43 +565,43 @@ class Missions
     
     // MARK: Part 14
     
-    m = new Mission(this.story.length, verreciel.items.usulPortalKey.name);
+    m = new Mission(this.story.length, i.usulPortalKey.name);
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.senni_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey,verreciel.items.map1]);
+      verreciel.capsule.beginAtLocation(u.senni_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.senni_station,verreciel.universe.senni_fog,verreciel.universe.senni_wreck]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.senni_station,u.senni_fog,u.senni_wreck]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map1;
-      verreciel.radio.setRecord(verreciel.items.record2);
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1]);
+      verreciel.nav.setMap(i.map1);
+      verreciel.radio.setRecord(i.record2);
+      u.valen_bank.addItems([i.record1]);
     }
-    m.predicate = function() { return verreciel.cargo.contains(verreciel.items.usulPortalKey); };
+    m.predicate = function() { return verreciel.cargo.contains(i.usulPortalKey); };
     m.quests = [
       new Quest(
-        "Collect " + verreciel.items.usulPortalFragment1.name, 
-        verreciel.universe.valen_fog,
-        function() { return verreciel.cargo.containsLike(verreciel.items.usulPortalFragment1); },
+        "Collect " + i.usulPortalFragment1.name, 
+        u.valen_fog,
+        function() { return verreciel.cargo.containsLike(i.usulPortalFragment1); },
         function() {}
       ),
       new Quest(
-        "Collect " + verreciel.items.usulPortalFragment2.name, 
-        verreciel.universe.loiqe_fog,
-        function() { return verreciel.cargo.containsLike(verreciel.items.usulPortalFragment2); },
+        "Collect " + i.usulPortalFragment2.name, 
+        u.loiqe_fog,
+        function() { return verreciel.cargo.containsLike(i.usulPortalFragment2); },
         function() {}
       ),
       new Quest(
         "Combine fragments",
         null,
-        function() { return verreciel.cargo.containsLike(verreciel.items.usulPortalKey); },
+        function() { return verreciel.cargo.containsLike(i.usulPortalKey); },
         function() {}
       ),
     ]
@@ -608,29 +611,29 @@ class Missions
     
     m = new Mission(this.story.length, "Shield");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.loiqe_horadric);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey,verreciel.items.usulPortalKey]);
+      verreciel.capsule.beginAtLocation(u.loiqe_horadric);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey,i.usulPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.senni_station,verreciel.universe.valen_fog,verreciel.universe.loiqe_fog,verreciel.universe.senni_fog,verreciel.universe.senni_wreck]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.senni_station,u.valen_fog,u.loiqe_fog,u.senni_fog,u.senni_wreck]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map1;
-      verreciel.radio.setRecord(verreciel.items.record2);
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1]);
+      verreciel.nav.setMap(i.map1);
+      verreciel.radio.setRecord(i.record2);
+      u.valen_bank.addItems([i.record1]);
     }
-    m.predicate = function() { return shield.isInstalled == true; };
+    m.predicate = function() { return verreciel.shield.isInstalled == true; };
     m.quests = [
       new Quest(
         "Install shield", 
-        verreciel.universe.usul_station,
-        function() { return shield.isInstalled == true; },
+        u.usul_station,
+        function() { return verreciel.shield.isInstalled == true; },
         function() {}
       ),
     ]
@@ -638,43 +641,43 @@ class Missions
     
     // MARK: Part 16
     
-    m = new Mission(this.story.length, verreciel.items.endPortalKey.name);
+    m = new Mission(this.story.length, i.endPortalKey.name);
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.usul_station);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.loiqePortalKey,verreciel.items.valenPortalKey,verreciel.items.senniPortalKey,verreciel.items.usulPortalKey]);
+      verreciel.capsule.beginAtLocation(u.usul_station);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.loiqePortalKey,i.valenPortalKey,i.senniPortalKey,i.usulPortalKey]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.valen_fog,verreciel.universe.senni_station,verreciel.universe.loiqe_fog,verreciel.universe.usul_station,verreciel.universe.senni_fog,verreciel.universe.senni_wreck]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map1;
-      verreciel.radio.setRecord(verreciel.items.record2);
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1]);
+      verreciel.nav.setMap(i.map1);
+      verreciel.radio.setRecord(i.record2);
+      u.valen_bank.addItems([i.record1]);
     }
-    m.predicate = function() { return verreciel.cargo.contains(verreciel.items.endPortalKey); };
+    m.predicate = function() { return verreciel.cargo.contains(i.endPortalKey); };
     m.quests = [
       new Quest(
-        "Create " + verreciel.items.endPortalKeyFragment1.name,
+        "Create " + i.endPortalKeyFragment1.name,
         null,
-        function() { return verreciel.cargo.contains(verreciel.items.endPortalKeyFragment1); },
+        function() { return verreciel.cargo.contains(i.endPortalKeyFragment1); },
         function() {}
       ),
       new Quest(
-        "Create " + verreciel.items.endPortalKeyFragment2.name,
+        "Create " + i.endPortalKeyFragment2.name,
         null,
-        function() { return verreciel.cargo.contains(verreciel.items.endPortalKeyFragment2); },
+        function() { return verreciel.cargo.contains(i.endPortalKeyFragment2); },
         function() {}
       ),
       new Quest(
         "Combine fragments",
         null,
-        function() { return verreciel.cargo.containsLike(verreciel.items.endPortalKey); },
+        function() { return verreciel.cargo.containsLike(i.endPortalKey); },
         function() {}
       ),
     ]
@@ -684,46 +687,46 @@ class Missions
     
     m = new Mission(this.story.length, "Shield");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.senni_horadric);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.endPortalKey,Item.like(verreciel.items.currency4),Item.like(verreciel.items.currency5)]);
+      verreciel.capsule.beginAtLocation(u.senni_horadric);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.endPortalKey,Item.like(i.currency4),Item.like(i.currency5)]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.valen_fog,verreciel.universe.senni_station,verreciel.universe.loiqe_fog,verreciel.universe.usul_station,verreciel.universe.senni_fog,verreciel.universe.senni_wreck]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map1;
-      verreciel.radio.setRecord(verreciel.items.record2);
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1]);
+      verreciel.nav.setMap(i.map1);
+      verreciel.radio.setRecord(i.record2);
+      u.valen_bank.addItems([i.record1]);
     }
     m.quests = [
       new Quest(
-        "Collect " + verreciel.items.map2.name, 
-        verreciel.universe.usul_telescope,
-        function() { return verreciel.nav.port.hasEvent(verreciel.items.map2) || verreciel.cargo.contains(verreciel.items.map2); },
+        "Collect " + i.map2.name, 
+        u.usul_telescope,
+        function() { return verreciel.nav.port.hasEvent(i.map2) || verreciel.cargo.contains(i.map2); },
         function() {}
       ),
       new Quest(
-        "Route " + verreciel.items.map2.name + " to map",
+        "Route " + i.map2.name + " to map",
         null,
-        function() { return verreciel.nav.port.hasEvent(verreciel.items.map2); },
+        function() { return verreciel.nav.port.hasEvent(i.map2); },
         function() {}
       ),
       new Quest(
-        "Collect " + verreciel.items.shield.name, 
-        verreciel.universe.usul_silence,
-        function() { return verreciel.shield.port.hasEvent(verreciel.items.shield) || verreciel.cargo.contains(verreciel.items.shield); },
+        "Collect " + i.shield.name, 
+        u.usul_silence,
+        function() { return verreciel.shield.port.hasEvent(i.shield) || verreciel.cargo.contains(i.shield); },
         function() {}
       ),
       new Quest(
-        "Route " + verreciel.items.shield.name + " to shield",
+        "Route " + i.shield.name + " to shield",
         null,
-        function() { return verreciel.shield.port.hasEvent(verreciel.items.shield); },
+        function() { return verreciel.shield.port.hasEvent(i.shield); },
         function() {}
       ),
       new Quest(
@@ -739,47 +742,47 @@ class Missions
     
     m = new Mission(this.story.length, "mechanism");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.usul_silence);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.endPortalKey,verreciel.items.map1]);
+      verreciel.capsule.beginAtLocation(u.usul_silence);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.endPortalKey,i.map1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.valen_fog,verreciel.universe.senni_station,verreciel.universe.loiqe_fog,verreciel.universe.usul_station,verreciel.universe.senni_fog,verreciel.universe.senni_wreck,verreciel.universe.usul_telescope,verreciel.universe.usul_silence]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map2;
-      verreciel.radio.setRecord(verreciel.items.record3);
-      verreciel.shield.port.event = verreciel.items.shield;
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1,verreciel.items.record2]);
+      verreciel.nav.setMap(i.map2);
+      verreciel.radio.setRecord(i.record3);
+      verreciel.shield.port.event = i.shield;
+      u.valen_bank.addItems([i.record1,i.record2]);
     }
     m.quests = [
       new Quest(
         "Extinguish the sun", 
-        verreciel.universe.loiqe,
-        function() { return verreciel.universe.loiqe.isComplete == true; },
+        u.loiqe,
+        function() { return u.loiqe.isComplete == true; },
         function() {}
       ),
       new Quest(
         "Extinguish the sun", 
-        verreciel.universe.valen,
-        function() { return verreciel.universe.valen.isComplete == true; },
+        u.valen,
+        function() { return u.valen.isComplete == true; },
         function() {}
       ),
       new Quest(
         "Extinguish the sun", 
-        verreciel.universe.senni,
-        function() { return verreciel.universe.senni.isComplete == true; },
+        u.senni,
+        function() { return u.senni.isComplete == true; },
         function() {}
       ),
       new Quest(
         "Extinguish the sun", 
-        verreciel.universe.usul,
-        function() { return verreciel.universe.usul.isComplete == true; },
+        u.usul,
+        function() { return u.usul.isComplete == true; },
         function() {}
       ),
     ]
@@ -789,29 +792,29 @@ class Missions
     
     m = new Mission(this.story.length, "At the close");
     m.state = function() {
-      verreciel.capsule.beginAtLocation(verreciel.universe.usul_transit);
-      verreciel.battery.cellPort1.addEvent(verreciel.items.battery1);
-      verreciel.battery.cellPort2.addEvent(verreciel.items.battery2);
-      verreciel.battery.cellPort3.addEvent(verreciel.items.battery3);
-      verreciel.cargo.addItems([verreciel.items.endPortalKey,verreciel.items.map1]);
+      verreciel.capsule.beginAtLocation(u.usul_transit);
+      verreciel.battery.cellPort1.addEvent(i.battery1);
+      verreciel.battery.cellPort2.addEvent(i.battery2);
+      verreciel.battery.cellPort3.addEvent(i.battery3);
+      verreciel.cargo.addItems([i.endPortalKey,i.map1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
-      verreciel.missions.setToKnown([verreciel.universe.loiqe_spawn,verreciel.universe.loiqe_harvest,verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.loiqe_horadric,verreciel.universe.loiqe_portal,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.valen_bank,verreciel.universe.senni_harvest,verreciel.universe.senni_portal,verreciel.universe.valen_portal]);
-      verreciel.missions.setToCompleted([verreciel.universe.loiqe_city,verreciel.universe.loiqe_satellite,verreciel.universe.valen_station,verreciel.universe.valen_cargo,verreciel.universe.loiqe_port,verreciel.universe.senni_cargo,verreciel.universe.valen_fog,verreciel.universe.senni_station,verreciel.universe.loiqe_fog,verreciel.universe.usul_station,verreciel.universe.senni_fog,verreciel.universe.senni_wreck,verreciel.universe.usul_telescope,verreciel.universe.usul_silence,verreciel.universe.loiqe,verreciel.universe.valen,verreciel.universe.senni,verreciel.universe.usul]);
+      verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence,u.loiqe,u.valen,u.senni,u.usul]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
-      verreciel.nav.port.event = verreciel.items.map2;
-      verreciel.radio.setRecord(verreciel.items.record3);
-      verreciel.shield.port.event = verreciel.items.shield;
-      verreciel.universe.valen_bank.addItems([verreciel.items.record1,verreciel.items.record2]);
+      verreciel.nav.setMap(i.map2);
+      verreciel.radio.setRecord(i.record3);
+      verreciel.shield.port.event = i.shield;
+      u.valen_bank.addItems([i.record1,i.record2]);
     }
     m.quests = [
       new Quest(
         "Witness", 
-        verreciel.universe.close,
-        function() { return verreciel.universe.close.isComplete == true; },
+        u.close,
+        function() { return u.close.isComplete == true; },
         function() {}
       )
     ]
@@ -827,7 +830,7 @@ class Missions
     m.quests = [
       new Quest(
         "Stop", 
-        verreciel.universe.close,
+        u.close,
         function() { return (1 > 2) == true; },
         function() {}
       )

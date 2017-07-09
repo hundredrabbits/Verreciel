@@ -7,10 +7,19 @@ class Nav extends Widget
     this.name = "map";
     this.details = "disk drive";
     this.requirement = ItemTypes.map;
-    this.isPowered = function() { return battery.isNavPowered(); };
+    this.isPowered = function() { return verreciel.battery.isNavPowered(); };
     this.label.updateText(this.name);
   }
   
+  setMap(map)
+  {
+    assertArgs(arguments, 1);
+    if (!this.hasMap(map))
+    {
+      this.port.addEvent(map);
+    }
+  }
+
   hasMap(map)
   {
     assertArgs(arguments, 1);
