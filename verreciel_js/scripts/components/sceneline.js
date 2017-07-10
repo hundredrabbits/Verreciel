@@ -10,6 +10,10 @@ class SceneLine extends Empty
   updateGeometry(vertices, color)
   {
     assertArgs(arguments, 2);
+    if (vertices.indexOf(null) != -1)
+    {
+      throw "BAD GEOMETRY";
+    }
     if (vertices.length < 2)
     {
       return;

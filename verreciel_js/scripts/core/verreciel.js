@@ -200,7 +200,8 @@ class Verreciel
       event.preventDefault();
       for (let intersect of this.getIntersectObjects())
       {
-        if (intersect.object.node.method == Methods.interactiveRegion && intersect.object.node.touch(0))
+        let node = intersect.object.node;
+        if (node.method == Methods.interactiveRegion && node.isEnabled == true && node.opacityFromTop > 0 && node.touch(0))
         {
           break;
         }

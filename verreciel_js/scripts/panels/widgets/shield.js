@@ -13,6 +13,17 @@ class Shield extends Widget
     this.label.updateText(name);
   }
   
+  setShield(item)
+  {
+    assertArgs(arguments, 1);
+    if (this.port.event == null)
+    {
+      this.port.addEvent(item);
+      this.onUploadComplete();
+      update();
+    }
+  }
+
   update()
   {
     assertArgs(arguments, 0);
@@ -97,17 +108,17 @@ class Shield extends Widget
       scale = 2.5;
       // Face 1
       let face1 = new Empty();
-      face1.add(new SceneLine([THREE.Vector3(0,scale,radius), THREE.Vector3(0,-scale,radius)], color));
+      face1.add(new SceneLine([new THREE.Vector3(0,scale,radius), new THREE.Vector3(0,-scale,radius)], color));
       face1.rotation.y += degToRad(i * (360/sides));
       verreciel.capsule.shieldRoot.add(face1);
       
       // Face 2
       scale = 1.9;
       let face2 = new Empty();
-      let line5 = new SceneLine([THREE.Vector3(-scale,0,radius), THREE.Vector3(0,scale,radius)], color);
-      let line6 = new SceneLine([THREE.Vector3(0,scale,radius), THREE.Vector3(scale,0,radius)], color);
-      let line7 = new SceneLine([THREE.Vector3(scale,0,radius), THREE.Vector3(0,-scale,radius)], color);
-      let line8 = new SceneLine([THREE.Vector3(0,-scale,radius), THREE.Vector3(-scale,0,radius)], color);
+      let line5 = new SceneLine([new THREE.Vector3(-scale,0,radius), new THREE.Vector3(0,scale,radius)], color);
+      let line6 = new SceneLine([new THREE.Vector3(0,scale,radius), new THREE.Vector3(scale,0,radius)], color);
+      let line7 = new SceneLine([new THREE.Vector3(scale,0,radius), new THREE.Vector3(0,-scale,radius)], color);
+      let line8 = new SceneLine([new THREE.Vector3(0,-scale,radius), new THREE.Vector3(-scale,0,radius)], color);
       face2.add(line5);
       face2.add(line6);
       face2.add(line7);
@@ -119,10 +130,10 @@ class Shield extends Widget
       // Face 3
       scale = 1.9;
       let face3 = new Empty()
-      let line9 = new SceneLine([THREE.Vector3(-scale,0,radius), THREE.Vector3(0,scale,radius)], color);
-      let line10 = new SceneLine([THREE.Vector3(0,scale,radius), THREE.Vector3(scale,0,radius)], color);
-      let line11 = new SceneLine([THREE.Vector3(scale,0,radius), THREE.Vector3(0,-scale,radius)], color);
-      let line12 = new SceneLine([THREE.Vector3(0,-scale,radius), THREE.Vector3(-scale,0,radius)], color);
+      let line9 = new SceneLine([new THREE.Vector3(-scale,0,radius), new THREE.Vector3(0,scale,radius)], color);
+      let line10 = new SceneLine([new THREE.Vector3(0,scale,radius), new THREE.Vector3(scale,0,radius)], color);
+      let line11 = new SceneLine([new THREE.Vector3(scale,0,radius), new THREE.Vector3(0,-scale,radius)], color);
+      let line12 = new SceneLine([new THREE.Vector3(0,-scale,radius), new THREE.Vector3(-scale,0,radius)], color);
       face3.add(line9);
       face3.add(line10);
       face3.add(line11);

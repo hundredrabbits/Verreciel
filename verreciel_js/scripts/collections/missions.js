@@ -757,7 +757,7 @@ class Missions
       verreciel.cargo.port.connect(verreciel.console.port);
       verreciel.nav.setMap(i.map2);
       verreciel.radio.setRecord(i.record3);
-      verreciel.shield.port.event = i.shield;
+      verreciel.shield.setShield(i.shield);
       u.valen_bank.addItems([i.record1,i.record2]);
     }
     m.quests = [
@@ -807,7 +807,7 @@ class Missions
       verreciel.cargo.port.connect(verreciel.console.port);
       verreciel.nav.setMap(i.map2);
       verreciel.radio.setRecord(i.record3);
-      verreciel.shield.port.event = i.shield;
+      verreciel.shield.setShield(i.shield);
       u.valen_bank.addItems([i.record1,i.record2]);
     }
     m.quests = [

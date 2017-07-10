@@ -295,10 +295,13 @@ class Capsule extends Empty
   
   dock(newLocation)
   {
-    assertArgs(arguments, 1);   
-    this.location = newLocation;
-    verreciel.thruster.disable();
-    verreciel.helmet.addPassive("Approaching " + this.location.name);
+    assertArgs(arguments, 1);
+    if (!this.isDocked)
+    {
+      this.location = newLocation;
+      verreciel.thruster.disable();
+      verreciel.helmet.addPassive("Approaching " + this.location.name);
+    }
   }
   
   docked()

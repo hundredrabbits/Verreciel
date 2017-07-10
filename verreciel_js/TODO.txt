@@ -1,23 +1,21 @@
-Bugs since 15:
+Bugs since 16:
 
 Other bugs:
 
   What happens at state = 12 if you delete the map, and all the keys?
-  On game load, helmet shouldn't say "approaching X", it should say "Docked at X"
-  Should journey reset at launch, or persist as part of game state?
 
 -------
 
 Foresight:
 
-  Verify that shield port label is working properly on game load
-    missions.js -> verreciel.shield.port.event = verreciel.items.shield;
+  Trigger size should double for mobile devices
+  Sort triggers by "distance from touch" if possible, before iterating through them
 
 -------
 
 Compare side by side with Swift build
-  game state: 15
-  iOS game state: 15
+  game state: 16
+  iOS game state: 16
 
 Find a better method to draw lines
 Run a JavaScript linter
@@ -38,9 +36,18 @@ Rethink missions
   They should be accumulative, at least in part
   Keep Cargo connected to Console, why doncha
 
-Walkthroughs, too
 State recovery
   What are some states that cannot be returned to?
+
+Walkthroughs, too
+  Player rotate, click, predicate
+  Game speed modification
+
+  Mission walkthrough chapters
+  Record walkthrough chapters
+  Chapter to reach other areas
+
+Should journey reset at launch, or persist as part of game state?
 
 What should be interactive, when?
 
