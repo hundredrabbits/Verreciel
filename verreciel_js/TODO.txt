@@ -10,6 +10,7 @@ Foresight:
 
   Trigger size should double for mobile devices
   Sort triggers by "distance from touch" if possible, before iterating through them
+  Make tea drinkable
 
 -------
 

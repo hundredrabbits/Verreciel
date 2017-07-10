@@ -42,7 +42,7 @@ class Items
     this.currency4 = new Item ("altiov", ItemTypes.currency, null, "From 1 & 2", false, "currency-4");
     this.currency5 = new Item ("ikeral", ItemTypes.currency, null, "From 2 & 3", false, "currency-5");
     this.currency6 = new Item ("echo", ItemTypes.currency, null, "From 4 & 5", false, "currency-6");
-    this.record_oquonie = new Item ("record", ItemTypes.record, null, "wet", true, "record-5");
+    this.record_oquonie = new Item ("record", ItemTypes.record, null, "wet", true, "record5");
     this.shield = new Item ("glass", ItemTypes.shield, null, "star sand", true, "shield-1");
 
     // "Batteries"
