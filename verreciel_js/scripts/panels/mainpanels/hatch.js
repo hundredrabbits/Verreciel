@@ -2,7 +2,7 @@ class Hatch extends MainPanel
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     this.outline = new Empty();
@@ -38,7 +38,7 @@ class Hatch extends MainPanel
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     
     this.update();
@@ -46,7 +46,7 @@ class Hatch extends MainPanel
 
   touch(id = 0)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.port.isReceiving() == false)
     {
       return false;
@@ -72,7 +72,7 @@ class Hatch extends MainPanel
   
   update()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var load = (this.port.origin == null) ? null : this.port.origin.event;
     
     if (load != null)
@@ -97,7 +97,7 @@ class Hatch extends MainPanel
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onConnect();
     
     if (this.port.origin == null && this.port.origin.host == null && this.port.origin.host == verreciel.pilot)
@@ -109,13 +109,13 @@ class Hatch extends MainPanel
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.update();
   }
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-315);

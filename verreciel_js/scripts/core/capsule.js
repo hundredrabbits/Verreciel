@@ -4,7 +4,7 @@ class Capsule extends Empty
   
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     console.log("^ Capsule | Init");
@@ -67,21 +67,21 @@ class Capsule extends Empty
 
   addPanel(panel)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.add(panel);
     this.panels.push(panel);
   }
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     console.log("+ Capsule | Start");
   }
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenRenderer();
     
     // Docking
@@ -148,7 +148,7 @@ class Capsule extends Empty
   
   beginAtLocation(location)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.at.copy(location.at);
     this.location = location;
     this.location.isKnown = true;
@@ -159,7 +159,7 @@ class Capsule extends Empty
   
   whenSecond()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenSecond();
     let cl = this.closestLocation()
     if (cl.system != null && cl.system != this.system)
@@ -170,7 +170,7 @@ class Capsule extends Empty
   
   closestLocation()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var closestLocation = null;
     for (let location of verreciel.universe.allLocations)
     {
@@ -189,7 +189,7 @@ class Capsule extends Empty
   
   closestStar()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var star = null;
 
     switch (this.system)
@@ -218,7 +218,7 @@ class Capsule extends Empty
   
   closestKnownLocation()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var closestLocation = null;
     for (let location of verreciel.universe.allLocations)
     {
@@ -243,7 +243,7 @@ class Capsule extends Empty
   
   warpTo(destination)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     let portal = this.location;
     
     portal.pilotPort.disconnect();
@@ -263,7 +263,7 @@ class Capsule extends Empty
 
   warpUp()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (verreciel.thruster.actualSpeed < 10)
     {
       verreciel.thruster.actualSpeed += 0.025;
@@ -272,7 +272,7 @@ class Capsule extends Empty
   
   warpDown()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.thruster.speed = 1;
     if (verreciel.thruster.actualSpeed > 1)
     {
@@ -286,7 +286,7 @@ class Capsule extends Empty
   
   warpStop()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isWarping = false;
     this.warp = null;
   }
@@ -295,7 +295,7 @@ class Capsule extends Empty
   
   dock(newLocation)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (!this.isDocked)
     {
       this.location = newLocation;
@@ -306,7 +306,7 @@ class Capsule extends Empty
   
   docked()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.lastLocation = this.location;
     if (this.isFleeing == true)
     {
@@ -327,7 +327,7 @@ class Capsule extends Empty
   
   undock()
   {
-    assertArgs(arguments, 0);   
+    // assertArgs(arguments, 0);   
     this.location.onUndock();
     this.isDocked = false;
     this.location = null;
@@ -340,7 +340,7 @@ class Capsule extends Empty
   
   flee()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isFleeing = true;
     verreciel.thruster.lock();
     verreciel.thruster.speed = verreciel.thruster.maxSpeed();
@@ -349,7 +349,7 @@ class Capsule extends Empty
   
   autoReturn()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isReturning = true;
     verreciel.thruster.lock();
     verreciel.thruster.speed = 1;
@@ -360,7 +360,7 @@ class Capsule extends Empty
   
   teleport(location)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.location = location;
     this.at.copy(this.location.at);
     this.isDocked = true;
@@ -372,13 +372,13 @@ class Capsule extends Empty
   
   isDockedAtLocation(location)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     return this.isDocked == true && this.location != null && this.location == location;
   }
   
   hasShield()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return verreciel.shield.isPowered() == true && verreciel.shield.port.hasItemOfType(ItemTypes.shield) == true;
   }
   
@@ -386,7 +386,7 @@ class Capsule extends Empty
   
   systemsInstalledCount()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var count = 0;
     for (let panel of this.panels)
     {
@@ -400,7 +400,7 @@ class Capsule extends Empty
   
   systemsCount()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return this.panels.length;
   }
 }

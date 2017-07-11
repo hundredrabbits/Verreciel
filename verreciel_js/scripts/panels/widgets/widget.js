@@ -2,7 +2,7 @@ class Widget extends Panel
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     this.isPowered = function(){ return false; };
@@ -29,19 +29,19 @@ class Widget extends Panel
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.refresh();
   }
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.refresh();
   }
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isPowered() == true)
     {
       this.onPowered();
@@ -54,7 +54,7 @@ class Widget extends Panel
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false)
     {
       return;
@@ -74,14 +74,14 @@ class Widget extends Panel
   
   onPowered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.label.updateColor(verreciel.white);
     this.port.enable();
   }
   
   onUnpowered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.label.updateColor(verreciel.grey);
     this.port.disable();
   }
@@ -90,7 +90,7 @@ class Widget extends Panel
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin()
     
     verreciel.helmet.addWarning("Installing", null, 3, "install");
@@ -110,7 +110,7 @@ class Widget extends Panel
   
   installProgress()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.installProgress();
     this.installLabel.updateText("Install " + this.installPercentage.toFixed(0) + "%");
     this.installProgressBar.updatePercent(this.installPercentage);
@@ -118,7 +118,7 @@ class Widget extends Panel
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.installNode.removeFromParentNode();

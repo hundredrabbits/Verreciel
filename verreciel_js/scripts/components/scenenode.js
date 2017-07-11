@@ -2,7 +2,7 @@ class SceneNode
 {
   constructor(method = null)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.id = SceneNode.ids++;
     this.method = method;
     this.children = [];
@@ -114,7 +114,7 @@ class SceneNode
 
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenStart();
@@ -123,7 +123,7 @@ class SceneNode
   
   whenTime()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenTime();
@@ -132,7 +132,7 @@ class SceneNode
   
   whenSecond()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenSecond();
@@ -141,7 +141,7 @@ class SceneNode
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let node of this.children)
     {
       node.whenRenderer();
@@ -150,7 +150,7 @@ class SceneNode
 
   removeFromParentNode()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.parent != null)
     {
       this.parent.remove(this);
@@ -159,7 +159,7 @@ class SceneNode
 
   convertPositionToNode(xyz, node)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     this.hardUpdateMatrixWorld();
     node.hardUpdateMatrixWorld();
@@ -169,7 +169,7 @@ class SceneNode
 
   convertPositionFromNode(xyz, node)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     this.hardUpdateMatrixWorld();
     node.hardUpdateMatrixWorld();

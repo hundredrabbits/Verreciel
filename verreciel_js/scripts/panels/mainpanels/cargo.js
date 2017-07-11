@@ -2,7 +2,7 @@ class Cargo extends MainPanel
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     this.cargohold = new CargoHold();
@@ -37,7 +37,7 @@ class Cargo extends MainPanel
   
   contains(event)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let item of this.cargohold.content)
     {
       if (item == event)
@@ -50,7 +50,7 @@ class Cargo extends MainPanel
   
   containsLike(target)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let item of this.cargohold.content)
     {
       if (item.name == target.name && item.type == target.type)
@@ -63,7 +63,7 @@ class Cargo extends MainPanel
   
   containsCount(count, target)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     var count_actual = 0;
     for (let item of this.cargohold.content)
     {
@@ -83,7 +83,7 @@ class Cargo extends MainPanel
   
   addItems(items)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let item of items)
     {
       this.addItem(item);
@@ -93,14 +93,14 @@ class Cargo extends MainPanel
   
   addItem(item)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.cargohold.content.push(item);
     this.refresh();
   }
 
   removeItem(target)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.cargohold.content.length == 1)
     {
       this.line1.position.x = 0.25;
@@ -160,7 +160,7 @@ class Cargo extends MainPanel
   
   removeTransfer(target)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     let history = this.cargohold.content;
     this.cargohold.content = [];
     for (let event of history)
@@ -177,7 +177,7 @@ class Cargo extends MainPanel
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let newCargohold = new CargoHold();
     for (let item of this.cargohold.content)
     {
@@ -240,7 +240,7 @@ class Cargo extends MainPanel
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.refresh();
     
     if (this.port.isConnectedToPanel(verreciel.console) == true)
@@ -253,7 +253,7 @@ class Cargo extends MainPanel
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.isReceivingEventOfTypeItem() == false)
     {
       this.detailsLabel.updateText("ERROR",verreciel.red);
@@ -279,14 +279,14 @@ class Cargo extends MainPanel
   
   upload(item)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.uploadedItem = item;
     this.uploadProgress();
   }
   
   uploadProgress()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.origin == null)
     {
       this.uploadCancel();
@@ -309,7 +309,7 @@ class Cargo extends MainPanel
   
   uploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.cargohold.content.length == 0)
     {
       this.line1.position.x = -0.25;
@@ -369,7 +369,7 @@ class Cargo extends MainPanel
   
   uploadTransfer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.origin != null)
     {
       let origin = this.port.origin.host;
@@ -386,7 +386,7 @@ class Cargo extends MainPanel
   
   uploadCancel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.uploadPercentage = 0;
     this.refresh();
   }
@@ -395,7 +395,7 @@ class Cargo extends MainPanel
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-225);
@@ -406,7 +406,7 @@ class CargoHold extends Item
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super("cargo", ItemTypes.cargo, null, "storage", true, null);
 
     this.content = [];
@@ -414,7 +414,7 @@ class CargoHold extends Item
   
   payload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var data = [];
     
     for (let item of this.content)

@@ -2,7 +2,7 @@ class Missions
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.story = [];
     this.currentMission = new Mission(0, "--");
 
@@ -842,7 +842,7 @@ class Missions
   
   setToInstalled(panels)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let panel of panels)
     {
       panel.onInstallationComplete();
@@ -851,7 +851,7 @@ class Missions
   
   setToKnown(locations)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let location of locations)
     {
       location.isKnown = true;
@@ -860,7 +860,7 @@ class Missions
   
   setToCompleted(locations)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let location of locations)
     {
       if (location.isComplete == false)
@@ -874,7 +874,7 @@ class Missions
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.currentMission.validate();
     if (this.currentMission.isCompleted == true)
     {
@@ -885,7 +885,7 @@ class Missions
   
   updateCurrentMission()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let mission of this.story)
     {
       if (mission.isCompleted == false)

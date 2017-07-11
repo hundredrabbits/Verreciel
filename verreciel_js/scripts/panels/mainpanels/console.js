@@ -2,7 +2,7 @@ class Console extends MainPanel
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.lines = [
@@ -34,7 +34,7 @@ class Console extends MainPanel
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDisconnect();
     
     this.nameLabel.updateText(this.port.origin.host.name + " > Port", verreciel.cyan);
@@ -51,7 +51,7 @@ class Console extends MainPanel
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDisconnect();
     
     this.nameLabel.updateText("Console", verreciel.grey);
@@ -60,7 +60,7 @@ class Console extends MainPanel
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     
     this.nameLabel.updateColor(verreciel.grey);
@@ -69,7 +69,7 @@ class Console extends MainPanel
   
   whenTime()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenTime();
     
     
@@ -77,7 +77,7 @@ class Console extends MainPanel
   
   clear()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     for (let line of this.lines) 
     {
       line.updateData(new ConsoleData());
@@ -86,7 +86,7 @@ class Console extends MainPanel
   
   inject(payload)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.clear();
     
     var id = 0;
@@ -120,7 +120,7 @@ class Console extends MainPanel
   
   defaultPayload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData("nataniev os", "OK", null, verreciel.white),
       new ConsoleData("systems", verreciel.capsule.systemsInstalledCount() + "/" + verreciel.capsule.systemsCount() , null, verreciel.grey),
@@ -133,7 +133,7 @@ class Console extends MainPanel
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-270);
@@ -141,7 +141,7 @@ class Console extends MainPanel
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.inject(this.defaultPayload());
@@ -152,7 +152,7 @@ class ConsoleLine extends Empty
 {
   constructor(data = null)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.port = new ScenePortRedirect(this);
@@ -177,7 +177,7 @@ class ConsoleLine extends Empty
   
   updateData(data)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.detailsLabel.updateText(data.details);
     
     if (data.event != null)
@@ -202,7 +202,7 @@ class ConsoleData
 {
   constructor(text = "", details = "", event = null, color = verreciel.white)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.text = text;
     this.details = details;
     this.event = event;
@@ -214,7 +214,7 @@ class ConsolePayload
 {
   constructor(data)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.data = data;
   }
 }

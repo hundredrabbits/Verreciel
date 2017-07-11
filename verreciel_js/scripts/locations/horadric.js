@@ -2,7 +2,7 @@ class LocationHoradric extends Location
 {
   constructor(name, system, at, mapRequirement = null)
   {
-    assertArgs(arguments, 3);
+    // assertArgs(arguments, 3);
     super( name,system, at, new IconHoradric(), new StructureHoradric());
     
     this.details = "unknown";
@@ -13,7 +13,7 @@ class LocationHoradric extends Location
   
   panel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     this.inPort1 = new ScenePortSlot(this, Alignment.center, false, "In");
@@ -52,7 +52,7 @@ class LocationHoradric extends Location
   
   dockUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.inPort1.isEnabled == true && this.inPort2.isEnabled == true)
     {
 
@@ -66,13 +66,13 @@ class LocationHoradric extends Location
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.verifyRecipes();
   }
   
   verifyRecipes()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var ingredients = [];
     
     if (this.inPort1.event != null)
@@ -103,7 +103,7 @@ class LocationHoradric extends Location
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.outPort.hasEvent() == true)
     {
       this.inPort1.disable();
@@ -161,7 +161,7 @@ class LocationHoradric extends Location
   
   combine(recipe)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.inPort1.disable();
     this.inPort2.disable();
     this.inPort1.label.updateColor(verreciel.cyan);
@@ -174,7 +174,7 @@ class LocationHoradric extends Location
   
   combineProgress()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.combinationPercentage += Math.random() * 2;
     this.combinationPercentage += 1; // Faster!
     
@@ -192,7 +192,7 @@ class LocationHoradric extends Location
   
   onCombinationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.inPort1.removeEvent();
     this.inPort2.removeEvent();
     this.inPort1.label.updateColor(verreciel.grey);
@@ -213,7 +213,7 @@ class IconHoradric extends Icon
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -237,7 +237,7 @@ class StructureHoradric extends Structure
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,0,0);
@@ -290,7 +290,7 @@ class StructureHoradric extends Structure
   
   onUndock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onUndock();
     
     verreciel.animator.begin();
@@ -312,7 +312,7 @@ class StructureHoradric extends Structure
   
   onDock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDock();
     
     verreciel.animator.begin();

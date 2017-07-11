@@ -2,7 +2,7 @@ class Animator
 {
   constructor()
   {
-    assertArgs(arguments, 0, true);
+    // assertArgs(arguments, 0, true);
     this.begun = false;
     this.properties = [];
     this.ease = Penner.easeOutQuart;
@@ -12,7 +12,7 @@ class Animator
 
   begin(name = null)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.begun)
     {
       console.warn("Animator has already begun.");
@@ -31,7 +31,7 @@ class Animator
 
   registerProperty(property)
   {
-    assertArgs(arguments, 1, true);
+    // assertArgs(arguments, 1, true);
     if (!property.registered)
     {
       property.registered = true;
@@ -41,7 +41,7 @@ class Animator
 
   commit()
   {
-    assertArgs(arguments, 0, true);
+    // assertArgs(arguments, 0, true);
     if (!this.begun)
     {
       console.warn("Animator has not yet begun.");

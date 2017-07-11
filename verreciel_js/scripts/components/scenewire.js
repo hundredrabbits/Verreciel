@@ -2,7 +2,7 @@ class SceneWire extends Empty
 {
   constructor(host, endA = new THREE.Vector3(), endB = new THREE.Vector3())
   {
-    assertArgs(arguments, 3);
+    // assertArgs(arguments, 3);
     super();
     
     this.segment1 = new SceneLine([], verreciel.white);
@@ -47,7 +47,7 @@ class SceneWire extends Empty
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (this.isEnabled == false || this.endB == null)
@@ -64,7 +64,7 @@ class SceneWire extends Empty
   
   updateEnds(endA = new THREE.Vector3(), endB = new THREE.Vector3())
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     this.endA = endA;
     this.endB = endB;
     
@@ -92,27 +92,27 @@ class SceneWire extends Empty
   
   enable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = true;
     this.show();
   }
   
   disable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = false;
     this.hide();
   }
   
   isCompatible()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return true;
   }
   
   updateColor(color)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     
   }
 }

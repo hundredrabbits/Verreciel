@@ -2,20 +2,20 @@ class Empty extends SceneNode
 {
   constructor(method = null)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super(method);
     this.details = "unknown";
   }
 
   touch(id = 0)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     return false;
   }
   
   update()
   {
-    assertArgs(arguments, 0, true);
+    // assertArgs(arguments, 0, true);
 
   }
 
@@ -35,7 +35,7 @@ class Empty extends SceneNode
   
   empty()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     while (this.children.length > 0)
     {
       this.remove(this.children[0]);
@@ -44,7 +44,7 @@ class Empty extends SceneNode
   
   blink()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (verreciel.game.time % 3 == 0)
     {
       this.opacity = 1;
@@ -57,19 +57,19 @@ class Empty extends SceneNode
   
   show()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.opacity = 1;
   }
   
   hide()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.opacity = 0;
   }
   
   updateChildrenColors(color)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.method == Methods.lineArt)
     {
       this.updateColor(color);
@@ -82,31 +82,31 @@ class Empty extends SceneNode
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.update();
   }
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.update();
   }
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   onMissionComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   payload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return new ConsolePayload([new ConsoleData("unknown", "unknown")]);
   }
 }

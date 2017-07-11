@@ -2,7 +2,7 @@ class LocationTrade extends Location
 {
   constructor(name, system, at, want, give, mapRequirement = null)
   {
-    assertArgs(arguments, 5);
+    // assertArgs(arguments, 5);
     super( name, system, at, new IconTrade(), new StructureTrade());
     
     this.details = give.name;
@@ -20,7 +20,7 @@ class LocationTrade extends Location
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     this.refresh();
   }
@@ -29,7 +29,7 @@ class LocationTrade extends Location
   
   panel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isComplete == true)
     {
       return null;
@@ -66,20 +66,20 @@ class LocationTrade extends Location
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.refresh()
     verreciel.music.playEffect("beep2")
   }
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.refresh();
   }
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.wantPort.event != null && this.wantPort.event.name == this.wantPort.requirement.name)
     {
       this.wantPort.disable();
@@ -114,7 +114,7 @@ class IconTrade extends Icon
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -136,7 +136,7 @@ class StructureTrade extends Structure
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -168,7 +168,7 @@ class StructureTrade extends Structure
   
   onSight()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onSight();
     
     verreciel.animator.begin();
@@ -186,7 +186,7 @@ class StructureTrade extends Structure
   
   onUndock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onUndock();
     
     verreciel.animator.begin();
@@ -204,7 +204,7 @@ class StructureTrade extends Structure
   
   onDock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDock()
     
     verreciel.animator.begin();
@@ -220,13 +220,13 @@ class StructureTrade extends Structure
   
   onComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onComplete();
   }
   
   sightUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1);
   }
 }

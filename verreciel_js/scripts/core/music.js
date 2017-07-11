@@ -2,7 +2,7 @@ class Music
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.trackEffect = new Audio();
     this.trackMusic = new Audio();
     this.audioCatalog = {};
@@ -10,7 +10,7 @@ class Music
 
   playEffect(name)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     // console.log("Effect: ",name);
     this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg", false);
     this.trackEffect.play()
@@ -18,7 +18,7 @@ class Music
 
   playMusic(name, role)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.trackMusic.name == name)
     {
       return;
@@ -40,7 +40,7 @@ class Music
 
   fetchAudio(name, role, src, loop)
   {
-    assertArgs(arguments, 3);
+    // assertArgs(arguments, 3);
     var audioId = role + "_" + name;
     if (!(audioId in this.audioCatalog))
     {

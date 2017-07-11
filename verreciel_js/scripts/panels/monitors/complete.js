@@ -2,7 +2,7 @@ class Complete extends Monitor
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     this.distance = 0;
@@ -14,7 +14,7 @@ class Complete extends Monitor
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.refresh();
     this.nameLabel.updateText(verreciel.missions.currentMission.id + "/" + verreciel.missions.story.length);
   }

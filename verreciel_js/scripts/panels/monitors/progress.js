@@ -2,7 +2,7 @@ class Progress extends Monitor
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     this.completed = 0;
     this.name = "map";
@@ -14,7 +14,7 @@ class Progress extends Monitor
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.refresh();
     
     var totalQuestLocations = 0;

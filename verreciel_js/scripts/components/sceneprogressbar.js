@@ -2,7 +2,7 @@ class SceneProgressBar extends Empty
 {
   constructor(width, color = verreciel.red)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     super();
     this.percent = 0;
     this.width = width;
@@ -12,7 +12,7 @@ class SceneProgressBar extends Empty
   
   addGeometry()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.progressLine = new SceneLine([new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)], this.color);
     this.add(this.progressLine);
     this.remainingLine = new SceneLine([new THREE.Vector3(0,0,0), new THREE.Vector3(this.width,0,0)], verreciel.grey);
@@ -21,7 +21,7 @@ class SceneProgressBar extends Empty
   
   updatePercent(percent)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     let to = this.width * (percent/100);
     
     this.progressLine.updateGeometry([new THREE.Vector3(0,0,0), new THREE.Vector3(to,0,0)], this.color);

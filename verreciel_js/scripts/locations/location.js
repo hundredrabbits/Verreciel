@@ -2,7 +2,7 @@ class Location extends Event
 {
   constructor(name, system, at, icon, structure)
   {
-    assertArgs(arguments, 5);
+    // assertArgs(arguments, 5);
     super(name, at, "unknown", verreciel.grey, false);
     
     this.system = system;
@@ -34,7 +34,7 @@ class Location extends Event
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     
     this.position.set(this.at.x,this.at.y,0);
@@ -46,19 +46,19 @@ class Location extends Event
   
   setup()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
   
   }
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenRenderer();
     
     this.position.set(this.at.x,this.at.y,0);
@@ -119,19 +119,19 @@ class Location extends Event
   
   onRadarView()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.icon.label.opacity = 1;
   }
   
   onHelmetView()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.icon.label.opacity = 0;
   }
   
   onSight()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isSeen = true;
     this.update();
     this.icon.onUpdate();
@@ -148,7 +148,7 @@ class Location extends Event
   
   onApproach()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.mapRequirement != null && verreciel.nav.port.hasEvent(this.mapRequirement) == false)
     {
       return;
@@ -168,13 +168,13 @@ class Location extends Event
   
   onCollision()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.update();
   }
   
   onDock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (verreciel.thruster.isLocked && verreciel.universe.loiqe_city.isKnown == true)
     {
       verreciel.thruster.unlock();
@@ -191,7 +191,7 @@ class Location extends Event
   
   onUndock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isDocked = false;
     this.retrieveStorage();
     this.structure.onUndock();
@@ -200,7 +200,7 @@ class Location extends Event
   
   retrieveStorage()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.storage.length == 0)
     {
       return;
@@ -218,7 +218,7 @@ class Location extends Event
   
   onComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isComplete = true;
     verreciel.progress.refresh();
     this.icon.onUpdate();
@@ -229,31 +229,31 @@ class Location extends Event
   
   sightUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.structure.sightUpdate();
   }
   
   approachUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   collisionUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   dockUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.structure.dockUpdate();
   }
   
   radarCulling()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let verticalDistance = Math.abs(verreciel.capsule.at.y - this.at.y);
     let horizontalDistance = Math.abs(verreciel.capsule.at.x - this.at.x);
     
@@ -291,7 +291,7 @@ class Location extends Event
   
   connect(location)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.connection = location;
     this.icon.wire.updateGeometry(
       [
@@ -306,7 +306,7 @@ class Location extends Event
   
   touch(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.isTargetable == false)
     {
       return false;
@@ -339,14 +339,14 @@ class Location extends Event
   
   calculateAngle()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let angle = angleBetweenTwoPoints(verreciel.capsule.at, this.at, verreciel.capsule.at);
     return (360 - (angle - 90)) % 360;
   }
   
   calculateAlignment(direction = verreciel.capsule.direction)
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var diff = Math.max(direction, this.angle) - Math.min(direction, this.angle);
     if (diff > 180)
     {
@@ -360,7 +360,7 @@ class Location extends Event
   
   storedItems()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     var collection = [];
     for (let port of this.storage)
     {
@@ -374,7 +374,7 @@ class Location extends Event
   
   payload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData("Name", this.name),
       new ConsoleData("System", this.system),
@@ -387,7 +387,7 @@ class Location extends Event
   
   close()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.icon.close();
   }
 }

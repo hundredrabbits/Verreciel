@@ -2,7 +2,7 @@ class Player extends Empty
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     console.log("^ Player | Init");
@@ -33,20 +33,20 @@ class Player extends Empty
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     console.log("+ Player | Start");
   }
   
   activateEvent(event)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.event = event;
   }
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (!this.isLocked)
@@ -76,7 +76,7 @@ class Player extends Empty
   
   lookAt(deg = 0)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     let normalizedDeg = radToDeg(this.rotation.y) % 360;
     this.rotation.y = degToRad(normalizedDeg);
     verreciel.helmet.rotation.y = degToRad(normalizedDeg);
@@ -102,7 +102,7 @@ class Player extends Empty
   
   eject()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 2;
     
@@ -131,7 +131,7 @@ class Player extends Empty
   
   holdPort(port)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (port.host != null && port.host.name != null)
     {
       verreciel.helmet.leftHandLabel.updateText(port.host.name, verreciel.white);
@@ -144,7 +144,7 @@ class Player extends Empty
   
   connectPorts(from, to)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     verreciel.helmet.leftHandLabel.updateText("--", verreciel.grey);
     
     this.activePort = null;
@@ -158,7 +158,7 @@ class Player extends Empty
   
   releasePort()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.helmet.leftHandLabel.updateText("--", verreciel.grey);
     
     this.activePort.desactivate();
@@ -171,7 +171,7 @@ class Player extends Empty
 
   holdHandle(handle)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.releaseHandle();
     
     verreciel.helmet.rightHandLabel.updateText(handle.host.name, verreciel.white);
@@ -201,7 +201,7 @@ class Player extends Empty
       cancelDelay(this.lastDelay);
       this.lastDelay = null;
     }
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.activeHandle == null)
     {
       return;
@@ -222,7 +222,7 @@ class Player extends Empty
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onConnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) == true)
     {
@@ -232,7 +232,7 @@ class Player extends Empty
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDisconnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) != true)
     {
@@ -242,7 +242,7 @@ class Player extends Empty
   
   payload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData("Hiversaire unit", "type"), 
       new ConsoleData("--", "--"),

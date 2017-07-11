@@ -2,7 +2,7 @@ class LocationHarvest extends Location
 {
   constructor(name, system, at, grows, mapRequirement = null)
   {
-    assertArgs(arguments, 4);
+    // assertArgs(arguments, 4);
     super(name, system, at, new IconHarvest(), new StructureHarvest());
     
     this.mapRequirement = mapRequirement;
@@ -22,14 +22,14 @@ class LocationHarvest extends Location
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     this.port.addEvent(this.grows);
   }
   
   generate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     setTimeout(this.generate.bind(this), 1000);
 
     if (this.port == null)
@@ -67,7 +67,7 @@ class LocationHarvest extends Location
   
   panel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     this.timeLeftLabel = new SceneLabel("", 0.15, Alignment.center);
@@ -84,7 +84,7 @@ class LocationHarvest extends Location
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onUploadComplete();
     
     this.refresh();
@@ -93,7 +93,7 @@ class LocationHarvest extends Location
 
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.hasEvent(this.grows) != true)
     {
       this.icon.mesh.updateChildrenColors(verreciel.grey);
@@ -110,7 +110,7 @@ class IconHarvest extends Icon
 {   
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     this.mesh.add(new SceneLine([
       new THREE.Vector3(0,this.size,0),  
@@ -131,7 +131,7 @@ class StructureHarvest extends Structure
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -159,7 +159,7 @@ class StructureHarvest extends Structure
   
   update()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.update();
     
     if (this.host.port.hasEvent() != true)
@@ -174,7 +174,7 @@ class StructureHarvest extends Structure
   
   sightUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.sightUpdate();
     
     this.root.rotation.y += degToRad(0.1);

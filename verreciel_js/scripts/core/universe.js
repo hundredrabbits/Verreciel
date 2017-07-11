@@ -2,7 +2,7 @@ class Universe extends Empty
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     console.log("^ Universe | Init");
 
@@ -86,14 +86,14 @@ class Universe extends Empty
 
   addLocation(child)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.allLocations.push(child);
     this.eventView.add(child);
   }
 
   addLoiqe()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.addLocation(this.loiqe);
     this.addLocation(this.loiqe_spawn);
     this.addLocation(this.loiqe_harvest);
@@ -111,7 +111,7 @@ class Universe extends Empty
   
   addValen()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.addLocation(this.valen);
     this.addLocation(this.valen_bank);
     this.addLocation(this.valen_station);
@@ -128,7 +128,7 @@ class Universe extends Empty
   
   addSenni()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.addLocation(this.senni);
     this.addLocation(this.senni_station);
     this.addLocation(this.senni_portal);
@@ -145,7 +145,7 @@ class Universe extends Empty
   
   addUsul()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.addLocation(this.usul);
     
     this.addLocation(this.usul_portal);
@@ -159,13 +159,13 @@ class Universe extends Empty
   
   addClose()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.addLocation(this.close);
   }
   
   connectPaths()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.loiqe_city.connect(this.loiqe_satellite);
     this.loiqe_satellite.connect(this.loiqe_portal);
     this.loiqe_horadric.connect(this.loiqe_satellite);
@@ -201,7 +201,7 @@ class Universe extends Empty
 
   locationLike(target)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let location of this.allLocations)
     {
       if (location.name == target.name && location.system == target.system)
@@ -215,7 +215,7 @@ class Universe extends Empty
   
   locationWithCode(code)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let location of this.allLocations)
     {
       if (location.code == code)
@@ -228,7 +228,7 @@ class Universe extends Empty
   
   closeSystem(system)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     for (let location of this.allLocations)
     {
       if (location.system == system)

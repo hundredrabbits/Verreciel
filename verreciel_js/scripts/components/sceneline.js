@@ -2,14 +2,14 @@ class SceneLine extends Empty
 {
   constructor(vertices, color = verreciel.white)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     super(Methods.lineArt);
     this.updateGeometry(vertices, color);
   }
   
   updateGeometry(vertices, color)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     if (vertices.indexOf(null) != -1)
     {
       throw "BAD GEOMETRY";
@@ -31,7 +31,7 @@ class SceneLine extends Empty
   
   reset()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.vertices = [];
     this.geometry.vertices = [];
     this.geometry.verticesNeedUpdate = true;
@@ -39,7 +39,7 @@ class SceneLine extends Empty
   
   updateColor(color)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (color.equals(this.color))
     {
       return;
@@ -49,7 +49,7 @@ class SceneLine extends Empty
   
   updateVertices(vertices)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.updateGeometry(vertices, this.color);
   }
 }

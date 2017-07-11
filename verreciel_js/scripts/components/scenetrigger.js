@@ -2,7 +2,7 @@ class SceneTrigger extends Empty
 {
   constructor(host, width, height, operation = 0)
   {
-    assertArgs(arguments, 3);
+    // assertArgs(arguments, 3);
     super(Methods.interactiveRegion);
     this.isEnabled = true;
     this.operation = operation;
@@ -18,7 +18,7 @@ class SceneTrigger extends Empty
   
   touch(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.isEnabled == false)
     {
       return false;
@@ -28,12 +28,12 @@ class SceneTrigger extends Empty
   
   update()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
   }
   
   enable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (!this.isEnabled)
     {
       this.isEnabled = true;
@@ -43,7 +43,7 @@ class SceneTrigger extends Empty
   
   disable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isEnabled)
     {
       this.isEnabled = false;

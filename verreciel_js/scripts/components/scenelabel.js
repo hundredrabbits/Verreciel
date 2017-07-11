@@ -2,7 +2,7 @@ class SceneLabel extends Empty
 {
   constructor(text = "", scale = 0.1, align = Alignment.left, color = verreciel.white)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     super();
 
     this.nodeOffset = new Empty();
@@ -19,7 +19,7 @@ class SceneLabel extends Empty
   
   adjustAlignment()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.activeAlignment == Alignment.center)
     {
       let wordLength = this.activeText.length * this.activeScale * 1.5;
@@ -34,7 +34,7 @@ class SceneLabel extends Empty
   
   addLetters(text, scale)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     var letterPos = 0;
     var linePos = 0;
     for (let letterCur of text)
@@ -54,7 +54,7 @@ class SceneLabel extends Empty
   
   removeLetters()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     while (this.nodeOffset.children.length > 0)
     {
       this.nodeOffset.remove(this.nodeOffset.children[0]);
@@ -63,7 +63,7 @@ class SceneLabel extends Empty
   
   updateText(text, color = null)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
 
     if (text == null)
     {
@@ -87,7 +87,7 @@ class SceneLabel extends Empty
   
   updateScale(scale)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.activeScale = scale;
     this.removeLetters();
     this.addLetters(this.activeText, this.activeScale);
@@ -96,7 +96,7 @@ class SceneLabel extends Empty
   
   updateColor(color)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.color.equals(color))
     {
       return;
@@ -109,7 +109,7 @@ class SceneLabel extends Empty
   
   letter(char, scale)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     let pivot = new Empty();
     switch (char.toLowerCase())
     {

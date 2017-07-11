@@ -5,7 +5,7 @@ class Intercom extends MainPanel
   
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.name = "mission";
@@ -68,7 +68,7 @@ class Intercom extends MainPanel
   
   whenRenderer()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenRenderer();
     
     if (verreciel.capsule.isDocked && 
@@ -115,7 +115,7 @@ class Intercom extends MainPanel
   
   touch(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.refresh();
     verreciel.music.playEffect("click3");
     return false;
@@ -123,7 +123,7 @@ class Intercom extends MainPanel
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if( this.isInstalled == true )
     {
       if (verreciel.capsule.location == null)
@@ -149,7 +149,7 @@ class Intercom extends MainPanel
   
   complete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     // Animate
     
     verreciel.animator.begin();
@@ -178,7 +178,7 @@ class Intercom extends MainPanel
   
   connectToLocation(location)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     this.locationPanel.empty();
     let panel = location.panel();
     if (panel != null)
@@ -232,7 +232,7 @@ class Intercom extends MainPanel
   
   disconnectFromLocation()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
     
@@ -262,7 +262,7 @@ class Intercom extends MainPanel
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.player.lookAt(-180);
@@ -270,7 +270,7 @@ class Intercom extends MainPanel
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.touch(1);
@@ -278,7 +278,7 @@ class Intercom extends MainPanel
   
   onConnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true)
     {
       verreciel.capsule.location.onConnect();
@@ -287,7 +287,7 @@ class Intercom extends MainPanel
   
   onDisconnect()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true)
     {
       verreciel.capsule.location.onDisconnect();

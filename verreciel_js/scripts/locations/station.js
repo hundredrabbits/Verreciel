@@ -2,7 +2,7 @@ class LocationStation extends Location
 {
   constructor(name, system, at, requirement = null, installation, installationName, mapRequirement = null)
   {
-    assertArgs(arguments, 6);
+    // assertArgs(arguments, 6);
     super(name,system, at, new IconStation(), new StructureStation());
     
     this.installation = installation;
@@ -15,7 +15,7 @@ class LocationStation extends Location
   
   panel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     let requirementLabel = new SceneLabel("Exchange " + this.requirement.name + "$install the " + this.installationName);
@@ -42,7 +42,7 @@ class LocationStation extends Location
   
   onUploadComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false)
     {
       this.tradeLabel.updateColor(verreciel.grey);
@@ -63,7 +63,7 @@ class LocationStation extends Location
   
   touch(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     super.touch(id);
     if (id == 1)
     {
@@ -78,7 +78,7 @@ class IconStation extends Icon
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([
@@ -100,7 +100,7 @@ class StructureStation extends Structure
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.root.position.set(0,5,0);
@@ -126,7 +126,7 @@ class StructureStation extends Structure
   
   onSight()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onSight();
     
     verreciel.animator.begin();
@@ -142,7 +142,7 @@ class StructureStation extends Structure
   
   onUndock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onUndock();
     
     verreciel.animator.begin();
@@ -158,7 +158,7 @@ class StructureStation extends Structure
   
   onDock()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onDock();
     
     verreciel.animator.begin();
@@ -174,7 +174,7 @@ class StructureStation extends Structure
   
   onComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onComplete();
     
     this.updateChildrenColors(verreciel.cyan);
@@ -182,13 +182,13 @@ class StructureStation extends Structure
   
   sightUpdate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1);
   }
   
   morph()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.morph();
     
     verreciel.animator.begin();

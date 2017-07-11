@@ -2,7 +2,7 @@ class Quest
 {
   constructor(name, location, predicate, result)
   {
-    assertArgs(arguments, 4);
+    // assertArgs(arguments, 4);
     this.isCompleted = false;
     this.isSkipped = false;
 
@@ -14,7 +14,7 @@ class Quest
 
   validate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isSkipped == true)
     {
       this.isCompleted = true;
@@ -31,7 +31,7 @@ class Quest
   
   complete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isCompleted == true)
     {
       return;

@@ -2,7 +2,7 @@ class Mission
 {
   constructor(id, name, requirement = function(){ return true; }, state = function(){ } )
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     this.isCompleted = false;
     this.quests = [];
     this.predicate = function(){ return false; };
@@ -14,7 +14,7 @@ class Mission
   
   validate()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.currentQuest == null)
     {
       this.currentQuest = this.quests[0];
@@ -39,7 +39,7 @@ class Mission
   
   prompt()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.currentQuest.location != null)
     {
       if (verreciel.capsule.isDockedAtLocation(this.currentQuest.location))
@@ -70,13 +70,13 @@ class Mission
   
   onComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.completion.refresh();
   }
   
   complete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isCompleted = true;
     for (let quest of this.quests)
     {

@@ -2,7 +2,7 @@ class Hexagon extends Empty
 {
   constructor(size, color = verreciel.white)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     super();
     
     let angle = 1.5;

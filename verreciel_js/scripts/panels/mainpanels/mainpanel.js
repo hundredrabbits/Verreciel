@@ -2,7 +2,7 @@ class MainPanel extends Panel
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
 
     this.installNode = new Empty();
@@ -72,7 +72,7 @@ class MainPanel extends Panel
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.whenStart();
     
     this.decals.hide();
@@ -84,7 +84,7 @@ class MainPanel extends Panel
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
     
     verreciel.helmet.addWarning("Installing", null, 3, "install");
@@ -103,7 +103,7 @@ class MainPanel extends Panel
   
   installProgress()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.installProgress();
     
     this.installLabel.updateText("Install " + this.installPercentage.toFixed(0) + "%");
@@ -112,7 +112,7 @@ class MainPanel extends Panel
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     
     this.mainNode.position.set(0,0,-0.2);

@@ -2,7 +2,7 @@ class LocationBeacon extends Location
 {
   constructor(name, system, at, message, mapRequirement = null)
   {
-    assertArgs(arguments, 5);
+    // assertArgs(arguments, 5);
     super(name,system, at, new IconBeacon(), new Structure());
     
     this.mapRequirement = mapRequirement;
@@ -11,7 +11,7 @@ class LocationBeacon extends Location
   
   panel()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let newPanel = new Panel();
     
     let text1 = this.message.substr(0, 19);
@@ -43,7 +43,7 @@ class IconBeacon extends Icon
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.mesh.add(new SceneLine([

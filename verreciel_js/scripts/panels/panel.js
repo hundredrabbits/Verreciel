@@ -2,7 +2,7 @@ class Panel extends Empty
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super()
     this.isEnabled = false;
     this.root = new Empty();
@@ -13,19 +13,19 @@ class Panel extends Empty
   
   refresh()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     
   }
   
   enable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = true;
   }
   
   disable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = false;
   }
   
@@ -33,7 +33,7 @@ class Panel extends Empty
   
   install()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.isInstalled == true)
     {
       return;
@@ -45,7 +45,7 @@ class Panel extends Empty
   
   installProgress()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.installPercentage += Math.random() * 6;
     this.installPercentage += 1; // Faster!
     
@@ -60,13 +60,13 @@ class Panel extends Empty
 
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.music.playEffect("beep1");
   }
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.installPercentage = 0;
     this.isInstalled = true;
     verreciel.music.playEffect("beep2");
@@ -74,7 +74,7 @@ class Panel extends Empty
   
   payload()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     return new ConsolePayload([new ConsoleData("Capsule", "Panel"), new ConsoleData(this.details)]);
   }
 }

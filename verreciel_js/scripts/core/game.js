@@ -2,14 +2,14 @@ class Game
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     console.log("^ Game | Init");
     this.time = 0;
   }
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     console.log("+ Game | Start");
     setTimeout(this.onTic.bind(this), 50);
     setTimeout(this.whenSecond.bind(this), 1000);
@@ -18,7 +18,7 @@ class Game
   
   save(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (DEBUG_DONT_SAVE) { return; }
     console.log("@ GAME     | Saved State to " + id);
     for (let c of document.cookie.split(";"))
@@ -31,7 +31,7 @@ class Game
   
   load(id)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     id = (id == 20) ? 0 : id;
     
     console.log("@ GAME     | Loaded State to " + id);
@@ -48,7 +48,7 @@ class Game
   
   get state()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if ("state" in localStorage)
     {
       return parseInt(localStorage.state);
@@ -58,14 +58,14 @@ class Game
   
   erase()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     console.log("$ GAME     | Erase");
     localStorage.clear();
   }
   
   whenSecond()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     setTimeout(this.whenSecond.bind(this), 1000);
     verreciel.capsule.whenSecond();
     verreciel.missions.refresh();
@@ -73,7 +73,7 @@ class Game
   
   onTic()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     setTimeout(this.onTic.bind(this), 50);
     this.time += 1;
     verreciel.space.whenTime();

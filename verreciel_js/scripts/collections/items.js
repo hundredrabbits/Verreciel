@@ -2,7 +2,7 @@ class Items
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     // Misc
     this.kelp = new Item ("space kelp", ItemTypes.waste, null, "useless", false, "kelp");
     this.waste = new Item ("waste", ItemTypes.waste, null, "useless", false, "waste");
@@ -56,7 +56,7 @@ class Items
   
   whenStart()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.loiqePortalKey.location = verreciel.universe.loiqe_portal;
     this.valenPortalKey.location = verreciel.universe.valen_portal;
     this.senniPortalKey.location = verreciel.universe.senni_portal;

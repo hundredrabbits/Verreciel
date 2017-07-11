@@ -2,7 +2,7 @@ class Enigma extends Widget
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
     
     this.name = "enigma";
@@ -14,13 +14,13 @@ class Enigma extends Widget
   
   onInstallationBegin()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationBegin();
   }
   
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     verreciel.battery.installEnigma();
   }

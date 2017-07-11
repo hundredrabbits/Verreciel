@@ -2,7 +2,7 @@ class SceneHandle extends Empty
 {
   constructor(destination, host)
   {
-    assertArgs(arguments, 2);
+    // assertArgs(arguments, 2);
     super();
     this.isEnabled = true;
     this.destination = destination;
@@ -12,7 +12,7 @@ class SceneHandle extends Empty
   
   setup()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     let width = 0.4;
     let spacing = 0.15;
     let height = 0.2;
@@ -42,21 +42,21 @@ class SceneHandle extends Empty
   
   enable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = true;
     this.selectionLine.updateColor(verreciel.cyan);
   }
   
   disable()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     this.isEnabled = false;
     this.selectionLine.updateColor(verreciel.grey);
   }
   
   touch(id = 0)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     verreciel.player.holdHandle(this);
     verreciel.music.playEffect("click4");
     return true;

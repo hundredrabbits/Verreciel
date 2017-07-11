@@ -2,7 +2,7 @@ class Shield extends Widget
 {
   constructor()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super();
   
     this.isActive = false;
@@ -15,7 +15,7 @@ class Shield extends Widget
   
   setShield(item)
   {
-    assertArgs(arguments, 1);
+    // assertArgs(arguments, 1);
     if (this.port.event == null)
     {
       this.port.addEvent(item);
@@ -26,7 +26,7 @@ class Shield extends Widget
 
   update()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     if (this.port.hasItemOfType(ItemTypes.shield) == true)
     {
       if (verreciel.battery.isShieldPowered() == true)
@@ -53,49 +53,49 @@ class Shield extends Widget
   
   mode_powered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.cyan);
     verreciel.capsule.shieldRoot.show();
   }
   
   mode_unpowered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.grey);
     verreciel.capsule.shieldRoot.show();
   }
   
   mode_blank()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.grey);
     verreciel.capsule.shieldRoot.show();
   }
   
   mode_none()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.clear);
     verreciel.capsule.shieldRoot.hide();
   }
   
   onPowered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onPowered();
     this.update();
   }
   
   onUnpowered()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onUnpowered();
     this.update();
   }
   
   createShield()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     verreciel.capsule.add(verreciel.capsule.shieldRoot);
     let radius = 6;
     var scale = 2.5;
@@ -151,7 +151,7 @@ class Shield extends Widget
 
   onInstallationComplete()
   {
-    assertArgs(arguments, 0);
+    // assertArgs(arguments, 0);
     super.onInstallationComplete();
     this.createShield();
     verreciel.battery.installShield();
