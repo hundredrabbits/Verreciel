@@ -13,7 +13,7 @@ class Intercom extends MainPanel
 
     this.selector = new SceneLabel(">", 0.1, Alignment.left);
   
-    this.locationPanel = new Panel();
+    this.locationPanel = new Empty();
     this.mainNode.add(this.locationPanel);
     
     this.defaultPanel = new Empty();
@@ -151,6 +151,12 @@ class Intercom extends MainPanel
   {
     // assertArgs(arguments, 0);
     // Animate
+
+    if (this.isCompleting)
+    {
+      return;
+    }
+    this.isCompleting = true;
     
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
@@ -174,6 +180,7 @@ class Intercom extends MainPanel
       verreciel.animator.commit();
     }.bind(this);
     verreciel.animator.commit();
+    this.isCompleting = false;
   }
   
   connectToLocation(location)
