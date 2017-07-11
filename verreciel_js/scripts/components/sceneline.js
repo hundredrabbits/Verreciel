@@ -14,15 +14,7 @@ class SceneLine extends Empty
     {
       throw "BAD GEOMETRY";
     }
-    if (vertices.length < 2)
-    {
-      return;
-    }
-    if (vertices.length % 2 == 1)
-    {
-      return;
-    }
-
+    
     this.vertices = vertices;
     this.geometry.vertices = vertices;
     this.geometry.verticesNeedUpdate = true;
