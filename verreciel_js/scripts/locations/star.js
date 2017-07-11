@@ -149,7 +149,7 @@ class StructureStar extends Structure
     var i = 0;
     while (i < 20)
     {
-      let shape = new Octogon(new THREE.Vector2(i * 0.3), verreciel.red);
+      let shape = new Octogon(i * 0.3, verreciel.red);
       shape.rotation.y = degToRad(22.5);
       this.root.add(shape);
       i += 1;
@@ -203,7 +203,7 @@ class StructureStar extends Structure
     assertArgs(arguments, 0);
     super.onComplete()
     
-    this.root.updateChildrenColors(cyan)
+    this.root.updateChildrenColors(verreciel.cyan);
     
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;

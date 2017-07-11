@@ -119,7 +119,7 @@ class Player extends Empty
       
       verreciel.animator.completionBlock = function(){
         this.isEjected = true;
-        game.save(0);
+        verreciel.game.save(0);
       }.bind(this);
       verreciel.animator.commit();
       

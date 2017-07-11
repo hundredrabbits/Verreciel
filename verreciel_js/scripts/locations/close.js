@@ -55,13 +55,13 @@ class LocationClose extends Location
   onDock()
   {
     assertArgs(arguments, 0);
-    player.eject()
-    onComplete()
+    verreciel.player.eject();
+    this.onComplete();
     
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 30;
     
-    structure.opacity = 0;
+    this.structure.opacity = 0;
     
     verreciel.animator.commit();
   }

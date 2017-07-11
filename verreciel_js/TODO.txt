@@ -1,58 +1,26 @@
-Bugs since 16:
-
-Other bugs:
-
-  What happens at state = 12 if you delete the map, and all the keys?
-
--------
-
-Foresight:
-
-  Trigger size should double for mobile devices
-  Sort triggers by "distance from touch" if possible, before iterating through them
-  Make tea drinkable
-
--------
-
-Compare side by side with Swift build
-  game state: 16
-  iOS game state: 16
-
+Trigger size should double for mobile devices
+Sort triggers by "distance from touch" if possible, before iterating through them
+When  removing     items, the cargo should update the console if it's connected
+When selecting locations, the radar should update the console if it's connected
+Letters should be added to a single geometry
+Write tool that identifies empties that have an identity matrix and full opacity
+  I presume these are unnecessary
 Find a better method to draw lines
+Make tea drinkable
+
 Run a JavaScript linter
 
 -------
-
-LOOK OUT: Never override a method with a different signature
-
-Render every location panel
-  Does it look good?
-
-Console updates
-  When selecting locations on the map, the radar should update the console if it's connected to the console
-  Cargo doesn't update console when an item is removed from the hold
-  etc.  
 
 Rethink missions
   They should be accumulative, at least in part
   Keep Cargo connected to Console, why doncha
 
-State recovery
-  What are some states that cannot be returned to?
-
-Walkthroughs, too
+Walkthroughs
   Player rotate, click, predicate
   Game speed modification
 
   Mission walkthrough chapters
   Record walkthrough chapters
+  Test for each recipe
   Chapter to reach other areas
-
-Should journey reset at launch, or persist as part of game state?
-
-What should be interactive, when?
-
-Maybe systems could slowly orbit their stars, and stars could orbit the center
-
-Spacewalk
-  Out the hatch, presumably
