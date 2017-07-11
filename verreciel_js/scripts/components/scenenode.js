@@ -4,6 +4,7 @@ class SceneNode
   {
     // assertArgs(arguments, 0);
     this.id = SceneNode.ids++;
+    // console.log(this.id);
     this.method = method;
     this.children = [];
     
@@ -16,9 +17,7 @@ class SceneNode
       if (this.method == Methods.lineArt)
       {
         this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
-        
         this.geometry = new THREE.Geometry();
-        this.geometry.dynamic = true;
         this.meat = new THREE.LineSegments(this.geometry, this.material);
       } else if (this.method == Methods.interactiveRegion)
       {

@@ -1,11 +1,10 @@
-class SceneLabel extends Empty
+class SceneLabel extends SceneLine
 {
   constructor(text = "", scale = 0.1, align = Alignment.left, color = verreciel.white)
   {
     // assertArgs(arguments, 1);
-    super();
+    super([], color);
     
-    this.color = color;
     this.activeText = text;
     this.activeScale = scale;
     this.activeAlignment = align;
@@ -93,7 +92,7 @@ class SceneLabel extends Empty
       letterPos += 1;
     }
     
-    this.add(new SceneLine(vertices, this.color));
+    this.updateVertices(vertices);
   }
   
   appendLetter(vertices, char, scale, offsetX, offsetY)
@@ -115,8 +114,6 @@ class SceneLabel extends Empty
         vertices.push(vertex);
       }
     }
-
-    return new SceneLine(vertices, this.color);
   }
 }
 

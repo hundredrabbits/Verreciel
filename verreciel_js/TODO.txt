@@ -1,7 +1,3 @@
-Letters should be added to a single geometry
-  Switch to BufferGeometry
-Write tool that identifies empties that have an identity matrix and full opacity
-  I presume these are unnecessary
 Find a better method to draw lines
 Make tea drinkable
 
