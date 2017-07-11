@@ -148,16 +148,6 @@ class SceneNode
     }
   }
 
-  whenUpdateMatrix()
-  {
-    assertArgs(arguments, 0);
-    this.meat.updateMatrixWorld(false);
-    for (let node of this.children)
-    {
-      node.whenUpdateMatrix();
-    }
-  }
-
   removeFromParentNode()
   {
     assertArgs(arguments, 0);
@@ -171,6 +161,8 @@ class SceneNode
   {
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
+    this.hardUpdateMatrixWorld();
+    node.hardUpdateMatrixWorld();
     position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
     return position;
   }
@@ -179,6 +171,8 @@ class SceneNode
   {
     assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
+    this.hardUpdateMatrixWorld();
+    node.hardUpdateMatrixWorld();
     position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
     return position;
   }
@@ -186,8 +180,19 @@ class SceneNode
   getDistSquared(point)
   {
     let position = point.clone();
+    this.hardUpdateMatrixWorld();
     position.applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
     return position.lengthSq();
+  }
+
+  hardUpdateMatrixWorld()
+  {
+    var node = this;
+    while (node != null)
+    {
+      node.meat.updateMatrixWorld();
+      node = node.parent;
+    }
   }
 }
 

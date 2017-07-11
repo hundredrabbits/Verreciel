@@ -128,7 +128,6 @@ class Verreciel
     {
       this.lastFrameTime = frameTime;
       this.root.whenRenderer();
-      this.root.whenUpdateMatrix();
       this.helmet.updatePortWires();
       this.renderer.render( this.scene, this.camera );
     }
