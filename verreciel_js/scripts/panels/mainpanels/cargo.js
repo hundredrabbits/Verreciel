@@ -30,11 +30,6 @@ class Cargo extends MainPanel
     this.mainNode.add(this.line5);
     this.mainNode.add(this.line6);
     
-    // Trigger
-    
-    this.trigger = new SceneTrigger(this, 2, 2, 1);
-    this.mainNode.add(this.trigger);
-    
     this.decals.empty();
     
     this.detailsLabel.updateText("Empty", verreciel.grey);
@@ -180,21 +175,6 @@ class Cargo extends MainPanel
     this.refresh();
   }
   
-  touch(id = 0)
-  {
-    assertArgs(arguments, 1);
-    this.refresh();
-    
-    if (this.port.isConnectedToPanel(verreciel.console) == true)
-    {
-      verreciel.console.onConnect();
-    }
-    
-    verreciel.music.playEffect("click4");
-        
-    return true;
-  }
-  
   refresh()
   {
     assertArgs(arguments, 0);
@@ -250,6 +230,11 @@ class Cargo extends MainPanel
     else
     {
       this.detailsLabel.updateText(this.cargohold.content.length + "/6", verreciel.white);
+    }
+
+    if (this.port.isConnectedToPanel(verreciel.console) == true)
+    {
+      verreciel.console.onConnect();
     }
   }
   

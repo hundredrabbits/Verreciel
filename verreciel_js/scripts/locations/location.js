@@ -330,6 +330,10 @@ class Location extends Event
       verreciel.radar.addTarget(this);
       verreciel.music.playEffect("click1");
     }
+    if (verreciel.radar.port.isConnectedToPanel(verreciel.console) == true)
+    {
+      verreciel.console.onConnect();
+    }
     return true;
   }
   

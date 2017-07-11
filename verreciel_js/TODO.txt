@@ -1,5 +1,3 @@
-When  removing     items, the cargo should update the console if it's connected
-When selecting locations, the radar should update the console if it's connected
 Letters should be added to a single geometry
 Write tool that identifies empties that have an identity matrix and full opacity
   I presume these are unnecessary
