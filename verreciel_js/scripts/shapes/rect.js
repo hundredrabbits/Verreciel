@@ -1,11 +1,9 @@
-class Rect extends Empty
+class Rect extends SceneLine
 {
   constructor(size, color = verreciel.white)
   {
     // assertArgs(arguments, 1);
-    super();
-    
-    this.add(new SceneLine([
+    super([
       new THREE.Vector3(-size.width/2,0,size.height/2), 
       new THREE.Vector3(size.width/2,0,size.height/2), 
       new THREE.Vector3(size.width/2,0,size.height/2), 
@@ -14,6 +12,6 @@ class Rect extends Empty
       new THREE.Vector3(-size.width/2,0,-size.height/2), 
       new THREE.Vector3(-size.width/2,0,-size.height/2), 
       new THREE.Vector3(-size.width/2,0,size.height/2),
-    ], color));
+    ], color);
   }
 }

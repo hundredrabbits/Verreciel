@@ -1,13 +1,11 @@
-class Octogon extends Empty
+class Octogon extends SceneLine
 {
   constructor(size, color = verreciel.white)
   {
     // assertArgs(arguments, 1);
-    super();
-    
     let angle = 1.5;
     
-    this.add(new SceneLine([
+    super([
       new THREE.Vector3(0,0,-size), 
       new THREE.Vector3(size/angle,0,-size/angle), 
       new THREE.Vector3(size/angle,0,-size/angle), 
@@ -24,6 +22,6 @@ class Octogon extends Empty
       new THREE.Vector3(-size/angle,0,-size/angle), 
       new THREE.Vector3(-size/angle,0,-size/angle), 
       new THREE.Vector3(0,0,-size),
-    ], color));
+    ], color);
   }
 }

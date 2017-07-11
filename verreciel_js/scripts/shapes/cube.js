@@ -1,10 +1,9 @@
-class Cube extends Empty
+class Cube extends SceneLine
 {
   constructor(size, color = verreciel.white)
   {
     // assertArgs(arguments, 1);
-    super();
-    this.add(new SceneLine([
+    super([
         new THREE.Vector3(size,size,size), new THREE.Vector3(-size,size,size),
         new THREE.Vector3(size,size,-size), new THREE.Vector3(-size,size,-size),
         new THREE.Vector3(size,size,size), new THREE.Vector3(size,size,-size),
@@ -17,6 +16,6 @@ class Cube extends Empty
         // new THREE.Vector3(size,size,-size), new THREE.Vector3(size,-size,-size),
         // new THREE.Vector3(-size,size,-size), new THREE.Vector3(-size,-size,-size),
         // new THREE.Vector3(-size,size,size), new THREE.Vector3(-size,-size,size),
-    ], color));
+    ], color);
   }
 }
