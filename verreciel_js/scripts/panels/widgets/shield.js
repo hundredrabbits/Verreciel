@@ -5,7 +5,6 @@ class Shield extends Widget
     // assertArgs(arguments, 0);
     super();
   
-    this.isActive = false;
     this.name = "shield";
     this.details = "star protection";
     this.requirement = ItemTypes.shield;

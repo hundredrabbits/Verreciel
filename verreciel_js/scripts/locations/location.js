@@ -293,13 +293,10 @@ class Location extends Event
   {
     // assertArgs(arguments, 1);
     this.connection = location;
-    this.icon.wire.updateGeometry(
-      [
-        new THREE.Vector3(0,0,0), 
-        new THREE.Vector3( (this.connection.at.x - this.at.x),(this.connection.at.y - this.at.y),0)
-      ],
-      verreciel.grey
-    );
+    this.icon.wire.updateVertices([
+      new THREE.Vector3(0,0,0), 
+      new THREE.Vector3( (this.connection.at.x - this.at.x),(this.connection.at.y - this.at.y),0)
+    ]);
   }
 
   // MARK: Events -

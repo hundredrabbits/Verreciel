@@ -4,20 +4,7 @@ class SceneLine extends Empty
   {
     // assertArgs(arguments, 1);
     super(Methods.lineArt);
-    this.updateGeometry(vertices, color);
-  }
-  
-  updateGeometry(vertices, color)
-  {
-    // assertArgs(arguments, 2);
-    if (vertices.indexOf(null) != -1)
-    {
-      throw "BAD GEOMETRY";
-    }
-    
-    this.vertices = vertices;
-    this.geometry.vertices = vertices;
-    this.geometry.verticesNeedUpdate = true;
+    this.updateVertices(vertices);
     this.color = color;
   }
   
@@ -29,6 +16,19 @@ class SceneLine extends Empty
     this.geometry.verticesNeedUpdate = true;
   }
   
+  updateVertices(vertices)
+  {
+    // assertArgs(arguments, 1);
+    if (vertices.indexOf(null) != -1)
+    {
+      throw "BAD GEOMETRY";
+    }
+    
+    this.vertices = vertices;
+    this.geometry.vertices = vertices;
+    this.geometry.verticesNeedUpdate = true;
+  }
+
   updateColor(color)
   {
     // assertArgs(arguments, 1);
@@ -36,12 +36,6 @@ class SceneLine extends Empty
     {
       return;
     }
-    this.updateGeometry(this.vertices, color);
-  }
-  
-  updateVertices(vertices)
-  {
-    // assertArgs(arguments, 1);
-    this.updateGeometry(vertices, this.color);
+    this.color = color;
   }
 }

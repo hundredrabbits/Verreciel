@@ -6,7 +6,6 @@ class ScenePort extends Empty
     super();
 
     this.host = host;
-    this.isActive = false;
     this.isEnabled = true;
     this.isPersistent = isPersistent;
     
@@ -89,13 +88,6 @@ class ScenePort extends Empty
     this.sprite_input.updateColor(this.inputColor());
     this.sprite_output.updateColor(this.outputColor());
     
-    // Wire
-    this.wire.isActive = false;
-    if (this.connection != null && this.event != null)
-    {
-      this.wire.isActive = true;
-    }
-    
     // Blink
     if (verreciel.player.activePort != null && verreciel.player.activePort == this)
     {
@@ -130,18 +122,6 @@ class ScenePort extends Empty
     }
     
     return verreciel.cyan;
-  }
-  
-  activate()
-  {
-    // assertArgs(arguments, 0);
-    this.isActive = true;
-  }
-  
-  desactivate()
-  {
-    // assertArgs(arguments, 0);
-    this.isActive = false;
   }
   
   enable()

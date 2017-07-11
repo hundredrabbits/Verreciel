@@ -24,7 +24,7 @@ class SceneProgressBar extends Empty
     // assertArgs(arguments, 1);
     let to = this.width * (percent/100);
     
-    this.progressLine.updateGeometry([new THREE.Vector3(0,0,0), new THREE.Vector3(to,0,0)], this.color);
-    this.remainingLine.updateGeometry([new THREE.Vector3(to,0,0), new THREE.Vector3(this.width,0,0)], verreciel.grey);
+    this.progressLine.updateVertices([new THREE.Vector3(0,0,0), new THREE.Vector3(to,0,0)]);
+    this.remainingLine.updateVertices([new THREE.Vector3(to,0,0), new THREE.Vector3(this.width,0,0)]);
   }
 }

@@ -14,7 +14,7 @@ class Icon extends Empty
     this.label.position.set(0,-0.3,-0.35);
     this.add(this.label);
     
-    this.wire = new SceneLine([], verreciel.white);
+    this.wire = new SceneLine([], verreciel.grey);
     this.wire.position.set(0,0,-0.01);
     this.wire.hide();
     this.add(this.wire);

@@ -38,12 +38,6 @@ class Player extends Empty
     console.log("+ Player | Start");
   }
   
-  activateEvent(event)
-  {
-    // assertArgs(arguments, 1);
-    this.event = event;
-  }
-  
   whenRenderer()
   {
     // assertArgs(arguments, 0);
@@ -138,7 +132,6 @@ class Player extends Empty
     }
     
     this.activePort = port;
-    this.port.activate();
     verreciel.music.playEffect("click1");
   }
   
@@ -149,8 +142,6 @@ class Player extends Empty
     
     this.activePort = null;
     from.connect(to);
-    from.desactivate();
-    to.desactivate();
     from.update();
     to.update();
     verreciel.music.playEffect("click3");
@@ -161,7 +152,6 @@ class Player extends Empty
     // assertArgs(arguments, 0);
     verreciel.helmet.leftHandLabel.updateText("--", verreciel.grey);
     
-    this.activePort.desactivate();
     this.activePort.disconnect();
     this.activePort = null;
     verreciel.music.playEffect("click2");
