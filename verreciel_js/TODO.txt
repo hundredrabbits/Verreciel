@@ -1,7 +1,5 @@
 Letters should be added to a single geometry
-  Other targets:
-    cube shape
-    thruster
+  Switch to BufferGeometry
 Write tool that identifies empties that have an identity matrix and full opacity
   I presume these are unnecessary
 Find a better method to draw lines

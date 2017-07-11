@@ -119,12 +119,6 @@ class Space extends Empty
     this.starsRoot.rotation.set(0, degToRad(verreciel.capsule.direction), 0);
   }
   
-  star(position)
-  {
-    assertArgs(arguments, 1);
-    return new SceneLine([this.position, new THREE.Vector3(this.position.x, this.position.y + 1, this.position.z)], this.stars_color);
-  }
-
   fetchStarCluster()
   {
     var nextCluster = null;
