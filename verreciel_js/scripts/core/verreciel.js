@@ -110,6 +110,13 @@ class Verreciel
     this.game.whenStart();
     this.items.whenStart();
 
+    if (DEBUG_SHOW_STATS)
+    {
+      this.stats = new Stats();
+      this.stats.showPanel(1);
+      document.body.appendChild(this.stats.dom);
+    }
+
     this.lastFrameTime = Date.now();
     this.render();
   }
@@ -117,10 +124,10 @@ class Verreciel
   render()
   {
     this.phase = Phase.render;
-
     // assertArgs(arguments, 0);
     requestAnimationFrame( this.render.bind(this) );
     
+    if (DEBUG_SHOW_STATS) { this.stats.begin(); }
     let frameTime = Date.now();
 
     let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
@@ -132,6 +139,7 @@ class Verreciel
       this.renderer.render( this.scene, this.camera );
     }
     this.phase = Phase.idle;
+    if (DEBUG_SHOW_STATS) { this.stats.end(); }
   }
 
   mouseDown(e)
