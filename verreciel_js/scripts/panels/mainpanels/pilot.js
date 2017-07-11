@@ -7,6 +7,7 @@ class Pilot extends MainPanel
 
     this.name = "pilot";
     this.details = "aligns to locations";
+    this.port.isPersistent = true;
     
     this.targetDirectionIndicator = new Empty();
     this.targetDirectionIndicator.add(new SceneLine([new THREE.Vector3(0, 0.55, 0), new THREE.Vector3(0, 0.7, 0)], verreciel.white));

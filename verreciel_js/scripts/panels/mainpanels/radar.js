@@ -14,6 +14,7 @@ class Radar extends MainPanel
     
     this.name = "radar";
     this.details = "displays locations";
+    this.port.isPersistent = true;
     
     this.mainNode.add(this.eventPivot);
     this.eventPivot.add(this.eventView);

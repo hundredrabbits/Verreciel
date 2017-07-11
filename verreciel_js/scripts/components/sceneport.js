@@ -1,6 +1,6 @@
 class ScenePort extends Empty
 {
-  constructor(host)
+  constructor(host, isPersistent = false)
   {
     assertArgs(arguments, 1);
     super();
@@ -8,6 +8,7 @@ class ScenePort extends Empty
     this.host = host;
     this.isActive = false;
     this.isEnabled = true;
+    this.isPersistent = isPersistent;
     
     this.trigger = new SceneTrigger(this, 1, 1);
     this.trigger.position.set(0,0,-0.1);
@@ -70,6 +71,16 @@ class ScenePort extends Empty
     return true;
   }
   
+  whenInherit()
+  {
+    assertArgs(arguments, 0);
+    super.whenInherit();
+    if (this.isPersistent == false && this.opacityFromTop == 0)
+    {
+      this.strip();
+    }
+  }
+
   whenRenderer()
   {
     assertArgs(arguments, 0);

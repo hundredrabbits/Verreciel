@@ -15,6 +15,7 @@ class Thruster extends MainPanel
     this.actualSpeed = 0;
     this.canWarp = false;
     this.isLocked = false;
+    this.port.isPersistent = true;
 
     this.name = "thruster";
     this.details = "moves the capsule";
