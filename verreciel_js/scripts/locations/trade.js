@@ -85,7 +85,7 @@ class LocationTrade extends Location
       this.wantPort.disable();
       this.wantPort.label.updateText("Accepted",verreciel.cyan);
       this.givePort.enable();
-      this.givePort.label.updateColor(verreciel.white);
+      this.givePort.label.color = verreciel.white;
       this.isTradeAccepted = true;
     }
     else if (this.wantPort.event != null && this.wantPort.event.name != this.wantPort.requirement.name)

@@ -63,7 +63,7 @@ class Console extends MainPanel
     // assertArgs(arguments, 0);
     super.whenStart();
     
-    this.nameLabel.updateColor(verreciel.grey);
+    this.nameLabel.color = verreciel.grey;
     this.inject(this.defaultPayload());
   }
   

@@ -164,8 +164,8 @@ class LocationHoradric extends Location
     // assertArgs(arguments, 1);
     this.inPort1.disable();
     this.inPort2.disable();
-    this.inPort1.label.updateColor(verreciel.cyan);
-    this.inPort2.label.updateColor(verreciel.cyan);
+    this.inPort1.label.color = verreciel.cyan;
+    this.inPort2.label.color = verreciel.cyan;
     
     this.combinationRecipe = recipe;
     this.combineProgress();
@@ -195,8 +195,8 @@ class LocationHoradric extends Location
     // assertArgs(arguments, 0);
     this.inPort1.removeEvent();
     this.inPort2.removeEvent();
-    this.inPort1.label.updateColor(verreciel.grey);
-    this.inPort2.label.updateColor(verreciel.grey);
+    this.inPort1.label.color = verreciel.grey;
+    this.inPort2.label.color = verreciel.grey;
     
     this.outPort.addEvent(this.combinationRecipe.result);
     
@@ -247,45 +247,45 @@ class StructureHoradric extends Structure
     
     let cube1 = new Cube(radius, verreciel.grey);
     this.root.add(cube1);
-    // cube1.line9.updateColor(verreciel.clear);
-    // cube1.line10.updateColor(verreciel.clear);
-    // cube1.line11.updateColor(verreciel.clear);
-    // cube1.line12.updateColor(verreciel.clear);
+    // cube1.line9.color = verreciel.clear;
+    // cube1.line10.color = verreciel.clear;
+    // cube1.line11.color = verreciel.clear;
+    // cube1.line12.color = verreciel.clear;
     
     let cube2 = new Cube(radius, verreciel.grey);
     this.root.add(cube2);
-    // cube2.line9.updateColor(verreciel.clear);
-    // cube2.line10.updateColor(verreciel.clear);
-    // cube2.line11.updateColor(verreciel.clear);
-    // cube2.line12.updateColor(verreciel.clear);
+    // cube2.line9.color = verreciel.clear;
+    // cube2.line10.color = verreciel.clear;
+    // cube2.line11.color = verreciel.clear;
+    // cube2.line12.color = verreciel.clear;
     
     let cube3 = new Cube(radius, verreciel.grey);
     this.root.add(cube3);
-    // cube3.line9.updateColor(verreciel.clear);
-    // cube3.line10.updateColor(verreciel.clear);
-    // cube3.line11.updateColor(verreciel.clear);
-    // cube3.line12.updateColor(verreciel.clear);
+    // cube3.line9.color = verreciel.clear;
+    // cube3.line10.color = verreciel.clear;
+    // cube3.line11.color = verreciel.clear;
+    // cube3.line12.color = verreciel.clear;
     
     let cube4 = new Cube(radius, verreciel.grey);
     this.root.add(cube4);
-    // cube4.line9.updateColor(verreciel.clear);
-    // cube4.line10.updateColor(verreciel.clear);
-    // cube4.line11.updateColor(verreciel.clear);
-    // cube4.line12.updateColor(verreciel.clear);
+    // cube4.line9.color = verreciel.clear;
+    // cube4.line10.color = verreciel.clear;
+    // cube4.line11.color = verreciel.clear;
+    // cube4.line12.color = verreciel.clear;
     
     let cube5 = new Cube(radius, verreciel.grey);
     this.root.add(cube5);
-    // cube5.line9.updateColor(verreciel.clear);
-    // cube5.line10.updateColor(verreciel.clear);
-    // cube5.line11.updateColor(verreciel.clear);
-    // cube5.line12.updateColor(verreciel.clear);
+    // cube5.line9.color = verreciel.clear;
+    // cube5.line10.color = verreciel.clear;
+    // cube5.line11.color = verreciel.clear;
+    // cube5.line12.color = verreciel.clear;
     
     let cube6 = new Cube(radius, verreciel.grey);
     this.root.add(cube6);
-    // cube6.line9.updateColor(verreciel.clear);
-    // cube6.line10.updateColor(verreciel.clear);
-    // cube6.line11.updateColor(verreciel.clear);
-    // cube6.line12.updateColor(verreciel.clear);
+    // cube6.line9.color = verreciel.clear;
+    // cube6.line10.color = verreciel.clear;
+    // cube6.line11.color = verreciel.clear;
+    // cube6.line12.color = verreciel.clear;
   }
   
   onUndock()

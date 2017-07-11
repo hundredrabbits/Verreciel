@@ -85,8 +85,8 @@ class ScenePort extends Empty
     // assertArgs(arguments, 0);
     super.whenRenderer();
     
-    this.sprite_input.updateColor(this.inputColor());
-    this.sprite_output.updateColor(this.outputColor());
+    this.sprite_input.color = this.inputColor();
+    this.sprite_output.color = this.outputColor();
     
     // Blink
     if (verreciel.player.activePort != null && verreciel.player.activePort == this)

@@ -98,10 +98,9 @@ class SceneWire extends Empty
     // assertArgs(arguments, 0);
     return true;
   }
-  
-  updateColor(color)
+
+  updateChildrenColors(color)
   {
-    // assertArgs(arguments, 1);
-    
+    // NOPE.
   }
 }

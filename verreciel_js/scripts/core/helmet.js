@@ -228,7 +228,7 @@ class Helmet extends Empty
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.1;
     this.messageLabel.hide();
-    this.messageLabel.updateColor(verreciel.cyan);
+    this.messageLabel.color = verreciel.cyan;
     verreciel.animator.completionBlock = function()
     {
       verreciel.animator.begin();

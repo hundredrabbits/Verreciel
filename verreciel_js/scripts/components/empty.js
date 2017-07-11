@@ -72,7 +72,7 @@ class Empty extends SceneNode
     // assertArgs(arguments, 1);
     if (this.method == Methods.lineArt)
     {
-      this.updateColor(color);
+      this.color = color;
     }
     for (let node of this.children)
     {

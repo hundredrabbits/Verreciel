@@ -38,7 +38,7 @@ class Icon extends Empty
     super.whenStart();
     if (this.host.mapRequirement != null)
     {
-      this.label.updateColor(verreciel.cyan);
+      this.label.color = verreciel.cyan;
     }
   }
   

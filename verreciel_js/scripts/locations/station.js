@@ -45,7 +45,7 @@ class LocationStation extends Location
     // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false)
     {
-      this.tradeLabel.updateColor(verreciel.grey);
+      this.tradeLabel.color = verreciel.grey;
       return;
     }
     
@@ -53,11 +53,11 @@ class LocationStation extends Location
     if (trade instanceof Item && trade.name == this.requirement.name && trade.type == this.requirement.type)
     {
       this.button.enable("install");
-      this.tradeLabel.updateColor(verreciel.cyan);
+      this.tradeLabel.color = verreciel.cyan;
     }
     else
     {
-      this.tradeLabel.updateColor(verreciel.red);
+      this.tradeLabel.color = verreciel.red;
     }
   }
   

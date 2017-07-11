@@ -18,6 +18,8 @@ Walkthroughs
   Test for each recipe
   Chapter to reach other areas
 
+Use the walkthrough to detect any other late THREE.js class construction
+
 -------
 
 Enigma doesn't do anything at all...

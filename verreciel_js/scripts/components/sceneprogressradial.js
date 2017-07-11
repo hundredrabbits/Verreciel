@@ -26,15 +26,15 @@ class SceneProgressRadial extends Empty
     {
       if (reach == 0)
       {
-        line.updateColor(verreciel.cyan);
+        line.color = verreciel.cyan;
       }
       else if (i > reach)
       {
-        line.updateColor(verreciel.grey);
+        line.color = verreciel.grey;
       }
       else
       {
-        line.updateColor(verreciel.cyan);
+        line.color = verreciel.cyan;
       }
       
       i += 1;

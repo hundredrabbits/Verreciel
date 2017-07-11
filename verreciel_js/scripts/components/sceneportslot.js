@@ -77,23 +77,23 @@ class ScenePortSlot extends ScenePort
     
     if (this.isEnabled == false)
     {
-      this.label.updateColor(verreciel.grey);
+      this.label.color = verreciel.grey;
     }
     else if (this.requirement != null && this.event != null && this.requirement.name == this.event.name)
     {
-      this.label.updateColor(verreciel.cyan);
+      this.label.color = verreciel.cyan;
     }
     else if (this.requirement != null && this.event != null && this.requirement.name != this.event.name)
     {
-      this.label.updateColor(verreciel.red);
+      this.label.color = verreciel.red;
     }
     else if (this.event != null)
     {
-      this.label.updateColor(verreciel.white);
+      this.label.color = verreciel.white;
     }
     else
     {
-      this.label.updateColor(verreciel.grey);
+      this.label.color = verreciel.grey;
     }
   }
   

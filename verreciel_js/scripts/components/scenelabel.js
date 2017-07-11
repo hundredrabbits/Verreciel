@@ -44,16 +44,6 @@ class SceneLabel extends SceneLine
     }
   }
   
-  updateColor(color)
-  {
-    // assertArgs(arguments, 1);
-    if (!this.color.equals(color))
-    {
-      this.color = color;
-      this.redrawLetters(this.activeText, this.activeScale);
-    }
-  }
-  
   redrawLetters(text, scale)
   {
     // assertArgs(arguments, 2);

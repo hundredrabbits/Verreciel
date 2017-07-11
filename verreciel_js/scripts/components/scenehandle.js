@@ -44,14 +44,14 @@ class SceneHandle extends Empty
   {
     // assertArgs(arguments, 0);
     this.isEnabled = true;
-    this.selectionLine.updateColor(verreciel.cyan);
+    this.selectionLine.color = verreciel.cyan;
   }
   
   disable()
   {
     // assertArgs(arguments, 0);
     this.isEnabled = false;
-    this.selectionLine.updateColor(verreciel.grey);
+    this.selectionLine.color = verreciel.grey;
   }
   
   touch(id = 0)

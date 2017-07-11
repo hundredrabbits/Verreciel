@@ -187,36 +187,36 @@ class Cargo extends MainPanel
     
     // Animate
     
-    this.line1.updateColor(verreciel.grey);
-    this.line2.updateColor(verreciel.grey);
-    this.line3.updateColor(verreciel.grey);
-    this.line4.updateColor(verreciel.grey);
-    this.line5.updateColor(verreciel.grey);
-    this.line6.updateColor(verreciel.grey);
+    this.line1.color = verreciel.grey;
+    this.line2.color = verreciel.grey;
+    this.line3.color = verreciel.grey;
+    this.line4.color = verreciel.grey;
+    this.line5.color = verreciel.grey;
+    this.line6.color = verreciel.grey;
     
     if (this.cargohold.content.length > 0)
     {
-      this.line1.updateColor( this.cargohold.content[0].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line1.color = this.cargohold.content[0].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     if (this.cargohold.content.length > 1)
     {
-      this.line2.updateColor( this.cargohold.content[1].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line2.color = this.cargohold.content[1].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     if (this.cargohold.content.length > 2)
     {
-      this.line3.updateColor( this.cargohold.content[2].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line3.color = this.cargohold.content[2].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     if (this.cargohold.content.length > 3)
     {
-      this.line4.updateColor( this.cargohold.content[3].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line4.color = this.cargohold.content[3].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     if (this.cargohold.content.length > 4)
     {
-      this.line5.updateColor( this.cargohold.content[4].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line5.color = this.cargohold.content[4].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     if (this.cargohold.content.length > 5)
     {
-      this.line6.updateColor( this.cargohold.content[5].isQuest == true ? verreciel.cyan : verreciel.white )
+      this.line6.color = this.cargohold.content[5].isQuest == true ? verreciel.cyan : verreciel.white;
     }
     
     if (this.cargohold.content.length == 0)

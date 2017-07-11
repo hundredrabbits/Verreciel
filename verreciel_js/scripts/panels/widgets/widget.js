@@ -62,11 +62,11 @@ class Widget extends Panel
     
     if (this.port.event instanceof Item && this.port.event.type != this.requirement)
     {
-      this.port.label.updateColor(verreciel.red);
+      this.port.label.color = verreciel.red;
     }
     else
     {
-      this.port.label.updateColor(verreciel.white);
+      this.port.label.color = verreciel.white;
     }
   }
   
@@ -75,14 +75,14 @@ class Widget extends Panel
   onPowered()
   {
     // assertArgs(arguments, 0);
-    this.label.updateColor(verreciel.white);
+    this.label.color = verreciel.white;
     this.port.enable();
   }
   
   onUnpowered()
   {
     // assertArgs(arguments, 0);
-    this.label.updateColor(verreciel.grey);
+    this.label.color = verreciel.grey;
     this.port.disable();
   }
   

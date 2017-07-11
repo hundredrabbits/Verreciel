@@ -34,7 +34,7 @@ class Exploration extends Monitor
     {
       this.knownLocations = kl;
       this.nameLabel.updateText(this.knownLocations + "/" + verreciel.universe.allLocations.length, verreciel.cyan);
-      delay(2, function() { this.nameLabel.updateColor(verreciel.white); }.bind(this));
+      delay(2, function() { this.nameLabel.color = verreciel.white; }.bind(this));
     }
   }
   

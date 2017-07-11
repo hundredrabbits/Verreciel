@@ -28,17 +28,12 @@ class SceneLine extends Empty
       this.geometry.dispose();
       this.geometry = new THREE.Geometry();
       this.meat.geometry = this.geometry;
-      console.log("EXPAND:", oldLength, "-->", this.vertices.length);
+      // console.log("EXPAND:", oldLength, "-->", this.vertices.length);
     }
 
     this.geometry.vertices = vertices;
     this.geometry.verticesNeedUpdate = true;
     this.geometry.computeBoundingSphere();
-  }
-
-  updateColor(color)
-  {
-    this.color = color;
   }
 }
 
