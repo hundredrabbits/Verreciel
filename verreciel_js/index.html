@@ -108,6 +108,15 @@
       <div id='logoContainer' style='width:120px;height:120px; margin:25vh auto; background: none;'></div>
     </div>
     <script>
+
+        function isDeviceMobile()
+        {
+            console.log("isDeviceMobile: window orientation = " + window.orientation);
+            return window.orientation !== undefined;
+        }
+
+        let IS_MOBILE = isDeviceMobile();
+
         let DEBUG_SKIP_LOGO = false;
         let DEBUG_SHOW_TRIGGERS = false;
         let DEBUG_DONT_SAVE = false;

@@ -8,7 +8,9 @@ class SceneTrigger extends Empty
     this.operation = operation;
     this.host = host;
 
-    this.geometry.fromBufferGeometry(new THREE.PlaneBufferGeometry(width * 0.5, height * 0.5));
+    let scale = IS_MOBILE ? 1 : 0.5;
+
+    this.geometry.fromBufferGeometry(new THREE.PlaneBufferGeometry(width * scale, height * scale));
     this.geometry.mergeVertices();
     
     this.color = SceneTrigger.DEBUG_BLUE;
@@ -50,5 +52,5 @@ class SceneTrigger extends Empty
   }
 }
 
-SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 1);
+SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1);
 SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1);

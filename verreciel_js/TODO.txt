@@ -1,5 +1,3 @@
-Trigger size should double for mobile devices
-Sort triggers by "distance from touch" if possible, before iterating through them
 When  removing     items, the cargo should update the console if it's connected
 When selecting locations, the radar should update the console if it's connected
 Letters should be added to a single geometry

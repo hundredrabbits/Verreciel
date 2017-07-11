@@ -198,10 +198,11 @@ class Verreciel
     if (!this.mouseMoved)
     {
       event.preventDefault();
-      for (let intersect of this.getIntersectObjects())
+      let hits = this.getHits().filter(this.isEnabledTrigger);
+      hits.sort(this.hasShortestDistance);
+      for (let hit of hits)
       {
-        let node = intersect.object.node;
-        if (node.method == Methods.interactiveRegion && node.isEnabled == true && node.opacityFromTop > 0 && node.touch(0))
+        if (hit.object.node.touch(0))
         {
           break;
         }
@@ -209,7 +210,20 @@ class Verreciel
     }
   }
 
-  getIntersectObjects()
+  isEnabledTrigger(hit)
+  {
+    let node = hit.object.node;
+    return node.method == Methods.interactiveRegion && node.isEnabled == true && node.opacityFromTop > 0;
+  }
+
+  hasShortestDistance(hit1, hit2)
+  {
+    if (hit1.distSquared == null) { hit1.distSquared = hit1.object.node.getDistSquared(hit1.point); }
+    if (hit2.distSquared == null) { hit2.distSquared = hit2.object.node.getDistSquared(hit2.point); }
+    return hit1.distSquared - hit2.distSquared;
+  }
+
+  getHits()
   {
     let mouse = new THREE.Vector2();
     mouse.x =   this.lastMousePosition.x * 2 - 1;

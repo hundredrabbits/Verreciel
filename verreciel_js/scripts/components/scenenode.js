@@ -22,7 +22,7 @@ class SceneNode
         this.meat = new THREE.LineSegments(this.geometry, this.material);
       } else if (this.method == Methods.interactiveRegion)
       {
-        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_SHOW_TRIGGERS });
+        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_SHOW_TRIGGERS, transparent:true });
         this.geometry = new THREE.Geometry();
         this.geometry.dynamic = true;
         this.meat = new THREE.Mesh(this.geometry, this.material);
@@ -181,6 +181,13 @@ class SceneNode
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
     return position;
+  }
+
+  getDistSquared(point)
+  {
+    let position = point.clone();
+    position.applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
+    return position.lengthSq();
   }
 }
 
