@@ -35,36 +35,40 @@ class Space extends Empty
   {
     assertArgs(arguments, 1);
     verreciel.capsule.system = system;
-    
+    var ambience = Ambience.ambience1;
     switch (system)
     {
       case Systems.valen:
         this.targetSpaceColor = [0.2,0.2,0.2];
         this.stars_color = verreciel.white;
-        verreciel.music.playMusic(Ambience.ambience2, "ambience");
+        ambience = Ambience.ambience2;
         break;
       case Systems.senni:
         this.targetSpaceColor = [0.0,0.0,0.0];
         this.stars_color = verreciel.cyan;
-        verreciel.music.playMusic(Ambience.ambience3, "ambience");
+        ambience = Ambience.ambience3;
         break;
       case Systems.usul:
         this.targetSpaceColor = [0.2,0.0,0.0];
         this.stars_color = verreciel.white;
-        verreciel.music.playMusic(Ambience.ambience4, "ambience");
+        ambience = Ambience.ambience4;
         break;
       case Systems.close:
         this.targetSpaceColor = [0.6,0.6,0.6];
         this.stars_color = verreciel.black;
-        verreciel.music.playMusic(Ambience.ambience5, "ambience");
+        ambience = Ambience.ambience5;
         break;
       default:
         this.targetSpaceColor = [0.0,0.0,0.0];
         this.stars_color = verreciel.white;
-        verreciel.music.playMusic(Ambience.ambience1, "ambience");
+        ambience = Ambience.ambience1;
         break;
     }
     
+    if (verreciel.music.track == null || verreciel.music.track.role == "ambience")
+    {
+      verreciel.music.playMusic(Ambience.ambience1, "ambience");
+    }
     if (verreciel.player.isEjected == true)
     {
       this.targetSpaceColor = [0,0,0];

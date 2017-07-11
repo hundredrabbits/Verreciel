@@ -3,8 +3,7 @@ class Music
   constructor()
   {
     // assertArgs(arguments, 0);
-    this.trackEffect = new Audio();
-    this.trackMusic = new Audio();
+    this.track = null;
     this.audioCatalog = {};
   }
 
@@ -12,14 +11,13 @@ class Music
   {
     // assertArgs(arguments, 1);
     // console.log("Effect: ",name);
-    this.trackEffect = this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg", false);
-    this.trackEffect.play()
+    this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg", false).play();
   }
 
   playMusic(name, role)
   {
     // assertArgs(arguments, 1);
-    if (this.trackMusic.name == name)
+    if (this.track != null && this.track.name == name)
     {
       return;
     }
@@ -32,10 +30,22 @@ class Music
 
     console.log(role, ":", name);
 
-    this.trackMusic.pause();
-    this.trackMusic = this.fetchAudio(name, role, "media/audio/" + role + "/" + name + ".mp3", true);
-    this.trackMusic.currentTime = 0;
-    this.trackMusic.play();
+    if (this.track != null)
+    {
+      this.track.pause();
+    }
+    this.track = this.fetchAudio(name, role, "media/audio/" + role + "/" + name + ".mp3", true);
+    this.track.currentTime = 0;
+    this.track.play();
+  }
+
+  stopMusic()
+  {
+    if (this.track != null)
+    {
+      this.track.pause();
+      this.track = null;
+    }
   }
 
   fetchAudio(name, role, src, loop)
