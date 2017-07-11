@@ -10,9 +10,6 @@ class SceneLabel extends Empty
     this.activeScale = scale;
     this.activeAlignment = align;
 
-    this.nodeOffset = new Empty();
-    this.add(this.nodeOffset);
-    
     this.redrawLetters(this.activeText, this.activeScale);
   }
   
@@ -62,13 +59,28 @@ class SceneLabel extends Empty
   {
     // assertArgs(arguments, 2);
 
-    while (this.nodeOffset.children.length > 0)
+    while (this.children.length > 0)
     {
-      this.nodeOffset.remove(this.nodeOffset.children[0]);
+      this.remove(this.children[0]);
     }
 
     var letterPos = 0;
     var linePos = 0;
+
+    var alignmentOffset = 0;
+    if (this.activeAlignment == Alignment.center)
+    {
+      let wordLength = this.activeText.length * this.activeScale * 1.5;
+      alignmentOffset = -wordLength * 0.5;
+    }
+    else if (this.activeAlignment == Alignment.right)
+    {
+      let wordLength = this.activeText.length * this.activeScale * 1.5;
+      alignmentOffset = -wordLength + this.activeScale * 0.5;
+    }
+
+    let vertices = [];
+
     for (let letterCur of text)
     {
       if (letterCur == "$")
@@ -77,27 +89,17 @@ class SceneLabel extends Empty
         letterPos = 0;
         continue;
       }
-      this.nodeOffset.add(this.letter(letterCur, scale, scale * 1.5 * letterPos, scale * linePos * -4.15, 0));
+      this.appendLetter(vertices, letterCur, scale, scale * 1.5 * letterPos + alignmentOffset, scale * linePos * -4.15, 0);
       letterPos += 1;
     }
-
-    if (this.activeAlignment == Alignment.center)
-    {
-      let wordLength = this.activeText.length * this.activeScale * 1.5;
-      this.nodeOffset.position.setNow((-wordLength/2), 0, 0);
-    }
-    else if (this.activeAlignment == Alignment.right)
-    {
-      let wordLength = this.activeText.length * this.activeScale * 1.5;
-      this.nodeOffset.position.setNow(-wordLength + (this.activeScale * 0.5), 0, 0);
-    }
+    
+    this.add(new SceneLine(vertices, this.color));
   }
   
-  letter(char, scale, offsetX, offsetY)
+  appendLetter(vertices, char, scale, offsetX, offsetY)
   {
     // assertArgs(arguments, 2);
 
-    let vertices = [];
     var dictVertices = SceneLabel.letterDictionary[char.toLowerCase()];
     if (dictVertices == null)
     {

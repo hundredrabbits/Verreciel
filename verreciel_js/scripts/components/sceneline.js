@@ -8,14 +8,6 @@ class SceneLine extends Empty
     this.color = color;
   }
   
-  reset()
-  {
-    // assertArgs(arguments, 0);
-    this.vertices = [];
-    this.geometry.vertices = [];
-    this.geometry.verticesNeedUpdate = true;
-  }
-  
   updateVertices(vertices)
   {
     // assertArgs(arguments, 1);
@@ -31,11 +23,6 @@ class SceneLine extends Empty
 
   updateColor(color)
   {
-    // assertArgs(arguments, 1);
-    if (color.equals(this.color))
-    {
-      return;
-    }
     this.color = color;
   }
 }
