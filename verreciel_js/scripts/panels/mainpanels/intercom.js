@@ -180,9 +180,10 @@ class Intercom extends MainPanel
   {
     assertArgs(arguments, 1);
     this.locationPanel.empty();
-    if (location.panel() != null)
+    let panel = location.panel();
+    if (panel != null)
     {
-      this.locationPanel.add(location.panel());
+      this.locationPanel.add(panel);
     }
     else
     {

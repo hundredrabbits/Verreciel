@@ -20,7 +20,7 @@ class Shield extends Widget
     {
       this.port.addEvent(item);
       this.onUploadComplete();
-      update();
+      this.update();
     }
   }
 

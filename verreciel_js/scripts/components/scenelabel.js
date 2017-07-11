@@ -244,6 +244,12 @@ class SceneLabel extends Empty
       case "<":
         pivot.add(new SceneLine([new THREE.Vector3(scale, scale, 0), new THREE.Vector3(0, 0, 0), new THREE.Vector3(scale, -scale, 0), new THREE.Vector3(0, 0, 0)], this.color));
         break;
+      case "]":
+        pivot.add(new SceneLine([new THREE.Vector3(scale/2, scale, 0),  new THREE.Vector3(scale, scale, 0),  new THREE.Vector3(scale, scale, 0),  new THREE.Vector3(scale, -scale, 0),  new THREE.Vector3(scale, -scale, 0),  new THREE.Vector3(scale/2, -scale, 0)], this.color));
+        break;
+      case "[":
+        pivot.add(new SceneLine([new THREE.Vector3(scale/2, scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, scale, 0), new THREE.Vector3(0, -scale, 0),  new THREE.Vector3(0, -scale, 0),  new THREE.Vector3(scale/2, -scale, 0)], this.color));
+        break;
       case ",":
         pivot.add(new SceneLine([new THREE.Vector3(scale/2, 0, 0), new THREE.Vector3(scale/2, -scale, 0)], this.color));
         break;
