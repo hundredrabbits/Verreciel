@@ -6,8 +6,15 @@ class MainPanel extends Panel
     super();
 
     this.installNode = new Empty();
+    this.installNode.position.set(0,0,0);
     this.installProgressBar = new SceneProgressBar(1);
+    this.installProgressBar.position.set(-this.installProgressBar.width/2,-0.3,0);
+    this.installProgressBar.show();
+    this.installNode.add(this.installProgressBar);
     this.installLabel = new SceneLabel("install", 0.1, Alignment.center, verreciel.grey);
+    this.installNode.add(this.installLabel);
+    this.installNode.hide();
+    this.root.add(this.installNode);
 
     this.nameLabel = new SceneLabel("", 0.1, Alignment.center);
     this.detailsLabel = new SceneLabel("", 0.085, Alignment.center);
@@ -90,19 +97,8 @@ class MainPanel extends Panel
   {
     // assertArgs(arguments, 0);
     super.onInstallationBegin();
-    
     verreciel.helmet.addWarning("Installing", null, 3, "install");
-    
-    this.installNode = new Empty();
-    this.installNode.position.set(0,0,0);
-    this.installProgressBar = new SceneProgressBar(1);
-    this.installProgressBar.position.set(-this.installProgressBar.width/2,-0.3,0);
-    this.installProgressBar.show();
-    this.installNode.add(this.installProgressBar);
-    
-    this.installNode.add(this.installLabel);
-    
-    this.root.add(this.installNode);
+    this.installNode.show();
   }
   
   installProgress()
@@ -133,7 +129,7 @@ class MainPanel extends Panel
     this.footer.show();
     verreciel.animator.commit();
     
-    this.installNode.removeFromParentNode();
+    this.installNode.hide();
     
     this.port.enable();
     this.nameLabel.updateText(this.name, verreciel.white);

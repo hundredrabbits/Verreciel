@@ -44,10 +44,4 @@ class Event extends Empty
   {
     // assertArgs(arguments, 0);
   }
-  
-  panel()
-  {
-    // assertArgs(arguments, 0);
-    return new Panel();
-  }
 }
