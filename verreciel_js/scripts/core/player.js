@@ -218,6 +218,10 @@ class Player extends Empty
     {
       verreciel.radar.modeOverview();
     }
+    if (this.port.isReceivingEvent(verreciel.items.teapot) == true)
+    {
+      verreciel.helmet.drinkTea();
+    }
   }
   
   onDisconnect()

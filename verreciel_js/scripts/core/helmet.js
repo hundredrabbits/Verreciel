@@ -214,6 +214,42 @@ class Helmet extends Empty
       port.updateWire();
     }
   }
+
+  drinkTea()
+  {
+    let oldPassive = this.passive;
+    this.addPassive("< sip >");
+
+    delay(0.7, function(){
+      verreciel.player.port.origin.disconnect();
+      
+      this.addPassive("...mmm...");
+      verreciel.animator.begin();
+      verreciel.animator.ease = Penner.easeInOutCubic;
+      verreciel.animator.animationDuration = 0.125;
+      this.displayLeft.updateChildrenColors(verreciel.cyan);
+      this.displayRight.updateChildrenColors(verreciel.cyan);
+      this.displayLeft.position.set(-0.65,0, this.visorDepth + 0.05);
+      this.displayRight.position.set(0.65,0, this.visorDepth + 0.05);
+      verreciel.animator.completionBlock = function()
+      {
+        verreciel.animator.begin();
+        verreciel.animator.ease = Penner.easeInOutQuad;
+        verreciel.animator.animationDuration = 3;
+        this.displayLeft.updateChildrenColors(verreciel.grey);
+        this.displayLeft.position.set(-0.5,0, this.visorDepth);
+        this.displayRight.updateChildrenColors(verreciel.grey);
+        this.displayRight.position.set(0.5,0, this.visorDepth);
+        verreciel.animator.completionBlock = function()
+        {
+          this.addPassive(oldPassive);
+        }.bind(this);
+        verreciel.animator.commit();
+      }.bind(this);
+      verreciel.animator.commit();
+      verreciel.music.playEffect("beep3");
+    }.bind(this));
+  }
   
   addMessage(message, color = verreciel.white)
   {

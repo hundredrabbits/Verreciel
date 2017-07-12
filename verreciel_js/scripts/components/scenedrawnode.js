@@ -4,6 +4,8 @@ class SceneDrawNode extends Empty
   {
     super();
     this.__color4 = new THREE.Vector4(1, 1, 1, 1);
+    this.__colorRGB = new AnimatedXYZ(verreciel.animator, this, "__color4", false, false, this.updateMaterialColor.bind(this));
+    this.updateMaterialColor();
   }
 
   get color()
@@ -17,16 +19,22 @@ class SceneDrawNode extends Empty
     {
       return;
     }
-    this.__color4.copy(newColor);
-    this.material.color.r = this.__color4.x;
-    this.material.color.g = this.__color4.y;
-    this.material.color.b = this.__color4.z;
+    this.__color4.w = newColor.w;
+    this.__colorRGB.set(newColor.x, newColor.y, newColor.z);
+    this.updateMaterialColor();
     this.updateMaterialOpacity();
   }
 
   makeElement()
   {
     
+  }
+
+  updateMaterialColor()
+  {
+    this.material.color.r = this.__color4.x;
+    this.material.color.g = this.__color4.y;
+    this.material.color.b = this.__color4.z;
   }
 
   updateMaterialOpacity()

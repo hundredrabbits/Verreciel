@@ -1,14 +1,14 @@
 class AnimatedXYZ
 {
-  constructor(animator, target, property, angles = false)
+  constructor(animator, target, property, angles = false, snapToEnd = false, onChange = null)
   {
     // assertArgs(arguments, 3);
     this.target = target;
     this.property = property;
     this.xyz = target[property];
-    this.__xProperty = new AnimatedProperty(animator, this.xyz, "x", angles);
-    this.__yProperty = new AnimatedProperty(animator, this.xyz, "y", angles);
-    this.__zProperty = new AnimatedProperty(animator, this.xyz, "z", angles);
+    this.__xProperty = new AnimatedProperty(animator, this.xyz, "x", angles, snapToEnd, onChange);
+    this.__yProperty = new AnimatedProperty(animator, this.xyz, "y", angles, snapToEnd, onChange);
+    this.__zProperty = new AnimatedProperty(animator, this.xyz, "z", angles, snapToEnd, onChange);
   }
   
   get x() { return this.__xProperty.value; }
