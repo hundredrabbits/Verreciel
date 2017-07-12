@@ -8,7 +8,7 @@ class LocationStar extends Location
     this.masterPort = new ScenePort(this);
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

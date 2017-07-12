@@ -9,7 +9,7 @@ class LocationBeacon extends Location
     this.message = message;
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

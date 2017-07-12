@@ -10,7 +10,7 @@ class LocationTransit extends Location
   
   // MARK: Panel -
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

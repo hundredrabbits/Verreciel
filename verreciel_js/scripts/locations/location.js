@@ -29,6 +29,20 @@ class Location extends Event
     this.structure.addHost(this);
     this.icon.addHost(this);
   }
+
+  get panel()
+  {
+    if (this._panel === undefined)
+    {
+      this._panel = this.makePanel();
+    }
+    return this._panel;
+  }
+
+  makePanel()
+  {
+    return null;
+  }
   
   // MARK: System -
   

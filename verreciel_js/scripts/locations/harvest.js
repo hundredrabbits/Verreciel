@@ -65,7 +65,7 @@ class LocationHarvest extends Location
     }
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

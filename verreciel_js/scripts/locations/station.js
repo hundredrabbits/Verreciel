@@ -13,7 +13,7 @@ class LocationStation extends Location
     this.isComplete = false;
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

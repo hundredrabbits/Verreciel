@@ -22,7 +22,7 @@ class LocationBank extends Location
     this.port6.enable();
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

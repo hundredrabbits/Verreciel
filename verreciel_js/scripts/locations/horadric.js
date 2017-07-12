@@ -11,7 +11,7 @@ class LocationHoradric extends Location
     this.combinationPercentage = 0;
   }
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();

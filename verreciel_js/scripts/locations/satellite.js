@@ -20,7 +20,7 @@ class LocationSatellite extends Location
   
   // MARK: Panel
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     if (this.isComplete == true)

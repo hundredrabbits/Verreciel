@@ -187,7 +187,7 @@ class Intercom extends MainPanel
   {
     // assertArgs(arguments, 1);
     this.locationPanel.empty();
-    let panel = location.panel();
+    let panel = location.panel;
     if (panel != null)
     {
       this.locationPanel.add(panel);

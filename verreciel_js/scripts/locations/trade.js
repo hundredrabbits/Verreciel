@@ -27,7 +27,7 @@ class LocationTrade extends Location
   
   // MARK: Panels -
   
-  panel()
+  makePanel()
   {
     // assertArgs(arguments, 0);
     if (this.isComplete == true)
