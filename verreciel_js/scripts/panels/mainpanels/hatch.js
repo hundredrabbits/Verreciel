@@ -31,8 +31,6 @@ class Hatch extends MainPanel
     
     this.mainNode.add(new SceneTrigger(this, 2, 2));
     
-    this.decals.empty();
-    
     this.detailsLabel.updateText("empty", verreciel.grey);
   }
   

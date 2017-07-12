@@ -51,6 +51,7 @@ class Radar extends MainPanel
     
     this.handle = new SceneHandle(new THREE.Vector3(1,0,0),this);
     this.footer.add(this.handle);
+    this.drawDecals();
   }
   
   refresh()

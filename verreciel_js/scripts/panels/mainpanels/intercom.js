@@ -62,7 +62,7 @@ class Intercom extends MainPanel
     this.mainNode.add(this.defaultPanel);
     
     this.footer.add(new SceneHandle(new THREE.Vector3(0,0,1), this));
-    
+    this.drawDecals();
     this.locationPanel.hide();
   }
   

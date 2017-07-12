@@ -29,8 +29,6 @@ class Pilot extends MainPanel
     this.eventsDirectionIndicator.add(new SceneLine([new THREE.Vector3(0, 0.2, -0.1), new THREE.Vector3(-0.2, 0, -0)], verreciel.white));
     this.mainNode.add(this.eventsDirectionIndicator);
   
-    this.decals.empty();
-    
     this.detailsLabel.updateText("Ready", verreciel.grey);
   }
   

@@ -1,3 +1,6 @@
+Persist install views
+Persist location panels
+
 Find a better method to draw lines
 Make tea drinkable
 

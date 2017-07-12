@@ -30,6 +30,7 @@ class Console extends MainPanel
     }
     
     this.footer.add(new SceneHandle(new THREE.Vector3(-1,0,0), this));
+    this.drawDecals();
   }
   
   onConnect()

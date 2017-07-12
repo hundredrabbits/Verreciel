@@ -7,6 +7,14 @@ class SceneNode
     // console.log(this.id);
     this.method = method;
     this.children = [];
+
+    if (DEBUG_REPORT_NODE_USE)
+    {
+      this.inception = getStackTrace();
+      this.inception = this.inception.replace(/^Error\n/, "");
+      this.useCheckDelay = null;
+      this.useCheckDuration = 1;
+    }
     
     if (this.method == null)
     {
@@ -87,6 +95,39 @@ class SceneNode
     this.meat.remove(other.meat);
     this.children.splice(this.children.indexOf(other), 1);
     other.parent = null;
+
+    if (DEBUG_REPORT_NODE_USE)
+    {
+      other.startReportingUnused();
+    }
+  }
+
+  startReportingUnused()
+  {
+    this.useCheckDuration = 1;
+    this.useCheckDelay = delay(this.useCheckDuration, this.checkUnused.bind(this));
+  }
+
+  checkUnused()
+  {
+    if (DEBUG_REPORT_NODE_USE)
+    {
+      var parent = this.parent;
+      while (parent != null && parent != verreciel.root) { parent = parent.parent; }
+      if (parent == null)
+      {
+        console.log("Unused for", this.useCheckDuration, "seconds:");
+        console.log(this.inception);
+        this.useCheckDuration *= 2;
+        this.useCheckDelay = delay(this.useCheckDuration, this.checkUnused.bind(this));
+      }
+      else
+      {
+        console.log("On graph", this.inception);
+        this.useCheckDelay = null;
+        this.useCheckDuration = 1;
+      }
+    }
   }
 
   updateMaterialOpacity()

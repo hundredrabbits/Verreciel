@@ -30,8 +30,6 @@ class Cargo extends MainPanel
     this.mainNode.add(this.line5);
     this.mainNode.add(this.line6);
     
-    this.decals.empty();
-    
     this.detailsLabel.updateText("Empty", verreciel.grey);
   }
   

@@ -48,11 +48,6 @@ class SceneLabel extends SceneLine
   {
     // assertArgs(arguments, 2);
 
-    while (this.children.length > 0)
-    {
-      this.remove(this.children[0]);
-    }
-
     var letterPos = 0;
     var linePos = 0;
 

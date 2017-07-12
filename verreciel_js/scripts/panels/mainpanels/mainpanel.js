@@ -37,29 +37,8 @@ class MainPanel extends Panel
     this.add(this.footer);
     this.footer.rotation.x = degToRad(-Templates.titlesAngle);
     
-    // Decals
-    
     this.width = 1.65;
     this.height = 1.8;
-    
-    this.decals.add(new SceneLine([
-      new THREE.Vector3(this.width + 0.2, this.height - 0.2, 0),
-      new THREE.Vector3(this.width, this.height, 0),
-      new THREE.Vector3(this.width + 0.2, this.height - 0.2, 0),
-      new THREE.Vector3(this.width + 0.2, -this.height + 0.2, 0),
-      new THREE.Vector3(this.width + 0.2, -this.height + 0.2, 0),
-      new THREE.Vector3(this.width, -this.height, 0)
-    ],
-    verreciel.grey));
-    this.decals.add(new SceneLine([
-      new THREE.Vector3(-this.width - 0.2, this.height - 0.2, 0),
-      new THREE.Vector3(-this.width, this.height, 0),
-      new THREE.Vector3(-this.width - 0.2, -this.height + 0.2, 0),
-      new THREE.Vector3(-this.width, -this.height, 0),
-      new THREE.Vector3(-this.width - 0.2, this.height - 0.2, 0),
-      new THREE.Vector3(-this.width - 0.2, -this.height + 0.2, 0)
-    ],
-    verreciel.grey));
     
     // Start
     
@@ -68,6 +47,31 @@ class MainPanel extends Panel
     this.footer.hide();
     
     this.nameLabel.updateText("--", verreciel.grey);
+  }
+
+  drawDecals()
+  {
+    if (this.decals.children.length == 0)
+    {
+      this.decals.add(new SceneLine([
+        new THREE.Vector3(this.width + 0.2, this.height - 0.2, 0),
+        new THREE.Vector3(this.width, this.height, 0),
+        new THREE.Vector3(this.width + 0.2, this.height - 0.2, 0),
+        new THREE.Vector3(this.width + 0.2, -this.height + 0.2, 0),
+        new THREE.Vector3(this.width + 0.2, -this.height + 0.2, 0),
+        new THREE.Vector3(this.width, -this.height, 0)
+      ],
+      verreciel.grey));
+      this.decals.add(new SceneLine([
+        new THREE.Vector3(-this.width - 0.2, this.height - 0.2, 0),
+        new THREE.Vector3(-this.width, this.height, 0),
+        new THREE.Vector3(-this.width - 0.2, -this.height + 0.2, 0),
+        new THREE.Vector3(-this.width, -this.height, 0),
+        new THREE.Vector3(-this.width - 0.2, this.height - 0.2, 0),
+        new THREE.Vector3(-this.width - 0.2, -this.height + 0.2, 0)
+      ],
+      verreciel.grey));
+    }
   }
   
   whenStart()

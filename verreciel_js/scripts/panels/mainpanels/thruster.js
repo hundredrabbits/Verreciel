@@ -106,8 +106,6 @@ class Thruster extends MainPanel
     this.mainNode.add(this.action);
     
     this.detailsLabel.updateText("--");
-    
-    this.decals.empty();
   }
 
   touch(id = 0)
