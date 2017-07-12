@@ -1,4 +1,3 @@
-Find a better method to draw lines
 Make tea drinkable
 
 Run a JavaScript linter
