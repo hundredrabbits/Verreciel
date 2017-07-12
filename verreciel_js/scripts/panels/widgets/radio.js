@@ -52,7 +52,8 @@ class Radio extends Widget
   play()
   {
     // assertArgs(arguments, 0);
-    verreciel.music.playMusic(Records[this.port.event.code], "record");
+    verreciel.music.setRecord(Records[this.port.event.code]);
+    verreciel.music.playRecord();
   }
   
   hasRecord()
@@ -65,8 +66,7 @@ class Radio extends Widget
   stop()
   {
     // assertArgs(arguments, 0);
-    verreciel.music.stopMusic();
-    verreciel.space.onSystemEnter(verreciel.capsule.system);
+    verreciel.music.playAmbience();
   }
   
   onUploadComplete()

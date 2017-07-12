@@ -5,6 +5,8 @@ class Music
     // assertArgs(arguments, 0);
     this.track = null;
     this.audioCatalog = {};
+    this.ambience = null;
+    this.record = null;
   }
 
   playEffect(name)
@@ -14,37 +16,66 @@ class Music
     this.fetchAudio(name, "effect", "media/audio/effect/"+name+".ogg", false).play();
   }
 
-  playMusic(name, role)
+  setAmbience(name)
   {
-    // assertArgs(arguments, 1);
-    if (this.track != null && this.track.name == name)
+    if (this.ambience == name)
     {
       return;
     }
-
-    if (DEBUG_NO_MUSIC == true)
+    this.ambience = name;
+    if (this.track == null)
     {
-      console.log(role, ":", name, " (off by debug)");
-      return;
+      this.playAmbience();
     }
-
-    console.log(role, ":", name);
-
-    if (this.track != null)
-    {
-      this.track.pause();
-    }
-    this.track = this.fetchAudio(name, role, "media/audio/" + role + "/" + name + ".mp3", true);
-    this.track.currentTime = 0;
-    this.track.play();
   }
 
-  stopMusic()
+  setRecord(name)
+  {
+    if (this.record == name)
+    {
+      return;
+    }
+    this.record = name;
+    if (this.track == null)
+    {
+      this.playRecord();
+    }
+  }
+
+  playRecord()
+  {
+    this.switchAudio("record", this.record);
+  }
+
+  playAmbience()
+  {
+    this.switchAudio("ambience", this.ambience);
+  }
+
+  switchAudio(role, name)
   {
     if (this.track != null)
     {
+      if (this.track.name == name)
+      {
+        return;
+      }
       this.track.pause();
-      this.track = null;
+    }
+
+    if (name != null)
+    {
+      this.track = this.fetchAudio(name, role, "media/audio/" + role + "/" + name + ".mp3", true);
+      this.track.currentTime = 0;
+      if (DEBUG_NO_MUSIC)
+      {
+        console.log(role, ":", name, "(off by debug)");
+      }
+      else
+      {
+        console.log(role, ":", name);
+        this.track.play();
+      }
     }
   }
 
