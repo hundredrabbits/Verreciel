@@ -1,11 +1,10 @@
 class SceneNode
 {
-  constructor(method = null)
+  constructor()
   {
     // assertArgs(arguments, 0);
     this.id = SceneNode.ids++;
     // console.log(this.id);
-    this.method = method;
     this.children = [];
 
     if (DEBUG_REPORT_NODE_USE)
@@ -16,73 +15,42 @@ class SceneNode
       this.useCheckDuration = 1;
     }
     
-    if (this.method == null)
-    {
-      this.meat = new THREE.Group();
-    }
-    else
-    {
-      if (this.method == Methods.lineArt)
-      {
-        this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
-        this.geometry = new THREE.Geometry();
-        this.meat = new THREE.LineSegments(this.geometry, this.material);
-      } else if (this.method == Methods.interactiveRegion)
-      {
-        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_SHOW_TRIGGERS, transparent:true });
-        this.geometry = new THREE.Geometry();
-        this.geometry.dynamic = true;
-        this.meat = new THREE.Mesh(this.geometry, this.material);
-      }
-      
-      this.__color4 = new THREE.Vector4(1, 1, 1, 1);
-    }
-
-    this.__opacityProperty = new AnimatedProperty(verreciel.animator, {opacity:1}, "opacity", false, true, this.whenInherit.bind(this));
+    this.makeElement();
     
-    this.meat.node = this;
-    this.meat.rotation.order = "YXZ";
+    this.element.node = this;
+    this.element.rotation.order = "YXZ";
+    this.position = new AnimatedXYZ(verreciel.animator, this.element, "position");
+    this.rotation = new AnimatedXYZ(verreciel.animator, this.element, "rotation", true);
+    this.__opacityProperty = new AnimatedProperty(verreciel.animator, {opacity:1}, "opacity", false, true, this.whenInherit.bind(this));
+  }
 
-    this.position = new AnimatedXYZ(verreciel.animator, this.meat, "position");
-    this.rotation = new AnimatedXYZ(verreciel.animator, this.meat, "rotation", true);
+  get opacity()
+  {
+    return this.__opacityProperty.value;
+  }
 
-    Object.defineProperties(this, {
-      opacity: {
-        get: function() { return this.__opacityProperty.value; },
-        set: function(newValue) { this.__opacityProperty.value = newValue; }
-      },
-      opacityFromTop: {
-        get: function()
-        {
-          var value = (this.parent == null) ? 1 : this.parent.opacityFromTop;
-          return value * this.__opacityProperty.value;
-        }
-      }
-    });
+  set opacity(newValue)
+  {
+    this.__opacityProperty.value = newValue;
+  }
+  
+  get opacityFromTop()
+  {
+    var value = (this.parent == null) ? 1 : this.parent.opacityFromTop;
+    return value * this.__opacityProperty.value;
+  }
 
-    if (this.method != null)
-    {
-      Object.defineProperty( this, "color", {
-        get: function() { return this.__color4; },
-        set: function(newColor)
-        {
-          if (this.__color4.equals(newColor)) { return; }
-          this.__color4.copy(newColor);
-          this.material.color.r = this.__color4.x;
-          this.material.color.g = this.__color4.y;
-          this.material.color.b = this.__color4.z;
-          this.updateMaterialOpacity();
-        }
-      });
-    }
+  makeElement()
+  {
+    this.element = new THREE.Group();
   }
 
   add(other)
   {
-    this.meat.add(other.meat);
+    this.element.add(other.element);
     this.children.push(other);
     other.parent = this;
-    other.meat.updateMatrixWorld(true);
+    other.element.updateMatrixWorld(true);
     other.whenInherit();
     if (verreciel.phase == Phase.render)
     {
@@ -92,7 +60,7 @@ class SceneNode
 
   remove(other)
   {
-    this.meat.remove(other.meat);
+    this.element.remove(other.element);
     this.children.splice(this.children.indexOf(other), 1);
     other.parent = null;
 
@@ -130,22 +98,8 @@ class SceneNode
     }
   }
 
-  updateMaterialOpacity()
-  {
-    if (this.method != null)
-    {
-      this.material.opacity = this.opacityFromTop * this.__color4.w;
-      if (this.method == Methods.lineArt)
-      {
-        this.material.visible = this.material.opacity > 0;
-      }
-    }
-  }
-
   whenInherit()
   {
-    this.updateMaterialOpacity();
-
     for (let node of this.children)
     {
       node.whenInherit();
@@ -203,7 +157,7 @@ class SceneNode
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     this.hardUpdateMatrixWorld();
     node.hardUpdateMatrixWorld();
-    position.applyMatrix4(this.meat.matrixWorld).applyMatrix4(node.meat.matrixWorld.getInverse(node.meat.matrixWorld));
+    position.applyMatrix4(this.element.matrixWorld).applyMatrix4(node.element.matrixWorld.getInverse(node.element.matrixWorld));
     return position;
   }
 
@@ -213,7 +167,7 @@ class SceneNode
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z);
     this.hardUpdateMatrixWorld();
     node.hardUpdateMatrixWorld();
-    position.applyMatrix4(node.meat.matrixWorld).applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
+    position.applyMatrix4(node.element.matrixWorld).applyMatrix4(this.element.matrixWorld.getInverse(this.element.matrixWorld));
     return position;
   }
 
@@ -221,7 +175,7 @@ class SceneNode
   {
     let position = point.clone();
     this.hardUpdateMatrixWorld();
-    position.applyMatrix4(this.meat.matrixWorld.getInverse(this.meat.matrixWorld));
+    position.applyMatrix4(this.element.matrixWorld.getInverse(this.element.matrixWorld));
     return position.lengthSq();
   }
 
@@ -230,7 +184,7 @@ class SceneNode
     var node = this;
     while (node != null)
     {
-      node.meat.updateMatrixWorld();
+      node.element.updateMatrixWorld();
       node = node.parent;
     }
   }

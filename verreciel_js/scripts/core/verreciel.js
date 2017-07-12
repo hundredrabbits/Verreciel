@@ -95,7 +95,7 @@ class Verreciel
     this.windowResize();
 
     this.root = new Empty();
-    this.scene.add(this.root.meat);
+    this.scene.add(this.root.element);
 
     this.root.add(this.player);
     this.root.add(this.helmet);
@@ -220,7 +220,7 @@ class Verreciel
   isEnabledTrigger(hit)
   {
     let node = hit.object.node;
-    return node.method == Methods.interactiveRegion && node.isEnabled == true && node.opacityFromTop > 0;
+    return node instanceof SceneTrigger && node.isEnabled == true && node.opacityFromTop > 0;
   }
 
   hasShortestDistance(hit1, hit2)
@@ -251,7 +251,6 @@ class Verreciel
   }
 }
 
-class Methods {} setEnumValues(Methods, ['lineArt', 'interactiveRegion']);
 class Phase {} setEnumValues(Phase, ['init', 'start', 'render', 'idle']);
 class Alignment {} setEnumValues(Alignment, ['left', 'center', 'right',]);
 class Systems {} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);

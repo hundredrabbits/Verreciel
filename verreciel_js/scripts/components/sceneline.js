@@ -1,13 +1,34 @@
-class SceneLine extends Empty
+class SceneLine extends SceneDrawNode
 {
   constructor(vertices, color = verreciel.white)
   {
     // assertArgs(arguments, 1);
-    super(Methods.lineArt);
+    super();
     this.updateVertices(vertices);
     this.color = color;
   }
+
+  makeElement()
+  {
+    this.material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true });
+    this.geometry = new THREE.Geometry();
+    this.element = new THREE.LineSegments(this.geometry, this.material);
+    super.makeElement();
+  }
   
+  updateChildrenColors(color)
+  {
+    // assertArgs(arguments, 1);
+    this.color = color;
+    super.updateChildrenColors(color);
+  }
+
+  updateMaterialOpacity()
+  {
+    super.updateMaterialOpacity();
+    this.material.visible = this.material.opacity > 0;
+  }
+
   updateVertices(vertices)
   {
     // assertArgs(arguments, 1);
@@ -27,7 +48,7 @@ class SceneLine extends Empty
     {
       this.geometry.dispose();
       this.geometry = new THREE.Geometry();
-      this.meat.geometry = this.geometry;
+      this.element.geometry = this.geometry;
       // console.log("EXPAND:", oldLength, "-->", this.vertices.length);
     }
 

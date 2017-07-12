@@ -7,12 +7,7 @@ class SceneHandle extends Empty
     this.isEnabled = true;
     this.destination = destination;
     this.host = host;
-    this.setup();
-  }
-  
-  setup()
-  {
-    // assertArgs(arguments, 0);
+    
     let width = 0.4;
     let spacing = 0.15;
     let height = 0.2;

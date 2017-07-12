@@ -21,11 +21,11 @@ class SceneWire extends Empty
     this.segment4 = new SceneLine( [this.vertex3, this.vertex4], verreciel.white);
     this.segment5 = new SceneLine( [this.vertex4, this.endB], verreciel.red);
 
-    this.segment1.meat.frustumCulled = false;
-    this.segment2.meat.frustumCulled = false;
-    this.segment3.meat.frustumCulled = false;
-    this.segment4.meat.frustumCulled = false;
-    this.segment5.meat.frustumCulled = false;
+    this.segment1.element.frustumCulled = false;
+    this.segment2.element.frustumCulled = false;
+    this.segment3.element.frustumCulled = false;
+    this.segment4.element.frustumCulled = false;
+    this.segment5.element.frustumCulled = false;
 
     this.add(this.segment1);
     this.add(this.segment2);

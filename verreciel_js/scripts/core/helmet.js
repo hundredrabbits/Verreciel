@@ -8,7 +8,7 @@ class Helmet extends Empty
     // Useful snippet. I should put it somewhere else, but this is where I'd go looking for it.
     /*
     let node = this;
-    let ham = this.meat;
+    let ham = this.element;
 
     let hamX = ham.position.x;
     let hamY = ham.position.y;

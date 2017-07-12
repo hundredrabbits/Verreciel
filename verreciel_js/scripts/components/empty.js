@@ -1,9 +1,9 @@
 class Empty extends SceneNode
 {
-  constructor(method = null)
+  constructor()
   {
     // assertArgs(arguments, 0);
-    super(method);
+    super();
     this.details = "unknown";
   }
 
@@ -69,11 +69,6 @@ class Empty extends SceneNode
   
   updateChildrenColors(color)
   {
-    // assertArgs(arguments, 1);
-    if (this.method == Methods.lineArt)
-    {
-      this.color = color;
-    }
     for (let node of this.children)
     {
       node.updateChildrenColors(color);

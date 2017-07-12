@@ -64,7 +64,7 @@ class Player extends Empty
       }
     }
 
-    this.meat.add(verreciel.camera);
+    this.element.add(verreciel.camera);
     // verreciel.camera.position.z = 8;
   }
   

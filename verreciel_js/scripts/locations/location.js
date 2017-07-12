@@ -58,12 +58,6 @@ class Location extends Event
     this.icon.onUpdate();
   }
   
-  setup()
-  {
-    // assertArgs(arguments, 0);
-  
-  }
-  
   refresh()
   {
     // assertArgs(arguments, 0);

@@ -1,9 +1,9 @@
-class SceneTrigger extends Empty
+class SceneTrigger extends SceneDrawNode
 {
   constructor(host, width, height, operation = 0)
   {
     // assertArgs(arguments, 3);
-    super(Methods.interactiveRegion);
+    super();
     this.isEnabled = true;
     this.operation = operation;
     this.host = host;
@@ -14,6 +14,15 @@ class SceneTrigger extends Empty
     this.geometry.mergeVertices();
     
     this.color = SceneTrigger.DEBUG_BLUE;
+  }
+
+  makeElement()
+  {
+    this.material = new THREE.MeshBasicMaterial({ color: 0xffffff, visible: DEBUG_SHOW_TRIGGERS, transparent:true });
+    this.geometry = new THREE.Geometry();
+    this.geometry.dynamic = true;
+    this.element = new THREE.Mesh(this.geometry, this.material);
+    super.makeElement();
   }
   
   touch(id)
