@@ -7,9 +7,11 @@ class Space extends Empty
     
     console.log("^ Space | Init");
     
-    this.targetSpaceColor = [0,0,0];
-    this.currentSpaceColor = [0,0,0];
-    this.stars_color = verreciel.white;
+    this.targetSpaceColor = new THREE.Color(0, 0, 0);
+    this.currentSpaceColor = new THREE.Color(0, 0, 0);
+
+    this.targetStarColor = verreciel.white;
+    this.currentStarColor = verreciel.white.clone();
 
     this.lastStarAddedTime = 0;
     this.starClusters = [];
@@ -38,39 +40,39 @@ class Space extends Empty
     switch (system)
     {
       case Systems.valen:
-        this.targetSpaceColor = [0.2,0.2,0.2];
-        this.stars_color = verreciel.white;
+        this.targetSpaceColor.setRGB(0.2,0.2,0.2);
+        this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience2);
         break;
       case Systems.senni:
-        this.targetSpaceColor = [0.0,0.0,0.0];
-        this.stars_color = verreciel.cyan;
+        this.targetSpaceColor.setRGB(0.0,0.0,0.0);
+        this.targetStarColor = verreciel.cyan;
         verreciel.music.setAmbience(Ambience.ambience3);
         break;
       case Systems.usul:
-        this.targetSpaceColor = [0.2,0.0,0.0];
-        this.stars_color = verreciel.white;
+        this.targetSpaceColor.setRGB(0.2,0.0,0.0);
+        this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience4);
         break;
       case Systems.close:
-        this.targetSpaceColor = [0.6,0.6,0.6];
-        this.stars_color = verreciel.black;
+        this.targetSpaceColor.setRGB(0.6,0.6,0.6);
+        this.targetStarColor = verreciel.black;
         verreciel.music.setAmbience(Ambience.ambience5);
         break;
       default:
-        this.targetSpaceColor = [0.0,0.0,0.0];
-        this.stars_color = verreciel.white;
+        this.targetSpaceColor.setRGB(0.0,0.0,0.0);
+        this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience1);
         break;
     }
     
     if (verreciel.player.isEjected == true)
     {
-      this.targetSpaceColor = [0,0,0];
+      this.targetSpaceColor.setRGB(0,0,0);
     }
     else if (verreciel.capsule.closestStar().isComplete == true)
     {
-      this.targetSpaceColor = [44 / 255, 73/255, 65/255];
+      this.targetSpaceColor.setRGB(44 / 255, 73/255, 65/255);
     }
   }
   
@@ -100,17 +102,26 @@ class Space extends Empty
     
     // Background
     
-    if (this.currentSpaceColor[0] < this.targetSpaceColor[0]) { this.currentSpaceColor[0] += 0.01; }
-    if (this.currentSpaceColor[0] > this.targetSpaceColor[0]) { this.currentSpaceColor[0] -= 0.01; }
-    if (this.currentSpaceColor[1] < this.targetSpaceColor[1]) { this.currentSpaceColor[1] += 0.01; }
-    if (this.currentSpaceColor[1] > this.targetSpaceColor[1]) { this.currentSpaceColor[1] -= 0.01; }
-    if (this.currentSpaceColor[2] < this.targetSpaceColor[2]) { this.currentSpaceColor[2] += 0.01; }
-    if (this.currentSpaceColor[2] > this.targetSpaceColor[2]) { this.currentSpaceColor[2] -= 0.01; }
+    if (this.currentSpaceColor.r < this.targetSpaceColor.r) { this.currentSpaceColor.r += 0.01; }
+    if (this.currentSpaceColor.r > this.targetSpaceColor.r) { this.currentSpaceColor.r -= 0.01; }
+    if (this.currentSpaceColor.g < this.targetSpaceColor.g) { this.currentSpaceColor.g += 0.01; }
+    if (this.currentSpaceColor.g > this.targetSpaceColor.g) { this.currentSpaceColor.g -= 0.01; }
+    if (this.currentSpaceColor.b < this.targetSpaceColor.b) { this.currentSpaceColor.b += 0.01; }
+    if (this.currentSpaceColor.b > this.targetSpaceColor.b) { this.currentSpaceColor.b -= 0.01; }
+
+    if (this.currentStarColor.x < this.targetStarColor.x) { this.currentStarColor.x += 0.01; }
+    if (this.currentStarColor.x > this.targetStarColor.x) { this.currentStarColor.x -= 0.01; }
+    if (this.currentStarColor.y < this.targetStarColor.y) { this.currentStarColor.y += 0.01; }
+    if (this.currentStarColor.y > this.targetStarColor.y) { this.currentStarColor.y -= 0.01; }
+    if (this.currentStarColor.z < this.targetStarColor.z) { this.currentStarColor.z += 0.01; }
+    if (this.currentStarColor.z > this.targetStarColor.z) { this.currentStarColor.z -= 0.01; }
     
-    verreciel.scene.background = new THREE.Color(this.currentSpaceColor[0], this.currentSpaceColor[1], this.currentSpaceColor[2]);
+    verreciel.scene.background = this.currentSpaceColor;
     
     // Etc
     
+    this.starsRoot.updateChildrenColors(this.currentStarColor);
+
     this.starsRoot.rotation.set(0, degToRad(verreciel.capsule.direction), 0);
   }
   
