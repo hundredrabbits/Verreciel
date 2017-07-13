@@ -1,3 +1,4 @@
+Make sure the records are all accessible
 
 Rethink missions
   They should be accumulative, at least in part
