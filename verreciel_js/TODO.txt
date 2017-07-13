@@ -1,10 +1,9 @@
-Run a JavaScript linter
-
--------
 
 Rethink missions
   They should be accumulative, at least in part
   Keep Cargo connected to Console, why doncha
+
+Remove dead code from Locations
 
 Walkthroughs
   Player rotate, click, predicate
@@ -20,3 +19,4 @@ Use the walkthrough to detect any other late THREE.js class construction
 -------
 
 Enigma doesn't do anything at all...
+Valen beacon??

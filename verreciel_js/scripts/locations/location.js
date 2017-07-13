@@ -383,8 +383,8 @@ class Location extends Event
     return new ConsolePayload([
       new ConsoleData("Name", this.name),
       new ConsoleData("System", this.system),
-      new ConsoleData("Position", this.at.x.toFixed(0) + "," + this.at.y.toFixed(0)),
-      new ConsoleData("Distance", this.distance.toFixed(0)),
+      new ConsoleData("Position", verreciel.space.printPosition(this.at)),
+      new ConsoleData("Distance", verreciel.space.printDistance(this.distance)),
       new ConsoleData("Angle", this.angle.toFixed(0)),
       new ConsoleData(this.details),
     ]);

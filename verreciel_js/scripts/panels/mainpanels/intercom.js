@@ -84,7 +84,7 @@ class Intercom extends MainPanel
       
       this.systemValueLabel.updateText(target.system);
       this.distanceLabel.updateText("Distance");
-      this.distanceValueLabel.updateText( (verreciel.capsule.isDockedAtLocation(target) ? "docked" : (target.distance * 19).toFixed(2)) );
+      this.distanceValueLabel.updateText(verreciel.capsule.isDockedAtLocation(target) ? "docked" : verreciel.space.printDistance(target.distance));
       this.typeLabel.updateText("type");
       this.typeValueLabel.updateText(target.name);
       this.detailValueLabel.updateText(target.details);
@@ -106,7 +106,7 @@ class Intercom extends MainPanel
     {
       this.systemValueLabel.updateText(verreciel.capsule.system);
       this.distanceLabel.updateText("Position");
-      this.distanceValueLabel.updateText(verreciel.capsule.at.x.toFixed(0) + "," + verreciel.capsule.at.y.toFixed(0));
+      this.distanceValueLabel.updateText(verreciel.space.printPosition(verreciel.capsule.at));
       this.typeValueLabel.updateText("--");
       this.statusValueLabel.updateText("in flight", verreciel.white);
       this.detailValueLabel.updateText("--");

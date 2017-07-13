@@ -133,8 +133,19 @@ class Space extends Empty
     }
     return nextCluster;
   }
+
+  printDistance(distance)
+  {
+    return (distance * Space.unit).toFixed(2);
+  }
+
+  printPosition(position)
+  {
+    return (position.x /* * Space.unit */).toFixed(0) + "," + (position.y /* * Space.unit */).toFixed(0)
+  }
 }
 
+Space.unit = 19;
 
 class StarCluster extends Empty
 {

@@ -37,14 +37,14 @@ class SceneLine extends SceneDrawNode
       throw "BAD GEOMETRY";
     }
 
-    let oldLength = this.vertices == null ? 0 : this.vertices.length;
+    let oldLength = this.vertices == null ? -1 : this.vertices.length;
     this.vertices = vertices;
     while (this.vertices.length < oldLength)
     {
       this.vertices.push(SceneLine.DUD_VERT);
     }
 
-    if (this.vertices.length > oldLength && oldLength != 0) // oldLength of zero is special case
+    if (oldLength != -1 && this.vertices.length > oldLength)
     {
       this.geometry.dispose();
       this.geometry = new THREE.Geometry();
