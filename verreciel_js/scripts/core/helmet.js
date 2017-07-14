@@ -153,6 +153,7 @@ class Helmet extends Empty
     this.visor.add(verreciel.player.port);
     verreciel.player.port.position.set(0,-3,-2.5);
     
+    /*
     // iPhone4
     if (verreciel.width == 320 && verreciel.height == 480)
     {
@@ -170,6 +171,7 @@ class Helmet extends Empty
       verreciel.player.port.position.set(0,-2,-2.5);
       this.messageLabel.position.set(0,1.2, this.visorDepth);
     }
+    */
   }
   
   whenStart()
