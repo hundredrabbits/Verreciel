@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class SceneButton extends Empty
 {
   constructor(host, text, operation, width = 0.65)

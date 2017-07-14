@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class Complete extends Monitor
 {
   constructor()

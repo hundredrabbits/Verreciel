@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class Event extends Empty
 {
   constructor(name = "", at = new THREE.Vector2(), details = "", color = verreciel.grey, isQuest = false)

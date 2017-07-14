@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class SceneProgressRadial extends Empty
 {
   constructor(size = 1.2, linesCount = 52, color = verreciel.cyan)

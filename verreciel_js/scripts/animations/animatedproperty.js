@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class AnimatedProperty
 {
   constructor(animator, target, property, isAngle = false, snapToEnd = false, onChange = null)

@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class SceneLabel extends SceneLine
 {
   constructor(text = "", scale = 0.1, align = Alignment.left, color = verreciel.white)

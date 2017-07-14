@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class SceneWire extends Empty
 {
   constructor(host, endA = new THREE.Vector3(), endB = new THREE.Vector3())

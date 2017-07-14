@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class Mission
 {
   constructor(id, name, requirement = function(){ return true; }, state = function(){ } )

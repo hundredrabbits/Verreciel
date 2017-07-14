@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class ScenePortSlot extends ScenePort
 {
   constructor(host = new Empty(), align = Alignment.left, hasDetails = false, placeholder = "Empty")

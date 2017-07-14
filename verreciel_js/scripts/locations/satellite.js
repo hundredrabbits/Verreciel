@@ -1,3 +1,6 @@
+//  Created by Devine Lu Linvega.
+//  Copyright © 2017 XXIIVV. All rights reserved.
+
 class LocationSatellite extends Location
 {
   constructor(name, system, at, message, item, mapRequirement = null)
