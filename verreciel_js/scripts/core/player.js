@@ -96,6 +96,7 @@ class Player extends Empty
   
   eject()
   {
+    this.isLocked = true;
     // assertArgs(arguments, 0);
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 2;
@@ -111,6 +112,75 @@ class Player extends Empty
       
       this.position.set(0,5,0);
       
+      verreciel.animator.completionBlock = function(){
+        this.isEjected = true;
+        verreciel.game.save(0);
+      }.bind(this);
+      verreciel.animator.commit();
+      
+    }.bind(this);
+    verreciel.animator.commit();
+  }
+
+  ejectViaHatch()
+  {
+    this.isLocked = true;
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 2;
+    
+    this.position.set(0,0,0);
+    this.rotation.set(0,verreciel.hatch.rotation.y, 0);
+    verreciel.helmet.opacity = 0;
+    verreciel.space.opacity = 0;
+    verreciel.above.opacity = 0;
+    verreciel.below.opacity = 0;
+    
+    verreciel.animator.completionBlock = function(){
+    
+      verreciel.animator.begin();
+      verreciel.animator.ease = Penner.easeInOutQuart;
+      verreciel.animator.animationDuration = 3;
+      verreciel.animator.delay = 3;
+      this.rotation.y = Math.PI + verreciel.hatch.rotation.y;
+      verreciel.animator.completionBlock = function(){
+        verreciel.animator.begin();
+        verreciel.animator.ease = Penner.easeInQuart;
+        verreciel.animator.animationDuration = 20;
+        verreciel.capsule.opacity = 0;
+        verreciel.animator.commit();
+
+        let rotCapsuleY = verreciel.capsule.rotation.y;
+        var rotCapsuleVelY = 0;
+        function spiralCapsule()
+        {
+          verreciel.capsule.rotation.y -= rotCapsuleVelY * 0.18;
+          rotCapsuleVelY += 0.0002;
+          requestAnimationFrame(spiralCapsule);
+        }
+        spiralCapsule();
+
+      }.bind(this);
+      verreciel.animator.commit();
+
+      let rotPlayerZ = verreciel.player.rotation.z;
+      var rotPlayerVelZ = 0;
+      function spiralCapsule()
+      {
+        verreciel.player.rotation.z += rotPlayerVelZ * 0.5;
+        rotPlayerVelZ += 0.000002;
+        requestAnimationFrame(spiralCapsule);
+      }
+      spiralCapsule();
+
+      verreciel.animator.begin();
+      verreciel.animator.animationDuration = 10;
+      verreciel.animator.ease = Penner.easeInOutCubic;
+      
+      let destination = new THREE.Vector3(0, 0, 1);
+      destination.applyAxisAngle(new THREE.Vector3(0, 1, 0), verreciel.hatch.rotation.y);
+      destination.multiplyScalar(-10);
+      this.position.set(destination.x, destination.y, destination.z);
+
       verreciel.animator.completionBlock = function(){
         this.isEjected = true;
         verreciel.game.save(0);

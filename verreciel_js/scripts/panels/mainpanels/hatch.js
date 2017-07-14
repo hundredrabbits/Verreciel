@@ -10,6 +10,7 @@ class Hatch extends MainPanel
     
     this.name = "hatch";
     this.details = "jetisons items";
+    this.pendingErase = false;
     
     this.mainNode.add(new SceneLine([new THREE.Vector3( 0, 0.7,  0),  new THREE.Vector3(0.7, 0, 0),], verreciel.grey));
     this.mainNode.add(new SceneLine([new THREE.Vector3( 0.7, 0,  0), new THREE.Vector3(0, -0.7, 0),], verreciel.grey));
@@ -42,9 +43,34 @@ class Hatch extends MainPanel
     this.update();
   }
 
+  whenRenderer()
+  {
+    super.whenRenderer();
+    if (this.pendingErase == true)
+    {
+      this.outline.blink();
+    }
+    else
+    {
+      this.outline.show();
+    }
+  }
+
   touch(id = 0)
   {
     // assertArgs(arguments, 1);
+    
+    if (this.port.origin != null && this.port.origin.host != null && (this.port.origin.host == verreciel.pilot || this.port.origin.host == verreciel.player))
+    {
+      this.port.origin.disconnect();
+      verreciel.music.playEffect("click3");
+      verreciel.game.erase();
+      verreciel.missions.refresh();
+      verreciel.missions.updateCurrentMission();
+      verreciel.player.ejectViaHatch();
+      return true;
+    }
+
     if (this.port.isReceiving() == false)
     {
       return false;
@@ -52,12 +78,6 @@ class Hatch extends MainPanel
     if (this.port.origin.event.isQuest == true)
     {
       return false;
-    }
-    
-    if (this.port.origin.host == verreciel.pilot)
-    {
-      this.game.erase();
-      return true;
     }
     
     this.port.origin.removeEvent();
@@ -98,16 +118,22 @@ class Hatch extends MainPanel
     // assertArgs(arguments, 0);
     super.onConnect();
     
-    if (this.port.origin == null && this.port.origin.host == null && this.port.origin.host == verreciel.pilot)
+    if (this.port.origin != null && this.port.origin.host != null && (this.port.origin.host == verreciel.pilot || this.port.origin.host == verreciel.player))
     {
-      this.detailsLabel.updateText("erase game ?", verreciel.red);
+      this.detailsLabel.updateText(" erase   game ?", verreciel.red);
       this.outline.updateChildrenColors(verreciel.red);
+      this.pendingErase = true;
+    }
+    else
+    {
+      this.pendingErase = false;
     }
   }
   
   onDisconnect()
   {
     // assertArgs(arguments, 0);
+    this.pendingErase = false;
     this.update();
   }
   

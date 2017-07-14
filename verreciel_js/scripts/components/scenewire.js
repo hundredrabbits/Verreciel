@@ -67,6 +67,11 @@ class SceneWire extends Empty
 
   updateSegments()
   {
+    this.vertex1.x = this.endB.x * 0.2 + Math.cos((verreciel.game.time + this.vertex1.x + this.vertex1.y + this.vertex1.z)/20) * 0.05;
+    this.vertex2.x = this.endB.x * 0.4 + Math.cos((verreciel.game.time + this.vertex2.x + this.vertex2.y + this.vertex2.z)/20) * 0.08;
+    this.vertex3.x = this.endB.x * 0.6 + Math.cos((verreciel.game.time + this.vertex3.x + this.vertex3.y + this.vertex3.z)/20) * 0.08;
+    this.vertex4.x = this.endB.x * 0.8 + Math.cos((verreciel.game.time + this.vertex4.x + this.vertex4.y + this.vertex4.z)/20) * 0.05;
+
     this.vertex1.y = this.endB.y * 0.2 + Math.sin((verreciel.game.time + this.vertex1.x + this.vertex1.y + this.vertex1.z)/20) * 0.05;
     this.vertex2.y = this.endB.y * 0.4 + Math.sin((verreciel.game.time + this.vertex2.x + this.vertex2.y + this.vertex2.z)/20) * 0.08;
     this.vertex3.y = this.endB.y * 0.6 + Math.sin((verreciel.game.time + this.vertex3.x + this.vertex3.y + this.vertex3.z)/20) * 0.08;

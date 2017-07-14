@@ -1,15 +1,17 @@
 class Animation
 {
-  constructor(name, duration, ease, properties, completionBlock)
+  constructor(name, duration, animDelay, ease, properties, completionBlock)
   {
     this.name = name;
     this.duration = duration;
+    this.delay = animDelay;
     this.ease = ease;
     this.properties = properties;
     this.completionBlock = completionBlock;
     this.percent = 0;
     this.lastFrameTime = Date.now();
     this.completed = false;
+    this.started = false;
 
     for (let property of this.properties)
     {
@@ -18,7 +20,11 @@ class Animation
         property.commit(this.name);
       }
     }
+
     this.tick();
+    this.started = true;
+    this.lastFrameTime += this.delay * 1000;
+    delay(this.delay, this.tick.bind(this));
   }
 
   tick()
@@ -54,13 +60,16 @@ class Animation
       }
     }
 
-    if (this.percent < 1)
+    if (this.started == true)
     {
-      requestAnimationFrame(this.tick.bind(this));
-    }
-    else
-    {
-      verreciel.animator.completeAnimation(this.name);
+      if (this.percent < 1)
+      {
+        requestAnimationFrame(this.tick.bind(this));
+      }
+      else
+      {
+        verreciel.animator.completeAnimation(this.name);
+      }
     }
   }
 

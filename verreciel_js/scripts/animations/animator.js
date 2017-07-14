@@ -5,6 +5,7 @@ class Animator
     // assertArgs(arguments, 0, true);
     this.begun = false;
     this.properties = [];
+    this.delay = 0;
     this.ease = Penner.easeOutQuart;
     this.animationID = 1;
     this.animations = {};
@@ -26,7 +27,6 @@ class Animator
     this.animationID++;
     this.begun = true;
     this.properties.splice(0, this.properties.length);
-    this.ease = Penner.easeOutQuart;
   }
 
   registerProperty(property)
@@ -48,13 +48,15 @@ class Animator
       return;
     }
 
-    let animation = new Animation(this.name, this.animationDuration, this.ease, this.properties.slice(), this.completionBlock);
+    let animation = new Animation(this.name, this.animationDuration, this.delay, this.ease, this.properties.slice(), this.completionBlock);
     this.name = null;
     this.properties.splice(0, this.properties.length);
     this.begun = false;
     this.animationDuration = 0;
     this.completionBlock = null;
+    this.delay = 0;
     this.animations[animation.name] = animation;
+    this.ease = Penner.easeOutQuart;
     return animation.name;
   }
 
