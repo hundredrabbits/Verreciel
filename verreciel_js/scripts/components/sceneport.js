@@ -73,16 +73,6 @@ class ScenePort extends Empty
     return true;
   }
   
-  whenInherit()
-  {
-    // assertArgs(arguments, 0);
-    super.whenInherit();
-    if (this.isPersistent == false && this.opacityFromTop == 0)
-    {
-      this.strip();
-    }
-  }
-
   whenRenderer()
   {
     // assertArgs(arguments, 0);
@@ -511,5 +501,32 @@ class ScenePort extends Empty
     // assertArgs(arguments, 0);
     super.onDisconnect();
     this.host.onDisconnect();
+  }
+}
+
+ScenePort.stripAllPorts = function(root)
+{
+  let ports = [];
+
+  function findPorts(node)
+  {
+    if (node instanceof ScenePort)
+    {
+      ports.push(node);
+    }
+    for (let child of node.children)
+    {
+      findPorts(child);
+    }
+  }
+
+  findPorts(root);
+
+  for (let port of ports)
+  {
+    if (port.isPersistent == false)
+    {
+      port.strip();
+    }
   }
 }

@@ -243,6 +243,9 @@ class Intercom extends MainPanel
   disconnectFromLocation()
   {
     // assertArgs(arguments, 0);
+
+    ScenePort.stripAllPorts(this);
+
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
     
