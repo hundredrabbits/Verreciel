@@ -144,8 +144,15 @@ class Console extends MainPanel
   {
     // assertArgs(arguments, 0);
     super.onInstallationComplete();
-    
-    this.inject(this.defaultPayload());
+    if (this.port.origin == null)
+    {
+      this.nameLabel.updateText("Console", verreciel.grey);
+      this.inject(this.defaultPayload());
+    }
+    else
+    {
+      this.nameLabel.updateText(this.port.origin.host.name + " > Port", verreciel.cyan);
+    }
   }
 }
 
@@ -185,15 +192,15 @@ class ConsoleLine extends Empty
     {
       this.textLabel.updateText(data.text, data.color);
       this.port.addEvent(data.event);
-      this.port.enable();
-      this.port.show();
+      // this.port.enable();
+      // this.port.show();
       this.textLabel.position.set(0.3, 0, 0);
     }
     else
     {
       this.textLabel.updateText("> " + data.text, data.color);
-      this.port.disable();
-      this.port.hide();
+      // this.port.disable();
+      // this.port.hide();
       this.textLabel.position.set(0, 0, 0);
     }
   }

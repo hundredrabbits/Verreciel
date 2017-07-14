@@ -1,8 +1,4 @@
-Make sure the records are all accessible
-
-Rethink missions
-  They should be accumulative, at least in part
-  Keep Cargo connected to Console, why doncha
+Make sure the records are all accessible somehow
 
 Walkthroughs
   Player rotate, click, predicate
@@ -17,10 +13,6 @@ Use the walkthrough to detect any other late THREE.js class construction
 
 -------
 
-Enigma doesn't do anything at all...
-
--------
-
 beacons
   One in south valen, one in south usul
   starts red, pressing button turns it grey
@@ -32,3 +24,8 @@ beacons
 Nevic
   South of loiqe
   Not sure what to do there though
+  Maybe work enigma into it?
+  Green space, black stars
+  Black approachable sun
+    It’s always night$under the$ultraviolet sun
+    Give LocationStar another parameter
