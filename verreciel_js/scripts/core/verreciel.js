@@ -1,15 +1,12 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Verreciel
-{
-  constructor()
-  {
+class Verreciel {
+  constructor() {
     // assertArgs(arguments, 0);
   }
 
-  install()
-  {
+  install() {
     // assertArgs(arguments, 0);
     this.version = "r1";
 
@@ -27,16 +24,16 @@ class Verreciel
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
     this.fps = 40;
-    this.camera = new THREE.PerspectiveCamera( 105, 1, 0.0001, 10000 );
+    this.camera = new THREE.PerspectiveCamera(105, 1, 0.0001, 10000);
     this.raycaster = new THREE.Raycaster();
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
-    this.renderer = new THREE.WebGLRenderer( { antialias: false } );
+    this.renderer = new THREE.WebGLRenderer({ antialias: false });
     // this.renderer.sortObjects = false;
-    this.renderer.setPixelRatio( window.devicePixelRatio );
-    this.renderer.setSize( 0, 0 );
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize(0, 0);
 
-    this.element.appendChild( this.renderer.domElement );
+    this.element.appendChild(this.renderer.domElement);
     this.lastMousePosition = new THREE.Vector2();
     this.mouseMoved = false;
     this.music = new Music();
@@ -47,7 +44,7 @@ class Verreciel
     this.items = new Items();
     this.locations = new Locations();
     this.recipes = new Recipes();
-    
+
     // Panels
     this.battery = new Battery();
     this.pilot = new Pilot();
@@ -65,7 +62,7 @@ class Verreciel
     this.exploration = new Exploration();
     this.progress = new Progress();
     this.completion = new Complete();
-    
+
     this.radio = new Radio();
     this.nav = new Nav();
     this.shield = new Shield();
@@ -78,22 +75,21 @@ class Verreciel
     this.player = new Player();
     this.space = new Space();
     this.helmet = new Helmet();
-    
+
     this.missions = new Missions();
   }
 
-  start()
-  {
+  start() {
     this.phase = Phase.start;
 
     // assertArgs(arguments, 0);
     console.info("Starting Verreciel");
 
     this.mouseIsDown = false;
-    document.addEventListener( "mousemove", this.mouseMove.bind(this), false );
-    document.addEventListener( "mousedown", this.mouseDown.bind(this), false );
-    document.addEventListener( "mouseup", this.mouseUp.bind(this), false );
-    window.addEventListener( "resize", this.windowResize.bind(this), false );
+    document.addEventListener("mousemove", this.mouseMove.bind(this), false);
+    document.addEventListener("mousedown", this.mouseDown.bind(this), false);
+    document.addEventListener("mouseup", this.mouseUp.bind(this), false);
+    window.addEventListener("resize", this.windowResize.bind(this), false);
 
     this.windowResize();
 
@@ -113,8 +109,7 @@ class Verreciel
     this.game.whenStart();
     this.items.whenStart();
 
-    if (DEBUG_SHOW_STATS)
-    {
+    if (DEBUG_SHOW_STATS) {
       this.stats = new Stats();
       this.stats.showPanel(1);
       document.body.appendChild(this.stats.dom);
@@ -124,59 +119,56 @@ class Verreciel
     this.render();
   }
 
-  render()
-  {
+  render() {
     this.phase = Phase.render;
     // assertArgs(arguments, 0);
-    requestAnimationFrame( this.render.bind(this) );
-    
-    if (DEBUG_SHOW_STATS) { this.stats.begin(); }
+    requestAnimationFrame(this.render.bind(this));
+
+    if (DEBUG_SHOW_STATS) {
+      this.stats.begin();
+    }
     let frameTime = Date.now();
 
     let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
-    if (framesElapsed > 1)
-    {
+    if (framesElapsed > 1) {
       this.lastFrameTime = frameTime;
       this.root.whenRenderer();
       this.helmet.updatePortWires();
-      this.renderer.render( this.scene, this.camera );
+      this.renderer.render(this.scene, this.camera);
     }
     this.phase = Phase.idle;
-    if (DEBUG_SHOW_STATS) { this.stats.end(); }
+    if (DEBUG_SHOW_STATS) {
+      this.stats.end();
+    }
   }
 
-  mouseDown(e)
-  {
+  mouseDown(e) {
     e.preventDefault();
     // assertArgs(arguments, 1);
-    if (this.player.isLocked)
-    {
+    if (this.player.isLocked) {
       return;
     }
 
     this.mouseIsDown = true;
     this.mouseMoved = false;
-    
+
     this.lastMousePosition.x = e.clientX / this.width;
     this.lastMousePosition.y = e.clientY / this.height;
-    
+
     this.player.canAlign = false;
     this.helmet.canAlign = false;
   }
 
-  mouseMove(e)
-  {
+  mouseMove(e) {
     e.preventDefault();
     // assertArgs(arguments, 1);
-    if (!this.mouseIsDown)
-    {
+    if (!this.mouseIsDown) {
       return;
     }
-    if (this.player.isLocked)
-    {
+    if (this.player.isLocked) {
       return;
     }
-    
+
     this.mouseMoved = true;
 
     let mouseX = e.clientX / this.width;
@@ -184,7 +176,7 @@ class Verreciel
 
     let dragX = mouseX - this.lastMousePosition.x;
     let dragY = mouseY - this.lastMousePosition.y;
-    
+
     this.lastMousePosition.x = mouseX;
     this.lastMousePosition.y = mouseY;
 
@@ -192,98 +184,115 @@ class Verreciel
     this.player.accelX += dragY;
   }
 
-  mouseUp(e)
-  {
+  mouseUp(e) {
     e.preventDefault();
     // assertArgs(arguments, 1);
     this.mouseIsDown = false;
-    if (this.player.isLocked)
-    {
+    if (this.player.isLocked) {
       return;
     }
-    
+
     this.player.canAlign = true;
     this.helmet.canAlign = true;
 
-    if (!this.mouseMoved)
-    {
+    if (!this.mouseMoved) {
       event.preventDefault();
       let hits = this.getHits().filter(this.isEnabledTrigger);
       hits.sort(this.hasShortestDistance);
-      for (let hit of hits)
-      {
-        if (hit.object.node.touch(0))
-        {
+      for (let hit of hits) {
+        if (hit.object.node.touch(0)) {
           break;
         }
       }
     }
   }
 
-  isEnabledTrigger(hit)
-  {
+  isEnabledTrigger(hit) {
     let node = hit.object.node;
-    return node instanceof SceneTrigger && node.isEnabled == true && node.opacityFromTop > 0;
+    return (
+      node instanceof SceneTrigger &&
+      node.isEnabled == true &&
+      node.opacityFromTop > 0
+    );
   }
 
-  hasShortestDistance(hit1, hit2)
-  {
-    if (hit1.distSquared == null) { hit1.distSquared = hit1.object.node.getDistSquared(hit1.point); }
-    if (hit2.distSquared == null) { hit2.distSquared = hit2.object.node.getDistSquared(hit2.point); }
+  hasShortestDistance(hit1, hit2) {
+    if (hit1.distSquared == null) {
+      hit1.distSquared = hit1.object.node.getDistSquared(hit1.point);
+    }
+    if (hit2.distSquared == null) {
+      hit2.distSquared = hit2.object.node.getDistSquared(hit2.point);
+    }
     return hit1.distSquared - hit2.distSquared;
   }
 
-  getHits()
-  {
+  getHits() {
     let mouse = new THREE.Vector2();
-    mouse.x =   this.lastMousePosition.x * 2 - 1;
-    mouse.y = - this.lastMousePosition.y * 2 + 1;
+    mouse.x = this.lastMousePosition.x * 2 - 1;
+    mouse.y = -this.lastMousePosition.y * 2 + 1;
 
     this.raycaster.setFromCamera(mouse, this.camera);
-    return this.raycaster.intersectObjects( this.scene.children, true );
+    return this.raycaster.intersectObjects(this.scene.children, true);
   }
 
-  windowResize()
-  {
+  windowResize() {
     // assertArgs(arguments, 0);
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( this.width, this.height );
+    this.renderer.setSize(this.width, this.height);
   }
 }
 
-class Phase {} setEnumValues(Phase, ['init', 'start', 'render', 'idle']);
-class Alignment {} setEnumValues(Alignment, ['left', 'center', 'right',]);
-class Systems {} setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown',]);
-class ItemTypes {} setEnumValues(ItemTypes, ['generic', 'fragment', 'battery', 'star', 'quest', 'waste', 'panel', 'key', 'currency', 'drive', 'cargo', 'shield', 'map', 'record', 'cypher', 'unknown',]);
+class Phase {}
+setEnumValues(Phase, ["init", "start", "render", "idle"]);
+class Alignment {}
+setEnumValues(Alignment, ["left", "center", "right"]);
+class Systems {}
+setEnumValues(Systems, ["loiqe", "valen", "senni", "usul", "close", "unknown"]);
+class ItemTypes {}
+setEnumValues(ItemTypes, [
+  "generic",
+  "fragment",
+  "battery",
+  "star",
+  "quest",
+  "waste",
+  "panel",
+  "key",
+  "currency",
+  "drive",
+  "cargo",
+  "shield",
+  "map",
+  "record",
+  "cypher",
+  "unknown"
+]);
 
-const Records =
-{
-  record1:"loiqe",
-  record2:"valen",
-  record3:"senni",
-  record4:"usul",
-  record5:"pillar"
-}
+const Records = {
+  record1: "loiqe",
+  record2: "valen",
+  record3: "senni",
+  record4: "usul",
+  record5: "pillar"
+};
 
-const Ambience =
-{
-  ambience1:"fog",
-  ambience2:"ghost",
-  ambience3:"silent",
-  ambience4:"kelp",
-  ambience5:"close"
-}
+const Ambience = {
+  ambience1: "fog",
+  ambience2: "ghost",
+  ambience3: "silent",
+  ambience4: "kelp",
+  ambience5: "close"
+};
 
-const Templates = function()
-{
+const Templates = (function() {
   let templates = {
     titlesAngle: 22,
     monitorsAngle: 47,
     warningsAngle: 44,
-    
+
     lineSpacing: 0.42
   };
 
@@ -291,14 +300,14 @@ const Templates = function()
   let height = 1.5;
 
   let highNode = [
-    new THREE.Vector3( 2 * scale, height, -4 * scale),
-    new THREE.Vector3( 4 * scale, height, -2 * scale),
-    new THREE.Vector3( 4 * scale, height,  2 * scale),
-    new THREE.Vector3( 2 * scale, height,  4 * scale),
-    new THREE.Vector3(-2 * scale, height,  4 * scale),
-    new THREE.Vector3(-4 * scale, height,  2 * scale),
+    new THREE.Vector3(2 * scale, height, -4 * scale),
+    new THREE.Vector3(4 * scale, height, -2 * scale),
+    new THREE.Vector3(4 * scale, height, 2 * scale),
+    new THREE.Vector3(2 * scale, height, 4 * scale),
+    new THREE.Vector3(-2 * scale, height, 4 * scale),
+    new THREE.Vector3(-4 * scale, height, 2 * scale),
     new THREE.Vector3(-4 * scale, height, -2 * scale),
-    new THREE.Vector3(-2 * scale, height, -4 * scale),
+    new THREE.Vector3(-2 * scale, height, -4 * scale)
   ];
 
   templates.left = highNode[7].x;
@@ -313,11 +322,10 @@ const Templates = function()
   templates.margin = Math.abs(templates.left - templates.leftMargin);
 
   return templates;
-}();
+})();
 
-const Settings =
-{
+const Settings = {
   sight: 2.0,
   approach: 0.5,
-  collision: 0.5,
-}
+  collision: 0.5
+};

@@ -1,10 +1,8 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Helmet extends Empty
-{
-  constructor()
-  {
+class Helmet extends Empty {
+  constructor() {
     // assertArgs(arguments, 0);
     super();
 
@@ -69,9 +67,9 @@ class Helmet extends Empty
       }
     });
     */
-    
+
     console.log("^ Helmet | Init");
-    
+
     this.canAlign = false;
     this.visor = new Empty();
     this.message = "";
@@ -84,75 +82,112 @@ class Helmet extends Empty
     this.lastWarning = 0;
 
     this.add(this.visor);
-    
+
     // Left
-    
+
     this.displayLeft = new Empty();
-    this.displayLeft.position.set(-0.5,0, this.visorDepth);
-    this.displayLeft.add(new SceneLine([
-      new THREE.Vector3(-0.2, -1.3, 0),
-      new THREE.Vector3(0, -1.3, 0),
-    ], verreciel.grey));
-    this.displayLeft.add(new SceneLine([
-      new THREE.Vector3(0, -1.3, 0),
-      new THREE.Vector3(0.01, -1.275, 0),
-    ], verreciel.grey));
-    
-    this.leftHandLabel = new SceneLabel("--", this.textSize, Alignment.left, verreciel.grey);
+    this.displayLeft.position.set(-0.5, 0, this.visorDepth);
+    this.displayLeft.add(
+      new SceneLine(
+        [new THREE.Vector3(-0.2, -1.3, 0), new THREE.Vector3(0, -1.3, 0)],
+        verreciel.grey
+      )
+    );
+    this.displayLeft.add(
+      new SceneLine(
+        [new THREE.Vector3(0, -1.3, 0), new THREE.Vector3(0.01, -1.275, 0)],
+        verreciel.grey
+      )
+    );
+
+    this.leftHandLabel = new SceneLabel(
+      "--",
+      this.textSize,
+      Alignment.left,
+      verreciel.grey
+    );
     this.leftHandLabel.position.set(-0.2, -1.375, 0);
     this.displayLeft.add(this.leftHandLabel);
-    
-    this.messageLabel = new SceneLabel("--", this.textSize, Alignment.center, verreciel.white);
-    this.messageLabel.position.set(0,1.35, this.visorDepth);
+
+    this.messageLabel = new SceneLabel(
+      "--",
+      this.textSize,
+      Alignment.center,
+      verreciel.white
+    );
+    this.messageLabel.position.set(0, 1.35, this.visorDepth);
     this.visor.add(this.messageLabel);
-    
-    this.passiveLabel = new SceneLabel("--", this.textSize, Alignment.center, verreciel.grey);
-    this.passiveLabel.position.set(0,-1.2, this.visorDepth);
+
+    this.passiveLabel = new SceneLabel(
+      "--",
+      this.textSize,
+      Alignment.center,
+      verreciel.grey
+    );
+    this.passiveLabel.position.set(0, -1.2, this.visorDepth);
     this.visor.add(this.passiveLabel);
-    
+
     this.displayLeft.rotation.y = degToRad(10);
-    
+
     this.visor.add(this.displayLeft);
-    
+
     // Right
-    
+
     this.displayRight = new Empty();
-    this.displayRight.position.set(0.5,0, this.visorDepth);
-    this.displayRight.add(new SceneLine([
-      new THREE.Vector3(0.2, -1.3, 0),
-      new THREE.Vector3(0, -1.3, 0),
-    ], verreciel.grey));
-    this.displayRight.add(new SceneLine([
-      new THREE.Vector3(0, -1.3, 0),
-      new THREE.Vector3(-0.01, -1.275, 0),
-    ], verreciel.grey));
-    
-    this.rightHandLabel = new SceneLabel("--", this.textSize, Alignment.right, verreciel.white);
+    this.displayRight.position.set(0.5, 0, this.visorDepth);
+    this.displayRight.add(
+      new SceneLine(
+        [new THREE.Vector3(0.2, -1.3, 0), new THREE.Vector3(0, -1.3, 0)],
+        verreciel.grey
+      )
+    );
+    this.displayRight.add(
+      new SceneLine(
+        [new THREE.Vector3(0, -1.3, 0), new THREE.Vector3(-0.01, -1.275, 0)],
+        verreciel.grey
+      )
+    );
+
+    this.rightHandLabel = new SceneLabel(
+      "--",
+      this.textSize,
+      Alignment.right,
+      verreciel.white
+    );
     this.rightHandLabel.position.set(0.2, -1.375, 0);
     this.displayRight.add(this.rightHandLabel);
-    
+
     this.displayRight.rotation.y = degToRad(-10);
-    
+
     this.visor.add(this.displayRight);
-    
-    this.displayRight.add(new SceneLine([
-      new THREE.Vector3(0.2, 1.4, 0),
-      new THREE.Vector3(0.1, 1.4, 0),
-    ], verreciel.grey));
-    this.displayLeft.add(new SceneLine([
-      new THREE.Vector3(-0.2, 1.4, 0),
-      new THREE.Vector3(-0.1, 1.4, 0),
-    ], verreciel.grey));
-    
+
+    this.displayRight.add(
+      new SceneLine(
+        [new THREE.Vector3(0.2, 1.4, 0), new THREE.Vector3(0.1, 1.4, 0)],
+        verreciel.grey
+      )
+    );
+    this.displayLeft.add(
+      new SceneLine(
+        [new THREE.Vector3(-0.2, 1.4, 0), new THREE.Vector3(-0.1, 1.4, 0)],
+        verreciel.grey
+      )
+    );
+
     // Center
-    
-    this.warningLabel = new SceneLabel("", 0.1, Alignment.center, verreciel.red);
+
+    this.warningLabel = new SceneLabel(
+      "",
+      0.1,
+      Alignment.center,
+      verreciel.red
+    );
     this.warningLabel.position.set(0, 2, -3.25);
     this.visor.add(this.warningLabel);
-    
+
     this.visor.add(verreciel.player.port);
-    verreciel.player.port.position.set(0,-3,-2.5);
-    
+    verreciel.player.port.position.set(0, -3, -2.5);
+
     /*
     // iPhone4
     if (verreciel.width == 320 && verreciel.height == 480)
@@ -173,31 +208,33 @@ class Helmet extends Empty
     }
     */
   }
-  
-  whenStart()
-  {
+
+  whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
     console.log("+ Helmet | Start");
   }
-  
-  whenRenderer()
-  {
+
+  whenRenderer() {
     // assertArgs(arguments, 0);
     super.whenRenderer();
-    
+
     let rotX = this.rotation.x;
     let rotY = this.rotation.y;
 
-    let diffRotationY = sanitizeDiffAngle(verreciel.player.rotation.y, this.rotation.y);
-    if (Math.abs(diffRotationY) > 0.001)
-    {
+    let diffRotationY = sanitizeDiffAngle(
+      verreciel.player.rotation.y,
+      this.rotation.y
+    );
+    if (Math.abs(diffRotationY) > 0.001) {
       rotY += diffRotationY * 0.75;
     }
 
-    let diffRotationX = sanitizeDiffAngle(verreciel.player.rotation.x, this.rotation.x);
-    if (Math.abs(diffRotationX) > 0.001)
-    {
+    let diffRotationX = sanitizeDiffAngle(
+      verreciel.player.rotation.x,
+      this.rotation.x
+    );
+    if (Math.abs(diffRotationX) > 0.001) {
       rotX += diffRotationX * 0.85;
     }
 
@@ -206,72 +243,66 @@ class Helmet extends Empty
     this.warningLabel.blink();
   }
 
-  updatePortWires()
-  {
+  updatePortWires() {
     // assertArgs(arguments, 0);
     let port = verreciel.player.port;
-    if (port.origin != null)
-    {
+    if (port.origin != null) {
       port.origin.updateWire();
     }
-    if (port.connection != null)
-    {
+    if (port.connection != null) {
       port.updateWire();
     }
   }
 
-  drinkTea()
-  {
+  drinkTea() {
     let oldPassive = this.passive;
     this.addPassive("< sip >");
 
-    delay(0.7, function(){
-      verreciel.player.port.origin.disconnect();
-      
-      this.addPassive("...mmm...");
-      verreciel.animator.begin();
-      verreciel.animator.ease = Penner.easeInOutCubic;
-      verreciel.animator.animationDuration = 0.125;
-      this.displayLeft.updateChildrenColors(verreciel.cyan);
-      this.displayRight.updateChildrenColors(verreciel.cyan);
-      this.displayLeft.position.set(-0.65,0, this.visorDepth + 0.05);
-      this.displayRight.position.set(0.65,0, this.visorDepth + 0.05);
-      verreciel.animator.completionBlock = function()
-      {
+    delay(
+      0.7,
+      function() {
+        verreciel.player.port.origin.disconnect();
+
+        this.addPassive("...mmm...");
         verreciel.animator.begin();
-        verreciel.animator.ease = Penner.easeInOutQuad;
-        verreciel.animator.animationDuration = 3;
-        this.displayLeft.updateChildrenColors(verreciel.grey);
-        this.displayLeft.position.set(-0.5,0, this.visorDepth);
-        this.displayRight.updateChildrenColors(verreciel.grey);
-        this.displayRight.position.set(0.5,0, this.visorDepth);
-        verreciel.animator.completionBlock = function()
-        {
-          this.addPassive(oldPassive);
+        verreciel.animator.ease = Penner.easeInOutCubic;
+        verreciel.animator.animationDuration = 0.125;
+        this.displayLeft.updateChildrenColors(verreciel.cyan);
+        this.displayRight.updateChildrenColors(verreciel.cyan);
+        this.displayLeft.position.set(-0.65, 0, this.visorDepth + 0.05);
+        this.displayRight.position.set(0.65, 0, this.visorDepth + 0.05);
+        verreciel.animator.completionBlock = function() {
+          verreciel.animator.begin();
+          verreciel.animator.ease = Penner.easeInOutQuad;
+          verreciel.animator.animationDuration = 3;
+          this.displayLeft.updateChildrenColors(verreciel.grey);
+          this.displayLeft.position.set(-0.5, 0, this.visorDepth);
+          this.displayRight.updateChildrenColors(verreciel.grey);
+          this.displayRight.position.set(0.5, 0, this.visorDepth);
+          verreciel.animator.completionBlock = function() {
+            this.addPassive(oldPassive);
+          }.bind(this);
+          verreciel.animator.commit();
         }.bind(this);
         verreciel.animator.commit();
-      }.bind(this);
-      verreciel.animator.commit();
-      verreciel.music.playEffect("beep3");
-    }.bind(this));
+        verreciel.music.playEffect("beep3");
+      }.bind(this)
+    );
   }
-  
-  addMessage(message, color = verreciel.white)
-  {
-    // assertArgs(arguments, 1);   
-    if (this.message == message)
-    {
+
+  addMessage(message, color = verreciel.white) {
+    // assertArgs(arguments, 1);
+    if (this.message == message) {
       return;
     }
-    
+
     this.message = message;
-    
+
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.1;
     this.messageLabel.hide();
     this.messageLabel.color = verreciel.cyan;
-    verreciel.animator.completionBlock = function()
-    {
+    verreciel.animator.completionBlock = function() {
       verreciel.animator.begin();
       verreciel.animator.animationDuration = 0.1;
       this.messageLabel.updateText(this.message, color);
@@ -280,61 +311,54 @@ class Helmet extends Empty
     }.bind(this);
     verreciel.animator.commit();
   }
-  
-  addPassive(passive)
-  {
+
+  addPassive(passive) {
     // assertArgs(arguments, 1);
-    if (this.passive == passive)
-    {
+    if (this.passive == passive) {
       return;
     }
-    
+
     this.passive = passive;
-    
+
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.1;
-    this.passiveLabel.position.set(0,-1.2,this.visorDepth - 0.01);
+    this.passiveLabel.position.set(0, -1.2, this.visorDepth - 0.01);
     this.passiveLabel.hide();
-    verreciel.animator.completionBlock = function(){
+    verreciel.animator.completionBlock = function() {
       verreciel.animator.begin();
       verreciel.animator.animationDuration = 0.1;
       this.passiveLabel.updateText(this.passive);
-      this.passiveLabel.position.set(0,-1.2,this.visorDepth);
+      this.passiveLabel.position.set(0, -1.2, this.visorDepth);
       this.passiveLabel.show();
       verreciel.animator.commit();
     }.bind(this);
     verreciel.animator.commit();
   }
-  
-  addWarning(text, color, duration, flag)
-  {
+
+  addWarning(text, color, duration, flag) {
     // assertArgs(arguments, 3);
-    if (verreciel.game.time - this.lastWarning <= 10)
-    {
+    if (verreciel.game.time - this.lastWarning <= 10) {
       return;
     }
-    if (text == "")
-    {
+    if (text == "") {
       return;
     }
-    
+
     this.warningString = text;
-    if (color == null)
-    {
+    if (color == null) {
       color = verreciel.red;
     }
     this.warningColor = color;
     this.warningFlag = flag;
     this.lastWarning = verreciel.game.time;
-    
+
     this.warningLabel.updateText(this.warningString, this.warningColor);
     verreciel.music.playEffect("beep2");
-    
+
     delay(duration, this.hideWarning.bind(this));
   }
-  
-  hideWarning()
-  {
+
+  hideWarning() {
     // assertArgs(arguments, 0);
     this.warningFlag = "";
     this.warningString = "";
