@@ -134,13 +134,19 @@ class Usul
     // assertArgs(arguments, 0);
     return new LocationSatellite("telescope", this.system, new THREE.Vector2(this.offset.x, this.offset.y - 1), "extra sight$map format", verreciel.items.map2, verreciel.items.map1);
   }
-  
+
   // MARK: Blind
   
   silence()
   {
     // assertArgs(arguments, 0);
     return new LocationTrade("silence", this.system, new THREE.Vector2(this.offset.x - 1, this.offset.y), verreciel.items.currency6, verreciel.items.shield, verreciel.items.map2);
+  }
+
+  annex()
+  {
+    // assertArgs(arguments, 0);
+    return new LocationSatellite("annex", this.system, new THREE.Vector2(this.offset.x - 1, this.offset.y + 1), "A vivid moment$on repeat", verreciel.items.record4, verreciel.items.map2);
   }
 }
 
@@ -228,12 +234,6 @@ class Valen
     // assertArgs(arguments, 0);
     return new LocationTrade("void", this.system, new THREE.Vector2(this.offset.x + 1, this.offset.y - 2), verreciel.items.teapot, verreciel.items.kelp, verreciel.items.map2);
   }
-  
-  wreck()
-  {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite("wreck", this.system, new THREE.Vector2(this.offset.x + 2, this.offset.y), "Memories$radio format", verreciel.items.record3, verreciel.items.map2);
-  }
 }
 
 class Senni
@@ -298,7 +298,7 @@ class Senni
   wreck()
   {
     // assertArgs(arguments, 0);
-    return new LocationSatellite("wreck", this.system, new THREE.Vector2(this.offset.x - 2, this.offset.y), "Memories$radio format", verreciel.items.record2, verreciel.items.map1);
+    return new LocationSatellite("wreck", this.system, new THREE.Vector2(this.offset.x - 2, this.offset.y), "Memories$of misfortune", verreciel.items.record2, verreciel.items.map1);
   }
   
   // MARK: Silence

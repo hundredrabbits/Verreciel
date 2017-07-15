@@ -752,14 +752,14 @@ class Missions
       verreciel.cargo.addItems([i.endPortalKey,i.map1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.console,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
       verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
-      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence,u.usul_annex]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
       verreciel.nav.setMap(i.map2);
-      verreciel.radio.setRecord(i.record3);
+      verreciel.radio.setRecord(i.record4);
       verreciel.shield.setShield(i.shield);
       u.valen_bank.addItems([i.record1,i.record2]);
     }
@@ -802,14 +802,14 @@ class Missions
       verreciel.cargo.addItems([i.endPortalKey,i.map1]);
       verreciel.missions.setToInstalled([verreciel.battery,verreciel.thruster,verreciel.console,verreciel.radar,verreciel.progress,verreciel.pilot,verreciel.exploration,verreciel.radio,verreciel.journey,verreciel.nav,verreciel.shield]);
       verreciel.missions.setToKnown([u.loiqe_spawn,u.loiqe_harvest,u.loiqe_city,u.loiqe_satellite,u.loiqe_horadric,u.loiqe_portal,u.valen_station,u.valen_cargo,u.valen_bank,u.senni_harvest,u.senni_portal,u.valen_portal]);
-      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence,u.loiqe,u.valen,u.senni,u.usul]);
+      verreciel.missions.setToCompleted([u.loiqe_city,u.loiqe_satellite,u.valen_station,u.valen_cargo,u.loiqe_port,u.senni_cargo,u.valen_fog,u.senni_station,u.loiqe_fog,u.usul_station,u.senni_fog,u.senni_wreck,u.usul_telescope,u.usul_silence,u.usul_annex,u.loiqe,u.valen,u.senni,u.usul]);
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort);
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort);
       verreciel.radar.port.connect(verreciel.pilot.port);
       verreciel.cargo.port.connect(verreciel.console.port);
       verreciel.nav.setMap(i.map2);
-      verreciel.radio.setRecord(i.record3);
+      verreciel.radio.setRecord(i.record4);
       verreciel.shield.setShield(i.shield);
       u.valen_bank.addItems([i.record1,i.record2]);
     }

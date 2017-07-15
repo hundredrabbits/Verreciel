@@ -24,9 +24,5 @@ class Recipes
     this.horadric.push( new Recipe([verreciel.items.currency1, verreciel.items.currency2], Item.like(verreciel.items.currency4)) );
     this.horadric.push( new Recipe([verreciel.items.currency2, verreciel.items.currency3], Item.like(verreciel.items.currency5)) );
     this.horadric.push( new Recipe([verreciel.items.currency4, verreciel.items.currency5], Item.like(verreciel.items.currency6)) );
-    
-    //
-    
-    this.horadric.push( new Recipe([verreciel.items.record1, verreciel.items.record2], verreciel.items.record4) );
   }
 }
