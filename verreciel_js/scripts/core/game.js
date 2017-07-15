@@ -30,6 +30,7 @@ class Game
     }
     localStorage.state = id;
     localStorage.version = verreciel.version;
+    verreciel.completion.refresh();
   }
   
   load(id)
