@@ -7,7 +7,7 @@
   "author": "Devine Lu Linvega <aliceffekt@gmail.com>",
   "license": "CC-BY-4.0",
   "scripts": {
-    "fmt": "prettier --single-quote --write main.js scripts/**/*.js links/**/*.css"
+    "fmt": "prettier --write main.js scripts/**/*.js links/**/*.css"
   },
   "dependencies": {
     "electron-packager": "^8.4.0"
