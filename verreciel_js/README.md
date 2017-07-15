@@ -41,5 +41,5 @@ Code formatting is handled by [prettier](https://github.com/prettier/prettier).
 To format the code:
 
 ```sh
-npm fmt
+npm run fmt
 ```
