@@ -6,10 +6,14 @@
   "main": "main.js",
   "author": "Devine Lu Linvega <aliceffekt@gmail.com>",
   "license": "CC-BY-4.0",
+  "scripts": {
+    "fmt": "prettier --single-quote --write main.js scripts/**/*.js links/**/*.css"
+  },
   "dependencies": {
     "electron-packager": "^8.4.0"
   },
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron": "^1.6.11",
+    "prettier": "^1.5.3"
   }
 }
