@@ -1,0 +1,31 @@
+Make sure the records are all accessible somehow
+
+Walkthroughs
+  Player rotate, click, predicate
+  Game speed modification
+
+  Mission walkthrough chapters
+  Record walkthrough chapters
+  Test for each recipe
+  Chapter to reach other areas
+
+Use the walkthrough to detect any other late THREE.js class construction
+
+-------
+
+beacons
+  One in south valen, one in south usul
+  starts red, pressing button turns it grey
+    takes three times as long as harvest
+    50% chance of no result
+  Returns cipher
+  cipher 1 & cipher 2 = key to Nevic
+
+Nevic
+  South of loiqe
+  Not sure what to do there though
+  Maybe work enigma into it?
+  Green space, black stars
+  Black approachable sun
+    It’s always night$under the$ultraviolet sun
+    Give LocationStar another parameter

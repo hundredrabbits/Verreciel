@@ -1,0 +1,12 @@
+{
+  "name": "Verreciel",
+  "version": "0.1.0",
+  "main": "main.js",
+  "start": "",
+  "dependencies": {
+    "electron-packager": "^8.4.0"
+  },
+  "devDependencies": {
+    "electron": "^1.6.11"
+  }
+}

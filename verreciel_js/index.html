@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script type="text/javascript" src="scripts/logo.js"></script>
+    <script type="text/javascript" src="lib/three.js"></script>
+    <script type="text/javascript" src="lib/stats.min.js"></script>
+    <script type="text/javascript" src="lib/easing.js"></script>
+
+    <script type="text/javascript" src="scripts/utils/enum.js"></script>
+    <script type="text/javascript" src="scripts/utils/tools.js"></script>
+
+    <script type="text/javascript" src="scripts/animations/animator.js"></script>
+    <script type="text/javascript" src="scripts/animations/animation.js"></script>
+    <script type="text/javascript" src="scripts/animations/animatedproperty.js"></script>
+    <script type="text/javascript" src="scripts/animations/animatedxyz.js"></script>
+
+    <script type="text/javascript" src="scripts/components/scenenode.js"></script>
+    <script type="text/javascript" src="scripts/components/empty.js"></script>
+    <script type="text/javascript" src="scripts/components/scenedrawnode.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneline.js"></script>
+    <script type="text/javascript" src="scripts/components/scenelabel.js"></script>
+    <script type="text/javascript" src="scripts/components/scenebutton.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneprogressbar.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneprogressradial.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneport.js"></script>
+    <script type="text/javascript" src="scripts/components/scenetrigger.js"></script>
+    <script type="text/javascript" src="scripts/components/scenewire.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneportslot.js"></script>
+    <script type="text/javascript" src="scripts/components/scenehandle.js"></script>
+    <script type="text/javascript" src="scripts/components/sceneportredirect.js"></script>
+
+    <script type="text/javascript" src="scripts/shapes/diamond.js"></script>
+    <script type="text/javascript" src="scripts/shapes/octagon.js"></script>
+    <script type="text/javascript" src="scripts/shapes/hexagon.js"></script>
+    <script type="text/javascript" src="scripts/shapes/rect.js"></script>
+    <script type="text/javascript" src="scripts/shapes/cube.js"></script>
+
+    <script type="text/javascript" src="scripts/core/verreciel.js"></script>
+    <script type="text/javascript" src="scripts/core/music.js"></script>
+
+    <script type="text/javascript" src="scripts/core/universe.js"></script>
+    <script type="text/javascript" src="scripts/core/game.js"></script>
+    <script type="text/javascript" src="scripts/core/player.js"></script>
+    <script type="text/javascript" src="scripts/core/helmet.js"></script>
+    <script type="text/javascript" src="scripts/core/capsule.js"></script>
+    <script type="text/javascript" src="scripts/core/space.js"></script>
+
+    <script type="text/javascript" src="scripts/objects/event.js"></script>
+    <script type="text/javascript" src="scripts/objects/icon.js"></script>
+    <script type="text/javascript" src="scripts/objects/item.js"></script>
+    <script type="text/javascript" src="scripts/objects/mission.js"></script>
+    <script type="text/javascript" src="scripts/objects/recipe.js"></script>
+    <script type="text/javascript" src="scripts/objects/quest.js"></script>
+
+    <script type="text/javascript" src="scripts/objects/structure.js"></script>
+
+    <script type="text/javascript" src="scripts/panels/panel.js"></script>
+    <script type="text/javascript" src="scripts/panels/portholes/above.js"></script>
+    <script type="text/javascript" src="scripts/panels/portholes/below.js"></script>
+
+    <script type="text/javascript" src="scripts/panels/mainpanels/mainpanel.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/battery.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/cargo.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/console.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/hatch.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/intercom.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/pilot.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/radar.js"></script>
+    <script type="text/javascript" src="scripts/panels/mainpanels/thruster.js"></script>
+
+    <script type="text/javascript" src="scripts/panels/monitors/monitor.js"></script>
+    <script type="text/javascript" src="scripts/panels/monitors/journey.js"></script>
+    <script type="text/javascript" src="scripts/panels/monitors/exploration.js"></script>
+    <script type="text/javascript" src="scripts/panels/monitors/progress.js"></script>
+    <script type="text/javascript" src="scripts/panels/monitors/complete.js"></script>
+
+    <script type="text/javascript" src="scripts/panels/widgets/widget.js"></script>
+    <script type="text/javascript" src="scripts/panels/widgets/radio.js"></script>
+    <script type="text/javascript" src="scripts/panels/widgets/nav.js"></script>
+    <script type="text/javascript" src="scripts/panels/widgets/shield.js"></script>
+    <script type="text/javascript" src="scripts/panels/widgets/enigma.js"></script>
+    
+    <script type="text/javascript" src="scripts/locations/location.js"></script>
+    <script type="text/javascript" src="scripts/locations/bank.js"></script>
+    <script type="text/javascript" src="scripts/locations/beacon.js"></script>
+    <script type="text/javascript" src="scripts/locations/close.js"></script>
+    <script type="text/javascript" src="scripts/locations/constellation.js"></script>
+    <script type="text/javascript" src="scripts/locations/harvest.js"></script>
+    <script type="text/javascript" src="scripts/locations/horadric.js"></script>
+    <script type="text/javascript" src="scripts/locations/portal.js"></script>
+    <script type="text/javascript" src="scripts/locations/satellite.js"></script>
+    <script type="text/javascript" src="scripts/locations/star.js"></script>
+    <script type="text/javascript" src="scripts/locations/station.js"></script>
+    <script type="text/javascript" src="scripts/locations/trade.js"></script>
+    <script type="text/javascript" src="scripts/locations/transit.js"></script>
+
+    <script type="text/javascript" src="scripts/collections/missions.js"></script>
+    <script type="text/javascript" src="scripts/collections/items.js"></script>
+    <script type="text/javascript" src="scripts/collections/locations.js"></script>
+    <script type="text/javascript" src="scripts/collections/recipes.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="links/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="links/main.css"/>
+
+    <title>Verreciel</title>
+    <!-- Created by Devine Lu Linvega. -->
+    <!-- Copyright © 2017 XXIIVV. All rights reserved. -->
+  </head>
+  <body>
+    <div id='splashContainer'>
+      <div id='logoContainer' style='width:120px;height:120px; margin:25vh auto; background: none;'></div>
+    </div>
+    <script>
+
+        function isDeviceMobile()
+        {
+            console.log("isDeviceMobile: window orientation = " + window.orientation);
+            return window.orientation !== undefined;
+        }
+
+        let IS_MOBILE = isDeviceMobile();
+
+        let DEBUG_SKIP_LOGO = false;
+        let DEBUG_SHOW_TRIGGERS = false;
+        let DEBUG_DONT_SAVE = false;
+        let DEBUG_NO_MUSIC = false;
+        let DEBUG_SHOW_STATS = false;
+        let DEBUG_REPORT_NODE_USE = false;
+
+        let verreciel = new Verreciel();
+        verreciel.install();
+
+        let logoContainer = document.getElementById("logoContainer");
+        let splashContainer = document.getElementById("splashContainer");
+
+        if (DEBUG_SKIP_LOGO)
+        {
+            logoContainer.parentNode.removeChild(logoContainer);
+            splashContainer.style = "opacity: 0";
+            verreciel.start();
+        }
+        else
+        {
+            var logo = new Logo(logoContainer);
+            delay(1.5, function(){ logo.install(); });
+            delay(7.0, function(){ verreciel.start(); });
+            delay(7.5, function(){ splashContainer.style = "opacity: 0"; });
+            delay(8.5, function(){ logoContainer.parentNode.removeChild(logoContainer); });
+        }
+
+    </script>
+  </body>
+</html>
