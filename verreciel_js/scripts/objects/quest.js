@@ -1,10 +1,8 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Quest
-{
-  constructor(name, location, predicate, result)
-  {
+class Quest {
+  constructor(name, location, predicate, result) {
     // assertArgs(arguments, 4);
     this.isCompleted = false;
     this.isSkipped = false;
@@ -15,28 +13,20 @@ class Quest
     this.result = result;
   }
 
-  validate()
-  {
+  validate() {
     // assertArgs(arguments, 0);
-    if (this.isSkipped == true)
-    {
+    if (this.isSkipped == true) {
       this.isCompleted = true;
-    }
-    else if (this.predicate())
-    {
+    } else if (this.predicate()) {
       this.complete();
-    }
-    else
-    {
+    } else {
       this.isCompleted = false;
     }
   }
-  
-  complete()
-  {
+
+  complete() {
     // assertArgs(arguments, 0);
-    if (this.isCompleted == true)
-    {
+    if (this.isCompleted == true) {
       return;
     }
     this.isCompleted = true;

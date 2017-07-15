@@ -1,10 +1,8 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Animation
-{
-  constructor(name, duration, animDelay, ease, properties, completionBlock)
-  {
+class Animation {
+  constructor(name, duration, animDelay, ease, properties, completionBlock) {
     this.name = name;
     this.duration = duration;
     this.delay = animDelay;
@@ -16,10 +14,8 @@ class Animation
     this.completed = false;
     this.started = false;
 
-    for (let property of this.properties)
-    {
-      if (property.registered)
-      {
+    for (let property of this.properties) {
+      if (property.registered) {
         property.commit(this.name);
       }
     }
@@ -30,10 +26,8 @@ class Animation
     delay(this.delay, this.tick.bind(this));
   }
 
-  tick()
-  {
-    if (this.completed)
-    {
+  tick() {
+    if (this.completed) {
       return;
     }
     let frameTime = Date.now();
@@ -43,44 +37,34 @@ class Animation
     var percentElapsed = secondsElapsed / this.duration;
     this.percent += percentElapsed;
 
-    if (this.percent > 1)
-    {
+    if (this.percent > 1) {
       this.percent = 1;
     }
 
     let easedPercent = this.ease(this.percent, 0, 1, 1);
 
-    for (let property of this.properties)
-    {
-      if (property.registered)
-      {
+    for (let property of this.properties) {
+      if (property.registered) {
         property.interpolate(easedPercent);
-        if (this.percent >= 1)
-        {
+        if (this.percent >= 1) {
           property.animation = null;
           property.registered = false;
         }
       }
     }
 
-    if (this.started == true)
-    {
-      if (this.percent < 1)
-      {
+    if (this.started == true) {
+      if (this.percent < 1) {
         requestAnimationFrame(this.tick.bind(this));
-      }
-      else
-      {
+      } else {
         verreciel.animator.completeAnimation(this.name);
       }
     }
   }
 
-  complete()
-  {
+  complete() {
     this.completed = true;
-    if (this.completionBlock != null)
-    {
+    if (this.completionBlock != null) {
       this.completionBlock();
     }
   }

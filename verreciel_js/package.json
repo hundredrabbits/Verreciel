@@ -1,12 +1,20 @@
 {
   "name": "Verreciel",
   "version": "0.1.0",
+  "description": "Verreciel is a space exploration game happening in a small capsule.",
+  "repository": "https://github.com/Echorridoors/Verreciel",
   "main": "main.js",
-  "start": "",
+  "author": "Devine Lu Linvega <aliceffekt@gmail.com>",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "start": "electron .",
+    "fmt": "prettier --write main.js scripts/**/*.js links/**/*.css"
+  },
   "dependencies": {
     "electron-packager": "^8.4.0"
   },
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron": "^1.6.11",
+    "prettier": "^1.5.3"
   }
 }

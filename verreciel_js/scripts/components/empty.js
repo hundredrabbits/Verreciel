@@ -1,109 +1,84 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Empty extends SceneNode
-{
-  constructor()
-  {
+class Empty extends SceneNode {
+  constructor() {
     // assertArgs(arguments, 0);
     super();
     this.details = "unknown";
   }
 
-  touch(id = 0)
-  {
+  touch(id = 0) {
     // assertArgs(arguments, 1);
     return false;
   }
-  
-  update()
-  {
-    // assertArgs(arguments, 0, true);
 
+  update() {
+    // assertArgs(arguments, 0, true);
   }
 
   // TODO: REMOVE
-  add()
-  {
-    if (arguments[0] == null)
-    {
+  add() {
+    if (arguments[0] == null) {
       throw "NULL ADD";
     }
-    if (!arguments[0] instanceof THREE.Object3D)
-    {
+    if (!arguments[0] instanceof THREE.Object3D) {
       throw "ILLEGAL ADD";
     }
     super.add.apply(this, arguments);
   }
-  
-  empty()
-  {
+
+  empty() {
     // assertArgs(arguments, 0);
-    while (this.children.length > 0)
-    {
+    while (this.children.length > 0) {
       this.remove(this.children[0]);
     }
   }
-  
-  blink()
-  {
+
+  blink() {
     // assertArgs(arguments, 0);
-    if (verreciel.game.time % 3 == 0)
-    {
+    if (verreciel.game.time % 3 == 0) {
       this.opacity = 1;
-    }
-    else
-    {
+    } else {
       this.opacity = 0;
     }
   }
-  
-  show()
-  {
+
+  show() {
     // assertArgs(arguments, 0);
     this.opacity = 1;
   }
-  
-  hide()
-  {
+
+  hide() {
     // assertArgs(arguments, 0);
     this.opacity = 0;
   }
-  
-  updateChildrenColors(color)
-  {
-    for (let node of this.children)
-    {
+
+  updateChildrenColors(color) {
+    for (let node of this.children) {
       node.updateChildrenColors(color);
     }
   }
-  
-  onConnect()
-  {
+
+  onConnect() {
     // assertArgs(arguments, 0);
     this.update();
   }
-  
-  onDisconnect()
-  {
+
+  onDisconnect() {
     // assertArgs(arguments, 0);
     this.update();
   }
-  
-  onUploadComplete()
-  {
+
+  onUploadComplete() {
     // assertArgs(arguments, 0);
-    
   }
-  
-  onMissionComplete()
-  {
+
+  onMissionComplete() {
     // assertArgs(arguments, 0);
-    
   }
-  
-  payload()
-  {
+
+  payload() {
     // assertArgs(arguments, 0);
     return new ConsolePayload([new ConsoleData("unknown", "unknown")]);
   }
