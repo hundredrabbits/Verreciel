@@ -234,7 +234,10 @@ class Location extends Event
     verreciel.progress.refresh();
     this.icon.onUpdate();
     this.structure.onComplete();
-    verreciel.intercom.complete();
+    if (verreciel.intercom.port.event == this)
+    {
+      verreciel.intercom.complete();
+    }
     verreciel.music.playEffect("beep1");
   }
   

@@ -872,7 +872,6 @@ class Missions
       }
       location.isKnown = true;
     }
-    verreciel.intercom.locationPanel.empty();
   }
   
   refresh()

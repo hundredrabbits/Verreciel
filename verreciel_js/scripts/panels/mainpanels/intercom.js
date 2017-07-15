@@ -160,8 +160,11 @@ class Intercom extends MainPanel
       return;
     }
     this.isCompleting = true;
+
+    verreciel.animator.completeAnimation("intercom_connect_1");
+    verreciel.animator.completeAnimation("intercom_connect_2");
     
-    verreciel.animator.begin();
+    verreciel.animator.begin("intercom_complete_1");
     verreciel.animator.animationDuration = 0.5;
     
     this.locationPanel.position.set(0,0,-0.5);
@@ -171,7 +174,7 @@ class Intercom extends MainPanel
 
       // this.defaultPanel.position.set(0,0,-0.5);
       
-      verreciel.animator.begin();
+      verreciel.animator.begin("intercom_complete_2");
       verreciel.animator.animationDuration = 0.5;
       
       this.defaultPanel.position.set(0,0,0);
@@ -202,7 +205,12 @@ class Intercom extends MainPanel
     
     // Animate
     
-    verreciel.animator.begin();
+    verreciel.animator.completeAnimation("intercom_complete_1");
+    verreciel.animator.completeAnimation("intercom_complete_2");
+    verreciel.animator.completeAnimation("intercom_disconnect_1");
+    verreciel.animator.completeAnimation("intercom_disconnect_2");
+
+    verreciel.animator.begin("intercom_connect_1");
     verreciel.animator.animationDuration = 0.5;
     
     this.defaultPanel.position.set(0,0,-0.5);
@@ -217,7 +225,7 @@ class Intercom extends MainPanel
         this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
       }
       
-      verreciel.animator.begin();
+      verreciel.animator.begin("intercom_connect_2");
       verreciel.animator.animationDuration = 0.5;
       
       this.locationPanel.position.set(0,0,0);
@@ -246,7 +254,10 @@ class Intercom extends MainPanel
 
     ScenePort.stripAllPorts(this);
 
-    verreciel.animator.begin();
+    verreciel.animator.completeAnimation("intercom_connect_1");
+    verreciel.animator.completeAnimation("intercom_connect_2");
+
+    verreciel.animator.begin("intercom_disconnect_1");
     verreciel.animator.animationDuration = 0.5;
     
     this.locationPanel.position.set(0,0,-0.5);
@@ -256,7 +267,7 @@ class Intercom extends MainPanel
       
       this.defaultPanel.position.set(0,0,-0.5);
       
-      verreciel.animator.begin();
+      verreciel.animator.begin("intercom_disconnect_2");
       verreciel.animator.animationDuration = 0.5;
       
       this.defaultPanel.position.set(0,0,0);
