@@ -1,5 +1,3 @@
-Make sure the records are all accessible somehow
-
 Walkthroughs
   Player rotate, click, predicate
   Game speed modification
