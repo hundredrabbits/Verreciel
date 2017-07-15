@@ -173,7 +173,7 @@ class ConsoleLine extends Empty
     this.port.hide();
     this.add(this.port);
     
-    this.textLabel = new SceneLabel("", 0.1, Alignment.left);
+    this.textLabel = new SceneLabel("", 0.0875, Alignment.left);
     this.textLabel.position.set(0.3, 0, 0);
     this.add(this.textLabel);
     
