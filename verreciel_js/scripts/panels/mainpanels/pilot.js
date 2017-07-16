@@ -4,9 +4,8 @@
 class Pilot extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("pilot");
 
-    this.name = "pilot";
     this.details = "aligns to locations";
     this.port.isPersistent = true;
 

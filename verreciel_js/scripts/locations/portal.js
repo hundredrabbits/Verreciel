@@ -19,14 +19,14 @@ class LocationPortal extends Location {
       Alignment.center,
       verreciel.grey
     );
-    this.pilotPort = new ScenePort(this);
+    this.pilotPort = new ScenePort(this, this.code + "_pilot");
     this.pilotLabel = new SceneLabel(
       "pilot",
       0.1,
       Alignment.center,
       verreciel.grey
     );
-    this.thrusterPort = new ScenePort(this);
+    this.thrusterPort = new ScenePort(this, this.code + "_thruster");
     this.thrusterLabel = new SceneLabel(
       "thruster",
       0.08,

@@ -5,7 +5,7 @@ class Universe extends Empty {
   constructor() {
     // assertArgs(arguments, 0);
     super();
-    console.log("^ Universe | Init");
+    console.info("^ Universe | Init");
 
     this.eventView = verreciel.radar.eventView;
 
@@ -81,7 +81,7 @@ class Universe extends Empty {
 
   whenStart() {
     super.whenStart();
-    console.log("+ Universe | Start");
+    console.info("+ Universe | Start");
     this.connectPaths();
   }
 

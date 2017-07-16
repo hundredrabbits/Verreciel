@@ -4,18 +4,17 @@
 class Console extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("console");
 
     this.lines = [
-      new ConsoleLine(),
-      new ConsoleLine(),
-      new ConsoleLine(),
-      new ConsoleLine(),
-      new ConsoleLine(),
-      new ConsoleLine()
+      new ConsoleLine(1),
+      new ConsoleLine(2),
+      new ConsoleLine(3),
+      new ConsoleLine(4),
+      new ConsoleLine(5),
+      new ConsoleLine(6)
     ];
 
-    this.name = "console";
     this.details = "inspects events";
 
     this.lines[0].position.set(
@@ -170,11 +169,11 @@ class Console extends MainPanel {
 }
 
 class ConsoleLine extends Empty {
-  constructor(data = null) {
+  constructor(index) {
     // assertArgs(arguments, 0);
     super();
 
-    this.port = new ScenePortRedirect(this);
+    this.port = new ScenePortRedirect(this, "console_line_" + index);
     this.port.position.set(0, 0, 0);
     this.port.hide();
     this.add(this.port);
@@ -191,11 +190,6 @@ class ConsoleLine extends Empty {
     );
     this.detailsLabel.position.set(3.2, 0, 0);
     this.add(this.detailsLabel);
-
-    // Missing, but surely this is correct?
-    if (data != null) {
-      this.updateLine(data);
-    }
   }
 
   updateData(data) {

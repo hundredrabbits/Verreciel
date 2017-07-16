@@ -6,7 +6,7 @@ class Space extends Empty {
     // assertArgs(arguments, 0);
     super();
 
-    console.log("^ Space | Init");
+    console.info("^ Space | Init");
 
     this.targetSpaceColor = new THREE.Color(0, 0, 0);
     this.currentSpaceColor = new THREE.Color(0, 0, 0);
@@ -28,7 +28,7 @@ class Space extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Space | Start");
+    console.info("+ Space | Start");
   }
 
   // Space Color

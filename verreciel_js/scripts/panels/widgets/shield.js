@@ -4,9 +4,8 @@
 class Shield extends Widget {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("shield");
 
-    this.name = "shield";
     this.details = "star protection";
     this.requirement = ItemTypes.shield;
     this.isPowered = function() {

@@ -1649,9 +1649,9 @@ class Missions {
     for (let mission of this.story) {
       if (mission.isCompleted == false) {
         this.currentMission = mission;
-        console.log("# ---------------------------");
-        console.log("# MISSION  | Reached: " + this.currentMission.id);
-        console.log("# ---------------------------");
+        console.info("# ---------------------------");
+        console.info("# MISSION  | Reached: " + this.currentMission.id);
+        console.info("# ---------------------------");
         verreciel.game.save(this.currentMission.id);
         return;
       }

@@ -4,11 +4,10 @@
 class Cargo extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("cargo");
 
     this.cargohold = new CargoHold();
 
-    this.name = "cargo";
     this.details = "stores items";
     this.port.event = this.cargohold;
     this.uploadPercentage = 0;

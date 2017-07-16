@@ -2,7 +2,7 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneHandle extends Empty {
-  constructor(destination, host) {
+  constructor(destination, host, name) {
     // assertArgs(arguments, 2);
     super();
     this.isEnabled = true;
@@ -39,7 +39,13 @@ class SceneHandle extends Empty {
     );
     this.add(this.selectionLine);
 
-    this.trigger = new SceneTrigger(this, 2, 0.5, 0);
+    this.trigger = new SceneTrigger(
+      this,
+      "handle_" + this.host.name,
+      2,
+      0.5,
+      0
+    );
     this.trigger.updateChildrenColors(verreciel.red); // Implies this was never used?
     this.add(this.trigger);
   }

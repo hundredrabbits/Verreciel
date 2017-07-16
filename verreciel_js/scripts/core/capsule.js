@@ -8,7 +8,7 @@ class Capsule extends Empty {
     // assertArgs(arguments, 0);
     super();
 
-    console.log("^ Capsule | Init");
+    console.info("^ Capsule | Init");
 
     this.at = verreciel.universe.loiqe_spawn.at.clone();
     this.direction = 1;
@@ -75,7 +75,7 @@ class Capsule extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Capsule | Start");
+    console.info("+ Capsule | Start");
   }
 
   whenRenderer() {

@@ -3,21 +3,22 @@
 
 class ScenePortSlot extends ScenePort {
   constructor(
-    host = new Empty(),
+    host,
+    name,
     align = Alignment.left,
     hasDetails = false,
     placeholder = "Empty"
   ) {
-    // assertArgs(arguments, 1);
-    super(host);
+    if (host == null) {
+      host = new Empty();
+    }
+
+    // assertArgs(arguments, 2);
+    super(host, name);
 
     this.placeholder = placeholder;
     this.hasDetails = hasDetails;
     this.uploadPercentage = 0;
-
-    this.trigger = new SceneTrigger(this, 1, 1);
-    this.trigger.position.set(0, 0, -0.1);
-    this.add(this.trigger);
 
     this.label = new SceneLabel(placeholder, 0.1, align, verreciel.grey);
     this.add(this.label);

@@ -4,14 +4,14 @@
 class Game {
   constructor() {
     // assertArgs(arguments, 0);
-    console.log("^ Game | Init");
+    console.info("^ Game | Init");
     this.time = 0;
     this.gameSpeed = 1;
   }
 
   whenStart() {
     // assertArgs(arguments, 0);
-    console.log("+ Game | Start");
+    console.info("+ Game | Start");
     setTimeout(this.onTic.bind(this), 50);
     setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
     this.load(this.state);
@@ -22,7 +22,7 @@ class Game {
     if (DEBUG_DONT_SAVE) {
       return;
     }
-    console.log("@ GAME     | Saved State to " + id);
+    console.info("@ GAME     | Saved State to " + id);
     for (let c of document.cookie.split(";")) {
       document.cookie = c
         .replace(/^ +/, "")
@@ -37,7 +37,7 @@ class Game {
     // assertArgs(arguments, 1);
     id = id == 20 ? 0 : id;
 
-    console.log("@ GAME     | Loaded State to " + id);
+    console.info("@ GAME     | Loaded State to " + id);
 
     for (let mission of verreciel.missions.story) {
       if (mission.id < id) {
@@ -57,7 +57,7 @@ class Game {
 
   erase() {
     // assertArgs(arguments, 0);
-    console.log("$ GAME     | Erase");
+    console.info("$ GAME     | Erase");
     localStorage.clear();
   }
 

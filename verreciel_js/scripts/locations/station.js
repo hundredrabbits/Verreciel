@@ -39,11 +39,11 @@ class LocationStation extends Location {
     );
     newPanel.add(requirementLabel);
 
-    this.button = new SceneButton(this, "install", 1);
+    this.button = new SceneButton(this, this.code + "_install", "install", 1);
     this.button.position.set(0, -1, 0);
     newPanel.add(this.button);
 
-    this.port = new ScenePortSlot(this);
+    this.port = new ScenePortSlot(this, this.code);
     this.port.position.set(0, -0.2, 0);
     newPanel.add(this.port);
 

@@ -203,7 +203,7 @@ class Verreciel {
       let hits = this.getHits().filter(this.isEnabledTrigger);
       hits.sort(this.hasShortestDistance);
       for (let hit of hits) {
-        if (hit.object.node.touch(0)) {
+        if (hit.object.node.tap()) {
           break;
         }
       }

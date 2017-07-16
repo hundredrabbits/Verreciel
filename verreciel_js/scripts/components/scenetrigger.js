@@ -2,9 +2,12 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneTrigger extends SceneDrawNode {
-  constructor(host, width, height, operation = 0) {
-    // assertArgs(arguments, 3);
+  constructor(host, name, width, height, operation) {
+    // assertArgs(arguments, 5);
+
     super();
+    this.name = name;
+    SceneTrigger.triggersByName[name] = this;
     this.isEnabled = true;
     this.operation = operation;
     this.host = host;
@@ -31,12 +34,19 @@ class SceneTrigger extends SceneDrawNode {
     super.makeElement();
   }
 
-  touch(id) {
+  tap() {
     // assertArgs(arguments, 1);
     if (this.isEnabled == false) {
       return false;
     }
-    return this.host.touch(this.operation);
+
+    let result = this.host.touch(this.operation);
+
+    if (result == true) {
+      console.log("hit:", this.name);
+    }
+
+    return result;
   }
 
   update() {
@@ -58,7 +68,12 @@ class SceneTrigger extends SceneDrawNode {
       this.color = SceneTrigger.DEBUG_WHITE;
     }
   }
+
+  static autoTapTrigger(name) {
+    SceneTrigger.triggersByName[name].tap();
+  }
 }
 
 SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1);
 SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1);
+SceneTrigger.triggersByName = {};

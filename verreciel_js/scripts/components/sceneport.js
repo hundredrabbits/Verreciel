@@ -2,15 +2,15 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class ScenePort extends Empty {
-  constructor(host, isPersistent = false) {
-    // assertArgs(arguments, 1);
+  constructor(host, name) {
+    assertArgs(arguments, 2);
     super();
 
     this.host = host;
     this.isEnabled = true;
-    this.isPersistent = isPersistent;
+    this.isPersistent = false;
 
-    this.trigger = new SceneTrigger(this, 1, 1);
+    this.trigger = new SceneTrigger(this, "port_" + name, 1, 1, 0);
     this.trigger.position.set(0, 0, -0.1);
     this.add(this.trigger);
 
@@ -435,25 +435,25 @@ class ScenePort extends Empty {
     super.onDisconnect();
     this.host.onDisconnect();
   }
+
+  static stripAllPorts(root) {
+    let ports = [];
+
+    function findPorts(node) {
+      if (node instanceof ScenePort) {
+        ports.push(node);
+      }
+      for (let child of node.children) {
+        findPorts(child);
+      }
+    }
+
+    findPorts(root);
+
+    for (let port of ports) {
+      if (port.isPersistent == false) {
+        port.strip();
+      }
+    }
+  }
 }
-
-ScenePort.stripAllPorts = function(root) {
-  let ports = [];
-
-  function findPorts(node) {
-    if (node instanceof ScenePort) {
-      ports.push(node);
-    }
-    for (let child of node.children) {
-      findPorts(child);
-    }
-  }
-
-  findPorts(root);
-
-  for (let port of ports) {
-    if (port.isPersistent == false) {
-      port.strip();
-    }
-  }
-};

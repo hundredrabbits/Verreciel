@@ -8,12 +8,12 @@ class LocationBank extends Location {
 
     this.details = "storage";
 
-    this.port1 = new ScenePortSlot(this);
-    this.port2 = new ScenePortSlot(this);
-    this.port3 = new ScenePortSlot(this);
-    this.port4 = new ScenePortSlot(this);
-    this.port5 = new ScenePortSlot(this);
-    this.port6 = new ScenePortSlot(this);
+    this.port1 = new ScenePortSlot(this, this.code + "_slot_1");
+    this.port2 = new ScenePortSlot(this, this.code + "_slot_2");
+    this.port3 = new ScenePortSlot(this, this.code + "_slot_3");
+    this.port4 = new ScenePortSlot(this, this.code + "_slot_4");
+    this.port5 = new ScenePortSlot(this, this.code + "_slot_5");
+    this.port6 = new ScenePortSlot(this, this.code + "_slot_6");
 
     this.port1.enable();
     this.port2.enable();

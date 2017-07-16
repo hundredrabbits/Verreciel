@@ -20,16 +20,16 @@ class Helmet extends Empty {
         return hamX;
       },
       set: function(value) {
-        console.log("x");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("x");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__xProperty.animation != null,
           node.position.__xProperty.from,
           node.position.__xProperty.to,
           node.position.__xProperty.percent
         );
-        console.log("");
+        console.debug("");
         return (hamX = value);
       }
     });
@@ -39,16 +39,16 @@ class Helmet extends Empty {
         return hamY;
       },
       set: function(value) {
-        console.log("y");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("y");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__yProperty.animation != null,
           node.position.__yProperty.from,
           node.position.__yProperty.to,
           node.position.__yProperty.percent
         );
-        console.log("");
+        console.debug("");
         return (hamY = value);
       }
     });
@@ -58,22 +58,22 @@ class Helmet extends Empty {
         return hamZ;
       },
       set: function(value) {
-        console.log("z");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("z");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__zProperty.animation != null,
           node.position.__zProperty.from,
           node.position.__zProperty.to,
           node.position.__zProperty.percent
         );
-        console.log("");
+        console.debug("");
         return (hamZ = value);
       }
     });
     */
 
-    console.log("^ Helmet | Init");
+    console.info("^ Helmet | Init");
 
     this.canAlign = false;
     this.visor = new Empty();
@@ -217,7 +217,7 @@ class Helmet extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Helmet | Start");
+    console.info("+ Helmet | Start");
   }
 
   whenRenderer() {

@@ -6,7 +6,7 @@ class Thruster extends MainPanel {
 
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("thruster");
 
     this.interface_flight = new Empty();
     this.interface_cutlines = new Empty();
@@ -18,7 +18,6 @@ class Thruster extends MainPanel {
     this.isLocked = false;
     this.port.isPersistent = true;
 
-    this.name = "thruster";
     this.details = "moves the capsule";
 
     // Flight
@@ -288,7 +287,7 @@ class Thruster extends MainPanel {
 
     // Triggers
 
-    this.accelerate = new SceneTrigger(this, 1, 1, 1);
+    this.accelerate = new SceneTrigger(this, "thruster_accelerate", 1, 1, 1);
     this.accelerate.position.set(0, 0.5, 0);
     this.accelerate.add(
       new SceneLine(
@@ -303,7 +302,7 @@ class Thruster extends MainPanel {
       )
     );
 
-    this.decelerate = new SceneTrigger(this, 1, 1, 0);
+    this.decelerate = new SceneTrigger(this, "thruster_decelerate", 1, 1, 0);
     this.decelerate.position.set(0, -0.5, 0);
     this.decelerate.add(
       new SceneLine(
@@ -318,7 +317,7 @@ class Thruster extends MainPanel {
       )
     );
 
-    this.action = new SceneTrigger(this, 1.5, 1.5, 2);
+    this.action = new SceneTrigger(this, "thruster_action", 1.5, 1.5, 2);
 
     this.mainNode.add(this.accelerate);
     this.mainNode.add(this.decelerate);

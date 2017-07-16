@@ -15,7 +15,12 @@ class LocationHarvest extends Location {
     this.generationCountdown = 0;
     this.generationRate = 200;
 
-    this.port = new ScenePortSlot(this, Alignment.center, true);
+    this.port = new ScenePortSlot(
+      this,
+      this.code + "_" + this.grows.name,
+      Alignment.center,
+      false
+    );
     this.port.enable();
 
     this.generate();

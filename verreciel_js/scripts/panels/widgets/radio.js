@@ -4,10 +4,9 @@
 class Radio extends Widget {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("radio");
 
     this.seek = 0;
-    this.name = "radio";
     this.details = "format reader";
     this.requirement = ItemTypes.record;
     this.isPowered = function() {

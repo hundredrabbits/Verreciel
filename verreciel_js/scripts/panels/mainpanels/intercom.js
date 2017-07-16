@@ -6,9 +6,8 @@ class Intercom extends MainPanel {
 
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("mission");
 
-    this.name = "mission";
     this.details = "displays informations";
 
     this.selector = new SceneLabel(">", 0.1, Alignment.left);

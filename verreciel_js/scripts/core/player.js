@@ -6,7 +6,7 @@ class Player extends Empty {
     // assertArgs(arguments, 0);
     super();
 
-    console.log("^ Player | Init");
+    console.info("^ Player | Init");
 
     this.canAlign = true;
     this.isLocked = false;
@@ -17,20 +17,8 @@ class Player extends Empty {
     this.accelY = 0;
     this.isPanoptic = false;
 
-    this.port = new ScenePort(this);
+    this.port = new ScenePort(this, "player");
     this.port.enable();
-
-    // TODO: spacewalk
-    /*
-    this.trigger = new SceneTrigger(this, 2, 0.75);
-    this.trigger.position.set(0, 0.9, -1.01);
-    this.trigger.hide();
-    this.add(this.trigger);
-    
-    this.triggerLabel = new SceneLabel("return to capsule", 0.03, Alignment.center, verreciel.red);
-    this.triggerLabel.position.set(0,0,0);
-    this.trigger.add(this.triggerLabel);
-    */
 
     this.element.add(verreciel.camera);
   }
@@ -38,7 +26,7 @@ class Player extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Player | Start");
+    console.info("+ Player | Start");
   }
 
   whenRenderer() {

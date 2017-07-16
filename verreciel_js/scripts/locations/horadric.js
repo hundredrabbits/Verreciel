@@ -16,8 +16,20 @@ class LocationHoradric extends Location {
     // assertArgs(arguments, 0);
     let newPanel = new Panel();
 
-    this.inPort1 = new ScenePortSlot(this, Alignment.center, false, "In");
-    this.inPort2 = new ScenePortSlot(this, Alignment.center, false, "In");
+    this.inPort1 = new ScenePortSlot(
+      this,
+      this.code + "_input_1",
+      Alignment.center,
+      false,
+      "In"
+    );
+    this.inPort2 = new ScenePortSlot(
+      this,
+      this.code + "_input_2",
+      Alignment.center,
+      false,
+      "In"
+    );
 
     this.inPort1.label.position.set(0, 0.5, 0);
     this.inPort2.label.position.set(0, 0.5, 0);
@@ -28,7 +40,13 @@ class LocationHoradric extends Location {
     this.inPort1.position.set(0.6, 0.6, 0);
     this.inPort2.position.set(-0.6, 0.6, 0);
 
-    this.outPort = new ScenePortSlot(this, Alignment.center, false, "");
+    this.outPort = new ScenePortSlot(
+      this,
+      this.code + "_output_1",
+      Alignment.center,
+      false,
+      ""
+    );
     this.outPort.position.set(0, -0.8, 0);
     this.outPort.label.position.set(0, -0.4, 0);
     this.outPort.label.updateText("Out");

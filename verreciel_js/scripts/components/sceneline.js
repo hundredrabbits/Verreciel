@@ -46,7 +46,7 @@ class SceneLine extends SceneDrawNode {
       this.geometry.dispose();
       this.geometry = new THREE.Geometry();
       this.element.geometry = this.geometry;
-      // console.log("EXPAND:", oldLength, "-->", this.vertices.length);
+      // console.debug("EXPAND:", oldLength, "-->", this.vertices.length);
     }
 
     this.geometry.vertices = vertices;

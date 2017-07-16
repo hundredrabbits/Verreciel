@@ -12,7 +12,7 @@ class Music {
 
   playEffect(name) {
     // assertArgs(arguments, 1);
-    // console.log("Effect: ",name);
+    // console.info("Effect: ",name);
     this.fetchAudio(
       name,
       "effect",
@@ -66,9 +66,9 @@ class Music {
       );
       this.track.currentTime = 0;
       if (DEBUG_NO_MUSIC) {
-        console.log(role, ":", name, "(off by debug)");
+        console.info(role, ":", name, "(off by debug)");
       } else {
-        console.log(role, ":", name);
+        console.info(role, ":", name);
         this.track.play();
       }
     }

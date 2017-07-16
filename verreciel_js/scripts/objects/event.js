@@ -21,17 +21,6 @@ class Event extends Empty {
     this.color = color;
   }
 
-  // MARK: Basic -
-
-  whenStart() {
-    // assertArgs(arguments, 0);
-    super.whenStart();
-
-    let trigger = new SceneTrigger(this, 1, 1);
-    trigger.position.set(0, 0, -0.1);
-    this.add(trigger);
-  }
-
   // MARK: Radar -
 
   update() {
