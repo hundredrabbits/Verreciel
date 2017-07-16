@@ -19,7 +19,7 @@ class Complete extends Monitor {
     this.nameLabel.updateText(
       verreciel.missions.currentMission.id +
         "/" +
-        verreciel.missions.story.length
+        (verreciel.missions.story.length - 1)
     );
   }
 }
