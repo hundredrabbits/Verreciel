@@ -156,7 +156,7 @@ class ScenePort extends Empty {
     this.connection = port;
     this.connection.origin = this;
 
-    this.updateWire();
+    this.updateWire(true);
 
     this.wire.enable();
 
@@ -166,10 +166,11 @@ class ScenePort extends Empty {
     this.onConnect();
   }
 
-  updateWire() {
+  updateWire(reset = false) {
     this.wire.updateEnds(
       new THREE.Vector3(0, 0, 0),
-      this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), this.connection)
+      this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), this.connection),
+      reset
     );
   }
 

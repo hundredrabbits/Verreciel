@@ -1,13 +1,9 @@
 Walkthroughs
-  Player rotate, click, predicate
-  Game speed modification
 
   Mission walkthrough chapters
   Record walkthrough chapters
   Test for each recipe
   Chapter to reach other areas
-
-Use the walkthrough to detect any other late THREE.js class construction
 
 -------
 
