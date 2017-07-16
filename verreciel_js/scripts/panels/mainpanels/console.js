@@ -89,11 +89,6 @@ class Console extends MainPanel {
     this.inject(this.defaultPayload());
   }
 
-  whenTime() {
-    // assertArgs(arguments, 0);
-    super.whenTime();
-  }
-
   clear() {
     // assertArgs(arguments, 0);
     for (let line of this.lines) {

@@ -29,7 +29,7 @@ class LocationHarvest extends Location {
 
   generate() {
     // assertArgs(arguments, 0);
-    setTimeout(this.generate.bind(this), 1000);
+    delay(1, this.generate.bind(this));
 
     if (this.port == null) {
       return;

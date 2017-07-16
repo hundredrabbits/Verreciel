@@ -51,7 +51,7 @@ function sanitizeDiffAngle(angle1, angle2, inDegrees = false) {
 
 function delay(seconds, callback) {
   // assertArgs(arguments, 2);
-  return setTimeout(callback, seconds * 1000);
+  return setTimeout(callback, seconds * 1000 / verreciel.game.gameSpeed);
 }
 
 function cancelDelay(delayID) {

@@ -129,10 +129,13 @@ class Verreciel {
     }
     let frameTime = Date.now();
 
-    let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
+    let framesElapsed =
+      (frameTime - this.lastFrameTime) / 1000 * this.fps * this.game.gameSpeed;
     if (framesElapsed > 1) {
       this.lastFrameTime = frameTime;
-      this.root.whenRenderer();
+      for (let i = 0; i < framesElapsed; i++) {
+        this.root.whenRenderer();
+      }
       this.helmet.updatePortWires();
       this.renderer.render(this.scene, this.camera);
     }

@@ -121,13 +121,6 @@ class SceneNode {
     }
   }
 
-  whenTime() {
-    // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenTime();
-    }
-  }
-
   whenSecond() {
     // assertArgs(arguments, 0);
     for (let node of this.children) {

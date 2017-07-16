@@ -26,7 +26,7 @@ class Music {
       return;
     }
     this.ambience = name;
-    if (this.track == null) {
+    if (this.track == null || this.track.name != name) {
       this.playAmbience();
     }
   }

@@ -6,13 +6,14 @@ class Game {
     // assertArgs(arguments, 0);
     console.log("^ Game | Init");
     this.time = 0;
+    this.gameSpeed = 1;
   }
 
   whenStart() {
     // assertArgs(arguments, 0);
     console.log("+ Game | Start");
     setTimeout(this.onTic.bind(this), 50);
-    setTimeout(this.whenSecond.bind(this), 1000);
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
     this.load(this.state);
   }
 
@@ -62,7 +63,7 @@ class Game {
 
   whenSecond() {
     // assertArgs(arguments, 0);
-    setTimeout(this.whenSecond.bind(this), 1000);
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
     verreciel.capsule.whenSecond();
     verreciel.missions.refresh();
   }
@@ -70,7 +71,6 @@ class Game {
   onTic() {
     // assertArgs(arguments, 0);
     setTimeout(this.onTic.bind(this), 50);
-    this.time += 1;
-    verreciel.space.whenTime();
+    this.time += this.gameSpeed;
   }
 }
