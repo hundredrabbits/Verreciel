@@ -16,7 +16,9 @@ class Helmet extends Empty {
     let hamZ = ham.position.z;
 
     Object.defineProperty(ham.position, "x", {
-      get: function() { return hamX; },
+      get: function() {
+        return hamX;
+      },
       set: function(value) {
         console.log("x");
         console.log(getStackTrace());
@@ -28,12 +30,14 @@ class Helmet extends Empty {
           node.position.__xProperty.percent
         );
         console.log("");
-        return hamX = value;
+        return (hamX = value);
       }
     });
 
     Object.defineProperty(ham.position, "y", {
-      get: function() { return hamY; },
+      get: function() {
+        return hamY;
+      },
       set: function(value) {
         console.log("y");
         console.log(getStackTrace());
@@ -45,13 +49,14 @@ class Helmet extends Empty {
           node.position.__yProperty.percent
         );
         console.log("");
-        return hamY = value;
+        return (hamY = value);
       }
     });
 
-
     Object.defineProperty(ham.position, "z", {
-      get: function() { return hamZ; },
+      get: function() {
+        return hamZ;
+      },
       set: function(value) {
         console.log("z");
         console.log(getStackTrace());
@@ -63,7 +68,7 @@ class Helmet extends Empty {
           node.position.__zProperty.percent
         );
         console.log("");
-        return hamZ = value;
+        return (hamZ = value);
       }
     });
     */
@@ -363,5 +368,13 @@ class Helmet extends Empty {
     this.warningFlag = "";
     this.warningString = "";
     this.warningLabel.updateText("");
+  }
+
+  resizeText(size) {
+    this.textSize = size;
+    this.leftHandLabel.updateScale(this.textSize);
+    this.messageLabel.updateScale(this.textSize);
+    this.passiveLabel.updateScale(this.textSize);
+    this.rightHandLabel.updateScale(this.textSize);
   }
 }
