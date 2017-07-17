@@ -146,7 +146,7 @@ class Missions {
     };
     m.quests = [
       new Quest(
-        "Route " + i.currency1.name + " to verreciel.cargo",
+        "Route " + i.currency1.name + " to cargo",
         u.loiqe_harvest,
         function() {
           return (
@@ -165,7 +165,7 @@ class Missions {
         function() {}
       ),
       new Quest(
-        "Route " + i.valenPortalFragment1.name + " to verreciel.cargo",
+        "Route " + i.valenPortalFragment1.name + " to cargo",
         null,
         function() {
           return verreciel.cargo.contains(i.valenPortalFragment1) == true;
