@@ -167,6 +167,7 @@ class ScenePortSlot extends ScenePort {
     this.uploadPercentage = 0;
     this.refresh();
     this.host.onUploadComplete();
+    verreciel.ghost.report(LogType.upload, this.name);
   }
 
   uploadCancel() {

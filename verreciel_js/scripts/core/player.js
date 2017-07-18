@@ -80,6 +80,7 @@ class Player extends Empty {
         this.rotation.y,
         verreciel.helmet.rotation.z
       );
+      verreciel.ghost.report(LogType.playerUnlock, deg);
     }.bind(this);
     verreciel.animator.commit();
 
@@ -101,11 +102,15 @@ class Player extends Empty {
       this.rotation.x = degToRad(90);
       verreciel.space.structuresRoot.position.y = 5;
       verreciel.helmet.position.y = -3;
+      verreciel.above.opacity = 0;
+      verreciel.below.opacity = 0;
     } else {
       this.position.y = 0;
       this.rotation.x = degToRad(0);
       verreciel.space.structuresRoot.position.y = 0;
       verreciel.helmet.position.y = 0;
+      verreciel.above.opacity = 1;
+      verreciel.below.opacity = 1;
     }
 
     verreciel.animator.completionBlock = function() {

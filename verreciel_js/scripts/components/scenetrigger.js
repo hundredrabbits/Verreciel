@@ -7,7 +7,7 @@ class SceneTrigger extends SceneDrawNode {
 
     super();
     this.name = name;
-    SceneTrigger.triggersByName[name] = this;
+    verreciel.ghost.triggersByName[name] = this;
     this.isEnabled = true;
     this.operation = operation;
     this.host = host;
@@ -43,7 +43,7 @@ class SceneTrigger extends SceneDrawNode {
     let result = this.host.touch(this.operation);
 
     if (result == true) {
-      console.log("hit:", this.name);
+      verreciel.ghost.report(LogType.hit, this.name);
     }
 
     return result;
@@ -68,12 +68,7 @@ class SceneTrigger extends SceneDrawNode {
       this.color = SceneTrigger.DEBUG_WHITE;
     }
   }
-
-  static autoTapTrigger(name) {
-    SceneTrigger.triggersByName[name].tap();
-  }
 }
 
 SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1);
 SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1);
-SceneTrigger.triggersByName = {};

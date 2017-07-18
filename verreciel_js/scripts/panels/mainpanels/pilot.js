@@ -8,6 +8,7 @@ class Pilot extends MainPanel {
 
     this.details = "aligns to locations";
     this.port.isPersistent = true;
+    this.isAligned = false;
 
     this.targetDirectionIndicator = new Empty();
     this.targetDirectionIndicator.add(
@@ -116,6 +117,12 @@ class Pilot extends MainPanel {
       this.turnLeft(this.target_align);
     } else {
       this.turnRight(this.target_align);
+    }
+
+    let wasAligned = this.isAligned;
+    this.isAligned = Math.abs(this.target.align) < 1;
+    if (this.isAligned == true && wasAligned == false) {
+      verreciel.ghost.report(LogType.pilotAligned, this.target.name);
     }
 
     this.animate();

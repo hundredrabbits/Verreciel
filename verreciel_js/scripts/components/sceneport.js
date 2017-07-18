@@ -7,6 +7,7 @@ class ScenePort extends Empty {
     super();
 
     this.host = host;
+    this.name = name;
     this.isEnabled = true;
     this.isPersistent = false;
 

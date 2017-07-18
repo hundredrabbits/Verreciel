@@ -39,6 +39,7 @@ class Verreciel {
     this.music = new Music();
 
     this.animator = new Animator();
+    this.ghost = new Ghost();
 
     // Collections
     this.items = new Items();
@@ -100,7 +101,9 @@ class Verreciel {
     this.root.add(this.helmet);
     this.root.add(this.capsule);
     this.root.add(this.space);
+    this.root.add(this.ghost);
 
+    this.ghost.whenStart();
     this.universe.whenStart();
     this.player.whenStart();
     this.helmet.whenStart();

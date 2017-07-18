@@ -357,6 +357,7 @@ class Cargo extends MainPanel {
     }
     this.uploadPercentage = 0;
     this.refresh();
+    verreciel.ghost.report(LogType.upload, this.name);
   }
 
   uploadCancel() {

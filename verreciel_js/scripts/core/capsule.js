@@ -287,6 +287,7 @@ class Capsule extends Empty {
     verreciel.helmet.addPassive("Docked at " + this.location.name);
 
     verreciel.intercom.connectToLocation(this.location);
+    verreciel.ghost.report(LogType.docked, this.location.name);
   }
 
   undock() {

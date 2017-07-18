@@ -61,6 +61,7 @@ class Panel extends Empty {
     this.installPercentage = 0;
     this.isInstalled = true;
     verreciel.music.playEffect("beep2");
+    verreciel.ghost.report(LogType.install, this.name);
   }
 
   payload() {

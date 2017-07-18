@@ -433,6 +433,7 @@ class Thruster extends MainPanel {
   unlock() {
     // assertArgs(arguments, 0);
     this.isLocked = false;
+    verreciel.ghost.report(LogType.thrusterUnlock);
   }
 
   // MARK: Custom -
