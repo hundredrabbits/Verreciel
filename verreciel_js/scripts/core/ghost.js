@@ -31,6 +31,14 @@ class Ghost extends Empty {
 
     this.openEyes.opacity = 1;
     this.closedEyes.opacity = 0;
+
+    if (DEBUG_LOG_GHOST == true) {
+      document.onkeyup = function(event) {
+        if (event.keyCode == 88) {
+          this.report(LogType.erratum);
+        }
+      }.bind(this);
+    }
   }
 
   appear() {
