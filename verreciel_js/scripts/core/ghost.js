@@ -334,12 +334,13 @@ class Ghost extends Empty {
     this.face.rotation.setNow(this.face.rotation.x, rotY, this.face.rotation.z);
   }
 
-  report(entry) {
+  report(type, data = null) {
     if (this.isPlaying) {
       // TODO: autopilot
     } else if (DEBUG_LOG_GHOST == true) {
+      const entry = new LogEntry(type, data);
       this.allEntries.push(entry);
-      if (entry.type == LogType.hit) {
+      if (type == LogType.hit) {
         if (this.lastNonHit != null) {
           this.salientEntries.push(this.lastNonHit);
           this.lastNonHit = null;
@@ -371,7 +372,7 @@ setEnumValues(LogType, [
 ]);
 
 class LogEntry {
-  constructor(type, data = null) {
+  constructor(type, data) {
     this.type = type;
     this.data = data;
   }
