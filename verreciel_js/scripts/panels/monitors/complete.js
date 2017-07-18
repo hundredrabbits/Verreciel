@@ -1,10 +1,8 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Complete extends Monitor
-{
-  constructor()
-  {
+class Complete extends Monitor {
+  constructor() {
     // assertArgs(arguments, 0);
     super();
 
@@ -14,11 +12,14 @@ class Complete extends Monitor
     this.nameLabel.updateText("--");
     this.detailsLabel.updateText(this.name);
   }
-  
-  refresh()
-  {
+
+  refresh() {
     // assertArgs(arguments, 0);
     super.refresh();
-    this.nameLabel.updateText(verreciel.missions.currentMission.id + "/" + verreciel.missions.story.length);
+    this.nameLabel.updateText(
+      verreciel.missions.currentMission.id +
+        "/" +
+        verreciel.missions.story.length
+    );
   }
 }
