@@ -10,6 +10,7 @@ class Ghost extends Empty {
     this.makeFuzz();
     this.makeFace();
     this.returnTimeout = null;
+    this.flickerTimeoutnull;
     this.idling = true;
     this.danceAmplitude = 0;
 
@@ -30,6 +31,52 @@ class Ghost extends Empty {
 
     this.openEyes.opacity = 1;
     this.closedEyes.opacity = 0;
+  }
+
+  appear() {
+    this.flicker();
+    setTimeout(this.stopFlickering.bind(this), 700);
+    setTimeout(this.onAppear.bind(this), 2000);
+  }
+
+  onAppear() {
+    this.hide();
+    this.idle();
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 1;
+    verreciel.animator.ease = Penner.easeInOutCubic;
+    this.show();
+    verreciel.capsule.show();
+    verreciel.animator.commit();
+  }
+
+  disappear() {
+    this.flicker();
+    setTimeout(this.stopFlickering.bind(this), 700);
+    setTimeout(this.onDisappear.bind(this), 2000);
+  }
+
+  onDisappear() {
+    this.hide();
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 1;
+    verreciel.animator.ease = Penner.easeInOutCubic;
+    verreciel.capsule.show();
+    verreciel.animator.commit();
+  }
+
+  flicker() {
+    this.flickerTimeout = setTimeout(this.flicker.bind(this), 50);
+    verreciel.capsule.opacity = Math.random();
+    if (this.opacity != 0) {
+      this.opacity = verreciel.capsule.opacity;
+    }
+  }
+
+  stopFlickering() {
+    clearTimeout(this.flickerTimeout);
+    verreciel.capsule.hide();
+    this.hide();
   }
 
   wanderTo(target, seconds = 2, callback = null) {
