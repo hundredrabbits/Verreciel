@@ -1,10 +1,8 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Radio extends Widget
-{
-  constructor()
-  {
+class Radio extends Widget {
+  constructor() {
     // assertArgs(arguments, 0);
     super();
 
@@ -12,93 +10,80 @@ class Radio extends Widget
     this.name = "radio";
     this.details = "format reader";
     this.requirement = ItemTypes.record;
-    this.isPowered = function() { return verreciel.battery.isRadioPowered(); };
-    
+    this.isPowered = function() {
+      return verreciel.battery.isRadioPowered();
+    };
+
     this.label.updateText(this.name);
   }
-  
+
   // This is used when the missions system is assigning values to things
-  setRecord(record)
-  {
+  setRecord(record) {
     this.port.addEvent(record);
     this.onUploadComplete();
   }
 
-  update()
-  {
+  update() {
     // assertArgs(arguments, 0);
     super.update();
     this.refresh();
   }
 
-  onPowered()
-  {
+  onPowered() {
     // assertArgs(arguments, 0);
-    super.onPowered()
-    if (this.hasRecord())
-    {
+    super.onPowered();
+    if (this.hasRecord()) {
       this.play();
-    }
-    else
-    {
+    } else {
       this.stop();
     }
   }
-  
-  onUnpowered()
-  {
+
+  onUnpowered() {
     // assertArgs(arguments, 0);
     super.onUnpowered();
     this.stop();
   }
-  
-  play()
-  {
+
+  play() {
     // assertArgs(arguments, 0);
     verreciel.music.setRecord(Records[this.port.event.code]);
     verreciel.music.playRecord();
   }
-  
-  hasRecord()
-  {
+
+  hasRecord() {
     // assertArgs(arguments, 0);
     let event = this.port.event;
-    return event != null && event instanceof Item && event.type == ItemTypes.record;
+    return (
+      event != null && event instanceof Item && event.type == ItemTypes.record
+    );
   }
 
-  stop()
-  {
+  stop() {
     // assertArgs(arguments, 0);
     verreciel.music.playAmbience();
   }
-  
-  onUploadComplete()
-  {
+
+  onUploadComplete() {
     // assertArgs(arguments, 0);
     super.onUploadComplete();
-    
-    if (verreciel.battery.isRadioPowered() == true)
-    {
-      if (this.hasRecord())
-      {
+
+    if (verreciel.battery.isRadioPowered() == true) {
+      if (this.hasRecord()) {
         this.play();
-      }
-      else
-      {
+      } else {
         this.stop();
       }
     }
   }
-  
-  onInstallationBegin()
-  {
+
+  onInstallationBegin() {
     // assertArgs(arguments, 0);
     super.onInstallationBegin();
     verreciel.player.lookAt(0);
   }
-  
-  onInstallationComplete()
-  {
+
+  onInstallationComplete() {
     // assertArgs(arguments, 0);
     super.onInstallationComplete();
     verreciel.battery.installRadio();
