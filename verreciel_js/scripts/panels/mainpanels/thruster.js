@@ -339,6 +339,13 @@ class Thruster extends MainPanel {
       verreciel.music.playEffect("click3");
       return true;
     } else if (id == 1) {
+      if (
+        (verreciel.pilot.target == null ||
+          verreciel.pilot.port.origin.host != verreciel.radar) &&
+        verreciel.pilot.isInstalled == true
+      ) {
+        return;
+      }
       this.speedUp();
       verreciel.music.playEffect("click4");
       return true;
@@ -772,7 +779,7 @@ class Thruster extends MainPanel {
     if (verreciel.capsule.location != null) {
       this.speed = 0;
     } else if (this.actualSpeed < 0.1) {
-      this.actualSpeed = 0.1;
+      this.actualSpeed = DEBUG_LOG_GHOST ? 0 : 0.1;
     }
 
     if (this.actualSpeed > 0) {

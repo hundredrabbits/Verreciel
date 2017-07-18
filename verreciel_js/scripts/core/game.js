@@ -7,6 +7,9 @@ class Game {
     console.info("^ Game | Init");
     this.time = 0;
     this.gameSpeed = 1;
+    if (DEBUG_LOG_GHOST) {
+      this.gameSpeed = 5;
+    }
   }
 
   whenStart() {
@@ -14,6 +17,9 @@ class Game {
     console.info("+ Game | Start");
     setTimeout(this.onTic.bind(this), 50);
     setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
+    if (DEBUG_LOG_GHOST) {
+      this.save(0);
+    }
     this.load(this.state);
   }
 
