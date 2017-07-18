@@ -30,7 +30,6 @@ class Quest {
       return;
     }
     this.isCompleted = true;
-    verreciel.ghost.report(LogType.quest, this.name);
     this.result();
   }
 }

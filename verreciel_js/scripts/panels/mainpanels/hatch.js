@@ -9,7 +9,7 @@ class Hatch extends MainPanel {
     this.outline = new Empty();
     this.count = 0;
 
-    this.details = "jetisons items";
+    this.details = "jettisons items";
     this.pendingErase = false;
 
     this.mainNode.add(

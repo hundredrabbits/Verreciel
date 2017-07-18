@@ -35,7 +35,7 @@ class Ghost extends Empty {
     if (DEBUG_LOG_GHOST == true) {
       document.onkeyup = function(event) {
         if (event.keyCode == 88) {
-          this.report(LogType.erratum);
+          this.report(LogType.mistake);
         }
       }.bind(this);
     }
@@ -351,9 +351,14 @@ class Ghost extends Empty {
       if (type == LogType.hit) {
         if (this.lastNonHit != null) {
           this.salientEntries.push(this.lastNonHit);
+          console.log(this.lastNonHit);
           this.lastNonHit = null;
         }
         this.salientEntries.push(entry);
+        console.log(entry);
+      } else if (type == LogType.mistake) {
+        this.salientEntries.push(entry);
+        console.log(entry);
       } else {
         this.lastNonHit = entry;
       }
@@ -376,12 +381,16 @@ setEnumValues(LogType, [
   "playerUnlock",
   "pilotAligned",
   "mission",
-  "quest"
+  "mistake"
 ]);
 
 class LogEntry {
   constructor(type, data) {
     this.type = type;
     this.data = data;
+  }
+
+  toString() {
+    return "> " + this.type + "\t" + this.data.toString();
   }
 }

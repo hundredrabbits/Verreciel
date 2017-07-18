@@ -568,7 +568,7 @@ class Missions {
         function() {}
       ),
       new Quest(
-        "Jetison Waste",
+        "Jettison Waste",
         null,
         function() {
           return verreciel.hatch.count > 0;
