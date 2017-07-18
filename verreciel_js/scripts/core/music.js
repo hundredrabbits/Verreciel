@@ -30,13 +30,16 @@ class Music {
   playEffect(name) {
     // assertArgs(arguments, 1);
     // console.info("Effect: ",name);
-    this.fetchTrack(
+    let track = this.fetchTrack(
       name,
       "effect",
       "media/audio/effect/" + name + ".ogg",
       false,
       false
-    ).play();
+    );
+    if (verreciel.game.time - track.lastTimePlayed > 5) {
+      track.play();
+    }
   }
 
   setAmbience(name) {
@@ -109,6 +112,7 @@ class Track {
     this.role = role;
     this.audio.src = src;
     this.audio.loop = loop;
+    this.lastTimePlayed = 0;
     if (analyze) {
       this.node = verreciel.music.context.createMediaElementSource(this.audio);
     }
@@ -123,6 +127,7 @@ class Track {
   }
 
   play() {
+    this.lastTimePlayed = verreciel.game.time;
     if (this.node != null) {
       this.node.connect(verreciel.music.analyser);
     }
