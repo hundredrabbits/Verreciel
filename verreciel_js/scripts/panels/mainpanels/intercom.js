@@ -215,6 +215,8 @@ class Intercom extends MainPanel {
     this.locationPanel.position.set(0, 0, -0.5);
     this.locationPanel.hide();
 
+    ScenePort.stripAllPorts(this);
+
     verreciel.animator.completionBlock = function() {
       // this.defaultPanel.position.set(0,0,-0.5);
 

@@ -1,6 +1,3 @@
-Listening to record while returning from valen to loiqe should continue playing record, not switch to loiqe ambient
-Extinguishing a sun should disconnect the end key, but it doesn't
-
 Walkthroughs
 
   Mission walkthrough chapters

@@ -47,7 +47,10 @@ class Music {
       return;
     }
     this.ambience = name;
-    if (this.track == null || this.track.name != name) {
+    if (
+      this.track == null ||
+      (this.track.role == "ambience" && this.track.name != name)
+    ) {
       this.playAmbience();
     }
   }
@@ -57,7 +60,10 @@ class Music {
       return;
     }
     this.record = name;
-    if (this.track == null) {
+    if (
+      this.track == null ||
+      (this.track.role == "record" && this.track.name != name)
+    ) {
       this.playRecord();
     }
   }
