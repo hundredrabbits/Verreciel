@@ -51,7 +51,7 @@ class Ghost extends Empty {
     this.hide();
     this.idle();
     verreciel.animator.begin();
-    verreciel.animator.animationDuration = 1;
+    verreciel.animator.animationDuration = 0.1;
     verreciel.animator.ease = Penner.easeInOutCubic;
     this.show();
     verreciel.capsule.show();
@@ -67,7 +67,7 @@ class Ghost extends Empty {
   onDisappear() {
     this.hide();
     verreciel.animator.begin();
-    verreciel.animator.animationDuration = 1;
+    verreciel.animator.animationDuration = 0.1;
     verreciel.animator.ease = Penner.easeInOutCubic;
     verreciel.capsule.show();
     verreciel.animator.commit();
@@ -320,9 +320,17 @@ class Ghost extends Empty {
         this.closedEyes.opacity = 1;
         this.danceAmplitude = Math.min(1, this.danceAmplitude + 0.005);
         this.root.position.setNow(
-          this.danceAmplitude * 0.4 * Math.cos(verreciel.game.time / 4),
+          scale *
+            scale *
+            this.danceAmplitude *
+            0.2 *
+            Math.cos(verreciel.game.time / 4),
           0,
-          this.danceAmplitude * 0.4 * Math.sin(verreciel.game.time / 2)
+          scale *
+            scale *
+            this.danceAmplitude *
+            0.2 *
+            Math.sin(verreciel.game.time / 2)
         );
       } else {
         if (this.danceAmplitude > 0) {

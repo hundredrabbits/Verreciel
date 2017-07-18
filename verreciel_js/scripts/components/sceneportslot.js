@@ -162,8 +162,13 @@ class ScenePortSlot extends ScenePort {
   uploadComplete() {
     // assertArgs(arguments, 0);
     if (this.origin != null) {
+      let originHost = this.origin.host;
       this.addEvent(this.syphon());
+      if (originHost != null) {
+        originHost.onUploadComplete();
+      }
     }
+
     this.uploadPercentage = 0;
     this.refresh();
     this.host.onUploadComplete();
