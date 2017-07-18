@@ -98,7 +98,6 @@ class Music {
     if (!(audioId in this.trackCatalog)) {
       this.trackCatalog[audioId] = new Track(name, role, src, loop, analyze);
     }
-    this.trackCatalog[audioId].currentTime = 0;
     return this.trackCatalog[audioId];
   }
 }
@@ -127,6 +126,7 @@ class Track {
     if (this.node != null) {
       this.node.connect(verreciel.music.analyser);
     }
+    this.audio.currentTime = 0;
     this.audio.play();
   }
 

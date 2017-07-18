@@ -101,6 +101,7 @@ class Player extends Empty {
       this.position.y = -5;
       this.rotation.x = degToRad(90);
       verreciel.space.structuresRoot.position.y = 5;
+      verreciel.space.structuresRoot.opacity = 0.2;
       verreciel.helmet.position.y = -3;
       verreciel.above.opacity = 0;
       verreciel.below.opacity = 0;
@@ -108,6 +109,7 @@ class Player extends Empty {
       this.position.y = 0;
       this.rotation.x = degToRad(0);
       verreciel.space.structuresRoot.position.y = 0;
+      verreciel.space.structuresRoot.opacity = 1;
       verreciel.helmet.position.y = 0;
       verreciel.above.opacity = 1;
       verreciel.below.opacity = 1;

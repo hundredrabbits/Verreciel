@@ -5,9 +5,13 @@ class Ghost extends Empty {
   constructor() {
     super();
 
+    this.root = new Empty();
+    this.add(this.root);
     this.makeFuzz();
     this.makeFace();
     this.returnTimeout = null;
+    this.idling = true;
+    this.danceAmplitude = 0;
 
     this.goalPosition = new THREE.Vector3();
     this.faceRadius = 0.42;
@@ -18,7 +22,7 @@ class Ghost extends Empty {
       this.faceRadius * Math.sin(this.faceRads)
     );
 
-    // this.hide();
+    this.hide();
     this.triggersByName = {};
     this.allEntries = [];
     this.salientEntries = [];
@@ -44,13 +48,21 @@ class Ghost extends Empty {
   }
 
   wanderToGoal(seconds, callback) {
+    if (this.idling == true) {
+      this.idling = false;
+      this.openEyes.opacity = 1;
+      this.closedEyes.opacity = 0;
+    }
     clearTimeout(this.returnTimeout);
+    verreciel.animator.completeAnimation("ghost_face");
+    verreciel.animator.completeAnimation("ghost");
+
     this.faceRads = Math.atan2(
       this.goalPosition.z - this.position.z,
       this.goalPosition.x - this.position.x
     );
 
-    verreciel.animator.begin();
+    verreciel.animator.begin("ghost_face");
     verreciel.animator.animationDuration = Math.max(0.5, seconds / 4);
     verreciel.animator.ease = Penner.easeInOutCubic;
     this.face.position.set(
@@ -60,7 +72,7 @@ class Ghost extends Empty {
     );
     verreciel.animator.commit();
 
-    verreciel.animator.begin();
+    verreciel.animator.begin("ghost");
     verreciel.animator.animationDuration = seconds;
     verreciel.animator.ease = Penner.easeInOutCubic;
     this.position.set(
@@ -68,6 +80,7 @@ class Ghost extends Empty {
       this.goalPosition.y,
       this.goalPosition.z
     );
+    this.root.position.set(0, 0, 0);
     verreciel.animator.completionBlock = callback;
     verreciel.animator.commit();
   }
@@ -78,8 +91,10 @@ class Ghost extends Empty {
   }
 
   idle() {
-    this.faceRads = degToRad(45);
-    verreciel.animator.begin();
+    this.idling = true;
+    this.danceAmplitude = 0;
+    this.faceRads = degToRad(45) - verreciel.player.rotation.y;
+    verreciel.animator.begin("ghost_face");
     verreciel.animator.animationDuration = 2;
     verreciel.animator.delay = 0.25;
     verreciel.animator.ease = Penner.easeInOutCubic;
@@ -112,6 +127,9 @@ class Ghost extends Empty {
     this.closedEyes.opacity = 1;
     setTimeout(
       function() {
+        if (this.danceAmplitude > 0) {
+          return;
+        }
         this.openEyes.opacity = 1;
         this.closedEyes.opacity = 0;
 
@@ -140,7 +158,7 @@ class Ghost extends Empty {
       this.fuzzVertices.push(new THREE.Vector3());
     }
     this.fuzz = new SceneLine(this.fuzzVertices, verreciel.white);
-    this.add(this.fuzz);
+    this.root.add(this.fuzz);
   }
 
   makeFace() {
@@ -199,7 +217,7 @@ class Ghost extends Empty {
     faceVertices = faceVertices.concat(mouth);
 
     this.face = new SceneLine(faceVertices, verreciel.white);
-    this.add(this.face);
+    this.root.add(this.face);
     this.openEyes = new SceneLine(openEyesVertices, verreciel.white);
     this.face.add(this.openEyes);
     this.closedEyes = new SceneLine(closedEyesVertices, verreciel.white);
@@ -237,6 +255,34 @@ class Ghost extends Empty {
       (1 + verreciel.music.magnitude * 4) * 0.5;
     this.fuzz.element.scale.x = scale;
     this.fuzz.element.scale.z = scale;
+
+    if (this.idling == true) {
+      if (
+        verreciel.music.track != null &&
+        verreciel.music.track.role == "record"
+      ) {
+        this.openEyes.opacity = 0;
+        this.closedEyes.opacity = 1;
+        this.danceAmplitude = Math.min(1, this.danceAmplitude + 0.005);
+        this.root.position.setNow(
+          this.danceAmplitude * 0.4 * Math.cos(verreciel.game.time / 4),
+          0,
+          this.danceAmplitude * 0.4 * Math.sin(verreciel.game.time / 2)
+        );
+      } else {
+        if (this.danceAmplitude > 0) {
+          this.danceAmplitude = 0;
+          this.openEyes.opacity = 1;
+          this.closedEyes.opacity = 0;
+          setTimeout(this.blink.bind(this), 1000 * (Math.random() * 4 + 6));
+        }
+        this.root.position.setNow(
+          this.root.position.x * 0.8,
+          0,
+          this.root.position.z * 0.8
+        );
+      }
+    }
 
     this.face.rotation.setNow(this.face.rotation.x, rotY, this.face.rotation.z);
   }
