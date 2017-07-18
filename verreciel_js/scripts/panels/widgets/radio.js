@@ -63,6 +63,22 @@ class Radio extends Widget {
     verreciel.music.playAmbience();
   }
 
+  whenRenderer() {
+    super.whenRenderer();
+
+    if (
+      verreciel.music.track != null &&
+      verreciel.music.track.role == "record"
+    ) {
+      let scale = 1 + verreciel.music.magnitude * 10;
+      this.port.sprite_output.element.scale.x = scale;
+      this.port.sprite_output.element.scale.y = scale;
+    } else {
+      this.port.sprite_output.element.scale.x = 1;
+      this.port.sprite_output.element.scale.y = 1;
+    }
+  }
+
   onUploadComplete() {
     // assertArgs(arguments, 0);
     super.onUploadComplete();

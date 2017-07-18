@@ -5,18 +5,36 @@ class Music {
   constructor() {
     // assertArgs(arguments, 0);
     this.track = null;
-    this.audioCatalog = {};
+    this.trackCatalog = {};
     this.ambience = null;
     this.record = null;
+    this.context = new AudioContext();
+    this.analyser = this.context.createAnalyser();
+    this.analyser.connect(this.context.destination);
+    this.data = new Uint8Array(this.analyser.frequencyBinCount);
+    requestAnimationFrame(this.updateData.bind(this));
+  }
+
+  updateData() {
+    requestAnimationFrame(this.updateData.bind(this));
+    this.analyser.getByteFrequencyData(this.data);
+    const length = this.data.length;
+    let count = 0;
+    const total = length * 0xff;
+    for (let i = 0; i < length; i++) {
+      count += this.data[i];
+    }
+    this.magnitude = count / total;
   }
 
   playEffect(name) {
     // assertArgs(arguments, 1);
     // console.info("Effect: ",name);
-    this.fetchAudio(
+    this.fetchTrack(
       name,
       "effect",
       "media/audio/effect/" + name + ".ogg",
+      false,
       false
     ).play();
   }
@@ -58,13 +76,13 @@ class Music {
     }
 
     if (name != null) {
-      this.track = this.fetchAudio(
+      this.track = this.fetchTrack(
         name,
         role,
         "media/audio/" + role + "/" + name + ".mp3",
+        true,
         true
       );
-      this.track.currentTime = 0;
       if (DEBUG_NO_MUSIC) {
         console.info(role, ":", name, "(off by debug)");
       } else {
@@ -74,17 +92,48 @@ class Music {
     }
   }
 
-  fetchAudio(name, role, src, loop) {
+  fetchTrack(name, role, src, loop, analyze) {
     // assertArgs(arguments, 3);
-    var audioId = role + "_" + name;
-    if (!(audioId in this.audioCatalog)) {
-      var audio = new Audio();
-      audio.name = name;
-      audio.src = src;
-      audio.loop = loop;
-      this.audioCatalog[audioId] = audio;
+    let audioId = role + "_" + name;
+    if (!(audioId in this.trackCatalog)) {
+      this.trackCatalog[audioId] = new Track(name, role, src, loop, analyze);
     }
-    this.audioCatalog[audioId].currenceTime = 0;
-    return this.audioCatalog[audioId];
+    this.trackCatalog[audioId].currentTime = 0;
+    return this.trackCatalog[audioId];
+  }
+}
+
+class Track {
+  constructor(name, role, src, loop, analyze) {
+    this.audio = new Audio();
+    this.name = name;
+    this.role = role;
+    this.audio.src = src;
+    this.audio.loop = loop;
+    if (analyze) {
+      this.node = verreciel.music.context.createMediaElementSource(this.audio);
+    }
+  }
+
+  get src() {
+    return this.audio.src;
+  }
+
+  get loop() {
+    return this.audio.loop;
+  }
+
+  play() {
+    if (this.node != null) {
+      this.node.connect(verreciel.music.analyser);
+    }
+    this.audio.play();
+  }
+
+  pause() {
+    if (this.node != null) {
+      this.node.disconnect();
+    }
+    this.audio.pause();
   }
 }
