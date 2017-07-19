@@ -157,9 +157,8 @@ class ScenePort extends Empty {
     this.connection = port;
     this.connection.origin = this;
 
-    this.updateWire(true);
-
     this.wire.enable();
+    this.updateWire(true);
 
     this.connection.host.onConnect();
     this.connection.onConnect();
