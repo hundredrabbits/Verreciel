@@ -25,6 +25,7 @@ class Ghost extends Empty {
 
     this.hide();
     this.triggersByName = {};
+    this.portsByName = {};
     this.allEntries = [];
     this.salientEntries = [];
     this.lastNonHit = null;
@@ -359,14 +360,14 @@ class Ghost extends Empty {
       if (type == LogType.hit) {
         if (this.lastNonHit != null) {
           this.salientEntries.push(this.lastNonHit);
-          console.log(this.lastNonHit);
+          console.log(Date.now() + "\t>\t" + this.lastNonHit.toString());
           this.lastNonHit = null;
         }
         this.salientEntries.push(entry);
-        console.log(entry);
-      } else if (type == LogType.mistake) {
+        console.log(Date.now() + "\t>\t" + entry.toString());
+      } else if (type == LogType.mistake || type == LogType.mission) {
         this.salientEntries.push(entry);
-        console.log(entry);
+        console.log(Date.now() + "\t>\t" + entry.toString());
       } else {
         this.lastNonHit = entry;
       }
@@ -380,16 +381,16 @@ class Ghost extends Empty {
 
 class LogType {}
 setEnumValues(LogType, [
-  "hit",
-  "install",
-  "upload",
   "combination",
   "docked",
-  "thrusterUnlock",
-  "playerUnlock",
-  "pilotAligned",
+  "hit",
+  "install",
   "mission",
-  "mistake"
+  "mistake",
+  "pilotAligned",
+  "playerUnlock",
+  "thrusterUnlock",
+  "upload"
 ]);
 
 class LogEntry {
@@ -399,6 +400,16 @@ class LogEntry {
   }
 
   toString() {
-    return "> " + this.type + "\t" + this.data.toString();
+    let string = this.type + "\t";
+    if (this.data != null) {
+      if (typeof this.data == "object") {
+        for (let prop in this.data) {
+          string += "(" + prop + ":" + this.data[prop] + ") ";
+        }
+      } else {
+        string += this.data.toString();
+      }
+    }
+    return string;
   }
 }

@@ -10,6 +10,15 @@ class ScenePort extends Empty {
     this.name = name;
     this.isEnabled = true;
     this.isPersistent = false;
+    verreciel.ghost.portsByName[name] = this;
+    let numberlessName = name.replace(/\d/g, "#");
+    if (name != numberlessName) {
+      this.numberlessName = numberlessName;
+      if (verreciel.ghost.portsByName[numberlessName] == null) {
+        verreciel.ghost.portsByName[numberlessName] = [];
+      }
+      verreciel.ghost.portsByName[numberlessName].push(this);
+    }
 
     this.trigger = new SceneTrigger(this, "port_" + name, 1, 1, 0);
     this.trigger.position.set(0, 0, -0.1);
