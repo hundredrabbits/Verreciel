@@ -53,7 +53,9 @@ class LocationStar extends Location {
 
   sightUpdate() {
     // assertArgs(arguments, 0);
-    let radiation = (1 - this.distance / 0.7) / 0.6;
+
+    let radiation =
+      this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6;
 
     if (verreciel.capsule.hasShield() == false) {
       if (radiation > 1 && verreciel.capsule.isFleeing == false) {

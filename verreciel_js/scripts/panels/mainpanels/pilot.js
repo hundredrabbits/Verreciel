@@ -85,7 +85,17 @@ class Pilot extends MainPanel {
     this.target = null;
 
     if (verreciel.capsule.isFleeing == true) {
-      this.target = verreciel.capsule.lastLocation;
+      for (
+        let i = verreciel.capsule.previousLocations.length - 1;
+        i >= 0;
+        i--
+      ) {
+        let loc = verreciel.capsule.previousLocations[i];
+        if (loc.isComplete || !(loc instanceof LocationStar)) {
+          this.target = loc;
+          break;
+        }
+      }
     } else if (verreciel.capsule.isReturning == true) {
       this.target = verreciel.capsule.closestKnownLocation();
     } else if (this.port.isReceivingEventOfTypeLocation()) {
