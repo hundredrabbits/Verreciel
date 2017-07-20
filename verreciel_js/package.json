@@ -8,7 +8,7 @@
   "license": "CC-BY-4.0",
   "scripts": {
     "start": "electron .",
-    "fmt": "prettier --write main.js 'scripts/**/*.js' 'links/**/*.css'",
+    "fmt": "prettier --write main.js 'scripts/**/*.js' 'links/**/*.css' 'media/**/*.json'",
     "stretch": "prettier --print-width 1000 --write main.js 'scripts/**/*.js' 'links/**/*.css'"
   },
   "dependencies": {

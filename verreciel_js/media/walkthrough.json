@@ -1,0 +1,2914 @@
+[
+  { "type": "mission", "data": 0 },
+  { "type": "playerUnlock", "data": 0 },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-1"
+    }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "battery_slot_thruster" }
+  },
+  { "type": "playerUnlock", "data": -45 },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "playerUnlock", "data": -225 },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-Harvest_alta" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "playerUnlock", "data": -270 },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_console" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "mission", "data": 0 },
+  { "type": "docked", "data": "City" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-City_want" } },
+  { "type": "upload", "data": "loiqe-City_want" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-City_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "mission", "data": 1 },
+  { "type": "install", "data": "map" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "playerUnlock", "data": -135 },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "mission", "data": 2 },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-satellite_valen part 2" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "valen-key-1"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "valen-key-2"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "valen key" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "mission", "data": 3 },
+  { "type": "install", "data": "exploration" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "valen-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_mission" } },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-portal_thruster" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_thruster" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-portal_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "record1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-cargo" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-cargo_cell" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "battery-2"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "battery_slot_cell2" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-station" }
+  },
+  { "type": "pilotAligned", "data": "station" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "valen-station" } },
+  { "type": "upload", "data": "valen-station" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_valen-station_install" }
+  },
+  { "type": "install", "data": "journey" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-2"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_radio" } },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "record1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "mission", "data": 6 },
+  { "type": "upload", "data": "widget_radio" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "pilotAligned", "data": "Bank" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "playerUnlock", "data": -315 },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_hatch" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "hatch_jettison" } },
+  { "type": "install", "data": "missions" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "loiqe-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "mission", "data": 8 },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "pilotAligned", "data": "Bank" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "loiqe-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_mission" } },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "valen-portal_thruster" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_thruster" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "valen-portal_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-City" }
+  },
+  { "type": "pilotAligned", "data": "City" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "City" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Harvest" }
+  },
+  { "type": "pilotAligned", "data": "Harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-Harvest_alta" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-City" }
+  },
+  { "type": "pilotAligned", "data": "City" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "City" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "altiov" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-port" }
+  },
+  { "type": "pilotAligned", "data": "port" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "port" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-port_want" } },
+  { "type": "upload", "data": "loiqe-port_want" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-port_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "senni-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_mission" } },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-portal_thruster" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_thruster" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-portal_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-cargo" }
+  },
+  { "type": "pilotAligned", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-cargo_Fog Map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-harvest_eral" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-station" }
+  },
+  { "type": "pilotAligned", "data": "station" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "senni-station" } },
+  { "type": "upload", "data": "senni-station" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_senni-station_install" }
+  },
+  { "type": "playerUnlock", "data": -90 },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-2"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_cloak" } },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "map-1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-fog" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-fog_cell" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "battery-3"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": null
+    }
+  },
+  { "type": "mission", "data": 12 },
+  { "type": "upload", "data": "battery_slot_cell3" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  { "type": "mission", "data": 13 },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-station" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-fog" }
+  },
+  { "type": "pilotAligned", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "fog" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "valen-fog_usul Part 1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-fog" }
+  },
+  { "type": "pilotAligned", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "senni-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_mission" } },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-portal_thruster" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_thruster" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-portal_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-wreck" }
+  },
+  { "type": "pilotAligned", "data": "wreck" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "wreck" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-wreck_disk" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "upload", "data": "widget_radio" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-harvest_eral" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "pilotAligned", "data": "Bank" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "valen-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "valen-Bank_slot_1" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "loiqe-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "valen-Bank_slot_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "senni-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "valen-Bank_slot_3" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "ikeral" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "record1"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "record2"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "cassette" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "upload", "data": "widget_radio" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-fog" }
+  },
+  { "type": "pilotAligned", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-fog" }
+  },
+  { "type": "pilotAligned", "data": "fog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "fog" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-fog_want" } },
+  { "type": "upload", "data": "loiqe-fog_want" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-fog_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "usul-key-1"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "usul-key-2"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "usul key" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "usul-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_mission" } },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-portal_thruster" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_thruster" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-portal_pilot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-station" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-transit" }
+  },
+  { "type": "pilotAligned", "data": "transit" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "transit" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "record3"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "valen-Bank_slot_4" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-harvest_eral" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "ikeral" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-wreck" }
+  },
+  { "type": "pilotAligned", "data": "wreck" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "wreck" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-station" }
+  },
+  { "type": "pilotAligned", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "usul-station" } },
+  { "type": "upload", "data": "usul-station" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_usul-station_install" }
+  },
+  { "type": "mission", "data": 15 },
+  { "type": "playerUnlock", "data": 0 },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_oxygen" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "valen-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "loiqe-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "senni-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "valen-Bank_slot_#",
+      "event": "record3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "usul-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "valen-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "horizontal part" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "loiqe-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "senni-key"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "vertical part" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key-1"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key-2"
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "End Key" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-wreck" }
+  },
+  { "type": "pilotAligned", "data": "wreck" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "wreck" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-station" }
+  },
+  { "type": "pilotAligned", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-telescope" }
+  },
+  { "type": "pilotAligned", "data": "telescope" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "telescope" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "usul-telescope_Blind Map" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-silence" }
+  },
+  { "type": "pilotAligned", "data": "silence" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "silence" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-annex" }
+  },
+  { "type": "pilotAligned", "data": "annex" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "annex" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "usul-annex_drive" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "upload", "data": "widget_radio" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "map-1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-transit" }
+  },
+  { "type": "pilotAligned", "data": "transit" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "transit" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Bank" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Bank" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-harvest_eral" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "senni-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "senni-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "ikeral" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "senni-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-harvest" }
+  },
+  { "type": "pilotAligned", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-harvest_ikov" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-port" }
+  },
+  { "type": "pilotAligned", "data": "port" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "port" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Harvest" }
+  },
+  { "type": "pilotAligned", "data": "Harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Harvest" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-Harvest_alta" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Horadric" }
+  },
+  { "type": "pilotAligned", "data": "Horadric" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Horadric" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "altiov" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "loiqe-Horadric_input_#",
+      "event": null
+    }
+  },
+  { "type": "combination", "data": "echo" },
+  {
+    "type": "hit",
+    "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-station" }
+  },
+  { "type": "pilotAligned", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "station" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "map-2"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-silence" }
+  },
+  { "type": "pilotAligned", "data": "silence" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "silence" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": null
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "usul-silence_want" } },
+  { "type": "upload", "data": "usul-silence_want" },
+  { "type": "hit", "data": { "from": "port", "name": "usul-silence_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_oxygen" } },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "shield-1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_shield" } },
+  { "type": "mission", "data": 17 },
+  { "type": "upload", "data": "widget_shield" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-portal" }
+  },
+  { "type": "pilotAligned", "data": "portal" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "portal" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-Loiqe" }
+  },
+  { "type": "pilotAligned", "data": "Loiqe" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Loiqe" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-Loiqe" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_loiqe-Loiqe_install" }
+  },
+  { "type": "pilotAligned", "data": "Loiqe" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-spawn" }
+  },
+  { "type": "pilotAligned", "data": "spawn" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "spawn" },
+  { "type": "hit", "data": { "from": "port", "name": "loiqe-spawn_a teapot" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_loiqe-satellite" }
+  },
+  { "type": "pilotAligned", "data": "satellite" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "satellite" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-void" }
+  },
+  { "type": "pilotAligned", "data": "void" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "void" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "echoes-1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "valen-void_want" } },
+  { "type": "upload", "data": "valen-void_want" },
+  { "type": "hit", "data": { "from": "port", "name": "valen-void_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_valen-Valen" }
+  },
+  { "type": "pilotAligned", "data": "Valen" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Valen" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "valen-Valen" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_valen-Valen_install" }
+  },
+  { "type": "pilotAligned", "data": "Valen" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-bog" }
+  },
+  { "type": "pilotAligned", "data": "bog" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "bog" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "kelp"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "senni-bog_want" } },
+  { "type": "upload", "data": "senni-bog_want" },
+  { "type": "hit", "data": { "from": "port", "name": "senni-bog_give" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-Senni" }
+  },
+  { "type": "pilotAligned", "data": "Senni" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Senni" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "senni-Senni" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_senni-Senni_install" }
+  },
+  { "type": "pilotAligned", "data": "Senni" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_senni-cargo" }
+  },
+  { "type": "pilotAligned", "data": "cargo" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_radio" } },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "record5"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
+  { "type": "upload", "data": "widget_radio" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-annex" }
+  },
+  { "type": "pilotAligned", "data": "annex" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "annex" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "battery_slot_cell#",
+      "event": "battery-3"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "battery_slot_oxygen" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-Usul" }
+  },
+  { "type": "pilotAligned", "data": "Usul" },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "Usul" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "end-key"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "usul-Usul" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "button_usul-Usul_install" }
+  },
+  { "type": "mission", "data": 18 },
+  { "type": "pilotAligned", "data": "Usul" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "map-1"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "player" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_usul-transit" }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "docked", "data": "transit" },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
+  { "type": "upload", "data": "cargo" },
+  {
+    "type": "hit",
+    "data": {
+      "from": "port",
+      "numberlessName": "console_line_#",
+      "event": "map-2"
+    }
+  },
+  { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
+  { "type": "upload", "data": "widget_map" },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "location_close-close" }
+  },
+  { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
+  {
+    "type": "hit",
+    "data": { "from": "trigger", "name": "thruster_accelerate" }
+  },
+  { "type": "mission", "data": 19 }
+]
