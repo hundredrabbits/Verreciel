@@ -26,7 +26,6 @@ class Ghost extends Empty {
     this.hide();
     this.triggersByName = {};
     this.portsByName = {};
-    this.allEntries = [];
     this.salientEntries = [];
     this.lastNonHit = null;
 
@@ -356,21 +355,29 @@ class Ghost extends Empty {
       // TODO: autopilot
     } else if (DEBUG_LOG_GHOST == true) {
       const entry = new LogEntry(type, data);
-      this.allEntries.push(entry);
       if (type == LogType.hit) {
         if (this.lastNonHit != null) {
-          this.salientEntries.push(this.lastNonHit);
-          console.log(Date.now() + "\t>\t" + this.lastNonHit.toString());
+          this.addEntry(this.lastNonHit);
           this.lastNonHit = null;
         }
-        this.salientEntries.push(entry);
-        console.log(Date.now() + "\t>\t" + entry.toString());
+        this.addEntry(entry);
       } else if (type == LogType.mistake || type == LogType.mission) {
-        this.salientEntries.push(entry);
-        console.log(Date.now() + "\t>\t" + entry.toString());
+        this.addEntry(entry);
       } else {
         this.lastNonHit = entry;
       }
+    }
+  }
+
+  addEntry(entry) {
+    entry.index = this.salientEntries.length;
+    this.salientEntries.push(entry);
+    console.log(">\t" + entry.toString());
+  }
+
+  rewindToEntry(index) {
+    if (index < this.salientEntries.length) {
+      this.salientEntries.splice(index + 1);
     }
   }
 
@@ -400,7 +407,7 @@ class LogEntry {
   }
 
   toString() {
-    let string = this.type + "\t";
+    let string = this.index + "\t" + this.type + "\t";
     if (this.data != null) {
       if (typeof this.data == "object") {
         for (let prop in this.data) {
