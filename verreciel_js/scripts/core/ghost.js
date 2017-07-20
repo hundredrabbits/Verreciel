@@ -13,6 +13,9 @@ class Ghost extends Empty {
     this.flickerTimeoutnull;
     this.idling = true;
     this.danceAmplitude = 0;
+    this.ready = false;
+
+    this.lastPlayerRotation = null;
 
     this.goalPosition = new THREE.Vector3();
     this.faceRadius = 0.42;
@@ -165,6 +168,43 @@ class Ghost extends Empty {
     super.whenStart();
     setTimeout(this.blink.bind(this), 1000 * (Math.random() * 4 + 6));
     setTimeout(this.waver.bind(this), 200);
+    if (DEBUG_LOG_GHOST) {
+      this.ready = true;
+    } else {
+      loadAsset(
+        "media/walkthrough.json",
+        function(data) {
+          for (let record of JSON.parse(data)) {
+            this.salientEntries.push(new LogEntry(record.type, record.data));
+          }
+          this.ready = true;
+          this.pollForSummon();
+        }.bind(this),
+        "application/json"
+      );
+    }
+  }
+
+  pollForSummon() {
+    if (verreciel.game.state > 0) {
+      return;
+    }
+    let playerRotation = new THREE.Vector3(
+      verreciel.player.rotation.x,
+      verreciel.player.rotation.y,
+      verreciel.player.rotation.z
+    );
+    if (
+      this.lastPlayerRotation != null &&
+      playerRotation.equals(this.lastPlayerRotation) &&
+      playerRotation.x > Math.PI / 4
+    ) {
+      verreciel.player.setIsPanoptic(true);
+      setTimeout(this.appear.bind(this), 500);
+    } else {
+      this.lastPlayerRotation = playerRotation;
+      setTimeout(this.pollForSummon.bind(this), 5000);
+    }
   }
 
   waver() {

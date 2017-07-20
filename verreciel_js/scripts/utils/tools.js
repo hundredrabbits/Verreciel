@@ -77,3 +77,17 @@ function getStackTrace() {
   Error.captureStackTrace(record, getStackTrace);
   return record.stack;
 }
+
+function loadAsset(path, callback, mimeType = null) {
+  let xhr = new XMLHttpRequest();
+  if (mimeType != null) {
+    xhr.overrideMimeType(mimeType);
+  }
+  xhr.open("GET", path, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == "200") {
+      callback(xhr.responseText);
+    }
+  };
+  xhr.send(null);
+}
