@@ -132,8 +132,10 @@ class Verreciel {
     }
     let frameTime = Date.now();
 
-    let framesElapsed =
-      (frameTime - this.lastFrameTime) / 1000 * this.fps * this.game.gameSpeed;
+    let framesElapsed = Math.min(
+      100,
+      (frameTime - this.lastFrameTime) / 1000 * this.fps * this.game.gameSpeed
+    );
     if (framesElapsed > 1) {
       this.lastFrameTime = frameTime;
       for (let i = 0; i < framesElapsed; i++) {
