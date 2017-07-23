@@ -9,8 +9,8 @@ class Ghost extends Empty {
     this.add(this.root);
     this.makeFuzz();
     this.makeFace();
-    this.returnTimeout = null;
-    this.flickerTimeoutnull;
+    this.returnDelay = null;
+    this.flickerDelay = null;
     this.idling = true;
     this.danceAmplitude = 0;
     this.ready = false;
@@ -49,8 +49,8 @@ class Ghost extends Empty {
 
   appear() {
     this.flicker();
-    setTimeout(this.stopFlickering.bind(this), 700);
-    setTimeout(this.onAppear.bind(this), 2000);
+    delay(0.7, this.stopFlickering.bind(this));
+    delay(2, this.onAppear.bind(this));
   }
 
   onAppear() {
@@ -66,8 +66,8 @@ class Ghost extends Empty {
 
   disappear() {
     this.flicker();
-    setTimeout(this.stopFlickering.bind(this), 700);
-    setTimeout(this.onDisappear.bind(this), 2000);
+    delay(0.7, this.stopFlickering.bind(this));
+    delay(2, this.onDisappear.bind(this));
   }
 
   onDisappear() {
@@ -80,7 +80,7 @@ class Ghost extends Empty {
   }
 
   flicker() {
-    this.flickerTimeout = setTimeout(this.flicker.bind(this), 50);
+    this.flickerDelay = delay(0.05, this.flicker.bind(this));
     verreciel.capsule.opacity = Math.random();
     if (this.opacity != 0) {
       this.opacity = verreciel.capsule.opacity;
@@ -88,7 +88,7 @@ class Ghost extends Empty {
   }
 
   stopFlickering() {
-    clearTimeout(this.flickerTimeout);
+    cancelDelay(this.flickerDelay);
     verreciel.capsule.hide();
     this.hide();
   }
@@ -100,7 +100,7 @@ class Ghost extends Empty {
     this.wanderToGoal(
       seconds,
       function() {
-        this.returnTimeout = setTimeout(this.returnToCenter.bind(this), 5000);
+        this.returnDelay = delay(5, this.returnToCenter.bind(this));
         if (callback != null) {
           callback();
         }
@@ -114,7 +114,7 @@ class Ghost extends Empty {
       this.openEyes.opacity = 1;
       this.closedEyes.opacity = 0;
     }
-    clearTimeout(this.returnTimeout);
+    cancelDelay(this.returnDelay);
     verreciel.animator.completeAnimation("ghost_face");
     verreciel.animator.completeAnimation("ghost");
 
@@ -169,8 +169,8 @@ class Ghost extends Empty {
 
   whenStart() {
     super.whenStart();
-    setTimeout(this.blink.bind(this), 1000 * (Math.random() * 4 + 6));
-    setTimeout(this.waver.bind(this), 200);
+    delay((Math.random() * 4 + 6), this.blink.bind(this));
+    delay(0.2, this.waver.bind(this));
     if (DEBUG_LOG_GHOST) {
       this.ready = true;
     } else {
@@ -205,11 +205,11 @@ class Ghost extends Empty {
       playerRotation.x > Math.PI / 4
     ) {
       verreciel.player.setIsPanoptic(true);
-      setTimeout(this.appear.bind(this), 500);
-      setTimeout(this.replay.bind(this), 2000);
+      delay(0.5, this.appear.bind(this));
+      delay(2, this.replay.bind(this));
     } else {
       this.lastPlayerRotation = playerRotation;
-      setTimeout(this.pollForSummon.bind(this), 5000);
+      delay(5, this.pollForSummon.bind(this));
     }
   }
 
@@ -227,6 +227,7 @@ class Ghost extends Empty {
         target,
         2,
         function() {
+          target = this.resolveHitTarget(this.currentEntry.data);
           this.replayIndex++;
           this.isTapping = true;
           target.tap();
@@ -247,7 +248,7 @@ class Ghost extends Empty {
   }
 
   waver() {
-    setTimeout(this.waver.bind(this), 200);
+    delay(0.2, this.waver.bind(this));
     for (let i = 0; i < this.fuzzVertices.length; i++) {
       this.fuzzVertices[i].copy(this.fuzzBaseVertices[i]);
       this.fuzzVertices[i].x += (Math.random() - 0.5) * 0.015;
@@ -259,7 +260,8 @@ class Ghost extends Empty {
   blink() {
     this.openEyes.opacity = 0;
     this.closedEyes.opacity = 1;
-    setTimeout(
+    delay(
+      0.15,
       function() {
         if (this.danceAmplitude > 0) {
           return;
@@ -268,9 +270,8 @@ class Ghost extends Empty {
         this.closedEyes.opacity = 0;
 
         let nextTime = Math.random() > 0.8 ? 0.2 : Math.random() * 4 + 6;
-        setTimeout(this.blink.bind(this), 1000 * nextTime);
-      }.bind(this),
-      0.15 * 1000
+        delay(nextTime, this.blink.bind(this));
+      }.bind(this)
     );
   }
 
@@ -403,20 +404,20 @@ class Ghost extends Empty {
             scale *
             this.danceAmplitude *
             0.2 *
-            Math.cos(verreciel.game.time / 4),
+            Math.cos((verreciel.game.time / verreciel.game.gameSpeed) / 4),
           0,
           scale *
             scale *
             this.danceAmplitude *
             0.2 *
-            Math.sin(verreciel.game.time / 2)
+            Math.sin((verreciel.game.time / verreciel.game.gameSpeed) / 2)
         );
       } else {
         if (this.danceAmplitude > 0) {
           this.danceAmplitude = 0;
           this.openEyes.opacity = 1;
           this.closedEyes.opacity = 0;
-          setTimeout(this.blink.bind(this), 1000 * (Math.random() * 4 + 6));
+          delay((Math.random() * 4 + 6), this.blink.bind(this));
         }
         this.root.position.setNow(
           this.root.position.x * 0.8,
@@ -437,7 +438,7 @@ class Ghost extends Empty {
       if (entry.toString() == this.currentEntry.toString()) {
         console.log("Entry match:", entry.toString());
         this.replayIndex++;
-        setTimeout(this.replay.bind(this), 500);
+        delay(0.5, this.replay.bind(this));
       }
     } else if (DEBUG_LOG_GHOST == true) {
       if (type == LogType.hit) {
@@ -518,6 +519,7 @@ class LogType {}
 setEnumValues(LogType, [
   "combination",
   "docked",
+  "harvest",
   "hit",
   "install",
   "mission",
@@ -525,7 +527,7 @@ setEnumValues(LogType, [
   "pilotAligned",
   "playerUnlock",
   "thrusterUnlock",
-  "upload"
+  "upload",
 ]);
 
 class LogEntry {

@@ -1,6 +1,9 @@
+Ghost gets stuck on pilot
+  Pilot should give OK immediately if necessary
+Ghost gets stuck on thruster in one spot
+
 TODO: change horadric reports from currency names to currency codes
   Update the walkthrough
-Ghost gets stuck on unready IKOV harvest
 Doesn't indicate readiness, doesn't auto-upload. What to do?
 
 Make ghost hang out closer to where he last was instead of center, with room to dance
@@ -8,18 +11,10 @@ Add pause between ghost appear and first ghost replay step
 Animate ghost button tap
 Revisit ghost face angle
 
-console - valen key 2 bug
-
+----
 
 It's weird when the helmet gives old quest instructions for the current mission
   I don't mean in response to mistakes, I mean when the player's doing the right thing
-
-Walkthroughs
-
-  Mission walkthrough chapters
-  Record walkthrough chapters
-  Test for each recipe
-  Chapter to reach other areas
 
 -------
 

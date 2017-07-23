@@ -30,6 +30,7 @@ class LocationHarvest extends Location {
     // assertArgs(arguments, 0);
     super.whenStart();
     this.port.addEvent(this.grows);
+    verreciel.ghost.report(LogType.harvest, this.grows.code);
   }
 
   generate() {
@@ -55,7 +56,10 @@ class LocationHarvest extends Location {
     } else {
       this.refresh();
       this.generationCountdown = 0;
-      this.port.addEvent(this.grows);
+      if (!this.port.hasEvent(this.grows)) {
+        this.port.addEvent(this.grows);
+        verreciel.ghost.report(LogType.harvest, this.grows.code);
+      }
       this.structure.update();
     }
 
