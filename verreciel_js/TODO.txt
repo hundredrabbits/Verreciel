@@ -1,11 +1,3 @@
-Ghost gets stuck on pilot
-  Pilot should give OK immediately if necessary
-Ghost gets stuck on thruster in one spot
-
-TODO: change horadric reports from currency names to currency codes
-  Update the walkthrough
-Doesn't indicate readiness, doesn't auto-upload. What to do?
-
 Make ghost hang out closer to where he last was instead of center, with room to dance
 Add pause between ghost appear and first ghost replay step
 Animate ghost button tap

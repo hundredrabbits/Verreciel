@@ -169,7 +169,7 @@ class Ghost extends Empty {
 
   whenStart() {
     super.whenStart();
-    delay((Math.random() * 4 + 6), this.blink.bind(this));
+    delay(Math.random() * 4 + 6, this.blink.bind(this));
     delay(0.2, this.waver.bind(this));
     if (DEBUG_LOG_GHOST) {
       this.ready = true;
@@ -178,9 +178,9 @@ class Ghost extends Empty {
         "media/walkthrough.json",
         function(data) {
           for (let record of JSON.parse(data)) {
-            this.salientEntries.push(
-              new LogEntry(record.type, record.data, record.skip)
-            );
+            let entry = new LogEntry(record.type, record.data, record.skip);
+            entry.index = record.index;
+            this.salientEntries.push(entry);
           }
           this.ready = true;
           this.pollForSummon();
@@ -216,12 +216,16 @@ class Ghost extends Empty {
   replay() {
     this.isReplaying = true;
     while (this.salientEntries[this.replayIndex].skip == true) {
-      console.log("SKIP", this.salientEntries[this.replayIndex]);
+      console.log(
+        "SKIP",
+        this.replayIndex,
+        this.salientEntries[this.replayIndex].toString()
+      );
       this.replayIndex++;
     }
     this.currentEntry = this.salientEntries[this.replayIndex];
     if (this.currentEntry.type == LogType.hit) {
-      console.log("HIT", this.currentEntry);
+      console.log("HIT", this.replayIndex, this.currentEntry.toString());
       let target = this.resolveHitTarget(this.currentEntry.data);
       this.wanderTo(
         target,
@@ -236,7 +240,7 @@ class Ghost extends Empty {
         }.bind(this)
       );
     } else {
-      console.log("WAIT", this.currentEntry.toString());
+      console.log("WAIT", this.replayIndex, this.currentEntry.toString());
     }
 
     if (this.entriesDuringTap.length > 0) {
@@ -404,20 +408,20 @@ class Ghost extends Empty {
             scale *
             this.danceAmplitude *
             0.2 *
-            Math.cos((verreciel.game.time / verreciel.game.gameSpeed) / 4),
+            Math.cos(verreciel.game.time / verreciel.game.gameSpeed / 4),
           0,
           scale *
             scale *
             this.danceAmplitude *
             0.2 *
-            Math.sin((verreciel.game.time / verreciel.game.gameSpeed) / 2)
+            Math.sin(verreciel.game.time / verreciel.game.gameSpeed / 2)
         );
       } else {
         if (this.danceAmplitude > 0) {
           this.danceAmplitude = 0;
           this.openEyes.opacity = 1;
           this.closedEyes.opacity = 0;
-          delay((Math.random() * 4 + 6), this.blink.bind(this));
+          delay(Math.random() * 4 + 6, this.blink.bind(this));
         }
         this.root.position.setNow(
           this.root.position.x * 0.8,
@@ -436,7 +440,7 @@ class Ghost extends Empty {
       this.entriesDuringTap.push(entry);
     } else if (this.isReplaying && entry.type != LogType.hit) {
       if (entry.toString() == this.currentEntry.toString()) {
-        console.log("Entry match:", entry.toString());
+        console.log("MATCH", this.replayIndex, entry.toString());
         this.replayIndex++;
         delay(0.5, this.replay.bind(this));
       }
@@ -527,7 +531,7 @@ setEnumValues(LogType, [
   "pilotAligned",
   "playerUnlock",
   "thrusterUnlock",
-  "upload",
+  "upload"
 ]);
 
 class LogEntry {
@@ -538,7 +542,7 @@ class LogEntry {
   }
 
   toString() {
-    let string = this.index + "\t" + this.type + "\t";
+    let string = this.type + "\t";
     if (this.data != null) {
       if (typeof this.data == "object") {
         for (let prop in this.data) {

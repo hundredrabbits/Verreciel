@@ -9,6 +9,7 @@ class Pilot extends MainPanel {
     this.details = "aligns to locations";
     this.port.isPersistent = true;
     this.isAligned = false;
+    this.retargeting = false;
 
     this.targetDirectionIndicator = new Empty();
     this.targetDirectionIndicator.add(
@@ -82,6 +83,7 @@ class Pilot extends MainPanel {
     // assertArgs(arguments, 0);
     super.whenRenderer();
 
+    let lastTarget = this.target;
     this.target = null;
 
     if (verreciel.capsule.isFleeing == true) {
@@ -100,6 +102,10 @@ class Pilot extends MainPanel {
       this.target = verreciel.capsule.closestKnownLocation();
     } else if (this.port.isReceivingEventOfTypeLocation()) {
       this.target = this.port.origin.event;
+    }
+
+    if (lastTarget != this.target) {
+      this.retargeting = true;
     }
 
     if (this.target != null) {
@@ -129,9 +135,9 @@ class Pilot extends MainPanel {
       this.turnRight(this.target_align);
     }
 
-    let wasAligned = this.isAligned;
     this.isAligned = Math.abs(this.target.align) < 1;
-    if (this.isAligned == true && wasAligned == false) {
+    if (this.isAligned == true && this.retargeting == true) {
+      this.retargeting = false;
       verreciel.ghost.report(LogType.pilotAligned, this.target.name);
     }
 

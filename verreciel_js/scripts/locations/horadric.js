@@ -238,7 +238,7 @@ class LocationHoradric extends Location {
     verreciel.music.playEffect("beep2");
     verreciel.ghost.report(
       LogType.combination,
-      this.combinationRecipe.result.name // TODO: should've been code
+      this.combinationRecipe.result.code
     );
   }
 }

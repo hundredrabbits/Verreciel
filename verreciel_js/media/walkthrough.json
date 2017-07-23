@@ -325,7 +325,7 @@
     "type": "hit"
   },
   {
-    "data": "valen key",
+    "data": "valen-key",
     "index": 46,
     "type": "combination"
   },
@@ -1510,7 +1510,7 @@
     "type": "hit"
   },
   {
-    "data": "altiov",
+    "data": "currency-4",
     "index": 211,
     "type": "combination"
   },
@@ -3447,7 +3447,7 @@
     "type": "hit"
   },
   {
-    "data": "ikeral",
+    "data": "currency-5",
     "index": 475,
     "type": "combination"
   },
@@ -3514,7 +3514,7 @@
     "type": "hit"
   },
   {
-    "data": "cassette",
+    "data": "record3",
     "index": 484,
     "type": "combination"
   },
@@ -4116,7 +4116,7 @@
     "type": "hit"
   },
   {
-    "data": "usul key",
+    "data": "usul-key",
     "index": 565,
     "type": "combination"
   },
@@ -4836,7 +4836,7 @@
     "type": "hit"
   },
   {
-    "data": "ikeral",
+    "data": "currency-5",
     "index": 662,
     "type": "combination"
   },
@@ -5506,7 +5506,7 @@
     "type": "hit"
   },
   {
-    "data": "End Key",
+    "data": "end-key",
     "index": 752,
     "type": "combination"
   },
@@ -6443,7 +6443,7 @@
     "type": "hit"
   },
   {
-    "data": "ikeral",
+    "data": "currency-5",
     "index": 880,
     "type": "combination"
   },
@@ -6783,7 +6783,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 926,
     "type": "hit"
@@ -6805,8 +6805,16 @@
     "type": "hit"
   },
   {
-    "data": "Harvest",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 929,
+    "type": "hit"
+  },
+  {
+    "data": "Harvest",
+    "index": 930,
     "type": "docked"
   },
   {
@@ -6814,7 +6822,7 @@
       "from": "port",
       "name": "loiqe-Harvest_alta"
     },
-    "index": 930,
+    "index": 931,
     "type": "hit"
   },
   {
@@ -6822,12 +6830,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 931,
+    "index": 932,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 932,
+    "index": 933,
     "type": "upload"
   },
   {
@@ -6835,7 +6843,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 933,
+    "index": 934,
     "type": "hit"
   },
   {
@@ -6843,7 +6851,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 934,
+    "index": 935,
     "type": "hit"
   },
   {
@@ -6851,21 +6859,13 @@
       "from": "trigger",
       "name": "location_loiqe-Horadric"
     },
-    "index": 935,
+    "index": 936,
     "type": "hit"
   },
   {
     "data": "Horadric",
-    "index": 936,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 937,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -6877,8 +6877,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 939,
     "type": "hit"
@@ -6886,7 +6886,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 940,
     "type": "hit"
@@ -6908,8 +6908,16 @@
     "type": "hit"
   },
   {
-    "data": "Horadric",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 943,
+    "type": "hit"
+  },
+  {
+    "data": "Horadric",
+    "index": 944,
     "type": "docked"
   },
   {
@@ -6918,7 +6926,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 944,
+    "index": 945,
     "type": "hit"
   },
   {
@@ -6927,12 +6935,12 @@
       "from": "port",
       "numberlessName": "loiqe-Horadric_input_#"
     },
-    "index": 945,
+    "index": 946,
     "type": "hit"
   },
   {
     "data": "loiqe-Horadric_input_#",
-    "index": 946,
+    "index": 947,
     "type": "upload"
   },
   {
@@ -6941,7 +6949,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 947,
+    "index": 948,
     "type": "hit"
   },
   {
@@ -6950,12 +6958,12 @@
       "from": "port",
       "numberlessName": "loiqe-Horadric_input_#"
     },
-    "index": 948,
+    "index": 949,
     "type": "hit"
   },
   {
-    "data": "altiov",
-    "index": 949,
+    "data": "currency-4",
+    "index": 950,
     "type": "combination"
   },
   {
@@ -6963,7 +6971,7 @@
       "from": "port",
       "name": "loiqe-Horadric_output_1"
     },
-    "index": 950,
+    "index": 951,
     "type": "hit"
   },
   {
@@ -6971,12 +6979,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 951,
+    "index": 952,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 952,
+    "index": 953,
     "type": "upload"
   },
   {
@@ -6985,7 +6993,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 953,
+    "index": 954,
     "type": "hit"
   },
   {
@@ -6994,12 +7002,12 @@
       "from": "port",
       "numberlessName": "loiqe-Horadric_input_#"
     },
-    "index": 954,
+    "index": 955,
     "type": "hit"
   },
   {
     "data": "loiqe-Horadric_input_#",
-    "index": 955,
+    "index": 956,
     "type": "upload"
   },
   {
@@ -7008,7 +7016,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 956,
+    "index": 957,
     "type": "hit"
   },
   {
@@ -7017,12 +7025,12 @@
       "from": "port",
       "numberlessName": "loiqe-Horadric_input_#"
     },
-    "index": 957,
+    "index": 958,
     "type": "hit"
   },
   {
-    "data": "echo",
-    "index": 958,
+    "data": "currency-6",
+    "index": 959,
     "type": "combination"
   },
   {
@@ -7030,7 +7038,7 @@
       "from": "port",
       "name": "loiqe-Horadric_output_1"
     },
-    "index": 959,
+    "index": 960,
     "type": "hit"
   },
   {
@@ -7038,12 +7046,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 960,
+    "index": 961,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 961,
+    "index": 962,
     "type": "upload"
   },
   {
@@ -7051,7 +7059,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 962,
+    "index": 963,
     "type": "hit"
   },
   {
@@ -7059,7 +7067,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 963,
+    "index": 964,
     "type": "hit"
   },
   {
@@ -7067,21 +7075,13 @@
       "from": "trigger",
       "name": "location_usul-station"
     },
-    "index": 964,
+    "index": 965,
     "type": "hit"
   },
   {
     "data": "station",
-    "index": 965,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 966,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7093,8 +7093,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 968,
     "type": "hit"
@@ -7102,7 +7102,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 969,
     "type": "hit"
@@ -7124,8 +7124,16 @@
     "type": "hit"
   },
   {
-    "data": "station",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 972,
+    "type": "hit"
+  },
+  {
+    "data": "station",
+    "index": 973,
     "type": "docked"
   },
   {
@@ -7133,7 +7141,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 973,
+    "index": 974,
     "type": "hit"
   },
   {
@@ -7141,12 +7149,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 974,
+    "index": 975,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 975,
+    "index": 976,
     "type": "upload"
   },
   {
@@ -7155,7 +7163,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 976,
+    "index": 977,
     "type": "hit"
   },
   {
@@ -7163,12 +7171,12 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 977,
+    "index": 978,
     "type": "hit"
   },
   {
     "data": "widget_map",
-    "index": 978,
+    "index": 979,
     "type": "upload"
   },
   {
@@ -7176,26 +7184,18 @@
       "from": "trigger",
       "name": "location_usul-silence"
     },
-    "index": 979,
+    "index": 980,
     "type": "hit"
   },
   {
     "data": "silence",
-    "index": 980,
+    "index": 981,
     "type": "pilotAligned"
   },
   {
     "data": {
       "from": "trigger",
       "name": "thruster_action"
-    },
-    "index": 981,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "trigger",
-      "name": "thruster_accelerate"
     },
     "index": 982,
     "type": "hit"
@@ -7217,8 +7217,16 @@
     "type": "hit"
   },
   {
-    "data": "silence",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 985,
+    "type": "hit"
+  },
+  {
+    "data": "silence",
+    "index": 986,
     "type": "docked"
   },
   {
@@ -7227,7 +7235,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 986,
+    "index": 987,
     "type": "hit"
   },
   {
@@ -7235,12 +7243,12 @@
       "from": "port",
       "name": "usul-silence_want"
     },
-    "index": 987,
+    "index": 988,
     "type": "hit"
   },
   {
     "data": "usul-silence_want",
-    "index": 988,
+    "index": 989,
     "type": "upload"
   },
   {
@@ -7248,7 +7256,7 @@
       "from": "port",
       "name": "usul-silence_give"
     },
-    "index": 989,
+    "index": 990,
     "type": "hit"
   },
   {
@@ -7256,12 +7264,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 990,
+    "index": 991,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 991,
+    "index": 992,
     "type": "upload"
   },
   {
@@ -7269,7 +7277,7 @@
       "from": "port",
       "name": "widget_radio"
     },
-    "index": 992,
+    "index": 993,
     "type": "hit"
   },
   {
@@ -7277,12 +7285,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 993,
+    "index": 994,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 994,
+    "index": 995,
     "type": "upload"
   },
   {
@@ -7291,7 +7299,7 @@
       "from": "port",
       "numberlessName": "battery_slot_cell#"
     },
-    "index": 995,
+    "index": 996,
     "type": "hit"
   },
   {
@@ -7299,7 +7307,7 @@
       "from": "port",
       "name": "battery_slot_oxygen"
     },
-    "index": 996,
+    "index": 997,
     "type": "hit"
   },
   {
@@ -7308,7 +7316,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 997,
+    "index": 998,
     "type": "hit"
   },
   {
@@ -7316,18 +7324,18 @@
       "from": "port",
       "name": "widget_shield"
     },
-    "index": 998,
+    "index": 999,
     "type": "hit"
   },
   {
     "data": 17,
-    "index": 999,
+    "index": 1000,
     "skip": true,
     "type": "mission"
   },
   {
     "data": "widget_shield",
-    "index": 1000,
+    "index": 1001,
     "type": "upload"
   },
   {
@@ -7335,7 +7343,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1001,
+    "index": 1002,
     "type": "hit"
   },
   {
@@ -7343,7 +7351,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1002,
+    "index": 1003,
     "type": "hit"
   },
   {
@@ -7351,21 +7359,13 @@
       "from": "trigger",
       "name": "location_loiqe-portal"
     },
-    "index": 1003,
+    "index": 1004,
     "type": "hit"
   },
   {
     "data": "portal",
-    "index": 1004,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1005,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7377,8 +7377,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1007,
     "type": "hit"
@@ -7386,7 +7386,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1008,
     "type": "hit"
@@ -7408,8 +7408,16 @@
     "type": "hit"
   },
   {
-    "data": "portal",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1011,
+    "type": "hit"
+  },
+  {
+    "data": "portal",
+    "index": 1012,
     "type": "docked"
   },
   {
@@ -7417,26 +7425,18 @@
       "from": "trigger",
       "name": "location_loiqe-Loiqe"
     },
-    "index": 1012,
+    "index": 1013,
     "type": "hit"
   },
   {
     "data": "Loiqe",
-    "index": 1013,
+    "index": 1014,
     "type": "pilotAligned"
   },
   {
     "data": {
       "from": "trigger",
       "name": "thruster_action"
-    },
-    "index": 1014,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "trigger",
-      "name": "thruster_accelerate"
     },
     "index": 1015,
     "type": "hit"
@@ -7458,8 +7458,16 @@
     "type": "hit"
   },
   {
-    "data": "Loiqe",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1018,
+    "type": "hit"
+  },
+  {
+    "data": "Loiqe",
+    "index": 1019,
     "type": "docked"
   },
   {
@@ -7468,7 +7476,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1019,
+    "index": 1020,
     "type": "hit"
   },
   {
@@ -7476,7 +7484,7 @@
       "from": "port",
       "name": "loiqe-Loiqe"
     },
-    "index": 1020,
+    "index": 1021,
     "type": "hit"
   },
   {
@@ -7484,12 +7492,12 @@
       "from": "trigger",
       "name": "button_loiqe-Loiqe_install"
     },
-    "index": 1021,
+    "index": 1022,
     "type": "hit"
   },
   {
     "data": "Loiqe",
-    "index": 1022,
+    "index": 1023,
     "type": "pilotAligned"
   },
   {
@@ -7497,7 +7505,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1023,
+    "index": 1024,
     "type": "hit"
   },
   {
@@ -7505,7 +7513,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1024,
+    "index": 1025,
     "type": "hit"
   },
   {
@@ -7513,21 +7521,13 @@
       "from": "trigger",
       "name": "location_loiqe-spawn"
     },
-    "index": 1025,
+    "index": 1026,
     "type": "hit"
   },
   {
     "data": "spawn",
-    "index": 1026,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1027,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7539,8 +7539,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1029,
     "type": "hit"
@@ -7548,7 +7548,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1030,
     "type": "hit"
@@ -7570,8 +7570,16 @@
     "type": "hit"
   },
   {
-    "data": "spawn",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1033,
+    "type": "hit"
+  },
+  {
+    "data": "spawn",
+    "index": 1034,
     "type": "docked"
   },
   {
@@ -7579,7 +7587,7 @@
       "from": "port",
       "name": "loiqe-spawn_a teapot"
     },
-    "index": 1034,
+    "index": 1035,
     "type": "hit"
   },
   {
@@ -7587,12 +7595,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 1035,
+    "index": 1036,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1036,
+    "index": 1037,
     "type": "upload"
   },
   {
@@ -7600,7 +7608,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1037,
+    "index": 1038,
     "type": "hit"
   },
   {
@@ -7608,7 +7616,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1038,
+    "index": 1039,
     "type": "hit"
   },
   {
@@ -7616,21 +7624,13 @@
       "from": "trigger",
       "name": "location_loiqe-satellite"
     },
-    "index": 1039,
+    "index": 1040,
     "type": "hit"
   },
   {
     "data": "satellite",
-    "index": 1040,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1041,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7642,8 +7642,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1043,
     "type": "hit"
@@ -7651,7 +7651,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1044,
     "type": "hit"
@@ -7673,8 +7673,16 @@
     "type": "hit"
   },
   {
-    "data": "satellite",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1047,
+    "type": "hit"
+  },
+  {
+    "data": "satellite",
+    "index": 1048,
     "type": "docked"
   },
   {
@@ -7682,7 +7690,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1048,
+    "index": 1049,
     "type": "hit"
   },
   {
@@ -7690,7 +7698,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1049,
+    "index": 1050,
     "type": "hit"
   },
   {
@@ -7698,21 +7706,13 @@
       "from": "trigger",
       "name": "location_valen-void"
     },
-    "index": 1050,
+    "index": 1051,
     "type": "hit"
   },
   {
     "data": "void",
-    "index": 1051,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1052,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7724,8 +7724,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1054,
     "type": "hit"
@@ -7733,7 +7733,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1055,
     "type": "hit"
@@ -7755,8 +7755,16 @@
     "type": "hit"
   },
   {
-    "data": "void",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1058,
+    "type": "hit"
+  },
+  {
+    "data": "void",
+    "index": 1059,
     "type": "docked"
   },
   {
@@ -7765,7 +7773,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1059,
+    "index": 1060,
     "type": "hit"
   },
   {
@@ -7773,12 +7781,12 @@
       "from": "port",
       "name": "valen-void_want"
     },
-    "index": 1060,
+    "index": 1061,
     "type": "hit"
   },
   {
     "data": "valen-void_want",
-    "index": 1061,
+    "index": 1062,
     "type": "upload"
   },
   {
@@ -7786,7 +7794,7 @@
       "from": "port",
       "name": "valen-void_give"
     },
-    "index": 1062,
+    "index": 1063,
     "type": "hit"
   },
   {
@@ -7794,12 +7802,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 1063,
+    "index": 1064,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1064,
+    "index": 1065,
     "type": "upload"
   },
   {
@@ -7807,7 +7815,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1065,
+    "index": 1066,
     "type": "hit"
   },
   {
@@ -7815,7 +7823,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1066,
+    "index": 1067,
     "type": "hit"
   },
   {
@@ -7823,21 +7831,13 @@
       "from": "trigger",
       "name": "location_valen-Valen"
     },
-    "index": 1067,
+    "index": 1068,
     "type": "hit"
   },
   {
     "data": "Valen",
-    "index": 1068,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1069,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7849,8 +7849,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1071,
     "type": "hit"
@@ -7858,7 +7858,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1072,
     "type": "hit"
@@ -7880,8 +7880,16 @@
     "type": "hit"
   },
   {
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
+    "index": 1074,
+    "type": "hit"
+  },
+  {
     "data": "Valen",
-    "index": 1075,
+    "index": 1076,
     "type": "docked"
   },
   {
@@ -7890,7 +7898,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1076,
+    "index": 1077,
     "type": "hit"
   },
   {
@@ -7898,7 +7906,7 @@
       "from": "port",
       "name": "valen-Valen"
     },
-    "index": 1077,
+    "index": 1078,
     "type": "hit"
   },
   {
@@ -7906,12 +7914,12 @@
       "from": "trigger",
       "name": "button_valen-Valen_install"
     },
-    "index": 1078,
+    "index": 1079,
     "type": "hit"
   },
   {
     "data": "Valen",
-    "index": 1079,
+    "index": 1080,
     "type": "pilotAligned"
   },
   {
@@ -7919,7 +7927,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1080,
+    "index": 1081,
     "type": "hit"
   },
   {
@@ -7927,7 +7935,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1081,
+    "index": 1082,
     "type": "hit"
   },
   {
@@ -7935,21 +7943,13 @@
       "from": "trigger",
       "name": "location_senni-bog"
     },
-    "index": 1082,
+    "index": 1083,
     "type": "hit"
   },
   {
     "data": "bog",
-    "index": 1083,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1084,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -7961,8 +7961,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1086,
     "type": "hit"
@@ -7970,7 +7970,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1087,
     "type": "hit"
@@ -7992,8 +7992,16 @@
     "type": "hit"
   },
   {
-    "data": "bog",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1090,
+    "type": "hit"
+  },
+  {
+    "data": "bog",
+    "index": 1091,
     "type": "docked"
   },
   {
@@ -8002,7 +8010,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1091,
+    "index": 1092,
     "type": "hit"
   },
   {
@@ -8010,12 +8018,12 @@
       "from": "port",
       "name": "senni-bog_want"
     },
-    "index": 1092,
+    "index": 1093,
     "type": "hit"
   },
   {
     "data": "senni-bog_want",
-    "index": 1093,
+    "index": 1094,
     "type": "upload"
   },
   {
@@ -8023,7 +8031,7 @@
       "from": "port",
       "name": "senni-bog_give"
     },
-    "index": 1094,
+    "index": 1095,
     "type": "hit"
   },
   {
@@ -8031,12 +8039,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 1095,
+    "index": 1096,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1096,
+    "index": 1097,
     "type": "upload"
   },
   {
@@ -8044,26 +8052,18 @@
       "from": "trigger",
       "name": "location_senni-Senni"
     },
-    "index": 1097,
+    "index": 1098,
     "type": "hit"
   },
   {
     "data": "Senni",
-    "index": 1098,
+    "index": 1099,
     "type": "pilotAligned"
   },
   {
     "data": {
       "from": "trigger",
       "name": "thruster_action"
-    },
-    "index": 1099,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "trigger",
-      "name": "thruster_accelerate"
     },
     "index": 1100,
     "type": "hit"
@@ -8085,8 +8085,16 @@
     "type": "hit"
   },
   {
-    "data": "Senni",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1103,
+    "type": "hit"
+  },
+  {
+    "data": "Senni",
+    "index": 1104,
     "type": "docked"
   },
   {
@@ -8095,7 +8103,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1104,
+    "index": 1105,
     "type": "hit"
   },
   {
@@ -8103,7 +8111,7 @@
       "from": "port",
       "name": "senni-Senni"
     },
-    "index": 1105,
+    "index": 1106,
     "type": "hit"
   },
   {
@@ -8111,12 +8119,12 @@
       "from": "trigger",
       "name": "button_senni-Senni_install"
     },
-    "index": 1106,
+    "index": 1107,
     "type": "hit"
   },
   {
     "data": "Senni",
-    "index": 1107,
+    "index": 1108,
     "type": "pilotAligned"
   },
   {
@@ -8124,26 +8132,18 @@
       "from": "trigger",
       "name": "location_senni-cargo"
     },
-    "index": 1108,
+    "index": 1109,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1109,
+    "index": 1110,
     "type": "pilotAligned"
   },
   {
     "data": {
       "from": "trigger",
       "name": "thruster_action"
-    },
-    "index": 1110,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "trigger",
-      "name": "thruster_accelerate"
     },
     "index": 1111,
     "type": "hit"
@@ -8165,8 +8165,16 @@
     "type": "hit"
   },
   {
-    "data": "cargo",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1114,
+    "type": "hit"
+  },
+  {
+    "data": "cargo",
+    "index": 1115,
     "type": "docked"
   },
   {
@@ -8175,7 +8183,7 @@
       "from": "port",
       "numberlessName": "battery_slot_cell#"
     },
-    "index": 1115,
+    "index": 1116,
     "type": "hit"
   },
   {
@@ -8183,7 +8191,7 @@
       "from": "port",
       "name": "battery_slot_radio"
     },
-    "index": 1116,
+    "index": 1117,
     "type": "hit"
   },
   {
@@ -8192,7 +8200,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1117,
+    "index": 1118,
     "type": "hit"
   },
   {
@@ -8200,12 +8208,12 @@
       "from": "port",
       "name": "widget_radio"
     },
-    "index": 1118,
+    "index": 1119,
     "type": "hit"
   },
   {
     "data": "widget_radio",
-    "index": 1119,
+    "index": 1120,
     "type": "upload"
   },
   {
@@ -8213,7 +8221,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1120,
+    "index": 1121,
     "type": "hit"
   },
   {
@@ -8221,7 +8229,7 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1121,
+    "index": 1122,
     "type": "hit"
   },
   {
@@ -8229,21 +8237,13 @@
       "from": "trigger",
       "name": "location_usul-annex"
     },
-    "index": 1122,
+    "index": 1123,
     "type": "hit"
   },
   {
     "data": "annex",
-    "index": 1123,
-    "type": "pilotAligned"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
-    },
     "index": 1124,
-    "type": "hit"
+    "type": "pilotAligned"
   },
   {
     "data": {
@@ -8255,8 +8255,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1126,
     "type": "hit"
@@ -8264,7 +8264,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1127,
     "type": "hit"
@@ -8286,8 +8286,16 @@
     "type": "hit"
   },
   {
-    "data": "annex",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1130,
+    "type": "hit"
+  },
+  {
+    "data": "annex",
+    "index": 1131,
     "type": "docked"
   },
   {
@@ -8296,7 +8304,7 @@
       "from": "port",
       "numberlessName": "battery_slot_cell#"
     },
-    "index": 1131,
+    "index": 1132,
     "type": "hit"
   },
   {
@@ -8304,7 +8312,7 @@
       "from": "port",
       "name": "battery_slot_oxygen"
     },
-    "index": 1132,
+    "index": 1133,
     "type": "hit"
   },
   {
@@ -8312,26 +8320,18 @@
       "from": "trigger",
       "name": "location_usul-Usul"
     },
-    "index": 1133,
+    "index": 1134,
     "type": "hit"
   },
   {
     "data": "Usul",
-    "index": 1134,
+    "index": 1135,
     "type": "pilotAligned"
   },
   {
     "data": {
       "from": "trigger",
       "name": "thruster_action"
-    },
-    "index": 1135,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "trigger",
-      "name": "thruster_accelerate"
     },
     "index": 1136,
     "type": "hit"
@@ -8353,8 +8353,16 @@
     "type": "hit"
   },
   {
-    "data": "Usul",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1139,
+    "type": "hit"
+  },
+  {
+    "data": "Usul",
+    "index": 1140,
     "type": "docked"
   },
   {
@@ -8363,7 +8371,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1140,
+    "index": 1141,
     "type": "hit"
   },
   {
@@ -8371,7 +8379,7 @@
       "from": "port",
       "name": "usul-Usul"
     },
-    "index": 1141,
+    "index": 1142,
     "type": "hit"
   },
   {
@@ -8379,18 +8387,18 @@
       "from": "trigger",
       "name": "button_usul-Usul_install"
     },
-    "index": 1142,
+    "index": 1143,
     "type": "hit"
   },
   {
     "data": 18,
-    "index": 1143,
+    "index": 1144,
     "skip": true,
     "type": "mission"
   },
   {
     "data": "Usul",
-    "index": 1144,
+    "index": 1145,
     "type": "pilotAligned"
   },
   {
@@ -8398,7 +8406,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1145,
+    "index": 1146,
     "type": "hit"
   },
   {
@@ -8406,12 +8414,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 1146,
+    "index": 1147,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1147,
+    "index": 1148,
     "type": "upload"
   },
   {
@@ -8420,7 +8428,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1148,
+    "index": 1149,
     "type": "hit"
   },
   {
@@ -8428,12 +8436,12 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1149,
+    "index": 1150,
     "type": "hit"
   },
   {
     "data": "widget_map",
-    "index": 1150,
+    "index": 1151,
     "type": "upload"
   },
   {
@@ -8441,7 +8449,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1151,
+    "index": 1152,
     "type": "hit"
   },
   {
@@ -8449,21 +8457,13 @@
       "from": "port",
       "name": "player"
     },
-    "index": 1152,
+    "index": 1153,
     "type": "hit"
   },
   {
     "data": {
       "from": "trigger",
       "name": "location_usul-transit"
-    },
-    "index": 1153,
-    "type": "hit"
-  },
-  {
-    "data": {
-      "from": "port",
-      "name": "widget_map"
     },
     "index": 1154,
     "type": "hit"
@@ -8478,8 +8478,8 @@
   },
   {
     "data": {
-      "from": "trigger",
-      "name": "thruster_action"
+      "from": "port",
+      "name": "widget_map"
     },
     "index": 1156,
     "type": "hit"
@@ -8487,7 +8487,7 @@
   {
     "data": {
       "from": "trigger",
-      "name": "thruster_accelerate"
+      "name": "thruster_action"
     },
     "index": 1157,
     "type": "hit"
@@ -8509,8 +8509,16 @@
     "type": "hit"
   },
   {
-    "data": "transit",
+    "data": {
+      "from": "trigger",
+      "name": "thruster_accelerate"
+    },
     "index": 1160,
+    "type": "hit"
+  },
+  {
+    "data": "transit",
+    "index": 1161,
     "type": "docked"
   },
   {
@@ -8518,7 +8526,7 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1161,
+    "index": 1162,
     "type": "hit"
   },
   {
@@ -8526,12 +8534,12 @@
       "from": "port",
       "name": "mainpanel_cargo"
     },
-    "index": 1162,
+    "index": 1163,
     "type": "hit"
   },
   {
     "data": "cargo",
-    "index": 1163,
+    "index": 1164,
     "type": "upload"
   },
   {
@@ -8540,7 +8548,7 @@
       "from": "port",
       "numberlessName": "console_line_#"
     },
-    "index": 1164,
+    "index": 1165,
     "type": "hit"
   },
   {
@@ -8548,12 +8556,12 @@
       "from": "port",
       "name": "widget_map"
     },
-    "index": 1165,
+    "index": 1166,
     "type": "hit"
   },
   {
     "data": "widget_map",
-    "index": 1166,
+    "index": 1167,
     "type": "upload"
   },
   {
@@ -8561,7 +8569,7 @@
       "from": "trigger",
       "name": "location_close-close"
     },
-    "index": 1167,
+    "index": 1168,
     "type": "hit"
   },
   {
@@ -8569,7 +8577,7 @@
       "from": "trigger",
       "name": "thruster_action"
     },
-    "index": 1168,
+    "index": 1169,
     "type": "hit"
   },
   {
@@ -8577,12 +8585,12 @@
       "from": "trigger",
       "name": "thruster_accelerate"
     },
-    "index": 1169,
+    "index": 1170,
     "type": "hit"
   },
   {
     "data": 19,
-    "index": 1170,
+    "index": 1171,
     "skip": true,
     "type": "mission"
   }
