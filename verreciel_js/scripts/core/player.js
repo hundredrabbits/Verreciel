@@ -68,18 +68,22 @@ class Player extends Empty {
     verreciel.animator.begin("look at");
     verreciel.animator.animationDuration = 2.5;
 
-    this.position.set(0, 0, 0); // ?
     this.rotation.y = degToRad(deg);
-    verreciel.helmet.position.set(0, 0, 0); // ?
-    verreciel.helmet.rotation.y = degToRad(deg);
+    if (!this.isPanoptic) {
+      this.position.set(0, 0, 0); // ?
+      verreciel.helmet.position.set(0, 0, 0); // ?
+      verreciel.helmet.rotation.y = degToRad(deg);
+    }
 
     verreciel.animator.completionBlock = function() {
       this.isLocked = false;
-      verreciel.helmet.rotation.setNow(
-        verreciel.helmet.rotation.x,
-        this.rotation.y,
-        verreciel.helmet.rotation.z
-      );
+      if (!this.isPanoptic) {
+        verreciel.helmet.rotation.setNow(
+          verreciel.helmet.rotation.x,
+          this.rotation.y,
+          verreciel.helmet.rotation.z
+        );
+      }
       verreciel.ghost.report(LogType.playerUnlock, deg);
     }.bind(this);
     verreciel.animator.commit();

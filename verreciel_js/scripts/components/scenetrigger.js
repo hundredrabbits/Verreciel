@@ -43,28 +43,10 @@ class SceneTrigger extends SceneDrawNode {
     let result = this.host.touch(this.operation);
 
     if (result == true) {
-      if (this.host instanceof ScenePort) {
-        if (
-          this.host.numberlessName != null &&
-          verreciel.ghost.portsByName[this.host.numberlessName].length > 1
-        ) {
-          verreciel.ghost.report(LogType.hit, {
-            from: "port",
-            numberlessName: this.host.numberlessName,
-            event: this.host.event == null ? null : this.host.event.code
-          });
-        } else {
-          verreciel.ghost.report(LogType.hit, {
-            from: "port",
-            name: this.host.name
-          });
-        }
-      } else {
-        verreciel.ghost.report(LogType.hit, {
-          from: "trigger",
-          name: this.name
-        });
-      }
+      verreciel.ghost.report(
+        LogType.hit,
+        verreciel.ghost.recordHitTarget(this)
+      );
     }
 
     return result;

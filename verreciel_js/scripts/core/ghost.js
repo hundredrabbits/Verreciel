@@ -14,6 +14,8 @@ class Ghost extends Empty {
     this.idling = true;
     this.danceAmplitude = 0;
     this.ready = false;
+    this.replayIndex = 0;
+    this.isTapping = false;
 
     this.lastPlayerRotation = null;
 
@@ -30,6 +32,7 @@ class Ghost extends Empty {
     this.triggersByName = {};
     this.portsByName = {};
     this.salientEntries = [];
+    this.entriesDuringTap = [];
     this.lastNonHit = null;
 
     this.openEyes.opacity = 1;
@@ -90,7 +93,7 @@ class Ghost extends Empty {
     this.hide();
   }
 
-  wanderTo(target, seconds = 2, callback = null) {
+  wanderTo(target, seconds, callback = null) {
     this.goalPosition
       .copy(target.convertPositionToNode(new THREE.Vector3(), verreciel.root))
       .multiply(new THREE.Vector3(0.7, 1, 0.7));
@@ -175,7 +178,9 @@ class Ghost extends Empty {
         "media/walkthrough.json",
         function(data) {
           for (let record of JSON.parse(data)) {
-            this.salientEntries.push(new LogEntry(record.type, record.data));
+            this.salientEntries.push(
+              new LogEntry(record.type, record.data, record.skip)
+            );
           }
           this.ready = true;
           this.pollForSummon();
@@ -201,9 +206,43 @@ class Ghost extends Empty {
     ) {
       verreciel.player.setIsPanoptic(true);
       setTimeout(this.appear.bind(this), 500);
+      setTimeout(this.replay.bind(this), 2000);
     } else {
       this.lastPlayerRotation = playerRotation;
       setTimeout(this.pollForSummon.bind(this), 5000);
+    }
+  }
+
+  replay() {
+    this.isReplaying = true;
+    while (this.salientEntries[this.replayIndex].skip == true) {
+      console.log("SKIP", this.salientEntries[this.replayIndex]);
+      this.replayIndex++;
+    }
+    this.currentEntry = this.salientEntries[this.replayIndex];
+    if (this.currentEntry.type == LogType.hit) {
+      console.log("HIT", this.currentEntry);
+      let target = this.resolveHitTarget(this.currentEntry.data);
+      this.wanderTo(
+        target,
+        2,
+        function() {
+          this.replayIndex++;
+          this.isTapping = true;
+          target.tap();
+          this.isTapping = false;
+          this.replay();
+        }.bind(this)
+      );
+    } else {
+      console.log("WAIT", this.currentEntry.toString());
+    }
+
+    if (this.entriesDuringTap.length > 0) {
+      for (let entry of this.entriesDuringTap) {
+        this.report(entry.type, entry.data);
+      }
+      this.entriesDuringTap.splice(0, this.entriesDuringTap.length);
     }
   }
 
@@ -391,17 +430,23 @@ class Ghost extends Empty {
   }
 
   report(type, data = null) {
-    if (this.isPlaying) {
-      // TODO: autopilot
+    const entry = new LogEntry(type, data);
+    if (this.isTapping) {
+      this.entriesDuringTap.push(entry);
+    } else if (this.isReplaying && entry.type != LogType.hit) {
+      if (entry.toString() == this.currentEntry.toString()) {
+        console.log("Entry match:", entry.toString());
+        this.replayIndex++;
+        setTimeout(this.replay.bind(this), 500);
+      }
     } else if (DEBUG_LOG_GHOST == true) {
-      const entry = new LogEntry(type, data);
       if (type == LogType.hit) {
         if (this.lastNonHit != null) {
           this.addEntry(this.lastNonHit);
           this.lastNonHit = null;
         }
         this.addEntry(entry);
-      } else if (type == LogType.mistake || type == LogType.mission) {
+      } else if (type == LogType.mistake) {
         this.addEntry(entry);
       } else {
         this.lastNonHit = entry;
@@ -421,8 +466,51 @@ class Ghost extends Empty {
     }
   }
 
-  tapTrigger(name) {
-    this.triggersByName[name].tap();
+  recordHitTarget(trigger) {
+    let record = null;
+    if (trigger.host instanceof ScenePort) {
+      if (
+        trigger.host.numberlessName != null &&
+        verreciel.ghost.portsByName[trigger.host.numberlessName].length > 1
+      ) {
+        record = {
+          from: "port",
+          numberlessName: trigger.host.numberlessName,
+          event: trigger.host.event == null ? null : trigger.host.event.code
+        };
+      } else {
+        record = {
+          from: "port",
+          name: trigger.host.name
+        };
+      }
+    } else {
+      record = {
+        from: "trigger",
+        name: trigger.name
+      };
+    }
+    return record;
+  }
+
+  resolveHitTarget(record) {
+    let target = null;
+    if (record.from == "trigger") {
+      target = this.triggersByName[record.name];
+    } else if (record.from == "port") {
+      if (record.name != null) {
+        target = this.portsByName[record.name].trigger;
+      } else {
+        for (let port of this.portsByName[record.numberlessName]) {
+          let eventCode = port.event == null ? null : port.event.code;
+          if (eventCode == record.event) {
+            target = port.trigger;
+            break;
+          }
+        }
+      }
+    }
+    return target;
   }
 }
 
@@ -441,9 +529,10 @@ setEnumValues(LogType, [
 ]);
 
 class LogEntry {
-  constructor(type, data) {
+  constructor(type, data, skip = false) {
     this.type = type;
     this.data = data;
+    this.skip = skip;
   }
 
   toString() {

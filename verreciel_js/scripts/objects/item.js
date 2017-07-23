@@ -30,7 +30,7 @@ class Item extends Event {
       null,
       other.details,
       other.isQuest,
-      null
+      other.code
     );
   }
 }

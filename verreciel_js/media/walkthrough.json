@@ -1,6 +1,6 @@
 [
-  { "type": "mission", "data": 0 },
-  { "type": "playerUnlock", "data": 0 },
+  { "skip": true, "type": "mission", "data": 0 },
+  { "skip": true, "type": "playerUnlock", "data": 0 },
   {
     "type": "hit",
     "data": {
@@ -30,21 +30,21 @@
     "type": "hit",
     "data": { "from": "trigger", "name": "thruster_accelerate" }
   },
-  { "type": "mission", "data": 0 },
+  { "skip": true, "type": "mission", "data": 0 },
   { "type": "docked", "data": "City" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-1"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "loiqe-City_want" } },
   { "type": "upload", "data": "loiqe-City_want" },
   { "type": "hit", "data": { "from": "port", "name": "loiqe-City_give" } },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
-  { "type": "mission", "data": 1 },
+  { "skip": true, "type": "mission", "data": 1 },
   { "type": "install", "data": "map" },
   {
     "type": "hit",
@@ -53,7 +53,7 @@
   { "type": "playerUnlock", "data": -135 },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_radar" } },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_pilot" } },
-  { "type": "mission", "data": 2 },
+  { "skip": true, "type": "mission", "data": 2 },
   { "type": "pilotAligned", "data": "satellite" },
   { "type": "hit", "data": { "from": "trigger", "name": "thruster_action" } },
   {
@@ -94,7 +94,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  { "type": "upload", "data": "loiqe-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -117,7 +117,7 @@
     "data": { "from": "port", "name": "loiqe-Horadric_output_1" }
   },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
-  { "type": "mission", "data": 3 },
+  { "skip": true, "type": "mission", "data": 3 },
   { "type": "install", "data": "exploration" },
   {
     "type": "hit",
@@ -213,7 +213,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "battery_slot_cell2" },
+  { "type": "upload", "data": "battery_slot_cell#" },
   {
     "type": "hit",
     "data": { "from": "trigger", "name": "location_valen-harvest" }
@@ -252,7 +252,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "valen-station" } },
@@ -280,7 +280,7 @@
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "widget_radio" } },
-  { "type": "mission", "data": 6 },
+  { "skip": true, "type": "mission", "data": 6 },
   { "type": "upload", "data": "widget_radio" },
   {
     "type": "hit",
@@ -302,7 +302,7 @@
     "data": {
       "from": "port",
       "numberlessName": "valen-Bank_slot_#",
-      "event": null
+      "event": "waste"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
@@ -312,7 +312,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "waste"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_hatch" } },
@@ -327,7 +327,7 @@
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
-  { "type": "mission", "data": 8 },
+  { "skip": true, "type": "mission", "data": 8 },
   { "type": "upload", "data": "cargo" },
   {
     "type": "hit",
@@ -497,7 +497,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-1"
     }
   },
   {
@@ -508,13 +508,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  { "type": "upload", "data": "loiqe-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   {
@@ -582,7 +582,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-4"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "loiqe-port_want" } },
@@ -684,7 +684,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-3"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "senni-station" } },
@@ -746,8 +746,8 @@
       "event": null
     }
   },
-  { "type": "mission", "data": 12 },
-  { "type": "upload", "data": "battery_slot_cell3" },
+  { "skip": true, "type": "mission", "data": 12 },
+  { "type": "upload", "data": "battery_slot_cell#" },
   { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
   { "type": "hit", "data": { "from": "port", "name": "player" } },
   { "type": "mission", "data": 13 },
@@ -1037,7 +1037,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "valen-Bank_slot_1" },
+  { "type": "upload", "data": "valen-Bank_slot_#" },
   {
     "type": "hit",
     "data": {
@@ -1054,7 +1054,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "valen-Bank_slot_2" },
+  { "type": "upload", "data": "valen-Bank_slot_#" },
   {
     "type": "hit",
     "data": {
@@ -1071,7 +1071,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "valen-Bank_slot_3" },
+  { "type": "upload", "data": "valen-Bank_slot_#" },
   {
     "type": "hit",
     "data": { "from": "trigger", "name": "location_valen-harvest" }
@@ -1125,7 +1125,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   {
@@ -1136,13 +1136,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-3"
     }
   },
   {
@@ -1176,7 +1176,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -1297,7 +1297,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-5"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "loiqe-fog_want" } },
@@ -1367,7 +1367,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  { "type": "upload", "data": "loiqe-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -1519,7 +1519,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "valen-Bank_slot_4" },
+  { "type": "upload", "data": "valen-Bank_slot_#" },
   {
     "type": "hit",
     "data": { "from": "trigger", "name": "location_valen-harvest" }
@@ -1592,7 +1592,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   {
@@ -1603,13 +1603,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-3"
     }
   },
   {
@@ -1678,7 +1678,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-5"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "usul-station" } },
@@ -1687,7 +1687,7 @@
     "type": "hit",
     "data": { "from": "trigger", "name": "button_usul-station_install" }
   },
-  { "type": "mission", "data": 15 },
+  { "skip": true, "type": "mission", "data": 15 },
   { "type": "playerUnlock", "data": 0 },
   {
     "type": "hit",
@@ -1799,7 +1799,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -1839,7 +1839,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -1879,7 +1879,7 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
@@ -2176,7 +2176,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   {
@@ -2187,13 +2187,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "senni-Horadric_input_2" },
+  { "type": "upload", "data": "senni-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-3"
     }
   },
   {
@@ -2336,7 +2336,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-1"
     }
   },
   {
@@ -2347,13 +2347,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  { "type": "upload", "data": "loiqe-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-2"
     }
   },
   {
@@ -2376,7 +2376,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-4"
     }
   },
   {
@@ -2387,13 +2387,13 @@
       "event": null
     }
   },
-  { "type": "upload", "data": "loiqe-Horadric_input_2" },
+  { "type": "upload", "data": "loiqe-Horadric_input_#" },
   {
     "type": "hit",
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-5"
     }
   },
   {
@@ -2471,7 +2471,7 @@
     "data": {
       "from": "port",
       "numberlessName": "console_line_#",
-      "event": null
+      "event": "currency-6"
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "usul-silence_want" } },
@@ -2500,7 +2500,7 @@
     }
   },
   { "type": "hit", "data": { "from": "port", "name": "widget_shield" } },
-  { "type": "mission", "data": 17 },
+  { "skip": true, "type": "mission", "data": 17 },
   { "type": "upload", "data": "widget_shield" },
   { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
   { "type": "hit", "data": { "from": "port", "name": "player" } },
@@ -2851,7 +2851,7 @@
     "type": "hit",
     "data": { "from": "trigger", "name": "button_usul-Usul_install" }
   },
-  { "type": "mission", "data": 18 },
+  { "skip": true, "type": "mission", "data": 18 },
   { "type": "pilotAligned", "data": "Usul" },
   { "type": "hit", "data": { "from": "port", "name": "widget_map" } },
   { "type": "hit", "data": { "from": "port", "name": "mainpanel_cargo" } },
@@ -2910,5 +2910,5 @@
     "type": "hit",
     "data": { "from": "trigger", "name": "thruster_accelerate" }
   },
-  { "type": "mission", "data": 19 }
+  { "skip": true, "type": "mission", "data": 19 }
 ]
