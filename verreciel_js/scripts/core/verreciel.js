@@ -206,10 +206,14 @@ class Verreciel {
     if (!this.mouseMoved) {
       event.preventDefault();
       let hits = this.getHits().filter(this.isEnabledTrigger);
-      hits.sort(this.hasShortestDistance);
-      for (let hit of hits) {
-        if (hit.object.node.tap()) {
-          break;
+      if (hits.length > 0 && this.ghost.isReplaying) {
+        this.ghost.disappear();
+      } else {
+        hits.sort(this.hasShortestDistance);
+        for (let hit of hits) {
+          if (hit.object.node.tap()) {
+            break;
+          }
         }
       }
     }

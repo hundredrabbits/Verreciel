@@ -74,6 +74,9 @@ class Ghost extends Empty {
     verreciel.animator.ease = Penner.easeInOutCubic;
     verreciel.capsule.show();
     verreciel.animator.commit();
+    this.isReplaying = false;
+    this.isWaiting = false;
+    verreciel.player.setIsPanoptic(false);
   }
 
   flicker() {
@@ -117,7 +120,7 @@ class Ghost extends Empty {
     verreciel.animator.completeAnimation("ghost");
 
     let distance = this.goalPosition.distanceTo(this.element.position);
-    let duration = 0.7 + 0.2 * distance;
+    let duration = 0.7 + 0.2 * distance / this.speed;
     verreciel.animator.begin("ghost");
     verreciel.animator.animationDuration = duration;
     verreciel.animator.ease = Penner.easeInOutCubic;
@@ -185,6 +188,7 @@ class Ghost extends Empty {
       playerRotation.equals(this.lastPlayerRotation) &&
       playerRotation.x > Math.PI / 4
     ) {
+      this.isReplaying = true;
       verreciel.player.setIsPanoptic(true);
       delay(0.5, this.appear.bind(this));
       delay(5, this.replay.bind(this));
@@ -195,7 +199,9 @@ class Ghost extends Empty {
   }
 
   replay() {
-    this.isReplaying = true;
+    if (this.isReplaying == false) {
+      return;
+    }
     while (this.salientEntries[this.replayIndex].skip == true) {
       /*
       console.log(
@@ -225,6 +231,9 @@ class Ghost extends Empty {
   }
 
   tap() {
+    if (this.isReplaying == false) {
+      return;
+    }
     let target = this.resolveHitTarget(this.currentEntry.data);
     let tapInPosition = this.element.position.clone().multiplyScalar(1.05);
     let tapOutPosition = this.element.position.clone();
@@ -429,19 +438,29 @@ class Ghost extends Empty {
       }
     }
 
-    let headGoalAngle = -Math.atan2(this.focus.z - this.position.z, this.focus.x - this.position.x);
+    let headGoalAngle = -Math.atan2(
+      this.focus.z - this.position.z,
+      this.focus.x - this.position.x
+    );
     let diffHeadRotY = sanitizeDiffAngle(headGoalAngle, this.headAngle);
     if (Math.abs(diffHeadRotY) > 0.001) {
-      this.headAngle += diffHeadRotY * 0.05;
+      this.headAngle += diffHeadRotY * 0.05 / this.speed;
     }
     this.head.rotation.y = this.headAngle;
 
     let faceAngle = this.face.rotation.y + this.headAngle;
-    let diffFaceRotY = sanitizeDiffAngle(verreciel.player.rotation.y, faceAngle);
+    let diffFaceRotY = sanitizeDiffAngle(
+      verreciel.player.rotation.y,
+      faceAngle
+    );
     if (Math.abs(diffFaceRotY) > 0.001) {
       faceAngle += diffFaceRotY * 0.3;
     }
-    this.face.rotation.setNow(this.face.rotation.x, faceAngle - this.headAngle, this.face.rotation.z);
+    this.face.rotation.setNow(
+      this.face.rotation.x,
+      faceAngle - this.headAngle,
+      this.face.rotation.z
+    );
   }
 
   report(type, data = null) {
