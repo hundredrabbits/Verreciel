@@ -16,6 +16,8 @@ class Ghost extends Empty {
     this.ready = false;
     this.replayIndex = 0;
     this.isTapping = false;
+    this.isWaiting = false;
+    this.speed = 1;
 
     this.lastPlayerRotation = null;
 
@@ -195,20 +197,23 @@ class Ghost extends Empty {
   replay() {
     this.isReplaying = true;
     while (this.salientEntries[this.replayIndex].skip == true) {
+      /*
       console.log(
         "SKIP",
         this.replayIndex,
         this.salientEntries[this.replayIndex].toString()
       );
+      */
       this.replayIndex++;
     }
     this.currentEntry = this.salientEntries[this.replayIndex];
     if (this.currentEntry.type == LogType.hit) {
-      console.log("HIT", this.replayIndex, this.currentEntry.toString());
+      // console.log("HIT", this.replayIndex, this.currentEntry.toString());
       let target = this.resolveHitTarget(this.currentEntry.data);
       this.wanderToTarget(target, this.tap.bind(this));
     } else {
-      console.log("WAIT", this.replayIndex, this.currentEntry.toString());
+      // console.log("WAIT", this.replayIndex, this.currentEntry.toString());
+      this.isWaiting = true;
     }
 
     if (this.entriesDuringTap.length > 0) {
@@ -378,6 +383,13 @@ class Ghost extends Empty {
     // assertArgs(arguments, 0);
     super.whenRenderer();
 
+    if (this.isWaiting == true) {
+      this.speed = this.speed * 0.999 + 10 * 0.001;
+    } else {
+      this.speed = this.speed * 0.5 + 1 * 0.5;
+    }
+    verreciel.game.gameSpeed = Math.floor(this.speed);
+
     let scale =
       this.fuzz.element.scale.z * 0.5 +
       (1 + verreciel.music.magnitude * 4) * 0.5;
@@ -415,8 +427,6 @@ class Ghost extends Empty {
           this.root.position.z * 0.8
         );
       }
-    } else {
-
     }
 
     let headGoalAngle = -Math.atan2(this.focus.z - this.position.z, this.focus.x - this.position.x);
@@ -440,7 +450,8 @@ class Ghost extends Empty {
       this.entriesDuringTap.push(entry);
     } else if (this.isReplaying && entry.type != LogType.hit) {
       if (entry.toString() == this.currentEntry.toString()) {
-        console.log("MATCH", this.replayIndex, entry.toString());
+        this.isWaiting = false;
+        // console.log("MATCH", this.replayIndex, entry.toString());
         this.replayIndex++;
         delay(0.5, this.replay.bind(this));
       }
@@ -462,7 +473,7 @@ class Ghost extends Empty {
   addEntry(entry) {
     entry.index = this.salientEntries.length;
     this.salientEntries.push(entry);
-    console.log(">\t" + entry.toString());
+    // console.log(">\t" + entry.toString());
   }
 
   rewindToEntry(index) {
