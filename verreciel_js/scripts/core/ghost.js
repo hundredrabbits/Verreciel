@@ -8,7 +8,7 @@ class Ghost extends Empty {
     this.root = new Empty();
     this.add(this.root);
     this.makeFuzz();
-    this.makeFace();
+    this.makeHead();
     this.returnDelay = null;
     this.flickerDelay = null;
     this.idling = true;
@@ -20,13 +20,8 @@ class Ghost extends Empty {
     this.lastPlayerRotation = null;
 
     this.goalPosition = new THREE.Vector3();
-    this.faceRadius = 0.42;
-    this.faceRads = degToRad(45);
-    this.face.position.set(
-      this.faceRadius * Math.cos(this.faceRads),
-      0,
-      this.faceRadius * Math.sin(this.faceRads)
-    );
+    this.headAngle = degToRad(-45);
+    this.focus = new THREE.Vector3(1, 0, 1);
 
     this.hide();
     this.triggersByName = {};
@@ -97,6 +92,9 @@ class Ghost extends Empty {
     this.goalPosition.copy(
       target.convertPositionToNode(new THREE.Vector3(), verreciel.root)
     );
+    this.focus.copy(this.goalPosition);
+    this.goalPosition.multiply(new THREE.Vector3(0.7, 1, 0.7));
+
     this.wanderToGoal(
       function() {
         this.returnDelay = delay(4, this.returnToCenter.bind(this));
@@ -114,29 +112,10 @@ class Ghost extends Empty {
       this.closedEyes.opacity = 0;
     }
     cancelDelay(this.returnDelay);
-    verreciel.animator.completeAnimation("ghost_face");
     verreciel.animator.completeAnimation("ghost");
-
-    this.faceRads = Math.atan2(
-      this.goalPosition.z - this.position.z,
-      this.goalPosition.x - this.position.x
-    );
-
-    this.goalPosition.multiply(new THREE.Vector3(0.7, 1, 0.7));
 
     let distance = this.goalPosition.distanceTo(this.element.position);
     let duration = 0.7 + 0.2 * distance;
-
-    verreciel.animator.begin("ghost_face");
-    verreciel.animator.animationDuration = Math.max(0.5, duration / 4);
-    verreciel.animator.ease = Penner.easeInOutCubic;
-    this.face.position.set(
-      this.faceRadius * Math.cos(this.faceRads),
-      0,
-      this.faceRadius * Math.sin(this.faceRads)
-    );
-    verreciel.animator.commit();
-
     verreciel.animator.begin("ghost");
     verreciel.animator.animationDuration = duration;
     verreciel.animator.ease = Penner.easeInOutCubic;
@@ -158,25 +137,13 @@ class Ghost extends Empty {
         .set(this.position.x, this.position.y, this.position.z)
         .multiplyScalar(0.9);
     }
+    this.focus.set(0, 0, 0);
     this.wanderToGoal(this.idle.bind(this));
   }
 
   idle() {
     this.idling = true;
     this.danceAmplitude = 0;
-    /*
-    this.faceRads = degToRad(45) - verreciel.player.rotation.y;
-    verreciel.animator.begin("ghost_face");
-    verreciel.animator.animationDuration = 2;
-    verreciel.animator.delay = 0.25;
-    verreciel.animator.ease = Penner.easeInOutCubic;
-    this.face.position.set(
-      this.faceRadius * Math.cos(this.faceRads),
-      0,
-      this.faceRadius * Math.sin(this.faceRads)
-    );
-    verreciel.animator.commit();
-    */
   }
 
   whenStart() {
@@ -326,7 +293,7 @@ class Ghost extends Empty {
     this.root.add(this.fuzz);
   }
 
-  makeFace() {
+  makeHead() {
     let center = new THREE.Vector3(0, 0, -0.14);
     let faceVertices = [];
     let openEyesVertices = [];
@@ -381,8 +348,11 @@ class Ghost extends Empty {
     ];
     faceVertices = faceVertices.concat(mouth);
 
+    this.head = new Empty();
+    this.root.add(this.head);
     this.face = new SceneLine(faceVertices, verreciel.white);
-    this.root.add(this.face);
+    this.face.position.x = 0.42;
+    this.head.add(this.face);
     this.openEyes = new SceneLine(openEyesVertices, verreciel.white);
     this.face.add(this.openEyes);
     this.closedEyes = new SceneLine(closedEyesVertices, verreciel.white);
@@ -407,13 +377,6 @@ class Ghost extends Empty {
   whenRenderer() {
     // assertArgs(arguments, 0);
     super.whenRenderer();
-
-    let rotY = this.face.rotation.y;
-
-    let diffRotationY = sanitizeDiffAngle(verreciel.player.rotation.y, rotY);
-    if (Math.abs(diffRotationY) > 0.001) {
-      rotY += diffRotationY * 0.3;
-    }
 
     let scale =
       this.fuzz.element.scale.z * 0.5 +
@@ -452,9 +415,23 @@ class Ghost extends Empty {
           this.root.position.z * 0.8
         );
       }
+    } else {
+
     }
 
-    this.face.rotation.setNow(this.face.rotation.x, rotY, this.face.rotation.z);
+    let headGoalAngle = -Math.atan2(this.focus.z - this.position.z, this.focus.x - this.position.x);
+    let diffHeadRotY = sanitizeDiffAngle(headGoalAngle, this.headAngle);
+    if (Math.abs(diffHeadRotY) > 0.001) {
+      this.headAngle += diffHeadRotY * 0.05;
+    }
+    this.head.rotation.y = this.headAngle;
+
+    let faceAngle = this.face.rotation.y + this.headAngle;
+    let diffFaceRotY = sanitizeDiffAngle(verreciel.player.rotation.y, faceAngle);
+    if (Math.abs(diffFaceRotY) > 0.001) {
+      faceAngle += diffFaceRotY * 0.3;
+    }
+    this.face.rotation.setNow(this.face.rotation.x, faceAngle - this.headAngle, this.face.rotation.z);
   }
 
   report(type, data = null) {
