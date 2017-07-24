@@ -199,6 +199,9 @@ class Ghost extends Empty {
   }
 
   replay() {
+    if (this.replayIndex == this.salientEntries.length) {
+      this.isReplaying = false;
+    }
     if (this.isReplaying == false) {
       return;
     }
