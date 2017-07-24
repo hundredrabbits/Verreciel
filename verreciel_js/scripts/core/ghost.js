@@ -175,7 +175,7 @@ class Ghost extends Empty {
   }
 
   pollForSummon() {
-    if (verreciel.game.state > 0) {
+    if (verreciel.game.state > 0 && verreciel.numClicks == 0) {
       return;
     }
     let playerRotation = new THREE.Vector3(

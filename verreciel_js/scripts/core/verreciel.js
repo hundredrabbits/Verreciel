@@ -26,6 +26,7 @@ class Verreciel {
     this.fps = 40;
     this.camera = new THREE.PerspectiveCamera(105, 1, 0.0001, 10000);
     this.raycaster = new THREE.Raycaster();
+    this.numClicks = 0;
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer({ antialias: false });
@@ -209,6 +210,7 @@ class Verreciel {
       if (hits.length > 0 && this.ghost.isReplaying) {
         this.ghost.disappear();
       } else {
+        this.numClicks++;
         hits.sort(this.hasShortestDistance);
         for (let hit of hits) {
           if (hit.object.node.tap()) {
