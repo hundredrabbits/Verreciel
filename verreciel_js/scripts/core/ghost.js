@@ -93,14 +93,13 @@ class Ghost extends Empty {
     this.hide();
   }
 
-  wanderTo(target, seconds, callback = null) {
-    this.goalPosition
-      .copy(target.convertPositionToNode(new THREE.Vector3(), verreciel.root))
-      .multiply(new THREE.Vector3(0.7, 1, 0.7));
+  wanderToTarget(target, callback = null) {
+    this.goalPosition.copy(
+      target.convertPositionToNode(new THREE.Vector3(), verreciel.root)
+    );
     this.wanderToGoal(
-      seconds,
       function() {
-        this.returnDelay = delay(5, this.returnToCenter.bind(this));
+        this.returnDelay = delay(4, this.returnToCenter.bind(this));
         if (callback != null) {
           callback();
         }
@@ -108,7 +107,7 @@ class Ghost extends Empty {
     );
   }
 
-  wanderToGoal(seconds, callback) {
+  wanderToGoal(callback) {
     if (this.idling == true) {
       this.idling = false;
       this.openEyes.opacity = 1;
@@ -123,8 +122,13 @@ class Ghost extends Empty {
       this.goalPosition.x - this.position.x
     );
 
+    this.goalPosition.multiply(new THREE.Vector3(0.7, 1, 0.7));
+
+    let distance = this.goalPosition.distanceTo(this.element.position);
+    let duration = 0.7 + 0.2 * distance;
+
     verreciel.animator.begin("ghost_face");
-    verreciel.animator.animationDuration = Math.max(0.5, seconds / 4);
+    verreciel.animator.animationDuration = Math.max(0.5, duration / 4);
     verreciel.animator.ease = Penner.easeInOutCubic;
     this.face.position.set(
       this.faceRadius * Math.cos(this.faceRads),
@@ -134,7 +138,7 @@ class Ghost extends Empty {
     verreciel.animator.commit();
 
     verreciel.animator.begin("ghost");
-    verreciel.animator.animationDuration = seconds;
+    verreciel.animator.animationDuration = duration;
     verreciel.animator.ease = Penner.easeInOutCubic;
     this.position.set(
       this.goalPosition.x,
@@ -147,13 +151,20 @@ class Ghost extends Empty {
   }
 
   returnToCenter() {
-    this.goalPosition.set(0, 0, 0);
-    this.wanderToGoal(1.5, this.idle.bind(this));
+    if (verreciel.music.isPlayingRecord()) {
+      this.goalPosition.set(0, 0, 0);
+    } else {
+      this.goalPosition
+        .set(this.position.x, this.position.y, this.position.z)
+        .multiplyScalar(0.9);
+    }
+    this.wanderToGoal(this.idle.bind(this));
   }
 
   idle() {
     this.idling = true;
     this.danceAmplitude = 0;
+    /*
     this.faceRads = degToRad(45) - verreciel.player.rotation.y;
     verreciel.animator.begin("ghost_face");
     verreciel.animator.animationDuration = 2;
@@ -165,6 +176,7 @@ class Ghost extends Empty {
       this.faceRadius * Math.sin(this.faceRads)
     );
     verreciel.animator.commit();
+    */
   }
 
   whenStart() {
@@ -206,7 +218,7 @@ class Ghost extends Empty {
     ) {
       verreciel.player.setIsPanoptic(true);
       delay(0.5, this.appear.bind(this));
-      delay(2, this.replay.bind(this));
+      delay(5, this.replay.bind(this));
     } else {
       this.lastPlayerRotation = playerRotation;
       delay(5, this.pollForSummon.bind(this));
@@ -227,18 +239,7 @@ class Ghost extends Empty {
     if (this.currentEntry.type == LogType.hit) {
       console.log("HIT", this.replayIndex, this.currentEntry.toString());
       let target = this.resolveHitTarget(this.currentEntry.data);
-      this.wanderTo(
-        target,
-        2,
-        function() {
-          target = this.resolveHitTarget(this.currentEntry.data);
-          this.replayIndex++;
-          this.isTapping = true;
-          target.tap();
-          this.isTapping = false;
-          this.replay();
-        }.bind(this)
-      );
+      this.wanderToTarget(target, this.tap.bind(this));
     } else {
       console.log("WAIT", this.replayIndex, this.currentEntry.toString());
     }
@@ -249,6 +250,31 @@ class Ghost extends Empty {
       }
       this.entriesDuringTap.splice(0, this.entriesDuringTap.length);
     }
+  }
+
+  tap() {
+    let target = this.resolveHitTarget(this.currentEntry.data);
+    let tapInPosition = this.element.position.clone().multiplyScalar(1.05);
+    let tapOutPosition = this.element.position.clone();
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 0.1;
+    verreciel.animator.ease = Penner.easeInCubic;
+    this.position.set(tapInPosition.x, tapInPosition.y, tapInPosition.z);
+    verreciel.animator.completionBlock = function() {
+      this.replayIndex++;
+      this.isTapping = true;
+      target.tap();
+      this.position.set(tapOutPosition.x, tapOutPosition.y, tapOutPosition.z);
+      verreciel.animator.begin();
+      verreciel.animator.ease = Penner.easeOutCubic;
+      verreciel.animator.animationDuration = 0.1;
+      verreciel.animator.completionBlock = function() {
+        this.isTapping = false;
+        this.replay();
+      }.bind(this);
+      verreciel.animator.commit();
+    }.bind(this);
+    verreciel.animator.commit();
   }
 
   waver() {
@@ -396,10 +422,7 @@ class Ghost extends Empty {
     this.fuzz.element.scale.z = scale;
 
     if (this.idling == true) {
-      if (
-        verreciel.music.track != null &&
-        verreciel.music.track.role == "record"
-      ) {
+      if (verreciel.music.isPlayingRecord()) {
         this.openEyes.opacity = 0;
         this.closedEyes.opacity = 1;
         this.danceAmplitude = Math.min(1, this.danceAmplitude + 0.005);

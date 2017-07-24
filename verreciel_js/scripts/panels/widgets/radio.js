@@ -66,10 +66,7 @@ class Radio extends Widget {
   whenRenderer() {
     super.whenRenderer();
 
-    if (
-      verreciel.music.track != null &&
-      verreciel.music.track.role == "record"
-    ) {
+    if (verreciel.music.isPlayingRecord()) {
       let scale = 1 + verreciel.music.magnitude * 10;
       this.port.sprite_output.element.scale.x = scale;
       this.port.sprite_output.element.scale.y = scale;

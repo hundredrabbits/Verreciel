@@ -76,6 +76,10 @@ class Music {
     this.switchAudio("ambience", this.ambience);
   }
 
+  isPlayingRecord() {
+    return this.track != null && this.track.role == "record";
+  }
+
   switchAudio(role, name) {
     if (this.track != null) {
       if (this.track.name == name) {

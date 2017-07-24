@@ -1,6 +1,3 @@
-Make ghost hang out closer to where he last was instead of center, with room to dance
-Add pause between ghost appear and first ghost replay step
-Animate ghost button tap
 Revisit ghost face angle
 
 ----
