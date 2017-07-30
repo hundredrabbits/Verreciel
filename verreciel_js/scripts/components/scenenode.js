@@ -5,7 +5,7 @@ class SceneNode {
   constructor() {
     // assertArgs(arguments, 0);
     this.id = SceneNode.ids++;
-    // console.log(this.id);
+    // console.debug(this.id);
     this.children = [];
 
     if (DEBUG_REPORT_NODE_USE) {
@@ -93,15 +93,15 @@ class SceneNode {
         parent = parent.parent;
       }
       if (parent == null) {
-        console.log("Unused for", this.useCheckDuration, "seconds:");
-        console.log(this.inception);
+        console.debug("Unused for", this.useCheckDuration, "seconds:");
+        console.debug(this.inception);
         this.useCheckDuration *= 2;
         this.useCheckDelay = delay(
           this.useCheckDuration,
           this.checkUnused.bind(this)
         );
       } else {
-        console.log("On graph", this.inception);
+        console.debug("On graph", this.inception);
         this.useCheckDelay = null;
         this.useCheckDuration = 1;
       }
@@ -118,13 +118,6 @@ class SceneNode {
     // assertArgs(arguments, 0);
     for (let node of this.children) {
       node.whenStart();
-    }
-  }
-
-  whenTime() {
-    // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenTime();
     }
   }
 

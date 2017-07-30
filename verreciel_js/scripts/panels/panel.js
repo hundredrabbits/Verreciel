@@ -2,9 +2,10 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Panel extends Empty {
-  constructor() {
+  constructor(name) {
     // assertArgs(arguments, 0);
     super();
+    this.name = name;
     this.isEnabled = false;
     this.root = new Empty();
     this.add(this.root);
@@ -60,6 +61,7 @@ class Panel extends Empty {
     this.installPercentage = 0;
     this.isInstalled = true;
     verreciel.music.playEffect("beep2");
+    verreciel.ghost.report(LogType.install, this.name);
   }
 
   payload() {

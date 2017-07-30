@@ -16,59 +16,64 @@ class Helmet extends Empty {
     let hamZ = ham.position.z;
 
     Object.defineProperty(ham.position, "x", {
-      get: function() { return hamX; },
+      get: function() {
+        return hamX;
+      },
       set: function(value) {
-        console.log("x");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("x");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__xProperty.animation != null,
           node.position.__xProperty.from,
           node.position.__xProperty.to,
           node.position.__xProperty.percent
         );
-        console.log("");
-        return hamX = value;
+        console.debug("");
+        return (hamX = value);
       }
     });
 
     Object.defineProperty(ham.position, "y", {
-      get: function() { return hamY; },
+      get: function() {
+        return hamY;
+      },
       set: function(value) {
-        console.log("y");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("y");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__yProperty.animation != null,
           node.position.__yProperty.from,
           node.position.__yProperty.to,
           node.position.__yProperty.percent
         );
-        console.log("");
-        return hamY = value;
+        console.debug("");
+        return (hamY = value);
       }
     });
 
-
     Object.defineProperty(ham.position, "z", {
-      get: function() { return hamZ; },
+      get: function() {
+        return hamZ;
+      },
       set: function(value) {
-        console.log("z");
-        console.log(getStackTrace());
-        console.log(
+        console.debug("z");
+        console.debug(getStackTrace());
+        console.debug(
           value,
           node.position.__zProperty.animation != null,
           node.position.__zProperty.from,
           node.position.__zProperty.to,
           node.position.__zProperty.percent
         );
-        console.log("");
-        return hamZ = value;
+        console.debug("");
+        return (hamZ = value);
       }
     });
     */
 
-    console.log("^ Helmet | Init");
+    console.info("^ Helmet | Init");
 
     this.canAlign = false;
     this.visor = new Empty();
@@ -212,7 +217,7 @@ class Helmet extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Helmet | Start");
+    console.info("+ Helmet | Start");
   }
 
   whenRenderer() {
@@ -363,5 +368,13 @@ class Helmet extends Empty {
     this.warningFlag = "";
     this.warningString = "";
     this.warningLabel.updateText("");
+  }
+
+  resizeText(size) {
+    this.textSize = size;
+    this.leftHandLabel.updateScale(this.textSize);
+    this.messageLabel.updateScale(this.textSize);
+    this.passiveLabel.updateScale(this.textSize);
+    this.rightHandLabel.updateScale(this.textSize);
   }
 }

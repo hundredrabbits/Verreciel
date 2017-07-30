@@ -2,13 +2,13 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneButton extends Empty {
-  constructor(host, text, operation, width = 0.65) {
+  constructor(host, name, text, operation, width = 0.65) {
     super();
     this.text = text;
     this.host = host;
     this.operation = operation;
 
-    this.trigger = new SceneTrigger(this, 2, 0.5, 2);
+    this.trigger = new SceneTrigger(this, "button_" + name, 2, 0.5, 2);
     this.trigger.add(
       new SceneLine(
         [

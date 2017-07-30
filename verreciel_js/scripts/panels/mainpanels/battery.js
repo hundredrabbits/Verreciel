@@ -4,61 +4,72 @@
 class Battery extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("battery");
 
-    this.name = "battery";
     this.details = "powers systems";
 
     // Cells
 
     let distance = 0.3;
 
-    this.cellPort1 = new ScenePortSlot(this, Alignment.right);
+    this.cellPort1 = new ScenePortSlot(
+      this,
+      "battery_slot_cell1",
+      Alignment.right
+    );
     this.cellPort1.position.set(-distance, Templates.lineSpacing, 0);
     this.cellPort1.enable();
     this.mainNode.add(this.cellPort1);
 
-    this.cellPort2 = new ScenePortSlot(this, Alignment.right);
+    this.cellPort2 = new ScenePortSlot(
+      this,
+      "battery_slot_cell2",
+      Alignment.right
+    );
     this.cellPort2.position.set(-distance, 0, 0);
     this.cellPort2.enable();
     this.mainNode.add(this.cellPort2);
 
-    this.cellPort3 = new ScenePortSlot(this, Alignment.right);
+    this.cellPort3 = new ScenePortSlot(
+      this,
+      "battery_slot_cell3",
+      Alignment.right
+    );
     this.cellPort3.position.set(-distance, -Templates.lineSpacing, 0);
     this.cellPort3.enable();
     this.mainNode.add(this.cellPort3);
 
     // Systems
 
-    this.enigmaPort = new ScenePort(this);
+    this.enigmaPort = new ScenePort(this, "battery_slot_shield");
     this.enigmaPort.position.set(distance, 2 * Templates.lineSpacing, 0);
     this.enigmaLabel = new SceneLabel("shield", 0.1, Alignment.left);
     this.enigmaLabel.position.set(0.3, 0, 0);
     this.enigmaPort.add(this.enigmaLabel);
     this.mainNode.add(this.enigmaPort);
 
-    this.thrusterPort = new ScenePort(this);
+    this.thrusterPort = new ScenePort(this, "battery_slot_thruster");
     this.thrusterPort.position.set(distance, Templates.lineSpacing, 0);
     this.thrusterLabel = new SceneLabel("thruster", 0.1, Alignment.left);
     this.thrusterLabel.position.set(0.3, 0, 0);
     this.thrusterPort.add(this.thrusterLabel);
     this.mainNode.add(this.thrusterPort);
 
-    this.radioPort = new ScenePort(this);
+    this.radioPort = new ScenePort(this, "battery_slot_radio");
     this.radioPort.position.set(distance, 0, 0);
     this.radioLabel = new SceneLabel("radio", 0.1, Alignment.left);
     this.radioLabel.position.set(0.3, 0, 0);
     this.radioPort.add(this.radioLabel);
     this.mainNode.add(this.radioPort);
 
-    this.navPort = new ScenePort(this);
+    this.navPort = new ScenePort(this, "battery_slot_cloak");
     this.navPort.position.set(distance, -Templates.lineSpacing, 0);
     this.navLabel = new SceneLabel("cloak", 0.1, Alignment.left);
     this.navLabel.position.set(0.3, 0, 0);
     this.navPort.add(this.navLabel);
     this.mainNode.add(this.navPort);
 
-    this.shieldPort = new ScenePort(this);
+    this.shieldPort = new ScenePort(this, "battery_slot_oxygen");
     this.shieldPort.position.set(distance, 2 * -Templates.lineSpacing, 0);
     this.shieldLabel = new SceneLabel("oxygen", 0.1, Alignment.left);
     this.shieldLabel.position.set(0.3, 0, 0);

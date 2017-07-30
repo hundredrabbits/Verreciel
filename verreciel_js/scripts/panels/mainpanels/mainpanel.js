@@ -2,9 +2,9 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class MainPanel extends Panel {
-  constructor() {
-    // assertArgs(arguments, 0);
-    super();
+  constructor(name) {
+    assertArgs(arguments, 1);
+    super(name);
 
     this.installNode = new Empty();
     this.installNode.position.set(0, 0, 0);
@@ -33,14 +33,13 @@ class MainPanel extends Panel {
     this.mainNode = new Empty();
     this.decals = new Empty();
 
-    this.name = "unknown";
     this.details = "unknown";
     this.root.position.set(0, 0, Templates.radius);
     this.root.add(this.mainNode);
     this.root.add(this.decals);
 
     // Header
-    this.port = new ScenePort(this);
+    this.port = new ScenePort(this, "mainpanel_" + this.name);
     this.port.position.set(0, 0.4, Templates.radius);
     this.nameLabel.position.set(0, 0, Templates.radius);
     this.header.add(this.port);

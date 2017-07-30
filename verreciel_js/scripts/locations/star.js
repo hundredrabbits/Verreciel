@@ -6,7 +6,7 @@ class LocationStar extends Location {
     // assertArgs(arguments, 3);
     super(name, system, at, new IconStar(), new StructureStar());
     this.isComplete = false;
-    this.masterPort = new ScenePort(this);
+    this.masterPort = new ScenePort(this, this.code);
   }
 
   makePanel() {
@@ -21,7 +21,13 @@ class LocationStar extends Location {
     );
     newPanel.add(requirementLabel);
 
-    this.button = new SceneButton(this, "install", 1, 1);
+    this.button = new SceneButton(
+      this,
+      this.code + "_install",
+      "install",
+      1,
+      1
+    );
     this.button.position.set(0, -1, 0);
     newPanel.add(this.button);
 
@@ -47,7 +53,9 @@ class LocationStar extends Location {
 
   sightUpdate() {
     // assertArgs(arguments, 0);
-    let radiation = (1 - this.distance / 0.7) / 0.6;
+
+    let radiation =
+      this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6;
 
     if (verreciel.capsule.hasShield() == false) {
       if (radiation > 1 && verreciel.capsule.isFleeing == false) {

@@ -4,15 +4,22 @@
 class Game {
   constructor() {
     // assertArgs(arguments, 0);
-    console.log("^ Game | Init");
+    console.info("^ Game | Init");
     this.time = 0;
+    this.gameSpeed = 1;
+    if (DEBUG_LOG_GHOST) {
+      this.gameSpeed = 5;
+    }
   }
 
   whenStart() {
     // assertArgs(arguments, 0);
-    console.log("+ Game | Start");
+    console.info("+ Game | Start");
     setTimeout(this.onTic.bind(this), 50);
-    setTimeout(this.whenSecond.bind(this), 1000);
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
+    if (DEBUG_LOG_GHOST) {
+      this.save(0);
+    }
     this.load(this.state);
   }
 
@@ -21,7 +28,7 @@ class Game {
     if (DEBUG_DONT_SAVE) {
       return;
     }
-    console.log("@ GAME     | Saved State to " + id);
+    console.info("@ GAME     | Saved State to " + id);
     for (let c of document.cookie.split(";")) {
       document.cookie = c
         .replace(/^ +/, "")
@@ -36,7 +43,7 @@ class Game {
     // assertArgs(arguments, 1);
     id = id == 20 ? 0 : id;
 
-    console.log("@ GAME     | Loaded State to " + id);
+    console.info("@ GAME     | Loaded State to " + id);
 
     for (let mission of verreciel.missions.story) {
       if (mission.id < id) {
@@ -56,13 +63,13 @@ class Game {
 
   erase() {
     // assertArgs(arguments, 0);
-    console.log("$ GAME     | Erase");
+    console.info("$ GAME     | Erase");
     localStorage.clear();
   }
 
   whenSecond() {
     // assertArgs(arguments, 0);
-    setTimeout(this.whenSecond.bind(this), 1000);
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
     verreciel.capsule.whenSecond();
     verreciel.missions.refresh();
   }
@@ -70,7 +77,6 @@ class Game {
   onTic() {
     // assertArgs(arguments, 0);
     setTimeout(this.onTic.bind(this), 50);
-    this.time += 1;
-    verreciel.space.whenTime();
+    this.time += this.gameSpeed;
   }
 }

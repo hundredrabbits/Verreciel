@@ -4,8 +4,7 @@
 class Nav extends Widget {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
-    this.name = "map";
+    super("map");
     this.details = "disk drive";
     this.requirement = ItemTypes.map;
     this.isPowered = function() {

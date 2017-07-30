@@ -6,9 +6,8 @@ class Intercom extends MainPanel {
 
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("mission");
 
-    this.name = "mission";
     this.details = "displays informations";
 
     this.selector = new SceneLabel(">", 0.1, Alignment.left);
@@ -215,6 +214,8 @@ class Intercom extends MainPanel {
 
     this.locationPanel.position.set(0, 0, -0.5);
     this.locationPanel.hide();
+
+    ScenePort.stripAllPorts(this);
 
     verreciel.animator.completionBlock = function() {
       // this.defaultPanel.position.set(0,0,-0.5);

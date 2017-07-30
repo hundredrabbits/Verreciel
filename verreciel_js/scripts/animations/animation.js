@@ -22,7 +22,7 @@ class Animation {
 
     this.tick();
     this.started = true;
-    this.lastFrameTime += this.delay * 1000;
+    this.lastFrameTime += this.delay * 1000 / verreciel.game.gameSpeed;
     delay(this.delay, this.tick.bind(this));
   }
 
@@ -34,7 +34,8 @@ class Animation {
     let secondsElapsed = (frameTime - this.lastFrameTime) / 1000;
     this.lastFrameTime = frameTime;
 
-    var percentElapsed = secondsElapsed / this.duration;
+    var percentElapsed =
+      secondsElapsed / this.duration * verreciel.game.gameSpeed;
     this.percent += percentElapsed;
 
     if (this.percent > 1) {

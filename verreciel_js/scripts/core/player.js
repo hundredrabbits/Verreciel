@@ -6,7 +6,7 @@ class Player extends Empty {
     // assertArgs(arguments, 0);
     super();
 
-    console.log("^ Player | Init");
+    console.info("^ Player | Init");
 
     this.canAlign = true;
     this.isLocked = false;
@@ -15,27 +15,18 @@ class Player extends Empty {
     this.position.set(0, 0, 0);
     this.accelX = 0;
     this.accelY = 0;
+    this.isPanoptic = false;
 
-    this.port = new ScenePort(this);
+    this.port = new ScenePort(this, "player");
     this.port.enable();
 
-    // TODO: spacewalk
-    /*
-    this.trigger = new SceneTrigger(this, 2, 0.75);
-    this.trigger.position.set(0, 0.9, -1.01);
-    this.trigger.hide();
-    this.add(this.trigger);
-    
-    this.triggerLabel = new SceneLabel("return to capsule", 0.03, Alignment.center, verreciel.red);
-    this.triggerLabel.position.set(0,0,0);
-    this.trigger.add(this.triggerLabel);
-    */
+    this.element.add(verreciel.camera);
   }
 
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Player | Start");
+    console.info("+ Player | Start");
   }
 
   whenRenderer() {
@@ -43,7 +34,9 @@ class Player extends Empty {
     super.whenRenderer();
 
     if (!this.isLocked) {
-      this.rotation.x += this.accelX;
+      if (!this.isPanoptic) {
+        this.rotation.x += this.accelX;
+      }
       this.rotation.y += this.accelY;
 
       this.rotation.x = Math.max(
@@ -62,9 +55,6 @@ class Player extends Empty {
         this.accelY = 0; //if it gets too small just drop to zero
       }
     }
-
-    this.element.add(verreciel.camera);
-    // verreciel.camera.position.z = 8;
   }
 
   lookAt(deg = 0) {
@@ -78,22 +68,62 @@ class Player extends Empty {
     verreciel.animator.begin("look at");
     verreciel.animator.animationDuration = 2.5;
 
-    this.position.set(0, 0, 0); // ?
     this.rotation.y = degToRad(deg);
-    verreciel.helmet.position.set(0, 0, 0); // ?
-    verreciel.helmet.rotation.y = degToRad(deg);
+    if (!this.isPanoptic) {
+      this.position.set(0, 0, 0); // ?
+      verreciel.helmet.position.set(0, 0, 0); // ?
+      verreciel.helmet.rotation.y = degToRad(deg);
+    }
 
     verreciel.animator.completionBlock = function() {
       this.isLocked = false;
-      verreciel.helmet.rotation.setNow(
-        verreciel.helmet.rotation.x,
-        this.rotation.y,
-        verreciel.helmet.rotation.z
-      );
+      if (!this.isPanoptic) {
+        verreciel.helmet.rotation.setNow(
+          verreciel.helmet.rotation.x,
+          this.rotation.y,
+          verreciel.helmet.rotation.z
+        );
+      }
+      verreciel.ghost.report(LogType.playerUnlock, deg);
     }.bind(this);
     verreciel.animator.commit();
 
     this.releaseHandle();
+  }
+
+  setIsPanoptic(value) {
+    if (this.isPanoptic == value) {
+      return;
+    }
+    this.isPanoptic = value;
+
+    verreciel.animator.begin();
+    verreciel.animator.animationDuration = 2;
+    verreciel.animator.ease = Penner.easeInOutQuart;
+    this.isLocked = true;
+    if (this.isPanoptic) {
+      this.position.y = -5;
+      this.rotation.x = degToRad(90);
+      verreciel.space.structuresRoot.position.y = 5;
+      verreciel.space.structuresRoot.opacity = 0.2;
+      verreciel.helmet.position.y = -3;
+      verreciel.above.opacity = 0;
+      verreciel.below.opacity = 0;
+    } else {
+      this.position.y = 0;
+      this.rotation.x = degToRad(0);
+      verreciel.space.structuresRoot.position.y = 0;
+      verreciel.space.structuresRoot.opacity = 1;
+      verreciel.helmet.position.y = 0;
+      verreciel.above.opacity = 1;
+      verreciel.below.opacity = 1;
+    }
+
+    verreciel.animator.completionBlock = function() {
+      this.isLocked = false;
+      verreciel.helmet.resizeText(this.isPanoptic == true ? 0.04 : 0.025);
+    }.bind(this);
+    verreciel.animator.commit();
   }
 
   eject() {

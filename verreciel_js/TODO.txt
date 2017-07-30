@@ -1,13 +1,5 @@
-Walkthroughs
-  Player rotate, click, predicate
-  Game speed modification
-
-  Mission walkthrough chapters
-  Record walkthrough chapters
-  Test for each recipe
-  Chapter to reach other areas
-
-Use the walkthrough to detect any other late THREE.js class construction
+It's weird when the helmet gives old quest instructions for the current mission
+  I don't mean in response to mistakes, I mean when the player's doing the right thing
 
 -------
 

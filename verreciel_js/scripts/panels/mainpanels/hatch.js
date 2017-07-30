@@ -4,13 +4,12 @@
 class Hatch extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("hatch");
 
     this.outline = new Empty();
     this.count = 0;
 
-    this.name = "hatch";
-    this.details = "jetisons items";
+    this.details = "jettisons items";
     this.pendingErase = false;
 
     this.mainNode.add(
@@ -63,7 +62,7 @@ class Hatch extends MainPanel {
 
     // Trigger
 
-    this.mainNode.add(new SceneTrigger(this, 2, 2));
+    this.mainNode.add(new SceneTrigger(this, "hatch_jettison", 2, 2, 0));
 
     this.detailsLabel.updateText("empty", verreciel.grey);
   }
@@ -126,7 +125,7 @@ class Hatch extends MainPanel {
         this.detailsLabel.updateText("error", verreciel.red);
         this.outline.updateChildrenColors(verreciel.red);
       } else {
-        this.detailsLabel.updateText("jetison", verreciel.cyan);
+        this.detailsLabel.updateText("jettison", verreciel.cyan);
         this.outline.updateChildrenColors(verreciel.cyan);
       }
     } else {

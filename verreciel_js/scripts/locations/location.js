@@ -29,13 +29,10 @@ class Location extends Event {
 
     this.structure.addHost(this);
     this.icon.addHost(this);
-  }
 
-  get panel() {
-    if (this._panel === undefined) {
-      this._panel = this.makePanel();
-    }
-    return this._panel;
+    let trigger = new SceneTrigger(this, "location_" + this.code, 1, 1, 0);
+    trigger.position.set(0, 0, -0.1);
+    this.add(trigger);
   }
 
   makePanel() {
@@ -47,7 +44,7 @@ class Location extends Event {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-
+    this.panel = this.makePanel();
     this.position.set(this.at.x, this.at.y, 0);
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at);
     this.angle = this.calculateAngle();

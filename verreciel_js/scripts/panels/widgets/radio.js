@@ -4,10 +4,9 @@
 class Radio extends Widget {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("radio");
 
     this.seek = 0;
-    this.name = "radio";
     this.details = "format reader";
     this.requirement = ItemTypes.record;
     this.isPowered = function() {
@@ -62,6 +61,19 @@ class Radio extends Widget {
   stop() {
     // assertArgs(arguments, 0);
     verreciel.music.playAmbience();
+  }
+
+  whenRenderer() {
+    super.whenRenderer();
+
+    if (verreciel.music.isPlayingRecord()) {
+      let scale = 1 + verreciel.music.magnitude * 10;
+      this.port.sprite_output.element.scale.x = scale;
+      this.port.sprite_output.element.scale.y = scale;
+    } else {
+      this.port.sprite_output.element.scale.x = 1;
+      this.port.sprite_output.element.scale.y = 1;
+    }
   }
 
   onUploadComplete() {

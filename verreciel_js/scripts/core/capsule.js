@@ -8,7 +8,7 @@ class Capsule extends Empty {
     // assertArgs(arguments, 0);
     super();
 
-    console.log("^ Capsule | Init");
+    console.info("^ Capsule | Init");
 
     this.at = verreciel.universe.loiqe_spawn.at.clone();
     this.direction = 1;
@@ -20,6 +20,7 @@ class Capsule extends Empty {
     this.isFleeing = false;
     this.isReturning = false;
     this.panels = [];
+    this.previousLocations = [];
 
     this.mesh = new Empty();
     this.mesh.position.set(0, 0, 0);
@@ -75,7 +76,7 @@ class Capsule extends Empty {
   whenStart() {
     // assertArgs(arguments, 0);
     super.whenStart();
-    console.log("+ Capsule | Start");
+    console.info("+ Capsule | Start");
   }
 
   whenRenderer() {
@@ -273,6 +274,7 @@ class Capsule extends Empty {
   docked() {
     // assertArgs(arguments, 0);
     this.lastLocation = this.location;
+    this.previousLocations.push(this.location);
     if (this.isFleeing == true) {
       this.isFleeing = false;
       verreciel.thruster.unlock();
@@ -287,6 +289,7 @@ class Capsule extends Empty {
     verreciel.helmet.addPassive("Docked at " + this.location.name);
 
     verreciel.intercom.connectToLocation(this.location);
+    verreciel.ghost.report(LogType.docked, this.location.name);
   }
 
   undock() {
@@ -303,6 +306,9 @@ class Capsule extends Empty {
 
   flee() {
     // assertArgs(arguments, 0);
+    if (this.isDocked == true) {
+      this.undock();
+    }
     this.isFleeing = true;
     verreciel.thruster.lock();
     verreciel.thruster.speed = verreciel.thruster.maxSpeed();

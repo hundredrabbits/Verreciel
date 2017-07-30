@@ -40,6 +40,7 @@ class Mission {
       }
     }
     this.isCompleted = true;
+    verreciel.ghost.report(LogType.mission, this.id);
   }
 
   prompt() {

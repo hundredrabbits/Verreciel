@@ -4,11 +4,12 @@
 class Pilot extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("pilot");
 
-    this.name = "pilot";
     this.details = "aligns to locations";
     this.port.isPersistent = true;
+    this.isAligned = false;
+    this.retargeting = false;
 
     this.targetDirectionIndicator = new Empty();
     this.targetDirectionIndicator.add(
@@ -82,14 +83,29 @@ class Pilot extends MainPanel {
     // assertArgs(arguments, 0);
     super.whenRenderer();
 
+    let lastTarget = this.target;
     this.target = null;
 
     if (verreciel.capsule.isFleeing == true) {
-      this.target = verreciel.capsule.lastLocation;
+      for (
+        let i = verreciel.capsule.previousLocations.length - 1;
+        i >= 0;
+        i--
+      ) {
+        let loc = verreciel.capsule.previousLocations[i];
+        if (loc.isComplete || !(loc instanceof LocationStar)) {
+          this.target = loc;
+          break;
+        }
+      }
     } else if (verreciel.capsule.isReturning == true) {
       this.target = verreciel.capsule.closestKnownLocation();
     } else if (this.port.isReceivingEventOfTypeLocation()) {
       this.target = this.port.origin.event;
+    }
+
+    if (lastTarget != this.target) {
+      this.retargeting = true;
     }
 
     if (this.target != null) {
@@ -117,6 +133,12 @@ class Pilot extends MainPanel {
       this.turnLeft(this.target_align);
     } else {
       this.turnRight(this.target_align);
+    }
+
+    this.isAligned = Math.abs(this.target.align) < 1;
+    if (this.isAligned == true && this.retargeting == true) {
+      this.retargeting = false;
+      verreciel.ghost.report(LogType.pilotAligned, this.target.name);
     }
 
     this.animate();

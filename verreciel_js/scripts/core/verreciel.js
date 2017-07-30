@@ -26,6 +26,7 @@ class Verreciel {
     this.fps = 40;
     this.camera = new THREE.PerspectiveCamera(105, 1, 0.0001, 10000);
     this.raycaster = new THREE.Raycaster();
+    this.numClicks = 0;
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
     this.renderer = new THREE.WebGLRenderer({ antialias: false });
@@ -39,6 +40,7 @@ class Verreciel {
     this.music = new Music();
 
     this.animator = new Animator();
+    this.ghost = new Ghost();
 
     // Collections
     this.items = new Items();
@@ -100,7 +102,9 @@ class Verreciel {
     this.root.add(this.helmet);
     this.root.add(this.capsule);
     this.root.add(this.space);
+    this.root.add(this.ghost);
 
+    this.ghost.whenStart();
     this.universe.whenStart();
     this.player.whenStart();
     this.helmet.whenStart();
@@ -129,10 +133,15 @@ class Verreciel {
     }
     let frameTime = Date.now();
 
-    let framesElapsed = (frameTime - this.lastFrameTime) / 1000 * this.fps;
+    let framesElapsed = Math.min(
+      100,
+      (frameTime - this.lastFrameTime) / 1000 * this.fps * this.game.gameSpeed
+    );
     if (framesElapsed > 1) {
       this.lastFrameTime = frameTime;
-      this.root.whenRenderer();
+      for (let i = 0; i < framesElapsed; i++) {
+        this.root.whenRenderer();
+      }
       this.helmet.updatePortWires();
       this.renderer.render(this.scene, this.camera);
     }
@@ -198,10 +207,15 @@ class Verreciel {
     if (!this.mouseMoved) {
       event.preventDefault();
       let hits = this.getHits().filter(this.isEnabledTrigger);
-      hits.sort(this.hasShortestDistance);
-      for (let hit of hits) {
-        if (hit.object.node.touch(0)) {
-          break;
+      if (hits.length > 0 && this.ghost.isReplaying) {
+        this.ghost.disappear();
+      } else {
+        this.numClicks++;
+        hits.sort(this.hasShortestDistance);
+        for (let hit of hits) {
+          if (hit.object.node.tap()) {
+            break;
+          }
         }
       }
     }

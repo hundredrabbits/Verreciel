@@ -21,16 +21,16 @@ class Item extends Event {
       new ConsoleData(this.details)
     ]);
   }
-}
 
-Item.like = function(other) {
-  // assertArgs(arguments, 1);
-  return new Item(
-    other.name,
-    other.type,
-    null,
-    other.details,
-    other.isQuest,
-    null
-  );
-};
+  static like(other) {
+    // assertArgs(arguments, 1);
+    return new Item(
+      other.name,
+      other.type,
+      null,
+      other.details,
+      other.isQuest,
+      other.code
+    );
+  }
+}

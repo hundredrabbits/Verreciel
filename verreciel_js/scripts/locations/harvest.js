@@ -15,7 +15,12 @@ class LocationHarvest extends Location {
     this.generationCountdown = 0;
     this.generationRate = 200;
 
-    this.port = new ScenePortSlot(this, Alignment.center, true);
+    this.port = new ScenePortSlot(
+      this,
+      this.code + "_" + this.grows.name,
+      Alignment.center,
+      false
+    );
     this.port.enable();
 
     this.generate();
@@ -25,11 +30,12 @@ class LocationHarvest extends Location {
     // assertArgs(arguments, 0);
     super.whenStart();
     this.port.addEvent(this.grows);
+    verreciel.ghost.report(LogType.harvest, this.grows.code);
   }
 
   generate() {
     // assertArgs(arguments, 0);
-    setTimeout(this.generate.bind(this), 1000);
+    delay(1, this.generate.bind(this));
 
     if (this.port == null) {
       return;
@@ -50,7 +56,10 @@ class LocationHarvest extends Location {
     } else {
       this.refresh();
       this.generationCountdown = 0;
-      this.port.addEvent(this.grows);
+      if (!this.port.hasEvent(this.grows)) {
+        this.port.addEvent(this.grows);
+        verreciel.ghost.report(LogType.harvest, this.grows.code);
+      }
       this.structure.update();
     }
 

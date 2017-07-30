@@ -12,10 +12,10 @@ class LocationTrade extends Location {
     this.mapRequirement = mapRequirement;
     this.isTradeAccepted = false;
 
-    this.wantPort = new ScenePortSlot(this);
+    this.wantPort = new ScenePortSlot(this, this.code + "_want");
     this.wantPort.addRequirement(want);
     this.wantPort.label.updateText("EMPTY", verreciel.red);
-    this.givePort = new ScenePortSlot(this);
+    this.givePort = new ScenePortSlot(this, this.code + "_give");
     this.givePort.addEvent(give);
   }
 

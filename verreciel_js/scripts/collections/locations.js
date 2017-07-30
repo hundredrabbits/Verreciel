@@ -42,14 +42,7 @@ class Loiqe {
       "Harvest",
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      new Item(
-        verreciel.items.currency1.name,
-        ItemTypes.currency,
-        null,
-        "",
-        false,
-        null
-      )
+      Item.like(verreciel.items.currency1)
     );
   }
 
@@ -264,14 +257,7 @@ class Valen {
       "harvest",
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      new Item(
-        verreciel.items.currency2.name,
-        ItemTypes.currency,
-        null,
-        "",
-        false,
-        null
-      )
+      Item.like(verreciel.items.currency2)
     );
   }
 
@@ -409,14 +395,7 @@ class Senni {
       "harvest",
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 1),
-      new Item(
-        verreciel.items.currency3.name,
-        ItemTypes.currency,
-        null,
-        "",
-        false,
-        null
-      )
+      Item.like(verreciel.items.currency3)
     );
   }
 

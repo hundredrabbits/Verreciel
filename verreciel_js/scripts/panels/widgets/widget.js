@@ -2,16 +2,22 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Widget extends Panel {
-  constructor() {
+  constructor(name) {
     // assertArgs(arguments, 0);
-    super();
+    super(name);
 
     this.isPowered = function() {
       return false;
     };
     this.requirement = null;
 
-    this.port = new ScenePortSlot(this, Alignment.center, false, "--");
+    this.port = new ScenePortSlot(
+      this,
+      "widget_" + this.name,
+      Alignment.center,
+      false,
+      "--"
+    );
     this.port.position.set(0, -0.7, Templates.radius);
     this.port.disable();
     this.port.label.updateScale(0.05);

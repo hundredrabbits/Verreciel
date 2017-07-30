@@ -17,7 +17,12 @@ class LocationSatellite extends Location {
     this.mapRequirement = mapRequirement;
     this.message = message;
 
-    this.port = new ScenePortSlot(this, Alignment.center, true);
+    this.port = new ScenePortSlot(
+      this,
+      this.code + "_" + item.name,
+      Alignment.center,
+      true
+    );
     this.port.position.set(0, -0.4, 0);
     this.port.addEvent(item);
     this.port.enable();

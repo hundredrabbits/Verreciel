@@ -2,15 +2,25 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class ScenePort extends Empty {
-  constructor(host, isPersistent = false) {
-    // assertArgs(arguments, 1);
+  constructor(host, name) {
+    assertArgs(arguments, 2);
     super();
 
     this.host = host;
+    this.name = name;
     this.isEnabled = true;
-    this.isPersistent = isPersistent;
+    this.isPersistent = false;
+    verreciel.ghost.portsByName[name] = this;
+    let numberlessName = name.replace(/\d/g, "#");
+    if (name != numberlessName) {
+      this.numberlessName = numberlessName;
+      if (verreciel.ghost.portsByName[numberlessName] == null) {
+        verreciel.ghost.portsByName[numberlessName] = [];
+      }
+      verreciel.ghost.portsByName[numberlessName].push(this);
+    }
 
-    this.trigger = new SceneTrigger(this, 1, 1);
+    this.trigger = new SceneTrigger(this, "port_" + name, 1, 1, 0);
     this.trigger.position.set(0, 0, -0.1);
     this.add(this.trigger);
 
@@ -156,9 +166,8 @@ class ScenePort extends Empty {
     this.connection = port;
     this.connection.origin = this;
 
-    this.updateWire();
-
     this.wire.enable();
+    this.updateWire(true);
 
     this.connection.host.onConnect();
     this.connection.onConnect();
@@ -166,10 +175,11 @@ class ScenePort extends Empty {
     this.onConnect();
   }
 
-  updateWire() {
+  updateWire(reset = false) {
     this.wire.updateEnds(
       new THREE.Vector3(0, 0, 0),
-      this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), this.connection)
+      this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), this.connection),
+      reset
     );
   }
 
@@ -435,25 +445,25 @@ class ScenePort extends Empty {
     super.onDisconnect();
     this.host.onDisconnect();
   }
+
+  static stripAllPorts(root) {
+    let ports = [];
+
+    function findPorts(node) {
+      if (node instanceof ScenePort) {
+        ports.push(node);
+      }
+      for (let child of node.children) {
+        findPorts(child);
+      }
+    }
+
+    findPorts(root);
+
+    for (let port of ports) {
+      if (port.isPersistent == false) {
+        port.strip();
+      }
+    }
+  }
 }
-
-ScenePort.stripAllPorts = function(root) {
-  let ports = [];
-
-  function findPorts(node) {
-    if (node instanceof ScenePort) {
-      ports.push(node);
-    }
-    for (let child of node.children) {
-      findPorts(child);
-    }
-  }
-
-  findPorts(root);
-
-  for (let port of ports) {
-    if (port.isPersistent == false) {
-      port.strip();
-    }
-  }
-};

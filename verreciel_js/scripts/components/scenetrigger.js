@@ -2,9 +2,12 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneTrigger extends SceneDrawNode {
-  constructor(host, width, height, operation = 0) {
-    // assertArgs(arguments, 3);
+  constructor(host, name, width, height, operation) {
+    // assertArgs(arguments, 5);
+
     super();
+    this.name = name;
+    verreciel.ghost.triggersByName[name] = this;
     this.isEnabled = true;
     this.operation = operation;
     this.host = host;
@@ -31,12 +34,22 @@ class SceneTrigger extends SceneDrawNode {
     super.makeElement();
   }
 
-  touch(id) {
+  tap() {
     // assertArgs(arguments, 1);
     if (this.isEnabled == false) {
       return false;
     }
-    return this.host.touch(this.operation);
+
+    let result = this.host.touch(this.operation);
+
+    if (result == true) {
+      verreciel.ghost.report(
+        LogType.hit,
+        verreciel.ghost.recordHitTarget(this)
+      );
+    }
+
+    return result;
   }
 
   update() {

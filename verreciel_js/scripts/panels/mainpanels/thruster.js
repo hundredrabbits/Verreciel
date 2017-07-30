@@ -6,7 +6,7 @@ class Thruster extends MainPanel {
 
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("thruster");
 
     this.interface_flight = new Empty();
     this.interface_cutlines = new Empty();
@@ -18,7 +18,6 @@ class Thruster extends MainPanel {
     this.isLocked = false;
     this.port.isPersistent = true;
 
-    this.name = "thruster";
     this.details = "moves the capsule";
 
     // Flight
@@ -288,7 +287,7 @@ class Thruster extends MainPanel {
 
     // Triggers
 
-    this.accelerate = new SceneTrigger(this, 1, 1, 1);
+    this.accelerate = new SceneTrigger(this, "thruster_accelerate", 1, 1, 1);
     this.accelerate.position.set(0, 0.5, 0);
     this.accelerate.add(
       new SceneLine(
@@ -303,7 +302,7 @@ class Thruster extends MainPanel {
       )
     );
 
-    this.decelerate = new SceneTrigger(this, 1, 1, 0);
+    this.decelerate = new SceneTrigger(this, "thruster_decelerate", 1, 1, 0);
     this.decelerate.position.set(0, -0.5, 0);
     this.decelerate.add(
       new SceneLine(
@@ -318,7 +317,7 @@ class Thruster extends MainPanel {
       )
     );
 
-    this.action = new SceneTrigger(this, 1.5, 1.5, 2);
+    this.action = new SceneTrigger(this, "thruster_action", 1.5, 1.5, 2);
 
     this.mainNode.add(this.accelerate);
     this.mainNode.add(this.decelerate);
@@ -340,6 +339,13 @@ class Thruster extends MainPanel {
       verreciel.music.playEffect("click3");
       return true;
     } else if (id == 1) {
+      if (
+        (verreciel.pilot.target == null ||
+          verreciel.pilot.port.origin.host != verreciel.radar) &&
+        verreciel.pilot.isInstalled == true
+      ) {
+        return;
+      }
       this.speedUp();
       verreciel.music.playEffect("click4");
       return true;
@@ -434,6 +440,7 @@ class Thruster extends MainPanel {
   unlock() {
     // assertArgs(arguments, 0);
     this.isLocked = false;
+    verreciel.ghost.report(LogType.thrusterUnlock);
   }
 
   // MARK: Custom -
@@ -772,7 +779,7 @@ class Thruster extends MainPanel {
     if (verreciel.capsule.location != null) {
       this.speed = 0;
     } else if (this.actualSpeed < 0.1) {
-      this.actualSpeed = 0.1;
+      this.actualSpeed = DEBUG_LOG_GHOST ? 0 : 0.1;
     }
 
     if (this.actualSpeed > 0) {

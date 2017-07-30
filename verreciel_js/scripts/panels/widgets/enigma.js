@@ -4,9 +4,8 @@
 class Enigma extends Widget {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("enigma");
 
-    this.name = "enigma";
     this.details = "extra";
     this.requirement = ItemTypes.cypher;
     this.isPowered = function() {

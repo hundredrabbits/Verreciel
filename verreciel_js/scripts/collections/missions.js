@@ -146,7 +146,7 @@ class Missions {
     };
     m.quests = [
       new Quest(
-        "Route " + i.currency1.name + " to verreciel.cargo",
+        "Route " + i.currency1.name + " to cargo",
         u.loiqe_harvest,
         function() {
           return (
@@ -165,7 +165,7 @@ class Missions {
         function() {}
       ),
       new Quest(
-        "Route " + i.valenPortalFragment1.name + " to verreciel.cargo",
+        "Route " + i.valenPortalFragment1.name + " to cargo",
         null,
         function() {
           return verreciel.cargo.contains(i.valenPortalFragment1) == true;
@@ -568,7 +568,7 @@ class Missions {
         function() {}
       ),
       new Quest(
-        "Jetison Waste",
+        "Jettison Waste",
         null,
         function() {
           return verreciel.hatch.count > 0;
@@ -1649,9 +1649,9 @@ class Missions {
     for (let mission of this.story) {
       if (mission.isCompleted == false) {
         this.currentMission = mission;
-        console.log("# ---------------------------");
-        console.log("# MISSION  | Reached: " + this.currentMission.id);
-        console.log("# ---------------------------");
+        console.info("# ---------------------------");
+        console.info("# MISSION  | Reached: " + this.currentMission.id);
+        console.info("# ---------------------------");
         verreciel.game.save(this.currentMission.id);
         return;
       }

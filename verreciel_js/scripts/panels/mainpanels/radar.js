@@ -4,7 +4,7 @@
 class Radar extends MainPanel {
   constructor() {
     // assertArgs(arguments, 0);
-    super();
+    super("radar");
 
     this.x = 0;
     this.z = 0;
@@ -13,7 +13,6 @@ class Radar extends MainPanel {
     this.eventPivot = new Empty();
     this.eventView = new Empty();
 
-    this.name = "radar";
     this.details = "displays locations";
     this.port.isPersistent = true;
 
@@ -228,7 +227,7 @@ class Radar extends MainPanel {
         newEvent.position.y == event.position.y &&
         event != newEvent
       ) {
-        console.log(
+        console.warn(
           "Overlapping event:",
           newEvent.name,
           "->",
