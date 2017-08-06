@@ -13,7 +13,7 @@ class SceneLine extends SceneDrawNode {
     this.meshLineSegments = new MeshLineSegments();
     this.material = this.meshLineSegments.material;
     this.material.screenAspectRatio = verreciel.width / verreciel.height;
-    this.material.lineWidth = 0.005;
+    this.material.lineWidth = 0.004;
     this.element = this.meshLineSegments.element;
     super.makeElement();
   }
