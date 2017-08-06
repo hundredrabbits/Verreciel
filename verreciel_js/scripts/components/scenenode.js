@@ -135,6 +135,13 @@ class SceneNode {
     }
   }
 
+  whenResize() {
+    // assertArgs(arguments, 0);
+    for (let node of this.children) {
+      node.whenResize();
+    }
+  }
+
   removeFromParentNode() {
     // assertArgs(arguments, 0);
     if (this.parent != null) {

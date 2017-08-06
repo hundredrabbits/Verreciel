@@ -5,6 +5,7 @@ class SceneDrawNode extends Empty {
   constructor() {
     super();
     this.__color4 = new THREE.Vector4(1, 1, 1, 1);
+    this.__materialColor = new THREE.Color();
     this.__colorRGB = new AnimatedXYZ(
       verreciel.animator,
       this,
@@ -33,9 +34,10 @@ class SceneDrawNode extends Empty {
   makeElement() {}
 
   updateMaterialColor() {
-    this.material.color.r = this.__color4.x;
-    this.material.color.g = this.__color4.y;
-    this.material.color.b = this.__color4.z;
+    this.__materialColor.r = this.__color4.x;
+    this.__materialColor.g = this.__color4.y;
+    this.__materialColor.b = this.__color4.z;
+    this.material.color = this.__materialColor;
   }
 
   updateMaterialOpacity() {
