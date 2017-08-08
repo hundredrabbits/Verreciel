@@ -62,6 +62,7 @@ class SceneNode {
     this.children.push(other);
     other.parent = this;
     other.element.updateMatrixWorld(true);
+    other.whenResize();
     other.whenInherit();
     if (verreciel.phase == Phase.render) {
       other.whenRenderer();
@@ -132,6 +133,13 @@ class SceneNode {
     // assertArgs(arguments, 0);
     for (let node of this.children) {
       node.whenRenderer();
+    }
+  }
+
+  whenResize() {
+    // assertArgs(arguments, 0);
+    for (let node of this.children) {
+      node.whenResize();
     }
   }
 

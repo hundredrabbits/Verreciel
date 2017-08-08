@@ -29,7 +29,7 @@ class Verreciel {
     this.numClicks = 0;
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0, 0, 0);
-    this.renderer = new THREE.WebGLRenderer({ antialias: false });
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
     // this.renderer.sortObjects = false;
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(0, 0);
@@ -119,6 +119,7 @@ class Verreciel {
       document.body.appendChild(this.stats.dom);
     }
 
+    this.root.whenResize();
     this.lastFrameTime = Date.now();
     this.render();
   }
@@ -256,6 +257,9 @@ class Verreciel {
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(this.width, this.height);
+    if (this.root != null) {
+      this.root.whenResize();
+    }
   }
 }
 

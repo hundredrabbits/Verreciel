@@ -10,12 +10,11 @@ class SceneLine extends SceneDrawNode {
   }
 
   makeElement() {
-    this.material = new THREE.LineBasicMaterial({
-      color: 0xffffff,
-      transparent: true
-    });
-    this.geometry = new THREE.Geometry();
-    this.element = new THREE.LineSegments(this.geometry, this.material);
+    this.meshLineSegments = new MeshLineSegments();
+    this.material = this.meshLineSegments.material;
+    this.material.screenAspectRatio = verreciel.width / verreciel.height;
+    this.material.lineWidth = 0.004;
+    this.element = this.meshLineSegments.element;
     super.makeElement();
   }
 
@@ -35,23 +34,12 @@ class SceneLine extends SceneDrawNode {
     if (vertices.indexOf(null) != -1) {
       throw "BAD GEOMETRY";
     }
+    this.meshLineSegments.updateGeometry(vertices);
+  }
 
-    let oldLength = this.vertices == null ? -1 : this.vertices.length;
-    this.vertices = vertices;
-    while (this.vertices.length < oldLength) {
-      this.vertices.push(SceneLine.DUD_VERT);
-    }
-
-    if (oldLength != -1 && this.vertices.length > oldLength) {
-      this.geometry.dispose();
-      this.geometry = new THREE.Geometry();
-      this.element.geometry = this.geometry;
-      // console.debug("EXPAND:", oldLength, "-->", this.vertices.length);
-    }
-
-    this.geometry.vertices = vertices;
-    this.geometry.verticesNeedUpdate = true;
-    this.geometry.computeBoundingSphere();
+  whenResize() {
+    this.material.screenAspectRatio = verreciel.width / verreciel.height;
+    super.whenResize();
   }
 }
 
