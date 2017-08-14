@@ -1,0 +1,83 @@
+{
+  "name": "p-limit",
+  "version": "1.1.0",
+  "description": "Run multiple promise-returning & async functions with limited concurrency",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/p-limit.git"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "promise",
+    "limit",
+    "limited",
+    "concurrency",
+    "throttle",
+    "throat",
+    "rate",
+    "batch",
+    "ratelimit",
+    "task",
+    "queue",
+    "async",
+    "await",
+    "promises",
+    "bluebird"
+  ],
+  "devDependencies": {
+    "ava": "*",
+    "delay": "^1.3.1",
+    "in-range": "^1.0.0",
+    "random-int": "^1.0.0",
+    "time-span": "^1.0.0",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  },
+  "gitHead": "276b0aeef73ac9fe0b80622d8261a2bbe4f9f74c",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/p-limit/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/p-limit#readme",
+  "_id": "p-limit@1.1.0",
+  "_shasum": "b07ff2d9a5d88bec806035895a2bab66a27988bc",
+  "_from": "p-limit@>=1.1.0 <2.0.0",
+  "_npmVersion": "2.15.11",
+  "_nodeVersion": "4.6.2",
+  "_npmUser": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "dist": {
+    "shasum": "b07ff2d9a5d88bec806035895a2bab66a27988bc",
+    "tarball": "https://registry.npmjs.org/p-limit/-/p-limit-1.1.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/p-limit-1.1.0.tgz_1479711587647_0.4504568234551698"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/p-limit/-/p-limit-1.1.0.tgz",
+  "readme": "ERROR: No README data found!"
+}
