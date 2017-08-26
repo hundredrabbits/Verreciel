@@ -7,7 +7,9 @@ class MeshLineSegments {
     this.geometry.setDrawRange(0, Infinity);
     this.material = new MeshLineSegmentsMaterial();
     this.material.lineWidth = 0.01;
-    this.element = new THREE.Mesh(this.geometry, this.material);
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.element = new THREE.Group();
+    this.element.add(this.mesh);
     if (source != null) {
       this.updateGeometry(source);
     }
@@ -123,47 +125,63 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
     this.uniforms.opacity = { value: 1.0 };
 
     this.vertexShader = `
-            attribute vec3 startPosition;
-            attribute vec3 endPosition;
-            attribute float side;
-            attribute float edge;
-            uniform float screenAspectRatio;
-            uniform float lineWidth;
+      attribute vec3 startPosition;
+      attribute vec3 endPosition;
+      attribute float side;
+      attribute float edge;
+      uniform float screenAspectRatio;
+      uniform float lineWidth;
 
-            void main() {
-                
-                mat4 screenFromModelView = projectionMatrix * modelViewMatrix;
+      void main() {
 
-                vec4 startScreenPosition = screenFromModelView * vec4( startPosition, 1.0 );
-                vec4 endScreenPosition   = screenFromModelView * vec4( endPosition,   1.0 );
+        mat4 screenProjection = projectionMatrix * modelViewMatrix;
 
-                vec4 currScreenPosition = edge == 1.0 ? startScreenPosition : endScreenPosition;
+        vec4 startScreenPosition = screenProjection * vec4( startPosition, 1.0 );
+        vec4 endScreenPosition = screenProjection * vec4( endPosition, 1.0 );
 
-                vec2 startXY = startScreenPosition.xy / startScreenPosition.w * vec2(screenAspectRatio, 1.0);
-                vec2 endXY = endScreenPosition.xy / endScreenPosition.w * vec2(screenAspectRatio, 1.0);
+        vec4 currScreenPosition = edge == 1.0 ? startScreenPosition : endScreenPosition;
 
-                vec2 dir = normalize(endXY - startXY);
-                vec2 normal = vec2( -dir.y / screenAspectRatio,  dir.x ) * lineWidth / 2.0;
-                currScreenPosition.xy += side * normal * currScreenPosition.w;
+        vec2 nextPos = startScreenPosition.xy / startScreenPosition.w * vec2(screenAspectRatio, 1.0);
+        vec2 currPos = currScreenPosition.xy / currScreenPosition.w * vec2(screenAspectRatio, 1.0);
+        vec2 prevPos = endScreenPosition.xy / endScreenPosition.w * vec2(screenAspectRatio, 1.0);
 
-                if (startXY != endXY) {
-                  vec2 bloat = vec2( dir.x / screenAspectRatio,  dir.y ) * lineWidth / 2.0;
-                  currScreenPosition.xy += -edge * bloat * currScreenPosition.w;
-                }
-                
-                gl_Position = currScreenPosition;
-            }
-        `;
+        vec2 dir = normalize( nextPos - prevPos );
+        vec2 normal = vec2( dir.y, -dir.x );
+        normal.x /= screenAspectRatio;
+
+        float thickness = lineWidth;
+
+        if (currPos == prevPos) {
+          dir = normalize(nextPos - currPos);
+        } else if (currPos == nextPos) {
+          dir = normalize(currPos - prevPos);
+        } else {
+          vec2 miterDir = normalize( nextPos - prevPos );
+          vec2 tangent = normalize( dir + miterDir );
+          vec2 miterNormal = vec2( -dir.y, dir.x );
+          vec2 miter = vec2( -tangent.y, tangent.x );
+          dir = tangent;
+          thickness = lineWidth / dot( miter, miterNormal );
+        }
+
+        normal = vec2( -dir.y, dir.x );
+        normal.x /= screenAspectRatio;
+
+        currScreenPosition.xy += side * normal * currScreenPosition.w * thickness / 2.0;
+
+        gl_Position = currScreenPosition;
+      }
+    `;
 
     this.fragmentShader = `
-            uniform vec3 diffuse;
-            uniform float opacity;
+      uniform vec3 diffuse;
+      uniform float opacity;
 
-            void main() {
-                vec4 diffuseColor = vec4( diffuse, opacity );
-                gl_FragColor = diffuseColor;
-            }
-        `;
+      void main() {
+        vec4 diffuseColor = vec4( diffuse, opacity );
+        gl_FragColor = diffuseColor;
+      }
+    `;
   }
 
   get screenAspectRatio() {
@@ -196,14 +214,6 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
 
   set opacity(newValue) {
     if (this.uniforms != null) this.uniforms.opacity.value = newValue;
-  }
-
-  get screenAspectRatio() {
-    return this.uniforms.screenAspectRatio.value;
-  }
-
-  set screenAspectRatio(newValue) {
-    this.uniforms.screenAspectRatio.value = newValue;
   }
 
   get color() {
