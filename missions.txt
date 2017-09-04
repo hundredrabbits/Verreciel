@@ -5,8 +5,6 @@ Start bank with record1
 Start bank with loiqe key
 ...and start the other locations with their items
 
-
-
 MISSION: 
 Route cell to thruster
 Undock with thruster

@@ -9,13 +9,12 @@ let win;
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 560,
-    height: 840,
+    width: 900,
+    height: 640,
     backgroundColor: "#000000",
     resizable: true,
     autoHideMenuBar: true,
     icon: __dirname + "/icon.ico",
-
     webPreferences: { blinkFeatures: "PreciseMemoryInfo" }
   });
 
