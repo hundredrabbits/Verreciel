@@ -12,10 +12,10 @@
     "stretch": "prettier --print-width 1000 --write main.js 'scripts/**/*.js' 'links/**/*.css'"
   },
   "dependencies": {
-    "electron-packager": "^8.4.0"
+    "electron": "^1.7.5"
   },
   "devDependencies": {
-    "electron": "^1.7.5",
+    "electron-packager": "^8.4.0",
     "prettier": "^1.5.3"
   }
 }
