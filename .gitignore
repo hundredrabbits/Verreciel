@@ -2,3 +2,4 @@
 *.xcodeproj
 *.sublime-workspace
 *.sublime-project
+node_modules

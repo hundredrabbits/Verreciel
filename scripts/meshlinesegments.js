@@ -56,14 +56,14 @@ class MeshLineSegments {
     // Side and Edge offsets
     this.sides = new Float32Array(this.numVertices);
     for (let i = 0; i < this.numVertices; i++) {
-      this.sides[i] = i % 2 * 2 - 1;
+      this.sides[i] = (i % 2) * 2 - 1;
     }
     this.sidesAttribute = new THREE.BufferAttribute(this.sides, 1);
     this.geometry.addAttribute("side", this.sidesAttribute);
 
     this.edges = new Float32Array(this.numVertices);
     for (let i = 0; i < this.numVertices; i++) {
-      this.edges[i] = Math.floor(i / 2) % 2 * 2 - 1;
+      this.edges[i] = (Math.floor(i / 2) % 2) * 2 - 1;
     }
     this.edgesAttribute = new THREE.BufferAttribute(this.edges, 1);
     this.geometry.addAttribute("edge", this.edgesAttribute);

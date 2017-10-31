@@ -91,6 +91,7 @@ class Verreciel {
     document.addEventListener("mousemove", this.mouseMove.bind(this), false);
     document.addEventListener("mousedown", this.mouseDown.bind(this), false);
     document.addEventListener("mouseup", this.mouseUp.bind(this), false);
+    document.addEventListener("wheel", this.mouseWheel.bind(this), false);
     window.addEventListener("resize", this.windowResize.bind(this), false);
 
     this.windowResize();
@@ -220,6 +221,15 @@ class Verreciel {
         }
       }
     }
+  }
+
+  mouseWheel(e) {
+    e.preventDefault();
+    if (this.mouseIsDown || this.player.isLocked) {
+      return;
+    }
+    this.player.accelY += e.deltaX * -0.001;
+    this.player.accelX += e.deltaY * -0.001;
   }
 
   isEnabledTrigger(hit) {

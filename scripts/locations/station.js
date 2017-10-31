@@ -204,13 +204,13 @@ class StructureStation extends Structure {
     verreciel.animator.begin();
     verreciel.animator.animationDuration = 0.5;
 
-    let deg1 = 22.5 * (this.morphTime * 123 % 8) % 180;
-    let deg2 = 22.5 * (this.morphTime * 678 % 6) % 180;
+    let deg1 = (22.5 * ((this.morphTime * 123) % 8)) % 180;
+    let deg2 = (22.5 * ((this.morphTime * 678) % 6)) % 180;
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
         subnode.rotation.z = degToRad(deg1 - deg2);
-        subnode.position.y = (2 - this.morphTime * 0.34 % 4) * 0.6;
+        subnode.position.y = (2 - (this.morphTime * 0.34) % 4) * 0.6;
       }
     }
 
