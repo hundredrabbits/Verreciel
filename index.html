@@ -9,6 +9,7 @@
 
     <script type="text/javascript" src="scripts/utils/enum.js"></script>
     <script type="text/javascript" src="scripts/utils/tools.js"></script>
+    <script type="text/javascript" src="scripts/utils/controller.js"></script>
 
     <script type="text/javascript" src="scripts/meshlinesegments.js"></script>
 
@@ -124,13 +125,16 @@
 
         let IS_MOBILE = isDeviceMobile();
 
-        let DEBUG_SKIP_LOGO = false;
+        let DEBUG_SKIP_LOGO = true;
         let DEBUG_SHOW_TRIGGERS = false;
         let DEBUG_LOG_GHOST = false;
         let DEBUG_DONT_SAVE = false;
         let DEBUG_NO_MUSIC = false;
         let DEBUG_SHOW_STATS = false;
         let DEBUG_REPORT_NODE_USE = false;
+
+        const {dialog,app} = require('electron').remote;
+        const fs = require('fs');
 
         let verreciel = new Verreciel();
         verreciel.install();

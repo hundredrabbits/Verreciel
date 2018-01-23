@@ -23,6 +23,7 @@ class Verreciel {
     this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
     this.clear = new THREE.Vector4(0, 0, 0, 0);
 
+    this.controller = new Controller();
     this.fps = 40;
     this.camera = new THREE.PerspectiveCamera(105, 1, 0.0001, 10000);
     this.raycaster = new THREE.Raycaster();
@@ -95,6 +96,24 @@ class Verreciel {
     window.addEventListener("resize", this.windowResize.bind(this), false);
 
     this.windowResize();
+
+    this.controller.add("default","*","About",() => { require('electron').shell.openExternal('http://hundredrabbits.itch.io/Verreciel'); },"CmdOrCtrl+,");
+    this.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
+    this.controller.add("default","*","Hide",() => { app.toggle_visible(); },"CmdOrCtrl+H");
+    this.controller.add("default","*","Inspect",() => { app.inspect(); },"CmdOrCtrl+.");
+    this.controller.add("default","*","Documentation",() => { verreciel.controller.docs(); },"CmdOrCtrl+Esc");
+    this.controller.add("default","*","Reset",() => { this.game.reset(); },"CmdOrCtrl+Backspace");
+    this.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
+
+    this.controller.add("default","Look","Battery",() => { verreciel.player.lookAt(0); },"1");
+    this.controller.add("default","Look","Radar",() => { verreciel.player.lookAt(180); },"2");
+    this.controller.add("default","Look","Monitor",() => { verreciel.player.lookAt(90); },"3");
+    this.controller.add("default","Look","East",() => { verreciel.player.lookAt(-90); },"4");
+
+    this.controller.add("default","Look","Right",() => { verreciel.player.lookAtMod(90); },"D");
+    this.controller.add("default","Look","Left",() => { verreciel.player.lookAtMod(-90); },"A");
+
+    this.controller.commit();
 
     this.root = new Empty();
     this.scene.add(this.root.element);

@@ -91,6 +91,10 @@ class Player extends Empty {
     this.releaseHandle();
   }
 
+  lookAtMod(deg = 0) {
+    this.lookAt(radToDeg(this.rotation.y) + deg)
+  }
+
   setIsPanoptic(value) {
     if (this.isPanoptic == value) {
       return;

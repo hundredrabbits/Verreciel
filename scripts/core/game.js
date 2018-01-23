@@ -67,6 +67,13 @@ class Game {
     localStorage.clear();
   }
 
+  reset() {
+    console.info("$ GAME     | Erase");
+    this.erase()
+    this.load(0)
+
+  }
+
   whenSecond() {
     // assertArgs(arguments, 0);
     setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
