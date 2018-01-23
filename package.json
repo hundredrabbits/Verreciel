@@ -19,7 +19,7 @@
     "push_linux"   : "~/butler push ~/Desktop/Verreciel-linux-x64/ hundredrabbits/verreciel:linux-64",
     "push_win"     : "~/butler push ~/Desktop/Verreciel-win32-x64/ hundredrabbits/verreciel:windows-64",
     "push_status"  : "~/butler status hundredrabbits/verreciel",
-    "push"         : "npm run build ;  ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
+    "push"         : "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
   },
   "devDependencies": {
     "electron": "^1.8.1"
