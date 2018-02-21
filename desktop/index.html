@@ -2,10 +2,10 @@
 <html>
   <head>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <script type="text/javascript" src="scripts/logo.js"></script>
-    <script type="text/javascript" src="lib/three.js"></script>
-    <script type="text/javascript" src="lib/stats.min.js"></script>
-    <script type="text/javascript" src="lib/easing.js"></script>
+    <script type="text/javascript" src="scripts/lib/logo.js"></script>
+    <script type="text/javascript" src="scripts/lib/three.js"></script>
+    <script type="text/javascript" src="scripts/lib/stats.min.js"></script>
+    <script type="text/javascript" src="scripts/lib/easing.js"></script>
 
     <script type="text/javascript" src="scripts/utils/enum.js"></script>
     <script type="text/javascript" src="scripts/utils/tools.js"></script>
@@ -112,9 +112,6 @@
     <!-- Copyright © 2017 XXIIVV. All rights reserved. -->
   </head>
   <body>
-    <div id='splashContainer'>
-      <div id='logoContainer' style='width:120px;height:120px; margin:25vh auto; background: none;'></div>
-    </div>
     <script>
 
         function isDeviceMobile()
@@ -139,22 +136,17 @@
         let verreciel = new Verreciel();
         verreciel.install();
 
-        let logoContainer = document.getElementById("logoContainer");
-        let splashContainer = document.getElementById("splashContainer");
-
         if (DEBUG_SKIP_LOGO)
         {
-            logoContainer.parentNode.removeChild(logoContainer);
-            splashContainer.style = "opacity: 0";
             verreciel.start();
         }
         else
         {
-            var logo = new Logo(logoContainer);
-            delay(1.5, function(){ logo.install(); });
-            delay(7.0, function(){ verreciel.start(); });
-            delay(7.5, function(){ splashContainer.style = "opacity: 0"; });
-            delay(8.5, function(){ logoContainer.parentNode.removeChild(logoContainer); });
+            var logo = new Logo();
+            logo.install(120);
+
+            setTimeout(function(){ verreciel.start(); }, 3000);
+            setTimeout(function(){ logo.remove(); }, 5500);
         }
 
     </script>
