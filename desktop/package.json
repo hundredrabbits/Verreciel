@@ -7,25 +7,25 @@
   "author": "Devine Lu Linvega <aliceffekt@gmail.com>",
   "license": "CC-BY-4.0",
   "scripts": {
-    "start"        : "electron .",
-    "fmt"          : "prettier --write main.js 'scripts/**/*.js' 'links/**/*.css' 'media/**/*.json'",
-    "stretch"      : "prettier --print-width 1000 --write main.js 'scripts/**/*.js' 'links/**/*.css'",
-    "clean"        : "rm -r ~/Desktop/Verreciel-darwin-x64/ ; rm -r ~/Desktop/Verreciel-linux-x64/ ; rm -r ~/Desktop/Verreciel-win32-x64/ ; echo 'cleaned build location'",
-    "build_osx"    : "electron-packager . Verreciel --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
-    "build_linux"  : "electron-packager . Verreciel --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
-    "build_win"    : "electron-packager . Verreciel --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
-    "build"        : "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
-    "push_osx"     : "~/butler push ~/Desktop/Verreciel-darwin-x64/ hundredrabbits/verreciel:osx-64",
-    "push_linux"   : "~/butler push ~/Desktop/Verreciel-linux-x64/ hundredrabbits/verreciel:linux-64",
-    "push_win"     : "~/butler push ~/Desktop/Verreciel-win32-x64/ hundredrabbits/verreciel:windows-64",
-    "push_status"  : "~/butler status hundredrabbits/verreciel",
-    "push"         : "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
+    "start": "electron .",
+    "fmt": "prettier --write main.js 'scripts/**/*.js' 'links/**/*.css' 'media/**/*.json'",
+    "stretch": "prettier --print-width 1000 --write main.js 'scripts/**/*.js' 'links/**/*.css'",
+    "clean": "rm -r ~/Desktop/Verreciel-darwin-x64/ ; rm -r ~/Desktop/Verreciel-linux-x64/ ; rm -r ~/Desktop/Verreciel-win32-x64/ ; echo 'cleaned build location'",
+    "build_osx": "electron-packager . Verreciel --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
+    "build_linux": "electron-packager . Verreciel --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
+    "build_win": "electron-packager . Verreciel --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
+    "build": "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
+    "push_osx": "~/butler push ~/Desktop/Verreciel-darwin-x64/ hundredrabbits/verreciel:osx-64",
+    "push_linux": "~/butler push ~/Desktop/Verreciel-linux-x64/ hundredrabbits/verreciel:linux-64",
+    "push_win": "~/butler push ~/Desktop/Verreciel-win32-x64/ hundredrabbits/verreciel:windows-64",
+    "push_status": "~/butler status hundredrabbits/verreciel",
+    "push": "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
   },
   "devDependencies": {
-    "electron": "^1.8.1"
+    "electron": "^5.0.8",
+    "electron-packager": "^13.1.1"
   },
   "dependencies": {
-    "electron-packager": "^8.4.0",
-    "prettier": "^1.5.3"
+    "prettier": "^1.18.2"
   }
 }
