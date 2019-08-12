@@ -15,7 +15,20 @@ class Verreciel {
     this.element = document.createElement('verreciel')
     document.body.appendChild(this.element)
 
-    this.theme = new Theme()
+    const defaultTheme = {
+      background: '#111',
+      f_high: '#fff',
+      f_med: '#999',
+      f_low: '#444',
+      f_inv: '#000',
+      b_high: '#ffffff',
+      b_med: '#72dec2',
+      b_low: '#aaaaaa',
+      b_inv: '#ffb545'
+    }
+
+    this.theme = new Theme(defaultTheme)
+    this.theme.install(document.body, () => { verreciel.scramblePalette() })
 
     this.colorPalette = [
       new THREE.Color(1, 0, 0), // red
@@ -91,6 +104,7 @@ class Verreciel {
   }
 
   start () {
+    this.theme.start()
     this.phase = Phase.start
 
     // assertArgs(arguments, 0);
@@ -305,6 +319,7 @@ class Verreciel {
   }
 
   scramblePalette () {
+    if (!this.root) { return }
     this.colorPalette[0].setRGB(Math.random(), Math.random(), Math.random())
     this.colorPalette[1].setRGB(Math.random(), Math.random(), Math.random())
     this.colorPalette[2].setRGB(Math.random(), Math.random(), Math.random())
