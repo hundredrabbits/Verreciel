@@ -49,6 +49,12 @@ class Empty extends SceneNode {
     }
   }
 
+  updateColorPalette() {
+    for (let node of this.children) {
+      node.updateColorPalette();
+    }
+  }
+
   onConnect() {
     // assertArgs(arguments, 0);
     this.update();

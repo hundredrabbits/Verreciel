@@ -4,7 +4,7 @@
 class SceneDrawNode extends Empty {
   constructor() {
     super();
-    this.__color4 = new THREE.Vector4(1, 1, 1, 1);
+    this.__color4 = new THREE.Vector4(1, 0, 0, 1);
     this.__materialColor = new THREE.Color();
     this.__colorRGB = new AnimatedXYZ(
       verreciel.animator,
