@@ -46,6 +46,34 @@ function Theme (_default) {
     return this.active[key]
   }
 
+  this.rgb = function () {
+    return {
+      background: hexToRgb(this.active.background),
+      f_high: hexToRgb(this.active.f_high),
+      f_med: hexToRgb(this.active.f_med),
+      f_low: hexToRgb(this.active.f_low),
+      f_inv: hexToRgb(this.active.f_inv),
+      b_high: hexToRgb(this.active.b_high),
+      b_med: hexToRgb(this.active.b_med),
+      b_low: hexToRgb(this.active.b_low),
+      b_inv: hexToRgb(this.active.b_inv)
+    }
+  }
+
+  this.floats = function () {
+    return {
+      background: hexToFloats(this.active.background),
+      f_high: hexToFloats(this.active.f_high),
+      f_med: hexToFloats(this.active.f_med),
+      f_low: hexToFloats(this.active.f_low),
+      f_inv: hexToFloats(this.active.f_inv),
+      b_high: hexToFloats(this.active.b_high),
+      b_med: hexToFloats(this.active.b_med),
+      b_low: hexToFloats(this.active.b_low),
+      b_inv: hexToFloats(this.active.b_inv)
+    }
+  }
+
   function parse (any) {
     if (any && any.background) { return any } else if (any && any.data) { return any.data } else if (any && isJson(any)) { return JSON.parse(any) } else if (any && isHtml(any)) { return extract(any) }
     return null
@@ -119,6 +147,32 @@ function Theme (_default) {
     } catch (err) {
       console.warn('Theme', 'Incomplete SVG Theme', err)
     }
+  }
+
+  function hexToRgb (hex) {
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+      return r + r + g + g + b + b
+    })
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null
+  }
+
+  function hexToFloats (hex) {
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+      return r + r + g + g + b + b
+    })
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+    return result ? {
+      r: parseInt(result[1], 16) / 255,
+      g: parseInt(result[2], 16) / 255,
+      b: parseInt(result[3], 16) / 255
+    } : null
   }
 
   function isJson (text) {

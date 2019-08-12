@@ -17,9 +17,9 @@ class Verreciel {
 
     const defaultTheme = {
       background: '#111',
-      f_high: '#fff',
-      f_med: '#999',
-      f_low: '#444',
+      f_high: '#ffb545',
+      f_med: '#72dec2',
+      f_low: '#ffffff',
       f_inv: '#000',
       b_high: '#ffffff',
       b_med: '#72dec2',
@@ -28,7 +28,15 @@ class Verreciel {
     }
 
     this.theme = new Theme(defaultTheme)
-    this.theme.install(document.body, () => { verreciel.scramblePalette() })
+
+    this.theme.install(document.body, () => {
+      if (!this.root) { return }
+      const compatible = this.theme.floats()
+      this.colorPalette[0].setRGB(compatible.f_high.r, compatible.f_high.g, compatible.f_high.b)
+      this.colorPalette[1].setRGB(compatible.f_med.r, compatible.f_med.g, compatible.f_med.b)
+      this.colorPalette[2].setRGB(compatible.f_low.r, compatible.f_low.g, compatible.f_low.b)
+      this.root.updateColorPalette()
+    })
 
     this.colorPalette = [
       new THREE.Color(1, 0, 0), // red
