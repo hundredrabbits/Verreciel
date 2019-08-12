@@ -202,7 +202,7 @@ class Items {
       'currency-3'
     )
     this.currency4 = new Item(
-      'altiov',
+      'alitov',
       ItemTypes.currency,
       null,
       'From 1 & 2',
