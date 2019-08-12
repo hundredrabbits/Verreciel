@@ -30,10 +30,10 @@ app.win = null;
 app.on('ready', () => 
 {
   app.win = new BrowserWindow({
-    width: 780,
-    height: 392,
-    minWidth: 380,
-    minHeight: 360,
+    width: 880,
+    height: 540,
+    minWidth: 780,
+    minHeight: 392,
     backgroundColor: '#000',
     icon: path.join(__dirname, { darwin: 'icon.icns', linux: 'icon.png', win32: 'icon.ico' }[process.platform] || 'icon.ico'),
     resizable: true,
@@ -42,7 +42,7 @@ app.on('ready', () =>
     autoHideMenuBar: process.platform === 'darwin',
     webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
   })
-  
+
   app.win.loadURL(`file://${__dirname}/index.html`)
   // app.win.toggleDevTools();
   
