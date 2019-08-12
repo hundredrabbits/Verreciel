@@ -81,7 +81,7 @@ class Loiqe {
       'satellite',
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y),
-      'something broken$half lost',
+      'something broken$somewhen lost',
       verreciel.items.valenPortalFragment2
     )
   }
@@ -315,7 +315,7 @@ class Valen {
       'fog',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      'something broken$half lost',
+      'something broken$somehow lost',
       verreciel.items.usulPortalFragment1,
       verreciel.items.map1
     )
