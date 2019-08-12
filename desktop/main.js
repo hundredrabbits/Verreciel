@@ -29,8 +29,20 @@ app.win = null;
 
 app.on('ready', () => 
 {
-  app.win = new BrowserWindow({width: 880, height: 540, backgroundColor:"#000", minWidth: 587, minHeight: 540, frame:false, autoHideMenuBar: true, icon: __dirname + '/icon.ico'})
-
+  app.win = new BrowserWindow({
+    width: 780,
+    height: 392,
+    minWidth: 380,
+    minHeight: 360,
+    backgroundColor: '#000',
+    icon: path.join(__dirname, { darwin: 'icon.icns', linux: 'icon.png', win32: 'icon.ico' }[process.platform] || 'icon.ico'),
+    resizable: true,
+    frame: process.platform !== 'darwin',
+    skipTaskbar: process.platform === 'darwin',
+    autoHideMenuBar: process.platform === 'darwin',
+    webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
+  })
+  
   app.win.loadURL(`file://${__dirname}/index.html`)
   // app.win.toggleDevTools();
   
