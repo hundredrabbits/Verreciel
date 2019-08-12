@@ -91,3 +91,9 @@ function loadAsset (path, callback, mimeType = null) {
   }
   xhr.send(null)
 }
+
+function setEnumValues (enumType, values) {
+  for (value of values) {
+    enumType[value] = value
+  }
+}
