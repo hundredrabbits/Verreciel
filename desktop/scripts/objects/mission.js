@@ -2,52 +2,52 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Mission {
-  constructor(
+  constructor (
     id,
     name,
-    requirement = function() {
-      return true;
+    requirement = function () {
+      return true
     },
-    state = function() {}
+    state = function () {}
   ) {
     // assertArgs(arguments, 2);
-    this.isCompleted = false;
-    this.quests = [];
-    this.predicate = function() {
-      return false;
-    };
-    this.id = id;
-    this.name = name;
-    this.requirement = requirement;
-    this.state = state;
+    this.isCompleted = false
+    this.quests = []
+    this.predicate = function () {
+      return false
+    }
+    this.id = id
+    this.name = name
+    this.requirement = requirement
+    this.state = state
   }
 
-  validate() {
+  validate () {
     // assertArgs(arguments, 0);
     if (this.currentQuest == null) {
-      this.currentQuest = this.quests[0];
+      this.currentQuest = this.quests[0]
     }
     if (this.predicate() == true) {
-      this.complete();
+      this.complete()
     }
 
     for (let quest of this.quests) {
-      quest.validate();
+      quest.validate()
       if (quest.isCompleted == false) {
-        this.currentQuest = quest;
-        this.prompt();
-        return;
+        this.currentQuest = quest
+        this.prompt()
+        return
       }
     }
-    this.isCompleted = true;
-    verreciel.ghost.report(LogType.mission, this.id);
+    this.isCompleted = true
+    verreciel.ghost.report(LogType.mission, this.id)
   }
 
-  prompt() {
+  prompt () {
     // assertArgs(arguments, 0);
     if (this.currentQuest.location != null) {
       if (verreciel.capsule.isDockedAtLocation(this.currentQuest.location)) {
-        verreciel.helmet.addMessage(this.currentQuest.name);
+        verreciel.helmet.addMessage(this.currentQuest.name)
       } else if (
         verreciel.capsule.system == this.currentQuest.location.system
       ) {
@@ -55,39 +55,39 @@ class Mission {
           this.currentQuest.location.system == this.currentQuest.location.name
         ) {
           verreciel.helmet.addMessage(
-            "Reach " + this.currentQuest.location.name,
+            'Reach ' + this.currentQuest.location.name,
             verreciel.red
-          );
+          )
         } else {
           verreciel.helmet.addMessage(
-            "Reach " +
+            'Reach ' +
               this.currentQuest.location.system +
-              " " +
+              ' ' +
               this.currentQuest.location.name,
             verreciel.red
-          );
+          )
         }
       } else {
         verreciel.helmet.addMessage(
-          "Reach the " + this.currentQuest.location.system + " system",
+          'Reach the ' + this.currentQuest.location.system + ' system',
           verreciel.cyan
-        );
+        )
       }
     } else {
-      verreciel.helmet.addMessage(this.currentQuest.name);
+      verreciel.helmet.addMessage(this.currentQuest.name)
     }
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
-    verreciel.completion.refresh();
+    verreciel.completion.refresh()
   }
 
-  complete() {
+  complete () {
     // assertArgs(arguments, 0);
-    this.isCompleted = true;
+    this.isCompleted = true
     for (let quest of this.quests) {
-      quest.complete();
+      quest.complete()
     }
   }
 }

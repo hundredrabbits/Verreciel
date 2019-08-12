@@ -2,138 +2,138 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class MeshLineSegments {
-  constructor(colorPalette = null, source = null) {
-    this.geometry = new THREE.BufferGeometry();
-    this.geometry.setDrawRange(0, Infinity);
-    this.material = new MeshLineSegmentsMaterial();
-    this.material.lineWidth = 0.01;
-    this.material.colorPalette = colorPalette;
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.element = new THREE.Group();
-    this.element.add(this.mesh);
+  constructor (colorPalette = null, source = null) {
+    this.geometry = new THREE.BufferGeometry()
+    this.geometry.setDrawRange(0, Infinity)
+    this.material = new MeshLineSegmentsMaterial()
+    this.material.lineWidth = 0.01
+    this.material.colorPalette = colorPalette
+    this.mesh = new THREE.Mesh(this.geometry, this.material)
+    this.element = new THREE.Group()
+    this.element.add(this.mesh)
     if (source != null) {
-      this.updateGeometry(source);
+      this.updateGeometry(source)
     }
   }
 
-  updateColorPalette(colorPalette) {
-    this.material.colorPalette = colorPalette;
+  updateColorPalette (colorPalette) {
+    this.material.colorPalette = colorPalette
   }
 
-  remakeGeometry(source) {
+  remakeGeometry (source) {
     // Counts
-    this.numQuadSegments = source.length / 2;
-    this.numTriangles = this.numQuadSegments * 2;
-    this.numIndices = this.numTriangles * 3;
-    this.numVertices = this.numQuadSegments * 4;
+    this.numQuadSegments = source.length / 2
+    this.numTriangles = this.numQuadSegments * 2
+    this.numIndices = this.numTriangles * 3
+    this.numVertices = this.numQuadSegments * 4
 
     // Indices
-    this.indices = new Uint32Array(this.numIndices);
+    this.indices = new Uint32Array(this.numIndices)
     for (let i = 0; i < this.numQuadSegments; i++) {
-      this.indices[i * 6 + 0] = (i * 4 + 0) % this.numVertices;
-      this.indices[i * 6 + 1] = (i * 4 + 1) % this.numVertices;
-      this.indices[i * 6 + 2] = (i * 4 + 2) % this.numVertices;
-      this.indices[i * 6 + 3] = (i * 4 + 1) % this.numVertices;
-      this.indices[i * 6 + 4] = (i * 4 + 2) % this.numVertices;
-      this.indices[i * 6 + 5] = (i * 4 + 3) % this.numVertices;
+      this.indices[i * 6 + 0] = (i * 4 + 0) % this.numVertices
+      this.indices[i * 6 + 1] = (i * 4 + 1) % this.numVertices
+      this.indices[i * 6 + 2] = (i * 4 + 2) % this.numVertices
+      this.indices[i * 6 + 3] = (i * 4 + 1) % this.numVertices
+      this.indices[i * 6 + 4] = (i * 4 + 2) % this.numVertices
+      this.indices[i * 6 + 5] = (i * 4 + 3) % this.numVertices
     }
-    this.geometry.setIndex(new THREE.BufferAttribute(this.indices, 1));
+    this.geometry.setIndex(new THREE.BufferAttribute(this.indices, 1))
 
     // Start and End Positions
-    this.startPositions = new Float32Array(this.numVertices * 3);
+    this.startPositions = new Float32Array(this.numVertices * 3)
     this.startPositionsAttribute = new THREE.BufferAttribute(
       this.startPositions,
       3
-    );
-    this.geometry.addAttribute("startPosition", this.startPositionsAttribute);
+    )
+    this.geometry.addAttribute('startPosition', this.startPositionsAttribute)
 
-    this.endPositions = new Float32Array(this.numVertices * 3);
+    this.endPositions = new Float32Array(this.numVertices * 3)
     this.endPositionsAttribute = new THREE.BufferAttribute(
       this.endPositions,
       3
-    );
-    this.geometry.addAttribute("endPosition", this.endPositionsAttribute);
+    )
+    this.geometry.addAttribute('endPosition', this.endPositionsAttribute)
 
-    this.positions = new Float32Array(source.length * 3);
-    this.positionsAttribute = new THREE.BufferAttribute(this.positions, 3);
-    this.geometry.addAttribute("position", this.positionsAttribute); // for boundary computing
+    this.positions = new Float32Array(source.length * 3)
+    this.positionsAttribute = new THREE.BufferAttribute(this.positions, 3)
+    this.geometry.addAttribute('position', this.positionsAttribute) // for boundary computing
 
     // Side and Edge offsets
-    this.sides = new Float32Array(this.numVertices);
+    this.sides = new Float32Array(this.numVertices)
     for (let i = 0; i < this.numVertices; i++) {
-      this.sides[i] = (i % 2) * 2 - 1;
+      this.sides[i] = (i % 2) * 2 - 1
     }
-    this.sidesAttribute = new THREE.BufferAttribute(this.sides, 1);
-    this.geometry.addAttribute("side", this.sidesAttribute);
+    this.sidesAttribute = new THREE.BufferAttribute(this.sides, 1)
+    this.geometry.addAttribute('side', this.sidesAttribute)
 
-    this.edges = new Float32Array(this.numVertices);
+    this.edges = new Float32Array(this.numVertices)
     for (let i = 0; i < this.numVertices; i++) {
-      this.edges[i] = (Math.floor(i / 2) % 2) * 2 - 1;
+      this.edges[i] = (Math.floor(i / 2) % 2) * 2 - 1
     }
-    this.edgesAttribute = new THREE.BufferAttribute(this.edges, 1);
-    this.geometry.addAttribute("edge", this.edgesAttribute);
+    this.edgesAttribute = new THREE.BufferAttribute(this.edges, 1)
+    this.geometry.addAttribute('edge', this.edgesAttribute)
   }
 
-  copyPosition(arr, index, pos) {
-    arr[index * 3 + 0] = pos.x;
-    arr[index * 3 + 1] = pos.y;
-    arr[index * 3 + 2] = pos.z;
+  copyPosition (arr, index, pos) {
+    arr[index * 3 + 0] = pos.x
+    arr[index * 3 + 1] = pos.y
+    arr[index * 3 + 2] = pos.z
   }
 
-  updateGeometry(source) {
+  updateGeometry (source) {
     if (source.length / 2 != this.numQuadSegments) {
-      this.remakeGeometry(source);
+      this.remakeGeometry(source)
     }
 
     for (let i = 0; i < this.numQuadSegments; i++) {
-      let start = source[i * 2 + 0];
-      this.copyPosition(this.startPositions, i * 4 + 0, start);
-      this.copyPosition(this.startPositions, i * 4 + 1, start);
-      this.copyPosition(this.startPositions, i * 4 + 2, start);
-      this.copyPosition(this.startPositions, i * 4 + 3, start);
+      let start = source[i * 2 + 0]
+      this.copyPosition(this.startPositions, i * 4 + 0, start)
+      this.copyPosition(this.startPositions, i * 4 + 1, start)
+      this.copyPosition(this.startPositions, i * 4 + 2, start)
+      this.copyPosition(this.startPositions, i * 4 + 3, start)
 
-      let end = source[i * 2 + 1];
-      this.copyPosition(this.endPositions, i * 4 + 0, end);
-      this.copyPosition(this.endPositions, i * 4 + 1, end);
-      this.copyPosition(this.endPositions, i * 4 + 2, end);
-      this.copyPosition(this.endPositions, i * 4 + 3, end);
+      let end = source[i * 2 + 1]
+      this.copyPosition(this.endPositions, i * 4 + 0, end)
+      this.copyPosition(this.endPositions, i * 4 + 1, end)
+      this.copyPosition(this.endPositions, i * 4 + 2, end)
+      this.copyPosition(this.endPositions, i * 4 + 3, end)
 
-      this.copyPosition(this.positions, i * 2 + 0, start);
-      this.copyPosition(this.positions, i * 2 + 1, end);
+      this.copyPosition(this.positions, i * 2 + 0, start)
+      this.copyPosition(this.positions, i * 2 + 1, end)
     }
 
-    this.startPositionsAttribute.setArray(this.startPositions);
-    this.startPositionsAttribute.needsUpdate = true;
+    this.startPositionsAttribute.setArray(this.startPositions)
+    this.startPositionsAttribute.needsUpdate = true
 
-    this.endPositionsAttribute.setArray(this.endPositions);
-    this.endPositionsAttribute.needsUpdate = true;
+    this.endPositionsAttribute.setArray(this.endPositions)
+    this.endPositionsAttribute.needsUpdate = true
 
-    this.positionsAttribute.setArray(this.positions);
+    this.positionsAttribute.setArray(this.positions)
 
-    this.geometry.computeBoundingSphere();
+    this.geometry.computeBoundingSphere()
   }
 }
 
 class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
-  constructor(params) {
-    let innerParams = { side: THREE.DoubleSide, transparent: true };
+  constructor (params) {
+    let innerParams = { side: THREE.DoubleSide, transparent: true }
     if (params != null) {
       for (let prop in params) {
-        innerParams[prop] = params[prop];
+        innerParams[prop] = params[prop]
       }
     }
-    super(innerParams);
+    super(innerParams)
 
-    this._color = new THREE.Color(1, 0, 0);
+    this._color = new THREE.Color(1, 0, 0)
     this._colorPalette = [
       new THREE.Vector3(1, 0, 0),
       new THREE.Vector3(0, 1, 0),
       new THREE.Vector3(0, 0, 1)
-    ];
-    this.uniforms.screenAspectRatio = { value: 1 };
-    this.uniforms.lineWidth = { value: 1 };
-    this.uniforms.diffuse = { value: new THREE.Vector3(1, 0, 0) };
-    this.uniforms.opacity = { value: 1.0 };
+    ]
+    this.uniforms.screenAspectRatio = { value: 1 }
+    this.uniforms.lineWidth = { value: 1 }
+    this.uniforms.diffuse = { value: new THREE.Vector3(1, 0, 0) }
+    this.uniforms.opacity = { value: 1.0 }
 
     this.vertexShader = `
       attribute vec3 startPosition;
@@ -182,7 +182,7 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
 
         gl_Position = currScreenPosition;
       }
-    `;
+    `
 
     this.fragmentShader = `
       uniform vec3 diffuse;
@@ -192,74 +192,74 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
         vec4 diffuseColor = vec4( diffuse, opacity );
         gl_FragColor = diffuseColor;
       }
-    `;
+    `
   }
 
-  recalculateDiffuse() {
-    const diffuse = new THREE.Color(0, 0, 0);
+  recalculateDiffuse () {
+    const diffuse = new THREE.Color(0, 0, 0)
 
-    diffuse.r += this._colorPalette[0].r * this._color.r;
-    diffuse.g += this._colorPalette[0].g * this._color.r;
-    diffuse.b += this._colorPalette[0].b * this._color.r;
+    diffuse.r += this._colorPalette[0].r * this._color.r
+    diffuse.g += this._colorPalette[0].g * this._color.r
+    diffuse.b += this._colorPalette[0].b * this._color.r
 
-    diffuse.r += this._colorPalette[1].r * this._color.g;
-    diffuse.g += this._colorPalette[1].g * this._color.g;
-    diffuse.b += this._colorPalette[1].b * this._color.g;
+    diffuse.r += this._colorPalette[1].r * this._color.g
+    diffuse.g += this._colorPalette[1].g * this._color.g
+    diffuse.b += this._colorPalette[1].b * this._color.g
 
-    diffuse.r += this._colorPalette[2].r * this._color.b;
-    diffuse.g += this._colorPalette[2].g * this._color.b;
-    diffuse.b += this._colorPalette[2].b * this._color.b;
+    diffuse.r += this._colorPalette[2].r * this._color.b
+    diffuse.g += this._colorPalette[2].g * this._color.b
+    diffuse.b += this._colorPalette[2].b * this._color.b
 
-    this.uniforms.diffuse.value.fromArray(diffuse.toArray());
+    this.uniforms.diffuse.value.fromArray(diffuse.toArray())
   }
 
-  get screenAspectRatio() {
-    return this.uniforms.screenAspectRatio.value;
+  get screenAspectRatio () {
+    return this.uniforms.screenAspectRatio.value
   }
 
-  set screenAspectRatio(newValue) {
-    this.uniforms.screenAspectRatio.value = newValue;
+  set screenAspectRatio (newValue) {
+    this.uniforms.screenAspectRatio.value = newValue
   }
 
-  get lineWidth() {
-    return this.uniforms.lineWidth.value;
+  get lineWidth () {
+    return this.uniforms.lineWidth.value
   }
 
-  set lineWidth(newValue) {
-    this.uniforms.lineWidth.value = newValue;
+  set lineWidth (newValue) {
+    this.uniforms.lineWidth.value = newValue
   }
 
-  get diffuse() {
-    return this.uniforms.diffuse.value;
+  get diffuse () {
+    return this.uniforms.diffuse.value
   }
 
-  set diffuse(newValue) {
-    this.uniforms.diffuse.value = newValue;
+  set diffuse (newValue) {
+    this.uniforms.diffuse.value = newValue
   }
 
-  get opacity() {
-    return this.uniforms.opacity.value;
+  get opacity () {
+    return this.uniforms.opacity.value
   }
 
-  set opacity(newValue) {
-    if (this.uniforms != null) this.uniforms.opacity.value = newValue;
+  set opacity (newValue) {
+    if (this.uniforms != null) this.uniforms.opacity.value = newValue
   }
 
-  get color() {
-    return this._color;
+  get color () {
+    return this._color
   }
 
-  set color(newColor) {
-    this._color = newColor;
-    this.recalculateDiffuse();
+  set color (newColor) {
+    this._color = newColor
+    this.recalculateDiffuse()
   }
 
-  get colorPalette() {
-    return this._colorPalette;
+  get colorPalette () {
+    return this._colorPalette
   }
 
-  set colorPalette(newValue) {
-    this._colorPalette = newValue;
-    this.recalculateDiffuse();
+  set colorPalette (newValue) {
+    this._colorPalette = newValue
+    this.recalculateDiffuse()
   }
 }

@@ -2,55 +2,55 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Radar extends MainPanel {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super("radar");
+    super('radar')
 
-    this.x = 0;
-    this.z = 0;
-    this.overviewMode = false;
+    this.x = 0
+    this.z = 0
+    this.overviewMode = false
 
-    this.eventPivot = new Empty();
-    this.eventView = new Empty();
+    this.eventPivot = new Empty()
+    this.eventView = new Empty()
 
-    this.details = "displays locations";
-    this.port.isPersistent = true;
+    this.details = 'displays locations'
+    this.port.isPersistent = true
 
-    this.mainNode.add(this.eventPivot);
-    this.eventPivot.add(this.eventView);
+    this.mainNode.add(this.eventPivot)
+    this.eventPivot.add(this.eventView)
 
     // Ship
 
-    this.shipCursor = new Empty();
+    this.shipCursor = new Empty()
     this.shipCursor.add(
       new SceneLine(
         [new THREE.Vector3(0, 0.2, 0), new THREE.Vector3(0.2, 0, 0)],
         verreciel.white
       )
-    );
+    )
     this.shipCursor.add(
       new SceneLine(
         [new THREE.Vector3(0, 0.2, 0), new THREE.Vector3(-0.2, 0, 0)],
         verreciel.white
       )
-    );
-    this.mainNode.add(this.shipCursor);
+    )
+    this.mainNode.add(this.shipCursor)
 
-    this.targetterFar = new Empty();
+    this.targetterFar = new Empty()
     this.targetterFar.add(
       new SceneLine(
         [new THREE.Vector3(0.8, 0, 0), new THREE.Vector3(1, 0, 0)],
         verreciel.red
       )
-    );
-    this.targetterFar.hide();
-    this.mainNode.add(this.targetterFar);
+    )
+    this.targetterFar.hide()
+    this.mainNode.add(this.targetterFar)
 
     // Targetter
 
-    let scale = 0.3;
-    let depth = 0;
-    this.targetter = new Empty();
+    let scale = 0.3
+    let depth = 0
+    this.targetter = new Empty()
     this.targetter.add(
       new SceneLine(
         [
@@ -59,7 +59,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -68,7 +68,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -77,7 +77,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -86,7 +86,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -95,7 +95,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -104,7 +104,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -113,7 +113,7 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
+    )
     this.targetter.add(
       new SceneLine(
         [
@@ -122,103 +122,103 @@ class Radar extends MainPanel {
         ],
         verreciel.red
       )
-    );
-    this.targetter.hide();
-    this.mainNode.add(this.targetter);
+    )
+    this.targetter.hide()
+    this.mainNode.add(this.targetter)
 
-    this.position.set(0, 0, 0);
+    this.position.set(0, 0, 0)
 
-    this.handle = new SceneHandle(new THREE.Vector3(1, 0, 0), this);
-    this.footer.add(this.handle);
-    this.drawDecals();
+    this.handle = new SceneHandle(new THREE.Vector3(1, 0, 0), this)
+    this.footer.add(this.handle)
+    this.drawDecals()
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
   }
 
-  whenRenderer() {
+  whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer();
+    super.whenRenderer()
 
     this.eventView.position.set(
       verreciel.capsule.at.x * -1,
       verreciel.capsule.at.y * -1,
       0
-    );
+    )
 
-    let directionNormal = verreciel.capsule.direction / 180 * -1;
-    this.shipCursor.rotation.set(0, 0, Math.PI * directionNormal);
+    let directionNormal = verreciel.capsule.direction / 180 * -1
+    this.shipCursor.rotation.set(0, 0, Math.PI * directionNormal)
 
-    this.updateTarget();
+    this.updateTarget()
   }
 
   // MARK: Custom -
 
-  updateTarget() {
+  updateTarget () {
     // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false) {
-      return;
+      return
     }
 
     let shipNodePosition = new THREE.Vector2(
       verreciel.capsule.at.x,
       verreciel.capsule.at.y
-    );
+    )
     let eventNodePosition = new THREE.Vector2(
       this.port.event.at.x,
       this.port.event.at.y
-    );
+    )
     let distanceFromShip = distanceBetweenTwoPoints(
       shipNodePosition,
       eventNodePosition
-    );
+    )
 
     if (distanceFromShip > 2) {
       let angleTest = angleBetweenTwoPoints(
         verreciel.capsule.at,
         this.port.event.at,
         verreciel.capsule.at
-      );
-      let targetDirectionNormal = angleTest / 180 * 1;
-      this.targetterFar.rotation.set(0, 0, Math.PI * targetDirectionNormal);
-      this.targetterFar.show();
+      )
+      let targetDirectionNormal = angleTest / 180 * 1
+      this.targetterFar.rotation.set(0, 0, Math.PI * targetDirectionNormal)
+      this.targetterFar.show()
     } else {
       this.targetter.position.set(
         this.port.event.at.x - verreciel.capsule.at.x,
         this.port.event.at.y - verreciel.capsule.at.y,
         0
-      );
-      this.targetterFar.hide();
+      )
+      this.targetterFar.hide()
     }
 
     // Targetter
     if (distanceFromShip > 2) {
-      this.targetter.updateChildrenColors(verreciel.clear);
+      this.targetter.updateChildrenColors(verreciel.clear)
     } else if (this.port.event != verreciel.capsule.location) {
-      this.targetter.updateChildrenColors(verreciel.red);
-      this.targetter.blink();
+      this.targetter.updateChildrenColors(verreciel.red)
+      this.targetter.blink()
     } else {
-      this.targetter.updateChildrenColors(verreciel.grey);
-      this.targetter.show();
+      this.targetter.updateChildrenColors(verreciel.grey)
+      this.targetter.show()
     }
   }
 
-  addTarget(event) {
+  addTarget (event) {
     // assertArgs(arguments, 1);
     if (
       verreciel.capsule.location != null &&
       verreciel.capsule.isDocked == false
     ) {
-      return;
+      return
     }
     if (verreciel.capsule.isWarping == true) {
-      return;
+      return
     }
 
-    this.port.event = event;
+    this.port.event = event
 
-    this.updateTarget();
+    this.updateTarget()
 
     // Check for overlapping events
     for (let newEvent of verreciel.universe.allLocations) {
@@ -228,58 +228,58 @@ class Radar extends MainPanel {
         event != newEvent
       ) {
         console.warn(
-          "Overlapping event:",
+          'Overlapping event:',
           newEvent.name,
-          "->",
+          '->',
           event.position.x
-        );
+        )
       }
     }
   }
 
-  removeTarget() {
+  removeTarget () {
     // assertArgs(arguments, 0);
-    this.port.event = null;
-    this.targetter.hide();
+    this.port.event = null
+    this.targetter.hide()
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
 
-    verreciel.player.lookAt(-90);
+    verreciel.player.lookAt(-90)
   }
 
   // MARK: Map
 
-  modeNormal() {
+  modeNormal () {
     // assertArgs(arguments, 0);
-    this.overviewMode = false;
+    this.overviewMode = false
 
-    verreciel.thruster.show();
-    verreciel.pilot.show();
-    this.decals.show();
-    this.header.show();
-    this.footer.show();
-    this.handle.show();
+    verreciel.thruster.show()
+    verreciel.pilot.show()
+    this.decals.show()
+    this.header.show()
+    this.footer.show()
+    this.handle.show()
 
     for (let location of verreciel.universe.allLocations) {
-      location.onRadarView();
+      location.onRadarView()
     }
   }
 
-  modeOverview() {
+  modeOverview () {
     // assertArgs(arguments, 0);
-    this.overviewMode = true;
+    this.overviewMode = true
 
-    verreciel.thruster.hide();
-    verreciel.pilot.hide();
-    this.decals.hide();
-    this.header.hide();
-    this.handle.hide();
+    verreciel.thruster.hide()
+    verreciel.pilot.hide()
+    this.decals.hide()
+    this.header.hide()
+    this.handle.hide()
 
     for (let location of verreciel.universe.allLocations) {
-      location.onHelmetView();
+      location.onHelmetView()
     }
   }
 }

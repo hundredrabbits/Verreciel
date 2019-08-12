@@ -2,29 +2,29 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class ScenePort extends Empty {
-  constructor(host, name) {
-    assertArgs(arguments, 2);
-    super();
+  constructor (host, name) {
+    assertArgs(arguments, 2)
+    super()
 
-    this.host = host;
-    this.name = name;
-    this.isEnabled = true;
-    this.isPersistent = false;
-    verreciel.ghost.portsByName[name] = this;
-    let numberlessName = name.replace(/\d/g, "#");
+    this.host = host
+    this.name = name
+    this.isEnabled = true
+    this.isPersistent = false
+    verreciel.ghost.portsByName[name] = this
+    let numberlessName = name.replace(/\d/g, '#')
     if (name != numberlessName) {
-      this.numberlessName = numberlessName;
+      this.numberlessName = numberlessName
       if (verreciel.ghost.portsByName[numberlessName] == null) {
-        verreciel.ghost.portsByName[numberlessName] = [];
+        verreciel.ghost.portsByName[numberlessName] = []
       }
-      verreciel.ghost.portsByName[numberlessName].push(this);
+      verreciel.ghost.portsByName[numberlessName].push(this)
     }
 
-    this.trigger = new SceneTrigger(this, "port_" + name, 1, 1, 0);
-    this.trigger.position.set(0, 0, -0.1);
-    this.add(this.trigger);
+    this.trigger = new SceneTrigger(this, 'port_' + name, 1, 1, 0)
+    this.trigger.position.set(0, 0, -0.1)
+    this.add(this.trigger)
 
-    let radius = 0.125;
+    let radius = 0.125
     this.sprite_input = new SceneLine(
       [
         new THREE.Vector3(0, radius / 2, 0),
@@ -37,8 +37,8 @@ class ScenePort extends Empty {
         new THREE.Vector3(0, radius / 2, 0)
       ],
       verreciel.grey
-    );
-    this.add(this.sprite_input);
+    )
+    this.add(this.sprite_input)
 
     this.sprite_output = new SceneLine(
       [
@@ -52,417 +52,417 @@ class ScenePort extends Empty {
         new THREE.Vector3(0, radius, 0)
       ],
       verreciel.grey
-    );
-    this.add(this.sprite_output);
+    )
+    this.add(this.sprite_output)
 
     this.wire = new SceneWire(
       this,
       new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(0, 0, 0)
-    );
-    this.add(this.wire);
+    )
+    this.add(this.wire)
 
-    this.disable();
+    this.disable()
   }
 
   // MARK: Touch -
 
-  touch(id = 0) {
+  touch (id = 0) {
     // assertArgs(arguments, 1);
     if (this.isEnabled == false) {
-      return false;
+      return false
     }
 
     if (verreciel.player.activePort == null) {
-      verreciel.player.holdPort(this);
+      verreciel.player.holdPort(this)
     } else if (verreciel.player.activePort == this) {
-      verreciel.player.releasePort();
+      verreciel.player.releasePort()
     } else if (verreciel.player.activePort != this) {
-      verreciel.player.connectPorts(verreciel.player.activePort, this);
+      verreciel.player.connectPorts(verreciel.player.activePort, this)
     }
 
-    return true;
+    return true
   }
 
-  whenRenderer() {
+  whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer();
+    super.whenRenderer()
 
-    this.sprite_input.color = this.inputColor();
-    this.sprite_output.color = this.outputColor();
+    this.sprite_input.color = this.inputColor()
+    this.sprite_output.color = this.outputColor()
 
     // Blink
     if (
       verreciel.player.activePort != null &&
       verreciel.player.activePort == this
     ) {
-      this.sprite_output.updateChildrenColors(verreciel.cyan);
-      this.sprite_output.blink();
+      this.sprite_output.updateChildrenColors(verreciel.cyan)
+      this.sprite_output.blink()
     } else {
-      this.sprite_output.show();
+      this.sprite_output.show()
     }
   }
 
-  inputColor() {
+  inputColor () {
     if (this.isEnabled == false) {
-      return verreciel.clear;
+      return verreciel.clear
     } else if (this.origin == null) {
-      return verreciel.grey;
+      return verreciel.grey
     }
 
-    return verreciel.red;
+    return verreciel.red
   }
 
-  outputColor() {
+  outputColor () {
     if (this.event == null || this.isEnabled == false) {
-      return verreciel.grey;
+      return verreciel.grey
     }
 
-    return verreciel.cyan;
+    return verreciel.cyan
   }
 
-  enable() {
+  enable () {
     // assertArgs(arguments, 0);
-    this.isEnabled = true;
-    this.trigger.enable();
+    this.isEnabled = true
+    this.trigger.enable()
   }
 
-  disable() {
+  disable () {
     // assertArgs(arguments, 0);
-    this.isEnabled = false;
-    this.disconnect();
-    this.trigger.disable();
+    this.isEnabled = false
+    this.disconnect()
+    this.trigger.disable()
   }
 
-  addEvent(event) {
+  addEvent (event) {
     // assertArgs(arguments, 1);
-    this.event = event;
-    this.update();
+    this.event = event
+    this.update()
   }
 
-  addRequirement(event) {
+  addRequirement (event) {
     // assertArgs(arguments, 1);
-    this.requirement = event;
+    this.requirement = event
   }
 
-  removeEvent() {
+  removeEvent () {
     // assertArgs(arguments, 0);
-    this.event = null;
+    this.event = null
   }
 
-  connect(port) {
+  connect (port) {
     // assertArgs(arguments, 1);
     if (port.isEnabled == false) {
-      return;
+      return
     }
     if (port.origin != null) {
-      return;
+      return
     }
     if (port.connection != null && port.connection == this) {
-      return;
+      return
     }
 
-    this.disconnect();
-    this.connection = port;
-    this.connection.origin = this;
+    this.disconnect()
+    this.connection = port
+    this.connection.origin = this
 
-    this.wire.enable();
-    this.updateWire(true);
+    this.wire.enable()
+    this.updateWire(true)
 
-    this.connection.host.onConnect();
-    this.connection.onConnect();
+    this.connection.host.onConnect()
+    this.connection.onConnect()
 
-    this.onConnect();
+    this.onConnect()
   }
 
-  updateWire(reset = false) {
+  updateWire (reset = false) {
     this.wire.updateEnds(
       new THREE.Vector3(0, 0, 0),
       this.convertPositionFromNode(new THREE.Vector3(0, 0, 0), this.connection),
       reset
-    );
+    )
   }
 
-  disconnect() {
+  disconnect () {
     // assertArgs(arguments, 0);
     if (this.connection == null) {
-      return;
+      return
     }
 
-    let targetOrigin = this.connection.host;
+    let targetOrigin = this.connection.host
 
-    this.connection.origin = null;
-    this.connection.update();
-    this.connection.onDisconnect();
-    this.connection = null;
+    this.connection.origin = null
+    this.connection.update()
+    this.connection.onDisconnect()
+    this.connection = null
 
     if (targetOrigin != null) {
-      targetOrigin.onDisconnect();
-      targetOrigin.update();
+      targetOrigin.onDisconnect()
+      targetOrigin.update()
     }
 
-    this.onDisconnect();
-    this.host.onDisconnect();
+    this.onDisconnect()
+    this.host.onDisconnect()
 
-    this.wire.disable();
+    this.wire.disable()
   }
 
-  strip() {
+  strip () {
     // assertArgs(arguments, 0);
-    this.disconnect();
+    this.disconnect()
     if (this.origin != null) {
-      this.origin.disconnect();
+      this.origin.disconnect()
     }
   }
 
-  syphon() {
+  syphon () {
     // assertArgs(arguments, 0);
-    let stored_origin = this.origin;
-    let stored_event = this.origin.event;
+    let stored_origin = this.origin
+    let stored_event = this.origin.event
 
     if (stored_origin != null) {
-      stored_origin.removeEvent();
-      stored_origin.host.update();
-      stored_origin.update();
-      stored_origin.disconnect();
+      stored_origin.removeEvent()
+      stored_origin.host.update()
+      stored_origin.update()
+      stored_origin.disconnect()
     }
 
-    return stored_event;
+    return stored_event
   }
 
   // MARK: Validation
 
   // MARK: Checks -
 
-  hasEvent(target) {
+  hasEvent (target) {
     // assertArgs(arguments, 1);
     if (this.event == null) {
-      return false;
+      return false
     }
     if (this.event.name == target.name) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  hasEvent() {
+  hasEvent () {
     // assertArgs(arguments, 0);
     if (this.event != null) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  hasItem() {
+  hasItem () {
     // assertArgs(arguments, 0);
     if (this.event == null) {
-      return false;
+      return false
     }
     if (this.event instanceof Item == true) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  hasItemOfType(target) {
+  hasItemOfType (target) {
     // assertArgs(arguments, 1);
     if (this.event == null) {
-      return false;
+      return false
     }
     if (this.event instanceof Item == false) {
-      return false;
+      return false
     }
     if (this.event.type == target) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  hasItemLike(target) {
+  hasItemLike (target) {
     // assertArgs(arguments, 1);
     if (this.event == null) {
-      return false;
+      return false
     }
     if (this.event instanceof Item == false) {
-      return false;
+      return false
     }
     if (this.event.name == target.name) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceiving() {
+  isReceiving () {
     // assertArgs(arguments, 0);
     if (this.origin != null && this.origin.event != null) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceivingFromPanel(panel) {
+  isReceivingFromPanel (panel) {
     // assertArgs(arguments, 1);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.host instanceof Panel == false) {
-      return false;
+      return false
     }
     if (this.origin.host == panel) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceivingEvent(event) {
+  isReceivingEvent (event) {
     // assertArgs(arguments, 1);
     if (
       this.origin != null &&
       this.origin.event != null &&
       this.origin.event == event
     ) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceivingItemLike(target) {
+  isReceivingItemLike (target) {
     // assertArgs(arguments, 1);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.event == null) {
-      return false;
+      return false
     }
     if (this.origin.event instanceof Item == false) {
-      return false;
+      return false
     }
     if (this.origin.event.name == target.name) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceivingItemOfType(type) {
+  isReceivingItemOfType (type) {
     // assertArgs(arguments, 1);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.event == null) {
-      return false;
+      return false
     }
     if (this.origin.event instanceof Item == false) {
-      return false;
+      return false
     }
 
-    let source = this.origin.event;
+    let source = this.origin.event
 
     if (source.type == type) {
-      return true;
+      return true
     }
 
-    return false;
+    return false
   }
 
-  isReceivingLocation() {
+  isReceivingLocation () {
     // assertArgs(arguments, 0);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.event == null) {
-      return false;
+      return false
     }
 
     if (this.origin.event instanceof Location) {
-      return true;
+      return true
     }
 
-    return false;
+    return false
   }
 
-  isReceivingLocationOfTypePortal() {
+  isReceivingLocationOfTypePortal () {
     // assertArgs(arguments, 0);
     if (this.isReceivingLocation() == false) {
-      return false;
+      return false
     }
     if (this.origin.event instanceof LocationPortal) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  isReceivingEventOfTypeLocation() {
+  isReceivingEventOfTypeLocation () {
     // assertArgs(arguments, 0);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.event == null) {
-      return false;
+      return false
     }
     if (this.origin.event instanceof Location == false) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
-  isReceivingEventOfTypeItem() {
+  isReceivingEventOfTypeItem () {
     // assertArgs(arguments, 0);
     if (this.origin == null) {
-      return false;
+      return false
     }
     if (this.origin.event == null) {
-      return false;
+      return false
     }
     if (this.origin.event instanceof Item == false) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
-  isConnectedToPanel(panel) {
+  isConnectedToPanel (panel) {
     // assertArgs(arguments, 1);
     if (this.connection == null) {
-      return false;
+      return false
     }
     if (
       this.connection.host instanceof Panel &&
       this.connection.host == panel
     ) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
   // MARK: Etc..
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
-    super.onConnect();
+    super.onConnect()
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
-    super.onDisconnect();
-    this.host.onDisconnect();
+    super.onDisconnect()
+    this.host.onDisconnect()
   }
 
-  static stripAllPorts(root) {
-    let ports = [];
+  static stripAllPorts (root) {
+    let ports = []
 
-    function findPorts(node) {
+    function findPorts (node) {
       if (node instanceof ScenePort) {
-        ports.push(node);
+        ports.push(node)
       }
       for (let child of node.children) {
-        findPorts(child);
+        findPorts(child)
       }
     }
 
-    findPorts(root);
+    findPorts(root)
 
     for (let port of ports) {
       if (port.isPersistent == false) {
-        port.strip();
+        port.strip()
       }
     }
   }

@@ -4,127 +4,127 @@
 class Intercom extends MainPanel {
   // MARK: Default -
 
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super("mission");
+    super('mission')
 
-    this.details = "displays informations";
+    this.details = 'displays informations'
 
-    this.selector = new SceneLabel(">", 0.1, Alignment.left);
+    this.selector = new SceneLabel('>', 0.1, Alignment.left)
 
-    this.locationPanel = new Empty();
-    this.mainNode.add(this.locationPanel);
+    this.locationPanel = new Empty()
+    this.mainNode.add(this.locationPanel)
 
-    this.defaultPanel = new Empty();
-    this.defaultPanel.position.set(0, 0, 0);
+    this.defaultPanel = new Empty()
+    this.defaultPanel.position.set(0, 0, 0)
 
     this.systemLabel = new SceneLabel(
-      "system",
+      'system',
       0.1,
       Alignment.right,
       verreciel.grey
-    );
-    this.defaultPanel.add(this.systemLabel);
+    )
+    this.defaultPanel.add(this.systemLabel)
     this.systemValueLabel = new SceneLabel(
-      "Loiqe",
+      'Loiqe',
       0.1,
       Alignment.left,
       verreciel.white
-    );
-    this.defaultPanel.add(this.systemValueLabel);
+    )
+    this.defaultPanel.add(this.systemValueLabel)
 
-    this.systemLabel.position.set(-0.1, 1 - 0.2, 0);
-    this.systemValueLabel.position.set(0.1, 1 - 0.2, 0);
+    this.systemLabel.position.set(-0.1, 1 - 0.2, 0)
+    this.systemValueLabel.position.set(0.1, 1 - 0.2, 0)
 
     this.distanceLabel = new SceneLabel(
-      "distance",
+      'distance',
       0.1,
       Alignment.right,
       verreciel.grey
-    );
-    this.defaultPanel.add(this.distanceLabel);
+    )
+    this.defaultPanel.add(this.distanceLabel)
     this.distanceValueLabel = new SceneLabel(
-      "324.4",
+      '324.4',
       0.1,
       Alignment.left,
       verreciel.white
-    );
-    this.defaultPanel.add(this.distanceValueLabel);
+    )
+    this.defaultPanel.add(this.distanceValueLabel)
 
-    this.distanceLabel.position.set(-0.1, 1 - 0.6, 0);
-    this.distanceValueLabel.position.set(0.1, 1 - 0.6, 0);
+    this.distanceLabel.position.set(-0.1, 1 - 0.6, 0)
+    this.distanceValueLabel.position.set(0.1, 1 - 0.6, 0)
 
     this.typeLabel = new SceneLabel(
-      "type",
+      'type',
       0.1,
       Alignment.right,
       verreciel.grey
-    );
-    this.defaultPanel.add(this.typeLabel);
+    )
+    this.defaultPanel.add(this.typeLabel)
     this.typeValueLabel = new SceneLabel(
-      "harvest",
+      'harvest',
       0.1,
       Alignment.left,
       verreciel.white
-    );
-    this.defaultPanel.add(this.typeValueLabel);
+    )
+    this.defaultPanel.add(this.typeValueLabel)
 
-    this.typeLabel.position.set(-0.1, 1 - 1.0, 0);
-    this.typeValueLabel.position.set(0.1, 1 - 1.0, 0);
+    this.typeLabel.position.set(-0.1, 1 - 1.0, 0)
+    this.typeValueLabel.position.set(0.1, 1 - 1.0, 0)
 
     this.statusLabel = new SceneLabel(
-      "status",
+      'status',
       0.1,
       Alignment.right,
       verreciel.grey
-    );
-    this.defaultPanel.add(this.statusLabel);
+    )
+    this.defaultPanel.add(this.statusLabel)
     this.statusValueLabel = new SceneLabel(
-      "completed",
+      'completed',
       0.1,
       Alignment.left,
       verreciel.white
-    );
-    this.defaultPanel.add(this.statusValueLabel);
+    )
+    this.defaultPanel.add(this.statusValueLabel)
 
-    this.statusLabel.position.set(-0.1, 1 - 1.4, 0);
-    this.statusValueLabel.position.set(0.1, 1 - 1.4, 0);
+    this.statusLabel.position.set(-0.1, 1 - 1.4, 0)
+    this.statusValueLabel.position.set(0.1, 1 - 1.4, 0)
 
     this.detailLabel = new SceneLabel(
-      "details",
+      'details',
       0.075,
       Alignment.right,
       verreciel.grey
-    );
-    this.defaultPanel.add(this.detailLabel);
+    )
+    this.defaultPanel.add(this.detailLabel)
     this.detailValueLabel = new SceneLabel(
-      "key",
+      'key',
       0.075,
       Alignment.left,
       verreciel.white
-    );
-    this.defaultPanel.add(this.detailValueLabel);
+    )
+    this.defaultPanel.add(this.detailValueLabel)
 
-    this.detailLabel.position.set(-0.1, 1 - 1.8, 0);
-    this.detailValueLabel.position.set(0.1, 1 - 1.8, 0);
+    this.detailLabel.position.set(-0.1, 1 - 1.8, 0)
+    this.detailValueLabel.position.set(0.1, 1 - 1.8, 0)
 
-    this.mainNode.add(this.defaultPanel);
+    this.mainNode.add(this.defaultPanel)
 
-    this.footer.add(new SceneHandle(new THREE.Vector3(0, 0, 1), this));
-    this.drawDecals();
-    this.locationPanel.hide();
+    this.footer.add(new SceneHandle(new THREE.Vector3(0, 0, 1), this))
+    this.drawDecals()
+    this.locationPanel.hide()
   }
 
-  whenRenderer() {
+  whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer();
+    super.whenRenderer()
 
     if (
       verreciel.capsule.isDocked &&
       verreciel.capsule.location.isComplete != null &&
       verreciel.capsule.location.isComplete == false
     ) {
-      this.locationPanel.update();
+      this.locationPanel.update()
     } else if (
       verreciel.capsule.location != null ||
       verreciel.radar.port.hasEvent() == true
@@ -132,218 +132,218 @@ class Intercom extends MainPanel {
       let target =
         verreciel.radar.port.hasEvent() == true
           ? verreciel.radar.port.event
-          : verreciel.capsule.location;
+          : verreciel.capsule.location
 
-      this.systemValueLabel.updateText(target.system);
-      this.distanceLabel.updateText("Distance");
+      this.systemValueLabel.updateText(target.system)
+      this.distanceLabel.updateText('Distance')
       this.distanceValueLabel.updateText(
         verreciel.capsule.isDockedAtLocation(target)
-          ? "docked"
+          ? 'docked'
           : verreciel.space.printDistance(target.distance)
-      );
-      this.typeLabel.updateText("type");
-      this.typeValueLabel.updateText(target.name);
-      this.detailValueLabel.updateText(target.details);
+      )
+      this.typeLabel.updateText('type')
+      this.typeValueLabel.updateText(target.name)
+      this.detailValueLabel.updateText(target.details)
 
       if (target.isComplete == null) {
-        this.statusValueLabel.updateText("--", verreciel.white);
+        this.statusValueLabel.updateText('--', verreciel.white)
       } else if (target.isComplete == true) {
-        this.statusValueLabel.updateText("complete", verreciel.cyan);
+        this.statusValueLabel.updateText('complete', verreciel.cyan)
       } else if (target.isComplete == false) {
-        this.statusValueLabel.updateText("quest", verreciel.red);
+        this.statusValueLabel.updateText('quest', verreciel.red)
       }
     } else {
-      this.systemValueLabel.updateText(verreciel.capsule.system);
-      this.distanceLabel.updateText("Position");
+      this.systemValueLabel.updateText(verreciel.capsule.system)
+      this.distanceLabel.updateText('Position')
       this.distanceValueLabel.updateText(
         verreciel.space.printPosition(verreciel.capsule.at)
-      );
-      this.typeValueLabel.updateText("--");
-      this.statusValueLabel.updateText("in flight", verreciel.white);
-      this.detailValueLabel.updateText("--");
+      )
+      this.typeValueLabel.updateText('--')
+      this.statusValueLabel.updateText('in flight', verreciel.white)
+      this.detailValueLabel.updateText('--')
     }
   }
 
-  touch(id) {
+  touch (id) {
     // assertArgs(arguments, 1);
-    this.refresh();
-    verreciel.music.playEffect("click3");
-    return false;
+    this.refresh()
+    verreciel.music.playEffect('click3')
+    return false
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
     if (this.isInstalled == true) {
       if (verreciel.capsule.location == null) {
-        this.nameLabel.updateText("mission", verreciel.white);
+        this.nameLabel.updateText('mission', verreciel.white)
       } else if (verreciel.capsule.location.isComplete == null) {
         this.nameLabel.updateText(
           verreciel.capsule.location.name,
           verreciel.white
-        );
+        )
       } else if (verreciel.capsule.location.isComplete == true) {
         this.nameLabel.updateText(
           verreciel.capsule.location.name,
           verreciel.cyan
-        );
+        )
       } else {
         this.nameLabel.updateText(
           verreciel.capsule.location.name,
           verreciel.red
-        );
+        )
       }
     }
   }
 
   // MARK: Custom -
 
-  complete() {
+  complete () {
     // assertArgs(arguments, 0);
     // Animate
 
     if (this.isCompleting) {
-      return;
+      return
     }
-    this.isCompleting = true;
+    this.isCompleting = true
 
-    verreciel.animator.completeAnimation("intercom_connect_1");
-    verreciel.animator.completeAnimation("intercom_connect_2");
+    verreciel.animator.completeAnimation('intercom_connect_1')
+    verreciel.animator.completeAnimation('intercom_connect_2')
 
-    verreciel.animator.begin("intercom_complete_1");
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin('intercom_complete_1')
+    verreciel.animator.animationDuration = 0.5
 
-    this.locationPanel.position.set(0, 0, -0.5);
-    this.locationPanel.hide();
+    this.locationPanel.position.set(0, 0, -0.5)
+    this.locationPanel.hide()
 
-    ScenePort.stripAllPorts(this);
+    ScenePort.stripAllPorts(this)
 
-    verreciel.animator.completionBlock = function() {
+    verreciel.animator.completionBlock = function () {
       // this.defaultPanel.position.set(0,0,-0.5);
 
-      verreciel.animator.begin("intercom_complete_2");
-      verreciel.animator.animationDuration = 0.5;
+      verreciel.animator.begin('intercom_complete_2')
+      verreciel.animator.animationDuration = 0.5
 
-      this.defaultPanel.position.set(0, 0, 0);
-      this.defaultPanel.show();
+      this.defaultPanel.position.set(0, 0, 0)
+      this.defaultPanel.show()
 
-      verreciel.animator.completionBlock = function() {
-        this.refresh();
-      }.bind(this);
-      verreciel.animator.commit();
-    }.bind(this);
-    verreciel.animator.commit();
-    this.isCompleting = false;
+      verreciel.animator.completionBlock = function () {
+        this.refresh()
+      }.bind(this)
+      verreciel.animator.commit()
+    }.bind(this)
+    verreciel.animator.commit()
+    this.isCompleting = false
   }
 
-  connectToLocation(location) {
+  connectToLocation (location) {
     // assertArgs(arguments, 1);
-    this.locationPanel.empty();
-    let panel = location.panel;
+    this.locationPanel.empty()
+    let panel = location.panel
     if (panel != null) {
-      this.locationPanel.add(panel);
+      this.locationPanel.add(panel)
     } else {
-      return;
+      return
     }
 
     // Animate
 
-    verreciel.animator.completeAnimation("intercom_complete_1");
-    verreciel.animator.completeAnimation("intercom_complete_2");
-    verreciel.animator.completeAnimation("intercom_disconnect_1");
-    verreciel.animator.completeAnimation("intercom_disconnect_2");
+    verreciel.animator.completeAnimation('intercom_complete_1')
+    verreciel.animator.completeAnimation('intercom_complete_2')
+    verreciel.animator.completeAnimation('intercom_disconnect_1')
+    verreciel.animator.completeAnimation('intercom_disconnect_2')
 
-    verreciel.animator.begin("intercom_connect_1");
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin('intercom_connect_1')
+    verreciel.animator.animationDuration = 0.5
 
-    this.defaultPanel.position.set(0, 0, -0.5);
-    this.defaultPanel.hide();
+    this.defaultPanel.position.set(0, 0, -0.5)
+    this.defaultPanel.hide()
 
-    verreciel.animator.completionBlock = function() {
-      this.locationPanel.position.set(0, 0, -0.5);
+    verreciel.animator.completionBlock = function () {
+      this.locationPanel.position.set(0, 0, -0.5)
 
       if (verreciel.capsule.location != null) {
-        this.nameLabel.updateText(null); // TODO: Surely this is meant to contain something?
+        this.nameLabel.updateText(null) // TODO: Surely this is meant to contain something?
       }
 
-      verreciel.animator.begin("intercom_connect_2");
-      verreciel.animator.animationDuration = 0.5;
+      verreciel.animator.begin('intercom_connect_2')
+      verreciel.animator.animationDuration = 0.5
 
-      this.locationPanel.position.set(0, 0, 0);
-      this.locationPanel.show();
-      this.refresh();
+      this.locationPanel.position.set(0, 0, 0)
+      this.locationPanel.show()
+      this.refresh()
 
-      verreciel.animator.commit();
-    }.bind(this);
-    verreciel.animator.commit();
+      verreciel.animator.commit()
+    }.bind(this)
+    verreciel.animator.commit()
 
-    this.port.addEvent(location);
+    this.port.addEvent(location)
 
     if (location.isPortEnabled == true) {
-      this.port.enable();
+      this.port.enable()
     } else {
-      this.port.disable();
+      this.port.disable()
     }
   }
 
-  disconnectFromLocation() {
+  disconnectFromLocation () {
     // assertArgs(arguments, 0);
 
-    ScenePort.stripAllPorts(this);
+    ScenePort.stripAllPorts(this)
 
-    verreciel.animator.completeAnimation("intercom_connect_1");
-    verreciel.animator.completeAnimation("intercom_connect_2");
+    verreciel.animator.completeAnimation('intercom_connect_1')
+    verreciel.animator.completeAnimation('intercom_connect_2')
 
-    verreciel.animator.begin("intercom_disconnect_1");
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin('intercom_disconnect_1')
+    verreciel.animator.animationDuration = 0.5
 
-    this.locationPanel.position.set(0, 0, -0.5);
-    this.locationPanel.hide();
+    this.locationPanel.position.set(0, 0, -0.5)
+    this.locationPanel.hide()
 
-    verreciel.animator.completionBlock = function() {
-      this.defaultPanel.position.set(0, 0, -0.5);
+    verreciel.animator.completionBlock = function () {
+      this.defaultPanel.position.set(0, 0, -0.5)
 
-      verreciel.animator.begin("intercom_disconnect_2");
-      verreciel.animator.animationDuration = 0.5;
+      verreciel.animator.begin('intercom_disconnect_2')
+      verreciel.animator.animationDuration = 0.5
 
-      this.defaultPanel.position.set(0, 0, 0);
-      this.defaultPanel.show();
-      this.refresh();
+      this.defaultPanel.position.set(0, 0, 0)
+      this.defaultPanel.show()
+      this.refresh()
 
-      verreciel.animator.completionBlock = function() {
-        this.locationPanel.empty();
-      }.bind(this);
-      verreciel.animator.commit();
-    }.bind(this);
-    verreciel.animator.commit();
+      verreciel.animator.completionBlock = function () {
+        this.locationPanel.empty()
+      }.bind(this)
+      verreciel.animator.commit()
+    }.bind(this)
+    verreciel.animator.commit()
 
-    this.port.removeEvent();
+    this.port.removeEvent()
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
 
-    verreciel.player.lookAt(-180);
+    verreciel.player.lookAt(-180)
   }
 
-  onInstallationComplete() {
+  onInstallationComplete () {
     // assertArgs(arguments, 0);
-    super.onInstallationComplete();
+    super.onInstallationComplete()
 
-    this.touch(1);
+    this.touch(1)
   }
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true) {
-      verreciel.capsule.location.onConnect();
+      verreciel.capsule.location.onConnect()
     }
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true) {
-      verreciel.capsule.location.onDisconnect();
+      verreciel.capsule.location.onDisconnect()
     }
   }
 }

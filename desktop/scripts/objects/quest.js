@@ -2,34 +2,34 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Quest {
-  constructor(name, location, predicate, result) {
+  constructor (name, location, predicate, result) {
     // assertArgs(arguments, 4);
-    this.isCompleted = false;
-    this.isSkipped = false;
+    this.isCompleted = false
+    this.isSkipped = false
 
-    this.name = name;
-    this.location = location;
-    this.predicate = predicate;
-    this.result = result;
+    this.name = name
+    this.location = location
+    this.predicate = predicate
+    this.result = result
   }
 
-  validate() {
+  validate () {
     // assertArgs(arguments, 0);
     if (this.isSkipped == true) {
-      this.isCompleted = true;
+      this.isCompleted = true
     } else if (this.predicate()) {
-      this.complete();
+      this.complete()
     } else {
-      this.isCompleted = false;
+      this.isCompleted = false
     }
   }
 
-  complete() {
+  complete () {
     // assertArgs(arguments, 0);
     if (this.isCompleted == true) {
-      return;
+      return
     }
-    this.isCompleted = true;
-    this.result();
+    this.isCompleted = true
+    this.result()
   }
 }

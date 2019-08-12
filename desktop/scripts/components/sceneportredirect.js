@@ -2,12 +2,12 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class ScenePortRedirect extends ScenePort {
-  removeEvent() {
+  removeEvent () {
     // assertArgs(arguments, 0);
-    let redirectedHost = verreciel.console.port.origin.host;
+    let redirectedHost = verreciel.console.port.origin.host
     if (redirectedHost instanceof Cargo) {
-      redirectedHost.removeItem(this.event);
-      this.disable();
+      redirectedHost.removeItem(this.event)
+      this.disable()
     }
   }
   /*
@@ -19,31 +19,31 @@ class ScenePortRedirect extends ScenePort {
     this.trigger.disable();
   }
   */
-  whenRenderer() {
+  whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer();
+    super.whenRenderer()
   }
 
-  disconnect() {
+  disconnect () {
     // assertArgs(arguments, 0);
     if (this.connection == null) {
-      return;
+      return
     }
 
-    let stored_connection = this.connection;
-    let stored_connection_host = this.connection.host;
+    let stored_connection = this.connection
+    let stored_connection_host = this.connection.host
 
-    this.connection.origin = null;
-    this.connection = null;
+    this.connection.origin = null
+    this.connection = null
 
     if (stored_connection != null) {
-      stored_connection.onDisconnect();
+      stored_connection.onDisconnect()
     }
     if (stored_connection_host != null) {
-      stored_connection_host.onDisconnect();
+      stored_connection_host.onDisconnect()
     }
-    this.host.onDisconnect();
+    this.host.onDisconnect()
 
-    this.wire.disable();
+    this.wire.disable()
   }
 }

@@ -2,110 +2,110 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationStar extends Location {
-  constructor(name, system, at) {
+  constructor (name, system, at) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconStar(), new StructureStar());
-    this.isComplete = false;
-    this.masterPort = new ScenePort(this, this.code);
+    super(name, system, at, new IconStar(), new StructureStar())
+    this.isComplete = false
+    this.masterPort = new ScenePort(this, this.code)
   }
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
-    let requirementLabel = new SceneLabel("the melting core$welcomes you.");
+    let requirementLabel = new SceneLabel('the melting core$welcomes you.')
     requirementLabel.position.set(
       Templates.leftMargin,
       Templates.topMargin - 0.3,
       0
-    );
-    newPanel.add(requirementLabel);
+    )
+    newPanel.add(requirementLabel)
 
     this.button = new SceneButton(
       this,
-      this.code + "_install",
-      "install",
+      this.code + '_install',
+      'install',
       1,
       1
-    );
-    this.button.position.set(0, -1, 0);
-    newPanel.add(this.button);
+    )
+    this.button.position.set(0, -1, 0)
+    newPanel.add(this.button)
 
-    this.masterPort.position.set(-0, -0.3, 0);
+    this.masterPort.position.set(-0, -0.3, 0)
 
-    this.masterPort.enable();
+    this.masterPort.enable()
 
-    newPanel.add(this.masterPort);
+    newPanel.add(this.masterPort)
 
-    this.button.disable("extinguish");
+    this.button.disable('extinguish')
 
-    return newPanel;
+    return newPanel
   }
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
     if (
       this.masterPort.isReceivingEvent(verreciel.items.endPortalKey) == true
     ) {
-      this.button.enable("extinguish");
+      this.button.enable('extinguish')
     }
   }
 
-  sightUpdate() {
+  sightUpdate () {
     // assertArgs(arguments, 0);
 
     let radiation =
-      this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6;
+      this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
 
     if (verreciel.capsule.hasShield() == false) {
       if (radiation > 1 && verreciel.capsule.isFleeing == false) {
-        verreciel.capsule.flee();
+        verreciel.capsule.flee()
       }
-      verreciel.capsule.radiation = radiation;
+      verreciel.capsule.radiation = radiation
     }
   }
 
-  onApproach() {
+  onApproach () {
     // assertArgs(arguments, 0);
     if (verreciel.capsule.hasShield() == true) {
-      super.onApproach();
+      super.onApproach()
     } else {
-      verreciel.space.startInstance(this);
+      verreciel.space.startInstance(this)
     }
   }
 
-  touch(id) {
+  touch (id) {
     // assertArgs(arguments, 1);
-    super.touch(id);
+    super.touch(id)
     if (id == 1) {
-      this.extinguish();
-      verreciel.music.playEffect("click3");
+      this.extinguish()
+      verreciel.music.playEffect('click3')
     }
-    return true;
+    return true
   }
 
-  extinguish() {
+  extinguish () {
     // assertArgs(arguments, 0);
-    this.onComplete();
+    this.onComplete()
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
-    super.onComplete();
+    super.onComplete()
 
-    verreciel.space.onSystemEnter(verreciel.capsule.system);
-    verreciel.universe.closeSystem(this.system);
+    verreciel.space.onSystemEnter(verreciel.capsule.system)
+    verreciel.universe.closeSystem(this.system)
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
   }
 }
 
 class IconStar extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
     this.mesh.add(
       new SceneLine(
@@ -137,79 +137,79 @@ class IconStar extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureStar extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.root.position.set(0, 5, 0);
+    this.root.position.set(0, 5, 0)
 
-    var i = 0;
+    var i = 0
     while (i < 20) {
-      let shape = new Octogon(i * 0.3, verreciel.red);
-      shape.rotation.y = degToRad(22.5);
-      this.root.add(shape);
-      i += 1;
+      let shape = new Octogon(i * 0.3, verreciel.red)
+      shape.rotation.y = degToRad(22.5)
+      this.root.add(shape)
+      i += 1
     }
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    super.onDock();
+    super.onDock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
-    var i = 0;
+    var i = 0
     for (let node of this.root.children) {
-      node.rotation.y = degToRad(i * (90 / this.root.children.length));
-      i += 1;
+      node.rotation.y = degToRad(i * (90 / this.root.children.length))
+      i += 1
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  sightUpdate() {
+  sightUpdate () {
     // assertArgs(arguments, 0);
-    super.sightUpdate();
-    this.root.rotation.y += degToRad(0.1);
+    super.sightUpdate()
+    this.root.rotation.y += degToRad(0.1)
   }
 
-  onUndock() {
+  onUndock () {
     // assertArgs(arguments, 0);
-    super.onDock();
+    super.onDock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
-      node.position.y = 0;
-      node.rotation.y = 0;
+      node.position.y = 0
+      node.rotation.y = 0
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
-    super.onComplete();
+    super.onComplete()
 
-    this.root.updateChildrenColors(verreciel.cyan);
+    this.root.updateChildrenColors(verreciel.cyan)
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
-    var i = 0;
+    var i = 0
     for (let node of this.root.children) {
-      node.position.y = -i * 0.05;
-      i += 1;
-      node.rotation.y = 0;
+      node.position.y = -i * 0.05
+      i += 1
+      node.rotation.y = 0
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 }

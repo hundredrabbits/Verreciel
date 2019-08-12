@@ -2,50 +2,50 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Nav extends Widget {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super("map");
-    this.details = "disk drive";
-    this.requirement = ItemTypes.map;
-    this.isPowered = function() {
-      return verreciel.battery.isNavPowered();
-    };
-    this.label.updateText(this.name);
+    super('map')
+    this.details = 'disk drive'
+    this.requirement = ItemTypes.map
+    this.isPowered = function () {
+      return verreciel.battery.isNavPowered()
+    }
+    this.label.updateText(this.name)
   }
 
-  setMap(map) {
+  setMap (map) {
     // assertArgs(arguments, 1);
     if (!this.hasMap(map)) {
-      this.port.addEvent(map);
+      this.port.addEvent(map)
     }
   }
 
-  hasMap(map) {
+  hasMap (map) {
     // assertArgs(arguments, 1);
     if (this.port.hasEvent() == false) {
-      return false;
+      return false
     }
     if (this.port.event == map) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
-  onUploadComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
-    super.onUploadComplete();
+    super.onUploadComplete()
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
 
-    verreciel.player.lookAt(-90);
+    verreciel.player.lookAt(-90)
   }
 
-  onInstallationComplete() {
+  onInstallationComplete () {
     // assertArgs(arguments, 0);
-    super.onInstallationComplete();
-    verreciel.battery.installNav();
+    super.onInstallationComplete()
+    verreciel.battery.installNav()
   }
 }

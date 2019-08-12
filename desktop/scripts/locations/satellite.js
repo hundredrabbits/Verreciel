@@ -2,79 +2,79 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationSatellite extends Location {
-  constructor(name, system, at, message, item, mapRequirement = null) {
+  constructor (name, system, at, message, item, mapRequirement = null) {
     // assertArgs(arguments, 5);
     super(
       name,
       system,
       at,
       new IconSatellite(),
-      name == "spawn" ? new Structure() : new StructureSatellite()
-    );
+      name == 'spawn' ? new Structure() : new StructureSatellite()
+    )
 
-    this.details = item.name;
-    this.isComplete = false;
-    this.mapRequirement = mapRequirement;
-    this.message = message;
+    this.details = item.name
+    this.isComplete = false
+    this.mapRequirement = mapRequirement
+    this.message = message
 
     this.port = new ScenePortSlot(
       this,
-      this.code + "_" + item.name,
+      this.code + '_' + item.name,
       Alignment.center,
       true
-    );
-    this.port.position.set(0, -0.4, 0);
-    this.port.addEvent(item);
-    this.port.enable();
+    )
+    this.port.position.set(0, -0.4, 0)
+    this.port.addEvent(item)
+    this.port.enable()
 
-    this.update();
+    this.update()
   }
 
   // MARK: Panel
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
     if (this.isComplete == true) {
-      return null;
+      return null
     }
 
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
-    let text = new SceneLabel(this.message, 0.1, Alignment.left);
-    text.position.set(-1.5, 1, 0);
-    newPanel.add(text);
+    let text = new SceneLabel(this.message, 0.1, Alignment.left)
+    text.position.set(-1.5, 1, 0)
+    newPanel.add(text)
 
-    newPanel.add(this.port);
+    newPanel.add(this.port)
 
-    return newPanel;
+    return newPanel
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    super.onDock();
-    this.port.refresh();
+    super.onDock()
+    this.port.refresh()
   }
 
-  update() {
+  update () {
     // assertArgs(arguments, 0);
-    super.update();
+    super.update()
 
     if (this.port.event == null) {
-      this.onComplete();
+      this.onComplete()
     }
   }
 
-  onUploadComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
-    this.onComplete();
-    this.structure.update();
+    this.onComplete()
+    this.structure.update()
   }
 }
 
 class IconSatellite extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
     this.mesh.add(
       new SceneLine(
@@ -90,111 +90,111 @@ class IconSatellite extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureSatellite extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    let nodes = Math.floor(Math.random() * 2) + 3;
+    let nodes = Math.floor(Math.random() * 2) + 3
 
-    this.root.position.set(0, 5, 0);
+    this.root.position.set(0, 5, 0)
 
-    var i = 0;
+    var i = 0
     while (i < nodes) {
-      let axis = new Empty();
-      axis.rotation.y = degToRad(i * (360 / nodes));
+      let axis = new Empty()
+      axis.rotation.y = degToRad(i * (360 / nodes))
 
-      this.root.add(axis);
+      this.root.add(axis)
 
-      let shape = new Hexagon(3, verreciel.red);
-      shape.position.x = 0;
-      axis.add(shape);
+      let shape = new Hexagon(3, verreciel.red)
+      shape.position.x = 0
+      axis.add(shape)
 
-      let shape2 = new Hexagon(3, verreciel.red);
-      shape2.rotation.z = degToRad(90);
-      shape.add(shape2);
+      let shape2 = new Hexagon(3, verreciel.red)
+      shape2.rotation.z = degToRad(90)
+      shape.add(shape2)
 
-      let shape3 = new Hexagon(3, verreciel.red);
-      shape3.rotation.y = degToRad(90);
-      shape.add(shape3);
+      let shape3 = new Hexagon(3, verreciel.red)
+      shape3.rotation.y = degToRad(90)
+      shape.add(shape3)
 
-      let shape4 = new Hexagon(3, verreciel.red);
-      shape4.rotation.x = degToRad(90);
-      shape.add(shape4);
+      let shape4 = new Hexagon(3, verreciel.red)
+      shape4.rotation.x = degToRad(90)
+      shape.add(shape4)
 
-      i += 1;
+      i += 1
     }
   }
 
-  onSight() {
+  onSight () {
     // assertArgs(arguments, 0);
-    super.onSight();
+    super.onSight()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 3;
+        subnode.position.x = 3
       }
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onUndock() {
+  onUndock () {
     // assertArgs(arguments, 0);
-    super.onUndock();
+    super.onUndock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 3;
+        subnode.position.x = 3
       }
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    super.onDock();
+    super.onDock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 0;
+        subnode.position.x = 0
       }
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
-    super.onComplete();
+    super.onComplete()
 
-    this.root.updateChildrenColors(verreciel.cyan);
+    this.root.updateChildrenColors(verreciel.cyan)
   }
 
-  sightUpdate() {
+  sightUpdate () {
     // assertArgs(arguments, 0);
-    this.root.rotation.y += degToRad(0.1);
+    this.root.rotation.y += degToRad(0.1)
   }
 
-  dockUpdate() {
+  dockUpdate () {
     // assertArgs(arguments, 0);
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.rotation.z += degToRad(0.25);
+        subnode.rotation.z += degToRad(0.25)
       }
     }
   }

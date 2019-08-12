@@ -2,123 +2,123 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationBank extends Location {
-  constructor(name, system, at) {
+  constructor (name, system, at) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconBank(), new StructureBank());
+    super(name, system, at, new IconBank(), new StructureBank())
 
-    this.details = "storage";
+    this.details = 'storage'
 
-    this.port1 = new ScenePortSlot(this, this.code + "_slot_1");
-    this.port2 = new ScenePortSlot(this, this.code + "_slot_2");
-    this.port3 = new ScenePortSlot(this, this.code + "_slot_3");
-    this.port4 = new ScenePortSlot(this, this.code + "_slot_4");
-    this.port5 = new ScenePortSlot(this, this.code + "_slot_5");
-    this.port6 = new ScenePortSlot(this, this.code + "_slot_6");
+    this.port1 = new ScenePortSlot(this, this.code + '_slot_1')
+    this.port2 = new ScenePortSlot(this, this.code + '_slot_2')
+    this.port3 = new ScenePortSlot(this, this.code + '_slot_3')
+    this.port4 = new ScenePortSlot(this, this.code + '_slot_4')
+    this.port5 = new ScenePortSlot(this, this.code + '_slot_5')
+    this.port6 = new ScenePortSlot(this, this.code + '_slot_6')
 
-    this.port1.enable();
-    this.port2.enable();
-    this.port3.enable();
-    this.port4.enable();
-    this.port5.enable();
-    this.port6.enable();
+    this.port1.enable()
+    this.port2.enable()
+    this.port3.enable()
+    this.port4.enable()
+    this.port5.enable()
+    this.port6.enable()
   }
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
     this.port1.position.set(
       Templates.leftMargin,
       Templates.lineSpacing * 2.5,
       0
-    );
-    newPanel.add(this.port1);
+    )
+    newPanel.add(this.port1)
 
     this.port2.position.set(
       Templates.leftMargin,
       Templates.lineSpacing * 1.5,
       0
-    );
-    newPanel.add(this.port2);
+    )
+    newPanel.add(this.port2)
 
     this.port3.position.set(
       Templates.leftMargin,
       Templates.lineSpacing * 0.5,
       0
-    );
-    newPanel.add(this.port3);
+    )
+    newPanel.add(this.port3)
 
     this.port4.position.set(
       Templates.leftMargin,
       -Templates.lineSpacing * 0.5,
       0
-    );
-    newPanel.add(this.port4);
+    )
+    newPanel.add(this.port4)
 
     this.port5.position.set(
       Templates.leftMargin,
       -Templates.lineSpacing * 1.5,
       0
-    );
-    newPanel.add(this.port5);
+    )
+    newPanel.add(this.port5)
 
     this.port6.position.set(
       Templates.leftMargin,
       -Templates.lineSpacing * 2.5,
       0
-    );
-    newPanel.add(this.port6);
+    )
+    newPanel.add(this.port6)
 
-    return newPanel;
+    return newPanel
   }
 
-  addItems(items) {
+  addItems (items) {
     // assertArgs(arguments, 1);
     for (let item of items) {
       if (this.port1.hasItem() == false) {
-        this.port1.addEvent(item);
+        this.port1.addEvent(item)
       } else if (this.port2.hasItem() == false) {
-        this.port2.addEvent(item);
+        this.port2.addEvent(item)
       } else if (this.port3.hasItem() == false) {
-        this.port3.addEvent(item);
+        this.port3.addEvent(item)
       } else if (this.port4.hasItem() == false) {
-        this.port4.addEvent(item);
+        this.port4.addEvent(item)
       } else if (this.port5.hasItem() == false) {
-        this.port5.addEvent(item);
+        this.port5.addEvent(item)
       } else if (this.port6.hasItem() == false) {
-        this.port6.addEvent(item);
+        this.port6.addEvent(item)
       }
     }
   }
 
-  contains(item) {
+  contains (item) {
     // assertArgs(arguments, 1);
     if (this.port1.event != null && this.port1.event == item) {
-      return true;
+      return true
     }
     if (this.port2.event != null && this.port2.event == item) {
-      return true;
+      return true
     }
     if (this.port3.event != null && this.port3.event == item) {
-      return true;
+      return true
     }
     if (this.port4.event != null && this.port4.event == item) {
-      return true;
+      return true
     }
     if (this.port5.event != null && this.port5.event == item) {
-      return true;
+      return true
     }
     if (this.port6.event != null && this.port6.event == item) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 }
 
 class IconBank extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
     this.mesh.add(
       new SceneLine(
@@ -136,56 +136,56 @@ class IconBank extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureBank extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    var i = 0;
+    var i = 0
     while (i < 7) {
-      let rect = new Rect(new THREE.Vector2(6, 6), verreciel.white);
-      rect.position.y = i - 3.5;
-      this.root.add(rect);
-      i += 1;
+      let rect = new Rect(new THREE.Vector2(6, 6), verreciel.white)
+      rect.position.y = i - 3.5
+      this.root.add(rect)
+      i += 1
     }
   }
 
-  onDock() {
-    super.onDock();
+  onDock () {
+    super.onDock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
-    this.hide();
+    this.hide()
 
-    var i = 0;
+    var i = 0
     for (let mesh of this.root.children) {
-      mesh.rotation.y = degToRad(i * 0.1);
+      mesh.rotation.y = degToRad(i * 0.1)
       // mesh.rotation.y = degToRad((i - 3) * 10); // TODO: I think this would be more interesting
-      i += 1;
+      i += 1
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onUndock() {
-    super.onUndock();
+  onUndock () {
+    super.onUndock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
 
-    this.show();
+    this.show()
 
-    var i = 0;
+    var i = 0
     for (let mesh of this.root.children) {
-      mesh.rotation.y = 0;
-      i += 1;
+      mesh.rotation.y = 0
+      i += 1
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 }

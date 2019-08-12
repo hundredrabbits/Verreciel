@@ -2,31 +2,31 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationTransit extends Location {
-  constructor(name, system, at, mapRequirement = null) {
+  constructor (name, system, at, mapRequirement = null) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconTransit(), new StructureTransit());
+    super(name, system, at, new IconTransit(), new StructureTransit())
 
-    this.mapRequirement = mapRequirement;
+    this.mapRequirement = mapRequirement
   }
 
   // MARK: Panel -
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
-    return newPanel;
+    return newPanel
   }
 }
 
 class IconTransit extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.label.hide();
+    this.label.hide()
 
-    this.size = 0.05;
+    this.size = 0.05
     this.mesh.add(
       new SceneLine(
         [
@@ -41,13 +41,13 @@ class IconTransit extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureTransit extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
   }
 }

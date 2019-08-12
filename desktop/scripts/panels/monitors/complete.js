@@ -2,24 +2,24 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Complete extends Monitor {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.distance = 0;
-    this.name = "missions";
-    this.rotation.x = degToRad(Templates.monitorsAngle);
-    this.nameLabel.updateText("--");
-    this.detailsLabel.updateText(this.name);
+    this.distance = 0
+    this.name = 'missions'
+    this.rotation.x = degToRad(Templates.monitorsAngle)
+    this.nameLabel.updateText('--')
+    this.detailsLabel.updateText(this.name)
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
-    super.refresh();
+    super.refresh()
     this.nameLabel.updateText(
       verreciel.missions.currentMission.id +
-        "/" +
+        '/' +
         (verreciel.missions.story.length - 1)
-    );
+    )
   }
 }

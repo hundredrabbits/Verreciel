@@ -2,140 +2,140 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Widget extends Panel {
-  constructor(name) {
+  constructor (name) {
     // assertArgs(arguments, 0);
-    super(name);
+    super(name)
 
-    this.isPowered = function() {
-      return false;
-    };
-    this.requirement = null;
+    this.isPowered = function () {
+      return false
+    }
+    this.requirement = null
 
     this.port = new ScenePortSlot(
       this,
-      "widget_" + this.name,
+      'widget_' + this.name,
       Alignment.center,
       false,
-      "--"
-    );
-    this.port.position.set(0, -0.7, Templates.radius);
-    this.port.disable();
-    this.port.label.updateScale(0.05);
-    this.port.label.position.set(0, -0.35, 0);
+      '--'
+    )
+    this.port.position.set(0, -0.7, Templates.radius)
+    this.port.disable()
+    this.port.label.updateScale(0.05)
+    this.port.label.position.set(0, -0.35, 0)
 
-    this.label = new SceneLabel("", 0.075, Alignment.center);
-    this.label.position.set(0, 0.35, 0);
-    this.port.add(this.label);
+    this.label = new SceneLabel('', 0.075, Alignment.center)
+    this.label.position.set(0, 0.35, 0)
+    this.port.add(this.label)
 
-    this.root.add(this.port);
-    this.root.hide();
+    this.root.add(this.port)
+    this.root.hide()
 
-    this.installNode = new Empty();
-    this.installProgressBar = new SceneProgressBar(1);
+    this.installNode = new Empty()
+    this.installProgressBar = new SceneProgressBar(1)
     this.installLabel = new SceneLabel(
-      "install",
+      'install',
       0.075,
       Alignment.center,
       verreciel.grey
-    );
+    )
   }
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
-    this.refresh();
+    this.refresh()
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
-    this.refresh();
+    this.refresh()
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
     if (this.isPowered() == true) {
-      this.onPowered();
+      this.onPowered()
     } else {
-      this.onUnpowered();
+      this.onUnpowered()
     }
   }
 
-  onUploadComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false) {
-      return;
+      return
     }
 
     if (
       this.port.event instanceof Item &&
       this.port.event.type != this.requirement
     ) {
-      this.port.label.color = verreciel.red;
+      this.port.label.color = verreciel.red
     } else {
-      this.port.label.color = verreciel.white;
+      this.port.label.color = verreciel.white
     }
   }
 
   // MARK: Powered
 
-  onPowered() {
+  onPowered () {
     // assertArgs(arguments, 0);
-    this.label.color = verreciel.white;
-    this.port.enable();
+    this.label.color = verreciel.white
+    this.port.enable()
   }
 
-  onUnpowered() {
+  onUnpowered () {
     // assertArgs(arguments, 0);
-    this.label.color = verreciel.grey;
-    this.port.disable();
+    this.label.color = verreciel.grey
+    this.port.disable()
   }
 
   // MARK: Installation -
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
 
-    verreciel.helmet.addWarning("Installing", null, 3, "install");
+    verreciel.helmet.addWarning('Installing', null, 3, 'install')
 
-    this.installNode = new Empty();
-    this.installNode.position.set(0, -0.6, Templates.radius);
+    this.installNode = new Empty()
+    this.installNode.position.set(0, -0.6, Templates.radius)
 
-    this.installProgressBar = new SceneProgressBar(1);
+    this.installProgressBar = new SceneProgressBar(1)
     this.installProgressBar.position.set(
       -this.installProgressBar.width / 2,
       0,
       0
-    );
-    this.installNode.add(this.installProgressBar);
+    )
+    this.installNode.add(this.installProgressBar)
 
-    this.installLabel.position.set(0, -0.35, 0);
-    this.installNode.add(this.installLabel);
+    this.installLabel.position.set(0, -0.35, 0)
+    this.installNode.add(this.installLabel)
 
-    this.add(this.installNode);
+    this.add(this.installNode)
   }
 
-  installProgress() {
+  installProgress () {
     // assertArgs(arguments, 0);
-    super.installProgress();
+    super.installProgress()
     this.installLabel.updateText(
-      "Install " + this.installPercentage.toFixed(0) + "%"
-    );
-    this.installProgressBar.updatePercent(this.installPercentage);
+      'Install ' + this.installPercentage.toFixed(0) + '%'
+    )
+    this.installProgressBar.updatePercent(this.installPercentage)
   }
 
-  onInstallationComplete() {
+  onInstallationComplete () {
     // assertArgs(arguments, 0);
-    super.onInstallationComplete();
+    super.onInstallationComplete()
 
-    this.installNode.removeFromParentNode();
-    this.installNode.hide();
+    this.installNode.removeFromParentNode()
+    this.installNode.hide()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.7;
-    this.root.show();
-    verreciel.animator.commit();
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.7
+    this.root.show()
+    verreciel.animator.commit()
 
-    this.port.enable();
-    this.label.updateText(this.name, verreciel.white);
+    this.port.enable()
+    this.label.updateText(this.name, verreciel.white)
   }
 }

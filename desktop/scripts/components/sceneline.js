@@ -2,50 +2,50 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneLine extends SceneDrawNode {
-  constructor(vertices, color = verreciel.white) {
+  constructor (vertices, color = verreciel.white) {
     // assertArgs(arguments, 1);
-    super();
-    this.updateVertices(vertices);
-    this.color = color;
+    super()
+    this.updateVertices(vertices)
+    this.color = color
   }
 
-  makeElement() {
-    this.meshLineSegments = new MeshLineSegments(verreciel.colorPalette);
-    this.material = this.meshLineSegments.material;
-    this.material.screenAspectRatio = verreciel.width / verreciel.height;
-    this.material.lineWidth = 0.004;
-    this.element = this.meshLineSegments.element;
-    super.makeElement();
+  makeElement () {
+    this.meshLineSegments = new MeshLineSegments(verreciel.colorPalette)
+    this.material = this.meshLineSegments.material
+    this.material.screenAspectRatio = verreciel.width / verreciel.height
+    this.material.lineWidth = 0.004
+    this.element = this.meshLineSegments.element
+    super.makeElement()
   }
 
-  updateChildrenColors(color) {
+  updateChildrenColors (color) {
     // assertArgs(arguments, 1);
-    this.color = color;
-    super.updateChildrenColors(color);
+    this.color = color
+    super.updateChildrenColors(color)
   }
 
-  updateMaterialOpacity() {
-    super.updateMaterialOpacity();
-    this.material.visible = this.material.opacity > 0;
+  updateMaterialOpacity () {
+    super.updateMaterialOpacity()
+    this.material.visible = this.material.opacity > 0
   }
 
-  updateVertices(vertices) {
+  updateVertices (vertices) {
     // assertArgs(arguments, 1);
     if (vertices.indexOf(null) != -1) {
-      throw "BAD GEOMETRY";
+      throw 'BAD GEOMETRY'
     }
-    this.meshLineSegments.updateGeometry(vertices);
+    this.meshLineSegments.updateGeometry(vertices)
   }
 
-  updateColorPalette() {
-    super.updateColorPalette();
-    this.material.colorPalette = verreciel.colorPalette;
+  updateColorPalette () {
+    super.updateColorPalette()
+    this.material.colorPalette = verreciel.colorPalette
   }
 
-  whenResize() {
-    this.material.screenAspectRatio = verreciel.width / verreciel.height;
-    super.whenResize();
+  whenResize () {
+    this.material.screenAspectRatio = verreciel.width / verreciel.height
+    super.whenResize()
   }
 }
 
-SceneLine.DUD_VERT = new THREE.Vector3();
+SceneLine.DUD_VERT = new THREE.Vector3()

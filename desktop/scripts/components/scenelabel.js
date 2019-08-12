@@ -2,106 +2,106 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneLabel extends SceneLine {
-  constructor(
-    text = "",
+  constructor (
+    text = '',
     scale = 0.1,
     align = Alignment.left,
     color = verreciel.white
   ) {
     // assertArgs(arguments, 1);
-    super([], color);
+    super([], color)
 
-    this.activeText = text;
-    this.activeScale = scale;
-    this.activeAlignment = align;
-    this.material.lineWidth = 0.003;
-    this.redrawLetters(this.activeText, this.activeScale);
+    this.activeText = text
+    this.activeScale = scale
+    this.activeAlignment = align
+    this.material.lineWidth = 0.003
+    this.redrawLetters(this.activeText, this.activeScale)
   }
 
-  updateText(text, color = null) {
+  updateText (text, color = null) {
     // assertArgs(arguments, 1);
 
     if (text == null) {
-      text = this.activeText;
+      text = this.activeText
     }
 
     if (color == null) {
-      color = this.color;
+      color = this.color
     }
 
     if (this.activeText != text || !this.color.equals(color)) {
-      this.activeText = text;
-      this.color = color;
-      this.redrawLetters(this.activeText, this.activeScale);
+      this.activeText = text
+      this.color = color
+      this.redrawLetters(this.activeText, this.activeScale)
     }
   }
 
-  updateScale(scale) {
+  updateScale (scale) {
     // assertArgs(arguments, 1);
     if (this.activeScale != scale) {
-      this.activeScale = scale;
-      this.redrawLetters(this.activeText, this.activeScale);
+      this.activeScale = scale
+      this.redrawLetters(this.activeText, this.activeScale)
     }
   }
 
-  redrawLetters(text, scale) {
-    const lineHeight = 1.5;
-    const letterSpacing = 0.3;
+  redrawLetters (text, scale) {
+    const lineHeight = 1.5
+    const letterSpacing = 0.3
 
-    let line = 0;
-    let offset = 0;
-    let vertices = [];
-    let glyph = null;
+    let line = 0
+    let offset = 0
+    let vertices = []
+    let glyph = null
 
     // NOTE: We need to upscale here, as the new glyphs
     // are considerably smaller, and don't have negative coordinates.
-    scale *= 1.5;
-    text = text.toLowerCase();
+    scale *= 1.5
+    text = text.toLowerCase()
 
     for (let i = 0; i < text.length; i++) {
-      if (text[i] === "$" || text[i] === "\n") {
-        line += 1;
-        offset = 0;
-        continue;
+      if (text[i] === '$' || text[i] === '\n') {
+        line += 1
+        offset = 0
+        continue
       }
 
-      glyph = SceneLabel.glyphs[text[i]];
+      glyph = SceneLabel.glyphs[text[i]]
 
       if (glyph == null) {
-        console.warn(`Unmapped glyph "${text[i]}"`);
-        continue;
+        console.warn(`Unmapped glyph "${text[i]}"`)
+        continue
       }
 
-      this.appendLetter(vertices, glyph, scale, offset, line * -lineHeight);
+      this.appendLetter(vertices, glyph, scale, offset, line * -lineHeight)
 
-      offset += glyph.width + letterSpacing;
+      offset += glyph.width + letterSpacing
     }
 
-    this.updateVertices(vertices);
+    this.updateVertices(vertices)
 
     // Calculate the bounding box of the resulting mesh,
     // and use that to center it over its origin, or align it.
-    let segments = this.meshLineSegments;
+    let segments = this.meshLineSegments
 
-    segments.geometry.computeBoundingBox();
-    segments.mesh.position.y = -segments.geometry.boundingBox.max.y / 2;
+    segments.geometry.computeBoundingBox()
+    segments.mesh.position.y = -segments.geometry.boundingBox.max.y / 2
 
     if (this.activeAlignment === Alignment.center) {
-      segments.mesh.position.x = -segments.geometry.boundingBox.max.x / 2;
+      segments.mesh.position.x = -segments.geometry.boundingBox.max.x / 2
     } else if (this.activeAlignment === Alignment.right) {
-      segments.mesh.position.x = -segments.geometry.boundingBox.max.x;
+      segments.mesh.position.x = -segments.geometry.boundingBox.max.x
     }
   }
 
-  appendLetter(vertices, glyph, scale, offsetX, offsetY) {
-    let vertex = null;
+  appendLetter (vertices, glyph, scale, offsetX, offsetY) {
+    let vertex = null
 
     for (let coords of glyph.positions) {
-      vertex = new THREE.Vector3(coords[0], coords[1], 0.0);
-      vertex.x = vertex.x + offsetX;
-      vertex.y = vertex.y + offsetY;
-      vertex.multiplyScalar(scale);
-      vertices.push(vertex);
+      vertex = new THREE.Vector3(coords[0], coords[1], 0.0)
+      vertex.x = vertex.x + offsetX
+      vertex.y = vertex.y + offsetY
+      vertex.multiplyScalar(scale)
+      vertices.push(vertex)
     }
   }
 }
@@ -498,7 +498,7 @@ SceneLabel.glyphs = {
       [0.6, 0.0]
     ]
   },
-  "0": {
+  '0': {
     width: 0.5,
     positions: [
       [0.0, 0.9],
@@ -521,11 +521,11 @@ SceneLabel.glyphs = {
       [0.5, 0.9]
     ]
   },
-  "1": {
+  '1': {
     width: 0.55,
     positions: [[0.0, 0.9], [0.3, 1.0], [0.3, 1.0], [0.3, 0.0]]
   },
-  "2": {
+  '2': {
     width: 0.55,
     positions: [
       [0.55, 0.0],
@@ -544,7 +544,7 @@ SceneLabel.glyphs = {
       [0.0, 0.9]
     ]
   },
-  "3": {
+  '3': {
     width: 0.55,
     positions: [
       [0.0, 0.9],
@@ -571,7 +571,7 @@ SceneLabel.glyphs = {
       [0.0, 0.1]
     ]
   },
-  "4": {
+  '4': {
     width: 0.55,
     positions: [
       [0.4, 0.0],
@@ -586,7 +586,7 @@ SceneLabel.glyphs = {
       [0.4, 1.0]
     ]
   },
-  "5": {
+  '5': {
     width: 0.55,
     positions: [
       [0.1, 1.0],
@@ -609,7 +609,7 @@ SceneLabel.glyphs = {
       [0.4, 0.5]
     ]
   },
-  "6": {
+  '6': {
     width: 0.55,
     positions: [
       [0.0, 0.9],
@@ -636,11 +636,11 @@ SceneLabel.glyphs = {
       [0.4, 0.5]
     ]
   },
-  "7": {
+  '7': {
     width: 0.55,
     positions: [[0.0, 1.0], [0.4, 1.0], [0.4, 1.0], [0.15, 0.0]]
   },
-  "8": {
+  '8': {
     width: 0.55,
     positions: [
       [0.0, 0.9],
@@ -675,7 +675,7 @@ SceneLabel.glyphs = {
       [0.4, 0.5]
     ]
   },
-  "9": {
+  '9': {
     width: 0.55,
     positions: [
       [0.0, 0.9],
@@ -702,23 +702,23 @@ SceneLabel.glyphs = {
       [0.5, 0.6]
     ]
   },
-  ":": {
+  ':': {
     width: 1.0,
     positions: [[0.5, 0.6], [0.5, 0.7], [0.5, 0.4], [0.5, 0.3]]
   },
-  " ": {
+  ' ': {
     width: 0.3,
     positions: []
   },
-  "~": {
+  '~': {
     width: 1.0,
     positions: [[0.0, 0.0], [0.0, 0.0]]
   },
-  "/": {
+  '/': {
     width: 1.0,
     positions: [[0.2, -0.1], [0.8, 1.1]]
   },
-  "-": {
+  '-': {
     width: 1.0,
     positions: [[0.2, 0.5], [0.8, 0.5]]
   },
@@ -726,15 +726,15 @@ SceneLabel.glyphs = {
     width: 1.0,
     positions: [[0.1, 0.0], [0.9, 0.0]]
   },
-  "&": {
+  '&': {
     width: 1.0,
     positions: [[0.0, 0.0], [0.0, 0.0]]
   },
-  "+": {
+  '+': {
     width: 1.0,
     positions: [[0.2, 0.5], [0.8, 0.5], [0.5, 0.8], [0.5, 0.2]]
   },
-  "*": {
+  '*': {
     width: 1.0,
     positions: [
       [0.25, 0.35],
@@ -745,7 +745,7 @@ SceneLabel.glyphs = {
       [0.5, 0.2]
     ]
   },
-  ">": {
+  '>': {
     width: 1.0,
     positions: [
       [0.2, 0.8],
@@ -756,7 +756,7 @@ SceneLabel.glyphs = {
       [0.2, 0.2]
     ]
   },
-  "<": {
+  '<': {
     width: 1.0,
     positions: [
       [0.8, 0.8],
@@ -767,7 +767,7 @@ SceneLabel.glyphs = {
       [0.8, 0.2]
     ]
   },
-  "[": {
+  '[': {
     width: 1.0,
     positions: [
       [0.6, 1.2],
@@ -778,7 +778,7 @@ SceneLabel.glyphs = {
       [0.6, -0.2]
     ]
   },
-  "]": {
+  ']': {
     width: 1.0,
     positions: [
       [0.4, 1.2],
@@ -789,7 +789,7 @@ SceneLabel.glyphs = {
       [0.2, -0.2]
     ]
   },
-  "(": {
+  '(': {
     width: 1.0,
     positions: [
       [0.6, 1.1],
@@ -800,7 +800,7 @@ SceneLabel.glyphs = {
       [0.6, -0.1]
     ]
   },
-  ")": {
+  ')': {
     width: 1.0,
     positions: [
       [0.4, 1.1],
@@ -811,7 +811,7 @@ SceneLabel.glyphs = {
       [0.2, -0.2]
     ]
   },
-  "{": {
+  '{': {
     width: 1.0,
     positions: [
       [0.8, 1.2],
@@ -828,7 +828,7 @@ SceneLabel.glyphs = {
       [0.8, -0.2]
     ]
   },
-  "}": {
+  '}': {
     width: 1.0,
     positions: [
       [0.2, 1.2],
@@ -845,15 +845,15 @@ SceneLabel.glyphs = {
       [0.2, -0.2]
     ]
   },
-  ",": {
+  ',': {
     width: 1.0,
     positions: [[0.5, 0.1], [0.5, 0.0], [0.5, 0.0], [0.4, -0.1]]
   },
-  "!": {
+  '!': {
     width: 1.0,
     positions: [[0.5, 1.0], [0.5, 0.3], [0.5, 0.1], [0.5, 0.0]]
   },
-  "?": {
+  '?': {
     width: 1.0,
     positions: [
       [0.3, 0.9],
@@ -872,7 +872,7 @@ SceneLabel.glyphs = {
       [0.5, 0.0]
     ]
   },
-  ".": {
+  '.': {
     width: 1.0,
     positions: [[0.5, 0.0], [0.5, 0.1]]
   },
@@ -884,7 +884,7 @@ SceneLabel.glyphs = {
     width: 1.0,
     positions: [[0.6, 1.1], [0.6, 0.9], [0.4, 1.1], [0.4, 0.9]]
   },
-  "%": {
+  '%': {
     width: 1.0,
     positions: [
       [0.1, 0.7],
@@ -923,8 +923,8 @@ SceneLabel.glyphs = {
       [0.7, 0.0]
     ]
   },
-  "⨉": {
+  '⨉': {
     width: 1.0,
     positions: [[0.2, 0.8], [0.8, 0.2], [0.8, 0.8], [0.2, 0.2]]
   }
-};
+}

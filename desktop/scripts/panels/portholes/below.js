@@ -2,8 +2,8 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Below extends Panel {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
   }
 }

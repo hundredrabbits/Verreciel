@@ -2,7 +2,7 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Diamond extends SceneLine {
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
     super(
       [
@@ -16,6 +16,6 @@ class Diamond extends SceneLine {
         new THREE.Vector3(0, 0, size)
       ],
       color
-    );
+    )
   }
 }

@@ -2,27 +2,27 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Item extends Event {
-  constructor(name, type, location, details, isQuest, code) {
+  constructor (name, type, location, details, isQuest, code) {
     // assertArgs(arguments, 6);
-    super(name, new THREE.Vector2(), details, verreciel.grey, false);
+    super(name, new THREE.Vector2(), details, verreciel.grey, false)
 
-    this.name = name;
-    this.type = type;
-    this.details = details;
-    this.isQuest = isQuest;
-    this.location = location;
-    this.code = code;
+    this.name = name
+    this.type = type
+    this.details = details
+    this.isQuest = isQuest
+    this.location = location
+    this.code = code
   }
 
-  payload() {
+  payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData("Item", this.type),
+      new ConsoleData('Item', this.type),
       new ConsoleData(this.details)
-    ]);
+    ])
   }
 
-  static like(other) {
+  static like (other) {
     // assertArgs(arguments, 1);
     return new Item(
       other.name,
@@ -31,6 +31,6 @@ class Item extends Event {
       other.details,
       other.isQuest,
       other.code
-    );
+    )
   }
 }

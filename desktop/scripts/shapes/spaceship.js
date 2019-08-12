@@ -4,21 +4,21 @@
 class Spaceship extends SceneLine {
   // Adapted from manual for Supergraphics Three-Dimensional Display System, P . Lutus, Kerby, Oregon 1980
 
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
 
-    const nose = [0, 0, -8];
-    const topBack = [1, 1, 9];
-    const bottomBack = [1, -1, 9];
-    const finBack = [6, -1, 8];
-    const finFront = [6, -1, 6];
-    const bottomFront = [1, -1, 6];
+    const nose = [0, 0, -8]
+    const topBack = [1, 1, 9]
+    const bottomBack = [1, -1, 9]
+    const finBack = [6, -1, 8]
+    const finFront = [6, -1, 6]
+    const bottomFront = [1, -1, 6]
 
     const point = (arr, reflect) => {
-      const p = new THREE.Vector3(...arr.map(x => size / 20 * x));
-      if (reflect) p.x = -p.x;
-      return p;
-    };
+      const p = new THREE.Vector3(...arr.map(x => size / 20 * x))
+      if (reflect) p.x = -p.x
+      return p
+    }
 
     super(
       [
@@ -52,31 +52,31 @@ class Spaceship extends SceneLine {
         point(topBack, true)
       ],
       color
-    );
+    )
 
-    this.add(new Axes(size));
+    this.add(new Axes(size))
   }
 }
 
 class RezSpaceship extends SceneLine {
   // Modified version of above
 
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
 
-    const nose = [1, 0, -8];
-    const topBack = [1, 1, 10];
-    const bottomBack = [2, -1, 9];
-    const finBack = [6, -2, 8];
-    const finFront = [5.5, -2, 6];
-    const topFront = [1, 1, 3];
-    const bottomFront = [1, -1, 4];
+    const nose = [1, 0, -8]
+    const topBack = [1, 1, 10]
+    const bottomBack = [2, -1, 9]
+    const finBack = [6, -2, 8]
+    const finFront = [5.5, -2, 6]
+    const topFront = [1, 1, 3]
+    const bottomFront = [1, -1, 4]
 
     const point = (arr, reflect) => {
-      const p = new THREE.Vector3(...arr.map(x => size / 20 * x));
-      if (reflect) p.x = -p.x;
-      return p;
-    };
+      const p = new THREE.Vector3(...arr.map(x => size / 20 * x))
+      if (reflect) p.x = -p.x
+      return p
+    }
 
     super(
       [
@@ -117,14 +117,14 @@ class RezSpaceship extends SceneLine {
         point(topBack, true)
       ],
       color
-    );
+    )
 
-    this.add(new Axes(size));
+    this.add(new Axes(size))
   }
 }
 
 class Axes extends SceneLine {
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
     super(
       [
@@ -136,7 +136,7 @@ class Axes extends SceneLine {
         new THREE.Vector3(size * 0.5, 0, 0)
       ],
       color
-    );
-    this.opacity = 0.1;
+    )
+    this.opacity = 0.1
   }
 }

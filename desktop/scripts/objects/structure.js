@@ -2,106 +2,106 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Structure extends Empty {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.morphTime = 0;
+    this.morphTime = 0
 
-    this.rot = new Empty();
-    this.pos = new Empty();
-    this.root = new Empty();
+    this.rot = new Empty()
+    this.pos = new Empty()
+    this.root = new Empty()
 
-    this.add(this.rot);
-    this.rot.add(this.pos);
-    this.pos.add(this.root);
+    this.add(this.rot)
+    this.rot.add(this.pos)
+    this.pos.add(this.root)
   }
 
-  addHost(host) {
+  addHost (host) {
     // assertArgs(arguments, 1);
-    this.host = host;
+    this.host = host
   }
 
-  whenRenderer() {
+  whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer();
+    super.whenRenderer()
 
-    let distance;
+    let distance
     if (this.host instanceof LocationConstellation) {
-      distance = this.host.distance / Settings.approach * 100;
+      distance = this.host.distance / Settings.approach * 100
     } else {
-      distance = Math.pow(this.host.distance / Settings.approach, 5) * 1000.0;
+      distance = Math.pow(this.host.distance / Settings.approach, 5) * 1000.0
     }
 
-    this.pos.position.set(0, distance, 0);
+    this.pos.position.set(0, distance, 0)
 
     if (verreciel.capsule.isDockedAtLocation(this.host)) {
-      this.rot.rotation.z = degToRad(0);
+      this.rot.rotation.z = degToRad(0)
     } else if (verreciel.capsule.lastLocation == this.host) {
-      this.rot.rotation.z = degToRad(0);
-      this.pos.position.set(0, distance * -1, 0);
+      this.rot.rotation.z = degToRad(0)
+      this.pos.position.set(0, distance * -1, 0)
     } else {
-      this.rot.rotation.z = degToRad(this.host.align);
+      this.rot.rotation.z = degToRad(this.host.align)
     }
 
-    this.rot.rotation.y = degToRad(verreciel.capsule.direction);
+    this.rot.rotation.y = degToRad(verreciel.capsule.direction)
 
     if (this.host.distance > Settings.approach) {
-      this.onLeave();
+      this.onLeave()
     }
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    this.show();
-    this.morph();
+    this.show()
+    this.morph()
   }
 
-  onSight() {
+  onSight () {
     // assertArgs(arguments, 0);
     // this.show();
   }
 
-  onUndock() {
+  onUndock () {
     // assertArgs(arguments, 0);
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
-    this.update();
+    this.update()
   }
 
-  onLeave() {
+  onLeave () {
     // assertArgs(arguments, 0);
-    this.removeFromParentNode();
+    this.removeFromParentNode()
   }
 
-  dockUpdate() {
-    // assertArgs(arguments, 0);
-  }
-
-  sightUpdate() {
+  dockUpdate () {
     // assertArgs(arguments, 0);
   }
 
-  update() {
+  sightUpdate () {
     // assertArgs(arguments, 0);
-    super.update();
+  }
+
+  update () {
+    // assertArgs(arguments, 0);
+    super.update()
 
     if (this.host.isComplete == null) {
-      this.root.updateChildrenColors(verreciel.grey);
+      this.root.updateChildrenColors(verreciel.grey)
     } else if (this.host.isComplete == true) {
-      this.root.updateChildrenColors(verreciel.cyan);
+      this.root.updateChildrenColors(verreciel.cyan)
     } else {
-      this.root.updateChildrenColors(verreciel.red);
+      this.root.updateChildrenColors(verreciel.red)
     }
   }
 
-  morph() {
+  morph () {
     // assertArgs(arguments, 0);
-    this.morphTime += 1;
+    this.morphTime += 1
     if (verreciel.capsule.isDocked == true) {
-      delay(2, this.morph.bind(this));
+      delay(2, this.morph.bind(this))
     }
   }
 }

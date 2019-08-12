@@ -2,7 +2,7 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Rect extends SceneLine {
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
     super(
       [
@@ -16,6 +16,6 @@ class Rect extends SceneLine {
         new THREE.Vector3(-size.width / 2, 0, size.height / 2)
       ],
       color
-    );
+    )
   }
 }

@@ -2,7 +2,7 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Cube extends SceneLine {
-  constructor(size, color = verreciel.white) {
+  constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
     super(
       [
@@ -28,6 +28,6 @@ class Cube extends SceneLine {
         // new THREE.Vector3(-size,size,size), new THREE.Vector3(-size,-size,size),
       ],
       color
-    );
+    )
   }
 }

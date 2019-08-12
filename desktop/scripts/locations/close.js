@@ -2,21 +2,21 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationClose extends Location {
-  constructor(name, system, at, mapRequirement = null) {
+  constructor (name, system, at, mapRequirement = null) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconClose(), new StructureClose());
+    super(name, system, at, new IconClose(), new StructureClose())
 
-    this.isComplete = false;
-    this.mapRequirement = mapRequirement;
+    this.isComplete = false
+    this.mapRequirement = mapRequirement
   }
 
-  onApproach() {
+  onApproach () {
     // assertArgs(arguments, 0);
     if (
       this.mapRequirement != null &&
       verreciel.nav.port.hasEvent(this.mapRequirement) == false
     ) {
-      return;
+      return
     }
     if (
       verreciel.universe.loiqe.isComplete != true ||
@@ -24,54 +24,54 @@ class LocationClose extends Location {
       verreciel.universe.senni.isComplete != true ||
       verreciel.universe.usul.isComplete != true
     ) {
-      return;
+      return
     }
 
-    verreciel.space.startInstance(this);
+    verreciel.space.startInstance(this)
     // Don't try to dock if there is already a target
     if (
       (verreciel.radar.port.hasEvent() == true &&
         verreciel.radar.port.event == this) ||
       verreciel.capsule.isFleeing == true
     ) {
-      verreciel.capsule.dock(this);
+      verreciel.capsule.dock(this)
     } else if (verreciel.radar.port.hasEvent() == false) {
-      verreciel.capsule.dock(this);
+      verreciel.capsule.dock(this)
     }
-    this.update();
+    this.update()
   }
 
   // MARK: Panel -
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
-    return newPanel;
+    return newPanel
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    verreciel.player.eject();
-    this.onComplete();
+    verreciel.player.eject()
+    this.onComplete()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 30;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 30
 
-    this.structure.opacity = 0;
+    this.structure.opacity = 0
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 }
 
 class IconClose extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.label.hide();
+    this.label.hide()
 
-    this.size = 0.05;
+    this.size = 0.05
     this.mesh.add(
       new SceneLine(
         [
@@ -86,49 +86,49 @@ class IconClose extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureClose extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.root.position.set(0, 5, 0);
+    this.root.position.set(0, 5, 0)
 
-    let count = 8;
-    var i = 0;
+    let count = 8
+    var i = 0
     while (i < count) {
-      let pivot = new Empty();
-      pivot.rotation.y = degToRad(i * 360 / count);
-      this.root.add(pivot);
-      let shape = new Hexagon(2, verreciel.grey);
-      shape.position.z = 3;
-      pivot.add(shape);
-      i += 1;
+      let pivot = new Empty()
+      pivot.rotation.y = degToRad(i * 360 / count)
+      this.root.add(pivot)
+      let shape = new Hexagon(2, verreciel.grey)
+      shape.position.z = 3
+      pivot.add(shape)
+      i += 1
     }
   }
 
-  morph() {
+  morph () {
     // assertArgs(arguments, 0);
-    super.morph();
+    super.morph()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 1.0;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 1.0
 
-    this.root.rotation.y = degToRad(this.morphTime * 45);
+    this.root.rotation.y = degToRad(this.morphTime * 45)
 
     for (let node of this.root.children) {
-      node.children[0].rotation.z = degToRad(this.morphTime * 180);
-      node.children[0].rotation.x = degToRad(this.morphTime * 90);
-      node.children[0].rotation.y = degToRad(this.morphTime * 45);
+      node.children[0].rotation.z = degToRad(this.morphTime * 180)
+      node.children[0].rotation.x = degToRad(this.morphTime * 90)
+      node.children[0].rotation.y = degToRad(this.morphTime * 45)
     }
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onComplete() {
+  onComplete () {
     // assertArgs(arguments, 0);
   }
 }

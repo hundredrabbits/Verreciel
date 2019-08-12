@@ -2,12 +2,12 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Above extends Panel {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    let aim = new Empty();
-    var i = 0;
+    let aim = new Empty()
+    var i = 0
     while (i < 3) {
       let test = new SceneLine(
         [
@@ -15,30 +15,30 @@ class Above extends Panel {
           new THREE.Vector3(0, Templates.radius * -2, 0.95)
         ],
         verreciel.white
-      );
-      test.rotation.y = degToRad(120 * i);
-      aim.add(test);
-      aim.rotation.y = degToRad(0);
-      i += 1;
+      )
+      test.rotation.y = degToRad(120 * i)
+      aim.add(test)
+      aim.rotation.y = degToRad(0)
+      i += 1
     }
-    this.root.add(aim);
+    this.root.add(aim)
   }
 
-  whenSecond() {
+  whenSecond () {
     // assertArgs(arguments, 0);
-    super.whenSecond();
+    super.whenSecond()
 
     if (verreciel.thruster.speed > 0) {
-      this.root.updateChildrenColors(verreciel.white);
+      this.root.updateChildrenColors(verreciel.white)
     } else {
-      this.root.updateChildrenColors(verreciel.grey);
+      this.root.updateChildrenColors(verreciel.grey)
     }
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 0.5;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
     this.rotation.y = degToRad(
       Math.floor((radToDeg(verreciel.player.rotation.y) + 22.5) / 45) * 45
-    );
-    verreciel.animator.commit();
+    )
+    verreciel.animator.commit()
   }
 }

@@ -2,88 +2,87 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Game {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    console.info("^ Game | Init");
-    this.time = 0;
-    this.gameSpeed = 1;
+    console.info('^ Game | Init')
+    this.time = 0
+    this.gameSpeed = 1
     if (DEBUG_LOG_GHOST) {
-      this.gameSpeed = 5;
+      this.gameSpeed = 5
     }
   }
 
-  whenStart() {
+  whenStart () {
     // assertArgs(arguments, 0);
-    console.info("+ Game | Start");
-    setTimeout(this.onTic.bind(this), 50);
-    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
+    console.info('+ Game | Start')
+    setTimeout(this.onTic.bind(this), 50)
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
     if (DEBUG_LOG_GHOST) {
-      this.save(0);
+      this.save(0)
     }
-    this.load(this.state);
+    this.load(this.state)
   }
 
-  save(id) {
+  save (id) {
     // assertArgs(arguments, 1);
     if (DEBUG_DONT_SAVE) {
-      return;
+      return
     }
-    console.info("@ GAME     | Saved State to " + id);
-    for (let c of document.cookie.split(";")) {
+    console.info('@ GAME     | Saved State to ' + id)
+    for (let c of document.cookie.split(';')) {
       document.cookie = c
-        .replace(/^ +/, "")
-        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        .replace(/^ +/, '')
+        .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
     }
-    localStorage.state = id;
-    localStorage.version = verreciel.version;
-    verreciel.completion.refresh();
+    localStorage.state = id
+    localStorage.version = verreciel.version
+    verreciel.completion.refresh()
   }
 
-  load(id) {
+  load (id) {
     // assertArgs(arguments, 1);
-    id = id == 20 ? 0 : id;
+    id = id == 20 ? 0 : id
 
-    console.info("@ GAME     | Loaded State to " + id);
+    console.info('@ GAME     | Loaded State to ' + id)
 
     for (let mission of verreciel.missions.story) {
       if (mission.id < id) {
-        mission.complete();
+        mission.complete()
       }
     }
-    verreciel.missions.story[id].state();
+    verreciel.missions.story[id].state()
   }
 
-  get state() {
+  get state () {
     // assertArgs(arguments, 0);
-    if ("state" in localStorage) {
-      return parseInt(localStorage.state);
+    if ('state' in localStorage) {
+      return parseInt(localStorage.state)
     }
-    return 0;
+    return 0
   }
 
-  erase() {
+  erase () {
     // assertArgs(arguments, 0);
-    console.info("$ GAME     | Erase");
-    localStorage.clear();
+    console.info('$ GAME     | Erase')
+    localStorage.clear()
   }
 
-  reset() {
-    console.info("$ GAME     | Erase");
+  reset () {
+    console.info('$ GAME     | Erase')
     this.erase()
     this.load(0)
-
   }
 
-  whenSecond() {
+  whenSecond () {
     // assertArgs(arguments, 0);
-    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed);
-    verreciel.capsule.whenSecond();
-    verreciel.missions.refresh();
+    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
+    verreciel.capsule.whenSecond()
+    verreciel.missions.refresh()
   }
 
-  onTic() {
+  onTic () {
     // assertArgs(arguments, 0);
-    setTimeout(this.onTic.bind(this), 50);
-    this.time += this.gameSpeed;
+    setTimeout(this.onTic.bind(this), 50)
+    this.time += this.gameSpeed
   }
 }

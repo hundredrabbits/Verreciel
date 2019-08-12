@@ -2,88 +2,88 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Hatch extends MainPanel {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super("hatch");
+    super('hatch')
 
-    this.outline = new Empty();
-    this.count = 0;
+    this.outline = new Empty()
+    this.count = 0
 
-    this.details = "jettisons items";
-    this.pendingErase = false;
+    this.details = 'jettisons items'
+    this.pendingErase = false
 
     this.mainNode.add(
       new SceneLine(
         [new THREE.Vector3(0, 0.7, 0), new THREE.Vector3(0.7, 0, 0)],
         verreciel.grey
       )
-    );
+    )
     this.mainNode.add(
       new SceneLine(
         [new THREE.Vector3(0.7, 0, 0), new THREE.Vector3(0, -0.7, 0)],
         verreciel.grey
       )
-    );
+    )
     this.mainNode.add(
       new SceneLine(
         [new THREE.Vector3(-0.7, 0, 0), new THREE.Vector3(0, 0.7, 0)],
         verreciel.grey
       )
-    );
+    )
     this.mainNode.add(
       new SceneLine(
         [new THREE.Vector3(-0.7, 0, 0), new THREE.Vector3(0, -0.7, 0)],
         verreciel.grey
       )
-    );
+    )
 
     let outline1 = new SceneLine(
       [new THREE.Vector3(0, 0.5, 0), new THREE.Vector3(0.5, 0, 0)],
       verreciel.red
-    );
-    this.outline.add(outline1);
+    )
+    this.outline.add(outline1)
     let outline2 = new SceneLine(
       [new THREE.Vector3(0.5, 0, 0), new THREE.Vector3(0, -0.5, 0)],
       verreciel.red
-    );
-    this.outline.add(outline2);
+    )
+    this.outline.add(outline2)
     let outline3 = new SceneLine(
       [new THREE.Vector3(-0.5, 0, 0), new THREE.Vector3(0, 0.5, 0)],
       verreciel.red
-    );
-    this.outline.add(outline3);
+    )
+    this.outline.add(outline3)
     let outline4 = new SceneLine(
       [new THREE.Vector3(-0.5, 0, 0), new THREE.Vector3(0, -0.5, 0)],
       verreciel.red
-    );
-    this.outline.add(outline4);
+    )
+    this.outline.add(outline4)
 
-    this.mainNode.add(this.outline);
+    this.mainNode.add(this.outline)
 
     // Trigger
 
-    this.mainNode.add(new SceneTrigger(this, "hatch_jettison", 2, 2, 0));
+    this.mainNode.add(new SceneTrigger(this, 'hatch_jettison', 2, 2, 0))
 
-    this.detailsLabel.updateText("empty", verreciel.grey);
+    this.detailsLabel.updateText('empty', verreciel.grey)
   }
 
-  whenStart() {
+  whenStart () {
     // assertArgs(arguments, 0);
-    super.whenStart();
+    super.whenStart()
 
-    this.update();
+    this.update()
   }
 
-  whenRenderer() {
-    super.whenRenderer();
+  whenRenderer () {
+    super.whenRenderer()
     if (this.pendingErase == true) {
-      this.outline.blink();
+      this.outline.blink()
     } else {
-      this.outline.show();
+      this.outline.show()
     }
   }
 
-  touch(id = 0) {
+  touch (id = 0) {
     // assertArgs(arguments, 1);
 
     if (
@@ -92,51 +92,51 @@ class Hatch extends MainPanel {
       (this.port.origin.host == verreciel.pilot ||
         this.port.origin.host == verreciel.player)
     ) {
-      this.port.origin.disconnect();
-      verreciel.music.playEffect("click3");
-      verreciel.game.erase();
-      verreciel.missions.refresh();
-      verreciel.missions.updateCurrentMission();
-      verreciel.player.ejectViaHatch();
-      return true;
+      this.port.origin.disconnect()
+      verreciel.music.playEffect('click3')
+      verreciel.game.erase()
+      verreciel.missions.refresh()
+      verreciel.missions.updateCurrentMission()
+      verreciel.player.ejectViaHatch()
+      return true
     }
 
     if (this.port.isReceiving() == false) {
-      return false;
+      return false
     }
     if (this.port.origin.event.isQuest == true) {
-      return false;
+      return false
     }
 
-    this.port.origin.removeEvent();
-    this.count += 1;
-    this.update();
-    verreciel.missions.refresh();
-    verreciel.music.playEffect("click3");
-    return true;
+    this.port.origin.removeEvent()
+    this.count += 1
+    this.update()
+    verreciel.missions.refresh()
+    verreciel.music.playEffect('click3')
+    return true
   }
 
-  update() {
+  update () {
     // assertArgs(arguments, 0);
-    var load = this.port.origin == null ? null : this.port.origin.event;
+    var load = this.port.origin == null ? null : this.port.origin.event
 
     if (load != null) {
       if (load.isQuest == true || load instanceof Item == false) {
-        this.detailsLabel.updateText("error", verreciel.red);
-        this.outline.updateChildrenColors(verreciel.red);
+        this.detailsLabel.updateText('error', verreciel.red)
+        this.outline.updateChildrenColors(verreciel.red)
       } else {
-        this.detailsLabel.updateText("jettison", verreciel.cyan);
-        this.outline.updateChildrenColors(verreciel.cyan);
+        this.detailsLabel.updateText('jettison', verreciel.cyan)
+        this.outline.updateChildrenColors(verreciel.cyan)
       }
     } else {
-      this.detailsLabel.updateText("empty", verreciel.grey);
-      this.outline.updateChildrenColors(verreciel.grey);
+      this.detailsLabel.updateText('empty', verreciel.grey)
+      this.outline.updateChildrenColors(verreciel.grey)
     }
   }
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
-    super.onConnect();
+    super.onConnect()
 
     if (
       this.port.origin != null &&
@@ -144,24 +144,24 @@ class Hatch extends MainPanel {
       (this.port.origin.host == verreciel.pilot ||
         this.port.origin.host == verreciel.player)
     ) {
-      this.detailsLabel.updateText(" erase   game ?", verreciel.red);
-      this.outline.updateChildrenColors(verreciel.red);
-      this.pendingErase = true;
+      this.detailsLabel.updateText(' erase   game ?', verreciel.red)
+      this.outline.updateChildrenColors(verreciel.red)
+      this.pendingErase = true
     } else {
-      this.pendingErase = false;
+      this.pendingErase = false
     }
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
-    this.pendingErase = false;
-    this.update();
+    this.pendingErase = false
+    this.update()
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
 
-    verreciel.player.lookAt(-315);
+    verreciel.player.lookAt(-315)
   }
 }

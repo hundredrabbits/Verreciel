@@ -2,79 +2,79 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Empty extends SceneNode {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
-    this.details = "unknown";
+    super()
+    this.details = 'unknown'
   }
 
-  touch(id = 0) {
+  touch (id = 0) {
     // assertArgs(arguments, 1);
-    return false;
+    return false
   }
 
-  update() {
+  update () {
     // assertArgs(arguments, 0, true);
   }
 
-  empty() {
+  empty () {
     // assertArgs(arguments, 0);
     while (this.children.length > 0) {
-      this.remove(this.children[0]);
+      this.remove(this.children[0])
     }
   }
 
-  blink() {
+  blink () {
     // assertArgs(arguments, 0);
     if (verreciel.game.time % 3 == 0) {
-      this.opacity = 1;
+      this.opacity = 1
     } else {
-      this.opacity = 0;
+      this.opacity = 0
     }
   }
 
-  show() {
+  show () {
     // assertArgs(arguments, 0);
-    this.opacity = 1;
+    this.opacity = 1
   }
 
-  hide() {
+  hide () {
     // assertArgs(arguments, 0);
-    this.opacity = 0;
+    this.opacity = 0
   }
 
-  updateChildrenColors(color) {
+  updateChildrenColors (color) {
     for (let node of this.children) {
-      node.updateChildrenColors(color);
+      node.updateChildrenColors(color)
     }
   }
 
-  updateColorPalette() {
+  updateColorPalette () {
     for (let node of this.children) {
-      node.updateColorPalette();
+      node.updateColorPalette()
     }
   }
 
-  onConnect() {
+  onConnect () {
     // assertArgs(arguments, 0);
-    this.update();
+    this.update()
   }
 
-  onDisconnect() {
+  onDisconnect () {
     // assertArgs(arguments, 0);
-    this.update();
+    this.update()
   }
 
-  onUploadComplete() {
-    // assertArgs(arguments, 0);
-  }
-
-  onMissionComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
   }
 
-  payload() {
+  onMissionComplete () {
     // assertArgs(arguments, 0);
-    return new ConsolePayload([new ConsoleData("unknown", "unknown")]);
+  }
+
+  payload () {
+    // assertArgs(arguments, 0);
+    return new ConsolePayload([new ConsoleData('unknown', 'unknown')])
   }
 }

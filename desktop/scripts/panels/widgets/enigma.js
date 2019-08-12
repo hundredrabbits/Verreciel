@@ -2,26 +2,26 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Enigma extends Widget {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super("enigma");
+    super('enigma')
 
-    this.details = "extra";
-    this.requirement = ItemTypes.cypher;
-    this.isPowered = function() {
-      return verreciel.battery.isEnigmaPowered();
-    };
-    this.label.updateText(this.name);
+    this.details = 'extra'
+    this.requirement = ItemTypes.cypher
+    this.isPowered = function () {
+      return verreciel.battery.isEnigmaPowered()
+    }
+    this.label.updateText(this.name)
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    super.onInstallationBegin();
+    super.onInstallationBegin()
   }
 
-  onInstallationComplete() {
+  onInstallationComplete () {
     // assertArgs(arguments, 0);
-    super.onInstallationComplete();
-    verreciel.battery.installEnigma();
+    super.onInstallationComplete()
+    verreciel.battery.installEnigma()
   }
 }

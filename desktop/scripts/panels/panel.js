@@ -2,73 +2,73 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Panel extends Empty {
-  constructor(name) {
+  constructor (name) {
     // assertArgs(arguments, 0);
-    super();
-    this.name = name;
-    this.isEnabled = false;
-    this.root = new Empty();
-    this.add(this.root);
-    this.isInstalled = false;
-    this.installPercentage = 0;
+    super()
+    this.name = name
+    this.isEnabled = false
+    this.root = new Empty()
+    this.add(this.root)
+    this.isInstalled = false
+    this.installPercentage = 0
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
   }
 
-  enable() {
+  enable () {
     // assertArgs(arguments, 0);
-    this.isEnabled = true;
+    this.isEnabled = true
   }
 
-  disable() {
+  disable () {
     // assertArgs(arguments, 0);
-    this.isEnabled = false;
+    this.isEnabled = false
   }
 
   // MARK: Installation -
 
-  install() {
+  install () {
     // assertArgs(arguments, 0);
     if (this.isInstalled == true) {
-      return;
+      return
     }
 
-    this.onInstallationBegin();
-    this.installProgress();
+    this.onInstallationBegin()
+    this.installProgress()
   }
 
-  installProgress() {
+  installProgress () {
     // assertArgs(arguments, 0);
-    this.installPercentage += Math.random() * 6;
-    this.installPercentage += 1; // Faster!
+    this.installPercentage += Math.random() * 6
+    this.installPercentage += 1 // Faster!
 
     if (this.installPercentage > 100) {
-      this.onInstallationComplete();
+      this.onInstallationComplete()
     } else {
-      delay(0.05, this.installProgress.bind(this));
+      delay(0.05, this.installProgress.bind(this))
     }
   }
 
-  onInstallationBegin() {
+  onInstallationBegin () {
     // assertArgs(arguments, 0);
-    verreciel.music.playEffect("beep1");
+    verreciel.music.playEffect('beep1')
   }
 
-  onInstallationComplete() {
+  onInstallationComplete () {
     // assertArgs(arguments, 0);
-    this.installPercentage = 0;
-    this.isInstalled = true;
-    verreciel.music.playEffect("beep2");
-    verreciel.ghost.report(LogType.install, this.name);
+    this.installPercentage = 0
+    this.isInstalled = true
+    verreciel.music.playEffect('beep2')
+    verreciel.ghost.report(LogType.install, this.name)
   }
 
-  payload() {
+  payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData("Capsule", "Panel"),
+      new ConsoleData('Capsule', 'Panel'),
       new ConsoleData(this.details)
-    ]);
+    ])
   }
 }

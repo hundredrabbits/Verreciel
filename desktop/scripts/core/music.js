@@ -2,153 +2,153 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Music {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    this.track = null;
-    this.trackCatalog = {};
-    this.ambience = null;
-    this.record = null;
-    this.context = new AudioContext();
-    this.analyser = this.context.createAnalyser();
-    this.analyser.connect(this.context.destination);
-    this.data = new Uint8Array(this.analyser.frequencyBinCount);
-    requestAnimationFrame(this.updateData.bind(this));
+    this.track = null
+    this.trackCatalog = {}
+    this.ambience = null
+    this.record = null
+    this.context = new AudioContext()
+    this.analyser = this.context.createAnalyser()
+    this.analyser.connect(this.context.destination)
+    this.data = new Uint8Array(this.analyser.frequencyBinCount)
+    requestAnimationFrame(this.updateData.bind(this))
   }
 
-  updateData() {
-    requestAnimationFrame(this.updateData.bind(this));
-    this.analyser.getByteFrequencyData(this.data);
-    const length = this.data.length;
-    let count = 0;
-    const total = length * 0xff;
+  updateData () {
+    requestAnimationFrame(this.updateData.bind(this))
+    this.analyser.getByteFrequencyData(this.data)
+    const length = this.data.length
+    let count = 0
+    const total = length * 0xff
     for (let i = 0; i < length; i++) {
-      count += this.data[i];
+      count += this.data[i]
     }
-    this.magnitude = count / total;
+    this.magnitude = count / total
   }
 
-  playEffect(name) {
+  playEffect (name) {
     // assertArgs(arguments, 1);
     // console.info("Effect: ",name);
     let track = this.fetchTrack(
       name,
-      "effect",
-      "media/audio/effect/" + name + ".ogg",
+      'effect',
+      'media/audio/effect/' + name + '.ogg',
       false,
       false
-    );
+    )
     if (verreciel.game.time - track.lastTimePlayed > 5) {
-      track.play();
+      track.play()
     }
   }
 
-  setAmbience(name) {
+  setAmbience (name) {
     if (this.ambience == name) {
-      return;
+      return
     }
-    this.ambience = name;
+    this.ambience = name
     if (
       this.track == null ||
-      (this.track.role == "ambience" && this.track.name != name)
+      (this.track.role == 'ambience' && this.track.name != name)
     ) {
-      this.playAmbience();
+      this.playAmbience()
     }
   }
 
-  setRecord(name) {
+  setRecord (name) {
     if (this.record == name) {
-      return;
+      return
     }
-    this.record = name;
+    this.record = name
     if (
       this.track == null ||
-      (this.track.role == "record" && this.track.name != name)
+      (this.track.role == 'record' && this.track.name != name)
     ) {
-      this.playRecord();
+      this.playRecord()
     }
   }
 
-  playRecord() {
-    this.switchAudio("record", this.record);
+  playRecord () {
+    this.switchAudio('record', this.record)
   }
 
-  playAmbience() {
-    this.switchAudio("ambience", this.ambience);
+  playAmbience () {
+    this.switchAudio('ambience', this.ambience)
   }
 
-  isPlayingRecord() {
-    return this.track != null && this.track.role == "record";
+  isPlayingRecord () {
+    return this.track != null && this.track.role == 'record'
   }
 
-  switchAudio(role, name) {
+  switchAudio (role, name) {
     if (this.track != null) {
       if (this.track.name == name) {
-        return;
+        return
       }
-      this.track.pause();
+      this.track.pause()
     }
 
     if (name != null) {
       this.track = this.fetchTrack(
         name,
         role,
-        "media/audio/" + role + "/" + name + ".mp3",
+        'media/audio/' + role + '/' + name + '.mp3',
         true,
         true
-      );
+      )
       if (DEBUG_NO_MUSIC) {
-        console.info(role, ":", name, "(off by debug)");
+        console.info(role, ':', name, '(off by debug)')
       } else {
-        console.info(role, ":", name);
-        this.track.play();
+        console.info(role, ':', name)
+        this.track.play()
       }
     }
   }
 
-  fetchTrack(name, role, src, loop, analyze) {
+  fetchTrack (name, role, src, loop, analyze) {
     // assertArgs(arguments, 3);
-    let audioId = role + "_" + name;
+    let audioId = role + '_' + name
     if (!(audioId in this.trackCatalog)) {
-      this.trackCatalog[audioId] = new Track(name, role, src, loop, analyze);
+      this.trackCatalog[audioId] = new Track(name, role, src, loop, analyze)
     }
-    return this.trackCatalog[audioId];
+    return this.trackCatalog[audioId]
   }
 }
 
 class Track {
-  constructor(name, role, src, loop, analyze) {
-    this.audio = new Audio();
-    this.name = name;
-    this.role = role;
-    this.audio.src = src;
-    this.audio.loop = loop;
-    this.lastTimePlayed = 0;
+  constructor (name, role, src, loop, analyze) {
+    this.audio = new Audio()
+    this.name = name
+    this.role = role
+    this.audio.src = src
+    this.audio.loop = loop
+    this.lastTimePlayed = 0
     if (analyze) {
-      this.node = verreciel.music.context.createMediaElementSource(this.audio);
+      this.node = verreciel.music.context.createMediaElementSource(this.audio)
     }
   }
 
-  get src() {
-    return this.audio.src;
+  get src () {
+    return this.audio.src
   }
 
-  get loop() {
-    return this.audio.loop;
+  get loop () {
+    return this.audio.loop
   }
 
-  play() {
-    this.lastTimePlayed = verreciel.game.time;
+  play () {
+    this.lastTimePlayed = verreciel.game.time
     if (this.node != null) {
-      this.node.connect(verreciel.music.analyser);
+      this.node.connect(verreciel.music.analyser)
     }
-    this.audio.currentTime = 0;
-    this.audio.play();
+    this.audio.currentTime = 0
+    this.audio.play()
   }
 
-  pause() {
+  pause () {
     if (this.node != null) {
-      this.node.disconnect();
+      this.node.disconnect()
     }
-    this.audio.pause();
+    this.audio.pause()
   }
 }

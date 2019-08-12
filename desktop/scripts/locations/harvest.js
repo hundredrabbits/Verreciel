@@ -2,114 +2,114 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationHarvest extends Location {
-  constructor(name, system, at, grows, mapRequirement = null) {
+  constructor (name, system, at, grows, mapRequirement = null) {
     // assertArgs(arguments, 4);
-    super(name, system, at, new IconHarvest(), new StructureHarvest());
+    super(name, system, at, new IconHarvest(), new StructureHarvest())
 
-    this.mapRequirement = mapRequirement;
+    this.mapRequirement = mapRequirement
 
-    this.grows = grows;
+    this.grows = grows
 
-    this.details = this.grows.name;
+    this.details = this.grows.name
 
-    this.generationCountdown = 0;
-    this.generationRate = 200;
+    this.generationCountdown = 0
+    this.generationRate = 200
 
     this.port = new ScenePortSlot(
       this,
-      this.code + "_" + this.grows.name,
+      this.code + '_' + this.grows.name,
       Alignment.center,
       false
-    );
-    this.port.enable();
+    )
+    this.port.enable()
 
-    this.generate();
+    this.generate()
   }
 
-  whenStart() {
+  whenStart () {
     // assertArgs(arguments, 0);
-    super.whenStart();
-    this.port.addEvent(this.grows);
-    verreciel.ghost.report(LogType.harvest, this.grows.code);
+    super.whenStart()
+    this.port.addEvent(this.grows)
+    verreciel.ghost.report(LogType.harvest, this.grows.code)
   }
 
-  generate() {
+  generate () {
     // assertArgs(arguments, 0);
-    delay(1, this.generate.bind(this));
+    delay(1, this.generate.bind(this))
 
     if (this.port == null) {
-      return;
+      return
     }
     if (this.timeLeftLabel == null) {
-      return;
+      return
     }
 
     this.progressRadial.updatePercent(
       this.generationCountdown / this.generationRate * 100
-    );
+    )
 
     if (
       this.generationCountdown < this.generationRate &&
       this.port.hasEvent(this.grows) == false
     ) {
-      this.generationCountdown += 1;
+      this.generationCountdown += 1
     } else {
-      this.refresh();
-      this.generationCountdown = 0;
+      this.refresh()
+      this.generationCountdown = 0
       if (!this.port.hasEvent(this.grows)) {
-        this.port.addEvent(this.grows);
-        verreciel.ghost.report(LogType.harvest, this.grows.code);
+        this.port.addEvent(this.grows)
+        verreciel.ghost.report(LogType.harvest, this.grows.code)
       }
-      this.structure.update();
+      this.structure.update()
     }
 
     if (this.port.hasEvent(this.grows) == true) {
-      this.timeLeftLabel.updateText("");
+      this.timeLeftLabel.updateText('')
     } else {
       this.timeLeftLabel.updateText(
         (this.generationRate - this.generationCountdown).toFixed(0)
-      );
+      )
     }
   }
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
-    this.timeLeftLabel = new SceneLabel("", 0.15, Alignment.center);
-    this.timeLeftLabel.position.set(0, 0.5, 0);
-    newPanel.add(this.timeLeftLabel);
+    this.timeLeftLabel = new SceneLabel('', 0.15, Alignment.center)
+    this.timeLeftLabel.position.set(0, 0.5, 0)
+    newPanel.add(this.timeLeftLabel)
 
-    this.progressRadial = new SceneProgressRadial(1.2, 52, verreciel.cyan);
-    newPanel.add(this.progressRadial);
+    this.progressRadial = new SceneProgressRadial(1.2, 52, verreciel.cyan)
+    newPanel.add(this.progressRadial)
 
-    newPanel.add(this.port);
+    newPanel.add(this.port)
 
-    return newPanel;
+    return newPanel
   }
 
-  onUploadComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
-    super.onUploadComplete();
+    super.onUploadComplete()
 
-    this.refresh();
-    this.structure.update();
+    this.refresh()
+    this.structure.update()
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
     if (this.port.hasEvent(this.grows) != true) {
-      this.icon.mesh.updateChildrenColors(verreciel.grey);
+      this.icon.mesh.updateChildrenColors(verreciel.grey)
     } else {
-      this.icon.mesh.updateChildrenColors(verreciel.white);
+      this.icon.mesh.updateChildrenColors(verreciel.white)
     }
   }
 }
 
 class IconHarvest extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
     this.mesh.add(
       new SceneLine(
         [
@@ -126,24 +126,24 @@ class IconHarvest extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureHarvest extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.root.position.set(0, 5, 0);
+    this.root.position.set(0, 5, 0)
 
-    let color = verreciel.cyan;
-    let value1 = 7;
-    let nodes = 45;
-    var i = 0;
+    let color = verreciel.cyan
+    let value1 = 7
+    let nodes = 45
+    var i = 0
     while (i < nodes) {
-      let node = new Empty();
-      node.rotation.y = degToRad(i * (360 / nodes));
+      let node = new Empty()
+      node.rotation.y = degToRad(i * (360 / nodes))
       node.add(
         new SceneLine(
           [
@@ -156,27 +156,27 @@ class StructureHarvest extends Structure {
           ],
           color
         )
-      );
-      this.root.add(node);
-      i += 1;
+      )
+      this.root.add(node)
+      i += 1
     }
   }
 
-  update() {
+  update () {
     // assertArgs(arguments, 0);
-    super.update();
+    super.update()
 
     if (this.host.port.hasEvent() != true) {
-      this.root.updateChildrenColors(verreciel.grey);
+      this.root.updateChildrenColors(verreciel.grey)
     } else {
-      this.root.updateChildrenColors(verreciel.cyan);
+      this.root.updateChildrenColors(verreciel.cyan)
     }
   }
 
-  sightUpdate() {
+  sightUpdate () {
     // assertArgs(arguments, 0);
-    super.sightUpdate();
+    super.sightUpdate()
 
-    this.root.rotation.y += degToRad(0.1);
+    this.root.rotation.y += degToRad(0.1)
   }
 }

@@ -2,58 +2,58 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationHoradric extends Location {
-  constructor(name, system, at, mapRequirement = null) {
+  constructor (name, system, at, mapRequirement = null) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconHoradric(), new StructureHoradric());
+    super(name, system, at, new IconHoradric(), new StructureHoradric())
 
-    this.details = "unknown";
-    this.mapRequirement = mapRequirement;
-    this.recipeValid = null;
-    this.combinationPercentage = 0;
+    this.details = 'unknown'
+    this.mapRequirement = mapRequirement
+    this.recipeValid = null
+    this.combinationPercentage = 0
   }
 
-  makePanel() {
+  makePanel () {
     // assertArgs(arguments, 0);
-    let newPanel = new Panel();
+    let newPanel = new Panel()
 
     this.inPort1 = new ScenePortSlot(
       this,
-      this.code + "_input_1",
+      this.code + '_input_1',
       Alignment.center,
       false,
-      "In"
-    );
+      'In'
+    )
     this.inPort2 = new ScenePortSlot(
       this,
-      this.code + "_input_2",
+      this.code + '_input_2',
       Alignment.center,
       false,
-      "In"
-    );
+      'In'
+    )
 
-    this.inPort1.label.position.set(0, 0.5, 0);
-    this.inPort2.label.position.set(0, 0.5, 0);
+    this.inPort1.label.position.set(0, 0.5, 0)
+    this.inPort2.label.position.set(0, 0.5, 0)
 
-    this.inPort1.enable();
-    this.inPort2.enable();
+    this.inPort1.enable()
+    this.inPort2.enable()
 
-    this.inPort1.position.set(0.6, 0.6, 0);
-    this.inPort2.position.set(-0.6, 0.6, 0);
+    this.inPort1.position.set(0.6, 0.6, 0)
+    this.inPort2.position.set(-0.6, 0.6, 0)
 
     this.outPort = new ScenePortSlot(
       this,
-      this.code + "_output_1",
+      this.code + '_output_1',
       Alignment.center,
       false,
-      ""
-    );
-    this.outPort.position.set(0, -0.8, 0);
-    this.outPort.label.position.set(0, -0.4, 0);
-    this.outPort.label.updateText("Out");
+      ''
+    )
+    this.outPort.position.set(0, -0.8, 0)
+    this.outPort.label.position.set(0, -0.4, 0)
+    this.outPort.label.updateText('Out')
 
-    newPanel.add(this.inPort1);
-    newPanel.add(this.inPort2);
-    newPanel.add(this.outPort);
+    newPanel.add(this.inPort1)
+    newPanel.add(this.inPort2)
+    newPanel.add(this.outPort)
 
     newPanel.add(
       new SceneLine(
@@ -63,7 +63,7 @@ class LocationHoradric extends Location {
         ],
         verreciel.grey
       )
-    );
+    )
     newPanel.add(
       new SceneLine(
         [
@@ -72,7 +72,7 @@ class LocationHoradric extends Location {
         ],
         verreciel.grey
       )
-    );
+    )
 
     newPanel.add(
       new SceneLine(
@@ -82,7 +82,7 @@ class LocationHoradric extends Location {
         ],
         verreciel.grey
       )
-    );
+    )
     newPanel.add(
       new SceneLine(
         [
@@ -91,7 +91,7 @@ class LocationHoradric extends Location {
         ],
         verreciel.grey
       )
-    );
+    )
 
     newPanel.add(
       new SceneLine(
@@ -101,152 +101,152 @@ class LocationHoradric extends Location {
         ],
         verreciel.grey
       )
-    );
+    )
 
-    this.storage = [this.inPort1, this.inPort2, this.outPort];
+    this.storage = [this.inPort1, this.inPort2, this.outPort]
 
-    return newPanel;
+    return newPanel
   }
 
-  dockUpdate() {
+  dockUpdate () {
     // assertArgs(arguments, 0);
     if (this.inPort1.isEnabled == true && this.inPort2.isEnabled == true) {
     }
 
     if (this.combinationPercentage > 0) {
-      this.structure.blink();
+      this.structure.blink()
     }
   }
 
-  onUploadComplete() {
+  onUploadComplete () {
     // assertArgs(arguments, 0);
-    this.verifyRecipes();
+    this.verifyRecipes()
   }
 
-  verifyRecipes() {
+  verifyRecipes () {
     // assertArgs(arguments, 0);
-    var ingredients = [];
+    var ingredients = []
 
     if (this.inPort1.event != null) {
-      ingredients.push(this.inPort1.event);
+      ingredients.push(this.inPort1.event)
     }
     if (this.inPort2.event != null) {
-      ingredients.push(this.inPort2.event);
+      ingredients.push(this.inPort2.event)
     }
 
     for (let recipe of verreciel.recipes.horadric) {
       if (recipe.isValid(ingredients) == true) {
-        this.recipeValid = recipe;
-        this.combine(recipe);
-        break;
+        this.recipeValid = recipe
+        this.combine(recipe)
+        break
       } else {
-        this.recipeValid = null;
+        this.recipeValid = null
       }
     }
 
-    this.refresh();
+    this.refresh()
   }
 
-  refresh() {
+  refresh () {
     // assertArgs(arguments, 0);
     if (this.outPort.hasEvent() == true) {
-      this.inPort1.disable();
-      this.inPort2.disable();
-      this.outPort.enable();
+      this.inPort1.disable()
+      this.inPort2.disable()
+      this.outPort.enable()
     } else {
-      this.inPort1.enable();
-      this.inPort2.enable();
-      this.outPort.disable();
+      this.inPort1.enable()
+      this.inPort2.enable()
+      this.outPort.disable()
     }
 
     if (this.recipeValid != null) {
-      this.inPort1.disable();
-      this.inPort2.disable();
+      this.inPort1.disable()
+      this.inPort2.disable()
     }
 
     if (this.recipeValid != null) {
-      this.inPort1.label.updateText("IN", verreciel.white);
-      this.inPort2.label.updateText("IN", verreciel.white);
+      this.inPort1.label.updateText('IN', verreciel.white)
+      this.inPort2.label.updateText('IN', verreciel.white)
       this.outPort.label.updateText(
         this.recipeValid.result.name,
         verreciel.white
-      );
+      )
     } else if (this.inPort1.event != null && this.inPort2.event != null) {
-      this.inPort1.label.updateText("IN", verreciel.grey);
-      this.inPort2.label.updateText("IN", verreciel.grey);
-      this.outPort.label.updateText("error", verreciel.red);
+      this.inPort1.label.updateText('IN', verreciel.grey)
+      this.inPort2.label.updateText('IN', verreciel.grey)
+      this.outPort.label.updateText('error', verreciel.red)
     } else {
       if (this.inPort1.event != null) {
-        this.inPort1.label.updateText("IN", verreciel.white);
+        this.inPort1.label.updateText('IN', verreciel.white)
       } else {
-        this.inPort1.label.updateText("IN", verreciel.grey);
+        this.inPort1.label.updateText('IN', verreciel.grey)
       }
       if (this.inPort2.event != null) {
-        this.inPort2.label.updateText("IN", verreciel.white);
+        this.inPort2.label.updateText('IN', verreciel.white)
       } else {
-        this.inPort2.label.updateText("IN", verreciel.grey);
+        this.inPort2.label.updateText('IN', verreciel.grey)
       }
-      this.outPort.label.updateText("Out", verreciel.grey);
+      this.outPort.label.updateText('Out', verreciel.grey)
     }
   }
 
   // MARK: Combinatrix
 
-  combine(recipe) {
+  combine (recipe) {
     // assertArgs(arguments, 1);
-    this.inPort1.disable();
-    this.inPort2.disable();
-    this.inPort1.label.color = verreciel.cyan;
-    this.inPort2.label.color = verreciel.cyan;
+    this.inPort1.disable()
+    this.inPort2.disable()
+    this.inPort1.label.color = verreciel.cyan
+    this.inPort2.label.color = verreciel.cyan
 
-    this.combinationRecipe = recipe;
-    this.combineProgress();
-    verreciel.music.playEffect("beep1");
+    this.combinationRecipe = recipe
+    this.combineProgress()
+    verreciel.music.playEffect('beep1')
   }
 
-  combineProgress() {
+  combineProgress () {
     // assertArgs(arguments, 0);
-    this.combinationPercentage += Math.random() * 2;
-    this.combinationPercentage += 1; // Faster!
+    this.combinationPercentage += Math.random() * 2
+    this.combinationPercentage += 1 // Faster!
 
     if (this.combinationPercentage > 100) {
-      this.onCombinationComplete();
-      return;
+      this.onCombinationComplete()
+      return
     } else {
-      delay(0.05, this.combineProgress.bind(this));
+      delay(0.05, this.combineProgress.bind(this))
     }
     this.outPort.label.updateText(
-      this.combinationPercentage.toFixed(0) + "%",
+      this.combinationPercentage.toFixed(0) + '%',
       verreciel.grey
-    );
+    )
   }
 
-  onCombinationComplete() {
+  onCombinationComplete () {
     // assertArgs(arguments, 0);
-    this.inPort1.removeEvent();
-    this.inPort2.removeEvent();
-    this.inPort1.label.color = verreciel.grey;
-    this.inPort2.label.color = verreciel.grey;
+    this.inPort1.removeEvent()
+    this.inPort2.removeEvent()
+    this.inPort1.label.color = verreciel.grey
+    this.inPort2.label.color = verreciel.grey
 
-    this.outPort.addEvent(this.combinationRecipe.result);
+    this.outPort.addEvent(this.combinationRecipe.result)
 
     // this.structure.show();
 
-    this.combinationPercentage = 0;
+    this.combinationPercentage = 0
 
-    this.refresh();
-    verreciel.music.playEffect("beep2");
+    this.refresh()
+    verreciel.music.playEffect('beep2')
     verreciel.ghost.report(
       LogType.combination,
       this.combinationRecipe.result.code
-    );
+    )
   }
 }
 
 class IconHoradric extends Icon {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
     this.mesh.add(
       new SceneLine(
@@ -266,102 +266,102 @@ class IconHoradric extends Icon {
         ],
         this.color
       )
-    );
+    )
   }
 }
 
 class StructureHoradric extends Structure {
-  constructor() {
+  constructor () {
     // assertArgs(arguments, 0);
-    super();
+    super()
 
-    this.root.position.set(0, 0, 0);
+    this.root.position.set(0, 0, 0)
 
-    let nodes = Math.floor(Math.random() * 10) + 4;
-    let radius = 5;
+    let nodes = Math.floor(Math.random() * 10) + 4
+    let radius = 5
 
-    let cube1 = new Cube(radius, verreciel.grey);
-    this.root.add(cube1);
+    let cube1 = new Cube(radius, verreciel.grey)
+    this.root.add(cube1)
     // cube1.line9.color = verreciel.clear;
     // cube1.line10.color = verreciel.clear;
     // cube1.line11.color = verreciel.clear;
     // cube1.line12.color = verreciel.clear;
 
-    let cube2 = new Cube(radius, verreciel.grey);
-    this.root.add(cube2);
+    let cube2 = new Cube(radius, verreciel.grey)
+    this.root.add(cube2)
     // cube2.line9.color = verreciel.clear;
     // cube2.line10.color = verreciel.clear;
     // cube2.line11.color = verreciel.clear;
     // cube2.line12.color = verreciel.clear;
 
-    let cube3 = new Cube(radius, verreciel.grey);
-    this.root.add(cube3);
+    let cube3 = new Cube(radius, verreciel.grey)
+    this.root.add(cube3)
     // cube3.line9.color = verreciel.clear;
     // cube3.line10.color = verreciel.clear;
     // cube3.line11.color = verreciel.clear;
     // cube3.line12.color = verreciel.clear;
 
-    let cube4 = new Cube(radius, verreciel.grey);
-    this.root.add(cube4);
+    let cube4 = new Cube(radius, verreciel.grey)
+    this.root.add(cube4)
     // cube4.line9.color = verreciel.clear;
     // cube4.line10.color = verreciel.clear;
     // cube4.line11.color = verreciel.clear;
     // cube4.line12.color = verreciel.clear;
 
-    let cube5 = new Cube(radius, verreciel.grey);
-    this.root.add(cube5);
+    let cube5 = new Cube(radius, verreciel.grey)
+    this.root.add(cube5)
     // cube5.line9.color = verreciel.clear;
     // cube5.line10.color = verreciel.clear;
     // cube5.line11.color = verreciel.clear;
     // cube5.line12.color = verreciel.clear;
 
-    let cube6 = new Cube(radius, verreciel.grey);
-    this.root.add(cube6);
+    let cube6 = new Cube(radius, verreciel.grey)
+    this.root.add(cube6)
     // cube6.line9.color = verreciel.clear;
     // cube6.line10.color = verreciel.clear;
     // cube6.line11.color = verreciel.clear;
     // cube6.line12.color = verreciel.clear;
   }
 
-  onUndock() {
+  onUndock () {
     // assertArgs(arguments, 0);
-    super.onUndock();
+    super.onUndock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 3;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 3
 
-    this.root.children[0].rotation.y = degToRad(0);
-    this.root.children[1].rotation.y = degToRad(0);
+    this.root.children[0].rotation.y = degToRad(0)
+    this.root.children[1].rotation.y = degToRad(0)
 
-    this.root.children[2].rotation.z = degToRad(0);
-    this.root.children[3].rotation.z = degToRad(0);
+    this.root.children[2].rotation.z = degToRad(0)
+    this.root.children[3].rotation.z = degToRad(0)
 
-    this.root.children[4].rotation.x = degToRad(0);
-    this.root.children[5].rotation.x = degToRad(0);
+    this.root.children[4].rotation.x = degToRad(0)
+    this.root.children[5].rotation.x = degToRad(0)
 
-    this.rotation.y = degToRad(0);
+    this.rotation.y = degToRad(0)
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 
-  onDock() {
+  onDock () {
     // assertArgs(arguments, 0);
-    super.onDock();
+    super.onDock()
 
-    verreciel.animator.begin();
-    verreciel.animator.animationDuration = 3;
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 3
 
-    this.root.children[0].rotation.y = degToRad(22.5);
-    this.root.children[1].rotation.y = -degToRad(22.5);
+    this.root.children[0].rotation.y = degToRad(22.5)
+    this.root.children[1].rotation.y = -degToRad(22.5)
 
-    this.root.children[2].rotation.z = degToRad(45);
-    this.root.children[3].rotation.z = -degToRad(45);
+    this.root.children[2].rotation.z = degToRad(45)
+    this.root.children[3].rotation.z = -degToRad(45)
 
-    this.root.children[4].rotation.x = degToRad(90);
-    this.root.children[5].rotation.x = -degToRad(90);
+    this.root.children[4].rotation.x = degToRad(90)
+    this.root.children[5].rotation.x = -degToRad(90)
 
-    this.rotation.y = degToRad(90);
+    this.rotation.y = degToRad(90)
 
-    verreciel.animator.commit();
+    verreciel.animator.commit()
   }
 }

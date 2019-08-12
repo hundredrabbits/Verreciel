@@ -2,76 +2,76 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class SceneTrigger extends SceneDrawNode {
-  constructor(host, name, width, height, operation) {
+  constructor (host, name, width, height, operation) {
     // assertArgs(arguments, 5);
 
-    super();
-    this.name = name;
-    verreciel.ghost.triggersByName[name] = this;
-    this.isEnabled = true;
-    this.operation = operation;
-    this.host = host;
+    super()
+    this.name = name
+    verreciel.ghost.triggersByName[name] = this
+    this.isEnabled = true
+    this.operation = operation
+    this.host = host
 
-    let scale = IS_MOBILE ? 1 : 0.5;
+    let scale = IS_MOBILE ? 1 : 0.5
 
     this.geometry.fromBufferGeometry(
       new THREE.PlaneBufferGeometry(width * scale, height * scale)
-    );
-    this.geometry.mergeVertices();
+    )
+    this.geometry.mergeVertices()
 
-    this.color = SceneTrigger.DEBUG_BLUE;
+    this.color = SceneTrigger.DEBUG_BLUE
   }
 
-  makeElement() {
+  makeElement () {
     this.material = new THREE.MeshBasicMaterial({
       color: 0xffffff,
       visible: DEBUG_SHOW_TRIGGERS,
       transparent: true
-    });
-    this.geometry = new THREE.Geometry();
-    this.geometry.dynamic = true;
-    this.element = new THREE.Mesh(this.geometry, this.material);
-    super.makeElement();
+    })
+    this.geometry = new THREE.Geometry()
+    this.geometry.dynamic = true
+    this.element = new THREE.Mesh(this.geometry, this.material)
+    super.makeElement()
   }
 
-  tap() {
+  tap () {
     // assertArgs(arguments, 1);
     if (this.isEnabled == false) {
-      return false;
+      return false
     }
 
-    let result = this.host.touch(this.operation);
+    let result = this.host.touch(this.operation)
 
     if (result == true) {
       verreciel.ghost.report(
         LogType.hit,
         verreciel.ghost.recordHitTarget(this)
-      );
+      )
     }
 
-    return result;
+    return result
   }
 
-  update() {
+  update () {
     // assertArgs(arguments, 0);
   }
 
-  enable() {
+  enable () {
     // assertArgs(arguments, 0);
     if (!this.isEnabled) {
-      this.isEnabled = true;
-      this.color = SceneTrigger.DEBUG_BLUE;
+      this.isEnabled = true
+      this.color = SceneTrigger.DEBUG_BLUE
     }
   }
 
-  disable() {
+  disable () {
     // assertArgs(arguments, 0);
     if (this.isEnabled) {
-      this.isEnabled = false;
-      this.color = SceneTrigger.DEBUG_WHITE;
+      this.isEnabled = false
+      this.color = SceneTrigger.DEBUG_WHITE
     }
   }
 }
 
-SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1);
-SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1);
+SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1)
+SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1)
