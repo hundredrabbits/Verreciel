@@ -3,23 +3,7 @@ const path = require('path')
 const url = require('url')
 const shell = require('electron').shell
 
-let is_shown = true
-
-app.inspect = function () {
-  app.win.toggleDevTools()
-}
-
-app.toggle_fullscreen = function () {
-  app.win.setFullScreen(!app.win.isFullScreen())
-}
-
-app.toggle_visible = function () {
-  if (is_shown) { app.win.hide() } else { app.win.show() }
-}
-
-app.inject_menu = function (m) {
-  Menu.setApplicationMenu(Menu.buildFromTemplate(m))
-}
+let isShown = true
 
 app.win = null
 
@@ -39,7 +23,7 @@ app.on('ready', () => {
   })
 
   app.win.loadURL(`file://${__dirname}/index.html`)
-  // app.win.toggleDevTools();
+  app.win.toggleDevTools()
 
   app.win.on('closed', () => {
     win = null
@@ -47,20 +31,46 @@ app.on('ready', () => {
   })
 
   app.win.on('hide', function () {
-    is_shown = false
+    isShown = false
   })
 
   app.win.on('show', function () {
-    is_shown = true
+    isShown = true
+  })
+
+  app.on('window-all-closed', () => {
+    app.quit()
+  })
+
+  app.on('activate', () => {
+    if (app.win === null) {
+      createWindow()
+    } else {
+      app.win.show()
+    }
   })
 })
 
-app.on('window-all-closed', () => {
-  app.quit()
-})
+app.inspect = function () {
+  app.win.toggleDevTools()
+}
 
-app.on('activate', () => {
-  if (app.win === null) {
-    createWindow()
+app.toggleFullscreen = function () {
+  app.win.setFullScreen(!app.win.isFullScreen())
+}
+
+app.toggleVisible = function () {
+  if (process.platform === 'win32') {
+    if (!app.win.isMinimized()) { app.win.minimize() } else { app.win.restore() }
+  } else {
+    if (isShown && !app.win.isFullScreen()) { app.win.hide() } else { app.win.show() }
   }
-})
+}
+
+app.injectMenu = function (menu) {
+  try {
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menu))
+  } catch (err) {
+    console.warn('Cannot inject menu.')
+  }
+}

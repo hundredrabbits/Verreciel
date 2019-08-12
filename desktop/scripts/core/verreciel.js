@@ -15,6 +15,8 @@ class Verreciel {
     this.element = document.createElement('verreciel')
     document.body.appendChild(this.element)
 
+    this.theme = new Theme()
+
     this.colorPalette = [
       new THREE.Color(1, 0, 0), // red
       new THREE.Color(0.44, 0.87, 0.76), // cyan
@@ -118,6 +120,11 @@ class Verreciel {
 
     this.controller.add('default', 'Look', 'Right', () => { verreciel.player.lookAtMod(90) }, 'D')
     this.controller.add('default', 'Look', 'Left', () => { verreciel.player.lookAtMod(-90) }, 'A')
+
+    this.controller.add('default', 'Theme', 'Open Theme', () => { this.theme.open() }, 'CmdOrCtrl+Shift+O')
+    this.controller.add('default', 'Theme', 'Reset Theme', () => { this.theme.reset() }, 'CmdOrCtrl+Shift+Backspace')
+    this.controller.addSpacer('default', 'Theme', 'Download')
+    this.controller.add('default', 'Theme', 'Download Themes..', () => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Themes') })
 
     this.controller.commit()
 
