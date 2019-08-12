@@ -23,7 +23,7 @@ app.on('ready', () => {
   })
 
   app.win.loadURL(`file://${__dirname}/index.html`)
-  app.win.toggleDevTools()
+  // app.win.toggleDevTools()
 
   app.win.on('closed', () => {
     win = null
