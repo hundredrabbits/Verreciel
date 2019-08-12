@@ -2,17 +2,22 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class MeshLineSegments {
-  constructor(source = null) {
+  constructor(colorPalette = null, source = null) {
     this.geometry = new THREE.BufferGeometry();
     this.geometry.setDrawRange(0, Infinity);
     this.material = new MeshLineSegmentsMaterial();
     this.material.lineWidth = 0.01;
+    this.material.colorPalette = colorPalette;
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.element = new THREE.Group();
     this.element.add(this.mesh);
     if (source != null) {
       this.updateGeometry(source);
     }
+  }
+
+  updateColorPalette(colorPalette) {
+    this.material.colorPalette = colorPalette;
   }
 
   remakeGeometry(source) {
@@ -119,9 +124,15 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
     }
     super(innerParams);
 
+    this._color = new THREE.Color(1, 0, 0);
+    this._colorPalette = [
+      new THREE.Vector3(1, 0, 0),
+      new THREE.Vector3(0, 1, 0),
+      new THREE.Vector3(0, 0, 1)
+    ];
     this.uniforms.screenAspectRatio = { value: 1 };
     this.uniforms.lineWidth = { value: 1 };
-    this.uniforms.diffuse = { value: new THREE.Vector3(1, 1, 1) };
+    this.uniforms.diffuse = { value: new THREE.Vector3(1, 0, 0) };
     this.uniforms.opacity = { value: 1.0 };
 
     this.vertexShader = `
@@ -184,6 +195,24 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
     `;
   }
 
+  recalculateDiffuse() {
+    const diffuse = new THREE.Color(0, 0, 0);
+
+    diffuse.r += this._colorPalette[0].r * this._color.r;
+    diffuse.g += this._colorPalette[0].g * this._color.r;
+    diffuse.b += this._colorPalette[0].b * this._color.r;
+
+    diffuse.r += this._colorPalette[1].r * this._color.g;
+    diffuse.g += this._colorPalette[1].g * this._color.g;
+    diffuse.b += this._colorPalette[1].b * this._color.g;
+
+    diffuse.r += this._colorPalette[2].r * this._color.b;
+    diffuse.g += this._colorPalette[2].g * this._color.b;
+    diffuse.b += this._colorPalette[2].b * this._color.b;
+
+    this.uniforms.diffuse.value.fromArray(diffuse.toArray());
+  }
+
   get screenAspectRatio() {
     return this.uniforms.screenAspectRatio.value;
   }
@@ -217,10 +246,20 @@ class MeshLineSegmentsMaterial extends THREE.ShaderMaterial {
   }
 
   get color() {
-    return new THREE.Color().fromArray(this.uniforms.diffuse.value.toArray());
+    return this._color;
   }
 
   set color(newColor) {
-    this.uniforms.diffuse.value.fromArray(newColor.toArray());
+    this._color = newColor;
+    this.recalculateDiffuse();
+  }
+
+  get colorPalette() {
+    return this._colorPalette;
+  }
+
+  set colorPalette(newValue) {
+    this._colorPalette = newValue;
+    this.recalculateDiffuse();
   }
 }

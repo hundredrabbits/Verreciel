@@ -15,13 +15,19 @@ class Verreciel {
     this.element = document.createElement("verreciel");
     document.body.appendChild(this.element);
 
+    this.colorPalette = [
+      new THREE.Color(1, 0, 0), // red
+      new THREE.Color(0.44, 0.87, 0.76), // cyan
+      new THREE.Color(1, 1, 1) // white
+    ];
+
     // Colors
-    this.black = new THREE.Vector4(0, 0, 0, 1);
-    this.grey = new THREE.Vector4(0.5, 0.5, 0.5, 1);
-    this.white = new THREE.Vector4(1, 1, 1, 1);
-    this.red = new THREE.Vector4(1, 0, 0, 1);
-    this.cyan = new THREE.Vector4(0.44, 0.87, 0.76, 1);
-    this.clear = new THREE.Vector4(0, 0, 0, 0);
+    this.clear = new THREE.Vector4(0, 0,  0, 0);
+    this.black = new THREE.Vector4(0, 0,  0, 1);
+    this.grey  = new THREE.Vector4(0, 0, .5, 1);
+    this.white = new THREE.Vector4(0, 0,  1, 1);
+    this.red   = new THREE.Vector4(1, 0,  0, 1);
+    this.cyan  = new THREE.Vector4(0, 1,  0, 1);
 
     this.controller = new Controller();
     this.fps = 40;
@@ -289,6 +295,13 @@ class Verreciel {
     if (this.root != null) {
       this.root.whenResize();
     }
+  }
+
+  scramblePalette() {
+    this.colorPalette[0].setRGB(Math.random(), Math.random(), Math.random());
+    this.colorPalette[1].setRGB(Math.random(), Math.random(), Math.random());
+    this.colorPalette[2].setRGB(Math.random(), Math.random(), Math.random());
+    this.root.updateColorPalette();
   }
 }
 

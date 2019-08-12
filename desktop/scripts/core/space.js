@@ -38,27 +38,27 @@ class Space extends Empty {
     verreciel.capsule.system = system;
     switch (system) {
       case Systems.valen:
-        this.targetSpaceColor.setRGB(0.2, 0.2, 0.2);
+        this.targetSpaceColor.setRGB(0, 0, 0.2);
         this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience2);
         break;
       case Systems.senni:
-        this.targetSpaceColor.setRGB(0.0, 0.0, 0.0);
+        this.targetSpaceColor.setRGB(0, 0, 0);
         this.targetStarColor = verreciel.cyan;
         verreciel.music.setAmbience(Ambience.ambience3);
         break;
       case Systems.usul:
-        this.targetSpaceColor.setRGB(0.2, 0.0, 0.0);
+        this.targetSpaceColor.setRGB(0.2, 0, 0);
         this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience4);
         break;
       case Systems.close:
-        this.targetSpaceColor.setRGB(0.6, 0.6, 0.6);
+        this.targetSpaceColor.setRGB(0, 0, 0.6);
         this.targetStarColor = verreciel.black;
         verreciel.music.setAmbience(Ambience.ambience5);
         break;
       default:
-        this.targetSpaceColor.setRGB(0.0, 0.0, 0.0);
+        this.targetSpaceColor.setRGB(0, 0, 0);
         this.targetStarColor = verreciel.white;
         verreciel.music.setAmbience(Ambience.ambience1);
         break;
@@ -67,7 +67,7 @@ class Space extends Empty {
     if (verreciel.player.isEjected == true) {
       this.targetSpaceColor.setRGB(0, 0, 0);
     } else if (verreciel.capsule.closestStar().isComplete == true) {
-      this.targetSpaceColor.setRGB(44 / 255, 73 / 255, 65 / 255);
+      this.targetSpaceColor.setRGB(0, 0.4, 0);
     }
   }
 
@@ -134,7 +134,22 @@ class Space extends Empty {
       this.currentStarColor.z -= 0.01;
     }
 
-    verreciel.scene.background = this.currentSpaceColor;
+    const diffuse = new THREE.Color(0, 0, 0);
+    const colorPalette = verreciel.colorPalette;
+
+    diffuse.r += colorPalette[0].r * this.currentSpaceColor.r;
+    diffuse.g += colorPalette[0].g * this.currentSpaceColor.r;
+    diffuse.b += colorPalette[0].b * this.currentSpaceColor.r;
+
+    diffuse.r += colorPalette[1].r * this.currentSpaceColor.g;
+    diffuse.g += colorPalette[1].g * this.currentSpaceColor.g;
+    diffuse.b += colorPalette[1].b * this.currentSpaceColor.g;
+
+    diffuse.r += colorPalette[2].r * this.currentSpaceColor.b;
+    diffuse.g += colorPalette[2].g * this.currentSpaceColor.b;
+    diffuse.b += colorPalette[2].b * this.currentSpaceColor.b;
+
+    verreciel.scene.background = diffuse;
 
     // Etc
 

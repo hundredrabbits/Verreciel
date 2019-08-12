@@ -10,7 +10,7 @@ class SceneLine extends SceneDrawNode {
   }
 
   makeElement() {
-    this.meshLineSegments = new MeshLineSegments();
+    this.meshLineSegments = new MeshLineSegments(verreciel.colorPalette);
     this.material = this.meshLineSegments.material;
     this.material.screenAspectRatio = verreciel.width / verreciel.height;
     this.material.lineWidth = 0.004;
@@ -35,6 +35,11 @@ class SceneLine extends SceneDrawNode {
       throw "BAD GEOMETRY";
     }
     this.meshLineSegments.updateGeometry(vertices);
+  }
+
+  updateColorPalette() {
+    super.updateColorPalette();
+    this.material.colorPalette = verreciel.colorPalette;
   }
 
   whenResize() {

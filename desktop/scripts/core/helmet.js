@@ -193,6 +193,21 @@ class Helmet extends Empty {
     this.visor.add(verreciel.player.port);
     verreciel.player.port.position.set(0, -3, -2.5);
 
+
+    // To spin around a fun shape:
+    /*
+    const funShape = new Spaceship(10);
+
+    funShape.position.z = -50;
+    funShape.rotation.x = Math.PI;
+    setInterval(() => {
+      funShape.rotation.y += 0.005;
+    }, 10);
+
+    this.visor.add(funShape);
+    verreciel.capsule.hide();
+    */
+
     /*
     // iPhone4
     if (verreciel.width == 320 && verreciel.height == 480)
