@@ -287,7 +287,7 @@ class Thruster extends MainPanel {
 
     // Triggers
 
-    this.accelerate = new SceneTrigger(this, 'thruster_accelerate', 1, 1, 1)
+    this.accelerate = new SceneTrigger(this, 'thruster_accelerate', 2, 1, 1)
     this.accelerate.position.set(0, 0.5, 0)
     this.accelerate.add(
       new SceneLine(
@@ -302,7 +302,7 @@ class Thruster extends MainPanel {
       )
     )
 
-    this.decelerate = new SceneTrigger(this, 'thruster_decelerate', 1, 1, 0)
+    this.decelerate = new SceneTrigger(this, 'thruster_decelerate', 2, 1, 1)
     this.decelerate.position.set(0, -0.5, 0)
     this.decelerate.add(
       new SceneLine(
@@ -317,7 +317,7 @@ class Thruster extends MainPanel {
       )
     )
 
-    this.action = new SceneTrigger(this, 'thruster_action', 1.5, 1.5, 2)
+    this.action = new SceneTrigger(this, 'thruster_action', 2, 2, 2)
 
     this.mainNode.add(this.accelerate)
     this.mainNode.add(this.decelerate)
@@ -339,11 +339,8 @@ class Thruster extends MainPanel {
       verreciel.music.playEffect('click3')
       return true
     } else if (id == 1) {
-      if (
-        (verreciel.pilot.target == null ||
-          verreciel.pilot.port.origin.host != verreciel.radar) &&
-        verreciel.pilot.isInstalled == true
-      ) {
+      if ((verreciel.pilot.target == null || verreciel.pilot.port.origin.host != verreciel.radar) && verreciel.pilot.isInstalled == true) {
+        verreciel.helmet.addMessage('no destination')
         return
       }
       this.speedUp()

@@ -156,6 +156,10 @@ class Verreciel {
     this.render()
   }
 
+  reset () {
+    this.game.reset()
+  }
+
   render () {
     this.phase = Phase.render
     // assertArgs(arguments, 0);
