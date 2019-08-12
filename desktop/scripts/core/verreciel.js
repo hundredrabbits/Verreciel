@@ -127,29 +127,6 @@ class Verreciel {
 
     this.windowResize()
 
-    this.controller.add('default', '*', 'About', () => { require('electron').shell.openExternal('http://hundredrabbits.itch.io/Verreciel') }, 'CmdOrCtrl+,')
-    this.controller.add('default', '*', 'Fullscreen', () => { app.toggle_fullscreen() }, 'CmdOrCtrl+Enter')
-    this.controller.add('default', '*', 'Hide', () => { app.toggle_visible() }, 'CmdOrCtrl+H')
-    this.controller.add('default', '*', 'Inspect', () => { app.inspect() }, 'CmdOrCtrl+.')
-    this.controller.add('default', '*', 'Documentation', () => { verreciel.controller.docs() }, 'CmdOrCtrl+Esc')
-    this.controller.add('default', '*', 'Reset', () => { this.game.reset() }, 'CmdOrCtrl+Backspace')
-    this.controller.add('default', '*', 'Quit', () => { app.exit() }, 'CmdOrCtrl+Q')
-
-    this.controller.add('default', 'Look', 'Battery', () => { verreciel.player.lookAt(0) }, '1')
-    this.controller.add('default', 'Look', 'Radar', () => { verreciel.player.lookAt(180) }, '2')
-    this.controller.add('default', 'Look', 'Monitor', () => { verreciel.player.lookAt(90) }, '3')
-    this.controller.add('default', 'Look', 'East', () => { verreciel.player.lookAt(-90) }, '4')
-
-    this.controller.add('default', 'Look', 'Right', () => { verreciel.player.lookAtMod(90) }, 'D')
-    this.controller.add('default', 'Look', 'Left', () => { verreciel.player.lookAtMod(-90) }, 'A')
-
-    this.controller.add('default', 'Theme', 'Open Theme', () => { this.theme.open() }, 'CmdOrCtrl+Shift+O')
-    this.controller.add('default', 'Theme', 'Reset Theme', () => { this.theme.reset() }, 'CmdOrCtrl+Shift+Backspace')
-    this.controller.addSpacer('default', 'Theme', 'Download')
-    this.controller.add('default', 'Theme', 'Download Themes..', () => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Themes') })
-
-    this.controller.commit()
-
     this.root = new Empty()
     this.scene.add(this.root.element)
 

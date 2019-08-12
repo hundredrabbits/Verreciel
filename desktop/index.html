@@ -104,52 +104,63 @@
     <script type="text/javascript" src="scripts/collections/items.js"></script>
     <script type="text/javascript" src="scripts/collections/locations.js"></script>
     <script type="text/javascript" src="scripts/collections/recipes.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="links/reset.css"/>
     <link rel="stylesheet" type="text/css" href="links/main.css"/>
-
     <title>Verreciel</title>
-    <!-- Created by Devine Lu Linvega. -->
-    <!-- Copyright © 2017 XXIIVV. All rights reserved. -->
   </head>
   <body>
     <script>
+      function isDeviceMobile()
+      {
+        console.log("isDeviceMobile: window orientation = " + window.orientation);
+        return window.orientation !== undefined;
+      }
 
-        function isDeviceMobile()
-        {
-            console.log("isDeviceMobile: window orientation = " + window.orientation);
-            return window.orientation !== undefined;
-        }
+      let IS_MOBILE = isDeviceMobile();
+      let DEBUG_SKIP_LOGO = true;
+      let DEBUG_SHOW_TRIGGERS = false;
+      let DEBUG_LOG_GHOST = false;
+      let DEBUG_DONT_SAVE = false;
+      let DEBUG_NO_MUSIC = false;
+      let DEBUG_SHOW_STATS = false;
+      let DEBUG_REPORT_NODE_USE = false;
 
-        let IS_MOBILE = isDeviceMobile();
+      const {dialog,app} = require('electron').remote;
+      const fs = require('fs');
 
-        let DEBUG_SKIP_LOGO = true;
-        let DEBUG_SHOW_TRIGGERS = false;
-        let DEBUG_LOG_GHOST = false;
-        let DEBUG_DONT_SAVE = false;
-        let DEBUG_NO_MUSIC = false;
-        let DEBUG_SHOW_STATS = false;
-        let DEBUG_REPORT_NODE_USE = false;
+      let verreciel = new Verreciel();
+      verreciel.install();
 
-        const {dialog,app} = require('electron').remote;
-        const fs = require('fs');
+      verreciel.controller.add('default', '*', 'About', () => { require('electron').shell.openExternal('http://hundredrabbits.itch.io/Verreciel') }, 'CmdOrCtrl+,')
+      verreciel.controller.add('default', '*', 'Fullscreen', () => { app.toggleFullscreen() }, 'CmdOrCtrl+Enter')
+      verreciel.controller.add('default', '*', 'Hide', () => { app.toggleVisible() }, 'CmdOrCtrl+H')
+      verreciel.controller.add('default', '*', 'Inspect', () => { app.inspect() }, 'CmdOrCtrl+.')
+      verreciel.controller.add('default', '*', 'Documentation', () => { verreciel.controller.docs() }, 'CmdOrCtrl+Esc')
+      verreciel.controller.add('default', '*', 'Reset', () => { this.game.reset() }, 'CmdOrCtrl+Backspace')
+      verreciel.controller.add('default', '*', 'Quit', () => { app.exit() }, 'CmdOrCtrl+Q')
+      verreciel.controller.add('default', 'Look', 'Battery', () => { verreciel.player.lookAt(0) }, '1')
+      verreciel.controller.add('default', 'Look', 'Radar', () => { verreciel.player.lookAt(180) }, '2')
+      verreciel.controller.add('default', 'Look', 'Monitor', () => { verreciel.player.lookAt(90) }, '3')
+      verreciel.controller.add('default', 'Look', 'East', () => { verreciel.player.lookAt(-90) }, '4')
+      verreciel.controller.add('default', 'Look', 'Right', () => { verreciel.player.lookAtMod(90) }, 'D')
+      verreciel.controller.add('default', 'Look', 'Left', () => { verreciel.player.lookAtMod(-90) }, 'A')
+      verreciel.controller.add('default', 'Audio', 'Toggle Ambience', () => { verreciel.music.toggleAmbience() }, 'CmdOrCtrl+Shift+M')
+      verreciel.controller.add('default', 'Theme', 'Open Theme', () => { this.theme.open() }, 'CmdOrCtrl+Shift+O')
+      verreciel.controller.add('default', 'Theme', 'Reset Theme', () => { this.theme.reset() }, 'CmdOrCtrl+Shift+Backspace')
+      verreciel.controller.addSpacer('default', 'Theme', 'Download')
+      verreciel.controller.add('default', 'Theme', 'Download Themes..', () => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Themes') })
+      verreciel.controller.commit()
 
-        let verreciel = new Verreciel();
-        verreciel.install();
-
-        if (DEBUG_SKIP_LOGO)
-        {
-            verreciel.start();
-        }
-        else
-        {
-            var logo = new Logo();
-            logo.install(120);
-
-            setTimeout(function(){ verreciel.start(); }, 3000);
-            setTimeout(function(){ logo.remove(); }, 5500);
-        }
-
+      if (DEBUG_SKIP_LOGO) {
+        verreciel.start();
+      }
+      else {
+        var logo = new Logo();
+        logo.install(120);
+        setTimeout(function(){ verreciel.start(); }, 3000);
+        setTimeout(function(){ logo.remove(); }, 5500);
+      }
     </script>
   </body>
 </html>

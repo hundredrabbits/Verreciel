@@ -76,6 +76,16 @@ class Music {
     this.switchAudio('ambience', this.ambience)
   }
 
+  toggleAmbience () {
+    if (this.track.audio.volume === 1) {
+      this.track.audio.volume = 0
+      verreciel.helmet.addMessage('Audio Off')
+    } else {
+      this.track.audio.volume = 1
+      verreciel.helmet.addMessage('Audio On')
+    }
+  }
+
   isPlayingRecord () {
     return this.track != null && this.track.role == 'record'
   }
