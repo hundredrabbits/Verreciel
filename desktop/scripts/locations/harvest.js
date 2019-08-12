@@ -13,7 +13,7 @@ class LocationHarvest extends Location {
     this.details = this.grows.name
 
     this.generationCountdown = 0
-    this.generationRate = 200
+    this.generationRate = 160
 
     this.port = new ScenePortSlot(
       this,
