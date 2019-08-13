@@ -120,7 +120,7 @@
         return window.orientation !== undefined;
       }
 
-      let JUMP_MISSION = remote.getGlobal('query')[0] === 'mission' ? remote.getGlobal('query')[1] : null
+      let JUMP_MISSION = null //remote.getGlobal('query')[0] === 'mission' ? remote.getGlobal('query')[1] : null
 
       let IS_MOBILE = isDeviceMobile();
       let DEBUG_SKIP_LOGO = JUMP_MISSION ? true : false;
