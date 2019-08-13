@@ -125,20 +125,24 @@ class StructureStation extends Structure {
 
     this.root.position.set(0, 5, 0)
 
-    let nodes = 4 + Math.random() * 4
+    let color = verreciel.grey
+    let nodes = 24
     var i = 0
     while (i < nodes) {
-      let axis = new Empty()
-      axis.rotation.y = degToRad(i * 360 / nodes)
-
-      let node = new Hexagon(4, verreciel.red)
-      node.rotation.x = degToRad(90)
-      let node1 = new Hexagon(4, verreciel.red)
-      node1.rotation.y = degToRad(90)
-
-      axis.add(node)
-      node.add(node1)
-      this.root.add(axis)
+      let node = new Empty()
+      node.rotation.y = degToRad(i * (360 / nodes))
+      node.add(
+        new SceneLine(
+          [
+            new THREE.Vector3(0.375, -4, 0),
+            new THREE.Vector3(-0.375, -4, 0),
+            new THREE.Vector3(-3.75, -40, 0),
+            new THREE.Vector3(3.75, -40, 0)
+          ],
+          color
+        )
+      )
+      this.root.add(node)
       i += 1
     }
   }
@@ -195,25 +199,5 @@ class StructureStation extends Structure {
   sightUpdate () {
     // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
-  }
-
-  morph () {
-    // assertArgs(arguments, 0);
-    super.morph()
-
-    verreciel.animator.begin()
-    verreciel.animator.animationDuration = 0.5
-
-    let deg1 = (22.5 * ((this.morphTime * 123) % 8)) % 180
-    let deg2 = (22.5 * ((this.morphTime * 678) % 6)) % 180
-
-    for (let node of this.root.children) {
-      for (let subnode of node.children) {
-        subnode.rotation.z = degToRad(deg1 - deg2)
-        subnode.position.y = (2 - (this.morphTime * 0.34) % 4) * 0.6
-      }
-    }
-
-    verreciel.animator.commit()
   }
 }
