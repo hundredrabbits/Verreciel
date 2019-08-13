@@ -329,10 +329,8 @@ class Player extends Empty {
 
   onKey (e) {
     if (!verreciel.player.port.connection) { return }
-
-    console.log(verreciel.player.port.connection, this.text)
-    verreciel.player.port.connection.host.update()
-    verreciel.player.text = e.key
+    console.log(verreciel.player.port.connection)
+    verreciel.player.text += e.key
     e.preventDefault()
   }
 
