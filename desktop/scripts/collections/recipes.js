@@ -24,6 +24,7 @@ class Recipes {
         verreciel.items.valenPortalKey
       )
     )
+
     this.horadric.push(
       new Recipe(
         [
@@ -40,12 +41,14 @@ class Recipes {
         verreciel.items.endPortalKeyFragment1
       )
     )
+
     this.horadric.push(
       new Recipe(
         [verreciel.items.loiqePortalKey, verreciel.items.senniPortalKey],
         verreciel.items.endPortalKeyFragment2
       )
     )
+
     this.horadric.push(
       new Recipe(
         [

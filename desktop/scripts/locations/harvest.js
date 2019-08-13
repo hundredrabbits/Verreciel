@@ -121,8 +121,8 @@ class IconHarvest extends Icon {
           new THREE.Vector3(-this.size, 0, 0),
           new THREE.Vector3(this.size, 0, 0),
           new THREE.Vector3(0, -this.size, 0),
-          new THREE.Vector3(this.size, 0, 0),
-          new THREE.Vector3(-this.size, 0, 0)
+          new THREE.Vector3(0, this.size, 0),
+          new THREE.Vector3(0, -this.size, 0)
         ],
         this.color
       )

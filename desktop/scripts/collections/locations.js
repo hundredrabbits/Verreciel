@@ -105,7 +105,7 @@ class Loiqe {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -163,7 +163,7 @@ class Usul {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -305,7 +305,7 @@ class Valen {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -421,7 +421,7 @@ class Senni {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 

@@ -48,8 +48,8 @@ class Space extends Empty {
         verreciel.music.setAmbience(Ambience.ambience3)
         break
       case Systems.usul:
-        this.targetSpaceColor.setRGB(0.2, 0, 0)
-        this.targetStarColor = verreciel.white
+        this.targetSpaceColor.setRGB(0.05, 0.05, 0.05)
+        this.targetStarColor = verreciel.red
         verreciel.music.setAmbience(Ambience.ambience4)
         break
       case Systems.close:

@@ -1,13 +1,10 @@
-## MISSION 1:
+## Intro
 
+### MISSION 1:
 Start capsule with battery
 Start capsule with battery 1
-Start bank with waste
-Start bank with record1
-Start bank with loiqe key
-...and start the other locations with their items
 
-## MISSION: 
+### MISSION: 
 Route cell to thruster
 Undock with thruster
 Accelerate with Thruster
@@ -58,41 +55,45 @@ Aquire [currency2]
 Aquire [currency1]
 Combine currencies
 
+## Senni
+
 ## MISSION: Senni
 Aquire [currency4]
 Trade [currency4] for [senniPortalKey]
 
-## MISSION: Map
+### MISSION: Map
 Collect [map1]
 Collect [currency3]
 Install map
 
-## MISSION: fog
+### MISSION: fog
 Power Map in battery
 Route fog to map
 Collect third cell
 Install cell in battery
 
-## MISSION: Helmet
+### MISSION: Helmet
 Route map to helmet
 Collect [usulPortalFragment1]
 Collect [usulPortalFragment2]
 Combine fragments
 
-## MISSION: Shield
+## Usul 
+
+### MISSION: Shield
 Install shield
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]
 Combine fragments
 
-## MISSION: Shield
+### MISSION: Shield
 Collect [map2]
 Route [map2] to map
 Collect [shield]
 Route [shield] to shield
 Power Shield in battery
 
-## MISSION: mechanism
+### MISSION: mechanism
 Extinguish the sun
 Extinguish the sun
 Extinguish the sun
