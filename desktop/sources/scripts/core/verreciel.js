@@ -125,6 +125,8 @@ class Verreciel {
     document.addEventListener('wheel', this.mouseWheel.bind(this), false)
     window.addEventListener('resize', this.windowResize.bind(this), false)
 
+    document.addEventListener('keydown', this.keyDown.bind(this), false)
+
     this.windowResize()
 
     this.root = new Empty()
@@ -313,6 +315,24 @@ class Verreciel {
     this.colorPalette[1].setRGB(Math.random(), Math.random(), Math.random())
     this.colorPalette[2].setRGB(Math.random(), Math.random(), Math.random())
     this.root.updateColorPalette()
+  }
+
+  keyDown (event) {
+    let playerText = this.player.text;
+
+    if (event.key === "Backspace") {
+      playerText = playerText.substring(0, playerText.length - 1);
+    } else if (event.key.length == 1) {
+      playerText += event.key;
+    }
+
+    if (this.player.text !== playerText) {
+      this.player.text = playerText;
+      console.log(playerText);
+      if (this.console.port.origin != null && this.console.port.origin.host === this.player) {
+        this.console.inject(this.player.payload(), false);
+      }
+    }
   }
 }
 

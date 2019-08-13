@@ -97,7 +97,7 @@ class Console extends MainPanel {
     ScenePort.stripAllPorts(this.mainNode)
   }
 
-  inject (payload) {
+  inject (payload, animate = true) {
     // assertArgs(arguments, 1);
     this.clear()
     var id = 0
@@ -108,24 +108,24 @@ class Console extends MainPanel {
       id += 1
     }
 
-    // Animate
+    if (animate) {
+      var count = 0
+      for (let line of this.lines) {
+        line.position.z = count * -0.1
+        line.opacity = 0
+        count += 1
+      }
 
-    var count = 0
-    for (let line of this.lines) {
-      line.position.z = count * -0.1
-      line.opacity = 0
-      count += 1
+      verreciel.animator.begin()
+      verreciel.animator.animationDuration = 0.5
+
+      for (let line of this.lines) {
+        line.position.z = 0
+        line.opacity = 1
+      }
+
+      verreciel.animator.commit()
     }
-
-    verreciel.animator.begin()
-    verreciel.animator.animationDuration = 0.5
-
-    for (let line of this.lines) {
-      line.position.z = 0
-      line.opacity = 1
-    }
-
-    verreciel.animator.commit()
   }
 
   defaultPayload () {
