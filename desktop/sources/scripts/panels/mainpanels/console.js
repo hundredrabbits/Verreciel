@@ -17,6 +17,19 @@ class Console extends MainPanel {
 
     this.details = 'inspects events'
 
+    this.text = ''
+
+    this.receive = (key) => {
+      if (key === 'Backspace' && this.text.length > 0) {
+        this.text = this.text.substring(0, this.text.length - 1)
+      } else if (key === 'Enter' && this.text.length > 0) {
+        this.validate(this.text)
+      } else if (key.length === 1 && this.text.length < 48) {
+        this.text += key
+      }
+      this.inject(this.inputPayload())
+    }
+
     this.lines[0].position.set(
       Templates.leftMargin,
       Templates.lineSpacing * 2.5,
@@ -126,6 +139,19 @@ class Console extends MainPanel {
 
       verreciel.animator.commit()
     }
+  }
+
+  inputPayload () {
+    // assertArgs(arguments, 0);
+    const segments = this.text.match(/.{1,16}/g)
+    return new ConsolePayload([
+      new ConsoleData(segments && segments[0] ? segments[0] : '', this.text.length, null, verreciel.white),
+      new ConsoleData(segments && segments[1] ? segments[1] : '', '', null, verreciel.white),
+      new ConsoleData(segments && segments[2] ? segments[2] : '', '', null, verreciel.white),
+      new ConsoleData('!!', `${verreciel.capsule.at.x.toFixed(2)} ${verreciel.capsule.at.y.toFixed(2)}`, null, verreciel.grey),
+      new ConsoleData('!', `${verreciel.capsule.radiation.toFixed(2)}`, null, verreciel.grey),
+      new ConsoleData('', `${verreciel.capsule.system}`, null, verreciel.grey)
+    ])
   }
 
   defaultPayload () {

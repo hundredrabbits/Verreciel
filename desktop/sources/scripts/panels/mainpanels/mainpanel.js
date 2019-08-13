@@ -47,7 +47,18 @@ class MainPanel extends Panel {
     this.add(this.header)
     this.header.rotation.x += degToRad(Templates.titlesAngle)
 
+    // Keyboard communication
+
+    this.receive = (e) => {
+      console.log('received: ', e)
+    }
+
+    this.validate = (e) => {
+      console.log('validate', e)
+    }
+
     // Footer
+
     this.detailsLabel.position.set(0, 0, Templates.radius)
     this.footer.add(this.detailsLabel)
     this.add(this.footer)

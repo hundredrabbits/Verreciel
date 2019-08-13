@@ -318,21 +318,9 @@ class Verreciel {
   }
 
   keyDown (event) {
-    let playerText = this.player.text;
-
-    if (event.key === "Backspace") {
-      playerText = playerText.substring(0, playerText.length - 1);
-    } else if (event.key.length == 1) {
-      playerText += event.key;
-    }
-
-    if (this.player.text !== playerText) {
-      this.player.text = playerText;
-      console.log(playerText);
-      if (this.console.port.origin != null && this.console.port.origin.host === this.player) {
-        this.console.inject(this.player.payload(), false);
-      }
-    }
+    if (!this.player.port.connection) { return }
+    this.player.send(event.key)
+    event.preventDefault()
   }
 }
 

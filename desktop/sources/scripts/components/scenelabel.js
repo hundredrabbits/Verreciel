@@ -56,7 +56,7 @@ class SceneLabel extends SceneLine {
     // NOTE: We need to upscale here, as the new glyphs
     // are considerably smaller, and don't have negative coordinates.
     scale *= 1.5
-    text = text.toLowerCase()
+    text = `${text}`.toLowerCase()
 
     for (let i = 0; i < text.length; i++) {
       if (text[i] === '$' || text[i] === '\n') {

@@ -16,7 +16,6 @@ class Player extends Empty {
     this.accelX = 0
     this.accelY = 0
     this.isPanoptic = false
-    this.text = ''
 
     this.port = new ScenePort(this, 'player')
     this.port.enable()
@@ -325,6 +324,11 @@ class Player extends Empty {
     if (this.port.isReceivingFromPanel(verreciel.nav) != true) {
       verreciel.radar.modeNormal()
     }
+  }
+
+  send (key) {
+    if (!this.port.connection.host.receive) { console.warn('host cannot receive'); return }
+    this.port.connection.host.receive(key)
   }
 
   payload () {
