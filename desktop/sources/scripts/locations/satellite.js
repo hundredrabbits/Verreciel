@@ -214,31 +214,9 @@ class StructureSpaceship extends Structure {
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 0.5
 
-    verreciel.animator.commit()
-  }
-
-  onUndock () {
-    // assertArgs(arguments, 0);
-    super.onUndock()
-
-    verreciel.animator.begin()
-    verreciel.animator.animationDuration = 0.5
-
-    this.root.rotation.y = degToRad(45)
-    this.root.rotation.z = degToRad(45)
-
-    verreciel.animator.commit()
-  }
-
-  onDock () {
-    // assertArgs(arguments, 0);
-    super.onDock()
-
-    verreciel.animator.begin()
-    verreciel.animator.animationDuration = 0.5
-
-    this.root.rotation.y = degToRad(0)
-    this.root.rotation.z = degToRad(0)
+    this.root.rotation.y = degToRad(25)
+    this.root.rotation.z = degToRad(25)
+    this.root.rotation.x = degToRad(25)
 
     verreciel.animator.commit()
   }
@@ -247,7 +225,7 @@ class StructureSpaceship extends Structure {
     // assertArgs(arguments, 0);
     super.onComplete()
 
-    this.root.updateChildrenColors(verreciel.cyan)
+    this.root.updateChildrenColors(verreciel.grey)
   }
 
   dockUpdate () {
