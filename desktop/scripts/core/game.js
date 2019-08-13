@@ -19,7 +19,9 @@ class Game {
     setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
     if (JUMP_MISSION) {
       this.load(jump_mission)
-    } else if (DEBUG_LOG_GHOST) {
+      return
+    }
+    if (DEBUG_LOG_GHOST) {
       this.save(0)
     }
     this.load(this.state)
