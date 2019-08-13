@@ -327,13 +327,6 @@ class Player extends Empty {
     }
   }
 
-  onKey (e) {
-    if (!verreciel.player.port.connection) { return }
-    console.log(verreciel.player.port.connection)
-    verreciel.player.text += e.key
-    e.preventDefault()
-  }
-
   payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
