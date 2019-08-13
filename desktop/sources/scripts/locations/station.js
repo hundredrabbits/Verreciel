@@ -155,7 +155,7 @@ class StructureStation extends Structure {
     verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
-      node.rotation.x = degToRad(0)
+      node.rotation.x = degToRad(45)
     }
 
     verreciel.animator.commit()
@@ -169,7 +169,7 @@ class StructureStation extends Structure {
     verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
-      node.rotation.x = degToRad(45)
+      node.rotation.x = degToRad(40)
     }
 
     verreciel.animator.commit()
@@ -183,7 +183,7 @@ class StructureStation extends Structure {
     verreciel.animator.animationDuration = 0.5
 
     for (let node of this.root.children) {
-      node.rotation.x = degToRad(45)
+      node.rotation.x = degToRad(50)
     }
 
     verreciel.animator.commit()
