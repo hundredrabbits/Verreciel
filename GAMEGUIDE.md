@@ -35,7 +35,7 @@ Power Thruster with portal
 
 ## Valen
 
-### 5. Radio
+### 5. Valen
 Collect [record1]
 Collect second cell
 Collect [currency2]
@@ -59,22 +59,22 @@ Combine currencies
 
 ## Senni
 
-## MISSION: Senni
+## 9. Senni
 Aquire [currency4]
 Trade [currency4] for [senniPortalKey]
 
-### MISSION: Map
+### 10. Map
 Collect [map1]
 Collect [currency3]
 Install map
 
-### MISSION: fog
+### 11. Fog
 Power Map in battery
 Route fog to map
 Collect third cell
 Install cell in battery
 
-### MISSION: Helmet
+### 12. Helmet
 Route map to helmet
 Collect [usulPortalFragment1]
 Collect [usulPortalFragment2]
@@ -82,7 +82,7 @@ Combine fragments
 
 ## Usul 
 
-### MISSION: Shield
+### MISSION: Usul
 Install shield
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]

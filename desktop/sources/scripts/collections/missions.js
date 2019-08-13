@@ -360,7 +360,7 @@ class Missions {
 
     // MARK: Part 5
 
-    m = new Mission(this.story.length, 'Radio')
+    m = new Mission(this.story.length, 'Valen')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.valen_portal)
       verreciel.battery.cellPort1.addEvent(i.battery1)
@@ -1070,7 +1070,7 @@ class Missions {
 
     // MARK: Part 15
 
-    m = new Mission(this.story.length, 'Shield')
+    m = new Mission(this.story.length, 'Usul')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)

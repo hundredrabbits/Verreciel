@@ -91,6 +91,7 @@ class LocationTrade extends Location {
 
   onUploadComplete () {
     // assertArgs(arguments, 0);
+    verreciel.player.releasePort()
     this.refresh()
     verreciel.music.playEffect('beep2')
   }

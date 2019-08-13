@@ -141,6 +141,7 @@
       verreciel.controller.add('default', '*', 'Documentation', () => { verreciel.controller.docs() }, 'CmdOrCtrl+Esc')
       verreciel.controller.add('default', '*', 'Reset', () => { verreciel.reset(); app.exit() }, 'CmdOrCtrl+Shift+Backspace')
       verreciel.controller.add('default', '*', 'Quit', () => { app.exit() }, 'CmdOrCtrl+Q')
+      verreciel.controller.add('default', 'Look', 'Release Hand', () => { verreciel.player.releasePort() }, 'Esc')
       verreciel.controller.add('default', 'Look', 'Battery', () => { verreciel.player.lookAt(0) }, '1')
       verreciel.controller.add('default', 'Look', 'Radar', () => { verreciel.player.lookAt(180) }, '2')
       verreciel.controller.add('default', 'Look', 'Monitor', () => { verreciel.player.lookAt(90) }, '3')
