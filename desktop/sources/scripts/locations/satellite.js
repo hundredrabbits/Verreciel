@@ -137,7 +137,7 @@ class StructureSatellite extends Structure {
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 5
+        subnode.position.x = 4
       }
     }
 
@@ -153,7 +153,7 @@ class StructureSatellite extends Structure {
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 5
+        subnode.position.x = 4
       }
     }
 
