@@ -1,7 +1,7 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Octogon extends SceneLine {
+class Octagon extends SceneLine {
   constructor (size, color = verreciel.white) {
     // assertArgs(arguments, 1);
     let angle = 1.5

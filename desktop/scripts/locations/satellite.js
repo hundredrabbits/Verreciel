@@ -99,9 +99,9 @@ class StructureSatellite extends Structure {
     // assertArgs(arguments, 0);
     super()
 
-    let nodes = Math.floor(Math.random() * 2) + 3
+    let nodes = 4
 
-    this.root.position.set(0, 5, 0)
+    this.root.position.set(0, 7.5, 0)
 
     var i = 0
     while (i < nodes) {
@@ -110,19 +110,19 @@ class StructureSatellite extends Structure {
 
       this.root.add(axis)
 
-      let shape = new Hexagon(3, verreciel.red)
+      let shape = new Cube(2, verreciel.red)
       shape.position.x = 0
       axis.add(shape)
 
-      let shape2 = new Hexagon(3, verreciel.red)
+      let shape2 = new Cube(2, verreciel.red)
       shape2.rotation.z = degToRad(90)
       shape.add(shape2)
 
-      let shape3 = new Hexagon(3, verreciel.red)
+      let shape3 = new Cube(2, verreciel.red)
       shape3.rotation.y = degToRad(90)
       shape.add(shape3)
 
-      let shape4 = new Hexagon(3, verreciel.red)
+      let shape4 = new Cube(2, verreciel.red)
       shape4.rotation.x = degToRad(90)
       shape.add(shape4)
 
@@ -139,7 +139,7 @@ class StructureSatellite extends Structure {
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 3
+        subnode.position.x = 5
       }
     }
 
@@ -155,7 +155,7 @@ class StructureSatellite extends Structure {
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 3
+        subnode.position.x = 5
       }
     }
 
@@ -171,7 +171,7 @@ class StructureSatellite extends Structure {
 
     for (let node of this.root.children) {
       for (let subnode of node.children) {
-        subnode.position.x = 0
+        subnode.position.x = 2
       }
     }
 

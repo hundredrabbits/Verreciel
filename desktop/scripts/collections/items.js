@@ -178,7 +178,7 @@ class Items {
 
     // "Harvest"
     this.currency1 = new Item(
-      'alta',
+      'metal',
       ItemTypes.currency,
       null,
       'trading currency',
@@ -186,7 +186,7 @@ class Items {
       'currency-1'
     )
     this.currency2 = new Item(
-      'ikov',
+      'sutal',
       ItemTypes.currency,
       null,
       'trading currency',
@@ -194,7 +194,7 @@ class Items {
       'currency-2'
     )
     this.currency3 = new Item(
-      'eral',
+      'vital',
       ItemTypes.currency,
       null,
       'trading currency',
@@ -202,7 +202,7 @@ class Items {
       'currency-3'
     )
     this.currency4 = new Item(
-      'alitov',
+      'meseta',
       ItemTypes.currency,
       null,
       'From 1 & 2',
@@ -210,7 +210,7 @@ class Items {
       'currency-4'
     )
     this.currency5 = new Item(
-      'ikeral',
+      'suveta',
       ItemTypes.currency,
       null,
       'From 2 & 3',
@@ -218,7 +218,7 @@ class Items {
       'currency-5'
     )
     this.currency6 = new Item(
-      'echo',
+      'icon',
       ItemTypes.currency,
       null,
       'From 4 & 5',

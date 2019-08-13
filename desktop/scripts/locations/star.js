@@ -150,7 +150,7 @@ class StructureStar extends Structure {
 
     var i = 0
     while (i < 20) {
-      let shape = new Octogon(i * 0.3, verreciel.red)
+      let shape = new Octagon(i * 0.3, verreciel.red)
       shape.rotation.y = degToRad(22.5)
       this.root.add(shape)
       i += 1

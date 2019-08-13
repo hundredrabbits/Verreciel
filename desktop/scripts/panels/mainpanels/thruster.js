@@ -302,7 +302,7 @@ class Thruster extends MainPanel {
       )
     )
 
-    this.decelerate = new SceneTrigger(this, 'thruster_decelerate', 2, 1, 1)
+    this.decelerate = new SceneTrigger(this, 'thruster_decelerate', 2, 1, 0)
     this.decelerate.position.set(0, -0.5, 0)
     this.decelerate.add(
       new SceneLine(
