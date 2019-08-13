@@ -9,7 +9,7 @@ class LocationSatellite extends Location {
       system,
       at,
       new IconSatellite(),
-      name == 'spawn' ? new Structure() : new StructureSatellite()
+      name === 'wreck' ? new StructureSpaceship() : name == 'spawn' ? new Structure() : new StructureSatellite()
     )
 
     this.details = item.name
@@ -195,5 +195,74 @@ class StructureSatellite extends Structure {
         subnode.rotation.z += degToRad(0.25)
       }
     }
+  }
+}
+
+class StructureSpaceship extends Structure {
+  constructor () {
+    // assertArgs(arguments, 0);
+    super()
+
+    this.root.position.set(0, 5, 0)
+    this.root.add(new Spaceship(5))
+  }
+
+  onSight () {
+    // assertArgs(arguments, 0);
+    super.onSight()
+
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
+
+    verreciel.animator.commit()
+  }
+
+  onUndock () {
+    // assertArgs(arguments, 0);
+    super.onUndock()
+
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
+
+    this.root.rotation.y = degToRad(45)
+    this.root.rotation.z = degToRad(45)
+
+    verreciel.animator.commit()
+  }
+
+  onDock () {
+    // assertArgs(arguments, 0);
+    super.onDock()
+
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
+
+    this.root.rotation.y = degToRad(0)
+    this.root.rotation.z = degToRad(0)
+
+    verreciel.animator.commit()
+  }
+
+  onComplete () {
+    // assertArgs(arguments, 0);
+    super.onComplete()
+
+    this.root.updateChildrenColors(verreciel.cyan)
+  }
+
+  dockUpdate () {
+    // assertArgs(arguments, 0);
+    this.root.rotation.y += degToRad(0.1)
+    this.root.rotation.x += degToRad(0.05)
+    this.root.rotation.z += degToRad(0.025)
+  }
+
+  sightUpdate () {
+    // assertArgs(arguments, 0);
+    super.sightUpdate()
+
+    this.root.rotation.y += degToRad(0.1)
+    this.root.rotation.x += degToRad(0.05)
+    this.root.rotation.z += degToRad(0.025)
   }
 }
