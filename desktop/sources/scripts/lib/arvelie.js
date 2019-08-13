@@ -48,5 +48,3 @@ function Arvelie (t = arvelie()) {
 Date.prototype.toArvelie = function () {
   return new Arvelie(arvelie(this))
 }
-
-module.exports = Arvelie

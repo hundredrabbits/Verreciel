@@ -16,6 +16,7 @@ class Player extends Empty {
     this.accelX = 0
     this.accelY = 0
     this.isPanoptic = false
+    this.text = ''
 
     this.port = new ScenePort(this, 'player')
     this.port.enable()
@@ -326,11 +327,20 @@ class Player extends Empty {
     }
   }
 
+  onKey (e) {
+    if (!verreciel.player.port.connection) { return }
+
+    console.log(verreciel.player.port.connection, this.text)
+    verreciel.player.port.connection.host.update()
+    verreciel.player.text = e.key
+    e.preventDefault()
+  }
+
   payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('Hiversaires unit', 'type'),
-      new ConsoleData('--', '--'),
+      new ConsoleData(this.text, '--'),
       new ConsoleData('paradise', 'console'),
       new ConsoleData('ready.', 'status')
     ])
