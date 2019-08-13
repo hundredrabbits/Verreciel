@@ -82,40 +82,55 @@ Combine fragments
 
 ## Usul 
 
-### MISSION: Usul
+### 13. Usul[TODO]
 Install shield
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]
 Combine fragments
 
-### MISSION: Shield
+### 14. Shield[TODO]
 Collect [map2]
 Route [map2] to map
 Collect [shield]
 Route [shield] to shield
 Power Shield in battery
 
-### MISSION: mechanism
+### 15. Mechanism[TODO]
 Extinguish the sun
 Extinguish the sun
 Extinguish the sun
 Extinguish the sun
 
-## MISSION: At the close
+### 16. At the close[TODO]
+
 Witness
 
 ## MISSION: End
 Stop
 
-## Currencies
+## Recipes
+
+### Currencies
 
 ```
 metal(cur1) --+
-              > meseta --+
-sutal(cur2) --+          > icon
-              > suveta --+
+              | meseta --+
+sutal(cur2) --+          | icon
+              | suveta --+
 vital(cur3) --+
-```               
+```
+
+### Tracks
+
+```
+record(track1) --+
+                 | archive(track5) --+
+disk(track2)   --+                   |
+                                     | story(track7)
+tape(track3)   --+                   |
+                 | volume(track6)  --+
+drive(track4)  --+
+```
 
 ### Harvest Points
 

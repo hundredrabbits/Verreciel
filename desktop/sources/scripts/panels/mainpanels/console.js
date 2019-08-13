@@ -131,19 +131,12 @@ class Console extends MainPanel {
   defaultPayload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData('nataniev service', 'OK', null, verreciel.white),
-      new ConsoleData(
-        'systems',
-        verreciel.capsule.systemsInstalledCount() +
-          '/' +
-          verreciel.capsule.systemsCount(),
-        null,
-        verreciel.grey
-      ),
-      new ConsoleData('', '', null, verreciel.grey),
-      new ConsoleData('', '', null, verreciel.grey),
-      new ConsoleData('', '', null, verreciel.grey),
-      new ConsoleData('', '', null, verreciel.grey)
+      new ConsoleData('nataniev network', 'OK', null, verreciel.white),
+      new ConsoleData('systems status', verreciel.capsule.systemsInstalledCount() + '/' + verreciel.capsule.systemsCount(), null, verreciel.grey),
+      new ConsoleData('local time', `${new Arvelie()} ${new Neralie()}`, null, verreciel.grey),
+      new ConsoleData('position', `${verreciel.capsule.at.x.toFixed(2)} ${verreciel.capsule.at.y.toFixed(2)}`, null, verreciel.grey),
+      new ConsoleData('radiation', `${verreciel.capsule.radiation.toFixed(2)}`, null, verreciel.grey),
+      new ConsoleData('sector', `${verreciel.capsule.system}`, null, verreciel.grey)
     ])
   }
 

@@ -329,7 +329,7 @@ class Player extends Empty {
   payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData('Hiversaire unit', 'type'),
+      new ConsoleData('Hiversaires unit', 'type'),
       new ConsoleData('--', '--'),
       new ConsoleData('paradise', 'console'),
       new ConsoleData('ready.', 'status')

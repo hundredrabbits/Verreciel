@@ -140,7 +140,7 @@ class Items {
       'record2'
     )
     this.record3 = new Item(
-      'cassette',
+      'tape',
       ItemTypes.record,
       null,
       'audio format',
