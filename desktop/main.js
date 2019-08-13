@@ -5,6 +5,8 @@ const shell = require('electron').shell
 
 let isShown = true
 
+global.query = process.argv[2].split(':')
+
 app.win = null
 
 app.on('ready', () => {
@@ -23,7 +25,7 @@ app.on('ready', () => {
   })
 
   app.win.loadURL(`file://${__dirname}/index.html`)
-  // app.win.toggleDevTools()
+  app.win.toggleDevTools()
 
   app.win.on('closed', () => {
     win = null

@@ -111,7 +111,7 @@ class Verreciel {
     this.missions = new Missions()
   }
 
-  start () {
+  start (jump_mission) {
     this.theme.start()
     this.phase = Phase.start
 
@@ -142,7 +142,7 @@ class Verreciel {
     this.helmet.whenStart()
     this.capsule.whenStart()
     this.space.whenStart()
-    this.game.whenStart()
+    this.game.whenStart(jump_mission)
     this.items.whenStart()
 
     if (DEBUG_SHOW_STATS) {

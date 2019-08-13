@@ -20,7 +20,7 @@ class ScenePort extends Empty {
       verreciel.ghost.portsByName[numberlessName].push(this)
     }
 
-    this.trigger = new SceneTrigger(this, 'port_' + name, 1, 1, 0)
+    this.trigger = new SceneTrigger(this, 'port_' + name, 2, 2, 0)
     this.trigger.position.set(0, 0, -0.1)
     this.add(this.trigger)
 

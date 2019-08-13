@@ -43,7 +43,7 @@ class SceneHandle extends Empty {
       this,
       'handle_' + this.host.name,
       2,
-      0.5,
+      1,
       0
     )
     this.trigger.updateChildrenColors(verreciel.red) // Implies this was never used?

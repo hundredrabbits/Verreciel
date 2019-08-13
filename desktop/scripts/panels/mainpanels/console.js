@@ -100,10 +100,11 @@ class Console extends MainPanel {
   inject (payload) {
     // assertArgs(arguments, 1);
     this.clear()
-
     var id = 0
     for (let data of payload.data) {
-      this.lines[id].updateData(data)
+      if (this.lines[id]) {
+        this.lines[id].updateData(data)
+      }
       id += 1
     }
 

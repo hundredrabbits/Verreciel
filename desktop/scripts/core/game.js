@@ -12,12 +12,14 @@ class Game {
     }
   }
 
-  whenStart () {
+  whenStart (jump_mission) {
     // assertArgs(arguments, 0);
     console.info('+ Game | Start')
     setTimeout(this.onTic.bind(this), 50)
     setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
-    if (DEBUG_LOG_GHOST) {
+    if (JUMP_MISSION) {
+      this.load(jump_mission)
+    } else if (DEBUG_LOG_GHOST) {
       this.save(0)
     }
     this.load(this.state)

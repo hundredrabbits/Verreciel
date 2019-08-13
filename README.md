@@ -1,53 +1,25 @@
 # Verreciel
 
 Verreciel is a space exploration game happening in a small capsule.
-
-Feel free to send pull requests if you find an issue that you wish to correct.
+Code is formatted with [standard.js](https://standardjs.com/).
 
 ## Setup
 
-### Yarn
-
-To install Yarn, follow the instructions [here](https://yarnpkg.com/en/docs/install).
-
-If you already have `npm` installed:
-
-```sh
-npm i -g yarn
 ```
-
-## Dependencies
-
-Install the Verreciel dependencies:
-
-```sh
-yarn install
-```
-
-If you don't feel like using Yarn, regular `npm` will work too:
-
-```sh
+cd desktop
 npm install
-```
-
-## Running
-
-To run Verreciel:
-
-```sh
 npm start
 ```
 
-## Formatting
+If you wish to test a specific mission, use:
 
-Code formatting is handled by [prettier](https://github.com/prettier/prettier).
-
-To format the code:
-
-```sh
-npm run fmt
+```
+./node_modules/.bin/electron main.js mission:10 
 ```
 
-## License
+## Extras
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (CC).
+- This application supports the [Ecosystem Theme](https://github.com/hundredrabbits/Themes).
+- Support this project through [Patreon](https://patreon.com/100).
+- See the [License](LICENSE.md) file for license rights and limitations (MIT).
+- Pull Requests are welcome!
