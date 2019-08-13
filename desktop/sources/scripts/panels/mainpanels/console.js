@@ -131,7 +131,7 @@ class Console extends MainPanel {
   defaultPayload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData('nataniev os', 'OK', null, verreciel.white),
+      new ConsoleData('nataniev service', 'OK', null, verreciel.white),
       new ConsoleData(
         'systems',
         verreciel.capsule.systemsInstalledCount() +

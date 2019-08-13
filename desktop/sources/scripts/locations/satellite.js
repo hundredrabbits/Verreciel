@@ -34,16 +34,14 @@ class LocationSatellite extends Location {
 
   makePanel () {
     // assertArgs(arguments, 0);
-    if (this.isComplete == true) {
+    if (this.isComplete === true) {
       return null
     }
 
     let newPanel = new Panel()
-
     let text = new SceneLabel(this.message, 0.1, Alignment.left)
     text.position.set(-1.5, 1, 0)
     newPanel.add(text)
-
     newPanel.add(this.port)
 
     return newPanel

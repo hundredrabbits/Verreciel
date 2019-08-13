@@ -202,6 +202,7 @@ class Location extends Event {
     verreciel.progress.refresh()
     this.icon.onUpdate()
     this.structure.onComplete()
+    this.panel = this.makePanel()
     if (verreciel.intercom.port.event == this) {
       verreciel.intercom.complete()
     }

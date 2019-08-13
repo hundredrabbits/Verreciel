@@ -582,67 +582,6 @@ class Missions {
 
     // MARK: Part 8
 
-    m = new Mission(this.story.length, 'Loiqe')
-
-    m.state = function () {
-      verreciel.capsule.beginAtLocation(u.valen_bank)
-      verreciel.battery.cellPort1.addEvent(i.battery1)
-      verreciel.battery.cellPort2.addEvent(i.battery2)
-      verreciel.cargo.addItems([i.valenPortalKey])
-      verreciel.missions.setToInstalled([
-        verreciel.battery,
-        verreciel.thruster,
-        verreciel.console,
-        verreciel.radar,
-        verreciel.progress,
-        verreciel.pilot,
-        verreciel.exploration,
-        verreciel.radio,
-        verreciel.journey,
-        verreciel.hatch,
-        verreciel.completion
-      ])
-      verreciel.missions.setToKnown([
-        u.loiqe_spawn,
-        u.loiqe_harvest,
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.loiqe_horadric,
-        u.loiqe_portal,
-        u.valen_station,
-        u.valen_cargo,
-        u.valen_bank
-      ])
-      verreciel.missions.setToCompleted([
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.valen_station,
-        u.valen_cargo
-      ])
-      verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
-      u.valen_bank.addItems([i.loiqePortalKey])
-      verreciel.radar.port.connect(verreciel.pilot.port)
-      verreciel.cargo.port.connect(verreciel.console.port)
-      verreciel.radio.setRecord(i.record1)
-    }
-    m.predicate = function () {
-      return verreciel.cargo.containsLike(i.loiqePortalKey)
-    }
-    m.quests = [
-      new Quest(
-        'Collect ' + i.loiqePortalKey.name,
-        u.valen_bank,
-        function () {
-          return verreciel.cargo.containsLike(i.loiqePortalKey)
-        },
-        function () {}
-      )
-    ]
-    this.story.push(m)
-
-    // MARK: Part 9
-
     m = new Mission(this.story.length, i.currency4.name)
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.valen_station)
@@ -687,6 +626,14 @@ class Missions {
       return verreciel.cargo.containsLike(i.currency4)
     }
     m.quests = [
+      new Quest(
+        'Collect ' + i.loiqePortalKey.name,
+        u.valen_bank,
+        function () {
+          return verreciel.cargo.containsLike(i.loiqePortalKey)
+        },
+        function () {}
+      ),
       new Quest(
         'Aquire ' + i.currency2.name,
         u.valen_harvest,
@@ -1623,7 +1570,7 @@ class Missions {
   setToCompleted (locations) {
     // assertArgs(arguments, 1);
     for (let location of locations) {
-      if (location.isComplete == false) {
+      if (location.isComplete !== true) {
         location.onComplete()
       }
       location.isKnown = true

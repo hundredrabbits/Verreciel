@@ -5,7 +5,7 @@ const shell = require('electron').shell
 
 let isShown = true
 
-// global.query = process && process.argv ? `${process.argv[2]}`.split(':') : []
+global.query = process && process.argv ? `${process.argv[2]}`.split(':') : []
 
 app.win = null
 

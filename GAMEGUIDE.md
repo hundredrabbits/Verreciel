@@ -1,10 +1,10 @@
-## Intro
+## Loiqe
 
-### MISSION 1:
 Start capsule with battery
 Start capsule with battery 1
 
-### MISSION: 
+### 0. Tutorial
+
 Route cell to thruster
 Undock with thruster
 Accelerate with Thruster
@@ -14,42 +14,44 @@ Route cargo to console
 Undock with thruster
 Wait for arrival
 
-## MISSION: Fragments
+### 1. Fragments
 Route [currency1] to verreciel.cargo
 Route [currency1] to trade table
 Route [valenPortalFragment1] to verreciel.cargo
 
-## MISSION: radar
+### 2. Radar
 Select satellite on radar
 Route Radar to Pilot
 
-## MISSION: portal
+### 3. Portal
 Aquire [valenPortalFragment1]
 Aquire [valenPortalFragment2]
 Combine fragments
 
-## MISSION: transit
+## 4. Transit
 Route [valenPortalKey] to Portal
 Align pilot to portal
 Power Thruster with portal
 
-## MISSION: Radio
+## Valen
+
+### 5. Radio
 Collect [record1]
 Collect second cell
 Collect [currency2]
 Install radio
 
-## MISSION: Record
+### 6. Record
 Install cell in battery
 Power radio
 Route record to radio
 
-## MISSION: Hatch
+### 7. Hatch
 Collect Waste
 Route waste to hatch
 Jetison Waste
 
-## MISSION: Loiqe
+### 8. Currencies
 Collect [loiqePortalKey]
 Aquire [currency2]
 Aquire [currency1]
