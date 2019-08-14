@@ -27,6 +27,7 @@ class Console extends MainPanel {
         this.text = this.text.substring(0, this.text.length - 1)
       } else if (key === 'Enter' && this.text.length > 0) {
         this.validate(this.text)
+        verreciel.music.playEffect('click3')
         return
       } else if (key.length === 1 && this.text.length < 40) {
         this.text += key
