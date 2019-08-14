@@ -174,6 +174,8 @@ class Radar extends MainPanel {
       eventNodePosition
     )
 
+    this.targetter.position.set(this.port.event.at.x - verreciel.capsule.at.x, this.port.event.at.y - verreciel.capsule.at.y, 0)
+
     if (distanceFromShip > 2) {
       let angleTest = angleBetweenTwoPoints(
         verreciel.capsule.at,
@@ -184,16 +186,12 @@ class Radar extends MainPanel {
       this.targetterFar.rotation.set(0, 0, Math.PI * targetDirectionNormal)
       this.targetterFar.show()
     } else {
-      this.targetter.position.set(
-        this.port.event.at.x - verreciel.capsule.at.x,
-        this.port.event.at.y - verreciel.capsule.at.y,
-        0
-      )
       this.targetterFar.hide()
     }
 
     // Targetter
-    if (distanceFromShip > 2) {
+
+    if (distanceFromShip > 2 && verreciel.player.port.isReceivingFromPanel(verreciel.nav) === false) {
       this.targetter.updateChildrenColors(verreciel.clear)
     } else if (this.port.event != verreciel.capsule.location) {
       this.targetter.updateChildrenColors(verreciel.red)
