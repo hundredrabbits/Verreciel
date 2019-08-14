@@ -83,6 +83,8 @@ Combine fragments
 ## Usul 
 
 ### 13. Usul[TODO]
+Align senni transmitter to Usul Radar
+Align loiqe transmitter to Usul Radar
 Install shield
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]

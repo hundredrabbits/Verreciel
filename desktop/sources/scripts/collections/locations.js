@@ -121,6 +121,16 @@ class Loiqe {
     )
   }
 
+  transmitter () {
+    // assertArgs(arguments, 0);
+    return new LocationTransmitter(
+      'transmitter',
+      this.system,
+      new THREE.Vector2(this.offset.x - 1, this.offset.y - 1),
+      verreciel.items.map1
+    )
+  }
+
   // Constellations
 
   c_1 () {
@@ -130,108 +140,6 @@ class Loiqe {
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 1.5),
       new StructureTunnel()
-    )
-  }
-}
-
-class Usul {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.usul
-    this.offset = offset
-  }
-
-  star () {
-    // assertArgs(arguments, 0);
-    return new LocationStar('Usul', this.system, this.offset)
-  }
-
-  portal () {
-    // assertArgs(arguments, 0);
-    return new LocationPortal(
-      'portal',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y)
-    )
-  }
-
-  // MARK: Fog
-
-  transit () {
-    // assertArgs(arguments, 0);
-    return new LocationTransit(
-      'transit',
-      this.system,
-      new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      verreciel.items.map1
-    )
-  }
-
-  station () {
-    // assertArgs(arguments, 0);
-    return new LocationStation(
-      'station',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1),
-      verreciel.items.currency5,
-      function () {
-        verreciel.shield.install()
-      },
-      'shield',
-      verreciel.items.map1
-    )
-  }
-
-  telescope () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'telescope',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      'extra sight$map format',
-      verreciel.items.map2,
-      verreciel.items.map1
-    )
-  }
-
-  radar () {
-    // assertArgs(arguments, 0);
-    return new LocationRadar(
-      'radar',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      verreciel.items.currency5,
-      function () {
-        verreciel.shield.install()
-      },
-      'shield',
-      verreciel.items.map1
-    )
-  }
-
-  // MARK: Blind
-
-  silence () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'silence',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
-      verreciel.items.currency6,
-      verreciel.items.shield,
-      verreciel.items.map2
-    )
-  }
-
-  annex () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'annex',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y + 1),
-      'A vivid moment$on repeat',
-      verreciel.items.record4,
-      verreciel.items.map2
     )
   }
 }
@@ -336,12 +244,12 @@ class Valen {
     )
   }
 
-  antenna () {
+  transmitter () {
     // assertArgs(arguments, 0);
-    return new LocationAntenna(
-      'antenna',
+    return new LocationTransmitter(
+      'transmitter',
       this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2),
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
       verreciel.items.map1
     )
   }
@@ -427,6 +335,15 @@ class Senni {
     )
   }
 
+  transmitter () {
+    // assertArgs(arguments, 0);
+    return new LocationTransmitter(
+      'transmitter',
+      this.system,
+      new THREE.Vector2(this.offset.x - 1, this.offset.y + 1)
+    )
+  }
+
   // MARK: Fog
 
   transit () {
@@ -483,6 +400,118 @@ class Senni {
       new THREE.Vector2(this.offset.x + 1, this.offset.y + 1),
       verreciel.items.kelp,
       verreciel.items.record_oquonie,
+      verreciel.items.map2
+    )
+  }
+}
+
+class Usul {
+  constructor (offset) {
+    // assertArgs(arguments, 1);
+    this.system = Systems.usul
+    this.offset = offset
+  }
+
+  star () {
+    // assertArgs(arguments, 0);
+    return new LocationStar('Usul', this.system, this.offset)
+  }
+
+  portal () {
+    // assertArgs(arguments, 0);
+    return new LocationPortal(
+      'portal',
+      this.system,
+      new THREE.Vector2(this.offset.x + 1, this.offset.y)
+    )
+  }
+
+  // MARK: Fog
+
+  transit () {
+    // assertArgs(arguments, 0);
+    return new LocationTransit(
+      'transit',
+      this.system,
+      new THREE.Vector2(this.offset.x + 2, this.offset.y),
+      verreciel.items.map1
+    )
+  }
+
+  station () {
+    // assertArgs(arguments, 0);
+    return new LocationStation(
+      'station',
+      this.system,
+      new THREE.Vector2(this.offset.x, this.offset.y + 1),
+      verreciel.items.currency5,
+      function () {
+        verreciel.shield.install()
+      },
+      'shield',
+      verreciel.items.map1
+    )
+  }
+
+  telescope () {
+    // assertArgs(arguments, 0);
+    return new LocationSatellite(
+      'telescope',
+      this.system,
+      new THREE.Vector2(this.offset.x, this.offset.y - 1),
+      'extra sight$map format',
+      verreciel.items.map2,
+      verreciel.items.map1
+    )
+  }
+
+  antenna () {
+    // assertArgs(arguments, 0);
+    return new LocationAntenna(
+      'antenna',
+      this.system,
+      new THREE.Vector2(this.offset.x, this.offset.y - 2),
+      verreciel.items.currency5,
+      function () {
+        verreciel.shield.install()
+      },
+      'shield',
+      verreciel.items.map1
+    )
+  }
+
+  transmitter () {
+    // assertArgs(arguments, 0);
+    return new LocationTransmitter(
+      'transmitter',
+      this.system,
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
+      verreciel.items.map1
+    )
+  }
+
+  // MARK: Blind
+
+  silence () {
+    // assertArgs(arguments, 0);
+    return new LocationTrade(
+      'silence',
+      this.system,
+      new THREE.Vector2(this.offset.x - 1, this.offset.y),
+      verreciel.items.currency6,
+      verreciel.items.shield,
+      verreciel.items.map2
+    )
+  }
+
+  annex () {
+    // assertArgs(arguments, 0);
+    return new LocationSatellite(
+      'annex',
+      this.system,
+      new THREE.Vector2(this.offset.x - 1, this.offset.y + 1),
+      'A vivid moment$on repeat',
+      verreciel.items.record4,
       verreciel.items.map2
     )
   }

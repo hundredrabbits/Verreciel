@@ -1072,7 +1072,7 @@ class Missions {
 
     m = new Mission(this.story.length, 'Usul')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.valen_antenna)
+      verreciel.capsule.beginAtLocation(u.usul_antenna)
       // verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
@@ -1136,10 +1136,10 @@ class Missions {
     }
     m.quests = [
       new Quest(
-        'Signal usul radar',
-        u.valen_antenna,
+        'Transmit to usul antenna',
+        u.valen_transmitter,
         function () {
-          return u.valen_antenna.target && u.valen_antenna.target.name === u.usul_radar.name && u.valen_antenna.target.system === u.usul_radar.system
+          return u.valen_transmitter.target && u.valen_transmitter.target.name === u.usul_radar.name && u.valen_transmitter.target.system === u.usul_radar.system
         },
         function () {}
       ),
