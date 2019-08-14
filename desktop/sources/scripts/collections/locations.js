@@ -194,6 +194,21 @@ class Usul {
     )
   }
 
+  radar () {
+    // assertArgs(arguments, 0);
+    return new LocationRadar(
+      'radar',
+      this.system,
+      new THREE.Vector2(this.offset.x, this.offset.y - 2),
+      verreciel.items.currency5,
+      function () {
+        verreciel.shield.install()
+      },
+      'shield',
+      verreciel.items.map1
+    )
+  }
+
   // MARK: Blind
 
   silence () {
@@ -327,7 +342,6 @@ class Valen {
       'antenna',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      'scribbles$scribbles$scrib..',
       verreciel.items.map1
     )
   }

@@ -1072,7 +1072,8 @@ class Missions {
 
     m = new Mission(this.story.length, 'Usul')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.capsule.beginAtLocation(u.valen_antenna)
+      // verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1134,6 +1135,14 @@ class Missions {
       return verreciel.shield.isInstalled == true
     }
     m.quests = [
+      new Quest(
+        'Signal usul radar',
+        u.valen_antenna,
+        function () {
+          return u.valen_antenna.target && u.valen_antenna.target.name === u.usul_radar.name && u.valen_antenna.target.system === u.usul_radar.system
+        },
+        function () {}
+      ),
       new Quest(
         'Install shield',
         u.usul_station,

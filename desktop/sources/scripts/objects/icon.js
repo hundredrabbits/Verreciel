@@ -27,9 +27,9 @@ class Icon extends Empty {
 
     this.marker = new Empty()
     this.marker.add(new SceneLine([
-      new THREE.Vector3(0, this.size * 3, 0),
-      new THREE.Vector3(0, this.size * 4, 0)
-      ], verreciel.cyan)
+      new THREE.Vector3(0, this.size * 3, this.size),
+      new THREE.Vector3(0, this.size * 4, this.size)
+    ], verreciel.cyan)
     )
   }
 

@@ -18,7 +18,7 @@ function distanceBetweenTwoPoints (point1, point2) {
   return Math.sqrt(xDist * xDist + yDist * yDist)
 }
 
-function angleBetweenTwoPoints (point1, point2, center) {
+function angleBetweenTwoPoints (point1, point2, center = { x: 0, y: 0 }) {
   // assertArgs(arguments, 3);
   let dx1 = point1.x - center.x
   let dy1 = point1.y - center.y

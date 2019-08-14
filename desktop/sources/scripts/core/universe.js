@@ -65,6 +65,7 @@ class Universe extends Empty {
     this.usul_transit = verreciel.locations.usul.transit()
     this.usul_station = verreciel.locations.usul.station()
     this.usul_telescope = verreciel.locations.usul.telescope()
+    this.usul_radar = verreciel.locations.usul.radar()
     // MARK: Blind
     this.usul_silence = verreciel.locations.usul.silence()
     this.usul_annex = verreciel.locations.usul.annex()
@@ -150,6 +151,7 @@ class Universe extends Empty {
     this.addLocation(this.usul_station)
     this.addLocation(this.usul_transit)
     this.addLocation(this.usul_telescope)
+    this.addLocation(this.usul_radar)
     // Blind
     this.addLocation(this.usul_silence)
     this.addLocation(this.usul_annex)
@@ -182,6 +184,7 @@ class Universe extends Empty {
     this.usul_station.connect(this.usul_portal)
     this.usul_telescope.connect(this.usul_portal)
     this.usul_silence.connect(this.usul_annex)
+    this.usul_radar.connect(this.usul_telescope)
 
     // Transits
 
