@@ -23,6 +23,9 @@ class LocationStation extends Location {
   }
 
   makePanel () {
+    if (this.isComplete == true) {
+      return null
+    }
     // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
