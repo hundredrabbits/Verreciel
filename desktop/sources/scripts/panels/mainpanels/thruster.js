@@ -575,7 +575,7 @@ class Thruster extends MainPanel {
 
   modeWarpError () {
     // assertArgs(arguments, 0);
-    this.detailsLabel.updateText('no target', verreciel.red)
+    this.detailsLabel.updateText('no pilot', verreciel.red)
 
     this.interface_flight.hide()
     this.interface_dock.hide()
