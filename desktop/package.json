@@ -24,5 +24,11 @@
   "devDependencies": {
     "electron": "^5.0.8",
     "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "three": "^0.107.0"
+  },
+  "standard": {
+    "globals": ["THREE","verreciel"]
   }
 }
