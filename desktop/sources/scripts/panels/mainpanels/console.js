@@ -17,17 +17,34 @@ class Console extends MainPanel {
 
     this.details = 'inspects events'
 
+    this.lisplib = new LispLibrary()
+    this.lisp = new Lisp(this.lisplib)
     this.text = ''
 
     this.receive = (key) => {
+      const original = `${this.text}`
       if (key === 'Backspace' && this.text.length > 0) {
         this.text = this.text.substring(0, this.text.length - 1)
       } else if (key === 'Enter' && this.text.length > 0) {
         this.validate(this.text)
-      } else if (key.length === 1 && this.text.length < 48) {
+        return
+      } else if (key.length === 1 && this.text.length < 40) {
         this.text += key
       }
-      this.inject(this.inputPayload())
+      if (original !== this.text) {
+        this.inject(this.inputPayload())
+      }
+    }
+
+    this.validate = () => {
+      let result = 'unknown'
+      try {
+        result = this.lisp.run(this.text)
+      } catch (err) {
+        result = 'error'
+      }
+      this.inject(this.inputPayload(result))
+      this.text = ''
     }
 
     this.lines[0].position.set(
@@ -73,6 +90,7 @@ class Console extends MainPanel {
     // assertArgs(arguments, 0);
     super.onDisconnect()
 
+    this.text = ''
     this.nameLabel.updateText(
       this.port.origin.host.name + ' > Port',
       verreciel.cyan
@@ -88,6 +106,8 @@ class Console extends MainPanel {
   onDisconnect () {
     // assertArgs(arguments, 0);
     super.onDisconnect()
+
+    this.text = ''
 
     this.nameLabel.updateText('Console', verreciel.grey)
     this.inject(this.defaultPayload())
@@ -141,16 +161,17 @@ class Console extends MainPanel {
     }
   }
 
-  inputPayload () {
+  inputPayload (response = '') {
     // assertArgs(arguments, 0);
-    const segments = this.text.match(/.{1,16}/g)
+    const segments = this.text.match(/.{1,20}/g)
+    const responseSegments = `${response}`.match(/.{1,20}/g)
     return new ConsolePayload([
       new ConsoleData(segments && segments[0] ? segments[0] : '', this.text.length, null, verreciel.white),
       new ConsoleData(segments && segments[1] ? segments[1] : '', '', null, verreciel.white),
-      new ConsoleData(segments && segments[2] ? segments[2] : '', '', null, verreciel.white),
-      new ConsoleData('!!', `${verreciel.capsule.at.x.toFixed(2)} ${verreciel.capsule.at.y.toFixed(2)}`, null, verreciel.grey),
-      new ConsoleData('!', `${verreciel.capsule.radiation.toFixed(2)}`, null, verreciel.grey),
-      new ConsoleData('', `${verreciel.capsule.system}`, null, verreciel.grey)
+      new ConsoleData(responseSegments && responseSegments[0] ? responseSegments[0] : '', '', null, verreciel.grey),
+      new ConsoleData(responseSegments && responseSegments[1] ? responseSegments[1] : '', '', null, verreciel.grey),
+      new ConsoleData(responseSegments && responseSegments[2] ? responseSegments[2] : '', '', null, verreciel.grey),
+      new ConsoleData(responseSegments && responseSegments[3] ? responseSegments[3] : '', '', null, verreciel.grey)
     ])
   }
 

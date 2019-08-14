@@ -334,10 +334,12 @@ class Player extends Empty {
   payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([
-      new ConsoleData('Hiversaires unit', 'type'),
-      new ConsoleData(this.text, '--'),
-      new ConsoleData('paradise', 'console'),
-      new ConsoleData('ready.', 'status')
+      new ConsoleData('Ronin repl', `${Object.keys(verreciel.console.lisplib).length} fns`),
+      new ConsoleData('', '--'),
+      new ConsoleData('input query press enter'),
+      new ConsoleData('input (help) see manual', '', null, verreciel.grey),
+      new ConsoleData('ready.', '', null, verreciel.grey),
+      new ConsoleData('', '', null, verreciel.grey)
     ])
   }
 }
