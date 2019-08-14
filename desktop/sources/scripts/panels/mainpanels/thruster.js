@@ -328,10 +328,7 @@ class Thruster extends MainPanel {
 
   touch (id = 0) {
     // assertArgs(arguments, 1);
-    if (
-      verreciel.battery.thrusterPort.isReceivingItemOfType(ItemTypes.battery) ==
-      false
-    ) {
+    if (verreciel.battery.thrusterPort.isReceivingItemOfType(ItemTypes.battery) == false) {
       return false
     }
     if (id == 0) {
@@ -379,6 +376,18 @@ class Thruster extends MainPanel {
     this.line4.hide()
   }
 
+  hasWarpPower () {
+    return this.port.isReceivingEvent(verreciel.items.warpDrive) === true
+  }
+
+  hasWarpDestination () {
+    return verreciel.pilot.port.origin && verreciel.pilot.port.origin.event && verreciel.pilot.port.isReceivingLocationOfTypePortal() === true && verreciel.pilot.port.origin.event != verreciel.capsule.location && verreciel.pilot.port.origin.event.distance > 2.75
+  }
+
+  hasWarpAlignment () {
+    return verreciel.pilot.target && Math.abs(verreciel.pilot.target.align) == 0
+  }
+
   whenRenderer () {
     // assertArgs(arguments, 0);
     super.whenRenderer()
@@ -389,32 +398,21 @@ class Thruster extends MainPanel {
 
     if (this.isLocked == true) {
       this.modeLocked()
-    } else if (
-      verreciel.battery.thrusterPort.isReceivingItemOfType(ItemTypes.battery) ==
-      false
-    ) {
+    } else if (verreciel.battery.thrusterPort.isReceivingItemOfType(ItemTypes.battery) == false) {
       this.speed = 0
       this.modeUnpowered()
     } else if (verreciel.capsule.isWarping == true) {
       this.modeWarping()
-    } else if (
-      this.port.isReceivingEvent(verreciel.items.warpDrive) == true &&
-      verreciel.pilot.port.isReceivingLocationOfTypePortal() == true &&
-      Math.abs(verreciel.pilot.target.align) == 0
-    ) {
-      if (verreciel.pilot.port.origin.event != verreciel.capsule.location) {
+    } else if (verreciel.capsule.isDocked == true && this.hasWarpPower() === true) {
+      if (this.hasWarpDestination() !== true) {
+        this.modeWarpError()
+      } else if (this.hasWarpAlignment() !== true) {
+        this.modeAligning()
+      } else {
         this.modeWaitingForWarp()
         this.canWarp = true
-      } else {
-        this.modeWarpError()
       }
-    } else if (this.port.isReceivingEvent(verreciel.items.warpDrive) == true) {
-      this.modeMisaligned()
-      this.canWarp = true
-    } else if (
-      verreciel.capsule.isDocked == true &&
-      verreciel.capsule.location.storedItems().length > 0
-    ) {
+    } else if (verreciel.capsule.isDocked == true && verreciel.capsule.location.storedItems().length > 0) {
       this.modeStorageBusy()
     } else if (verreciel.capsule.isDocked == true) {
       this.modeDocked()
@@ -577,7 +575,7 @@ class Thruster extends MainPanel {
 
   modeWarpError () {
     // assertArgs(arguments, 0);
-    this.detailsLabel.updateText('error', verreciel.red)
+    this.detailsLabel.updateText('no target', verreciel.red)
 
     this.interface_flight.hide()
     this.interface_dock.hide()
@@ -595,23 +593,19 @@ class Thruster extends MainPanel {
     this.lineRight.color = verreciel.red
   }
 
-  modeMisaligned () {
+  modeAligning () {
     // assertArgs(arguments, 0);
-    if (verreciel.pilot.target == null) {
-      return
-    }
-    if (verreciel.pilot.target.align == null) {
+    if (verreciel.pilot.target == null || verreciel.pilot.target.align == null) {
       return
     }
 
-    this.detailsLabel.updateText(
-      (Math.abs(verreciel.pilot.target.align) / 180 * 100).toFixed(0) + '%',
+    this.detailsLabel.updateText('align ' + (Math.abs(verreciel.pilot.target.align) / 180 * 100).toFixed(0) + '%',
       verreciel.red
     )
 
     this.interface_flight.hide()
     this.interface_dock.hide()
-    this.interface_warp.updateChildrenColors(verreciel.grey)
+    this.interface_warp.updateChildrenColors(verreciel.red)
 
     this.accelerate.disable()
     this.decelerate.disable()
