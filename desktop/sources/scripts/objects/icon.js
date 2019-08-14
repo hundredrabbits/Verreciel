@@ -24,6 +24,13 @@ class Icon extends Empty {
     this.add(this.label)
     this.add(this.trigger)
     this.add(this.wire)
+
+    this.marker = new Empty()
+    this.marker.add(new SceneLine([
+      new THREE.Vector3(0, this.size * 3, 0),
+      new THREE.Vector3(0, this.size * 4, 0)
+      ], verreciel.cyan)
+    )
   }
 
   addHost (host) {
@@ -35,8 +42,10 @@ class Icon extends Empty {
   whenStart () {
     // assertArgs(arguments, 0);
     super.whenStart()
+
     if (this.host.mapRequirement != null) {
       this.label.color = verreciel.cyan
+      this.add(this.marker)
     }
   }
 

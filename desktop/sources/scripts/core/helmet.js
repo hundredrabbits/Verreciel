@@ -206,26 +206,6 @@ class Helmet extends Empty {
     this.visor.add(funShape);
     verreciel.capsule.hide();
     */
-
-    /*
-    // iPhone4
-    if (verreciel.width == 320 && verreciel.height == 480)
-    {
-      verreciel.player.port.position.set(0,-2,-2.5);
-    }
-    // iPad
-    if (verreciel.width == 768 && verreciel.height == 1024)
-    {
-      verreciel.player.port.position.set(0,-2,-2.5);
-      this.messageLabel.position.set(0,1.2, this.visorDepth);
-    }
-    // iPad Pro
-    if (verreciel.width == 1024 && verreciel.height == 1366)
-    {
-      verreciel.player.port.position.set(0,-2,-2.5);
-      this.messageLabel.position.set(0,1.2, this.visorDepth);
-    }
-    */
   }
 
   whenStart () {

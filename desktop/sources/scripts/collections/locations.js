@@ -105,7 +105,7 @@ class Loiqe {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      verreciel.items.map2
+      verreciel.items.map1
     )
   }
 
@@ -163,7 +163,7 @@ class Usul {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      verreciel.items.map2
+      verreciel.items.map1
     )
   }
 
@@ -305,7 +305,7 @@ class Valen {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.map2
+      verreciel.items.map1
     )
   }
 
@@ -321,10 +321,10 @@ class Valen {
     )
   }
 
-  beacon () {
+  antenna () {
     // assertArgs(arguments, 0);
-    return new LocationBeacon(
-      'beacon',
+    return new LocationAntenna(
+      'antenna',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
       'scribbles$scribbles$scrib..',
@@ -421,7 +421,7 @@ class Senni {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      verreciel.items.map2
+      verreciel.items.map1
     )
   }
 
