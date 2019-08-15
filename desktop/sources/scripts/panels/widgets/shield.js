@@ -23,6 +23,12 @@ class Shield extends Widget {
     }
   }
 
+  onDisconnect () {
+    super.onDisconnect()
+
+    setTimeout(() => { this.update() }, 1000)
+  }
+
   update () {
     // assertArgs(arguments, 0);
     if (this.port.hasItemOfType(ItemTypes.shield) == true) {
@@ -87,19 +93,6 @@ class Shield extends Widget {
     var i = 0
     while (i < sides) {
       scale = 2.5
-      // Face 1
-      let face1 = new Empty()
-      face1.add(
-        new SceneLine(
-          [
-            new THREE.Vector3(0, scale, radius),
-            new THREE.Vector3(0, -scale, radius)
-          ],
-          color
-        )
-      )
-      face1.rotation.y += degToRad(i * (360 / sides))
-      verreciel.capsule.shieldRoot.add(face1)
 
       // Face 2
       scale = 1.9

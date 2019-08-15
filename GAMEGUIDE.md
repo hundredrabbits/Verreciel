@@ -90,6 +90,7 @@ Align loiqe transmitter to Usul Radar
 Install shield
 Collect glass
 Route glass to shield
+Power Shield
 
 ### 15. 
 

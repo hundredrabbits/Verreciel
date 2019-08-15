@@ -458,7 +458,7 @@ class Usul {
       'telescope',
       this.system,
       new THREE.Vector2(this.offset.x - 1, this.offset.y),
-      'extra sight$map format',
+      'star injection$glass capsule',
       verreciel.items.shield,
       verreciel.items.map1
     )

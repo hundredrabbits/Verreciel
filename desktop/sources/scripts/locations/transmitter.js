@@ -10,7 +10,7 @@ class LocationTransmitter extends Location {
     this.shouldAlign = false
     this.orientation = 0
 
-    this.details = '???'
+    this.details = 'broadcast'
     this.mapRequirement = mapRequirement
   }
 

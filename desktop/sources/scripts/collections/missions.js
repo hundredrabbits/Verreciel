@@ -1151,6 +1151,14 @@ class Missions {
         function () {}
       ),
       new Quest(
+        'Power Shield in battery',
+        null,
+        function () {
+          return verreciel.battery.isShieldPowered() == true
+        },
+        function () {}
+      ),
+      new Quest(
         'Collect ' + i.shield.name,
         u.usul_telescope,
         function () {
@@ -1169,11 +1177,11 @@ class Missions {
     ]
     this.story.push(m)
 
-    // MARK: Part 16
+    // MARK: Part 15
 
     m = new Mission(this.story.length, i.endPortalKey.name)
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.usul_station)
+      verreciel.capsule.beginAtLocation(u.usul_telescope)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1222,13 +1230,16 @@ class Missions {
         u.loiqe_fog,
         u.usul_station,
         u.senni_fog,
-        u.senni_wreck
+        u.senni_wreck,
+        u.usul_antenna,
+        u.usul_telescope
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
+      verreciel.shield.setShield(i.shield)
       verreciel.nav.setMap(i.map1)
       verreciel.radio.setRecord(i.record2)
       u.valen_bank.addItems([i.record1])
