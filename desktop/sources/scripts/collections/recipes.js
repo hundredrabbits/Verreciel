@@ -59,6 +59,18 @@ class Recipes {
       )
     )
 
+    // Maps
+
+    this.horadric.push(
+      new Recipe(
+        [
+          verreciel.items.map1,
+          verreciel.items.map2
+        ],
+        verreciel.items.map3
+      )
+    )
+
     // Currencies
 
     this.horadric.push(

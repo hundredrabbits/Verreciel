@@ -236,10 +236,10 @@ class ScenePort extends Empty {
 
   hasEvent (target) {
     // assertArgs(arguments, 1);
-    if (this.event == null) {
+    if (this.event === null) {
       return false
     }
-    if (this.event.name == target.name) {
+    if (this.event.code === target.code) {
       return true
     }
     return false
@@ -386,6 +386,9 @@ class ScenePort extends Empty {
       return false
     }
     if (this.origin.event instanceof LocationPortal) {
+      return true
+    }
+    if (this.origin.event instanceof LocationAitasla) {
       return true
     }
     return false

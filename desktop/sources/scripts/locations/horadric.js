@@ -229,8 +229,6 @@ class LocationHoradric extends Location {
 
     this.outPort.addEvent(this.combinationRecipe.result)
 
-    // this.structure.show();
-
     this.combinationPercentage = 0
 
     this.refresh()
@@ -239,6 +237,8 @@ class LocationHoradric extends Location {
       LogType.combination,
       this.combinationRecipe.result.code
     )
+
+    setTimeout(() => { this.structure.show() }, 100)
   }
 }
 
@@ -273,53 +273,20 @@ class StructureHoradric extends Structure {
   constructor () {
     // assertArgs(arguments, 0);
     super()
-
     this.root.position.set(0, 0, 0)
-
-    let nodes = Math.floor(Math.random() * 10) + 4
     let radius = 5
-
     let cube1 = new Cube(radius, verreciel.grey)
     this.root.add(cube1)
-    // cube1.line9.color = verreciel.clear;
-    // cube1.line10.color = verreciel.clear;
-    // cube1.line11.color = verreciel.clear;
-    // cube1.line12.color = verreciel.clear;
-
     let cube2 = new Cube(radius, verreciel.grey)
     this.root.add(cube2)
-    // cube2.line9.color = verreciel.clear;
-    // cube2.line10.color = verreciel.clear;
-    // cube2.line11.color = verreciel.clear;
-    // cube2.line12.color = verreciel.clear;
-
     let cube3 = new Cube(radius, verreciel.grey)
     this.root.add(cube3)
-    // cube3.line9.color = verreciel.clear;
-    // cube3.line10.color = verreciel.clear;
-    // cube3.line11.color = verreciel.clear;
-    // cube3.line12.color = verreciel.clear;
-
     let cube4 = new Cube(radius, verreciel.grey)
     this.root.add(cube4)
-    // cube4.line9.color = verreciel.clear;
-    // cube4.line10.color = verreciel.clear;
-    // cube4.line11.color = verreciel.clear;
-    // cube4.line12.color = verreciel.clear;
-
     let cube5 = new Cube(radius, verreciel.grey)
     this.root.add(cube5)
-    // cube5.line9.color = verreciel.clear;
-    // cube5.line10.color = verreciel.clear;
-    // cube5.line11.color = verreciel.clear;
-    // cube5.line12.color = verreciel.clear;
-
     let cube6 = new Cube(radius, verreciel.grey)
     this.root.add(cube6)
-    // cube6.line9.color = verreciel.clear;
-    // cube6.line10.color = verreciel.clear;
-    // cube6.line11.color = verreciel.clear;
-    // cube6.line12.color = verreciel.clear;
   }
 
   onUndock () {
@@ -350,8 +317,8 @@ class StructureHoradric extends Structure {
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 3
 
-    this.root.children[0].rotation.y = degToRad(22.5)
-    this.root.children[1].rotation.y = -degToRad(22.5)
+    this.root.children[0].rotation.y = degToRad(45)
+    this.root.children[1].rotation.y = -degToRad(45)
 
     this.root.children[2].rotation.z = degToRad(45)
     this.root.children[3].rotation.z = -degToRad(45)

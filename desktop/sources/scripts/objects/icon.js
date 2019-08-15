@@ -51,7 +51,9 @@ class Icon extends Empty {
 
   onUpdate () {
     // assertArgs(arguments, 0);
-    if (this.host.isComplete == null) {
+    if (this.host.name === 'aitasla') {
+      this.color = verreciel.black
+    } else if (this.host.isComplete == null) {
       this.color = verreciel.white
     } else if (this.host.isComplete == false) {
       this.color = verreciel.red

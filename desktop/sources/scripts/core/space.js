@@ -66,8 +66,6 @@ class Space extends Empty {
 
     if (verreciel.player.isEjected == true) {
       this.targetSpaceColor.setRGB(0, 0, 0)
-    } else if (verreciel.capsule.closestStar().isComplete == true) {
-      this.targetSpaceColor.setRGB(0, 0.4, 0)
     }
   }
 

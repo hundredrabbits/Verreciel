@@ -24,10 +24,10 @@ class Items {
 
     // "Keys"
     this.endPortalKey = new Item(
-      'End Key',
+      'aitasla key',
       ItemTypes.key,
       null,
-      '[missing]',
+      'aitasla warp key',
       true,
       'end-key'
     )
@@ -166,12 +166,20 @@ class Items {
       'map-1'
     )
     this.map2 = new Item(
-      'Blind Map',
+      'Myst Map',
       ItemTypes.map,
       null,
       'map expension',
       true,
       'map-2'
+    )
+    this.map3 = new Item(
+      'Void Map',
+      ItemTypes.map,
+      null,
+      'map expension',
+      true,
+      'map-3'
     )
 
     // "Shields(fields)"
@@ -285,5 +293,7 @@ class Items {
     this.valenPortalKey.location = verreciel.universe.valen_portal
     this.senniPortalKey.location = verreciel.universe.senni_portal
     this.usulPortalKey.location = verreciel.universe.usul_portal
+    console.log(verreciel.universe.aitasla)
+    this.endPortalKey.location = verreciel.universe.aitasla
   }
 }

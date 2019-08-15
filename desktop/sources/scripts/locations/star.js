@@ -33,9 +33,7 @@ class LocationStar extends Location {
 
   onConnect () {
     // assertArgs(arguments, 0);
-    if (
-      this.masterPort.isReceivingEvent(verreciel.items.endPortalKey) == true
-    ) {
+    if (this.masterPort.isReceivingEvent(verreciel.items.endPortalKey) == true) {
       this.button.enable('extinguish')
     }
   }
@@ -43,8 +41,7 @@ class LocationStar extends Location {
   sightUpdate () {
     // assertArgs(arguments, 0);
 
-    let radiation =
-      this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
+    let radiation = this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
 
     if (verreciel.capsule.hasShield() == false) {
       if (radiation > 1 && verreciel.capsule.isFleeing == false) {

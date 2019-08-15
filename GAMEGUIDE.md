@@ -92,29 +92,24 @@ Collect glass
 Route glass to shield
 Power Shield
 
-### 15. 
+### 15. Veil
+Aquire Map 2
+Combine maps
+Install Veil
+
+### 16. Extinguish
 
 
-
-
-
-
+### 15. End Key
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]
 Combine fragments
 
-
-Collect [map2]
-Route [map2] to map
-Collect [shield]
-Route [shield] to shield
-Power Shield in battery
-
-### 15. Mechanism[TODO]
-Extinguish the sun
-Extinguish the sun
-Extinguish the sun
-Extinguish the sun
+### 16. Aitasla
+Extinguish the Loiqe sun
+Extinguish the Valen sun
+Extinguish the Senni sun
+Extinguish the Usul sun
 
 ### 16. At the close[TODO]
 

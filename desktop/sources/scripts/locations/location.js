@@ -131,10 +131,7 @@ class Location extends Event {
 
   onApproach () {
     // assertArgs(arguments, 0);
-    if (
-      this.mapRequirement != null &&
-      verreciel.nav.port.hasEvent(this.mapRequirement) == false
-    ) {
+    if (this.isVisible() !== true) {
       return
     }
     verreciel.space.startInstance(this)
@@ -229,26 +226,13 @@ class Location extends Event {
 
   radarCulling () {
     // assertArgs(arguments, 0);
-    let verticalDistance = Math.abs(verreciel.capsule.at.y - this.at.y)
-    let horizontalDistance = Math.abs(verreciel.capsule.at.x - this.at.x)
 
-    // In Sight
-    if (
-      (verticalDistance <= 1.5 && horizontalDistance <= 1.5) ||
-      (verreciel.radar.overviewMode == true && this.distance < 7)
-    ) {
-      if (this.mapRequirement == null) {
+    this.hide()
+
+    if (this.isReach() === true) {
+      if (this.isVisible() === true) {
         this.show()
-      } else if (this.mapRequirement != null) {
-        this.opacity =
-          verreciel.nav.hasMap(this.mapRequirement) == true &&
-          verreciel.battery.isNavPowered() == true
-            ? 1
-            : 0
       }
-    } else {
-      // Out Of Sight
-      this.hide()
     }
 
     // Connections
@@ -344,6 +328,26 @@ class Location extends Event {
       new ConsoleData('Angle', this.angle.toFixed(0)),
       new ConsoleData(this.details)
     ])
+  }
+
+  isReach () {
+    let verticalDistance = Math.abs(verreciel.capsule.at.y - this.at.y)
+    let horizontalDistance = Math.abs(verreciel.capsule.at.x - this.at.x)
+    return (verticalDistance <= 1.5 && horizontalDistance <= 1.5) || verreciel.radar.overviewMode == true
+  }
+
+  isVisible () {
+    if (this.mapRequirement === null) {
+      return true
+    }
+    if (this.mapRequirement && verreciel.nav.port.event && this.mapRequirement.code === verreciel.nav.port.event.code) {
+      return true
+    }
+    // Map3 sees all
+    if (verreciel.nav.port.event && verreciel.nav.port.event.code === verreciel.items.map3.code) {
+      return true
+    }
+    return false
   }
 
   close () {

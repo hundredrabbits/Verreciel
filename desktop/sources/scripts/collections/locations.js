@@ -8,7 +8,7 @@ class Locations {
     this.usul = new Usul(new THREE.Vector2(-3, 0))
     this.valen = new Valen(new THREE.Vector2(3, 0))
     this.senni = new Senni(new THREE.Vector2(0, 3))
-    this.close = new Close(new THREE.Vector2(0, 0))
+    this.aitasla = new Aitasla(new THREE.Vector2(0, 0))
   }
 }
 
@@ -246,10 +246,15 @@ class Valen {
 
   antenna () {
     // assertArgs(arguments, 0);
-    return new LocationTransmitter(
-      'transmitter',
+    return new LocationAntenna(
+      'antenna',
       this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1)
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
+      function () {
+        verreciel.veil.install()
+      },
+      'veil',
+      verreciel.items.map2
     )
   }
 
@@ -437,17 +442,14 @@ class Usul {
     )
   }
 
-  station () {
+  cargo () {
     // assertArgs(arguments, 0);
-    return new LocationStation(
-      'station',
+    return new LocationSatellite(
+      'cargo',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 1),
-      verreciel.items.currency5,
-      function () {
-        verreciel.shield.install()
-      },
-      'shield',
+      'as above$so below',
+      verreciel.items.map2,
       verreciel.items.map1
     )
   }
@@ -470,7 +472,6 @@ class Usul {
       'antenna',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      verreciel.items.currency5,
       function () {
         verreciel.shield.install()
       },
@@ -516,7 +517,7 @@ class Usul {
   }
 }
 
-class Close {
+class Aitasla {
   constructor (offset) {
     // assertArgs(arguments, 1);
     this.system = Systems.close
@@ -525,11 +526,10 @@ class Close {
 
   void () {
     // assertArgs(arguments, 0);
-    return new LocationClose(
-      'close',
+    return new LocationAitasla(
+      'aitasla',
       this.system,
-      this.offset,
-      verreciel.items.map2
+      this.offset
     )
   }
 }

@@ -65,21 +65,21 @@ class Universe extends Empty {
     this.usul_portal = verreciel.locations.usul.portal()
     // MARK: Fog
     this.usul_transit = verreciel.locations.usul.transit()
-    this.usul_station = verreciel.locations.usul.station()
+    this.usul_cargo = verreciel.locations.usul.cargo()
     this.usul_telescope = verreciel.locations.usul.telescope()
     this.usul_antenna = verreciel.locations.usul.antenna()
     // MARK: Blind
     this.usul_silence = verreciel.locations.usul.silence()
     this.usul_annex = verreciel.locations.usul.annex()
 
-    // MARK: Close -
-    this.close = verreciel.locations.close.void()
+    // MARK: Aitasla -
+    this.aitasla = verreciel.locations.aitasla.void()
 
     this.addLoiqe()
     this.addUsul()
     this.addValen()
     this.addSenni()
-    this.addClose()
+    this.addAitasla()
   }
 
   whenStart () {
@@ -152,7 +152,7 @@ class Universe extends Empty {
 
     this.addLocation(this.usul_portal)
     // Fog
-    this.addLocation(this.usul_station)
+    this.addLocation(this.usul_cargo)
     this.addLocation(this.usul_transit)
     this.addLocation(this.usul_telescope)
     this.addLocation(this.usul_antenna)
@@ -161,9 +161,9 @@ class Universe extends Empty {
     this.addLocation(this.usul_annex)
   }
 
-  addClose () {
+  addAitasla () {
     // assertArgs(arguments, 0);
-    this.addLocation(this.close)
+    this.addLocation(this.aitasla)
   }
 
   connectPaths () {
@@ -185,7 +185,7 @@ class Universe extends Empty {
     this.senni_fog.connect(this.senni_station)
     this.senni_horadric.connect(this.senni_harvest)
 
-    this.usul_station.connect(this.usul_portal)
+    this.usul_cargo.connect(this.usul_portal)
     this.usul_telescope.connect(this.usul_antenna)
     this.usul_silence.connect(this.usul_annex)
     this.usul_antenna.connect(this.usul_portal)
@@ -224,11 +224,11 @@ class Universe extends Empty {
     return null
   }
 
-  closeSystem (system) {
+  aitaslaSystem (system) {
     // assertArgs(arguments, 1);
     for (let location of this.allLocations) {
       if (location.system == system) {
-        location.close()
+        location.aitasla()
       }
     }
   }

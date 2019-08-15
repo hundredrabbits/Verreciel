@@ -381,7 +381,7 @@ class Thruster extends MainPanel {
   }
 
   hasWarpDestination () {
-    return verreciel.pilot.port.origin && verreciel.pilot.port.origin.event && verreciel.pilot.port.isReceivingLocationOfTypePortal() === true && verreciel.pilot.port.origin.event != verreciel.capsule.location && verreciel.pilot.port.origin.event.distance > 2.75
+    return verreciel.pilot.port.origin && verreciel.pilot.port.origin.event && verreciel.pilot.port.isReceivingLocationOfTypePortal() === true && verreciel.pilot.port.origin.event != verreciel.capsule.location
   }
 
   hasWarpAlignment () {
