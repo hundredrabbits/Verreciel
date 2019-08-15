@@ -139,8 +139,8 @@ class Loiqe {
       'cargo',
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      'le soleil est noir$',
-      verreciel.items.veil
+      'le soleil est noir',
+      verreciel.items.veil1
     )
   }
 

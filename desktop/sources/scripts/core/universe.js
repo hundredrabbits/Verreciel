@@ -227,13 +227,4 @@ class Universe extends Empty {
     }
     return null
   }
-
-  aitaslaSystem (system) {
-    // assertArgs(arguments, 1);
-    for (let location of this.allLocations) {
-      if (location.system == system) {
-        location.aitasla()
-      }
-    }
-  }
 }

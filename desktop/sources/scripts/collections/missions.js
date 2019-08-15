@@ -1372,6 +1372,14 @@ class Missions {
         function () {}
       ),
       new Quest(
+        'Power Veil in battery',
+        null,
+        function () {
+          return verreciel.battery.isVeilPowered() == true
+        },
+        function () {}
+      ),
+      new Quest(
         'Route ' + i.veil1.name + ' to veil',
         null,
         function () {
@@ -1380,13 +1388,13 @@ class Missions {
         function () {}
       ),
       new Quest(
-        'Power Veil in battery',
+        'Power Shield in battery',
         null,
         function () {
-          return verreciel.battery.isVeilPowered() == true
+          return verreciel.battery.isShieldPowered() == true
         },
         function () {}
-      )
+      ),
       new Quest(
         'Extinguish Loiqe',
         u.loiqe,
@@ -1418,7 +1426,7 @@ class Missions {
           return u.usul.isComplete === true
         },
         function () {}
-      ),
+      )
     ]
     this.story.push(m)
 

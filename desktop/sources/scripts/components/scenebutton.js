@@ -34,14 +34,14 @@ class SceneButton extends Empty {
     this.add(this.label)
   }
 
-  enable (newText, outline = verreciel.cyan) {
+  enable (newText = this.text, outline = verreciel.cyan) {
     this.text = newText
     this.label.updateText(this.text, verreciel.white)
     this.trigger.enable()
     this.trigger.updateChildrenColors(outline)
   }
 
-  disable (newText, outline = verreciel.red) {
+  disable (newText = this.text, outline = verreciel.red) {
     this.text = newText
     this.label.updateText(this.text, verreciel.grey)
     this.trigger.updateChildrenColors(outline)

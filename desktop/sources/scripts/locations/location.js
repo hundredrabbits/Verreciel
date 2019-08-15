@@ -348,9 +348,4 @@ class Location extends Event {
     }
     return false
   }
-
-  close () {
-    // assertArgs(arguments, 0);
-    this.icon.close()
-  }
 }

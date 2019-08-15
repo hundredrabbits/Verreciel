@@ -51,18 +51,10 @@ class Mission {
       } else if (
         verreciel.capsule.system == this.currentQuest.location.system
       ) {
-        if (
-          this.currentQuest.location.system == this.currentQuest.location.name
-        ) {
-          verreciel.helmet.addMessage('Reach ' + this.currentQuest.location.system + ' ' + (this.currentQuest.location.name === this.currentQuest.location.system ? 'star' : this.currentQuest.location.name), verreciel.red)
+        if (this.currentQuest.location.system == this.currentQuest.location.name) {
+          verreciel.helmet.addMessage('Reach ' + this.currentQuest.location.system + ' ' + (this.currentQuest.location.name.toLowerCase() === this.currentQuest.location.system.toLowerCase() ? 'star' : this.currentQuest.location.name), verreciel.grey)
         } else {
-          verreciel.helmet.addMessage(
-            'Reach ' +
-              this.currentQuest.location.system +
-              ' ' +
-              this.currentQuest.location.name,
-            verreciel.red
-          )
+          verreciel.helmet.addMessage('Reach ' + this.currentQuest.location.system + ' ' + (this.currentQuest.location.name.toLowerCase() === this.currentQuest.location.system.toLowerCase() ? 'star' : this.currentQuest.location.name), verreciel.red)
         }
       } else {
         verreciel.helmet.addMessage(

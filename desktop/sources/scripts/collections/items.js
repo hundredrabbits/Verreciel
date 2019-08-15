@@ -281,7 +281,7 @@ class Items {
       'ink veil',
       ItemTypes.veil,
       null,
-      'exosphere',
+      'dyson sphere',
       true,
       'veil-3'
     )

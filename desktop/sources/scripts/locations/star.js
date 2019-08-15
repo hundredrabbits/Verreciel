@@ -25,8 +25,12 @@ class LocationStar extends Location {
     return newPanel
   }
 
-  onConnect () {
-    // assertArgs(arguments, 0);
+  dockUpdate () {
+    super.dockUpdate()
+
+    if (verreciel.veil.hasVeil(verreciel.items.veil1) && verreciel.battery.isVeilPowered() == true) {
+      this.button.enable('extinguish')
+    }
   }
 
   sightUpdate () {
@@ -34,17 +38,20 @@ class LocationStar extends Location {
 
     let radiation = this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
 
-    if (verreciel.capsule.hasShield() == false) {
+    if (verreciel.capsule.hasShield() === false) {
       if (radiation > 1 && verreciel.capsule.isFleeing == false) {
         verreciel.capsule.flee()
       }
       verreciel.capsule.radiation = radiation
     }
+    else{
+      verreciel.helmet.addWarning('shield ok', verreciel.cyan, 2, 'radiation')
+    }
   }
 
   onApproach () {
     // assertArgs(arguments, 0);
-    if (verreciel.capsule.hasShield() == true) {
+    if (verreciel.capsule.hasShield() === true) {
       super.onApproach()
     } else {
       verreciel.space.startInstance(this)
@@ -55,23 +62,17 @@ class LocationStar extends Location {
     // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
-      this.extinguish()
+      this.onComplete()
+      // TODO: Add extra sound effect
       verreciel.music.playEffect('click3')
     }
     return true
   }
 
-  extinguish () {
-    // assertArgs(arguments, 0);
-    this.onComplete()
-  }
-
   onComplete () {
     // assertArgs(arguments, 0);
     super.onComplete()
-
     verreciel.space.onSystemEnter(verreciel.capsule.system)
-    verreciel.universe.closeSystem(this.system)
   }
 
   onDisconnect () {
