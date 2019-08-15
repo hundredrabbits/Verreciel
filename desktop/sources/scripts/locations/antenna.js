@@ -2,12 +2,11 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationAntenna extends Location {
-  constructor (name, system, at, requirement = null, installation, installationName, mapRequirement = null) {
+  constructor (name, system, at, installation, installationName, mapRequirement = null) {
     // assertArgs(arguments, 6);
     super(name, system, at, new IconStation(), new StructureStation())
 
     this.installation = installation
-    this.requirement = requirement
     this.installationName = installationName
     this.details = installationName
     this.mapRequirement = mapRequirement
@@ -21,7 +20,7 @@ class LocationAntenna extends Location {
     // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
-    let text = new SceneLabel('Orient Transmitters$install shield', 0.1, Alignment.left)
+    let text = new SceneLabel('Orient Transmitters$install ' + installationName, 0.1, Alignment.left)
     text.position.set(-1.5, 1, 0)
     newPanel.add(text)
 

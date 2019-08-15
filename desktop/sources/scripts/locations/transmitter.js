@@ -72,7 +72,7 @@ class LocationTransmitter extends Location {
       this.orientation += offset * 0.01
       this.orientation = this.orientation % 360
       this.orientationLabel.updateText(parseInt(this.orientation), verreciel.cyan)
-      if (parseInt(this.orientation) === parseInt(angle)) {
+      if (Math.abs(parseInt(this.orientation) - parseInt(angle)) < 2) {
         this.shouldAlign = false
         this.button.disable('aligned', verreciel.white)
         this.orientationLabel.updateText(parseInt(this.orientation), verreciel.grey)

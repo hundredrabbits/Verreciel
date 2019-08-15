@@ -158,7 +158,7 @@ class Items {
 
     // "Maps"
     this.map1 = new Item(
-      'Fog Map',
+      'Red Map',
       ItemTypes.map,
       null,
       'map expension',
@@ -166,7 +166,7 @@ class Items {
       'map-1'
     )
     this.map2 = new Item(
-      'Myst Map',
+      'Cyan Map',
       ItemTypes.map,
       null,
       'map expension',
@@ -174,7 +174,7 @@ class Items {
       'map-2'
     )
     this.map3 = new Item(
-      'Void Map',
+      'Opal Map',
       ItemTypes.map,
       null,
       'map expension',
@@ -293,7 +293,6 @@ class Items {
     this.valenPortalKey.location = verreciel.universe.valen_portal
     this.senniPortalKey.location = verreciel.universe.senni_portal
     this.usulPortalKey.location = verreciel.universe.usul_portal
-    console.log(verreciel.universe.aitasla)
     this.endPortalKey.location = verreciel.universe.aitasla
   }
 }

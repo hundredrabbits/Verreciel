@@ -64,7 +64,7 @@ class Capsule extends Empty {
     verreciel.radar.footer.add(verreciel.nav)
     verreciel.battery.footer.add(verreciel.radio)
     verreciel.console.footer.add(verreciel.shield)
-    verreciel.intercom.footer.add(verreciel.enigma)
+    verreciel.intercom.footer.add(verreciel.veil)
   }
 
   addPanel (panel) {

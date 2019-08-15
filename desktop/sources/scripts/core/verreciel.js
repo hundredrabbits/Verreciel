@@ -98,7 +98,7 @@ class Verreciel {
     this.radio = new Radio()
     this.nav = new Nav()
     this.shield = new Shield()
-    this.enigma = new Enigma()
+    this.veil = new Veil()
 
     // Core
     this.game = new Game()

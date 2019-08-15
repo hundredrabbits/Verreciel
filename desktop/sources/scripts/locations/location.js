@@ -226,7 +226,6 @@ class Location extends Event {
 
   radarCulling () {
     // assertArgs(arguments, 0);
-    
     this.hide()
 
     if (this.isReach() === true) {

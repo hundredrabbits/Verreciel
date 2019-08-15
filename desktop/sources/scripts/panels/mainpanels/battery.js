@@ -41,12 +41,12 @@ class Battery extends MainPanel {
 
     // Systems
 
-    this.enigmaPort = new ScenePort(this, 'battery_slot_shield')
-    this.enigmaPort.position.set(distance, 2 * Templates.lineSpacing, 0)
-    this.enigmaLabel = new SceneLabel('shield', 0.1, Alignment.left)
-    this.enigmaLabel.position.set(0.3, 0, 0)
-    this.enigmaPort.add(this.enigmaLabel)
-    this.mainNode.add(this.enigmaPort)
+    this.veilPort = new ScenePort(this, 'battery_slot_shield')
+    this.veilPort.position.set(distance, 2 * Templates.lineSpacing, 0)
+    this.veilLabel = new SceneLabel('shield', 0.1, Alignment.left)
+    this.veilLabel.position.set(0.3, 0, 0)
+    this.veilPort.add(this.veilLabel)
+    this.mainNode.add(this.veilPort)
 
     this.thrusterPort = new ScenePort(this, 'battery_slot_thruster')
     this.thrusterPort.position.set(distance, Templates.lineSpacing, 0)
@@ -76,7 +76,7 @@ class Battery extends MainPanel {
     this.shieldPort.add(this.shieldLabel)
     this.mainNode.add(this.shieldPort)
 
-    this.enigmaLabel.updateText('--', verreciel.grey)
+    this.veilLabel.updateText('--', verreciel.grey)
     this.thrusterLabel.updateText('--', verreciel.grey)
     this.radioLabel.updateText('--', verreciel.grey)
     this.navLabel.updateText('--', verreciel.grey)
@@ -112,10 +112,10 @@ class Battery extends MainPanel {
 
   // MARK: Modules -
 
-  installEnigma () {
+  installVeil () {
     // assertArgs(arguments, 0);
-    this.enigmaPort.enable()
-    this.enigmaLabel.updateText('enigma', verreciel.white)
+    this.veilPort.enable()
+    this.veilLabel.updateText('veil', verreciel.white)
   }
 
   installThruster () {
@@ -146,9 +146,9 @@ class Battery extends MainPanel {
     }
   }
 
-  isEnigmaPowered () {
+  isVeilPowered () {
     // assertArgs(arguments, 0);
-    if (this.enigmaPort.isReceivingItemOfType(ItemTypes.battery)) {
+    if (this.veilPort.isReceivingItemOfType(ItemTypes.battery)) {
       return true
     }
     return false
@@ -210,10 +210,10 @@ class Battery extends MainPanel {
     } else {
       verreciel.shield.onUnpowered()
     }
-    if (this.enigmaPort.isReceivingItemOfType(ItemTypes.battery) == true) {
-      verreciel.enigma.onPowered()
+    if (this.veilPort.isReceivingItemOfType(ItemTypes.battery) == true) {
+      verreciel.veil.onPowered()
     } else {
-      verreciel.enigma.onUnpowered()
+      verreciel.veil.onUnpowered()
     }
     if (this.navPort.isReceivingItemOfType(ItemTypes.battery) == true) {
       verreciel.nav.onPowered()

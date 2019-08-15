@@ -1251,23 +1251,39 @@ class Missions {
         'Aquire ' + i.map2.name,
         u.usul_cargo,
         function () {
-          return verreciel.cargo.contains(i.endPortalKeyFragment1)
+          return verreciel.cargo.contains(i.map2) || verreciel.cargo.contains(i.map3) || verreciel.nav.hasMap(i.map2) || verreciel.nav.hasMap(i.map3)
         },
         function () {}
       ),
       new Quest(
-        'Create ' + i.endPortalKeyFragment2.name,
+        'Create ' + i.map3.name,
         null,
         function () {
-          return verreciel.cargo.contains(i.endPortalKeyFragment2)
+          return verreciel.cargo.contains(i.map3) || verreciel.nav.hasMap(i.map3)
         },
         function () {}
       ),
       new Quest(
-        'Combine fragments',
+        'Route ' + i.map3.name + ' to map',
         null,
         function () {
-          return verreciel.cargo.containsLike(i.endPortalKey)
+          return verreciel.nav.hasMap(i.map3)
+        },
+        function () {}
+      ),
+      new Quest(
+        'Install veil',
+        u.valen_antenna,
+        function () {
+          return verreciel.veil.isInstalled == true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Power Veil in battery',
+        null,
+        function () {
+          return verreciel.battery.isVeilPowered() == true
         },
         function () {}
       )

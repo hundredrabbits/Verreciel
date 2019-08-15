@@ -142,6 +142,12 @@ tape(track3)   --+                   |
 drive(track4)  --+
 ```
 
+### Maps
+
+red(map1)  --+
+             > opal(map3)
+cyan(map2) --+
+
 ### Harvest Points
 
 - Loiqe: metal
@@ -184,7 +190,7 @@ beacons
 Nevic
   South of loiqe
   Not sure what to do there though
-  Maybe work enigma into it?
+  Maybe work veil into it?
   Green space, black stars
   Black approachable sun
     It’s always night$under the$ultraviolet sun
