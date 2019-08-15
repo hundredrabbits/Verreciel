@@ -418,7 +418,7 @@ class Usul {
 
   star () {
     // assertArgs(arguments, 0);
-    return new LocationStar('Usul', this.system, this.offset)
+    return new LocationStar('usul', this.system, this.offset)
   }
 
   portal () {
@@ -529,7 +529,8 @@ class Aitasla {
     return new LocationAitasla(
       'aitasla',
       this.system,
-      this.offset
+      this.offset,
+      verreciel.items.map2
     )
   }
 }

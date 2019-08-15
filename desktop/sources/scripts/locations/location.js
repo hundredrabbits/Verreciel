@@ -226,7 +226,7 @@ class Location extends Event {
 
   radarCulling () {
     // assertArgs(arguments, 0);
-
+    
     this.hide()
 
     if (this.isReach() === true) {
@@ -337,7 +337,7 @@ class Location extends Event {
   }
 
   isVisible () {
-    if (this.mapRequirement === null) {
+    if (!this.mapRequirement) {
       return true
     }
     if (this.mapRequirement && verreciel.nav.port.event && this.mapRequirement.code === verreciel.nav.port.event.code) {
