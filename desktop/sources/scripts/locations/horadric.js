@@ -206,8 +206,7 @@ class LocationHoradric extends Location {
 
   combineProgress () {
     // assertArgs(arguments, 0);
-    this.combinationPercentage += Math.random() * 2
-    this.combinationPercentage += 1 // Faster!
+    this.combinationPercentage += Math.random() + Math.random()
 
     if (this.combinationPercentage > 100) {
       this.onCombinationComplete()

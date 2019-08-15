@@ -1068,12 +1068,11 @@ class Missions {
     ]
     this.story.push(m)
 
-    // MARK: Part 15
+    // MARK: Part 14
 
     m = new Mission(this.story.length, 'Usul')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.usul_antenna)
-      // verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1137,9 +1136,9 @@ class Missions {
     m.quests = [
       new Quest(
         'Transmit to usul antenna',
-        u.valen_transmitter,
+        u.usul_antenna,
         function () {
-          return u.valen_transmitter.target && u.valen_transmitter.target.name === u.usul_radar.name && u.valen_transmitter.target.system === u.usul_radar.system
+          return u.usul_antenna.getSignal() >= 0.95
         },
         function () {}
       ),

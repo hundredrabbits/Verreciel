@@ -249,6 +249,7 @@ class Player extends Empty {
 
   releasePort () {
     // assertArgs(arguments, 0);
+    if (!this.activePort) { return }
     verreciel.helmet.leftHandLabel.updateText('--', verreciel.grey)
 
     this.activePort.disconnect()

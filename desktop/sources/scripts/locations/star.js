@@ -14,25 +14,14 @@ class LocationStar extends Location {
     let newPanel = new Panel()
 
     let requirementLabel = new SceneLabel('the melting core$welcomes you.')
-    requirementLabel.position.set(
-      Templates.leftMargin,
-      Templates.topMargin - 0.3,
-      0
-    )
+    requirementLabel.position.set(Templates.leftMargin, Templates.topMargin - 0.3, 0)
     newPanel.add(requirementLabel)
 
-    this.button = new SceneButton(
-      this,
-      this.code + '_install',
-      'install',
-      1,
-      1
-    )
+    this.button = new SceneButton(this, this.code + '_install', 'install', 1, 1)
     this.button.position.set(0, -1, 0)
     newPanel.add(this.button)
 
     this.masterPort.position.set(-0, -0.3, 0)
-
     this.masterPort.enable()
 
     newPanel.add(this.masterPort)

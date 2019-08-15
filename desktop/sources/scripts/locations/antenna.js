@@ -21,38 +21,33 @@ class LocationAntenna extends Location {
     // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
-    let requirementLabel = new SceneLabel(
-      'Exchange ' +
-        this.requirement.name +
-        '$install the ' +
-        this.installationName
-    )
-    requirementLabel.position.set(
-      Templates.leftMargin,
-      Templates.topMargin - 0.3,
-      0
-    )
-    newPanel.add(requirementLabel)
+    let text = new SceneLabel('Orient Transmitters$install shield', 0.1, Alignment.left)
+    text.position.set(-1.5, 1, 0)
+    newPanel.add(text)
 
     this.button = new SceneButton(this, this.code + '_install', 'install', 1)
     this.button.position.set(0, -1, 0)
     newPanel.add(this.button)
 
-    this.port = new ScenePortSlot(this, this.code)
-    this.port.position.set(0, -0.2, 0)
-    newPanel.add(this.port)
+    this.signalLabel = new SceneLabel('signal', 0.1, Alignment.right, verreciel.grey)
+    this.signalLabel.position.set(-0.6, 0, 0)
+    newPanel.add(this.signalLabel)
 
-    this.tradeLabel = new SceneLabel(
-      'trade',
-      0.1,
-      Alignment.right,
-      verreciel.grey
-    )
-    this.tradeLabel.position.set(-0.3, 0, 0)
-    this.port.add(this.tradeLabel)
+    this.syncLabel = new SceneLabel('sync', 0.1, Alignment.left, verreciel.grey)
+    this.syncLabel.position.set(0.6, 0, 0)
+    newPanel.add(this.syncLabel)
+
+    this.diamond = new Diamond(0.5, verreciel.grey)
+    this.diamond.position.set(0, 0, 0)
+    this.diamond.rotation.x = degToRad(90)
+    newPanel.add(this.diamond)
+
+    this.syncDiamond = new Diamond(0.4, verreciel.red)
+    this.syncDiamond.position.set(0, 0, 0)
+    this.syncDiamond.rotation.x = degToRad(90)
+    newPanel.add(this.syncDiamond)
 
     this.button.disable('install')
-    this.port.enable()
 
     return newPanel
   }
@@ -60,30 +55,22 @@ class LocationAntenna extends Location {
   onDock () {
     super.onDock()
 
-    const loiqeOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.loiqe_transmitter.at)) - verreciel.universe.loiqe_transmitter.orientation
-    const senniOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.senni_transmitter.at)) - verreciel.universe.senni_transmitter.orientation
+    const signal = this.getSignal()
+    const value = (signal * 100).toFixed(1)
+    this.syncLabel.updateText(value + '%')
+    this.syncDiamond.position.set(0, 0, -5 * (1 - signal))
 
-    console.log(loiqeOffset, senniOffset)
+    if (signal >= 0.95) {
+      this.syncDiamond.color = verreciel.cyan
+      this.syncLabel.updateText('online', verreciel.cyan)
+      this.button.enable('install')
+    }
   }
 
-  onUploadComplete () {
-    // assertArgs(arguments, 0);
-    if (this.port.hasEvent() == false) {
-      this.tradeLabel.color = verreciel.grey
-      return
-    }
-
-    let trade = this.port.event
-    if (
-      trade instanceof Item &&
-      trade.name == this.requirement.name &&
-      trade.type == this.requirement.type
-    ) {
-      this.button.enable('install')
-      this.tradeLabel.color = verreciel.cyan
-    } else {
-      this.tradeLabel.color = verreciel.red
-    }
+  getSignal () {
+    const loiqeOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.loiqe_transmitter.at)) - verreciel.universe.loiqe_transmitter.orientation
+    const senniOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.senni_transmitter.at)) - verreciel.universe.senni_transmitter.orientation
+    const offset = 1 - ((Math.abs(loiqeOffset) + Math.abs(senniOffset)) / 360)
   }
 
   touch (id) {

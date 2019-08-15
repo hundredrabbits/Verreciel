@@ -38,7 +38,7 @@ class Universe extends Empty {
     // MARK: Fog
     this.valen_transit = verreciel.locations.valen.transit()
     this.valen_fog = verreciel.locations.valen.fog()
-    this.valen_transmitter = verreciel.locations.valen.transmitter()
+    this.valen_antenna = verreciel.locations.valen.antenna()
     this.valen_c_1 = verreciel.locations.valen.c_1()
     // MARK: Blind
     this.valen_void = verreciel.locations.valen.void()
@@ -120,7 +120,7 @@ class Universe extends Empty {
     this.addLocation(this.valen_portal)
     this.addLocation(this.valen_harvest)
     this.addLocation(this.valen_cargo)
-    this.addLocation(this.valen_transmitter)
+    this.addLocation(this.valen_antenna)
     // Fog
     this.addLocation(this.valen_transit)
     this.addLocation(this.valen_fog)
@@ -177,7 +177,7 @@ class Universe extends Empty {
     this.valen_station.connect(this.valen_bank)
     this.valen_harvest.connect(this.valen_bank)
     this.valen_fog.connect(this.valen_portal)
-    this.valen_transmitter.connect(this.valen_fog)
+    this.valen_antenna.connect(this.valen_fog)
 
     this.senni_portal.connect(this.senni_cargo)
     this.senni_cargo.connect(this.senni_portal)

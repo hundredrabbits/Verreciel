@@ -105,17 +105,17 @@ class Loiqe {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
   fog () {
     // assertArgs(arguments, 0);
-    return new LocationTrade(
+    return new LocationSatellite(
       'fog',
       this.system,
       new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.currency5,
+      'something broken$somehow lost',
       verreciel.items.usulPortalFragment2,
       verreciel.items.map1
     )
@@ -228,7 +228,7 @@ class Valen {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -244,13 +244,12 @@ class Valen {
     )
   }
 
-  transmitter () {
+  antenna () {
     // assertArgs(arguments, 0);
     return new LocationTransmitter(
       'transmitter',
       this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      verreciel.items.map1
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1)
     )
   }
 
@@ -352,7 +351,7 @@ class Senni {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -434,7 +433,7 @@ class Usul {
       'transit',
       this.system,
       new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      verreciel.items.map1
+      verreciel.items.map2
     )
   }
 
@@ -443,7 +442,7 @@ class Usul {
     return new LocationStation(
       'station',
       this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1),
+      new THREE.Vector2(this.offset.x, this.offset.y - 1),
       verreciel.items.currency5,
       function () {
         verreciel.shield.install()
@@ -458,7 +457,7 @@ class Usul {
     return new LocationSatellite(
       'telescope',
       this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
+      new THREE.Vector2(this.offset.x - 1, this.offset.y),
       'extra sight$map format',
       verreciel.items.map2,
       verreciel.items.map1
@@ -470,7 +469,7 @@ class Usul {
     return new LocationAntenna(
       'antenna',
       this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2),
+      new THREE.Vector2(this.offset.x - 1, this.offset.y),
       verreciel.items.currency5,
       function () {
         verreciel.shield.install()
@@ -497,7 +496,7 @@ class Usul {
     return new LocationTrade(
       'silence',
       this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
+      new THREE.Vector2(this.offset.x - 2, this.offset.y),
       verreciel.items.currency6,
       verreciel.items.shield,
       verreciel.items.map2

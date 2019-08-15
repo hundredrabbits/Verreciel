@@ -76,21 +76,23 @@ Install cell in battery
 
 ### 12. Helmet
 Route map to helmet
-Collect [usulPortalFragment1]
-Collect [usulPortalFragment2]
-Combine fragments
 
 ## Usul 
 
-### 13. Usul[TODO]
-Align senni transmitter to Usul Radar
-Align loiqe transmitter to Usul Radar
-Install shield
+### 13. Usul
+Collect [usulPortalFragment1]
+Collect [usulPortalFragment2]
+Combine fragments
+Travel to Usul
+
+### 14. Shield[TODO]
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]
 Combine fragments
 
-### 14. Shield[TODO]
+Align senni transmitter to Usul Radar
+Align loiqe transmitter to Usul Radar
+Install shield
 Collect [map2]
 Route [map2] to map
 Collect [shield]
@@ -116,9 +118,9 @@ Stop
 
 ```
 metal(cur1) --+
-              | meseta --+
-sutal(cur2) --+          | icon
-              | suveta --+
+              | meseta(cur4) --+
+sutal(cur2) --+                | icon(cur6)
+              | suveta(cur5) --+
 vital(cur3) --+
 ```
 
