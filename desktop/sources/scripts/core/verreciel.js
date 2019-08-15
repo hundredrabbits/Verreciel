@@ -346,7 +346,7 @@ setEnumValues(ItemTypes, [
   'shield',
   'map',
   'record',
-  'cypher',
+  'veil',
   'unknown'
 ])
 

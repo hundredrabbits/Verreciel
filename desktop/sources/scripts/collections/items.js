@@ -275,6 +275,16 @@ class Items {
       true,
       'battery-3'
     )
+    // Veils
+
+    this.veil1 = new Item(
+      'ink veil',
+      ItemTypes.veil,
+      null,
+      'exosphere',
+      true,
+      'veil-3'
+    )
 
     // "Echoes"
     this.teapot = new Item(

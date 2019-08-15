@@ -1179,7 +1179,7 @@ class Missions {
 
     // MARK: Part 15
 
-    m = new Mission(this.story.length, i.endPortalKey.name)
+    m = new Mission(this.story.length, 'veil')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.usul_telescope)
       verreciel.battery.cellPort1.addEvent(i.battery1)
@@ -1292,9 +1292,9 @@ class Missions {
 
     // MARK: Part 16
 
-    m = new Mission(this.story.length, i.endPortalKey.name)
+    m = new Mission(this.story.length, 'Extinguish')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.usul_telescope)
+      verreciel.capsule.beginAtLocation(u.valen_antenna)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1315,7 +1315,8 @@ class Missions {
         verreciel.radio,
         verreciel.journey,
         verreciel.nav,
-        verreciel.shield
+        verreciel.shield,
+        verreciel.veil
       ])
       verreciel.missions.setToKnown([
         u.loiqe_spawn,
@@ -1344,7 +1345,9 @@ class Missions {
         u.senni_fog,
         u.senni_wreck,
         u.usul_antenna,
-        u.usul_telescope
+        u.usul_telescope,
+        u.usul_cargo,
+        u.valen_antenna
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
@@ -1352,7 +1355,7 @@ class Missions {
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.shield.setShield(i.shield)
-      verreciel.nav.setMap(i.map1)
+      verreciel.nav.setMap(i.map3)
       verreciel.radio.setRecord(i.record2)
       u.valen_bank.addItems([i.record1])
     }
@@ -1361,35 +1364,67 @@ class Missions {
     }
     m.quests = [
       new Quest(
-        'Create ' + i.endPortalKeyFragment1.name,
-        null,
+        'Aquire ' + i.veil1.name,
+        u.loiqe_cargo,
         function () {
-          return verreciel.cargo.contains(i.endPortalKeyFragment1)
+          return verreciel.cargo.contains(i.veil1) || verreciel.veil.hasVeil(i.veil1)
         },
         function () {}
       ),
       new Quest(
-        'Create ' + i.endPortalKeyFragment2.name,
+        'Route ' + i.veil1.name + ' to veil',
         null,
         function () {
-          return verreciel.cargo.contains(i.endPortalKeyFragment2)
+          return verreciel.veil.hasVeil(i.veil1)
         },
         function () {}
       ),
       new Quest(
-        'Combine fragments',
+        'Power Veil in battery',
         null,
         function () {
-          return verreciel.cargo.containsLike(i.endPortalKey)
+          return verreciel.battery.isVeilPowered() == true
         },
         function () {}
       )
+      new Quest(
+        'Extinguish Loiqe',
+        u.loiqe,
+        function () {
+          return u.loiqe.isComplete === true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Extinguish Valen',
+        u.valen,
+        function () {
+          return u.valen.isComplete === true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Extinguish Senni',
+        u.senni,
+        function () {
+          return u.senni.isComplete === true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Extinguish Usul',
+        u.usul,
+        function () {
+          return u.usul.isComplete === true
+        },
+        function () {}
+      ),
     ]
     this.story.push(m)
 
     // MARK: Part 16
 
-    m = new Mission(this.story.length, 'Aitasla')
+    m = new Mission(this.story.length, 'veil')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)
@@ -1502,7 +1537,7 @@ class Missions {
 
     // MARK: Part 18
 
-    m = new Mission(this.story.length, 'mechanism')
+    m = new Mission(this.story.length, 'Extinguish')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.usul_silence)
       verreciel.battery.cellPort1.addEvent(i.battery1)

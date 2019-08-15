@@ -54,10 +54,7 @@ class Mission {
         if (
           this.currentQuest.location.system == this.currentQuest.location.name
         ) {
-          verreciel.helmet.addMessage(
-            'Reach ' + this.currentQuest.location.name,
-            verreciel.red
-          )
+          verreciel.helmet.addMessage('Reach ' + this.currentQuest.location.system + ' ' + (this.currentQuest.location.name === this.currentQuest.location.system ? 'star' : this.currentQuest.location.name), verreciel.red)
         } else {
           verreciel.helmet.addMessage(
             'Reach ' +

@@ -26,6 +26,8 @@ class Universe extends Empty {
     this.loiqe_transit = verreciel.locations.loiqe.transit()
     this.loiqe_c_1 = verreciel.locations.loiqe.c_1()
     this.loiqe_transmitter = verreciel.locations.loiqe.transmitter()
+    // MARK: Map2
+    this.loiqe_cargo = verreciel.locations.loiqe.cargo()
 
     // MARK: Valen -
 
@@ -105,9 +107,11 @@ class Universe extends Empty {
     this.addLocation(this.loiqe_satellite)
     this.addLocation(this.loiqe_port)
     this.addLocation(this.loiqe_transmitter)
-    // Fog
+    // map1
     this.addLocation(this.loiqe_fog)
     this.addLocation(this.loiqe_transit)
+    // map2
+    this.addLocation(this.loiqe_cargo)
     // Constellations
     this.addLocation(this.loiqe_c_1)
   }

@@ -98,7 +98,10 @@ Combine maps
 Install Veil
 
 ### 16. Extinguish
-
+Extinguish loiqe
+Extinguish valen
+Extinguish senni
+Extinguish usul
 
 ### 15. End Key
 Create [endPortalKeyFragment1]

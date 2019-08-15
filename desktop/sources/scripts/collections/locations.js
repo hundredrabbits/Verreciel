@@ -131,6 +131,19 @@ class Loiqe {
     )
   }
 
+  // Map2
+
+  cargo () {
+    // assertArgs(arguments, 0);
+    return new LocationSatellite(
+      'cargo',
+      this.system,
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
+      'le soleil est noir$',
+      verreciel.items.veil
+    )
+  }
+
   // Constellations
 
   c_1 () {
