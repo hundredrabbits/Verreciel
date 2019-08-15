@@ -442,7 +442,7 @@ class Usul {
     return new LocationStation(
       'station',
       this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
+      new THREE.Vector2(this.offset.x, this.offset.y + 1),
       verreciel.items.currency5,
       function () {
         verreciel.shield.install()
@@ -459,7 +459,7 @@ class Usul {
       this.system,
       new THREE.Vector2(this.offset.x - 1, this.offset.y),
       'extra sight$map format',
-      verreciel.items.map2,
+      verreciel.items.shield,
       verreciel.items.map1
     )
   }
@@ -469,7 +469,7 @@ class Usul {
     return new LocationAntenna(
       'antenna',
       this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
+      new THREE.Vector2(this.offset.x, this.offset.y - 1),
       verreciel.items.currency5,
       function () {
         verreciel.shield.install()

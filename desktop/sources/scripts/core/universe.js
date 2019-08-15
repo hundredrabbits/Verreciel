@@ -186,9 +186,9 @@ class Universe extends Empty {
     this.senni_horadric.connect(this.senni_harvest)
 
     this.usul_station.connect(this.usul_portal)
-    this.usul_telescope.connect(this.usul_portal)
+    this.usul_telescope.connect(this.usul_antenna)
     this.usul_silence.connect(this.usul_annex)
-    this.usul_antenna.connect(this.usul_telescope)
+    this.usul_antenna.connect(this.usul_portal)
 
     // Transits
 

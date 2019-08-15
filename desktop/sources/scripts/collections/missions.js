@@ -978,7 +978,7 @@ class Missions {
     ]
     this.story.push(m)
 
-    // MARK: Part 14
+    // MARK: Part 13
 
     m = new Mission(this.story.length, i.usulPortalKey.name)
     m.state = function () {
@@ -1131,7 +1131,7 @@ class Missions {
       u.valen_bank.addItems([i.record1])
     }
     m.predicate = function () {
-      return verreciel.shield.isInstalled == true
+      return verreciel.shield.isInstalled == true && verreciel.shield.port.hasEvent(i.shield) == true
     }
     m.quests = [
       new Quest(
@@ -1144,9 +1144,25 @@ class Missions {
       ),
       new Quest(
         'Install shield',
-        u.usul_station,
+        u.usul_antenna,
         function () {
           return verreciel.shield.isInstalled == true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Collect ' + i.shield.name,
+        u.usul_telescope,
+        function () {
+          return verreciel.cargo.containsLike(i.shield)
+        },
+        function () {}
+      ),
+      new Quest(
+        'Route ' + i.shield.name + ' to shield',
+        null,
+        function () {
+          return verreciel.shield.port.hasEvent(i.shield)
         },
         function () {}
       )

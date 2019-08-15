@@ -70,7 +70,7 @@ class LocationAntenna extends Location {
   getSignal () {
     const loiqeOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.loiqe_transmitter.at)) - verreciel.universe.loiqe_transmitter.orientation
     const senniOffset = (angleBetweenTwoPoints(this.at, verreciel.universe.senni_transmitter.at)) - verreciel.universe.senni_transmitter.orientation
-    const offset = 1 - ((Math.abs(loiqeOffset) + Math.abs(senniOffset)) / 360)
+    return 1 - ((Math.abs(loiqeOffset) + Math.abs(senniOffset)) / 360)
   }
 
   touch (id) {
