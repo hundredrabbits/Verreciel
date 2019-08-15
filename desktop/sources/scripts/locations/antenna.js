@@ -20,7 +20,7 @@ class LocationAntenna extends Location {
     // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
-    let text = new SceneLabel('Orient Transmitters$install ' + installationName, 0.1, Alignment.left)
+    let text = new SceneLabel('Orient Transmitters$install ' + this.installationName, 0.1, Alignment.left)
     text.position.set(-1.5, 1, 0)
     newPanel.add(text)
 
