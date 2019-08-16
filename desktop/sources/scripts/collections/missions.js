@@ -1491,7 +1491,7 @@ class Missions {
         u.usul
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
@@ -1537,7 +1537,6 @@ class Missions {
       )
     ]
     this.story.push(m)
-
 
     // MARK: Part 18
 
@@ -1600,7 +1599,7 @@ class Missions {
         u.usul
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
