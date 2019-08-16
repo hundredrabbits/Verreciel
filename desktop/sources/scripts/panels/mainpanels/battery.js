@@ -41,9 +41,9 @@ class Battery extends MainPanel {
 
     // Systems
 
-    this.veilPort = new ScenePort(this, 'battery_slot_shield')
+    this.veilPort = new ScenePort(this, 'battery_slot_veil')
     this.veilPort.position.set(distance, 2 * Templates.lineSpacing, 0)
-    this.veilLabel = new SceneLabel('shield', 0.1, Alignment.left)
+    this.veilLabel = new SceneLabel('veil', 0.1, Alignment.left)
     this.veilLabel.position.set(0.3, 0, 0)
     this.veilPort.add(this.veilLabel)
     this.mainNode.add(this.veilPort)
@@ -62,16 +62,16 @@ class Battery extends MainPanel {
     this.radioPort.add(this.radioLabel)
     this.mainNode.add(this.radioPort)
 
-    this.navPort = new ScenePort(this, 'battery_slot_cloak')
+    this.navPort = new ScenePort(this, 'battery_slot_map')
     this.navPort.position.set(distance, -Templates.lineSpacing, 0)
-    this.navLabel = new SceneLabel('cloak', 0.1, Alignment.left)
+    this.navLabel = new SceneLabel('map', 0.1, Alignment.left)
     this.navLabel.position.set(0.3, 0, 0)
     this.navPort.add(this.navLabel)
     this.mainNode.add(this.navPort)
 
-    this.shieldPort = new ScenePort(this, 'battery_slot_oxygen')
+    this.shieldPort = new ScenePort(this, 'battery_slot_shield')
     this.shieldPort.position.set(distance, 2 * -Templates.lineSpacing, 0)
-    this.shieldLabel = new SceneLabel('oxygen', 0.1, Alignment.left)
+    this.shieldLabel = new SceneLabel('shield', 0.1, Alignment.left)
     this.shieldLabel.position.set(0.3, 0, 0)
     this.shieldPort.add(this.shieldLabel)
     this.mainNode.add(this.shieldPort)

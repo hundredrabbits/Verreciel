@@ -22,12 +22,7 @@ class LocationAitasla extends Location {
 
   sightUpdate () {
     // assertArgs(arguments, 0);
-
-    let radiation = this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
-    if (radiation > 1 && verreciel.capsule.isFleeing == false) {
-      verreciel.capsule.flee()
-    }
-    verreciel.capsule.radiation = radiation
+    console.log('!!!')
   }
 
   onDock () {

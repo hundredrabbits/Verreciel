@@ -533,7 +533,7 @@ class Usul {
 class Aitasla {
   constructor (offset) {
     // assertArgs(arguments, 1);
-    this.system = Systems.close
+    this.system = Systems.aitasla
     this.offset = offset
   }
 

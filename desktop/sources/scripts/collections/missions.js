@@ -1431,7 +1431,7 @@ class Missions {
 
     m = new Mission(this.story.length, 'close')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.capsule.beginAtLocation(u.usul_portal)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1484,14 +1484,19 @@ class Missions {
         u.usul_antenna,
         u.usul_telescope,
         u.usul_cargo,
-        u.valen_antenna
+        u.valen_antenna,
+        u.loiqe,
+        u.valen,
+        u.senni,
+        u.usul
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort);
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
-      verreciel.nav.setMap(i.map1)
+      verreciel.nav.setMap(i.map3)
+      verreciel.shield.setShield(i.shield)
       verreciel.veil.setVeil(i.veil1)
       verreciel.radio.setRecord(i.record2)
       u.valen_bank.addItems([i.record1])
@@ -1529,7 +1534,86 @@ class Missions {
           )
         },
         function () {}
-      ),
+      )
+    ]
+    this.story.push(m)
+
+
+    // MARK: Part 18
+
+    m = new Mission(this.story.length, 'close')
+    m.state = function () {
+      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.battery.cellPort1.addEvent(i.battery1)
+      verreciel.battery.cellPort2.addEvent(i.battery2)
+      verreciel.battery.cellPort3.addEvent(i.battery3)
+      verreciel.cargo.addItems([
+        i.endPortalKey
+      ])
+      verreciel.missions.setToInstalled([
+        verreciel.battery,
+        verreciel.thruster,
+        verreciel.console,
+        verreciel.radar,
+        verreciel.progress,
+        verreciel.pilot,
+        verreciel.exploration,
+        verreciel.radio,
+        verreciel.journey,
+        verreciel.nav,
+        verreciel.shield,
+        verreciel.veil
+      ])
+      verreciel.missions.setToKnown([
+        u.loiqe_spawn,
+        u.loiqe_harvest,
+        u.loiqe_city,
+        u.loiqe_satellite,
+        u.loiqe_horadric,
+        u.loiqe_portal,
+        u.valen_station,
+        u.valen_cargo,
+        u.valen_bank,
+        u.senni_harvest,
+        u.senni_portal,
+        u.valen_portal
+      ])
+      verreciel.missions.setToCompleted([
+        u.loiqe_city,
+        u.loiqe_satellite,
+        u.valen_station,
+        u.valen_cargo,
+        u.loiqe_port,
+        u.senni_cargo,
+        u.valen_fog,
+        u.senni_station,
+        u.loiqe_fog,
+        u.senni_fog,
+        u.senni_wreck,
+        u.usul_antenna,
+        u.usul_telescope,
+        u.usul_cargo,
+        u.valen_antenna,
+        u.loiqe,
+        u.valen,
+        u.senni,
+        u.usul
+      ])
+      verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
+      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort);
+      verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
+      verreciel.radar.port.connect(verreciel.pilot.port)
+      verreciel.cargo.port.connect(verreciel.console.port)
+      verreciel.nav.setMap(i.map3)
+      verreciel.shield.setShield(i.shield)
+      verreciel.veil.setVeil(i.veil1)
+      verreciel.radio.setRecord(i.record2)
+      u.valen_bank.addItems([i.record1])
+    }
+    m.predicate = function () {
+      return u.aitasla.isKnown === true
+    }
+    m.quests = [
       new Quest(
         'Enter ' + u.aitasla,
         u.aitasla,
@@ -1573,7 +1657,7 @@ class Missions {
   refresh () {
     // assertArgs(arguments, 0);
     this.currentMission.validate()
-    if (this.currentMission.isCompleted == true) {
+    if (this.currentMission.isCompleted === true) {
       this.updateCurrentMission()
       verreciel.helmet.addWarning(
         this.currentMission.name,
