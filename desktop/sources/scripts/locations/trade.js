@@ -4,7 +4,7 @@
 class LocationTrade extends Location {
   constructor (name, system, at, want, give, mapRequirement = null) {
     // assertArgs(arguments, 5);
-    super(name, system, at, new IconTrade(), new StructureTrade())
+    super(name, system, at, new IconTrade(), name === 'tower' ? new StructureTower() : new StructureTrade())
 
     this.details = give.name
 
@@ -248,5 +248,52 @@ class StructureTrade extends Structure {
   sightUpdate () {
     // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
+  }
+}
+
+class StructureTower extends Structure {
+  constructor () {
+    // assertArgs(arguments, 0);
+    super()
+
+    this.root.position.set(0, 5, 0)
+    this.root.add(new Macintosh(1))
+  }
+
+  onSight () {
+    // assertArgs(arguments, 0);
+    super.onSight()
+
+    verreciel.animator.begin()
+    verreciel.animator.animationDuration = 0.5
+
+    this.root.rotation.y = degToRad(25)
+    this.root.rotation.z = degToRad(25)
+    this.root.rotation.x = degToRad(25)
+
+    verreciel.animator.commit()
+  }
+
+  onComplete () {
+    // assertArgs(arguments, 0);
+    super.onComplete()
+
+    this.root.updateChildrenColors(verreciel.grey)
+  }
+
+  dockUpdate () {
+    // assertArgs(arguments, 0);
+    this.root.rotation.y += degToRad(0.1)
+    this.root.rotation.x += degToRad(0.05)
+    this.root.rotation.z += degToRad(0.025)
+  }
+
+  sightUpdate () {
+    // assertArgs(arguments, 0);
+    super.sightUpdate()
+
+    this.root.rotation.y += degToRad(0.1)
+    this.root.rotation.x += degToRad(0.05)
+    this.root.rotation.z += degToRad(0.025)
   }
 }

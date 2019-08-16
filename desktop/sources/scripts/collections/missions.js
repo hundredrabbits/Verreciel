@@ -635,7 +635,7 @@ class Missions {
         u.valen_cargo
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.radio.setRecord(i.record1)
@@ -792,7 +792,7 @@ class Missions {
         u.loiqe_port
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.radio.setRecord(i.record1)
@@ -877,7 +877,7 @@ class Missions {
         u.senni_cargo
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.radio.setRecord(i.record1)
@@ -974,7 +974,7 @@ class Missions {
         u.senni_wreck
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
@@ -1047,7 +1047,7 @@ class Missions {
         u.senni_wreck
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
@@ -1140,7 +1140,7 @@ class Missions {
         u.senni_wreck
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
@@ -1253,7 +1253,7 @@ class Missions {
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
-      verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort)
+      verreciel.battery.cellPort3.connect(verreciel.battery.radioPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.shield.setShield(i.shield)
@@ -1511,7 +1511,7 @@ class Missions {
         u.usul
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort)
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
@@ -1562,7 +1562,7 @@ class Missions {
 
     m = new Mission(this.story.length, 'close')
     m.state = function () {
-      verreciel.capsule.beginAtLocation(u.loiqe_horadric)
+      verreciel.capsule.beginAtLocation(u.senni_tower)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
@@ -1620,12 +1620,12 @@ class Missions {
         u.usul
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.shieldPort)
+      verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
       verreciel.battery.cellPort3.connect(verreciel.battery.navPort)
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.nav.setMap(i.map3)
-      verreciel.shield.setShield(i.shield2)
+      verreciel.shield.setShield(i.shield1)
       verreciel.veil.setVeil(i.veil1)
       verreciel.radio.setRecord(i.record3)
       u.valen_bank.addItems([i.record1, i.record2])
