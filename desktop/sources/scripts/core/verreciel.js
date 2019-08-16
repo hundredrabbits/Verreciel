@@ -329,7 +329,7 @@ setEnumValues(Phase, ['init', 'start', 'render', 'idle'])
 class Alignment {}
 setEnumValues(Alignment, ['left', 'center', 'right'])
 class Systems {}
-setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'close', 'unknown'])
+setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'aitasla', 'unknown'])
 class ItemTypes {}
 setEnumValues(ItemTypes, [
   'generic',

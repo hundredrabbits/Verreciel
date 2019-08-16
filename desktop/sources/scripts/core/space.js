@@ -52,7 +52,7 @@ class Space extends Empty {
         this.targetStarColor = verreciel.red
         verreciel.music.setAmbience(Ambience.ambience4)
         break
-      case Systems.close:
+      case Systems.aitasla:
         this.targetSpaceColor.setRGB(0, 0, 0.6)
         this.targetStarColor = verreciel.black
         verreciel.music.setAmbience(Ambience.ambience5)
@@ -79,7 +79,7 @@ class Space extends Empty {
   whenRenderer () {
     super.whenRenderer()
     if (
-      verreciel.capsule.isDockedAtLocation(verreciel.universe.close) == true
+      verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla) == true
     ) {
       verreciel.journey.distance += 3
     }
@@ -246,10 +246,7 @@ class StarCluster extends Empty {
   whenRenderer () {
     // assertArgs(arguments, 0);
     var starSpeed = verreciel.thruster.actualSpeed
-    if (
-      verreciel.capsule.isDocked == false &&
-      verreciel.capsule.location != null
-    ) {
+    if (verreciel.capsule.isDocked == false && verreciel.capsule.location != null) {
       starSpeed = 0.3
     } else if (verreciel.capsule.isWarping == true) {
       starSpeed = 40
@@ -259,9 +256,7 @@ class StarCluster extends Empty {
 
     starSpeed *= 0.15
 
-    if (
-      verreciel.capsule.isDockedAtLocation(verreciel.universe.close) == true
-    ) {
+    if (verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla) == true) {
       starSpeed = 0.15
     }
 

@@ -22,7 +22,9 @@ class LocationAitasla extends Location {
 
   sightUpdate () {
     // assertArgs(arguments, 0);
-    console.log('!!!')
+
+    this.color = verreciel.black
+    this.structure.updateChildrenColors(this.color)
   }
 
   onDock () {
@@ -32,7 +34,5 @@ class LocationAitasla extends Location {
   onUpdate () {
     // assertArgs(arguments, 0);
 
-    this.color = verreciel.black
-    this.mesh.updateChildrenColors(this.color)
   }
 }

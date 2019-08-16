@@ -190,8 +190,8 @@ class Capsule extends Empty {
       case Systems.usul:
         star = verreciel.universe.usul
         break
-      case Systems.close:
-        star = verreciel.universe.close
+      case Systems.aitasla:
+        star = verreciel.universe.aitasla
         break
       default:
         star = verreciel.universe.loiqe
