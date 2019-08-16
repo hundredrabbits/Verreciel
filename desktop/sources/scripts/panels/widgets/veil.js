@@ -14,6 +14,13 @@ class Veil extends Widget {
     this.label.updateText(this.name)
   }
 
+  setVeil (veil) {
+    // assertArgs(arguments, 1);
+    if (!this.hasVeil(veil)) {
+      this.port.addEvent(veil)
+    }
+  }
+
   hasVeil (veil) {
     // assertArgs(arguments, 1);
     if (this.port.hasEvent() == false) {

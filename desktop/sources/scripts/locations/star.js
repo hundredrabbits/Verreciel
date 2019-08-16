@@ -30,6 +30,8 @@ class LocationStar extends Location {
 
     if (verreciel.veil.hasVeil(verreciel.items.veil1) && verreciel.battery.isVeilPowered() == true) {
       this.button.enable('extinguish')
+    } else {
+      this.button.disable('extinguish')
     }
   }
 
@@ -44,15 +46,13 @@ class LocationStar extends Location {
       }
       verreciel.capsule.radiation = radiation
     }
-    else{
-      verreciel.helmet.addWarning('shield ok', verreciel.cyan, 2, 'radiation')
-    }
   }
 
   onApproach () {
     // assertArgs(arguments, 0);
     if (verreciel.capsule.hasShield() === true) {
       super.onApproach()
+      verreciel.helmet.addWarning('shield ok', verreciel.cyan, 3, 'shield')
     } else {
       verreciel.space.startInstance(this)
     }

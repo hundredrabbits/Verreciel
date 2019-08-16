@@ -278,12 +278,12 @@ class Items {
     // Veils
 
     this.veil1 = new Item(
-      'ink veil',
+      'sphere veil',
       ItemTypes.veil,
       null,
       'dyson sphere',
       true,
-      'veil-3'
+      'veil-1'
     )
 
     // "Echoes"

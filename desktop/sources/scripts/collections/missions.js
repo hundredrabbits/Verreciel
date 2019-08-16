@@ -1243,9 +1243,6 @@ class Missions {
       verreciel.radio.setRecord(i.record2)
       u.valen_bank.addItems([i.record1])
     }
-    m.predicate = function () {
-      return verreciel.cargo.contains(i.endPortalKey)
-    }
     m.quests = [
       new Quest(
         'Aquire ' + i.map2.name,
@@ -1360,7 +1357,7 @@ class Missions {
       u.valen_bank.addItems([i.record1])
     }
     m.predicate = function () {
-      return verreciel.cargo.contains(i.endPortalKey)
+      return u.loiqe.isComplete === true && u.valen.isComplete === true && u.senni.isComplete === true && u.usul.isComplete === true
     }
     m.quests = [
       new Quest(
@@ -1430,16 +1427,19 @@ class Missions {
     ]
     this.story.push(m)
 
-    // MARK: Part 16
+    // MARK: Part 17
 
-    m = new Mission(this.story.length, 'veil')
+    m = new Mission(this.story.length, 'close')
     m.state = function () {
       verreciel.capsule.beginAtLocation(u.loiqe_horadric)
       verreciel.battery.cellPort1.addEvent(i.battery1)
       verreciel.battery.cellPort2.addEvent(i.battery2)
       verreciel.battery.cellPort3.addEvent(i.battery3)
       verreciel.cargo.addItems([
-        i.endPortalKey
+        i.loiqePortalKey,
+        i.valenPortalKey,
+        i.senniPortalKey,
+        i.usulPortalKey
       ])
       verreciel.missions.setToInstalled([
         verreciel.battery,
@@ -1452,7 +1452,8 @@ class Missions {
         verreciel.radio,
         verreciel.journey,
         verreciel.nav,
-        verreciel.shield
+        verreciel.shield,
+        verreciel.veil
       ])
       verreciel.missions.setToKnown([
         u.loiqe_spawn,
@@ -1478,11 +1479,12 @@ class Missions {
         u.valen_fog,
         u.senni_station,
         u.loiqe_fog,
-        u.usul_station,
         u.senni_fog,
         u.senni_wreck,
         u.usul_antenna,
-        u.usul_telescope
+        u.usul_telescope,
+        u.usul_cargo,
+        u.valen_antenna
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       // verreciel.battery.cellPort2.connect(verreciel.battery.radioPort);
@@ -1490,250 +1492,51 @@ class Missions {
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.nav.setMap(i.map1)
+      verreciel.veil.setVeil(i.veil1)
       verreciel.radio.setRecord(i.record2)
       u.valen_bank.addItems([i.record1])
     }
+    m.predicate = function () {
+      return verreciel.cargo.contains(i.endPortalKey)
+    }
     m.quests = [
       new Quest(
-        'Collect ' + i.map2.name,
-        u.usul_telescope,
+        'Create ' + i.endPortalKeyFragment1.name,
+        null,
         function () {
           return (
-            verreciel.nav.port.hasEvent(i.map2) ||
-            verreciel.cargo.contains(i.map2)
+            verreciel.cargo.contains(i.endPortalKeyFragment1)
           )
         },
         function () {}
       ),
       new Quest(
-        'Route ' + i.map2.name + ' to map',
+        'Create ' + i.endPortalKeyFragment2.name,
         null,
         function () {
-          return verreciel.nav.port.hasEvent(i.map2)
-        },
-        function () {}
-      ),
-      new Quest(
-        'Collect ' + i.shield.name,
-        u.usul_silence,
-        function () {
           return (
-            verreciel.shield.port.hasEvent(i.shield) ||
-            verreciel.cargo.contains(i.shield)
+            verreciel.cargo.contains(i.endPortalKeyFragment2)
           )
         },
         function () {}
       ),
       new Quest(
-        'Route ' + i.shield.name + ' to shield',
+        'Create ' + i.endPortalKey.name,
         null,
         function () {
-          return verreciel.shield.port.hasEvent(i.shield)
+          return (
+            verreciel.cargo.contains(i.endPortalKey)
+          )
         },
         function () {}
       ),
       new Quest(
-        'Power Shield in battery',
-        null,
+        'Enter ' + u.aitasla,
+        u.aitasla,
         function () {
-          return verreciel.battery.isShieldPowered() == true
-        },
-        function () {}
-      )
-    ]
-    this.story.push(m)
-
-    // MARK: Part 18
-
-    m = new Mission(this.story.length, 'Extinguish')
-    m.state = function () {
-      verreciel.capsule.beginAtLocation(u.usul_silence)
-      verreciel.battery.cellPort1.addEvent(i.battery1)
-      verreciel.battery.cellPort2.addEvent(i.battery2)
-      verreciel.battery.cellPort3.addEvent(i.battery3)
-      verreciel.cargo.addItems([i.endPortalKey, i.map1])
-      verreciel.missions.setToInstalled([
-        verreciel.battery,
-        verreciel.thruster,
-        verreciel.console,
-        verreciel.radar,
-        verreciel.progress,
-        verreciel.pilot,
-        verreciel.exploration,
-        verreciel.radio,
-        verreciel.journey,
-        verreciel.nav,
-        verreciel.shield
-      ])
-      verreciel.missions.setToKnown([
-        u.loiqe_spawn,
-        u.loiqe_harvest,
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.loiqe_horadric,
-        u.loiqe_portal,
-        u.valen_station,
-        u.valen_cargo,
-        u.valen_bank,
-        u.senni_harvest,
-        u.senni_portal,
-        u.valen_portal
-      ])
-      verreciel.missions.setToCompleted([
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.valen_station,
-        u.valen_cargo,
-        u.loiqe_port,
-        u.senni_cargo,
-        u.valen_fog,
-        u.senni_station,
-        u.loiqe_fog,
-        u.usul_station,
-        u.senni_fog,
-        u.senni_wreck,
-        u.usul_telescope,
-        u.usul_silence,
-        u.usul_annex
-      ])
-      verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
-      verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort)
-      verreciel.radar.port.connect(verreciel.pilot.port)
-      verreciel.cargo.port.connect(verreciel.console.port)
-      verreciel.nav.setMap(i.map2)
-      verreciel.radio.setRecord(i.record4)
-      verreciel.shield.setShield(i.shield)
-      u.valen_bank.addItems([i.record1, i.record2])
-    }
-    m.quests = [
-      new Quest(
-        'Extinguish the sun',
-        u.loiqe,
-        function () {
-          return u.loiqe.isComplete == true
-        },
-        function () {}
-      ),
-      new Quest(
-        'Extinguish the sun',
-        u.valen,
-        function () {
-          return u.valen.isComplete == true
-        },
-        function () {}
-      ),
-      new Quest(
-        'Extinguish the sun',
-        u.senni,
-        function () {
-          return u.senni.isComplete == true
-        },
-        function () {}
-      ),
-      new Quest(
-        'Extinguish the sun',
-        u.usul,
-        function () {
-          return u.usul.isComplete == true
-        },
-        function () {}
-      )
-    ]
-    this.story.push(m)
-
-    // MARK: Part 19
-
-    m = new Mission(this.story.length, 'At the close')
-    m.state = function () {
-      verreciel.capsule.beginAtLocation(u.usul_transit)
-      verreciel.battery.cellPort1.addEvent(i.battery1)
-      verreciel.battery.cellPort2.addEvent(i.battery2)
-      verreciel.battery.cellPort3.addEvent(i.battery3)
-      verreciel.cargo.addItems([i.endPortalKey, i.map1])
-      verreciel.missions.setToInstalled([
-        verreciel.battery,
-        verreciel.thruster,
-        verreciel.console,
-        verreciel.radar,
-        verreciel.progress,
-        verreciel.pilot,
-        verreciel.exploration,
-        verreciel.radio,
-        verreciel.journey,
-        verreciel.nav,
-        verreciel.shield
-      ])
-      verreciel.missions.setToKnown([
-        u.loiqe_spawn,
-        u.loiqe_harvest,
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.loiqe_horadric,
-        u.loiqe_portal,
-        u.valen_station,
-        u.valen_cargo,
-        u.valen_bank,
-        u.senni_harvest,
-        u.senni_portal,
-        u.valen_portal
-      ])
-      verreciel.missions.setToCompleted([
-        u.loiqe_city,
-        u.loiqe_satellite,
-        u.valen_station,
-        u.valen_cargo,
-        u.loiqe_port,
-        u.senni_cargo,
-        u.valen_fog,
-        u.senni_station,
-        u.loiqe_fog,
-        u.usul_station,
-        u.senni_fog,
-        u.senni_wreck,
-        u.usul_telescope,
-        u.usul_silence,
-        u.usul_annex,
-        u.loiqe,
-        u.valen,
-        u.senni,
-        u.usul
-      ])
-      verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
-      verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
-      verreciel.battery.cellPort3.connect(verreciel.battery.shieldPort)
-      verreciel.radar.port.connect(verreciel.pilot.port)
-      verreciel.cargo.port.connect(verreciel.console.port)
-      verreciel.nav.setMap(i.map2)
-      verreciel.radio.setRecord(i.record4)
-      verreciel.shield.setShield(i.shield)
-      u.valen_bank.addItems([i.record1, i.record2])
-    }
-    m.quests = [
-      new Quest(
-        'Witness',
-        u.close,
-        function () {
-          return u.close.isComplete == true
-        },
-        function () {}
-      )
-    ]
-    this.story.push(m)
-
-    // MARK: Part 20
-
-    m = new Mission(this.story.length, 'End')
-    m.state = function () {
-      verreciel.capsule.at = new THREE.Vector2(0, 100)
-      verreciel.helmet.addWarning('mechanism is closed', null, 60, 'end')
-    }
-    m.quests = [
-      new Quest(
-        'Stop',
-        u.close,
-        function () {
-          return 1 > 2 == true
+          return (
+            u.aitasla.isKnown === true
+          )
         },
         function () {}
       )

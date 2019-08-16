@@ -103,16 +103,13 @@ Extinguish valen
 Extinguish senni
 Extinguish usul
 
-### 15. End Key
+## Aitasla
+
+### 17. End Key
 Create [endPortalKeyFragment1]
 Create [endPortalKeyFragment2]
 Combine fragments
-
-### 16. Aitasla
-Extinguish the Loiqe sun
-Extinguish the Valen sun
-Extinguish the Senni sun
-Extinguish the Usul sun
+Enter Aitasla
 
 ### 16. At the close[TODO]
 
