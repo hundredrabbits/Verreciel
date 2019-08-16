@@ -9,7 +9,7 @@ class Recipes {
     this.horadric.push(
       new Recipe(
         [verreciel.items.record1, verreciel.items.record2],
-        verreciel.items.record3
+        verreciel.items.record4
       )
     )
 

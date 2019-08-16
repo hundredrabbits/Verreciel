@@ -111,12 +111,14 @@ Create [endPortalKeyFragment2]
 Combine fragments
 Enter Aitasla
 
-### 16. At the close[TODO]
+## Special
 
-Witness
+### Get the red shield
+Create icon
+Trade icon in Senni Tower
 
-## MISSION: End
-Stop
+### Get record 4
+Combined record 2 & record 3
 
 ## Recipes
 

@@ -325,7 +325,7 @@ class Missions {
       verreciel.cargo.port.connect(verreciel.console.port)
     }
     m.predicate = function () {
-      return u.valen_portal.isKnown == true
+      return verreciel.pilot.port.isReceivingEvent(u.valen_portal) == true && verreciel.thruster.port.isReceivingEvent(i.warpDrive) == true
     }
     m.quests = [
       new Quest(
@@ -340,7 +340,7 @@ class Missions {
         function () {}
       ),
       new Quest(
-        'Align pilot to portal',
+        'Route portal to pilot',
         u.loiqe_portal,
         function () {
           return verreciel.pilot.port.isReceivingEvent(u.valen_portal) == true
@@ -348,10 +348,18 @@ class Missions {
         function () {}
       ),
       new Quest(
-        'Power Thruster with portal',
+        'Route portal to thruster',
         u.loiqe_portal,
         function () {
           return verreciel.thruster.port.isReceivingEvent(i.warpDrive) == true
+        },
+        function () {}
+      ),
+      new Quest(
+        'Warp portal to valen',
+        u.valen_portal,
+        function () {
+          return verreciel.capsule.system === Systems.valen
         },
         function () {}
       )
@@ -392,6 +400,16 @@ class Missions {
       return verreciel.radio.isInstalled == true
     }
     m.quests = [
+      new Quest(
+        'Route Radar to Pilot',
+        null,
+        function () {
+          return (
+            verreciel.pilot.port.origin != null && verreciel.pilot.port.origin == verreciel.radar.port
+          )
+        },
+        function () {}
+      ),
       new Quest(
         'Collect ' + i.record1.name,
         u.valen_bank,
@@ -874,7 +892,7 @@ class Missions {
         function () {}
       ),
       new Quest(
-        'Route fog to map',
+        'Route ' + i.map1 + ' to map',
         null,
         function () {
           return verreciel.nav.port.hasItemOfType(ItemTypes.map)
@@ -1344,7 +1362,8 @@ class Missions {
         u.usul_antenna,
         u.usul_telescope,
         u.usul_cargo,
-        u.valen_antenna
+        u.valen_antenna,
+        u.valen_wreck
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.navPort)
@@ -1353,8 +1372,8 @@ class Missions {
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.shield.setShield(i.shield)
       verreciel.nav.setMap(i.map3)
-      verreciel.radio.setRecord(i.record2)
-      u.valen_bank.addItems([i.record1])
+      verreciel.radio.setRecord(i.record3)
+      u.valen_bank.addItems([i.record1, i.record2])
     }
     m.predicate = function () {
       return u.loiqe.isComplete === true && u.valen.isComplete === true && u.senni.isComplete === true && u.usul.isComplete === true
@@ -1472,6 +1491,7 @@ class Missions {
       verreciel.missions.setToCompleted([
         u.loiqe_city,
         u.loiqe_satellite,
+        u.loiqe_cargo,
         u.valen_station,
         u.valen_cargo,
         u.loiqe_port,
@@ -1498,8 +1518,8 @@ class Missions {
       verreciel.nav.setMap(i.map3)
       verreciel.shield.setShield(i.shield)
       verreciel.veil.setVeil(i.veil1)
-      verreciel.radio.setRecord(i.record2)
-      u.valen_bank.addItems([i.record1])
+      verreciel.radio.setRecord(i.record3)
+      u.valen_bank.addItems([i.record1, i.record2])
     }
     m.predicate = function () {
       return verreciel.cargo.contains(i.endPortalKey)
@@ -1580,6 +1600,7 @@ class Missions {
       verreciel.missions.setToCompleted([
         u.loiqe_city,
         u.loiqe_satellite,
+        u.loiqe_cargo,
         u.valen_station,
         u.valen_cargo,
         u.loiqe_port,
@@ -1604,10 +1625,10 @@ class Missions {
       verreciel.radar.port.connect(verreciel.pilot.port)
       verreciel.cargo.port.connect(verreciel.console.port)
       verreciel.nav.setMap(i.map3)
-      verreciel.shield.setShield(i.shield)
+      verreciel.shield.setShield(i.shield2)
       verreciel.veil.setVeil(i.veil1)
-      verreciel.radio.setRecord(i.record2)
-      u.valen_bank.addItems([i.record1])
+      verreciel.radio.setRecord(i.record3)
+      u.valen_bank.addItems([i.record1, i.record2])
     }
     m.predicate = function () {
       return u.aitasla.isKnown === true

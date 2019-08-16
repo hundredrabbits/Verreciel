@@ -249,6 +249,14 @@ class Items {
       true,
       'shield-1'
     )
+    this.shield2 = new Item(
+      'mirror',
+      ItemTypes.shield,
+      null,
+      'red mirror',
+      true,
+      'shield-2'
+    )
 
     // "Batteries"
     this.battery1 = new Item(

@@ -43,7 +43,7 @@ class Universe extends Empty {
     this.valen_antenna = verreciel.locations.valen.antenna()
     this.valen_c_1 = verreciel.locations.valen.c_1()
     // MARK: Blind
-    this.valen_void = verreciel.locations.valen.void()
+    this.valen_wreck = verreciel.locations.valen.wreck()
 
     // MARK: Senni -
 
@@ -59,7 +59,7 @@ class Universe extends Empty {
     this.senni_fog = verreciel.locations.senni.fog()
     this.senni_wreck = verreciel.locations.senni.wreck()
     // MARK: Blind
-    this.senni_bog = verreciel.locations.senni.bog()
+    this.senni_tower = verreciel.locations.senni.tower()
 
     // MARK: Usul -
 
@@ -70,9 +70,6 @@ class Universe extends Empty {
     this.usul_cargo = verreciel.locations.usul.cargo()
     this.usul_telescope = verreciel.locations.usul.telescope()
     this.usul_antenna = verreciel.locations.usul.antenna()
-    // MARK: Blind
-    this.usul_silence = verreciel.locations.usul.silence()
-    this.usul_annex = verreciel.locations.usul.annex()
 
     // MARK: Aitasla -
     this.aitasla = verreciel.locations.aitasla.void()
@@ -130,7 +127,7 @@ class Universe extends Empty {
     this.addLocation(this.valen_fog)
     this.addLocation(this.valen_c_1)
     // Blind
-    this.addLocation(this.valen_void)
+    this.addLocation(this.valen_wreck)
   }
 
   addSenni () {
@@ -147,7 +144,7 @@ class Universe extends Empty {
     this.addLocation(this.senni_fog)
     this.addLocation(this.senni_wreck)
     // Blind
-    this.addLocation(this.senni_bog)
+    this.addLocation(this.senni_tower)
   }
 
   addUsul () {
@@ -160,9 +157,6 @@ class Universe extends Empty {
     this.addLocation(this.usul_transit)
     this.addLocation(this.usul_telescope)
     this.addLocation(this.usul_antenna)
-    // Blind
-    this.addLocation(this.usul_silence)
-    this.addLocation(this.usul_annex)
   }
 
   addAitasla () {
@@ -191,7 +185,6 @@ class Universe extends Empty {
 
     this.usul_cargo.connect(this.usul_portal)
     this.usul_telescope.connect(this.usul_antenna)
-    this.usul_silence.connect(this.usul_annex)
     this.usul_antenna.connect(this.usul_portal)
 
     // Transits

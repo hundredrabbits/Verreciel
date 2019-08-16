@@ -23,6 +23,17 @@ class Shield extends Widget {
     }
   }
 
+  hasShield (shield) {
+    // assertArgs(arguments, 1);
+    if (this.port.hasEvent() == false) {
+      return false
+    }
+    if (this.port.event == shield) {
+      return true
+    }
+    return false
+  }
+
   onDisconnect () {
     super.onDisconnect()
 
@@ -48,7 +59,12 @@ class Shield extends Widget {
 
   mode_powered () {
     // assertArgs(arguments, 0);
-    verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.cyan)
+    if (this.hasShield(verreciel.items.shield2)) {
+      verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.red)
+    } else {
+      verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.cyan)
+    }
+
     verreciel.capsule.shieldRoot.show()
   }
 

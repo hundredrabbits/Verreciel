@@ -140,7 +140,8 @@ class Loiqe {
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
       'le soleil est noir',
-      verreciel.items.veil1
+      verreciel.items.veil1,
+      verreciel.items.map2
     )
   }
 
@@ -281,16 +282,16 @@ class Valen {
     )
   }
 
-  // MARK: Blind
+  // MARK: map2
 
-  void () {
+  wreck () {
     // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'void',
+    return new LocationSatellite(
+      'wreck',
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y - 2),
-      verreciel.items.teapot,
-      verreciel.items.kelp,
+      'Memories$of misfortune',
+      verreciel.items.record3,
       verreciel.items.map2
     )
   }
@@ -361,7 +362,7 @@ class Senni {
     )
   }
 
-  // MARK: Fog
+  // MARK: map1
 
   transit () {
     // assertArgs(arguments, 0);
@@ -400,23 +401,23 @@ class Senni {
     return new LocationSatellite(
       'wreck',
       this.system,
-      new THREE.Vector2(this.offset.x - 2, this.offset.y),
+      new THREE.Vector2(this.offset.x + 1, this.offset.y - 2),
       'Memories$of misfortune',
-      verreciel.items.record2,
+      verreciel.items.record3,
       verreciel.items.map1
     )
   }
 
-  // MARK: Silence
+  // MARK: map2
 
-  bog () {
+  tower () {
     // assertArgs(arguments, 0);
     return new LocationTrade(
-      'bog',
+      'tower',
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y + 1),
-      verreciel.items.kelp,
-      verreciel.items.record_oquonie,
+      verreciel.items.currency6,
+      verreciel.items.shield2,
       verreciel.items.map2
     )
   }
@@ -439,7 +440,8 @@ class Usul {
     return new LocationPortal(
       'portal',
       this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y)
+      new THREE.Vector2(this.offset.x + 1, this.offset.y),
+      verreciel.items.map1
     )
   }
 
@@ -500,32 +502,6 @@ class Usul {
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
       verreciel.items.map1
-    )
-  }
-
-  // MARK: Blind
-
-  silence () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'silence',
-      this.system,
-      new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.currency6,
-      verreciel.items.shield,
-      verreciel.items.map2
-    )
-  }
-
-  annex () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'annex',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y + 1),
-      'A vivid moment$on repeat',
-      verreciel.items.record4,
-      verreciel.items.map2
     )
   }
 }
