@@ -25,10 +25,12 @@ class LocationAitasla extends Location {
 
     this.color = verreciel.black
     this.structure.updateChildrenColors(this.color)
+    this.icon.label.color = verreciel.clear
   }
 
   onDock () {
     // assertArgs(arguments, 0);
+    verreciel.player.eject()
   }
 
   onUpdate () {

@@ -1658,12 +1658,6 @@ class Missions {
     this.currentMission.validate()
     if (this.currentMission.isCompleted === true) {
       this.updateCurrentMission()
-      verreciel.helmet.addWarning(
-        this.currentMission.name,
-        verreciel.cyan,
-        3,
-        'mission'
-      )
     }
   }
 
@@ -1676,6 +1670,7 @@ class Missions {
         console.info('# MISSION  | Reached: ' + this.currentMission.id)
         console.info('# ---------------------------')
         verreciel.game.save(this.currentMission.id)
+        verreciel.helmet.addWarning(this.currentMission.name, verreciel.cyan, 3, 'mission')
         return
       }
     }

@@ -134,21 +134,24 @@ class Player extends Empty {
     this.isLocked = true
     // assertArgs(arguments, 0);
     verreciel.animator.begin()
-    verreciel.animator.animationDuration = 2
-
-    this.position.set(0, 0, 0)
+    verreciel.animator.animationDuration = 60
     verreciel.capsule.opacity = 0
-    verreciel.helmet.opacity = 0
-
+    this.rotation.y = 0
+    this.rotation.x = 0
+    this.rotation.z = degToRad(90)
+    this.position.set(0, 5, 0)
+    verreciel.helmet.addWarning('the system is closing', verreciel.black, 3)
     verreciel.animator.completionBlock = function () {
       verreciel.animator.begin()
       verreciel.animator.animationDuration = 10
-
-      this.position.set(0, 5, 0)
-
+      verreciel.space.targetSpaceColor.setRGB(0, 0, 0)
+      verreciel.helmet.opacity = 0
       verreciel.animator.completionBlock = function () {
         this.isEjected = true
         verreciel.game.save(0)
+        const remote = require('electron').remote
+        const { dialog, app } = remote
+        app.exit()
       }.bind(this)
       verreciel.animator.commit()
     }.bind(this)
