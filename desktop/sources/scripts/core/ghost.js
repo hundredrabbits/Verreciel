@@ -400,7 +400,10 @@ class Ghost extends Empty {
     } else {
       this.speed = this.speed * 0.5 + 1 * 0.5
     }
-    verreciel.game.gameSpeed = Math.floor(this.speed)
+
+    if (this.isReplaying == true) {
+      verreciel.game.gameSpeed = Math.floor(this.speed)
+    }
 
     let scale =
       this.fuzz.element.scale.z * 0.5 +

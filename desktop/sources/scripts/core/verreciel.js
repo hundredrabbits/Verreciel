@@ -261,7 +261,7 @@ class Verreciel {
   }
 
   mouseWheel (e) {
-    e.preventDefault()
+    // e.preventDefault() // https://www.chromestatus.com/features/6662647093133312
     if (this.mouseIsDown || this.player.isLocked) {
       return
     }
