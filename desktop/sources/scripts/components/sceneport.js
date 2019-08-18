@@ -156,10 +156,10 @@ class ScenePort extends Empty {
       return
     }
     if (port.origin != null) {
-      return
+      port.origin.disconnect()
     }
     if (port.connection != null && port.connection == this) {
-      return
+      port.disconnect()
     }
 
     this.disconnect()
