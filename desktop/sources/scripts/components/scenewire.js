@@ -12,6 +12,7 @@ class SceneWire extends Empty {
     this.endB = endB
     this.time = 0
     this.length = 0
+    this.lastGameTime = 0
 
     this.baseline1 = new THREE.Vector3(
       this.endB.x * 0.2,
@@ -90,7 +91,9 @@ class SceneWire extends Empty {
 
   animate () {
     let rand = Math.random()
-    this.time += rand * rand * rand
+    let delta = verreciel.game.time - this.lastGameTime
+    this.lastGameTime = verreciel.game.time
+    this.time += rand * rand * delta
     if (
       this.isEnabled == false ||
       this.endB == null ||
