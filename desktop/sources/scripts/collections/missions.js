@@ -892,7 +892,7 @@ class Missions {
         function () {}
       ),
       new Quest(
-        'Route ' + i.map1 + ' to map',
+        'Route ' + i.map1.name + ' to map',
         null,
         function () {
           return verreciel.nav.port.hasItemOfType(ItemTypes.map)
