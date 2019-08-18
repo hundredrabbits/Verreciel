@@ -291,7 +291,7 @@ class Valen {
       this.system,
       new THREE.Vector2(this.offset.x + 1, this.offset.y - 2),
       'Memories$of misfortune',
-      verreciel.items.record3,
+      verreciel.items.record2,
       verreciel.items.map2
     )
   }
