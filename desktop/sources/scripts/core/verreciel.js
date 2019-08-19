@@ -67,6 +67,7 @@ class Verreciel {
     this.element.appendChild(this.renderer.domElement)
     this.lastMousePosition = new THREE.Vector2()
     this.mouseMoved = false
+    this.waitingForMouseUp = false
     this.music = new Music()
 
     this.animator = new Animator()
@@ -199,12 +200,23 @@ class Verreciel {
 
     this.mouseIsDown = true
     this.mouseMoved = false
+    this.waitingForMouseUp = true
 
     this.lastMousePosition.x = e.clientX / this.width
     this.lastMousePosition.y = e.clientY / this.height
 
     this.player.canAlign = false
     this.helmet.canAlign = false
+
+    let hits = this.getHits().filter(hit => this.isEnabledTapTarget(hit, "mousedown"))
+    hits.sort(this.hasShortestDistance)
+    for (let hit of hits) {
+      if (hit.object.node.trigger.tap()) {
+        this.numClicks++
+        this.waitingForMouseUp = false
+        break
+      }
+    }
   }
 
   mouseMove (e) {
@@ -243,21 +255,23 @@ class Verreciel {
     this.player.canAlign = true
     this.helmet.canAlign = true
 
-    if (!this.mouseMoved) {
-      event.preventDefault()
-      let hits = this.getHits().filter(this.isEnabledTrigger)
+    if (this.waitingForMouseUp && !this.mouseMoved) {
+      e.preventDefault()
+      let hits = this.getHits().filter(hit => this.isEnabledTapTarget(hit, "mouseup"))
       if (hits.length > 0 && this.ghost.isReplaying) {
         this.ghost.disappear()
       } else {
         this.numClicks++
         hits.sort(this.hasShortestDistance)
         for (let hit of hits) {
-          if (hit.object.node.tap()) {
+          if (hit.object.node.trigger.tap()) {
             break
           }
         }
       }
     }
+
+    this.waitingForMouseUp = false;
   }
 
   mouseWheel (e) {
@@ -269,11 +283,12 @@ class Verreciel {
     this.player.accelX += e.deltaY * -0.001
   }
 
-  isEnabledTrigger (hit) {
+  isEnabledTapTarget (hit, eventType) {
     let node = hit.object.node
     return (
-      node instanceof SceneTrigger &&
-      node.isEnabled == true &&
+      node instanceof SceneTapTarget &&
+      node.trigger.isEnabled == true &&
+      node.type == eventType &&
       node.opacityFromTop > 0
     )
   }
