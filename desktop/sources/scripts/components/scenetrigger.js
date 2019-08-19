@@ -1,7 +1,7 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class SceneTrigger extends SceneDrawNode {
+class SceneTrigger extends Empty {
   constructor (host, name, width, height, operation) {
     // assertArgs(arguments, 5);
 
@@ -12,26 +12,22 @@ class SceneTrigger extends SceneDrawNode {
     this.operation = operation
     this.host = host
 
-    let scale = IS_MOBILE ? 1 : 0.5
-
-    this.geometry.fromBufferGeometry(
-      new THREE.PlaneBufferGeometry(width * scale, height * scale)
+    this.mouseUpTarget = new SceneTapTarget(
+      this,
+      "mouseup",
+      width,
+      height,
+      SceneTrigger.DEBUG_BLUE
     )
-    this.geometry.mergeVertices()
-
-    this.color = SceneTrigger.DEBUG_BLUE
-  }
-
-  makeElement () {
-    this.material = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      visible: DEBUG_SHOW_TRIGGERS,
-      transparent: true
-    })
-    this.geometry = new THREE.Geometry()
-    this.geometry.dynamic = true
-    this.element = new THREE.Mesh(this.geometry, this.material)
-    super.makeElement()
+    this.add(this.mouseUpTarget)
+    this.mouseDownTarget = new SceneTapTarget(
+      this,
+      "mousedown",
+      width / 2,
+      height / 2,
+      SceneTrigger.DEBUG_MAGENTA
+    )
+    this.add(this.mouseDownTarget)
   }
 
   tap () {
@@ -52,15 +48,12 @@ class SceneTrigger extends SceneDrawNode {
     return result
   }
 
-  update () {
-    // assertArgs(arguments, 0);
-  }
-
   enable () {
     // assertArgs(arguments, 0);
     if (!this.isEnabled) {
       this.isEnabled = true
-      this.color = SceneTrigger.DEBUG_BLUE
+      this.mouseUpTarget.color = SceneTrigger.DEBUG_BLUE
+      this.mouseDownTarget.color = SceneTrigger.DEBUG_MAGENTA
     }
   }
 
@@ -68,10 +61,41 @@ class SceneTrigger extends SceneDrawNode {
     // assertArgs(arguments, 0);
     if (this.isEnabled) {
       this.isEnabled = false
-      this.color = SceneTrigger.DEBUG_WHITE
+      this.mouseUpTarget.color = SceneTrigger.DEBUG_WHITE
+      this.mouseDownTarget.color = SceneTrigger.DEBUG_WHITE
     }
   }
 }
 
+class SceneTapTarget extends SceneDrawNode {
+  constructor (trigger, type, width, height, color) {
+    super()
+    this.trigger = trigger;
+    this.type = type
+
+    let scale = IS_MOBILE ? 1 : 0.5
+
+    this.geometry.fromBufferGeometry(
+      new THREE.PlaneBufferGeometry(width * scale, height * scale)
+    )
+    this.geometry.mergeVertices()
+
+    this.color = color
+  }
+
+  makeElement () {
+    this.material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      visible: DEBUG_SHOW_TRIGGERS,
+      transparent: true
+    })
+    this.geometry = new THREE.Geometry()
+    this.geometry.dynamic = true
+    this.element = new THREE.Mesh(this.geometry, this.material)
+    super.makeElement()
+  }
+}
+
 SceneTrigger.DEBUG_BLUE = new THREE.Vector4(0, 0, 1, 0.1)
+SceneTrigger.DEBUG_MAGENTA = new THREE.Vector4(0.5, 0, 0.5, 0.1)
 SceneTrigger.DEBUG_WHITE = new THREE.Vector4(1, 1, 1, 0.1)
