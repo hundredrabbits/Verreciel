@@ -139,8 +139,7 @@ class ScenePortSlot extends ScenePort {
       return
     }
 
-    this.uploadPercentage += Math.random() * 6
-    this.uploadPercentage += 1 // Faster!
+    this.uploadPercentage += (Math.random() * 6 + 1) * verreciel.game.gameSpeed
     if (this.uploadPercentage > 100) {
       this.origin.wire.isUploading = false
       this.uploadComplete()

@@ -206,7 +206,7 @@ class LocationHoradric extends Location {
 
   combineProgress () {
     // assertArgs(arguments, 0);
-    this.combinationPercentage += Math.random() + Math.random()
+    this.combinationPercentage += Math.random() * 2 * verreciel.game.gameSpeed
 
     if (this.combinationPercentage > 100) {
       this.onCombinationComplete()

@@ -41,8 +41,7 @@ class Panel extends Empty {
 
   installProgress () {
     // assertArgs(arguments, 0);
-    this.installPercentage += Math.random() * 6
-    this.installPercentage += 1 // Faster!
+    this.installPercentage += (Math.random() * 6 + 1) * verreciel.game.gameSpeed
 
     if (this.installPercentage > 100) {
       this.onInstallationComplete()
