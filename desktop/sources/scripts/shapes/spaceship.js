@@ -54,7 +54,7 @@ class Spaceship extends SceneLine {
       color
     )
 
-    this.add(new Axes(size))
+    // this.add(new Axes(size))
   }
 }
 
@@ -119,7 +119,7 @@ class RezSpaceship extends SceneLine {
       color
     )
 
-    this.add(new Axes(size))
+    // this.add(new Axes(size))
   }
 }
 
