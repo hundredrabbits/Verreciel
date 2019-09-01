@@ -195,6 +195,12 @@ class Shield extends Widget {
     verreciel.capsule.shieldRoot.hide()
   }
 
+  onInstallationBegin () {
+    // assertArgs(arguments, 0);
+    super.onInstallationBegin()
+    verreciel.player.lookAt(90, -30)
+  }
+
   onInstallationComplete () {
     // assertArgs(arguments, 0);
     super.onInstallationComplete()

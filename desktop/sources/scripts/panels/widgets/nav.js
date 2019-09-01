@@ -40,7 +40,7 @@ class Nav extends Widget {
     // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
-    verreciel.player.lookAt(-90)
+    verreciel.player.lookAt(-90, -30)
   }
 
   onInstallationComplete () {

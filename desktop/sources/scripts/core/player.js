@@ -57,22 +57,23 @@ class Player extends Empty {
     }
   }
 
-  lookAt (deg = 0) {
+  lookAt (yDeg = 0, xDeg = 0) {
     // assertArgs(arguments, 1);
-    let normalizedDeg = radToDeg(this.rotation.y) % 360
-    this.rotation.y = degToRad(normalizedDeg)
-    verreciel.helmet.rotation.y = degToRad(normalizedDeg)
+    let normalizedYDeg = radToDeg(this.rotation.y) % 360
+    this.rotation.y = degToRad(normalizedYDeg)
+    verreciel.helmet.rotation.y = degToRad(normalizedYDeg)
 
     this.isLocked = true
 
     verreciel.animator.begin('look at')
     verreciel.animator.animationDuration = 2.5
 
-    this.rotation.y = degToRad(deg)
+    this.rotation.y = degToRad(yDeg)
+    this.rotation.x = degToRad(xDeg)
     if (!this.isPanoptic) {
       this.position.set(0, 0, 0) // ?
       verreciel.helmet.position.set(0, 0, 0) // ?
-      verreciel.helmet.rotation.y = degToRad(deg)
+      verreciel.helmet.rotation.y = degToRad(yDeg)
     }
 
     verreciel.animator.completionBlock = function () {
@@ -84,15 +85,15 @@ class Player extends Empty {
           verreciel.helmet.rotation.z
         )
       }
-      verreciel.ghost.report(LogType.playerUnlock, deg)
+      verreciel.ghost.report(LogType.playerUnlock, yDeg)
     }.bind(this)
     verreciel.animator.commit()
 
     this.releaseHandle()
   }
 
-  lookAtMod (deg = 0) {
-    this.lookAt(radToDeg(this.rotation.y) + deg)
+  lookAtMod(yDeg = 0, xDeg = 0) {
+    this.lookAt(radToDeg(this.rotation.y) + yDeg, xDeg)
   }
 
   setIsPanoptic (value) {

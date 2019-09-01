@@ -35,6 +35,7 @@ class Veil extends Widget {
   onInstallationBegin () {
     // assertArgs(arguments, 0);
     super.onInstallationBegin()
+    verreciel.player.lookAt(180, -30)
   }
 
   onInstallationComplete () {
