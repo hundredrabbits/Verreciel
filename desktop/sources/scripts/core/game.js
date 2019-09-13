@@ -9,7 +9,7 @@ class Game {
     this.seconds = 0
     this.gameSpeed = 1
     if (DEBUG_LOG_GHOST) {
-      this.gameSpeed = 5
+      this.gameSpeed = 30
     }
   }
 

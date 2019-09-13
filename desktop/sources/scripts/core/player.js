@@ -150,9 +150,11 @@ class Player extends Empty {
       verreciel.animator.completionBlock = function () {
         this.isEjected = true
         verreciel.game.save(0)
-        const remote = require('electron').remote
-        const { dialog, app } = remote
-        app.exit()
+        if (!DEBUG_LOG_GHOST) {
+          const remote = require('electron').remote
+          const { dialog, app } = remote
+          app.exit()
+        }
       }.bind(this)
       verreciel.animator.commit()
     }.bind(this)
