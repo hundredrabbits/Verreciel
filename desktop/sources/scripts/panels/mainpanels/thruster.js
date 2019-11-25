@@ -736,6 +736,9 @@ class Thruster extends MainPanel {
     // assertArgs(arguments, 0);
     if (this.speed < this.maxSpeed()) {
       this.speed += 1
+      if (DEBUG_LOG_GHOST == true && this.speed < this.maxSpeed()) {
+        this.accelerate.tap();
+      }
     }
   }
 
@@ -743,6 +746,9 @@ class Thruster extends MainPanel {
     // assertArgs(arguments, 0);
     if (this.speed >= 1) {
       this.speed -= 1
+      if (DEBUG_LOG_GHOST == true && this.speed >= 1) {
+        this.decelerate.tap();
+      }
     }
   }
 

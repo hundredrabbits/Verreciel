@@ -69,8 +69,8 @@ class Player extends Empty {
     verreciel.animator.animationDuration = 2.5
 
     this.rotation.y = degToRad(yDeg)
-    this.rotation.x = degToRad(xDeg)
     if (!this.isPanoptic) {
+      this.rotation.x = degToRad(xDeg)
       this.position.set(0, 0, 0) // ?
       verreciel.helmet.position.set(0, 0, 0) // ?
       verreciel.helmet.rotation.y = degToRad(yDeg)

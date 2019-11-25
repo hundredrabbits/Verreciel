@@ -37,7 +37,7 @@ class Ghost extends Empty {
 
     if (DEBUG_LOG_GHOST == true) {
       document.onkeyup = function (event) {
-        if (event.keyCode == 88) {
+        if (event.code === "KeyX") {
           this.report(LogType.mistake)
         }
       }.bind(this)
