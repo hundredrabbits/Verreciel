@@ -10,9 +10,9 @@ class Animation {
     this.properties = properties
     this.completionBlock = completionBlock
     this.percent = 0
-    this.lastFrameTime = Date.now()
     this.completed = false
     this.started = false
+    this.tick = this.tick.bind( this )
 
     for (let property of this.properties) {
       if (property.registered) {
@@ -20,22 +20,23 @@ class Animation {
       }
     }
 
-    this.tick()
-    this.started = true
-    this.lastFrameTime += this.delay * 1000 / verreciel.game.gameSpeed
-    delay(this.delay, this.tick.bind(this))
+    verreciel.animations.push( this )
+
+    if( this.delay ) {
+      delay(this.delay, () => {
+        this.started = true
+      })
+    } else {
+      this.started = true
+    }
   }
 
-  tick () {
-    if (this.completed) {
+  tick ( delta ) {
+    if (this.completed || !this.started) {
       return
     }
-    let frameTime = Date.now()
-    let secondsElapsed = (frameTime - this.lastFrameTime) / 1000
-    this.lastFrameTime = frameTime
 
-    var percentElapsed =
-      secondsElapsed / this.duration * verreciel.game.gameSpeed
+    var percentElapsed = delta / this.duration * verreciel.game.gameSpeed
     this.percent += percentElapsed
 
     if (this.percent > 1) {
@@ -54,12 +55,8 @@ class Animation {
       }
     }
 
-    if (this.started == true) {
-      if (this.percent < 1) {
-        requestAnimationFrame(this.tick.bind(this))
-      } else {
-        verreciel.animator.completeAnimation(this.name)
-      }
+    if (this.started == true && this.percent >= 1) {
+      verreciel.animator.completeAnimation(this.name)
     }
   }
 
@@ -67,6 +64,10 @@ class Animation {
     this.completed = true
     if (this.completionBlock != null) {
       this.completionBlock()
+    }
+    var index = verreciel.animations.indexOf( this )
+    if( ~index ) {
+      verreciel.animations.splice( index, 1 )
     }
   }
 }

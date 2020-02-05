@@ -12,11 +12,9 @@ class Music {
     this.analyser = this.context.createAnalyser()
     this.analyser.connect(this.context.destination)
     this.data = new Uint8Array(this.analyser.frequencyBinCount)
-    requestAnimationFrame(this.updateData.bind(this))
   }
 
   updateData () {
-    requestAnimationFrame(this.updateData.bind(this))
     this.analyser.getByteFrequencyData(this.data)
     const length = this.data.length
     let count = 0

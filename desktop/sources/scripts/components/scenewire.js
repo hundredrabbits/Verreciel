@@ -89,19 +89,35 @@ class SceneWire extends Empty {
     this.updateSegments()
   }
 
+  startAnimation() {
+    if( !verreciel.wires.includes( this ) ) {
+      verreciel.wires.push( this )
+    }
+  }
+
+  stopAnimation() {
+    var index = verreciel.wires.indexOf( this )
+    if( ~index ) {
+      verreciel.wires.splice( index, 1 )
+    }
+  }
+
   animate () {
+
     let rand = Math.random()
     let delta = verreciel.game.time - this.lastGameTime
+
     this.lastGameTime = verreciel.game.time
     this.time += rand * rand * delta
+
     if (
       this.isEnabled == false ||
       this.endB == null ||
       this.endA.equals(this.endB)
     ) {
-      return
+      this.stopAnimation()
     }
-    requestAnimationFrame(this.animate.bind(this))
+
   }
 
   updateEnds (
@@ -121,7 +137,7 @@ class SceneWire extends Empty {
 
     if (reset == true) {
       this.phase = Math.random() * Math.PI * 2
-      this.animate()
+      this.startAnimation()
     }
 
     this.updateSegments()

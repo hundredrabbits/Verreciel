@@ -53,10 +53,11 @@ class Verreciel {
     this.cyan = new THREE.Vector4(0, 1, 0, 1)
 
     this.controller = new Controller()
-    this.fps = 40
+    this.fps = 60
     this.camera = new THREE.PerspectiveCamera(105, 1, 0.0001, 10000)
     this.raycaster = new THREE.Raycaster()
     this.numClicks = 0
+    this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(0, 0, 0)
     this.renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -110,6 +111,9 @@ class Verreciel {
     this.helmet = new Helmet()
 
     this.missions = new Missions()
+
+    this.render = this.render.bind( this )
+
   }
 
   start (jump_mission) {
@@ -131,6 +135,9 @@ class Verreciel {
     this.windowResize()
 
     this.root = new Empty()
+    this.animations = []
+    this.wires = []
+
     this.scene.add(this.root.element)
 
     this.root.add(this.player)
@@ -155,7 +162,6 @@ class Verreciel {
     }
 
     this.root.whenResize()
-    this.lastFrameTime = Date.now()
     this.render()
   }
 
@@ -163,32 +169,45 @@ class Verreciel {
     this.game.reset()
   }
 
+  updateAnimations( delta ) {
+    for( let i = 0; i < this.animations.length; i++ ) {
+      this.animations[i].tick( delta )
+    }
+  }
+
+  updateWireAnimations() {
+    for( let i = 0; i < this.wires.length; i++ ) {
+      this.wires[i].animate()
+    }
+  }
+
   render () {
     this.phase = Phase.render
     // assertArgs(arguments, 0);
-    requestAnimationFrame(this.render.bind(this))
+    requestAnimationFrame(this.render)
 
     if (DEBUG_SHOW_STATS) {
       this.stats.begin()
     }
-    let frameTime = Date.now()
 
-    let framesElapsed = Math.min(
-      100,
-      (frameTime - this.lastFrameTime) / 1000 * this.fps * this.game.gameSpeed
-    )
-    if (framesElapsed > 1) {
-      this.lastFrameTime = frameTime
-      for (let i = 0; i < framesElapsed; i++) {
-        this.root.whenRenderer()
-      }
-      this.helmet.updatePortWires()
-      this.renderer.render(this.scene, this.camera)
-    }
+    var delta = this.clock.getDelta()
+
+    this.game.tick( delta )
+    this.updateAnimations( delta )
+    this.updateWireAnimations()
+
+    this.music.updateData()
+    this.root.whenRenderer()
+    this.helmet.updatePortWires()
+
+    this.renderer.render(this.scene, this.camera)
+
     this.phase = Phase.idle
+
     if (DEBUG_SHOW_STATS) {
       this.stats.end()
     }
+
   }
 
   mouseDown (e) {
