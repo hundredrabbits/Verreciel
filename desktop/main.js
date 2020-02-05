@@ -20,7 +20,7 @@ app.on('ready', () => {
     resizable: true,
     frame: process.platform !== 'darwin',
     skipTaskbar: process.platform === 'darwin',
-    autoHideMenuBar: process.platform === 'darwin',
+    autoHideMenuBar: process.platform !== 'darwin',
     webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
   })
 

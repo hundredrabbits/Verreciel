@@ -6,6 +6,7 @@ class Game {
     // assertArgs(arguments, 0);
     console.info('^ Game | Init')
     this.time = 0
+    this.seconds = 0
     this.gameSpeed = 1
     if (DEBUG_LOG_GHOST) {
       this.gameSpeed = 5
@@ -15,8 +16,6 @@ class Game {
   whenStart (jump_mission) {
     // assertArgs(arguments, 0);
     console.info('+ Game | Start')
-    setTimeout(this.onTic.bind(this), 50)
-    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
     if (JUMP_MISSION) {
       this.load(jump_mission)
       return
@@ -77,16 +76,15 @@ class Game {
     this.load(0)
   }
 
-  whenSecond () {
+  tick ( delta ) {
     // assertArgs(arguments, 0);
-    setTimeout(this.whenSecond.bind(this), 1000 / this.gameSpeed)
-    verreciel.capsule.whenSecond()
-    verreciel.missions.refresh()
-  }
-
-  onTic () {
-    // assertArgs(arguments, 0);
-    setTimeout(this.onTic.bind(this), 50)
     this.time += this.gameSpeed
+    this.seconds += delta
+
+    if( this.seconds > ( 1 / this.gameSpeed )) {
+      this.seconds = 0
+      verreciel.capsule.whenSecond()
+      verreciel.missions.refresh()
+    }
   }
 }

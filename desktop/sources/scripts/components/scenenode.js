@@ -111,36 +111,36 @@ class SceneNode {
   }
 
   whenInherit () {
-    for (let node of this.children) {
-      node.whenInherit()
+    for( let i = 0; i < this.children.length; i++ ) {
+      this.children[i].whenInherit()
     }
   }
 
   whenStart () {
     // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenStart()
+    for( let i = 0; i < this.children.length; i++ ) {
+      this.children[i].whenStart()
     }
   }
 
   whenSecond () {
     // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenSecond()
+    for( let i = 0; i < this.children.length; i++ ) {
+      this.children[i].whenSecond()
     }
   }
 
   whenRenderer () {
     // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenRenderer()
+    for( let i = 0; i < this.children.length; i++ ) {
+      this.children[i].whenRenderer()
     }
   }
 
   whenResize () {
     // assertArgs(arguments, 0);
-    for (let node of this.children) {
-      node.whenResize()
+    for( let i = 0; i < this.children.length; i++ ) {
+      this.children[i].whenResize()
     }
   }
 
