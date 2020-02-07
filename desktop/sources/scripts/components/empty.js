@@ -26,7 +26,7 @@ class Empty extends SceneNode {
 
   blink () {
     // assertArgs(arguments, 0);
-    if (parseInt(verreciel.game.time / 2) % 2 === 0) {
+    if (parseInt(verreciel.game.time * 0.2) % 2 === 0) {
       this.opacity = 1
     } else {
       this.opacity = 0
