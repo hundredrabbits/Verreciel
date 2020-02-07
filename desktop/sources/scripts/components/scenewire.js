@@ -10,9 +10,7 @@ class SceneWire extends Empty {
     this.host = host
     this.endA = endA
     this.endB = endB
-    this.time = 0
     this.length = 0
-    this.lastGameTime = 0
 
     this.baseline1 = new THREE.Vector3(
       this.endB.x * 0.2,
@@ -104,12 +102,6 @@ class SceneWire extends Empty {
 
   animate () {
 
-    let rand = Math.random()
-    let delta = verreciel.game.time - this.lastGameTime
-
-    this.lastGameTime = verreciel.game.time
-    this.time += rand * rand * delta
-
     if (
       this.isEnabled == false ||
       this.endB == null ||
@@ -128,7 +120,10 @@ class SceneWire extends Empty {
     // assertArgs(arguments, 2);
     this.endA = endA
     this.endB = endB
-    this.length = this.endA.distanceTo(this.endB)
+    this.length = Math.sqrt(
+      (this.endA.x - this.endB.x) ** 2 +
+      (this.endA.z - this.endB.z) ** 2
+    )
 
     this.baseline1.copy(this.endB).multiplyScalar(0.2)
     this.baseline2.copy(this.endB).multiplyScalar(0.4)
@@ -137,6 +132,7 @@ class SceneWire extends Empty {
 
     if (reset == true) {
       this.phase = Math.random() * Math.PI * 2
+      this.wiggleLength = this.length
       this.startAnimation()
     }
 
@@ -144,27 +140,28 @@ class SceneWire extends Empty {
   }
 
   updateSegments () {
-    this.wiggle.y = Math.sin(this.time / (this.length * 20) + this.phase)
+    const time = verreciel.game.time
+    this.wiggle.y = Math.sin(time * this.wiggleLength * 0.01 + this.phase)
 
     this.vertex1
       .copy(this.wiggle)
       .add(this.thrust)
-      .multiplyScalar(this.length * 0.05)
+      .multiplyScalar(this.wiggleLength * 0.05)
       .add(this.baseline1)
     this.vertex2
       .copy(this.wiggle)
       .add(this.thrust)
-      .multiplyScalar(this.length * 0.08)
+      .multiplyScalar(this.wiggleLength * 0.08)
       .add(this.baseline2)
     this.vertex3
       .copy(this.wiggle)
       .add(this.thrust)
-      .multiplyScalar(this.length * 0.08)
+      .multiplyScalar(this.wiggleLength * 0.08)
       .add(this.baseline3)
     this.vertex4
       .copy(this.wiggle)
       .add(this.thrust)
-      .multiplyScalar(this.length * 0.05)
+      .multiplyScalar(this.wiggleLength * 0.05)
       .add(this.baseline4)
 
     this.segment1.updateVertices([this.endA, this.vertex1])
