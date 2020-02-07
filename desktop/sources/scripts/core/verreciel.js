@@ -135,7 +135,6 @@ class Verreciel {
     this.windowResize()
 
     this.root = new Empty()
-    this.animations = []
     this.wires = []
 
     this.scene.add(this.root.element)
@@ -169,12 +168,6 @@ class Verreciel {
     this.game.reset()
   }
 
-  updateAnimations( delta ) {
-    for( let i = 0; i < this.animations.length; i++ ) {
-      this.animations[i].tick( delta )
-    }
-  }
-
   updateWireAnimations() {
     for( let i = 0; i < this.wires.length; i++ ) {
       this.wires[i].animate()
@@ -193,7 +186,7 @@ class Verreciel {
     var delta = this.clock.getDelta()
 
     this.game.tick( delta )
-    this.updateAnimations( delta )
+    this.animator.updateAnimations( delta )
     this.updateWireAnimations()
 
     this.music.updateData()

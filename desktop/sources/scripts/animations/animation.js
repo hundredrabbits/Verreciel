@@ -20,8 +20,6 @@ class Animation {
       }
     }
 
-    verreciel.animations.push( this )
-
     if( this.delay ) {
       delay(this.delay, () => {
         this.started = true
@@ -61,13 +59,12 @@ class Animation {
   }
 
   complete () {
+    if (this.completed) {
+      return
+    }
     this.completed = true
     if (this.completionBlock != null) {
       this.completionBlock()
-    }
-    var index = verreciel.animations.indexOf( this )
-    if( ~index ) {
-      verreciel.animations.splice( index, 1 )
     }
   }
 }
