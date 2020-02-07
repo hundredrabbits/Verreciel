@@ -190,7 +190,11 @@ class Verreciel {
     this.updateWireAnimations()
 
     this.music.updateData()
-    this.root.whenRenderer()
+    for (let i = 0; i < this.game.gameSpeed; i++) {
+      // TODO: divide role of whenRenderer
+      // between game tick and render logic
+      this.root.whenRenderer()
+    }
     this.helmet.updatePortWires()
 
     this.renderer.render(this.scene, this.camera)
