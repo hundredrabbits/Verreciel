@@ -101,7 +101,7 @@ class Cargo extends MainPanel {
     this.refresh()
   }
 
-  removeItem (target) {
+  removeItem (target, index) {
     // assertArgs(arguments, 1);
     if (this.cargohold.content.length == 1) {
       this.line1.position.x = 0.25
@@ -145,20 +145,19 @@ class Cargo extends MainPanel {
     }
 
     verreciel.animator.completionBlock = function () {
-      this.removeTransfer(target)
+      this.removeTransfer(target, index)
     }.bind(this)
     verreciel.animator.commit()
   }
 
-  removeTransfer (target) {
+  removeTransfer (target, index) {
     // assertArgs(arguments, 1);
-    let history = this.cargohold.content
-    this.cargohold.content = []
-    for (let event of history) {
-      if (event == target) {
-        continue
-      }
-      this.cargohold.content.push(event)
+
+    if (this.cargohold.content[index] != target) {
+      index = this.cargohold.content.indexOf(target)
+    }
+    if (index != -1) {
+      this.cargohold.content.splice(index, 1)
     }
 
     this.refresh()
@@ -283,8 +282,7 @@ class Cargo extends MainPanel {
       return
     }
 
-    this.uploadPercentage += Math.random() * 6
-    this.uploadPercentage += 1 // Faster!
+    this.uploadPercentage += (Math.random() * 6 + 1) * verreciel.game.gameSpeed
     if (this.uploadPercentage > 100) {
       this.uploadComplete()
     } else {

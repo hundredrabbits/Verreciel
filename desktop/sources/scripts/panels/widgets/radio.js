@@ -92,7 +92,7 @@ class Radio extends Widget {
   onInstallationBegin () {
     // assertArgs(arguments, 0);
     super.onInstallationBegin()
-    verreciel.player.lookAt(0)
+    verreciel.player.lookAt(0, -30)
   }
 
   onInstallationComplete () {

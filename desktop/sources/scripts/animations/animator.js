@@ -9,7 +9,8 @@ class Animator {
     this.delay = 0
     this.ease = Penner.easeOutQuart
     this.animationID = 1
-    this.animations = {}
+    this.animations = []
+    this.animationsByName = {}
   }
 
   begin (name = null) {
@@ -42,6 +43,8 @@ class Animator {
       return
     }
 
+    this.completeAnimation(this.name)
+
     let animation = new Animation(
       this.name,
       this.animationDuration,
@@ -50,23 +53,32 @@ class Animator {
       this.properties.slice(),
       this.completionBlock
     )
+    this.animations.push(animation)
     this.name = null
     this.properties.splice(0, this.properties.length)
     this.begun = false
     this.animationDuration = 0
     this.completionBlock = null
     this.delay = 0
-    this.animations[animation.name] = animation
+    this.animationsByName[animation.name] = animation
     this.ease = Penner.easeOutQuart
     return animation.name
   }
 
   completeAnimation (name) {
-    let animation = this.animations[name]
+    let animation = this.animationsByName[name]
     if (animation == null) {
       return
     }
-    delete this.animations[name]
+    delete this.animationsByName[name]
+    const index = this.animations.indexOf(animation)
+    this.animations.splice( index, 1 )
     animation.complete()
+  }
+
+  updateAnimations( delta ) {
+    for( let i = 0; i < this.animations.length; i++ ) {
+      this.animations[i].tick( delta )
+    }
   }
 }

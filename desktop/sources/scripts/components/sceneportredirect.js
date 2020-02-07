@@ -2,11 +2,17 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class ScenePortRedirect extends ScenePort {
+
+  constructor (host, name, index) {
+    super(host, name)
+    this.index = index
+  }
+
   removeEvent () {
     // assertArgs(arguments, 0);
     let redirectedHost = verreciel.console.port.origin.host
     if (redirectedHost instanceof Cargo) {
-      redirectedHost.removeItem(this.event)
+      redirectedHost.removeItem(this.event, this.index)
       this.disable()
     }
   }

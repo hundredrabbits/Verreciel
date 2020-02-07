@@ -48,31 +48,39 @@ class Player extends Empty {
       // closer to 1 for more 'momentum'
       this.accelX *= 0.75
       this.accelY *= 0.75
-      if (Math.abs(this.accelX) < 0.005) {
+      if (Math.abs(this.accelX) < 0.0005) {
         this.accelX = 0 // if it gets too small just drop to zero
       }
-      if (Math.abs(this.accelY) < 0.005) {
+      if (Math.abs(this.accelY) < 0.0005) {
         this.accelY = 0 // if it gets too small just drop to zero
       }
     }
   }
 
-  lookAt (deg = 0) {
+  lookAt (yDeg = 0, xDeg = 0) {
     // assertArgs(arguments, 1);
-    let normalizedDeg = radToDeg(this.rotation.y) % 360
-    this.rotation.y = degToRad(normalizedDeg)
-    verreciel.helmet.rotation.y = degToRad(normalizedDeg)
+    let normalizedYDeg = radToDeg(this.rotation.y) % 360
+    this.rotation.y = degToRad(normalizedYDeg)
+    verreciel.helmet.rotation.y = degToRad(normalizedYDeg)
 
     this.isLocked = true
 
     verreciel.animator.begin('look at')
-    verreciel.animator.animationDuration = 2.5
 
-    this.rotation.y = degToRad(deg)
+    const lastRotationY = this.rotation.y
+    this.rotation.y = degToRad(yDeg)
+    const diffAngle = Math.abs(
+      sanitizeDiffAngle(lastRotationY, this.rotation.y)
+    )
+    const ratio = diffAngle / Math.PI
+    verreciel.animator.animationDuration = 0.2 * (1 - ratio) + 1.0 * ratio
+    verreciel.animator.ease = Penner.easeInOutQuad
+
     if (!this.isPanoptic) {
+      this.rotation.x = degToRad(xDeg)
       this.position.set(0, 0, 0) // ?
       verreciel.helmet.position.set(0, 0, 0) // ?
-      verreciel.helmet.rotation.y = degToRad(deg)
+      verreciel.helmet.rotation.y = degToRad(yDeg)
     }
 
     verreciel.animator.completionBlock = function () {
@@ -84,15 +92,15 @@ class Player extends Empty {
           verreciel.helmet.rotation.z
         )
       }
-      verreciel.ghost.report(LogType.playerUnlock, deg)
+      verreciel.ghost.report(LogType.playerUnlock, yDeg)
     }.bind(this)
     verreciel.animator.commit()
 
     this.releaseHandle()
   }
 
-  lookAtMod (deg = 0) {
-    this.lookAt(radToDeg(this.rotation.y) + deg)
+  lookAtMod(yDeg = 0, xDeg = 0) {
+    this.lookAt(radToDeg(this.rotation.y) + yDeg, xDeg)
   }
 
   setIsPanoptic (value) {
@@ -149,9 +157,11 @@ class Player extends Empty {
       verreciel.animator.completionBlock = function () {
         this.isEjected = true
         verreciel.game.save(0)
-        const remote = require('electron').remote
-        const { dialog, app } = remote
-        app.exit()
+        if (!DEBUG_LOG_GHOST) {
+          const remote = require('electron').remote
+          const { dialog, app } = remote
+          app.exit()
+        }
       }.bind(this)
       verreciel.animator.commit()
     }.bind(this)

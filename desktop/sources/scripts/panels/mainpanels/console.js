@@ -7,12 +7,12 @@ class Console extends MainPanel {
     super('console')
 
     this.lines = [
+      new ConsoleLine(0),
       new ConsoleLine(1),
       new ConsoleLine(2),
       new ConsoleLine(3),
       new ConsoleLine(4),
-      new ConsoleLine(5),
-      new ConsoleLine(6)
+      new ConsoleLine(5)
     ]
 
     this.details = 'inspects events'
@@ -215,7 +215,7 @@ class ConsoleLine extends Empty {
     // assertArgs(arguments, 0);
     super()
 
-    this.port = new ScenePortRedirect(this, 'console_line_' + index)
+    this.port = new ScenePortRedirect(this, 'console_line_' + (index + 1), index)
     this.port.position.set(0, 0, 0)
     this.port.hide()
     this.add(this.port)
