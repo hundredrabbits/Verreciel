@@ -48,10 +48,10 @@ class Player extends Empty {
       // closer to 1 for more 'momentum'
       this.accelX *= 0.75
       this.accelY *= 0.75
-      if (Math.abs(this.accelX) < 0.005) {
+      if (Math.abs(this.accelX) < 0.0005) {
         this.accelX = 0 // if it gets too small just drop to zero
       }
-      if (Math.abs(this.accelY) < 0.005) {
+      if (Math.abs(this.accelY) < 0.0005) {
         this.accelY = 0 // if it gets too small just drop to zero
       }
     }
@@ -66,9 +66,16 @@ class Player extends Empty {
     this.isLocked = true
 
     verreciel.animator.begin('look at')
-    verreciel.animator.animationDuration = 2.5
 
+    const lastRotationY = this.rotation.y
     this.rotation.y = degToRad(yDeg)
+    const diffAngle = Math.abs(
+      sanitizeDiffAngle(lastRotationY, this.rotation.y)
+    )
+    const ratio = diffAngle / Math.PI
+    verreciel.animator.animationDuration = 0.2 * (1 - ratio) + 1.0 * ratio
+    verreciel.animator.ease = Penner.easeInOutQuad
+
     if (!this.isPanoptic) {
       this.rotation.x = degToRad(xDeg)
       this.position.set(0, 0, 0) // ?
